@@ -1,0 +1,224 @@
+:root {
+  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --radius: 0.75rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --background: #09090b;
+  --foreground: #fafafa;
+  --card: #0f0f12;
+  --card-foreground: #fafafa;
+  --popover: #131317;
+  --popover-foreground: #fafafa;
+  --primary: #fafafa;
+  --primary-foreground: #18181b;
+  --secondary: #27272a;
+  --secondary-foreground: #fafafa;
+  --muted: #1c1c20;
+  --muted-foreground: #a1a1aa;
+  --accent: #27272a;
+  --accent-foreground: #fafafa;
+  --destructive: #f87171;
+  --destructive-foreground: #1a0505;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #8a1c3b;
+
+  --glass: rgba(24, 24, 27, 0.62);
+  --glass-strong: rgba(18, 18, 21, 0.86);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-blur: saturate(180%) blur(28px);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 8px 24px -6px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 32px 80px -24px rgba(0, 0, 0, 0.75);
+  --shadow-ring: 0 0 0 3px color-mix(in srgb, var(--ring) 40%, transparent);
+
+  --wallpaper:
+    radial-gradient(120% 90% at 12% 4%, #2a1d5e 0%, transparent 55%),
+    radial-gradient(100% 80% at 88% 12%, #0f3f6b 0%, transparent 52%),
+    radial-gradient(120% 100% at 60% 100%, #3b1246 0%, transparent 60%),
+    linear-gradient(180deg, #0a0a12 0%, #08080c 100%);
+
+  --label-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  --syn-key: #7dd3fc;
+  --syn-str: #86efac;
+  --syn-num: #fbbf24;
+  --syn-bool: #c4b5fd;
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #09090b;
+  --card: #ffffff;
+  --card-foreground: #09090b;
+  --popover: #ffffff;
+  --popover-foreground: #09090b;
+  --primary: #18181b;
+  --primary-foreground: #fafafa;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #18181b;
+  --destructive: #dc2626;
+  --destructive-foreground: #fef2f2;
+  --success: #16a34a;
+  --warning: #d97706;
+  --border: rgba(9, 9, 11, 0.10);
+  --border-strong: rgba(9, 9, 11, 0.18);
+  --input: rgba(9, 9, 11, 0.06);
+  --ring: #8a1c3b;
+
+  --glass: rgba(255, 255, 255, 0.66);
+  --glass-strong: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(9, 9, 11, 0.08);
+
+  --shadow-sm: 0 1px 2px rgba(9, 9, 11, 0.06);
+  --shadow-md: 0 8px 24px -6px rgba(9, 9, 11, 0.12);
+  --shadow-lg: 0 32px 80px -24px rgba(9, 9, 11, 0.22);
+
+  --label-shadow: none;
+  --syn-key: #0369a1;
+  --syn-str: #15803d;
+  --syn-num: #b45309;
+  --syn-bool: #6d28d9;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]):not([data-theme="light"]) {
+  --background: #ffffff;
+  --foreground: #09090b;
+  --card: #ffffff;
+  --card-foreground: #09090b;
+  --popover: #ffffff;
+  --popover-foreground: #09090b;
+  --primary: #18181b;
+  --primary-foreground: #fafafa;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #18181b;
+  --destructive: #dc2626;
+  --destructive-foreground: #fef2f2;
+  --success: #16a34a;
+  --warning: #d97706;
+  --border: rgba(9, 9, 11, 0.10);
+  --border-strong: rgba(9, 9, 11, 0.18);
+  --input: rgba(9, 9, 11, 0.06);
+  --ring: #8a1c3b;
+
+  --glass: rgba(255, 255, 255, 0.66);
+  --glass-strong: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(9, 9, 11, 0.08);
+
+  --shadow-sm: 0 1px 2px rgba(9, 9, 11, 0.06);
+  --shadow-md: 0 8px 24px -6px rgba(9, 9, 11, 0.12);
+  --shadow-lg: 0 32px 80px -24px rgba(9, 9, 11, 0.22);
+
+  --label-shadow: none;
+  --syn-key: #0369a1;
+  --syn-str: #15803d;
+  --syn-num: #b45309;
+  --syn-bool: #6d28d9;
+
+  color-scheme: light;
+  --wallpaper:
+    radial-gradient(120% 90% at 12% 4%, #dcd8ff 0%, transparent 58%),
+    radial-gradient(100% 80% at 88% 12%, #cfe6fb 0%, transparent 55%),
+    radial-gradient(120% 100% at 60% 100%, #f6d9ee 0%, transparent 62%),
+    linear-gradient(180deg, #fbfbfe 0%, #f2f3f8 100%);
+  }
+}
+
+
+:root[data-density="compact"] { --density-scale: 0.9; }
+:root[data-density="cozy"] { --density-scale: 1; }
+:root[data-density="roomy"] { --density-scale: 1.1; }
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+:root[data-motion="off"] *,
+:root[data-motion="off"] *::before,
+:root[data-motion="off"] *::after {
+  animation-duration: 0.001ms !important;
+  transition-duration: 0.001ms !important;
+}
+
+noscript {
+  display: block;
+  padding: 2rem;
+  font-family: var(--font-sans);
+}
+
+.jg-toaster {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 2rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.jg-toast {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-strong);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-md);
+  color: var(--foreground);
+  font: 500 13px/1 var(--font-sans);
+  animation: jg-toast-in 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.3);
+}
+
+.jg-toast[data-tone="error"] { color: var(--destructive); }
+.jg-toast[data-tone="success"] { color: var(--success); }
+.jg-toast.is-leaving { animation: jg-toast-out 0.18s ease forwards; }
+
+@keyframes jg-toast-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes jg-toast-out {
+  to { opacity: 0; transform: translateY(8px) scale(0.98); }
+}
