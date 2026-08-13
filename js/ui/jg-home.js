@@ -217,13 +217,15 @@ const sheet = css`
   .site-links svg { --icon-accent: currentColor; stroke-width: 1.6; opacity: 0.9; }
   .site-links a:hover { color: var(--foreground); text-decoration: underline; text-underline-offset: 3px; }
   .brand {
-    display: grid;
-    justify-items: center;
-    gap: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
     padding: 24px 0 20px;
     color: var(--ring);
   }
-  .brand svg { width: 52px; height: 52px; stroke-width: 1.5; margin-bottom: 10px; }
+  .brand svg { width: 52px; height: 52px; stroke-width: 1.5; flex: none; }
+  .wordmark { display: grid; gap: 3px; }
   .brand h1 {
     margin: 0;
     font: 650 25px/1.2 var(--font-sans);
@@ -236,7 +238,9 @@ const sheet = css`
     font-size: 13px;
     color: color-mix(in srgb, var(--muted-foreground) 92%, transparent);
     text-shadow: var(--label-shadow);
-    text-align: center;
+  }
+  @media (max-width: 560px) {
+    .brand { flex-direction: column; gap: 10px; text-align: center; }
   }
   .search-field {
     display: flex;
@@ -373,8 +377,10 @@ class JGHome extends JGElement {
                   <div class="search-shell">
                     <div class="brand">
                       ${icon('knife', 52)}
-                      <h1>Toolbox</h1>
-                      <p>${registry.all().length} fast, private developer tools that run in your browser</p>
+                      <div class="wordmark">
+                        <h1>Toolbox</h1>
+                        <p>${registry.all().length} fast, private developer tools that run in your browser</p>
+                      </div>
                     </div>
                     <label class="search-field">
                       ${icon('search', 18)}

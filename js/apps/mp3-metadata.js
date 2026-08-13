@@ -16,7 +16,55 @@ const sheet = css`
     padding: 12px;
   }
   .drop[data-over="true"] { border-color: var(--ring); color: var(--foreground); }
-  .split { display: grid; grid-template-columns: 200px 1fr; gap: 14px; }
+  .drop { min-height: 88px; }
+
+  .shell { display: grid; grid-template-columns: 290px 1fr; gap: 14px; flex: 1; min-height: 0; }
+  @media (max-width: 900px) { .shell { grid-template-columns: 1fr; } }
+  .list-pane { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+  .list-head { display: flex; align-items: center; gap: 8px; }
+  .list {
+    flex: 1;
+    min-height: 160px;
+    overflow: auto;
+    display: grid;
+    gap: 3px;
+    align-content: start;
+    padding: 5px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--muted) 40%, transparent);
+    scrollbar-width: thin;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 8px;
+    align-items: center;
+    padding: 5px 7px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+  }
+  .row[data-current="true"] { background: var(--card); border-color: var(--border); box-shadow: var(--shadow-sm); }
+  .row:hover { background: color-mix(in srgb, var(--card) 70%, transparent); }
+  .open {
+    display: grid;
+    gap: 1px;
+    min-width: 0;
+    text-align: left;
+    border: 0;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--foreground);
+    font-family: inherit;
+  }
+  .open .name { font-size: 12.5px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .open .sub { font-size: 11px; color: var(--muted-foreground); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .mark { font-family: var(--font-mono); font-size: 11px; color: var(--muted-foreground); }
+  .mark[data-dirty="true"]::after { content: " *"; color: var(--warning); }
+
+  .edit { min-width: 0; overflow: auto; scrollbar-width: thin; }
+  .split { display: grid; grid-template-columns: 190px 1fr; gap: 14px; }
   @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
   .cover {
     display: grid;
@@ -196,68 +244,102 @@ const writeTag = (buffer, tags, cover) => {
   return out;
 };
 
+const uid = () => Math.random().toString(36).slice(2, 9);
+
+const SHARED = ['artist', 'albumArtist', 'album', 'year', 'genre', 'composer', 'publisher', 'bpm', 'comment'];
+const ALL_KEYS = [...new Set(Object.values(FRAMES).map((frame) => frame.key))];
+
+const titleFromName = (name) =>
+  name
+    .replace(/\.mp3$/i, '')
+    .replace(/^\s*\d{1,3}\s*[-._)]\s*/, '')
+    .replace(/_/g, ' ')
+    .trim();
+
+const trackFromName = (name) => {
+  const match = /^\s*(\d{1,3})\s*[-._)]/.exec(name);
+  return match ? String(Number(match[1])) : '';
+};
+
 class Mp3Metadata extends JGApp {
   static appId = 'mp3-metadata';
   static styles = [...JGApp.styles, sheet];
 
-  #file = null;
-  #buffer = null;
-  #cover = null;
+  #tracks = [];
+  #current = null;
   #coverUrl = null;
 
   renderApp() {
     this.paint(html`<div class="app">
-      <div class="drop" id="drop">Drop an MP3 here, or click to choose one</div>
+      <jg-toolbar id="bar"></jg-toolbar>
 
-      <div class="split" id="body" hidden>
-        <div class="stack tight">
-          <div class="cover" id="cover">No artwork</div>
-          <jg-button size="sm" variant="outline" id="pick-cover">Replace artwork</jg-button>
-          <jg-button size="sm" variant="ghost" id="drop-cover">Remove artwork</jg-button>
-          <div class="kv" id="file"></div>
+      <div class="drop" id="drop">Drop MP3 files here, or click to choose them</div>
+
+      <div class="shell" id="body" hidden>
+        <div class="list-pane">
+          <div class="list-head">
+            <jg-switch id="select-all" checked></jg-switch>
+            <span class="hint" id="counts"></span>
+          </div>
+          <div class="list" id="list"></div>
         </div>
 
-        <div class="stack tight">
-          <div class="fields">
-            <jg-field label="Title"><jg-input id="title"></jg-input></jg-field>
-            <jg-field label="Artist"><jg-input id="artist"></jg-input></jg-field>
-            <jg-field label="Album"><jg-input id="album"></jg-input></jg-field>
-            <jg-field label="Album artist"><jg-input id="albumArtist"></jg-input></jg-field>
-            <jg-field label="Year"><jg-input id="year" placeholder="2026"></jg-input></jg-field>
-            <jg-field label="Track"><jg-input id="track" placeholder="1/12"></jg-input></jg-field>
-            <jg-field label="Disc"><jg-input id="disc" placeholder="1/1"></jg-input></jg-field>
-            <jg-field label="Genre">
-              <jg-input id="genre" list="genres"></jg-input>
-            </jg-field>
-            <jg-field label="Composer"><jg-input id="composer"></jg-input></jg-field>
-            <jg-field label="Publisher"><jg-input id="publisher"></jg-input></jg-field>
-            <jg-field label="BPM"><jg-input id="bpm" type="number" min="0" max="400"></jg-input></jg-field>
-          </div>
-          <jg-field label="Comment"><jg-textarea id="comment" rows="2" sans></jg-textarea></jg-field>
+        <div class="edit">
+          <div class="split">
+            <div class="stack tight">
+              <div class="cover" id="cover">No artwork</div>
+              <jg-button size="sm" variant="outline" id="pick-cover">Replace artwork</jg-button>
+              <jg-button size="sm" variant="ghost" id="drop-cover">Remove artwork</jg-button>
+            </div>
 
-          <div class="row">
-            <jg-button size="sm" id="save">Save MP3</jg-button>
-            <jg-button size="sm" variant="outline" id="clear">Clear all tags</jg-button>
-            <span class="grow"></span>
-            <span class="hint">${GENRES.slice(0, 4).join(', ')} and more are accepted in Genre</span>
+            <div class="stack tight">
+              <div class="fields">
+                <jg-field label="Title"><jg-input id="title"></jg-input></jg-field>
+                <jg-field label="Artist"><jg-input id="artist"></jg-input></jg-field>
+                <jg-field label="Album"><jg-input id="album"></jg-input></jg-field>
+                <jg-field label="Album artist"><jg-input id="albumArtist"></jg-input></jg-field>
+                <jg-field label="Year"><jg-input id="year" placeholder="2026"></jg-input></jg-field>
+                <jg-field label="Track"><jg-input id="track" placeholder="1/12"></jg-input></jg-field>
+                <jg-field label="Disc"><jg-input id="disc" placeholder="1/1"></jg-input></jg-field>
+                <jg-field label="Genre"><jg-input id="genre" placeholder="${GENRES.slice(0, 3).join(', ')}"></jg-input></jg-field>
+                <jg-field label="Composer"><jg-input id="composer"></jg-input></jg-field>
+                <jg-field label="Publisher"><jg-input id="publisher"></jg-input></jg-field>
+                <jg-field label="BPM"><jg-input id="bpm" type="number" min="0" max="400"></jg-input></jg-field>
+              </div>
+              <jg-field label="Comment"><jg-textarea id="comment" rows="2" sans></jg-textarea></jg-field>
+              <div class="kv" id="file"></div>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="hint">
-        Tags are read from and written back as ID3v2.3, which is what music players and phones read. The audio
+        Tags are read from and written back as ID3v2.3. Batch actions only touch the ticked files, and the audio
         frames are copied through untouched.
       </div>
 
-      <input type="file" id="picker" accept="audio/mpeg,.mp3" hidden />
+      <input type="file" id="picker" accept="audio/mpeg,.mp3" multiple hidden />
       <input type="file" id="art" accept="image/*" hidden />
     </div>`);
+
+    this.$('#bar').items = [
+      { id: 'add', label: 'Add files', icon: 'plus' },
+      { separator: true },
+      { id: 'apply', label: 'Apply shared fields', icon: 'copy', title: 'Copy artist, album, year and the rest to every ticked file' },
+      { id: 'number', label: 'Number tracks', icon: 'list', title: 'Number the ticked files in list order' },
+      { id: 'from-name', label: 'Titles from filenames', icon: 'type', title: 'Read the title and track number from each filename' },
+      { spacer: true },
+      { id: 'save', label: 'Save selected', icon: 'music' },
+      { id: 'remove', label: 'Remove', icon: 'close', danger: true },
+    ];
+
+    this.on(this.$('#bar'), 'select', (event) => this.#action(event.detail.id));
 
     const picker = this.$('#picker');
     const drop = this.$('#drop');
 
     this.on(drop, 'click', () => picker.click());
-    this.on(picker, 'change', () => this.#load(picker.files[0]));
+    this.on(picker, 'change', () => this.#load(picker.files));
     this.on(drop, 'dragover', (event) => {
       event.preventDefault();
       drop.dataset.over = 'true';
@@ -268,28 +350,35 @@ class Mp3Metadata extends JGApp {
     this.on(drop, 'drop', (event) => {
       event.preventDefault();
       drop.dataset.over = 'false';
-      this.#load(event.dataTransfer.files[0]);
+      this.#load(event.dataTransfer.files);
+    });
+
+    ALL_KEYS.forEach((key) => {
+      const node = this.$(`#${key}`);
+      if (node) this.on(node, 'input', () => this.#capture());
+    });
+
+    this.on(this.$('#select-all'), 'change', (event) => {
+      this.#tracks.forEach((track) => {
+        track.selected = event.detail.checked;
+      });
+      this.#paintList();
     });
 
     this.on(this.$('#pick-cover'), 'click', () => this.$('#art').click());
     this.on(this.$('#art'), 'change', async () => {
       const image = this.$('#art').files[0];
-      if (!image) return;
-      this.#cover = { mime: image.type || 'image/jpeg', data: new Uint8Array(await image.arrayBuffer()) };
+      if (!image || !this.#current) return;
+      this.#current.cover = { mime: image.type || 'image/jpeg', data: new Uint8Array(await image.arrayBuffer()) };
+      this.#current.dirty = true;
       this.#paintCover();
+      this.#paintList();
     });
     this.on(this.$('#drop-cover'), 'click', () => {
-      this.#cover = null;
+      if (!this.#current) return;
+      this.#current.cover = null;
+      this.#current.dirty = true;
       this.#paintCover();
-    });
-
-    this.on(this.$('#save'), 'click', () => this.#save());
-    this.on(this.$('#clear'), 'click', () => {
-      Object.values(FRAMES).forEach((frame) => {
-        const node = this.$(`#${frame.key}`);
-        if (node) node.value = '';
-      });
-      toast('Fields cleared, save to write the file');
     });
   }
 
@@ -298,59 +387,193 @@ class Mp3Metadata extends JGApp {
     if (this.#coverUrl) URL.revokeObjectURL(this.#coverUrl);
   }
 
-  async #load(file) {
-    if (!file) return;
-    if (!/mpeg|mp3/i.test(file.type) && !/\.mp3$/i.test(file.name)) {
-      toast('Choose an MP3 file', 'error');
+  async #load(files) {
+    const list = [...(files ?? [])].filter((file) => /mpeg|mp3/i.test(file.type) || /\.mp3$/i.test(file.name));
+    if (!list.length) {
+      toast('Choose one or more MP3 files', 'error');
       return;
     }
 
-    this.#file = file;
-    this.#buffer = await file.arrayBuffer();
-    const { tags, cover, size, version } = readTag(this.#buffer);
+    for (const file of list) {
+      const buffer = await file.arrayBuffer();
+      const { tags, cover, size, version } = readTag(buffer);
+      this.#tracks.push({
+        id: uid(),
+        file,
+        buffer,
+        cover,
+        version,
+        tagSize: size,
+        selected: true,
+        dirty: false,
+        tags: Object.fromEntries(ALL_KEYS.map((key) => [key, tags[key] ?? ''])),
+      });
+    }
 
-    this.#cover = cover;
     this.$('#body').hidden = false;
-    this.$('#drop').textContent = `${file.name} - ${formatBytes(file.size)}`;
+    this.$('#drop').textContent = `${this.#tracks.length} file${this.#tracks.length === 1 ? '' : 's'} loaded, drop more or click to add`;
+    if (!this.#current) this.#select(this.#tracks[0]);
+    this.#paintList();
+  }
 
-    Object.values(FRAMES).forEach((frame) => {
-      const node = this.$(`#${frame.key}`);
-      if (node) node.value = tags[frame.key] ?? '';
+  #paintList() {
+    const selected = this.#tracks.filter((track) => track.selected).length;
+    this.$('#counts').textContent = `${selected} of ${this.#tracks.length} selected`;
+
+    this.$('#list').innerHTML = this.#tracks
+      .map(
+        (track) => html`<div class="row" data-id="${track.id}" data-current="${String(track === this.#current)}">
+          <jg-switch ${track.selected ? 'checked' : ''} data-pick="${track.id}"></jg-switch>
+          <button class="open" data-open="${track.id}">
+            <span class="name">${track.tags.title || track.file.name}</span>
+            <span class="sub">${[track.tags.artist, track.tags.album].filter(Boolean).join(' - ') || 'No artist or album'}</span>
+          </button>
+          <span class="mark" data-dirty="${String(track.dirty)}">${track.tags.track || ''}</span>
+        </div>`,
+      )
+      .join('');
+
+    this.bind('[data-pick]', 'change', (event) => {
+      const track = this.#find(event.currentTarget.dataset.pick);
+      if (track) track.selected = event.detail.checked;
+      this.$('#counts').textContent = `${this.#tracks.filter((item) => item.selected).length} of ${this.#tracks.length} selected`;
+    });
+
+    this.bind('[data-open]', 'click', (event) => {
+      this.#select(this.#find(event.currentTarget.dataset.open));
+      this.#paintList();
+    });
+  }
+
+  #find(id) {
+    return this.#tracks.find((track) => track.id === id) ?? null;
+  }
+
+  #select(track) {
+    this.#current = track ?? null;
+    if (!track) return;
+
+    ALL_KEYS.forEach((key) => {
+      const node = this.$(`#${key}`);
+      if (node) node.value = track.tags[key] ?? '';
     });
 
     this.$('#file').innerHTML = html`
-      <div>Name</div><div class="mono">${file.name}</div>
-      <div>Size</div><div>${formatBytes(file.size)}</div>
-      <div>Tag</div><div>${version ? `ID3v${version}, ${formatBytes(size)}` : 'none found'}</div>
-      <div>Audio</div><div>${formatBytes(file.size - size)}</div>
+      <div>Name</div><div class="mono">${track.file.name}</div>
+      <div>Size</div><div>${formatBytes(track.file.size)}</div>
+      <div>Tag</div><div>${track.version ? `ID3v${track.version}, ${formatBytes(track.tagSize)}` : 'none found'}</div>
+      <div>Audio</div><div>${formatBytes(track.file.size - track.tagSize)}</div>
     `;
 
     this.#paintCover();
+  }
+
+  #capture() {
+    if (!this.#current) return;
+    ALL_KEYS.forEach((key) => {
+      const node = this.$(`#${key}`);
+      if (node) this.#current.tags[key] = node.value;
+    });
+    this.#current.dirty = true;
+    this.#paintList();
   }
 
   #paintCover() {
     const node = this.$('#cover');
     if (this.#coverUrl) URL.revokeObjectURL(this.#coverUrl);
 
-    if (!this.#cover?.data?.length) {
+    const cover = this.#current?.cover;
+    if (!cover?.data?.length) {
       this.#coverUrl = null;
       node.textContent = 'No artwork';
       return;
     }
 
-    this.#coverUrl = URL.createObjectURL(new Blob([this.#cover.data], { type: this.#cover.mime }));
+    this.#coverUrl = URL.createObjectURL(new Blob([cover.data], { type: cover.mime }));
     node.innerHTML = html`<img src="${this.#coverUrl}" alt="Artwork" />`;
   }
 
-  #save() {
-    if (!this.#buffer) return;
-    const tags = Object.fromEntries(
-      [...new Set(Object.values(FRAMES).map((frame) => frame.key))].map((key) => [key, this.$(`#${key}`)?.value ?? '']),
-    );
-    const bytes = writeTag(this.#buffer, tags, this.#cover);
-    const name = this.#file.name.replace(/\.mp3$/i, '');
-    download(`${name}-tagged.mp3`, bytes, 'audio/mpeg');
-    toast('Saved with the new tags');
+  #selection() {
+    return this.#tracks.filter((track) => track.selected);
+  }
+
+  #action(id) {
+    if (id === 'add') return this.$('#picker').click();
+
+    const selection = this.#selection();
+    if (!selection.length) {
+      toast('Tick at least one file first', 'error');
+      return undefined;
+    }
+
+    if (id === 'apply') return this.#applyShared(selection);
+    if (id === 'number') return this.#numberTracks(selection);
+    if (id === 'from-name') return this.#titlesFromNames(selection);
+    if (id === 'save') return this.#saveAll(selection);
+    if (id === 'remove') return this.#remove(selection);
+    return undefined;
+  }
+
+  #applyShared(selection) {
+    if (!this.#current) return;
+    const source = this.#current;
+    const fields = SHARED.filter((key) => (source.tags[key] ?? '').trim());
+
+    selection.forEach((track) => {
+      if (track === source) return;
+      fields.forEach((key) => {
+        track.tags[key] = source.tags[key];
+      });
+      if (source.cover) track.cover = source.cover;
+      track.dirty = true;
+    });
+
+    this.#paintList();
+    toast(`${fields.length} field${fields.length === 1 ? '' : 's'} copied to ${selection.length} files`);
+  }
+
+  #numberTracks(selection) {
+    selection.forEach((track, index) => {
+      track.tags.track = `${index + 1}/${selection.length}`;
+      track.dirty = true;
+    });
+    if (this.#current) this.#select(this.#current);
+    this.#paintList();
+    toast(`Numbered ${selection.length} files`);
+  }
+
+  #titlesFromNames(selection) {
+    selection.forEach((track) => {
+      track.tags.title = titleFromName(track.file.name);
+      const number = trackFromName(track.file.name);
+      if (number) track.tags.track = number;
+      track.dirty = true;
+    });
+    if (this.#current) this.#select(this.#current);
+    this.#paintList();
+    toast(`Titles read from ${selection.length} filenames`);
+  }
+
+  #remove(selection) {
+    this.#tracks = this.#tracks.filter((track) => !selection.includes(track));
+    if (selection.includes(this.#current)) this.#select(this.#tracks[0] ?? null);
+    if (!this.#tracks.length) {
+      this.$('#body').hidden = true;
+      this.$('#drop').textContent = 'Drop MP3 files here, or click to choose them';
+    }
+    this.#paintList();
+  }
+
+  async #saveAll(selection) {
+    for (const [index, track] of selection.entries()) {
+      const bytes = writeTag(track.buffer, track.tags, track.cover);
+      const name = track.tags.title ? `${track.tags.track ? `${String(track.tags.track).split('/')[0].padStart(2, '0')} ` : ''}${track.tags.title}` : track.file.name.replace(/\.mp3$/i, '');
+      download(`${name.replace(/[\\/:*?"<>|]/g, '-')}.mp3`, bytes, 'audio/mpeg');
+      track.dirty = false;
+      if (index < selection.length - 1) await new Promise((resolve) => setTimeout(resolve, 350));
+    }
+    this.#paintList();
+    toast(`Saved ${selection.length} file${selection.length === 1 ? '' : 's'}`);
   }
 }
 
