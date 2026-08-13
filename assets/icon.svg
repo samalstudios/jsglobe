@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="JS Globe">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b52a52"/>
+      <stop offset="0.5" stop-color="#8a1c3b"/>
+      <stop offset="1" stop-color="#4d0f21"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="url(#bg)"/>
+
+  <g transform="translate(96 96) scale(13.333)"
+     fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20.83 8.83a4 4 0 0 0-5.66-5.66l-12 12a4 4 0 1 0 5.66 5.66Z"/>
+    <path d="M18 11.66V22a4 4 0 0 0 4-4V6"/>
+    <path d="M3 2v1c0 1 2 1 2 2S3 6 3 7s2 1 2 2-2 1-2 2 2 1 2 2"/>
+    <path d="M18 6h.01"/>
+    <path d="M6 18h.01"/>
+  </g>
+</svg>
