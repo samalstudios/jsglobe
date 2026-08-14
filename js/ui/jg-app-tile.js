@@ -36,16 +36,38 @@ const sheet = css`
     font-size: calc(var(--tile, 62px) * 0.34);
     font-weight: 600;
     letter-spacing: -0.02em;
-    box-shadow: 0 8px 18px -10px rgba(0, 0, 0, 0.6);
+    box-shadow:
+      0 8px 18px -10px rgba(0, 0, 0, 0.6),
+      inset 0 calc(1px * var(--icon-depth, 0)) 0 rgba(255, 255, 255, calc(0.55 * var(--icon-depth, 0))),
+      inset 0 calc(-3px * var(--icon-depth, 0)) calc(6px * var(--icon-depth, 0)) rgba(0, 0, 0, calc(0.28 * var(--icon-depth, 0)));
     transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.3, 1.2), box-shadow 0.18s ease;
     overflow: hidden;
     user-select: none;
   }
-  a:hover .app-icon { box-shadow: 0 14px 26px -12px rgba(0, 0, 0, 0.6); }
+  a:hover .app-icon {
+    box-shadow:
+      0 14px 26px -12px rgba(0, 0, 0, 0.6),
+      inset 0 calc(1px * var(--icon-depth, 0)) 0 rgba(255, 255, 255, calc(0.55 * var(--icon-depth, 0))),
+      inset 0 calc(-3px * var(--icon-depth, 0)) calc(6px * var(--icon-depth, 0)) rgba(0, 0, 0, calc(0.28 * var(--icon-depth, 0)));
+  }
+  .app-icon::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 58%;
+    border-radius: calc(var(--tile, 62px) * 0.29) calc(var(--tile, 62px) * 0.29) 60% 60% / calc(var(--tile, 62px) * 0.29) calc(var(--tile, 62px) * 0.29) 26% 26%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.06));
+    opacity: var(--icon-gloss, 0);
+    pointer-events: none;
+  }
+
   .app-icon svg {
+    position: relative;
+    z-index: 1;
     width: calc(var(--tile, 62px) * 0.46);
     height: calc(var(--tile, 62px) * 0.46);
     stroke-width: 1.6;
+    filter: drop-shadow(0 calc(1px * var(--icon-depth, 0)) calc(1px * var(--icon-depth, 0)) rgba(0, 0, 0, calc(0.4 * var(--icon-depth, 0))));
   }
   a:hover .app-icon { transform: translateY(-3px) scale(1.04); }
   a:active .app-icon { transform: scale(0.94); }

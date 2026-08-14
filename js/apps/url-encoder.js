@@ -14,7 +14,7 @@ class UrlEncoder extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-segment id="strategy"></jg-segment>
+        <jg-tabs id="strategy"></jg-tabs>
         <span class="grow"></span>
         <jg-button size="sm" variant="outline" id="swap">Swap ⇅</jg-button>
       </div>

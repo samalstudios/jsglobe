@@ -62,7 +62,7 @@ class FunctionPlotter extends JGApp {
 
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-segment id="mode"></jg-segment>
+        <jg-tabs id="mode"></jg-tabs>
         <jg-button size="sm" variant="outline" id="add">Add function</jg-button>
         <jg-button size="sm" variant="ghost" id="reset">Reset view</jg-button>
         <jg-button size="sm" variant="ghost" id="fit">Fit y axis</jg-button>

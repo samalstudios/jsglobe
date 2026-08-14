@@ -79,7 +79,7 @@ class TodoApp extends JGApp {
       </div>
 
       <div class="spread">
-        <jg-segment id="filter"></jg-segment>
+        <jg-tabs id="filter"></jg-tabs>
         <span class="hint">${tasks.filter((task) => !task.done).length} of ${tasks.length} open</span>
       </div>
 

@@ -219,8 +219,6 @@ class DockerCompose extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-toolbar id="bar"></jg-toolbar>
-
       <div class="split">
         <div class="pane">
           <span class="label" id="in-label">docker run command</span>
@@ -239,34 +237,34 @@ class DockerCompose extends JGApp {
       </div>
     </div>`);
 
-    this.$('#bar').items = [
-      { id: 'to-compose', label: 'Run to Compose', icon: 'docker', select: true },
-      { id: 'to-run', label: 'Compose to Run', icon: 'transform', select: true },
+    this.setActions([
+      { id: 'to-compose', label: 'Run to Compose', icon: 'docker', select: true, action: () => this.#swap('to-compose') },
+      { id: 'to-run', label: 'Compose to Run', icon: 'transform', select: true, action: () => this.#swap('to-run') },
       { separator: true },
-      { id: 'sample', label: 'Sample', icon: 'spec' },
+      {
+        id: 'sample',
+        label: 'Sample',
+        icon: 'spec',
+        action: () => {
+          this.$('#input').value = this.#direction === 'to-compose' ? SAMPLE_RUN : toCompose(SAMPLE_RUN);
+          this.#run();
+        },
+      },
       { spacer: true },
-      { id: 'copy', label: 'Copy result', icon: 'fileText' },
-      { id: 'download', label: 'Download', icon: 'server' },
-    ];
-    this.$('#bar').value = this.#direction;
-
-    this.on(this.$('#bar'), 'select', (event) => {
-      const id = event.detail.id;
-      if (id === 'to-compose' || id === 'to-run') return this.#swap(id);
-      if (id === 'sample') {
-        this.$('#input').value = this.#direction === 'to-compose' ? SAMPLE_RUN : toCompose(SAMPLE_RUN);
-        return this.#run();
-      }
-      if (id === 'copy') return copyText(this.$('#output').value);
-      if (id === 'download') {
-        return download(
-          this.#direction === 'to-compose' ? 'compose.yaml' : 'run.sh',
-          this.$('#output').value,
-          'text/plain',
-        );
-      }
-      return undefined;
-    });
+      { id: 'copy', label: 'Copy result', icon: 'fileText', action: () => copyText(this.$('#output').value) },
+      {
+        id: 'download',
+        label: 'Download',
+        icon: 'server',
+        action: () =>
+          download(
+            this.#direction === 'to-compose' ? 'compose.yaml' : 'run.sh',
+            this.$('#output').value,
+            'text/plain',
+          ),
+      },
+    ]);
+    this.setActiveAction(this.#direction);
 
     this.on(this.$('#input'), 'input', debounce(() => this.#run(), 250));
 
@@ -277,6 +275,7 @@ class DockerCompose extends JGApp {
   #swap(direction) {
     if (direction === this.#direction) return;
     this.#direction = direction;
+    this.setActiveAction(direction);
     const toCompose = direction === 'to-compose';
     this.$('#in-label').textContent = toCompose ? 'docker run command' : 'compose.yaml';
     this.$('#out-label').textContent = toCompose ? 'compose.yaml' : 'docker run command';

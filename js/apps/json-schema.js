@@ -150,8 +150,6 @@ class JsonSchema extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-toolbar id="bar"></jg-toolbar>
-
       <div class="row">
         <jg-switch id="required" checked></jg-switch><span class="hint">Mark properties required</span>
         <jg-switch id="formats" checked></jg-switch><span class="hint">Detect formats</span>
@@ -177,33 +175,29 @@ class JsonSchema extends JGApp {
       </jg-card>
     </div>`);
 
-    this.$('#bar').items = [
-      { id: 'infer', label: 'Infer schema', icon: 'spec', select: true },
-      { id: 'validate', label: 'Validate against schema', icon: 'shieldCheck', select: true },
+    this.setActions([
+      { id: 'infer', label: 'Infer schema', icon: 'spec', select: true, action: () => this.#mode_set('infer') },
+      { id: 'validate', label: 'Validate against schema', icon: 'shieldCheck', select: true, action: () => this.#mode_set('validate') },
       { separator: true },
-      { id: 'sample', label: 'Sample', icon: 'braces' },
+      {
+        id: 'sample',
+        label: 'Sample',
+        icon: 'braces',
+        action: () => {
+          this.$('#input').value = SAMPLE;
+          this.#run();
+        },
+      },
       { spacer: true },
-      { id: 'copy', label: 'Copy', icon: 'copy' },
-      { id: 'download', label: 'Download', icon: 'external' },
-    ];
-    this.$('#bar').value = this.#mode;
-
-    this.on(this.$('#bar'), 'select', (event) => {
-      const id = event.detail.id;
-      if (id === 'infer' || id === 'validate') {
-        this.#mode = id;
-        this.$('#right-label').textContent = id === 'infer' ? 'JSON Schema' : 'Schema to validate against';
-        this.$('#output').toggleAttribute('readonly', id === 'infer');
-        return this.#run();
-      }
-      if (id === 'sample') {
-        this.$('#input').value = SAMPLE;
-        return this.#run();
-      }
-      if (id === 'copy') return copyText(this.$('#output').value);
-      if (id === 'download') return download('schema.json', this.$('#output').value, 'application/json');
-      return undefined;
-    });
+      { id: 'copy', label: 'Copy', icon: 'copy', action: () => copyText(this.$('#output').value) },
+      {
+        id: 'download',
+        label: 'Download',
+        icon: 'external',
+        action: () => download('schema.json', this.$('#output').value, 'application/json'),
+      },
+    ]);
+    this.setActiveAction(this.#mode);
 
     const run = debounce(() => this.#run(), 300);
     this.on(this.$('#input'), 'input', run);
@@ -213,6 +207,14 @@ class JsonSchema extends JGApp {
     const saved = this.store.read({ input: '', schema: '' });
     this.$('#input').value = saved.input || SAMPLE;
     if (saved.schema) this.$('#output').value = saved.schema;
+    this.#run();
+  }
+
+  #mode_set(mode) {
+    this.#mode = mode;
+    this.setActiveAction(mode);
+    this.$('#right-label').textContent = mode === 'infer' ? 'JSON Schema' : 'Schema to validate against';
+    this.$('#output').toggleAttribute('readonly', mode === 'infer');
     this.#run();
   }
 

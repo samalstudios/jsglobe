@@ -46,7 +46,7 @@ class HtmlEntities extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-segment id="mode"></jg-segment>
+        <jg-tabs id="mode"></jg-tabs>
       </div>
       <div class="split">
         <div class="pane">

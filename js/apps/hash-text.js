@@ -41,7 +41,7 @@ class HashText extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-segment id="source"></jg-segment>
+        <jg-tabs id="source"></jg-tabs>
         <span class="grow"></span>
         <jg-select id="encoding" size="sm" value="hex" style="width:130px">
           <option value="hex">Hexadecimal</option>

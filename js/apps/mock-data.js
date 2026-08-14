@@ -165,8 +165,6 @@ class MockData extends JGApp {
     this.#format = saved.format ?? 'json';
 
     this.paint(html`<div class="app">
-      <jg-toolbar id="bar"></jg-toolbar>
-
       <div class="shell">
         <div class="fields">
           <div class="row">
@@ -193,25 +191,26 @@ class MockData extends JGApp {
       </div>
     </div>`);
 
-    this.$('#bar').items = [
-      { id: 'json', label: 'JSON', icon: 'braces', select: true },
-      { id: 'jsonl', label: 'JSON lines', icon: 'code', select: true },
-      { id: 'csv', label: 'CSV', icon: 'list', select: true },
-      { id: 'sql', label: 'SQL', icon: 'database', select: true },
+    this.setActions([
+      ...['json', 'jsonl', 'csv', 'sql'].map((format) => ({
+        id: format,
+        label: { json: 'JSON', jsonl: 'JSON lines', csv: 'CSV', sql: 'SQL' }[format],
+        icon: { json: 'braces', jsonl: 'code', csv: 'list', sql: 'database' }[format],
+        select: true,
+        action: () => this.#format_set(format),
+      })),
       { separator: true },
-      { id: 'shuffle', label: 'New seed', icon: 'undo' },
-    ];
-    this.$('#bar').value = this.#format;
-
-    this.on(this.$('#bar'), 'select', (event) => {
-      if (event.detail.id === 'shuffle') {
-        this.$('#seed').value = Math.random().toString(36).slice(2, 8);
-      } else {
-        this.#format = event.detail.id;
-        this.$('#out').language = { json: 'json', jsonl: 'json', csv: 'plain', sql: 'sql' }[this.#format];
-      }
-      this.#run();
-    });
+      {
+        id: 'shuffle',
+        label: 'New seed',
+        icon: 'undo',
+        action: () => {
+          this.$('#seed').value = Math.random().toString(36).slice(2, 8);
+          this.#run();
+        },
+      },
+    ]);
+    this.setActiveAction(this.#format);
 
     const run = debounce(() => this.#run(), 200);
     this.on(this.$('#count'), 'input', run);
@@ -229,6 +228,13 @@ class MockData extends JGApp {
     });
 
     this.#paintFields();
+    this.#run();
+  }
+
+  #format_set(format) {
+    this.#format = format;
+    this.setActiveAction(format);
+    this.$('#out').language = { json: 'json', jsonl: 'json', csv: 'plain', sql: 'sql' }[format];
     this.#run();
   }
 

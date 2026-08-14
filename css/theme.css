@@ -36,9 +36,24 @@
   --glass-border: rgba(255, 255, 255, 0.12);
   --glass-blur: saturate(180%) blur(28px);
 
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28);
-  --shadow-md: 0 8px 24px -6px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 32px 80px -24px rgba(0, 0, 0, 0.75);
+  --shadow-sm:
+    0 1px 1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.34);
+  --shadow-md:
+    0 1px 2px rgba(0, 0, 0, 0.36),
+    0 6px 12px -3px rgba(0, 0, 0, 0.42),
+    0 16px 28px -10px rgba(0, 0, 0, 0.5);
+  --shadow-lg:
+    0 2px 5px rgba(0, 0, 0, 0.4),
+    0 14px 30px -8px rgba(0, 0, 0, 0.52),
+    0 44px 84px -30px rgba(0, 0, 0, 0.72);
+  --shadow-raise:
+    0 1px 2px rgba(0, 0, 0, 0.45),
+    0 3px 8px -2px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.09);
+  --shadow-well:
+    inset 0 1px 2px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.25);
   --shadow-ring: 0 0 0 3px color-mix(in srgb, var(--ring) 40%, transparent);
 
   --wallpaper:
@@ -48,6 +63,8 @@
     linear-gradient(180deg, #0a0a0e 0%, #08080a 100%);
 
   --label-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  --icon-gloss: 0;
+  --icon-depth: 0;
   --syn-key: #7dd3fc;
   --syn-str: #86efac;
   --syn-num: #fbbf24;
@@ -89,11 +106,28 @@
   --glass-strong: rgba(255, 255, 255, 0.9);
   --glass-border: rgba(9, 9, 11, 0.08);
 
-  --shadow-sm: 0 1px 2px rgba(9, 9, 11, 0.06);
-  --shadow-md: 0 8px 24px -6px rgba(9, 9, 11, 0.12);
-  --shadow-lg: 0 32px 80px -24px rgba(9, 9, 11, 0.22);
+  --shadow-sm:
+    0 1px 1px rgba(9, 9, 11, 0.04),
+    0 2px 4px -1px rgba(9, 9, 11, 0.06);
+  --shadow-md:
+    0 1px 2px rgba(9, 9, 11, 0.05),
+    0 5px 10px -3px rgba(9, 9, 11, 0.07),
+    0 14px 26px -10px rgba(9, 9, 11, 0.09);
+  --shadow-lg:
+    0 2px 4px rgba(9, 9, 11, 0.05),
+    0 12px 26px -8px rgba(9, 9, 11, 0.1),
+    0 40px 70px -28px rgba(9, 9, 11, 0.18);
+  --shadow-raise:
+    0 1px 2px rgba(9, 9, 11, 0.09),
+    0 3px 8px -2px rgba(9, 9, 11, 0.1),
+    0 0 0 1px rgba(9, 9, 11, 0.07);
+  --shadow-well:
+    inset 0 1px 2px rgba(9, 9, 11, 0.07),
+    inset 0 0 0 1px rgba(9, 9, 11, 0.05);
 
   --label-shadow: none;
+  --icon-gloss: 0;
+  --icon-depth: 0;
   --syn-key: #0369a1;
   --syn-str: #15803d;
   --syn-num: #b45309;
@@ -136,11 +170,28 @@
   --glass-strong: rgba(255, 255, 255, 0.9);
   --glass-border: rgba(9, 9, 11, 0.08);
 
-  --shadow-sm: 0 1px 2px rgba(9, 9, 11, 0.06);
-  --shadow-md: 0 8px 24px -6px rgba(9, 9, 11, 0.12);
-  --shadow-lg: 0 32px 80px -24px rgba(9, 9, 11, 0.22);
+  --shadow-sm:
+    0 1px 1px rgba(9, 9, 11, 0.04),
+    0 2px 4px -1px rgba(9, 9, 11, 0.06);
+  --shadow-md:
+    0 1px 2px rgba(9, 9, 11, 0.05),
+    0 5px 10px -3px rgba(9, 9, 11, 0.07),
+    0 14px 26px -10px rgba(9, 9, 11, 0.09);
+  --shadow-lg:
+    0 2px 4px rgba(9, 9, 11, 0.05),
+    0 12px 26px -8px rgba(9, 9, 11, 0.1),
+    0 40px 70px -28px rgba(9, 9, 11, 0.18);
+  --shadow-raise:
+    0 1px 2px rgba(9, 9, 11, 0.09),
+    0 3px 8px -2px rgba(9, 9, 11, 0.1),
+    0 0 0 1px rgba(9, 9, 11, 0.07);
+  --shadow-well:
+    inset 0 1px 2px rgba(9, 9, 11, 0.07),
+    inset 0 0 0 1px rgba(9, 9, 11, 0.05);
 
   --label-shadow: none;
+  --icon-gloss: 0;
+  --icon-depth: 0;
   --syn-key: #0369a1;
   --syn-str: #15803d;
   --syn-num: #b45309;
@@ -164,6 +215,11 @@
 :root[data-density="compact"] { --density-scale: 0.9; }
 :root[data-density="cozy"] { --density-scale: 1; }
 :root[data-density="roomy"] { --density-scale: 1.1; }
+
+:root[data-icons="skeuomorphic"] {
+  --icon-gloss: 1;
+  --icon-depth: 1;
+}
 
 * { box-sizing: border-box; }
 

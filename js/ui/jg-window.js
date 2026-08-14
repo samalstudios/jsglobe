@@ -3,6 +3,7 @@ import { base } from './styles.js';
 import { registry } from '../core/registry.js';
 import { clamp } from '../core/util.js';
 import { icon } from './icons.js';
+import './jg-toolbar.js';
 
 const sheet = css`
   :host {
@@ -39,72 +40,109 @@ const sheet = css`
 
   .chrome {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    height: 44px;
-    padding: 0 10px 0 12px;
+    flex-direction: column;
     border-bottom: 1px solid var(--border);
-    background: color-mix(in srgb, var(--card) 55%, transparent);
+    background: color-mix(in srgb, var(--card) 62%, transparent);
     cursor: grab;
     user-select: none;
     flex: none;
   }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 48px;
+    padding: 0 12px 0 14px;
+  }
   .chrome:active { cursor: grabbing; }
   :host([fullscreen]) .chrome { cursor: default; }
-  .lights { display: flex; gap: 7px; align-items: center; }
+  .lights { display: flex; gap: 9px; align-items: center; flex: none; }
   .light {
-    width: 12px;
-    height: 12px;
+    width: 15px;
+    height: 15px;
     border-radius: 999px;
     border: 0;
     padding: 0;
     cursor: pointer;
     display: grid;
     place-items: center;
-    font-size: 8px;
+    font-size: 10px;
+    font-weight: 700;
     line-height: 1;
-    color: rgba(0, 0, 0, 0.55);
+    color: rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+    transition: filter 0.12s ease;
   }
-  .light span { opacity: 0; }
+  .light:hover { filter: brightness(1.08); }
+  .light span { opacity: 0; transition: opacity 0.12s ease; }
   .lights:hover .light span { opacity: 1; }
   .close { background: #ff5f57; }
   .min { background: #febc2e; }
   .max { background: #28c840; }
-  .identity { display: flex; align-items: center; gap: 8px; min-width: 0; flex: 1; justify-content: center; }
+
+  .identity { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .spring { flex: 1; min-width: 8px; }
   .badge {
     display: grid;
     place-items: center;
-    width: 18px;
-    height: 18px;
-    border-radius: 5px;
-    background: var(--tint, var(--muted));
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    flex: none;
+    background: linear-gradient(165deg,
+      color-mix(in srgb, var(--tint, var(--muted)) 92%, #fff 14%),
+      var(--tint, var(--muted)));
     color: #fff;
-    font-family: var(--font-mono);
-    font-size: 9px;
-    font-weight: 700;
+    box-shadow: var(--shadow-sm);
   }
+  .badge svg { width: 17px; height: 17px; --icon-accent: rgba(255, 255, 255, 0.72); }
+  .names { display: grid; gap: 1px; min-width: 0; }
   .title {
-    font-size: 12.5px;
+    font-size: 13.5px;
     font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--foreground);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .actions { display: flex; align-items: center; gap: 2px; }
+  .sub {
+    font-size: 11px;
+    color: var(--muted-foreground);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tools {
+    display: flex;
+    min-width: 0;
+    padding: 0 10px 7px;
+    overflow: hidden;
+  }
+  .tools[hidden] { display: none; }
+  .tools jg-toolbar { width: 100%; min-width: 0; }
+
   .action {
     display: grid;
     place-items: center;
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
+    flex: none;
+    margin-left: -4px;
     border-radius: var(--radius-sm);
     border: 0;
     background: transparent;
     color: var(--muted-foreground);
-    font-size: 12px;
     cursor: pointer;
   }
+  .action svg { --icon-accent: currentColor; }
   .action:hover { background: var(--accent); color: var(--foreground); }
+  @media (max-width: 720px) {
+    .bar { gap: 10px; padding-left: 12px; }
+    .sub { display: none; }
+    .identity { max-width: 40%; }
+  }
   .body {
     flex: 1;
     min-height: 0;
@@ -165,18 +203,23 @@ class JGWindow extends JGElement {
     this.style.setProperty('--tint', app ? registry.tint(app) : 'var(--muted)');
     this.paint(html`
       <header class="chrome">
-        <div class="lights">
-          <button class="light close" title="Close"><span>✕</span></button>
-          <button class="light min" title="Minimize"><span>-</span></button>
-          <button class="light max" title="Maximize"><span>＋</span></button>
+        <div class="bar">
+          <button class="action menu" title="App options" aria-label="App options">${icon('more', 16)}</button>
+          <div class="identity">
+            <span class="badge">${app ? icon(app.icon, 17) : ''}</span>
+            <span class="names">
+              <span class="title">${this.getAttribute('title-text') ?? app?.name ?? 'App'}</span>
+              ${app?.tagline ? html`<span class="sub">${app.tagline}</span>` : ''}
+            </span>
+          </div>
+          <span class="spring"></span>
+          <div class="lights">
+            <button class="light min" title="Minimize"><span>-</span></button>
+            <button class="light max" title="Maximize"><span>+</span></button>
+            <button class="light close" title="Close"><span>✕</span></button>
+          </div>
         </div>
-        <div class="identity">
-          <span class="badge">${app ? icon(app.icon, 12) : ""}</span>
-          <span class="title">${this.getAttribute('title-text') ?? app?.name ?? 'App'}</span>
-        </div>
-        <div class="actions">
-          <button class="action menu" title="App options">⋯</button>
-        </div>
+        <div class="tools" id="tools" hidden><jg-toolbar id="app-toolbar" variant="plain"></jg-toolbar></div>
       </header>
       <div class="body">
         <slot></slot>
@@ -194,7 +237,7 @@ class JGWindow extends JGElement {
     this.on(this.$('.max'), 'click', () => this.toggleMaximize());
     this.on(this.$('.menu'), 'click', (event) => {
       const rect = event.currentTarget.getBoundingClientRect();
-      this.emit('window:menu', { appId: this.appId, x: rect.left - 160, y: rect.bottom + 6 });
+      this.emit('window:menu', { appId: this.appId, x: rect.left, y: rect.bottom + 6 });
     });
     this.on(this.$('.chrome'), 'dblclick', (event) => {
       if (event.target.closest('.light')) return;
@@ -206,6 +249,25 @@ class JGWindow extends JGElement {
       this.on(grip, 'pointerdown', (event) => this.#startResize(event, edges));
     });
     this.on(this, 'pointerdown', () => this.emit('window:focus', { appId: this.appId }), true);
+    this.on(this, 'app:actions', (event) => {
+      event.stopPropagation();
+      this.setActions(event.detail.items);
+    });
+  }
+
+  setActions(items) {
+    const tools = this.$('#tools');
+    const toolbar = this.$('#app-toolbar');
+    if (!tools || !toolbar) return;
+    const list = Array.isArray(items) ? items : [];
+    tools.hidden = !list.length;
+    toolbar.items = list;
+  }
+
+  setActive(id) {
+    this.$('#app-toolbar')?.setAttribute('data-value', id ?? '');
+    const toolbar = this.$('#app-toolbar');
+    if (toolbar) toolbar.value = id ?? null;
   }
 
   setLoaded() {
@@ -247,7 +309,7 @@ class JGWindow extends JGElement {
   }
 
   #startDrag(event) {
-    if (event.target.closest('.light, .action') || this.getAttribute('state') === 'maximized') return;
+    if (event.target.closest('.light, .action, .tools') || this.getAttribute('state') === 'maximized') return;
     if (window.matchMedia('(max-width: 860px)').matches) return;
     event.preventDefault();
     this.emit('window:focus', { appId: this.appId });

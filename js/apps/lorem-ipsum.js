@@ -29,7 +29,7 @@ class LoremIpsum extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-segment id="kind"></jg-segment>
+        <jg-tabs id="kind"></jg-tabs>
         <span class="grow"></span>
         <jg-input id="count" type="number" min="1" max="100" value="3" suffix="qty" style="width:120px"></jg-input>
         <jg-button id="generate">Generate</jg-button>

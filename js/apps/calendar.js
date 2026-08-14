@@ -3,7 +3,7 @@ import { uid } from '../core/util.js';
 import { HOLIDAY_SETS, holidaysFor } from '../lib/holidays.js';
 
 const sheet = css`
-  .app { gap: 14px; }
+  .app { gap: 14px; container-type: inline-size; }
 
   .head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
   .title { display: flex; align-items: baseline; gap: 7px; white-space: nowrap; }
@@ -20,8 +20,8 @@ const sheet = css`
   }
 
   .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; align-items: start; }
-  @media (min-width: 980px) {
-    .wrap[data-side="true"] { grid-template-columns: minmax(0, 1fr) 300px; }
+  @container (min-width: 860px) {
+    .wrap[data-side="true"] { grid-template-columns: minmax(0, 1fr) 290px; }
   }
 
   .surface {
@@ -127,7 +127,17 @@ const sheet = css`
   }
   .more:hover { color: var(--foreground); background: color-mix(in srgb, var(--foreground) 10%, transparent); }
 
-  .tg-head { display: grid; background: color-mix(in srgb, var(--muted) 45%, transparent); border-bottom: 1px solid var(--border); }
+  .time-grid { overflow-x: auto; scrollbar-width: thin; }
+  .time-grid > * { min-width: var(--grid-min, 520px); }
+  .tg-scroll { max-height: 480px; overflow: auto; scrollbar-width: thin; }
+  .tg-head {
+    display: grid;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: color-mix(in srgb, var(--muted) 92%, var(--card));
+    border-bottom: 1px solid var(--border);
+  }
   .tg-corner { border-right: 1px solid var(--border); }
   .tg-day {
     display: flex;
@@ -158,7 +168,15 @@ const sheet = css`
   .tg-day[data-today="true"] .n { background: var(--ring); color: #fff; }
   .tg-day[data-selected="true"] { background: color-mix(in srgb, var(--ring) 12%, transparent); }
 
-  .allday { display: grid; border-bottom: 1px solid var(--border); min-height: 28px; }
+  .allday {
+    display: grid;
+    position: sticky;
+    top: var(--head-height, 46px);
+    z-index: 2;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    min-height: 28px;
+  }
   .allday .gutter {
     border-right: 1px solid var(--border);
     font-size: 9.5px;
@@ -171,7 +189,7 @@ const sheet = css`
   .allday .lane { border-right: 1px solid var(--border); padding: 4px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
   .allday .lane:last-child { border-right: 0; }
 
-  .tg-body { display: grid; max-height: 480px; overflow: auto; scrollbar-width: thin; }
+  .tg-body { display: grid; }
   .hours { border-right: 1px solid var(--border); }
   .hour-label {
     position: relative;
@@ -183,7 +201,7 @@ const sheet = css`
     color: var(--muted-foreground);
     transform: translateY(-6px);
   }
-  .cols { display: grid; position: relative; }
+  .daycols { display: grid; position: relative; gap: 0; }
   .col {
     position: relative;
     border-right: 1px solid var(--border);
@@ -265,7 +283,7 @@ const sheet = css`
   .side-head .rel { font-size: 11.5px; color: var(--muted-foreground); }
 
   .composer { display: flex; flex-direction: column; gap: 7px; }
-  .composer .times { display: grid; grid-template-columns: 1fr 1fr auto; gap: 6px; align-items: center; }
+  .times { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .composer .arrow { color: var(--muted-foreground); font-size: 11px; }
 
   .agenda { display: flex; flex-direction: column; gap: 6px; }
@@ -352,7 +370,6 @@ class CalendarApp extends JGApp {
   #view = 'month';
   #cursor = new Date();
   #selected = iso(new Date());
-  #showCalendars = false;
   #prefill = '';
   #timer = null;
 
@@ -432,19 +449,34 @@ class CalendarApp extends JGApp {
       <div class="head">
         <jg-button-group>
           <jg-button size="icon" variant="outline" id="prev" aria-label="Previous">‹</jg-button>
-          <jg-button size="sm" variant="outline" id="today">Today</jg-button>
+          <jg-button variant="outline" id="today">Today</jg-button>
           <jg-button size="icon" variant="outline" id="next" aria-label="Next">›</jg-button>
         </jg-button-group>
         <span class="title" id="title"></span>
         <span class="grow"></span>
         <jg-tabs id="view"></jg-tabs>
-        <jg-button size="sm" variant="${this.#showCalendars ? 'secondary' : 'outline'}" id="calendars">Calendars</jg-button>
+        <jg-button variant="outline" id="calendars">Calendars</jg-button>
       </div>
 
       <div class="wrap" data-side="${String(this.#view !== 'year')}">
         <div id="body"></div>
         ${this.#view === 'year' ? '' : html`<aside class="side" id="side"></aside>`}
       </div>
+
+      <jg-sheet id="calendar-sheet" title-text="Calendars" sub="Choose what appears in the grid">
+        <div id="calendar-list"></div>
+      </jg-sheet>
+
+      <jg-dialog id="event-dialog" title-text="New event">
+        <jg-field label="Title"><jg-input id="title-input" placeholder="Stand up" autofocus></jg-input></jg-field>
+        <div class="times">
+          <jg-field label="From"><jg-input id="from" type="time"></jg-input></jg-field>
+          <jg-field label="To"><jg-input id="to" type="time"></jg-input></jg-field>
+        </div>
+        <jg-field label="Calendar"><jg-select id="calendar"></jg-select></jg-field>
+        <jg-button slot="actions" variant="outline" id="cancel-event">Cancel</jg-button>
+        <jg-button slot="actions" id="add">Add event</jg-button>
+      </jg-dialog>
     </div>`);
 
     this.$('#view').items = VIEWS;
@@ -461,9 +493,15 @@ class CalendarApp extends JGApp {
       this.#selected = iso(new Date());
       this.refresh();
     });
+    this.on(this.$('#add'), 'click', () => this.#saveEvent());
+    this.on(this.$('#cancel-event'), 'click', () => this.$('#event-dialog').close());
+    this.on(this.$('#title-input'), 'keydown', (event) => {
+      if (event.key === 'Enter') this.#saveEvent();
+    });
+
     this.on(this.$('#calendars'), 'click', () => {
-      this.#showCalendars = !this.#showCalendars;
-      this.refresh();
+      this.#renderCalendars();
+      this.$('#calendar-sheet').open();
     });
 
     this.#renderTitle();
@@ -548,8 +586,8 @@ class CalendarApp extends JGApp {
     this.#prefill = time;
     const picked = parseIso(key);
     if (this.#view === 'month' && picked.getMonth() !== this.#cursor.getMonth()) this.#cursor = picked;
-    this.refresh();
-    if (focusComposer) this.$('#title-input')?.focus();
+    this.#repaint();
+    if (focusComposer) this.#openEvent(time);
   }
 
   #month(body) {
@@ -621,7 +659,8 @@ class CalendarApp extends JGApp {
     const hasAllDay = allDay.some((list) => list.length);
 
     body.innerHTML = html`
-      <div class="surface">
+      <div class="surface time-grid" style="--grid-min:${days === 7 ? 560 : 260}px">
+        <div class="tg-scroll">
         <div class="tg-head" style="grid-template-columns:${template}">
           <span class="tg-corner"></span>
           ${columns.map((date) => {
@@ -644,7 +683,7 @@ class CalendarApp extends JGApp {
           <div class="hours">
             ${Array.from({ length: 24 }, (unused, hour) => html`<div class="hour-label">${hour ? `${pad(hour)}:00` : ''}</div>`)}
           </div>
-          <div class="cols" style="grid-template-columns:repeat(${days}, minmax(0, 1fr));grid-column:2 / -1">
+          <div class="daycols" style="grid-template-columns:repeat(${days}, minmax(0, 1fr));grid-column:2 / -1">
             ${columns.map((date) => {
               const key = iso(date);
               const timed = this.#eventsFor(key).filter((event) => event.time);
@@ -673,6 +712,7 @@ class CalendarApp extends JGApp {
             })}
           </div>
         </div>
+        </div>
       </div>
     `;
 
@@ -689,7 +729,9 @@ class CalendarApp extends JGApp {
       this.#select(event.currentTarget.dataset.key, { focusComposer: true, time: `${pad(Math.min(23, hour))}:00` });
     });
 
-    const scroller = body.querySelector('.tg-body');
+    const scroller = body.querySelector('.tg-scroll');
+    const header = body.querySelector('.tg-head');
+    if (header) scroller.style.setProperty('--head-height', `${header.offsetHeight}px`);
     scroller.scrollTop = Math.max(0, (new Date().getHours() - 2) * HOUR);
     this.#paintNow(body, columns, today);
     this.#timer = setInterval(() => this.#paintNow(body, columns, today), 60000);
@@ -754,13 +796,141 @@ class CalendarApp extends JGApp {
     });
   }
 
+  #repaint() {
+    this.#renderTitle();
+    this.#renderView();
+    this.#renderSide();
+    this.#renderCalendars();
+  }
+
+  #openEvent(prefill = '') {
+    const dialog = this.$('#event-dialog');
+    const data = this.#data();
+    const selected = parseIso(this.#selected);
+    const end = prefill ? `${pad(Math.min(23, Number(prefill.slice(0, 2)) + 1))}:00` : '';
+
+    dialog.setAttribute('sub', selected.toLocaleDateString([], { weekday: 'long', day: 'numeric', month: 'long' }));
+    this.$('#title-input').value = '';
+    this.$('#from').value = prefill;
+    this.$('#to').value = end;
+    this.$('#calendar').options = data.calendars.map((calendar) => ({ value: calendar.id, label: calendar.name }));
+    this.$('#calendar').value = data.calendars[0]?.id ?? '';
+    dialog.open();
+  }
+
+  #saveEvent() {
+    const title = this.$('#title-input').value.trim();
+    if (!title) return;
+
+    const next = this.#data();
+    const list = next.events[this.#selected] ?? [];
+    next.events[this.#selected] = [
+      ...list,
+      {
+        id: uid().slice(0, 8),
+        title,
+        time: this.$('#from').value,
+        end: this.$('#to').value,
+        calendarId: this.$('#calendar').value,
+      },
+    ];
+
+    this.#save(next);
+    this.#prefill = '';
+    this.$('#event-dialog').close('saved');
+    this.#repaint();
+  }
+
+  #renderCalendars() {
+    const data = this.#data();
+    const sheet = this.$('#calendar-sheet');
+    const list = this.$('#calendar-list');
+
+    list.innerHTML = html`
+      <div class="label">Calendars</div>
+      <div>
+        ${data.calendars.map(
+          (calendar) => html`<div class="cal-row">
+            <span class="swatch" style="background:${calendar.color}"></span>
+            <span class="cal-name">${calendar.name}</span>
+            <jg-switch data-toggle="${calendar.id}" ${calendar.visible ? 'checked' : ''}></jg-switch>
+            <jg-button size="icon-sm" variant="ghost" data-delcal="${calendar.id}">✕</jg-button>
+          </div>`,
+        )}
+      </div>
+      <div class="row tight nowrap">
+        <jg-input id="calname" class="grow" placeholder="New calendar"></jg-input>
+        <jg-input id="calcolor" type="color" value="#f97316" style="width:52px"></jg-input>
+        <jg-button size="sm" id="addcal">Add</jg-button>
+      </div>
+      <div class="sep"></div>
+      <div class="label">Subscriptions</div>
+      <div>
+        ${HOLIDAY_SETS.map(
+          (set) => html`<div class="cal-row">
+            <span class="swatch" style="background:${set.color}"></span>
+            <span class="cal-name">${set.name}</span>
+            <jg-switch data-sub="${set.id}" ${data.subscriptions.includes(set.id) ? 'checked' : ''}></jg-switch>
+          </div>`,
+        )}
+      </div>
+    `;
+
+    list.querySelectorAll('[data-toggle]').forEach((node) =>
+      this.on(node, 'change', (event) => {
+        const next = this.#data();
+        next.calendars = next.calendars.map((calendar) =>
+          calendar.id === node.dataset.toggle ? { ...calendar, visible: event.detail.checked } : calendar,
+        );
+        this.#save(next);
+        this.#repaint();
+      }),
+    );
+
+    list.querySelectorAll('[data-sub]').forEach((node) =>
+      this.on(node, 'change', (event) => {
+        const next = this.#data();
+        next.subscriptions = event.detail.checked
+          ? [...new Set([...next.subscriptions, node.dataset.sub])]
+          : next.subscriptions.filter((item) => item !== node.dataset.sub);
+        this.#save(next);
+        this.#repaint();
+      }),
+    );
+    list.querySelectorAll('[data-delcal]').forEach((node) =>
+      this.on(node, 'click', () => {
+        const next = this.#data();
+        next.calendars = next.calendars.filter((calendar) => calendar.id !== node.dataset.delcal);
+        Object.keys(next.events).forEach((key) => {
+          next.events[key] = next.events[key].filter((item) => item.calendarId !== node.dataset.delcal);
+          if (!next.events[key].length) delete next.events[key];
+        });
+        this.#save(next);
+        this.#repaint();
+      }),
+    );
+    const addCal = list.querySelector('#addcal');
+    if (addCal) {
+      this.on(addCal, 'click', () => {
+        const name = list.querySelector('#calname').value.trim();
+        if (!name) return;
+        const next = this.#data();
+        next.calendars = [
+          ...next.calendars,
+          { id: uid().slice(0, 6), name, color: list.querySelector('#calcolor').value, visible: true },
+        ];
+        this.#save(next);
+        this.#repaint();
+      });
+    }
+  }
+
   #renderSide() {
     const side = this.$('#side');
     if (!side) return;
     const data = this.#data();
     const events = this.#eventsFor(this.#selected);
     const selected = parseIso(this.#selected);
-    const endDefault = this.#prefill ? `${pad(Math.min(23, Number(this.#prefill.slice(0, 2)) + 1))}:00` : '';
 
     side.innerHTML = html`
       <jg-card>
@@ -769,20 +939,7 @@ class CalendarApp extends JGApp {
           <span class="rel">${relativeLabel(this.#selected)}</span>
         </div>
 
-        <div class="composer">
-          <jg-input id="title-input" placeholder="Add an event" value=""></jg-input>
-          <div class="times">
-            <jg-input id="from" type="time" value="${this.#prefill}"></jg-input>
-            <jg-input id="to" type="time" value="${endDefault}"></jg-input>
-            <span class="arrow">to</span>
-          </div>
-          <div class="row tight nowrap">
-            <jg-select id="calendar" class="grow">
-              ${data.calendars.map((calendar) => html`<option value="${calendar.id}">${calendar.name}</option>`)}
-            </jg-select>
-            <jg-button id="add">Add</jg-button>
-          </div>
-        </div>
+        <jg-button id="new-event" full>Add an event</jg-button>
 
         <div class="agenda">
           ${events.length
@@ -800,63 +957,9 @@ class CalendarApp extends JGApp {
             : html`<jg-empty glyph="▤" title="Nothing planned">Pick a time above or click a slot in the week view.</jg-empty>`}
         </div>
       </jg-card>
-
-      ${this.#showCalendars
-        ? html`<jg-card title="Calendars" sub="Toggle what is shown">
-            <div>
-              ${data.calendars.map(
-                (calendar) => html`<div class="cal-row">
-                  <span class="swatch" style="background:${calendar.color}"></span>
-                  <span class="cal-name">${calendar.name}</span>
-                  <jg-switch data-toggle="${calendar.id}" ${calendar.visible ? 'checked' : ''}></jg-switch>
-                  <jg-button size="icon-sm" variant="ghost" data-delcal="${calendar.id}">✕</jg-button>
-                </div>`,
-              )}
-            </div>
-            <div class="row tight nowrap">
-              <jg-input id="calname" class="grow" placeholder="New calendar"></jg-input>
-              <jg-input id="calcolor" type="color" value="#f97316" style="width:52px"></jg-input>
-              <jg-button size="sm" id="addcal">Add</jg-button>
-            </div>
-            <div class="sep"></div>
-            <div class="label">Subscriptions</div>
-            <div>
-              ${HOLIDAY_SETS.map(
-                (set) => html`<div class="cal-row">
-                  <span class="swatch" style="background:${set.color}"></span>
-                  <span class="cal-name">${set.name}</span>
-                  <jg-switch data-sub="${set.id}" ${data.subscriptions.includes(set.id) ? 'checked' : ''}></jg-switch>
-                </div>`,
-              )}
-            </div>
-          </jg-card>`
-        : ''}
     `;
 
-    const add = () => {
-      const title = side.querySelector('#title-input').value.trim();
-      if (!title) return;
-      const next = this.#data();
-      const list = next.events[this.#selected] ?? [];
-      next.events[this.#selected] = [
-        ...list,
-        {
-          id: uid().slice(0, 8),
-          title,
-          time: side.querySelector('#from').value,
-          end: side.querySelector('#to').value,
-          calendarId: side.querySelector('#calendar').value,
-        },
-      ];
-      this.#save(next);
-      this.#prefill = '';
-      this.refresh();
-    };
-
-    this.on(side.querySelector('#add'), 'click', add);
-    this.on(side.querySelector('#title-input'), 'keydown', (event) => {
-      if (event.key === 'Enter') add();
-    });
+    this.on(side.querySelector('#new-event'), 'click', () => this.#openEvent());
 
     side.querySelectorAll('[data-remove]').forEach((node) =>
       this.on(node, 'click', () => {
@@ -867,56 +970,6 @@ class CalendarApp extends JGApp {
         this.refresh();
       }),
     );
-
-    side.querySelectorAll('[data-toggle]').forEach((node) =>
-      this.on(node, 'change', (event) => {
-        const next = this.#data();
-        next.calendars = next.calendars.map((calendar) =>
-          calendar.id === node.dataset.toggle ? { ...calendar, visible: event.detail.checked } : calendar,
-        );
-        this.#save(next);
-        this.refresh();
-      }),
-    );
-
-    side.querySelectorAll('[data-sub]').forEach((node) =>
-      this.on(node, 'change', (event) => {
-        const next = this.#data();
-        next.subscriptions = event.detail.checked
-          ? [...new Set([...next.subscriptions, node.dataset.sub])]
-          : next.subscriptions.filter((item) => item !== node.dataset.sub);
-        this.#save(next);
-        this.refresh();
-      }),
-    );
-
-    side.querySelectorAll('[data-delcal]').forEach((node) =>
-      this.on(node, 'click', () => {
-        const next = this.#data();
-        next.calendars = next.calendars.filter((calendar) => calendar.id !== node.dataset.delcal);
-        Object.keys(next.events).forEach((key) => {
-          next.events[key] = next.events[key].filter((item) => item.calendarId !== node.dataset.delcal);
-          if (!next.events[key].length) delete next.events[key];
-        });
-        this.#save(next);
-        this.refresh();
-      }),
-    );
-
-    const addCal = side.querySelector('#addcal');
-    if (addCal) {
-      this.on(addCal, 'click', () => {
-        const name = side.querySelector('#calname').value.trim();
-        if (!name) return;
-        const next = this.#data();
-        next.calendars = [
-          ...next.calendars,
-          { id: uid().slice(0, 6), name, color: side.querySelector('#calcolor').value, visible: true },
-        ];
-        this.#save(next);
-        this.refresh();
-      });
-    }
   }
 }
 

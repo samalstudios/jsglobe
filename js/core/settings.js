@@ -9,6 +9,7 @@ export const defaults = {
   'appearance.ring': '#8a1c3b',
   'appearance.density': 'cozy',
   'appearance.iconTint': 'category',
+  'appearance.icons': 'flat',
   'appearance.motion': true,
   'home.iconSize': 'medium',
   'home.labels': true,
@@ -91,6 +92,7 @@ export function applyTheme() {
   root.dataset.theme = resolved;
   root.dataset.wallpaper = settings.get('appearance.wallpaper');
   root.style.setProperty('--wallpaper', wallpaperCss(settings.get('appearance.wallpaper'), resolved));
+  root.dataset.icons = settings.get('appearance.icons');
   root.dataset.density = settings.get('appearance.density');
   root.dataset.motion = settings.get('appearance.motion') ? 'on' : 'off';
   root.style.setProperty('--ring', settings.get('appearance.ring'));

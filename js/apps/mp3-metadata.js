@@ -44,7 +44,7 @@ const sheet = css`
     border: 1px solid transparent;
     border-radius: var(--radius-sm);
   }
-  .row[data-current="true"] { background: var(--card); border-color: var(--border); box-shadow: var(--shadow-sm); }
+  .row[data-current="true"] { background: var(--card); border-color: transparent; box-shadow: var(--shadow-raise); }
   .row:hover { background: color-mix(in srgb, var(--card) 70%, transparent); }
   .open {
     display: grid;
@@ -271,8 +271,6 @@ class Mp3Metadata extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-toolbar id="bar"></jg-toolbar>
-
       <div class="drop" id="drop">Drop MP3 files here, or click to choose them</div>
 
       <div class="shell" id="body" hidden>
@@ -322,7 +320,7 @@ class Mp3Metadata extends JGApp {
       <input type="file" id="art" accept="image/*" hidden />
     </div>`);
 
-    this.$('#bar').items = [
+    this.setActions([
       { id: 'add', label: 'Add files', icon: 'plus' },
       { separator: true },
       { id: 'apply', label: 'Apply shared fields', icon: 'copy', title: 'Copy artist, album, year and the rest to every ticked file' },
@@ -331,9 +329,7 @@ class Mp3Metadata extends JGApp {
       { spacer: true },
       { id: 'save', label: 'Save selected', icon: 'music' },
       { id: 'remove', label: 'Remove', icon: 'close', danger: true },
-    ];
-
-    this.on(this.$('#bar'), 'select', (event) => this.#action(event.detail.id));
+    ].map((item) => (item.id ? { ...item, action: () => this.#action(item.id) } : item)));
 
     const picker = this.$('#picker');
     const drop = this.$('#drop');

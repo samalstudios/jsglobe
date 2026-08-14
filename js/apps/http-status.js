@@ -77,7 +77,7 @@ class HttpStatus extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <jg-input id="search" placeholder="Search by code or meaning - 404, timeout, redirect"></jg-input>
-      <div class="row"><jg-segment id="filter"></jg-segment></div>
+      <div class="row"><jg-tabs id="filter"></jg-tabs></div>
       <div id="list"></div>
     </div>`);
 

@@ -92,8 +92,24 @@ const sheet = css`
       color-mix(in srgb, var(--tint) 96%, #fff 10%) 0%,
       var(--tint) 62%,
       color-mix(in srgb, var(--tint) 86%, #000 16%) 100%);
-    box-shadow: 0 8px 16px -10px rgba(0, 0, 0, 0.65);
+    box-shadow:
+      0 8px 16px -10px rgba(0, 0, 0, 0.65),
+      inset 0 calc(1px * var(--icon-depth, 0)) 0 rgba(255, 255, 255, calc(0.5 * var(--icon-depth, 0))),
+      inset 0 calc(-3px * var(--icon-depth, 0)) calc(5px * var(--icon-depth, 0)) rgba(0, 0, 0, calc(0.26 * var(--icon-depth, 0)));
+    position: relative;
+    overflow: hidden;
   }
+  .item::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 56%;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.05));
+    opacity: var(--icon-gloss, 0);
+    pointer-events: none;
+  }
+  .item svg { position: relative; z-index: 1; }
   .item svg { width: 46%; height: 46%; stroke-width: 1.65; }
   .launcher .item svg { width: 52%; height: 52%; fill: currentColor; stroke: none; }
   .item:focus-visible { outline: none; box-shadow: var(--shadow-ring); }
@@ -113,12 +129,20 @@ const sheet = css`
     border-radius: 999px;
     background: color-mix(in srgb, var(--foreground) 70%, transparent);
     opacity: 0;
-    transition: opacity 0.15s ease, width 0.2s ease, background 0.15s ease;
+    transition: opacity 0.15s ease, width 0.2s ease, height 0.2s ease, margin 0.2s ease, background 0.15s ease;
   }
-  :host([position="left"]) .dot { bottom: auto; left: -7px; top: 50%; margin-top: -2px; }
-  :host([position="right"]) .dot { bottom: auto; right: -7px; top: 50%; margin-top: -2px; }
+  :host([position="left"]) .dot,
+  :host([position="right"]) .dot { bottom: auto; top: 50%; margin-top: -2px; }
+  :host([position="left"]) .dot { left: -7px; }
+  :host([position="right"]) .dot { right: -7px; }
   .slot[data-running="true"] .dot { opacity: 1; }
   .slot[data-focused="true"] .dot { width: 14px; background: var(--ring); }
+  :host([position="left"]) .slot[data-focused="true"] .dot,
+  :host([position="right"]) .slot[data-focused="true"] .dot {
+    width: 4px;
+    height: 14px;
+    margin-top: -7px;
+  }
 
   .divider {
     width: 1px;

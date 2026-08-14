@@ -46,7 +46,12 @@ const sheet = css`
   .nav-icon { display: grid; place-items: center; flex: none; }
   .nav-icon svg { --icon-accent: currentColor; stroke-width: 1.7; }
   .nav-item:hover { background: var(--accent); color: var(--foreground); }
-  .nav-item[aria-current="true"] { background: var(--card); color: var(--foreground); box-shadow: var(--shadow-sm); }
+  .nav-item[aria-current="true"] {
+    background: var(--card);
+    color: var(--foreground);
+    font-weight: 600;
+    box-shadow: var(--shadow-raise);
+  }
   .pane { overflow: auto; padding: 20px 22px 40px; display: flex; flex-direction: column; gap: 18px; }
   .section-title { font-size: 17px; font-weight: 650; letter-spacing: -0.02em; }
   .section-sub { font-size: 12.5px; color: var(--muted-foreground); margin-top: 2px; }
@@ -228,6 +233,16 @@ class SettingsApp extends JGApp {
               <option value="category">By category</option>
               <option value="accent">Accent only</option>
               <option value="neutral">Neutral</option>
+            </jg-select>`,
+          ),
+        }}
+        ${{
+          raw: this.#row(
+            'Icon style',
+            'Flat keeps the drawn icons plain. Skeuomorphic adds gloss, a bevel and depth.',
+            html`<jg-select data-setting="appearance.icons" value="${settings.get('appearance.icons')}" size="sm" style="width:160px">
+              <option value="flat">Flat</option>
+              <option value="skeuomorphic">Skeuomorphic</option>
             </jg-select>`,
           ),
         }}

@@ -136,6 +136,7 @@ const PATHS = {
   planner: '<circle cx="12" cy="12" r="8.8"/><path d="M12 6.8V12l3.4 2.1"/><path d="M3.2 12h4M16.8 12h4"/>',
   exchange: '<path d="M4 8.6h13l-3.4-3.4M20 15.4H7l3.4 3.4"/><circle cx="12" cy="12" r="9.2" stroke-dasharray="2 3"/>',
   headers: '<rect x="3" y="3.6" width="18" height="16.8" rx="2.6"/><path d="M3 8.8h18"/><path d="M6.6 12.6h7M6.6 16.2h10.8"/><path d="M6 6.2h.01M8.6 6.2h.01"/>',
+  more: '<circle cx="12" cy="5.4" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18.6" r="1.5"/>',
 };
 
 export const ACCENTS = {

@@ -49,7 +49,8 @@ const sheet = css`
     transition: background 0.15s ease;
   }
   .search:focus-within { background: color-mix(in srgb, var(--ring) 7%, transparent); }
-  .glass { color: var(--muted-foreground); font-size: 15px; }
+  .glass { display: grid; place-items: center; flex: none; color: var(--muted-foreground); }
+  .glass svg { width: 19px; height: 19px; --icon-accent: currentColor; }
   input {
     flex: 1;
     appearance: none;
@@ -165,7 +166,7 @@ class JGSpotlight extends JGElement {
       <div class="veil"></div>
       <div class="panel" role="dialog" aria-label="Search apps">
         <div class="search">
-          <span class="glass">⌕</span>
+          <span class="glass">${icon('search', 19)}</span>
           <input type="text" placeholder="Search tools, formats, keywords..." value="${this.#query}" spellcheck="false" />
           <kbd>esc</kbd>
         </div>
@@ -207,7 +208,7 @@ class JGSpotlight extends JGElement {
                 <span class="name">${app.name}</span>
                 <span class="tag">${app.tagline}</span>
               </span>
-              <span class="path">/${app.id}</span>
+              <span class="path">/apps/${app.id}</span>
             </button>`,
           )}`
       : html`<div class="empty">No tools match "${this.#query}".</div>`;

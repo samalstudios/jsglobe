@@ -16,7 +16,8 @@ const sheet = css`
     padding: 5px;
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 50%, transparent);
+    background: color-mix(in srgb, var(--muted) 88%, var(--foreground) 3%);
+    box-shadow: var(--shadow-well);
     overflow-x: auto;
     scrollbar-width: none;
   }
@@ -58,8 +59,9 @@ const sheet = css`
   .item[aria-current="true"] {
     background: var(--card);
     color: var(--foreground);
-    border-color: var(--border);
-    box-shadow: var(--shadow-sm);
+    border-color: transparent;
+    font-weight: 600;
+    box-shadow: var(--shadow-raise);
   }
   .item[data-danger="true"]:hover:not(:disabled) {
     color: var(--destructive);

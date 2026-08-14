@@ -3,6 +3,11 @@ import { base } from './styles.js';
 import { copyText } from '../core/util.js';
 import './jg-toolbar.js';
 import './jg-code.js';
+import './jg-sheet.js';
+import './jg-dialog.js';
+import './jg-popover.js';
+import './jg-drop.js';
+import './jg-stat.js';
 
 const controlBase = css`
   :host {
@@ -86,6 +91,10 @@ class JGButton extends JGElement {
       :host([size="lg"]) button { height: 40px; padding: 0 18px; font-size: 14px; }
       :host([size="icon"]) button { width: 34px; height: 34px; padding: 0; }
       :host([size="icon-sm"]) button { width: 28px; height: 28px; padding: 0; font-size: 12px; }
+      :host([group]) button { height: 100%; min-height: 34px; }
+      :host([group][size="sm"]) button,
+      :host([group][size="icon-sm"]) button { min-height: 28px; }
+      :host([group][size="lg"]) button { min-height: 40px; }
       :host([full]) { display: flex; width: 100%; }
     `,
   ];
@@ -438,6 +447,7 @@ class JGButtonGroup extends JGElement {
       :host { display: inline-flex; vertical-align: middle; }
       :host([full]) { display: flex; width: 100%; }
       .group { display: inline-flex; align-items: stretch; }
+      ::slotted(jg-button) { display: inline-flex; }
       :host([full]) .group { display: flex; width: 100%; }
       :host([full]) ::slotted(jg-button) { flex: 1; }
     `,
@@ -600,8 +610,9 @@ class JGTabs extends JGElement {
         gap: 2px;
         padding: 3px;
         border-radius: var(--radius-md);
-        background: color-mix(in srgb, var(--muted) 80%, transparent);
+        background: color-mix(in srgb, var(--muted) 92%, var(--foreground) 4%);
         border: 1px solid var(--border);
+        box-shadow: var(--shadow-well);
         max-width: 100%;
         overflow: auto;
         scrollbar-width: none;
@@ -627,7 +638,8 @@ class JGTabs extends JGElement {
       button[aria-selected="true"] {
         background: var(--card);
         color: var(--foreground);
-        box-shadow: var(--shadow-sm);
+        box-shadow: var(--shadow-raise);
+        font-weight: 600;
       }
       button:focus-visible { outline: none; box-shadow: var(--shadow-ring); }
     `,
@@ -903,9 +915,11 @@ class JGSegment extends JGElement {
       }
       button:hover { color: var(--foreground); border-color: var(--border-strong); }
       button[aria-pressed="true"] {
-        background: color-mix(in srgb, var(--ring) 16%, transparent);
-        border-color: color-mix(in srgb, var(--ring) 45%, transparent);
+        background: color-mix(in srgb, var(--ring) 18%, transparent);
+        border-color: color-mix(in srgb, var(--ring) 55%, transparent);
         color: var(--foreground);
+        font-weight: 600;
+        box-shadow: var(--shadow-sm);
       }
     `,
   ];
@@ -995,3 +1009,4 @@ define('jg-segment', JGSegment);
 define('jg-empty', JGEmpty);
 
 export { raw };
+export { confirm } from './jg-dialog.js';

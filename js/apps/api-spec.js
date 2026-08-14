@@ -140,8 +140,6 @@ class ApiSpec extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-toolbar id="bar"></jg-toolbar>
-
       <div class="shell">
         <div class="pane">
           <jg-code id="editor" grow gutter language="yaml" placeholder="Paste an OpenAPI document"></jg-code>
@@ -162,43 +160,37 @@ class ApiSpec extends JGApp {
       </div>
     </div>`);
 
-    this.$('#bar').items = [
-      { id: 'yaml', label: 'YAML', icon: 'braces', select: true },
-      { id: 'json', label: 'JSON', icon: 'code', select: true },
+    this.setActions([
+      { id: 'yaml', label: 'YAML', icon: 'braces', select: true, action: () => this.#convert('yaml') },
+      { id: 'json', label: 'JSON', icon: 'code', select: true, action: () => this.#convert('json') },
       { separator: true },
-      { id: 'sample', label: 'Sample', icon: 'spec' },
-      { id: 'format', label: 'Tidy', icon: 'alignLeft' },
+      { id: 'sample', label: 'Sample', icon: 'spec', action: () => this.#sample() },
+      { id: 'format', label: 'Tidy', icon: 'alignLeft', action: () => this.#tidy() },
       { spacer: true },
-      { id: 'copy', label: 'Copy', icon: 'fileText' },
-      { id: 'download', label: 'Download', icon: 'server' },
-    ];
-    this.$('#bar').value = this.#format;
-
-    this.on(this.$('#bar'), 'select', (event) => {
-      const id = event.detail.id;
-      if (id === 'yaml' || id === 'json') return this.#convert(id);
-      if (id === 'sample') {
-        this.#format = 'yaml';
-        this.$('#bar').value = 'yaml';
-        this.$('#editor').language = 'yaml';
-        this.$('#editor').value = SAMPLE;
-        return this.#run();
-      }
-      if (id === 'format') return this.#tidy();
-      if (id === 'copy') return copyText(this.$('#editor').value);
-      if (id === 'download') {
-        return download(`openapi.${this.#format}`, this.$('#editor').value, 'text/plain');
-      }
-      return undefined;
-    });
+      { id: 'copy', label: 'Copy', icon: 'fileText', action: () => copyText(this.$('#editor').value) },
+      {
+        id: 'download',
+        label: 'Download',
+        icon: 'server',
+        action: () => download(`openapi.${this.#format}`, this.$('#editor').value, 'text/plain'),
+      },
+    ]);
 
     this.on(this.$('#editor'), 'input', debounce(() => this.#run(), 300));
 
     const saved = this.store.read({ source: '', format: 'yaml' });
     this.#format = saved.format ?? 'yaml';
-    this.$('#bar').value = this.#format;
+    this.setActiveAction(this.#format);
     this.$('#editor').language = this.#format;
     this.$('#editor').value = saved.source || SAMPLE;
+    this.#run();
+  }
+
+  #sample() {
+    this.#format = 'yaml';
+    this.setActiveAction('yaml');
+    this.$('#editor').language = 'yaml';
+    this.$('#editor').value = SAMPLE;
     this.#run();
   }
 
@@ -214,12 +206,12 @@ class ApiSpec extends JGApp {
     try {
       const spec = this.#parse(this.$('#editor').value);
       this.#format = format;
-      this.$('#bar').value = format;
+      this.setActiveAction(format);
       this.$('#editor').language = format;
       this.$('#editor').value = format === 'json' ? JSON.stringify(spec, null, 2) : toYaml(spec);
       this.#run();
     } catch (error) {
-      this.$('#bar').value = this.#format;
+      this.setActiveAction(this.#format);
       toast(`Cannot convert: ${error.message}`, 'error');
     }
   }

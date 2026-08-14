@@ -16,8 +16,7 @@ const sheet = css`
     z-index: 40;
     pointer-events: none;
   }
-  :host([active]) { pointer-events: auto; }
-  jg-window { pointer-events: auto; }
+  ::slotted(jg-window) { pointer-events: auto; }
 `;
 
 const OFFSET_STEP = 28;

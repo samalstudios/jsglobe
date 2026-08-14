@@ -45,6 +45,16 @@ export class JGApp extends JGElement {
     this.emit('app:title', { title: text });
   }
 
+  setActions(items) {
+    if (this.isWidget) return;
+    this.emit('app:actions', { items });
+  }
+
+  setActiveAction(id) {
+    const window = this.closest('jg-window');
+    window?.setActive(id);
+  }
+
   hotkeys(handler, options = {}) {
     const type = options.type ?? 'keydown';
     this.listen(window, type, (event) => {

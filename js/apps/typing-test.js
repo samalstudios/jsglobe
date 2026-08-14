@@ -94,7 +94,7 @@ class TypingTest extends JGApp {
 
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-segment id="mode"></jg-segment>
+        <jg-tabs id="mode"></jg-tabs>
         <jg-segment id="duration"></jg-segment>
         <span class="grow"></span>
         <jg-button size="sm" variant="outline" id="restart">Restart</jg-button>
