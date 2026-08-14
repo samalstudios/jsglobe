@@ -3,6 +3,9 @@
 A home screen for small developer tools. Pure JavaScript, custom elements, no framework, no build step.
 Every tool is a lazily loaded ES module with its own URL: `jsglobe.com/json-formatter`.
 
+<img width="1624" height="1005" alt="demo" src="https://github.com/user-attachments/assets/c88bf003-c513-48a1-8341-cb93cfaebf34" />
+
+
 ## Running locally
 
 ```bash
