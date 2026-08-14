@@ -21,8 +21,8 @@ history-based router needs.
 security policy and the SPA fallback.
 
 ```bash
-sudo cp -r . /srv/jsglobe
-sudo caddy run --config /srv/jsglobe/Caddyfile
+ cp -r . /srv/jsglobe
+ caddy run --config /srv/jsglobe/Caddyfile
 ```
 
 `_redirects` and `vercel.json` are included for Netlify, Cloudflare Pages and Vercel.
