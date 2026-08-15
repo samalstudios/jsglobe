@@ -169,6 +169,9 @@ const PATHS = {
   file: '<path d="M13.6 3.2H7.4a2.2 2.2 0 0 0-2.2 2.2v13.2a2.2 2.2 0 0 0 2.2 2.2h9.2a2.2 2.2 0 0 0 2.2-2.2V8.4Z"/><path d="M13.6 3.2v5.2h5.2"/>',
   card: '<rect x="5.2" y="2.8" width="13.6" height="18.4" rx="2.6"/><text x="8.9" y="10.4" fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="7" font-weight="600" text-anchor="middle">A</text><path d="M14.6 18.2c-2.2-1.5-3.3-2.6-3.3-3.8a1.65 1.65 0 0 1 3.3-.8 1.65 1.65 0 0 1 3.3.8c0 1.2-1.1 2.3-3.3 3.8Z" fill="currentColor" stroke="none"/>',
   dino: '<text x="12" y="12.6" fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="8.2" font-weight="700" letter-spacing="-0.3" text-anchor="middle" dominant-baseline="middle">T-Rex</text>',
+  bluetooth: '<path d="m7.4 7.4 9.2 9.2L12 21V3l4.6 4.4-9.2 9.2"/>',
+  serial: '<rect x="2.6" y="8.6" width="18.8" height="9.4" rx="2.4"/><path d="M6.4 12.4h.01M9.6 12.4h.01M12.8 12.4h.01M16 12.4h.01M8 14.6h8"/><path d="M8.6 8.6V6.2a1.6 1.6 0 0 1 1.6-1.6h3.6a1.6 1.6 0 0 1 1.6 1.6v2.4"/>',
+  terminalKey: '<path d="M9.4 3.2h5.2"/>',
 };
 
 export const ACCENTS = {
