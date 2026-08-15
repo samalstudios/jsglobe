@@ -192,7 +192,9 @@ const sheet = css`
   }
 `;
 
-const REVEAL = 96;
+const REVEAL = 56;
+const REVEAL_BUSY = 5;
+const DWELL = 320;
 const MAGNIFY = 0.34;
 const REACH = 92;
 
@@ -202,6 +204,7 @@ class JGDock extends JGElement {
   #running = [];
   #focused = null;
   #hideTimer = null;
+  #dwellTimer = null;
 
   connectedCallback() {
     super.connectedCallback();
@@ -212,15 +215,33 @@ class JGDock extends JGElement {
     this.listen(window, 'pointermove', (event) => {
       if (!this.hasAttribute('auto-hide')) return;
       const position = this.getAttribute('position') ?? 'bottom';
-      const near =
+      const distance =
         position === 'left'
-          ? event.clientX <= REVEAL
+          ? event.clientX
           : position === 'right'
-            ? window.innerWidth - event.clientX <= REVEAL
-            : window.innerHeight - event.clientY <= REVEAL;
-      if (near) this.#peek(true);
-      else if (this.hasAttribute('peek')) this.#scheduleHide();
+            ? window.innerWidth - event.clientX
+            : window.innerHeight - event.clientY;
+
+      const busy = Boolean(this.#focused);
+      if (distance > (busy ? REVEAL_BUSY : REVEAL)) {
+        this.#cancelDwell();
+        if (this.hasAttribute('peek')) this.#scheduleHide();
+        return;
+      }
+
+      if (!busy || this.hasAttribute('peek')) {
+        this.#cancelDwell();
+        this.#peek(true);
+        return;
+      }
+
+      if (this.#dwellTimer) return;
+      this.#dwellTimer = setTimeout(() => {
+        this.#dwellTimer = null;
+        this.#peek(true);
+      }, DWELL);
     });
+    this.keep(() => this.#cancelDwell());
 
     this.keep(
       bus.on('windows:change', (detail) => {
@@ -330,6 +351,11 @@ class JGDock extends JGElement {
         }
       });
     });
+  }
+
+  #cancelDwell() {
+    clearTimeout(this.#dwellTimer);
+    this.#dwellTimer = null;
   }
 
   #peek(show) {
