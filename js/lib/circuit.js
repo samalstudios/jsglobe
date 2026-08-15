@@ -117,6 +117,84 @@ export const createCircuit = () => {
         slot += 1;
       } else if (part.type === 'isource') {
         inject(part.b, part.a, part.value);
+      } else if (part.type === 'npn' || part.type === 'pnp') {
+        const sign = part.type === 'npn' ? 1 : -1;
+        const beta = part.beta ?? 100;
+        const reverse = 2;
+        const saturation = 1e-14;
+        const limit = (value) => Math.max(-4, Math.min(0.85, value));
+        const vbe = limit(sign * (((guess[index(part.b)] ?? 0) - (guess[index(part.e)] ?? 0))));
+        const vbc = limit(sign * (((guess[index(part.b)] ?? 0) - (guess[index(part.c)] ?? 0))));
+
+        const expBe = Math.exp(Math.min(40, vbe / THERMAL));
+        const expBc = Math.exp(Math.min(40, vbc / THERMAL));
+
+        const ibe = (saturation / beta) * (expBe - 1);
+        const ibc = (saturation / reverse) * (expBc - 1);
+        const transport = saturation * (expBe - expBc);
+
+        const gbe = Math.max(1e-12, (saturation / beta) * expBe / THERMAL);
+        const gbc = Math.max(1e-12, (saturation / reverse) * expBc / THERMAL);
+        const gf = Math.max(1e-12, (saturation * expBe) / THERMAL);
+        const gr = Math.max(1e-12, (saturation * expBc) / THERMAL);
+
+        const ic = transport - ibc;
+        const ib = ibe + ibc;
+
+        conductance(part.b, part.e, gbe);
+        conductance(part.b, part.c, gbc);
+
+        const b = index(part.b);
+        const c = index(part.c);
+        const e = index(part.e);
+        if (c >= 0) {
+          if (b >= 0) matrix[c][b] += sign * sign * (gf - gr);
+          if (e >= 0) matrix[c][e] -= sign * sign * gf;
+          if (c >= 0) matrix[c][c] += sign * sign * gr;
+        }
+        if (e >= 0) {
+          if (b >= 0) matrix[e][b] -= sign * sign * (gf - gr);
+          if (e >= 0) matrix[e][e] += sign * sign * gf;
+          if (c >= 0) matrix[e][c] -= sign * sign * gr;
+        }
+
+        inject(part.e, part.c, sign * (ic - gf * vbe + gr * vbc));
+        inject(part.b, part.e, sign * (-ibe + gbe * vbe));
+        inject(part.b, part.c, sign * (-ibc + gbc * vbc));
+        void ib;
+      } else if (part.type === 'nmos' || part.type === 'pmos') {
+        const sign = part.type === 'nmos' ? 1 : -1;
+        const threshold = part.threshold ?? 1.8;
+        const strength = part.strength ?? 0.02;
+        const vgs = sign * ((guess[index(part.b)] ?? 0) - (guess[index(part.e)] ?? 0));
+        const vds = sign * ((guess[index(part.c)] ?? 0) - (guess[index(part.e)] ?? 0));
+        const overdrive = vgs - threshold;
+
+        let drain = 0;
+        let gm = 0;
+        let gds = 1e-9;
+        if (overdrive > 0) {
+          if (vds < overdrive) {
+            drain = strength * (overdrive * vds - (vds * vds) / 2);
+            gm = strength * vds;
+            gds = Math.max(1e-9, strength * (overdrive - vds));
+          } else {
+            drain = (strength / 2) * overdrive * overdrive;
+            gm = strength * overdrive;
+            gds = 1e-9;
+          }
+        }
+
+        conductance(part.c, part.e, gds);
+        const c = index(part.c);
+        const e = index(part.e);
+        const g = index(part.b);
+        if (c >= 0 && g >= 0) matrix[c][g] += gm;
+        if (c >= 0 && e >= 0) matrix[c][e] -= gm;
+        if (e >= 0 && g >= 0) matrix[e][g] -= gm;
+        if (e >= 0) matrix[e][e] += gm;
+
+        inject(part.e, part.c, sign * (drain - gm * vgs - gds * vds));
       } else if (part.type === 'diode' || part.type === 'led') {
         const saturation = part.type === 'led' ? 1e-16 : 1e-12;
         const emission = part.type === 'led' ? 2.4 : 1.6;
@@ -135,8 +213,10 @@ export const createCircuit = () => {
   const step = (dt) => {
     let guess = voltages.map((value, node) => (node === ground ? 0 : value));
     let solution = [];
-    const nonlinear = parts.some((part) => part.type === 'diode' || part.type === 'led');
-    const passes = nonlinear ? 24 : 1;
+    const nonlinear = parts.some((part) =>
+      ['diode', 'led', 'npn', 'pnp', 'nmos', 'pmos'].includes(part.type),
+    );
+    const passes = nonlinear ? 40 : 1;
 
     for (let pass = 0; pass < passes; pass += 1) {
       const packed = guess.filter((value, node) => node !== ground);
@@ -176,6 +256,8 @@ export const createCircuit = () => {
         const saturation = part.type === 'led' ? 1e-16 : 1e-12;
         const emission = part.type === 'led' ? 2.4 : 1.6;
         current = saturation * (Math.exp(Math.min(40, across / (emission * THERMAL))) - 1);
+      } else if (part.type === 'npn' || part.type === 'pnp' || part.type === 'nmos' || part.type === 'pmos') {
+        current = 0;
       } else if (part.type === 'vsource' || part.type === 'inductor' || part.type === 'wire') {
         current = solution[offset + slot] ?? 0;
         slot += 1;

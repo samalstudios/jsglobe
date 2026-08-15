@@ -195,6 +195,10 @@ const KINDS = {
   led: { label: 'LED', icon: 'sparkles', unit: '', value: 0 },
   lamp: { label: 'Lamp', icon: 'sun', unit: 'Ω', value: 220 },
   switch: { label: 'Switch', icon: 'toggle', unit: '', value: 0 },
+  npn: { label: 'NPN', icon: 'transistor', unit: '', value: 100, terminals: 3 },
+  pnp: { label: 'PNP', icon: 'transistor', unit: '', value: 100, terminals: 3 },
+  nmos: { label: 'N-MOSFET', icon: 'transistor', unit: '', value: 1.8, terminals: 3 },
+  pmos: { label: 'P-MOSFET', icon: 'transistor', unit: '', value: 1.8, terminals: 3 },
   ground: { label: 'Ground', icon: 'landmark', unit: '', value: 0 },
 };
 
@@ -279,6 +283,21 @@ const SAMPLES = {
     ],
     probe: [8, 3],
   },
+  npn: {
+    name: 'NPN switch',
+    parts: [
+      { kind: 'vsource', a: [3, 3], b: [3, 13], value: 9 },
+      { kind: 'wire', a: [3, 3], b: [13, 3] },
+      { kind: 'lamp', a: [13, 3], b: [13, 7], value: 330 },
+      { kind: 'npn', a: [6, 10], b: [13, 7], c: [13, 13], value: 120 },
+      { kind: 'resistor', a: [3, 10], b: [6, 10], value: 22000 },
+      { kind: 'wire', a: [3, 10], b: [3, 8] },
+      { kind: 'wire', a: [3, 8], b: [3, 3] },
+      { kind: 'wire', a: [13, 13], b: [3, 13] },
+      { kind: 'ground', a: [3, 13], b: [3, 13] },
+    ],
+    probe: [13, 7],
+  },
   led: {
     name: 'LED',
     parts: [
@@ -336,6 +355,7 @@ class CircuitLab extends JGApp {
       kind: part.kind,
       a: [...part.a],
       b: [...part.b],
+      c: part.c ? [...part.c] : undefined,
       value: part.value ?? KINDS[part.kind]?.value ?? 0,
       frequency: part.frequency ?? 60,
       closed: part.closed ?? true,
@@ -598,16 +618,21 @@ class CircuitLab extends JGApp {
   }
 
   #hit(point) {
+    const toSegment = (from, to) => {
+      const dx = to[0] - from[0];
+      const dy = to[1] - from[1];
+      const span = dx * dx + dy * dy;
+      const t = span ? Math.max(0, Math.min(1, ((point[0] - from[0]) * dx + (point[1] - from[1]) * dy) / span)) : 0;
+      return Math.hypot(point[0] - (from[0] + dx * t), point[1] - (from[1] + dy * t));
+    };
+
     let best = null;
     let closest = 0.6;
     this.#parts.forEach((part) => {
-      const [ax, ay] = part.a;
-      const [bx, by] = part.b;
-      const dx = bx - ax;
-      const dy = by - ay;
-      const span = dx * dx + dy * dy;
-      const t = span ? Math.max(0, Math.min(1, ((point[0] - ax) * dx + (point[1] - ay) * dy) / span)) : 0;
-      const distance = Math.hypot(point[0] - (ax + dx * t), point[1] - (ay + dy * t));
+      const legs = part.c
+        ? [toSegment(part.a, part.b), toSegment(part.a, part.c), toSegment(part.b, part.c)]
+        : [toSegment(part.a, part.b)];
+      const distance = Math.min(...legs);
       if (distance < closest) {
         closest = distance;
         best = part;
@@ -642,10 +667,18 @@ class CircuitLab extends JGApp {
           const endA = this.#near(raw, part.a);
           const endB = this.#near(raw, part.b);
           this.#snapshot();
+          const ends = [['a', endA], ['b', endB]];
+          if (part.c) ends.push(['c', this.#near(raw, part.c)]);
+          const [closestEnd, closestDistance] = ends.sort((first, second) => first[1] - second[1])[0];
           this.#drag =
-            endA < 0.45 || endB < 0.45
-              ? { kind: 'end', part, end: endA <= endB ? 'a' : 'b' }
-              : { kind: 'move', part, from: point, origin: { a: [...part.a], b: [...part.b] } };
+            closestDistance < 0.45
+              ? { kind: 'end', part, end: closestEnd }
+              : {
+                  kind: 'move',
+                  part,
+                  from: point,
+                  origin: { a: [...part.a], b: [...part.b], c: part.c ? [...part.c] : null },
+                };
           this.$('#view').dataset.dragging = 'true';
         }
       }
@@ -688,6 +721,7 @@ class CircuitLab extends JGApp {
       const { part, origin } = this.#drag;
       part.a = [origin.a[0] + dx, origin.a[1] + dy];
       part.b = [origin.b[0] + dx, origin.b[1] + dy];
+      if (origin.c) part.c = [origin.c[0] + dx, origin.c[1] + dy];
     } else if (this.#drag.kind === 'end') {
       this.#drag.part[this.#drag.end] = point;
     }
@@ -711,7 +745,8 @@ class CircuitLab extends JGApp {
         id: this.#seq++,
         kind: this.#tool,
         a: from,
-        b: to,
+        b: meta?.terminals === 3 ? [from[0] + 3, from[1] - 3] : to,
+        c: meta?.terminals === 3 ? [from[0] + 3, from[1] + 3] : undefined,
         value: meta?.value ?? 0,
         frequency: 60,
         closed: true,
@@ -747,6 +782,7 @@ class CircuitLab extends JGApp {
     this.#parts.forEach((part) => {
       add(part.a);
       add(part.b);
+      if (part.c) add(part.c);
     });
     this.#parts.filter((part) => part.kind === 'wire').forEach((part) => union(key(part.a), key(part.b)));
 
@@ -764,16 +800,26 @@ class CircuitLab extends JGApp {
 
     const solverParts = this.#parts
       .filter((part) => part.kind !== 'wire' && part.kind !== 'ground')
-      .map((part) => ({
-        id: part.id,
-        type: part.kind === 'ac' ? 'vsource' : part.kind,
-        wave: part.kind === 'ac' ? 'sine' : 'dc',
-        frequency: part.frequency,
-        closed: part.closed,
-        value: part.value,
-        a: this.#nodes.get(key(part.a)) ?? 0,
-        b: this.#nodes.get(key(part.b)) ?? 0,
-      }));
+      .map((part) => {
+        const entry = {
+          id: part.id,
+          type: part.kind === 'ac' ? 'vsource' : part.kind,
+          wave: part.kind === 'ac' ? 'sine' : 'dc',
+          frequency: part.frequency,
+          closed: part.closed,
+          value: part.value,
+          a: this.#nodes.get(key(part.a)) ?? 0,
+          b: this.#nodes.get(key(part.b)) ?? 0,
+        };
+        if (part.c) {
+          entry.b = this.#nodes.get(key(part.a)) ?? 0;
+          entry.c = this.#nodes.get(key(part.b)) ?? 0;
+          entry.e = this.#nodes.get(key(part.c)) ?? 0;
+          if (part.kind === 'npn' || part.kind === 'pnp') entry.beta = part.value || 100;
+          else entry.threshold = part.value || 1.8;
+        }
+        return entry;
+      });
 
     this.#circuit.build(solverParts, ids.size, ground);
     this.#trace = [];
@@ -940,6 +986,10 @@ class CircuitLab extends JGApp {
   }
 
   #drawPart(context, part, paint, ghost = 0) {
+    if (part.c) {
+      this.#drawTransistor(context, part, paint, ghost);
+      return;
+    }
     const [ax, ay] = [part.a[0] * GRID, part.a[1] * GRID];
     const [bx, by] = [part.b[0] * GRID, part.b[1] * GRID];
     const selected = part.id === this.#selected;
@@ -1135,6 +1185,87 @@ class CircuitLab extends JGApp {
     context.restore();
   }
 
+  #drawTransistor(context, part, paint, ghost) {
+    const gate = [part.a[0] * GRID, part.a[1] * GRID];
+    const drain = [part.b[0] * GRID, part.b[1] * GRID];
+    const source = [part.c[0] * GRID, part.c[1] * GRID];
+    const selected = part.id === this.#selected;
+    const mos = part.kind === 'nmos' || part.kind === 'pmos';
+    const inward = part.kind === 'pnp' || part.kind === 'pmos';
+
+    const barX = Math.min(drain[0], source[0]) - 12;
+    const top = Math.min(drain[1], source[1]);
+    const bottom = Math.max(drain[1], source[1]);
+    const midY = (top + bottom) / 2;
+
+    context.save();
+    if (ghost) {
+      context.globalAlpha = ghost;
+      context.setLineDash([5, 4]);
+    }
+    context.lineWidth = selected ? 2.6 : 1.8;
+    context.strokeStyle = selected ? paint.ring : paint.line;
+    context.lineCap = 'round';
+
+    context.beginPath();
+    context.moveTo(gate[0], gate[1]);
+    context.lineTo(barX - (mos ? 8 : 0), gate[1]);
+    context.lineTo(barX - (mos ? 8 : 0), midY);
+    context.lineTo(barX, midY);
+    context.stroke();
+
+    if (mos) {
+      context.beginPath();
+      context.moveTo(barX, midY - 14);
+      context.lineTo(barX, midY + 14);
+      context.stroke();
+      context.beginPath();
+      context.moveTo(barX + 5, midY - 14);
+      context.lineTo(barX + 5, midY + 14);
+      context.stroke();
+    } else {
+      context.beginPath();
+      context.moveTo(barX, midY - 14);
+      context.lineTo(barX, midY + 14);
+      context.stroke();
+    }
+
+    const stem = mos ? barX + 5 : barX;
+    [drain, source].forEach((pin, index) => {
+      const y = index === 0 ? midY - 9 : midY + 9;
+      context.beginPath();
+      context.moveTo(stem, y);
+      context.lineTo(pin[0], y);
+      context.lineTo(pin[0], pin[1]);
+      context.stroke();
+    });
+
+    const arrowY = midY + 9;
+    const direction = inward ? -1 : 1;
+    const tip = inward ? [stem + 6, arrowY - 4 * 0] : [drain[0] * 0 + stem + 14, arrowY];
+    void tip;
+    context.beginPath();
+    const baseX = inward ? stem + 14 : stem + 6;
+    context.moveTo(baseX, arrowY - 4);
+    context.lineTo(baseX + direction * 8, arrowY);
+    context.lineTo(baseX, arrowY + 4);
+    context.closePath();
+    context.fillStyle = selected ? paint.ring : paint.line;
+    context.fill();
+
+    context.beginPath();
+    context.arc((barX + Math.max(drain[0], source[0])) / 2, midY, 19, 0, Math.PI * 2);
+    context.globalAlpha = ghost || 0.35;
+    context.stroke();
+    context.globalAlpha = ghost || 1;
+
+    context.fillStyle = paint.soft;
+    context.font = `500 10px ${paint.mono}`;
+    context.textAlign = 'left';
+    context.fillText(KINDS[part.kind]?.label ?? part.kind, barX - 6, bottom + 16);
+    context.restore();
+  }
+
   #scope() {
     const view = this.#fit(this.$('#scope'));
     if (!view) return;
@@ -1224,6 +1355,7 @@ class CircuitLab extends JGApp {
 
     const interval = this.#interval || TIMEBASE[this.#timebase].seconds * DIVISIONS / POINTS;
     const mid = mean;
+    const noise = (max - min) < Math.max(1e-6, Math.abs(mean) * 0.002);
     const crossings = [];
     for (let index = 1; index < window.length; index += 1) {
       const before = window[index - 1];
@@ -1233,7 +1365,9 @@ class CircuitLab extends JGApp {
         crossings.push(index - 1 + (slope ? (mid - before) / slope : 0));
       }
     }
-    const period = crossings.length > 1 ? ((crossings[crossings.length - 1] - crossings[0]) / (crossings.length - 1)) * interval : 0;
+    const period = !noise && crossings.length > 1
+      ? ((crossings[crossings.length - 1] - crossings[0]) / (crossings.length - 1)) * interval
+      : 0;
 
     target.innerHTML = html`
       <div><dt>Vpp</dt><dd>${prefix(max - min, unit)}</dd></div>
