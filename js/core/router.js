@@ -18,6 +18,7 @@ const parse = () => {
   if (head === 'privacy') return { name: 'privacy', segments, params };
   if (head !== 'apps') return { name: 'app', appId: head, path: rest, segments, params, legacy: true };
   if (!rest.length) return { name: 'directory', category: params.category ?? null, segments, params };
+  if (rest[0] === 'category') return { name: 'directory', category: rest[1] ?? null, segments, params };
   return { name: 'app', appId: rest[0], path: rest.slice(1), segments, params };
 };
 
@@ -98,7 +99,7 @@ export const router = {
 
   app: (id) => router.go(`/apps/${id}`),
 
-  directory: (category) => router.go('/apps', category ? { category } : undefined),
+  directory: (category) => router.go(category ? `/apps/category/${category}` : '/apps'),
 
   search: (query) => router.go('/search', query ? { q: query } : undefined),
 };

@@ -52,6 +52,9 @@ createServer(async (request, response) => {
 
   if (extname(requested)) return send(response, 404, `Not found: ${requested}`, 'text/plain');
 
+  const indexed = await readIfFile(join(target, 'index.html'));
+  if (indexed) return send(response, 200, indexed, TYPES['.html']);
+
   const shell = await readIfFile(join(root, 'index.html'));
   if (shell) return send(response, 200, shell, TYPES['.html']);
 

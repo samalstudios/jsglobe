@@ -3,6 +3,18 @@
   <url><loc>https://jsglobe.com/</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://jsglobe.com/apps</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://jsglobe.com/privacy</loc><lastmod>2026-08-15</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://jsglobe.com/apps/category/crypto</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jsglobe.com/apps/category/converter</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jsglobe.com/apps/category/web</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jsglobe.com/apps/category/development</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jsglobe.com/apps/category/network</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jsglobe.com/apps/category/text</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jsglobe.com/apps/category/math</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jsglobe.com/apps/category/media</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jsglobe.com/apps/category/science</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jsglobe.com/apps/category/ai</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jsglobe.com/apps/category/play</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jsglobe.com/apps/category/utility</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jsglobe.com/apps/hash-text</loc><lastmod>2026-08-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://jsglobe.com/apps/hmac-generator</loc><lastmod>2026-08-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://jsglobe.com/apps/encryption</loc><lastmod>2026-08-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
