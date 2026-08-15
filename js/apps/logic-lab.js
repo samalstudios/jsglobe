@@ -18,7 +18,7 @@ const sheet = css`
   .body { flex: 1; min-height: 0; display: flex; }
 
   .palette {
-    width: 124px;
+    width: 158px;
     flex: none;
     border-right: 1px solid var(--border);
     padding: 8px;
@@ -38,8 +38,9 @@ const sheet = css`
   .tool {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 6px 8px;
+    gap: 9px;
+    padding: 7px 9px;
+    white-space: nowrap;
     border: 1px solid transparent;
     border-radius: var(--radius-sm);
     background: transparent;
@@ -81,7 +82,7 @@ const sheet = css`
   }
 
   .side {
-    width: 224px;
+    width: 250px;
     flex: none;
     border-left: 1px solid var(--border);
     padding: 12px;
@@ -417,15 +418,16 @@ class LogicLab extends JGApp {
 
   #pins(part) {
     const meta = KINDS[part.kind];
+    const spread = (count, index) => part.y + Math.round(((meta.height * (index + 1)) / (count + 1)) * 2) / 2;
     const inputs = Array.from({ length: meta.inputs }, (item, index) => ({
       pin: `in${index}`,
       x: part.x,
-      y: part.y + 1 + index * Math.max(1, Math.floor((meta.height - 1) / Math.max(1, meta.inputs))),
+      y: spread(meta.inputs, index),
     }));
     const outputs = Array.from({ length: meta.outputs }, (item, index) => ({
       pin: `out${index}`,
       x: part.x + meta.width,
-      y: part.y + 1 + index * Math.max(1, Math.floor((meta.height - 1) / Math.max(1, meta.outputs))),
+      y: spread(meta.outputs, index),
     }));
     return [...inputs, ...outputs];
   }
@@ -678,6 +680,8 @@ class LogicLab extends JGApp {
       context.stroke();
     } else if (part.kind === 'seven') {
       this.#drawSeven(context, part, x, y, width, height, paint);
+    } else if (GATES[part.kind]) {
+      this.#drawGate(context, part.kind, x, y, width, height, paint);
     } else {
       context.beginPath();
       context.roundRect(x + 4, y + 6, width - 8, height - 12, 6);
@@ -692,6 +696,61 @@ class LogicLab extends JGApp {
     }
 
     context.restore();
+  }
+
+  #drawGate(context, kind, x, y, width, height, paint) {
+    const inverting = ['nand', 'nor', 'xnor', 'not'].includes(kind);
+    const curved = ['or', 'nor', 'xor', 'xnor'].includes(kind);
+    const pointed = ['not', 'buffer'].includes(kind);
+
+    const left = x + 8;
+    const right = x + width - (inverting ? 14 : 6);
+    const top = y + 5;
+    const bottom = y + height - 5;
+    const mid = (top + bottom) / 2;
+
+    context.beginPath();
+    if (pointed) {
+      context.moveTo(left, top);
+      context.lineTo(right, mid);
+      context.lineTo(left, bottom);
+      context.closePath();
+    } else if (curved) {
+      context.moveTo(left, top);
+      context.quadraticCurveTo(left + (right - left) * 0.55, top, right, mid);
+      context.quadraticCurveTo(left + (right - left) * 0.55, bottom, left, bottom);
+      context.quadraticCurveTo(left + 12, mid, left, top);
+    } else {
+      const radius = (bottom - top) / 2;
+      context.moveTo(left, top);
+      context.lineTo(right - radius, top);
+      context.arc(right - radius, mid, radius, -Math.PI / 2, Math.PI / 2);
+      context.lineTo(left, bottom);
+      context.closePath();
+    }
+    context.fill();
+    context.stroke();
+
+    if (kind === 'xor' || kind === 'xnor') {
+      context.beginPath();
+      context.moveTo(left - 6, top);
+      context.quadraticCurveTo(left + 6, mid, left - 6, bottom);
+      context.stroke();
+    }
+
+    if (inverting) {
+      context.beginPath();
+      context.arc(right + 5, mid, 4.5, 0, Math.PI * 2);
+      context.fillStyle = paint.card;
+      context.fill();
+      context.stroke();
+    }
+
+    context.fillStyle = paint.soft;
+    context.font = `500 9px ${paint.mono}`;
+    context.textAlign = 'center';
+    context.textBaseline = 'alphabetic';
+    context.fillText(GATES[kind].label, x + width / 2, bottom + 11);
   }
 
   #drawSeven(context, part, x, y, width, height, paint) {
