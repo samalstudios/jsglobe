@@ -28,7 +28,7 @@ const sheet = css`
     outline: none;
   }
   canvas[data-night="true"] { background: #10151b; }
-  canvas:focus-visible { box-shadow: var(--shadow-ring); }
+  canvas:focus-visible { border-color: color-mix(in srgb, var(--ring) 55%, transparent); }
 
   .overlay {
     position: absolute;
@@ -134,6 +134,84 @@ const DUCK_LEGS = [
   ['000011110001111000000000000', '000011100001110000000000000'],
 ];
 
+const CACTUS_SMALL = [
+  '0011100',
+  '0011100',
+  '0011100',
+  '1011100',
+  '1011101',
+  '1011101',
+  '1111101',
+  '1111111',
+  '0111111',
+  '0011100',
+  '0011100',
+  '0011100',
+  '0011100',
+  '0011100',
+];
+
+const CACTUS_LARGE = [
+  '000111000',
+  '000111000',
+  '000111000',
+  '100111000',
+  '100111001',
+  '100111001',
+  '110111001',
+  '111111011',
+  '011111111',
+  '001111111',
+  '000111111',
+  '000111011',
+  '000111000',
+  '000111000',
+  '000111000',
+  '000111000',
+  '000111000',
+  '000111000',
+  '000111000',
+  '000111000',
+];
+
+const BIRD = [
+  [
+    '00000000011100',
+    '00000000111110',
+    '00000001112011',
+    '00111111111100',
+    '01111111110000',
+    '11111111000000',
+    '01111000000000',
+    '00000000000000',
+  ],
+  [
+    '00000000011100',
+    '00000000111110',
+    '00000001112011',
+    '00111111111100',
+    '01111111110000',
+    '00011111000000',
+    '00011110000000',
+    '00111100000000',
+  ],
+];
+
+const CLOUD = [
+  '0001111000',
+  '0111111110',
+  '1111111111',
+  '0011111100',
+];
+
+const HILL = [
+  '000000111111000000',
+  '000011111111110000',
+  '001111111111111100',
+  '011111111111111110',
+  '111111111111111111',
+];
+
 const SPEED_START = 6;
 const SPEED_MAX = 13.4;
 const GRAVITY = 0.82;
@@ -150,7 +228,9 @@ class Dino extends JGApp {
   #dino = { y: GROUND, dy: 0, ducking: false, dead: false };
   #obstacles = [];
   #clouds = [];
+  #hills = [];
   #bumps = [];
+  #notches = [];
   #speed = SPEED_START;
   #distance = 0;
   #score = 0;
@@ -195,6 +275,7 @@ class Dino extends JGApp {
 
     this.#reset();
     this.#paint();
+    this.#idle();
 
     this.on(this.$('#start'), 'click', () => this.#play());
     this.on(this.$('#new'), 'click', () => {
@@ -286,7 +367,13 @@ class Dino extends JGApp {
   #reset() {
     this.#dino = { y: GROUND, dy: 0, ducking: false, dead: false };
     this.#obstacles = [];
-    this.#clouds = [{ x: 520, y: 52 }, { x: 800, y: 86 }];
+    this.#clouds = [{ x: 520, y: 62 }, { x: 800, y: 96 }];
+    this.#hills = [
+      { x: 90, scale: 2.6 },
+      { x: 470, scale: 3.4 },
+      { x: 760, scale: 2.2 },
+    ];
+    this.#notches = Array.from({ length: 9 }, () => ({ x: Math.random() * WIDTH, width: 4 + Math.random() * 7 }));
     this.#bumps = Array.from({ length: 44 }, () => ({ x: Math.random() * WIDTH, size: Math.random() > 0.5 ? 2 : 1 }));
     this.#speed = SPEED_START;
     this.#distance = 0;
@@ -342,8 +429,8 @@ class Dino extends JGApp {
   #pause() {
     if (this.#state !== 'running') return;
     this.#state = 'paused';
-    cancelAnimationFrame(this.#frame);
     this.#show('Paused', '<kbd>space</kbd> to carry on');
+    this.#idle();
   }
 
   #jump() {
@@ -366,27 +453,30 @@ class Dino extends JGApp {
     if (last && WIDTH - last.x < gap) return;
 
     if (this.#score > 420 && Math.random() < 0.22) {
-      const heights = [GROUND - 76, GROUND - 46, GROUND - 14];
+      const heights = [GROUND - 78, GROUND - 48, GROUND - 16];
       this.#obstacles.push({
         kind: 'bird',
         x: WIDTH + 30,
         y: heights[Math.floor(Math.random() * heights.length)],
-        width: 38,
-        height: 24,
+        width: BIRD[0][0].length * UNIT,
+        height: BIRD[0].length * UNIT,
       });
       return;
     }
 
-    const cluster = 1 + Math.floor(Math.random() * (this.#speed > 9 ? 3 : 2));
-    const tall = Math.random() > 0.6;
+    const tall = Math.random() > 0.58;
+    const sprite = tall ? CACTUS_LARGE : CACTUS_SMALL;
+    const cluster = 1 + Math.floor(Math.random() * (this.#speed > 9.5 ? 3 : 2));
+    const pitch = (sprite[0].length - 1) * UNIT;
     this.#obstacles.push({
       kind: 'cactus',
       x: WIDTH + 20,
       y: GROUND,
       cluster,
       tall,
-      width: cluster * (tall ? 17 : 14),
-      height: tall ? 52 : 36,
+      pitch,
+      width: pitch * (cluster - 1) + sprite[0].length * UNIT,
+      height: sprite.length * UNIT,
     });
   }
 
@@ -427,8 +517,16 @@ class Dino extends JGApp {
       cloud.x -= this.#speed * 0.22;
       return cloud.x > -70;
     });
-    if (this.#clouds.length < 3 && Math.random() < 0.006) {
-      this.#clouds.push({ x: WIDTH + 40, y: 34 + Math.random() * 62 });
+    if (this.#clouds.length < 4 && Math.random() < 0.006) {
+      this.#clouds.push({ x: WIDTH + 40, y: 40 + Math.random() * 66 });
+    }
+
+    this.#hills = this.#hills.filter((hill) => {
+      hill.x -= this.#speed * 0.09;
+      return hill.x > -HILL[0].length * UNIT * hill.scale;
+    });
+    if (this.#hills.length < 3 && Math.random() < 0.012) {
+      this.#hills.push({ x: WIDTH + 60, scale: 2 + Math.random() * 1.6 });
     }
 
     this.#bumps.forEach((bump) => {
@@ -436,6 +534,14 @@ class Dino extends JGApp {
       if (bump.x < -4) {
         bump.x = WIDTH + Math.random() * 40;
         bump.size = Math.random() > 0.5 ? 2 : 1;
+      }
+    });
+
+    this.#notches.forEach((notch) => {
+      notch.x -= this.#speed;
+      if (notch.x < -notch.width) {
+        notch.x = WIDTH + Math.random() * 260;
+        notch.width = 4 + Math.random() * 7;
       }
     });
 
@@ -477,6 +583,19 @@ class Dino extends JGApp {
     }
     this.#sync();
     this.#show('Game over', `You ran <strong>${this.#score}</strong> metres &nbsp; <kbd>space</kbd> to run again`);
+    this.#idle();
+  }
+
+  #idle() {
+    cancelAnimationFrame(this.#frame);
+    const loop = () => {
+      if (this.#state === 'running') return;
+      this.#beat += 1;
+      this.#paint();
+      this.#frame = requestAnimationFrame(loop);
+    };
+    this.#frame = requestAnimationFrame(loop);
+    this.track(() => cancelAnimationFrame(this.#frame));
   }
 
   #paint() {
@@ -491,11 +610,12 @@ class Dino extends JGApp {
     context.fillStyle = this.#flash > 0 ? (this.#night ? '#1c232c' : '#e8e8e2') : paper;
     context.fillRect(0, 0, WIDTH, HEIGHT);
 
-    context.fillStyle = faint;
+    this.#hills.forEach((hill) => {
+      this.#sprite(context, HILL, hill.x, GROUND + 3, this.#night ? '#212a34' : '#e0e3df', paper, UNIT * hill.scale);
+    });
+
     this.#clouds.forEach((cloud) => {
-      context.fillRect(cloud.x, cloud.y, 26, 5);
-      context.fillRect(cloud.x + 5, cloud.y - 4, 16, 4);
-      context.fillRect(cloud.x + 3, cloud.y + 5, 20, 3);
+      this.#sprite(context, CLOUD, cloud.x, cloud.y, faint, paper);
     });
 
     if (this.#night) {
@@ -511,9 +631,12 @@ class Dino extends JGApp {
 
     context.fillStyle = ink;
     context.fillRect(0, GROUND + 2, WIDTH, 2);
-    this.#bumps.forEach((bump) => context.fillRect(bump.x, GROUND + 6, bump.size * 2, 2));
+    context.fillStyle = paper;
+    this.#notches.forEach((notch) => context.fillRect(notch.x, GROUND + 2, notch.width, 2));
+    context.fillStyle = faint;
+    this.#bumps.forEach((bump) => context.fillRect(bump.x, GROUND + 7, bump.size * 2, 2));
 
-    this.#obstacles.forEach((item) => this.#drawObstacle(context, item));
+    this.#obstacles.forEach((item) => this.#drawObstacle(context, item, ink, paper));
     this.#drawDino(context, ink, paper);
 
     context.fillStyle = faint;
@@ -527,44 +650,29 @@ class Dino extends JGApp {
     }
   }
 
-  #drawObstacle(context, item) {
+  #drawObstacle(context, item, ink, paper) {
     if (item.kind === 'bird') {
-      const up = Math.floor(this.#beat / 9) % 2 === 0;
-      context.fillRect(item.x + 11, item.y + 9, 22, 7);
-      context.fillRect(item.x + 31, item.y + 4, 11, 6);
-      context.fillRect(item.x + 39, item.y + 9, 6, 3);
-      if (up) {
-        context.fillRect(item.x + 6, item.y - 6, 20, 6);
-        context.fillRect(item.x, item.y - 12, 11, 6);
-      } else {
-        context.fillRect(item.x + 6, item.y + 16, 20, 6);
-        context.fillRect(item.x, item.y + 22, 11, 6);
-      }
+      const frame = BIRD[Math.floor(this.#beat / 8) % 2];
+      this.#sprite(context, frame, item.x, item.y + frame.length * UNIT, ink, paper);
       return;
     }
 
+    const sprite = item.tall ? CACTUS_LARGE : CACTUS_SMALL;
     for (let index = 0; index < item.cluster; index += 1) {
-      const x = item.x + index * (item.tall ? 17 : 14);
-      const height = item.tall ? 52 : 36;
-      const width = item.tall ? 10 : 9;
-      context.fillRect(x, item.y - height, width, height);
-      context.fillRect(x - 6, item.y - height + (item.tall ? 20 : 14), 6, 5);
-      context.fillRect(x - 6, item.y - height + (item.tall ? 20 : 14), 4, 14);
-      context.fillRect(x + width, item.y - height + (item.tall ? 27 : 18), 6, 5);
-      context.fillRect(x + width + 2, item.y - height + (item.tall ? 15 : 10), 4, 14);
+      this.#sprite(context, sprite, item.x + index * item.pitch, item.y, ink, paper);
     }
   }
 
-  #sprite(context, rows, x, bottom, ink, paper) {
+  #sprite(context, rows, x, bottom, ink, paper, scale = UNIT) {
     rows.forEach((row, ry) => {
       [...row].forEach((cell, rx) => {
         if (cell === '0') return;
         context.fillStyle = cell === '2' ? paper : ink;
         context.fillRect(
-          Math.round(x + rx * UNIT),
-          Math.round(bottom - (rows.length - ry) * UNIT),
-          Math.ceil(UNIT),
-          Math.ceil(UNIT),
+          Math.round(x + rx * scale),
+          Math.round(bottom - (rows.length - ry) * scale),
+          Math.ceil(scale),
+          Math.ceil(scale),
         );
       });
     });
@@ -587,6 +695,17 @@ class Dino extends JGApp {
     const legs = dino.dead || !running ? STAND : LEGS[step];
     this.#sprite(context, BODY, DINO_X, dino.y - legs.length * UNIT, ink, paper);
     this.#sprite(context, legs, DINO_X, dino.y, ink, paper);
+
+    const blinking = !running && !dino.dead && this.#beat % 190 < 9;
+    if (blinking) {
+      context.fillStyle = ink;
+      context.fillRect(
+        Math.round(DINO_X + 18 * UNIT),
+        Math.round(dino.y - (BODY.length + legs.length - 4) * UNIT),
+        Math.ceil(UNIT),
+        Math.ceil(UNIT),
+      );
+    }
 
     if (dino.dead) {
       context.fillStyle = ink;
