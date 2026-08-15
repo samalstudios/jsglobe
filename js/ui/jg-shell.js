@@ -314,7 +314,10 @@ class JGShell extends JGElement {
     }
     if (event.key === 'Escape' && !spotlight.isOpen && !palette.isOpen) {
       const focused = this.#layer?.focusedId;
-      if (focused && router.current.name === 'app') router.go('/');
+      if (!focused || router.current.name !== 'app') return;
+      const app = this.#layer.windowFor(focused)?.querySelector('[data-keeps-escape="true"]');
+      if (app) return;
+      router.go('/');
       return;
     }
     if ((event.metaKey || event.ctrlKey) && key === '/') {
