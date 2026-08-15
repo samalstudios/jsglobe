@@ -3,6 +3,10 @@ import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize, resolve } from 'node:path';
 
 const root = resolve(process.argv[2] ?? '.');
+if (!root.startsWith(process.cwd())) {
+  console.error(`Error: serve root "${root}" is outside the current working directory.`);
+  process.exit(1);
+}
 const port = Number(process.env.PORT ?? 4173);
 
 const TYPES = {
