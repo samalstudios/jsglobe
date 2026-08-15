@@ -1309,7 +1309,7 @@ export const catalog = [
     tagline: 'Pencil, shapes, fill and spray on a canvas',
     category: 'media',
     glyph: '✎',
-    icon: 'brush',
+    icon: 'bucket',
     tint: '#8a1c3b',
     keywords: ['paint', 'draw', 'canvas', 'pixel', 'sketch', 'bitmap', 'image'],
     tag: 'jg-app-paint',
