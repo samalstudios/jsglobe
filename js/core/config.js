@@ -1,10 +1,9 @@
 import { storage } from './storage.js';
 import { bus } from './bus.js';
 import { workspaces } from './workspaces.js';
-import { registry } from './registry.js';
+import { appSettings } from './app-settings.js';
 
-const schemaDefaults = (appId) =>
-  Object.fromEntries((registry.find(appId)?.settings ?? []).map((field) => [field.key, field.default]));
+const schemaDefaults = (appId) => appSettings.defaults(appId);
 
 export function appConfig(appId) {
   const storeKey = () => workspaces.key(`apps/${appId}`);

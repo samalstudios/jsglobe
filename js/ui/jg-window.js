@@ -117,7 +117,7 @@ const sheet = css`
   .tools {
     display: flex;
     min-width: 0;
-    padding: 0 10px 7px;
+    padding: 5px 14px 10px;
     overflow: hidden;
   }
   .tools[hidden] { display: none; }
@@ -192,6 +192,8 @@ class JGWindow extends JGElement {
   static styles = [base, sheet];
   static observedAttributes = ['title-text'];
 
+  #actions = [];
+
   #restore = null;
 
   get appId() {
@@ -255,7 +257,12 @@ class JGWindow extends JGElement {
     });
   }
 
+  get actions() {
+    return this.#actions;
+  }
+
   setActions(items) {
+    this.#actions = Array.isArray(items) ? items : [];
     const tools = this.$('#tools');
     const toolbar = this.$('#app-toolbar');
     if (!tools || !toolbar) return;

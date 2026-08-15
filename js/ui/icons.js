@@ -226,6 +226,21 @@ export const ACCENTS = {
   compare: '<path d="M12 2.4v19.2"/>',
   user: '<circle cx="12" cy="8" r="4"/>',
   fingerprint: '<path d="M12 11.4v3.4c0 1.9-.4 3.7-1.2 5.4"/>',
+  terminal: '<rect x="2.6" y="4" width="18.8" height="16" rx="2.6"/><path d="m7 9.6 3.2 2.8L7 15.2M12.8 15.6h4.4"/>',
+  atom: '<circle cx="12" cy="12" r="2.2"/><ellipse cx="12" cy="12" rx="10" ry="4.4"/><ellipse cx="12" cy="12" rx="10" ry="4.4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.4" transform="rotate(120 12 12)"/>',
+  molecule: '<circle cx="6" cy="7.2" r="2.6"/><circle cx="18" cy="6.6" r="2.2"/><circle cx="12.4" cy="16.8" r="2.8"/><path d="M8.2 8.8 10.6 14.4M8.4 6.6l7.4-.3M16.6 8.6l-2.4 5.8"/>',
+  circuit: '<path d="M2.6 12h3.2M18.2 12h3.2M9 8.4v7.2M12 6.6v10.8M15 8.4v7.2"/><path d="M5.8 12h3.2M15 12h3.2"/>',
+  sun: '<circle cx="12" cy="12" r="4.4"/><path d="M12 2.6v2.4M12 19v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.6 12H5M19 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>',
+  moon: '<path d="M20.4 14.6A8.8 8.8 0 0 1 9.4 3.6a8.8 8.8 0 1 0 11 11Z"/>',
+  thermometer: '<path d="M14 14.8V5.4a2.4 2.4 0 0 0-4.8 0v9.4a4.4 4.4 0 1 0 4.8 0Z"/><path d="M11.6 16.6V9.6"/>',
+  flask: '<path d="M9.6 3.4v6.2L4.2 18a2.2 2.2 0 0 0 1.9 3.4h11.8a2.2 2.2 0 0 0 1.9-3.4l-5.4-8.4V3.4"/><path d="M8.4 3.4h7.2M6.6 14.6h10.8"/>',
+  brush: '<path d="M14.6 4.6 19.4 9.4"/><path d="M7.4 16.6 16.2 7.8a2.4 2.4 0 0 1 3.4 3.4l-8.8 8.8-4.6 1.2 1.2-4.6Z"/><path d="M4.6 12.4a3 3 0 0 1 4.2 0"/>',
+  joystick: '<circle cx="12" cy="6.4" r="2.8"/><path d="M12 9.2v4.2"/><rect x="3.6" y="13.4" width="16.8" height="7.2" rx="2.6"/><path d="M7.4 17h2.4M8.6 15.8v2.4M15.4 16.4h.01M17.4 18.2h.01"/>',
+  element: '<rect x="3.4" y="3.4" width="17.2" height="17.2" rx="3.6"/><text x="10.4" y="16.4" fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" text-anchor="middle">H</text><text x="16.6" y="10.2" fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="6" font-weight="600" text-anchor="middle">1</text>',
+  minus: '<path d="M5.2 12h13.6"/>',
+  battery: '<rect x="2.6" y="7.4" width="16.4" height="9.2" rx="2.2"/><path d="M21.4 10.6v2.8M6.4 12h4M8.4 10v4"/>',
+  toggle: '<rect x="2.6" y="7" width="18.8" height="10" rx="5"/><circle cx="8" cy="12" r="3.1"/>',
+  play: '<path d="M8 5.4 18.4 12 8 18.6V5.4Z"/>',
 };
 
 export const iconNames = Object.keys(PATHS);

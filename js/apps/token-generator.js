@@ -49,6 +49,10 @@ const build = ({ length, sets, avoidAmbiguous }) => {
 
 class TokenGenerator extends JGApp {
   static appId = 'token-generator';
+  static settings = [
+    { key: 'length', label: 'Default length', type: 'number', default: 32, min: 4, max: 512 },
+    { key: 'symbols', label: 'Include symbols', type: 'switch', default: true },
+  ];
   static styles = [...JGApp.styles, sheet];
 
   renderWidget() {

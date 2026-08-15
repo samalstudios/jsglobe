@@ -54,6 +54,10 @@ const TONES = {
 
 class AiTranslate extends JGApp {
   static appId = 'ai-translate';
+  static settings = [
+    { key: 'target', label: 'Default target language', type: 'text', default: 'English' },
+    { key: 'auto', label: 'Translate as I type', type: 'switch', default: false },
+  ];
   static styles = [...JGApp.styles, sheet];
 
   #controller = null;

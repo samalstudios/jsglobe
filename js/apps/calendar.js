@@ -365,6 +365,12 @@ const packLanes = (events) => {
 
 class CalendarApp extends JGApp {
   static appId = 'calendar';
+  static settings = [
+    { key: 'weekStart', label: 'Week starts on', type: 'select', default: 'mon', options: [
+      { value: 'mon', label: 'Monday' },
+      { value: 'sun', label: 'Sunday' },
+    ] },
+  ];
   static styles = [...JGApp.styles, sheet];
 
   #view = 'month';

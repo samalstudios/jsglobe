@@ -15,6 +15,17 @@ const sheet = css`
     overflow: hidden;
     transition: background 0.2s ease, padding 0.2s ease;
   }
+  .stage[data-flood="true"] {
+    padding: clamp(12px, var(--flood-gap, 8%), 140px);
+    place-items: center;
+  }
+  .stage[data-flood="true"] .frame {
+    width: min(var(--preview, 34%), 340px);
+    height: auto;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.5);
+  }
+  .stage[data-flood="true"] .idle { color: #1a1a1f; }
   .frame {
     position: relative;
     width: 100%;
@@ -57,6 +68,10 @@ const sheet = css`
 
 class Mirror extends JGApp {
   static appId = 'mirror';
+  static settings = [
+    { key: 'glow', label: 'Ring light level', type: 'number', default: 70, min: 0, max: 100 },
+    { key: 'warmth', label: 'Warmth', type: 'number', default: 20, min: 0, max: 100 },
+  ];
   static styles = [...JGApp.styles, sheet];
 
   #stream = null;
@@ -109,8 +124,11 @@ class Mirror extends JGApp {
         <jg-field label="Warmth">
           <jg-slider id="warmth" min="0" max="100" value="${config.get('warmth', 20)}"></jg-slider>
         </jg-field>
-        <jg-field label="Border size">
+        <jg-field label="Border size" id="border-field">
           <jg-slider id="border" min="0" max="18" value="${config.get('border', 6)}"></jg-slider>
+        </jg-field>
+        <jg-field label="Preview size" id="preview-field" hidden>
+          <jg-slider id="preview" min="15" max="70" value="${config.get('preview', 34)}"></jg-slider>
         </jg-field>
         <jg-field label="Zoom">
           <jg-slider id="zoom" min="100" max="250" value="100"></jg-slider>
@@ -124,6 +142,7 @@ class Mirror extends JGApp {
       </div>
 
       <div class="bar">
+        <jg-switch id="flood" ${config.get('flood', false) ? 'checked' : ''}></jg-switch><span class="hint">Flood light</span>
         <jg-switch id="flip" checked></jg-switch><span class="hint">Mirror the image</span>
         <jg-switch id="guides"></jg-switch><span class="hint">Composition guides</span>
         <jg-switch id="mono"></jg-switch><span class="hint">Black and white</span>
@@ -139,15 +158,19 @@ class Mirror extends JGApp {
     this.on(this.$('#full'), 'click', () => this.#fullscreen());
     this.on(this.$('#device'), 'change', () => this.#start(this.$('#device').value));
 
-    ['#glow', '#warmth', '#border', '#zoom', '#brightness', '#contrast'].forEach((selector) =>
+    ['#glow', '#warmth', '#border', '#preview', '#zoom', '#brightness', '#contrast'].forEach((selector) =>
       this.on(this.$(selector), 'input', () => this.#apply()),
     );
-    ['#glow', '#warmth', '#border'].forEach((selector) =>
+    ['#glow', '#warmth', '#border', '#preview'].forEach((selector) =>
       this.on(this.$(selector), 'change', () => {
         this.config.set(selector.slice(1), Number(this.$(selector).value));
       }),
     );
     ['#flip', '#guides', '#mono'].forEach((selector) => this.on(this.$(selector), 'change', () => this.#apply()));
+    this.on(this.$('#flood'), 'change', (event) => {
+      this.config.set('flood', event.detail.checked);
+      this.#apply();
+    });
 
     this.#apply();
   }
@@ -163,8 +186,14 @@ class Mirror extends JGApp {
     const blue = Math.round(255 - warmth * 66);
     const level = 0.35 + glow * 0.65;
 
+    const flood = this.$('#flood').checked;
+
     stage.style.setProperty('--light', `rgb(${Math.round(red * level)} ${Math.round(green * level)} ${Math.round(blue * level)})`);
     stage.style.setProperty('--ring-size', `${this.$('#border').value}%`);
+    stage.style.setProperty('--preview', `${this.$('#preview').value}%`);
+    stage.dataset.flood = String(flood);
+    this.$('#border-field').hidden = flood;
+    this.$('#preview-field').hidden = !flood;
     stage.style.setProperty('--zoom', String(Number(this.$('#zoom').value) / 100));
     stage.style.setProperty('--flip', this.$('#flip').checked ? '-1' : '1');
     stage.style.setProperty('--brightness', String(Number(this.$('#brightness').value) / 100));

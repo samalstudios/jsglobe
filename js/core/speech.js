@@ -5,7 +5,7 @@ const state = { status: 'idle', message: '', pipeline: null, loading: null, mode
 
 const setStatus = (status, message = '') => {
   Object.assign(state, { status, message });
-  bus.emit('speech:status', { status, message });
+  bus.emit('speech:status', { status, message, progress: state.progress ?? 0 });
 };
 
 export const WHISPER_MODELS = [
@@ -46,7 +46,8 @@ export const speech = {
         device: navigator.gpu ? 'webgpu' : 'wasm',
         progress_callback: (report) => {
           if (report.status === 'progress' && report.total) {
-            setStatus('loading', `Downloading ${report.file} ${Math.round((report.loaded / report.total) * 100)}%`);
+            state.progress = Math.round((report.loaded / report.total) * 100);
+            setStatus('loading', `Downloading ${report.file}`);
           }
         },
       });

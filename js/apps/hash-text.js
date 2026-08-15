@@ -13,6 +13,12 @@ const ALGORITHMS = ['MD5', 'SHA-1', 'SHA-256', 'SHA-384', 'SHA-512'];
 
 class HashText extends JGApp {
   static appId = 'hash-text';
+  static settings = [
+    { key: 'case', label: 'Output case', type: 'select', default: 'lower', options: [
+      { value: 'lower', label: 'lowercase' },
+      { value: 'upper', label: 'UPPERCASE' },
+    ] },
+  ];
   static styles = [...JGApp.styles, sheet];
 
   #bytes = null;

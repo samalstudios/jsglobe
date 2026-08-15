@@ -1,5 +1,6 @@
 import { JGApp, define, html, css, raw } from '../core/app.js';
 import { settings } from '../core/settings.js';
+import { appSettings } from '../core/app-settings.js';
 import { workspaces } from '../core/workspaces.js';
 import { layout } from '../core/layout.js';
 import { registry } from '../core/registry.js';
@@ -137,6 +138,9 @@ class SettingsApp extends JGApp {
   static styles = [...JGApp.styles, sheet];
 
   #section = 'appearance';
+  #query = '';
+  #scanned = false;
+  #scanning = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -156,6 +160,7 @@ class SettingsApp extends JGApp {
     this.paint(html`
       <div class="shell">
         <nav class="nav">
+          <jg-input id="find" size="sm" placeholder="Search settings" value="${this.#query}"></jg-input>
           ${SECTIONS.map(
             (section) => html`<button class="nav-item" data-section="${section.id}" aria-current="${String(section.id === this.#section)}">
               <span class="nav-icon">${icon(section.icon, 16)}</span><span>${section.label}</span>
@@ -167,13 +172,23 @@ class SettingsApp extends JGApp {
     `);
     this.bind('.nav-item', 'click', (event) => {
       this.#section = event.currentTarget.dataset.section;
+      this.#query = '';
       this.refresh();
+    });
+    const find = this.$('#find');
+    this.on(find, 'input', () => {
+      this.#query = find.value.trim();
+      this.#renderSection();
     });
     this.#renderSection();
   }
 
   #renderSection() {
     const pane = this.$('#pane');
+    if (this.#query) {
+      this.#renderSearch(pane);
+      return;
+    }
     const render = {
       appearance: () => this.#appearance(),
       home: () => this.#home(),
@@ -187,6 +202,43 @@ class SettingsApp extends JGApp {
     }[this.#section];
     pane.innerHTML = render();
     this.#wireSection();
+    if (this.#section === 'apps') this.#scanApps();
+  }
+
+  #renderSearch(pane) {
+    const sections = SECTIONS.filter((section) => section.id !== 'about');
+    pane.innerHTML = html`${{
+      raw: sections
+        .map((section) => {
+          const body = { appearance: () => this.#appearance(), home: () => this.#home(), behavior: () => this.#behaviour(), ai: () => this.#ai(), media: () => this.#media(), workspaces: () => this.#workspaces(), apps: () => this.#apps(), data: () => this.#data() }[section.id];
+          return body ? `<div data-search-section="${section.id}">${body()}</div>` : '';
+        })
+        .join(''),
+    }}`;
+    this.#wireSection();
+
+    const term = this.#query.toLowerCase();
+    let hits = 0;
+    this.$$('#pane .settings-row').forEach((row) => {
+      const match = row.textContent.toLowerCase().includes(term) || (row.dataset.key ?? '').toLowerCase().includes(term);
+      row.hidden = !match;
+      if (match) hits += 1;
+    });
+    this.$$('#pane .panel').forEach((panel) => {
+      const rows = [...panel.querySelectorAll('.settings-row')];
+      const visible = rows.some((row) => !row.hidden);
+      const own = panel.textContent.toLowerCase().includes(term);
+      panel.hidden = rows.length ? !visible : !own;
+      if (!panel.hidden && !rows.length) hits += 1;
+    });
+    this.$$('[data-search-section]').forEach((section) => {
+      const alive = [...section.querySelectorAll('.settings-row, .panel')].some((node) => !node.hidden);
+      section.hidden = !alive;
+    });
+
+    if (!hits) {
+      pane.innerHTML = html`<div class="center" style="padding:60px 20px"><div class="hint">Nothing matches "${this.#query}".</div></div>`;
+    }
   }
 
   #head(title, sub) {
@@ -194,7 +246,8 @@ class SettingsApp extends JGApp {
   }
 
   #row(name, desc, control) {
-    return html`<div class="settings-row">
+    const key = String(control).match(/data-setting="([^"]+)"/)?.[1] ?? '';
+    return html`<div class="settings-row" data-key="${key}">
       <div class="text"><div class="name">${name}</div><div class="desc">${desc}</div></div>
       <div class="control">${{ raw: control }}</div>
     </div>`;
@@ -576,6 +629,9 @@ class SettingsApp extends JGApp {
 
   #apps() {
     const hidden = layout.state().hidden;
+    const configurable = registry
+      .all({ includeSystem: true })
+      .filter((app) => appSettings.has(app.id));
     return html`
       ${{ raw: this.#head('Apps', 'Per-app preferences and what appears on the home screen.') }}
       ${hidden.length
@@ -589,32 +645,33 @@ class SettingsApp extends JGApp {
             </div>
           </div>`
         : ''}
-      ${registry
-        .all()
-        .filter((app) => app.settings?.length)
-        .map(
-          (app) => html`<div class="panel stack" style="--tint:${registry.tint(app)}">
-            <div class="row nowrap">
-              <span class="app-badge">${icon(app.icon, 15)}</span>
-              <div class="grow"><div class="strong">${app.name}</div><div class="hint">${app.tagline}</div></div>
-              <jg-button size="sm" variant="ghost" data-reset-app="${app.id}">Reset</jg-button>
-            </div>
-            <div class="rows">
-              ${app.settings.map((field) => {
-                const value = appConfig(app.id).get(field.key, field.default);
-                const control =
-                  field.type === 'switch'
-                    ? html`<jg-switch data-app="${app.id}" data-key="${field.key}" ${value ? 'checked' : ''}></jg-switch>`
-                    : field.type === 'number'
-                      ? html`<jg-input type="number" size="sm" data-app="${app.id}" data-key="${field.key}" value="${value}" min="${field.min ?? ''}" max="${field.max ?? ''}" style="width:120px"></jg-input>`
-                      : html`<jg-select size="sm" data-app="${app.id}" data-key="${field.key}" value="${value}">
-                          ${field.options.map((option) => html`<option value="${option.value}">${option.label}</option>`)}
-                        </jg-select>`;
-                return raw(this.#row(field.label, `${app.id}.${field.key}`, control));
-              })}
-            </div>
-          </div>`,
-        )}
+      <jg-progress id="scan" size="sm" label="Reading app preferences" indeterminate ${this.#scanning ? '' : 'hidden'}></jg-progress>
+      ${configurable.map((app) => {
+        const fields = appSettings.schema(app.id);
+        return html`<div class="panel stack" style="--tint:${registry.tint(app)}">
+          <div class="row nowrap">
+            <span class="app-badge">${icon(app.icon, 15)}</span>
+            <div class="grow"><div class="strong">${app.name}</div><div class="hint">${app.tagline}</div></div>
+            <jg-button size="sm" variant="ghost" data-reset-app="${app.id}">Reset</jg-button>
+          </div>
+          <div class="rows">
+            ${fields.map((field) => {
+              const value = appConfig(app.id).get(field.key, field.default);
+              const control =
+                field.type === 'switch'
+                  ? html`<jg-switch data-app="${app.id}" data-key="${field.key}" ${value ? 'checked' : ''}></jg-switch>`
+                  : field.type === 'number'
+                    ? html`<jg-input type="number" size="sm" data-app="${app.id}" data-key="${field.key}" value="${value}" min="${field.min ?? ''}" max="${field.max ?? ''}" style="width:120px"></jg-input>`
+                  : field.type === 'text' || !field.options
+                    ? html`<jg-input size="sm" data-app="${app.id}" data-key="${field.key}" value="${value}" style="width:220px"></jg-input>`
+                    : html`<jg-select size="sm" data-app="${app.id}" data-key="${field.key}" value="${value}">
+                        ${field.options.map((option) => html`<option value="${option.value}">${option.label}</option>`)}
+                      </jg-select>`;
+              return raw(this.#row(field.label, `${app.id}.${field.key}`, control));
+            })}
+          </div>
+        </div>`;
+      })}
       <div class="panel stack">
         <div class="label">Installed</div>
         ${registry.categories().map(
@@ -631,6 +688,33 @@ class SettingsApp extends JGApp {
         )}
       </div>
     `;
+  }
+
+  async #scanApps() {
+    if (this.#scanned) return;
+    this.#scanned = true;
+    const known = appSettings.known();
+    const ids = registry.all({ includeSystem: true }).map((app) => app.id);
+    const first = ids.filter((id) => known.includes(id) && !appSettings.has(id));
+    const rest = ids.filter((id) => !known.includes(id) && !appSettings.has(id));
+
+    const load = async (batch) => {
+      for (const id of batch) await registry.load(id).catch(() => null);
+    };
+
+    if (first.length) {
+      await load(first);
+      if (this.#section === 'apps') this.#renderSection();
+    }
+    if (!rest.length) return;
+
+    this.#scanning = true;
+    const bar = this.$('#scan');
+    if (bar) bar.hidden = false;
+    await load(rest);
+    this.#scanning = false;
+    appSettings.forget(known.filter((id) => !appSettings.has(id)));
+    if (this.#section === 'apps') this.#renderSection();
   }
 
   #data() {

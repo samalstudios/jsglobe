@@ -64,6 +64,9 @@ const PRESETS = [
 
 class AiChat extends JGApp {
   static appId = 'ai-chat';
+  static settings = [
+    { key: 'system', label: 'System prompt', type: 'text', default: 'You are a concise, accurate assistant for developers.' },
+  ];
   static styles = [...JGApp.styles, sheet];
 
   #controller = null;

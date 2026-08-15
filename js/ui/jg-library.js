@@ -107,6 +107,15 @@ class JGLibrary extends JGElement {
   #filter = null;
   #painted = false;
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.listen(window, 'keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      event.stopPropagation();
+      router.home();
+    });
+  }
+
   set category(value) {
     const next = value ?? null;
     if (this.#painted && next === this.#filter) return;

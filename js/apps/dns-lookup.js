@@ -80,6 +80,12 @@ const reverseName = (value) => {
 
 class DnsLookup extends JGApp {
   static appId = 'dns-lookup';
+  static settings = [
+    { key: 'resolver', label: 'Resolver', type: 'select', default: 'cloudflare', options: [
+      { value: 'cloudflare', label: 'Cloudflare' },
+      { value: 'google', label: 'Google' },
+    ] },
+  ];
   static styles = [...JGApp.styles, sheet];
 
   #selected = new Set(DEFAULT_TYPES);

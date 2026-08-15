@@ -98,6 +98,19 @@ const percent = (value) => `${value >= 0 ? '+' : ''}${(value * 100).toFixed(2)}%
 
 class Portfolio extends JGApp {
   static appId = 'portfolio';
+  static settings = [
+    { key: 'currency', label: 'Currency', type: 'select', default: 'USD', options: [
+      { value: 'USD', label: 'USD' }, { value: 'EUR', label: 'EUR' }, { value: 'GBP', label: 'GBP' },
+      { value: 'CHF', label: 'CHF' }, { value: 'CAD', label: 'CAD' }, { value: 'AUD', label: 'AUD' },
+      { value: 'JPY', label: 'JPY' }, { value: 'AED', label: 'AED' },
+    ] },
+    { key: 'provider', label: 'Price provider', type: 'select', default: 'manual', options: [
+      { value: 'manual', label: 'Manual prices' },
+      { value: 'finnhub', label: 'Finnhub' },
+      { value: 'twelvedata', label: 'Twelve Data' },
+      { value: 'coingecko', label: 'CoinGecko' },
+    ] },
+  ];
   static styles = [...JGApp.styles, sheet];
 
   #editing = null;

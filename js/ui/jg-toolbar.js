@@ -23,14 +23,16 @@ const sheet = css`
   }
   .bar::-webkit-scrollbar { display: none; }
 
-  :host([variant="plain"]) .bar { border: 0; background: none; padding: 0; }
+  :host([variant="plain"]) .bar { border: 0; background: none; padding: 0.1em; gap: 6px; }
+  :host([variant="plain"]) .item { padding: 0 11px; }
+  :host([variant="plain"]) .sep { margin: 3px 6px; }
   :host([variant="sidebar"]) { height: 100%; }
   :host([variant="sidebar"]) .bar {
     flex-direction: column;
     align-items: stretch;
     height: 100%;
     width: var(--sidebar-width, 176px);
-    padding: 8px;
+    padding: 16px;
     overflow-x: hidden;
     overflow-y: auto;
   }

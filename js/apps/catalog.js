@@ -7,6 +7,7 @@ export const categories = [
   { id: 'text', name: 'Text', tint: '#875a6b' },
   { id: 'math', name: 'Math & Units', tint: '#847a44' },
   { id: 'media', name: 'Media', tint: '#8a1c3b' },
+  { id: 'science', name: 'Science', tint: '#3f6b6b' },
   { id: 'ai', name: 'Local AI', tint: '#5b5b8a' },
   { id: 'play', name: 'Play', tint: '#9c6440' },
   { id: 'utility', name: 'Utility', tint: '#5b6470' },
@@ -26,12 +27,6 @@ export const catalog = [
     tag: 'jg-app-hash-text',
     widget: true,
     load: () => import('./hash-text.js'),
-    settings: [
-      { key: 'case', label: 'Output case', type: 'select', default: 'lower', options: [
-        { value: 'lower', label: 'lowercase' },
-        { value: 'upper', label: 'UPPERCASE' },
-      ] },
-    ],
   },
   {
     id: 'hmac-generator',
@@ -69,10 +64,6 @@ export const catalog = [
     tag: 'jg-app-token',
     widget: true,
     load: () => import('./token-generator.js'),
-    settings: [
-      { key: 'length', label: 'Default length', type: 'number', default: 32, min: 4, max: 512 },
-      { key: 'symbols', label: 'Include symbols', type: 'switch', default: true },
-    ],
   },
   {
     id: 'otp-generator',
@@ -345,14 +336,6 @@ export const catalog = [
     keywords: ['json', 'format', 'pretty', 'minify', 'validate', 'tree'],
     tag: 'jg-app-json-formatter',
     load: () => import('./json-formatter.js'),
-    settings: [
-      { key: 'indent', label: 'Indent', type: 'select', default: '2', options: [
-        { value: '2', label: '2 spaces' },
-        { value: '4', label: '4 spaces' },
-        { value: 'tab', label: 'Tab' },
-      ] },
-      { key: 'sortKeys', label: 'Sort keys', type: 'switch', default: false },
-    ],
   },
   {
     id: 'json-diff',
@@ -589,10 +572,6 @@ export const catalog = [
     tag: 'jg-app-clock',
     widget: true,
     load: () => import('./clock.js'),
-    settings: [
-      { key: 'hour12', label: '12-hour time', type: 'switch', default: false },
-      { key: 'seconds', label: 'Show seconds', type: 'switch', default: true },
-    ],
   },
   {
     id: 'calendar',
@@ -606,12 +585,6 @@ export const catalog = [
     tag: 'jg-app-calendar',
     widget: true,
     load: () => import('./calendar.js'),
-    settings: [
-      { key: 'weekStart', label: 'Week starts on', type: 'select', default: 'mon', options: [
-        { value: 'mon', label: 'Monday' },
-        { value: 'sun', label: 'Sunday' },
-      ] },
-    ],
   },
   {
     id: 'portfolio',
@@ -626,19 +599,6 @@ export const catalog = [
     widget: true,
     window: { width: 1040, height: 900 },
     load: () => import('./portfolio.js'),
-    settings: [
-      { key: 'currency', label: 'Currency', type: 'select', default: 'USD', options: [
-        { value: 'USD', label: 'USD' }, { value: 'EUR', label: 'EUR' }, { value: 'GBP', label: 'GBP' },
-        { value: 'CHF', label: 'CHF' }, { value: 'CAD', label: 'CAD' }, { value: 'AUD', label: 'AUD' },
-        { value: 'JPY', label: 'JPY' }, { value: 'AED', label: 'AED' },
-      ] },
-      { key: 'provider', label: 'Price provider', type: 'select', default: 'manual', options: [
-        { value: 'manual', label: 'Manual prices' },
-        { value: 'finnhub', label: 'Finnhub' },
-        { value: 'twelvedata', label: 'Twelve Data' },
-        { value: 'coingecko', label: 'CoinGecko' },
-      ] },
-    ],
   },
   {
     id: 'notes',
@@ -703,9 +663,6 @@ export const catalog = [
     tag: 'jg-app-ai-chat',
     widget: true,
     load: () => import('./ai-chat.js'),
-    settings: [
-      { key: 'system', label: 'System prompt', type: 'text', default: 'You are a concise, accurate assistant for developers.' },
-    ],
   },
   {
     id: 'ai-code',
@@ -743,10 +700,6 @@ export const catalog = [
     tag: 'jg-app-ai-translate',
     window: { width: 980, height: 760 },
     load: () => import('./ai-translate.js'),
-    settings: [
-      { key: 'target', label: 'Default target language', type: 'text', default: 'English' },
-      { key: 'auto', label: 'Translate as I type', type: 'switch', default: false },
-    ],
   },
   {
     id: 'ai-regex',
@@ -773,12 +726,6 @@ export const catalog = [
     tag: 'jg-app-dns-lookup',
     window: { width: 820, height: 780 },
     load: () => import('./dns-lookup.js'),
-    settings: [
-      { key: 'resolver', label: 'Resolver', type: 'select', default: 'cloudflare', options: [
-        { value: 'cloudflare', label: 'Cloudflare' },
-        { value: 'google', label: 'Google' },
-      ] },
-    ],
   },
 
   {
@@ -792,12 +739,6 @@ export const catalog = [
     keywords: ['speed', 'test', 'bandwidth', 'download', 'upload', 'latency', 'ping', 'internet'],
     tag: 'jg-app-speed-test',
     load: () => import('./speed-test.js'),
-    settings: [
-      { key: 'server', label: 'Test server', type: 'select', default: 'cloudflare', options: [
-        { value: 'cloudflare', label: 'Cloudflare' },
-        { value: 'origin', label: 'This server' },
-      ] },
-    ],
   },
 
   {
@@ -1223,19 +1164,6 @@ export const catalog = [
     tag: 'jg-app-voice-recorder',
     window: { width: 860, height: 880 },
     load: () => import('./voice-recorder.js'),
-    settings: [
-      { key: 'live', label: 'Live captions while recording', type: 'switch', default: true },
-      { key: 'language', label: 'Transcription language', type: 'select', default: 'auto', options: [
-        { value: 'auto', label: 'Detect' },
-        { value: 'english', label: 'English' },
-        { value: 'spanish', label: 'Spanish' },
-        { value: 'french', label: 'French' },
-        { value: 'german', label: 'German' },
-        { value: 'persian', label: 'Farsi' },
-        { value: 'arabic', label: 'Arabic' },
-        { value: 'japanese', label: 'Japanese' },
-      ] },
-    ],
   },
 
   {
@@ -1250,10 +1178,6 @@ export const catalog = [
     tag: 'jg-app-mirror',
     window: { width: 760, height: 860 },
     load: () => import('./mirror.js'),
-    settings: [
-      { key: 'glow', label: 'Ring light level', type: 'number', default: 70, min: 0, max: 100 },
-      { key: 'warmth', label: 'Warmth', type: 'number', default: 20, min: 0, max: 100 },
-    ],
   },
   {
     id: 'screenshot',
@@ -1281,9 +1205,6 @@ export const catalog = [
     tag: 'jg-app-tuner',
     window: { width: 700, height: 780 },
     load: () => import('./tuner.js'),
-    settings: [
-      { key: 'reference', label: 'Reference pitch (A4)', type: 'number', default: 440, min: 415, max: 466 },
-    ],
   },
   {
     id: 'midi-keyboard',
@@ -1336,6 +1257,64 @@ export const catalog = [
     tag: 'jg-app-game-snake',
     window: { width: 700, height: 900 },
     load: () => import('./game-snake.js'),
+  },
+
+  {
+    id: 'periodic-table',
+    name: 'Periodic Table',
+    tagline: 'All 118 elements with full properties',
+    category: 'science',
+    glyph: 'H',
+    icon: 'element',
+    tint: '#3f6b6b',
+    keywords: ['element', 'chemistry', 'periodic', 'atomic', 'science', 'mendeleev'],
+    tag: 'jg-app-periodic-table',
+    widget: true,
+    window: { width: 1080, height: 860 },
+    load: () => import('./periodic-table.js'),
+  },
+
+  {
+    id: 'molecule-viewer',
+    name: 'Molecule Viewer',
+    tagline: 'Vitamins, drugs and famous molecules in 3D',
+    category: 'science',
+    glyph: 'Mo',
+    icon: 'molecule',
+    tint: '#4a7a8c',
+    keywords: ['molecule', '3d', 'chemistry', 'vitamin', 'protein', 'dna', 'structure', 'science'],
+    tag: 'jg-app-molecule-viewer',
+    widget: true,
+    window: { width: 1020, height: 780 },
+    load: () => import('./molecule-viewer.js'),
+  },
+
+  {
+    id: 'circuit-lab',
+    name: 'Circuit Lab',
+    tagline: 'Build and simulate basic electronic circuits',
+    category: 'science',
+    glyph: '~',
+    icon: 'circuit',
+    tint: '#4a7a58',
+    keywords: ['circuit', 'electronics', 'simulator', 'resistor', 'capacitor', 'spice', 'ohm', 'science'],
+    tag: 'jg-app-circuit-lab',
+    window: { width: 1080, height: 760 },
+    load: () => import('./circuit-lab.js'),
+  },
+
+  {
+    id: 'paint',
+    name: 'Paint',
+    tagline: 'Pencil, shapes, fill and spray on a canvas',
+    category: 'media',
+    glyph: '✎',
+    icon: 'brush',
+    tint: '#8a1c3b',
+    keywords: ['paint', 'draw', 'canvas', 'pixel', 'sketch', 'bitmap', 'image'],
+    tag: 'jg-app-paint',
+    window: { width: 1040, height: 760 },
+    load: () => import('./paint.js'),
   },
 
   {

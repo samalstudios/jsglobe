@@ -80,6 +80,19 @@ const ACTIONS = [
 
 class VoiceRecorder extends JGApp {
   static appId = 'voice-recorder';
+  static settings = [
+    { key: 'live', label: 'Live captions while recording', type: 'switch', default: true },
+    { key: 'language', label: 'Transcription language', type: 'select', default: 'auto', options: [
+      { value: 'auto', label: 'Detect' },
+      { value: 'english', label: 'English' },
+      { value: 'spanish', label: 'Spanish' },
+      { value: 'french', label: 'French' },
+      { value: 'german', label: 'German' },
+      { value: 'persian', label: 'Farsi' },
+      { value: 'arabic', label: 'Arabic' },
+      { value: 'japanese', label: 'Japanese' },
+    ] },
+  ];
   static styles = [...JGApp.styles, sheet];
 
   #stream = null;

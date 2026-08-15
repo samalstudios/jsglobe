@@ -1,12 +1,14 @@
-import { JGElement } from './dom.js';
+import { JGElement, define as defineElement } from './dom.js';
 import { appSheets } from '../ui/styles.js';
 import { appConfig, appState } from './config.js';
 import { keys } from './keys.js';
+import { appSettings } from './app-settings.js';
 import '../ui/kit.js';
 
 export class JGApp extends JGElement {
   static styles = appSheets;
   static appId = '';
+  static settings = [];
   static observedAttributes = ['mode'];
 
   #config = null;
@@ -69,4 +71,9 @@ export class JGApp extends JGElement {
   }
 }
 
-export { html, raw, css, define } from './dom.js';
+export { html, raw, css } from './dom.js';
+
+export function define(tag, ctor) {
+  appSettings.define(ctor.appId, ctor.settings);
+  return defineElement(tag, ctor);
+}

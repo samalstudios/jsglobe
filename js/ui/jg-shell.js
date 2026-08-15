@@ -4,11 +4,15 @@ import { registry } from '../core/registry.js';
 import { router } from '../core/router.js';
 import { bus } from '../core/bus.js';
 import { settings } from '../core/settings.js';
+import { commands } from '../core/commands.js';
+import { layout } from '../core/layout.js';
+import { wallpapers } from '../core/wallpapers.js';
 import './jg-statusbar.js';
 import './jg-home.js';
 import './jg-dock.js';
 import './jg-window-layer.js';
 import './jg-spotlight.js';
+import './jg-commands.js';
 import './jg-library.js';
 import './jg-privacy.js';
 import './jg-consent.js';
@@ -120,6 +124,61 @@ class JGShell extends JGElement {
       }),
     );
     this.listen(window, 'keydown', (event) => this.#hotkeys(event));
+    this.keep(commands.provide(() => this.#commands()));
+    this.keep(commands.provide(() => this.#appCommands()));
+  }
+
+  #commands() {
+    const theme = settings.get('appearance.theme');
+    const cycle = (key, values) => {
+      const list = values.map((entry) => entry.value ?? entry);
+      const next = list[(list.indexOf(settings.get(key)) + 1) % list.length];
+      settings.set(key, next);
+    };
+    const toggle = (key) => settings.set(key, !settings.get(key));
+
+    return [
+      { id: 'home', group: 'Navigate', label: 'Go to home screen', icon: 'grid', shortcut: 'esc', action: () => router.home() },
+      { id: 'library', group: 'Navigate', label: 'Open app library', icon: 'launcher', shortcut: '⌘/', action: () => router.go('/apps') },
+      { id: 'search', group: 'Navigate', label: 'Search tools', icon: 'search', shortcut: '⌘K', action: () => this.$('jg-spotlight').open() },
+      { id: 'settings', group: 'Navigate', label: 'Open settings', icon: 'cog', action: () => router.app('settings') },
+      { id: 'privacy', group: 'Navigate', label: 'Open privacy policy', icon: 'shield', action: () => router.go('/privacy') },
+
+      { id: 'theme-light', group: 'Appearance', label: 'Use light theme', icon: 'sun', value: theme === 'light' ? 'active' : '', action: () => settings.set('appearance.theme', 'light') },
+      { id: 'theme-dark', group: 'Appearance', label: 'Use dark theme', icon: 'moon', value: theme === 'dark' ? 'active' : '', action: () => settings.set('appearance.theme', 'dark') },
+      { id: 'theme-auto', group: 'Appearance', label: 'Match system theme', icon: 'monitor', value: theme === 'auto' ? 'active' : '', action: () => settings.set('appearance.theme', 'auto') },
+      { id: 'wallpaper', group: 'Appearance', label: 'Next wallpaper', icon: 'image', keywords: ['background'], action: () => cycle('appearance.wallpaper', wallpapers.map((paper) => paper.id)) },
+      { id: 'icons', group: 'Appearance', label: 'Switch icon style', icon: 'swatches', keywords: ['skeuomorphic', 'flat'], value: settings.get('appearance.icons'), action: () => cycle('appearance.icons', ['flat', 'skeuomorphic']) },
+      { id: 'density', group: 'Appearance', label: 'Switch density', icon: 'ruler', value: settings.get('appearance.density'), action: () => cycle('appearance.density', ['compact', 'cozy', 'roomy']) },
+      { id: 'motion', group: 'Appearance', label: settings.get('appearance.motion') ? 'Turn off animation' : 'Turn on animation', icon: 'motion', action: () => toggle('appearance.motion') },
+
+      { id: 'dock', group: 'Desktop', label: settings.get('home.dock') ? 'Hide the dock' : 'Show the dock', icon: 'blocks', action: () => toggle('home.dock') },
+      { id: 'dock-position', group: 'Desktop', label: 'Move the dock', icon: 'transform', value: settings.get('dock.position'), action: () => cycle('dock.position', ['left', 'bottom', 'right']) },
+      { id: 'labels', group: 'Desktop', label: settings.get('home.labels') ? 'Hide app labels' : 'Show app labels', icon: 'type', action: () => toggle('home.labels') },
+      { id: 'widgets', group: 'Desktop', label: settings.get('home.widgets') ? 'Hide widgets' : 'Show widgets', icon: 'widgets', action: () => toggle('home.widgets') },
+      { id: 'icon-size', group: 'Desktop', label: 'Change icon size', icon: 'scale', value: settings.get('home.iconSize'), action: () => cycle('home.iconSize', ['small', 'medium', 'large']) },
+      { id: 'shuffle', group: 'Desktop', label: 'Reset home layout', icon: 'repeat', keywords: ['arrange'], action: () => layout.reset() },
+    ];
+  }
+
+  #appCommands() {
+    const id = this.#layer?.focusedId;
+    if (!id) return [];
+    const meta = registry.find(id);
+    const window = this.#layer.windowFor(id);
+    const actions = (window?.actions ?? [])
+      .filter((item) => item.action && item.label)
+      .map((item) => ({
+        id: `app:${id}:${item.id ?? item.label}`,
+        group: meta?.name ?? 'App',
+        label: item.label,
+        icon: item.icon ?? 'sparkles',
+        action: () => item.action(),
+      }));
+    return [
+      ...actions,
+      { id: `close:${id}`, group: meta?.name ?? 'App', label: `Close ${meta?.name ?? id}`, icon: 'close', action: () => router.home() },
+    ];
   }
 
   render() {
@@ -134,6 +193,7 @@ class JGShell extends JGElement {
         </div>
       </div>
       <jg-spotlight></jg-spotlight>
+      <jg-commands></jg-commands>
       <jg-consent></jg-consent>
     `);
     this.#applyChrome();
@@ -229,13 +289,20 @@ class JGShell extends JGElement {
 
   #hotkeys(event) {
     const spotlight = this.$('jg-spotlight');
+    const palette = this.$('jg-commands');
     const key = event.key.toLowerCase();
+    if ((event.metaKey || event.ctrlKey) && key === 'p') {
+      event.preventDefault();
+      spotlight.close();
+      palette.isOpen ? palette.close() : palette.open();
+      return;
+    }
     if ((event.metaKey || event.ctrlKey) && key === 'k') {
       event.preventDefault();
       spotlight.isOpen ? spotlight.close() : spotlight.open();
       return;
     }
-    if (event.key === 'Escape' && !spotlight.isOpen) {
+    if (event.key === 'Escape' && !spotlight.isOpen && !palette.isOpen) {
       const focused = this.#layer?.focusedId;
       if (focused && router.current.name === 'app') router.go('/');
       return;

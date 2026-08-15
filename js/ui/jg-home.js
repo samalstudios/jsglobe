@@ -46,6 +46,7 @@ const sheet = css`
     }
   }
   .today { min-height: 0; overflow: hidden; }
+  .stage[data-on-search="true"] .today { display: none; }
   .pager {
     display: flex;
     min-height: 0;
@@ -199,9 +200,9 @@ const sheet = css`
     transition: justify-content 0.2s ease;
   }
   .search-page[data-top="true"] { justify-content: flex-start; }
-  .search-page[data-top="false"] .search-shell { padding-bottom: 6vh; }
+  .search-page[data-top="true"] .search-shell { margin-block: 0 auto; }
   .search-page::-webkit-scrollbar { display: none; }
-  .search-shell { display: grid; gap: 14px; width: min(760px, 100%); margin: 0 auto; }
+  .search-shell { display: grid; gap: 14px; width: min(760px, 100%); margin: auto; }
   .site-links {
     display: flex;
     align-items: center;
@@ -379,7 +380,7 @@ class JGHome extends JGElement {
                       ${icon('knife', 52)}
                       <div class="wordmark">
                         <h1>Toolbox</h1>
-                        <p>${registry.all().length} fast, private developer tools that run in your browser</p>
+                        <p>${Math.floor(registry.all().length / 10) * 10}+ fast, private developer tools that run in your browser</p>
                       </div>
                     </div>
                     <label class="search-field">
@@ -388,7 +389,7 @@ class JGHome extends JGElement {
                       <button class="search-clear" id="home-search-clear" hidden aria-label="Clear">✕</button>
                     </label>
                     <div id="home-search-results"></div>
-                    <jg-widget-board></jg-widget-board>
+                    <jg-widget-board compact></jg-widget-board>
                   </div>
                   <footer class="site-links">
                     <a href="${router.href('/apps')}">${icon('launcher', 14)}All tools</a>
@@ -672,6 +673,11 @@ class JGHome extends JGElement {
 
   #syncPager() {
     this.$$('.dot').forEach((dot) => dot.setAttribute('aria-current', String(Number(dot.dataset.page) === this.#page)));
+
+    const stage = this.$('.stage');
+    const onSearch = settings.get('home.searchPage') && this.#page === 0;
+    if (stage) stage.dataset.onSearch = String(Boolean(onSearch));
+
     const prev = this.$('.prev');
     const next = this.$('.next');
     if (prev) prev.disabled = this.#page === 0;

@@ -8,6 +8,7 @@ import './jg-dialog.js';
 import './jg-popover.js';
 import './jg-drop.js';
 import './jg-stat.js';
+import './jg-progress.js';
 
 const controlBase = css`
   :host {
@@ -862,6 +863,15 @@ class JGSlider extends JGElement {
         font-size: 12px;
         color: var(--muted-foreground);
       }
+      :host([orient="vertical"]) { flex-direction: column; width: auto; height: 100%; }
+      :host([orient="vertical"]) input {
+        writing-mode: vertical-lr;
+        direction: rtl;
+        width: 4px;
+        height: 100%;
+        flex: 1;
+      }
+      :host([orient="vertical"]) .value { display: none; }
     `,
   ];
 

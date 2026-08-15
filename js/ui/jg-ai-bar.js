@@ -25,8 +25,7 @@ const sheet = css`
   .text { flex: 1; min-width: 0; }
   .name { font-weight: 600; }
   .detail { color: var(--muted-foreground); font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .track { height: 4px; border-radius: 999px; background: var(--border); overflow: hidden; margin-top: 5px; }
-  .track i { display: block; height: 100%; background: var(--ring); transition: width 0.2s ease; }
+  jg-progress { margin-top: 6px; }
   .setup {
     display: grid;
     gap: 10px;
@@ -78,7 +77,7 @@ class JGAiBar extends JGElement {
           <span class="detail">
             ${status.status === 'idle' ? 'Not loaded yet' : status.message || status.status}
           </span>
-          ${status.status === 'loading' ? html`<span class="track"><i style="width:${status.progress}%"></i></span>` : ''}
+          ${status.status === 'loading' ? html`<jg-progress size="sm" value="${status.progress}" ${status.progress ? '' : 'indeterminate'}></jg-progress>` : ''}
         </span>
         ${status.status === 'idle' && ai.provider === 'webllm'
           ? html`<jg-button size="sm" variant="outline" id="load">Load model</jg-button>`

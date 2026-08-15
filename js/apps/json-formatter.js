@@ -70,6 +70,14 @@ const describe = (value) => {
 
 class JsonFormatter extends JGApp {
   static appId = 'json-formatter';
+  static settings = [
+    { key: 'indent', label: 'Indent', type: 'select', default: '2', options: [
+      { value: '2', label: '2 spaces' },
+      { value: '4', label: '4 spaces' },
+      { value: 'tab', label: 'Tab' },
+    ] },
+    { key: 'sortKeys', label: 'Sort keys', type: 'switch', default: false },
+  ];
   static styles = [...JGApp.styles, sheet];
 
   #parsed = null;

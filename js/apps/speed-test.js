@@ -33,6 +33,12 @@ const mbps = (bytes, seconds) => (bytes * 8) / seconds / 1e6;
 
 class SpeedTest extends JGApp {
   static appId = 'speed-test';
+  static settings = [
+    { key: 'server', label: 'Test server', type: 'select', default: 'cloudflare', options: [
+      { value: 'cloudflare', label: 'Cloudflare' },
+      { value: 'origin', label: 'This server' },
+    ] },
+  ];
   static styles = [...JGApp.styles, sheet];
 
   #running = false;

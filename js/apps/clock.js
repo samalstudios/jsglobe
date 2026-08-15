@@ -60,6 +60,10 @@ const offsetLabel = (zone) => {
 
 class ClockApp extends JGApp {
   static appId = 'clock';
+  static settings = [
+    { key: 'hour12', label: '12-hour time', type: 'switch', default: false },
+    { key: 'seconds', label: 'Show seconds', type: 'switch', default: true },
+  ];
   static styles = [...JGApp.styles, sheet];
 
   #tab = 'world';

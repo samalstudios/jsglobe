@@ -144,6 +144,9 @@ const detect = (buffer, sampleRate) => {
 
 class Tuner extends JGApp {
   static appId = 'tuner';
+  static settings = [
+    { key: 'reference', label: 'Reference pitch (A4)', type: 'number', default: 440, min: 415, max: 466 },
+  ];
   static styles = [...JGApp.styles, sheet];
 
   #stream = null;

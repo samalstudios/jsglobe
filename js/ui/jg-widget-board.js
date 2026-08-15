@@ -114,6 +114,28 @@ const sheet = css`
     gap: 8px;
   }
   .add[data-empty="true"] .plus { font-size: 17px; }
+
+  :host([compact]) .add[data-empty="true"] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 0;
+    max-width: max-content;
+    justify-self: center;
+    padding: 6px 12px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    gap: 6px;
+    font-size: 12px;
+    opacity: 0.75;
+  }
+  :host([compact]) .add[data-empty="true"]:hover {
+    opacity: 1;
+    background: color-mix(in srgb, var(--foreground) 8%, transparent);
+    color: var(--foreground);
+  }
+  :host([compact]) .add[data-empty="true"] .plus { font-size: 13px; }
 `;
 
 class JGWidgetBoard extends JGElement {

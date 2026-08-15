@@ -46,6 +46,10 @@ class JGWindowLayer extends JGElement {
     return this.#order[this.#order.length - 1] ?? null;
   }
 
+  windowFor(appId) {
+    return this.#windows.get(appId) ?? null;
+  }
+
   isVisible(appId) {
     return this.#windows.get(appId)?.getAttribute('state') !== 'minimized';
   }
