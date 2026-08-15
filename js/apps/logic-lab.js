@@ -208,6 +208,7 @@ class LogicLab extends JGApp {
   #hover = null;
   #logic = createLogic();
   #frame = null;
+  #grid = null;
   #seq = 1;
   #history = [];
   #running = true;
@@ -581,12 +582,7 @@ class LogicLab extends JGApp {
     context.clearRect(0, 0, width, height);
     const paint = this.#palette();
 
-    context.fillStyle = paint.soft;
-    context.globalAlpha = 0.22;
-    for (let x = 0; x <= width; x += GRID) {
-      for (let y = 0; y <= height; y += GRID) context.fillRect(x, y, 1, 1);
-    }
-    context.globalAlpha = 1;
+    this.#gridFill(context, width, height, paint);
 
     this.#links.forEach((link) => {
       const from = this.#pinPoint(link.from);
@@ -620,6 +616,41 @@ class LogicLab extends JGApp {
         context.restore();
       }
     }
+  }
+
+  #gridFill(context, width, height, paint) {
+    const tone = paint.soft;
+    if (this.#grid?.tone !== tone) {
+      const tile = (size, radius, alpha) => {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const brush = canvas.getContext('2d');
+        brush.fillStyle = tone;
+        brush.globalAlpha = alpha;
+        brush.beginPath();
+        brush.arc(size / 2, size / 2, radius, 0, Math.PI * 2);
+        brush.fill();
+        return canvas;
+      };
+      this.#grid = {
+        tone,
+        minor: context.createPattern(tile(GRID, 1, 0.45), 'repeat'),
+        major: context.createPattern(tile(GRID * 5, 1.8, 0.6), 'repeat'),
+      };
+    }
+
+    context.save();
+    context.translate(-GRID / 2, -GRID / 2);
+    context.fillStyle = this.#grid.minor;
+    context.fillRect(0, 0, width + GRID, height + GRID);
+    context.restore();
+
+    context.save();
+    context.translate((-GRID * 5) / 2, (-GRID * 5) / 2);
+    context.fillStyle = this.#grid.major;
+    context.fillRect(0, 0, width + GRID * 5, height + GRID * 5);
+    context.restore();
   }
 
   #pinPoint(key) {
