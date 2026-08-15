@@ -1381,7 +1381,7 @@ export const catalog = [
     tint: '#5b6470',
     keywords: ['game', 'dino', 'trex', 'runner', 'chrome', 'offline', 'retro', 'jump'],
     tag: 'jg-app-game-dino',
-    window: { width: 1160, height: 450 },
+    window: { width: 1120, height: 560 },
     load: () => import('./game-dino.js'),
   },
 

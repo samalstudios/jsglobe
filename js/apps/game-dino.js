@@ -18,7 +18,7 @@ const sheet = css`
   canvas {
     width: 100%;
     max-height: 100%;
-    aspect-ratio: 900 / 260;
+    aspect-ratio: 900 / 340;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border);
     background: #f7f7f4;
@@ -63,8 +63,8 @@ const sheet = css`
 `;
 
 const WIDTH = 900;
-const HEIGHT = 260;
-const GROUND = 200;
+const HEIGHT = 340;
+const GROUND = 268;
 const UNIT = 2.5;
 const DINO_X = 62;
 const STEP = 1 / 60;
@@ -73,23 +73,23 @@ const BODY = [
   '000000000000000000111111',
   '000000000000000001111111',
   '000000000000000011111111',
-  '000000000000000011111111',
   '000000000000000011211111',
+  '000000000000000011111111',
   '000000000000000011111111',
   '000000000000000011111000',
   '000000000000000111111111',
   '000000000000001111111000',
-  '100000000000011111100000',
-  '110000000000111111000000',
-  '111000000001111111000000',
-  '111100000111111111100000',
-  '111110011111111111000000',
+  '100000000000111111100000',
+  '110000000011111111000000',
+  '111000001111111111000000',
+  '111100011222111111100000',
+  '111110111111111111000000',
   '011111111111111110000000',
   '001111111111111100000000',
   '000111111111111000000000',
-  '000011111111111000000000',
+  '000111222111110000000000',
+  '000011111111110000000000',
   '000001111111110000000000',
-  '000001111111100000000000',
 ];
 
 const LEGS = [
@@ -197,6 +197,11 @@ const BIRD = [
   ],
 ];
 
+const FLOCK = [
+  ['010000010', '101000101', '000101000'],
+  ['000000000', '010000010', '101101101'],
+];
+
 const CLOUD = [
   '0001111000',
   '0111111110',
@@ -205,11 +210,12 @@ const CLOUD = [
 ];
 
 const HILL = [
-  '000000111111000000',
-  '000011111111110000',
-  '001111111111111100',
-  '011111111111111110',
-  '111111111111111111',
+  '000000000111100000000000',
+  '000000011111111000000000',
+  '000001111111111110000000',
+  '000111111111111111100000',
+  '011111111111111111111000',
+  '111111111111111111111110',
 ];
 
 const SPEED_START = 6;
@@ -228,6 +234,7 @@ class Dino extends JGApp {
   #dino = { y: GROUND, dy: 0, ducking: false, dead: false };
   #obstacles = [];
   #clouds = [];
+  #flock = [];
   #hills = [];
   #bumps = [];
   #notches = [];
@@ -367,11 +374,16 @@ class Dino extends JGApp {
   #reset() {
     this.#dino = { y: GROUND, dy: 0, ducking: false, dead: false };
     this.#obstacles = [];
-    this.#clouds = [{ x: 520, y: 62 }, { x: 800, y: 96 }];
+    this.#clouds = [{ x: 520, y: 78 }, { x: 800, y: 130 }];
+    this.#flock = [
+      { x: 300, y: 62, scale: 1.4 },
+      { x: 322, y: 74, scale: 1.1 },
+      { x: 344, y: 58, scale: 1.2 },
+    ];
     this.#hills = [
-      { x: 90, scale: 2.6 },
-      { x: 470, scale: 3.4 },
-      { x: 760, scale: 2.2 },
+      { x: 90, scale: 1.7 },
+      { x: 470, scale: 2.2 },
+      { x: 760, scale: 1.4 },
     ];
     this.#notches = Array.from({ length: 9 }, () => ({ x: Math.random() * WIDTH, width: 4 + Math.random() * 7 }));
     this.#bumps = Array.from({ length: 44 }, () => ({ x: Math.random() * WIDTH, size: Math.random() > 0.5 ? 2 : 1 }));
@@ -452,7 +464,7 @@ class Dino extends JGApp {
     const gap = 240 + Math.random() * 190 + (SPEED_MAX - this.#speed) * 16;
     if (last && WIDTH - last.x < gap) return;
 
-    if (this.#score > 420 && Math.random() < 0.22) {
+    if (this.#score > 240 && Math.random() < 0.24) {
       const heights = [GROUND - 78, GROUND - 48, GROUND - 16];
       this.#obstacles.push({
         kind: 'bird',
@@ -518,7 +530,24 @@ class Dino extends JGApp {
       return cloud.x > -70;
     });
     if (this.#clouds.length < 4 && Math.random() < 0.006) {
-      this.#clouds.push({ x: WIDTH + 40, y: 40 + Math.random() * 66 });
+      this.#clouds.push({ x: WIDTH + 40, y: 46 + Math.random() * 96 });
+    }
+
+    this.#flock = this.#flock.filter((bird) => {
+      bird.x -= this.#speed * 0.34;
+      bird.y += Math.sin((this.#beat + bird.x) / 26) * 0.14;
+      return bird.x > -40;
+    });
+    if (!this.#flock.length && Math.random() < 0.004) {
+      const lead = WIDTH + 40;
+      const height = 44 + Math.random() * 70;
+      for (let index = 0; index < 3 + Math.floor(Math.random() * 3); index += 1) {
+        this.#flock.push({
+          x: lead + index * (22 + Math.random() * 12),
+          y: height + (index % 2 ? 12 : 0) + Math.random() * 8,
+          scale: 1 + Math.random() * 0.6,
+        });
+      }
     }
 
     this.#hills = this.#hills.filter((hill) => {
@@ -526,7 +555,7 @@ class Dino extends JGApp {
       return hill.x > -HILL[0].length * UNIT * hill.scale;
     });
     if (this.#hills.length < 3 && Math.random() < 0.012) {
-      this.#hills.push({ x: WIDTH + 60, scale: 2 + Math.random() * 1.6 });
+      this.#hills.push({ x: WIDTH + 60, scale: 1.3 + Math.random() * 1.1 });
     }
 
     this.#bumps.forEach((bump) => {
@@ -618,15 +647,22 @@ class Dino extends JGApp {
       this.#sprite(context, CLOUD, cloud.x, cloud.y, faint, paper);
     });
 
+    const wing = FLOCK[Math.floor(this.#beat / 14) % 2];
+    this.#flock.forEach((bird) => {
+      this.#sprite(context, wing, bird.x, bird.y, faint, paper, bird.scale * 1.6);
+    });
+
     if (this.#night) {
       context.fillStyle = '#8d97a5';
-      context.fillRect(WIDTH - 140, 40, 4, 4);
-      context.fillRect(WIDTH - 220, 68, 3, 3);
-      context.fillRect(WIDTH - 320, 32, 3, 3);
+      context.fillRect(WIDTH - 140, 52, 4, 4);
+      context.fillRect(WIDTH - 220, 92, 3, 3);
+      context.fillRect(WIDTH - 320, 40, 3, 3);
+      context.fillRect(WIDTH - 400, 76, 3, 3);
+      context.fillRect(WIDTH - 520, 46, 3, 3);
       context.fillStyle = '#e6e9ee';
-      context.fillRect(WIDTH - 96, 34, 16, 24);
+      context.fillRect(WIDTH - 96, 44, 18, 27);
       context.fillStyle = paper;
-      context.fillRect(WIDTH - 89, 34, 12, 24);
+      context.fillRect(WIDTH - 88, 44, 13, 27);
     }
 
     context.fillStyle = ink;
