@@ -120,9 +120,9 @@ const STYLES = [
 ];
 
 const SHAPE = {
-  ball: { atomScale: 0.32, bondRadius: 0.14 },
-  space: { atomScale: 1, bondRadius: 0 },
-  stick: { atomScale: 0.15, bondRadius: 0.15 },
+  ball: { atomScale: 0.5, bondRadius: 0.1, vdw: false },
+  space: { atomScale: 1, bondRadius: 0, vdw: true },
+  stick: { atomScale: 0.16, bondRadius: 0.16, vdw: false },
 };
 
 const helix = () => {
@@ -504,14 +504,18 @@ class MoleculeViewer extends JGApp {
   #rebuild() {
     if (!this.#gl || this.#style === 'diagram') return;
     const { points, links } = this.#visible();
+    const shape = this.#molecule.shape?.[this.#style] ?? SHAPE[this.#style] ?? SHAPE.ball;
     this.#gl.build(
-      points.map((point) => ({
-        position: point.position,
-        radius: atomInfo(point.symbol).radius,
-        color: toRgb(atomInfo(point.symbol).color),
-      })),
+      points.map((point) => {
+        const info = atomInfo(point.symbol);
+        return {
+          position: point.position,
+          radius: shape.vdw ? info.vdw ?? info.radius : info.radius,
+          color: toRgb(info.color),
+        };
+      }),
       links.map(([a, b, order]) => ({ a, b, order })),
-      this.#molecule.shape?.[this.#style] ?? SHAPE[this.#style] ?? SHAPE.ball,
+      shape,
     );
   }
 

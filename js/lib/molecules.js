@@ -1,25 +1,25 @@
 export const GROUPS = ['Basics', 'Everyday', 'Biology', 'Vitamins', 'Medicine', 'Genetics', 'Proteins'];
 
 export const ATOM = {
-  H: { color: '#e8e8ec', radius: 0.31, name: 'Hydrogen' },
-  C: { color: '#4a4a52', radius: 0.72, name: 'Carbon' },
-  N: { color: '#3f6b91', radius: 0.71, name: 'Nitrogen' },
-  O: { color: '#b5473f', radius: 0.66, name: 'Oxygen' },
-  S: { color: '#c8a63a', radius: 1.05, name: 'Sulfur' },
-  P: { color: '#c9773a', radius: 1.07, name: 'Phosphorus' },
-  F: { color: '#79b04a', radius: 0.57, name: 'Fluorine' },
-  Cl: { color: '#5aa05a', radius: 1.02, name: 'Chlorine' },
-  Br: { color: '#a3603a', radius: 1.2, name: 'Bromine' },
-  I: { color: '#8a5aa3', radius: 1.39, name: 'Iodine' },
-  Na: { color: '#8f6bd6', radius: 1.66, name: 'Sodium' },
-  Mg: { color: '#4fa06b', radius: 1.41, name: 'Magnesium' },
-  Ca: { color: '#4f8fa0', radius: 1.76, name: 'Calcium' },
-  Fe: { color: '#c26a3f', radius: 1.32, name: 'Iron' },
-  Co: { color: '#4f6bb0', radius: 1.26, name: 'Cobalt' },
-  Zn: { color: '#6b7f8f', radius: 1.22, name: 'Zinc' },
+  H: { color: '#e8e8ec', radius: 0.31, vdw: 1.2, name: 'Hydrogen' },
+  C: { color: '#4a4a52', radius: 0.72, vdw: 1.7, name: 'Carbon' },
+  N: { color: '#3f6b91', radius: 0.71, vdw: 1.55, name: 'Nitrogen' },
+  O: { color: '#b5473f', radius: 0.66, vdw: 1.52, name: 'Oxygen' },
+  S: { color: '#c8a63a', radius: 1.05, vdw: 1.8, name: 'Sulfur' },
+  P: { color: '#c9773a', radius: 1.07, vdw: 1.8, name: 'Phosphorus' },
+  F: { color: '#79b04a', radius: 0.57, vdw: 1.47, name: 'Fluorine' },
+  Cl: { color: '#5aa05a', radius: 1.02, vdw: 1.75, name: 'Chlorine' },
+  Br: { color: '#a3603a', radius: 1.2, vdw: 1.85, name: 'Bromine' },
+  I: { color: '#8a5aa3', radius: 1.39, vdw: 1.98, name: 'Iodine' },
+  Na: { color: '#8f6bd6', radius: 1.66, vdw: 2.27, name: 'Sodium' },
+  Mg: { color: '#4fa06b', radius: 1.41, vdw: 1.73, name: 'Magnesium' },
+  Ca: { color: '#4f8fa0', radius: 1.76, vdw: 2.31, name: 'Calcium' },
+  Fe: { color: '#c26a3f', radius: 1.32, vdw: 2.04, name: 'Iron' },
+  Co: { color: '#4f6bb0', radius: 1.26, vdw: 2, name: 'Cobalt' },
+  Zn: { color: '#6b7f8f', radius: 1.22, vdw: 2.1, name: 'Zinc' },
 };
 
-export const fallbackAtom = { color: '#8a8a94', radius: 0.9, name: 'Atom' };
+export const fallbackAtom = { color: '#8a8a94', radius: 0.9, vdw: 1.8, name: 'Atom' };
 
 export const molecules = [
   {

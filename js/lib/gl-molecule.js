@@ -225,8 +225,10 @@ export const createGlRenderer = (canvas) => {
       data.push(position[0], position[1], position[2], normal[0], normal[1], normal[2], color[0], color[1], color[2]);
     };
 
+    const sizeOf = (atom) => Math.max(atom.radius * options.atomScale, options.bondRadius * 1.35);
+
     atoms.forEach((atom) => {
-      const radius = atom.radius * options.atomScale;
+      const radius = sizeOf(atom);
       SPHERE.forEach((point) => {
         push(
           [atom.position[0] + point[0] * radius, atom.position[1] + point[1] * radius, atom.position[2] + point[2] * radius],
@@ -284,7 +286,7 @@ export const createGlRenderer = (canvas) => {
 
     bound = 1;
     atoms.forEach((atom) => {
-      bound = Math.max(bound, Math.hypot(...atom.position) + atom.radius * options.atomScale);
+      bound = Math.max(bound, Math.hypot(...atom.position) + sizeOf(atom));
     });
   };
 
