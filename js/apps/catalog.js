@@ -1440,6 +1440,20 @@ export const catalog = [
   },
 
   {
+    id: 'logic-lab',
+    name: 'Logic Lab',
+    tagline: 'Gates, flip-flops, counters and a seven segment display',
+    category: 'science',
+    glyph: '&',
+    icon: 'gate',
+    tint: '#4a6fa5',
+    keywords: ['logic', 'digital', 'gate', 'and', 'or', 'xor', 'flip-flop', 'counter', 'seven segment', 'boolean', 'circuit'],
+    tag: 'jg-app-logic-lab',
+    window: { width: 1100, height: 780 },
+    load: () => import('./logic-lab.js'),
+  },
+
+  {
     id: 'settings',
     name: 'Settings',
     tagline: 'Appearance, home screen, workspaces and data',

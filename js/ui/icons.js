@@ -173,6 +173,7 @@ const PATHS = {
   serial: '<rect x="2.6" y="8.6" width="18.8" height="9.4" rx="2.4"/><path d="M6.4 12.4h.01M9.6 12.4h.01M12.8 12.4h.01M16 12.4h.01M8 14.6h8"/><path d="M8.6 8.6V6.2a1.6 1.6 0 0 1 1.6-1.6h3.6a1.6 1.6 0 0 1 1.6 1.6v2.4"/>',
   terminalKey: '<path d="M9.4 3.2h5.2"/>',
   transistor: '<path d="M9.4 6.4v11.2"/><path d="M3.4 12h6M9.4 9.6 20 4.6M9.4 14.4 20 19.4"/><path d="m15.2 15.4 3.2 1.4-1.2-3.2"/>',
+  gate: '<path d="M4.4 5.6h6.4a6.4 6.4 0 0 1 0 12.8H4.4Z"/><path d="M2 8.8h2.4M2 15.2h2.4M17.2 12h4.4"/>',
 };
 
 export const ACCENTS = {
