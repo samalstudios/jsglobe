@@ -61,11 +61,14 @@ const sheet = css`
   }
   .card[data-red="true"] { color: #b5473f; }
   .card[data-face="false"] {
-    background: repeating-linear-gradient(45deg, #4a6fa5 0 6px, #3f6b91 6px 12px);
-    border-color: #33556f;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-opacity='0.62' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.83 8.83a4 4 0 0 0-5.66-5.66l-12 12a4 4 0 1 0 5.66 5.66Z'/%3E%3Cpath d='M18 11.66V22a4 4 0 0 0 4-4V6'/%3E%3Cpath d='M3 2v1c0 1 2 1 2 2S3 6 3 7s2 1 2 2-2 1-2 2 2 1 2 2'/%3E%3C/svg%3E") center / 34px no-repeat,
+      linear-gradient(150deg, #a52348, #8a1c3b 55%, #6b1430);
+    border-color: #59102a;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.14), 0 1px 2px rgba(0, 0, 0, 0.25);
     color: transparent;
   }
-  .card[data-drag="true"] { z-index: 60; box-shadow: 0 10px 22px rgba(0, 0, 0, 0.32); }
+  .card[data-drag="true"] { box-shadow: 0 10px 22px rgba(0, 0, 0, 0.32); transform: scale(1.02); }
   .card .rank { display: block; }
   .card .suit { display: block; font-size: 14px; margin-top: 1px; }
   .card .big {
@@ -409,9 +412,11 @@ class Solitaire extends JGApp {
 
   #sendUp(event) {
     const node = event.currentTarget;
-    if (node.dataset.face !== 'true') return;
+    if (node.dataset.face !== 'true' || node.dataset.pile === 'stock:0') return;
+    event.preventDefault();
     const from = this.#pileOf(node.dataset.pile);
-    const index = Number(node.dataset.index);
+    if (from.kind === 'foundation') return;
+    const index = from.kind === 'column' ? this.#columns[from.index].length - 1 : Number(node.dataset.index);
     const cards = this.#cardsFrom(from, index);
     if (cards.length !== 1) return;
     const target = this.#foundations.findIndex((pile, foundation) => this.#canStack(cards[0], { kind: 'foundation', index: foundation }));
@@ -427,27 +432,38 @@ class Solitaire extends JGApp {
     if (!cards.length) return;
     if (from.kind === 'column' && cards.some((card) => !card.face)) return;
 
-    const nodes = cards
-      .map((card) => this.$(`.card[data-id="${card.id}"]`))
-      .filter(Boolean);
+    const nodes = cards.map((card) => this.$(`.card[data-id="${card.id}"]`)).filter(Boolean);
     const origin = { x: event.clientX, y: event.clientY };
-    const offsets = nodes.map((item) => ({ left: item.offsetLeft, top: item.offsetTop }));
-    nodes.forEach((item) => item.setAttribute('data-drag', 'true'));
+    const home = nodes.map((item) => ({ left: item.offsetLeft, top: item.offsetTop, z: item.style.zIndex }));
+    let moved = false;
     node.setPointerCapture(event.pointerId);
 
     const move = (moveEvent) => {
       const dx = moveEvent.clientX - origin.x;
       const dy = moveEvent.clientY - origin.y;
+      if (!moved && Math.hypot(dx, dy) < 4) return;
+      if (!moved) {
+        moved = true;
+        nodes.forEach((item, position) => {
+          item.setAttribute('data-drag', 'true');
+          item.style.zIndex = String(200 + position);
+        });
+      }
       nodes.forEach((item, position) => {
-        item.style.left = `${offsets[position].left + dx}px`;
-        item.style.top = `${offsets[position].top + dy}px`;
+        item.style.left = `${home[position].left + dx}px`;
+        item.style.top = `${home[position].top + dy}px`;
       });
     };
 
     const drop = (upEvent) => {
       node.removeEventListener('pointermove', move);
       node.removeEventListener('pointerup', drop);
-      nodes.forEach((item) => item.removeAttribute('data-drag'));
+      node.removeEventListener('pointercancel', drop);
+
+      if (!moved) {
+        nodes.forEach((item) => item.removeAttribute('data-drag'));
+        return;
+      }
 
       const board = this.$('#board');
       const rect = board.getBoundingClientRect();
@@ -459,16 +475,25 @@ class Solitaire extends JGApp {
         ...this.#columns.map((pile, column) => ({ kind: 'column', index: column })),
       ];
       const hit = targets.find((target) => {
-        const spot = this.#position(target, Math.max(0, (target.kind === 'column' ? this.#columns[target.index].length : 1) - 1), 1);
+        const depth = target.kind === 'column' ? Math.max(0, this.#columns[target.index].length - 1) : 0;
+        const spot = this.#position(target, depth, 1);
         const height = target.kind === 'column' ? CARD.height + 40 : CARD.height;
-        return x >= spot.x - 12 && x <= spot.x + CARD.width + 12 && y >= spot.y - 24 && y <= spot.y + height;
+        return x >= spot.x - 14 && x <= spot.x + CARD.width + 14 && y >= spot.y - 26 && y <= spot.y + height;
       });
 
-      if (!hit || !this.#move(from, index, hit)) this.#paint();
+      if (!hit || !this.#move(from, index, hit)) {
+        nodes.forEach((item, position) => {
+          item.removeAttribute('data-drag');
+          item.style.left = `${home[position].left}px`;
+          item.style.top = `${home[position].top}px`;
+          item.style.zIndex = home[position].z;
+        });
+      }
     };
 
     node.addEventListener('pointermove', move);
     node.addEventListener('pointerup', drop);
+    node.addEventListener('pointercancel', drop);
   }
 }
 

@@ -167,6 +167,8 @@ const PATHS = {
   circle: '<circle cx="12" cy="12" r="8.4"/>',
   marquee: '<rect x="3.6" y="3.6" width="16.8" height="16.8" rx="2.4" stroke-dasharray="3.6 3"/>',
   file: '<path d="M13.6 3.2H7.4a2.2 2.2 0 0 0-2.2 2.2v13.2a2.2 2.2 0 0 0 2.2 2.2h9.2a2.2 2.2 0 0 0 2.2-2.2V8.4Z"/><path d="M13.6 3.2v5.2h5.2"/>',
+  card: '<rect x="5.2" y="2.8" width="13.6" height="18.4" rx="2.6"/><text x="8.9" y="10.4" fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="7" font-weight="600" text-anchor="middle">A</text><path d="M14.6 18.2c-2.2-1.5-3.3-2.6-3.3-3.8a1.65 1.65 0 0 1 3.3-.8 1.65 1.65 0 0 1 3.3.8c0 1.2-1.1 2.3-3.3 3.8Z" fill="currentColor" stroke="none"/>',
+  dino: '<text x="12" y="12.6" fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="8.2" font-weight="700" letter-spacing="-0.3" text-anchor="middle" dominant-baseline="middle">T-Rex</text>',
 };
 
 export const ACCENTS = {

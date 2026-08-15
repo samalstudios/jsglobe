@@ -1255,7 +1255,7 @@ export const catalog = [
     tint: '#ca8a04',
     keywords: ['game', 'snake', 'arcade', 'classic'],
     tag: 'jg-app-game-snake',
-    window: { width: 700, height: 900 },
+    window: { width: 820, height: 940 },
     load: () => import('./game-snake.js'),
   },
 
@@ -1327,7 +1327,7 @@ export const catalog = [
     tint: '#c2603f',
     keywords: ['game', 'breakout', 'arcade', 'retro', 'paddle', 'brick'],
     tag: 'jg-app-game-breakout',
-    window: { width: 780, height: 720 },
+    window: { width: 980, height: 820 },
     load: () => import('./game-breakout.js'),
   },
   {
@@ -1340,7 +1340,7 @@ export const catalog = [
     tint: '#4a6fa5',
     keywords: ['game', 'pong', 'arcade', 'retro', 'paddle', 'tennis'],
     tag: 'jg-app-game-pong',
-    window: { width: 820, height: 640 },
+    window: { width: 1040, height: 720 },
     load: () => import('./game-pong.js'),
   },
   {
@@ -1353,7 +1353,7 @@ export const catalog = [
     tint: '#6f5a9c',
     keywords: ['game', 'invaders', 'space', 'arcade', 'retro', 'shooter'],
     tag: 'jg-app-game-invaders',
-    window: { width: 780, height: 720 },
+    window: { width: 1020, height: 820 },
     load: () => import('./game-invaders.js'),
   },
 
@@ -1363,12 +1363,26 @@ export const catalog = [
     tagline: 'Klondike patience with draw one or three',
     category: 'play',
     glyph: '♠',
-    icon: 'layers',
+    icon: 'card',
     tint: '#4f7f6b',
     keywords: ['game', 'solitaire', 'klondike', 'cards', 'patience', 'retro'],
     tag: 'jg-app-game-solitaire',
-    window: { width: 900, height: 760 },
+    window: { width: 980, height: 800 },
     load: () => import('./game-solitaire.js'),
+  },
+
+  {
+    id: 'game-dino',
+    name: 'T-Rex Run',
+    tagline: 'Jump the cacti in the offline runner',
+    category: 'play',
+    glyph: '🦖',
+    icon: 'dino',
+    tint: '#5b6470',
+    keywords: ['game', 'dino', 'trex', 'runner', 'chrome', 'offline', 'retro', 'jump'],
+    tag: 'jg-app-game-dino',
+    window: { width: 1120, height: 480 },
+    load: () => import('./game-dino.js'),
   },
 
   {

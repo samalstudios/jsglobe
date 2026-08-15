@@ -15,7 +15,7 @@ const sheet = css`
   }
   .wrap { position: relative; display: grid; place-items: center; }
   canvas {
-    width: min(580px, 100%, 68vh);
+    width: min(720px, 100%, 74vh);
     aspect-ratio: 1;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border);

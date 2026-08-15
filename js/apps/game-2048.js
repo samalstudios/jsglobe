@@ -97,6 +97,7 @@ class Game2048 extends JGApp {
   #best = 0;
   #over = false;
   #won = false;
+  #kept = false;
   #fresh = new Set();
 
   renderApp() {
@@ -161,6 +162,7 @@ class Game2048 extends JGApp {
     this.#score = 0;
     this.#over = false;
     this.#won = false;
+    this.#kept = false;
     this.#spawn();
     this.#spawn();
   }
@@ -201,7 +203,7 @@ class Game2048 extends JGApp {
       this.#best = this.#score;
       this.store.write({ best: this.#best });
     }
-    if (!this.#won && this.#grid.flat().includes(2048)) this.#won = true;
+    if (!this.#kept && this.#grid.flat().includes(2048)) this.#won = true;
     if (!this.#canMove()) this.#over = true;
 
     this.#paint();
@@ -234,7 +236,7 @@ class Game2048 extends JGApp {
             .join(''),
         )
         .join('') +
-      (this.#over || this.#won
+      (this.#over || (this.#won && !this.#kept)
         ? `<div class="overlay">
             <div>
               <h3>${this.#over ? 'No moves left' : 'You reached 2048'}</h3>
@@ -248,7 +250,10 @@ class Game2048 extends JGApp {
     if (again) {
       this.on(again, 'click', () => {
         if (this.#over) this.#reset();
-        else this.#won = false;
+        else {
+          this.#kept = true;
+          this.#won = false;
+        }
         this.#paint();
       });
     }
