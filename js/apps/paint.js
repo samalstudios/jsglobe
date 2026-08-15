@@ -13,6 +13,8 @@ const sheet = css`
     border-bottom: 1px solid var(--border);
     flex: none;
   }
+  .head jg-toolbar,
+  .tools { --icon-accent: currentColor; }
 
   .body { flex: 1; min-height: 0; display: flex; }
 
@@ -119,15 +121,16 @@ const sheet = css`
 `;
 
 const TOOLS = [
+  { id: 'select', label: 'Select an area', icon: 'marquee' },
   { id: 'pencil', label: 'Pencil', icon: 'pencil' },
   { id: 'brush', label: 'Brush', icon: 'brush' },
-  { id: 'eraser', label: 'Eraser', icon: 'box' },
-  { id: 'fill', label: 'Fill', icon: 'palette' },
-  { id: 'picker', label: 'Pick colour', icon: 'swatches' },
-  { id: 'spray', label: 'Spray', icon: 'sparkles' },
-  { id: 'line', label: 'Line', icon: 'transform' },
-  { id: 'rect', label: 'Rectangle', icon: 'box' },
-  { id: 'ellipse', label: 'Ellipse', icon: 'emoji' },
+  { id: 'eraser', label: 'Eraser', icon: 'eraser' },
+  { id: 'fill', label: 'Fill with colour', icon: 'bucket' },
+  { id: 'picker', label: 'Pick a colour', icon: 'eyedropper' },
+  { id: 'spray', label: 'Spray can', icon: 'spray' },
+  { id: 'line', label: 'Line', icon: 'line' },
+  { id: 'rect', label: 'Rectangle', icon: 'square' },
+  { id: 'ellipse', label: 'Ellipse', icon: 'circle' },
   { id: 'text', label: 'Text', icon: 'type' },
 ];
 
@@ -158,6 +161,8 @@ class Paint extends JGApp {
   #redo = [];
   #context = null;
   #preview = null;
+  #pending = null;
+  #selection = null;
 
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
@@ -208,17 +213,56 @@ class Paint extends JGApp {
           </div>
         </div>
       </div>
+
+      <jg-sheet id="adjust" side="right" title-text="Adjust image">
+        <div class="stack" style="padding:14px;gap:14px">
+          <jg-field label="Brightness"><jg-slider id="brightness" min="0" max="200" step="1" value="100"></jg-slider></jg-field>
+          <jg-field label="Contrast"><jg-slider id="contrast" min="0" max="200" step="1" value="100"></jg-slider></jg-field>
+          <jg-field label="Saturation"><jg-slider id="saturate" min="0" max="200" step="1" value="100"></jg-slider></jg-field>
+          <jg-field label="Blur"><jg-slider id="blur" min="0" max="12" step="1" value="0"></jg-slider></jg-field>
+          <div class="row">
+            <jg-button size="sm" id="apply-adjust">Apply</jg-button>
+            <jg-button size="sm" variant="ghost" id="reset-adjust">Reset</jg-button>
+            <span class="grow"></span>
+            <jg-button size="sm" variant="ghost" id="grayscale">Black and white</jg-button>
+          </div>
+          <div class="hint">Adjustments preview live and only touch the canvas when you apply them.</div>
+        </div>
+      </jg-sheet>
+
+      <jg-dialog id="resize" title-text="Resize canvas">
+        <div class="stack" style="gap:12px">
+          <div class="row">
+            <jg-field label="Width"><jg-input id="new-width" type="number" size="sm" value="${width}"></jg-input></jg-field>
+            <jg-field label="Height"><jg-input id="new-height" type="number" size="sm" value="${height}"></jg-input></jg-field>
+          </div>
+          <div class="row"><jg-switch id="keep-ratio" checked></jg-switch><span class="hint">Keep proportions</span></div>
+        </div>
+        <div slot="actions" class="row">
+          <span class="grow"></span>
+          <jg-button size="sm" variant="ghost" id="cancel-resize">Cancel</jg-button>
+          <jg-button size="sm" id="do-resize">Resize</jg-button>
+        </div>
+      </jg-dialog>
     </div>`);
 
     this.$('#bar').items = [
-      { id: 'new', label: 'New', icon: 'frame', action: () => this.#clear() },
-      { id: 'open', label: 'Open', icon: 'image', action: () => this.#open() },
-      { id: 'save', label: 'Save PNG', icon: 'download', action: () => this.#save() },
+      { id: 'new', label: 'New', icon: 'file', iconOnly: true, title: 'New canvas', action: () => this.#clear() },
+      { id: 'open', label: 'Open', icon: 'folder', iconOnly: true, title: 'Open an image', action: () => this.#open() },
+      { id: 'insert', label: 'Insert', icon: 'image', iconOnly: true, title: 'Insert an image', action: () => this.#insert() },
+      { id: 'save', label: 'Save', icon: 'download', iconOnly: true, title: 'Save as PNG', action: () => this.#save() },
       { separator: true },
-      { id: 'undo', label: 'Undo', icon: 'swap', action: () => this.#step(this.#undo, this.#redo) },
-      { id: 'redo', label: 'Redo', icon: 'repeat', action: () => this.#step(this.#redo, this.#undo) },
+      { id: 'undo', label: 'Undo', icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#step(this.#undo, this.#redo) },
+      { id: 'redo', label: 'Redo', icon: 'redo', iconOnly: true, title: 'Redo', action: () => this.#step(this.#redo, this.#undo) },
+      { separator: true },
+      { id: 'crop', label: 'Crop', icon: 'crop', title: 'Crop to selection', action: () => this.#crop() },
+      { id: 'rotate', label: 'Rotate', icon: 'rotate', iconOnly: true, title: 'Rotate right', action: () => this.#rotate(1) },
+      { id: 'flip-h', label: 'Flip across', icon: 'flip', iconOnly: true, title: 'Flip horizontally', action: () => this.#flip('h') },
+      { id: 'flip-v', label: 'Flip down', icon: 'flip-v', iconOnly: true, title: 'Flip vertically', action: () => this.#flip('v') },
+      { id: 'resize', label: 'Resize', icon: 'scale', title: 'Resize the canvas', action: () => this.$('#resize').open() },
+      { id: 'adjust', label: 'Adjust', icon: 'gauge', title: 'Brightness, contrast and colour', action: () => this.$('#adjust').open() },
       { spacer: true },
-      { id: 'swap', label: 'Swap colours', icon: 'transform', action: () => this.#swap() },
+      { id: 'swap', label: 'Swap', icon: 'transform', iconOnly: true, title: 'Swap the two colours', action: () => this.#swap() },
     ];
 
     const board = this.$('#board');
@@ -250,9 +294,30 @@ class Paint extends JGApp {
       if (this.#drawing) this.#up();
     });
     this.on(board, 'contextmenu', (event) => event.preventDefault());
+    this.on(board, 'wheel', (event) => {
+      if (!this.#pending) return;
+      event.preventDefault();
+      const factor = event.deltaY < 0 ? 1.08 : 0.93;
+      const centreX = this.#pending.x + this.#pending.width / 2;
+      const centreY = this.#pending.y + this.#pending.height / 2;
+      this.#pending.width = Math.max(16, this.#pending.width * factor);
+      this.#pending.height = Math.max(16, this.#pending.height * factor);
+      this.#pending.x = centreX - this.#pending.width / 2;
+      this.#pending.y = centreY - this.#pending.height / 2;
+      this.#drawPending();
+    });
 
     this.hotkeys((event) => {
       const key = event.key.toLowerCase();
+      if (this.#pending && (event.key === 'Enter' || event.key === 'Escape')) {
+        event.preventDefault();
+        if (event.key === 'Enter') this.#commit();
+        else {
+          this.#pending = null;
+          this.#preview.clearRect(0, 0, this.$('#overlay').width, this.$('#overlay').height);
+        }
+        return;
+      }
       if ((event.metaKey || event.ctrlKey) && key === 'z') {
         event.preventDefault();
         if (event.shiftKey) this.#step(this.#redo, this.#undo);
@@ -269,6 +334,50 @@ class Paint extends JGApp {
         this.#tool = shortcut;
         this.$$('.tool').forEach((node) => node.setAttribute('aria-pressed', String(node.dataset.tool === this.#tool)));
       }
+    });
+
+    const preview = () => {
+      this.$('#board').style.filter = this.#filters();
+    };
+    ['brightness', 'contrast', 'saturate', 'blur'].forEach((id) => this.on(this.$(`#${id}`), 'input', preview));
+    this.on(this.$('#grayscale'), 'click', () => {
+      this.$('#saturate').value = 0;
+      preview();
+    });
+    this.on(this.$('#reset-adjust'), 'click', () => {
+      ['brightness', 'contrast', 'saturate'].forEach((id) => {
+        this.$(`#${id}`).value = 100;
+      });
+      this.$('#blur').value = 0;
+      preview();
+    });
+    this.on(this.$('#apply-adjust'), 'click', () => {
+      const board = this.$('#board');
+      const filter = this.#filters();
+      this.#replace(board.width, board.height, (context) => {
+        context.filter = filter;
+        context.drawImage(board, 0, 0);
+      });
+      board.style.filter = '';
+      this.$('#reset-adjust').click();
+      this.$('#adjust').close();
+    });
+
+    this.on(this.$('#new-width'), 'input', () => {
+      if (!this.$('#keep-ratio').checked) return;
+      const board = this.$('#board');
+      this.$('#new-height').value = Math.round(Number(this.$('#new-width').value) * (board.height / board.width));
+    });
+    this.on(this.$('#cancel-resize'), 'click', () => this.$('#resize').close());
+    this.on(this.$('#do-resize'), 'click', () => {
+      const board = this.$('#board');
+      const next = { width: Number(this.$('#new-width').value), height: Number(this.$('#new-height').value) };
+      if (!next.width || !next.height) return;
+      this.#replace(next.width, next.height, (context) => {
+        context.imageSmoothingQuality = 'high';
+        context.drawImage(board, 0, 0, next.width, next.height);
+      });
+      this.$('#resize').close();
     });
 
     const observer = new ResizeObserver(() => this.#fit());
@@ -339,12 +448,32 @@ class Paint extends JGApp {
   #down(event) {
     const point = this.#point(event);
     const secondary = event.button === 2;
+
+    if (this.#pending) {
+      const { x, y, width, height } = this.#pending;
+      if (point.x >= x && point.x <= x + width && point.y >= y && point.y <= y + height) {
+        this.#pending.grab = { x: point.x - x, y: point.y - y };
+        this.$('#board').setPointerCapture(event.pointerId);
+        return;
+      }
+      this.#commit();
+      return;
+    }
     const color = secondary ? this.#back : this.#fore;
 
     if (this.#tool === 'picker') {
       const data = this.#context.getImageData(Math.floor(point.x), Math.floor(point.y), 1, 1).data;
       const hex = `#${[data[0], data[1], data[2]].map((value) => value.toString(16).padStart(2, '0')).join('')}`;
       this.#setColor(hex, secondary);
+      return;
+    }
+
+    if (this.#tool === 'select') {
+      this.#drawing = true;
+      this.#start = point;
+      this.#last = point;
+      this.#selection = { x: point.x, y: point.y, width: 0, height: 0 };
+      this.$('#board').setPointerCapture(event.pointerId);
       return;
     }
 
@@ -378,8 +507,26 @@ class Paint extends JGApp {
   #move(event) {
     const point = this.#point(event);
     this.$('#status').textContent = `${Math.round(point.x)}, ${Math.round(point.y)}`;
+
+    if (this.#pending?.grab) {
+      this.#pending.x = point.x - this.#pending.grab.x;
+      this.#pending.y = point.y - this.#pending.grab.y;
+      this.#drawPending();
+      return;
+    }
     if (!this.#drawing) return;
     const secondary = event.buttons === 2;
+
+    if (this.#tool === 'select') {
+      this.#selection = {
+        x: Math.min(this.#start.x, point.x),
+        y: Math.min(this.#start.y, point.y),
+        width: Math.abs(point.x - this.#start.x),
+        height: Math.abs(point.y - this.#start.y),
+      };
+      this.#drawSelection();
+      return;
+    }
 
     if (this.#tool === 'line' || this.#tool === 'rect' || this.#tool === 'ellipse') {
       this.#drawShape(this.#preview, this.#start, point, secondary, true);
@@ -390,8 +537,18 @@ class Paint extends JGApp {
   }
 
   #up(event) {
+    if (this.#pending?.grab) {
+      this.#pending.grab = null;
+      return;
+    }
     if (!this.#drawing) return;
     this.#drawing = false;
+    if (this.#tool === 'select') {
+      this.$('#status').textContent = this.#selection?.width
+        ? `${Math.round(this.#selection.width)} × ${Math.round(this.#selection.height)} selected`
+        : 'no selection';
+      return;
+    }
     const point = event ? this.#point(event) : this.#last;
     if (this.#tool === 'line' || this.#tool === 'rect' || this.#tool === 'ellipse') {
       this.#preview.clearRect(0, 0, this.$('#overlay').width, this.$('#overlay').height);
@@ -525,6 +682,122 @@ class Paint extends JGApp {
     this.#snapshot();
     const scale = Math.min(board.width / bitmap.width, board.height / bitmap.height, 1);
     this.#context.drawImage(bitmap, 0, 0, bitmap.width * scale, bitmap.height * scale);
+  }
+
+  async #insert() {
+    const picked = await pickFile('image/*', false);
+    if (!picked?.file) return;
+    const bitmap = await createImageBitmap(picked.file);
+    const board = this.$('#board');
+    const scale = Math.min(1, (board.width * 0.6) / bitmap.width, (board.height * 0.6) / bitmap.height);
+    this.#pending = {
+      bitmap,
+      width: bitmap.width * scale,
+      height: bitmap.height * scale,
+      x: (board.width - bitmap.width * scale) / 2,
+      y: (board.height - bitmap.height * scale) / 2,
+      grab: null,
+    };
+    this.$('#status').textContent = 'Drag to place, scroll to resize, Enter to drop';
+    this.#drawPending();
+  }
+
+  #drawPending() {
+    const overlay = this.$('#overlay');
+    this.#preview.clearRect(0, 0, overlay.width, overlay.height);
+    if (!this.#pending) return;
+    const { bitmap, x, y, width, height } = this.#pending;
+    this.#preview.drawImage(bitmap, x, y, width, height);
+    this.#preview.strokeStyle = getComputedStyle(this).getPropertyValue('--ring').trim() || '#8a1c3b';
+    this.#preview.setLineDash([6, 5]);
+    this.#preview.lineWidth = 2;
+    this.#preview.strokeRect(x, y, width, height);
+    this.#preview.setLineDash([]);
+  }
+
+  #commit() {
+    if (!this.#pending) return;
+    const { bitmap, x, y, width, height } = this.#pending;
+    this.#snapshot();
+    this.#context.drawImage(bitmap, x, y, width, height);
+    this.#pending = null;
+    const overlay = this.$('#overlay');
+    this.#preview.clearRect(0, 0, overlay.width, overlay.height);
+  }
+
+  #drawSelection() {
+    const overlay = this.$('#overlay');
+    this.#preview.clearRect(0, 0, overlay.width, overlay.height);
+    if (!this.#selection) return;
+    const { x, y, width, height } = this.#selection;
+    this.#preview.fillStyle = 'rgba(0,0,0,0.28)';
+    this.#preview.fillRect(0, 0, overlay.width, overlay.height);
+    this.#preview.clearRect(x, y, width, height);
+    this.#preview.strokeStyle = getComputedStyle(this).getPropertyValue('--ring').trim() || '#8a1c3b';
+    this.#preview.setLineDash([6, 4]);
+    this.#preview.lineWidth = 1.6;
+    this.#preview.strokeRect(x, y, width, height);
+    this.#preview.setLineDash([]);
+  }
+
+  #replace(width, height, paint) {
+    const board = this.$('#board');
+    const overlay = this.$('#overlay');
+    const buffer = document.createElement('canvas');
+    buffer.width = Math.max(1, Math.round(width));
+    buffer.height = Math.max(1, Math.round(height));
+    paint(buffer.getContext('2d'), buffer);
+
+    this.#snapshot();
+    board.width = buffer.width;
+    board.height = buffer.height;
+    overlay.width = buffer.width;
+    overlay.height = buffer.height;
+    this.#context = board.getContext('2d', { willReadFrequently: true });
+    this.#preview = overlay.getContext('2d');
+    this.#context.drawImage(buffer, 0, 0);
+    this.#undo = [];
+    this.#redo = [];
+    this.#selection = null;
+    this.#fit();
+    this.$('#status').textContent = `${board.width} × ${board.height}`;
+  }
+
+  #crop() {
+    const area = this.#selection;
+    if (!area || area.width < 4 || area.height < 4) {
+      this.$('#status').textContent = 'Select an area first';
+      return;
+    }
+    const board = this.$('#board');
+    this.#replace(area.width, area.height, (context) => {
+      context.drawImage(board, area.x, area.y, area.width, area.height, 0, 0, area.width, area.height);
+    });
+  }
+
+  #rotate(turns) {
+    const board = this.$('#board');
+    const width = board.height;
+    const height = board.width;
+    this.#replace(width, height, (context) => {
+      context.translate(width / 2, height / 2);
+      context.rotate((Math.PI / 2) * turns);
+      context.drawImage(board, -board.width / 2, -board.height / 2);
+    });
+  }
+
+  #flip(axis) {
+    const board = this.$('#board');
+    this.#replace(board.width, board.height, (context) => {
+      context.translate(axis === 'h' ? board.width : 0, axis === 'v' ? board.height : 0);
+      context.scale(axis === 'h' ? -1 : 1, axis === 'v' ? -1 : 1);
+      context.drawImage(board, 0, 0);
+    });
+  }
+
+  #filters() {
+    const value = (id) => Number(this.$(`#${id}`)?.value ?? 100);
+    return `brightness(${value('brightness')}%) contrast(${value('contrast')}%) saturate(${value('saturate')}%) blur(${Number(this.$('#blur')?.value ?? 0)}px)`;
   }
 
   #save() {

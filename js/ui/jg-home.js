@@ -677,6 +677,7 @@ class JGHome extends JGElement {
     const stage = this.$('.stage');
     const onSearch = settings.get('home.searchPage') && this.#page === 0;
     if (stage) stage.dataset.onSearch = String(Boolean(onSearch));
+    bus.emit('home:page', { page: this.#page, search: Boolean(onSearch) });
 
     const prev = this.$('.prev');
     const next = this.$('.next');

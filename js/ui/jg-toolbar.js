@@ -73,6 +73,9 @@ const sheet = css`
   :host([variant="sidebar"]) .item { width: 100%; height: 32px; }
   :host([icons]) .item { padding: 0; width: 30px; justify-content: center; }
   :host([icons]) .item .text { display: none; }
+  .item[data-icon-only="true"] { padding: 0; width: 30px; justify-content: center; }
+  .item[data-icon-only="true"] .text { display: none; }
+  :host([variant="plain"]) .item[data-icon-only="true"] { padding: 0; }
 
   .count {
     margin-left: auto;
@@ -173,6 +176,7 @@ class JGToolbar extends JGElement {
       data-id="${item.id}"
       data-select="${String(Boolean(item.select))}"
       data-danger="${String(Boolean(item.danger))}"
+      data-icon-only="${String(Boolean(item.iconOnly))}"
       title="${item.title ?? item.label ?? ''}"
       ${raw(state)}
       ${item.disabled ? raw('disabled') : ''}

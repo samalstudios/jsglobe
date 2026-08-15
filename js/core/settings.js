@@ -15,6 +15,7 @@ export const defaults = {
   'home.labels': true,
   'home.dock': true,
   'dock.position': 'left',
+  'dock.scope': 'search',
   'dock.autoHide': true,
   'dock.mode': 'auto',
   'dock.recents': true,

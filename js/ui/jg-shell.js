@@ -109,6 +109,7 @@ class JGShell extends JGElement {
   static styles = [base, sheet];
 
   #route = null;
+  #onSearch = true;
 
   connectedCallback() {
     super.connectedCallback();
@@ -117,6 +118,13 @@ class JGShell extends JGElement {
     this.keep(bus.on('home:toggle-widgets', () => this.$('jg-home').toggleToday()));
     this.keep(bus.on('windows:change', (detail) => this.#syncRoute(detail)));
     this.keep(bus.on('settings:change', () => this.#applyChrome()));
+    this.keep(
+      bus.on('home:page', ({ search }) => {
+        if (this.#onSearch === search) return;
+        this.#onSearch = search;
+        this.#applyChrome();
+      }),
+    );
     this.keep(
       bus.on('dock:peek', ({ visible }) => {
         const surface = this.$('.surface');
@@ -201,12 +209,14 @@ class JGShell extends JGElement {
   }
 
   #applyChrome() {
+    const scope = settings.get('dock.scope');
+    const wanted = settings.get('home.dock') && (scope !== 'search' || this.#onSearch);
     const dock = this.$('jg-dock');
-    if (dock) dock.hidden = !settings.get('home.dock');
+    if (dock) dock.hidden = !wanted;
     const surface = this.$('.surface');
     const position = settings.get('dock.position');
     if (surface) {
-      surface.dataset.dock = settings.get('home.dock') ? position : 'hidden';
+      surface.dataset.dock = wanted ? position : 'hidden';
       surface.dataset.autohide = String(Boolean(settings.get('dock.autoHide')));
     }
   }

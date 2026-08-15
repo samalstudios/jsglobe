@@ -412,6 +412,16 @@ class SettingsApp extends JGApp {
         }}
         ${{
           raw: this.#row(
+            'Dock appears',
+            'Keep the dock to the search page or show it everywhere.',
+            html`<jg-select data-setting="dock.scope" value="${settings.get('dock.scope')}" size="sm" style="width:170px">
+              <option value="search">Search page only</option>
+              <option value="always">Everywhere</option>
+            </jg-select>`,
+          ),
+        }}
+        ${{
+          raw: this.#row(
             'Auto-hide dock',
             'Slide it away until the pointer reaches the edge.',
             html`<jg-switch data-setting="dock.autoHide" ${settings.get('dock.autoHide') ? 'checked' : ''}></jg-switch>`,
