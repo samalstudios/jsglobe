@@ -30,9 +30,9 @@ export const analytics = {
     return navigator.doNotTrack === '1' || window.doNotTrack === '1' || navigator.msDoNotTrack === '1';
   },
 
-  gtag(...args) {
+  gtag() {
     window.dataLayer = window.dataLayer ?? [];
-    window.dataLayer.push(args);
+    window.dataLayer.push(arguments);
   },
 
   start() {
@@ -55,13 +55,12 @@ export const analytics = {
     document.head.append(script);
 
     analytics.gtag('js', new Date());
-    analytics.gtag('config', MEASUREMENT_ID, {
-      send_page_view: false,
-      anonymize_ip: true,
-      transport_type: 'beacon',
-    });
+    analytics.gtag('config', MEASUREMENT_ID, { send_page_view: false });
 
     bus.on('route:change', () => analytics.page());
+    bus.on('app:open', ({ appId, name, category }) =>
+      analytics.event('app_open', { app_id: appId, app_name: name, app_category: category }),
+    );
     analytics.page();
   },
 

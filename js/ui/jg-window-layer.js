@@ -70,6 +70,7 @@ class JGWindowLayer extends JGElement {
     }
 
     usage.record(appId);
+    bus.emit('app:open', { appId, name: meta.name, category: meta.category });
     if (settings.get('behavior.singleWindow')) this.closeAll({ silent: true });
 
     const win = document.createElement('jg-window');
