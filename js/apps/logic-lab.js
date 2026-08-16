@@ -60,6 +60,7 @@ const sheet = css`
   .board { position: relative; flex: 1; min-width: 0; background: var(--muted); }
   canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; }
   canvas[data-tool="select"] { cursor: default; }
+  canvas[data-pin="true"] { cursor: crosshair; }
   .hint-bar {
     position: absolute;
     left: 12px;
@@ -220,6 +221,9 @@ class LogicLab extends JGApp {
   #tool = 'select';
   #selected = null;
   #wireFrom = null;
+  #wireStart = null;
+  #hoverPin = null;
+  #paint = null;
   #drag = null;
   #hover = null;
   #logic = createLogic();
@@ -334,7 +338,7 @@ class LogicLab extends JGApp {
     const canvas = this.$('#view');
     this.on(canvas, 'pointerdown', (event) => this.#down(event));
     this.on(canvas, 'pointermove', (event) => this.#move(event));
-    this.on(canvas, 'pointerup', () => this.#up());
+    this.on(canvas, 'pointerup', (event) => this.#up(event));
 
     this.hotkeys((event) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'z') {
@@ -343,6 +347,12 @@ class LogicLab extends JGApp {
         return;
       }
       if (event.key === 'Escape') {
+        if (this.#wireFrom) {
+          event.preventDefault();
+          this.#wireFrom = null;
+          this.#draw();
+          return;
+        }
         if (this.#tool === 'select') return;
         event.preventDefault();
         this.#setTool('select');
@@ -393,9 +403,9 @@ class LogicLab extends JGApp {
       name.textContent = tool === 'select' ? 'Select' : tool === 'wire' ? 'Wire' : KINDS[tool]?.label ?? tool;
       hint.textContent =
         tool === 'select'
-          ? 'Drag a part to move it, click a switch to flip it, Delete removes.'
+          ? 'Drag pin to pin to wire, drag a part to move it, R rotates, F mirrors.'
           : tool === 'wire'
-            ? 'Click an output pin, then an input pin. Esc goes back to Select.'
+            ? 'Drag between two pins, or click one then the other. Esc goes back to Select.'
             : 'Click to drop one. Esc goes back to Select.';
     }
     this.#draw();
@@ -468,7 +478,8 @@ class LogicLab extends JGApp {
 
   #footprint(part) {
     const meta = KINDS[part.kind];
-    const height = GATES[part.kind]?.wide ? Math.max(meta.height, this.#inputCount(part) + 1) : meta.height;
+    const rows = Math.max(this.#inputCount(part), meta.outputs);
+    const height = Math.max(meta.height, rows + 1);
     const turned = (part.turn ?? 0) % 180 !== 0;
     return {
       width: turned ? height : meta.width,
@@ -498,7 +509,7 @@ class LogicLab extends JGApp {
 
   #localPins(part) {
     const body = this.#footprint(part).body;
-    const spread = (count, index) => Math.round(((body.height * (index + 1)) / (count + 1)) * 2) / 2;
+    const spread = (count, index) => Math.round(((body.height - count + 1) / 2 + index) * 2) / 2;
     const inputs = Array.from({ length: this.#inputCount(part) }, (item, index) => ({
       pin: `in${index}`,
       local: { x: 0, y: spread(this.#inputCount(part), index) },
@@ -532,13 +543,27 @@ class LogicLab extends JGApp {
     context.restore();
   }
 
-  #pinAt(point) {
+  #pinAt(point, reach = 0.85) {
+    let best = null;
     for (const part of this.#parts) {
       for (const pin of this.#pins(part)) {
-        if (Math.hypot(point[0] - pin.x, point[1] - pin.y) < 0.6) return { part, ...pin };
+        const away = Math.hypot(point[0] - pin.x, point[1] - pin.y);
+        if (away < reach && (!best || away < best.away)) best = { part, away, ...pin };
       }
     }
-    return null;
+    return best;
+  }
+
+  #connect(a, b) {
+    if (!a || !b || a.part.id === b.part.id) return false;
+    const from = a.pin.startsWith('out') ? a : b;
+    const to = a.pin.startsWith('out') ? b : a;
+    if (!from.pin.startsWith('out') || !to.pin.startsWith('in')) return false;
+    this.#snapshot();
+    this.#links = this.#links.filter((link) => link.to !== `${to.part.id}:${to.pin}`);
+    this.#links.push({ from: `${from.part.id}:${from.pin}`, to: `${to.part.id}:${to.pin}` });
+    this.#rebuild();
+    return true;
   }
 
   #partAt(point) {
@@ -558,25 +583,27 @@ class LogicLab extends JGApp {
     const point = [Math.round(raw[0]), Math.round(raw[1])];
     this.$('#view').setPointerCapture(event.pointerId);
 
-    if (this.#tool === 'wire') {
+    if (this.#tool === 'select' || this.#tool === 'wire') {
       const pin = this.#pinAt(raw);
-      if (!pin) return;
-      if (!this.#wireFrom) {
-        this.#wireFrom = pin;
-      } else {
-        const from = this.#wireFrom.pin.startsWith('out') ? this.#wireFrom : pin;
-        const to = this.#wireFrom.pin.startsWith('out') ? pin : this.#wireFrom;
-        if (from.pin.startsWith('out') && to.pin.startsWith('in')) {
-          this.#snapshot();
-          this.#links = this.#links.filter((link) => link.to !== `${to.part.id}:${to.pin}`);
-          this.#links.push({ from: `${from.part.id}:${from.pin}`, to: `${to.part.id}:${to.pin}` });
-          this.#rebuild();
+      if (pin) {
+        if (this.#wireFrom) {
+          this.#connect(this.#wireFrom, pin);
+          this.#wireFrom = null;
+        } else {
+          this.#wireFrom = pin;
+          this.#wireStart = raw;
         }
-        this.#wireFrom = null;
+        this.#draw();
+        return;
       }
-      this.#draw();
-      return;
+      if (this.#wireFrom) {
+        this.#wireFrom = null;
+        this.#draw();
+        if (this.#tool === 'wire') return;
+      }
     }
+
+    if (this.#tool === 'wire') return;
 
     if (this.#tool === 'select') {
       const part = this.#partAt(raw);
@@ -617,21 +644,38 @@ class LogicLab extends JGApp {
 
   #move(event) {
     const raw = this.#point(event);
-    this.#hover = [Math.round(raw[0]), Math.round(raw[1])];
+    this.#hover = this.#wireFrom ? raw : [Math.round(raw[0]), Math.round(raw[1])];
+    this.#hoverPin = this.#drag ? null : this.#pinAt(raw);
+    this.$('#view').dataset.pin = String(Boolean(this.#hoverPin));
     if (this.#drag) {
       const { part, from, origin } = this.#drag;
-      part.x = origin[0] + (this.#hover[0] - from[0]);
-      part.y = origin[1] + (this.#hover[1] - from[1]);
+      const at = [Math.round(raw[0]), Math.round(raw[1])];
+      part.x = origin[0] + (at[0] - from[0]);
+      part.y = origin[1] + (at[1] - from[1]);
+    }
+  }
+
+  #up(event) {
+    this.#drag = null;
+    if (this.#wireFrom && this.#wireStart) {
+      const raw = this.#point(event);
+      const moved = Math.hypot(raw[0] - this.#wireStart[0], raw[1] - this.#wireStart[1]) > 0.5;
+      if (moved) {
+        this.#connect(this.#wireFrom, this.#pinAt(raw));
+        this.#wireFrom = null;
+      }
     }
     this.#draw();
   }
 
-  #up() {
-    this.#drag = null;
-    this.#draw();
-  }
-
   #loop() {
+    const watch = new MutationObserver(() => {
+      this.#paint = null;
+      this.#grid = null;
+    });
+    watch.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'style', 'class'] });
+    this.track(() => watch.disconnect());
+
     let carry = 0;
     let last = performance.now();
     const tick = (now) => {
@@ -654,8 +698,9 @@ class LogicLab extends JGApp {
   }
 
   #palette() {
+    if (this.#paint) return this.#paint;
     const styles = getComputedStyle(this);
-    return {
+    this.#paint = {
       line: styles.getPropertyValue('--foreground').trim() || '#111',
       soft: styles.getPropertyValue('--muted-foreground').trim() || '#888',
       border: styles.getPropertyValue('--border').trim() || '#ddd',
@@ -665,6 +710,7 @@ class LogicLab extends JGApp {
       mono: styles.getPropertyValue('--font-mono') || 'monospace',
       live: '#4a9d6b',
     };
+    return this.#paint;
   }
 
   #draw() {
@@ -686,6 +732,16 @@ class LogicLab extends JGApp {
     this.#drawWires(context, paint);
 
     this.#parts.forEach((part) => this.#drawPart(context, part, paint));
+
+    if (this.#hoverPin) {
+      context.beginPath();
+      context.arc(this.#hoverPin.x * GRID, this.#hoverPin.y * GRID, 7, 0, Math.PI * 2);
+      context.fillStyle = `color-mix(in srgb, ${paint.ring} 28%, transparent)`;
+      context.fill();
+      context.strokeStyle = paint.ring;
+      context.lineWidth = 1.6;
+      context.stroke();
+    }
 
     if (this.#wireFrom) {
       const from = this.#pinPoint(`${this.#wireFrom.part.id}:${this.#wireFrom.pin}`);
@@ -740,31 +796,52 @@ class LogicLab extends JGApp {
 
   #drawWires(context, paint) {
     const runs = [];
-    const lanes = new Map();
+    const columns = new Map();
 
-    this.#links.forEach((link, index) => {
-      const from = this.#pinPoint(link.from);
-      const to = this.#pinPoint(link.to);
-      if (!from || !to) return;
+    const drawn = this.#links
+      .map((link) => ({ link, from: this.#pinPoint(link.from), to: this.#pinPoint(link.to) }))
+      .filter((entry) => entry.from && entry.to);
 
+    drawn.forEach(({ link, from, to }) => {
+      const column = Math.round((from.x + to.x) / 2);
+      if (!columns.has(column)) columns.set(column, []);
+      const sources = columns.get(column);
+      if (!sources.includes(link.from)) sources.push(link.from);
+    });
+
+    drawn.forEach(({ link, from, to }) => {
       const source = link.from;
-      if (!lanes.has(source)) lanes.set(source, lanes.size);
-      const nudge = ((lanes.get(source) + index) % 3) - 1;
-
       const ax = from.x * GRID;
       const ay = from.y * GRID;
       const bx = to.x * GRID;
       const by = to.y * GRID;
-      const midX = Math.round((ax + bx) / 2) + nudge * 5;
+
+      const column = Math.round((from.x + to.x) / 2);
+      const sources = columns.get(column);
+      const lane = sources.indexOf(source) - (sources.length - 1) / 2;
+      const stub = 12;
+
+      const segments = [];
+      if (bx - ax >= stub * 2) {
+        const midX = column * GRID + lane * 7;
+        segments.push({ x1: ax, y1: ay, x2: midX, y2: ay });
+        segments.push({ x1: midX, y1: ay, x2: midX, y2: by });
+        segments.push({ x1: midX, y1: by, x2: bx, y2: by });
+      } else {
+        const out = ax + stub;
+        const back = bx - stub;
+        const midY = Math.round((ay + by) / 2 / GRID) * GRID + lane * 7;
+        segments.push({ x1: ax, y1: ay, x2: out, y2: ay });
+        segments.push({ x1: out, y1: ay, x2: out, y2: midY });
+        segments.push({ x1: out, y1: midY, x2: back, y2: midY });
+        segments.push({ x1: back, y1: midY, x2: back, y2: by });
+        segments.push({ x1: back, y1: by, x2: bx, y2: by });
+      }
 
       runs.push({
         live: this.#logic.value(Number(source.split(':')[0]), source.split(':')[1]),
         source,
-        segments: [
-          { x1: ax, y1: ay, x2: midX, y2: ay },
-          { x1: midX, y1: ay, x2: midX, y2: by },
-          { x1: midX, y1: by, x2: bx, y2: by },
-        ],
+        segments: segments.filter((part) => part.x1 !== part.x2 || part.y1 !== part.y2),
       });
     });
 
@@ -1090,8 +1167,11 @@ class LogicLab extends JGApp {
       ]);
     };
 
+    const centreX = (left + right) / 2;
     context.save();
-    context.transform(1, 0, -0.09, 1, (midY - top) * 0.09 + 4, 0);
+    context.translate(centreX, midY);
+    context.transform(1, 0, -0.09, 1, 0, 0);
+    context.translate(-centreX, -midY);
     horizontal('a', top);
     horizontal('g', midY);
     horizontal('d', bottom);
