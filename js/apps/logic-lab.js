@@ -1,7 +1,8 @@
 import { JGApp, define, html, css } from '../core/app.js';
 import { createLogic, GATES, SEGMENTS } from '../lib/logic.js';
 import { icon } from '../ui/icons.js';
-import { copyText } from '../core/util.js';
+import { copyText, toast } from '../core/util.js';
+import { createDesigns } from '../lib/designs.js';
 
 const sheet = css`
   .app { padding: 0; gap: 0; container-type: inline-size; overflow: hidden; }
@@ -103,6 +104,42 @@ const sheet = css`
     cursor: pointer;
   }
   .samples button:hover { border-color: var(--ring); }
+  .samples button[data-open="true"] { border-color: var(--ring); background: color-mix(in srgb, var(--ring) 14%, var(--card)); }
+  .saved { display: flex; flex-direction: column; gap: 5px; }
+  .saved .row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .saved .row button:first-child {
+    flex: 1;
+    text-align: left;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--foreground);
+    border-radius: var(--radius-sm);
+    padding: 5px 9px;
+    font: 500 11.5px/1.3 var(--font-sans);
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .saved .row button:first-child:hover { border-color: var(--ring); }
+  .saved .row button[data-open="true"] { border-color: var(--ring); background: color-mix(in srgb, var(--ring) 14%, var(--card)); }
+  .saved .row .drop {
+    flex: none;
+    border: 0;
+    background: transparent;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    padding: 4px;
+    line-height: 0;
+    border-radius: var(--radius-sm);
+  }
+  .saved .row .drop:hover { background: var(--accent); color: var(--foreground); }
+  .save-row { display: flex; gap: 6px; align-items: center; }
+  .save-row jg-input { flex: 1; }
   .truth { width: 100%; border-collapse: collapse; font: 500 11.5px/1 var(--font-mono); }
   .truth th, .truth td { padding: 4px 6px; border-bottom: 1px solid var(--border); text-align: center; }
   .truth th { color: var(--muted-foreground); font-weight: 600; }
@@ -117,6 +154,7 @@ const sheet = css`
 `;
 
 const GRID = 26;
+const MATRIX = 8;
 
 const KINDS = {
   toggle: { label: 'Switch', icon: 'toggle', inputs: 0, outputs: 1, width: 3, height: 2 },
@@ -141,6 +179,7 @@ const KINDS = {
   node: { label: 'Splitter', icon: 'square', inputs: 1, outputs: 2, width: 2, height: 3 },
   led: { label: 'LED', icon: 'sparkles', inputs: 1, outputs: 0, width: 2, height: 2 },
   seven: { label: '7 segment', icon: 'spec', inputs: 4, outputs: 0, width: 5, height: 7 },
+  matrix: { label: '8x8 matrix', icon: 'grid', inputs: 16, outputs: 0, rows: 8, width: 10, height: 10 },
 };
 
 const PIN_NAMES = {
@@ -229,6 +268,9 @@ class LogicLab extends JGApp {
   #panDrag = null;
   #routeDrag = null;
   #selectedLink = null;
+  #designs = null;
+  #openName = null;
+  #press = null;
   #drag = null;
   #hover = null;
   #logic = createLogic();
@@ -239,8 +281,27 @@ class LogicLab extends JGApp {
   #running = true;
 
   connectedCallback() {
-    this.#load(this.store.read() ?? 'halfAdder');
+    this.#designs = createDesigns(this.store, 'logic-lab');
+    const open = this.#designs.open();
+    const saved = open ? this.#designs.get(open) : null;
+    if (saved) {
+      this.#restore(saved);
+      this.#openName = open;
+    } else {
+      this.#load(SAMPLES[open] ? open : 'halfAdder');
+    }
     super.connectedCallback();
+  }
+
+  #restore(design) {
+    this.#parts = (design.parts ?? []).filter((part) => KINDS[part.kind]).map((part) => ({ ...part }));
+    this.#seq = this.#parts.reduce((top, part) => Math.max(top, Number(part.id) || 0), 0) + 1;
+    const alive = new Set(this.#parts.map((part) => String(part.id)));
+    this.#links = (design.links ?? [])
+      .filter((link) => alive.has(String(link.from).split(':')[0]) && alive.has(String(link.to).split(':')[0]))
+      .map((link) => ({ from: link.from, to: link.to, ...(link.bend != null ? { bend: link.bend } : {}) }));
+    this.#clearView();
+    this.#rebuild();
   }
 
   #load(name) {
@@ -258,19 +319,121 @@ class LogicLab extends JGApp {
       from: `${this.#parts[from].id}:${fromPin}`,
       to: `${this.#parts[to].id}:${toPin}`,
     }));
+    this.#openName = null;
+    this.#clearView();
+    this.#rebuild();
+  }
+
+  #clearView() {
     this.#selected = null;
     this.#selectedLink = null;
     this.#wireFrom = null;
     this.#pan = { x: 0, y: 0 };
     this.#zoom = 1;
-    this.#rebuild();
+  }
+
+  #design() {
+    return {
+      parts: this.#parts.map((part) => ({
+        id: part.id,
+        kind: part.kind,
+        x: part.x,
+        y: part.y,
+        on: part.on ?? false,
+        value: part.value ?? 0,
+        momentary: part.momentary,
+        inputs: part.inputs,
+        inverted: part.inverted,
+        turn: part.turn,
+        flip: part.flip,
+      })),
+      links: this.#links.map((link) => ({ from: link.from, to: link.to, bend: link.bend })),
+    };
+  }
+
+  #apply(design) {
+    if (!Array.isArray(design?.parts)) throw new Error('That design has no parts.');
+    this.#snapshot();
+    this.#restore(design);
+    this.#inspector();
+    this.#fit();
+    this.#draw();
+  }
+
+  #savedList() {
+    const target = this.$('#saved');
+    if (!target) return;
+    const rows = this.#designs.list();
+    if (!rows.length) {
+      target.innerHTML = html`<span class="hint">Nothing saved yet. Name a circuit above and save it.</span>`;
+      return;
+    }
+    target.innerHTML = rows
+      .map(
+        (row) => html`<div class="row">
+          <button data-load="${row.name}" data-open="${String(row.name === this.#openName)}" title="${row.name}">${row.name}</button>
+          <button class="drop" data-drop="${row.name}" title="Delete ${row.name}">${icon('eraser', 14)}</button>
+        </div>`,
+      )
+      .join('');
+    target.querySelectorAll('[data-load]').forEach((node) =>
+      node.addEventListener('click', () => {
+        const design = this.#designs.get(node.dataset.load);
+        if (!design) return;
+        this.#apply(design);
+        this.#openName = node.dataset.load;
+        this.#designs.setOpen(this.#openName);
+        this.#nameField();
+        this.#savedList();
+      }),
+    );
+    target.querySelectorAll('[data-drop]').forEach((node) =>
+      node.addEventListener('click', () => {
+        this.#designs.remove(node.dataset.drop);
+        if (this.#openName === node.dataset.drop) this.#openName = null;
+        this.#savedList();
+      }),
+    );
+  }
+
+  #nameField() {
+    const field = this.$('#save-name');
+    if (field) field.value = this.#openName ?? '';
+  }
+
+  #saveNamed() {
+    const field = this.$('#save-name');
+    const name = (field?.value ?? '').trim();
+    if (!name) {
+      field?.focus();
+      return;
+    }
+    this.#openName = this.#designs.save(name, this.#design());
+    this.#savedList();
+  }
+
+  #exportFile() {
+    this.#designs.toFile(this.#openName ?? 'logic-circuit', this.#design());
+  }
+
+  async #importFile() {
+    try {
+      const picked = await this.#designs.fromFile();
+      if (!picked) return;
+      this.#apply(picked.design);
+      this.#openName = picked.name;
+      this.#nameField();
+      this.#savedList();
+    } catch (error) {
+      toast(error.message, 'danger');
+    }
   }
 
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
       <div class="stack tight">
         <div class="label">Logic Lab</div>
-        <div class="hint">Gates, flip-flops, counters and a seven segment display.</div>
+        <div class="hint">Gates, flip-flops, counters, decoders and LED displays.</div>
       </div>
     </div>`);
   }
@@ -289,6 +452,13 @@ class LogicLab extends JGApp {
           <div class="samples">
             ${Object.entries(SAMPLES).map(([key, sample]) => html`<button data-sample="${key}">${sample.name}</button>`)}
           </div>
+          <div class="sep"></div>
+          <div class="label">Saved</div>
+          <div class="save-row">
+            <jg-input id="save-name" size="sm" placeholder="Name this circuit"></jg-input>
+            <jg-button size="sm" variant="outline" id="save">Save</jg-button>
+          </div>
+          <div class="saved" id="saved"></div>
           <div class="sep"></div>
           <div id="inspector"></div>
           <div class="sep"></div>
@@ -310,6 +480,8 @@ class LogicLab extends JGApp {
       { id: 'flip', label: 'Flip', icon: 'flip', iconOnly: true, title: 'Mirror left to right (F)', action: () => this.#mirror() },
       { id: 'delete', label: 'Delete', icon: 'eraser', iconOnly: true, title: 'Delete the selection', action: () => this.#remove() },
       { spacer: true },
+      { id: 'import', label: 'Open file', icon: 'upload', iconOnly: true, title: 'Open a circuit from a file', action: () => this.#importFile() },
+      { id: 'export', label: 'Save file', icon: 'download', iconOnly: true, title: 'Save this circuit to a file', action: () => this.#exportFile() },
       { id: 'copy', label: 'Copy netlist', icon: 'copy', action: () => copyText(this.#netlist()) },
     ];
 
@@ -334,17 +506,27 @@ class LogicLab extends JGApp {
       <div class="group">Wiring</div>
       ${['node'].map((kind) => this.#toolButton(kind))}
       <div class="group">Output</div>
-      ${['led', 'seven'].map((kind) => this.#toolButton(kind))}
+      ${['led', 'seven', 'matrix'].map((kind) => this.#toolButton(kind))}
     `;
 
     this.bind('.tool', 'click', (event) => this.#setTool(event.currentTarget.dataset.tool));
     this.bind('[data-sample]', 'click', (event) => {
       const key = event.currentTarget.dataset.sample;
-      this.store.write(key);
       this.#load(key);
+      this.#designs.setOpen(null);
+      this.#nameField();
+      this.#savedList();
       this.#inspector();
       this.#draw();
     });
+    this.bind('#save', 'click', () => this.#saveNamed());
+    this.on(this.$('#save-name'), 'keydown', (event) => {
+      if (event.key !== 'Enter') return;
+      event.preventDefault();
+      this.#saveNamed();
+    });
+    this.#nameField();
+    this.#savedList();
 
     const canvas = this.$('#view');
     this.on(canvas, 'pointerdown', (event) => this.#down(event));
@@ -531,7 +713,7 @@ class LogicLab extends JGApp {
 
   #footprint(part) {
     const meta = KINDS[part.kind];
-    const rows = Math.max(this.#inputCount(part), meta.outputs);
+    const rows = meta.rows ?? Math.max(this.#inputCount(part), meta.outputs);
     const height = Math.max(meta.height, rows + 1);
     const turned = (part.turn ?? 0) % 180 !== 0;
     return {
@@ -563,21 +745,50 @@ class LogicLab extends JGApp {
   #localPins(part) {
     const body = this.#footprint(part).body;
     const spread = (count, index) => Math.round(((body.height - count + 1) / 2 + index) * 2) / 2;
+
+    if (part.kind === 'matrix') {
+      const across = (index) => Math.round(((body.width - MATRIX + 1) / 2 + index) * 2) / 2;
+      return [
+        ...Array.from({ length: MATRIX }, (item, index) => ({
+          pin: `in${index}`,
+          face: [-1, 0],
+          local: { x: 0, y: spread(MATRIX, index) },
+        })),
+        ...Array.from({ length: MATRIX }, (item, index) => ({
+          pin: `in${MATRIX + index}`,
+          face: [0, 1],
+          local: { x: across(index), y: body.height },
+        })),
+      ];
+    }
+
     const inputs = Array.from({ length: this.#inputCount(part) }, (item, index) => ({
       pin: `in${index}`,
+      face: [-1, 0],
       local: { x: 0, y: spread(this.#inputCount(part), index) },
     }));
     const outputs = Array.from({ length: KINDS[part.kind].outputs }, (item, index) => ({
       pin: `out${index}`,
+      face: [1, 0],
       local: { x: body.width, y: spread(KINDS[part.kind].outputs, index) },
     }));
     return [...inputs, ...outputs];
   }
 
+  #face(part, direction) {
+    const turn = ((part.turn ?? 0) % 360 + 360) % 360;
+    let [dx, dy] = direction;
+    if (part.flip) dx = -dx;
+    if (turn === 90) return [-dy, dx];
+    if (turn === 180) return [-dx, -dy];
+    if (turn === 270) return [dy, -dx];
+    return [dx, dy];
+  }
+
   #pins(part) {
     return this.#localPins(part).map((pin) => {
       const spot = this.#place(part, pin.local);
-      return { pin: pin.pin, x: part.x + spot.x, y: part.y + spot.y };
+      return { pin: pin.pin, x: part.x + spot.x, y: part.y + spot.y, face: this.#face(part, pin.face) };
     });
   }
 
@@ -707,15 +918,12 @@ class LogicLab extends JGApp {
       if (part) {
         this.#selected = part.id;
         this.#selectedLink = null;
-        const size = this.#footprint(part);
-        const centre = [part.x + size.width / 2, part.y + size.height / 2];
-        if (part.kind === 'toggle' && Math.hypot(raw[0] - centre[0], raw[1] - centre[1]) < 1.4) {
-          this.#snapshot();
-          part.on = !part.on;
+        this.#snapshot();
+        this.#drag = { part, from: point, origin: [part.x, part.y] };
+        if (part.kind === 'toggle' && part.momentary) {
+          this.#press = part;
+          part.on = true;
           this.#rebuild();
-        } else {
-          this.#snapshot();
-          this.#drag = { part, from: point, origin: [part.x, part.y] };
         }
         this.#inspector();
         this.#draw();
@@ -726,7 +934,7 @@ class LogicLab extends JGApp {
       if (wire) {
         this.#selected = null;
         this.#selectedLink = wire.run.link;
-        if (wire.index === wire.run.trunk) {
+        if (wire.run.trunk >= 0 && wire.index === wire.run.trunk) {
           this.#snapshot();
           this.#routeDrag = { link: wire.run.link, axis: wire.run.axis };
         }
@@ -790,6 +998,17 @@ class LogicLab extends JGApp {
   }
 
   #up(event) {
+    const drag = this.#drag;
+    if (this.#press) {
+      this.#press.on = false;
+      this.#press = null;
+      this.#rebuild();
+      this.#inspector();
+    } else if (drag?.part.kind === 'toggle' && drag.part.x === drag.origin[0] && drag.part.y === drag.origin[1]) {
+      drag.part.on = !drag.part.on;
+      this.#rebuild();
+      this.#inspector();
+    }
     this.#drag = null;
     this.#panDrag = null;
     this.#routeDrag = null;
@@ -959,26 +1178,36 @@ class LogicLab extends JGApp {
       const lane = sources.indexOf(source) - (sources.length - 1) / 2;
       const stub = 12;
 
-      const segments = [];
-      let trunk = 1;
+      const outFace = from.face ?? [1, 0];
+      const inFace = to.face ?? [-1, 0];
+      const p1 = [ax + outFace[0] * stub, ay + outFace[1] * stub];
+      const p2 = [bx + inFace[0] * stub, by + inFace[1] * stub];
+      const flatOut = outFace[1] === 0;
+      const flatIn = inFace[1] === 0;
+
+      const path = [[ax, ay], p1];
+      let trunk = -1;
       let axis = 'x';
-      if (bx - ax >= stub * 2) {
+
+      if (flatOut && flatIn && (p2[0] - p1[0]) * outFace[0] >= 0) {
         const midX = link.bend != null ? link.bend * GRID : column * GRID + lane * 7;
-        segments.push({ x1: ax, y1: ay, x2: midX, y2: ay });
-        segments.push({ x1: midX, y1: ay, x2: midX, y2: by });
-        segments.push({ x1: midX, y1: by, x2: bx, y2: by });
+        path.push([midX, p1[1]], [midX, p2[1]]);
+        trunk = 2;
+        axis = 'x';
+      } else if (flatOut !== flatIn) {
+        path.push(flatOut ? [p2[0], p1[1]] : [p1[0], p2[1]]);
       } else {
-        const out = ax + stub;
-        const back = bx - stub;
-        const midY = link.bend != null ? link.bend * GRID : Math.round((ay + by) / 2 / GRID) * GRID + lane * 7;
-        segments.push({ x1: ax, y1: ay, x2: out, y2: ay });
-        segments.push({ x1: out, y1: ay, x2: out, y2: midY });
-        segments.push({ x1: out, y1: midY, x2: back, y2: midY });
-        segments.push({ x1: back, y1: midY, x2: back, y2: by });
-        segments.push({ x1: back, y1: by, x2: bx, y2: by });
+        const midY = link.bend != null ? link.bend * GRID : Math.round((p1[1] + p2[1]) / 2 / GRID) * GRID + lane * 7;
+        path.push([p1[0], midY], [p2[0], midY]);
         trunk = 2;
         axis = 'y';
       }
+
+      path.push(p2, [bx, by]);
+
+      const segments = path
+        .slice(1)
+        .map((point, index) => ({ x1: path[index][0], y1: path[index][1], x2: point[0], y2: point[1] }));
 
       runs.push({
         link,
@@ -1148,6 +1377,17 @@ class LogicLab extends JGApp {
       context.fillStyle = on ? '#e0483d' : paint.card;
       context.fill();
       context.stroke();
+    } else if (part.kind === 'toggle' && part.momentary) {
+      context.beginPath();
+      context.roundRect(x + 6, y + 8, width - 12, height - 16, 6);
+      context.fillStyle = paint.card;
+      context.fill();
+      context.stroke();
+      context.beginPath();
+      context.arc(x + width / 2, y + height / 2, part.on ? 8 : 9.5, 0, Math.PI * 2);
+      context.fillStyle = part.on ? paint.live : paint.card;
+      context.fill();
+      context.stroke();
     } else if (part.kind === 'toggle') {
       context.beginPath();
       context.roundRect(x + 6, y + 8, width - 12, height - 16, 12);
@@ -1159,6 +1399,8 @@ class LogicLab extends JGApp {
       context.fillStyle = paint.card;
       context.fill();
       context.stroke();
+    } else if (part.kind === 'matrix') {
+      this.#drawMatrix(context, part, x, y, width, height, paint);
     } else if (part.kind === 'seven') {
       this.#drawSeven(context, part, x, y, width, height, paint);
     } else if (GATES[part.kind]) {
@@ -1284,6 +1526,33 @@ class LogicLab extends JGApp {
     this.#upright(context, part, x + width / 2, bottom + 11, () => context.fillText(GATES[kind].label, x + width / 2, bottom + 11));
   }
 
+  #drawMatrix(context, part, x, y, width, height, paint) {
+    context.fillStyle = '#15181d';
+    context.beginPath();
+    context.roundRect(x + 4, y + 5, width - 8, height - 10, 7);
+    context.fill();
+    context.strokeStyle = part.id === this.#selected ? paint.ring : '#2a2f38';
+    context.stroke();
+
+    const pins = this.#localPins(part);
+    const inner = Math.min(width - 24, height - 26);
+    const left = x + (width - inner) / 2;
+    const top = y + (height - inner) / 2;
+    const step = inner / (MATRIX - 1);
+    const dot = Math.min(step * 0.34, 6);
+
+    for (let row = 0; row < MATRIX; row += 1) {
+      const hot = this.#logic.value(part.id, pins[row].pin);
+      for (let column = 0; column < MATRIX; column += 1) {
+        const lit = hot && this.#logic.value(part.id, pins[MATRIX + column].pin);
+        context.beginPath();
+        context.arc(left + column * step, top + row * step, dot, 0, Math.PI * 2);
+        context.fillStyle = lit ? '#ff5a4d' : '#23272f';
+        context.fill();
+      }
+    }
+  }
+
   #drawSeven(context, part, x, y, width, height, paint) {
     const bits = [0, 1, 2, 3].reduce((sum, index) => sum + (this.#logic.value(part.id, `in${index}`) ? 1 << index : 0), 0);
     const lit = SEGMENTS[bits] ?? '';
@@ -1403,7 +1672,11 @@ class LogicLab extends JGApp {
         ? html`<jg-field label="Rate"><jg-input id="rate" size="sm" type="number" value="${part.value}" min="0.2" max="30" step="0.1"></jg-input></jg-field>`
         : ''}
       ${part.kind === 'toggle'
-        ? html`<div class="row"><jg-switch id="on" ${part.on ? 'checked' : ''}></jg-switch><span class="hint">Closed</span></div>`
+        ? html`<div class="row"><jg-switch id="on" ${part.on ? 'checked' : ''}></jg-switch><span class="hint">Closed</span></div>
+            <label class="row tight" style="gap:6px">
+              <input type="checkbox" id="momentary" ${part.momentary ? 'checked' : ''} />
+              <span class="hint">Push button, on only while held</span>
+            </label>`
         : ''}
       <jg-button size="sm" variant="outline" id="drop">Remove part</jg-button>
     `;
@@ -1445,6 +1718,17 @@ class LogicLab extends JGApp {
       this.on(on, 'change', (event) => {
         part.on = event.detail.checked;
         this.#rebuild();
+      });
+    }
+    const momentary = this.$('#momentary');
+    if (momentary) {
+      this.on(momentary, 'change', () => {
+        this.#snapshot();
+        part.momentary = momentary.checked;
+        if (part.momentary) part.on = false;
+        this.#rebuild();
+        this.#inspector();
+        this.#draw();
       });
     }
     this.on(this.$('#drop'), 'click', () => this.#remove());
