@@ -291,6 +291,8 @@ class LogicLab extends JGApp {
       { id: 'reset', label: 'Reset', icon: 'repeat', action: () => this.#logic.reset() },
       { separator: true },
       { id: 'undo', label: 'Undo', icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#undo() },
+      { id: 'rotate', label: 'Rotate', icon: 'rotate', iconOnly: true, title: 'Rotate 90 degrees (R)', action: () => this.#turn(90) },
+      { id: 'flip', label: 'Flip', icon: 'flip', iconOnly: true, title: 'Mirror left to right (F)', action: () => this.#mirror() },
       { id: 'delete', label: 'Delete', icon: 'eraser', iconOnly: true, title: 'Delete the selection', action: () => this.#remove() },
       { spacer: true },
       { id: 'copy', label: 'Copy netlist', icon: 'copy', action: () => copyText(this.#netlist()) },
@@ -349,6 +351,16 @@ class LogicLab extends JGApp {
       if (event.key === 'Backspace' || event.key === 'Delete') {
         event.preventDefault();
         this.#remove();
+        return;
+      }
+      if (event.key.toLowerCase() === 'r' && !event.metaKey && !event.ctrlKey) {
+        event.preventDefault();
+        this.#turn(event.shiftKey ? -90 : 90);
+        return;
+      }
+      if (event.key.toLowerCase() === 'f' && !event.metaKey && !event.ctrlKey) {
+        event.preventDefault();
+        this.#mirror();
       }
     });
 
@@ -411,6 +423,22 @@ class LogicLab extends JGApp {
     this.#draw();
   }
 
+  #turn(degrees) {
+    const part = this.#parts.find((entry) => entry.id === this.#selected);
+    if (!part) return;
+    this.#snapshot();
+    part.turn = (((part.turn ?? 0) + degrees) % 360 + 360) % 360;
+    this.#draw();
+  }
+
+  #mirror() {
+    const part = this.#parts.find((entry) => entry.id === this.#selected);
+    if (!part) return;
+    this.#snapshot();
+    part.flip = !part.flip;
+    this.#draw();
+  }
+
   #remove() {
     if (this.#selected === null) return;
     this.#snapshot();
@@ -438,30 +466,70 @@ class LogicLab extends JGApp {
     );
   }
 
+  #footprint(part) {
+    const meta = KINDS[part.kind];
+    const height = GATES[part.kind]?.wide ? Math.max(meta.height, this.#inputCount(part) + 1) : meta.height;
+    const turned = (part.turn ?? 0) % 180 !== 0;
+    return {
+      width: turned ? height : meta.width,
+      height: turned ? meta.width : height,
+      body: { width: meta.width, height },
+    };
+  }
+
+  #place(part, local) {
+    const turn = ((part.turn ?? 0) % 360 + 360) % 360;
+    const body = this.#footprint(part).body;
+    let { x, y } = local;
+    if (part.flip) x = body.width - x;
+    if (turn === 90) return { x: body.height - y, y: x };
+    if (turn === 180) return { x: body.width - x, y: body.height - y };
+    if (turn === 270) return { x: y, y: body.width - x };
+    return { x, y };
+  }
+
   #inputCount(part) {
     return GATES[part.kind]?.wide ? Math.max(2, Math.min(8, part.inputs ?? KINDS[part.kind].inputs)) : KINDS[part.kind].inputs;
   }
 
   #height(part) {
-    const meta = KINDS[part.kind];
-    return GATES[part.kind]?.wide ? Math.max(meta.height, this.#inputCount(part) + 1) : meta.height;
+    return this.#footprint(part).body.height;
+  }
+
+  #localPins(part) {
+    const body = this.#footprint(part).body;
+    const spread = (count, index) => Math.round(((body.height * (index + 1)) / (count + 1)) * 2) / 2;
+    const inputs = Array.from({ length: this.#inputCount(part) }, (item, index) => ({
+      pin: `in${index}`,
+      local: { x: 0, y: spread(this.#inputCount(part), index) },
+    }));
+    const outputs = Array.from({ length: KINDS[part.kind].outputs }, (item, index) => ({
+      pin: `out${index}`,
+      local: { x: body.width, y: spread(KINDS[part.kind].outputs, index) },
+    }));
+    return [...inputs, ...outputs];
   }
 
   #pins(part) {
-    const meta = KINDS[part.kind];
-    const height = this.#height(part);
-    const spread = (count, index) => part.y + Math.round(((height * (index + 1)) / (count + 1)) * 2) / 2;
-    const inputs = Array.from({ length: this.#inputCount(part) }, (item, index) => ({
-      pin: `in${index}`,
-      x: part.x,
-      y: spread(this.#inputCount(part), index),
-    }));
-    const outputs = Array.from({ length: meta.outputs }, (item, index) => ({
-      pin: `out${index}`,
-      x: part.x + meta.width,
-      y: spread(meta.outputs, index),
-    }));
-    return [...inputs, ...outputs];
+    return this.#localPins(part).map((pin) => {
+      const spot = this.#place(part, pin.local);
+      return { pin: pin.pin, x: part.x + spot.x, y: part.y + spot.y };
+    });
+  }
+
+  #upright(context, part, anchorX, anchorY, draw) {
+    const turn = ((part.turn ?? 0) % 360 + 360) % 360;
+    if (!turn && !part.flip) {
+      draw();
+      return;
+    }
+    context.save();
+    context.translate(anchorX, anchorY);
+    if (part.flip) context.scale(-1, 1);
+    context.rotate((-turn * Math.PI) / 180);
+    context.translate(-anchorX, -anchorY);
+    draw();
+    context.restore();
   }
 
   #pinAt(point) {
@@ -475,8 +543,8 @@ class LogicLab extends JGApp {
 
   #partAt(point) {
     return this.#parts.find((part) => {
-      const meta = KINDS[part.kind];
-      return point[0] >= part.x && point[0] <= part.x + meta.width && point[1] >= part.y && point[1] <= part.y + this.#height(part);
+      const size = this.#footprint(part);
+      return point[0] >= part.x && point[0] <= part.x + size.width && point[1] >= part.y && point[1] <= part.y + size.height;
     });
   }
 
@@ -514,8 +582,8 @@ class LogicLab extends JGApp {
       const part = this.#partAt(raw);
       this.#selected = part?.id ?? null;
       if (part) {
-        const meta = KINDS[part.kind];
-        const centre = [part.x + meta.width / 2, part.y + meta.height / 2];
+        const size = this.#footprint(part);
+        const centre = [part.x + size.width / 2, part.y + size.height / 2];
         if (part.kind === 'toggle' && Math.hypot(raw[0] - centre[0], raw[1] - centre[1]) < 1.4) {
           this.#snapshot();
           part.on = !part.on;
@@ -773,10 +841,11 @@ class LogicLab extends JGApp {
 
   #drawPart(context, part, paint) {
     const meta = KINDS[part.kind];
+    const size = this.#footprint(part);
     const x = part.x * GRID;
     const y = part.y * GRID;
-    const width = meta.width * GRID;
-    const height = this.#height(part) * GRID;
+    const width = size.body.width * GRID;
+    const height = size.body.height * GRID;
     const selected = part.id === this.#selected;
 
     context.save();
@@ -784,16 +853,26 @@ class LogicLab extends JGApp {
     context.strokeStyle = selected ? paint.ring : paint.line;
     context.fillStyle = paint.card;
 
-    this.#pins(part).forEach((pin) => {
+    const turn = ((part.turn ?? 0) % 360 + 360) % 360;
+    context.translate(x, y);
+    if (turn === 90) context.transform(0, 1, -1, 0, size.width * GRID, 0);
+    else if (turn === 180) context.transform(-1, 0, 0, -1, size.width * GRID, size.height * GRID);
+    else if (turn === 270) context.transform(0, -1, 1, 0, 0, size.height * GRID);
+    if (part.flip) context.transform(-1, 0, 0, 1, width, 0);
+    context.translate(-x, -y);
+
+    this.#localPins(part).forEach((pin) => {
       const live = this.#logic.value(part.id, pin.pin);
+      const inbound = pin.pin.startsWith('in');
+      const at = [x + pin.local.x * GRID, y + pin.local.y * GRID];
       context.beginPath();
-      context.moveTo(pin.x * GRID + (pin.pin.startsWith('in') ? 8 : -8), pin.y * GRID);
-      context.lineTo(pin.x * GRID, pin.y * GRID);
+      context.moveTo(at[0] + (inbound ? 8 : -8), at[1]);
+      context.lineTo(at[0], at[1]);
       context.strokeStyle = live ? paint.live : paint.soft;
       context.lineWidth = live ? 2.4 : 1.6;
       context.stroke();
       context.beginPath();
-      context.arc(pin.x * GRID, pin.y * GRID, 3, 0, Math.PI * 2);
+      context.arc(at[0], at[1], 3, 0, Math.PI * 2);
       context.fillStyle = live ? paint.live : paint.soft;
       context.fill();
     });
@@ -847,7 +926,8 @@ class LogicLab extends JGApp {
       context.textAlign = 'center';
       context.textBaseline = 'middle';
       const label = part.kind === 'clock' ? `${part.value} Hz` : meta.label;
-      context.fillText(label, x + width / 2, y + height / 2 - (PIN_NAMES[part.kind] ? 2 : 0));
+      const baseline = y + height / 2 - (PIN_NAMES[part.kind] ? 2 : 0);
+      this.#upright(context, part, x + width / 2, baseline, () => context.fillText(label, x + width / 2, baseline));
     }
 
     this.#drawPinNames(context, part, x, y, width, paint);
@@ -862,23 +942,28 @@ class LogicLab extends JGApp {
     context.font = `600 9.5px ${paint.mono}`;
     context.textBaseline = 'middle';
 
-    this.#pins(part).forEach((pin) => {
+    this.#localPins(part).forEach((pin) => {
       const name = names[pin.pin];
       if (!name) return;
       const inbound = pin.pin.startsWith('in');
-      context.textAlign = inbound ? 'left' : 'right';
-      context.fillText(name, inbound ? x + 10 : x + width - 10, pin.y * GRID);
+      const at = inbound ? x + 10 : x + width - 10;
+      const down = y + pin.local.y * GRID;
+      this.#upright(context, part, at, down, () => {
+        context.textAlign = inbound ? 'left' : 'right';
+        context.fillText(name, at, down);
+      });
     });
 
     if (part.kind === 'dff' || part.kind === 'tff' || part.kind === 'counter') {
-      const clock = this.#pins(part).find((pin) => names[pin.pin] === 'CLK');
+      const clock = this.#localPins(part).find((pin) => names[pin.pin] === 'CLK');
       if (clock) {
+        const down = y + clock.local.y * GRID;
         context.strokeStyle = paint.soft;
         context.lineWidth = 1.4;
         context.beginPath();
-        context.moveTo(x + 5, clock.y * GRID - 4);
-        context.lineTo(x + 9, clock.y * GRID);
-        context.lineTo(x + 5, clock.y * GRID + 4);
+        context.moveTo(x + 5, down - 4);
+        context.lineTo(x + 9, down);
+        context.lineTo(x + 5, down + 4);
         context.stroke();
       }
     }
@@ -949,7 +1034,7 @@ class LogicLab extends JGApp {
     context.font = `500 9px ${paint.mono}`;
     context.textAlign = 'center';
     context.textBaseline = 'alphabetic';
-    context.fillText(GATES[kind].label, x + width / 2, bottom + 11);
+    this.#upright(context, part, x + width / 2, bottom + 11, () => context.fillText(GATES[kind].label, x + width / 2, bottom + 11));
   }
 
   #drawSeven(context, part, x, y, width, height, paint) {
@@ -1020,7 +1105,8 @@ class LogicLab extends JGApp {
     context.font = `600 10px ${paint.mono}`;
     context.textAlign = 'center';
     context.textBaseline = 'alphabetic';
-    context.fillText(bits.toString(16).toUpperCase(), x + width / 2, y + height - 10);
+    this.#upright(context, part, x + width / 2, y + height - 10, () =>
+      context.fillText(bits.toString(16).toUpperCase(), x + width / 2, y + height - 10));
     this.#drawPinNames(context, part, x, y, width, paint);
   }
 
