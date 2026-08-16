@@ -1440,6 +1440,20 @@ export const catalog = [
   },
 
   {
+    id: 'physics-lab',
+    name: 'Physics Lab',
+    tagline: 'Balls, blocks, springs, rods, jacks and motors',
+    category: 'science',
+    glyph: 'v',
+    icon: 'cradle',
+    tint: '#3f7f6d',
+    keywords: ['physics', 'simulation', 'mechanics', 'gravity', 'spring', 'pendulum', 'collision', 'rigid body', 'motor', 'friction', 'sandbox'],
+    tag: 'jg-app-physics-lab',
+    window: { width: 1120, height: 800 },
+    load: () => import('./physics-lab.js'),
+  },
+
+  {
     id: 'logic-lab',
     name: 'Logic Lab',
     tagline: 'Gates, flip-flops, counters, decoders and LED displays',
