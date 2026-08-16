@@ -1,7 +1,8 @@
 import { JGApp, define, html, css } from '../core/app.js';
 import { createCircuit } from '../lib/circuit.js';
 import { settings } from '../core/settings.js';
-import { copyText } from '../core/util.js';
+import { copyText, toast } from '../core/util.js';
+import { createDesigns } from '../lib/designs.js';
 import { icon } from '../ui/icons.js';
 
 const sheet = css`
@@ -151,6 +152,37 @@ const sheet = css`
     cursor: pointer;
   }
   .samples button:hover { border-color: var(--ring); }
+  .saved { display: flex; flex-direction: column; gap: 5px; }
+  .saved .row { display: flex; align-items: center; gap: 6px; }
+  .saved .row button:first-child {
+    flex: 1;
+    text-align: left;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--foreground);
+    border-radius: var(--radius-sm);
+    padding: 5px 9px;
+    font: 500 11.5px/1.3 var(--font-sans);
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .saved .row button:first-child:hover { border-color: var(--ring); }
+  .saved .row button[data-open="true"] { border-color: var(--ring); background: color-mix(in srgb, var(--ring) 14%, var(--card)); }
+  .saved .row .drop {
+    flex: none;
+    border: 0;
+    background: transparent;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    padding: 4px;
+    line-height: 0;
+    border-radius: var(--radius-sm);
+  }
+  .saved .row .drop:hover { background: var(--accent); color: var(--foreground); }
+  .save-row { display: flex; gap: 6px; align-items: center; }
+  .save-row jg-input { flex: 1; }
 
   @container (max-width: 720px) {
     .body { flex-direction: column; }
@@ -343,10 +375,114 @@ class CircuitLab extends JGApp {
   #ticks = 0;
   #interval = 0;
   #speed = 2;
+  #designs = null;
+  #openName = null;
 
   connectedCallback() {
-    this.#load(this.store.read() ?? 'divider');
+    this.#designs = createDesigns(this.store, 'circuit-lab');
+    const open = this.#designs.open();
+    const saved = open ? this.#designs.get(open) : null;
+    if (saved) {
+      this.#restore(saved);
+      this.#openName = open;
+    } else {
+      this.#load(SAMPLES[open] ? open : 'divider');
+    }
     super.connectedCallback();
+  }
+
+  #restore(design) {
+    this.#parts = (design.parts ?? []).filter((part) => KINDS[part.kind]).map((part) => ({ ...part, a: [...part.a], b: [...part.b], c: part.c ? [...part.c] : undefined }));
+    this.#seq = this.#parts.reduce((top, part) => Math.max(top, Number(part.id) || 0), 0) + 1;
+    this.#probe = design.probe ? [...design.probe] : null;
+    this.#trace = [];
+    this.#selected = null;
+    this.#circuit.reset();
+  }
+
+  #design() {
+    return {
+      parts: this.#parts.map((part) => ({ ...part })),
+      probe: this.#probe ? [...this.#probe] : null,
+    };
+  }
+
+  #apply(design) {
+    if (!Array.isArray(design?.parts)) throw new Error('That design has no parts.');
+    this.#snapshot();
+    this.#restore(design);
+    this.#rebuild();
+    this.#inspector();
+    this.#draw();
+  }
+
+  #savedList() {
+    const target = this.$('#saved');
+    if (!target) return;
+    const rows = this.#designs.list();
+    if (!rows.length) {
+      target.innerHTML = html`<span class="hint">Nothing saved yet. Name a circuit above and save it.</span>`;
+      return;
+    }
+    target.innerHTML = rows
+      .map(
+        (row) => html`<div class="row">
+          <button data-load="${row.name}" data-open="${String(row.name === this.#openName)}" title="${row.name}">${row.name}</button>
+          <button class="drop" data-drop="${row.name}" title="Delete ${row.name}">${icon('eraser', 14)}</button>
+        </div>`,
+      )
+      .join('');
+    target.querySelectorAll('[data-load]').forEach((node) =>
+      node.addEventListener('click', () => {
+        const design = this.#designs.get(node.dataset.load);
+        if (!design) return;
+        this.#apply(design);
+        this.#openName = node.dataset.load;
+        this.#designs.setOpen(this.#openName);
+        this.#nameField();
+        this.#savedList();
+      }),
+    );
+    target.querySelectorAll('[data-drop]').forEach((node) =>
+      node.addEventListener('click', () => {
+        this.#designs.remove(node.dataset.drop);
+        if (this.#openName === node.dataset.drop) this.#openName = null;
+        this.#savedList();
+      }),
+    );
+  }
+
+  #nameField() {
+    const field = this.$('#save-name');
+    if (field) field.value = this.#openName ?? '';
+  }
+
+  #saveNamed() {
+    const field = this.$('#save-name');
+    const name = (field?.value ?? '').trim();
+    if (!name) {
+      field?.focus();
+      return;
+    }
+    this.#openName = this.#designs.save(name, this.#design());
+    this.#savedList();
+  }
+
+  #exportFile() {
+    this.#designs.toFile(this.#openName ?? 'circuit', this.#design());
+  }
+
+  async #importFile() {
+    try {
+      const picked = await this.#designs.fromFile();
+      if (!picked) return;
+      this.#apply(picked.design);
+      this.#openName = picked.name;
+      this.#nameField();
+      this.#savedList();
+    } catch (error) {
+      toast(error.message, 'danger');
+    }
   }
 
   #load(sample) {
@@ -394,6 +530,13 @@ class CircuitLab extends JGApp {
             <div class="samples">
               ${Object.entries(SAMPLES).map(([key, sample]) => html`<button data-sample="${key}">${sample.name}</button>`)}
             </div>
+            <div class="sep"></div>
+            <div class="label">Saved</div>
+            <div class="save-row">
+              <jg-input id="save-name" size="sm" placeholder="Name this circuit"></jg-input>
+              <jg-button size="sm" variant="outline" id="save">Save</jg-button>
+            </div>
+            <div class="saved" id="saved"></div>
             <div class="sep"></div>
             <div id="inspector"></div>
           </div>
@@ -449,6 +592,8 @@ class CircuitLab extends JGApp {
       { id: 'redo', label: 'Redo', icon: 'redo', iconOnly: true, title: 'Redo', action: () => this.#redo() },
       { id: 'delete', label: 'Delete', icon: 'eraser', iconOnly: true, title: 'Delete the selected part', action: () => this.#remove() },
       { spacer: true },
+      { id: 'import', label: 'Open file', icon: 'upload', iconOnly: true, title: 'Open a circuit from a file', action: () => this.#importFile() },
+      { id: 'export', label: 'Save file', icon: 'download', iconOnly: true, title: 'Save this circuit to a file', action: () => this.#exportFile() },
       { id: 'copy', label: 'Copy netlist', icon: 'copy', action: () => copyText(this.#netlist()) },
     ];
 
@@ -474,12 +619,23 @@ class CircuitLab extends JGApp {
 
     this.bind('[data-sample]', 'click', (event) => {
       const key = event.currentTarget.dataset.sample;
-      this.store.write(key);
       this.#load(key);
+      this.#openName = null;
+      this.#designs.setOpen(null);
+      this.#nameField();
+      this.#savedList();
       this.#rebuild();
       this.#inspector();
       this.#draw();
     });
+    this.bind('#save', 'click', () => this.#saveNamed());
+    this.on(this.$('#save-name'), 'keydown', (event) => {
+      if (event.key !== 'Enter') return;
+      event.preventDefault();
+      this.#saveNamed();
+    });
+    this.#nameField();
+    this.#savedList();
 
     const canvas = this.$('#view');
     this.on(canvas, 'pointerdown', (event) => this.#down(event));

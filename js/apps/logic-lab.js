@@ -342,6 +342,7 @@ class LogicLab extends JGApp {
         on: part.on ?? false,
         value: part.value ?? 0,
         momentary: part.momentary,
+        side: part.side,
         inputs: part.inputs,
         inverted: part.inverted,
         turn: part.turn,
@@ -745,6 +746,18 @@ class LogicLab extends JGApp {
   #localPins(part) {
     const body = this.#footprint(part).body;
     const spread = (count, index) => Math.round(((body.height - count + 1) / 2 + index) * 2) / 2;
+
+    const count = this.#inputCount(part);
+    if (!KINDS[part.kind].outputs && part.kind !== 'matrix') {
+      const along = (extent, index) => Math.round(((extent - count + 1) / 2 + index) * 2) / 2;
+      const edge = {
+        left: (index) => ({ face: [-1, 0], local: { x: 0, y: along(body.height, index) } }),
+        right: (index) => ({ face: [1, 0], local: { x: body.width, y: along(body.height, index) } }),
+        top: (index) => ({ face: [0, -1], local: { x: along(body.width, index), y: 0 } }),
+        bottom: (index) => ({ face: [0, 1], local: { x: along(body.width, index), y: body.height } }),
+      }[part.side ?? 'left'];
+      if (edge) return Array.from({ length: count }, (item, index) => ({ pin: `in${index}`, ...edge(index) }));
+    }
 
     if (part.kind === 'matrix') {
       const across = (index) => Math.round(((body.width - MATRIX + 1) / 2 + index) * 2) / 2;
@@ -1431,14 +1444,27 @@ class LogicLab extends JGApp {
     context.font = `600 9.5px ${paint.mono}`;
     context.textBaseline = 'middle';
 
+    const height = this.#footprint(part).body.height * GRID;
     this.#localPins(part).forEach((pin) => {
       const name = names[pin.pin];
       if (!name) return;
-      const inbound = pin.pin.startsWith('in');
-      const at = inbound ? x + 10 : x + width - 10;
-      const down = y + pin.local.y * GRID;
+      const face = pin.face ?? (pin.pin.startsWith('in') ? [-1, 0] : [1, 0]);
+      let at = x + pin.local.x * GRID;
+      let down = y + pin.local.y * GRID;
+      let align = 'center';
+      if (face[0] < 0) {
+        at = x + 10;
+        align = 'left';
+      } else if (face[0] > 0) {
+        at = x + width - 10;
+        align = 'right';
+      } else if (face[1] < 0) {
+        down = y + 13;
+      } else {
+        down = y + height - 13;
+      }
       this.#upright(context, part, at, down, () => {
-        context.textAlign = inbound ? 'left' : 'right';
+        context.textAlign = align;
         context.fillText(name, at, down);
       });
     });
@@ -1668,6 +1694,16 @@ class LogicLab extends JGApp {
               </label>`)}
             </div>`
         : ''}
+      ${!KINDS[part.kind].outputs && part.kind !== 'matrix'
+        ? html`<jg-field label="Pins on">
+            <jg-select id="side" size="sm" value="${part.side ?? 'left'}">
+              <option value="left">Left</option>
+              <option value="right">Right</option>
+              <option value="top">Top</option>
+              <option value="bottom">Bottom</option>
+            </jg-select>
+          </jg-field>`
+        : ''}
       ${part.kind === 'clock'
         ? html`<jg-field label="Rate"><jg-input id="rate" size="sm" type="number" value="${part.value}" min="0.2" max="30" step="0.1"></jg-input></jg-field>`
         : ''}
@@ -1720,6 +1756,15 @@ class LogicLab extends JGApp {
         this.#rebuild();
       });
     }
+    const side = this.$('#side');
+    if (side) {
+      this.on(side, 'change', (event) => {
+        this.#snapshot();
+        part.side = event.detail?.value ?? side.value;
+        this.#draw();
+      });
+    }
+
     const momentary = this.$('#momentary');
     if (momentary) {
       this.on(momentary, 'change', () => {
