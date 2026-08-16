@@ -1,10 +1,10 @@
 export const GATES = {
-  and: { label: 'AND', inputs: 2, apply: (bits) => bits.every(Boolean) },
-  or: { label: 'OR', inputs: 2, apply: (bits) => bits.some(Boolean) },
-  nand: { label: 'NAND', inputs: 2, apply: (bits) => !bits.every(Boolean) },
-  nor: { label: 'NOR', inputs: 2, apply: (bits) => !bits.some(Boolean) },
-  xor: { label: 'XOR', inputs: 2, apply: (bits) => bits.filter(Boolean).length % 2 === 1 },
-  xnor: { label: 'XNOR', inputs: 2, apply: (bits) => bits.filter(Boolean).length % 2 === 0 },
+  and: { label: 'AND', inputs: 2, wide: true, apply: (bits) => bits.every(Boolean) },
+  or: { label: 'OR', inputs: 2, wide: true, apply: (bits) => bits.some(Boolean) },
+  nand: { label: 'NAND', inputs: 2, wide: true, apply: (bits) => !bits.every(Boolean) },
+  nor: { label: 'NOR', inputs: 2, wide: true, apply: (bits) => !bits.some(Boolean) },
+  xor: { label: 'XOR', inputs: 2, wide: true, apply: (bits) => bits.filter(Boolean).length % 2 === 1 },
+  xnor: { label: 'XNOR', inputs: 2, wide: true, apply: (bits) => bits.filter(Boolean).length % 2 === 0 },
   not: { label: 'NOT', inputs: 1, apply: (bits) => !bits[0] },
   buffer: { label: 'Buffer', inputs: 1, apply: (bits) => Boolean(bits[0]) },
 };
@@ -85,9 +85,52 @@ export const createLogic = () => {
       let changed = false;
       parts.forEach((part) => {
         if (part.kind === 'clock' || part.kind === 'toggle' || part.kind === 'high' || part.kind === 'low') return;
+
+        if (part.kind === 'node') {
+          const bit = read(part.id, 'in0');
+          part.outputs.forEach((pin, index) => {
+            const key = net(part.id, `out${index}`);
+            if (Boolean(values.get(key)) !== bit) {
+              values.set(key, bit);
+              changed = true;
+            }
+          });
+          return;
+        }
+
+        if (part.kind === 'decoder' || part.kind === 'mux' || part.kind === 'demux' || part.kind === 'encoder') {
+          const put = (index, bit) => {
+            const key = net(part.id, `out${index}`);
+            if (Boolean(values.get(key)) !== bit) {
+              values.set(key, bit);
+              changed = true;
+            }
+          };
+
+          if (part.kind === 'decoder') {
+            const select = (read(part.id, 'in0') ? 1 : 0) + (read(part.id, 'in1') ? 2 : 0);
+            const enable = read(part.id, 'in2');
+            for (let line = 0; line < 4; line += 1) put(line, enable && select === line);
+          } else if (part.kind === 'mux') {
+            const select = (read(part.id, 'in4') ? 1 : 0) + (read(part.id, 'in5') ? 2 : 0);
+            put(0, read(part.id, `in${select}`));
+          } else if (part.kind === 'demux') {
+            const select = (read(part.id, 'in1') ? 1 : 0) + (read(part.id, 'in2') ? 2 : 0);
+            const data = read(part.id, 'in0');
+            for (let line = 0; line < 4; line += 1) put(line, data && select === line);
+          } else {
+            let highest = -1;
+            for (let line = 0; line < 4; line += 1) if (read(part.id, `in${line}`)) highest = line;
+            put(0, highest >= 0 && (highest & 1) === 1);
+            put(1, highest >= 0 && (highest & 2) === 2);
+            put(2, highest >= 0);
+          }
+          return;
+        }
+
         const gate = GATES[part.kind];
         if (!gate) return;
-        const bits = part.inputs.map((pin, index) => read(part.id, `in${index}`));
+        const bits = part.inputs.map((pin, index) => read(part.id, `in${index}`) !== Boolean(part.inverted?.[index]));
         const next = gate.apply(bits);
         const key = net(part.id, 'out0');
         if (Boolean(values.get(key)) !== next) {

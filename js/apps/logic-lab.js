@@ -133,8 +133,24 @@ const KINDS = {
   dff: { label: 'D flip-flop', icon: 'blocks', inputs: 2, outputs: 2, width: 5, height: 4 },
   tff: { label: 'T flip-flop', icon: 'blocks', inputs: 2, outputs: 1, width: 5, height: 4 },
   counter: { label: '4 bit counter', icon: 'binary', inputs: 2, outputs: 4, width: 5, height: 6 },
+  decoder: { label: '2 to 4 decoder', icon: 'blocks', inputs: 3, outputs: 4, width: 6, height: 6 },
+  encoder: { label: '4 to 2 encoder', icon: 'blocks', inputs: 4, outputs: 3, width: 6, height: 6 },
+  mux: { label: '4 to 1 mux', icon: 'transform', inputs: 6, outputs: 1, width: 6, height: 7 },
+  demux: { label: '1 to 4 demux', icon: 'transform', inputs: 3, outputs: 4, width: 6, height: 6 },
+  node: { label: 'Splitter', icon: 'square', inputs: 1, outputs: 2, width: 2, height: 3 },
   led: { label: 'LED', icon: 'sparkles', inputs: 1, outputs: 0, width: 2, height: 2 },
   seven: { label: '7 segment', icon: 'spec', inputs: 4, outputs: 0, width: 5, height: 7 },
+};
+
+const PIN_NAMES = {
+  dff: { in0: 'D', in1: 'CLK', out0: 'Q', out1: 'Q\u0305' },
+  tff: { in0: 'T', in1: 'CLK', out0: 'Q' },
+  counter: { in0: 'CLK', in1: 'RST', out0: 'Q0', out1: 'Q1', out2: 'Q2', out3: 'Q3' },
+  decoder: { in0: 'A0', in1: 'A1', in2: 'EN', out0: 'Y0', out1: 'Y1', out2: 'Y2', out3: 'Y3' },
+  encoder: { in0: 'I0', in1: 'I1', in2: 'I2', in3: 'I3', out0: 'A0', out1: 'A1', out2: 'V' },
+  mux: { in0: 'D0', in1: 'D1', in2: 'D2', in3: 'D3', in4: 'S0', in5: 'S1', out0: 'Y' },
+  demux: { in0: 'D', in1: 'S0', in2: 'S1', out0: 'Y0', out1: 'Y1', out2: 'Y2', out3: 'Y3' },
+  seven: { in0: 'A', in1: 'B', in2: 'C', in3: 'D' },
 };
 
 const SAMPLES = {
@@ -296,6 +312,10 @@ class LogicLab extends JGApp {
       ${['and', 'or', 'not', 'nand', 'nor', 'xor', 'xnor', 'buffer'].map((kind) => this.#toolButton(kind))}
       <div class="group">Memory</div>
       ${['dff', 'tff', 'counter'].map((kind) => this.#toolButton(kind))}
+      <div class="group">Blocks</div>
+      ${['decoder', 'encoder', 'mux', 'demux'].map((kind) => this.#toolButton(kind))}
+      <div class="group">Wiring</div>
+      ${['node'].map((kind) => this.#toolButton(kind))}
       <div class="group">Output</div>
       ${['led', 'seven'].map((kind) => this.#toolButton(kind))}
     `;
@@ -410,20 +430,31 @@ class LogicLab extends JGApp {
         kind: part.kind,
         on: part.on,
         value: part.value,
-        inputs: Array.from({ length: KINDS[part.kind]?.inputs ?? 0 }, (item, index) => index),
+        inverted: part.inverted ?? [],
+        inputs: Array.from({ length: this.#inputCount(part) }, (item, index) => index),
         outputs: Array.from({ length: KINDS[part.kind]?.outputs ?? 0 }, (item, index) => index),
       })),
       this.#links,
     );
   }
 
+  #inputCount(part) {
+    return GATES[part.kind]?.wide ? Math.max(2, Math.min(8, part.inputs ?? KINDS[part.kind].inputs)) : KINDS[part.kind].inputs;
+  }
+
+  #height(part) {
+    const meta = KINDS[part.kind];
+    return GATES[part.kind]?.wide ? Math.max(meta.height, this.#inputCount(part) + 1) : meta.height;
+  }
+
   #pins(part) {
     const meta = KINDS[part.kind];
-    const spread = (count, index) => part.y + Math.round(((meta.height * (index + 1)) / (count + 1)) * 2) / 2;
-    const inputs = Array.from({ length: meta.inputs }, (item, index) => ({
+    const height = this.#height(part);
+    const spread = (count, index) => part.y + Math.round(((height * (index + 1)) / (count + 1)) * 2) / 2;
+    const inputs = Array.from({ length: this.#inputCount(part) }, (item, index) => ({
       pin: `in${index}`,
       x: part.x,
-      y: spread(meta.inputs, index),
+      y: spread(this.#inputCount(part), index),
     }));
     const outputs = Array.from({ length: meta.outputs }, (item, index) => ({
       pin: `out${index}`,
@@ -445,7 +476,7 @@ class LogicLab extends JGApp {
   #partAt(point) {
     return this.#parts.find((part) => {
       const meta = KINDS[part.kind];
-      return point[0] >= part.x && point[0] <= part.x + meta.width && point[1] >= part.y && point[1] <= part.y + meta.height;
+      return point[0] >= part.x && point[0] <= part.x + meta.width && point[1] >= part.y && point[1] <= part.y + this.#height(part);
     });
   }
 
@@ -584,21 +615,7 @@ class LogicLab extends JGApp {
 
     this.#gridFill(context, width, height, paint);
 
-    this.#links.forEach((link) => {
-      const from = this.#pinPoint(link.from);
-      const to = this.#pinPoint(link.to);
-      if (!from || !to) return;
-      const live = this.#logic.value(Number(link.from.split(':')[0]), link.from.split(':')[1]);
-      context.strokeStyle = live ? paint.live : paint.soft;
-      context.lineWidth = live ? 2.4 : 1.6;
-      context.beginPath();
-      context.moveTo(from.x * GRID, from.y * GRID);
-      const midX = ((from.x + to.x) / 2) * GRID;
-      context.lineTo(midX, from.y * GRID);
-      context.lineTo(midX, to.y * GRID);
-      context.lineTo(to.x * GRID, to.y * GRID);
-      context.stroke();
-    });
+    this.#drawWires(context, paint);
 
     this.#parts.forEach((part) => this.#drawPart(context, part, paint));
 
@@ -653,6 +670,100 @@ class LogicLab extends JGApp {
     context.restore();
   }
 
+  #drawWires(context, paint) {
+    const runs = [];
+    const lanes = new Map();
+
+    this.#links.forEach((link, index) => {
+      const from = this.#pinPoint(link.from);
+      const to = this.#pinPoint(link.to);
+      if (!from || !to) return;
+
+      const source = link.from;
+      if (!lanes.has(source)) lanes.set(source, lanes.size);
+      const nudge = ((lanes.get(source) + index) % 3) - 1;
+
+      const ax = from.x * GRID;
+      const ay = from.y * GRID;
+      const bx = to.x * GRID;
+      const by = to.y * GRID;
+      const midX = Math.round((ax + bx) / 2) + nudge * 5;
+
+      runs.push({
+        live: this.#logic.value(Number(source.split(':')[0]), source.split(':')[1]),
+        source,
+        segments: [
+          { x1: ax, y1: ay, x2: midX, y2: ay },
+          { x1: midX, y1: ay, x2: midX, y2: by },
+          { x1: midX, y1: by, x2: bx, y2: by },
+        ],
+      });
+    });
+
+    const horizontals = runs.flatMap((run) => run.segments.filter((part) => part.y1 === part.y2).map((part) => ({ ...part, source: run.source })));
+    const verticals = runs.flatMap((run) => run.segments.filter((part) => part.x1 === part.x2).map((part) => ({ ...part, source: run.source })));
+
+    runs.forEach((run) => {
+      context.strokeStyle = run.live ? paint.live : paint.soft;
+      context.lineWidth = run.live ? 2.4 : 1.7;
+      context.lineCap = 'round';
+      context.lineJoin = 'round';
+
+      run.segments.forEach((part) => {
+        if (part.y1 !== part.y2) {
+          context.beginPath();
+          context.moveTo(part.x1, part.y1);
+          context.lineTo(part.x2, part.y2);
+          context.stroke();
+          return;
+        }
+
+        const left = Math.min(part.x1, part.x2);
+        const right = Math.max(part.x1, part.x2);
+        const hops = verticals
+          .filter((cross) => cross.source !== part.source)
+          .filter((cross) => cross.x1 > left + 6 && cross.x1 < right - 6)
+          .filter((cross) => part.y1 > Math.min(cross.y1, cross.y2) + 2 && part.y1 < Math.max(cross.y1, cross.y2) - 2)
+          .map((cross) => cross.x1)
+          .sort((a, b) => a - b);
+
+        context.beginPath();
+        context.moveTo(part.x1, part.y1);
+        let cursor = left;
+        const forward = part.x2 >= part.x1;
+        (forward ? hops : [...hops].reverse()).forEach((at) => {
+          if (forward) {
+            context.lineTo(at - 5, part.y1);
+            context.arc(at, part.y1, 5, Math.PI, 0, true);
+            cursor = at + 5;
+          } else {
+            context.lineTo(at + 5, part.y1);
+            context.arc(at, part.y1, 5, 0, Math.PI, true);
+            cursor = at - 5;
+          }
+        });
+        void cursor;
+        context.lineTo(part.x2, part.y2);
+        context.stroke();
+      });
+    });
+
+    const fanned = new Map();
+    this.#links.forEach((link) => fanned.set(link.from, (fanned.get(link.from) ?? 0) + 1));
+    fanned.forEach((count, key) => {
+      if (count < 2) return;
+      const point = this.#pinPoint(key);
+      if (!point) return;
+      const live = this.#logic.value(Number(key.split(':')[0]), key.split(':')[1]);
+      context.beginPath();
+      context.arc(point.x * GRID, point.y * GRID, 4, 0, Math.PI * 2);
+      context.fillStyle = live ? paint.live : paint.soft;
+      context.fill();
+    });
+
+    void horizontals;
+  }
+
   #pinPoint(key) {
     const [id, pin] = key.split(':');
     const part = this.#parts.find((entry) => entry.id === Number(id));
@@ -665,7 +776,7 @@ class LogicLab extends JGApp {
     const x = part.x * GRID;
     const y = part.y * GRID;
     const width = meta.width * GRID;
-    const height = meta.height * GRID;
+    const height = this.#height(part) * GRID;
     const selected = part.id === this.#selected;
 
     context.save();
@@ -691,7 +802,20 @@ class LogicLab extends JGApp {
     context.lineWidth = selected ? 2.4 : 1.7;
     context.fillStyle = paint.card;
 
-    if (part.kind === 'led') {
+    if (part.kind === 'node') {
+      const live = this.#logic.value(part.id, 'in0');
+      const side = 11;
+      context.beginPath();
+      context.roundRect(x + width / 2 - side / 2, y + height / 2 - side / 2, side, side, 2);
+      context.fillStyle = live ? paint.live : paint.soft;
+      context.fill();
+      if (part.id === this.#selected) {
+        context.beginPath();
+        context.roundRect(x + width / 2 - side, y + height / 2 - side, side * 2, side * 2, 4);
+        context.strokeStyle = paint.ring;
+        context.stroke();
+      }
+    } else if (part.kind === 'led') {
       const on = this.#logic.value(part.id, 'in0');
       context.beginPath();
       context.arc(x + width / 2, y + height / 2, 13, 0, Math.PI * 2);
@@ -712,7 +836,7 @@ class LogicLab extends JGApp {
     } else if (part.kind === 'seven') {
       this.#drawSeven(context, part, x, y, width, height, paint);
     } else if (GATES[part.kind]) {
-      this.#drawGate(context, part.kind, x, y, width, height, paint);
+      this.#drawGate(context, part.kind, x, y, width, height, paint, part);
     } else {
       context.beginPath();
       context.roundRect(x + 4, y + 6, width - 8, height - 12, 6);
@@ -723,13 +847,44 @@ class LogicLab extends JGApp {
       context.textAlign = 'center';
       context.textBaseline = 'middle';
       const label = part.kind === 'clock' ? `${part.value} Hz` : meta.label;
-      context.fillText(label, x + width / 2, y + height / 2);
+      context.fillText(label, x + width / 2, y + height / 2 - (PIN_NAMES[part.kind] ? 2 : 0));
     }
+
+    this.#drawPinNames(context, part, x, y, width, paint);
 
     context.restore();
   }
 
-  #drawGate(context, kind, x, y, width, height, paint) {
+  #drawPinNames(context, part, x, y, width, paint) {
+    const names = PIN_NAMES[part.kind];
+    if (!names) return;
+    context.fillStyle = paint.soft;
+    context.font = `600 9.5px ${paint.mono}`;
+    context.textBaseline = 'middle';
+
+    this.#pins(part).forEach((pin) => {
+      const name = names[pin.pin];
+      if (!name) return;
+      const inbound = pin.pin.startsWith('in');
+      context.textAlign = inbound ? 'left' : 'right';
+      context.fillText(name, inbound ? x + 10 : x + width - 10, pin.y * GRID);
+    });
+
+    if (part.kind === 'dff' || part.kind === 'tff' || part.kind === 'counter') {
+      const clock = this.#pins(part).find((pin) => names[pin.pin] === 'CLK');
+      if (clock) {
+        context.strokeStyle = paint.soft;
+        context.lineWidth = 1.4;
+        context.beginPath();
+        context.moveTo(x + 5, clock.y * GRID - 4);
+        context.lineTo(x + 9, clock.y * GRID);
+        context.lineTo(x + 5, clock.y * GRID + 4);
+        context.stroke();
+      }
+    }
+  }
+
+  #drawGate(context, kind, x, y, width, height, paint, part) {
     const inverting = ['nand', 'nor', 'xnor', 'not'].includes(kind);
     const curved = ['or', 'nor', 'xor', 'xnor'].includes(kind);
     const pointed = ['not', 'buffer'].includes(kind);
@@ -777,6 +932,19 @@ class LogicLab extends JGApp {
       context.stroke();
     }
 
+    if (part) {
+      this.#pins(part)
+        .filter((pin) => pin.pin.startsWith('in'))
+        .forEach((pin, index) => {
+          if (!part.inverted?.[index]) return;
+          context.beginPath();
+          context.arc(left - 4.5, pin.y * GRID, 4.5, 0, Math.PI * 2);
+          context.fillStyle = paint.card;
+          context.fill();
+          context.stroke();
+        });
+    }
+
     context.fillStyle = paint.soft;
     context.font = `500 9px ${paint.mono}`;
     context.textAlign = 'center';
@@ -787,37 +955,73 @@ class LogicLab extends JGApp {
   #drawSeven(context, part, x, y, width, height, paint) {
     const bits = [0, 1, 2, 3].reduce((sum, index) => sum + (this.#logic.value(part.id, `in${index}`) ? 1 << index : 0), 0);
     const lit = SEGMENTS[bits] ?? '';
-    const left = x + 18;
-    const top = y + 16;
-    const w = width - 46;
-    const h = height - 44;
 
-    context.fillStyle = paint.card;
+    context.fillStyle = '#15181d';
     context.beginPath();
-    context.roundRect(x + 4, y + 6, width - 8, height - 12, 6);
+    context.roundRect(x + 4, y + 6, width - 8, height - 12, 7);
     context.fill();
+    context.strokeStyle = part.id === this.#selected ? paint.ring : '#2a2f38';
     context.stroke();
 
-    const bar = (name, bx, by, bw, bh) => {
-      context.fillStyle = lit.includes(name) ? '#e0483d' : paint.border;
+    const padX = 22;
+    const padY = 22;
+    const left = x + padX;
+    const right = x + width - padX;
+    const top = y + padY;
+    const bottom = y + height - padY - 8;
+    const midY = (top + bottom) / 2;
+    const thick = Math.max(5, (right - left) * 0.16);
+    const gap = 2.4;
+
+    const bar = (name, points) => {
       context.beginPath();
-      context.roundRect(bx, by, bw, bh, 2);
+      points.forEach(([px, py], index) => (index ? context.lineTo(px, py) : context.moveTo(px, py)));
+      context.closePath();
+      context.fillStyle = lit.includes(name) ? '#ff5a4d' : '#23272f';
       context.fill();
     };
 
-    const thick = 6;
-    bar('a', left + thick, top, w - thick * 2, thick);
-    bar('b', left + w - thick, top + thick, thick, h / 2 - thick);
-    bar('c', left + w - thick, top + h / 2 + 2, thick, h / 2 - thick);
-    bar('d', left + thick, top + h, w - thick * 2, thick);
-    bar('e', left, top + h / 2 + 2, thick, h / 2 - thick);
-    bar('f', left, top + thick, thick, h / 2 - thick);
-    bar('g', left + thick, top + h / 2 - thick / 2 + 1, w - thick * 2, thick);
+    const horizontal = (name, cy) => {
+      const half = thick / 2;
+      bar(name, [
+        [left + half + gap, cy - half],
+        [right - half - gap, cy - half],
+        [right - gap, cy],
+        [right - half - gap, cy + half],
+        [left + half + gap, cy + half],
+        [left + gap, cy],
+      ]);
+    };
+
+    const vertical = (name, cx, fromY, toY) => {
+      const half = thick / 2;
+      bar(name, [
+        [cx - half, fromY + half + gap],
+        [cx, fromY + gap],
+        [cx + half, fromY + half + gap],
+        [cx + half, toY - half - gap],
+        [cx, toY - gap],
+        [cx - half, toY - half - gap],
+      ]);
+    };
+
+    context.save();
+    context.transform(1, 0, -0.09, 1, (midY - top) * 0.09 + 4, 0);
+    horizontal('a', top);
+    horizontal('g', midY);
+    horizontal('d', bottom);
+    vertical('f', left, top, midY);
+    vertical('b', right, top, midY);
+    vertical('e', left, midY, bottom);
+    vertical('c', right, midY, bottom);
+    context.restore();
 
     context.fillStyle = paint.soft;
-    context.font = `500 10px ${paint.mono}`;
+    context.font = `600 10px ${paint.mono}`;
     context.textAlign = 'center';
-    context.fillText(bits.toString(16).toUpperCase(), x + width / 2, y + height - 8);
+    context.textBaseline = 'alphabetic';
+    context.fillText(bits.toString(16).toUpperCase(), x + width / 2, y + height - 10);
+    this.#drawPinNames(context, part, x, y, width, paint);
   }
 
   #inspector() {
@@ -828,8 +1032,21 @@ class LogicLab extends JGApp {
       target.innerHTML = html`<div class="hint">Pick a part to change it, or drop a new one from the palette.</div>`;
       return;
     }
+    const gate = GATES[part.kind];
     target.innerHTML = html`
       <div class="label">${KINDS[part.kind]?.label ?? part.kind}</div>
+      ${gate?.wide
+        ? html`<jg-field label="Inputs">
+              <jg-input id="inputs" size="sm" type="number" min="2" max="8" value="${this.#inputCount(part)}"></jg-input>
+            </jg-field>
+            <div class="stack tight">
+              <span class="hint">Invert an input</span>
+              ${Array.from({ length: this.#inputCount(part) }, (item, index) => html`<label class="row tight" style="gap:6px">
+                <input type="checkbox" data-invert="${index}" ${part.inverted?.[index] ? 'checked' : ''} />
+                <span class="hint">input ${String.fromCharCode(65 + index)}</span>
+              </label>`)}
+            </div>`
+        : ''}
       ${part.kind === 'clock'
         ? html`<jg-field label="Rate"><jg-input id="rate" size="sm" type="number" value="${part.value}" min="0.2" max="30" step="0.1"></jg-input></jg-field>`
         : ''}
@@ -838,6 +1055,32 @@ class LogicLab extends JGApp {
         : ''}
       <jg-button size="sm" variant="outline" id="drop">Remove part</jg-button>
     `;
+    const inputs = this.$('#inputs');
+    if (inputs) {
+      this.on(inputs, 'change', () => {
+        this.#snapshot();
+        part.inputs = Math.max(2, Math.min(8, Number(inputs.value) || 2));
+        part.inverted = (part.inverted ?? []).slice(0, part.inputs);
+        this.#links = this.#links.filter((link) => {
+          const [id, pin] = link.to.split(':');
+          if (Number(id) !== part.id || !pin.startsWith('in')) return true;
+          return Number(pin.slice(2)) < part.inputs;
+        });
+        this.#rebuild();
+        this.#inspector();
+        this.#draw();
+      });
+    }
+    this.$$('[data-invert]').forEach((box) => {
+      this.on(box, 'change', () => {
+        this.#snapshot();
+        part.inverted = part.inverted ?? [];
+        part.inverted[Number(box.dataset.invert)] = box.checked;
+        this.#rebuild();
+        this.#draw();
+      });
+    });
+
     const rate = this.$('#rate');
     if (rate) {
       this.on(rate, 'input', () => {
@@ -868,19 +1111,28 @@ class LogicLab extends JGApp {
       return;
     }
 
-    const bits = Array.from({ length: gate.inputs }, (item, index) => this.#logic.value(part.id, `in${index}`));
-    const rows = [];
-    for (let value = 0; value < 2 ** gate.inputs; value += 1) {
-      const inputs = Array.from({ length: gate.inputs }, (item, index) => Boolean((value >> (gate.inputs - 1 - index)) & 1));
-      rows.push({ inputs, out: gate.apply(inputs) });
+    const count = this.#inputCount(part);
+    if (count > 4) {
+      if (target.dataset.kind !== 'wide') {
+        target.dataset.kind = 'wide';
+        target.innerHTML = html`<div class="hint">${count} inputs is too many rows to show.</div>`;
+      }
+      return;
     }
-    const now = bits.reduce((sum, bit, index) => sum + (bit ? 1 << (gate.inputs - 1 - index) : 0), 0);
+    const invert = (bits) => bits.map((bit, index) => bit !== Boolean(part.inverted?.[index]));
+    const bits = Array.from({ length: count }, (item, index) => this.#logic.value(part.id, `in${index}`));
+    const rows = [];
+    for (let value = 0; value < 2 ** count; value += 1) {
+      const inputs = Array.from({ length: count }, (item, index) => Boolean((value >> (count - 1 - index)) & 1));
+      rows.push({ inputs, out: gate.apply(invert(inputs)) });
+    }
+    const now = bits.reduce((sum, bit, index) => sum + (bit ? 1 << (count - 1 - index) : 0), 0);
 
-    const signature = `${part.kind}:${now}`;
+    const signature = `${part.kind}:${count}:${(part.inverted ?? []).join('')}:${now}`;
     if (target.dataset.kind === signature) return;
     target.dataset.kind = signature;
     target.innerHTML = html`<table class="truth">
-      <tr>${Array.from({ length: gate.inputs }, (item, index) => html`<th>${String.fromCharCode(65 + index)}</th>`)}<th>Q</th></tr>
+      <tr>${Array.from({ length: count }, (item, index) => html`<th>${String.fromCharCode(65 + index)}${part.inverted?.[index] ? '̅' : ''}</th>`)}<th>Q</th></tr>
       ${rows.map(
         (row, index) => html`<tr data-now="${String(index === now)}">
           ${row.inputs.map((bit) => html`<td>${bit ? 1 : 0}</td>`)}
