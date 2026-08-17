@@ -377,6 +377,12 @@ class CircuitLab extends JGApp {
   #speed = 2;
   #designs = null;
   #openName = null;
+  #pan = { x: 0, y: 0 };
+  #zoom = 1;
+  #panDrag = null;
+  #hoverEnd = null;
+  #paint = null;
+  #touched = false;
 
   connectedCallback() {
     this.#designs = createDesigns(this.store, 'circuit-lab');
@@ -413,7 +419,8 @@ class CircuitLab extends JGApp {
     this.#restore(design);
     this.#rebuild();
     this.#inspector();
-    this.#draw();
+    this.#touched = false;
+    this.#zoomFit();
   }
 
   #savedList() {
@@ -590,6 +597,11 @@ class CircuitLab extends JGApp {
       { separator: true },
       { id: 'undo', label: 'Undo', icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#undo() },
       { id: 'redo', label: 'Redo', icon: 'redo', iconOnly: true, title: 'Redo', action: () => this.#redo() },
+      { id: 'zoom-out', label: 'Zoom out', icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
+      { id: 'zoom-fit', label: 'Fit', icon: 'maximize', iconOnly: true, title: 'Fit the circuit to the view', action: () => { this.#touched = false; this.#zoomFit(); } },
+      { id: 'zoom-in', label: 'Zoom in', icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
+      { id: 'rotate', label: 'Rotate', icon: 'rotate', iconOnly: true, title: 'Rotate 90 degrees (R)', action: () => this.#turn(90) },
+      { id: 'flip', label: 'Flip', icon: 'flip', iconOnly: true, title: 'Mirror the part (F)', action: () => this.#mirror() },
       { id: 'delete', label: 'Delete', icon: 'eraser', iconOnly: true, title: 'Delete the selected part', action: () => this.#remove() },
       { spacer: true },
       { id: 'import', label: 'Open file', icon: 'upload', iconOnly: true, title: 'Open a circuit from a file', action: () => this.#importFile() },
@@ -626,7 +638,8 @@ class CircuitLab extends JGApp {
       this.#savedList();
       this.#rebuild();
       this.#inspector();
-      this.#draw();
+      this.#touched = false;
+      this.#zoomFit();
     });
     this.bind('#save', 'click', () => this.#saveNamed());
     this.on(this.$('#save-name'), 'keydown', (event) => {
@@ -663,10 +676,48 @@ class CircuitLab extends JGApp {
       if (event.key === 'Backspace' || event.key === 'Delete') {
         event.preventDefault();
         this.#remove();
+        return;
+      }
+      if (key === 'r' && !event.metaKey && !event.ctrlKey) {
+        event.preventDefault();
+        this.#turn(event.shiftKey ? -90 : 90);
+        return;
+      }
+      if (key === 'f' && !event.metaKey && !event.ctrlKey) {
+        event.preventDefault();
+        this.#mirror();
       }
     });
 
-    const observer = new ResizeObserver(() => this.#draw());
+    this.on(
+      this.$('#view'),
+      'wheel',
+      (event) => {
+        event.preventDefault();
+        if (event.ctrlKey || event.metaKey) {
+          this.#zoomAt(Math.exp(-event.deltaY / 240), event.clientX, event.clientY);
+          return;
+        }
+        this.#touched = true;
+        this.#pan.x -= event.deltaX;
+        this.#pan.y -= event.deltaY;
+        this.#draw();
+      },
+      { passive: false },
+    );
+
+    const watch = new MutationObserver(() => {
+      this.#paint = null;
+      this.#grid = null;
+      this.#draw();
+    });
+    watch.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'style', 'class'] });
+    this.track(() => watch.disconnect());
+
+    const observer = new ResizeObserver(() => {
+      if (this.#touched) this.#draw();
+      else this.#zoomFit();
+    });
     observer.observe(this.$('.board'));
     this.track(() => observer.disconnect());
 
@@ -708,7 +759,7 @@ class CircuitLab extends JGApp {
     if (!name || !hint) return;
     if (this.#tool === 'select') {
       name.textContent = 'Select';
-      hint.textContent = 'Drag a part to move it, drag an end to re-route, click a switch to flip it. Delete removes.';
+      hint.textContent = 'Drag a part to move it, drag an end to re-route, drag the board to pan, R rotates, F mirrors.';
       return;
     }
     if (this.#tool === 'probe') {
@@ -763,7 +814,57 @@ class CircuitLab extends JGApp {
 
   #point(event) {
     const rect = this.$('#view').getBoundingClientRect();
-    return [(event.clientX - rect.left) / GRID, (event.clientY - rect.top) / GRID];
+    const span = GRID * this.#zoom;
+    return [(event.clientX - rect.left - this.#pan.x) / span, (event.clientY - rect.top - this.#pan.y) / span];
+  }
+
+  #zoomAt(factor, clientX, clientY) {
+    this.#touched = true;
+    const rect = this.$('#view').getBoundingClientRect();
+    const at = [clientX - rect.left, clientY - rect.top];
+    const next = Math.min(2.6, Math.max(0.35, this.#zoom * factor));
+    const ratio = next / this.#zoom;
+    this.#pan.x = at[0] - (at[0] - this.#pan.x) * ratio;
+    this.#pan.y = at[1] - (at[1] - this.#pan.y) * ratio;
+    this.#zoom = next;
+    this.#draw();
+  }
+
+  #step(factor) {
+    const canvas = this.$('#view');
+    if (!canvas) return;
+    const box = canvas.getBoundingClientRect();
+    this.#zoomAt(factor, box.left + box.width / 2, box.top + box.height / 2);
+  }
+
+  #zoomFit() {
+    const canvas = this.$('#view');
+    if (!canvas || !canvas.clientWidth) return;
+    const points = this.#parts.flatMap((part) => [part.a, part.b, ...(part.c ? [part.c] : [])]);
+    if (!points.length) {
+      this.#pan = { x: 0, y: 0 };
+      this.#zoom = 1;
+      this.#draw();
+      return;
+    }
+    const bounds = points.reduce(
+      (box, point) => ({
+        left: Math.min(box.left, point[0]),
+        top: Math.min(box.top, point[1]),
+        right: Math.max(box.right, point[0]),
+        bottom: Math.max(box.bottom, point[1]),
+      }),
+      { left: Infinity, top: Infinity, right: -Infinity, bottom: -Infinity },
+    );
+    const pad = 44;
+    const width = Math.max(1, (bounds.right - bounds.left) * GRID);
+    const height = Math.max(1, (bounds.bottom - bounds.top) * GRID);
+    this.#zoom = Math.min(1.6, Math.max(0.35, Math.min((canvas.clientWidth - pad * 2) / width, (canvas.clientHeight - pad * 2) / height)));
+    this.#pan = {
+      x: (canvas.clientWidth - width * this.#zoom) / 2 - bounds.left * GRID * this.#zoom,
+      y: (canvas.clientHeight - height * this.#zoom) / 2 - bounds.top * GRID * this.#zoom,
+    };
+    this.#draw();
   }
 
   #snap(point) {
@@ -772,6 +873,96 @@ class CircuitLab extends JGApp {
 
   #near(point, target) {
     return Math.hypot(point[0] - target[0], point[1] - target[1]);
+  }
+
+  #endNear(point) {
+    const reach = 0.5 / this.#zoom;
+    let best = null;
+    this.#parts.forEach((part) => {
+      ['a', 'b', 'c'].forEach((end) => {
+        if (!part[end]) return;
+        const away = this.#near(point, part[end]);
+        if (away < reach && (!best || away < best.away)) best = { part, end, away, at: part[end] };
+      });
+    });
+    return best;
+  }
+
+  #ends(part) {
+    return part.c ? [part.a, part.b, part.c] : [part.a, part.b];
+  }
+
+  #relink(part, before, bridge = false) {
+    const after = this.#ends(part);
+    before.forEach((old, index) => {
+      const next = after[index];
+      if (!next || (old[0] === next[0] && old[1] === next[1])) return;
+      const attached = this.#parts.filter(
+        (other) => other !== part && this.#ends(other).some((end) => end[0] === old[0] && end[1] === old[1]),
+      );
+      if (!attached.length) return;
+
+      if (!bridge || attached.every((other) => other.kind === 'wire')) {
+        attached.forEach((other) => {
+          if (other.kind !== 'wire') return;
+          ['a', 'b'].forEach((end) => {
+            if (other[end][0] === old[0] && other[end][1] === old[1]) other[end] = [...next];
+          });
+        });
+        return;
+      }
+
+      this.#parts.push({
+        id: this.#seq++,
+        kind: 'wire',
+        a: [...old],
+        b: [...next],
+        value: 0,
+        frequency: 60,
+        closed: true,
+      });
+    });
+  }
+
+  #turn(degrees) {
+    const part = this.#parts.find((entry) => entry.id === this.#selected);
+    if (!part || part.kind === 'ground') return;
+    this.#snapshot();
+    const ends = this.#ends(part);
+    const before = ends.map((point) => [...point]);
+    const centre = [
+      ends.reduce((sum, point) => sum + point[0], 0) / ends.length,
+      ends.reduce((sum, point) => sum + point[1], 0) / ends.length,
+    ];
+    const spin = ([x, y]) =>
+      degrees > 0
+        ? [Math.round(centre[0] + (centre[1] - y)), Math.round(centre[1] + (x - centre[0]))]
+        : [Math.round(centre[0] + (y - centre[1])), Math.round(centre[1] + (centre[0] - x))];
+    part.a = spin(part.a);
+    part.b = spin(part.b);
+    if (part.c) part.c = spin(part.c);
+    this.#relink(part, before, true);
+    this.#rebuild();
+    this.#draw();
+  }
+
+  #mirror() {
+    const part = this.#parts.find((entry) => entry.id === this.#selected);
+    if (!part || part.kind === 'ground') return;
+    this.#snapshot();
+    const ends = this.#ends(part);
+    const before = ends.map((point) => [...point]);
+    const flat = Math.abs(part.a[1] - part.b[1]) < Math.abs(part.a[0] - part.b[0]);
+    const axis = flat
+      ? ends.reduce((sum, point) => sum + point[0], 0) / ends.length
+      : ends.reduce((sum, point) => sum + point[1], 0) / ends.length;
+    const flip = ([x, y]) => (flat ? [Math.round(2 * axis - x), y] : [x, Math.round(2 * axis - y)]);
+    part.a = flip(part.a);
+    part.b = flip(part.b);
+    if (part.c) part.c = flip(part.c);
+    this.#relink(part, before, true);
+    this.#rebuild();
+    this.#draw();
   }
 
   #hit(point) {
@@ -784,7 +975,7 @@ class CircuitLab extends JGApp {
     };
 
     let best = null;
-    let closest = 0.6;
+    let closest = 0.6 / this.#zoom;
     this.#parts.forEach((part) => {
       const legs = part.c
         ? [toSegment(part.a, part.b), toSegment(part.a, part.c), toSegment(part.b, part.c)]
@@ -814,6 +1005,14 @@ class CircuitLab extends JGApp {
     if (this.#tool === 'select') {
       const part = this.#hit(raw);
       this.#selected = part?.id ?? null;
+
+      if (!part) {
+        this.#touched = true;
+        this.#panDrag = { from: [event.clientX, event.clientY], origin: { ...this.#pan } };
+        this.#inspector();
+        this.#draw();
+        return;
+      }
 
       if (part) {
         if (part.kind === 'switch' && this.#near(raw, [(part.a[0] + part.b[0]) / 2, (part.a[1] + part.b[1]) / 2]) < 0.5) {
@@ -847,8 +1046,12 @@ class CircuitLab extends JGApp {
 
     if (this.#tool === 'ground') {
       this.#snapshot();
-      this.#parts.push({ id: this.#seq++, kind: 'ground', a: point, b: point, value: 0 });
+      const part = { id: this.#seq++, kind: 'ground', a: point, b: point, value: 0 };
+      this.#parts.push(part);
+      this.#selected = part.id;
       this.#rebuild();
+      this.#setTool('select');
+      this.#inspector();
       this.#draw();
       return;
     }
@@ -857,12 +1060,22 @@ class CircuitLab extends JGApp {
   }
 
   #move(event) {
+    if (this.#panDrag) {
+      this.#pan = {
+        x: this.#panDrag.origin.x + (event.clientX - this.#panDrag.from[0]),
+        y: this.#panDrag.origin.y + (event.clientY - this.#panDrag.from[1]),
+      };
+      this.#draw();
+      return;
+    }
+
     const raw = this.#point(event);
     const point = this.#snap(raw);
     this.#hover = point;
     const canvas = this.$('#view');
 
     if (!this.#drag) {
+      this.#hoverEnd = this.#tool === 'select' ? this.#endNear(raw) : null;
       if (this.#tool === 'select' && canvas) canvas.dataset.grab = String(Boolean(this.#hit(raw)));
       this.#draw();
       return;
@@ -876,11 +1089,16 @@ class CircuitLab extends JGApp {
       const dx = point[0] - this.#drag.from[0];
       const dy = point[1] - this.#drag.from[1];
       const { part, origin } = this.#drag;
+      const before = this.#ends(part).map((end) => [...end]);
       part.a = [origin.a[0] + dx, origin.a[1] + dy];
       part.b = [origin.b[0] + dx, origin.b[1] + dy];
       if (origin.c) part.c = [origin.c[0] + dx, origin.c[1] + dy];
+      this.#relink(part, before);
     } else if (this.#drag.kind === 'end') {
-      this.#drag.part[this.#drag.end] = point;
+      const { part, end } = this.#drag;
+      const before = this.#ends(part).map((point) => [...point]);
+      part[end] = point;
+      this.#relink(part, before);
     }
 
     this.#draw();
@@ -889,6 +1107,7 @@ class CircuitLab extends JGApp {
   #up() {
     const drag = this.#drag;
     this.#drag = null;
+    this.#panDrag = null;
     const canvas = this.$('#view');
     if (canvas) canvas.dataset.dragging = 'false';
     if (!drag) return;
@@ -910,6 +1129,7 @@ class CircuitLab extends JGApp {
       };
       this.#parts.push(part);
       this.#selected = part.id;
+      this.#setTool('select');
     }
 
     this.#rebuild();
@@ -1047,8 +1267,9 @@ class CircuitLab extends JGApp {
   }
 
   #palette() {
+    if (this.#paint) return this.#paint;
     const styles = getComputedStyle(this);
-    return {
+    this.#paint = {
       line: styles.getPropertyValue('--foreground').trim() || '#111',
       soft: styles.getPropertyValue('--muted-foreground').trim() || '#888',
       border: styles.getPropertyValue('--border').trim() || '#ddd',
@@ -1057,6 +1278,7 @@ class CircuitLab extends JGApp {
       font: styles.getPropertyValue('--font-sans') || 'sans-serif',
       mono: styles.getPropertyValue('--font-mono') || 'monospace',
     };
+    return this.#paint;
   }
 
   #draw() {
@@ -1068,6 +1290,9 @@ class CircuitLab extends JGApp {
     context.clearRect(0, 0, width, height);
 
     this.#gridFill(context, width, height, paint);
+
+    context.translate(this.#pan.x, this.#pan.y);
+    context.scale(this.#zoom, this.#zoom);
 
     this.#parts.forEach((part) => this.#drawPart(context, part, paint));
 
@@ -1105,6 +1330,16 @@ class CircuitLab extends JGApp {
       context.globalAlpha = 1;
     }
 
+    if (this.#hoverEnd) {
+      context.beginPath();
+      context.arc(this.#hoverEnd.at[0] * GRID, this.#hoverEnd.at[1] * GRID, 7, 0, Math.PI * 2);
+      context.fillStyle = `color-mix(in srgb, ${paint.ring} 26%, transparent)`;
+      context.fill();
+      context.strokeStyle = paint.ring;
+      context.lineWidth = 1.6;
+      context.stroke();
+    }
+
     if (settings.get('appearance.motion') && this.config.get('labels', true)) this.#drawLabels(context, paint);
 
     if (this.#probe) {
@@ -1139,17 +1374,16 @@ class CircuitLab extends JGApp {
       };
     }
 
-    context.save();
-    context.translate(-GRID / 2, -GRID / 2);
-    context.fillStyle = this.#grid.minor;
-    context.fillRect(0, 0, width + GRID, height + GRID);
-    context.restore();
+    const place = (size) =>
+      new DOMMatrix().translateSelf(this.#pan.x - (size * this.#zoom) / 2, this.#pan.y - (size * this.#zoom) / 2).scaleSelf(this.#zoom);
 
-    context.save();
-    context.translate((-GRID * 5) / 2, (-GRID * 5) / 2);
+    this.#grid.minor.setTransform(place(GRID));
+    context.fillStyle = this.#grid.minor;
+    context.fillRect(0, 0, width, height);
+
+    this.#grid.major.setTransform(place(GRID * 5));
     context.fillStyle = this.#grid.major;
-    context.fillRect(0, 0, width + GRID * 5, height + GRID * 5);
-    context.restore();
+    context.fillRect(0, 0, width, height);
   }
 
   #drawLabels(context, paint) {
