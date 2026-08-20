@@ -354,6 +354,21 @@ class LogicLab extends JGApp {
     this.#rebuild();
   }
 
+  #blank() {
+    this.#snapshot();
+    this.#parts = [];
+    this.#links = [];
+    this.#seq = 1;
+    this.#openName = null;
+    this.#designs.setOpen(null);
+    this.#clearView();
+    this.#rebuild();
+    this.#nameField();
+    this.#savedList();
+    this.#inspector();
+    this.#draw();
+  }
+
   #clearView() {
     this.#selected = null;
     this.#selectedLink = null;
@@ -500,9 +515,16 @@ class LogicLab extends JGApp {
     </div>`);
 
     this.$('#bar').items = [
-      { id: 'run', label: this.#running ? 'Pause' : 'Run', icon: this.#running ? 'timer' : 'play', action: () => this.#toggleRun() },
-      { id: 'reset', label: 'Reset', icon: 'repeat', action: () => this.#logic.reset() },
+      {
+        id: 'run',
+        label: this.#running ? 'Pause' : 'Run',
+        icon: this.#running ? 'pause' : 'play',
+        tone: this.#running ? 'pause' : 'run',
+        action: () => this.#toggleRun(),
+      },
+      { id: 'reset', label: 'Reset', icon: 'repeat', tone: 'stop', action: () => this.#logic.reset() },
       { separator: true },
+      { id: 'new', label: 'New', icon: 'file', iconOnly: true, title: 'Start an empty board', action: () => this.#blank() },
       { id: 'undo', label: 'Undo', icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#undo() },
       { id: 'zoom-out', label: 'Zoom out', icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
       { id: 'zoom-fit', label: 'Fit', icon: 'maximize', iconOnly: true, title: 'Fit the board to the view', action: () => { this.#fit(); this.#draw(); } },
@@ -663,7 +685,11 @@ class LogicLab extends JGApp {
 
   #toggleRun() {
     this.#running = !this.#running;
-    this.$('#bar').update('run', { label: this.#running ? 'Pause' : 'Run', icon: this.#running ? 'timer' : 'play' });
+    this.$('#bar').update('run', {
+      label: this.#running ? 'Pause' : 'Run',
+      icon: this.#running ? 'pause' : 'play',
+      tone: this.#running ? 'pause' : 'run',
+    });
   }
 
   #snapshot() {

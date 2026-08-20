@@ -42,6 +42,124 @@ export const hull = (points) => {
   return [...half(sorted), ...half([...sorted].reverse())];
 };
 
+const signedArea = (points) => {
+  let total = 0;
+  for (let index = 0; index < points.length; index += 1) {
+    const a = points[index];
+    const b = points[(index + 1) % points.length];
+    total += a.x * b.y - b.x * a.y;
+  }
+  return total / 2;
+};
+
+export const windForward = (points) => (signedArea(points) < 0 ? [...points].reverse() : points);
+
+const turn = (a, b, c) => (b.x - a.x) * (c.y - b.y) - (b.y - a.y) * (c.x - b.x);
+
+const inside = (a, b, c, point) => {
+  const first = turn(a, b, point);
+  const second = turn(b, c, point);
+  const third = turn(c, a, point);
+  return first >= 0 && second >= 0 && third >= 0;
+};
+
+const triangulate = (points) => {
+  const left = points.map((point, index) => index);
+  const shapes = [];
+  let guard = points.length * points.length + 16;
+
+  while (left.length > 3 && guard > 0) {
+    guard -= 1;
+    let clipped = false;
+    for (let slot = 0; slot < left.length; slot += 1) {
+      const before = left[(slot - 1 + left.length) % left.length];
+      const here = left[slot];
+      const after = left[(slot + 1) % left.length];
+      const a = points[before];
+      const b = points[here];
+      const c = points[after];
+      if (turn(a, b, c) <= 0) continue;
+      const blocked = left.some((index) => {
+        if (index === before || index === here || index === after) return false;
+        return inside(a, b, c, points[index]);
+      });
+      if (blocked) continue;
+      shapes.push([before, here, after]);
+      left.splice(slot, 1);
+      clipped = true;
+      break;
+    }
+    if (!clipped) break;
+  }
+
+  if (left.length >= 3) shapes.push([...left]);
+  return shapes;
+};
+
+const convexRun = (points, loop) =>
+  loop.every((index, slot) => {
+    const a = points[loop[(slot - 1 + loop.length) % loop.length]];
+    const b = points[index];
+    const c = points[loop[(slot + 1) % loop.length]];
+    return turn(a, b, c) >= -1e-9;
+  });
+
+const weld = (points, first, second) => {
+  for (let i = 0; i < first.length; i += 1) {
+    const a = first[i];
+    const b = first[(i + 1) % first.length];
+    for (let j = 0; j < second.length; j += 1) {
+      if (second[j] !== b || second[(j + 1) % second.length] !== a) continue;
+      const merged = [];
+      for (let step = 0; step <= i; step += 1) merged.push(first[step]);
+      for (let step = 2; step < second.length; step += 1) merged.push(second[(j + step) % second.length]);
+      for (let step = i + 1; step < first.length; step += 1) merged.push(first[step]);
+      if (merged.length >= 3 && convexRun(points, merged)) return merged;
+    }
+  }
+  return null;
+};
+
+export const decompose = (points) => {
+  if (points.length < 3) return [];
+  let pieces = triangulate(points);
+  let merged = true;
+  let guard = 200;
+
+  while (merged && guard > 0) {
+    guard -= 1;
+    merged = false;
+    outer: for (let i = 0; i < pieces.length; i += 1) {
+      for (let j = i + 1; j < pieces.length; j += 1) {
+        const joined = weld(points, pieces[i], pieces[j]);
+        if (!joined) continue;
+        pieces = pieces.filter((piece, index) => index !== i && index !== j);
+        pieces.push(joined);
+        merged = true;
+        break outer;
+      }
+    }
+  }
+
+  return pieces;
+};
+
+const straddles = (a, b, c, d) => {
+  const side = (p, q, r) => Math.sign((q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x));
+  return side(a, b, c) !== side(a, b, d) && side(c, d, a) !== side(c, d, b);
+};
+
+export const simpleLoop = (points) => {
+  if (points.length < 3) return false;
+  for (let i = 0; i < points.length; i += 1) {
+    for (let j = i + 1; j < points.length; j += 1) {
+      if (i === j || (i + 1) % points.length === j || (j + 1) % points.length === i) continue;
+      if (straddles(points[i], points[(i + 1) % points.length], points[j], points[(j + 1) % points.length])) return false;
+    }
+  }
+  return true;
+};
+
 export const polyMass = (points) => {
   let area = 0;
   let cx = 0;
@@ -126,7 +244,7 @@ export const makeBody = (spec) => {
     spin: spec.spin ?? 0,
     width: spec.width ?? 1,
     height: spec.height ?? 1,
-    points: spec.points ? spec.points.map((point) => ({ ...point })) : null,
+    points: spec.points ? windForward(spec.points.map((point) => ({ ...point }))) : null,
     radius: spec.radius ?? 0.5,
     density: spec.density ?? 1,
     restitution: spec.restitution ?? 0.2,
@@ -140,8 +258,24 @@ export const makeBody = (spec) => {
     lastVy: 0,
     lastSpin: 0,
   };
+  if (body.kind === 'poly') body.pieces = decompose(body.points);
   return refreshMass(body);
 };
+
+export const piecesOf = (body) => {
+  if (body.kind === 'circle') return [];
+  if (body.kind === 'poly') {
+    if (!body.pieces?.length) return [body.points];
+    return body.pieces.map((piece) => piece.map((index) => body.points[index]));
+  }
+  return [outline(body)];
+};
+
+const placed = (body, local) =>
+  local.map((point) => {
+    const spun = rotate(point.x, point.y, body.angle);
+    return { x: body.x + spun.x, y: body.y + spun.y };
+  });
 
 const support = (body) => {
   if (body.kind === 'circle') return body.radius;
@@ -169,8 +303,7 @@ const circleCircle = (a, b) => {
   };
 };
 
-const circleShape = (circle, shape, flip) => {
-  const corners = bodyCorners(shape);
+const circleShape = (circle, corners, flip) => {
   const axes = axesOf(corners);
 
   let deepest = -Infinity;
@@ -249,9 +382,12 @@ const clipSegment = (segment, axis, limit) => {
   return kept;
 };
 
-const shapeShape = (a, b) => {
-  const cornersA = bodyCorners(a);
-  const cornersB = bodyCorners(b);
+const middleOf = (corners) => ({
+  x: corners.reduce((sum, point) => sum + point.x, 0) / corners.length,
+  y: corners.reduce((sum, point) => sum + point.y, 0) / corners.length,
+});
+
+const shapeShape = (cornersA, cornersB) => {
   const facesA = axesOf(cornersA);
   const facesB = axesOf(cornersB);
   const axes = [...facesA, ...facesB];
@@ -266,7 +402,9 @@ const shapeShape = (a, b) => {
     if (!best || overlap < best.overlap) best = { overlap, axis, fromA: index < facesA.length };
   }
 
-  const middle = { x: b.x - a.x, y: b.y - a.y };
+  const centreA = middleOf(cornersA);
+  const centreB = middleOf(cornersB);
+  const middle = { x: centreB.x - centreA.x, y: centreB.y - centreA.y };
   let normal = best.axis;
   if (middle.x * normal.x + middle.y * normal.y < 0) normal = { x: -normal.x, y: -normal.y };
 
@@ -325,10 +463,32 @@ const shapeShape = (a, b) => {
 };
 
 const collide = (a, b) => {
-  if (a.kind === 'circle' && b.kind === 'circle') return circleCircle(a, b);
-  if (a.kind === 'circle') return circleShape(a, b, false);
-  if (b.kind === 'circle') return circleShape(b, a, true);
-  return shapeShape(a, b);
+  if (a.kind === 'circle' && b.kind === 'circle') {
+    const hit = circleCircle(a, b);
+    return hit ? [{ ...hit, tag: 0 }] : [];
+  }
+
+  const found = [];
+  if (a.kind === 'circle' || b.kind === 'circle') {
+    const circle = a.kind === 'circle' ? a : b;
+    const shape = a.kind === 'circle' ? b : a;
+    const flip = a.kind !== 'circle';
+    piecesOf(shape).forEach((piece, index) => {
+      const hit = circleShape(circle, placed(shape, piece), flip);
+      if (hit) found.push({ ...hit, tag: index });
+    });
+    return found;
+  }
+
+  const left = piecesOf(a);
+  const right = piecesOf(b);
+  left.forEach((first, i) => {
+    right.forEach((second, j) => {
+      const hit = shapeShape(placed(a, first), placed(b, second));
+      if (hit) found.push({ ...hit, tag: i * 64 + j });
+    });
+  });
+  return found;
 };
 
 const velocityAt = (body, rx, ry) => ({
@@ -551,20 +711,20 @@ export const createWorld = () => {
         if (a.invMass === 0 && b.invMass === 0) continue;
         const reach = support(a) + support(b);
         if (Math.hypot(b.x - a.x, b.y - a.y) > reach) continue;
-        const hit = collide(a, b);
-        if (!hit) continue;
-        hit.points.forEach((point, index) => {
-          const key = `${a.id}:${b.id}:${point.feature}:${index}`;
-          const kept = cache.get(key);
-          found.push({
-            key,
-            a,
-            b,
-            normal: hit.normal,
-            point,
-            normalImpulse: kept?.normalImpulse ?? 0,
-            tangentImpulse: kept?.tangentImpulse ?? 0,
-            nudgeImpulse: 0,
+        collide(a, b).forEach((hit) => {
+          hit.points.forEach((point, index) => {
+            const key = `${a.id}:${b.id}:${hit.tag}:${point.feature}:${index}`;
+            const kept = cache.get(key);
+            found.push({
+              key,
+              a,
+              b,
+              normal: hit.normal,
+              point,
+              normalImpulse: kept?.normalImpulse ?? 0,
+              tangentImpulse: kept?.tangentImpulse ?? 0,
+              nudgeImpulse: 0,
+            });
           });
         });
       }
@@ -763,17 +923,34 @@ export const createWorld = () => {
       applyImpulse(body, fx * dt * body.mass, fy * dt * body.mass, rx, ry);
     },
 
+    holds(body, x, y) {
+      if (body.kind === 'circle') return Math.hypot(x - body.x, y - body.y) <= body.radius;
+      const local = localPoint(body, { x, y });
+      const shape = outline(body);
+      let crossings = 0;
+      for (let step = 0; step < shape.length; step += 1) {
+        const a = shape[step];
+        const b = shape[(step + 1) % shape.length];
+        if (a.y > local.y === b.y > local.y) continue;
+        const cut = a.x + ((local.y - a.y) / (b.y - a.y)) * (b.x - a.x);
+        if (cut > local.x) crossings += 1;
+      }
+      return crossings % 2 === 1;
+    },
+
     at(x, y) {
       for (let index = bodies.length - 1; index >= 0; index -= 1) {
-        const body = bodies[index];
-        if (body.kind === 'circle') {
-          if (Math.hypot(x - body.x, y - body.y) <= body.radius) return body;
-          continue;
-        }
-        const local = localPoint(body, { x, y });
-        if (Math.abs(local.x) <= body.width / 2 && Math.abs(local.y) <= body.height / 2) return body;
+        if (this.holds(bodies[index], x, y)) return bodies[index];
       }
       return null;
+    },
+
+    allAt(x, y) {
+      const found = [];
+      for (let index = bodies.length - 1; index >= 0; index -= 1) {
+        if (this.holds(bodies[index], x, y)) found.push(bodies[index]);
+      }
+      return found;
     },
   };
 };

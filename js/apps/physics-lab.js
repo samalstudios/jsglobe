@@ -1,5 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
-import { createWorld, bodyCorners, worldPoint, localPoint, spanOf, hull, polyMass } from '../lib/physics.js';
+import { createWorld, bodyCorners, worldPoint, localPoint, spanOf, hull, polyMass, simpleLoop } from '../lib/physics.js';
 import { createDesigns } from '../lib/designs.js';
 import { icon } from '../ui/icons.js';
 import { toast } from '../core/util.js';
@@ -171,6 +171,7 @@ const LINKS = {
   jack: { label: 'Jack', icon: 'transform' },
   pin: { label: 'Pin', icon: 'asterisk' },
   motor: { label: 'Motor', icon: 'gear' },
+  linkage: { label: 'Linkage', icon: 'ruler' },
   track: { label: 'Track', icon: 'swap' },
   weld: { label: 'Weld', icon: 'lock' },
 };
@@ -584,10 +585,17 @@ export default class PhysicsLab extends JGApp {
 
   #toolbar() {
     this.$('#bar').items = [
-      { id: 'run', label: this.#running ? 'Pause' : 'Run', icon: this.#running ? 'timer' : 'play', action: () => this.#toggleRun() },
+      {
+        id: 'run',
+        label: this.#running ? 'Pause' : 'Run',
+        icon: this.#running ? 'pause' : 'play',
+        tone: this.#running ? 'pause' : 'run',
+        action: () => this.#toggleRun(),
+      },
       { id: 'step', label: 'Step', icon: 'redo', iconOnly: true, title: 'Advance one frame', action: () => this.#stepOnce() },
-      { id: 'reset', label: 'Reset', icon: 'repeat', action: () => this.#rewind() },
+      { id: 'reset', label: 'Reset', icon: 'repeat', tone: 'stop', action: () => this.#rewind() },
       { separator: true },
+      { id: 'new', label: 'New', icon: 'file', iconOnly: true, title: 'Start an empty scene', action: () => this.#blank() },
       { id: 'undo', label: 'Undo', icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#undo() },
       { id: 'zoom-out', label: 'Zoom out', icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
       { id: 'zoom-fit', label: 'Fit', icon: 'maximize', iconOnly: true, title: 'Fit the scene', action: () => { this.#touched = false; this.#fit(); } },
@@ -611,8 +619,12 @@ export default class PhysicsLab extends JGApp {
     const hint = this.$('#tool-hint');
     if (!name || !hint) return;
     name.textContent = tool === 'select' ? 'Select' : tool === 'erase' ? 'Erase' : (SHAPES[tool] ?? LINKS[tool])?.label ?? tool;
-    hint.textContent = LINKS[tool]
-      ? 'Click one body, then the other. Click empty space to anchor to the world.'
+    hint.textContent = tool === 'pin' || tool === 'motor'
+      ? 'Click where two bodies overlap to hinge them, or one body to hinge it to the world.'
+      : tool === 'linkage'
+        ? 'Click a point on one body, then a point on another, to join them with a hinged bar.'
+        : LINKS[tool]
+          ? 'Click one body, then the other. Click empty space to anchor to the world.'
       : tool === 'shape'
         ? 'Click each corner, then click the first one again or press Enter to close it.'
         : SHAPES[tool]
@@ -646,6 +658,28 @@ export default class PhysicsLab extends JGApp {
   #toggleRun() {
     if (!this.#running) this.#sync();
     this.#running = !this.#running;
+    this.#toolbar();
+  }
+
+  #blank() {
+    this.#snapshot();
+    this.#bodies = [];
+    this.#joints = [];
+    this.#gravity = 9.81;
+    this.#attraction = 0;
+    this.#damping = 0.02;
+    this.#seq = 1;
+    this.#running = false;
+    this.#openName = null;
+    this.#designs.setOpen(null);
+    this.#reset();
+    this.#pan = { x: 0, y: 0 };
+    this.#zoom = 1;
+    this.#touched = false;
+    this.#worldFields();
+    this.#nameField();
+    this.#savedList();
+    this.#inspector();
     this.#toolbar();
   }
 
@@ -772,6 +806,48 @@ export default class PhysicsLab extends JGApp {
   #down(event) {
     const point = this.#point(event);
     this.$('#view').setPointerCapture(event.pointerId);
+
+    if (this.#tool === 'pin' || this.#tool === 'motor') {
+      const found = this.#world.allAt(point.x, point.y);
+      if (!found.length) return;
+      this.#snapshot();
+      const top = found[0];
+      const under = found.find((body) => body !== top) ?? null;
+      const joint = {
+        kind: this.#tool,
+        a: under ? under.id : null,
+        b: top.id,
+        aAt: under ? localPoint(under, point) : { x: point.x, y: point.y },
+        bAt: localPoint(top, point),
+      };
+      if (this.#tool === 'motor') {
+        joint.speed = 2.4;
+        joint.torque = 60;
+      }
+      this.#joints.push(joint);
+      this.#selectedJoint = joint;
+      this.#selected = null;
+      this.#reset();
+      this.#setTool('select');
+      this.#inspector();
+      return;
+    }
+
+    if (this.#tool === 'linkage') {
+      const body = this.#world.at(point.x, point.y);
+      const end = {
+        id: body ? body.id : null,
+        at: body ? localPoint(body, point) : { x: point.x, y: point.y },
+        world: { x: point.x, y: point.y },
+      };
+      if (!this.#linkFrom) {
+        this.#linkFrom = end;
+        return;
+      }
+      this.#addArm(this.#linkFrom, end);
+      this.#linkFrom = null;
+      return;
+    }
 
     if (LINKS[this.#tool]) {
       const body = this.#world.at(point.x, point.y);
@@ -924,8 +1000,10 @@ export default class PhysicsLab extends JGApp {
   }
 
   #closeShape() {
-    const points = hull(this.#sketch ?? []);
+    const drawn = this.#sketch ?? [];
     this.#sketch = null;
+    if (drawn.length < 3) return;
+    const points = simpleLoop(drawn) ? drawn : hull(drawn);
     if (points.length < 3) return;
     const shape = polyMass(points);
     if (shape.area < 0.02) return;
@@ -977,6 +1055,39 @@ export default class PhysicsLab extends JGApp {
     this.#selected = body.id;
     this.#selectedJoint = null;
     this.#reset();
+    this.#inspector();
+  }
+
+  #addArm(from, to) {
+    const a = from.world;
+    const b = to.world;
+    const span = Math.hypot(b.x - a.x, b.y - a.y);
+    if (span < 0.3) return;
+
+    this.#snapshot();
+    const bar = {
+      id: this.#seq++,
+      kind: 'box',
+      x: (a.x + b.x) / 2,
+      y: (a.y + b.y) / 2,
+      angle: Math.atan2(b.y - a.y, b.x - a.x),
+      width: span,
+      height: 0.22,
+      density: 1.2,
+      restitution: 0.1,
+      friction: 0.5,
+    };
+    this.#bodies.push(bar);
+    this.#reset();
+
+    const live = this.#world.body(bar.id);
+    this.#joints.push({ kind: 'pin', a: from.id, b: bar.id, aAt: from.at, bAt: localPoint(live, a) });
+    this.#joints.push({ kind: 'pin', a: to.id, b: bar.id, aAt: to.at, bAt: localPoint(live, b) });
+
+    this.#selected = bar.id;
+    this.#selectedJoint = null;
+    this.#reset();
+    this.#setTool('select');
     this.#inspector();
   }
 

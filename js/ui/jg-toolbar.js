@@ -65,6 +65,9 @@ const sheet = css`
     font-weight: 600;
     box-shadow: var(--shadow-raise);
   }
+  .item[data-tone="run"] svg { color: #3f9a5d; }
+  .item[data-tone="pause"] svg { color: #d18b2c; }
+  .item[data-tone="stop"] svg { color: #d0453b; }
   .item[data-danger="true"]:hover:not(:disabled) {
     color: var(--destructive);
     background: color-mix(in srgb, var(--destructive) 12%, transparent);
@@ -176,6 +179,7 @@ class JGToolbar extends JGElement {
       data-id="${item.id}"
       data-select="${String(Boolean(item.select))}"
       data-danger="${String(Boolean(item.danger))}"
+      data-tone="${item.tone ?? ''}"
       data-icon-only="${String(Boolean(item.iconOnly))}"
       title="${item.title ?? item.label ?? ''}"
       ${raw(state)}

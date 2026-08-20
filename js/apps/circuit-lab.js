@@ -654,9 +654,16 @@ class CircuitLab extends JGApp {
     </div>`);
 
     this.$('#bar').items = [
-      { id: 'run', label: this.#running ? 'Pause' : 'Run', icon: this.#running ? 'timer' : 'play', action: () => this.#toggleRun() },
-      { id: 'reset', label: 'Reset', icon: 'repeat', action: () => this.#reset() },
+      {
+        id: 'run',
+        label: this.#running ? 'Pause' : 'Run',
+        icon: this.#running ? 'pause' : 'play',
+        tone: this.#running ? 'pause' : 'run',
+        action: () => this.#toggleRun(),
+      },
+      { id: 'reset', label: 'Reset', icon: 'repeat', tone: 'stop', action: () => this.#reset() },
       { separator: true },
+      { id: 'new', label: 'New', icon: 'file', iconOnly: true, title: 'Start an empty board', action: () => this.#blank() },
       { id: 'undo', label: 'Undo', icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#undo() },
       { id: 'redo', label: 'Redo', icon: 'redo', iconOnly: true, title: 'Redo', action: () => this.#redo() },
       { id: 'zoom-out', label: 'Zoom out', icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
@@ -810,9 +817,34 @@ class CircuitLab extends JGApp {
     this.#draw();
   }
 
+  #blank() {
+    this.#snapshot();
+    this.#parts = [];
+    this.#probe = null;
+    this.#trace = [];
+    this.#selected = null;
+    this.#seq = 1;
+    this.#openName = null;
+    this.#designs.setOpen(null);
+    this.#pan = { x: 0, y: 0 };
+    this.#zoom = 1;
+    this.#touched = false;
+    this.#circuit.reset();
+    this.#rebuild();
+    this.#nameField();
+    this.#savedList();
+    this.#scopeLabel();
+    this.#inspector();
+    this.#draw();
+  }
+
   #toggleRun() {
     this.#running = !this.#running;
-    this.$('#bar').update('run', { label: this.#running ? 'Pause' : 'Run', icon: this.#running ? 'timer' : 'play' });
+    this.$('#bar').update('run', {
+      label: this.#running ? 'Pause' : 'Run',
+      icon: this.#running ? 'pause' : 'play',
+      tone: this.#running ? 'pause' : 'run',
+    });
   }
 
   #reset() {
