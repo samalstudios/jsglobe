@@ -628,7 +628,7 @@ export default class PhysicsLab extends JGApp {
       : tool === 'shape'
         ? 'Click each corner, then click the first one again or press Enter to close it.'
         : SHAPES[tool]
-          ? 'Drag to size one, or click to drop a default. Esc goes back to Select.'
+          ? 'Drag from one corner to the other, or click to drop a default one.'
         : tool === 'erase'
           ? 'Click a body or a link to remove it.'
           : 'Drag a body to throw it, drag the board to pan, Space runs and pauses.';
@@ -1031,15 +1031,22 @@ export default class PhysicsLab extends JGApp {
     const dx = to.x - from.x;
     const dy = to.y - from.y;
     const dragged = Math.hypot(dx, dy) > 0.25;
-    const body = { id: this.#seq++, kind: shape === 'wall' ? 'box' : shape, x: from.x, y: from.y, angle: 0 };
+    const middle = { x: (from.x + to.x) / 2, y: (from.y + to.y) / 2 };
+    const body = {
+      id: this.#seq++,
+      kind: shape === 'wall' ? 'box' : shape,
+      x: dragged ? middle.x : from.x,
+      y: dragged ? middle.y : from.y,
+      angle: 0,
+    };
 
     if (shape === 'circle') {
-      body.radius = dragged ? Math.hypot(dx, dy) : 0.45;
+      body.radius = dragged ? Math.hypot(dx, dy) / 2 : 0.45;
       body.restitution = 0.35;
       body.friction = 0.35;
     } else {
-      body.width = dragged ? Math.max(0.2, Math.abs(dx) * 2) : 1.2;
-      body.height = dragged ? Math.max(0.2, Math.abs(dy) * 2) : 0.9;
+      body.width = dragged ? Math.max(0.2, Math.abs(dx)) : 1.2;
+      body.height = dragged ? Math.max(0.2, Math.abs(dy)) : 0.9;
       body.restitution = shape === 'wall' ? 0.1 : 0.15;
       body.friction = shape === 'wall' ? 0.7 : 0.5;
       if (shape === 'wall') {
@@ -1076,6 +1083,7 @@ export default class PhysicsLab extends JGApp {
       density: 1.2,
       restitution: 0.1,
       friction: 0.5,
+      ghost: true,
     };
     this.#bodies.push(bar);
     this.#reset();
@@ -1122,6 +1130,7 @@ export default class PhysicsLab extends JGApp {
     this.#selectedJoint = joint;
     this.#selected = null;
     this.#reset();
+    this.#setTool('select');
     this.#inspector();
   }
 
@@ -1313,7 +1322,7 @@ export default class PhysicsLab extends JGApp {
 
     const live = this.#world.body(body.id);
     target.innerHTML = html`
-      <div class="label">${body.kind === 'circle' ? 'Ball' : body.kind === 'poly' ? 'Shape' : body.pinned ? 'Wall' : 'Block'}</div>
+      <div class="label">${body.ghost ? 'Linkage bar' : body.kind === 'circle' ? 'Ball' : body.kind === 'poly' ? 'Shape' : body.pinned ? 'Wall' : 'Block'}</div>
       ${body.kind === 'circle'
         ? html`<jg-field label="Radius m"><jg-input id="radius" size="sm" type="number" step="0.05" min="0.05" value="${body.radius}"></jg-input></jg-field>`
         : body.kind === 'poly'
@@ -1565,6 +1574,7 @@ export default class PhysicsLab extends JGApp {
     context.beginPath();
     corners.forEach((point, index) => (index ? context.lineTo(point.x, point.y) : context.moveTo(point.x, point.y)));
     context.closePath();
+    if (body.ghost) context.fillStyle = `color-mix(in srgb, ${paint.soft} 55%, ${paint.card})`;
     context.fill();
     context.stroke();
 
@@ -1718,11 +1728,10 @@ export default class PhysicsLab extends JGApp {
     context.strokeStyle = paint.ring;
     context.beginPath();
     if (this.#drag.shape === 'circle') {
-      context.arc(from.x, from.y, Math.max(0.05, Math.hypot(to.x - from.x, to.y - from.y)), 0, Math.PI * 2);
+      const middle = { x: (from.x + to.x) / 2, y: (from.y + to.y) / 2 };
+      context.arc(middle.x, middle.y, Math.max(0.05, Math.hypot(to.x - from.x, to.y - from.y) / 2), 0, Math.PI * 2);
     } else {
-      const width = Math.max(0.1, Math.abs(to.x - from.x) * 2);
-      const height = Math.max(0.1, Math.abs(to.y - from.y) * 2);
-      context.rect(from.x - width / 2, from.y - height / 2, width, height);
+      context.rect(Math.min(from.x, to.x), Math.min(from.y, to.y), Math.abs(to.x - from.x), Math.abs(to.y - from.y));
     }
     context.stroke();
     context.restore();

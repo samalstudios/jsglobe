@@ -38,6 +38,35 @@ const toYaml = (value, depth = 0) => {
   return String(value);
 };
 
+const splitTop = (text) => {
+  const parts = [];
+  let depth = 0;
+  let quote = null;
+  let current = '';
+  for (const letter of text) {
+    if (quote) {
+      current += letter;
+      if (letter === quote) quote = null;
+      continue;
+    }
+    if (letter === '"' || letter === "'") {
+      quote = letter;
+      current += letter;
+      continue;
+    }
+    if (letter === '[' || letter === '{') depth += 1;
+    if (letter === ']' || letter === '}') depth -= 1;
+    if (letter === ',' && depth === 0) {
+      parts.push(current);
+      current = '';
+      continue;
+    }
+    current += letter;
+  }
+  if (current.trim()) parts.push(current);
+  return parts.map((part) => part.trim()).filter(Boolean);
+};
+
 const scalar = (token) => {
   const text = token.trim();
   if (!text || text === '~' || text === 'null') return null;
@@ -48,7 +77,17 @@ const scalar = (token) => {
   if (/^["'].*["']$/.test(text)) return text.slice(1, -1);
   if (text === '[]') return [];
   if (text === '{}') return {};
-  if (/^\[.*\]$/.test(text)) return text.slice(1, -1).split(',').map((part) => scalar(part)).filter((part) => part !== null || part === null);
+  if (/^\[.*\]$/.test(text)) return splitTop(text.slice(1, -1)).map((part) => scalar(part));
+  if (/^\{.*\}$/.test(text)) {
+    const map = {};
+    splitTop(text.slice(1, -1)).forEach((pair) => {
+      const split = pair.indexOf(':');
+      if (split < 0) return;
+      const key = pair.slice(0, split).trim().replace(/^["']|["']$/g, '');
+      if (key) map[key] = scalar(pair.slice(split + 1));
+    });
+    return map;
+  }
   return text;
 };
 

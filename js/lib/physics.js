@@ -251,6 +251,7 @@ export const makeBody = (spec) => {
     friction: spec.friction ?? 0.35,
     pinned: spec.pinned ?? false,
     fixedAngle: spec.fixedAngle ?? false,
+    ghost: spec.ghost ?? false,
     driftX: 0,
     driftY: 0,
     driftSpin: 0,
@@ -709,6 +710,7 @@ export const createWorld = () => {
         const a = bodies[i];
         const b = bodies[j];
         if (a.invMass === 0 && b.invMass === 0) continue;
+        if (a.ghost || b.ghost) continue;
         const reach = support(a) + support(b);
         if (Math.hypot(b.x - a.x, b.y - a.y) > reach) continue;
         collide(a, b).forEach((hit) => {
