@@ -198,7 +198,8 @@ export const createCircuit = () => {
       } else if (part.type === 'diode' || part.type === 'led') {
         const saturation = part.type === 'led' ? 1e-16 : 1e-12;
         const emission = part.type === 'led' ? 2.4 : 1.6;
-        const across = Math.max(-1, Math.min(1.2, (guess[index(part.a)] ?? 0) - (guess[index(part.b)] ?? 0)));
+        const ceiling = part.type === 'led' ? 2.6 : 1.2;
+        const across = Math.max(-1, Math.min(ceiling, (guess[index(part.a)] ?? 0) - (guess[index(part.b)] ?? 0)));
         const exponent = Math.exp(Math.min(40, across / (emission * THERMAL)));
         const current = saturation * (exponent - 1);
         const slope = Math.max(1e-12, (saturation * exponent) / (emission * THERMAL));
@@ -255,7 +256,11 @@ export const createCircuit = () => {
       else if (part.type === 'diode' || part.type === 'led') {
         const saturation = part.type === 'led' ? 1e-16 : 1e-12;
         const emission = part.type === 'led' ? 2.4 : 1.6;
-        current = saturation * (Math.exp(Math.min(40, across / (emission * THERMAL))) - 1);
+        const ceiling = part.type === 'led' ? 2.6 : 1.2;
+        const held = Math.max(-1, Math.min(ceiling, across));
+        const exponent = Math.exp(Math.min(40, held / (emission * THERMAL)));
+        const slope = Math.max(1e-12, (saturation * exponent) / (emission * THERMAL));
+        current = saturation * (exponent - 1) + slope * (across - held);
       } else if (part.type === 'npn' || part.type === 'pnp' || part.type === 'nmos' || part.type === 'pmos') {
         current = 0;
       } else if (part.type === 'vsource' || part.type === 'inductor' || part.type === 'wire') {

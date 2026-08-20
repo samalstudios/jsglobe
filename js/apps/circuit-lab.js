@@ -20,16 +20,43 @@ const sheet = css`
   .body { flex: 1; min-height: 0; display: flex; }
 
   .palette {
-    width: 118px;
+    width: 166px;
     flex: none;
     border-right: 1px solid var(--border);
-    padding: 8px;
+    padding: 8px 10px;
     overflow: auto;
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
     --icon-accent: currentColor;
+    transition: width 140ms ease;
   }
+  .palette[data-collapsed="true"] { width: 54px; padding: 8px 7px; }
+  .palette[data-collapsed="true"] .tool { justify-content: center; padding: 8px 0; }
+  .palette[data-collapsed="true"] .tool span { display: none; }
+  .palette[data-collapsed="true"] .group {
+    height: 1px;
+    padding: 0;
+    margin: 7px 3px;
+    background: var(--border);
+    overflow: hidden;
+    text-indent: -999px;
+  }
+  .palette[data-collapsed="true"] .collapse { justify-content: center; }
+  .collapse {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    border: 0;
+    background: transparent;
+    color: var(--muted-foreground);
+    border-radius: var(--radius-sm);
+    padding: 4px 6px;
+    cursor: pointer;
+    line-height: 0;
+  }
+  .collapse:hover { background: var(--accent); color: var(--foreground); }
   .palette .group {
     padding: 9px 6px 3px;
     font: 600 10px/1 var(--font-sans);
@@ -40,8 +67,9 @@ const sheet = css`
   .tool {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 6px 8px;
+    gap: 9px;
+    padding: 7px 9px;
+    white-space: nowrap;
     border: 1px solid transparent;
     border-radius: var(--radius-sm);
     background: transparent;
@@ -186,7 +214,9 @@ const sheet = css`
 
   @container (max-width: 720px) {
     .body { flex-direction: column; }
-    .palette { width: auto; flex-direction: row; flex-wrap: wrap; border-right: 0; border-bottom: 1px solid var(--border); }
+    .palette, .palette[data-collapsed="true"] { width: auto; flex-direction: row; flex-wrap: wrap; border-right: 0; border-bottom: 1px solid var(--border); }
+    .palette[data-collapsed="true"] .tool span { display: inline; }
+    .collapse { display: none; }
     .palette .group { width: 100%; }
     .footer { grid-template-columns: minmax(0, 1fr); }
     .side { width: auto; border-left: 0; border-top: 1px solid var(--border); max-height: 250px; }
@@ -329,6 +359,33 @@ const SAMPLES = {
       { kind: 'ground', a: [3, 13], b: [3, 13] },
     ],
     probe: [13, 7],
+  },
+  blinker: {
+    name: 'Blinker',
+    parts: [
+      { kind: 'vsource', a: [3, 2], b: [3, 16], value: 9 },
+      { kind: 'wire', a: [3, 2], b: [6, 2] },
+      { kind: 'wire', a: [6, 2], b: [9, 2] },
+      { kind: 'wire', a: [9, 2], b: [16, 2] },
+      { kind: 'wire', a: [16, 2], b: [19, 2] },
+      { kind: 'resistor', a: [9, 2], b: [9, 5], value: 470 },
+      { kind: 'led', a: [9, 5], b: [9, 9] },
+      { kind: 'resistor', a: [19, 2], b: [19, 5], value: 470 },
+      { kind: 'led', a: [19, 5], b: [19, 9] },
+      { kind: 'resistor', a: [6, 2], b: [6, 12], value: 47000 },
+      { kind: 'resistor', a: [16, 2], b: [16, 12], value: 47000 },
+      { kind: 'capacitor', a: [9, 9], b: [16, 12], value: 10e-6 },
+      { kind: 'capacitor', a: [19, 9], b: [6, 12], value: 22e-6 },
+      { kind: 'npn', a: [6, 12], b: [9, 9], c: [9, 15], value: 120 },
+      { kind: 'npn', a: [16, 12], b: [19, 9], c: [19, 15], value: 120 },
+      { kind: 'wire', a: [9, 15], b: [9, 16] },
+      { kind: 'wire', a: [19, 15], b: [19, 16] },
+      { kind: 'wire', a: [3, 16], b: [9, 16] },
+      { kind: 'wire', a: [9, 16], b: [19, 16] },
+      { kind: 'ground', a: [3, 16], b: [3, 16] },
+    ],
+    probe: [9, 9],
+    speed: 5,
   },
   led: {
     name: 'LED',
@@ -507,6 +564,11 @@ class CircuitLab extends JGApp {
     this.#probe = preset.probe ? [...preset.probe] : null;
     this.#trace = [];
     this.#selected = null;
+    if (preset.speed != null) {
+      this.#speed = preset.speed;
+      const field = this.$('#speed');
+      if (field) field.value = String(this.#speed);
+    }
     this.#circuit.reset();
   }
 
@@ -609,7 +671,9 @@ class CircuitLab extends JGApp {
       { id: 'copy', label: 'Copy netlist', icon: 'copy', action: () => copyText(this.#netlist()) },
     ];
 
+    this.$('#palette').dataset.collapsed = String(this.config.get('palette', false));
     this.$('#palette').innerHTML = html`
+      <button class="collapse" id="collapse" title="Widen or narrow the parts list">${icon('swap', 15)}</button>
       <div class="group">Edit</div>
       ${[
         { id: 'select', label: 'Select', icon: 'launcher' },
@@ -627,6 +691,12 @@ class CircuitLab extends JGApp {
       )}
     `;
     this.bind('.tool', 'click', (event) => this.#setTool(event.currentTarget.dataset.tool));
+    this.bind('#collapse', 'click', () => {
+      const palette = this.$('#palette');
+      const next = palette.dataset.collapsed !== 'true';
+      palette.dataset.collapsed = String(next);
+      this.config.set('palette', next);
+    });
     this.#hint();
 
     this.bind('[data-sample]', 'click', (event) => {
@@ -875,6 +945,19 @@ class CircuitLab extends JGApp {
     return Math.hypot(point[0] - target[0], point[1] - target[1]);
   }
 
+  #magnet(raw, skip = null) {
+    const reach = 0.75 / this.#zoom;
+    let best = null;
+    this.#parts.forEach((part) => {
+      if (part === skip) return;
+      this.#ends(part).forEach((point) => {
+        const away = this.#near(raw, point);
+        if (away < reach && (!best || away < best.away)) best = { at: [...point], away };
+      });
+    });
+    return best;
+  }
+
   #endNear(point) {
     const reach = 0.5 / this.#zoom;
     let best = null;
@@ -1056,7 +1139,8 @@ class CircuitLab extends JGApp {
       return;
     }
 
-    this.#drag = { kind: 'place', from: point, to: point, moved: false };
+    const start = this.#magnet(raw);
+    this.#drag = { kind: 'place', from: start ? start.at : point, to: start ? start.at : point, moved: false };
   }
 
   #move(event) {
@@ -1083,7 +1167,13 @@ class CircuitLab extends JGApp {
 
     if (this.#drag.kind === 'place') {
       const [fx, fy] = this.#drag.from;
-      this.#drag.to = Math.abs(point[0] - fx) >= Math.abs(point[1] - fy) ? [point[0], fy] : [fx, point[1]];
+      const magnet = this.#magnet(raw);
+      this.#drag.to = magnet
+        ? magnet.at
+        : Math.abs(point[0] - fx) >= Math.abs(point[1] - fy)
+          ? [point[0], fy]
+          : [fx, point[1]];
+      this.#drag.magnet = magnet ? magnet.at : null;
       this.#drag.moved = this.#drag.to[0] !== fx || this.#drag.to[1] !== fy;
     } else if (this.#drag.kind === 'move') {
       const dx = point[0] - this.#drag.from[0];
@@ -1097,7 +1187,9 @@ class CircuitLab extends JGApp {
     } else if (this.#drag.kind === 'end') {
       const { part, end } = this.#drag;
       const before = this.#ends(part).map((point) => [...point]);
-      part[end] = point;
+      const magnet = this.#magnet(raw, part);
+      part[end] = magnet ? magnet.at : point;
+      this.#drag.magnet = magnet ? magnet.at : null;
       this.#relink(part, before);
     }
 
@@ -1328,6 +1420,29 @@ class CircuitLab extends JGApp {
       context.arc(this.#hover[0] * GRID, this.#hover[1] * GRID, 3.2, 0, Math.PI * 2);
       context.fill();
       context.globalAlpha = 1;
+    }
+
+    context.save();
+    context.fillStyle = paint.soft;
+    context.globalAlpha = 0.55;
+    this.#parts.forEach((part) => {
+      if (part.kind === 'wire' || part.kind === 'ground') return;
+      this.#ends(part).forEach((point) => {
+        context.beginPath();
+        context.arc(point[0] * GRID, point[1] * GRID, 2.2, 0, Math.PI * 2);
+        context.fill();
+      });
+    });
+    context.restore();
+
+    if (this.#drag?.magnet) {
+      context.beginPath();
+      context.arc(this.#drag.magnet[0] * GRID, this.#drag.magnet[1] * GRID, 7, 0, Math.PI * 2);
+      context.fillStyle = `color-mix(in srgb, ${paint.ring} 30%, transparent)`;
+      context.fill();
+      context.strokeStyle = paint.ring;
+      context.lineWidth = 1.8;
+      context.stroke();
     }
 
     if (this.#hoverEnd) {

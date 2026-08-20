@@ -230,6 +230,36 @@ const SAMPLES = {
       [2, 'out3', 3, 'in3'],
     ],
   },
+  matrix: {
+    name: 'Matrix scan',
+    parts: [
+      { kind: 'high', x: 2, y: 2 },
+      { kind: 'node', x: 6, y: 2 },
+      { kind: 'clock', x: 2, y: 10, value: 4 },
+      { kind: 'counter', x: 8, y: 8 },
+      { kind: 'decoder', x: 16, y: 1 },
+      { kind: 'decoder', x: 16, y: 10 },
+      { kind: 'matrix', x: 26, y: 3 },
+    ],
+    links: [
+      [2, 'out0', 3, 'in0'],
+      [0, 'out0', 1, 'in0'],
+      [1, 'out0', 4, 'in2'],
+      [1, 'out1', 5, 'in2'],
+      [3, 'out0', 4, 'in0'],
+      [3, 'out1', 4, 'in1'],
+      [3, 'out2', 5, 'in0'],
+      [3, 'out3', 5, 'in1'],
+      [4, 'out0', 6, 'in0'],
+      [4, 'out1', 6, 'in1'],
+      [4, 'out2', 6, 'in2'],
+      [4, 'out3', 6, 'in3'],
+      [5, 'out0', 6, 'in8'],
+      [5, 'out1', 6, 'in9'],
+      [5, 'out2', 6, 'in10'],
+      [5, 'out3', 6, 'in11'],
+    ],
+  },
   latch: {
     name: 'D latch',
     parts: [
@@ -518,6 +548,7 @@ class LogicLab extends JGApp {
       this.#nameField();
       this.#savedList();
       this.#inspector();
+      this.#fit();
       this.#draw();
     });
     this.bind('#save', 'click', () => this.#saveNamed());
