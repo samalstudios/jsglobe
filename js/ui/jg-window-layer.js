@@ -16,6 +16,7 @@ const sheet = css`
     z-index: 40;
     pointer-events: none;
   }
+  :host([data-maximized]) { z-index: 80; }
   ::slotted(jg-window) { pointer-events: auto; }
 `;
 
@@ -124,6 +125,14 @@ class JGWindowLayer extends JGElement {
     win.addEventListener('window:minimize', () => this.minimize(appId));
     win.addEventListener('window:focus', () => this.focus(appId));
     win.addEventListener('window:menu', (event) => this.#menu(appId, event.detail));
+    win.addEventListener('window:state', () => this.#syncMaximized());
+  }
+
+  #syncMaximized() {
+    const full = [...this.#windows.values()].some(
+      (node) => node.getAttribute('state') === 'maximized',
+    );
+    this.toggleAttribute('data-maximized', full);
   }
 
   #menu(appId, position) {
@@ -173,6 +182,7 @@ class JGWindowLayer extends JGElement {
     this.#order = this.#order.filter((id) => id !== appId);
     this.#order.unshift(appId);
     this.#applyStacking();
+    this.#syncMaximized();
     this.#emitChange();
   }
 
@@ -190,6 +200,7 @@ class JGWindowLayer extends JGElement {
     this.#order = this.#order.filter((id) => id !== appId);
     this.#cascade = Math.max(0, this.#cascade - 1);
     this.#applyStacking();
+    this.#syncMaximized();
     this.#emitChange();
   }
 

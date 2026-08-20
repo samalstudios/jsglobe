@@ -35,6 +35,10 @@ const sheet = css`
     border-radius: 0;
     border: 0;
   }
+  :host([state="maximized"]) {
+    position: fixed !important;
+    z-index: 90;
+  }
   :host([focused]) { box-shadow: var(--shadow-lg), 0 0 0 1px color-mix(in srgb, var(--ring) 30%, transparent); }
   :host(:not([focused])) .chrome { opacity: 0.72; }
 
@@ -300,6 +304,7 @@ class JGWindow extends JGElement {
     if (this.getAttribute('state') === 'maximized') {
       this.setAttribute('state', 'normal');
       if (this.#restore) this.place(this.#restore);
+      this.emit('window:state', { appId: this.appId, state: 'normal' });
       return;
     }
     this.#restore = {
@@ -309,6 +314,7 @@ class JGWindow extends JGElement {
       height: this.offsetHeight,
     };
     this.setAttribute('state', 'maximized');
+    this.emit('window:state', { appId: this.appId, state: 'maximized' });
   }
 
   #bounds() {
