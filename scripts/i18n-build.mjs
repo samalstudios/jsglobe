@@ -12,6 +12,7 @@ const targets = process.argv.slice(2).length
   : (await readdir(APPS, { withFileTypes: true })).filter((entry) => entry.isDirectory()).map((entry) => entry.name);
 
 const missing = [];
+const dropped = [];
 let written = 0;
 
 for (const id of targets) {
@@ -46,11 +47,22 @@ for (const id of targets) {
     return `  ${lang}: {\n${lines.join('\n')}\n  },`;
   }).join('\n');
 
+  // A key held in the dictionary but never seen as a literal t('key') call is
+  // about to be dropped. That is usually a key built from a template literal,
+  // which is a mistake worth seeing rather than losing quietly.
+  const keeping = new Set(english.keys());
+  const losing = Object.keys(existing[LANGS[0]] ?? {}).filter((key) => !keeping.has(key));
+  if (losing.length) dropped.push(`${id}: ${losing.join(', ')}`);
+
   await writeFile(`${APPS}/${id}/i18n.js`, `export default {\n${body}\n};\n`);
   written += 1;
 }
 
 console.log(`wrote ${written} app dictionaries`);
+if (dropped.length) {
+  console.log(`\n${dropped.length} app(s) had keys with no literal t() call, so they were dropped:`);
+  dropped.forEach((line) => console.log('  ' + line));
+}
 if (missing.length) {
   console.log(`\n${missing.length} strings still need a translation (app / key / english):`);
   missing.slice(0, 40).forEach((line) => console.log('  ' + line.replace(/\t/g, '  ')));

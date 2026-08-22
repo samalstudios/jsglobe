@@ -1,5 +1,10 @@
 export default {
   de: {
+    'chess.family.open': 'Offene Spiele',
+    'chess.family.semiOpen': 'Halboffene Spiele',
+    'chess.family.closed': 'Geschlossene Spiele',
+    'chess.family.indian': 'Indische Verteidigungen',
+    'chess.family.flank': 'Flankeneröffnungen',
     'chess.theme.paper': 'Papier',
     'chess.theme.wood': 'Holz',
     'chess.theme.forest': 'Wald',
@@ -59,6 +64,11 @@ export default {
     'chess.tryThisPiece': 'Versuch die Figur auf {square}.',
   },
   es: {
+    'chess.family.open': 'Juegos abiertos',
+    'chess.family.semiOpen': 'Juegos semiabiertos',
+    'chess.family.closed': 'Juegos cerrados',
+    'chess.family.indian': 'Defensas indias',
+    'chess.family.flank': 'Aperturas de flanco',
     'chess.theme.paper': 'Papel',
     'chess.theme.wood': 'Madera',
     'chess.theme.forest': 'Bosque',
@@ -118,6 +128,11 @@ export default {
     'chess.tryThisPiece': 'Prueba la pieza de {square}.',
   },
   zh: {
+    'chess.family.open': '开放性开局',
+    'chess.family.semiOpen': '半开放性开局',
+    'chess.family.closed': '封闭性开局',
+    'chess.family.indian': '印度防御体系',
+    'chess.family.flank': '侧翼开局',
     'chess.theme.paper': '纸色',
     'chess.theme.wood': '木色',
     'chess.theme.forest': '森林',

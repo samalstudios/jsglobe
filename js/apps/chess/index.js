@@ -37,6 +37,15 @@ const VALUE = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
 
 const THEMES = ['paper', 'wood', 'forest', 'ocean', 'slate', 'rose', 'ink'];
 
+const familyName = (id) =>
+  ({
+    open: t('chess.family.open', 'Open games'),
+    'semi-open': t('chess.family.semiOpen', 'Semi-open games'),
+    closed: t('chess.family.closed', 'Closed games'),
+    indian: t('chess.family.indian', 'Indian defences'),
+    flank: t('chess.family.flank', 'Flank openings'),
+  })[id] ?? FAMILIES[id] ?? id;
+
 const themeName = (id) =>
   ({
     paper: t('chess.theme.paper', 'Paper'),
@@ -565,7 +574,7 @@ class Chess extends JGApp {
       <p class="hint">${t('chess.openingsBlurb', 'Pick a line to play it out on the board, one move at a time.')}</p>
       ${[...bands.entries()].map(
         ([family, list]) => html`<section class="band">
-          <h4>${t(`chess.family.${family}`, FAMILIES[family] ?? family)}</h4>
+          <h4>${familyName(family)}</h4>
           ${list.map(
             (opening) => html`<button class="line" data-opening="${opening.id}">
               <span class="eco">${opening.eco}</span>
