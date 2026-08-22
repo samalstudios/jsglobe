@@ -1,0 +1,29 @@
+export default {
+  de: {
+    'notes.newNote': 'Neue Notiz',
+    'notes.noNotesYet': 'Noch keine Notizen',
+    'notes.export': 'Exportieren',
+    'notes.delete': 'Löschen',
+    'notes.startTyping': 'Losschreiben...',
+    'notes.nothingSelected': 'Nichts ausgewählt',
+    'notes.createANoteToGet': 'Eine Notiz anlegen, um loszulegen.',
+  },
+  es: {
+    'notes.newNote': 'Nota nueva',
+    'notes.noNotesYet': 'Todavía no hay notas',
+    'notes.export': 'Exportar',
+    'notes.delete': 'Eliminar',
+    'notes.startTyping': 'Empieza a escribir...',
+    'notes.nothingSelected': 'No hay nada seleccionado',
+    'notes.createANoteToGet': 'Crea una nota para empezar.',
+  },
+  zh: {
+    'notes.newNote': '新建笔记',
+    'notes.noNotesYet': '暂无笔记',
+    'notes.export': '导出',
+    'notes.delete': '删除',
+    'notes.startTyping': '开始输入...',
+    'notes.nothingSelected': '未选中任何内容',
+    'notes.createANoteToGet': '创建一条笔记开始使用。',
+  },
+};

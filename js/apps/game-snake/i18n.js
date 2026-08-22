@@ -1,0 +1,32 @@
+export default {
+  de: {
+    'game-snake.snake': 'Snake',
+    'game-snake.score': 'Punkte',
+    'game-snake.best': 'Bestwert',
+    'game-snake.calm': 'Ruhig',
+    'game-snake.normal': 'Normal',
+    'game-snake.fast': 'Schnell',
+    'game-snake.restart': 'Neu starten',
+    'game-snake.arrowKeysOrWasdTo': 'Mit den Pfeiltasten oder WASD steuern, Leertaste pausiert. Auf Touchscreens wischen.',
+  },
+  es: {
+    'game-snake.snake': 'Snake',
+    'game-snake.score': 'Puntuación',
+    'game-snake.best': 'Récord',
+    'game-snake.calm': 'Tranquilo',
+    'game-snake.normal': 'Normal',
+    'game-snake.fast': 'Rápido',
+    'game-snake.restart': 'Reiniciar',
+    'game-snake.arrowKeysOrWasdTo': 'Usa las flechas o WASD para dirigir, espacio para pausar. Desliza en pantallas táctiles.',
+  },
+  zh: {
+    'game-snake.snake': '贪吃蛇',
+    'game-snake.score': '得分',
+    'game-snake.best': '最佳',
+    'game-snake.calm': '平缓',
+    'game-snake.normal': '普通',
+    'game-snake.fast': '快速',
+    'game-snake.restart': '重新开始',
+    'game-snake.arrowKeysOrWasdTo': '用方向键或 WASD 控制方向，空格暂停。触摸屏可滑动。',
+  },
+};

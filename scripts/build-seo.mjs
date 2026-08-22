@@ -19,8 +19,8 @@ const fill = (text, vars) =>
 
 const T = (lang, key, english, vars) => fill(packs[lang]?.seo?.[key] ?? english, vars);
 
-const appName = (lang, app) => packs[lang]?.apps?.[app.id]?.name ?? app.name;
-const appTagline = (lang, app) => packs[lang]?.apps?.[app.id]?.tagline ?? app.tagline;
+const appName = (lang, app) => app.i18n?.[lang]?.name ?? app.name;
+const appTagline = (lang, app) => app.i18n?.[lang]?.tagline ?? app.tagline;
 const groupName = (lang, group) => (group ? packs[lang]?.categories?.[group.id] ?? group.name : null);
 
 const prefix = (lang) => {

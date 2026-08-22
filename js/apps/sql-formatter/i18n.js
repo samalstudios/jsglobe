@@ -1,0 +1,32 @@
+export default {
+  de: {
+    'sql-formatter.uppercaseKeywords': 'Schlüsselwörter in Großbuchstaben',
+    'sql-formatter.2Spaces': '2 Leerzeichen',
+    'sql-formatter.4Spaces': '4 Leerzeichen',
+    'sql-formatter.sample': 'Beispiel',
+    'sql-formatter.copy': 'Kopieren',
+    'sql-formatter.input': 'Eingabe',
+    'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
+    'sql-formatter.formatted': 'Formatiert',
+  },
+  es: {
+    'sql-formatter.uppercaseKeywords': 'Palabras clave en mayúsculas',
+    'sql-formatter.2Spaces': '2 espacios',
+    'sql-formatter.4Spaces': '4 espacios',
+    'sql-formatter.sample': 'Ejemplo',
+    'sql-formatter.copy': 'Copiar',
+    'sql-formatter.input': 'Entrada',
+    'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
+    'sql-formatter.formatted': 'Formateado',
+  },
+  zh: {
+    'sql-formatter.uppercaseKeywords': '关键字大写',
+    'sql-formatter.2Spaces': '2 个空格',
+    'sql-formatter.4Spaces': '4 个空格',
+    'sql-formatter.sample': '示例',
+    'sql-formatter.copy': '复制',
+    'sql-formatter.input': '输入',
+    'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
+    'sql-formatter.formatted': '已格式化',
+  },
+};

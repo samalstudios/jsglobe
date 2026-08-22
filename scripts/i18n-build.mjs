@@ -1,33 +1,53 @@
-import { readFile, writeFile } from 'node:fs/promises';
-
-const manifest = JSON.parse(await readFile('js/i18n/strings.json', 'utf8'));
-const table = JSON.parse(await readFile('js/i18n/translations.json', 'utf8'));
+import { readFile, writeFile, readdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 
 const LANGS = ['de', 'es', 'zh'];
-const header = {
-  de: 'German',
-  es: 'Spanish',
-  zh: 'Chinese',
-};
+const APPS = 'js/apps';
+const glossary = JSON.parse(await readFile('js/i18n/glossary.json', 'utf8'));
 
 const quote = (text) => `'${String(text).replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
 
-for (const lang of LANGS) {
-  const lines = [];
-  let translated = 0;
-  for (const [key, english] of Object.entries(manifest)) {
-    const value = table[english]?.[lang];
-    if (!value) continue;
-    lines.push(`  ${quote(key)}: ${quote(value)},`);
-    translated += 1;
-  }
-  const body = `export default {\n${lines.join('\n')}\n};\n`;
-  await writeFile(`js/i18n/${lang}-apps.generated.js`, body);
-  console.log(`${lang}: ${translated}/${Object.keys(manifest).length} app keys (${header[lang]})`);
+const targets = process.argv.slice(2).length
+  ? process.argv.slice(2)
+  : (await readdir(APPS, { withFileTypes: true })).filter((entry) => entry.isDirectory()).map((entry) => entry.name);
+
+const missing = [];
+let written = 0;
+
+for (const id of targets) {
+  const file = `${APPS}/${id}/index.js`;
+  if (!existsSync(file)) continue;
+  const code = await readFile(file, 'utf8');
+
+  const calls = [...code.matchAll(/\bt\(\s*'((?:[^'\\]|\\.)*)'\s*,\s*'((?:[^'\\]|\\.)*)'/g)];
+  if (!calls.length) continue;
+
+  const english = new Map();
+  for (const [, key, source] of calls) english.set(key.replace(/\\'/g, "'"), source.replace(/\\'/g, "'"));
+
+  const existing = existsSync(`${APPS}/${id}/i18n.js`)
+    ? (await import(`../${APPS}/${id}/i18n.js`)).default
+    : {};
+
+  const body = LANGS.map((lang) => {
+    const lines = [];
+    for (const [key, source] of english) {
+      const value = existing[lang]?.[key] ?? glossary[source]?.[lang];
+      if (!value) {
+        if (lang === LANGS[0]) missing.push(`${id}\t${key}\t${source}`);
+        continue;
+      }
+      lines.push(`    ${quote(key)}: ${quote(value)},`);
+    }
+    return `  ${lang}: {\n${lines.join('\n')}\n  },`;
+  }).join('\n');
+
+  await writeFile(`${APPS}/${id}/i18n.js`, `export default {\n${body}\n};\n`);
+  written += 1;
 }
 
-const missing = [...new Set(Object.values(manifest))].filter(
-  (english) => !LANGS.every((lang) => table[english]?.[lang]),
-);
-console.log(`untranslated unique strings: ${missing.length} of ${new Set(Object.values(manifest)).size}`);
-await writeFile('js/i18n/untranslated.json', `${JSON.stringify(missing, null, 2)}\n`);
+console.log(`wrote ${written} app dictionaries`);
+if (missing.length) {
+  console.log(`\n${missing.length} strings still need a translation (app / key / english):`);
+  missing.slice(0, 40).forEach((line) => console.log('  ' + line.replace(/\t/g, '  ')));
+}

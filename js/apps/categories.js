@@ -1,0 +1,15 @@
+export const categories = [
+  { id: 'crypto', name: 'Crypto & Security', tint: '#6a5a8c' },
+  { id: 'converter', name: 'Converters', tint: '#96703f' },
+  { id: 'web', name: 'Web', tint: '#3f6b91' },
+  { id: 'development', name: 'Development', tint: '#4a7a58' },
+  { id: 'network', name: 'Network', tint: '#3f7a75' },
+  { id: 'text', name: 'Text', tint: '#875a6b' },
+  { id: 'math', name: 'Math & Units', tint: '#847a44' },
+  { id: 'media', name: 'Media', tint: '#8a1c3b' },
+  { id: 'science', name: 'Science', tint: '#3f6b6b' },
+  { id: 'ai', name: 'Local AI', tint: '#5b5b8a' },
+  { id: 'play', name: 'Play', tint: '#9c6440' },
+  { id: 'utility', name: 'Utility', tint: '#5b6470' },
+  { id: 'system', name: 'System', tint: '#6b7280' },
+];

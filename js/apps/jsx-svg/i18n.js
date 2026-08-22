@@ -1,0 +1,32 @@
+export default {
+  de: {
+    'jsx-svg.componentName': 'Komponentenname',
+    'jsx-svg.sample': 'Beispiel',
+    'jsx-svg.copyResult': 'Ergebnis kopieren',
+    'jsx-svg.jsxComponent': 'JSX-Komponente',
+    'jsx-svg.pasteAReactSvgComponent': 'Eine React-SVG-Komponente einfügen',
+    'jsx-svg.svgMarkup': 'SVG-Markup',
+    'jsx-svg.jsxToSvg': 'JSX zu SVG',
+    'jsx-svg.svgToJsx': 'SVG zu JSX',
+  },
+  es: {
+    'jsx-svg.componentName': 'Nombre del componente',
+    'jsx-svg.sample': 'Ejemplo',
+    'jsx-svg.copyResult': 'Copiar resultado',
+    'jsx-svg.jsxComponent': 'Componente JSX',
+    'jsx-svg.pasteAReactSvgComponent': 'Pega un componente SVG de React',
+    'jsx-svg.svgMarkup': 'Marcado SVG',
+    'jsx-svg.jsxToSvg': 'JSX a SVG',
+    'jsx-svg.svgToJsx': 'SVG a JSX',
+  },
+  zh: {
+    'jsx-svg.componentName': '组件名称',
+    'jsx-svg.sample': '示例',
+    'jsx-svg.copyResult': '复制结果',
+    'jsx-svg.jsxComponent': 'JSX 组件',
+    'jsx-svg.pasteAReactSvgComponent': '粘贴一个 React SVG 组件',
+    'jsx-svg.svgMarkup': 'SVG 标记',
+    'jsx-svg.jsxToSvg': 'JSX 转 SVG',
+    'jsx-svg.svgToJsx': 'SVG 转 JSX',
+  },
+};

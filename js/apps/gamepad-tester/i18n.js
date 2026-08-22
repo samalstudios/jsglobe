@@ -1,0 +1,32 @@
+export default {
+  de: {
+    'gamepad-tester.stickDeadZone': 'Totzone des Sticks',
+    'gamepad-tester.gamepad': 'Gamepad',
+    'gamepad-tester.pressAButtonOnA': 'Eine Taste am Controller drücken',
+    'gamepad-tester.testRumble': 'Vibration testen',
+    'gamepad-tester.noControllerYet': 'Noch kein Controller',
+    'gamepad-tester.plugInAGamepadAnd': 'Ein Gamepad anschließen und eine beliebige Taste drücken. Browser zeigen ein Pad erst, wenn es Eingaben sendet.',
+    'gamepad-tester.buttons': 'Tasten',
+    'gamepad-tester.axes': 'Achsen',
+  },
+  es: {
+    'gamepad-tester.stickDeadZone': 'Zona muerta del stick',
+    'gamepad-tester.gamepad': 'Mando',
+    'gamepad-tester.pressAButtonOnA': 'Pulsa un botón del mando',
+    'gamepad-tester.testRumble': 'Probar la vibración',
+    'gamepad-tester.noControllerYet': 'Todavía no hay mando',
+    'gamepad-tester.plugInAGamepadAnd': 'Conecta un mando y pulsa cualquier botón. Los navegadores solo detectan el mando cuando envía datos.',
+    'gamepad-tester.buttons': 'Botones',
+    'gamepad-tester.axes': 'Ejes',
+  },
+  zh: {
+    'gamepad-tester.stickDeadZone': '摇杆死区',
+    'gamepad-tester.gamepad': '手柄',
+    'gamepad-tester.pressAButtonOnA': '按下手柄上的任意键',
+    'gamepad-tester.testRumble': '测试震动',
+    'gamepad-tester.noControllerYet': '尚未检测到手柄',
+    'gamepad-tester.plugInAGamepadAnd': '接上手柄并按任意键。浏览器只有在手柄发送输入后才会显示它。',
+    'gamepad-tester.buttons': '按键',
+    'gamepad-tester.axes': '摇杆轴',
+  },
+};

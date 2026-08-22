@@ -2,18 +2,12 @@ import { bus } from './bus.js';
 import { DEFAULT_LANGUAGE, languageOf, languageCodes } from './languages.js';
 
 let active = DEFAULT_LANGUAGE;
-let pack = { ui: {}, apps: {}, categories: {} };
+let pack = { ui: {}, categories: {} };
 
 const loaders = {
   de: () => import('../i18n/de.js'),
   es: () => import('../i18n/es.js'),
   zh: () => import('../i18n/zh.js'),
-};
-
-const appLoaders = {
-  de: () => import('../i18n/de-apps.js'),
-  es: () => import('../i18n/es-apps.js'),
-  zh: () => import('../i18n/zh-apps.js'),
 };
 
 export const language = () => active;
@@ -25,15 +19,11 @@ export const loadLanguage = async (code) => {
   if (code === active && (code === DEFAULT_LANGUAGE || Object.keys(pack.ui).length)) return;
   if (code === DEFAULT_LANGUAGE) {
     active = code;
-    pack = { ui: {}, apps: {}, categories: {} };
+    pack = { ui: {}, categories: {} };
   } else {
-    const [module, appModule] = await Promise.all([
-      loaders[code](),
-      appLoaders[code]().catch(() => ({ default: {} })),
-    ]);
+    const module = await loaders[code]();
     active = code;
-    pack = { ui: {}, apps: {}, categories: {}, ...module.default };
-    pack.ui = { ...pack.ui, ...appModule.default };
+    pack = { ui: {}, categories: {}, ...module.default };
   }
   const entry = languageOf(active);
   document.documentElement.lang = entry.locale;
@@ -41,17 +31,21 @@ export const loadLanguage = async (code) => {
   bus.emit('language:change', active);
 };
 
-export const t = (key, fallback = key, vars) => {
-  const raw = pack.ui[key] ?? fallback;
+const interpolate = (raw, vars) => {
   if (!vars) return raw;
   return String(raw).replace(/\{(\w+)\}/g, (match, name) => (name in vars ? String(vars[name]) : match));
 };
 
-export const appName = (app) => pack.apps[app.id]?.name ?? app.name;
+export const t = (key, fallback = key, vars) => interpolate(pack.ui[key] ?? fallback, vars);
 
-export const appTagline = (app) => pack.apps[app.id]?.tagline ?? app.tagline;
+export const appText = (strings = {}) => (key, fallback = key, vars) =>
+  interpolate(strings[active]?.[key] ?? fallback, vars);
 
-export const appKeywords = (app) => [...(app.keywords ?? []), ...(pack.apps[app.id]?.keywords ?? [])];
+export const appName = (app) => app.i18n?.[active]?.name ?? app.name;
+
+export const appTagline = (app) => app.i18n?.[active]?.tagline ?? app.tagline;
+
+export const appKeywords = (app) => [...(app.keywords ?? []), ...(app.i18n?.[active]?.keywords ?? [])];
 
 export const categoryName = (category) => pack.categories[category.id] ?? category.name;
 

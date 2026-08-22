@@ -1,0 +1,2090 @@
+import { JGApp, define, html, css } from '../../core/app.js';
+import { appText } from '../../core/i18n.js';
+import strings from './i18n.js';
+import { createCircuit } from '../../lib/circuit.js';
+import { settings } from '../../core/settings.js';
+import { copyText, toast } from '../../core/util.js';
+import { createDesigns } from '../../lib/designs.js';
+import { icon } from '../../ui/icons.js';
+
+const t = appText(strings);
+
+const sheet = css`
+  .app { padding: 0; gap: 0; container-type: inline-size; overflow: hidden; }
+
+  .head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    flex: none;
+  }
+
+  .body { flex: 1; min-height: 0; display: flex; }
+
+  .palette {
+    width: 166px;
+    flex: none;
+    border-right: 1px solid var(--border);
+    padding: 8px 10px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    --icon-accent: currentColor;
+    transition: width 140ms ease;
+  }
+  .palette[data-collapsed="true"] { width: 54px; padding: 8px 7px; }
+  .palette[data-collapsed="true"] .tool { justify-content: center; padding: 8px 0; }
+  .palette[data-collapsed="true"] .tool span { display: none; }
+  .palette[data-collapsed="true"] .group {
+    height: 1px;
+    padding: 0;
+    margin: 7px 3px;
+    background: var(--border);
+    overflow: hidden;
+    text-indent: -999px;
+  }
+  .palette[data-collapsed="true"] .collapse { justify-content: center; }
+  .collapse {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    border: 0;
+    background: transparent;
+    color: var(--muted-foreground);
+    border-radius: var(--radius-sm);
+    padding: 4px 6px;
+    cursor: pointer;
+    line-height: 0;
+  }
+  .collapse:hover { background: var(--accent); color: var(--foreground); }
+  .palette .group {
+    padding: 9px 6px 3px;
+    font: 600 10px/1 var(--font-sans);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+  .tool {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 9px;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--muted-foreground);
+    font: 500 12px/1 var(--font-sans);
+    text-align: left;
+    cursor: pointer;
+  }
+  .tool:hover { background: var(--accent); color: var(--foreground); }
+  .tool[aria-pressed="true"] {
+    background: color-mix(in srgb, var(--ring) 16%, var(--card));
+    border-color: color-mix(in srgb, var(--ring) 55%, transparent);
+    color: var(--foreground);
+    font-weight: 600;
+  }
+  .tool svg { flex: none; }
+
+  .board { position: relative; flex: 1; min-width: 0; background: var(--muted); }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; }
+  canvas[data-tool="select"] { cursor: default; }
+  canvas[data-grab="true"] { cursor: grab; }
+  canvas[data-dragging="true"] { cursor: grabbing; }
+  .hint-bar {
+    position: absolute;
+    left: 12px;
+    bottom: 10px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    color: var(--muted-foreground);
+    pointer-events: none;
+  }
+  .hint-bar b {
+    font: 600 11px/1 var(--font-sans);
+    color: var(--foreground);
+    padding: 3px 7px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--ring) 18%, var(--card));
+    border: 1px solid color-mix(in srgb, var(--ring) 45%, transparent);
+  }
+  .warn {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    padding: 5px 10px;
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--destructive) 16%, var(--card));
+    color: var(--destructive);
+    font-size: 12px;
+  }
+
+  .side {
+    width: 232px;
+    flex: none;
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .side .pane { padding: 12px; display: flex; flex-direction: column; gap: 10px; overflow: auto; }
+
+  .footer {
+    flex: none;
+    border-top: 1px solid var(--border);
+    padding: 10px 14px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 14px;
+    align-items: stretch;
+    background: color-mix(in srgb, var(--muted) 35%, transparent);
+  }
+  .footer .trace { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .footer .trace-head { display: flex; align-items: baseline; gap: 10px; }
+  .footer canvas {
+    width: 100%;
+    height: 168px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--muted) 70%, transparent);
+  }
+  .scope-controls { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 8px; align-items: center; font-size: 11.5px; }
+  .scope-controls span { color: var(--muted-foreground); }
+  .scope-foot { display: flex; align-items: center; gap: 8px; justify-content: space-between; }
+  .measures-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    font-size: 11.5px;
+  }
+  .measures-row div { display: flex; gap: 6px; }
+  .measures-row dt { color: var(--muted-foreground); }
+  .measures-row dd { margin: 0; font-family: var(--font-mono); }
+
+  .readout { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; font-size: 12px; }
+  .readout dt { color: var(--muted-foreground); }
+  .readout dd { margin: 0; font-family: var(--font-mono); text-align: right; }
+
+  .samples { display: flex; flex-wrap: wrap; gap: 6px; }
+  .samples button {
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--foreground);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font: 500 11.5px/1 var(--font-sans);
+    cursor: pointer;
+  }
+  .samples button:hover { border-color: var(--ring); }
+  .saved { display: flex; flex-direction: column; gap: 5px; }
+  .saved .row { display: flex; align-items: center; gap: 6px; }
+  .saved .row button:first-child {
+    flex: 1;
+    text-align: left;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--foreground);
+    border-radius: var(--radius-sm);
+    padding: 5px 9px;
+    font: 500 11.5px/1.3 var(--font-sans);
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .saved .row button:first-child:hover { border-color: var(--ring); }
+  .saved .row button[data-open="true"] { border-color: var(--ring); background: color-mix(in srgb, var(--ring) 14%, var(--card)); }
+  .saved .row .drop {
+    flex: none;
+    border: 0;
+    background: transparent;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    padding: 4px;
+    line-height: 0;
+    border-radius: var(--radius-sm);
+  }
+  .saved .row .drop:hover { background: var(--accent); color: var(--foreground); }
+  .save-row { display: flex; gap: 6px; align-items: center; }
+  .save-row jg-input { flex: 1; }
+
+  @container (max-width: 720px) {
+    .body { flex-direction: column; }
+    .palette, .palette[data-collapsed="true"] { width: auto; flex-direction: row; flex-wrap: wrap; border-right: 0; border-bottom: 1px solid var(--border); }
+    .palette[data-collapsed="true"] .tool span { display: inline; }
+    .collapse { display: none; }
+    .palette .group { width: 100%; }
+    .footer { grid-template-columns: minmax(0, 1fr); }
+    .side { width: auto; border-left: 0; border-top: 1px solid var(--border); max-height: 250px; }
+  }
+`;
+
+const GRID = 26;
+const DIVISIONS = 10;
+const POINTS = 900;
+
+const SPEEDS = [
+  { label: t('circuit-lab.1200Speed', '1/200 speed'), factor: 0.005 },
+  { label: t('circuit-lab.150Speed', '1/50 speed'), factor: 0.02 },
+  { label: t('circuit-lab.110Speed', '1/10 speed'), factor: 0.1 },
+  { label: t('circuit-lab.14Speed', '1/4 speed'), factor: 0.25 },
+  { label: t('circuit-lab.halfSpeed', 'Half speed'), factor: 0.5 },
+  { label: t('circuit-lab.realTime', 'Real time'), factor: 1 },
+];
+
+const TIMEBASE = [
+  { label: t('circuit-lab.20SDiv', '20 µs/div'), seconds: 0.00002 },
+  { label: t('circuit-lab.100SDiv', '100 µs/div'), seconds: 0.0001 },
+  { label: t('circuit-lab.500SDiv', '500 µs/div'), seconds: 0.0005 },
+  { label: t('circuit-lab.2MsDiv', '2 ms/div'), seconds: 0.002 },
+  { label: t('circuit-lab.5MsDiv', '5 ms/div'), seconds: 0.005 },
+  { label: t('circuit-lab.20MsDiv', '20 ms/div'), seconds: 0.02 },
+  { label: t('circuit-lab.50MsDiv', '50 ms/div'), seconds: 0.05 },
+];
+
+const KINDS = {
+  wire: { label: t('circuit-lab.wire', 'Wire'), icon: 'link' },
+  resistor: { label: t('circuit-lab.resistor', 'Resistor'), icon: 'activity', unit: 'Ω', value: 1000 },
+  capacitor: { label: t('circuit-lab.capacitor', 'Capacitor'), icon: 'binary', unit: 'F', value: 1e-6 },
+  inductor: { label: t('circuit-lab.inductor', 'Inductor'), icon: 'repeat', unit: 'H', value: 0.01 },
+  vsource: { label: t('circuit-lab.battery', 'Battery'), icon: 'battery', unit: 'V', value: 5 },
+  ac: { label: t('circuit-lab.acSource', 'AC source'), icon: 'motion', unit: 'V', value: 5 },
+  diode: { label: t('circuit-lab.diode', 'Diode'), icon: 'transform', unit: '', value: 0 },
+  led: { label: t('circuit-lab.led', 'LED'), icon: 'sparkles', unit: '', value: 0 },
+  lamp: { label: t('circuit-lab.lamp', 'Lamp'), icon: 'sun', unit: 'Ω', value: 220 },
+  switch: { label: t('circuit-lab.switch', 'Switch'), icon: 'toggle', unit: '', value: 0 },
+  npn: { label: t('circuit-lab.npn', 'NPN'), icon: 'transistor', unit: '', value: 100, terminals: 3 },
+  pnp: { label: t('circuit-lab.pnp', 'PNP'), icon: 'transistor', unit: '', value: 100, terminals: 3 },
+  nmos: { label: t('circuit-lab.nMosfet', 'N-MOSFET'), icon: 'transistor', unit: '', value: 1.8, terminals: 3 },
+  pmos: { label: t('circuit-lab.pMosfet', 'P-MOSFET'), icon: 'transistor', unit: '', value: 1.8, terminals: 3 },
+  ground: { label: t('circuit-lab.ground', 'Ground'), icon: 'landmark', unit: '', value: 0 },
+};
+
+const prefix = (value, unit) => {
+  const magnitude = Math.abs(value);
+  if (!magnitude) return `0 ${unit}`;
+  const steps = [
+    [1e9, 'G'],
+    [1e6, 'M'],
+    [1e3, 'k'],
+    [1, ''],
+    [1e-3, 'm'],
+    [1e-6, 'µ'],
+    [1e-9, 'n'],
+    [1e-12, 'p'],
+  ];
+  const [scale, symbol] = steps.find(([size]) => magnitude >= size) ?? [1e-12, 'p'];
+  const scaled = value / scale;
+  const digits = Math.abs(scaled) >= 100 ? 0 : Math.abs(scaled) >= 10 ? 1 : 2;
+  const text = scaled.toFixed(digits);
+  const trimmed = text.includes('.') ? text.replace(/0+$/, '').replace(/\.$/, '') : text;
+  return `${trimmed} ${symbol}${unit}`;
+};
+
+const parseValue = (text, fallback) => {
+  const match = String(text).trim().match(/^(-?[\d.]+)\s*([a-zA-ZµΩ]*)/);
+  if (!match) return fallback;
+  const number = Number(match[1]);
+  if (!Number.isFinite(number)) return fallback;
+  const factor = { g: 1e9, meg: 1e6, m: 1e-3, k: 1e3, u: 1e-6, µ: 1e-6, n: 1e-9, p: 1e-12 }[match[2].toLowerCase().replace(/[ωvfh]$/i, '')] ?? 1;
+  return number * factor;
+};
+
+const SAMPLES = {
+  divider: {
+    name: 'Divider',
+    parts: [
+      { kind: 'vsource', a: [3, 3], b: [3, 8], value: 9 },
+      { kind: 'resistor', a: [3, 3], b: [9, 3], value: 1000 },
+      { kind: 'resistor', a: [9, 3], b: [9, 8], value: 2200 },
+      { kind: 'wire', a: [9, 8], b: [3, 8] },
+      { kind: 'ground', a: [3, 8], b: [3, 8] },
+    ],
+    probe: [9, 3],
+  },
+  rc: {
+    name: 'RC filter',
+    parts: [
+      { kind: 'ac', a: [3, 3], b: [3, 9], value: 5, frequency: 120 },
+      { kind: 'resistor', a: [3, 3], b: [9, 3], value: 1000 },
+      { kind: 'capacitor', a: [9, 3], b: [9, 9], value: 2e-6 },
+      { kind: 'wire', a: [9, 9], b: [3, 9] },
+      { kind: 'ground', a: [3, 9], b: [3, 9] },
+    ],
+    probe: [9, 3],
+  },
+  rectifier: {
+    name: 'Rectifier',
+    parts: [
+      { kind: 'ac', a: [3, 3], b: [3, 9], value: 8, frequency: 60 },
+      { kind: 'diode', a: [3, 3], b: [9, 3] },
+      { kind: 'capacitor', a: [9, 3], b: [9, 9], value: 4e-5 },
+      { kind: 'resistor', a: [13, 3], b: [13, 9], value: 2000 },
+      { kind: 'wire', a: [9, 3], b: [13, 3] },
+      { kind: 'wire', a: [13, 9], b: [9, 9] },
+      { kind: 'wire', a: [9, 9], b: [3, 9] },
+      { kind: 'ground', a: [3, 9], b: [3, 9] },
+    ],
+    probe: [9, 3],
+  },
+  tank: {
+    name: 'LC tank',
+    parts: [
+      { kind: 'vsource', a: [3, 3], b: [3, 9], value: 5 },
+      { kind: 'resistor', a: [3, 3], b: [8, 3], value: 50 },
+      { kind: 'inductor', a: [8, 3], b: [8, 9], value: 0.05 },
+      { kind: 'capacitor', a: [13, 3], b: [13, 9], value: 1e-6 },
+      { kind: 'wire', a: [8, 3], b: [13, 3] },
+      { kind: 'wire', a: [13, 9], b: [8, 9] },
+      { kind: 'wire', a: [8, 9], b: [3, 9] },
+      { kind: 'ground', a: [3, 9], b: [3, 9] },
+    ],
+    probe: [8, 3],
+  },
+  npn: {
+    name: 'NPN switch',
+    parts: [
+      { kind: 'vsource', a: [3, 3], b: [3, 13], value: 9 },
+      { kind: 'wire', a: [3, 3], b: [13, 3] },
+      { kind: 'lamp', a: [13, 3], b: [13, 7], value: 330 },
+      { kind: 'npn', a: [6, 10], b: [13, 7], c: [13, 13], value: 120 },
+      { kind: 'resistor', a: [3, 10], b: [6, 10], value: 22000 },
+      { kind: 'wire', a: [3, 10], b: [3, 8] },
+      { kind: 'wire', a: [3, 8], b: [3, 3] },
+      { kind: 'wire', a: [13, 13], b: [3, 13] },
+      { kind: 'ground', a: [3, 13], b: [3, 13] },
+    ],
+    probe: [13, 7],
+  },
+  blinker: {
+    name: 'Blinker',
+    parts: [
+      { kind: 'vsource', a: [3, 2], b: [3, 16], value: 9 },
+      { kind: 'wire', a: [3, 2], b: [6, 2] },
+      { kind: 'wire', a: [6, 2], b: [9, 2] },
+      { kind: 'wire', a: [9, 2], b: [16, 2] },
+      { kind: 'wire', a: [16, 2], b: [19, 2] },
+      { kind: 'resistor', a: [9, 2], b: [9, 5], value: 470 },
+      { kind: 'led', a: [9, 5], b: [9, 9] },
+      { kind: 'resistor', a: [19, 2], b: [19, 5], value: 470 },
+      { kind: 'led', a: [19, 5], b: [19, 9] },
+      { kind: 'resistor', a: [6, 2], b: [6, 12], value: 47000 },
+      { kind: 'resistor', a: [16, 2], b: [16, 12], value: 47000 },
+      { kind: 'capacitor', a: [9, 9], b: [16, 12], value: 10e-6 },
+      { kind: 'capacitor', a: [19, 9], b: [6, 12], value: 22e-6 },
+      { kind: 'npn', a: [6, 12], b: [9, 9], c: [9, 15], value: 120 },
+      { kind: 'npn', a: [16, 12], b: [19, 9], c: [19, 15], value: 120 },
+      { kind: 'wire', a: [9, 15], b: [9, 16] },
+      { kind: 'wire', a: [19, 15], b: [19, 16] },
+      { kind: 'wire', a: [3, 16], b: [9, 16] },
+      { kind: 'wire', a: [9, 16], b: [19, 16] },
+      { kind: 'ground', a: [3, 16], b: [3, 16] },
+    ],
+    probe: [9, 9],
+    speed: 5,
+  },
+  led: {
+    name: 'LED',
+    parts: [
+      { kind: 'vsource', a: [3, 3], b: [3, 9], value: 5 },
+      { kind: 'switch', a: [3, 3], b: [8, 3], closed: true },
+      { kind: 'resistor', a: [8, 3], b: [13, 3], value: 220 },
+      { kind: 'led', a: [13, 3], b: [13, 9] },
+      { kind: 'wire', a: [13, 9], b: [3, 9] },
+      { kind: 'ground', a: [3, 9], b: [3, 9] },
+    ],
+    probe: [13, 3],
+  },
+};
+
+class CircuitLab extends JGApp {
+  static appId = 'circuit-lab';
+  static settings = [
+    { key: 'step', label: t('circuit-lab.timeStepS', 'Time step (µs)'), type: 'number', default: 20, min: 1, max: 500 },
+    { key: 'labels', label: t('circuit-lab.showNodeVoltages', 'Show node voltages'), type: 'switch', default: true },
+  ];
+  static styles = [...JGApp.styles, sheet];
+
+  #parts = [];
+  #tool = 'select';
+  #selected = null;
+  #probe = null;
+  #running = true;
+  #frame = null;
+  #grid = null;
+  #circuit = createCircuit();
+  #trace = [];
+  #drag = null;
+  #hover = null;
+  #nodes = new Map();
+  #seq = 1;
+  #history = [];
+  #future = [];
+  #signal = 'voltage';
+  #timebase = 3;
+  #range = 0;
+  #hold = false;
+  #trigger = true;
+  #ticks = 0;
+  #interval = 0;
+  #speed = 2;
+  #designs = null;
+  #openName = null;
+  #pan = { x: 0, y: 0 };
+  #zoom = 1;
+  #panDrag = null;
+  #hoverEnd = null;
+  #clipboard = null;
+  #paint = null;
+  #touched = false;
+
+  connectedCallback() {
+    this.#designs = createDesigns(this.store, 'circuit-lab');
+    const open = this.#designs.open();
+    const saved = open ? this.#designs.get(open) : null;
+    if (saved) {
+      this.#restore(saved);
+      this.#openName = open;
+    } else {
+      this.#load(SAMPLES[open] ? open : 'divider');
+    }
+    super.connectedCallback();
+  }
+
+  #restore(design) {
+    this.#parts = (design.parts ?? []).filter((part) => KINDS[part.kind]).map((part) => ({ ...part, a: [...part.a], b: [...part.b], c: part.c ? [...part.c] : undefined }));
+    this.#seq = this.#parts.reduce((top, part) => Math.max(top, Number(part.id) || 0), 0) + 1;
+    this.#probe = design.probe ? [...design.probe] : null;
+    this.#trace = [];
+    this.#selected = null;
+    this.#circuit.reset();
+  }
+
+  #design() {
+    return {
+      parts: this.#parts.map((part) => ({ ...part })),
+      probe: this.#probe ? [...this.#probe] : null,
+    };
+  }
+
+  #apply(design) {
+    if (!Array.isArray(design?.parts)) throw new Error('That design has no parts.');
+    this.#snapshot();
+    this.#restore(design);
+    this.#rebuild();
+    this.#inspector();
+    this.#touched = false;
+    this.#zoomFit();
+  }
+
+  #savedList() {
+    const target = this.$('#saved');
+    if (!target) return;
+    const rows = this.#designs.list();
+    if (!rows.length) {
+      target.innerHTML = html`<span class="hint">${t('circuit-lab.nothingSavedYetNameA', 'Nothing saved yet. Name a circuit above and save it.')}</span>`;
+      return;
+    }
+    target.innerHTML = rows
+      .map(
+        (row) => html`<div class="row">
+          <button data-load="${row.name}" data-open="${String(row.name === this.#openName)}" title="${row.name}">${row.name}</button>
+          <button class="drop" data-drop="${row.name}" title="Delete ${row.name}">${icon('eraser', 14)}</button>
+        </div>`,
+      )
+      .join('');
+    target.querySelectorAll('[data-load]').forEach((node) =>
+      node.addEventListener('click', () => {
+        const design = this.#designs.get(node.dataset.load);
+        if (!design) return;
+        this.#apply(design);
+        this.#openName = node.dataset.load;
+        this.#designs.setOpen(this.#openName);
+        this.#nameField();
+        this.#savedList();
+      }),
+    );
+    target.querySelectorAll('[data-drop]').forEach((node) =>
+      node.addEventListener('click', () => {
+        this.#designs.remove(node.dataset.drop);
+        if (this.#openName === node.dataset.drop) this.#openName = null;
+        this.#savedList();
+      }),
+    );
+  }
+
+  #nameField() {
+    const field = this.$('#save-name');
+    if (field) field.value = this.#openName ?? '';
+  }
+
+  #saveNamed() {
+    const field = this.$('#save-name');
+    const name = (field?.value ?? '').trim();
+    if (!name) {
+      field?.focus();
+      return;
+    }
+    this.#openName = this.#designs.save(name, this.#design());
+    this.#savedList();
+  }
+
+  #exportFile() {
+    this.#designs.toFile(this.#openName ?? 'circuit', this.#design());
+  }
+
+  async #importFile() {
+    try {
+      const picked = await this.#designs.fromFile();
+      if (!picked) return;
+      this.#apply(picked.design);
+      this.#openName = picked.name;
+      this.#nameField();
+      this.#savedList();
+    } catch (error) {
+      toast(error.message, 'danger');
+    }
+  }
+
+  #load(sample) {
+    const preset = SAMPLES[sample] ?? SAMPLES.divider;
+    this.#parts = preset.parts.map((part) => ({
+      id: this.#seq++,
+      kind: part.kind,
+      a: [...part.a],
+      b: [...part.b],
+      c: part.c ? [...part.c] : undefined,
+      value: part.value ?? KINDS[part.kind]?.value ?? 0,
+      frequency: part.frequency ?? 60,
+      closed: part.closed ?? true,
+    }));
+    this.#probe = preset.probe ? [...preset.probe] : null;
+    this.#trace = [];
+    this.#selected = null;
+    if (preset.speed != null) {
+      this.#speed = preset.speed;
+      const field = this.$('#speed');
+      if (field) field.value = String(this.#speed);
+    }
+    this.#circuit.reset();
+  }
+
+  renderWidget() {
+    this.paint(html`<div class="app" style="padding:12px">
+      <div class="stack tight">
+        <div class="label">${t('circuit-lab.circuitLab', 'Circuit Lab')}</div>
+        <div class="hint">${t('circuit-lab.buildResistorsCapacitorsAndDiodes', 'Build resistors, capacitors and diodes, then watch the scope.')}</div>
+      </div>
+    </div>`);
+  }
+
+  renderApp() {
+    this.paint(html`<div class="app">
+      <div class="head">
+        <jg-toolbar id="bar"></jg-toolbar>
+      </div>
+      <div class="body">
+        <div class="palette" id="palette"></div>
+        <div class="board">
+          <canvas id="view"></canvas>
+          <div class="hint-bar"><b id="tool-name">${t('circuit-lab.select', 'Select')}</b><span id="tool-hint"></span></div>
+          <div class="warn" id="warn" hidden>${t('circuit-lab.theSolverCouldNotSettle', 'The solver could not settle. Check for shorted sources.')}</div>
+        </div>
+        <aside class="side">
+          <div class="pane">
+            <div class="label">${t('circuit-lab.circuits', 'Circuits')}</div>
+            <div class="samples">
+              ${Object.entries(SAMPLES).map(([key, sample]) => html`<button data-sample="${key}">${sample.name}</button>`)}
+            </div>
+            <div class="sep"></div>
+            <div class="label">${t('circuit-lab.saved', 'Saved')}</div>
+            <div class="save-row">
+              <jg-input id="save-name" size="sm" placeholder="${t('circuit-lab.nameThisCircuit', 'Name this circuit')}"></jg-input>
+              <jg-button size="sm" variant="outline" id="save">${t('circuit-lab.save', 'Save')}</jg-button>
+            </div>
+            <div class="saved" id="saved"></div>
+            <div class="sep"></div>
+            <div id="inspector"></div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="footer">
+        <div class="trace">
+          <div class="trace-head">
+            <span class="label">${t('circuit-lab.scope', 'Scope')}</span>
+            <span class="hint mono tiny" id="scope-label">${t('circuit-lab.noProbe', 'no probe')}</span>
+            <span class="grow"></span>
+            <dl class="measures-row" id="measures"></dl>
+          </div>
+          <canvas id="scope"></canvas>
+        </div>
+        <div class="stack tight">
+          <div class="scope-controls">
+            <span>${t('circuit-lab.signal', 'Signal')}</span>
+            <jg-select id="signal" size="sm" value="voltage">
+              <option value="voltage">${t('circuit-lab.nodeVoltage', 'Node voltage')}</option>
+              <option value="current">${t('circuit-lab.partCurrent', 'Part current')}</option>
+            </jg-select>
+            <span>${t('circuit-lab.speed', 'Speed')}</span>
+            <jg-select id="speed" size="sm" value="${this.#speed}">
+              ${SPEEDS.map((step, index) => html`<option value="${index}">${step.label}</option>`)}
+            </jg-select>
+            <span>${t('circuit-lab.timeBase', 'Time base')}</span>
+            <jg-select id="timebase" size="sm" value="${this.#timebase}">
+              ${TIMEBASE.map((step, index) => html`<option value="${index}">${step.label}</option>`)}
+            </jg-select>
+            <span>${t('circuit-lab.voltsDiv', 'Volts/div')}</span>
+            <jg-slider id="range" min="0" max="40" step="1" value="${this.#range}"></jg-slider>
+          </div>
+          <div class="scope-foot">
+            <label class="hint" style="display:flex;align-items:center;gap:6px">
+              <jg-switch id="trigger" checked></jg-switch>Trigger
+            </label>
+            <div class="row tight">
+              <jg-button size="sm" variant="ghost" id="hold">${t('circuit-lab.hold', 'Hold')}</jg-button>
+              <jg-button size="sm" variant="ghost" id="clear">${t('circuit-lab.clear', 'Clear')}</jg-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`);
+
+    this.$('#bar').items = [
+      {
+        id: 'run',
+        label: this.#running ? 'Pause' : 'Run',
+        icon: this.#running ? 'pause' : 'play',
+        tone: this.#running ? 'pause' : 'run',
+        action: () => this.#toggleRun(),
+      },
+      { id: 'reset', label: t('circuit-lab.reset', 'Reset'), icon: 'repeat', tone: 'stop', action: () => this.#reset() },
+      { separator: true },
+      { id: 'new', label: t('circuit-lab.new', 'New'), icon: 'file', iconOnly: true, title: 'Start an empty board', action: () => this.#blank() },
+      { id: 'undo', label: t('circuit-lab.undo', 'Undo'), icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#undo() },
+      { id: 'redo', label: t('circuit-lab.redo', 'Redo'), icon: 'redo', iconOnly: true, title: 'Redo', action: () => this.#redo() },
+      { id: 'zoom-out', label: t('circuit-lab.zoomOut', 'Zoom out'), icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
+      { id: 'zoom-fit', label: t('circuit-lab.fit', 'Fit'), icon: 'maximize', iconOnly: true, title: 'Fit the circuit to the view', action: () => { this.#touched = false; this.#zoomFit(); } },
+      { id: 'zoom-in', label: t('circuit-lab.zoomIn', 'Zoom in'), icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
+      { id: 'copy-part', label: t('circuit-lab.copy', 'Copy'), icon: 'copy', iconOnly: true, title: 'Copy the selected part', action: () => this.#copy() },
+      { id: 'paste-part', label: t('circuit-lab.paste', 'Paste'), icon: 'clipboard', iconOnly: true, title: 'Paste a copy', action: () => this.#paste() },
+      { id: 'rotate', label: t('circuit-lab.rotate', 'Rotate'), icon: 'rotate', iconOnly: true, title: 'Rotate 90 degrees (R)', action: () => this.#turn(90) },
+      { id: 'flip', label: t('circuit-lab.flip', 'Flip'), icon: 'flip', iconOnly: true, title: 'Mirror the part (F)', action: () => this.#mirror() },
+      { id: 'delete', label: t('circuit-lab.delete', 'Delete'), icon: 'eraser', iconOnly: true, title: 'Delete the selected part', action: () => this.#remove() },
+      { spacer: true },
+      { id: 'import', label: t('circuit-lab.openFile', 'Open file'), icon: 'upload', iconOnly: true, title: 'Open a circuit from a file', action: () => this.#importFile() },
+      { id: 'export', label: t('circuit-lab.saveFile', 'Save file'), icon: 'download', iconOnly: true, title: 'Save this circuit to a file', action: () => this.#exportFile() },
+      { id: 'copy', label: t('circuit-lab.copyNetlist', 'Copy netlist'), icon: 'copy', action: () => copyText(this.#netlist()) },
+    ];
+
+    this.$('#palette').dataset.collapsed = String(this.config.get('palette', false));
+    this.$('#palette').innerHTML = html`
+      <button class="collapse" id="collapse" title="${t('circuit-lab.widenOrNarrowTheParts', 'Widen or narrow the parts list')}">${icon('swap', 15)}</button>
+      <div class="group">${t('circuit-lab.edit', 'Edit')}</div>
+      ${[
+        { id: 'select', label: t('circuit-lab.select', 'Select'), icon: 'launcher' },
+        { id: 'probe', label: t('circuit-lab.probe', 'Probe'), icon: 'search' },
+      ].map(
+        (tool) => html`<button class="tool" data-tool="${tool.id}" aria-pressed="${String(this.#tool === tool.id)}">
+          ${icon(tool.icon, 15)}<span>${tool.label}</span>
+        </button>`,
+      )}
+      <div class="group">${t('circuit-lab.parts', 'Parts')}</div>
+      ${Object.entries(KINDS).map(
+        ([kind, meta]) => html`<button class="tool" data-tool="${kind}" aria-pressed="${String(this.#tool === kind)}">
+          ${icon(meta.icon, 15)}<span>${meta.label}</span>
+        </button>`,
+      )}
+    `;
+    this.bind('.tool', 'click', (event) => this.#setTool(event.currentTarget.dataset.tool));
+    this.bind('#collapse', 'click', () => {
+      const palette = this.$('#palette');
+      const next = palette.dataset.collapsed !== 'true';
+      palette.dataset.collapsed = String(next);
+      this.config.set('palette', next);
+    });
+    this.#hint();
+
+    this.bind('[data-sample]', 'click', (event) => {
+      const key = event.currentTarget.dataset.sample;
+      this.#load(key);
+      this.#openName = null;
+      this.#designs.setOpen(null);
+      this.#nameField();
+      this.#savedList();
+      this.#rebuild();
+      this.#inspector();
+      this.#touched = false;
+      this.#zoomFit();
+    });
+    this.bind('#save', 'click', () => this.#saveNamed());
+    this.on(this.$('#save-name'), 'keydown', (event) => {
+      if (event.key !== 'Enter') return;
+      event.preventDefault();
+      this.#saveNamed();
+    });
+    this.#nameField();
+    this.#savedList();
+
+    const canvas = this.$('#view');
+    this.on(canvas, 'pointerdown', (event) => this.#down(event));
+    this.on(canvas, 'pointermove', (event) => this.#move(event));
+    this.on(canvas, 'pointerup', (event) => this.#up(event));
+    this.on(canvas, 'pointerleave', () => {
+      this.#hover = null;
+      this.#draw();
+    });
+
+    this.hotkeys((event) => {
+      const key = event.key.toLowerCase();
+      if ((event.metaKey || event.ctrlKey) && key === 'z') {
+        event.preventDefault();
+        if (event.shiftKey) this.#redo();
+        else this.#undo();
+        return;
+      }
+      if (event.key === 'Escape') {
+        if (this.#tool === 'select') return;
+        event.preventDefault();
+        this.#setTool('select');
+        return;
+      }
+      if (event.key === 'Backspace' || event.key === 'Delete') {
+        event.preventDefault();
+        this.#remove();
+        return;
+      }
+      if ((event.metaKey || event.ctrlKey) && key === 'c') {
+        event.preventDefault();
+        this.#copy();
+        return;
+      }
+      if ((event.metaKey || event.ctrlKey) && key === 'v') {
+        event.preventDefault();
+        this.#paste();
+        return;
+      }
+      if ((event.metaKey || event.ctrlKey) && key === 'd') {
+        event.preventDefault();
+        this.#copy();
+        this.#paste();
+        return;
+      }
+      if (key === 'r' && !event.metaKey && !event.ctrlKey) {
+        event.preventDefault();
+        this.#turn(event.shiftKey ? -90 : 90);
+        return;
+      }
+      if (key === 'f' && !event.metaKey && !event.ctrlKey) {
+        event.preventDefault();
+        this.#mirror();
+      }
+    });
+
+    this.on(
+      this.$('#view'),
+      'wheel',
+      (event) => {
+        event.preventDefault();
+        if (event.ctrlKey || event.metaKey) {
+          this.#zoomAt(Math.exp(-event.deltaY / 240), event.clientX, event.clientY);
+          return;
+        }
+        this.#touched = true;
+        this.#pan.x -= event.deltaX;
+        this.#pan.y -= event.deltaY;
+        this.#draw();
+      },
+      { passive: false },
+    );
+
+    const watch = new MutationObserver(() => {
+      this.#paint = null;
+      this.#grid = null;
+      this.#draw();
+    });
+    watch.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'style', 'class'] });
+    this.track(() => watch.disconnect());
+
+    const observer = new ResizeObserver(() => {
+      if (this.#touched) this.#draw();
+      else this.#zoomFit();
+    });
+    observer.observe(this.$('.board'));
+    this.track(() => observer.disconnect());
+
+    this.#rebuild();
+    this.#inspector();
+    this.#loop();
+  }
+
+  #setTool(tool) {
+    this.#tool = tool;
+    this.toggleAttribute('data-keeps-escape', tool !== 'select');
+    this.$$('.tool').forEach((node) => node.setAttribute('aria-pressed', String(node.dataset.tool === tool)));
+    const canvas = this.$('#view');
+    if (canvas) canvas.dataset.tool = tool === 'select' || tool === 'probe' ? 'select' : 'place';
+    if (tool !== 'select') {
+      this.#selected = null;
+      this.#inspector();
+    }
+    this.#hint();
+    this.#draw();
+  }
+
+  #blank() {
+    this.#snapshot();
+    this.#parts = [];
+    this.#probe = null;
+    this.#trace = [];
+    this.#selected = null;
+    this.#seq = 1;
+    this.#openName = null;
+    this.#designs.setOpen(null);
+    this.#pan = { x: 0, y: 0 };
+    this.#zoom = 1;
+    this.#touched = false;
+    this.#circuit.reset();
+    this.#rebuild();
+    this.#nameField();
+    this.#savedList();
+    this.#scopeLabel();
+    this.#inspector();
+    this.#draw();
+  }
+
+  #toggleRun() {
+    this.#running = !this.#running;
+    this.$('#bar').update('run', {
+      label: this.#running ? 'Pause' : 'Run',
+      icon: this.#running ? 'pause' : 'play',
+      tone: this.#running ? 'pause' : 'run',
+    });
+  }
+
+  #reset() {
+    this.#circuit.reset();
+    this.#trace = [];
+    this.#ticks = 0;
+    this.$('#warn').hidden = true;
+    this.#draw();
+  }
+
+  #hint() {
+    const name = this.$('#tool-name');
+    const hint = this.$('#tool-hint');
+    if (!name || !hint) return;
+    if (this.#tool === 'select') {
+      name.textContent = 'Select';
+      hint.textContent = 'Drag a part to move it, drag an end to re-route, drag the board to pan, R rotates, F mirrors.';
+      return;
+    }
+    if (this.#tool === 'probe') {
+      name.textContent = 'Probe';
+      hint.textContent = 'Click any junction to watch its voltage on the scope.';
+      return;
+    }
+    name.textContent = KINDS[this.#tool]?.label ?? this.#tool;
+    hint.textContent =
+      this.#tool === 'ground'
+        ? 'Click a junction to tie it to ground. Esc goes back to Select.'
+        : 'Click to drop one, or drag to set its length and direction. Esc goes back to Select.';
+  }
+
+  #snapshot() {
+    this.#history.push(JSON.stringify(this.#parts));
+    if (this.#history.length > 60) this.#history.shift();
+    this.#future = [];
+  }
+
+  #undo() {
+    const previous = this.#history.pop();
+    if (previous === undefined) return;
+    this.#future.push(JSON.stringify(this.#parts));
+    this.#parts = JSON.parse(previous);
+    this.#selected = null;
+    this.#rebuild();
+    this.#inspector();
+    this.#draw();
+  }
+
+  #redo() {
+    const next = this.#future.pop();
+    if (next === undefined) return;
+    this.#history.push(JSON.stringify(this.#parts));
+    this.#parts = JSON.parse(next);
+    this.#selected = null;
+    this.#rebuild();
+    this.#inspector();
+    this.#draw();
+  }
+
+  #remove() {
+    if (this.#selected === null) return;
+    this.#snapshot();
+    this.#parts = this.#parts.filter((part) => part.id !== this.#selected);
+    this.#selected = null;
+    this.#rebuild();
+    this.#inspector();
+    this.#draw();
+  }
+
+  #point(event) {
+    const rect = this.$('#view').getBoundingClientRect();
+    const span = GRID * this.#zoom;
+    return [(event.clientX - rect.left - this.#pan.x) / span, (event.clientY - rect.top - this.#pan.y) / span];
+  }
+
+  #zoomAt(factor, clientX, clientY) {
+    this.#touched = true;
+    const rect = this.$('#view').getBoundingClientRect();
+    const at = [clientX - rect.left, clientY - rect.top];
+    const next = Math.min(2.6, Math.max(0.35, this.#zoom * factor));
+    const ratio = next / this.#zoom;
+    this.#pan.x = at[0] - (at[0] - this.#pan.x) * ratio;
+    this.#pan.y = at[1] - (at[1] - this.#pan.y) * ratio;
+    this.#zoom = next;
+    this.#draw();
+  }
+
+  #step(factor) {
+    const canvas = this.$('#view');
+    if (!canvas) return;
+    const box = canvas.getBoundingClientRect();
+    this.#zoomAt(factor, box.left + box.width / 2, box.top + box.height / 2);
+  }
+
+  #zoomFit() {
+    const canvas = this.$('#view');
+    if (!canvas || !canvas.clientWidth) return;
+    const points = this.#parts.flatMap((part) => [part.a, part.b, ...(part.c ? [part.c] : [])]);
+    if (!points.length) {
+      this.#pan = { x: 0, y: 0 };
+      this.#zoom = 1;
+      this.#draw();
+      return;
+    }
+    const bounds = points.reduce(
+      (box, point) => ({
+        left: Math.min(box.left, point[0]),
+        top: Math.min(box.top, point[1]),
+        right: Math.max(box.right, point[0]),
+        bottom: Math.max(box.bottom, point[1]),
+      }),
+      { left: Infinity, top: Infinity, right: -Infinity, bottom: -Infinity },
+    );
+    const pad = 44;
+    const width = Math.max(1, (bounds.right - bounds.left) * GRID);
+    const height = Math.max(1, (bounds.bottom - bounds.top) * GRID);
+    this.#zoom = Math.min(1.6, Math.max(0.35, Math.min((canvas.clientWidth - pad * 2) / width, (canvas.clientHeight - pad * 2) / height)));
+    this.#pan = {
+      x: (canvas.clientWidth - width * this.#zoom) / 2 - bounds.left * GRID * this.#zoom,
+      y: (canvas.clientHeight - height * this.#zoom) / 2 - bounds.top * GRID * this.#zoom,
+    };
+    this.#draw();
+  }
+
+  #snap(point) {
+    return [Math.round(point[0]), Math.round(point[1])];
+  }
+
+  #near(point, target) {
+    return Math.hypot(point[0] - target[0], point[1] - target[1]);
+  }
+
+  #magnet(raw, skip = null) {
+    const reach = 0.75 / this.#zoom;
+    let best = null;
+    this.#parts.forEach((part) => {
+      if (part === skip) return;
+      this.#ends(part).forEach((point) => {
+        const away = this.#near(raw, point);
+        if (away < reach && (!best || away < best.away)) best = { at: [...point], away };
+      });
+    });
+    return best;
+  }
+
+  #endNear(point) {
+    const reach = 0.5 / this.#zoom;
+    let best = null;
+    this.#parts.forEach((part) => {
+      ['a', 'b', 'c'].forEach((end) => {
+        if (!part[end]) return;
+        const away = this.#near(point, part[end]);
+        if (away < reach && (!best || away < best.away)) best = { part, end, away, at: part[end] };
+      });
+    });
+    return best;
+  }
+
+  #ends(part) {
+    return part.c ? [part.a, part.b, part.c] : [part.a, part.b];
+  }
+
+  #relink(part, before, bridge = false) {
+    const after = this.#ends(part);
+    before.forEach((old, index) => {
+      const next = after[index];
+      if (!next || (old[0] === next[0] && old[1] === next[1])) return;
+      const attached = this.#parts.filter(
+        (other) => other !== part && this.#ends(other).some((end) => end[0] === old[0] && end[1] === old[1]),
+      );
+      if (!attached.length) return;
+
+      if (!bridge || attached.every((other) => other.kind === 'wire')) {
+        attached.forEach((other) => {
+          if (other.kind !== 'wire') return;
+          ['a', 'b'].forEach((end) => {
+            if (other[end][0] === old[0] && other[end][1] === old[1]) other[end] = [...next];
+          });
+        });
+        return;
+      }
+
+      this.#parts.push({
+        id: this.#seq++,
+        kind: 'wire',
+        a: [...old],
+        b: [...next],
+        value: 0,
+        frequency: 60,
+        closed: true,
+      });
+    });
+  }
+
+  #copy() {
+    const part = this.#parts.find((entry) => entry.id === this.#selected);
+    if (!part) return;
+    this.#clipboard = { ...part, a: [...part.a], b: [...part.b], c: part.c ? [...part.c] : undefined };
+  }
+
+  #paste() {
+    if (!this.#clipboard) return;
+    this.#snapshot();
+    const shift = ([x, y]) => [x + 2, y + 2];
+    const held = this.#clipboard;
+    const copy = {
+      ...held,
+      id: this.#seq++,
+      a: shift(held.a),
+      b: shift(held.b),
+      c: held.c ? shift(held.c) : undefined,
+    };
+    this.#parts.push(copy);
+    this.#selected = copy.id;
+    this.#rebuild();
+    this.#inspector();
+    this.#draw();
+  }
+
+  #turn(degrees) {
+    const part = this.#parts.find((entry) => entry.id === this.#selected);
+    if (!part || part.kind === 'ground') return;
+    this.#snapshot();
+    const ends = this.#ends(part);
+    const before = ends.map((point) => [...point]);
+    const centre = [
+      ends.reduce((sum, point) => sum + point[0], 0) / ends.length,
+      ends.reduce((sum, point) => sum + point[1], 0) / ends.length,
+    ];
+    const spin = ([x, y]) =>
+      degrees > 0
+        ? [Math.round(centre[0] + (centre[1] - y)), Math.round(centre[1] + (x - centre[0]))]
+        : [Math.round(centre[0] + (y - centre[1])), Math.round(centre[1] + (centre[0] - x))];
+    part.a = spin(part.a);
+    part.b = spin(part.b);
+    if (part.c) part.c = spin(part.c);
+    this.#relink(part, before, true);
+    this.#rebuild();
+    this.#draw();
+  }
+
+  #mirror() {
+    const part = this.#parts.find((entry) => entry.id === this.#selected);
+    if (!part || part.kind === 'ground') return;
+    this.#snapshot();
+    const ends = this.#ends(part);
+    const before = ends.map((point) => [...point]);
+    const flat = Math.abs(part.a[1] - part.b[1]) < Math.abs(part.a[0] - part.b[0]);
+    const axis = flat
+      ? ends.reduce((sum, point) => sum + point[0], 0) / ends.length
+      : ends.reduce((sum, point) => sum + point[1], 0) / ends.length;
+    const flip = ([x, y]) => (flat ? [Math.round(2 * axis - x), y] : [x, Math.round(2 * axis - y)]);
+    part.a = flip(part.a);
+    part.b = flip(part.b);
+    if (part.c) part.c = flip(part.c);
+    this.#relink(part, before, true);
+    this.#rebuild();
+    this.#draw();
+  }
+
+  #hit(point) {
+    const toSegment = (from, to) => {
+      const dx = to[0] - from[0];
+      const dy = to[1] - from[1];
+      const span = dx * dx + dy * dy;
+      const t = span ? Math.max(0, Math.min(1, ((point[0] - from[0]) * dx + (point[1] - from[1]) * dy) / span)) : 0;
+      return Math.hypot(point[0] - (from[0] + dx * t), point[1] - (from[1] + dy * t));
+    };
+
+    let best = null;
+    let closest = 0.6 / this.#zoom;
+    this.#parts.forEach((part) => {
+      const legs = part.c
+        ? [toSegment(part.a, part.b), toSegment(part.a, part.c), toSegment(part.b, part.c)]
+        : [toSegment(part.a, part.b)];
+      const distance = Math.min(...legs);
+      if (distance < closest) {
+        closest = distance;
+        best = part;
+      }
+    });
+    return best;
+  }
+
+  #down(event) {
+    const raw = this.#point(event);
+    const point = this.#snap(raw);
+    this.$('#view').setPointerCapture(event.pointerId);
+
+    if (this.#tool === 'probe') {
+      this.#probe = point;
+      this.#trace = [];
+      this.#scopeLabel();
+      this.#draw();
+      return;
+    }
+
+    if (this.#tool === 'select') {
+      const part = this.#hit(raw);
+      this.#selected = part?.id ?? null;
+
+      if (!part) {
+        this.#touched = true;
+        this.#panDrag = { from: [event.clientX, event.clientY], origin: { ...this.#pan } };
+        this.#inspector();
+        this.#draw();
+        return;
+      }
+
+      if (part) {
+        if (part.kind === 'switch' && this.#near(raw, [(part.a[0] + part.b[0]) / 2, (part.a[1] + part.b[1]) / 2]) < 0.5) {
+          this.#snapshot();
+          part.closed = !part.closed;
+          this.#rebuild();
+        } else {
+          const endA = this.#near(raw, part.a);
+          const endB = this.#near(raw, part.b);
+          this.#snapshot();
+          const ends = [['a', endA], ['b', endB]];
+          if (part.c) ends.push(['c', this.#near(raw, part.c)]);
+          const [closestEnd, closestDistance] = ends.sort((first, second) => first[1] - second[1])[0];
+          this.#drag =
+            closestDistance < 0.45
+              ? { kind: 'end', part, end: closestEnd }
+              : {
+                  kind: 'move',
+                  part,
+                  from: point,
+                  origin: { a: [...part.a], b: [...part.b], c: part.c ? [...part.c] : null },
+                };
+          this.$('#view').dataset.dragging = 'true';
+        }
+      }
+
+      this.#inspector();
+      this.#draw();
+      return;
+    }
+
+    if (this.#tool === 'ground') {
+      this.#snapshot();
+      const part = { id: this.#seq++, kind: 'ground', a: point, b: point, value: 0 };
+      this.#parts.push(part);
+      this.#selected = part.id;
+      this.#rebuild();
+      this.#setTool('select');
+      this.#inspector();
+      this.#draw();
+      return;
+    }
+
+    const start = this.#magnet(raw);
+    this.#drag = { kind: 'place', from: start ? start.at : point, to: start ? start.at : point, moved: false };
+  }
+
+  #move(event) {
+    if (this.#panDrag) {
+      this.#pan = {
+        x: this.#panDrag.origin.x + (event.clientX - this.#panDrag.from[0]),
+        y: this.#panDrag.origin.y + (event.clientY - this.#panDrag.from[1]),
+      };
+      this.#draw();
+      return;
+    }
+
+    const raw = this.#point(event);
+    const point = this.#snap(raw);
+    this.#hover = point;
+    const canvas = this.$('#view');
+
+    if (!this.#drag) {
+      this.#hoverEnd = this.#tool === 'select' ? this.#endNear(raw) : null;
+      if (this.#tool === 'select' && canvas) canvas.dataset.grab = String(Boolean(this.#hit(raw)));
+      this.#draw();
+      return;
+    }
+
+    if (this.#drag.kind === 'place') {
+      const [fx, fy] = this.#drag.from;
+      const magnet = this.#magnet(raw);
+      this.#drag.to = magnet
+        ? magnet.at
+        : Math.abs(point[0] - fx) >= Math.abs(point[1] - fy)
+          ? [point[0], fy]
+          : [fx, point[1]];
+      this.#drag.magnet = magnet ? magnet.at : null;
+      this.#drag.moved = this.#drag.to[0] !== fx || this.#drag.to[1] !== fy;
+    } else if (this.#drag.kind === 'move') {
+      const dx = point[0] - this.#drag.from[0];
+      const dy = point[1] - this.#drag.from[1];
+      const { part, origin } = this.#drag;
+      const before = this.#ends(part).map((end) => [...end]);
+      part.a = [origin.a[0] + dx, origin.a[1] + dy];
+      part.b = [origin.b[0] + dx, origin.b[1] + dy];
+      if (origin.c) part.c = [origin.c[0] + dx, origin.c[1] + dy];
+      this.#relink(part, before);
+    } else if (this.#drag.kind === 'end') {
+      const { part, end } = this.#drag;
+      const before = this.#ends(part).map((point) => [...point]);
+      const magnet = this.#magnet(raw, part);
+      part[end] = magnet ? magnet.at : point;
+      this.#drag.magnet = magnet ? magnet.at : null;
+      this.#relink(part, before);
+    }
+
+    this.#draw();
+  }
+
+  #up() {
+    const drag = this.#drag;
+    this.#drag = null;
+    this.#panDrag = null;
+    const canvas = this.$('#view');
+    if (canvas) canvas.dataset.dragging = 'false';
+    if (!drag) return;
+
+    if (drag.kind === 'place') {
+      const meta = KINDS[this.#tool];
+      const from = drag.from;
+      const to = drag.moved ? drag.to : [from[0] + 4, from[1]];
+      this.#snapshot();
+      const part = {
+        id: this.#seq++,
+        kind: this.#tool,
+        a: from,
+        b: meta?.terminals === 3 ? [from[0] + 3, from[1] - 3] : to,
+        c: meta?.terminals === 3 ? [from[0] + 3, from[1] + 3] : undefined,
+        value: meta?.value ?? 0,
+        frequency: 60,
+        closed: true,
+      };
+      this.#parts.push(part);
+      this.#selected = part.id;
+      this.#setTool('select');
+    }
+
+    this.#rebuild();
+    this.#inspector();
+    this.#draw();
+  }
+
+  #rebuild() {
+    const key = (point) => `${point[0]},${point[1]}`;
+    const parent = new Map();
+    const find = (node) => {
+      let root = node;
+      while (parent.get(root) !== root) root = parent.get(root);
+      return root;
+    };
+    const add = (point) => {
+      const id = key(point);
+      if (!parent.has(id)) parent.set(id, id);
+      return id;
+    };
+    const union = (first, second) => {
+      const a = find(first);
+      const b = find(second);
+      if (a !== b) parent.set(a, b);
+    };
+
+    this.#parts.forEach((part) => {
+      add(part.a);
+      add(part.b);
+      if (part.c) add(part.c);
+    });
+    this.#parts.filter((part) => part.kind === 'wire').forEach((part) => union(key(part.a), key(part.b)));
+
+    const ids = new Map();
+    parent.forEach((value, id) => {
+      const root = find(id);
+      if (!ids.has(root)) ids.set(root, ids.size);
+    });
+
+    this.#nodes = new Map();
+    parent.forEach((value, id) => this.#nodes.set(id, ids.get(find(id))));
+
+    const groundPart = this.#parts.find((part) => part.kind === 'ground');
+    const ground = groundPart ? this.#nodes.get(key(groundPart.a)) ?? 0 : 0;
+
+    const solverParts = this.#parts
+      .filter((part) => part.kind !== 'wire' && part.kind !== 'ground')
+      .map((part) => {
+        const entry = {
+          id: part.id,
+          type: part.kind === 'ac' ? 'vsource' : part.kind,
+          wave: part.kind === 'ac' ? 'sine' : 'dc',
+          frequency: part.frequency,
+          closed: part.closed,
+          value: part.value,
+          a: this.#nodes.get(key(part.a)) ?? 0,
+          b: this.#nodes.get(key(part.b)) ?? 0,
+        };
+        if (part.c) {
+          entry.b = this.#nodes.get(key(part.a)) ?? 0;
+          entry.c = this.#nodes.get(key(part.b)) ?? 0;
+          entry.e = this.#nodes.get(key(part.c)) ?? 0;
+          if (part.kind === 'npn' || part.kind === 'pnp') entry.beta = part.value || 100;
+          else entry.threshold = part.value || 1.8;
+        }
+        return entry;
+      });
+
+    this.#circuit.build(solverParts, ids.size, ground);
+    this.#trace = [];
+  }
+
+  #sample() {
+    if (this.#signal === 'current') {
+      return this.#selected === null ? null : this.#circuit.current(this.#selected);
+    }
+    if (!this.#probe) return null;
+    const node = this.#node(this.#probe);
+    return node === null ? null : this.#circuit.voltage(node);
+  }
+
+  #scopeLabel() {
+    const label = this.$('#scope-label');
+    if (!label) return;
+    if (this.#signal === 'current') {
+      const part = this.#parts.find((entry) => entry.id === this.#selected);
+      label.textContent = part ? `current in ${KINDS[part.kind]?.label ?? part.kind}` : 'select a part';
+      return;
+    }
+    label.textContent = this.#probe ? `node at ${this.#probe.join(',')}` : 'no probe';
+  }
+
+  #node(point) {
+    return this.#nodes.get(`${point[0]},${point[1]}`) ?? null;
+  }
+
+  #loop() {
+    const dt = Math.max(1, Number(this.config.get('step', 20))) * 1e-6;
+    const tick = () => {
+      if (this.#running && this.#parts.length) {
+        const span = TIMEBASE[this.#timebase].seconds * DIVISIONS;
+        const every = Math.max(1, Math.round(span / (dt * POINTS)));
+        this.#interval = dt * every;
+        const budget = Math.max(1, Math.round((SPEEDS[this.#speed].factor / 60) / dt));
+        for (let index = 0; index < budget; index += 1) {
+          this.#circuit.step(dt);
+          this.#ticks += 1;
+          if (this.#hold || this.#ticks % every) continue;
+          const sample = this.#sample();
+          if (sample === null) continue;
+          this.#trace.push(sample);
+          while (this.#trace.length > POINTS * 2) this.#trace.shift();
+        }
+        this.$('#warn').hidden = !this.#circuit.failed;
+        this.#draw();
+        this.#scope();
+        this.#readout();
+      }
+      this.#frame = requestAnimationFrame(tick);
+    };
+    this.#frame = requestAnimationFrame(tick);
+    this.track(() => cancelAnimationFrame(this.#frame));
+  }
+
+  #fit(canvas) {
+    const ratio = Math.min(2, window.devicePixelRatio || 1);
+    const width = Math.round(canvas.clientWidth * ratio);
+    const height = Math.round(canvas.clientHeight * ratio);
+    if (!width || !height) return null;
+    if (canvas.width !== width) canvas.width = width;
+    if (canvas.height !== height) canvas.height = height;
+    const context = canvas.getContext('2d');
+    context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    return { context, width: canvas.clientWidth, height: canvas.clientHeight };
+  }
+
+  #palette() {
+    if (this.#paint) return this.#paint;
+    const styles = getComputedStyle(this);
+    this.#paint = {
+      line: styles.getPropertyValue('--foreground').trim() || '#111',
+      soft: styles.getPropertyValue('--muted-foreground').trim() || '#888',
+      border: styles.getPropertyValue('--border').trim() || '#ddd',
+      ring: styles.getPropertyValue('--ring').trim() || '#8a1c3b',
+      card: styles.getPropertyValue('--card').trim() || '#fff',
+      font: styles.getPropertyValue('--font-sans') || 'sans-serif',
+      mono: styles.getPropertyValue('--font-mono') || 'monospace',
+    };
+    return this.#paint;
+  }
+
+  #draw() {
+    const view = this.#fit(this.$('#view'));
+    if (!view) return;
+    const { context, width, height } = view;
+    const paint = this.#palette();
+
+    context.clearRect(0, 0, width, height);
+
+    this.#gridFill(context, width, height, paint);
+
+    context.translate(this.#pan.x, this.#pan.y);
+    context.scale(this.#zoom, this.#zoom);
+
+    this.#parts.forEach((part) => this.#drawPart(context, part, paint));
+
+    const ends = new Map();
+    this.#parts.forEach((part) => {
+      [part.a, part.b].forEach((point) => {
+        const id = `${point[0]},${point[1]}`;
+        ends.set(id, (ends.get(id) ?? 0) + 1);
+      });
+    });
+    context.fillStyle = paint.line;
+    ends.forEach((count, id) => {
+      if (count < 3) return;
+      const [x, y] = id.split(',').map(Number);
+      context.beginPath();
+      context.arc(x * GRID, y * GRID, 3.4, 0, Math.PI * 2);
+      context.fill();
+    });
+
+    if (this.#drag?.kind === 'place') {
+      this.#drawPart(context, { ...this.#drag, kind: this.#tool, a: this.#drag.from, b: this.#drag.to, id: -1, closed: true, value: KINDS[this.#tool]?.value ?? 0 }, paint, 0.45);
+    } else if (this.#hover && this.#tool !== 'select' && this.#tool !== 'probe') {
+      const ghost = this.#tool === 'ground'
+        ? { kind: 'ground', a: this.#hover, b: this.#hover }
+        : { kind: this.#tool, a: this.#hover, b: [this.#hover[0] + 4, this.#hover[1]] };
+      this.#drawPart(context, { ...ghost, id: -1, closed: true, value: KINDS[this.#tool]?.value ?? 0 }, paint, 0.3);
+    }
+
+    if (this.#hover) {
+      context.fillStyle = paint.ring;
+      context.globalAlpha = 0.5;
+      context.beginPath();
+      context.arc(this.#hover[0] * GRID, this.#hover[1] * GRID, 3.2, 0, Math.PI * 2);
+      context.fill();
+      context.globalAlpha = 1;
+    }
+
+    context.save();
+    context.fillStyle = paint.soft;
+    context.globalAlpha = 0.55;
+    this.#parts.forEach((part) => {
+      if (part.kind === 'wire' || part.kind === 'ground') return;
+      this.#ends(part).forEach((point) => {
+        context.beginPath();
+        context.arc(point[0] * GRID, point[1] * GRID, 2.2, 0, Math.PI * 2);
+        context.fill();
+      });
+    });
+    context.restore();
+
+    if (this.#drag?.magnet) {
+      context.beginPath();
+      context.arc(this.#drag.magnet[0] * GRID, this.#drag.magnet[1] * GRID, 7, 0, Math.PI * 2);
+      context.fillStyle = `color-mix(in srgb, ${paint.ring} 30%, transparent)`;
+      context.fill();
+      context.strokeStyle = paint.ring;
+      context.lineWidth = 1.8;
+      context.stroke();
+    }
+
+    if (this.#hoverEnd) {
+      context.beginPath();
+      context.arc(this.#hoverEnd.at[0] * GRID, this.#hoverEnd.at[1] * GRID, 7, 0, Math.PI * 2);
+      context.fillStyle = `color-mix(in srgb, ${paint.ring} 26%, transparent)`;
+      context.fill();
+      context.strokeStyle = paint.ring;
+      context.lineWidth = 1.6;
+      context.stroke();
+    }
+
+    if (settings.get('appearance.motion') && this.config.get('labels', true)) this.#drawLabels(context, paint);
+
+    if (this.#probe) {
+      const [x, y] = this.#probe;
+      context.strokeStyle = paint.ring;
+      context.lineWidth = 2;
+      context.beginPath();
+      context.arc(x * GRID, y * GRID, 6, 0, Math.PI * 2);
+      context.stroke();
+    }
+  }
+
+  #gridFill(context, width, height, paint) {
+    const tone = paint.soft;
+    if (this.#grid?.tone !== tone) {
+      const tile = (size, radius, alpha) => {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const brush = canvas.getContext('2d');
+        brush.fillStyle = tone;
+        brush.globalAlpha = alpha;
+        brush.beginPath();
+        brush.arc(size / 2, size / 2, radius, 0, Math.PI * 2);
+        brush.fill();
+        return canvas;
+      };
+      this.#grid = {
+        tone,
+        minor: context.createPattern(tile(GRID, 1, 0.45), 'repeat'),
+        major: context.createPattern(tile(GRID * 5, 1.8, 0.6), 'repeat'),
+      };
+    }
+
+    const place = (size) =>
+      new DOMMatrix().translateSelf(this.#pan.x - (size * this.#zoom) / 2, this.#pan.y - (size * this.#zoom) / 2).scaleSelf(this.#zoom);
+
+    this.#grid.minor.setTransform(place(GRID));
+    context.fillStyle = this.#grid.minor;
+    context.fillRect(0, 0, width, height);
+
+    this.#grid.major.setTransform(place(GRID * 5));
+    context.fillStyle = this.#grid.major;
+    context.fillRect(0, 0, width, height);
+  }
+
+  #drawLabels(context, paint) {
+    const seen = new Set();
+    context.font = `500 10px ${paint.mono}`;
+    context.textAlign = 'center';
+    context.textBaseline = 'bottom';
+    this.#parts.forEach((part) => {
+      [part.a, part.b].forEach((point) => {
+        const id = `${point[0]},${point[1]}`;
+        if (seen.has(id)) return;
+        seen.add(id);
+        const node = this.#nodes.get(id);
+        if (node === undefined) return;
+        context.fillStyle = paint.soft;
+        context.fillText(prefix(this.#circuit.voltage(node), 'V'), point[0] * GRID, point[1] * GRID - 8);
+      });
+    });
+  }
+
+  #drawPart(context, part, paint, ghost = 0) {
+    if (part.c) {
+      this.#drawTransistor(context, part, paint, ghost);
+      return;
+    }
+    const [ax, ay] = [part.a[0] * GRID, part.a[1] * GRID];
+    const [bx, by] = [part.b[0] * GRID, part.b[1] * GRID];
+    const selected = part.id === this.#selected;
+    const angle = Math.atan2(by - ay, bx - ax);
+    const length = Math.hypot(bx - ax, by - ay);
+    const current = this.#circuit.current(part.id);
+
+    context.save();
+    if (ghost) {
+      context.globalAlpha = ghost;
+      context.setLineDash([5, 4]);
+    }
+    context.translate(ax, ay);
+    context.rotate(angle);
+    context.lineWidth = selected ? 2.6 : 1.8;
+    context.strokeStyle = selected ? paint.ring : paint.line;
+    context.lineCap = 'round';
+    context.lineJoin = 'round';
+    context.fillStyle = paint.card;
+
+    const lead = Math.max(0, (length - 26) / 2);
+    const draw = (body) => {
+      context.beginPath();
+      context.moveTo(0, 0);
+      context.lineTo(lead, 0);
+      context.stroke();
+      context.beginPath();
+      context.moveTo(length - lead, 0);
+      context.lineTo(length, 0);
+      context.stroke();
+      body(lead, length - lead);
+    };
+
+    if (part.kind === 'wire') {
+      context.beginPath();
+      context.moveTo(0, 0);
+      context.lineTo(length, 0);
+      context.stroke();
+    } else if (part.kind === 'ground') {
+      context.beginPath();
+      context.moveTo(0, 0);
+      context.lineTo(0, 9);
+      context.moveTo(-9, 9);
+      context.lineTo(9, 9);
+      context.moveTo(-5.5, 13);
+      context.lineTo(5.5, 13);
+      context.moveTo(-2, 17);
+      context.lineTo(2, 17);
+      context.stroke();
+    } else if (part.kind === 'resistor' || part.kind === 'lamp') {
+      draw((start, end) => {
+        const span = end - start;
+        context.beginPath();
+        context.moveTo(start, 0);
+        for (let step = 0; step < 6; step += 1) {
+          context.lineTo(start + (span / 6) * (step + 0.5), step % 2 === 0 ? -7 : 7);
+        }
+        context.lineTo(end, 0);
+        context.stroke();
+        if (part.kind === 'lamp') {
+          const glow = Math.min(1, Math.abs(current) * 30);
+          context.beginPath();
+          context.arc((start + end) / 2, 0, 11, 0, Math.PI * 2);
+          context.fillStyle = `rgba(255,196,80,${0.15 + glow * 0.7})`;
+          context.fill();
+          context.strokeStyle = selected ? paint.ring : paint.line;
+          context.stroke();
+        }
+      });
+    } else if (part.kind === 'capacitor') {
+      draw((start, end) => {
+        const mid = (start + end) / 2;
+        context.beginPath();
+        context.moveTo(mid - 3, -10);
+        context.lineTo(mid - 3, 10);
+        context.moveTo(mid + 3, -10);
+        context.lineTo(mid + 3, 10);
+        context.stroke();
+        context.beginPath();
+        context.moveTo(start, 0);
+        context.lineTo(mid - 3, 0);
+        context.moveTo(mid + 3, 0);
+        context.lineTo(end, 0);
+        context.stroke();
+      });
+    } else if (part.kind === 'inductor') {
+      draw((start, end) => {
+        const span = end - start;
+        context.beginPath();
+        for (let step = 0; step < 4; step += 1) {
+          context.arc(start + (span / 4) * (step + 0.5), 0, span / 8, Math.PI, 0, false);
+        }
+        context.stroke();
+      });
+    } else if (part.kind === 'vsource' || part.kind === 'ac') {
+      draw((start, end) => {
+        const mid = (start + end) / 2;
+        if (part.kind === 'ac') {
+          context.beginPath();
+          context.arc(mid, 0, 12, 0, Math.PI * 2);
+          context.fillStyle = paint.card;
+          context.fill();
+          context.stroke();
+          context.beginPath();
+          for (let step = -8; step <= 8; step += 1) {
+            const value = Math.sin((step / 8) * Math.PI) * 5;
+            if (step === -8) context.moveTo(mid + step, -value);
+            else context.lineTo(mid + step, -value);
+          }
+          context.stroke();
+          context.beginPath();
+          context.moveTo(start, 0);
+          context.lineTo(mid - 12, 0);
+          context.moveTo(mid + 12, 0);
+          context.lineTo(end, 0);
+          context.stroke();
+          return;
+        }
+        context.beginPath();
+        context.moveTo(mid - 4, -11);
+        context.lineTo(mid - 4, 11);
+        context.moveTo(mid + 4, -6);
+        context.lineTo(mid + 4, 6);
+        context.stroke();
+        context.beginPath();
+        context.moveTo(start, 0);
+        context.lineTo(mid - 4, 0);
+        context.moveTo(mid + 4, 0);
+        context.lineTo(end, 0);
+        context.stroke();
+      });
+    } else if (part.kind === 'diode' || part.kind === 'led') {
+      draw((start, end) => {
+        const mid = (start + end) / 2;
+        context.beginPath();
+        context.moveTo(mid - 6, -8);
+        context.lineTo(mid - 6, 8);
+        context.lineTo(mid + 6, 0);
+        context.closePath();
+        if (part.kind === 'led') {
+          const glow = Math.min(1, Math.abs(current) * 90);
+          context.fillStyle = `rgba(220,70,60,${0.25 + glow * 0.7})`;
+        } else {
+          context.fillStyle = paint.line;
+        }
+        context.fill();
+        context.beginPath();
+        context.moveTo(mid + 6, -8);
+        context.lineTo(mid + 6, 8);
+        context.stroke();
+        context.beginPath();
+        context.moveTo(start, 0);
+        context.lineTo(mid - 6, 0);
+        context.moveTo(mid + 6, 0);
+        context.lineTo(end, 0);
+        context.stroke();
+        if (part.kind === 'led') {
+          context.beginPath();
+          context.moveTo(mid + 2, -12);
+          context.lineTo(mid + 8, -18);
+          context.moveTo(mid + 7, -11);
+          context.lineTo(mid + 13, -17);
+          context.stroke();
+        }
+      });
+    } else if (part.kind === 'switch') {
+      draw((start, end) => {
+        context.beginPath();
+        context.arc(start + 2, 0, 2, 0, Math.PI * 2);
+        context.arc(end - 2, 0, 2, 0, Math.PI * 2);
+        context.fillStyle = paint.line;
+        context.fill();
+        context.beginPath();
+        context.moveTo(start + 2, 0);
+        context.lineTo(end - 2, part.closed ? 0 : -10);
+        context.stroke();
+      });
+    }
+
+    if (part.kind !== 'wire' && part.kind !== 'ground') {
+      const meta = KINDS[part.kind === 'ac' ? 'ac' : part.kind];
+      if (meta?.unit) {
+        context.rotate(-angle);
+        context.fillStyle = paint.soft;
+        context.font = `500 10px ${paint.mono}`;
+        context.textAlign = 'center';
+        const dx = (Math.cos(angle) * length) / 2;
+        const dy = (Math.sin(angle) * length) / 2;
+        context.fillText(prefix(part.value, meta.unit), dx, dy + (Math.abs(Math.sin(angle)) > 0.5 ? 4 : 22));
+      }
+    }
+
+    context.restore();
+  }
+
+  #drawTransistor(context, part, paint, ghost) {
+    const gate = [part.a[0] * GRID, part.a[1] * GRID];
+    const drain = [part.b[0] * GRID, part.b[1] * GRID];
+    const source = [part.c[0] * GRID, part.c[1] * GRID];
+    const selected = part.id === this.#selected;
+    const mos = part.kind === 'nmos' || part.kind === 'pmos';
+    const inward = part.kind === 'pnp' || part.kind === 'pmos';
+
+    const barX = Math.min(drain[0], source[0]) - 12;
+    const top = Math.min(drain[1], source[1]);
+    const bottom = Math.max(drain[1], source[1]);
+    const midY = (top + bottom) / 2;
+
+    context.save();
+    if (ghost) {
+      context.globalAlpha = ghost;
+      context.setLineDash([5, 4]);
+    }
+    context.lineWidth = selected ? 2.6 : 1.8;
+    context.strokeStyle = selected ? paint.ring : paint.line;
+    context.lineCap = 'round';
+
+    context.beginPath();
+    context.moveTo(gate[0], gate[1]);
+    context.lineTo(barX - (mos ? 8 : 0), gate[1]);
+    context.lineTo(barX - (mos ? 8 : 0), midY);
+    context.lineTo(barX, midY);
+    context.stroke();
+
+    if (mos) {
+      context.beginPath();
+      context.moveTo(barX, midY - 14);
+      context.lineTo(barX, midY + 14);
+      context.stroke();
+      context.beginPath();
+      context.moveTo(barX + 5, midY - 14);
+      context.lineTo(barX + 5, midY + 14);
+      context.stroke();
+    } else {
+      context.beginPath();
+      context.moveTo(barX, midY - 14);
+      context.lineTo(barX, midY + 14);
+      context.stroke();
+    }
+
+    const stem = mos ? barX + 5 : barX;
+    [drain, source].forEach((pin, index) => {
+      const y = index === 0 ? midY - 9 : midY + 9;
+      context.beginPath();
+      context.moveTo(stem, y);
+      context.lineTo(pin[0], y);
+      context.lineTo(pin[0], pin[1]);
+      context.stroke();
+    });
+
+    const arrowY = midY + 9;
+    const direction = inward ? -1 : 1;
+    const tip = inward ? [stem + 6, arrowY - 4 * 0] : [drain[0] * 0 + stem + 14, arrowY];
+    void tip;
+    context.beginPath();
+    const baseX = inward ? stem + 14 : stem + 6;
+    context.moveTo(baseX, arrowY - 4);
+    context.lineTo(baseX + direction * 8, arrowY);
+    context.lineTo(baseX, arrowY + 4);
+    context.closePath();
+    context.fillStyle = selected ? paint.ring : paint.line;
+    context.fill();
+
+    context.beginPath();
+    context.arc((barX + Math.max(drain[0], source[0])) / 2, midY, 19, 0, Math.PI * 2);
+    context.globalAlpha = ghost || 0.35;
+    context.stroke();
+    context.globalAlpha = ghost || 1;
+
+    context.fillStyle = paint.soft;
+    context.font = `500 10px ${paint.mono}`;
+    context.textAlign = 'left';
+    context.fillText(KINDS[part.kind]?.label ?? part.kind, barX - 6, bottom + 16);
+    context.restore();
+  }
+
+  #scope() {
+    const view = this.#fit(this.$('#scope'));
+    if (!view) return;
+    const { context, width, height } = view;
+    const paint = this.#palette();
+    context.clearRect(0, 0, width, height);
+
+    context.strokeStyle = paint.border;
+    context.lineWidth = 1;
+    context.globalAlpha = 0.55;
+    for (let step = 1; step < DIVISIONS; step += 1) {
+      const x = Math.round((width / DIVISIONS) * step) + 0.5;
+      context.beginPath();
+      context.moveTo(x, 0);
+      context.lineTo(x, height);
+      context.stroke();
+    }
+    for (let step = 1; step < 8; step += 1) {
+      const y = Math.round((height / 8) * step) + 0.5;
+      context.beginPath();
+      context.moveTo(0, y);
+      context.lineTo(width, y);
+      context.stroke();
+    }
+    context.globalAlpha = 1;
+    context.strokeStyle = paint.soft;
+    context.beginPath();
+    context.moveTo(0, Math.round(height / 2) + 0.5);
+    context.lineTo(width, Math.round(height / 2) + 0.5);
+    context.stroke();
+
+    const unit = this.#signal === 'current' ? 'A' : 'V';
+    const trace = this.#trace;
+    if (trace.length < 2) return;
+
+    const span = TIMEBASE[this.#timebase].seconds * DIVISIONS;
+    const sweep = Math.max(2, Math.min(POINTS, Math.round(span / (this.#interval || span / POINTS))));
+    const latest = Math.max(0, trace.length - sweep);
+    let start = latest;
+    if (this.#trigger && trace.length > POINTS) {
+      const mid = trace.reduce((sum, value) => sum + value, 0) / trace.length;
+      for (let index = latest; index > 0; index -= 1) {
+        if (trace[index - 1] <= mid && trace[index] > mid) {
+          start = index;
+          break;
+        }
+      }
+    }
+
+    const window = trace.slice(start, start + sweep);
+    const peak = this.#range || Math.max(this.#signal === 'current' ? 1e-6 : 0.5, ...window.map((value) => Math.abs(value))) * 1.1;
+
+    context.strokeStyle = paint.ring;
+    context.lineWidth = 1.6;
+    context.lineJoin = 'round';
+    context.beginPath();
+    window.forEach((value, index) => {
+      const x = (index / Math.max(1, sweep - 1)) * width;
+      const y = height / 2 - (value / peak) * (height / 2 - 4);
+      if (index === 0) context.moveTo(x, y);
+      else context.lineTo(x, y);
+    });
+    context.stroke();
+
+    context.fillStyle = paint.soft;
+    context.font = `500 10px ${paint.mono}`;
+    context.textAlign = 'left';
+    context.fillText(`${prefix(peak / 4, unit)}/div`, 6, 12);
+    context.textAlign = 'right';
+    context.fillText(TIMEBASE[this.#timebase].label, width - 6, 12);
+
+    this.#measure(window, unit);
+  }
+
+  #measure(window, unit) {
+    const target = this.$('#measures');
+    if (!target) return;
+    if (window.length < 2) {
+      target.innerHTML = '';
+      return;
+    }
+
+    const min = Math.min(...window);
+    const max = Math.max(...window);
+    const mean = window.reduce((sum, value) => sum + value, 0) / window.length;
+    const rms = Math.sqrt(window.reduce((sum, value) => sum + value * value, 0) / window.length);
+
+    const interval = this.#interval || TIMEBASE[this.#timebase].seconds * DIVISIONS / POINTS;
+    const mid = mean;
+    const noise = (max - min) < Math.max(1e-6, Math.abs(mean) * 0.002);
+    const crossings = [];
+    for (let index = 1; index < window.length; index += 1) {
+      const before = window[index - 1];
+      const after = window[index];
+      if (before <= mid && after > mid) {
+        const slope = after - before;
+        crossings.push(index - 1 + (slope ? (mid - before) / slope : 0));
+      }
+    }
+    const period = !noise && crossings.length > 1
+      ? ((crossings[crossings.length - 1] - crossings[0]) / (crossings.length - 1)) * interval
+      : 0;
+
+    target.innerHTML = html`
+      <div><dt>${t('circuit-lab.vpp', 'Vpp')}</dt><dd>${prefix(max - min, unit)}</dd></div>
+      <div><dt>${t('circuit-lab.min', 'min')}</dt><dd>${prefix(min, unit)}</dd></div>
+      <div><dt>${t('circuit-lab.max', 'max')}</dt><dd>${prefix(max, unit)}</dd></div>
+      <div><dt>${t('circuit-lab.avg', 'avg')}</dt><dd>${prefix(mean, unit)}</dd></div>
+      <div><dt>${t('circuit-lab.rms', 'rms')}</dt><dd>${prefix(rms, unit)}</dd></div>
+      ${period ? html`<div><dt>${t('circuit-lab.freq', 'freq')}</dt><dd>${prefix(1 / period, 'Hz')}</dd></div>` : ''}
+    `;
+  }
+
+  #readout() {
+    const target = this.$('#readout');
+    if (!target) return;
+    const part = this.#parts.find((entry) => entry.id === this.#selected);
+    if (part) {
+      const current = this.#circuit.current(part.id);
+      const across = this.#circuit.voltage(this.#node(part.a) ?? 0) - this.#circuit.voltage(this.#node(part.b) ?? 0);
+      target.innerHTML = html`
+        <dt>${t('circuit-lab.voltage', 'Voltage')}</dt><dd>${prefix(across, 'V')}</dd>
+        <dt>${t('circuit-lab.current', 'Current')}</dt><dd>${prefix(current, 'A')}</dd>
+        <dt>${t('circuit-lab.power', 'Power')}</dt><dd>${prefix(Math.abs(across * current), 'W')}</dd>
+      `;
+      return;
+    }
+    if (this.#probe) {
+      const node = this.#node(this.#probe);
+      target.innerHTML = html`<dt>Node ${node ?? '-'}</dt><dd>${node === null ? '-' : prefix(this.#circuit.voltage(node), 'V')}</dd>`;
+    }
+  }
+
+  #inspector() {
+    const part = this.#parts.find((entry) => entry.id === this.#selected);
+    const meta = part ? KINDS[part.kind] : null;
+    this.#scopeLabel();
+
+    this.$('#inspector').innerHTML = html`
+      <div class="label">${part ? meta?.label ?? part.kind : 'Probe'}</div>
+      ${part && meta?.unit
+        ? html`<jg-field label="${t('circuit-lab.value', 'Value')}">
+            <jg-input id="value" size="sm" value="${prefix(part.value, meta.unit)}"></jg-input>
+          </jg-field>`
+        : ''}
+      ${part && part.kind === 'ac'
+        ? html`<jg-field label="${t('circuit-lab.frequency', 'Frequency')}">
+            <jg-input id="frequency" size="sm" value="${part.frequency}"></jg-input>
+          </jg-field>`
+        : ''}
+      ${part && part.kind === 'switch'
+        ? html`<div class="row"><jg-switch id="closed" ${part.closed ? 'checked' : ''}></jg-switch><span class="hint">${t('circuit-lab.closed', 'Closed')}</span></div>`
+        : ''}
+      <dl class="readout" id="readout"></dl>
+      ${part ? html`<jg-button size="sm" variant="outline" id="remove">${t('circuit-lab.removePart', 'Remove part')}</jg-button>` : html`<div class="hint">${t('circuit-lab.clickAWireJunctionTo', 'Click a wire junction to probe it, or a part to edit it.')}</div>`}
+    `;
+
+    const value = this.$('#value');
+    if (value) {
+      this.on(value, 'change', () => {
+        part.value = parseValue(value.value, part.value);
+        value.value = prefix(part.value, meta.unit);
+        this.#rebuild();
+        this.#draw();
+      });
+    }
+    const frequency = this.$('#frequency');
+    if (frequency) {
+      this.on(frequency, 'change', () => {
+        part.frequency = Math.max(0.1, Number(frequency.value) || 60);
+        this.#rebuild();
+      });
+    }
+    const closed = this.$('#closed');
+    if (closed) {
+      this.on(closed, 'change', (event) => {
+        part.closed = event.detail.checked;
+        this.#rebuild();
+        this.#draw();
+      });
+    }
+    const remove = this.$('#remove');
+    if (remove) {
+      this.on(remove, 'click', () => {
+        this.#parts = this.#parts.filter((entry) => entry.id !== this.#selected);
+        this.#selected = null;
+        this.#rebuild();
+        this.#inspector();
+        this.#draw();
+      });
+    }
+    this.#readout();
+  }
+
+  #netlist() {
+    return this.#parts
+      .filter((part) => part.kind !== 'ground')
+      .map((part, index) => {
+        const a = this.#node(part.a);
+        const b = this.#node(part.b);
+        const unit = KINDS[part.kind]?.unit ?? '';
+        return `${part.kind.toUpperCase()}${index + 1} ${a} ${b} ${unit ? prefix(part.value, unit) : ''}`.trim();
+      })
+      .join('\n');
+  }
+}
+
+define('jg-app-circuit-lab', CircuitLab);

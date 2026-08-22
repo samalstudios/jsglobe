@@ -1,0 +1,17 @@
+export default {
+  id: "morse-code",
+  name: "Morse Code",
+  tagline: "Translate text to Morse and play it back",
+  category: "converter",
+  glyph: ".-",
+  icon: "morse",
+  keywords: ["morse","code","telegraph","signal","sos","decode"],
+  tag: "jg-app-morse-code",
+  window: {"width":760,"height":820},
+  i18n: {
+    de: { name: 'Morsecode', tagline: 'Text in Morse übersetzen und abspielen' },
+    es: { name: 'Código morse', tagline: 'Traducir texto a morse y reproducirlo' },
+    zh: { name: '摩尔斯电码', tagline: '把文本转成摩尔斯码并播放' },
+  },
+  load: () => import('./index.js'),
+};

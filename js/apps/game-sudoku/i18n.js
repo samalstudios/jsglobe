@@ -1,0 +1,32 @@
+export default {
+  de: {
+    'game-sudoku.newGame': 'Neues Spiel',
+    'game-sudoku.time': 'Zeit',
+    'game-sudoku.mistakes': 'Fehler',
+    'game-sudoku.empty': 'Leer',
+    'game-sudoku.notesOff': 'Notizen aus',
+    'game-sudoku.erase': 'Radieren',
+    'game-sudoku.hint': 'Tipp',
+    'game-sudoku.check': 'Prüfen',
+  },
+  es: {
+    'game-sudoku.newGame': 'Partida nueva',
+    'game-sudoku.time': 'Hora',
+    'game-sudoku.mistakes': 'Errores',
+    'game-sudoku.empty': 'Vacío',
+    'game-sudoku.notesOff': 'Notas desactivadas',
+    'game-sudoku.erase': 'Borrar',
+    'game-sudoku.hint': 'Pista',
+    'game-sudoku.check': 'Comprobar',
+  },
+  zh: {
+    'game-sudoku.newGame': '新游戏',
+    'game-sudoku.time': '时间',
+    'game-sudoku.mistakes': '错误',
+    'game-sudoku.empty': '空',
+    'game-sudoku.notesOff': '关闭笔记',
+    'game-sudoku.erase': '擦除',
+    'game-sudoku.hint': '提示',
+    'game-sudoku.check': '检查',
+  },
+};
