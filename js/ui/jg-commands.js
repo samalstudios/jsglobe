@@ -1,4 +1,5 @@
 import { JGElement, define, css, html } from '../core/dom.js';
+import { t } from '../core/i18n.js';
 import { base } from './styles.js';
 import { commands } from '../core/commands.js';
 import { clamp } from '../core/util.js';
@@ -167,10 +168,10 @@ class JGCommands extends JGElement {
 
     this.paint(html`
       <div class="veil"></div>
-      <div class="panel" role="dialog" aria-label="Commands">
+      <div class="panel" role="dialog" aria-label="${t('commands.title', 'Commands')}">
         <div class="search">
           <span class="chevron">${icon('terminal', 17)}</span>
-          <input type="text" placeholder="Run a command..." spellcheck="false" />
+          <input type="text" placeholder="${t('commands.placeholder', 'Run a command...')}" spellcheck="false" />
           <kbd>esc</kbd>
         </div>
         <div class="results"></div>

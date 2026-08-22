@@ -1,4 +1,5 @@
 import { JGElement, define, css, html } from '../core/dom.js';
+import { t } from '../core/i18n.js';
 import { base } from './styles.js';
 import { registry } from '../core/registry.js';
 import { layout } from '../core/layout.js';
@@ -158,14 +159,14 @@ class JGWidgetBoard extends JGElement {
             <header class="head">
               <span class="badge">${icon(meta.icon, 11)}</span>
               <span class="name">${meta.name}</span>
-              <button class="more" title="Widget options">⋯</button>
+              <button class="more" title="${t('action.widgetOptions', 'Widget options')}">⋯</button>
             </header>
             <div class="surface" data-app="${widget.appId}"></div>
           </article>`;
         })}
         <button class="add" type="button" data-empty="${String(!widgets.length)}">
           <span class="plus">＋</span>
-          <span>${widgets.length ? 'Add widget' : 'Add widgets'}</span>
+          <span>${widgets.length ? t('action.addWidget', 'Add widget') : t('action.addWidgets', 'Add widgets')}</span>
         </button>
       </div>
     `);
@@ -205,7 +206,7 @@ class JGWidgetBoard extends JGElement {
       y,
       title: meta.name,
       items: [
-        { label: 'Open app', icon: 'external', action: () => router.app(widget.appId) },
+        { label: t('action.openApp', 'Open app'), icon: 'external', action: () => router.app(widget.appId) },
         { separator: true },
         ...['small', 'wide', 'tall', 'large'].map((size) => ({
           label: `Size: ${size}`,
@@ -213,7 +214,7 @@ class JGWidgetBoard extends JGElement {
           action: () => layout.resizeWidget(uid, size),
         })),
         { separator: true },
-        { label: 'Remove widget', icon: 'close', danger: true, action: () => layout.removeWidget(uid) },
+        { label: t('action.removeWidget', 'Remove widget'), icon: 'close', danger: true, action: () => layout.removeWidget(uid) },
       ],
     });
   }

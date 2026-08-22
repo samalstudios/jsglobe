@@ -1,3 +1,5 @@
+import { bus } from './bus.js';
+
 const sheets = new Map();
 
 export function css(strings, ...values) {
@@ -59,6 +61,7 @@ export class JGElement extends HTMLElement {
 
   connectedCallback() {
     this.render();
+    this.keep(bus.on('language:change', () => this.refresh()));
   }
 
   disconnectedCallback() {

@@ -1,4 +1,5 @@
 import { JGElement, define, css, html } from '../core/dom.js';
+import { t } from '../core/i18n.js';
 import { base } from './styles.js';
 import { registry } from '../core/registry.js';
 import { clamp } from '../core/util.js';
@@ -210,7 +211,7 @@ class JGWindow extends JGElement {
     this.paint(html`
       <header class="chrome">
         <div class="bar">
-          <button class="action menu" title="App options" aria-label="App options">${icon('more', 16)}</button>
+          <button class="action menu" title="${t('action.appOptions', 'App options')}" aria-label="${t('action.appOptions', 'App options')}">${icon('more', 16)}</button>
           <div class="identity">
             <span class="badge">${app ? icon(app.icon, 17) : ''}</span>
             <span class="names">
@@ -220,9 +221,9 @@ class JGWindow extends JGElement {
           </div>
           <span class="spring"></span>
           <div class="lights">
-            <button class="light min" title="Minimize"><span>-</span></button>
-            <button class="light max" title="Maximize"><span>+</span></button>
-            <button class="light close" title="Close"><span>✕</span></button>
+            <button class="light min" title="${t('action.minimise', 'Minimize')}"><span>-</span></button>
+            <button class="light max" title="${t('action.maximize', 'Maximize')}"><span>+</span></button>
+            <button class="light close" title="${t('action.close', 'Close')}"><span>✕</span></button>
           </div>
         </div>
         <div class="tools" id="tools" hidden><jg-toolbar id="app-toolbar" variant="plain"></jg-toolbar></div>

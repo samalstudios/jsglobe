@@ -1,31 +1,70 @@
 import { catalog, categories } from '../apps/catalog.js';
 import { settings } from './settings.js';
+import { bus } from './bus.js';
+import { appName, appTagline, categoryName, language } from './i18n.js';
 
 const byId = new Map(catalog.map((app) => [app.id, app]));
 const pending = new Map();
 
+let localised = new Map();
+let localGroups = new Map();
+
+bus.on('language:change', () => {
+  localised = new Map();
+  localGroups = new Map();
+});
+
+const shown = (app) => {
+  if (!app) return app;
+  if (language() === 'en') return app;
+  let entry = localised.get(app.id);
+  if (!entry) {
+    entry = { ...app, name: appName(app), tagline: appTagline(app), source: app };
+    localised.set(app.id, entry);
+  }
+  return entry;
+};
+
+const shownGroup = (group) => {
+  if (!group) return group;
+  if (language() === 'en') return group;
+  let entry = localGroups.get(group.id);
+  if (!entry) {
+    entry = { ...group, name: categoryName(group), source: group };
+    localGroups.set(group.id, entry);
+  }
+  return entry;
+};
+
+const matches = (value, query, exact) => {
+  const text = String(value ?? '').toLowerCase();
+  return exact ? text === query : text.includes(query);
+};
+
 const score = (app, query) => {
-  const name = app.name.toLowerCase();
+  const names = [app.name.toLowerCase(), appName(app).toLowerCase()];
+  const taglines = [app.tagline, appTagline(app)];
   const id = app.id.toLowerCase();
-  if (name === query || id === query) return 100;
-  if (name.startsWith(query)) return 80;
+  if (names.some((name) => name === query) || id === query) return 100;
+  if (names.some((name) => name.startsWith(query))) return 80;
   if (id.startsWith(query)) return 70;
-  if (name.includes(query)) return 55;
-  if (app.keywords?.some((word) => word === query)) return 50;
-  if (app.keywords?.some((word) => word.startsWith(query))) return 40;
-  if (app.tagline.toLowerCase().includes(query)) return 25;
-  if (app.keywords?.some((word) => word.includes(query))) return 15;
+  if (names.some((name) => name.includes(query))) return 55;
+  if (app.keywords?.some((word) => matches(word, query, true))) return 50;
+  if (app.keywords?.some((word) => word.toLowerCase().startsWith(query))) return 40;
+  if (taglines.some((line) => matches(line, query))) return 25;
+  if (app.keywords?.some((word) => matches(word, query))) return 15;
   return 0;
 };
 
 export const registry = {
-  all: (options = {}) => catalog.filter((app) => (options.includeSystem ? true : !app.system)),
+  all: (options = {}) => catalog.filter((app) => (options.includeSystem ? true : !app.system)).map(shown),
 
-  categories: () => categories.filter((group) => catalog.some((app) => app.category === group.id && !app.system)),
+  categories: () =>
+    categories.filter((group) => catalog.some((app) => app.category === group.id && !app.system)).map(shownGroup),
 
-  category: (id) => categories.find((group) => group.id === id),
+  category: (id) => shownGroup(categories.find((group) => group.id === id)),
 
-  find: (id) => byId.get(id) ?? null,
+  find: (id) => shown(byId.get(id)) ?? null,
 
   tint(app) {
     const meta = typeof app === 'string' ? byId.get(app) : app;
@@ -37,7 +76,7 @@ export const registry = {
   },
 
   byCategory(id) {
-    return catalog.filter((app) => app.category === id);
+    return catalog.filter((app) => app.category === id).map(shown);
   },
 
   search(query, limit = 12) {
@@ -48,7 +87,7 @@ export const registry = {
       .filter((entry) => entry.rank > 0)
       .sort((a, b) => b.rank - a.rank || a.app.name.localeCompare(b.app.name))
       .slice(0, limit)
-      .map((entry) => entry.app);
+      .map((entry) => shown(entry.app));
   },
 
   async load(id) {

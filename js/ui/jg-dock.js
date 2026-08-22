@@ -1,4 +1,5 @@
 import { JGElement, define, css, html } from '../core/dom.js';
+import { t } from '../core/i18n.js';
 import { base } from './styles.js';
 import { registry } from '../core/registry.js';
 import { layout } from '../core/layout.js';
@@ -277,7 +278,7 @@ class JGDock extends JGElement {
     this.paint(html`
       <nav class="dock" aria-label="Dock">
         <span class="slot launcher">
-          <a class="item" href="${router.href('/apps')}" aria-label="App Library">${icon('launcher', 22)}</a>
+          <a class="item" href="${router.href('/apps')}" aria-label="${t('library.title', 'App Library')}">${icon('launcher', 22)}</a>
           <span class="dot"></span>
         </span>
         <span class="divider"></span>
@@ -378,7 +379,7 @@ class JGDock extends JGElement {
     if (!tip) return;
     const isLauncher = slot.classList.contains('launcher');
     const app = isLauncher ? null : registry.find(slot.dataset.id);
-    const label = isLauncher ? 'App Library' : app?.name ?? '';
+    const label = isLauncher ? t('library.title', 'App Library') : app?.name ?? '';
     const kind = slot.dataset.kind;
     const suffix =
       this.#focused === slot.dataset.id ? 'click to minimise'
@@ -422,23 +423,23 @@ class JGDock extends JGElement {
       y: position === 'bottom' ? y - 260 : y,
       title: meta.name,
       items: [
-        { label: 'Open', icon: 'external', action: () => router.app(appId) },
+        { label: t('action.open', 'Open'), icon: 'external', action: () => router.app(appId) },
         this.#running.includes(appId) && {
-          label: 'Minimise',
+          label: t('action.minimise', 'Minimise'),
           icon: 'minimize',
           action: () => bus.emit('window:minimize-request', { appId }),
         },
         this.#running.includes(appId) && {
-          label: 'Close',
+          label: t('action.close', 'Close'),
           icon: 'close',
           action: () => bus.emit('window:close-request', { appId }),
         },
         { separator: true },
         { label: locked ? 'Unpin from dock' : 'Keep in dock', icon: 'dock', action: () => layout.toggleDock(appId) },
-        meta.widget && { label: 'Add widget', icon: 'widget', action: () => layout.addWidget(appId) },
+        meta.widget && { label: t('action.addWidget', 'Add widget'), icon: 'widget', action: () => layout.addWidget(appId) },
         { separator: true },
         {
-          label: 'Copy link',
+          label: t('action.copyLink', 'Copy link'),
           icon: 'copy',
           action: () => navigator.clipboard?.writeText(`${window.location.origin}${router.href(`/apps/${appId}`)}`),
         },

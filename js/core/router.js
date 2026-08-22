@@ -1,4 +1,5 @@
 import { bus } from './bus.js';
+import { DEFAULT_LANGUAGE, codeForPath, isLanguagePath, prefixFor } from './languages.js';
 
 const baseHref = document.querySelector('base')?.getAttribute('href') ?? '/';
 export const BASE = new URL(baseHref, window.location.origin).pathname.replace(/\/+$/, '');
@@ -9,17 +10,20 @@ const strip = (pathname) => {
 };
 
 const parse = () => {
-  const segments = strip(window.location.pathname).split('/').filter(Boolean);
+  const raw = strip(window.location.pathname).split('/').filter(Boolean);
+  const language = raw.length && isLanguagePath(raw[0]) ? codeForPath(raw[0]) : DEFAULT_LANGUAGE;
+  const segments = language === DEFAULT_LANGUAGE ? raw : raw.slice(1);
   const params = Object.fromEntries(new URLSearchParams(window.location.search));
   const [head, ...rest] = segments;
+  const base = { language, segments, params };
 
-  if (!head) return { name: 'home', segments, params };
-  if (head === 'search') return { name: 'search', query: params.q ?? '', segments, params };
-  if (head === 'privacy') return { name: 'privacy', segments, params };
-  if (head !== 'apps') return { name: 'app', appId: head, path: rest, segments, params, legacy: true };
-  if (!rest.length) return { name: 'directory', category: params.category ?? null, segments, params };
-  if (rest[0] === 'category') return { name: 'directory', category: rest[1] ?? null, segments, params };
-  return { name: 'app', appId: rest[0], path: rest.slice(1), segments, params };
+  if (!head) return { ...base, name: 'home' };
+  if (head === 'search') return { ...base, name: 'search', query: params.q ?? '' };
+  if (head === 'privacy') return { ...base, name: 'privacy' };
+  if (head !== 'apps') return { ...base, name: 'app', appId: head, path: rest, legacy: true };
+  if (!rest.length) return { ...base, name: 'directory', category: params.category ?? null };
+  if (rest[0] === 'category') return { ...base, name: 'directory', category: rest[1] ?? null };
+  return { ...base, name: 'app', appId: rest[0], path: rest.slice(1) };
 };
 
 let current = parse();
@@ -30,14 +34,14 @@ const migrateHash = () => {
   const segments = hash.split('?')[0].split('/').filter(Boolean);
   const rest = segments[0] === 'app' ? segments.slice(1) : segments;
   if (!rest.length) return false;
-  history.replaceState(null, '', `${BASE}/apps/${rest.join('/')}`);
+  history.replaceState(null, '', router.href(`/apps/${rest.join('/')}`));
   return true;
 };
 
 const migrateLegacy = () => {
   if (!current.legacy) return false;
   const path = [current.appId, ...current.path].join('/');
-  history.replaceState(null, '', `${BASE}/apps/${path}${window.location.search}`);
+  history.replaceState(null, '', `${router.href(`/apps/${path}`)}${window.location.search}`);
   return true;
 };
 
@@ -53,8 +57,18 @@ export const router = {
     return current;
   },
 
-  href(path = '/') {
-    return `${BASE}${path.startsWith('/') ? path : `/${path}`}` || '/';
+  get language() {
+    return current.language;
+  },
+
+  href(path = '/', language = current.language) {
+    const tail = path.startsWith('/') ? path : `/${path}`;
+    return `${BASE}${prefixFor(language)}${tail === '/' ? '/' : tail}` || '/';
+  },
+
+  pathFor(language) {
+    const tail = current.segments.length ? `/${current.segments.join('/')}` : '/';
+    return `${router.href(tail, language)}${window.location.search}`;
   },
 
   start() {
@@ -74,25 +88,32 @@ export const router = {
       const url = new URL(anchor.href, window.location.href);
       if (url.origin !== window.location.origin) return;
       event.preventDefault();
-      router.go(`${url.pathname}${url.search}`);
+      router.navigate(`${url.pathname}${url.search}`);
     });
 
     bus.emit('route:change', current);
   },
 
-  go(path, params) {
-    const query = params && Object.keys(params).length ? `?${new URLSearchParams(params)}` : '';
-    const target = path.startsWith(BASE) ? `${path}${query}` : `${router.href(path)}${query}`;
+  navigate(target) {
     if (target === `${window.location.pathname}${window.location.search}`) return;
     history.pushState(null, '', target || '/');
     current = parse();
     bus.emit('route:change', current);
   },
 
+  go(path, params) {
+    const query = params && Object.keys(params).length ? `?${new URLSearchParams(params)}` : '';
+    router.navigate(`${router.href(path)}${query}`);
+  },
+
   replace(path) {
     history.replaceState(null, '', router.href(path) || '/');
     current = parse();
     bus.emit('route:change', current);
+  },
+
+  switchLanguage(code) {
+    router.navigate(router.pathFor(code));
   },
 
   home: () => router.go('/'),

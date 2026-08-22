@@ -1,4 +1,5 @@
 import { JGElement, define, css, html } from '../core/dom.js';
+import { t } from '../core/i18n.js';
 import { base } from './styles.js';
 import { layout } from '../core/layout.js';
 import { registry } from '../core/registry.js';
@@ -116,7 +117,7 @@ class JGFolderView extends JGElement {
         <header>
           <input class="name" value="${folder.name}" spellcheck="false" />
           <span class="count">${folder.items.length} tools</span>
-          <button class="close" title="Close">✕</button>
+          <button class="close" title="${t('action.close', 'Close')}">✕</button>
         </header>
         <div class="grid">
           ${folder.items.map((id) => html`<jg-app-tile app-id="${id}"></jg-app-tile>`)}
@@ -139,9 +140,9 @@ class JGFolderView extends JGElement {
         y,
         title: meta.name,
         items: [
-          { label: 'Move out of folder', icon: 'arrowUp', action: () => layout.removeFromFolder(folder.id, appId) },
+          { label: t('action.moveOutOfFolder', 'Move out of folder'), icon: 'arrowUp', action: () => layout.removeFromFolder(folder.id, appId) },
           { label: layout.dock().includes(appId) ? 'Remove from dock' : 'Add to dock', icon: 'dock', action: () => layout.toggleDock(appId) },
-          meta.widget && { label: 'Add widget', icon: 'widget', action: () => layout.addWidget(appId) },
+          meta.widget && { label: t('action.addWidget', 'Add widget'), icon: 'widget', action: () => layout.addWidget(appId) },
         ],
       });
     });

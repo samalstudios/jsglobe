@@ -1,4 +1,5 @@
 import { JGElement, define, css, html } from '../core/dom.js';
+import { t } from '../core/i18n.js';
 import { base } from './styles.js';
 import { registry } from '../core/registry.js';
 import { router } from '../core/router.js';
@@ -164,10 +165,10 @@ class JGSpotlight extends JGElement {
 
     this.paint(html`
       <div class="veil"></div>
-      <div class="panel" role="dialog" aria-label="Search apps">
+      <div class="panel" role="dialog" aria-label="${t('spotlight.searchApps', 'Search apps')}">
         <div class="search">
           <span class="glass">${icon('search', 19)}</span>
-          <input type="text" placeholder="Search tools, formats, keywords..." value="${this.#query}" spellcheck="false" />
+          <input type="text" placeholder="${t('spotlight.placeholder', 'Search tools, formats, keywords...')}" value="${this.#query}" spellcheck="false" />
           <kbd>esc</kbd>
         </div>
         <div class="results"></div>

@@ -20,9 +20,26 @@ jsglobe.com {
 	@code path /js/* /css/*
 	header @code Cache-Control "public, max-age=300, must-revalidate"
 
-	@shell path / /index.html /manifest.webmanifest /sitemap.xml /robots.txt
+	@shell path / /index.html /de /de/ /es /es/ /zh /zh/ /manifest.webmanifest /sitemap.xml /robots.txt
 	header @shell Cache-Control "no-cache"
 
-	try_files {path} {path}/ /index.html
-	file_server
+	handle /de/* {
+		try_files {path} {path}/ /de/index.html
+		file_server
+	}
+
+	handle /es/* {
+		try_files {path} {path}/ /es/index.html
+		file_server
+	}
+
+	handle /zh/* {
+		try_files {path} {path}/ /zh/index.html
+		file_server
+	}
+
+	handle {
+		try_files {path} {path}/ /index.html
+		file_server
+	}
 }

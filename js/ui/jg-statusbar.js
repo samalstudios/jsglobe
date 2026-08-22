@@ -6,6 +6,8 @@ import { router } from '../core/router.js';
 import { bus } from '../core/bus.js';
 import { contextMenu } from './jg-menu.js';
 import { icon } from './icons.js';
+import { LANGUAGES } from '../core/languages.js';
+import { language, t } from '../core/i18n.js';
 
 const sheet = css`
   :host {
@@ -81,10 +83,26 @@ const sheet = css`
   }
   .icon-btn svg { width: 17px; height: 17px; stroke-width: 1.7; --icon-accent: currentColor; }
   .icon-btn:hover { background: var(--glass); border-color: var(--glass-border); opacity: 1; }
+  .icon-btn.lang {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    gap: 5px;
+    padding: 0 8px;
+    font: 600 11.5px/1 var(--font-sans);
+    letter-spacing: 0.02em;
+  }
+  .icon-btn.lang svg { width: 15px; height: 15px; }
+  .icon-btn.lang .code { display: none; }
+  @media (max-width: 900px) {
+    .icon-btn.lang .native { display: none; }
+    .icon-btn.lang .code { display: inline; }
+  }
   .clock { font-variant-numeric: tabular-nums; font-weight: 600; letter-spacing: 0.01em; }
   .date { color: color-mix(in srgb, var(--foreground) 66%, transparent); }
   @media (max-width: 620px) {
-    .date, .brand span:not(.mark) { display: none; }
+    .date, .brand span:not(.mark), .icon-btn.lang .code, .icon-btn.lang .native { display: none; }
   }
 `;
 
@@ -98,6 +116,7 @@ class JGStatusbar extends JGElement {
     this.keep(bus.on('workspace:switch', () => this.refresh()));
     this.keep(bus.on('workspaces:change', () => this.refresh()));
     this.keep(bus.on('settings:change', () => this.refresh()));
+    this.keep(bus.on('language:change', () => this.refresh()));
   }
 
   disconnectedCallback() {
@@ -107,9 +126,10 @@ class JGStatusbar extends JGElement {
 
   render() {
     const workspace = workspaces.active();
+    const current = LANGUAGES.find((entry) => entry.code === language()) ?? LANGUAGES[0];
     this.paint(html`
       <div class="side">
-        <button class="brand" id="launcher" title="App library" aria-label="Open the app library">
+        <button class="brand" id="launcher" title="${t('status.appLibrary', 'App library')}" aria-label="${t('status.openLibrary', 'Open the app library')}">
           <span class="mark">${icon('launcher', 13)}</span>
           <span>JS Globe</span>
         </button>
@@ -120,8 +140,11 @@ class JGStatusbar extends JGElement {
         </button>
       </div>
       <div class="side right">
-        <button class="icon-btn search" title="Search (⌘K)" aria-label="Search">${icon('search', 17)}</button>
-        <button class="icon-btn settings" title="Settings" aria-label="Settings">${icon('cog', 17)}</button>
+        <button class="icon-btn lang" title="${t('language.change', 'Change language')}" aria-label="${t('language.change', 'Change language')}">
+          ${icon('languages', 15)}<span class="native">${current.native}</span><span class="code">${current.code.toUpperCase()}</span>
+        </button>
+        <button class="icon-btn search" title="${t('status.search', 'Search (⌘K)')}" aria-label="${t('action.search', 'Search')}">${icon('search', 17)}</button>
+        <button class="icon-btn settings" title="${t('action.settings', 'Settings')}" aria-label="${t('action.settings', 'Settings')}">${icon('cog', 17)}</button>
         <span class="date"></span>
         <span class="clock"></span>
       </div>
@@ -129,6 +152,7 @@ class JGStatusbar extends JGElement {
 
     this.on(this.$('#launcher'), 'click', () => router.go('/apps'));
     this.on(this.$('.workspace'), 'click', (event) => this.#workspaceMenu(event));
+    this.on(this.$('.lang'), 'click', (event) => this.#languageMenu(event));
     this.on(this.$('.search'), 'click', () => bus.emit('spotlight:open'));
     this.on(this.$('.settings'), 'click', () => router.app('settings'));
 
@@ -143,8 +167,24 @@ class JGStatusbar extends JGElement {
     const date = this.$('.date');
     if (!clock) return;
     const now = new Date();
-    clock.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    date.textContent = now.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
+    const locale = LANGUAGES.find((entry) => entry.code === language())?.locale ?? [];
+    clock.textContent = now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
+    date.textContent = now.toLocaleDateString(locale, { weekday: 'short', month: 'short', day: 'numeric' });
+  }
+
+  #languageMenu(event) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const active = language();
+    contextMenu({
+      x: rect.left,
+      y: rect.bottom + 6,
+      title: t('language.label', 'Language'),
+      items: LANGUAGES.map((entry) => ({
+        label: entry.native,
+        glyph: entry.code === active ? '✓' : '·',
+        action: () => router.switchLanguage(entry.code),
+      })),
+    });
   }
 
   #workspaceMenu(event) {
@@ -153,7 +193,7 @@ class JGStatusbar extends JGElement {
     contextMenu({
       x: rect.left,
       y: rect.bottom + 6,
-      title: 'Workspaces',
+      title: t('status.workspaces', 'Workspaces'),
       items: [
         ...workspaces.all().map((workspace) => ({
           label: workspace.name,
@@ -162,14 +202,14 @@ class JGStatusbar extends JGElement {
         })),
         { separator: true },
         {
-          label: 'New workspace',
+          label: t('status.newWorkspace', 'New workspace'),
           icon: 'plus',
           action: () => {
             const name = prompt('Workspace name');
             if (name) workspaces.switchTo(workspaces.create({ name }).id);
           },
         },
-        { label: 'Manage in settings', icon: 'cog', action: () => router.app('settings') },
+        { label: t('status.manageInSettings', 'Manage in settings'), icon: 'cog', action: () => router.app('settings') },
       ],
     });
   }

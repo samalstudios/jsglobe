@@ -3,6 +3,7 @@ import { base } from './styles.js';
 import { layout, isFolder, folderId } from '../core/layout.js';
 import { usage } from '../core/usage.js';
 import { icon } from './icons.js';
+import { t } from '../core/i18n.js';
 import { registry } from '../core/registry.js';
 import { settings } from '../core/settings.js';
 import { router } from '../core/router.js';
@@ -367,7 +368,7 @@ class JGHome extends JGElement {
 
     this.paint(html`
       ${this.#editing
-        ? html`<div class="editbar"><span>Drag to rearrange</span><button class="done" type="button">Done</button></div>`
+        ? html`<div class="editbar"><span>${t('home.dragToRearrange', 'Drag to rearrange')}</span><button class="done" type="button">${t('action.done', 'Done')}</button></div>`
         : ''}
       <div class="stage">
         ${showWidgets ? html`<aside class="today"><jg-widget-board></jg-widget-board></aside>` : ''}
@@ -380,21 +381,21 @@ class JGHome extends JGElement {
                       ${icon('knife', 52)}
                       <div class="wordmark">
                         <h1>Toolbox</h1>
-                        <p>${Math.floor(registry.all().length / 10) * 10}+ fast, private developer tools that run in your browser</p>
+                        <p>${t('home.hero', `${Math.floor(registry.all().length / 10) * 10}+ fast, private developer tools that run in your browser`, { count: Math.floor(registry.all().length / 10) * 10 })}</p>
                       </div>
                     </div>
                     <label class="search-field">
                       ${icon('search', 18)}
-                      <input id="home-search" type="search" placeholder="Search ${registry.all().length} tools" autocomplete="off" spellcheck="false" />
-                      <button class="search-clear" id="home-search-clear" hidden aria-label="Clear">✕</button>
+                      <input id="home-search" type="search" placeholder="${t('home.searchPlaceholder', `Search ${registry.all().length} tools`, { count: registry.all().length })}" autocomplete="off" spellcheck="false" />
+                      <button class="search-clear" id="home-search-clear" hidden aria-label="${t('action.clear', 'Clear')}">✕</button>
                     </label>
                     <div id="home-search-results"></div>
                     <jg-widget-board compact></jg-widget-board>
                   </div>
                   <footer class="site-links">
-                    <a href="${router.href('/apps')}">${icon('launcher', 14)}All tools</a>
+                    <a href="${router.href('/apps')}">${icon('launcher', 14)}${t('nav.allTools', 'All tools')}</a>
                     <span>·</span>
-                    <a href="${router.href('/privacy')}">${icon('shieldCheck', 14)}Privacy</a>
+                    <a href="${router.href('/privacy')}">${icon('shieldCheck', 14)}${t('nav.privacy', 'Privacy')}</a>
                     <span>·</span>
                     <a href="${REPO_URL}" target="_blank" rel="noopener noreferrer">${icon('github', 14)}GitHub</a>
                   </footer>
@@ -406,7 +407,7 @@ class JGHome extends JGElement {
                           ? html`<jg-folder-tile folder-id="${folderId(entry)}" ${labels ? '' : 'no-label'} ${this.#editing ? 'editing' : ''}></jg-folder-tile>`
                           : html`<jg-app-tile app-id="${entry}" ${labels ? '' : 'no-label'} ${this.#editing ? 'editing' : ''}></jg-app-tile>`,
                       )
-                    : html`<div class="empty-page">Drop apps here</div>`}
+                    : html`<div class="empty-page">${t('home.dropAppsHere', 'Drop apps here')}</div>`}
                 </section>`,
           )}
         </div>
@@ -414,11 +415,11 @@ class JGHome extends JGElement {
       ${descriptors.length > 1
         ? html`<div class="pager-controls">
             <div class="pager-inner">
-              <button class="arrow prev" aria-label="Previous page">‹</button>
+              <button class="arrow prev" aria-label="${t('action.prevPage', 'Previous page')}">‹</button>
               <div class="dots">
                 ${descriptors.map((descriptor, index) =>
                   descriptor.type === 'search'
-                    ? html`<button class="dot glyph" data-page="${index}" aria-current="${String(index === this.#page)}" aria-label="Search">
+                    ? html`<button class="dot glyph" data-page="${index}" aria-current="${String(index === this.#page)}" aria-label="${t('action.search', 'Search')}">
                         <span class="pip"></span>${icon('search', 13)}
                       </button>`
                     : html`<button class="dot" data-page="${index}" aria-current="${String(index === this.#page)}" aria-label="Page ${descriptor.index + 1}">
@@ -426,7 +427,7 @@ class JGHome extends JGElement {
                       </button>`,
                 )}
               </div>
-              <button class="arrow next" aria-label="Next page">›</button>
+              <button class="arrow next" aria-label="${t('action.nextPage', 'Next page')}">›</button>
             </div>
           </div>`
         : ''}
@@ -456,11 +457,11 @@ class JGHome extends JGElement {
 
     node.innerHTML = html`
       ${query
-        ? html`<div class="search-heading">${results.length} result${results.length === 1 ? '' : 's'}</div>`
+        ? html`<div class="search-heading">${results.length === 1 ? t('home.resultsOne', '1 result', { count: 1 }) : t('home.results', `${results.length} results`, { count: results.length })}</div>`
         : results.length
           ? html`<div class="search-heading">
-              <span>Most used</span>
-              <button class="close" id="hide-most-used" title="Hide this section" aria-label="Hide most used">✕</button>
+              <span>${t('home.mostUsed', 'Most used')}</span>
+              <button class="close" id="hide-most-used" title="${t('action.hideSection', 'Hide this section')}" aria-label="${t('action.hideMostUsed', 'Hide most used')}">✕</button>
             </div>`
           : ''}
       <div class="search-results">
@@ -564,18 +565,18 @@ class JGHome extends JGElement {
       contextMenu({
         x: event.clientX,
         y: event.clientY,
-        title: 'Home screen',
+        title: t('home.title', 'Home screen'),
         items: [
-          { label: this.#editing ? 'Finish editing' : 'Edit home screen', icon: 'pencil', action: () => this.#setEditing(!this.#editing) },
-          { label: 'Add page', icon: 'plus', action: () => layout.addPage() },
+          { label: this.#editing ? 'Finish editing' : t('action.editHome', 'Edit home screen'), icon: 'pencil', action: () => this.#setEditing(!this.#editing) },
+          { label: t('action.addPage', 'Add page'), icon: 'plus', action: () => layout.addPage() },
           {
             label: settings.get('home.widgets') ? 'Hide widgets' : 'Show widgets',
             icon: 'widget',
             action: () => settings.set('home.widgets', !settings.get('home.widgets')),
           },
           { separator: true },
-          { label: 'Open settings', icon: 'cog', action: () => router.app('settings') },
-          { label: 'Reset layout', icon: 'undo', danger: true, action: () => layout.reset() },
+          { label: t('shell.openSettings', 'Open settings'), icon: 'cog', action: () => router.app('settings') },
+          { label: t('action.resetLayout', 'Reset layout'), icon: 'undo', danger: true, action: () => layout.reset() },
         ],
       });
     });
@@ -596,9 +597,9 @@ class JGHome extends JGElement {
       y,
       title: folder.name,
       items: [
-        { label: 'Open folder', icon: 'folder', action: () => this.#openFolder(id) },
+        { label: t('action.openFolder', 'Open folder'), icon: 'folder', action: () => this.#openFolder(id) },
         {
-          label: 'Rename...',
+          label: t('action.rename', 'Rename...'),
           icon: 'pencil',
           action: () => {
             const name = prompt('Folder name', folder.name);
@@ -606,7 +607,7 @@ class JGHome extends JGElement {
           },
         },
         { separator: true },
-        { label: 'Ungroup', icon: 'arrowUp', danger: true, action: () => layout.dissolveFolder(id) },
+        { label: t('action.ungroup', 'Ungroup'), icon: 'arrowUp', danger: true, action: () => layout.dissolveFolder(id) },
       ],
     });
   }
@@ -619,19 +620,19 @@ class JGHome extends JGElement {
       y,
       title: meta.name,
       items: [
-        { label: 'Open', icon: 'external', action: () => router.app(appId) },
-        { label: 'Copy link', icon: 'copy', action: () => navigator.clipboard?.writeText(`${window.location.origin}${router.href(`/apps/${appId}`)}`) },
+        { label: t('action.open', 'Open'), icon: 'external', action: () => router.app(appId) },
+        { label: t('action.copyLink', 'Copy link'), icon: 'copy', action: () => navigator.clipboard?.writeText(`${window.location.origin}${router.href(`/apps/${appId}`)}`) },
         { separator: true },
-        meta.widget && { label: 'Add widget', icon: 'widget', action: () => layout.addWidget(appId) },
+        meta.widget && { label: t('action.addWidget', 'Add widget'), icon: 'widget', action: () => layout.addWidget(appId) },
         { label: inDock ? 'Remove from dock' : 'Add to dock', icon: 'dock', action: () => layout.toggleDock(appId) },
         {
-          label: 'Move to folder',
+          label: t('action.moveToFolder', 'Move to folder'),
           icon: 'folder',
           action: () =>
             contextMenu({
               x,
               y,
-              title: 'Move to folder',
+              title: t('action.moveToFolder', 'Move to folder'),
               items: [
                 ...Object.values(layout.folders()).map((folder) => ({
                   label: folder.name,
@@ -640,7 +641,7 @@ class JGHome extends JGElement {
                 })),
                 { separator: true },
                 {
-                  label: 'New folder...',
+                  label: t('action.newFolder', 'New folder...'),
                   icon: 'plus',
                   action: () => {
                     const name = prompt('Folder name', meta.name);
@@ -650,9 +651,9 @@ class JGHome extends JGElement {
               ],
             }),
         },
-        { label: 'Edit home screen', icon: 'pencil', action: () => this.#setEditing(true) },
+        { label: t('action.editHome', 'Edit home screen'), icon: 'pencil', action: () => this.#setEditing(true) },
         { separator: true },
-        { label: 'Remove from home', icon: 'close', danger: true, action: () => layout.hide(appId) },
+        { label: t('action.removeFromHome', 'Remove from home'), icon: 'close', danger: true, action: () => layout.hide(appId) },
       ],
     });
   }

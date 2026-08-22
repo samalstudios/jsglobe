@@ -1,6 +1,7 @@
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize, resolve } from 'node:path';
+import { LANGUAGES } from '../js/core/languages.js';
 
 const root = resolve(process.argv[2] ?? '.');
 if (!root.startsWith(process.cwd())) {
@@ -44,6 +45,8 @@ const readIfFile = async (path) => {
   }
 };
 
+const LANGUAGE_PATHS = new Set(LANGUAGES.map((entry) => entry.path).filter(Boolean));
+
 createServer(async (request, response) => {
   const url = new URL(request.url, `http://${request.headers.host}`);
   const requested = normalize(decodeURIComponent(url.pathname)).replace(/^(\.\.[/\\])+/, '');
@@ -58,6 +61,12 @@ createServer(async (request, response) => {
 
   const indexed = await readIfFile(join(target, 'index.html'));
   if (indexed) return send(response, 200, indexed, TYPES['.html']);
+
+  const language = requested.split('/').filter(Boolean)[0];
+  if (language && LANGUAGE_PATHS.has(language)) {
+    const localised = await readIfFile(join(root, language, 'index.html'));
+    if (localised) return send(response, 200, localised, TYPES['.html']);
+  }
 
   const shell = await readIfFile(join(root, 'index.html'));
   if (shell) return send(response, 200, shell, TYPES['.html']);

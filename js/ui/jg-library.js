@@ -1,4 +1,5 @@
 import { JGElement, define, css, html } from '../core/dom.js';
+import { t } from '../core/i18n.js';
 import { base } from './styles.js';
 import { registry } from '../core/registry.js';
 import { router } from '../core/router.js';
@@ -130,13 +131,13 @@ class JGLibrary extends JGElement {
     this.paint(html`
       <header>
         <div>
-          <h1>App Library</h1>
-          <div class="sub">${registry.all().length} tools - every app has its own link</div>
+          <h1>${t('library.title', 'App Library')}</h1>
+          <div class="sub">${t('library.sub', `${registry.all().length} tools - every app has its own link`, { count: registry.all().length })}</div>
         </div>
-        <button class="close" title="Close">✕</button>
+        <button class="close" title="${t('action.close', 'Close')}">✕</button>
       </header>
       <div class="filters">
-        <button class="filter" data-id="" aria-pressed="${String(!this.#filter)}">All</button>
+        <button class="filter" data-id="" aria-pressed="${String(!this.#filter)}">${t('home.all', 'All')}</button>
         ${registry.categories().map(
           (group) => html`<button class="filter" data-id="${group.id}" aria-pressed="${String(this.#filter === group.id)}">
             ${group.name}
