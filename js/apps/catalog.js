@@ -63,6 +63,7 @@ import http_headers from './http-headers/meta.js';
 import csv_studio from './csv-studio/meta.js';
 import mock_data from './mock-data/meta.js';
 import json_schema from './json-schema/meta.js';
+import icon_studio from './icon-studio/meta.js';
 import favicon_generator from './favicon-generator/meta.js';
 import function_plotter from './function-plotter/meta.js';
 import statistics from './statistics/meta.js';
@@ -188,6 +189,7 @@ export const catalog = [
   csv_studio,
   mock_data,
   json_schema,
+  icon_studio,
   favicon_generator,
   function_plotter,
   statistics,

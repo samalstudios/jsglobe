@@ -300,6 +300,8 @@ export const ACCENTS = {
 
 export const iconNames = Object.keys(PATHS);
 
+export const iconPath = (name) => PATHS[name] ?? PATHS.box;
+
 export const icon = (name, size = 24) => {
   const accent = ACCENTS[name];
   return raw(
