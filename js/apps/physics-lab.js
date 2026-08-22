@@ -1159,6 +1159,7 @@ export default class PhysicsLab extends JGApp {
       const snap = this.#snapPoint(point);
       const at = snap ? { x: snap.x, y: snap.y } : point;
       const found = this.#world.allAt(at.x, at.y);
+      if (snap?.body && !found.includes(snap.body)) found.unshift(snap.body);
       if (!found.length) return;
       this.#snapshot();
       const top = found[0];
@@ -1188,7 +1189,7 @@ export default class PhysicsLab extends JGApp {
     if (this.#tool === 'linkage') {
       const snap = this.#snapPoint(point);
       if (snap) point = { x: snap.x, y: snap.y };
-      const body = this.#world.at(point.x, point.y);
+      const body = snap?.body ?? this.#world.at(point.x, point.y);
       const end = {
         id: body ? body.id : null,
         at: body ? localPoint(body, point) : { x: point.x, y: point.y },
@@ -1206,7 +1207,7 @@ export default class PhysicsLab extends JGApp {
     if (LINKS[this.#tool]) {
       const snap = this.#snapPoint(point);
       if (snap) point = { x: snap.x, y: snap.y };
-      const body = this.#world.at(point.x, point.y);
+      const body = snap?.body ?? this.#world.at(point.x, point.y);
       const end = body ? { id: body.id, at: localPoint(body, point) } : { id: null, at: { x: point.x, y: point.y } };
       if (!this.#linkFrom) {
         this.#linkFrom = end;
