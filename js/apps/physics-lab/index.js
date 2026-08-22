@@ -1,4 +1,5 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
+import ackermann from './ackermann.js';
 import { collapsibleGroups, paletteSheet } from '../../ui/palette.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
@@ -51,6 +52,20 @@ const SLIDER_WIDTH = 0.8;
 const SLIDER_HEIGHT = 3.2;
 const SLIDER_GRIP = 0.5;
 const HANDLE_HEIGHT = 0.3;
+
+const sceneNames = () => ({
+  pendulum: t('physics-lab.scenePendulum', 'Pendulum'),
+  stack: t('physics-lab.sceneStack', 'Stack and ball'),
+  ramp: t('physics-lab.sceneRamp', 'Ramp'),
+  cradle: t('physics-lab.sceneCradle', "Newton's cradle"),
+  crank: t('physics-lab.sceneCrank', 'Crank and piston'),
+  dominoes: t('physics-lab.sceneDominoes', 'Domino run'),
+  excavator: t('physics-lab.sceneExcavator', 'Excavator arm'),
+  fourbar: t('physics-lab.sceneFourbar', 'Four bar linkage'),
+  gears: t('physics-lab.sceneGears', 'Gear train'),
+  orbits: t('physics-lab.sceneOrbits', 'Three bodies'),
+  ackermann: t('physics-lab.sceneAckermann', 'Ackermann steering'),
+});
 
 const SAMPLES = {
   pendulum: {
@@ -240,6 +255,7 @@ const SAMPLES = {
     ],
     joints: [],
   },
+  ackermann,
 };
 
 export default class PhysicsLab extends JGApp {
@@ -417,7 +433,7 @@ export default class PhysicsLab extends JGApp {
         <aside class="side">
           <div class="label">${t('physics-lab.scenes', 'Scenes')}</div>
           <div class="samples">
-            ${Object.entries(SAMPLES).map(([key, sample]) => html`<button data-sample="${key}">${sample.name}</button>`)}
+            ${Object.entries(SAMPLES).map(([key, sample]) => html`<button data-sample="${key}">${sceneNames()[key] ?? sample.name}</button>`)}
           </div>
           <div class="sep"></div>
           <jg-field label="${t('physics-lab.gravity', 'Gravity')}">
