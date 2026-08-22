@@ -166,16 +166,16 @@ const SHAPES = {
 };
 
 const LINKS = {
-  spring: { label: 'Spring', icon: 'curve' },
+  spring: { label: 'Spring', icon: 'coil' },
   rod: { label: 'Rod', icon: 'line' },
   rope: { label: 'Rope', icon: 'link' },
-  jack: { label: 'Jack', icon: 'transform' },
-  pin: { label: 'Pin', icon: 'asterisk' },
-  motor: { label: 'Motor', icon: 'gear' },
+  jack: { label: 'Jack', icon: 'piston' },
+  pin: { label: 'Pin', icon: 'hinge' },
+  motor: { label: 'Motor', icon: 'motorised' },
   mesh: { label: 'Mesh gears', icon: 'cog' },
   linkage: { label: 'Linkage', icon: 'ruler' },
-  track: { label: 'Track', icon: 'swap' },
-  weld: { label: 'Weld', icon: 'lock' },
+  track: { label: 'Track', icon: 'rail' },
+  weld: { label: 'Weld', icon: 'weldSeam' },
 };
 
 const CONTROLS = {
@@ -708,7 +708,7 @@ export default class PhysicsLab extends JGApp {
         tone: this.#running ? 'pause' : 'run',
         action: () => this.#toggleRun(),
       },
-      { id: 'step', label: 'Step', icon: 'redo', iconOnly: true, title: 'Advance one frame', action: () => this.#stepOnce() },
+      { id: 'step', label: 'Step', icon: 'stepOver', iconOnly: true, title: 'Advance one frame', action: () => this.#stepOnce() },
       { id: 'reset', label: 'Reset', icon: 'repeat', tone: 'stop', action: () => this.#rewind() },
       { separator: true },
       { id: 'new', label: 'New', icon: 'file', iconOnly: true, title: 'Start an empty scene', action: () => this.#blank() },
