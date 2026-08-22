@@ -1,5 +1,11 @@
 export default {
   de: {
+    'physics-lab.radiusMm': 'Radius mm',
+    'physics-lab.widthMm': 'Breite mm',
+    'physics-lab.heightMm': 'Höhe mm',
+    'physics-lab.restLengthMm': 'Ruhelänge mm',
+    'physics-lab.shortestMm': 'Kürzeste mm',
+    'physics-lab.longestMm': 'Längste mm',
     'physics-lab.scenePendulum': 'Pendel',
     'physics-lab.sceneStack': 'Stapel und Kugel',
     'physics-lab.sceneRamp': 'Rampe',
@@ -126,6 +132,12 @@ export default {
     'physics-lab.removeBody': 'Körper entfernen',
   },
   es: {
+    'physics-lab.radiusMm': 'Radio mm',
+    'physics-lab.widthMm': 'Ancho mm',
+    'physics-lab.heightMm': 'Alto mm',
+    'physics-lab.restLengthMm': 'Longitud en reposo mm',
+    'physics-lab.shortestMm': 'Mínima mm',
+    'physics-lab.longestMm': 'Máxima mm',
     'physics-lab.scenePendulum': 'Péndulo',
     'physics-lab.sceneStack': 'Pila y bola',
     'physics-lab.sceneRamp': 'Rampa',
@@ -252,6 +264,12 @@ export default {
     'physics-lab.removeBody': 'Quitar el cuerpo',
   },
   zh: {
+    'physics-lab.radiusMm': '半径 mm',
+    'physics-lab.widthMm': '宽度 mm',
+    'physics-lab.heightMm': '高度 mm',
+    'physics-lab.restLengthMm': '自然长度 mm',
+    'physics-lab.shortestMm': '最短 mm',
+    'physics-lab.longestMm': '最长 mm',
     'physics-lab.scenePendulum': '单摆',
     'physics-lab.sceneStack': '方块与小球',
     'physics-lab.sceneRamp': '斜坡',

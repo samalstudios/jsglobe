@@ -53,6 +53,14 @@ const SLIDER_HEIGHT = 3.2;
 const SLIDER_GRIP = 0.5;
 const HANDLE_HEIGHT = 0.3;
 
+// the solver works in metres, the interface reads and writes millimetres
+const MM = 1000;
+const toMm = (metres) => Math.round((metres ?? 0) * MM);
+const fromMm = (value, fallback) => {
+  const mm = Number(value);
+  return Number.isFinite(mm) && mm !== 0 ? mm / MM : fallback;
+};
+
 const sceneNames = () => ({
   pendulum: t('physics-lab.scenePendulum', 'Pendulum'),
   stack: t('physics-lab.sceneStack', 'Stack and ball'),
@@ -1118,15 +1126,10 @@ export default class PhysicsLab extends JGApp {
         this.#selectedControl = widget;
         this.#selected = null;
         this.#selectedJoint = null;
-        // while the scene is paused the controls are being arranged, not driven
-        if (!this.#running) {
-          this.#snapshot();
-          this.#drag = { kind: 'widget-move', widget, from: point, origin: { x: widget.x, y: widget.y } };
-          this.#inspector();
-          return;
-        }
+        // the body of a control drives it, the grip above it moves it
         if (widget.kind === 'slider') {
           widget.value = this.#sliderValue(widget, point);
+          if (!this.#running) this.#toggleRun();
         } else {
           this.#press(widget);
         }
@@ -1365,14 +1368,6 @@ export default class PhysicsLab extends JGApp {
       if (widget.kind === 'slider') {
         widget.value = this.#sliderValue(widget, point);
         return;
-      }
-      const moved = Math.hypot(point.x - this.#drag.from.x, point.y - this.#drag.from.y);
-      if (moved > 0.25) {
-        if (this.#held.size) {
-          this.#release();
-          this.#snapshot();
-        }
-        this.#moveWidget(widget, point);
       }
       return;
     }
@@ -2082,14 +2077,14 @@ export default class PhysicsLab extends JGApp {
         ${joint.kind === 'spring'
           ? html`<jg-field label="${t('physics-lab.stiffness', 'Stiffness')}"><jg-input id="stiffness" size="sm" type="number" step="5" min="1" value="${joint.stiffness}"></jg-input></jg-field>
               <jg-field label="${t('physics-lab.damping', 'Damping')}"><jg-input id="damping" size="sm" type="number" step="0.2" min="0" value="${joint.damping}"></jg-input></jg-field>
-              <jg-field label="${t('physics-lab.restLength', 'Rest length')}"><jg-input id="rest" size="sm" type="number" step="0.1" min="0.1" value="${joint.rest.toFixed(2)}"></jg-input></jg-field>`
+              <jg-field label="${t('physics-lab.restLengthMm', 'Rest length mm')}"><jg-input id="rest" size="sm" type="number" step="10" min="100" value="${toMm(joint.rest)}"></jg-input></jg-field>`
           : ''}
         ${joint.kind === 'rod' || joint.kind === 'rope'
           ? html`<jg-field label="${t('physics-lab.length', 'Length')}"><jg-input id="rest" size="sm" type="number" step="0.1" min="0.1" value="${joint.rest.toFixed(2)}"></jg-input></jg-field>`
           : ''}
         ${joint.kind === 'jack'
-          ? html`<jg-field label="${t('physics-lab.shortest', 'Shortest')}"><jg-input id="min" size="sm" type="number" step="0.1" min="0.1" value="${joint.min.toFixed(2)}"></jg-input></jg-field>
-              <jg-field label="${t('physics-lab.longest', 'Longest')}"><jg-input id="max" size="sm" type="number" step="0.1" min="0.2" value="${joint.max.toFixed(2)}"></jg-input></jg-field>
+          ? html`<jg-field label="${t('physics-lab.shortestMm', 'Shortest mm')}"><jg-input id="min" size="sm" type="number" step="10" min="100" value="${toMm(joint.min)}"></jg-input></jg-field>
+              <jg-field label="${t('physics-lab.longestMm', 'Longest mm')}"><jg-input id="max" size="sm" type="number" step="10" min="200" value="${toMm(joint.max)}"></jg-input></jg-field>
               <label class="row tight" style="gap:6px">
                 <input type="checkbox" id="manual" ${joint.manual ? 'checked' : ''} />
                 <span class="hint">${t('physics-lab.drivenByHand', 'Driven by hand')}</span>
@@ -2113,11 +2108,20 @@ export default class PhysicsLab extends JGApp {
           this.#reset();
         });
       };
+      const bindLength = (id, key, least) => {
+        const field = this.$(`#${id}`);
+        if (!field) return;
+        this.on(field, 'change', () => {
+          this.#snapshot();
+          joint[key] = Math.max(least, fromMm(field.value, joint[key]));
+          this.#reset();
+        });
+      };
       bind('stiffness', 'stiffness');
       bind('damping', 'damping');
-      bind('rest', 'rest');
-      bind('min', 'min');
-      bind('max', 'max');
+      bindLength('rest', 'rest', 0.02);
+      bindLength('min', 'min', 0.02);
+      bindLength('max', 'max', 0.04);
       bind('speed', 'speed');
       bind('torque', 'torque');
 
@@ -2152,7 +2156,7 @@ export default class PhysicsLab extends JGApp {
       const back = this.#backdrop;
       target.innerHTML = html`
         <div class="label">${t('physics-lab.backdrop', 'Backdrop')}</div>
-        <jg-field label="${t('physics-lab.widthM', 'Width m')}"><jg-input id="backWidth" size="sm" type="number" step="0.5" min="0.5" value="${back.width.toFixed(1)}"></jg-input></jg-field>
+        <jg-field label="${t('physics-lab.widthMm', 'Width mm')}"><jg-input id="backWidth" size="sm" type="number" step="100" min="500" value="${toMm(back.width)}"></jg-input></jg-field>
         <jg-field label="${t('physics-lab.fade', 'Fade')}"><jg-slider id="backFade" min="5" max="100" step="5" value="${Math.round((back.opacity ?? 0.6) * 100)}"></jg-slider></jg-field>
         <jg-button size="sm" variant="outline" id="backDrop">${t('physics-lab.removeBackdrop', 'Remove backdrop')}</jg-button>
       `;
@@ -2160,7 +2164,7 @@ export default class PhysicsLab extends JGApp {
       this.on(width, 'change', () => {
         this.#snapshot();
         const ratio = back.height / back.width;
-        back.width = Math.max(0.5, Number(width.value) || back.width);
+        back.width = Math.max(0.5, fromMm(width.value, back.width));
         back.height = back.width * ratio;
         this.#draw();
       });
@@ -2187,15 +2191,15 @@ export default class PhysicsLab extends JGApp {
     target.innerHTML = html`
       <div class="label">${body.ghost ? 'Linkage bar' : body.teeth ? 'Gear' : body.kind === 'circle' ? 'Ball' : body.kind === 'poly' ? 'Shape' : body.pinned ? 'Wall' : 'Block'}</div>
       ${body.kind === 'circle' && body.teeth
-        ? html`<jg-field label="${t('physics-lab.radiusM', 'Radius m')}"><jg-input id="radius" size="sm" type="number" step="0.05" min="0.2" value="${body.radius}"></jg-input></jg-field>
+        ? html`<jg-field label="${t('physics-lab.radiusMm', 'Radius mm')}"><jg-input id="radius" size="sm" type="number" step="10" min="200" value="${toMm(body.radius)}"></jg-input></jg-field>
             <jg-field label="${t('physics-lab.teeth', 'Teeth')}"><jg-input id="teeth" size="sm" type="number" step="1" min="6" max="72" value="${Math.round(body.teeth)}"></jg-input></jg-field>
             <div class="hint">${t('physics-lab.meshedWheelsTurnInThe', 'Meshed wheels turn in the ratio of their teeth.')}</div>`
         : body.kind === 'circle'
-        ? html`<jg-field label="${t('physics-lab.radiusM', 'Radius m')}"><jg-input id="radius" size="sm" type="number" step="0.05" min="0.05" value="${body.radius}"></jg-input></jg-field>`
+        ? html`<jg-field label="${t('physics-lab.radiusMm', 'Radius mm')}"><jg-input id="radius" size="sm" type="number" step="10" min="50" value="${toMm(body.radius)}"></jg-input></jg-field>`
         : body.kind === 'poly'
           ? html`<div class="hint">${body.points.length} corners</div>`
-          : html`<jg-field label="${t('physics-lab.widthM', 'Width m')}"><jg-input id="width" size="sm" type="number" step="0.1" min="0.1" value="${body.width}"></jg-input></jg-field>
-              <jg-field label="${t('physics-lab.heightM', 'Height m')}"><jg-input id="height" size="sm" type="number" step="0.1" min="0.1" value="${body.height}"></jg-input></jg-field>`}
+          : html`<jg-field label="${t('physics-lab.widthMm', 'Width mm')}"><jg-input id="width" size="sm" type="number" step="10" min="100" value="${toMm(body.width)}"></jg-input></jg-field>
+              <jg-field label="${t('physics-lab.heightMm', 'Height mm')}"><jg-input id="height" size="sm" type="number" step="10" min="100" value="${toMm(body.height)}"></jg-input></jg-field>`}
       ${body.kind === 'circle'
         ? ''
         : html`<jg-field label="${t('physics-lab.angleDegrees', 'Angle degrees')}"><jg-input id="angle" size="sm" type="number" step="5" value="${Math.round((((body.angle ?? 0) * 180) / Math.PI) * 10) / 10}"></jg-input></jg-field>`}
@@ -2209,6 +2213,17 @@ export default class PhysicsLab extends JGApp {
       <div class="hint">Mass ${live && live.mass ? `${live.mass.toFixed(2)} kg` : 'fixed'}</div>
       <jg-button size="sm" variant="outline" id="drop">${t('physics-lab.removeBody', 'Remove body')}</jg-button>
     `;
+
+    const bindLength = (id, key, least) => {
+      const field = this.$(`#${id}`);
+      if (!field) return;
+      this.on(field, 'change', () => {
+        this.#snapshot();
+        body[key] = Math.max(least, fromMm(field.value, body[key]));
+        this.#reset();
+        this.#inspector();
+      });
+    };
 
     const bind = (id, key) => {
       const field = this.$(`#${id}`);
@@ -2235,17 +2250,17 @@ export default class PhysicsLab extends JGApp {
     if (radius && body.teeth) {
       this.on(radius, 'change', () => {
         this.#snapshot();
-        body.radius = Math.max(0.2, Number(radius.value) || body.radius);
+        body.radius = Math.max(0.2, fromMm(radius.value, body.radius));
         this.#retuneMeshes(body.id);
         this.#reset();
         this.#inspector();
         this.#draw();
       });
     } else {
-      bind('radius', 'radius');
+      bindLength('radius', 'radius', 0.01);
     }
-    bind('width', 'width');
-    bind('height', 'height');
+    bindLength('width', 'width', 0.02);
+    bindLength('height', 'height', 0.02);
     const angle = this.$('#angle');
     if (angle) {
       this.on(angle, 'change', () => {
@@ -2346,7 +2361,7 @@ export default class PhysicsLab extends JGApp {
     const body = this.#selected != null ? this.#world.body(this.#selected) : null;
     const parts = [`t ${this.#world.time.toFixed(2)} s`];
     if (body) {
-      parts.push(`v ${Math.hypot(body.vx, body.vy).toFixed(2)} m/s`);
+      parts.push(`v ${toMm(Math.hypot(body.vx, body.vy))} mm/s`);
       parts.push(`w ${body.spin.toFixed(2)} rad/s`);
     } else {
       parts.push(`KE ${this.#world.energy().toFixed(1)} J`);
