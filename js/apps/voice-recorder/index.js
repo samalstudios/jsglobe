@@ -326,7 +326,7 @@ class VoiceRecorder extends JGApp {
     this.#drawIdle();
     this.#open = record.id;
     this.#load();
-    toast('Recording saved', 'success');
+    toast(t('voice-recorder.recordingSaved', 'Recording saved'), 'success');
   }
 
   #teardown() {

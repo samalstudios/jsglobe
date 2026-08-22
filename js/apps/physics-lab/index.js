@@ -618,17 +618,17 @@ export default class PhysicsLab extends JGApp {
         tone: this.#running ? 'pause' : 'run',
         action: () => this.#toggleRun(),
       },
-      { id: 'step', label: t('physics-lab.step', 'Step'), icon: 'stepOver', iconOnly: true, title: 'Advance one frame', action: () => this.#stepOnce() },
+      { id: 'step', label: t('physics-lab.step', 'Step'), icon: 'stepOver', iconOnly: true, title: t('physics-lab.advanceOneFrame', 'Advance one frame'), action: () => this.#stepOnce() },
       { id: 'reset', label: t('physics-lab.reset', 'Reset'), icon: 'repeat', tone: 'stop', action: () => this.#rewind() },
       { separator: true },
-      { id: 'new', label: t('physics-lab.new', 'New'), icon: 'file', iconOnly: true, title: 'Start an empty scene', action: () => this.#blank() },
-      { id: 'undo', label: t('physics-lab.undo', 'Undo'), icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#undo() },
-      { id: 'zoom-out', label: t('physics-lab.zoomOut', 'Zoom out'), icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
-      { id: 'zoom-fit', label: t('physics-lab.fit', 'Fit'), icon: 'maximize', iconOnly: true, title: 'Fit the scene', action: () => { this.#touched = false; this.#fit(); } },
-      { id: 'zoom-in', label: t('physics-lab.zoomIn', 'Zoom in'), icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
-      { id: 'copy', label: t('physics-lab.copy', 'Copy'), icon: 'copy', iconOnly: true, title: 'Copy the selection', action: () => this.#copy() },
-      { id: 'paste', label: t('physics-lab.paste', 'Paste'), icon: 'clipboard', iconOnly: true, title: 'Paste a copy', action: () => this.#paste() },
-      { id: 'turn', label: t('physics-lab.rotate', 'Rotate'), icon: 'rotate', iconOnly: true, title: 'Turn the selected body (R, shift R the other way)', action: () => this.#turn(Math.PI / 12) },
+      { id: 'new', label: t('physics-lab.new', 'New'), icon: 'file', iconOnly: true, title: t('physics-lab.startAnEmptyScene', 'Start an empty scene'), action: () => this.#blank() },
+      { id: 'undo', label: t('physics-lab.undo', 'Undo'), icon: 'undo', iconOnly: true, title: t('physics-lab.undo', 'Undo'), action: () => this.#undo() },
+      { id: 'zoom-out', label: t('physics-lab.zoomOut', 'Zoom out'), icon: 'minus', iconOnly: true, title: t('physics-lab.zoomOut', 'Zoom out'), action: () => this.#step(1 / 1.25) },
+      { id: 'zoom-fit', label: t('physics-lab.fit', 'Fit'), icon: 'maximize', iconOnly: true, title: t('physics-lab.fitTheScene', 'Fit the scene'), action: () => { this.#touched = false; this.#fit(); } },
+      { id: 'zoom-in', label: t('physics-lab.zoomIn', 'Zoom in'), icon: 'plus', iconOnly: true, title: t('physics-lab.zoomIn', 'Zoom in'), action: () => this.#step(1.25) },
+      { id: 'copy', label: t('physics-lab.copy', 'Copy'), icon: 'copy', iconOnly: true, title: t('physics-lab.copyTheSelection', 'Copy the selection'), action: () => this.#copy() },
+      { id: 'paste', label: t('physics-lab.paste', 'Paste'), icon: 'clipboard', iconOnly: true, title: t('physics-lab.pasteACopy', 'Paste a copy'), action: () => this.#paste() },
+      { id: 'turn', label: t('physics-lab.rotate', 'Rotate'), icon: 'rotate', iconOnly: true, title: t('physics-lab.turnTheSelectedBodyR', 'Turn the selected body (R, shift R the other way)'), action: () => this.#turn(Math.PI / 12) },
       {
         id: 'snap',
         label: t('physics-lab.snap', 'Snap'),
@@ -639,15 +639,15 @@ export default class PhysicsLab extends JGApp {
         title: t('physics-lab.snapTitle', 'Snap links to centres and corners'),
         action: (item) => this.config.set('snap', item.active),
       },
-      { id: 'union', label: t('physics-lab.merge', 'Merge'), icon: 'union', iconOnly: true, title: 'Merge the two selected shapes', action: () => this.#combine('union') },
-      { id: 'subtract', label: t('physics-lab.subtract', 'Subtract'), icon: 'subtract', iconOnly: true, title: 'Cut the second shape out of the first', action: () => this.#combine('subtract') },
-      { id: 'intersect', label: t('physics-lab.overlap', 'Overlap'), icon: 'intersect', iconOnly: true, title: 'Keep only where the two shapes overlap', action: () => this.#combine('intersect') },
-      { id: 'front', label: t('physics-lab.bringToFront', 'Bring to front'), icon: 'toFront', iconOnly: true, title: 'Bring the selected body to the front', action: () => this.#lift(true) },
-      { id: 'back', label: t('physics-lab.sendToBack', 'Send to back'), icon: 'toBack', iconOnly: true, title: 'Send the selected body to the back', action: () => this.#lift(false) },
-      { id: 'delete', label: t('physics-lab.delete', 'Delete'), icon: 'eraser', iconOnly: true, title: 'Delete the selection', action: () => this.#remove() },
+      { id: 'union', label: t('physics-lab.merge', 'Merge'), icon: 'union', iconOnly: true, title: t('physics-lab.mergeTheTwoSelectedShapes', 'Merge the two selected shapes'), action: () => this.#combine('union') },
+      { id: 'subtract', label: t('physics-lab.subtract', 'Subtract'), icon: 'subtract', iconOnly: true, title: t('physics-lab.cutTheSecondShapeOut', 'Cut the second shape out of the first'), action: () => this.#combine('subtract') },
+      { id: 'intersect', label: t('physics-lab.overlap', 'Overlap'), icon: 'intersect', iconOnly: true, title: t('physics-lab.keepOnlyWhereTheTwo', 'Keep only where the two shapes overlap'), action: () => this.#combine('intersect') },
+      { id: 'front', label: t('physics-lab.bringToFront', 'Bring to front'), icon: 'toFront', iconOnly: true, title: t('physics-lab.bringTheSelectedBodyTo', 'Bring the selected body to the front'), action: () => this.#lift(true) },
+      { id: 'back', label: t('physics-lab.sendToBack', 'Send to back'), icon: 'toBack', iconOnly: true, title: t('physics-lab.sendTheSelectedBodyTo', 'Send the selected body to the back'), action: () => this.#lift(false) },
+      { id: 'delete', label: t('physics-lab.delete', 'Delete'), icon: 'eraser', iconOnly: true, title: t('physics-lab.deleteTheSelection', 'Delete the selection'), action: () => this.#remove() },
       { spacer: true },
-      { id: 'import', label: t('physics-lab.openFile', 'Open file'), icon: 'upload', iconOnly: true, title: 'Open a scene from a file', action: () => this.#importFile() },
-      { id: 'export', label: t('physics-lab.saveFile', 'Save file'), icon: 'download', iconOnly: true, title: 'Save this scene to a file', action: () => this.#exportFile() },
+      { id: 'import', label: t('physics-lab.openFile', 'Open file'), icon: 'upload', iconOnly: true, title: t('physics-lab.openASceneFromA', 'Open a scene from a file'), action: () => this.#importFile() },
+      { id: 'export', label: t('physics-lab.saveFile', 'Save file'), icon: 'download', iconOnly: true, title: t('physics-lab.saveThisSceneToA', 'Save this scene to a file'), action: () => this.#exportFile() },
     ];
   }
 
@@ -1004,7 +1004,7 @@ export default class PhysicsLab extends JGApp {
 
     if (this.#tool === 'backdrop') {
       if (!this.#backdrop) {
-        toast('Load a backdrop first.', 'danger');
+        toast(t('physics-lab.loadABackdropFirst', 'Load a backdrop first.'), 'danger');
         return;
       }
       this.#snapshot();
@@ -1660,7 +1660,7 @@ export default class PhysicsLab extends JGApp {
     const secondId = [...this.#alsoSelected][0];
     const second = this.#bodies.find((body) => body.id === secondId);
     if (!first || !second) {
-      toast('Pick one shape, then shift click a second one.', 'danger');
+      toast(t('physics-lab.pickOneShapeThenShift', 'Pick one shape, then shift click a second one.'), 'danger');
       return;
     }
 
@@ -1670,12 +1670,12 @@ export default class PhysicsLab extends JGApp {
 
     const rings = clipPolygons(this.#outlineOf(liveA), this.#outlineOf(liveB), mode);
     if (!rings) {
-      toast('Those shapes do not touch, so there is nothing to merge.', 'danger');
+      toast(t('physics-lab.thoseShapesDoNotTouch', 'Those shapes do not touch, so there is nothing to merge.'), 'danger');
       return;
     }
     const kept = rings.filter((ring) => polygonArea(ring) > 0.01);
     if (!kept.length) {
-      toast('That leaves nothing behind.', 'danger');
+      toast(t('physics-lab.thatLeavesNothingBehind', 'That leaves nothing behind.'), 'danger');
       return;
     }
 

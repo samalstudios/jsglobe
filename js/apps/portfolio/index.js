@@ -206,7 +206,7 @@ class Portfolio extends JGApp {
     const price = Number(this.$('#f-price').value) || cost;
 
     if (!symbol || !quantity) {
-      toast('A symbol and quantity are required', 'error');
+      toast(t('portfolio.aSymbolAndQuantityAre', 'A symbol and quantity are required'), 'error');
       return;
     }
 
@@ -250,7 +250,7 @@ class Portfolio extends JGApp {
     const status = this.$('#status');
     const data = this.#data();
     if (!data.positions.length) {
-      toast('Add a position first', 'error');
+      toast(t('portfolio.addAPositionFirst', 'Add a position first'), 'error');
       return;
     }
 

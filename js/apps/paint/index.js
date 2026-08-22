@@ -135,22 +135,22 @@ class Paint extends JGApp {
     </div>`);
 
     this.$('#bar').items = [
-      { id: 'new', label: t('paint.new', 'New'), icon: 'file', iconOnly: true, title: 'New canvas', action: () => this.#clear() },
-      { id: 'open', label: t('paint.open', 'Open'), icon: 'folder', iconOnly: true, title: 'Open an image', action: () => this.#open() },
-      { id: 'insert', label: t('paint.insert', 'Insert'), icon: 'image', iconOnly: true, title: 'Insert an image', action: () => this.#insert() },
-      { id: 'save', label: t('paint.save', 'Save'), icon: 'download', iconOnly: true, title: 'Save as PNG', action: () => this.#save() },
+      { id: 'new', label: t('paint.new', 'New'), icon: 'file', iconOnly: true, title: t('paint.newCanvas', 'New canvas'), action: () => this.#clear() },
+      { id: 'open', label: t('paint.open', 'Open'), icon: 'folder', iconOnly: true, title: t('paint.openAnImage', 'Open an image'), action: () => this.#open() },
+      { id: 'insert', label: t('paint.insert', 'Insert'), icon: 'image', iconOnly: true, title: t('paint.insertAnImage', 'Insert an image'), action: () => this.#insert() },
+      { id: 'save', label: t('paint.save', 'Save'), icon: 'download', iconOnly: true, title: t('paint.saveAsPng', 'Save as PNG'), action: () => this.#save() },
       { separator: true },
-      { id: 'undo', label: t('paint.undo', 'Undo'), icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#step(this.#undo, this.#redo) },
-      { id: 'redo', label: t('paint.redo', 'Redo'), icon: 'redo', iconOnly: true, title: 'Redo', action: () => this.#step(this.#redo, this.#undo) },
+      { id: 'undo', label: t('paint.undo', 'Undo'), icon: 'undo', iconOnly: true, title: t('paint.undo', 'Undo'), action: () => this.#step(this.#undo, this.#redo) },
+      { id: 'redo', label: t('paint.redo', 'Redo'), icon: 'redo', iconOnly: true, title: t('paint.redo', 'Redo'), action: () => this.#step(this.#redo, this.#undo) },
       { separator: true },
-      { id: 'crop', label: t('paint.crop', 'Crop'), icon: 'crop', title: 'Crop to selection', action: () => this.#crop() },
-      { id: 'rotate', label: t('paint.rotate', 'Rotate'), icon: 'rotate', iconOnly: true, title: 'Rotate right', action: () => this.#rotate(1) },
-      { id: 'flip-h', label: t('paint.flipAcross', 'Flip across'), icon: 'flip', iconOnly: true, title: 'Flip horizontally', action: () => this.#flip('h') },
-      { id: 'flip-v', label: t('paint.flipDown', 'Flip down'), icon: 'flip-v', iconOnly: true, title: 'Flip vertically', action: () => this.#flip('v') },
-      { id: 'resize', label: t('paint.resize', 'Resize'), icon: 'scale', title: 'Resize the canvas', action: () => this.$('#resize').open() },
-      { id: 'adjust', label: t('paint.adjust', 'Adjust'), icon: 'gauge', title: 'Brightness, contrast and colour', action: () => this.$('#adjust').open() },
+      { id: 'crop', label: t('paint.crop', 'Crop'), icon: 'crop', title: t('paint.cropToSelection', 'Crop to selection'), action: () => this.#crop() },
+      { id: 'rotate', label: t('paint.rotate', 'Rotate'), icon: 'rotate', iconOnly: true, title: t('paint.rotateRight', 'Rotate right'), action: () => this.#rotate(1) },
+      { id: 'flip-h', label: t('paint.flipAcross', 'Flip across'), icon: 'flip', iconOnly: true, title: t('paint.flipHorizontally', 'Flip horizontally'), action: () => this.#flip('h') },
+      { id: 'flip-v', label: t('paint.flipDown', 'Flip down'), icon: 'flip-v', iconOnly: true, title: t('paint.flipVertically', 'Flip vertically'), action: () => this.#flip('v') },
+      { id: 'resize', label: t('paint.resize', 'Resize'), icon: 'scale', title: t('paint.resizeTheCanvas', 'Resize the canvas'), action: () => this.$('#resize').open() },
+      { id: 'adjust', label: t('paint.adjust', 'Adjust'), icon: 'gauge', title: t('paint.brightnessContrastAndColour', 'Brightness, contrast and colour'), action: () => this.$('#adjust').open() },
       { spacer: true },
-      { id: 'swap', label: t('paint.swap', 'Swap'), icon: 'transform', iconOnly: true, title: 'Swap the two colours', action: () => this.#swap() },
+      { id: 'swap', label: t('paint.swap', 'Swap'), icon: 'transform', iconOnly: true, title: t('paint.swapTheTwoColours', 'Swap the two colours'), action: () => this.#swap() },
     ];
 
     const board = this.$('#board');

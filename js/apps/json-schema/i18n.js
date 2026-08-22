@@ -14,6 +14,7 @@ export default {
     'json-schema.sample': 'Beispiel',
     'json-schema.copy': 'Kopieren',
     'json-schema.download': 'Herunterladen',
+    'json-schema.generatedSchema': 'Erzeugtes Schema',
     'json-schema.everyDocumentMatchesTheSchema': 'Jedes Dokument passt zum Schema.',
   },
   es: {
@@ -31,6 +32,7 @@ export default {
     'json-schema.sample': 'Ejemplo',
     'json-schema.copy': 'Copiar',
     'json-schema.download': 'Descargar',
+    'json-schema.generatedSchema': 'Esquema generado',
     'json-schema.everyDocumentMatchesTheSchema': 'Todos los documentos cumplen el esquema.',
   },
   zh: {
@@ -48,6 +50,7 @@ export default {
     'json-schema.sample': '示例',
     'json-schema.copy': '复制',
     'json-schema.download': '下载',
+    'json-schema.generatedSchema': '生成的 schema',
     'json-schema.everyDocumentMatchesTheSchema': '所有文档都符合该 schema。',
   },
 };

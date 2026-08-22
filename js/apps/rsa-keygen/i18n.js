@@ -15,6 +15,7 @@ export default {
     'rsa-keygen.privateKey': 'Privater Schlüssel',
     'rsa-keygen.pkcs8PemEncoded': 'PKCS#8, PEM-kodiert',
     'rsa-keygen.jsonWebKey': 'JSON Web Key',
+    'rsa-keygen.keyGenerationFailed': 'Die Schlüsselerzeugung ist fehlgeschlagen',
   },
   es: {
     'rsa-keygen.rsa2048': 'RSA 2048',
@@ -32,6 +33,7 @@ export default {
     'rsa-keygen.privateKey': 'Clave privada',
     'rsa-keygen.pkcs8PemEncoded': 'PKCS#8, codificado en PEM',
     'rsa-keygen.jsonWebKey': 'JSON Web Key',
+    'rsa-keygen.keyGenerationFailed': 'Ha fallado la generación de la clave',
   },
   zh: {
     'rsa-keygen.rsa2048': 'RSA 2048',
@@ -49,5 +51,6 @@ export default {
     'rsa-keygen.privateKey': '私钥',
     'rsa-keygen.pkcs8PemEncoded': 'PKCS#8，PEM 编码',
     'rsa-keygen.jsonWebKey': 'JSON Web Key',
+    'rsa-keygen.keyGenerationFailed': '密钥生成失败',
   },
 };

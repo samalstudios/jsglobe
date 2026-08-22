@@ -19,11 +19,15 @@ for (const id of targets) {
   if (!existsSync(file)) continue;
   const code = await readFile(file, 'utf8');
 
-  const calls = [...code.matchAll(/\bt\(\s*'((?:[^'\\]|\\.)*)'\s*,\s*'((?:[^'\\]|\\.)*)'/g)];
-  if (!calls.length) continue;
+  const keys = [...code.matchAll(/\bt\(\s*'((?:[^'\\]|\\.)*)'/g)].map((m) => m[1].replace(/\\'/g, "'"));
+  if (!keys.length) continue;
 
+  // where the fallback is a plain string we can look the translation up by it
   const english = new Map();
-  for (const [, key, source] of calls) english.set(key.replace(/\\'/g, "'"), source.replace(/\\'/g, "'"));
+  for (const key of new Set(keys)) english.set(key, null);
+  for (const [, key, source] of code.matchAll(/\bt\(\s*'((?:[^'\\]|\\.)*)'\s*,\s*'((?:[^'\\]|\\.)*)'/g)) {
+    english.set(key.replace(/\\'/g, "'"), source.replace(/\\'/g, "'"));
+  }
 
   const existing = existsSync(`${APPS}/${id}/i18n.js`)
     ? (await import(`../${APPS}/${id}/i18n.js`)).default
@@ -32,7 +36,7 @@ for (const id of targets) {
   const body = LANGS.map((lang) => {
     const lines = [];
     for (const [key, source] of english) {
-      const value = existing[lang]?.[key] ?? glossary[source]?.[lang];
+      const value = existing[lang]?.[key] ?? (source ? glossary[source]?.[lang] : null);
       if (!value) {
         if (lang === LANGS[0]) missing.push(`${id}\t${key}\t${source}`);
         continue;

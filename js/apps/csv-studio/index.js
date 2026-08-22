@@ -155,7 +155,7 @@ class CsvStudio extends JGApp {
       { separator: true },
       { id: 'row', label: t('csv-studio.addRow', 'Add row'), icon: 'plus' },
       { id: 'column', label: t('csv-studio.addColumn', 'Add column'), icon: 'grid' },
-      { id: 'tidy', label: t('csv-studio.tidy', 'Tidy'), icon: 'undo', title: 'Trim spaces, drop empty rows and duplicates' },
+      { id: 'tidy', label: t('csv-studio.tidy', 'Tidy'), icon: 'undo', title: t('csv-studio.trimSpacesDropEmptyRows', 'Trim spaces, drop empty rows and duplicates') },
       { spacer: true },
       { id: 'copy', label: t('csv-studio.copy', 'Copy'), icon: 'copy' },
       { id: 'download', label: t('csv-studio.download', 'Download'), icon: 'external' },

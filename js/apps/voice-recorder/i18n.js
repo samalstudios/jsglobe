@@ -22,6 +22,7 @@ export default {
     'voice-recorder.delete': 'Löschen',
     'voice-recorder.copy': 'Kopieren',
     'voice-recorder.saveText': 'Text speichern',
+    'voice-recorder.recordingSaved': 'Aufnahme gespeichert',
   },
   es: {
     'voice-recorder.liveCaptionsWhileRecording': 'Subtítulos en vivo mientras grabas',
@@ -46,6 +47,7 @@ export default {
     'voice-recorder.delete': 'Eliminar',
     'voice-recorder.copy': 'Copiar',
     'voice-recorder.saveText': 'Guardar el texto',
+    'voice-recorder.recordingSaved': 'Grabación guardada',
   },
   zh: {
     'voice-recorder.liveCaptionsWhileRecording': '录制时实时字幕',
@@ -70,5 +72,6 @@ export default {
     'voice-recorder.delete': '删除',
     'voice-recorder.copy': '复制',
     'voice-recorder.saveText': '保存文本',
+    'voice-recorder.recordingSaved': '录音已保存',
   },
 };

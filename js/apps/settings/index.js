@@ -726,7 +726,7 @@ class SettingsApp extends JGApp {
       this.on(node, 'change', (event) => {
         const value = node.tagName === 'JG-SWITCH' ? event.detail.checked : event.detail.value;
         appConfig(node.dataset.app).set(node.dataset.key, value);
-        toast('Saved');
+        toast(t('settings.saved', 'Saved'));
       });
     });
 
@@ -748,12 +748,12 @@ class SettingsApp extends JGApp {
     });
     this.bind('[data-duplicate]', 'click', (event) => {
       workspaces.duplicate(event.currentTarget.dataset.duplicate);
-      toast('Workspace duplicated', 'success');
+      toast(t('settings.workspaceDuplicated', 'Workspace duplicated'), 'success');
     });
     this.bind('[data-delete]', 'click', (event) => {
       const id = event.currentTarget.dataset.delete;
       if (!confirm('Delete this workspace and everything stored in it?')) return;
-      if (!workspaces.remove(id)) toast('The last workspace cannot be deleted', 'error');
+      if (!workspaces.remove(id)) toast(t('settings.theLastWorkspaceCannotBe', 'The last workspace cannot be deleted'), 'error');
     });
     this.bind('[data-export]', 'click', (event) => {
       const id = event.currentTarget.dataset.export;
@@ -765,10 +765,10 @@ class SettingsApp extends JGApp {
     if (create) {
       this.on(create, 'click', () => {
         const name = this.$('#ws-name').value.trim();
-        if (!name) return toast('Name the workspace first', 'error');
+        if (!name) return toast(t('settings.nameTheWorkspaceFirst', 'Name the workspace first'), 'error');
         const workspace = workspaces.create({ name, kind: this.$('#ws-kind').value });
         workspaces.switchTo(workspace.id);
-        toast('Workspace created', 'success');
+        toast(t('settings.workspaceCreated', 'Workspace created'), 'success');
       });
     }
 
@@ -780,7 +780,7 @@ class SettingsApp extends JGApp {
         try {
           const workspace = workspaces.import(JSON.parse(file.data));
           workspaces.switchTo(workspace.id);
-          toast('Workspace imported', 'success');
+          toast(t('settings.workspaceImported', 'Workspace imported'), 'success');
         } catch (error) {
           toast(error.message, 'error');
         }
@@ -823,12 +823,12 @@ class SettingsApp extends JGApp {
     if (resetUsage) {
       this.on(resetUsage, 'click', () => {
         usage.clear();
-        toast('Usage history cleared');
+        toast(t('settings.usageHistoryCleared', 'Usage history cleared'));
       });
     }
 
     const resetLayout = this.$('#reset-layout');
-    if (resetLayout) this.on(resetLayout, 'click', () => { layout.reset(); toast('Layout reset', 'success'); });
+    if (resetLayout) this.on(resetLayout, 'click', () => { layout.reset(); toast(t('settings.layoutReset', 'Layout reset'), 'success'); });
 
     const exportAll = this.$('#export-all');
     if (exportAll) {
@@ -862,7 +862,7 @@ class SettingsApp extends JGApp {
     }
 
     const resetSettings = this.$('#reset-settings');
-    if (resetSettings) this.on(resetSettings, 'click', () => { settings.reset(); this.refresh(); toast('Settings reset'); });
+    if (resetSettings) this.on(resetSettings, 'click', () => { settings.reset(); this.refresh(); toast(t('settings.settingsReset', 'Settings reset')); });
 
     const resetAll = this.$('#reset-all');
     if (resetAll) {

@@ -14,6 +14,8 @@ export default {
     'websocket-tester.notes': 'Notizen',
     'websocket-tester.savedMessagesAppearHere': 'Gespeicherte Nachrichten erscheinen hier.',
     'websocket-tester.framesAppearHereOnceYou': 'Frames erscheinen hier, sobald du verbunden bist.',
+    'websocket-tester.theAddressMustStartWith': 'Die Adresse muss mit ws:// oder wss:// beginnen',
+    'websocket-tester.connectFirst': 'Zuerst verbinden',
   },
   es: {
     'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
@@ -30,6 +32,8 @@ export default {
     'websocket-tester.notes': 'Notas',
     'websocket-tester.savedMessagesAppearHere': 'Aquí aparecen los mensajes guardados.',
     'websocket-tester.framesAppearHereOnceYou': 'Los frames aparecen aquí cuando te conectas.',
+    'websocket-tester.theAddressMustStartWith': 'La dirección debe empezar por ws:// o wss://',
+    'websocket-tester.connectFirst': 'Conéctate primero',
   },
   zh: {
     'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
@@ -46,5 +50,7 @@ export default {
     'websocket-tester.notes': '备忘',
     'websocket-tester.savedMessagesAppearHere': '已保存的消息会显示在这里。',
     'websocket-tester.framesAppearHereOnceYou': '连接后数据帧会显示在这里。',
+    'websocket-tester.theAddressMustStartWith': '地址必须以 ws:// 或 wss:// 开头',
+    'websocket-tester.connectFirst': '请先连接',
   },
 };

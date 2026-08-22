@@ -227,7 +227,7 @@ class TimezonePlanner extends JGApp {
     });
     this.bind('[data-drop]', 'click', (event) => {
       if (this.#zones.length === 1) {
-        toast('Keep at least one city', 'error');
+        toast(t('timezone-planner.keepAtLeastOneCity', 'Keep at least one city'), 'error');
         return;
       }
       this.#zones = this.#zones.filter((zone) => zone !== event.currentTarget.dataset.drop);

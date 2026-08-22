@@ -265,7 +265,7 @@ class SvgEditor extends JGApp {
 
   #wrap(transform) {
     const doc = this.#doc();
-    if (!doc) return toast('Fix the markup first', 'error');
+    if (!doc) return toast(t('svg-editor.fixTheMarkupFirst', 'Fix the markup first'), 'error');
     const svg = doc.documentElement;
     const group = doc.createElementNS('http://www.w3.org/2000/svg', 'g');
     group.setAttribute('transform', transform);
@@ -369,7 +369,7 @@ class SvgEditor extends JGApp {
         );
         this.#commit(doc);
       } catch {
-        toast('Could not measure the artwork', 'error');
+        toast(t('svg-editor.couldNotMeasureTheArtwork', 'Could not measure the artwork'), 'error');
       }
     });
 
@@ -678,7 +678,7 @@ class SvgEditor extends JGApp {
     };
     image.onerror = () => {
       URL.revokeObjectURL(url);
-      toast('Could not rasterise that SVG', 'error');
+      toast(t('svg-editor.couldNotRasteriseThatSvg', 'Could not rasterise that SVG'), 'error');
     };
     image.src = url;
   }

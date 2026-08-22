@@ -108,7 +108,7 @@ class GameWord extends JGApp {
   #submit() {
     if (this.#state !== 'playing') return this.#start();
     if (this.#current.length < 5) {
-      toast('Five letters are needed', 'error');
+      toast(t('game-word.fiveLettersAreNeeded', 'Five letters are needed'), 'error');
       return undefined;
     }
     if (!ALLOWED.has(this.#current)) {

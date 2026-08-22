@@ -15,8 +15,10 @@ export default {
     'json-formatter.tree': 'Baum',
     'json-formatter.waiting': 'Warte auf Eingabe',
     'json-formatter.invalid': 'Ungültiges JSON',
+    'json-formatter.checkLine': 'Zeile {line} prüfen.',
     'json-formatter.fixSyntax': 'Syntax korrigieren, um fortzufahren.',
     'json-formatter.valid': 'Gültig',
+    'json-formatter.stats': '{nodes} Knoten · Tiefe {depth} · {chars} Zeichen',
   },
   es: {
     'json-formatter.indent': 'Sangría',
@@ -34,8 +36,10 @@ export default {
     'json-formatter.tree': 'Árbol',
     'json-formatter.waiting': 'Esperando entrada',
     'json-formatter.invalid': 'JSON no válido',
+    'json-formatter.checkLine': 'Revisa la línea {line}.',
     'json-formatter.fixSyntax': 'Corrige la sintaxis para continuar.',
     'json-formatter.valid': 'Válido',
+    'json-formatter.stats': '{nodes} nodos · profundidad {depth} · {chars} caracteres',
   },
   zh: {
     'json-formatter.indent': '缩进',
@@ -53,7 +57,9 @@ export default {
     'json-formatter.tree': '树状',
     'json-formatter.waiting': '等待输入',
     'json-formatter.invalid': 'JSON 无效',
+    'json-formatter.checkLine': '请检查第 {line} 行。',
     'json-formatter.fixSyntax': '修正语法后继续。',
     'json-formatter.valid': '有效',
+    'json-formatter.stats': '{nodes} 个节点 · 深度 {depth} · {chars} 个字符',
   },
 };

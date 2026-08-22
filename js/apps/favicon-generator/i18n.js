@@ -20,6 +20,9 @@ export default {
     'favicon-generator.copyHtml': 'HTML kopieren',
     'favicon-generator.copyManifest': 'Manifest kopieren',
     'favicon-generator.saveManifest': 'Manifest speichern',
+    'favicon-generator.chooseAPngJpegWebp': 'Ein PNG-, JPEG-, WebP- oder SVG-Bild wählen',
+    'favicon-generator.thatImageCouldNotBe': 'Dieses Bild konnte nicht gelesen werden',
+    'favicon-generator.faviconIcoSavedWith16': 'favicon.ico mit 16-, 32- und 48-Pixel-Rahmen gespeichert',
   },
   es: {
     'favicon-generator.dropAPngJpegOr': 'Suelta un PNG, JPEG o SVG aquí, o haz clic para elegir uno',
@@ -42,6 +45,9 @@ export default {
     'favicon-generator.copyHtml': 'Copiar HTML',
     'favicon-generator.copyManifest': 'Copiar el manifiesto',
     'favicon-generator.saveManifest': 'Guardar el manifiesto',
+    'favicon-generator.chooseAPngJpegWebp': 'Elige una imagen PNG, JPEG, WebP o SVG',
+    'favicon-generator.thatImageCouldNotBe': 'No se ha podido leer esa imagen',
+    'favicon-generator.faviconIcoSavedWith16': 'favicon.ico guardado con marcos de 16, 32 y 48 píxeles',
   },
   zh: {
     'favicon-generator.dropAPngJpegOr': '把 PNG、JPEG 或 SVG 拖到这里，或点击选择一个',
@@ -64,5 +70,8 @@ export default {
     'favicon-generator.copyHtml': '复制 HTML',
     'favicon-generator.copyManifest': '复制 manifest',
     'favicon-generator.saveManifest': '保存 manifest',
+    'favicon-generator.chooseAPngJpegWebp': '选择一张 PNG、JPEG、WebP 或 SVG 图片',
+    'favicon-generator.thatImageCouldNotBe': '无法读取该图片',
+    'favicon-generator.faviconIcoSavedWith16': '已保存包含 16、32 和 48 像素的 favicon.ico',
   },
 };

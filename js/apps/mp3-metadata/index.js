@@ -248,9 +248,9 @@ class Mp3Metadata extends JGApp {
     this.setActions([
       { id: 'add', label: t('mp3-metadata.addFiles', 'Add files'), icon: 'plus' },
       { separator: true },
-      { id: 'apply', label: t('mp3-metadata.applySharedFields', 'Apply shared fields'), icon: 'copy', title: 'Copy artist, album, year and the rest to every ticked file' },
-      { id: 'number', label: t('mp3-metadata.numberTracks', 'Number tracks'), icon: 'list', title: 'Number the ticked files in list order' },
-      { id: 'from-name', label: t('mp3-metadata.titlesFromFilenames', 'Titles from filenames'), icon: 'type', title: 'Read the title and track number from each filename' },
+      { id: 'apply', label: t('mp3-metadata.applySharedFields', 'Apply shared fields'), icon: 'copy', title: t('mp3-metadata.copyArtistAlbumYearAnd', 'Copy artist, album, year and the rest to every ticked file') },
+      { id: 'number', label: t('mp3-metadata.numberTracks', 'Number tracks'), icon: 'list', title: t('mp3-metadata.numberTheTickedFilesIn', 'Number the ticked files in list order') },
+      { id: 'from-name', label: t('mp3-metadata.titlesFromFilenames', 'Titles from filenames'), icon: 'type', title: t('mp3-metadata.readTheTitleAndTrack', 'Read the title and track number from each filename') },
       { spacer: true },
       { id: 'save', label: t('mp3-metadata.saveSelected', 'Save selected'), icon: 'music' },
       { id: 'remove', label: t('mp3-metadata.remove', 'Remove'), icon: 'close', danger: true },
@@ -311,7 +311,7 @@ class Mp3Metadata extends JGApp {
   async #load(files) {
     const list = [...(files ?? [])].filter((file) => /mpeg|mp3/i.test(file.type) || /\.mp3$/i.test(file.name));
     if (!list.length) {
-      toast('Choose one or more MP3 files', 'error');
+      toast(t('mp3-metadata.chooseOneOrMoreMp3', 'Choose one or more MP3 files'), 'error');
       return;
     }
 
@@ -423,7 +423,7 @@ class Mp3Metadata extends JGApp {
 
     const selection = this.#selection();
     if (!selection.length) {
-      toast('Tick at least one file first', 'error');
+      toast(t('mp3-metadata.tickAtLeastOneFile', 'Tick at least one file first'), 'error');
       return undefined;
     }
 

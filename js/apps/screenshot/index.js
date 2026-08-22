@@ -127,7 +127,7 @@ class Screenshot extends JGApp {
 
   async #capture() {
     if (!navigator.mediaDevices?.getDisplayMedia) {
-      toast('Screen capture is not available in this browser', 'error');
+      toast(t('screenshot.screenCaptureIsNotAvailable', 'Screen capture is not available in this browser'), 'error');
       return;
     }
     try {
@@ -416,9 +416,9 @@ class Screenshot extends JGApp {
     this.#flatten().toBlob(async (blob) => {
       try {
         await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-        toast('Image copied', 'success');
+        toast(t('screenshot.imageCopied', 'Image copied'), 'success');
       } catch {
-        toast('This browser blocked the clipboard write', 'error');
+        toast(t('screenshot.thisBrowserBlockedTheClipboard', 'This browser blocked the clipboard write'), 'error');
       }
     }, 'image/png');
   }

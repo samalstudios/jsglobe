@@ -44,7 +44,7 @@ class PosterStudio extends JGApp {
   #selected = null;
   #drag = null;
   #view = { x: 0, y: 0, zoom: 1 };
-  #event = { title: 'Live at the Union', start: '', place: '', notes: '' };
+  #event = { title: t('poster-studio.liveAtTheUnion', 'Live at the Union'), start: '', place: '', notes: '' };
   #designs = null;
   #openName = null;
   #paint = null;
@@ -192,14 +192,14 @@ class PosterStudio extends JGApp {
     this.$('#bar').items = [
       { id: 'gallery', label: t('poster-studio.gallery', 'Gallery'), icon: 'widgets', action: () => this.#openPicker() },
       { separator: true },
-      { id: 'fit', label: t('poster-studio.fit', 'Fit'), icon: 'maximize', iconOnly: true, title: 'Fit the poster in view', action: () => this.#fit() },
-      { id: 'front', label: t('poster-studio.bringToFront', 'Bring to front'), icon: 'toFront', iconOnly: true, title: 'Bring to front', action: () => this.#lift(true) },
-      { id: 'back', label: t('poster-studio.sendToBack', 'Send to back'), icon: 'toBack', iconOnly: true, title: 'Send to back', action: () => this.#lift(false) },
-      { id: 'copy', label: t('poster-studio.duplicate', 'Duplicate'), icon: 'copy', iconOnly: true, title: 'Duplicate the selection', action: () => this.#duplicate() },
-      { id: 'delete', label: t('poster-studio.delete', 'Delete'), icon: 'eraser', iconOnly: true, title: 'Delete the selection', action: () => this.#remove() },
+      { id: 'fit', label: t('poster-studio.fit', 'Fit'), icon: 'maximize', iconOnly: true, title: t('poster-studio.fitThePosterInView', 'Fit the poster in view'), action: () => this.#fit() },
+      { id: 'front', label: t('poster-studio.bringToFront', 'Bring to front'), icon: 'toFront', iconOnly: true, title: t('poster-studio.bringToFront', 'Bring to front'), action: () => this.#lift(true) },
+      { id: 'back', label: t('poster-studio.sendToBack', 'Send to back'), icon: 'toBack', iconOnly: true, title: t('poster-studio.sendToBack', 'Send to back'), action: () => this.#lift(false) },
+      { id: 'copy', label: t('poster-studio.duplicate', 'Duplicate'), icon: 'copy', iconOnly: true, title: t('poster-studio.duplicateTheSelection', 'Duplicate the selection'), action: () => this.#duplicate() },
+      { id: 'delete', label: t('poster-studio.delete', 'Delete'), icon: 'eraser', iconOnly: true, title: t('poster-studio.deleteTheSelection', 'Delete the selection'), action: () => this.#remove() },
       { spacer: true },
-      { id: 'variants', label: t('poster-studio.socialSizes', 'Social sizes'), icon: 'grid', iconOnly: true, title: 'Save the square, story and wide versions', action: () => this.#variants() },
-      { id: 'svg', label: 'SVG', icon: 'vector', iconOnly: true, title: 'Export as SVG', action: () => this.#exportSvg() },
+      { id: 'variants', label: t('poster-studio.socialSizes', 'Social sizes'), icon: 'grid', iconOnly: true, title: t('poster-studio.saveTheSquareStoryAnd', 'Save the square, story and wide versions'), action: () => this.#variants() },
+      { id: 'svg', label: 'SVG', icon: 'vector', iconOnly: true, title: t('poster-studio.exportAsSvg', 'Export as SVG'), action: () => this.#exportSvg() },
       { id: 'png', label: t('poster-studio.exportPng', 'Export PNG'), icon: 'download', action: () => this.#exportPng() },
     ];
   }

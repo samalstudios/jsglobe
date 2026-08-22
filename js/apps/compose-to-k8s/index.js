@@ -110,7 +110,7 @@ class ComposeToK8s extends JGApp {
       { id: 'copy', label: t('compose-to-k8s.copy', 'Copy'), icon: 'copy', action: () => copyText(this.$('#out').value) },
       { id: 'download', label: t('compose-to-k8s.download', 'Download'), icon: 'download', action: () => this.#download() },
       { spacer: true },
-      { id: 'clear', label: t('compose-to-k8s.clear', 'Clear'), icon: 'eraser', iconOnly: true, title: 'Empty the input', action: () => this.#clear() },
+      { id: 'clear', label: t('compose-to-k8s.clear', 'Clear'), icon: 'eraser', iconOnly: true, title: t('compose-to-k8s.emptyTheInput', 'Empty the input'), action: () => this.#clear() },
     ];
 
     this.$('#in').value = saved.source ?? SAMPLE;

@@ -232,7 +232,7 @@ class ExifEditor extends JGApp {
     this.on(this.$('#copy-json'), 'click', () => {
       const tags = readExif(this.#buffer).tags;
       navigator.clipboard?.writeText(JSON.stringify(Object.fromEntries(tags.map((tag) => [tag.name, tag.value])), null, 2));
-      toast('Metadata copied');
+      toast(t('exif-editor.metadataCopied', 'Metadata copied'));
     });
   }
 
@@ -244,7 +244,7 @@ class ExifEditor extends JGApp {
   async #load(file) {
     if (!file) return;
     if (!/jpe?g/i.test(file.type)) {
-      toast('Only JPEG files carry Exif metadata', 'error');
+      toast(t('exif-editor.onlyJpegFilesCarryExif', 'Only JPEG files carry Exif metadata'), 'error');
       return;
     }
 
@@ -288,7 +288,7 @@ class ExifEditor extends JGApp {
     if (!this.#buffer) return;
     const bytes = stripMetadata(this.#buffer, { keepIcc: keepIcc && this.$('#keep-icc').checked });
     if (!bytes) {
-      toast('That file is not a JPEG', 'error');
+      toast(t('exif-editor.thatFileIsNotA', 'That file is not a JPEG'), 'error');
       return;
     }
     const name = this.#file.name.replace(/\.jpe?g$/i, '');

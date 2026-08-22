@@ -9,6 +9,7 @@ export default {
     'timezone-planner.slotsThatFallInsideWorking': 'Zeitfenster, die überall in die Arbeitszeit fallen',
     'timezone-planner.makeThisTheReference': 'Als Bezug festlegen',
     'timezone-planner.remove': 'Entfernen',
+    'timezone-planner.keepAtLeastOneCity': 'Mindestens eine Stadt behalten',
     'timezone-planner.noHourWorksForEveryone': 'Keine Stunde passt allen. Die Arbeitszeiten erweitern oder eine Stadt entfernen.',
   },
   es: {
@@ -21,6 +22,7 @@ export default {
     'timezone-planner.slotsThatFallInsideWorking': 'Huecos que caen dentro del horario laboral en todas partes',
     'timezone-planner.makeThisTheReference': 'Usar esta como referencia',
     'timezone-planner.remove': 'Quitar',
+    'timezone-planner.keepAtLeastOneCity': 'Deja al menos una ciudad',
     'timezone-planner.noHourWorksForEveryone': 'No hay ninguna hora que valga para todos. Amplía el horario laboral o quita una ciudad.',
   },
   zh: {
@@ -33,6 +35,7 @@ export default {
     'timezone-planner.slotsThatFallInsideWorking': '在各地都处于工作时间内的时段',
     'timezone-planner.makeThisTheReference': '以此为基准',
     'timezone-planner.remove': '移除',
+    'timezone-planner.keepAtLeastOneCity': '请至少保留一个城市',
     'timezone-planner.noHourWorksForEveryone': '没有对所有人都合适的时段。请放宽工作时间，或移除一个城市。',
   },
 };

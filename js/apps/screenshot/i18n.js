@@ -19,6 +19,9 @@ export default {
     'screenshot.beforeAndAfter': 'Vorher und nachher',
     'screenshot.copy': 'Kopieren',
     'screenshot.savePng': 'PNG speichern',
+    'screenshot.screenCaptureIsNotAvailable': 'Bildschirmaufnahme ist in diesem Browser nicht verfügbar',
+    'screenshot.imageCopied': 'Bild kopiert',
+    'screenshot.thisBrowserBlockedTheClipboard': 'Dieser Browser hat das Schreiben in die Zwischenablage blockiert',
   },
   es: {
     'screenshot.pen': 'Pluma',
@@ -40,6 +43,9 @@ export default {
     'screenshot.beforeAndAfter': 'Antes y después',
     'screenshot.copy': 'Copiar',
     'screenshot.savePng': 'Guardar PNG',
+    'screenshot.screenCaptureIsNotAvailable': 'La captura de pantalla no está disponible en este navegador',
+    'screenshot.imageCopied': 'Imagen copiada',
+    'screenshot.thisBrowserBlockedTheClipboard': 'Este navegador ha bloqueado la escritura en el portapapeles',
   },
   zh: {
     'screenshot.pen': '钢笔',
@@ -61,5 +67,8 @@ export default {
     'screenshot.beforeAndAfter': '前后对比',
     'screenshot.copy': '复制',
     'screenshot.savePng': '保存 PNG',
+    'screenshot.screenCaptureIsNotAvailable': '此浏览器不支持屏幕捕获',
+    'screenshot.imageCopied': '已复制图片',
+    'screenshot.thisBrowserBlockedTheClipboard': '此浏览器阻止了写入剪贴板',
   },
 };

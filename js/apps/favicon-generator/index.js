@@ -125,7 +125,7 @@ class FaviconGenerator extends JGApp {
 
   async #load(file) {
     if (!file || !file.type.startsWith('image/')) {
-      toast('Choose a PNG, JPEG, WebP or SVG image', 'error');
+      toast(t('favicon-generator.chooseAPngJpegWebp', 'Choose a PNG, JPEG, WebP or SVG image'), 'error');
       return;
     }
 
@@ -137,7 +137,7 @@ class FaviconGenerator extends JGApp {
       image.onload = resolve;
       image.onerror = reject;
       image.src = url;
-    }).catch(() => toast('That image could not be read', 'error'));
+    }).catch(() => toast(t('favicon-generator.thatImageCouldNotBe', 'That image could not be read'), 'error'));
 
     URL.revokeObjectURL(url);
     if (!image.width) return;
@@ -264,7 +264,7 @@ class FaviconGenerator extends JGApp {
     });
 
     download('favicon.ico', bytes, 'image/x-icon');
-    toast('favicon.ico saved with 16, 32 and 48 pixel frames');
+    toast(t('favicon-generator.faviconIcoSavedWith16', 'favicon.ico saved with 16, 32 and 48 pixel frames'));
   }
 }
 

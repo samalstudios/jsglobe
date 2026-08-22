@@ -14,6 +14,7 @@ export default {
     'compose-to-k8s.copy': 'Kopieren',
     'compose-to-k8s.download': 'Herunterladen',
     'compose-to-k8s.clear': 'Leeren',
+    'compose-to-k8s.emptyTheInput': 'Die Eingabe leeren',
   },
   es: {
     'compose-to-k8s.defaultVolumeSize': 'Tamaño de volumen por defecto',
@@ -30,6 +31,7 @@ export default {
     'compose-to-k8s.copy': 'Copiar',
     'compose-to-k8s.download': 'Descargar',
     'compose-to-k8s.clear': 'Limpiar',
+    'compose-to-k8s.emptyTheInput': 'Vaciar la entrada',
   },
   zh: {
     'compose-to-k8s.defaultVolumeSize': '默认卷大小',
@@ -46,5 +48,6 @@ export default {
     'compose-to-k8s.copy': '复制',
     'compose-to-k8s.download': '下载',
     'compose-to-k8s.clear': '清空',
+    'compose-to-k8s.emptyTheInput': '清空输入',
   },
 };

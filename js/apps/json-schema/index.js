@@ -267,7 +267,7 @@ class JsonSchema extends JGApp {
       const schema = documents.map((document) => infer(document, options)).reduce((left, right) => merge(left, right), null);
       const output = {
         $schema: 'https://json-schema.org/draft/2020-12/schema',
-        title: 'Generated schema',
+        title: t('json-schema.generatedSchema', 'Generated schema'),
         ...schema,
       };
 

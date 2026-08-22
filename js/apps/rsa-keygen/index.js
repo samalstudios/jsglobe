@@ -86,7 +86,7 @@ class RsaKeygen extends JGApp {
       status.textContent = `${algorithm.label} generated. Usage: ${algorithm.uses.join(', ')}.`;
     } catch (error) {
       status.innerHTML = html`<span class="error">${error.message}</span>`;
-      toast('Key generation failed', 'error');
+      toast(t('rsa-keygen.keyGenerationFailed', 'Key generation failed'), 'error');
     }
   }
 }

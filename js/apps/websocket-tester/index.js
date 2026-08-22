@@ -166,7 +166,7 @@ class WebsocketTester extends JGApp {
   #connect() {
     const url = this.$('#url').value.trim();
     if (!/^wss?:\/\//i.test(url)) {
-      toast('The address must start with ws:// or wss://', 'error');
+      toast(t('websocket-tester.theAddressMustStartWith', 'The address must start with ws:// or wss://'), 'error');
       return;
     }
 
@@ -221,7 +221,7 @@ class WebsocketTester extends JGApp {
   #send() {
     const text = this.$('#message').value;
     if (!this.#socket || this.#socket.readyState !== WebSocket.OPEN) {
-      toast('Connect first', 'error');
+      toast(t('websocket-tester.connectFirst', 'Connect first'), 'error');
       return;
     }
     this.#socket.send(text);

@@ -274,6 +274,11 @@
   "es": "Se guarda una instantánea cada día que actualizas los precios",
   "zh": "每次更新价格的当天都会保存一份快照"
  },
+ "A symbol and quantity are required": {
+  "de": "Symbol und Stückzahl sind erforderlich",
+  "es": "Hacen falta un símbolo y una cantidad",
+  "zh": "需要填写代码和数量"
+ },
  "AAPL": {
   "de": "AAPL",
   "es": "AAPL",
@@ -369,6 +374,11 @@
   "es": "Añade primero un cilindro o un motor, y entonces este botón podrá accionarlo.",
   "zh": "请先添加液压缸或马达，然后这个按钮才能驱动它。"
  },
+ "Add a position first": {
+  "de": "Zuerst eine Position hinzufügen",
+  "es": "Añade primero una posición",
+  "zh": "请先添加一笔持仓"
+ },
  "Add a position to see the split.": {
   "de": "Eine Position hinzufügen, um die Aufteilung zu sehen.",
   "es": "Añade una posición para ver el reparto.",
@@ -463,6 +473,11 @@
   "de": "Vergabe",
   "es": "Administración",
   "zh": "管理方式"
+ },
+ "Advance one frame": {
+  "de": "Ein Bild weiter",
+  "es": "Avanzar un fotograma",
+  "zh": "前进一帧"
  },
  "Album": {
   "de": "Album",
@@ -979,6 +994,16 @@
   "es": "Brillo",
   "zh": "亮度"
  },
+ "Brightness, contrast and colour": {
+  "de": "Helligkeit, Kontrast und Farbe",
+  "es": "Brillo, contraste y color",
+  "zh": "亮度、对比度与颜色"
+ },
+ "Bring the selected body to the front": {
+  "de": "Den gewählten Körper in den Vordergrund holen",
+  "es": "Traer al frente el cuerpo seleccionado",
+  "zh": "把所选物体移到最前"
+ },
  "Bring to front": {
   "de": "In den Vordergrund",
   "es": "Traer al frente",
@@ -1264,6 +1289,11 @@
   "es": "Comprobaciones",
   "zh": "检查项"
  },
+ "Choose a PNG, JPEG, WebP or SVG image": {
+  "de": "Ein PNG-, JPEG-, WebP- oder SVG-Bild wählen",
+  "es": "Elige una imagen PNG, JPEG, WebP o SVG",
+  "zh": "选择一张 PNG、JPEG、WebP 或 SVG 图片"
+ },
  "Choose a device": {
   "de": "Ein Gerät wählen",
   "es": "Elegir un dispositivo",
@@ -1273,6 +1303,11 @@
   "de": "Dateien wählen",
   "es": "Elegir archivos",
   "zh": "选择文件"
+ },
+ "Choose one or more MP3 files": {
+  "de": "Eine oder mehrere MP3-Dateien wählen",
+  "es": "Elige uno o varios archivos MP3",
+  "zh": "选择一个或多个 MP3 文件"
  },
  "Choose what appears in the grid": {
   "de": "Wählen, was im Raster erscheint",
@@ -1594,6 +1629,11 @@
   "es": "Conecta un mando para jugar directamente",
   "zh": "接上手柄即可直接游玩"
  },
+ "Connect first": {
+  "de": "Zuerst verbinden",
+  "es": "Conéctate primero",
+  "zh": "请先连接"
+ },
  "Connection": {
   "de": "Verbindung",
   "es": "Conexión",
@@ -1709,6 +1749,11 @@
   "es": "Copiar todo",
   "zh": "复制全部"
  },
+ "Copy artist, album, year and the rest to every ticked file": {
+  "de": "Interpret, Album, Jahr und den Rest auf jede angehakte Datei übertragen",
+  "es": "Copiar artista, álbum, año y lo demás a cada archivo marcado",
+  "zh": "把艺术家、专辑、年份等复制到每个勾选的文件"
+ },
  "Copy batch": {
   "de": "Stapel kopieren",
   "es": "Copiar el lote",
@@ -1809,6 +1854,16 @@
   "es": "Copiar el texto",
   "zh": "复制文本"
  },
+ "Copy the selected part": {
+  "de": "Das gewählte Bauteil kopieren",
+  "es": "Copiar el componente seleccionado",
+  "zh": "复制所选元件"
+ },
+ "Copy the selection": {
+  "de": "Die Auswahl kopieren",
+  "es": "Copiar la selección",
+  "zh": "复制所选内容"
+ },
  "Core files": {
   "de": "Kerndateien",
   "es": "Archivos del núcleo",
@@ -1823,6 +1878,16 @@
   "de": "Einstand",
   "es": "Coste",
   "zh": "成本"
+ },
+ "Could not measure the artwork": {
+  "de": "Das Cover konnte nicht vermessen werden",
+  "es": "No se ha podido medir la carátula",
+  "zh": "无法测量封面尺寸"
+ },
+ "Could not rasterise that SVG": {
+  "de": "Dieses SVG konnte nicht gerastert werden",
+  "es": "No se ha podido rasterizar ese SVG",
+  "zh": "无法栅格化该 SVG"
  },
  "Could not read that address.": {
   "de": "Diese Adresse konnte nicht gelesen werden.",
@@ -1879,6 +1944,11 @@
   "es": "Recortar",
   "zh": "裁剪"
  },
+ "Crop to selection": {
+  "de": "Auf die Auswahl zuschneiden",
+  "es": "Recortar a la selección",
+  "zh": "裁剪到选区"
+ },
  "Currency": {
   "de": "Währung",
   "es": "Moneda",
@@ -1918,6 +1988,11 @@
   "de": "Custom Elements, kein Framework",
   "es": "Custom elements, sin framework",
   "zh": "自定义元素，无框架"
+ },
+ "Cut the second shape out of the first": {
+  "de": "Die zweite Form aus der ersten ausschneiden",
+  "es": "Recortar la segunda forma de la primera",
+  "zh": "从第一个形状中减去第二个"
  },
  "Cycles per second": {
   "de": "Zyklen pro Sekunde",
@@ -2083,6 +2158,16 @@
   "de": "Löschen",
   "es": "Eliminar",
   "zh": "删除"
+ },
+ "Delete the selected part": {
+  "de": "Das gewählte Bauteil löschen",
+  "es": "Eliminar el componente seleccionado",
+  "zh": "删除所选元件"
+ },
+ "Delete the selection": {
+  "de": "Die Auswahl löschen",
+  "es": "Eliminar la selección",
+  "zh": "删除所选内容"
  },
  "Density": {
   "de": "Dichte",
@@ -2369,6 +2454,11 @@
   "es": "Duplicar",
   "zh": "复制一份"
  },
+ "Duplicate the selection": {
+  "de": "Die Auswahl duplizieren",
+  "es": "Duplicar la selección",
+  "zh": "复制一份所选内容"
+ },
  "Duration": {
   "de": "Dauer",
   "es": "Duración",
@@ -2483,6 +2573,11 @@
   "de": "Leer",
   "es": "Vacío",
   "zh": "空"
+ },
+ "Empty the input": {
+  "de": "Die Eingabe leeren",
+  "es": "Vaciar la entrada",
+  "zh": "清空输入"
  },
  "Encoded": {
   "de": "Kodiert",
@@ -2649,6 +2744,11 @@
   "es": "Exportar PNG",
   "zh": "导出 PNG"
  },
+ "Export as SVG": {
+  "de": "Als SVG exportieren",
+  "es": "Exportar como SVG",
+  "zh": "导出为 SVG"
+ },
  "Export everything": {
   "de": "Alles exportieren",
   "es": "Exportar todo",
@@ -2799,6 +2899,26 @@
   "es": "Ajustar",
   "zh": "适应"
  },
+ "Fit the board to the view": {
+  "de": "Die Platine an die Ansicht anpassen",
+  "es": "Ajustar el tablero a la vista",
+  "zh": "让电路板适应视图"
+ },
+ "Fit the circuit to the view": {
+  "de": "Die Schaltung an die Ansicht anpassen",
+  "es": "Ajustar el circuito a la vista",
+  "zh": "让电路适应视图"
+ },
+ "Fit the poster in view": {
+  "de": "Das Poster in die Ansicht einpassen",
+  "es": "Ajustar el cartel a la vista",
+  "zh": "让海报适应视图"
+ },
+ "Fit the scene": {
+  "de": "Die Szene einpassen",
+  "es": "Ajustar la escena",
+  "zh": "适应场景"
+ },
  "Fit to width": {
   "de": "An Breite anpassen",
   "es": "Ajustar al ancho",
@@ -2818,6 +2938,16 @@
   "de": "Passt in",
   "es": "Cabe en",
   "zh": "可容纳于"
+ },
+ "Five letters are needed": {
+  "de": "Es werden fünf Buchstaben gebraucht",
+  "es": "Hacen falta cinco letras",
+  "zh": "需要五个字母"
+ },
+ "Fix the markup first": {
+  "de": "Zuerst das Markup korrigieren",
+  "es": "Corrige primero el marcado",
+  "zh": "请先修正标记"
  },
  "Fix the markup to use the editing tools.": {
   "de": "Das Markup korrigieren, um die Bearbeitungswerkzeuge zu nutzen.",
@@ -2869,7 +2999,17 @@
   "es": "Voltear en horizontal",
   "zh": "水平翻转"
  },
+ "Flip horizontally": {
+  "de": "Waagerecht spiegeln",
+  "es": "Voltear en horizontal",
+  "zh": "水平翻转"
+ },
  "Flip vertical": {
+  "de": "Senkrecht spiegeln",
+  "es": "Voltear en vertical",
+  "zh": "垂直翻转"
+ },
+ "Flip vertically": {
   "de": "Senkrecht spiegeln",
   "es": "Voltear en vertical",
   "zh": "垂直翻转"
@@ -3043,6 +3183,11 @@
   "de": "Erzeugtes CSS",
   "es": "CSS generado",
   "zh": "生成的 CSS"
+ },
+ "Generated schema": {
+  "de": "Erzeugtes Schema",
+  "es": "Esquema generado",
+  "zh": "生成的 schema"
  },
  "Generated sizes": {
   "de": "Erzeugte Größen",
@@ -3329,6 +3474,11 @@
   "es": "Imagen",
   "zh": "镜像"
  },
+ "Image copied": {
+  "de": "Bild kopiert",
+  "es": "Imagen copiada",
+  "zh": "已复制图片"
+ },
  "Image export scale": {
   "de": "Bild-Exportgröße",
   "es": "Escala de exportación de imagen",
@@ -3418,6 +3568,11 @@
   "de": "Einfügen",
   "es": "Insertar",
   "zh": "插入"
+ },
+ "Insert an image": {
+  "de": "Ein Bild einfügen",
+  "es": "Insertar una imagen",
+  "zh": "插入图片"
  },
  "Inspect": {
   "de": "Untersuchen",
@@ -3559,6 +3714,16 @@
   "es": "Mantener la proporción",
   "zh": "保持宽高比"
  },
+ "Keep at least one city": {
+  "de": "Mindestens eine Stadt behalten",
+  "es": "Deja al menos una ciudad",
+  "zh": "请至少保留一个城市"
+ },
+ "Keep only where the two shapes overlap": {
+  "de": "Nur behalten, wo sich die beiden Formen überlappen",
+  "es": "Conservar solo donde se solapan las dos formas",
+  "zh": "只保留两个形状重叠的部分"
+ },
  "Keep proportions": {
   "de": "Proportionen beibehalten",
   "es": "Mantener las proporciones",
@@ -3583,6 +3748,11 @@
   "de": "Schlüssel",
   "es": "Clave",
   "zh": "密钥"
+ },
+ "Key generation failed": {
+  "de": "Die Schlüsselerzeugung ist fehlgeschlagen",
+  "es": "Ha fallado la generación de la clave",
+  "zh": "密钥生成失败"
  },
  "Key type": {
   "de": "Schlüsseltyp",
@@ -3694,6 +3864,11 @@
   "es": "Disposición",
   "zh": "布局"
  },
+ "Layout reset": {
+  "de": "Anordnung zurückgesetzt",
+  "es": "Disposición restablecida",
+  "zh": "已重置布局"
+ },
  "Leap year": {
   "de": "Schaltjahr",
   "es": "Año bisiesto",
@@ -3779,6 +3954,11 @@
   "es": "Elementos de lista",
   "zh": "列表项"
  },
+ "Live at the Union": {
+  "de": "Live im Union",
+  "es": "En directo en el Union",
+  "zh": "Union 现场演出"
+ },
  "Live captions while recording": {
   "de": "Live-Untertitel während der Aufnahme",
   "es": "Subtítulos en vivo mientras grabas",
@@ -3798,6 +3978,11 @@
   "de": "SVG laden",
   "es": "Cargar SVG",
   "zh": "加载 SVG"
+ },
+ "Load a backdrop first.": {
+  "de": "Zuerst ein Hintergrundbild laden.",
+  "es": "Carga primero un fondo.",
+  "zh": "请先加载背景图。"
  },
  "Load a sample": {
   "de": "Ein Beispiel laden",
@@ -4039,6 +4224,11 @@
   "es": "Unir",
   "zh": "合并"
  },
+ "Merge the two selected shapes": {
+  "de": "Die beiden gewählten Formen vereinen",
+  "es": "Unir las dos formas seleccionadas",
+  "zh": "合并所选的两个形状"
+ },
  "Merge, split, rotate, and convert to or from images.": {
   "de": "Zusammenführen, teilen, drehen und von oder zu Bildern umwandeln.",
   "es": "Une, divide, rota y convierte a o desde imágenes.",
@@ -4069,6 +4259,11 @@
   "es": "Metadatos",
   "zh": "元数据"
  },
+ "Metadata copied": {
+  "de": "Metadaten kopiert",
+  "es": "Metadatos copiados",
+  "zh": "已复制元数据"
+ },
  "Microphone is off": {
   "de": "Mikrofon ist aus",
   "es": "El micrófono está apagado",
@@ -4084,10 +4279,20 @@
   "es": "Mínimo",
   "zh": "最少"
  },
+ "Mirror left to right (F)": {
+  "de": "Links nach rechts spiegeln (F)",
+  "es": "Reflejar de izquierda a derecha (F)",
+  "zh": "左右镜像 (F)"
+ },
  "Mirror the image": {
   "de": "Bild spiegeln",
   "es": "Reflejar la imagen",
   "zh": "镜像画面"
+ },
+ "Mirror the part (F)": {
+  "de": "Das Bauteil spiegeln (F)",
+  "es": "Reflejar el componente (F)",
+  "zh": "镜像该元件 (F)"
  },
  "Mistakes": {
   "de": "Fehler",
@@ -4244,6 +4449,11 @@
   "es": "Nombre",
   "zh": "名称"
  },
+ "Name the workspace first": {
+  "de": "Zuerst den Arbeitsbereich benennen",
+  "es": "Ponle nombre al espacio de trabajo primero",
+  "zh": "请先为工作区命名"
+ },
  "Name this circuit": {
   "de": "Diese Schaltung benennen",
   "es": "Nombra este circuito",
@@ -4323,6 +4533,11 @@
   "de": "Neuer Kalender",
   "es": "Calendario nuevo",
   "zh": "新建日历"
+ },
+ "New canvas": {
+  "de": "Neue Leinwand",
+  "es": "Lienzo nuevo",
+  "zh": "新建画布"
  },
  "New event": {
   "de": "Neuer Termin",
@@ -4624,6 +4839,11 @@
   "es": "Numerar los elementos",
   "zh": "为各项编号"
  },
+ "Number the ticked files in list order": {
+  "de": "Die angehakten Dateien in Listenreihenfolge nummerieren",
+  "es": "Numerar los archivos marcados en el orden de la lista",
+  "zh": "按列表顺序为勾选的文件编号"
+ },
  "Number tracks": {
   "de": "Titel nummerieren",
   "es": "Numerar las pistas",
@@ -4724,6 +4944,11 @@
   "es": "En línea",
   "zh": "在线"
  },
+ "Only JPEG files carry Exif metadata": {
+  "de": "Nur JPEG-Dateien tragen Exif-Metadaten",
+  "es": "Solo los archivos JPEG llevan metadatos Exif",
+  "zh": "只有 JPEG 文件带有 Exif 元数据"
+ },
  "Opacity": {
   "de": "Deckkraft",
   "es": "Opacidad",
@@ -4743,6 +4968,21 @@
   "de": "Ein PDF öffnen, um es zusammenzuführen, zu teilen, zu drehen oder umzuwandeln.",
   "es": "Abre un PDF para unirlo, dividirlo, rotarlo o convertirlo.",
   "zh": "打开一个 PDF 以进行合并、拆分、旋转或转换。"
+ },
+ "Open a circuit from a file": {
+  "de": "Eine Schaltung aus einer Datei öffnen",
+  "es": "Abrir un circuito desde un archivo",
+  "zh": "从文件打开电路"
+ },
+ "Open a scene from a file": {
+  "de": "Eine Szene aus einer Datei öffnen",
+  "es": "Abrir una escena desde un archivo",
+  "zh": "从文件打开场景"
+ },
+ "Open an image": {
+  "de": "Ein Bild öffnen",
+  "es": "Abrir una imagen",
+  "zh": "打开图片"
  },
  "Open chat": {
   "de": "Chat öffnen",
@@ -4979,6 +5219,11 @@
   "es": "Pega un archivo compose",
   "zh": "粘贴一个 compose 文件"
  },
+ "Paste a copy": {
+  "de": "Eine Kopie einfügen",
+  "es": "Pegar una copia",
+  "zh": "粘贴一份副本"
+ },
  "Paste a signature to compare in constant view": {
   "de": "Eine Signatur zum Vergleich in konstanter Zeit einfügen",
   "es": "Pega una firma para compararla en tiempo constante",
@@ -5163,6 +5408,11 @@
   "de": "Oben mindestens einen Typ wählen.",
   "es": "Elige al menos un tipo arriba.",
   "zh": "请在上方至少选择一种类型。"
+ },
+ "Pick one shape, then shift click a second one.": {
+  "de": "Eine Form wählen, dann mit Umschalt auf eine zweite klicken.",
+  "es": "Elige una forma y luego haz clic con Mayús en una segunda.",
+  "zh": "先选中一个形状，再按住 Shift 点击第二个。"
  },
  "Pick something on the poster to change it, or add a piece from the left.": {
   "de": "Etwas auf dem Poster wählen, um es zu ändern, oder links ein Element hinzufügen.",
@@ -5574,6 +5824,11 @@
   "es": "Leer la política",
   "zh": "阅读政策"
  },
+ "Read the title and track number from each filename": {
+  "de": "Titel und Titelnummer aus jedem Dateinamen lesen",
+  "es": "Leer el título y el número de pista de cada nombre de archivo",
+  "zh": "从每个文件名中读取标题和音轨号"
+ },
  "Readability": {
   "de": "Lesbarkeit",
   "es": "Legibilidad",
@@ -5618,6 +5873,11 @@
   "de": "Aufnehmen",
   "es": "Grabar",
   "zh": "录制"
+ },
+ "Recording saved": {
+  "de": "Aufnahme gespeichert",
+  "es": "Grabación guardada",
+  "zh": "录音已保存"
  },
  "Recordings": {
   "de": "Aufnahmen",
@@ -5834,6 +6094,11 @@
   "es": "Cambiar el tamaño del lienzo",
   "zh": "调整画布大小"
  },
+ "Resize the canvas": {
+  "de": "Die Leinwandgröße ändern",
+  "es": "Cambiar el tamaño del lienzo",
+  "zh": "调整画布大小"
+ },
  "Resolver": {
   "de": "Resolver",
   "es": "Resolutor",
@@ -5939,10 +6204,20 @@
   "es": "Rotar +90°",
   "zh": "旋转 +90°"
  },
+ "Rotate 90 degrees (R)": {
+  "de": "Um 90 Grad drehen (R)",
+  "es": "Rotar 90 grados (R)",
+  "zh": "旋转 90 度 (R)"
+ },
  "Rotate by": {
   "de": "Drehen um",
   "es": "Rotar",
   "zh": "旋转角度"
+ },
+ "Rotate right": {
+  "de": "Nach rechts drehen",
+  "es": "Rotar a la derecha",
+  "zh": "向右旋转"
  },
  "Rotate −90°": {
   "de": "−90° drehen",
@@ -6114,6 +6389,11 @@
   "es": "Guardar SVG",
   "zh": "保存 SVG"
  },
+ "Save as PNG": {
+  "de": "Als PNG speichern",
+  "es": "Guardar como PNG",
+  "zh": "保存为 PNG"
+ },
  "Save cleaned copy": {
   "de": "Bereinigte Kopie speichern",
   "es": "Guardar una copia limpia",
@@ -6168,6 +6448,21 @@
   "de": "Text speichern",
   "es": "Guardar el texto",
   "zh": "保存文本"
+ },
+ "Save the square, story and wide versions": {
+  "de": "Die quadratische, die Story- und die breite Fassung speichern",
+  "es": "Guardar las versiones cuadrada, de historia y ancha",
+  "zh": "保存方形、竖屏故事和宽屏版本"
+ },
+ "Save this circuit to a file": {
+  "de": "Diese Schaltung in eine Datei speichern",
+  "es": "Guardar este circuito en un archivo",
+  "zh": "把这个电路保存到文件"
+ },
+ "Save this scene to a file": {
+  "de": "Diese Szene in eine Datei speichern",
+  "es": "Guardar esta escena en un archivo",
+  "zh": "把这个场景保存到文件"
  },
  "Saved": {
   "de": "Gespeichert",
@@ -6228,6 +6523,11 @@
   "de": "Bildschirm und Fenster",
   "es": "Pantalla y ventana",
   "zh": "屏幕与窗口"
+ },
+ "Screen capture is not available in this browser": {
+  "de": "Bildschirmaufnahme ist in diesem Browser nicht verfügbar",
+  "es": "La captura de pantalla no está disponible en este navegador",
+  "zh": "此浏览器不支持屏幕捕获"
  },
  "Search a character, U+00E9 or 233": {
   "de": "Ein Zeichen, U+00E9 oder 233 suchen",
@@ -6319,6 +6619,11 @@
   "es": "Enviar",
   "zh": "发送"
  },
+ "Send the selected body to the back": {
+  "de": "Den gewählten Körper in den Hintergrund schicken",
+  "es": "Enviar al fondo el cuerpo seleccionado",
+  "zh": "把所选物体移到最后"
+ },
  "Send to back": {
   "de": "In den Hintergrund",
   "es": "Enviar al fondo",
@@ -6403,6 +6708,11 @@
   "de": "Legt das Verhalten für das ganze Gespräch fest",
   "es": "Define el comportamiento de toda la conversación",
   "zh": "设定整段对话的行为"
+ },
+ "Settings reset": {
+  "de": "Einstellungen zurückgesetzt",
+  "es": "Ajustes restablecidos",
+  "zh": "设置已重置"
  },
  "Shade": {
   "de": "Schattierung",
@@ -6709,6 +7019,16 @@
   "es": "Estrella",
   "zh": "星号"
  },
+ "Start an empty board": {
+  "de": "Eine leere Platine beginnen",
+  "es": "Empezar con un tablero vacío",
+  "zh": "新建一个空白电路板"
+ },
+ "Start an empty scene": {
+  "de": "Eine leere Szene beginnen",
+  "es": "Empezar con una escena vacía",
+  "zh": "新建一个空白场景"
+ },
  "Start and duration in seconds": {
   "de": "Start und Dauer in Sekunden",
   "es": "Inicio y duración en segundos",
@@ -6919,6 +7239,11 @@
   "es": "Intercambiar idiomas",
   "zh": "交换语言"
  },
+ "Swap the two colours": {
+  "de": "Die beiden Farben tauschen",
+  "es": "Intercambiar los dos colores",
+  "zh": "交换两种颜色"
+ },
  "Swap ⇅": {
   "de": "Tauschen ⇅",
   "es": "Intercambiar ⇅",
@@ -7084,20 +7409,45 @@
   "es": "Texto para cifrar",
   "zh": "要加密的文本"
  },
+ "That file is not a JPEG": {
+  "de": "Diese Datei ist kein JPEG",
+  "es": "Ese archivo no es un JPEG",
+  "zh": "该文件不是 JPEG"
+ },
+ "That image could not be read": {
+  "de": "Dieses Bild konnte nicht gelesen werden",
+  "es": "No se ha podido leer esa imagen",
+  "zh": "无法读取该图片"
+ },
  "That is not valid SVG markup.": {
   "de": "Das ist kein gültiges SVG-Markup.",
   "es": "Eso no es marcado SVG válido.",
   "zh": "这不是有效的 SVG 标记。"
+ },
+ "That leaves nothing behind.": {
+  "de": "Dabei bleibt nichts übrig.",
+  "es": "Así no queda nada.",
+  "zh": "这样什么都不会剩下。"
  },
  "The YAML parser covers the common configuration subset: nested maps, lists and scalars.": {
   "de": "Der YAML-Parser deckt die übliche Konfigurationsuntermenge ab: verschachtelte Maps, Listen und Skalare.",
   "es": "El analizador YAML cubre el subconjunto habitual de configuración: mapas anidados, listas y escalares.",
   "zh": "该 YAML 解析器覆盖常见的配置子集：嵌套映射、列表和标量。"
  },
+ "The address must start with ws:// or wss://": {
+  "de": "Die Adresse muss mit ws:// oder wss:// beginnen",
+  "es": "La dirección debe empezar por ws:// o wss://",
+  "zh": "地址必须以 ws:// 或 wss:// 开头"
+ },
  "The event QR carries these so a phone can add it to a calendar.": {
   "de": "Der Termin-QR trägt diese Angaben, damit ein Telefon ihn in einen Kalender eintragen kann.",
   "es": "El QR del evento lleva estos datos para que un móvil pueda añadirlo al calendario.",
   "zh": "活动二维码携带这些信息，方便手机把它加入日历。"
+ },
+ "The last workspace cannot be deleted": {
+  "de": "Der letzte Arbeitsbereich kann nicht gelöscht werden",
+  "es": "No se puede eliminar el último espacio de trabajo",
+  "zh": "最后一个工作区无法删除"
  },
  "The same amount in other currencies": {
   "de": "Derselbe Betrag in anderen Währungen",
@@ -7129,6 +7479,11 @@
   "es": "Color del tema",
   "zh": "主题色"
  },
+ "This browser blocked the clipboard write": {
+  "de": "Dieser Browser hat das Schreiben in die Zwischenablage blockiert",
+  "es": "Este navegador ha bloqueado la escritura en el portapapeles",
+  "zh": "此浏览器阻止了写入剪贴板"
+ },
  "This document has no top level shapes.": {
   "de": "Dieses Dokument hat keine Formen auf oberster Ebene.",
   "es": "Este documento no tiene formas de primer nivel.",
@@ -7138,6 +7493,16 @@
   "de": "Dieser Server",
   "es": "Este servidor",
   "zh": "本服务器"
+ },
+ "Those shapes do not touch, so there is nothing to merge.": {
+  "de": "Diese Formen berühren sich nicht, es gibt also nichts zu vereinen.",
+  "es": "Esas formas no se tocan, así que no hay nada que unir.",
+  "zh": "这些形状没有接触，因此没有可合并的部分。"
+ },
+ "Tick at least one file first": {
+  "de": "Zuerst mindestens eine Datei anhaken",
+  "es": "Marca al menos un archivo primero",
+  "zh": "请先勾选至少一个文件"
  },
  "Tick the limits you want in front of the key": {
   "de": "Die gewünschten Einschränkungen vor dem Schlüssel ankreuzen",
@@ -7339,6 +7704,11 @@
   "es": "Recortar",
   "zh": "修剪"
  },
+ "Trim spaces, drop empty rows and duplicates": {
+  "de": "Leerzeichen kürzen, leere Zeilen und Duplikate entfernen",
+  "es": "Recortar espacios y quitar filas vacías y duplicadas",
+  "zh": "去除空格，删除空行与重复行"
+ },
  "Trouble keys": {
   "de": "Problemtasten",
   "es": "Teclas problemáticas",
@@ -7373,6 +7743,11 @@
   "de": "Kamera einschalten",
   "es": "Encender la cámara",
   "zh": "打开摄像头"
+ },
+ "Turn the selected body (R, shift R the other way)": {
+  "de": "Den gewählten Körper drehen (R, Umschalt R andersherum)",
+  "es": "Girar el cuerpo seleccionado (R, Mayús R al revés)",
+  "zh": "转动所选物体（R，Shift+R 反向）"
  },
  "Twelve Data": {
   "de": "Twelve Data",
@@ -7518,6 +7893,11 @@
   "de": "Nutzbare Hosts",
   "es": "Hosts utilizables",
   "zh": "可用主机数"
+ },
+ "Usage history cleared": {
+  "de": "Nutzungsverlauf gelöscht",
+  "es": "Historial de uso borrado",
+  "zh": "已清除使用记录"
  },
  "Use": {
   "de": "Verwenden",
@@ -7824,6 +8204,21 @@
   "es": "Espacio de trabajo",
   "zh": "工作区"
  },
+ "Workspace created": {
+  "de": "Arbeitsbereich angelegt",
+  "es": "Espacio de trabajo creado",
+  "zh": "已创建工作区"
+ },
+ "Workspace duplicated": {
+  "de": "Arbeitsbereich dupliziert",
+  "es": "Espacio de trabajo duplicado",
+  "zh": "已复制工作区"
+ },
+ "Workspace imported": {
+  "de": "Arbeitsbereich importiert",
+  "es": "Espacio de trabajo importado",
+  "zh": "已导入工作区"
+ },
  "Workspaces": {
   "de": "Arbeitsbereiche",
   "es": "Espacios de trabajo",
@@ -8103,6 +8498,11 @@
   "de": "eyJhbGciOi...",
   "es": "eyJhbGciOi...",
   "zh": "eyJhbGciOi..."
+ },
+ "favicon.ico saved with 16, 32 and 48 pixel frames": {
+  "de": "favicon.ico mit 16-, 32- und 48-Pixel-Rahmen gespeichert",
+  "es": "favicon.ico guardado con marcos de 16, 32 y 48 píxeles",
+  "zh": "已保存包含 16、32 和 48 像素的 favicon.ico"
  },
  "fetch": {
   "de": "fetch",
