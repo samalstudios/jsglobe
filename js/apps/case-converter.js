@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { words, titleCase, debounce } from '../core/util.js';
 
 const sheet = css`
@@ -7,21 +8,21 @@ const sheet = css`
 `;
 
 const CASES = [
-  { id: 'camel', label: 'camelCase', fn: (parts) => parts.map((word, index) => (index ? titleCase(word) : word.toLowerCase())).join('') },
-  { id: 'pascal', label: 'PascalCase', fn: (parts) => parts.map((word) => titleCase(word)).join('') },
-  { id: 'snake', label: 'snake_case', fn: (parts) => parts.map((word) => word.toLowerCase()).join('_') },
-  { id: 'constant', label: 'CONSTANT_CASE', fn: (parts) => parts.map((word) => word.toUpperCase()).join('_') },
-  { id: 'kebab', label: 'kebab-case', fn: (parts) => parts.map((word) => word.toLowerCase()).join('-') },
-  { id: 'train', label: 'Train-Case', fn: (parts) => parts.map((word) => titleCase(word)).join('-') },
-  { id: 'dot', label: 'dot.case', fn: (parts) => parts.map((word) => word.toLowerCase()).join('.') },
-  { id: 'path', label: 'path/case', fn: (parts) => parts.map((word) => word.toLowerCase()).join('/') },
-  { id: 'sentence', label: 'Sentence case', fn: (parts) => {
+  { id: 'camel', label: t('case-converter.camelcase', 'camelCase'), fn: (parts) => parts.map((word, index) => (index ? titleCase(word) : word.toLowerCase())).join('') },
+  { id: 'pascal', label: t('case-converter.pascalcase', 'PascalCase'), fn: (parts) => parts.map((word) => titleCase(word)).join('') },
+  { id: 'snake', label: t('case-converter.snakeCase', 'snake_case'), fn: (parts) => parts.map((word) => word.toLowerCase()).join('_') },
+  { id: 'constant', label: t('case-converter.constantCase', 'CONSTANT_CASE'), fn: (parts) => parts.map((word) => word.toUpperCase()).join('_') },
+  { id: 'kebab', label: t('case-converter.kebabCase', 'kebab-case'), fn: (parts) => parts.map((word) => word.toLowerCase()).join('-') },
+  { id: 'train', label: t('case-converter.trainCase', 'Train-Case'), fn: (parts) => parts.map((word) => titleCase(word)).join('-') },
+  { id: 'dot', label: t('case-converter.dotCase', 'dot.case'), fn: (parts) => parts.map((word) => word.toLowerCase()).join('.') },
+  { id: 'path', label: t('case-converter.pathCase', 'path/case'), fn: (parts) => parts.map((word) => word.toLowerCase()).join('/') },
+  { id: 'sentence', label: t('case-converter.sentenceCase', 'Sentence case'), fn: (parts) => {
     const joined = parts.map((word) => word.toLowerCase()).join(' ');
     return joined.charAt(0).toUpperCase() + joined.slice(1);
   } },
-  { id: 'title', label: 'Title Case', fn: (parts) => parts.map((word) => titleCase(word)).join(' ') },
-  { id: 'lower', label: 'lower case', fn: (parts) => parts.map((word) => word.toLowerCase()).join(' ') },
-  { id: 'upper', label: 'UPPER CASE', fn: (parts) => parts.map((word) => word.toUpperCase()).join(' ') },
+  { id: 'title', label: t('case-converter.titleCase', 'Title Case'), fn: (parts) => parts.map((word) => titleCase(word)).join(' ') },
+  { id: 'lower', label: t('case-converter.lowerCase', 'lower case'), fn: (parts) => parts.map((word) => word.toLowerCase()).join(' ') },
+  { id: 'upper', label: t('case-converter.upperCase', 'UPPER CASE'), fn: (parts) => parts.map((word) => word.toUpperCase()).join(' ') },
 ];
 
 class CaseConverter extends JGApp {
@@ -30,8 +31,8 @@ class CaseConverter extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="Input" hint="Any separator works - spaces, dashes, underscores or camel humps">
-        <jg-textarea id="input" rows="3" sans placeholder="hello world example"></jg-textarea>
+      <jg-field label="${t('case-converter.input', 'Input')}" hint="${t('case-converter.anySeparatorWorksSpacesDashes', 'Any separator works - spaces, dashes, underscores or camel humps')}">
+        <jg-textarea id="input" rows="3" sans placeholder="${t('case-converter.helloWorldExample', 'hello world example')}"></jg-textarea>
       </jg-field>
       <div class="cases">
         ${CASES.map(

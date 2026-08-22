@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { randomInt } from '../core/util.js';
 
 const sheet = css`
@@ -69,14 +70,14 @@ class Snake extends JGApp {
 
     this.paint(html`<div class="app">
       <div class="head">
-        <span class="title">Snake</span>
+        <span class="title">${t('game-snake.snake', 'Snake')}</span>
         <span class="grow"></span>
-        <span class="stat">Score <span id="score">0</span></span>
-        <span class="stat">Best <span id="best">0</span></span>
+        <span class="stat">${t('game-snake.score', 'Score')} <span id="score">0</span></span>
+        <span class="stat">${t('game-snake.best', 'Best')} <span id="best">0</span></span>
         <jg-select id="speed" value="normal" size="sm" style="width:120px">
-          <option value="calm">Calm</option><option value="normal">Normal</option><option value="fast">Fast</option>
+          <option value="calm">${t('game-snake.calm', 'Calm')}</option><option value="normal">${t('game-snake.normal', 'Normal')}</option><option value="fast">${t('game-snake.fast', 'Fast')}</option>
         </jg-select>
-        <jg-button size="sm" variant="outline" id="new">Restart</jg-button>
+        <jg-button size="sm" variant="outline" id="new">${t('game-snake.restart', 'Restart')}</jg-button>
       </div>
 
       <div class="wrap">
@@ -84,7 +85,7 @@ class Snake extends JGApp {
         <div class="overlay" id="overlay"></div>
       </div>
 
-      <div class="center hint">Arrow keys or WASD to steer, space to pause. Swipe on touch screens.</div>
+      <div class="center hint">${t('game-snake.arrowKeysOrWasdTo', 'Arrow keys or WASD to steer, space to pause. Swipe on touch screens.')}</div>
     </div>`);
 
     this.on(this.$('#new'), 'click', () => this.#start());

@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { createCircuit } from '../lib/circuit.js';
 import { settings } from '../core/settings.js';
 import { copyText, toast } from '../core/util.js';
@@ -228,40 +229,40 @@ const DIVISIONS = 10;
 const POINTS = 900;
 
 const SPEEDS = [
-  { label: '1/200 speed', factor: 0.005 },
-  { label: '1/50 speed', factor: 0.02 },
-  { label: '1/10 speed', factor: 0.1 },
-  { label: '1/4 speed', factor: 0.25 },
-  { label: 'Half speed', factor: 0.5 },
-  { label: 'Real time', factor: 1 },
+  { label: t('circuit-lab.1200Speed', '1/200 speed'), factor: 0.005 },
+  { label: t('circuit-lab.150Speed', '1/50 speed'), factor: 0.02 },
+  { label: t('circuit-lab.110Speed', '1/10 speed'), factor: 0.1 },
+  { label: t('circuit-lab.14Speed', '1/4 speed'), factor: 0.25 },
+  { label: t('circuit-lab.halfSpeed', 'Half speed'), factor: 0.5 },
+  { label: t('circuit-lab.realTime', 'Real time'), factor: 1 },
 ];
 
 const TIMEBASE = [
-  { label: '20 µs/div', seconds: 0.00002 },
-  { label: '100 µs/div', seconds: 0.0001 },
-  { label: '500 µs/div', seconds: 0.0005 },
-  { label: '2 ms/div', seconds: 0.002 },
-  { label: '5 ms/div', seconds: 0.005 },
-  { label: '20 ms/div', seconds: 0.02 },
-  { label: '50 ms/div', seconds: 0.05 },
+  { label: t('circuit-lab.20SDiv', '20 µs/div'), seconds: 0.00002 },
+  { label: t('circuit-lab.100SDiv', '100 µs/div'), seconds: 0.0001 },
+  { label: t('circuit-lab.500SDiv', '500 µs/div'), seconds: 0.0005 },
+  { label: t('circuit-lab.2MsDiv', '2 ms/div'), seconds: 0.002 },
+  { label: t('circuit-lab.5MsDiv', '5 ms/div'), seconds: 0.005 },
+  { label: t('circuit-lab.20MsDiv', '20 ms/div'), seconds: 0.02 },
+  { label: t('circuit-lab.50MsDiv', '50 ms/div'), seconds: 0.05 },
 ];
 
 const KINDS = {
-  wire: { label: 'Wire', icon: 'link' },
-  resistor: { label: 'Resistor', icon: 'activity', unit: 'Ω', value: 1000 },
-  capacitor: { label: 'Capacitor', icon: 'binary', unit: 'F', value: 1e-6 },
-  inductor: { label: 'Inductor', icon: 'repeat', unit: 'H', value: 0.01 },
-  vsource: { label: 'Battery', icon: 'battery', unit: 'V', value: 5 },
-  ac: { label: 'AC source', icon: 'motion', unit: 'V', value: 5 },
-  diode: { label: 'Diode', icon: 'transform', unit: '', value: 0 },
-  led: { label: 'LED', icon: 'sparkles', unit: '', value: 0 },
-  lamp: { label: 'Lamp', icon: 'sun', unit: 'Ω', value: 220 },
-  switch: { label: 'Switch', icon: 'toggle', unit: '', value: 0 },
-  npn: { label: 'NPN', icon: 'transistor', unit: '', value: 100, terminals: 3 },
-  pnp: { label: 'PNP', icon: 'transistor', unit: '', value: 100, terminals: 3 },
-  nmos: { label: 'N-MOSFET', icon: 'transistor', unit: '', value: 1.8, terminals: 3 },
-  pmos: { label: 'P-MOSFET', icon: 'transistor', unit: '', value: 1.8, terminals: 3 },
-  ground: { label: 'Ground', icon: 'landmark', unit: '', value: 0 },
+  wire: { label: t('circuit-lab.wire', 'Wire'), icon: 'link' },
+  resistor: { label: t('circuit-lab.resistor', 'Resistor'), icon: 'activity', unit: 'Ω', value: 1000 },
+  capacitor: { label: t('circuit-lab.capacitor', 'Capacitor'), icon: 'binary', unit: 'F', value: 1e-6 },
+  inductor: { label: t('circuit-lab.inductor', 'Inductor'), icon: 'repeat', unit: 'H', value: 0.01 },
+  vsource: { label: t('circuit-lab.battery', 'Battery'), icon: 'battery', unit: 'V', value: 5 },
+  ac: { label: t('circuit-lab.acSource', 'AC source'), icon: 'motion', unit: 'V', value: 5 },
+  diode: { label: t('circuit-lab.diode', 'Diode'), icon: 'transform', unit: '', value: 0 },
+  led: { label: t('circuit-lab.led', 'LED'), icon: 'sparkles', unit: '', value: 0 },
+  lamp: { label: t('circuit-lab.lamp', 'Lamp'), icon: 'sun', unit: 'Ω', value: 220 },
+  switch: { label: t('circuit-lab.switch', 'Switch'), icon: 'toggle', unit: '', value: 0 },
+  npn: { label: t('circuit-lab.npn', 'NPN'), icon: 'transistor', unit: '', value: 100, terminals: 3 },
+  pnp: { label: t('circuit-lab.pnp', 'PNP'), icon: 'transistor', unit: '', value: 100, terminals: 3 },
+  nmos: { label: t('circuit-lab.nMosfet', 'N-MOSFET'), icon: 'transistor', unit: '', value: 1.8, terminals: 3 },
+  pmos: { label: t('circuit-lab.pMosfet', 'P-MOSFET'), icon: 'transistor', unit: '', value: 1.8, terminals: 3 },
+  ground: { label: t('circuit-lab.ground', 'Ground'), icon: 'landmark', unit: '', value: 0 },
 };
 
 const prefix = (value, unit) => {
@@ -404,8 +405,8 @@ const SAMPLES = {
 class CircuitLab extends JGApp {
   static appId = 'circuit-lab';
   static settings = [
-    { key: 'step', label: 'Time step (µs)', type: 'number', default: 20, min: 1, max: 500 },
-    { key: 'labels', label: 'Show node voltages', type: 'switch', default: true },
+    { key: 'step', label: t('circuit-lab.timeStepS', 'Time step (µs)'), type: 'number', default: 20, min: 1, max: 500 },
+    { key: 'labels', label: t('circuit-lab.showNodeVoltages', 'Show node voltages'), type: 'switch', default: true },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -486,7 +487,7 @@ class CircuitLab extends JGApp {
     if (!target) return;
     const rows = this.#designs.list();
     if (!rows.length) {
-      target.innerHTML = html`<span class="hint">Nothing saved yet. Name a circuit above and save it.</span>`;
+      target.innerHTML = html`<span class="hint">${t('circuit-lab.nothingSavedYetNameA', 'Nothing saved yet. Name a circuit above and save it.')}</span>`;
       return;
     }
     target.innerHTML = rows
@@ -576,8 +577,8 @@ class CircuitLab extends JGApp {
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
       <div class="stack tight">
-        <div class="label">Circuit Lab</div>
-        <div class="hint">Build resistors, capacitors and diodes, then watch the scope.</div>
+        <div class="label">${t('circuit-lab.circuitLab', 'Circuit Lab')}</div>
+        <div class="hint">${t('circuit-lab.buildResistorsCapacitorsAndDiodes', 'Build resistors, capacitors and diodes, then watch the scope.')}</div>
       </div>
     </div>`);
   }
@@ -591,20 +592,20 @@ class CircuitLab extends JGApp {
         <div class="palette" id="palette"></div>
         <div class="board">
           <canvas id="view"></canvas>
-          <div class="hint-bar"><b id="tool-name">Select</b><span id="tool-hint"></span></div>
-          <div class="warn" id="warn" hidden>The solver could not settle. Check for shorted sources.</div>
+          <div class="hint-bar"><b id="tool-name">${t('circuit-lab.select', 'Select')}</b><span id="tool-hint"></span></div>
+          <div class="warn" id="warn" hidden>${t('circuit-lab.theSolverCouldNotSettle', 'The solver could not settle. Check for shorted sources.')}</div>
         </div>
         <aside class="side">
           <div class="pane">
-            <div class="label">Circuits</div>
+            <div class="label">${t('circuit-lab.circuits', 'Circuits')}</div>
             <div class="samples">
               ${Object.entries(SAMPLES).map(([key, sample]) => html`<button data-sample="${key}">${sample.name}</button>`)}
             </div>
             <div class="sep"></div>
-            <div class="label">Saved</div>
+            <div class="label">${t('circuit-lab.saved', 'Saved')}</div>
             <div class="save-row">
-              <jg-input id="save-name" size="sm" placeholder="Name this circuit"></jg-input>
-              <jg-button size="sm" variant="outline" id="save">Save</jg-button>
+              <jg-input id="save-name" size="sm" placeholder="${t('circuit-lab.nameThisCircuit', 'Name this circuit')}"></jg-input>
+              <jg-button size="sm" variant="outline" id="save">${t('circuit-lab.save', 'Save')}</jg-button>
             </div>
             <div class="saved" id="saved"></div>
             <div class="sep"></div>
@@ -616,8 +617,8 @@ class CircuitLab extends JGApp {
       <div class="footer">
         <div class="trace">
           <div class="trace-head">
-            <span class="label">Scope</span>
-            <span class="hint mono tiny" id="scope-label">no probe</span>
+            <span class="label">${t('circuit-lab.scope', 'Scope')}</span>
+            <span class="hint mono tiny" id="scope-label">${t('circuit-lab.noProbe', 'no probe')}</span>
             <span class="grow"></span>
             <dl class="measures-row" id="measures"></dl>
           </div>
@@ -625,20 +626,20 @@ class CircuitLab extends JGApp {
         </div>
         <div class="stack tight">
           <div class="scope-controls">
-            <span>Signal</span>
+            <span>${t('circuit-lab.signal', 'Signal')}</span>
             <jg-select id="signal" size="sm" value="voltage">
-              <option value="voltage">Node voltage</option>
-              <option value="current">Part current</option>
+              <option value="voltage">${t('circuit-lab.nodeVoltage', 'Node voltage')}</option>
+              <option value="current">${t('circuit-lab.partCurrent', 'Part current')}</option>
             </jg-select>
-            <span>Speed</span>
+            <span>${t('circuit-lab.speed', 'Speed')}</span>
             <jg-select id="speed" size="sm" value="${this.#speed}">
               ${SPEEDS.map((step, index) => html`<option value="${index}">${step.label}</option>`)}
             </jg-select>
-            <span>Time base</span>
+            <span>${t('circuit-lab.timeBase', 'Time base')}</span>
             <jg-select id="timebase" size="sm" value="${this.#timebase}">
               ${TIMEBASE.map((step, index) => html`<option value="${index}">${step.label}</option>`)}
             </jg-select>
-            <span>Volts/div</span>
+            <span>${t('circuit-lab.voltsDiv', 'Volts/div')}</span>
             <jg-slider id="range" min="0" max="40" step="1" value="${this.#range}"></jg-slider>
           </div>
           <div class="scope-foot">
@@ -646,8 +647,8 @@ class CircuitLab extends JGApp {
               <jg-switch id="trigger" checked></jg-switch>Trigger
             </label>
             <div class="row tight">
-              <jg-button size="sm" variant="ghost" id="hold">Hold</jg-button>
-              <jg-button size="sm" variant="ghost" id="clear">Clear</jg-button>
+              <jg-button size="sm" variant="ghost" id="hold">${t('circuit-lab.hold', 'Hold')}</jg-button>
+              <jg-button size="sm" variant="ghost" id="clear">${t('circuit-lab.clear', 'Clear')}</jg-button>
             </div>
           </div>
         </div>
@@ -662,38 +663,38 @@ class CircuitLab extends JGApp {
         tone: this.#running ? 'pause' : 'run',
         action: () => this.#toggleRun(),
       },
-      { id: 'reset', label: 'Reset', icon: 'repeat', tone: 'stop', action: () => this.#reset() },
+      { id: 'reset', label: t('circuit-lab.reset', 'Reset'), icon: 'repeat', tone: 'stop', action: () => this.#reset() },
       { separator: true },
-      { id: 'new', label: 'New', icon: 'file', iconOnly: true, title: 'Start an empty board', action: () => this.#blank() },
-      { id: 'undo', label: 'Undo', icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#undo() },
-      { id: 'redo', label: 'Redo', icon: 'redo', iconOnly: true, title: 'Redo', action: () => this.#redo() },
-      { id: 'zoom-out', label: 'Zoom out', icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
-      { id: 'zoom-fit', label: 'Fit', icon: 'maximize', iconOnly: true, title: 'Fit the circuit to the view', action: () => { this.#touched = false; this.#zoomFit(); } },
-      { id: 'zoom-in', label: 'Zoom in', icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
-      { id: 'copy-part', label: 'Copy', icon: 'copy', iconOnly: true, title: 'Copy the selected part', action: () => this.#copy() },
-      { id: 'paste-part', label: 'Paste', icon: 'clipboard', iconOnly: true, title: 'Paste a copy', action: () => this.#paste() },
-      { id: 'rotate', label: 'Rotate', icon: 'rotate', iconOnly: true, title: 'Rotate 90 degrees (R)', action: () => this.#turn(90) },
-      { id: 'flip', label: 'Flip', icon: 'flip', iconOnly: true, title: 'Mirror the part (F)', action: () => this.#mirror() },
-      { id: 'delete', label: 'Delete', icon: 'eraser', iconOnly: true, title: 'Delete the selected part', action: () => this.#remove() },
+      { id: 'new', label: t('circuit-lab.new', 'New'), icon: 'file', iconOnly: true, title: 'Start an empty board', action: () => this.#blank() },
+      { id: 'undo', label: t('circuit-lab.undo', 'Undo'), icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#undo() },
+      { id: 'redo', label: t('circuit-lab.redo', 'Redo'), icon: 'redo', iconOnly: true, title: 'Redo', action: () => this.#redo() },
+      { id: 'zoom-out', label: t('circuit-lab.zoomOut', 'Zoom out'), icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
+      { id: 'zoom-fit', label: t('circuit-lab.fit', 'Fit'), icon: 'maximize', iconOnly: true, title: 'Fit the circuit to the view', action: () => { this.#touched = false; this.#zoomFit(); } },
+      { id: 'zoom-in', label: t('circuit-lab.zoomIn', 'Zoom in'), icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
+      { id: 'copy-part', label: t('circuit-lab.copy', 'Copy'), icon: 'copy', iconOnly: true, title: 'Copy the selected part', action: () => this.#copy() },
+      { id: 'paste-part', label: t('circuit-lab.paste', 'Paste'), icon: 'clipboard', iconOnly: true, title: 'Paste a copy', action: () => this.#paste() },
+      { id: 'rotate', label: t('circuit-lab.rotate', 'Rotate'), icon: 'rotate', iconOnly: true, title: 'Rotate 90 degrees (R)', action: () => this.#turn(90) },
+      { id: 'flip', label: t('circuit-lab.flip', 'Flip'), icon: 'flip', iconOnly: true, title: 'Mirror the part (F)', action: () => this.#mirror() },
+      { id: 'delete', label: t('circuit-lab.delete', 'Delete'), icon: 'eraser', iconOnly: true, title: 'Delete the selected part', action: () => this.#remove() },
       { spacer: true },
-      { id: 'import', label: 'Open file', icon: 'upload', iconOnly: true, title: 'Open a circuit from a file', action: () => this.#importFile() },
-      { id: 'export', label: 'Save file', icon: 'download', iconOnly: true, title: 'Save this circuit to a file', action: () => this.#exportFile() },
-      { id: 'copy', label: 'Copy netlist', icon: 'copy', action: () => copyText(this.#netlist()) },
+      { id: 'import', label: t('circuit-lab.openFile', 'Open file'), icon: 'upload', iconOnly: true, title: 'Open a circuit from a file', action: () => this.#importFile() },
+      { id: 'export', label: t('circuit-lab.saveFile', 'Save file'), icon: 'download', iconOnly: true, title: 'Save this circuit to a file', action: () => this.#exportFile() },
+      { id: 'copy', label: t('circuit-lab.copyNetlist', 'Copy netlist'), icon: 'copy', action: () => copyText(this.#netlist()) },
     ];
 
     this.$('#palette').dataset.collapsed = String(this.config.get('palette', false));
     this.$('#palette').innerHTML = html`
-      <button class="collapse" id="collapse" title="Widen or narrow the parts list">${icon('swap', 15)}</button>
-      <div class="group">Edit</div>
+      <button class="collapse" id="collapse" title="${t('circuit-lab.widenOrNarrowTheParts', 'Widen or narrow the parts list')}">${icon('swap', 15)}</button>
+      <div class="group">${t('circuit-lab.edit', 'Edit')}</div>
       ${[
-        { id: 'select', label: 'Select', icon: 'launcher' },
-        { id: 'probe', label: 'Probe', icon: 'search' },
+        { id: 'select', label: t('circuit-lab.select', 'Select'), icon: 'launcher' },
+        { id: 'probe', label: t('circuit-lab.probe', 'Probe'), icon: 'search' },
       ].map(
         (tool) => html`<button class="tool" data-tool="${tool.id}" aria-pressed="${String(this.#tool === tool.id)}">
           ${icon(tool.icon, 15)}<span>${tool.label}</span>
         </button>`,
       )}
-      <div class="group">Parts</div>
+      <div class="group">${t('circuit-lab.parts', 'Parts')}</div>
       ${Object.entries(KINDS).map(
         ([kind, meta]) => html`<button class="tool" data-tool="${kind}" aria-pressed="${String(this.#tool === kind)}">
           ${icon(meta.icon, 15)}<span>${meta.label}</span>
@@ -1980,12 +1981,12 @@ class CircuitLab extends JGApp {
       : 0;
 
     target.innerHTML = html`
-      <div><dt>Vpp</dt><dd>${prefix(max - min, unit)}</dd></div>
-      <div><dt>min</dt><dd>${prefix(min, unit)}</dd></div>
-      <div><dt>max</dt><dd>${prefix(max, unit)}</dd></div>
-      <div><dt>avg</dt><dd>${prefix(mean, unit)}</dd></div>
-      <div><dt>rms</dt><dd>${prefix(rms, unit)}</dd></div>
-      ${period ? html`<div><dt>freq</dt><dd>${prefix(1 / period, 'Hz')}</dd></div>` : ''}
+      <div><dt>${t('circuit-lab.vpp', 'Vpp')}</dt><dd>${prefix(max - min, unit)}</dd></div>
+      <div><dt>${t('circuit-lab.min', 'min')}</dt><dd>${prefix(min, unit)}</dd></div>
+      <div><dt>${t('circuit-lab.max', 'max')}</dt><dd>${prefix(max, unit)}</dd></div>
+      <div><dt>${t('circuit-lab.avg', 'avg')}</dt><dd>${prefix(mean, unit)}</dd></div>
+      <div><dt>${t('circuit-lab.rms', 'rms')}</dt><dd>${prefix(rms, unit)}</dd></div>
+      ${period ? html`<div><dt>${t('circuit-lab.freq', 'freq')}</dt><dd>${prefix(1 / period, 'Hz')}</dd></div>` : ''}
     `;
   }
 
@@ -1997,9 +1998,9 @@ class CircuitLab extends JGApp {
       const current = this.#circuit.current(part.id);
       const across = this.#circuit.voltage(this.#node(part.a) ?? 0) - this.#circuit.voltage(this.#node(part.b) ?? 0);
       target.innerHTML = html`
-        <dt>Voltage</dt><dd>${prefix(across, 'V')}</dd>
-        <dt>Current</dt><dd>${prefix(current, 'A')}</dd>
-        <dt>Power</dt><dd>${prefix(Math.abs(across * current), 'W')}</dd>
+        <dt>${t('circuit-lab.voltage', 'Voltage')}</dt><dd>${prefix(across, 'V')}</dd>
+        <dt>${t('circuit-lab.current', 'Current')}</dt><dd>${prefix(current, 'A')}</dd>
+        <dt>${t('circuit-lab.power', 'Power')}</dt><dd>${prefix(Math.abs(across * current), 'W')}</dd>
       `;
       return;
     }
@@ -2017,20 +2018,20 @@ class CircuitLab extends JGApp {
     this.$('#inspector').innerHTML = html`
       <div class="label">${part ? meta?.label ?? part.kind : 'Probe'}</div>
       ${part && meta?.unit
-        ? html`<jg-field label="Value">
+        ? html`<jg-field label="${t('circuit-lab.value', 'Value')}">
             <jg-input id="value" size="sm" value="${prefix(part.value, meta.unit)}"></jg-input>
           </jg-field>`
         : ''}
       ${part && part.kind === 'ac'
-        ? html`<jg-field label="Frequency">
+        ? html`<jg-field label="${t('circuit-lab.frequency', 'Frequency')}">
             <jg-input id="frequency" size="sm" value="${part.frequency}"></jg-input>
           </jg-field>`
         : ''}
       ${part && part.kind === 'switch'
-        ? html`<div class="row"><jg-switch id="closed" ${part.closed ? 'checked' : ''}></jg-switch><span class="hint">Closed</span></div>`
+        ? html`<div class="row"><jg-switch id="closed" ${part.closed ? 'checked' : ''}></jg-switch><span class="hint">${t('circuit-lab.closed', 'Closed')}</span></div>`
         : ''}
       <dl class="readout" id="readout"></dl>
-      ${part ? html`<jg-button size="sm" variant="outline" id="remove">Remove part</jg-button>` : html`<div class="hint">Click a wire junction to probe it, or a part to edit it.</div>`}
+      ${part ? html`<jg-button size="sm" variant="outline" id="remove">${t('circuit-lab.removePart', 'Remove part')}</jg-button>` : html`<div class="hint">${t('circuit-lab.clickAWireJunctionTo', 'Click a wire junction to probe it, or a part to edit it.')}</div>`}
     `;
 
     const value = this.$('#value');

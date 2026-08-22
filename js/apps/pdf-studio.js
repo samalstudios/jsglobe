@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { settings } from '../core/settings.js';
 import { copyText, download, formatBytes } from '../core/util.js';
 
@@ -79,19 +80,19 @@ const sheet = css`
 `;
 
 const MODES = [
-  { value: 'pages', label: 'Pages' },
-  { value: 'images', label: 'To images' },
-  { value: 'text', label: 'To text' },
-  { value: 'build', label: 'From images' },
+  { value: 'pages', label: t('pdf-studio.pages', 'Pages') },
+  { value: 'images', label: t('pdf-studio.toImages', 'To images') },
+  { value: 'text', label: t('pdf-studio.toText', 'To text') },
+  { value: 'build', label: t('pdf-studio.fromImages', 'From images') },
 ];
 
 class PdfStudio extends JGApp {
   static appId = 'pdf-studio';
   static settings = [
-    { key: 'pdfLib', label: 'pdf-lib module', type: 'text', default: 'https://esm.run/pdf-lib@1.17.1' },
-    { key: 'pdfJs', label: 'pdf.js module', type: 'text', default: 'https://esm.run/pdfjs-dist@4.0.379/build/pdf.min.mjs' },
-    { key: 'worker', label: 'pdf.js worker', type: 'text', default: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.worker.min.mjs' },
-    { key: 'scale', label: 'Image export scale', type: 'number', default: 2, min: 1, max: 4 },
+    { key: 'pdfLib', label: t('pdf-studio.pdfLibModule', 'pdf-lib module'), type: 'text', default: 'https://esm.run/pdf-lib@1.17.1' },
+    { key: 'pdfJs', label: t('pdf-studio.pdfJsModule', 'pdf.js module'), type: 'text', default: 'https://esm.run/pdfjs-dist@4.0.379/build/pdf.min.mjs' },
+    { key: 'worker', label: t('pdf-studio.pdfJsWorker', 'pdf.js worker'), type: 'text', default: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.worker.min.mjs' },
+    { key: 'scale', label: t('pdf-studio.imageExportScale', 'Image export scale'), type: 'number', default: 2, min: 1, max: 4 },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -105,8 +106,8 @@ class PdfStudio extends JGApp {
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
       <div class="stack tight">
-        <div class="label">PDF Studio</div>
-        <div class="hint">Merge, split, rotate, and convert to or from images.</div>
+        <div class="label">${t('pdf-studio.pdfStudio', 'PDF Studio')}</div>
+        <div class="hint">${t('pdf-studio.mergeSplitRotateAndConvert', 'Merge, split, rotate, and convert to or from images.')}</div>
       </div>
     </div>`);
   }
@@ -120,19 +121,19 @@ class PdfStudio extends JGApp {
         <div class="stage">
           <div id="empty">
             <div class="drop" id="drop">
-              <div class="title">Drop PDFs or images here</div>
+              <div class="title">${t('pdf-studio.dropPdfsOrImagesHere', 'Drop PDFs or images here')}</div>
               <p class="hint" style="max-width:44ch">
                 Everything is processed by this tab. Nothing is uploaded, and the files never leave your machine.
               </p>
-              <jg-button size="sm" id="pick">Choose files</jg-button>
+              <jg-button size="sm" id="pick">${t('pdf-studio.chooseFiles', 'Choose files')}</jg-button>
             </div>
           </div>
           <div class="pages" id="pages" hidden></div>
           <jg-textarea id="text" class="text" mono readonly hidden></jg-textarea>
         </div>
         <aside class="side">
-          <div class="label">Document</div>
-          <div class="status" id="status">No file open</div>
+          <div class="label">${t('pdf-studio.document', 'Document')}</div>
+          <div class="status" id="status">${t('pdf-studio.noFileOpen', 'No file open')}</div>
           <div class="sep"></div>
           <div id="controls"></div>
           <span class="grow"></span>
@@ -150,9 +151,9 @@ class PdfStudio extends JGApp {
         action: () => this.#setMode(mode.value),
       })),
       { separator: true },
-      { id: 'open', label: 'Open', icon: 'folder', action: () => this.#pick() },
+      { id: 'open', label: t('pdf-studio.open', 'Open'), icon: 'folder', action: () => this.#pick() },
       { spacer: true },
-      { id: 'clear', label: 'Clear', icon: 'eraser', action: () => this.#clear() },
+      { id: 'clear', label: t('pdf-studio.clear', 'Clear'), icon: 'eraser', action: () => this.#clear() },
     ];
     this.$('#bar').value = this.#mode;
 
@@ -259,8 +260,8 @@ class PdfStudio extends JGApp {
         <div class="meta">
           <span>${index + 1}</span>
           <span class="tools">
-            <button data-rotate="${index}" title="Rotate">↻</button>
-            <button data-drop="${index}" title="Remove">✕</button>
+            <button data-rotate="${index}" title="${t('pdf-studio.rotate', 'Rotate')}">↻</button>
+            <button data-drop="${index}" title="${t('pdf-studio.remove', 'Remove')}">✕</button>
           </span>
         </div>
       </div>`,
@@ -330,15 +331,15 @@ class PdfStudio extends JGApp {
     const picked = this.#picked().length;
 
     if (!this.#pages.length) {
-      host.innerHTML = html`<div class="hint">Open a PDF to merge, split, rotate or convert it.</div>`;
+      host.innerHTML = html`<div class="hint">${t('pdf-studio.openAPdfToMerge', 'Open a PDF to merge, split, rotate or convert it.')}</div>`;
       return;
     }
 
     if (this.#mode === 'text') {
       host.innerHTML = html`
-        <div class="hint">Text is pulled from the PDF's own text layer. Scanned pages hold pictures, not letters, so they come out empty.</div>
-        <jg-button size="sm" id="copy-text">Copy text</jg-button>
-        <jg-button size="sm" variant="outline" id="save-text">Save .txt</jg-button>
+        <div class="hint">${t('pdf-studio.textIsPulledFromThe', 'Text is pulled from the PDF\'s own text layer. Scanned pages hold pictures, not letters, so they come out empty.')}</div>
+        <jg-button size="sm" id="copy-text">${t('pdf-studio.copyText', 'Copy text')}</jg-button>
+        <jg-button size="sm" variant="outline" id="save-text">${t('pdf-studio.saveTxt', 'Save .txt')}</jg-button>
       `;
       this.on(this.$('#copy-text'), 'click', () => copyText(this.$('#text').value));
       this.on(this.$('#save-text'), 'click', () => download('extracted.txt', this.$('#text').value));
@@ -348,12 +349,12 @@ class PdfStudio extends JGApp {
     host.innerHTML = html`
       <div class="hint">${picked} of ${this.#pages.length} pages selected. Click a page to include or exclude it.</div>
       <div class="row tight">
-        <jg-button size="sm" variant="ghost" id="all">Select all</jg-button>
-        <jg-button size="sm" variant="ghost" id="none">Select none</jg-button>
+        <jg-button size="sm" variant="ghost" id="all">${t('pdf-studio.selectAll', 'Select all')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="none">${t('pdf-studio.selectNone', 'Select none')}</jg-button>
       </div>
       ${this.#mode === 'images'
         ? html`<jg-button size="sm" id="export-images">Save ${picked} PNG${picked === 1 ? '' : 's'}</jg-button>`
-        : html`<jg-button size="sm" id="export-pdf">Save PDF</jg-button>`}
+        : html`<jg-button size="sm" id="export-pdf">${t('pdf-studio.savePdf', 'Save PDF')}</jg-button>`}
       <jg-progress id="progress" size="sm" hidden></jg-progress>
     `;
 

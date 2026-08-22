@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { download } from '../core/util.js';
 
 const sheet = css`
@@ -69,8 +70,8 @@ const sheet = css`
 class Mirror extends JGApp {
   static appId = 'mirror';
   static settings = [
-    { key: 'glow', label: 'Ring light level', type: 'number', default: 70, min: 0, max: 100 },
-    { key: 'warmth', label: 'Warmth', type: 'number', default: 20, min: 0, max: 100 },
+    { key: 'glow', label: t('mirror.ringLightLevel', 'Ring light level'), type: 'number', default: 70, min: 0, max: 100 },
+    { key: 'warmth', label: t('mirror.warmth', 'Warmth'), type: 'number', default: 20, min: 0, max: 100 },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -88,13 +89,13 @@ class Mirror extends JGApp {
 
     this.paint(html`<div class="app">
       <div class="bar">
-        <jg-button id="start">Turn on camera</jg-button>
-        <jg-button id="stop" variant="outline" hidden>Turn off</jg-button>
-        <jg-button id="freeze" variant="outline" hidden>Freeze</jg-button>
-        <jg-button id="shot" variant="outline" hidden>Save photo</jg-button>
+        <jg-button id="start">${t('mirror.turnOnCamera', 'Turn on camera')}</jg-button>
+        <jg-button id="stop" variant="outline" hidden>${t('mirror.turnOff', 'Turn off')}</jg-button>
+        <jg-button id="freeze" variant="outline" hidden>${t('mirror.freeze', 'Freeze')}</jg-button>
+        <jg-button id="shot" variant="outline" hidden>${t('mirror.savePhoto', 'Save photo')}</jg-button>
         <span class="grow"></span>
         <jg-select id="device" style="width:200px" hidden></jg-select>
-        <jg-button size="icon" variant="outline" id="full" title="Full screen">⤢</jg-button>
+        <jg-button size="icon" variant="outline" id="full" title="${t('mirror.fullScreen', 'Full screen')}">⤢</jg-button>
       </div>
 
       <div class="stage" id="stage" data-guides="false">
@@ -109,7 +110,7 @@ class Mirror extends JGApp {
         </div>
         <div class="idle" id="idle">
           <div>
-            <div class="strong">Camera is off</div>
+            <div class="strong">${t('mirror.cameraIsOff', 'Camera is off')}</div>
             <div class="hint" style="color:#55555f">
               The picture stays on this device. Nothing is recorded or uploaded.
             </div>
@@ -118,34 +119,34 @@ class Mirror extends JGApp {
       </div>
 
       <div class="controls">
-        <jg-field label="Ring light">
+        <jg-field label="${t('mirror.ringLight', 'Ring light')}">
           <jg-slider id="glow" min="0" max="100" value="${config.get('glow', 70)}"></jg-slider>
         </jg-field>
-        <jg-field label="Warmth">
+        <jg-field label="${t('mirror.warmth', 'Warmth')}">
           <jg-slider id="warmth" min="0" max="100" value="${config.get('warmth', 20)}"></jg-slider>
         </jg-field>
-        <jg-field label="Border size" id="border-field">
+        <jg-field label="${t('mirror.borderSize', 'Border size')}" id="border-field">
           <jg-slider id="border" min="0" max="18" value="${config.get('border', 6)}"></jg-slider>
         </jg-field>
-        <jg-field label="Preview size" id="preview-field" hidden>
+        <jg-field label="${t('mirror.previewSize', 'Preview size')}" id="preview-field" hidden>
           <jg-slider id="preview" min="15" max="70" value="${config.get('preview', 34)}"></jg-slider>
         </jg-field>
-        <jg-field label="Zoom">
+        <jg-field label="${t('mirror.zoom', 'Zoom')}">
           <jg-slider id="zoom" min="100" max="250" value="100"></jg-slider>
         </jg-field>
-        <jg-field label="Brightness">
+        <jg-field label="${t('mirror.brightness', 'Brightness')}">
           <jg-slider id="brightness" min="50" max="180" value="100"></jg-slider>
         </jg-field>
-        <jg-field label="Contrast">
+        <jg-field label="${t('mirror.contrast', 'Contrast')}">
           <jg-slider id="contrast" min="50" max="180" value="100"></jg-slider>
         </jg-field>
       </div>
 
       <div class="bar">
-        <jg-switch id="flood" ${config.get('flood', false) ? 'checked' : ''}></jg-switch><span class="hint">Flood light</span>
-        <jg-switch id="flip" checked></jg-switch><span class="hint">Mirror the image</span>
-        <jg-switch id="guides"></jg-switch><span class="hint">Composition guides</span>
-        <jg-switch id="mono"></jg-switch><span class="hint">Black and white</span>
+        <jg-switch id="flood" ${config.get('flood', false) ? 'checked' : ''}></jg-switch><span class="hint">${t('mirror.floodLight', 'Flood light')}</span>
+        <jg-switch id="flip" checked></jg-switch><span class="hint">${t('mirror.mirrorTheImage', 'Mirror the image')}</span>
+        <jg-switch id="guides"></jg-switch><span class="hint">${t('mirror.compositionGuides', 'Composition guides')}</span>
+        <jg-switch id="mono"></jg-switch><span class="hint">${t('mirror.blackAndWhite', 'Black and white')}</span>
         <span class="grow"></span>
         <span class="error" id="error"></span>
       </div>

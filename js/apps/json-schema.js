@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText, download } from '../core/util.js';
 
 const sheet = css`
@@ -151,37 +152,37 @@ class JsonSchema extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-switch id="required" checked></jg-switch><span class="hint">Mark properties required</span>
-        <jg-switch id="formats" checked></jg-switch><span class="hint">Detect formats</span>
-        <jg-switch id="strict"></jg-switch><span class="hint">No extra properties</span>
-        <jg-switch id="examples"></jg-switch><span class="hint">Include examples</span>
+        <jg-switch id="required" checked></jg-switch><span class="hint">${t('json-schema.markPropertiesRequired', 'Mark properties required')}</span>
+        <jg-switch id="formats" checked></jg-switch><span class="hint">${t('json-schema.detectFormats', 'Detect formats')}</span>
+        <jg-switch id="strict"></jg-switch><span class="hint">${t('json-schema.noExtraProperties', 'No extra properties')}</span>
+        <jg-switch id="examples"></jg-switch><span class="hint">${t('json-schema.includeExamples', 'Include examples')}</span>
         <span class="grow"></span>
-        <jg-badge id="status" tone="muted">Waiting</jg-badge>
+        <jg-badge id="status" tone="muted">${t('json-schema.waiting', 'Waiting')}</jg-badge>
       </div>
 
       <div class="split">
         <div class="pane">
-          <span class="label" id="left-label">Sample JSON</span>
-          <jg-code id="input" grow gutter language="json" placeholder="Paste one or more JSON documents"></jg-code>
+          <span class="label" id="left-label">${t('json-schema.sampleJson', 'Sample JSON')}</span>
+          <jg-code id="input" grow gutter language="json" placeholder="${t('json-schema.pasteOneOrMoreJson', 'Paste one or more JSON documents')}"></jg-code>
         </div>
         <div class="pane">
-          <span class="label" id="right-label">JSON Schema</span>
+          <span class="label" id="right-label">${t('json-schema.jsonSchema', 'JSON Schema')}</span>
           <jg-code id="output" grow gutter language="json" readonly></jg-code>
         </div>
       </div>
 
-      <jg-card title="Result" id="result-card">
+      <jg-card title="${t('json-schema.result', 'Result')}" id="result-card">
         <div class="issues" id="issues"></div>
       </jg-card>
     </div>`);
 
     this.setActions([
-      { id: 'infer', label: 'Infer schema', icon: 'spec', select: true, action: () => this.#mode_set('infer') },
-      { id: 'validate', label: 'Validate against schema', icon: 'shieldCheck', select: true, action: () => this.#mode_set('validate') },
+      { id: 'infer', label: t('json-schema.inferSchema', 'Infer schema'), icon: 'spec', select: true, action: () => this.#mode_set('infer') },
+      { id: 'validate', label: t('json-schema.validateAgainstSchema', 'Validate against schema'), icon: 'shieldCheck', select: true, action: () => this.#mode_set('validate') },
       { separator: true },
       {
         id: 'sample',
-        label: 'Sample',
+        label: t('json-schema.sample', 'Sample'),
         icon: 'braces',
         action: () => {
           this.$('#input').value = SAMPLE;
@@ -189,10 +190,10 @@ class JsonSchema extends JGApp {
         },
       },
       { spacer: true },
-      { id: 'copy', label: 'Copy', icon: 'copy', action: () => copyText(this.$('#output').value) },
+      { id: 'copy', label: t('json-schema.copy', 'Copy'), icon: 'copy', action: () => copyText(this.$('#output').value) },
       {
         id: 'download',
-        label: 'Download',
+        label: t('json-schema.download', 'Download'),
         icon: 'external',
         action: () => download('schema.json', this.$('#output').value, 'application/json'),
       },
@@ -314,7 +315,7 @@ class JsonSchema extends JGApp {
           .slice(0, 40)
           .map((issue) => html`<div class="issue"><span class="path">${issue.path}</span><span>${issue.message}</span></div>`)
           .join('')
-      : html`<div class="hint">Every document matches the schema.</div>`;
+      : html`<div class="hint">${t('json-schema.everyDocumentMatchesTheSchema', 'Every document matches the schema.')}</div>`;
 
     this.store.write({ input: this.$('#input').value, schema: this.$('#output').value });
   }

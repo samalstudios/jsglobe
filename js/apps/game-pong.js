@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 
 const sheet = css`
   .head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -46,10 +47,10 @@ const SKILL = { easy: 0.055, normal: 0.085, hard: 0.13 };
 class Pong extends JGApp {
   static appId = 'game-pong';
   static settings = [
-    { key: 'skill', label: 'Opponent skill', type: 'select', default: 'normal', options: [
-      { value: 'easy', label: 'Easy' },
-      { value: 'normal', label: 'Normal' },
-      { value: 'hard', label: 'Hard' },
+    { key: 'skill', label: t('game-pong.opponentSkill', 'Opponent skill'), type: 'select', default: 'normal', options: [
+      { value: 'easy', label: t('game-pong.easy', 'Easy') },
+      { value: 'normal', label: t('game-pong.normal', 'Normal') },
+      { value: 'hard', label: t('game-pong.hard', 'Hard') },
     ] },
   ];
   static styles = [...JGApp.styles, sheet];
@@ -65,22 +66,22 @@ class Pong extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="head">
-        <span class="title">Pong</span>
+        <span class="title">${t('game-pong.pong', 'Pong')}</span>
         <span class="grow"></span>
-        <span class="stat">You <span id="you">0</span></span>
-        <span class="stat">CPU <span id="cpu">0</span></span>
+        <span class="stat">${t('game-pong.you', 'You')} <span id="you">0</span></span>
+        <span class="stat">${t('game-pong.cpu', 'CPU')} <span id="cpu">0</span></span>
         <jg-select id="skill" size="sm" value="${this.config.get('skill', 'normal')}" style="width:120px">
-          <option value="easy">Easy</option><option value="normal">Normal</option><option value="hard">Hard</option>
+          <option value="easy">${t('game-pong.easy', 'Easy')}</option><option value="normal">${t('game-pong.normal', 'Normal')}</option><option value="hard">${t('game-pong.hard', 'Hard')}</option>
         </jg-select>
-        <jg-button size="sm" variant="outline" id="new">Restart</jg-button>
+        <jg-button size="sm" variant="outline" id="new">${t('game-pong.restart', 'Restart')}</jg-button>
       </div>
       <div class="wrap">
         <canvas id="view" width="${WIDTH}" height="${HEIGHT}"></canvas>
         <div class="overlay" id="overlay">
           <div class="card">
             <h3 id="title">First to ${TARGET}</h3>
-            <div class="hint">Move with the mouse or the up and down arrows.</div>
-            <jg-button size="sm" id="start">Play</jg-button>
+            <div class="hint">${t('game-pong.moveWithTheMouseOr', 'Move with the mouse or the up and down arrows.')}</div>
+            <jg-button size="sm" id="start">${t('game-pong.play', 'Play')}</jg-button>
           </div>
         </div>
       </div>

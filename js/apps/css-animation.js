@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { copyText } from '../core/util.js';
 
 const sheet = css`
@@ -41,16 +42,16 @@ const sheet = css`
 `;
 
 const ANIMATIONS = {
-  fade: { label: 'Fade in', frames: { '0%': 'opacity: 0', '100%': 'opacity: 1' } },
-  'slide-up': { label: 'Slide up', frames: { '0%': 'opacity: 0; transform: translateY(28px)', '100%': 'opacity: 1; transform: translateY(0)' } },
-  pop: { label: 'Pop', frames: { '0%': 'transform: scale(0.7)', '60%': 'transform: scale(1.08)', '100%': 'transform: scale(1)' } },
-  spin: { label: 'Spin', frames: { '0%': 'transform: rotate(0deg)', '100%': 'transform: rotate(360deg)' } },
-  pulse: { label: 'Pulse', frames: { '0%, 100%': 'transform: scale(1)', '50%': 'transform: scale(1.14)' } },
-  shake: { label: 'Shake', frames: { '0%, 100%': 'transform: translateX(0)', '25%': 'transform: translateX(-10px)', '75%': 'transform: translateX(10px)' } },
-  bounce: { label: 'Bounce', frames: { '0%, 100%': 'transform: translateY(0)', '50%': 'transform: translateY(-30px)' } },
-  flip: { label: 'Flip', frames: { '0%': 'transform: rotateY(0deg)', '100%': 'transform: rotateY(360deg)' } },
-  swing: { label: 'Swing', frames: { '0%, 100%': 'transform: rotate(-8deg)', '50%': 'transform: rotate(8deg)' } },
-  blink: { label: 'Blink', frames: { '0%, 100%': 'opacity: 1', '50%': 'opacity: 0.15' } },
+  fade: { label: t('css-animation.fadeIn', 'Fade in'), frames: { '0%': 'opacity: 0', '100%': 'opacity: 1' } },
+  'slide-up': { label: t('css-animation.slideUp', 'Slide up'), frames: { '0%': 'opacity: 0; transform: translateY(28px)', '100%': 'opacity: 1; transform: translateY(0)' } },
+  pop: { label: t('css-animation.pop', 'Pop'), frames: { '0%': 'transform: scale(0.7)', '60%': 'transform: scale(1.08)', '100%': 'transform: scale(1)' } },
+  spin: { label: t('css-animation.spin', 'Spin'), frames: { '0%': 'transform: rotate(0deg)', '100%': 'transform: rotate(360deg)' } },
+  pulse: { label: t('css-animation.pulse', 'Pulse'), frames: { '0%, 100%': 'transform: scale(1)', '50%': 'transform: scale(1.14)' } },
+  shake: { label: t('css-animation.shake', 'Shake'), frames: { '0%, 100%': 'transform: translateX(0)', '25%': 'transform: translateX(-10px)', '75%': 'transform: translateX(10px)' } },
+  bounce: { label: t('css-animation.bounce', 'Bounce'), frames: { '0%, 100%': 'transform: translateY(0)', '50%': 'transform: translateY(-30px)' } },
+  flip: { label: t('css-animation.flip', 'Flip'), frames: { '0%': 'transform: rotateY(0deg)', '100%': 'transform: rotateY(360deg)' } },
+  swing: { label: t('css-animation.swing', 'Swing'), frames: { '0%, 100%': 'transform: rotate(-8deg)', '50%': 'transform: rotate(8deg)' } },
+  blink: { label: t('css-animation.blink', 'Blink'), frames: { '0%, 100%': 'opacity: 1', '50%': 'opacity: 0.15' } },
 };
 
 const EASINGS = {
@@ -83,50 +84,50 @@ class CssAnimation extends JGApp {
       </div>
 
       <div class="fields">
-        <jg-field label="Duration"><jg-slider id="duration" min="100" max="4000" step="50" value="700"></jg-slider></jg-field>
-        <jg-field label="Delay"><jg-slider id="delay" min="0" max="2000" step="50" value="0"></jg-slider></jg-field>
-        <jg-field label="Repeat">
+        <jg-field label="${t('css-animation.duration', 'Duration')}"><jg-slider id="duration" min="100" max="4000" step="50" value="700"></jg-slider></jg-field>
+        <jg-field label="${t('css-animation.delay', 'Delay')}"><jg-slider id="delay" min="0" max="2000" step="50" value="0"></jg-slider></jg-field>
+        <jg-field label="${t('css-animation.repeat', 'Repeat')}">
           <jg-select id="iteration" value="infinite">
-            <option value="1">Once</option><option value="2">Twice</option>
-            <option value="3">3 times</option><option value="infinite">Infinite</option>
+            <option value="1">${t('css-animation.once', 'Once')}</option><option value="2">${t('css-animation.twice', 'Twice')}</option>
+            <option value="3">${t('css-animation.3Times', '3 times')}</option><option value="infinite">${t('css-animation.infinite', 'Infinite')}</option>
           </jg-select>
         </jg-field>
-        <jg-field label="Direction">
+        <jg-field label="${t('css-animation.direction', 'Direction')}">
           <jg-select id="direction" value="normal">
-            <option value="normal">normal</option><option value="reverse">reverse</option>
-            <option value="alternate">alternate</option><option value="alternate-reverse">alternate-reverse</option>
+            <option value="normal">${t('css-animation.normal', 'normal')}</option><option value="reverse">${t('css-animation.reverse', 'reverse')}</option>
+            <option value="alternate">${t('css-animation.alternate', 'alternate')}</option><option value="alternate-reverse">${t('css-animation.alternateReverse', 'alternate-reverse')}</option>
           </jg-select>
         </jg-field>
-        <jg-field label="Fill mode">
+        <jg-field label="${t('css-animation.fillMode', 'Fill mode')}">
           <jg-select id="fill" value="both">
-            <option value="none">none</option><option value="forwards">forwards</option>
-            <option value="backwards">backwards</option><option value="both">both</option>
+            <option value="none">${t('css-animation.none', 'none')}</option><option value="forwards">${t('css-animation.forwards', 'forwards')}</option>
+            <option value="backwards">${t('css-animation.backwards', 'backwards')}</option><option value="both">${t('css-animation.both', 'both')}</option>
           </jg-select>
         </jg-field>
-        <jg-field label="Easing">
+        <jg-field label="${t('css-animation.easing', 'Easing')}">
           <jg-select id="easing" value="ease-out">
             ${Object.keys(EASINGS).map((key) => html`<option value="${key}">${key}</option>`)}
-            <option value="custom">custom</option>
+            <option value="custom">${t('css-animation.custom', 'custom')}</option>
           </jg-select>
         </jg-field>
       </div>
 
-      <jg-card title="Timing curve" sub="Drag the handles to shape the easing">
+      <jg-card title="${t('css-animation.timingCurve', 'Timing curve')}" sub="Drag the handles to shape the easing">
         <div class="bezier">
           <canvas class="curve" id="curve" width="360" height="360" style="width:180px;height:180px"></canvas>
           <div class="stack tight">
             <jg-output id="cubic"></jg-output>
-            <div class="hint">Values outside 0 to 1 on the vertical axis overshoot, which is what gives a spring feel.</div>
+            <div class="hint">${t('css-animation.valuesOutside0To1', 'Values outside 0 to 1 on the vertical axis overshoot, which is what gives a spring feel.')}</div>
             <div class="row">
-              <jg-button size="sm" variant="outline" id="replay">Replay</jg-button>
-              <jg-button size="sm" variant="ghost" id="copy-css">Copy CSS</jg-button>
-              <jg-button size="sm" variant="ghost" id="copy-tw">Copy Tailwind</jg-button>
+              <jg-button size="sm" variant="outline" id="replay">${t('css-animation.replay', 'Replay')}</jg-button>
+              <jg-button size="sm" variant="ghost" id="copy-css">${t('css-animation.copyCss', 'Copy CSS')}</jg-button>
+              <jg-button size="sm" variant="ghost" id="copy-tw">${t('css-animation.copyTailwind', 'Copy Tailwind')}</jg-button>
             </div>
           </div>
         </div>
       </jg-card>
 
-      <jg-field label="Generated CSS">
+      <jg-field label="${t('css-animation.generatedCss', 'Generated CSS')}">
         <jg-textarea id="out" rows="9" readonly></jg-textarea>
       </jg-field>
     </div>`);

@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { randomInt } from '../core/util.js';
 
 const sheet = css`
@@ -109,9 +110,9 @@ class Game2048 extends JGApp {
       <div class="head">
         <span class="title">2048</span>
         <span class="grow"></span>
-        <span class="score"><span class="label">Score</span><span class="value" id="score">0</span></span>
-        <span class="score"><span class="label">Best</span><span class="value" id="best">0</span></span>
-        <jg-button size="sm" variant="outline" id="new">New game</jg-button>
+        <span class="score"><span class="label">${t('game-2048.score', 'Score')}</span><span class="value" id="score">0</span></span>
+        <span class="score"><span class="label">${t('game-2048.best', 'Best')}</span><span class="value" id="best">0</span></span>
+        <jg-button size="sm" variant="outline" id="new">${t('game-2048.newGame', 'New game')}</jg-button>
       </div>
 
       <div class="board" id="board"></div>

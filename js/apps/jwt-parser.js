@@ -34,20 +34,20 @@ class JwtParser extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="Token">
+      <jg-field label="${t('jwt-parser.token', 'Token')}">
         <div slot="action"><jg-button size="sm" variant="outline" id="sample">${t('action.sample', 'Sample')}</jg-button></div>
-        <jg-textarea id="input" rows="4" placeholder="eyJhbGciOi..."></jg-textarea>
+        <jg-textarea id="input" rows="4" placeholder="${t('jwt-parser.eyjhbgcioi', 'eyJhbGciOi...')}"></jg-textarea>
       </jg-field>
 
       <div class="panel token" id="colored"></div>
       <div class="row" id="badges"></div>
 
       <div class="cols2">
-        <jg-card title="Header"><pre class="code scroll" id="header" style="max-height:220px"></pre></jg-card>
-        <jg-card title="Payload"><pre class="code scroll" id="payload" style="max-height:220px"></pre></jg-card>
+        <jg-card title="${t('jwt-parser.header', 'Header')}"><pre class="code scroll" id="header" style="max-height:220px"></pre></jg-card>
+        <jg-card title="${t('jwt-parser.payload', 'Payload')}"><pre class="code scroll" id="payload" style="max-height:220px"></pre></jg-card>
       </div>
 
-      <jg-card title="Claims">
+      <jg-card title="${t('jwt-parser.claims', 'Claims')}">
         <div class="kv" id="claims"></div>
       </jg-card>
     </div>`);

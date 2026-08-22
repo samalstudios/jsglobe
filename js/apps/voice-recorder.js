@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { blobs } from '../core/blobs.js';
 import { speech } from '../core/speech.js';
 import { ai } from '../core/ai.js';
@@ -81,16 +82,16 @@ const ACTIONS = [
 class VoiceRecorder extends JGApp {
   static appId = 'voice-recorder';
   static settings = [
-    { key: 'live', label: 'Live captions while recording', type: 'switch', default: true },
-    { key: 'language', label: 'Transcription language', type: 'select', default: 'auto', options: [
-      { value: 'auto', label: 'Detect' },
-      { value: 'english', label: 'English' },
-      { value: 'spanish', label: 'Spanish' },
-      { value: 'french', label: 'French' },
-      { value: 'german', label: 'German' },
-      { value: 'persian', label: 'Farsi' },
-      { value: 'arabic', label: 'Arabic' },
-      { value: 'japanese', label: 'Japanese' },
+    { key: 'live', label: t('voice-recorder.liveCaptionsWhileRecording', 'Live captions while recording'), type: 'switch', default: true },
+    { key: 'language', label: t('voice-recorder.transcriptionLanguage', 'Transcription language'), type: 'select', default: 'auto', options: [
+      { value: 'auto', label: t('voice-recorder.detect', 'Detect') },
+      { value: 'english', label: t('voice-recorder.english', 'English') },
+      { value: 'spanish', label: t('voice-recorder.spanish', 'Spanish') },
+      { value: 'french', label: t('voice-recorder.french', 'French') },
+      { value: 'german', label: t('voice-recorder.german', 'German') },
+      { value: 'persian', label: t('voice-recorder.farsi', 'Farsi') },
+      { value: 'arabic', label: t('voice-recorder.arabic', 'Arabic') },
+      { value: 'japanese', label: t('voice-recorder.japanese', 'Japanese') },
     ] },
   ];
   static styles = [...JGApp.styles, sheet];
@@ -127,13 +128,13 @@ class VoiceRecorder extends JGApp {
           <span class="dot" id="dot" hidden></span>
           <span class="timer" id="timer">00:00</span>
           <span class="grow"></span>
-          <jg-button id="record">Record</jg-button>
-          <jg-button id="pause" variant="outline" hidden>Pause</jg-button>
-          <jg-button id="stop" variant="outline" hidden>Stop</jg-button>
+          <jg-button id="record">${t('voice-recorder.record', 'Record')}</jg-button>
+          <jg-button id="pause" variant="outline" hidden>${t('voice-recorder.pause', 'Pause')}</jg-button>
+          <jg-button id="stop" variant="outline" hidden>${t('voice-recorder.stop', 'Stop')}</jg-button>
         </div>
         <div class="engine">
           <jg-switch id="liveText" ${this.config.get('live', true) ? 'checked' : ''}></jg-switch>
-          <span>Live captions while recording</span>
+          <span>${t('voice-recorder.liveCaptionsWhileRecording', 'Live captions while recording')}</span>
           <span class="grow"></span>
           <span id="engine"></span>
         </div>
@@ -141,19 +142,19 @@ class VoiceRecorder extends JGApp {
       </div>
 
       <div class="spread">
-        <span class="label">Recordings</span>
+        <span class="label">${t('voice-recorder.recordings', 'Recordings')}</span>
         <span class="row tight">
           <jg-select id="language" value="${this.config.get('language', 'auto')}" size="sm" style="width:150px">
-            <option value="auto">Detect language</option>
-            <option value="english">English</option>
-            <option value="spanish">Spanish</option>
-            <option value="french">French</option>
-            <option value="german">German</option>
-            <option value="persian">Farsi</option>
-            <option value="arabic">Arabic</option>
-            <option value="japanese">Japanese</option>
+            <option value="auto">${t('voice-recorder.detectLanguage', 'Detect language')}</option>
+            <option value="english">${t('voice-recorder.english', 'English')}</option>
+            <option value="spanish">${t('voice-recorder.spanish', 'Spanish')}</option>
+            <option value="french">${t('voice-recorder.french', 'French')}</option>
+            <option value="german">${t('voice-recorder.german', 'German')}</option>
+            <option value="persian">${t('voice-recorder.farsi', 'Farsi')}</option>
+            <option value="arabic">${t('voice-recorder.arabic', 'Arabic')}</option>
+            <option value="japanese">${t('voice-recorder.japanese', 'Japanese')}</option>
           </jg-select>
-          <jg-button size="sm" variant="ghost" id="clear">Clear all</jg-button>
+          <jg-button size="sm" variant="ghost" id="clear">${t('voice-recorder.clearAll', 'Clear all')}</jg-button>
         </span>
       </div>
 
@@ -197,7 +198,7 @@ class VoiceRecorder extends JGApp {
   #paintList() {
     const list = this.$('#list');
     if (!this.#items.length) {
-      list.innerHTML = html`<jg-empty glyph="●" title="No recordings yet">
+      list.innerHTML = html`<jg-empty glyph="●" title="${t('voice-recorder.noRecordingsYet', 'No recordings yet')}">
         Recordings stay in this browser. Nothing is uploaded unless you turn on browser captions.
       </jg-empty>`;
       return;
@@ -215,9 +216,9 @@ class VoiceRecorder extends JGApp {
             <jg-button size="sm" variant="outline" data-transcribe="${item.id}">
               ${item.transcript ? 'Re-transcribe' : 'Transcribe'}
             </jg-button>
-            <jg-button size="icon-sm" variant="ghost" data-toggle="${item.id}" title="Details">${open ? '▴' : '▾'}</jg-button>
-            <jg-button size="icon-sm" variant="ghost" data-save="${item.id}" title="Download">↓</jg-button>
-            <jg-button size="icon-sm" variant="ghost" data-remove="${item.id}" title="Delete">✕</jg-button>
+            <jg-button size="icon-sm" variant="ghost" data-toggle="${item.id}" title="${t('voice-recorder.details', 'Details')}">${open ? '▴' : '▾'}</jg-button>
+            <jg-button size="icon-sm" variant="ghost" data-save="${item.id}" title="${t('voice-recorder.download', 'Download')}">↓</jg-button>
+            <jg-button size="icon-sm" variant="ghost" data-remove="${item.id}" title="${t('voice-recorder.delete', 'Delete')}">✕</jg-button>
           </span>
           ${open
             ? html`<span class="body">
@@ -227,8 +228,8 @@ class VoiceRecorder extends JGApp {
                   ? html`<span class="row tight">
                       ${ACTIONS.map((action) => html`<jg-button size="sm" variant="ghost" data-ai="${item.id}" data-prompt="${action[1]}">${action[0]}</jg-button>`)}
                       <span class="grow"></span>
-                      <jg-button size="sm" variant="ghost" data-copy="${item.id}">Copy</jg-button>
-                      <jg-button size="sm" variant="ghost" data-export="${item.id}">Save text</jg-button>
+                      <jg-button size="sm" variant="ghost" data-copy="${item.id}">${t('voice-recorder.copy', 'Copy')}</jg-button>
+                      <jg-button size="sm" variant="ghost" data-export="${item.id}">${t('voice-recorder.saveText', 'Save text')}</jg-button>
                     </span>`
                   : ''}
               </span>`

@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText, download, toast, formatBytes } from '../core/util.js';
 
 const sheet = css`
@@ -192,14 +193,14 @@ class CsvStudio extends JGApp {
     this.paint(html`<div class="app">
       <jg-toolbar id="bar"></jg-toolbar>
 
-      <div class="drop" id="drop">Drop a CSV or TSV file here, or click to choose one</div>
+      <div class="drop" id="drop">${t('csv-studio.dropACsvOrTsv', 'Drop a CSV or TSV file here, or click to choose one')}</div>
 
       <div class="row">
-        <jg-input id="filter" size="sm" placeholder="Filter rows" style="flex:1;min-width:160px"></jg-input>
+        <jg-input id="filter" size="sm" placeholder="${t('csv-studio.filterRows', 'Filter rows')}" style="flex:1;min-width:160px"></jg-input>
         <jg-select id="delimiter" size="sm" style="width:140px">
           ${Object.entries(DELIMITERS).map(([value, label]) => html`<option value="${value === '\t' ? 'tab' : value}">${label}</option>`)}
         </jg-select>
-        <jg-switch id="header" checked></jg-switch><span class="hint">First row is a header</span>
+        <jg-switch id="header" checked></jg-switch><span class="hint">${t('csv-studio.firstRowIsAHeader', 'First row is a header')}</span>
         <span class="grow"></span>
         <span class="hint" id="stats"></span>
       </div>
@@ -210,24 +211,24 @@ class CsvStudio extends JGApp {
         </div>
       </div>
 
-      <jg-field label="Paste or export" id="textfield">
-        <jg-code id="text" rows="8" gutter language="plain" placeholder="name,role,city"></jg-code>
+      <jg-field label="${t('csv-studio.pasteOrExport', 'Paste or export')}" id="textfield">
+        <jg-code id="text" rows="8" gutter language="plain" placeholder="${t('csv-studio.nameRoleCity', 'name,role,city')}"></jg-code>
       </jg-field>
     </div>`);
 
     this.$('#bar').items = [
       { id: 'csv', label: 'CSV', icon: 'list', select: true },
       { id: 'json', label: 'JSON', icon: 'braces', select: true },
-      { id: 'jsonl', label: 'JSON lines', icon: 'code', select: true },
+      { id: 'jsonl', label: t('csv-studio.jsonLines', 'JSON lines'), icon: 'code', select: true },
       { id: 'sql', label: 'SQL', icon: 'database', select: true },
-      { id: 'markdown', label: 'Markdown', icon: 'fileText', select: true },
+      { id: 'markdown', label: t('csv-studio.markdown', 'Markdown'), icon: 'fileText', select: true },
       { separator: true },
-      { id: 'row', label: 'Add row', icon: 'plus' },
-      { id: 'column', label: 'Add column', icon: 'grid' },
-      { id: 'tidy', label: 'Tidy', icon: 'undo', title: 'Trim spaces, drop empty rows and duplicates' },
+      { id: 'row', label: t('csv-studio.addRow', 'Add row'), icon: 'plus' },
+      { id: 'column', label: t('csv-studio.addColumn', 'Add column'), icon: 'grid' },
+      { id: 'tidy', label: t('csv-studio.tidy', 'Tidy'), icon: 'undo', title: 'Trim spaces, drop empty rows and duplicates' },
       { spacer: true },
-      { id: 'copy', label: 'Copy', icon: 'copy' },
-      { id: 'download', label: 'Download', icon: 'external' },
+      { id: 'copy', label: t('csv-studio.copy', 'Copy'), icon: 'copy' },
+      { id: 'download', label: t('csv-studio.download', 'Download'), icon: 'external' },
     ];
     this.$('#bar').value = 'csv';
 

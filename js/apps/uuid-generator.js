@@ -83,7 +83,7 @@ class UuidGenerator extends JGApp {
         <jg-switch id="dashes" checked></jg-switch><span class="hint">${t('uuid.dashes', 'Keep dashes')}</span>
       </div>
 
-      <jg-field label="Output" grow>
+      <jg-field label="${t('uuid-generator.output', 'Output')}" grow>
         <div slot="action" class="row tight">
           <jg-button size="sm" variant="outline" id="copy">${t('uuid.copyAll', 'Copy all')}</jg-button>
         </div>
@@ -94,8 +94,8 @@ class UuidGenerator extends JGApp {
     </div>`);
 
     this.$('#kind').items = [
-      { value: 'v4', label: 'UUID v4' },
-      { value: 'v7', label: 'UUID v7' },
+      { value: 'v4', label: t('uuid-generator.uuidV4', 'UUID v4') },
+      { value: 'v7', label: t('uuid-generator.uuidV7', 'UUID v7') },
       { value: 'ulid', label: 'ULID' },
       { value: 'short', label: t('uuid.shortId', 'Short ID') },
       { value: 'nil', label: t('uuid.nil', 'Nil') },

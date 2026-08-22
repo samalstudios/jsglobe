@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { toast } from '../core/util.js';
 
 const sheet = css`
@@ -83,14 +84,14 @@ class GameMemory extends JGApp {
           ${Object.keys(DECKS).map((key) => html`<option value="${key}">${key}</option>`)}
         </jg-select>
         <span class="grow"></span>
-        <jg-button size="sm" variant="outline" id="new">New game</jg-button>
+        <jg-button size="sm" variant="outline" id="new">${t('game-memory.newGame', 'New game')}</jg-button>
       </div>
 
       <div class="stats">
-        <div class="stat"><div class="value" id="moves">0</div><div class="name">Moves</div></div>
-        <div class="stat"><div class="value" id="pairs">0</div><div class="name">Pairs</div></div>
-        <div class="stat"><div class="value" id="time">0:00</div><div class="name">Time</div></div>
-        <div class="stat"><div class="value" id="best">-</div><div class="name">Best moves</div></div>
+        <div class="stat"><div class="value" id="moves">0</div><div class="name">${t('game-memory.moves', 'Moves')}</div></div>
+        <div class="stat"><div class="value" id="pairs">0</div><div class="name">${t('game-memory.pairs', 'Pairs')}</div></div>
+        <div class="stat"><div class="value" id="time">0:00</div><div class="name">${t('game-memory.time', 'Time')}</div></div>
+        <div class="stat"><div class="value" id="best">-</div><div class="name">${t('game-memory.bestMoves', 'Best moves')}</div></div>
       </div>
 
       <div class="board" id="board"></div>

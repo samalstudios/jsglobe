@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { uid } from '../core/util.js';
 import { HOLIDAY_SETS, holidaysFor } from '../lib/holidays.js';
 
@@ -334,10 +335,10 @@ const DEFAULT_STATE = {
 };
 
 const VIEWS = [
-  { value: 'day', label: 'Day' },
-  { value: 'week', label: 'Week' },
-  { value: 'month', label: 'Month' },
-  { value: 'year', label: 'Year' },
+  { value: 'day', label: t('calendar.day', 'Day') },
+  { value: 'week', label: t('calendar.week', 'Week') },
+  { value: 'month', label: t('calendar.month', 'Month') },
+  { value: 'year', label: t('calendar.year', 'Year') },
 ];
 
 const relativeLabel = (key) => {
@@ -366,9 +367,9 @@ const packLanes = (events) => {
 class CalendarApp extends JGApp {
   static appId = 'calendar';
   static settings = [
-    { key: 'weekStart', label: 'Week starts on', type: 'select', default: 'mon', options: [
-      { value: 'mon', label: 'Monday' },
-      { value: 'sun', label: 'Sunday' },
+    { key: 'weekStart', label: t('calendar.weekStartsOn', 'Week starts on'), type: 'select', default: 'mon', options: [
+      { value: 'mon', label: t('calendar.monday', 'Monday') },
+      { value: 'sun', label: t('calendar.sunday', 'Sunday') },
     ] },
   ];
   static styles = [...JGApp.styles, sheet];
@@ -444,7 +445,7 @@ class CalendarApp extends JGApp {
                   <span>${event.date === today ? '' : `${parseIso(event.date).toLocaleDateString([], { day: 'numeric', month: 'short' })} `}${event.time ? `${event.time} ` : ''}${event.title}</span>
                 </div>`,
               )
-            : html`<div>Nothing scheduled</div>`}
+            : html`<div>${t('calendar.nothingScheduled', 'Nothing scheduled')}</div>`}
         </div>
       </div>
     </div>`);
@@ -454,14 +455,14 @@ class CalendarApp extends JGApp {
     this.paint(html`<div class="app">
       <div class="head">
         <jg-button-group>
-          <jg-button size="icon" variant="outline" id="prev" aria-label="Previous">‹</jg-button>
-          <jg-button variant="outline" id="today">Today</jg-button>
-          <jg-button size="icon" variant="outline" id="next" aria-label="Next">›</jg-button>
+          <jg-button size="icon" variant="outline" id="prev" aria-label="${t('calendar.previous', 'Previous')}">‹</jg-button>
+          <jg-button variant="outline" id="today">${t('calendar.today', 'Today')}</jg-button>
+          <jg-button size="icon" variant="outline" id="next" aria-label="${t('calendar.next', 'Next')}">›</jg-button>
         </jg-button-group>
         <span class="title" id="title"></span>
         <span class="grow"></span>
         <jg-tabs id="view"></jg-tabs>
-        <jg-button variant="outline" id="calendars">Calendars</jg-button>
+        <jg-button variant="outline" id="calendars">${t('calendar.calendars', 'Calendars')}</jg-button>
       </div>
 
       <div class="wrap" data-side="${String(this.#view !== 'year')}">
@@ -474,14 +475,14 @@ class CalendarApp extends JGApp {
       </jg-sheet>
 
       <jg-dialog id="event-dialog" title-text="New event">
-        <jg-field label="Title"><jg-input id="title-input" placeholder="Stand up" autofocus></jg-input></jg-field>
+        <jg-field label="${t('calendar.title', 'Title')}"><jg-input id="title-input" placeholder="${t('calendar.standUp', 'Stand up')}" autofocus></jg-input></jg-field>
         <div class="times">
-          <jg-field label="From"><jg-input id="from" type="time"></jg-input></jg-field>
-          <jg-field label="To"><jg-input id="to" type="time"></jg-input></jg-field>
+          <jg-field label="${t('calendar.from', 'From')}"><jg-input id="from" type="time"></jg-input></jg-field>
+          <jg-field label="${t('calendar.to', 'To')}"><jg-input id="to" type="time"></jg-input></jg-field>
         </div>
-        <jg-field label="Calendar"><jg-select id="calendar"></jg-select></jg-field>
-        <jg-button slot="actions" variant="outline" id="cancel-event">Cancel</jg-button>
-        <jg-button slot="actions" id="add">Add event</jg-button>
+        <jg-field label="${t('calendar.calendar', 'Calendar')}"><jg-select id="calendar"></jg-select></jg-field>
+        <jg-button slot="actions" variant="outline" id="cancel-event">${t('calendar.cancel', 'Cancel')}</jg-button>
+        <jg-button slot="actions" id="add">${t('calendar.addEvent', 'Add event')}</jg-button>
       </jg-dialog>
     </div>`);
 
@@ -568,7 +569,7 @@ class CalendarApp extends JGApp {
 
     node.innerHTML = html`<span class="primary">${primary}</span>
       ${secondary ? html`<span class="secondary">${secondary}</span>` : ''}
-      ${showsToday ? html`<span class="today-pill">now</span>` : ''}`;
+      ${showsToday ? html`<span class="today-pill">${t('calendar.now', 'now')}</span>` : ''}`;
   }
 
   #chip(event) {
@@ -626,7 +627,7 @@ class CalendarApp extends JGApp {
                 >
                   <span class="cell-head">
                     <span class="num">${date.getDate()}</span>
-                    <button class="add" data-add="${key}" title="Add an event">＋</button>
+                    <button class="add" data-add="${key}" title="${t('calendar.addAnEvent', 'Add an event')}">＋</button>
                   </span>
                   ${events.slice(0, 3).map((event) => this.#chip(event))}
                   ${events.length > 3 ? html`<button class="more" data-open="${key}">+${events.length - 3} more</button>` : ''}
@@ -680,7 +681,7 @@ class CalendarApp extends JGApp {
 
         ${hasAllDay
           ? html`<div class="allday" style="grid-template-columns:${template}">
-              <span class="gutter">all day</span>
+              <span class="gutter">${t('calendar.allDay', 'all day')}</span>
               ${allDay.map((list) => html`<span class="lane">${list.map((event) => this.#chip(event))}</span>`)}
             </div>`
           : ''}
@@ -853,7 +854,7 @@ class CalendarApp extends JGApp {
     const list = this.$('#calendar-list');
 
     list.innerHTML = html`
-      <div class="label">Calendars</div>
+      <div class="label">${t('calendar.calendars', 'Calendars')}</div>
       <div>
         ${data.calendars.map(
           (calendar) => html`<div class="cal-row">
@@ -865,12 +866,12 @@ class CalendarApp extends JGApp {
         )}
       </div>
       <div class="row tight nowrap">
-        <jg-input id="calname" class="grow" placeholder="New calendar"></jg-input>
+        <jg-input id="calname" class="grow" placeholder="${t('calendar.newCalendar', 'New calendar')}"></jg-input>
         <jg-input id="calcolor" type="color" value="#f97316" style="width:52px"></jg-input>
-        <jg-button size="sm" id="addcal">Add</jg-button>
+        <jg-button size="sm" id="addcal">${t('calendar.add', 'Add')}</jg-button>
       </div>
       <div class="sep"></div>
-      <div class="label">Subscriptions</div>
+      <div class="label">${t('calendar.subscriptions', 'Subscriptions')}</div>
       <div>
         ${HOLIDAY_SETS.map(
           (set) => html`<div class="cal-row">
@@ -945,7 +946,7 @@ class CalendarApp extends JGApp {
           <span class="rel">${relativeLabel(this.#selected)}</span>
         </div>
 
-        <jg-button id="new-event" full>Add an event</jg-button>
+        <jg-button id="new-event" full>${t('calendar.addAnEvent', 'Add an event')}</jg-button>
 
         <div class="agenda">
           ${events.length
@@ -960,7 +961,7 @@ class CalendarApp extends JGApp {
                   ${event.readonly ? '' : html`<jg-button class="del" size="icon-sm" variant="ghost" data-remove="${event.id}">✕</jg-button>`}
                 </div>`;
               })
-            : html`<jg-empty glyph="▤" title="Nothing planned">Pick a time above or click a slot in the week view.</jg-empty>`}
+            : html`<jg-empty glyph="▤" title="${t('calendar.nothingPlanned', 'Nothing planned')}">${t('calendar.pickATimeAboveOr', 'Pick a time above or click a slot in the week view.')}</jg-empty>`}
         </div>
       </jg-card>
     `;

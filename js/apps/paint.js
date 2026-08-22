@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { download, pickFile } from '../core/util.js';
 import { icon } from '../ui/icons.js';
 
@@ -121,17 +122,17 @@ const sheet = css`
 `;
 
 const TOOLS = [
-  { id: 'select', label: 'Select an area', icon: 'marquee' },
-  { id: 'pencil', label: 'Pencil', icon: 'pencil' },
-  { id: 'brush', label: 'Brush', icon: 'brush' },
-  { id: 'eraser', label: 'Eraser', icon: 'eraser' },
-  { id: 'fill', label: 'Fill with colour', icon: 'bucket' },
-  { id: 'picker', label: 'Pick a colour', icon: 'eyedropper' },
-  { id: 'spray', label: 'Spray can', icon: 'spray' },
-  { id: 'line', label: 'Line', icon: 'line' },
-  { id: 'rect', label: 'Rectangle', icon: 'square' },
-  { id: 'ellipse', label: 'Ellipse', icon: 'circle' },
-  { id: 'text', label: 'Text', icon: 'type' },
+  { id: 'select', label: t('paint.selectAnArea', 'Select an area'), icon: 'marquee' },
+  { id: 'pencil', label: t('paint.pencil', 'Pencil'), icon: 'pencil' },
+  { id: 'brush', label: t('paint.brush', 'Brush'), icon: 'brush' },
+  { id: 'eraser', label: t('paint.eraser', 'Eraser'), icon: 'eraser' },
+  { id: 'fill', label: t('paint.fillWithColour', 'Fill with colour'), icon: 'bucket' },
+  { id: 'picker', label: t('paint.pickAColour', 'Pick a colour'), icon: 'eyedropper' },
+  { id: 'spray', label: t('paint.sprayCan', 'Spray can'), icon: 'spray' },
+  { id: 'line', label: t('paint.line', 'Line'), icon: 'line' },
+  { id: 'rect', label: t('paint.rectangle', 'Rectangle'), icon: 'square' },
+  { id: 'ellipse', label: t('paint.ellipse', 'Ellipse'), icon: 'circle' },
+  { id: 'text', label: t('paint.text', 'Text'), icon: 'type' },
 ];
 
 const PALETTE = [
@@ -145,8 +146,8 @@ const SIZES = [1, 3, 6, 12];
 class Paint extends JGApp {
   static appId = 'paint';
   static settings = [
-    { key: 'width', label: 'Canvas width', type: 'number', default: 900, min: 64, max: 4000 },
-    { key: 'height', label: 'Canvas height', type: 'number', default: 600, min: 64, max: 4000 },
+    { key: 'width', label: t('paint.canvasWidth', 'Canvas width'), type: 'number', default: 900, min: 64, max: 4000 },
+    { key: 'height', label: t('paint.canvasHeight', 'Canvas height'), type: 'number', default: 600, min: 64, max: 4000 },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -167,8 +168,8 @@ class Paint extends JGApp {
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
       <div class="stack tight">
-        <div class="label">Paint</div>
-        <div class="hint">Pencil, shapes, fill and spray on a plain canvas.</div>
+        <div class="label">${t('paint.paint', 'Paint')}</div>
+        <div class="hint">${t('paint.pencilShapesFillAndSpray', 'Pencil, shapes, fill and spray on a plain canvas.')}</div>
       </div>
     </div>`);
   }
@@ -201,7 +202,7 @@ class Paint extends JGApp {
             <div class="grid-colors">
               ${PALETTE.map((color) => html`<button class="chip" data-color="${color}" style="background:${color}" title="${color}"></button>`)}
             </div>
-            <input type="color" id="custom" value="${this.#fore}" title="Custom colour" style="width:28px;height:26px;border:0;background:none" />
+            <input type="color" id="custom" value="${this.#fore}" title="${t('paint.customColour', 'Custom colour')}" style="width:28px;height:26px;border:0;background:none" />
             <div class="size-row">
               ${SIZES.map(
                 (size) => html`<button class="size" data-size="${size}" aria-pressed="${String(size === this.#size)}" title="${size} px">
@@ -216,53 +217,53 @@ class Paint extends JGApp {
 
       <jg-sheet id="adjust" side="right" title-text="Adjust image">
         <div class="stack" style="padding:14px;gap:14px">
-          <jg-field label="Brightness"><jg-slider id="brightness" min="0" max="200" step="1" value="100"></jg-slider></jg-field>
-          <jg-field label="Contrast"><jg-slider id="contrast" min="0" max="200" step="1" value="100"></jg-slider></jg-field>
-          <jg-field label="Saturation"><jg-slider id="saturate" min="0" max="200" step="1" value="100"></jg-slider></jg-field>
-          <jg-field label="Blur"><jg-slider id="blur" min="0" max="12" step="1" value="0"></jg-slider></jg-field>
+          <jg-field label="${t('paint.brightness', 'Brightness')}"><jg-slider id="brightness" min="0" max="200" step="1" value="100"></jg-slider></jg-field>
+          <jg-field label="${t('paint.contrast', 'Contrast')}"><jg-slider id="contrast" min="0" max="200" step="1" value="100"></jg-slider></jg-field>
+          <jg-field label="${t('paint.saturation', 'Saturation')}"><jg-slider id="saturate" min="0" max="200" step="1" value="100"></jg-slider></jg-field>
+          <jg-field label="${t('paint.blur', 'Blur')}"><jg-slider id="blur" min="0" max="12" step="1" value="0"></jg-slider></jg-field>
           <div class="row">
-            <jg-button size="sm" id="apply-adjust">Apply</jg-button>
-            <jg-button size="sm" variant="ghost" id="reset-adjust">Reset</jg-button>
+            <jg-button size="sm" id="apply-adjust">${t('paint.apply', 'Apply')}</jg-button>
+            <jg-button size="sm" variant="ghost" id="reset-adjust">${t('paint.reset', 'Reset')}</jg-button>
             <span class="grow"></span>
-            <jg-button size="sm" variant="ghost" id="grayscale">Black and white</jg-button>
+            <jg-button size="sm" variant="ghost" id="grayscale">${t('paint.blackAndWhite', 'Black and white')}</jg-button>
           </div>
-          <div class="hint">Adjustments preview live and only touch the canvas when you apply them.</div>
+          <div class="hint">${t('paint.adjustmentsPreviewLiveAndOnly', 'Adjustments preview live and only touch the canvas when you apply them.')}</div>
         </div>
       </jg-sheet>
 
       <jg-dialog id="resize" title-text="Resize canvas">
         <div class="stack" style="gap:12px">
           <div class="row">
-            <jg-field label="Width"><jg-input id="new-width" type="number" size="sm" value="${width}"></jg-input></jg-field>
-            <jg-field label="Height"><jg-input id="new-height" type="number" size="sm" value="${height}"></jg-input></jg-field>
+            <jg-field label="${t('paint.width', 'Width')}"><jg-input id="new-width" type="number" size="sm" value="${width}"></jg-input></jg-field>
+            <jg-field label="${t('paint.height', 'Height')}"><jg-input id="new-height" type="number" size="sm" value="${height}"></jg-input></jg-field>
           </div>
-          <div class="row"><jg-switch id="keep-ratio" checked></jg-switch><span class="hint">Keep proportions</span></div>
+          <div class="row"><jg-switch id="keep-ratio" checked></jg-switch><span class="hint">${t('paint.keepProportions', 'Keep proportions')}</span></div>
         </div>
         <div slot="actions" class="row">
           <span class="grow"></span>
-          <jg-button size="sm" variant="ghost" id="cancel-resize">Cancel</jg-button>
-          <jg-button size="sm" id="do-resize">Resize</jg-button>
+          <jg-button size="sm" variant="ghost" id="cancel-resize">${t('paint.cancel', 'Cancel')}</jg-button>
+          <jg-button size="sm" id="do-resize">${t('paint.resize', 'Resize')}</jg-button>
         </div>
       </jg-dialog>
     </div>`);
 
     this.$('#bar').items = [
-      { id: 'new', label: 'New', icon: 'file', iconOnly: true, title: 'New canvas', action: () => this.#clear() },
-      { id: 'open', label: 'Open', icon: 'folder', iconOnly: true, title: 'Open an image', action: () => this.#open() },
-      { id: 'insert', label: 'Insert', icon: 'image', iconOnly: true, title: 'Insert an image', action: () => this.#insert() },
-      { id: 'save', label: 'Save', icon: 'download', iconOnly: true, title: 'Save as PNG', action: () => this.#save() },
+      { id: 'new', label: t('paint.new', 'New'), icon: 'file', iconOnly: true, title: 'New canvas', action: () => this.#clear() },
+      { id: 'open', label: t('paint.open', 'Open'), icon: 'folder', iconOnly: true, title: 'Open an image', action: () => this.#open() },
+      { id: 'insert', label: t('paint.insert', 'Insert'), icon: 'image', iconOnly: true, title: 'Insert an image', action: () => this.#insert() },
+      { id: 'save', label: t('paint.save', 'Save'), icon: 'download', iconOnly: true, title: 'Save as PNG', action: () => this.#save() },
       { separator: true },
-      { id: 'undo', label: 'Undo', icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#step(this.#undo, this.#redo) },
-      { id: 'redo', label: 'Redo', icon: 'redo', iconOnly: true, title: 'Redo', action: () => this.#step(this.#redo, this.#undo) },
+      { id: 'undo', label: t('paint.undo', 'Undo'), icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#step(this.#undo, this.#redo) },
+      { id: 'redo', label: t('paint.redo', 'Redo'), icon: 'redo', iconOnly: true, title: 'Redo', action: () => this.#step(this.#redo, this.#undo) },
       { separator: true },
-      { id: 'crop', label: 'Crop', icon: 'crop', title: 'Crop to selection', action: () => this.#crop() },
-      { id: 'rotate', label: 'Rotate', icon: 'rotate', iconOnly: true, title: 'Rotate right', action: () => this.#rotate(1) },
-      { id: 'flip-h', label: 'Flip across', icon: 'flip', iconOnly: true, title: 'Flip horizontally', action: () => this.#flip('h') },
-      { id: 'flip-v', label: 'Flip down', icon: 'flip-v', iconOnly: true, title: 'Flip vertically', action: () => this.#flip('v') },
-      { id: 'resize', label: 'Resize', icon: 'scale', title: 'Resize the canvas', action: () => this.$('#resize').open() },
-      { id: 'adjust', label: 'Adjust', icon: 'gauge', title: 'Brightness, contrast and colour', action: () => this.$('#adjust').open() },
+      { id: 'crop', label: t('paint.crop', 'Crop'), icon: 'crop', title: 'Crop to selection', action: () => this.#crop() },
+      { id: 'rotate', label: t('paint.rotate', 'Rotate'), icon: 'rotate', iconOnly: true, title: 'Rotate right', action: () => this.#rotate(1) },
+      { id: 'flip-h', label: t('paint.flipAcross', 'Flip across'), icon: 'flip', iconOnly: true, title: 'Flip horizontally', action: () => this.#flip('h') },
+      { id: 'flip-v', label: t('paint.flipDown', 'Flip down'), icon: 'flip-v', iconOnly: true, title: 'Flip vertically', action: () => this.#flip('v') },
+      { id: 'resize', label: t('paint.resize', 'Resize'), icon: 'scale', title: 'Resize the canvas', action: () => this.$('#resize').open() },
+      { id: 'adjust', label: t('paint.adjust', 'Adjust'), icon: 'gauge', title: 'Brightness, contrast and colour', action: () => this.$('#adjust').open() },
       { spacer: true },
-      { id: 'swap', label: 'Swap', icon: 'transform', iconOnly: true, title: 'Swap the two colours', action: () => this.#swap() },
+      { id: 'swap', label: t('paint.swap', 'Swap'), icon: 'transform', iconOnly: true, title: 'Swap the two colours', action: () => this.#swap() },
     ];
 
     const board = this.$('#board');

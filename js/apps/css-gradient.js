@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { copyText, uid } from '../core/util.js';
 
 const sheet = css`
@@ -81,26 +82,26 @@ class CssGradient extends JGApp {
       <div class="stops" id="stops"></div>
 
       <div class="fields">
-        <jg-field label="Type">
+        <jg-field label="${t('css-gradient.type', 'Type')}">
           <jg-select id="type" value="linear">
-            <option value="linear">Linear</option>
-            <option value="radial">Radial</option>
-            <option value="conic">Conic</option>
-            <option value="repeating-linear">Repeating linear</option>
+            <option value="linear">${t('css-gradient.linear', 'Linear')}</option>
+            <option value="radial">${t('css-gradient.radial', 'Radial')}</option>
+            <option value="conic">${t('css-gradient.conic', 'Conic')}</option>
+            <option value="repeating-linear">${t('css-gradient.repeatingLinear', 'Repeating linear')}</option>
           </jg-select>
         </jg-field>
-        <jg-field label="Angle" id="anglefield"><jg-slider id="angle" min="0" max="360" value="135"></jg-slider></jg-field>
-        <jg-field label="Shape" id="shapefield" hidden>
-          <jg-select id="shape" value="circle"><option value="circle">Circle</option><option value="ellipse">Ellipse</option></jg-select>
+        <jg-field label="${t('css-gradient.angle', 'Angle')}" id="anglefield"><jg-slider id="angle" min="0" max="360" value="135"></jg-slider></jg-field>
+        <jg-field label="${t('css-gradient.shape', 'Shape')}" id="shapefield" hidden>
+          <jg-select id="shape" value="circle"><option value="circle">${t('css-gradient.circle', 'Circle')}</option><option value="ellipse">${t('css-gradient.ellipse', 'Ellipse')}</option></jg-select>
         </jg-field>
-        <jg-field label="Position" id="atfield" hidden>
+        <jg-field label="${t('css-gradient.position', 'Position')}" id="atfield" hidden>
           <jg-select id="at" value="center">
-            <option value="center">Center</option><option value="top left">Top left</option>
-            <option value="top right">Top right</option><option value="bottom left">Bottom left</option>
-            <option value="bottom right">Bottom right</option>
+            <option value="center">${t('css-gradient.center', 'Center')}</option><option value="top left">${t('css-gradient.topLeft', 'Top left')}</option>
+            <option value="top right">${t('css-gradient.topRight', 'Top right')}</option><option value="bottom left">${t('css-gradient.bottomLeft', 'Bottom left')}</option>
+            <option value="bottom right">${t('css-gradient.bottomRight', 'Bottom right')}</option>
           </jg-select>
         </jg-field>
-        <jg-field label="Add stop"><jg-button size="sm" variant="outline" id="add">Add colour</jg-button></jg-field>
+        <jg-field label="${t('css-gradient.addStop', 'Add stop')}"><jg-button size="sm" variant="outline" id="add">${t('css-gradient.addColour', 'Add colour')}</jg-button></jg-field>
       </div>
 
       <jg-field label="CSS">
@@ -108,13 +109,13 @@ class CssGradient extends JGApp {
       </jg-field>
 
       <div class="row">
-        <jg-button size="sm" variant="outline" id="copy-css">Copy CSS</jg-button>
-        <jg-button size="sm" variant="outline" id="copy-tw">Copy Tailwind</jg-button>
-        <jg-button size="sm" variant="ghost" id="random">Randomise</jg-button>
-        <jg-button size="sm" variant="ghost" id="reverse">Reverse</jg-button>
+        <jg-button size="sm" variant="outline" id="copy-css">${t('css-gradient.copyCss', 'Copy CSS')}</jg-button>
+        <jg-button size="sm" variant="outline" id="copy-tw">${t('css-gradient.copyTailwind', 'Copy Tailwind')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="random">${t('css-gradient.randomise', 'Randomise')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="reverse">${t('css-gradient.reverse', 'Reverse')}</jg-button>
       </div>
 
-      <jg-card title="Presets">
+      <jg-card title="${t('css-gradient.presets', 'Presets')}">
         <div class="presets" id="presets">
           ${PRESETS.map(
             (pair, index) => html`<button class="preset" data-preset="${index}" style="background-image:linear-gradient(135deg, ${pair[0]}, ${pair[1]})"></button>`,

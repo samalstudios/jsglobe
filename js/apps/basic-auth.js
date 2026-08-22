@@ -1,4 +1,5 @@
 import { JGApp, define, html } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { encodeBytes, decodeBytes, toBase64, fromBase64 } from '../core/util.js';
 
 class BasicAuth extends JGApp {
@@ -8,17 +9,17 @@ class BasicAuth extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="cols equal">
-        <jg-field label="Username"><jg-input id="user" placeholder="admin"></jg-input></jg-field>
-        <jg-field label="Password"><jg-input id="pass" type="password" placeholder="hunter2"></jg-input></jg-field>
+        <jg-field label="${t('basic-auth.username', 'Username')}"><jg-input id="user" placeholder="${t('basic-auth.admin', 'admin')}"></jg-input></jg-field>
+        <jg-field label="${t('basic-auth.password', 'Password')}"><jg-input id="pass" type="password" placeholder="${t('basic-auth.hunter2', 'hunter2')}"></jg-input></jg-field>
       </div>
 
-      <jg-field label="Authorization header"><jg-output id="header"></jg-output></jg-field>
-      <jg-field label="Base64 credentials"><jg-output id="encoded"></jg-output></jg-field>
-      <jg-field label="curl"><jg-output id="curl"></jg-output></jg-field>
-      <jg-field label="fetch"><jg-output id="fetch" scroll></jg-output></jg-field>
+      <jg-field label="${t('basic-auth.authorizationHeader', 'Authorization header')}"><jg-output id="header"></jg-output></jg-field>
+      <jg-field label="${t('basic-auth.base64Credentials', 'Base64 credentials')}"><jg-output id="encoded"></jg-output></jg-field>
+      <jg-field label="${t('basic-auth.curl', 'curl')}"><jg-output id="curl"></jg-output></jg-field>
+      <jg-field label="${t('basic-auth.fetch', 'fetch')}"><jg-output id="fetch" scroll></jg-output></jg-field>
 
-      <jg-card title="Decode" sub="Paste an existing header or base64 pair">
-        <jg-input id="decode-in" mono placeholder="Basic YWRtaW46aHVudGVyMg=="></jg-input>
+      <jg-card title="${t('basic-auth.decode', 'Decode')}" sub="Paste an existing header or base64 pair">
+        <jg-input id="decode-in" mono placeholder="${t('basic-auth.basicYwrtaw46ahvudgvymg', 'Basic YWRtaW46aHVudGVyMg==')}"></jg-input>
         <jg-output id="decode-out"></jg-output>
       </jg-card>
     </div>`);

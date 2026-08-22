@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { toYaml } from '../core/yaml.js';
 import { debounce, copyText, download } from '../core/util.js';
 
@@ -32,52 +33,52 @@ class Kubernetes extends JGApp {
 
       <div class="shell">
         <div class="form">
-          <jg-field label="Name"><jg-input id="name" value="web" mono></jg-input></jg-field>
-          <jg-field label="Namespace"><jg-input id="namespace" value="default" mono></jg-input></jg-field>
-          <jg-field label="Image"><jg-input id="image" value="nginx:1.27-alpine" mono></jg-input></jg-field>
+          <jg-field label="${t('kubernetes.name', 'Name')}"><jg-input id="name" value="web" mono></jg-input></jg-field>
+          <jg-field label="${t('kubernetes.namespace', 'Namespace')}"><jg-input id="namespace" value="default" mono></jg-input></jg-field>
+          <jg-field label="${t('kubernetes.image', 'Image')}"><jg-input id="image" value="nginx:1.27-alpine" mono></jg-input></jg-field>
           <div class="row">
-            <jg-field label="Replicas" style="flex:1"><jg-input id="replicas" type="number" min="1" max="50" value="2"></jg-input></jg-field>
-            <jg-field label="Container port" style="flex:1"><jg-input id="port" type="number" min="1" max="65535" value="80"></jg-input></jg-field>
+            <jg-field label="${t('kubernetes.replicas', 'Replicas')}" style="flex:1"><jg-input id="replicas" type="number" min="1" max="50" value="2"></jg-input></jg-field>
+            <jg-field label="${t('kubernetes.containerPort', 'Container port')}" style="flex:1"><jg-input id="port" type="number" min="1" max="65535" value="80"></jg-input></jg-field>
           </div>
           <div class="row">
-            <jg-field label="Service port" style="flex:1"><jg-input id="servicePort" type="number" min="1" max="65535" value="80"></jg-input></jg-field>
-            <jg-field label="Service type" style="flex:1">
+            <jg-field label="${t('kubernetes.servicePort', 'Service port')}" style="flex:1"><jg-input id="servicePort" type="number" min="1" max="65535" value="80"></jg-input></jg-field>
+            <jg-field label="${t('kubernetes.serviceType', 'Service type')}" style="flex:1">
               <jg-select id="serviceType" value="ClusterIP">
                 ${SERVICE_TYPES.map((type) => html`<option value="${type}">${type}</option>`)}
               </jg-select>
             </jg-field>
           </div>
 
-          <jg-field label="Host for the ingress"><jg-input id="host" value="example.com" mono></jg-input></jg-field>
-          <jg-field label="Ingress class"><jg-input id="ingressClass" value="nginx" mono></jg-input></jg-field>
+          <jg-field label="${t('kubernetes.hostForTheIngress', 'Host for the ingress')}"><jg-input id="host" value="example.com" mono></jg-input></jg-field>
+          <jg-field label="${t('kubernetes.ingressClass', 'Ingress class')}"><jg-input id="ingressClass" value="nginx" mono></jg-input></jg-field>
 
           <div class="row">
-            <jg-field label="CPU request" style="flex:1"><jg-input id="cpuRequest" value="100m" mono></jg-input></jg-field>
-            <jg-field label="CPU limit" style="flex:1"><jg-input id="cpuLimit" value="500m" mono></jg-input></jg-field>
+            <jg-field label="${t('kubernetes.cpuRequest', 'CPU request')}" style="flex:1"><jg-input id="cpuRequest" value="100m" mono></jg-input></jg-field>
+            <jg-field label="${t('kubernetes.cpuLimit', 'CPU limit')}" style="flex:1"><jg-input id="cpuLimit" value="500m" mono></jg-input></jg-field>
           </div>
           <div class="row">
-            <jg-field label="Memory request" style="flex:1"><jg-input id="memRequest" value="128Mi" mono></jg-input></jg-field>
-            <jg-field label="Memory limit" style="flex:1"><jg-input id="memLimit" value="512Mi" mono></jg-input></jg-field>
+            <jg-field label="${t('kubernetes.memoryRequest', 'Memory request')}" style="flex:1"><jg-input id="memRequest" value="128Mi" mono></jg-input></jg-field>
+            <jg-field label="${t('kubernetes.memoryLimit', 'Memory limit')}" style="flex:1"><jg-input id="memLimit" value="512Mi" mono></jg-input></jg-field>
           </div>
 
           <div class="row">
-            <jg-switch id="probes" checked></jg-switch><span class="hint">Add readiness and liveness probes</span>
+            <jg-switch id="probes" checked></jg-switch><span class="hint">${t('kubernetes.addReadinessAndLivenessProbes', 'Add readiness and liveness probes')}</span>
           </div>
           <div class="row">
-            <jg-switch id="tls" checked></jg-switch><span class="hint">Request TLS on the ingress</span>
+            <jg-switch id="tls" checked></jg-switch><span class="hint">${t('kubernetes.requestTlsOnTheIngress', 'Request TLS on the ingress')}</span>
           </div>
 
-          <jg-card title="Environment" sub="Written into a ConfigMap and referenced by the pod">
+          <jg-card title="${t('kubernetes.environment', 'Environment')}" sub="Written into a ConfigMap and referenced by the pod">
             <div class="list" id="env"></div>
-            <jg-button size="sm" variant="outline" id="add-env">Add variable</jg-button>
+            <jg-button size="sm" variant="outline" id="add-env">${t('kubernetes.addVariable', 'Add variable')}</jg-button>
           </jg-card>
         </div>
 
         <div class="out">
           <jg-code id="out" grow gutter language="yaml" readonly></jg-code>
           <div class="row">
-            <jg-button size="sm" variant="outline" id="copy">Copy manifests</jg-button>
-            <jg-button size="sm" variant="ghost" id="download">Download</jg-button>
+            <jg-button size="sm" variant="outline" id="copy">${t('kubernetes.copyManifests', 'Copy manifests')}</jg-button>
+            <jg-button size="sm" variant="ghost" id="download">${t('kubernetes.download', 'Download')}</jg-button>
             <span class="grow"></span>
             <span class="hint" id="count"></span>
           </div>
@@ -87,12 +88,12 @@ class Kubernetes extends JGApp {
 
     const kinds = this.$('#kinds');
     kinds.items = [
-      { id: 'deployment', label: 'Deployment', icon: 'helm', toggle: true, active: this.#kinds.has('deployment') },
-      { id: 'service', label: 'Service', icon: 'network', toggle: true, active: this.#kinds.has('service') },
-      { id: 'ingress', label: 'Ingress', icon: 'globe', toggle: true, active: this.#kinds.has('ingress') },
-      { id: 'configmap', label: 'ConfigMap', icon: 'list', toggle: true, active: this.#kinds.has('configmap') },
-      { id: 'hpa', label: 'Autoscaler', icon: 'trending', toggle: true, active: this.#kinds.has('hpa') },
-      { id: 'pdb', label: 'PodDisruptionBudget', icon: 'shieldCheck', toggle: true, active: this.#kinds.has('pdb') },
+      { id: 'deployment', label: t('kubernetes.deployment', 'Deployment'), icon: 'helm', toggle: true, active: this.#kinds.has('deployment') },
+      { id: 'service', label: t('kubernetes.service', 'Service'), icon: 'network', toggle: true, active: this.#kinds.has('service') },
+      { id: 'ingress', label: t('kubernetes.ingress', 'Ingress'), icon: 'globe', toggle: true, active: this.#kinds.has('ingress') },
+      { id: 'configmap', label: t('kubernetes.configmap', 'ConfigMap'), icon: 'list', toggle: true, active: this.#kinds.has('configmap') },
+      { id: 'hpa', label: t('kubernetes.autoscaler', 'Autoscaler'), icon: 'trending', toggle: true, active: this.#kinds.has('hpa') },
+      { id: 'pdb', label: t('kubernetes.poddisruptionbudget', 'PodDisruptionBudget'), icon: 'shieldCheck', toggle: true, active: this.#kinds.has('pdb') },
     ];
 
     this.on(kinds, 'select', (event) => {
@@ -131,8 +132,8 @@ class Kubernetes extends JGApp {
     this.$('#env').innerHTML = this.#env
       .map(
         (entry) => html`<div class="pair">
-          <jg-input size="sm" mono value="${entry.key}" data-key="${entry.id}" placeholder="KEY"></jg-input>
-          <jg-input size="sm" mono value="${entry.value}" data-value="${entry.id}" placeholder="value"></jg-input>
+          <jg-input size="sm" mono value="${entry.key}" data-key="${entry.id}" placeholder="${t('kubernetes.key', 'KEY')}"></jg-input>
+          <jg-input size="sm" mono value="${entry.value}" data-value="${entry.id}" placeholder="${t('kubernetes.value', 'value')}"></jg-input>
           <jg-button size="icon-sm" variant="ghost" data-drop="${entry.id}">✕</jg-button>
         </div>`,
       )

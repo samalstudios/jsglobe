@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { evaluate } from '../core/expression.js';
 import { debounce, download } from '../core/util.js';
 
@@ -63,12 +64,12 @@ class FunctionPlotter extends JGApp {
     this.paint(html`<div class="app">
       <div class="row">
         <jg-tabs id="mode"></jg-tabs>
-        <jg-button size="sm" variant="outline" id="add">Add function</jg-button>
-        <jg-button size="sm" variant="ghost" id="reset">Reset view</jg-button>
-        <jg-button size="sm" variant="ghost" id="fit">Fit y axis</jg-button>
+        <jg-button size="sm" variant="outline" id="add">${t('function-plotter.addFunction', 'Add function')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="reset">${t('function-plotter.resetView', 'Reset view')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="fit">${t('function-plotter.fitYAxis', 'Fit y axis')}</jg-button>
         <span class="grow"></span>
-        <span class="row tight" id="derivative-field"><jg-switch id="derivative"></jg-switch><span class="hint">Show derivative</span></span>
-        <jg-button size="sm" variant="ghost" id="save">Save PNG</jg-button>
+        <span class="row tight" id="derivative-field"><jg-switch id="derivative"></jg-switch><span class="hint">${t('function-plotter.showDerivative', 'Show derivative')}</span></span>
+        <jg-button size="sm" variant="ghost" id="save">${t('function-plotter.savePng', 'Save PNG')}</jg-button>
       </div>
 
       <div class="curves" id="curves"></div>
@@ -76,12 +77,12 @@ class FunctionPlotter extends JGApp {
       <div class="surface" id="surface" hidden>
         <jg-field label="z = f(x, y)"><jg-input id="expression" mono value="${this.#surface.expression}"></jg-input></jg-field>
         <div class="row">
-          <span class="hint">Range</span>
+          <span class="hint">${t('function-plotter.range', 'Range')}</span>
           <jg-slider id="span" min="2" max="20" value="${this.#surface.span}" style="max-width:150px"></jg-slider>
-          <span class="hint">Detail</span>
+          <span class="hint">${t('function-plotter.detail', 'Detail')}</span>
           <jg-slider id="resolution" min="10" max="60" value="${this.#surface.resolution}" style="max-width:150px"></jg-slider>
           <span class="grow"></span>
-          <span class="hint">Drag to rotate, scroll to zoom</span>
+          <span class="hint">${t('function-plotter.dragToRotateScrollTo', 'Drag to rotate, scroll to zoom')}</span>
         </div>
       </div>
 
@@ -90,15 +91,15 @@ class FunctionPlotter extends JGApp {
         <div class="readout" id="readout"></div>
       </div>
 
-      <jg-card title="Roots and extrema" sub="Found by scanning the visible range" id="roots-card">
+      <jg-card title="${t('function-plotter.rootsAndExtrema', 'Roots and extrema')}" sub="Found by scanning the visible range" id="roots-card">
         <div class="roots" id="roots"></div>
       </jg-card>
     </div>`);
 
     const modes = this.$('#mode');
     modes.items = [
-      { value: '2d', label: '2D curve' },
-      { value: '3d', label: '3D surface' },
+      { value: '2d', label: t('function-plotter.2dCurve', '2D curve') },
+      { value: '3d', label: t('function-plotter.3dSurface', '3D surface') },
     ];
     modes.value = this.#mode;
     this.on(modes, 'change', (event) => {
@@ -182,7 +183,7 @@ class FunctionPlotter extends JGApp {
       .map(
         (curve) => html`<div class="curve">
           <span class="swatch" style="background:${curve.colour}"></span>
-          <jg-input size="sm" mono value="${curve.expression}" data-expression="${curve.id}" placeholder="sin(x)"></jg-input>
+          <jg-input size="sm" mono value="${curve.expression}" data-expression="${curve.id}" placeholder="${t('function-plotter.sinX', 'sin(x)')}"></jg-input>
           <jg-switch ${curve.visible ? 'checked' : ''} data-visible="${curve.id}"></jg-switch>
           <jg-button size="icon-sm" variant="ghost" data-drop="${curve.id}">✕</jg-button>
         </div>`,
@@ -473,7 +474,7 @@ class FunctionPlotter extends JGApp {
           .slice(0, 14)
           .map((root) => html`<jg-badge mono>${root.expression} = 0 at x = ${Number(root.x.toPrecision(6))}</jg-badge>`)
           .join('')
-      : html`<span class="hint">No sign changes in the visible range.</span>`;
+      : html`<span class="hint">${t('function-plotter.noSignChangesInThe', 'No sign changes in the visible range.')}</span>`;
 
     this.store.write({
       curves: this.#curves.map(({ expression, visible }) => ({ expression, visible })),

@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { ai } from '../core/ai.js';
 import { copyText } from '../core/util.js';
 import '../ui/jg-ai-bar.js';
@@ -23,12 +24,12 @@ const sheet = css`
 `;
 
 const TASKS = [
-  { value: 'explain', label: 'Explain', prompt: 'Explain what this code does, step by step. Be concise and mention edge cases you notice.' },
-  { value: 'review', label: 'Review', prompt: 'Review this code. List concrete bugs, risks and improvements as a short bulleted list. Do not rewrite the whole file.' },
-  { value: 'document', label: 'Document', prompt: 'Add clear doc comments to this code and return the full updated code only, no commentary.' },
-  { value: 'tests', label: 'Write tests', prompt: 'Write focused unit tests for this code. Return only the test code.' },
-  { value: 'convert', label: 'Convert', prompt: 'Convert this code to the requested target language, keeping behaviour identical. Return only code.' },
-  { value: 'simplify', label: 'Simplify', prompt: 'Rewrite this code to be simpler and clearer without changing behaviour. Return only code.' },
+  { value: 'explain', label: t('ai-code.explain', 'Explain'), prompt: 'Explain what this code does, step by step. Be concise and mention edge cases you notice.' },
+  { value: 'review', label: t('ai-code.review', 'Review'), prompt: 'Review this code. List concrete bugs, risks and improvements as a short bulleted list. Do not rewrite the whole file.' },
+  { value: 'document', label: t('ai-code.document', 'Document'), prompt: 'Add clear doc comments to this code and return the full updated code only, no commentary.' },
+  { value: 'tests', label: t('ai-code.writeTests', 'Write tests'), prompt: 'Write focused unit tests for this code. Return only the test code.' },
+  { value: 'convert', label: t('ai-code.convert', 'Convert'), prompt: 'Convert this code to the requested target language, keeping behaviour identical. Return only code.' },
+  { value: 'simplify', label: t('ai-code.simplify', 'Simplify'), prompt: 'Rewrite this code to be simpler and clearer without changing behaviour. Return only code.' },
 ];
 
 class AiCode extends JGApp {
@@ -44,20 +45,20 @@ class AiCode extends JGApp {
       <div class="row">
         <jg-tabs id="task"></jg-tabs>
         <span class="grow"></span>
-        <jg-input id="target" placeholder="Target language" style="width:180px" hidden></jg-input>
-        <jg-button id="run">Run</jg-button>
-        <jg-button id="stop" variant="outline" hidden>Stop</jg-button>
+        <jg-input id="target" placeholder="${t('ai-code.targetLanguage', 'Target language')}" style="width:180px" hidden></jg-input>
+        <jg-button id="run">${t('ai-code.run', 'Run')}</jg-button>
+        <jg-button id="stop" variant="outline" hidden>${t('ai-code.stop', 'Stop')}</jg-button>
       </div>
 
       <div class="split">
         <div class="pane">
-          <span class="label">Code</span>
-          <jg-code id="input" grow gutter language="javascript" placeholder="Paste code here"></jg-code>
+          <span class="label">${t('ai-code.code', 'Code')}</span>
+          <jg-code id="input" grow gutter language="javascript" placeholder="${t('ai-code.pasteCodeHere', 'Paste code here')}"></jg-code>
         </div>
         <div class="pane">
           <div class="spread">
-            <span class="label">Result</span>
-            <jg-button size="sm" variant="ghost" id="copy">Copy</jg-button>
+            <span class="label">${t('ai-code.result', 'Result')}</span>
+            <jg-button size="sm" variant="ghost" id="copy">${t('ai-code.copy', 'Copy')}</jg-button>
           </div>
           <div class="out" id="out"></div>
         </div>

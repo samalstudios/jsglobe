@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { encodeBytes, copyText } from '../core/util.js';
 
 const sheet = css`
@@ -83,35 +84,35 @@ class OtpGenerator extends JGApp {
   renderApp() {
     const secret = this.#secret();
     this.paint(html`<div class="app">
-      <jg-field label="Base32 secret" hint="Same format authenticator apps use">
+      <jg-field label="${t('otp-generator.base32Secret', 'Base32 secret')}" hint="${t('otp-generator.sameFormatAuthenticatorAppsUse', 'Same format authenticator apps use')}">
         <div class="row nowrap">
           <jg-input id="secret" class="grow" mono value="${secret}"></jg-input>
-          <jg-button variant="outline" id="random">Random</jg-button>
+          <jg-button variant="outline" id="random">${t('otp-generator.random', 'Random')}</jg-button>
         </div>
       </jg-field>
 
       <div class="row">
-        <jg-select id="digits" value="6" style="width:120px"><option value="6">6 digits</option><option value="8">8 digits</option></jg-select>
-        <jg-select id="period" value="30" style="width:130px"><option value="30">30 seconds</option><option value="60">60 seconds</option></jg-select>
+        <jg-select id="digits" value="6" style="width:120px"><option value="6">${t('otp-generator.6Digits', '6 digits')}</option><option value="8">${t('otp-generator.8Digits', '8 digits')}</option></jg-select>
+        <jg-select id="period" value="30" style="width:130px"><option value="30">${t('otp-generator.30Seconds', '30 seconds')}</option><option value="60">${t('otp-generator.60Seconds', '60 seconds')}</option></jg-select>
         <jg-select id="algorithm" value="SHA-1" style="width:140px">
-          <option value="SHA-1">SHA-1</option><option value="SHA-256">SHA-256</option><option value="SHA-512">SHA-512</option>
+          <option value="SHA-1">${t('otp-generator.sha1', 'SHA-1')}</option><option value="SHA-256">${t('otp-generator.sha256', 'SHA-256')}</option><option value="SHA-512">${t('otp-generator.sha512', 'SHA-512')}</option>
         </jg-select>
       </div>
 
-      <jg-card title="Current code">
+      <jg-card title="${t('otp-generator.currentCode', 'Current code')}">
         <div class="code" id="code">······</div>
         <div class="ring"><i id="bar"></i></div>
         <div class="spread">
           <span class="hint" id="left"></span>
-          <jg-button size="sm" variant="outline" id="copy">Copy</jg-button>
+          <jg-button size="sm" variant="outline" id="copy">${t('otp-generator.copy', 'Copy')}</jg-button>
         </div>
       </jg-card>
 
-      <jg-field label="otpauth URI" hint="Paste into an authenticator app">
+      <jg-field label="${t('otp-generator.otpauthUri', 'otpauth URI')}" hint="${t('otp-generator.pasteIntoAnAuthenticatorApp', 'Paste into an authenticator app')}">
         <jg-output id="uri"></jg-output>
       </jg-field>
 
-      <jg-card title="Adjacent codes" sub="Useful when a server allows drift">
+      <jg-card title="${t('otp-generator.adjacentCodes', 'Adjacent codes')}" sub="Useful when a server allows drift">
         <div class="kv" id="drift"></div>
       </jg-card>
     </div>`);
@@ -147,8 +148,8 @@ class OtpGenerator extends JGApp {
         if (drift) {
           const previous = await totp(secret, { digits, period, algorithm, at: Date.now() - period * 1000 });
           const next = await totp(secret, { digits, period, algorithm, at: Date.now() + period * 1000 });
-          drift.innerHTML = html`<div>Previous window</div><div class="mono">${previous}</div>
-            <div>Next window</div><div class="mono">${next}</div>`;
+          drift.innerHTML = html`<div>${t('otp-generator.previousWindow', 'Previous window')}</div><div class="mono">${previous}</div>
+            <div>${t('otp-generator.nextWindow', 'Next window')}</div><div class="mono">${next}</div>`;
         }
       } catch {
         code.textContent = 'invalid';

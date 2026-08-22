@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { encodeQr, qrToSvg } from '../lib/qr.js';
 import { download, copyText, debounce } from '../core/util.js';
 
@@ -18,13 +19,13 @@ const sheet = css`
 `;
 
 const PRESETS = [
-  { id: 'text', label: 'Text or URL' },
-  { id: 'wifi', label: 'Wi-Fi' },
-  { id: 'email', label: 'Email' },
-  { id: 'sms', label: 'SMS' },
-  { id: 'vcard', label: 'Contact' },
-  { id: 'event', label: 'Event' },
-  { id: 'geo', label: 'Location' },
+  { id: 'text', label: t('qr-generator.textOrUrl', 'Text or URL') },
+  { id: 'wifi', label: t('qr-generator.wiFi', 'Wi-Fi') },
+  { id: 'email', label: t('qr-generator.email', 'Email') },
+  { id: 'sms', label: t('qr-generator.sms', 'SMS') },
+  { id: 'vcard', label: t('qr-generator.contact', 'Contact') },
+  { id: 'event', label: t('qr-generator.event', 'Event') },
+  { id: 'geo', label: t('qr-generator.location', 'Location') },
 ];
 
 const escapeWifi = (value) => value.replace(/([\\;,:"])/g, '\\$1');
@@ -52,7 +53,7 @@ class QrGenerator extends JGApp {
       <div id="fields"></div>
 
       <div class="cols3">
-        <jg-field label="Error correction" hint="Higher levels survive more damage">
+        <jg-field label="${t('qr-generator.errorCorrection', 'Error correction')}" hint="${t('qr-generator.higherLevelsSurviveMoreDamage', 'Higher levels survive more damage')}">
           <jg-select id="ecl" value="M">
             <option value="L">L - 7%</option>
             <option value="M">M - 15%</option>
@@ -60,19 +61,19 @@ class QrGenerator extends JGApp {
             <option value="H">H - 30%</option>
           </jg-select>
         </jg-field>
-        <jg-field label="Module size"><jg-slider id="scale" min="2" max="16" value="8"></jg-slider></jg-field>
-        <jg-field label="Quiet zone"><jg-slider id="margin" min="0" max="8" value="4"></jg-slider></jg-field>
-        <jg-field label="Foreground"><jg-input id="dark" type="color" value="#000000"></jg-input></jg-field>
-        <jg-field label="Background"><jg-input id="light" type="color" value="#ffffff"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.moduleSize', 'Module size')}"><jg-slider id="scale" min="2" max="16" value="8"></jg-slider></jg-field>
+        <jg-field label="${t('qr-generator.quietZone', 'Quiet zone')}"><jg-slider id="margin" min="0" max="8" value="4"></jg-slider></jg-field>
+        <jg-field label="${t('qr-generator.foreground', 'Foreground')}"><jg-input id="dark" type="color" value="#000000"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.background', 'Background')}"><jg-input id="light" type="color" value="#ffffff"></jg-input></jg-field>
       </div>
 
       <div class="stage"><div class="frame" id="frame"></div></div>
       <div class="center hint" id="status"></div>
 
       <div class="row" style="justify-content:center">
-        <jg-button size="sm" variant="outline" id="png">Download PNG</jg-button>
-        <jg-button size="sm" variant="outline" id="svg">Download SVG</jg-button>
-        <jg-button size="sm" variant="ghost" id="copy">Copy SVG markup</jg-button>
+        <jg-button size="sm" variant="outline" id="png">${t('qr-generator.downloadPng', 'Download PNG')}</jg-button>
+        <jg-button size="sm" variant="outline" id="svg">${t('qr-generator.downloadSvg', 'Download SVG')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="copy">${t('qr-generator.copySvgMarkup', 'Copy SVG markup')}</jg-button>
       </div>
     </div>`);
 
@@ -100,41 +101,41 @@ class QrGenerator extends JGApp {
   #fields() {
     const node = this.$('#fields');
     const forms = {
-      text: html`<jg-field label="Content"><jg-textarea id="text" rows="3" sans placeholder="https://jsglobe.com">https://jsglobe.com</jg-textarea></jg-field>`,
+      text: html`<jg-field label="${t('qr-generator.content', 'Content')}"><jg-textarea id="text" rows="3" sans placeholder="https://jsglobe.com">https://jsglobe.com</jg-textarea></jg-field>`,
       wifi: html`<div class="cols3">
-        <jg-field label="Network name (SSID)"><jg-input id="ssid" placeholder="Home network"></jg-input></jg-field>
-        <jg-field label="Password"><jg-input id="password" type="password"></jg-input></jg-field>
-        <jg-field label="Security">
-          <jg-select id="security" value="WPA"><option value="WPA">WPA/WPA2</option><option value="WEP">WEP</option><option value="nopass">Open</option></jg-select>
+        <jg-field label="${t('qr-generator.networkNameSsid', 'Network name (SSID)')}"><jg-input id="ssid" placeholder="${t('qr-generator.homeNetwork', 'Home network')}"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.password', 'Password')}"><jg-input id="password" type="password"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.security', 'Security')}">
+          <jg-select id="security" value="WPA"><option value="WPA">${t('qr-generator.wpaWpa2', 'WPA/WPA2')}</option><option value="WEP">${t('qr-generator.wep', 'WEP')}</option><option value="nopass">${t('qr-generator.open', 'Open')}</option></jg-select>
         </jg-field>
       </div>`,
       email: html`<div class="cols3">
-        <jg-field label="To"><jg-input id="to" placeholder="hello@example.com"></jg-input></jg-field>
-        <jg-field label="Subject"><jg-input id="subject"></jg-input></jg-field>
-        <jg-field label="Body"><jg-input id="body"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.to', 'To')}"><jg-input id="to" placeholder="hello@example.com"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.subject', 'Subject')}"><jg-input id="subject"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.body', 'Body')}"><jg-input id="body"></jg-input></jg-field>
       </div>`,
       sms: html`<div class="cols3">
-        <jg-field label="Number"><jg-input id="number" placeholder="+1 555 0100"></jg-input></jg-field>
-        <jg-field label="Message"><jg-input id="message"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.number', 'Number')}"><jg-input id="number" placeholder="+1 555 0100"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.message', 'Message')}"><jg-input id="message"></jg-input></jg-field>
       </div>`,
       vcard: html`<div class="cols3">
-        <jg-field label="Name"><jg-input id="name" placeholder="Ada Lovelace"></jg-input></jg-field>
-        <jg-field label="Organisation"><jg-input id="org"></jg-input></jg-field>
-        <jg-field label="Phone"><jg-input id="phone"></jg-input></jg-field>
-        <jg-field label="Email"><jg-input id="vemail"></jg-input></jg-field>
-        <jg-field label="Website"><jg-input id="url"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.name', 'Name')}"><jg-input id="name" placeholder="${t('qr-generator.adaLovelace', 'Ada Lovelace')}"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.organisation', 'Organisation')}"><jg-input id="org"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.phone', 'Phone')}"><jg-input id="phone"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.email', 'Email')}"><jg-input id="vemail"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.website', 'Website')}"><jg-input id="url"></jg-input></jg-field>
       </div>`,
       event: html`<div class="cols3">
-        <jg-field label="Title"><jg-input id="summary" placeholder="Team standup"></jg-input></jg-field>
-        <jg-field label="Location"><jg-input id="location" placeholder="Meeting room 2"></jg-input></jg-field>
-        <jg-field label="Starts"><jg-input id="start" type="datetime-local"></jg-input></jg-field>
-        <jg-field label="Ends"><jg-input id="end" type="datetime-local"></jg-input></jg-field>
-        <jg-field label="Description"><jg-input id="description"></jg-input></jg-field>
-        <jg-field label="All day" row><jg-switch id="allday"></jg-switch></jg-field>
+        <jg-field label="${t('qr-generator.title', 'Title')}"><jg-input id="summary" placeholder="${t('qr-generator.teamStandup', 'Team standup')}"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.location', 'Location')}"><jg-input id="location" placeholder="${t('qr-generator.meetingRoom2', 'Meeting room 2')}"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.starts', 'Starts')}"><jg-input id="start" type="datetime-local"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.ends', 'Ends')}"><jg-input id="end" type="datetime-local"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.description', 'Description')}"><jg-input id="description"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.allDay', 'All day')}" row><jg-switch id="allday"></jg-switch></jg-field>
       </div>`,
       geo: html`<div class="cols3">
-        <jg-field label="Latitude"><jg-input id="lat" value="51.5074"></jg-input></jg-field>
-        <jg-field label="Longitude"><jg-input id="lon" value="-0.1278"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.latitude', 'Latitude')}"><jg-input id="lat" value="51.5074"></jg-input></jg-field>
+        <jg-field label="${t('qr-generator.longitude', 'Longitude')}"><jg-input id="lon" value="-0.1278"></jg-input></jg-field>
       </div>`,
     };
 

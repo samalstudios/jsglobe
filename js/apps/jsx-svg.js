@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText } from '../core/util.js';
 
 const sheet = css`
@@ -124,18 +125,18 @@ class JsxSvg extends JGApp {
       <div class="row">
         <jg-tabs id="direction"></jg-tabs>
         <span class="grow"></span>
-        <jg-input id="name" value="Icon" size="sm" style="width:150px" placeholder="Component name"></jg-input>
-        <jg-button size="sm" variant="outline" id="sample">Sample</jg-button>
-        <jg-button size="sm" variant="outline" id="copy">Copy result</jg-button>
+        <jg-input id="name" value="Icon" size="sm" style="width:150px" placeholder="${t('jsx-svg.componentName', 'Component name')}"></jg-input>
+        <jg-button size="sm" variant="outline" id="sample">${t('jsx-svg.sample', 'Sample')}</jg-button>
+        <jg-button size="sm" variant="outline" id="copy">${t('jsx-svg.copyResult', 'Copy result')}</jg-button>
       </div>
 
       <div class="split">
         <div class="pane">
-          <span class="label" id="inlabel">JSX component</span>
-          <jg-code id="input" rows="14" gutter language="jsx" placeholder="Paste a React SVG component"></jg-code>
+          <span class="label" id="inlabel">${t('jsx-svg.jsxComponent', 'JSX component')}</span>
+          <jg-code id="input" rows="14" gutter language="jsx" placeholder="${t('jsx-svg.pasteAReactSvgComponent', 'Paste a React SVG component')}"></jg-code>
         </div>
         <div class="pane">
-          <span class="label" id="outlabel">SVG markup</span>
+          <span class="label" id="outlabel">${t('jsx-svg.svgMarkup', 'SVG markup')}</span>
           <jg-code id="output" rows="14" gutter language="svg" readonly></jg-code>
           <div class="preview" id="preview"></div>
         </div>
@@ -148,8 +149,8 @@ class JsxSvg extends JGApp {
     </div>`);
 
     this.$('#direction').items = [
-      { value: 'to-svg', label: 'JSX to SVG' },
-      { value: 'to-jsx', label: 'SVG to JSX' },
+      { value: 'to-svg', label: t('jsx-svg.jsxToSvg', 'JSX to SVG') },
+      { value: 'to-jsx', label: t('jsx-svg.svgToJsx', 'SVG to JSX') },
     ];
     this.$('#direction').value = this.#direction;
 

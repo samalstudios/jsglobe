@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { download, toast, formatBytes } from '../core/util.js';
 
 const sheet = css`
@@ -203,7 +204,7 @@ class ExifEditor extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <div class="drop" id="drop">Drop a JPEG here, or click to choose one</div>
+      <div class="drop" id="drop">${t('exif-editor.dropAJpegHereOr', 'Drop a JPEG here, or click to choose one')}</div>
 
       <div class="split" id="body" hidden>
         <div class="stack tight">
@@ -211,16 +212,16 @@ class ExifEditor extends JGApp {
           <div class="kv" id="file"></div>
         </div>
         <div class="stack tight">
-          <jg-card title="Metadata" sub="Untick a tag to drop it from the saved copy">
+          <jg-card title="${t('exif-editor.metadata', 'Metadata')}" sub="Untick a tag to drop it from the saved copy">
             <div class="tags" id="tags"></div>
           </jg-card>
           <div class="row">
-            <jg-switch id="keep-icc" checked></jg-switch><span class="hint">Keep the colour profile</span>
+            <jg-switch id="keep-icc" checked></jg-switch><span class="hint">${t('exif-editor.keepTheColourProfile', 'Keep the colour profile')}</span>
           </div>
           <div class="row">
-            <jg-button size="sm" id="save">Save cleaned copy</jg-button>
-            <jg-button size="sm" variant="outline" id="save-all">Strip everything</jg-button>
-            <jg-button size="sm" variant="ghost" id="copy-json">Copy metadata as JSON</jg-button>
+            <jg-button size="sm" id="save">${t('exif-editor.saveCleanedCopy', 'Save cleaned copy')}</jg-button>
+            <jg-button size="sm" variant="outline" id="save-all">${t('exif-editor.stripEverything', 'Strip everything')}</jg-button>
+            <jg-button size="sm" variant="ghost" id="copy-json">${t('exif-editor.copyMetadataAsJson', 'Copy metadata as JSON')}</jg-button>
           </div>
         </div>
       </div>
@@ -285,10 +286,10 @@ class ExifEditor extends JGApp {
     const metaBytes = app.reduce((total, segment) => total + segment.length, 0);
 
     this.$('#file').innerHTML = html`
-      <div>Name</div><div class="mono">${file.name}</div>
-      <div>Size</div><div>${formatBytes(file.size)}</div>
-      <div>Type</div><div class="mono">${file.type}</div>
-      <div>Metadata</div><div>${formatBytes(metaBytes)} in ${app.length} segment${app.length === 1 ? '' : 's'}</div>
+      <div>${t('exif-editor.name', 'Name')}</div><div class="mono">${file.name}</div>
+      <div>${t('exif-editor.size', 'Size')}</div><div>${formatBytes(file.size)}</div>
+      <div>${t('exif-editor.type', 'Type')}</div><div class="mono">${file.type}</div>
+      <div>${t('exif-editor.metadata', 'Metadata')}</div><div>${formatBytes(metaBytes)} in ${app.length} segment${app.length === 1 ? '' : 's'}</div>
     `;
 
     this.$('#tags').innerHTML = tags.length
@@ -301,7 +302,7 @@ class ExifEditor extends JGApp {
             </div>`,
           )
           .join('')
-      : html`<span class="hint">No Exif tags found in this file.</span>`;
+      : html`<span class="hint">${t('exif-editor.noExifTagsFoundIn', 'No Exif tags found in this file.')}</span>`;
 
     this.bind('[data-keep]', 'change', (event) => {
       event.currentTarget.closest('.tag').classList.toggle('removed', !event.detail.checked);

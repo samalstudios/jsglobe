@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { createWorld, bodyCorners, worldPoint, localPoint, spanOf, hull, polyMass, simpleLoop } from '../lib/physics.js';
 import { createDesigns } from '../lib/designs.js';
 import { clipPolygons, polygonArea } from '../lib/clip.js';
@@ -160,33 +161,33 @@ const sheet = css`
 const SCALE = 42;
 
 const SHAPES = {
-  circle: { label: 'Ball', icon: 'circle' },
-  box: { label: 'Block', icon: 'square' },
-  wall: { label: 'Wall', icon: 'frame' },
-  shape: { label: 'Shape', icon: 'vector' },
-  gear: { label: 'Gear', icon: 'gearWheel' },
+  circle: { label: t('physics-lab.ball', 'Ball'), icon: 'circle' },
+  box: { label: t('physics-lab.block', 'Block'), icon: 'square' },
+  wall: { label: t('physics-lab.wall', 'Wall'), icon: 'frame' },
+  shape: { label: t('physics-lab.shape', 'Shape'), icon: 'vector' },
+  gear: { label: t('physics-lab.gear', 'Gear'), icon: 'gearWheel' },
 };
 
 const LINKS = {
-  spring: { label: 'Spring', icon: 'coil' },
-  rod: { label: 'Rod', icon: 'line' },
-  rope: { label: 'Rope', icon: 'link' },
-  jack: { label: 'Jack', icon: 'piston' },
-  pin: { label: 'Pin', icon: 'hinge' },
-  motor: { label: 'Motor', icon: 'motorised' },
-  mesh: { label: 'Mesh gears', icon: 'gearPair' },
-  linkage: { label: 'Linkage', icon: 'ruler' },
-  track: { label: 'Track', icon: 'rail' },
-  weld: { label: 'Weld', icon: 'weldSeam' },
+  spring: { label: t('physics-lab.spring', 'Spring'), icon: 'coil' },
+  rod: { label: t('physics-lab.rod', 'Rod'), icon: 'line' },
+  rope: { label: t('physics-lab.rope', 'Rope'), icon: 'link' },
+  jack: { label: t('physics-lab.jack', 'Jack'), icon: 'piston' },
+  pin: { label: t('physics-lab.pin', 'Pin'), icon: 'hinge' },
+  motor: { label: t('physics-lab.motor', 'Motor'), icon: 'motorised' },
+  mesh: { label: t('physics-lab.meshGears', 'Mesh gears'), icon: 'gearPair' },
+  linkage: { label: t('physics-lab.linkage', 'Linkage'), icon: 'ruler' },
+  track: { label: t('physics-lab.track', 'Track'), icon: 'rail' },
+  weld: { label: t('physics-lab.weld', 'Weld'), icon: 'weldSeam' },
 };
 
 const CONTROLS = {
-  button: { label: 'Button', icon: 'toggle' },
-  slider: { label: 'Slider', icon: 'tuning' },
+  button: { label: t('physics-lab.button', 'Button'), icon: 'toggle' },
+  slider: { label: t('physics-lab.slider', 'Slider'), icon: 'tuning' },
 };
 
 const SCENERY = {
-  backdrop: { label: 'Backdrop', icon: 'image' },
+  backdrop: { label: t('physics-lab.backdrop', 'Backdrop'), icon: 'image' },
 };
 
 const BUTTON_WIDTH = 1.5;
@@ -321,8 +322,8 @@ const SAMPLES = {
       { id: 61, kind: 'jack', a: 42, b: 37, aAt: { x: -0.492, y: -1.379 }, bAt: { x: -0.412, y: 0.002 }, rest: 3.516, min: 3, max: 4.6, speed: 0.4, manual: true, extend: 0.3225 },
     ],
     controls: [
-      { id: 51, kind: 'slider', x: 6.5, y: 15, target: 50, value: 0.9522, label: 'Long' },
-      { id: 64, kind: 'slider', x: 5, y: 15, target: 61, value: 0.3225, label: 'Cap' },
+      { id: 51, kind: 'slider', x: 6.5, y: 15, target: 50, value: 0.9522, label: t('physics-lab.long', 'Long') },
+      { id: 64, kind: 'slider', x: 5, y: 15, target: 61, value: 0.3225, label: t('physics-lab.cap', 'Cap') },
     ],
   },
   fourbar: {
@@ -343,9 +344,9 @@ const SAMPLES = {
       { id: 23, kind: 'pin', a: 3, b: 6, aWorld: { x: 2.5, y: 2 }, bWorld: { x: 2.5, y: 2 } },
     ],
     controls: [
-      { id: 30, kind: 'slider', x: -5.4, y: -1.2, target: 20, value: 0.78, label: 'Motor' },
-      { id: 31, kind: 'button', x: -3.4, y: -2.2, target: 20, action: 'run', label: 'Turn' },
-      { id: 32, kind: 'button', x: -3.4, y: -1.4, target: 20, action: 'reverse', label: 'Reverse' },
+      { id: 30, kind: 'slider', x: -5.4, y: -1.2, target: 20, value: 0.78, label: t('physics-lab.motor', 'Motor') },
+      { id: 31, kind: 'button', x: -3.4, y: -2.2, target: 20, action: 'run', label: t('physics-lab.turn', 'Turn') },
+      { id: 32, kind: 'button', x: -3.4, y: -1.4, target: 20, action: 'reverse', label: t('physics-lab.reverse', 'Reverse') },
     ],
   },
   gears: {
@@ -368,7 +369,7 @@ const SAMPLES = {
       { id: 25, kind: 'gear', a: 4, b: 6, ratio: 0.625 },
     ],
     controls: [
-      { id: 30, kind: 'slider', x: -6, y: 0, target: 23, value: 0.75, label: 'Drive' },
+      { id: 30, kind: 'slider', x: -6, y: 0, target: 23, value: 0.75, label: t('physics-lab.drive', 'Drive') },
     ],
   },
   orbits: {
@@ -389,11 +390,11 @@ export default class PhysicsLab extends JGApp {
   static appId = 'physics-lab';
   static styles = [sheet];
   static settings = [
-    { key: 'vectors', label: 'Show velocity arrows', type: 'switch', value: false },
-    { key: 'trails', label: 'Trace the selected body', type: 'switch', value: true },
-    { key: 'centres', label: 'Show the centre of each body', type: 'switch', value: true },
-    { key: 'snap', label: 'Snap links to centres and corners', type: 'switch', value: true },
-    { key: 'accuracy', label: 'Solver passes per frame', type: 'number', value: 8, min: 3, max: 20 },
+    { key: 'vectors', label: t('physics-lab.showVelocityArrows', 'Show velocity arrows'), type: 'switch', value: false },
+    { key: 'trails', label: t('physics-lab.traceTheSelectedBody', 'Trace the selected body'), type: 'switch', value: true },
+    { key: 'centres', label: t('physics-lab.showTheCentreOfEach', 'Show the centre of each body'), type: 'switch', value: true },
+    { key: 'snap', label: t('physics-lab.snapLinksToCentresAnd', 'Snap links to centres and corners'), type: 'switch', value: true },
+    { key: 'accuracy', label: t('physics-lab.solverPassesPerFrame', 'Solver passes per frame'), type: 'number', value: 8, min: 3, max: 20 },
   ];
 
   #world = createWorld();
@@ -541,8 +542,8 @@ export default class PhysicsLab extends JGApp {
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
       <div class="stack tight">
-        <div class="label">Physics Lab</div>
-        <div class="hint">Balls, blocks, springs, rods and motors with a real solver.</div>
+        <div class="label">${t('physics-lab.physicsLab', 'Physics Lab')}</div>
+        <div class="hint">${t('physics-lab.ballsBlocksSpringsRodsAnd', 'Balls, blocks, springs, rods and motors with a real solver.')}</div>
       </div>
     </div>`);
   }
@@ -555,25 +556,25 @@ export default class PhysicsLab extends JGApp {
         <div class="board">
           <canvas id="view"></canvas>
           <div class="readout" id="readout"></div>
-          <div class="hint-bar"><b id="tool-name">Select</b><span id="tool-hint"></span></div>
+          <div class="hint-bar"><b id="tool-name">${t('physics-lab.select', 'Select')}</b><span id="tool-hint"></span></div>
         </div>
         <aside class="side">
-          <div class="label">Scenes</div>
+          <div class="label">${t('physics-lab.scenes', 'Scenes')}</div>
           <div class="samples">
             ${Object.entries(SAMPLES).map(([key, sample]) => html`<button data-sample="${key}">${sample.name}</button>`)}
           </div>
           <div class="sep"></div>
-          <jg-field label="Gravity">
+          <jg-field label="${t('physics-lab.gravity', 'Gravity')}">
             <jg-input id="gravity" size="sm" type="number" step="0.5" min="-20" max="30" value="${this.#gravity}"></jg-input>
           </jg-field>
-          <jg-field label="Mutual gravity">
+          <jg-field label="${t('physics-lab.mutualGravity', 'Mutual gravity')}">
             <jg-input id="attraction" size="sm" type="number" step="0.1" min="0" max="20" value="${this.#attraction}"></jg-input>
           </jg-field>
           <div class="sep"></div>
-          <div class="label">Saved</div>
+          <div class="label">${t('physics-lab.saved', 'Saved')}</div>
           <div class="save-row">
-            <jg-input id="save-name" size="sm" placeholder="Name this scene"></jg-input>
-            <jg-button size="sm" variant="outline" id="save">Save</jg-button>
+            <jg-input id="save-name" size="sm" placeholder="${t('physics-lab.nameThisScene', 'Name this scene')}"></jg-input>
+            <jg-button size="sm" variant="outline" id="save">${t('physics-lab.save', 'Save')}</jg-button>
           </div>
           <div class="saved" id="saved"></div>
           <div class="sep"></div>
@@ -585,36 +586,36 @@ export default class PhysicsLab extends JGApp {
     this.#toolbar();
 
     this.$('#palette').innerHTML = html`
-      <div class="group">Edit</div>
+      <div class="group">${t('physics-lab.edit', 'Edit')}</div>
       ${[
-        { id: 'select', label: 'Select', icon: 'launcher' },
-        { id: 'erase', label: 'Erase', icon: 'eraser' },
+        { id: 'select', label: t('physics-lab.select', 'Select'), icon: 'launcher' },
+        { id: 'erase', label: t('physics-lab.erase', 'Erase'), icon: 'eraser' },
       ].map(
         (tool) => html`<button class="tool" data-tool="${tool.id}" aria-pressed="${String(this.#tool === tool.id)}">
           ${icon(tool.icon, 15)}<span>${tool.label}</span>
         </button>`,
       )}
-      <div class="group">Bodies</div>
+      <div class="group">${t('physics-lab.bodies', 'Bodies')}</div>
       ${Object.entries(SHAPES).map(
         ([kind, meta]) => html`<button class="tool" data-tool="${kind}" aria-pressed="${String(this.#tool === kind)}">
           ${icon(meta.icon, 15)}<span>${meta.label}</span>
         </button>`,
       )}
-      <div class="group">Links</div>
+      <div class="group">${t('physics-lab.links', 'Links')}</div>
       ${Object.entries(LINKS).map(
         ([kind, meta]) => html`<button class="tool" data-tool="${kind}" aria-pressed="${String(this.#tool === kind)}">
           ${icon(meta.icon, 15)}<span>${meta.label}</span>
         </button>`,
       )}
-      <div class="group">Controls</div>
+      <div class="group">${t('physics-lab.controls', 'Controls')}</div>
       ${Object.entries(CONTROLS).map(
         ([kind, meta]) => html`<button class="tool" data-tool="${kind}" aria-pressed="${String(this.#tool === kind)}">
           ${icon(meta.icon, 15)}<span>${meta.label}</span>
         </button>`,
       )}
-      <div class="group">Scene</div>
-      <button class="tool" id="svg-in">${icon('vector', 15)}<span>Load SVG</span></button>
-      <button class="tool" id="backdrop-in">${icon('image', 15)}<span>Backdrop</span></button>
+      <div class="group">${t('physics-lab.scene', 'Scene')}</div>
+      <button class="tool" id="svg-in">${icon('vector', 15)}<span>${t('physics-lab.loadSvg', 'Load SVG')}</span></button>
+      <button class="tool" id="backdrop-in">${icon('image', 15)}<span>${t('physics-lab.backdrop', 'Backdrop')}</span></button>
       ${Object.entries(SCENERY).map(
         ([kind, meta]) => html`<button class="tool" data-tool="${kind}" aria-pressed="${String(this.#tool === kind)}">
           ${icon(meta.icon, 15)}<span>Move ${meta.label.toLowerCase()}</span>
@@ -760,26 +761,26 @@ export default class PhysicsLab extends JGApp {
         tone: this.#running ? 'pause' : 'run',
         action: () => this.#toggleRun(),
       },
-      { id: 'step', label: 'Step', icon: 'stepOver', iconOnly: true, title: 'Advance one frame', action: () => this.#stepOnce() },
-      { id: 'reset', label: 'Reset', icon: 'repeat', tone: 'stop', action: () => this.#rewind() },
+      { id: 'step', label: t('physics-lab.step', 'Step'), icon: 'stepOver', iconOnly: true, title: 'Advance one frame', action: () => this.#stepOnce() },
+      { id: 'reset', label: t('physics-lab.reset', 'Reset'), icon: 'repeat', tone: 'stop', action: () => this.#rewind() },
       { separator: true },
-      { id: 'new', label: 'New', icon: 'file', iconOnly: true, title: 'Start an empty scene', action: () => this.#blank() },
-      { id: 'undo', label: 'Undo', icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#undo() },
-      { id: 'zoom-out', label: 'Zoom out', icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
-      { id: 'zoom-fit', label: 'Fit', icon: 'maximize', iconOnly: true, title: 'Fit the scene', action: () => { this.#touched = false; this.#fit(); } },
-      { id: 'zoom-in', label: 'Zoom in', icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
-      { id: 'copy', label: 'Copy', icon: 'copy', iconOnly: true, title: 'Copy the selection', action: () => this.#copy() },
-      { id: 'paste', label: 'Paste', icon: 'clipboard', iconOnly: true, title: 'Paste a copy', action: () => this.#paste() },
-      { id: 'turn', label: 'Rotate', icon: 'rotate', iconOnly: true, title: 'Turn the selected body (R, shift R the other way)', action: () => this.#turn(Math.PI / 12) },
-      { id: 'union', label: 'Merge', icon: 'union', iconOnly: true, title: 'Merge the two selected shapes', action: () => this.#combine('union') },
-      { id: 'subtract', label: 'Subtract', icon: 'subtract', iconOnly: true, title: 'Cut the second shape out of the first', action: () => this.#combine('subtract') },
-      { id: 'intersect', label: 'Overlap', icon: 'intersect', iconOnly: true, title: 'Keep only where the two shapes overlap', action: () => this.#combine('intersect') },
-      { id: 'front', label: 'Bring to front', icon: 'toFront', iconOnly: true, title: 'Bring the selected body to the front', action: () => this.#lift(true) },
-      { id: 'back', label: 'Send to back', icon: 'toBack', iconOnly: true, title: 'Send the selected body to the back', action: () => this.#lift(false) },
-      { id: 'delete', label: 'Delete', icon: 'eraser', iconOnly: true, title: 'Delete the selection', action: () => this.#remove() },
+      { id: 'new', label: t('physics-lab.new', 'New'), icon: 'file', iconOnly: true, title: 'Start an empty scene', action: () => this.#blank() },
+      { id: 'undo', label: t('physics-lab.undo', 'Undo'), icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#undo() },
+      { id: 'zoom-out', label: t('physics-lab.zoomOut', 'Zoom out'), icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
+      { id: 'zoom-fit', label: t('physics-lab.fit', 'Fit'), icon: 'maximize', iconOnly: true, title: 'Fit the scene', action: () => { this.#touched = false; this.#fit(); } },
+      { id: 'zoom-in', label: t('physics-lab.zoomIn', 'Zoom in'), icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
+      { id: 'copy', label: t('physics-lab.copy', 'Copy'), icon: 'copy', iconOnly: true, title: 'Copy the selection', action: () => this.#copy() },
+      { id: 'paste', label: t('physics-lab.paste', 'Paste'), icon: 'clipboard', iconOnly: true, title: 'Paste a copy', action: () => this.#paste() },
+      { id: 'turn', label: t('physics-lab.rotate', 'Rotate'), icon: 'rotate', iconOnly: true, title: 'Turn the selected body (R, shift R the other way)', action: () => this.#turn(Math.PI / 12) },
+      { id: 'union', label: t('physics-lab.merge', 'Merge'), icon: 'union', iconOnly: true, title: 'Merge the two selected shapes', action: () => this.#combine('union') },
+      { id: 'subtract', label: t('physics-lab.subtract', 'Subtract'), icon: 'subtract', iconOnly: true, title: 'Cut the second shape out of the first', action: () => this.#combine('subtract') },
+      { id: 'intersect', label: t('physics-lab.overlap', 'Overlap'), icon: 'intersect', iconOnly: true, title: 'Keep only where the two shapes overlap', action: () => this.#combine('intersect') },
+      { id: 'front', label: t('physics-lab.bringToFront', 'Bring to front'), icon: 'toFront', iconOnly: true, title: 'Bring the selected body to the front', action: () => this.#lift(true) },
+      { id: 'back', label: t('physics-lab.sendToBack', 'Send to back'), icon: 'toBack', iconOnly: true, title: 'Send the selected body to the back', action: () => this.#lift(false) },
+      { id: 'delete', label: t('physics-lab.delete', 'Delete'), icon: 'eraser', iconOnly: true, title: 'Delete the selection', action: () => this.#remove() },
       { spacer: true },
-      { id: 'import', label: 'Open file', icon: 'upload', iconOnly: true, title: 'Open a scene from a file', action: () => this.#importFile() },
-      { id: 'export', label: 'Save file', icon: 'download', iconOnly: true, title: 'Save this scene to a file', action: () => this.#exportFile() },
+      { id: 'import', label: t('physics-lab.openFile', 'Open file'), icon: 'upload', iconOnly: true, title: 'Open a scene from a file', action: () => this.#importFile() },
+      { id: 'export', label: t('physics-lab.saveFile', 'Save file'), icon: 'download', iconOnly: true, title: 'Save this scene to a file', action: () => this.#exportFile() },
     ];
   }
 
@@ -1924,7 +1925,7 @@ export default class PhysicsLab extends JGApp {
     if (!target) return;
     const rows = this.#designs.list();
     if (!rows.length) {
-      target.innerHTML = html`<span class="hint">Nothing saved yet. Name a scene above and save it.</span>`;
+      target.innerHTML = html`<span class="hint">${t('physics-lab.nothingSavedYetNameA', 'Nothing saved yet. Name a scene above and save it.')}</span>`;
       return;
     }
     target.innerHTML = rows
@@ -2021,20 +2022,20 @@ export default class PhysicsLab extends JGApp {
       target.innerHTML = html`
         <div class="label">${isSlider ? 'Slider' : 'Button'}</div>
         ${targets.length
-          ? html`<jg-field label="Drives">
+          ? html`<jg-field label="${t('physics-lab.drives', 'Drives')}">
                 <jg-select id="target" size="sm" value="${String(button.target ?? '')}">
                   ${targets.map((entry) => html`<option value="${entry.id}">${entry.kind} ${entry.id}</option>`)}
                 </jg-select>
               </jg-field>
               ${isSlider
                 ? html`<div class="hint">${joint?.kind === 'motor' ? 'Middle stops the motor, either side runs it.' : 'Slide to set how far the jack reaches.'}</div>`
-                : html`<jg-field label="While held">
+                : html`<jg-field label="${t('physics-lab.whileHeld', 'While held')}">
                     <jg-select id="action" size="sm" value="${button.action}">
                       ${actions.map(([value, name]) => html`<option value="${value}">${name}</option>`)}
                     </jg-select>
                   </jg-field>`}
-              <jg-field label="Label"><jg-input id="label" size="sm" value="${button.label ?? ''}" placeholder="${this.#controlName(button)}"></jg-input></jg-field>`
-          : html`<div class="hint">Add a jack or a motor first, then this button can drive it.</div>`}
+              <jg-field label="${t('physics-lab.label', 'Label')}"><jg-input id="label" size="sm" value="${button.label ?? ''}" placeholder="${this.#controlName(button)}"></jg-input></jg-field>`
+          : html`<div class="hint">${t('physics-lab.addAJackOrA', 'Add a jack or a motor first, then this button can drive it.')}</div>`}
         <jg-button size="sm" variant="outline" id="drop">Remove ${isSlider ? 'slider' : 'button'}</jg-button>
       `;
 
@@ -2060,29 +2061,29 @@ export default class PhysicsLab extends JGApp {
       target.innerHTML = html`
         <div class="label">${LINKS[joint.kind]?.label ?? joint.kind}</div>
         ${joint.kind === 'spring'
-          ? html`<jg-field label="Stiffness"><jg-input id="stiffness" size="sm" type="number" step="5" min="1" value="${joint.stiffness}"></jg-input></jg-field>
-              <jg-field label="Damping"><jg-input id="damping" size="sm" type="number" step="0.2" min="0" value="${joint.damping}"></jg-input></jg-field>
-              <jg-field label="Rest length"><jg-input id="rest" size="sm" type="number" step="0.1" min="0.1" value="${joint.rest.toFixed(2)}"></jg-input></jg-field>`
+          ? html`<jg-field label="${t('physics-lab.stiffness', 'Stiffness')}"><jg-input id="stiffness" size="sm" type="number" step="5" min="1" value="${joint.stiffness}"></jg-input></jg-field>
+              <jg-field label="${t('physics-lab.damping', 'Damping')}"><jg-input id="damping" size="sm" type="number" step="0.2" min="0" value="${joint.damping}"></jg-input></jg-field>
+              <jg-field label="${t('physics-lab.restLength', 'Rest length')}"><jg-input id="rest" size="sm" type="number" step="0.1" min="0.1" value="${joint.rest.toFixed(2)}"></jg-input></jg-field>`
           : ''}
         ${joint.kind === 'rod' || joint.kind === 'rope'
-          ? html`<jg-field label="Length"><jg-input id="rest" size="sm" type="number" step="0.1" min="0.1" value="${joint.rest.toFixed(2)}"></jg-input></jg-field>`
+          ? html`<jg-field label="${t('physics-lab.length', 'Length')}"><jg-input id="rest" size="sm" type="number" step="0.1" min="0.1" value="${joint.rest.toFixed(2)}"></jg-input></jg-field>`
           : ''}
         ${joint.kind === 'jack'
-          ? html`<jg-field label="Shortest"><jg-input id="min" size="sm" type="number" step="0.1" min="0.1" value="${joint.min.toFixed(2)}"></jg-input></jg-field>
-              <jg-field label="Longest"><jg-input id="max" size="sm" type="number" step="0.1" min="0.2" value="${joint.max.toFixed(2)}"></jg-input></jg-field>
+          ? html`<jg-field label="${t('physics-lab.shortest', 'Shortest')}"><jg-input id="min" size="sm" type="number" step="0.1" min="0.1" value="${joint.min.toFixed(2)}"></jg-input></jg-field>
+              <jg-field label="${t('physics-lab.longest', 'Longest')}"><jg-input id="max" size="sm" type="number" step="0.1" min="0.2" value="${joint.max.toFixed(2)}"></jg-input></jg-field>
               <label class="row tight" style="gap:6px">
                 <input type="checkbox" id="manual" ${joint.manual ? 'checked' : ''} />
-                <span class="hint">Driven by hand</span>
+                <span class="hint">${t('physics-lab.drivenByHand', 'Driven by hand')}</span>
               </label>
               ${joint.manual
-                ? html`<jg-field label="Extension"><jg-slider id="extend" min="0" max="100" step="1" value="${Math.round((joint.extend ?? 0.5) * 100)}"></jg-slider></jg-field>`
-                : html`<jg-field label="Cycles per second"><jg-input id="speed" size="sm" type="number" step="0.05" min="0.05" value="${joint.speed ?? 0.4}"></jg-input></jg-field>`}`
+                ? html`<jg-field label="${t('physics-lab.extension', 'Extension')}"><jg-slider id="extend" min="0" max="100" step="1" value="${Math.round((joint.extend ?? 0.5) * 100)}"></jg-slider></jg-field>`
+                : html`<jg-field label="${t('physics-lab.cyclesPerSecond', 'Cycles per second')}"><jg-input id="speed" size="sm" type="number" step="0.05" min="0.05" value="${joint.speed ?? 0.4}"></jg-input></jg-field>`}`
           : ''}
         ${joint.kind === 'motor'
-          ? html`<jg-field label="Speed rad/s"><jg-input id="speed" size="sm" type="number" step="0.2" value="${joint.speed}"></jg-input></jg-field>
-              <jg-field label="Max torque"><jg-input id="torque" size="sm" type="number" step="5" min="1" value="${joint.torque}"></jg-input></jg-field>`
+          ? html`<jg-field label="${t('physics-lab.speedRadS', 'Speed rad/s')}"><jg-input id="speed" size="sm" type="number" step="0.2" value="${joint.speed}"></jg-input></jg-field>
+              <jg-field label="${t('physics-lab.maxTorque', 'Max torque')}"><jg-input id="torque" size="sm" type="number" step="5" min="1" value="${joint.torque}"></jg-input></jg-field>`
           : ''}
-        <jg-button size="sm" variant="outline" id="drop">Remove link</jg-button>
+        <jg-button size="sm" variant="outline" id="drop">${t('physics-lab.removeLink', 'Remove link')}</jg-button>
       `;
       const bind = (id, key) => {
         const field = this.$(`#${id}`);
@@ -2131,10 +2132,10 @@ export default class PhysicsLab extends JGApp {
     if (!body && this.#tool === 'backdrop' && this.#backdrop) {
       const back = this.#backdrop;
       target.innerHTML = html`
-        <div class="label">Backdrop</div>
-        <jg-field label="Width m"><jg-input id="backWidth" size="sm" type="number" step="0.5" min="0.5" value="${back.width.toFixed(1)}"></jg-input></jg-field>
-        <jg-field label="Fade"><jg-slider id="backFade" min="5" max="100" step="5" value="${Math.round((back.opacity ?? 0.6) * 100)}"></jg-slider></jg-field>
-        <jg-button size="sm" variant="outline" id="backDrop">Remove backdrop</jg-button>
+        <div class="label">${t('physics-lab.backdrop', 'Backdrop')}</div>
+        <jg-field label="${t('physics-lab.widthM', 'Width m')}"><jg-input id="backWidth" size="sm" type="number" step="0.5" min="0.5" value="${back.width.toFixed(1)}"></jg-input></jg-field>
+        <jg-field label="${t('physics-lab.fade', 'Fade')}"><jg-slider id="backFade" min="5" max="100" step="5" value="${Math.round((back.opacity ?? 0.6) * 100)}"></jg-slider></jg-field>
+        <jg-button size="sm" variant="outline" id="backDrop">${t('physics-lab.removeBackdrop', 'Remove backdrop')}</jg-button>
       `;
       const width = this.$('#backWidth');
       this.on(width, 'change', () => {
@@ -2159,7 +2160,7 @@ export default class PhysicsLab extends JGApp {
       return;
     }
     if (!body) {
-      target.innerHTML = html`<div class="hint">Pick a body or a link to change it, or drop a new one from the palette.</div>`;
+      target.innerHTML = html`<div class="hint">${t('physics-lab.pickABodyOrA', 'Pick a body or a link to change it, or drop a new one from the palette.')}</div>`;
       return;
     }
 
@@ -2167,27 +2168,27 @@ export default class PhysicsLab extends JGApp {
     target.innerHTML = html`
       <div class="label">${body.ghost ? 'Linkage bar' : body.teeth ? 'Gear' : body.kind === 'circle' ? 'Ball' : body.kind === 'poly' ? 'Shape' : body.pinned ? 'Wall' : 'Block'}</div>
       ${body.kind === 'circle' && body.teeth
-        ? html`<jg-field label="Radius m"><jg-input id="radius" size="sm" type="number" step="0.05" min="0.2" value="${body.radius}"></jg-input></jg-field>
-            <jg-field label="Teeth"><jg-input id="teeth" size="sm" type="number" step="1" min="6" max="72" value="${Math.round(body.teeth)}"></jg-input></jg-field>
-            <div class="hint">Meshed wheels turn in the ratio of their teeth.</div>`
+        ? html`<jg-field label="${t('physics-lab.radiusM', 'Radius m')}"><jg-input id="radius" size="sm" type="number" step="0.05" min="0.2" value="${body.radius}"></jg-input></jg-field>
+            <jg-field label="${t('physics-lab.teeth', 'Teeth')}"><jg-input id="teeth" size="sm" type="number" step="1" min="6" max="72" value="${Math.round(body.teeth)}"></jg-input></jg-field>
+            <div class="hint">${t('physics-lab.meshedWheelsTurnInThe', 'Meshed wheels turn in the ratio of their teeth.')}</div>`
         : body.kind === 'circle'
-        ? html`<jg-field label="Radius m"><jg-input id="radius" size="sm" type="number" step="0.05" min="0.05" value="${body.radius}"></jg-input></jg-field>`
+        ? html`<jg-field label="${t('physics-lab.radiusM', 'Radius m')}"><jg-input id="radius" size="sm" type="number" step="0.05" min="0.05" value="${body.radius}"></jg-input></jg-field>`
         : body.kind === 'poly'
           ? html`<div class="hint">${body.points.length} corners</div>`
-          : html`<jg-field label="Width m"><jg-input id="width" size="sm" type="number" step="0.1" min="0.1" value="${body.width}"></jg-input></jg-field>
-              <jg-field label="Height m"><jg-input id="height" size="sm" type="number" step="0.1" min="0.1" value="${body.height}"></jg-input></jg-field>`}
+          : html`<jg-field label="${t('physics-lab.widthM', 'Width m')}"><jg-input id="width" size="sm" type="number" step="0.1" min="0.1" value="${body.width}"></jg-input></jg-field>
+              <jg-field label="${t('physics-lab.heightM', 'Height m')}"><jg-input id="height" size="sm" type="number" step="0.1" min="0.1" value="${body.height}"></jg-input></jg-field>`}
       ${body.kind === 'circle'
         ? ''
-        : html`<jg-field label="Angle degrees"><jg-input id="angle" size="sm" type="number" step="5" value="${Math.round((((body.angle ?? 0) * 180) / Math.PI) * 10) / 10}"></jg-input></jg-field>`}
-      <jg-field label="Density"><jg-input id="density" size="sm" type="number" step="0.1" min="0.05" value="${body.density ?? 1}"></jg-input></jg-field>
-      <jg-field label="Bounce"><jg-input id="restitution" size="sm" type="number" step="0.05" min="0" max="1" value="${body.restitution ?? 0.2}"></jg-input></jg-field>
-      <jg-field label="Friction"><jg-input id="friction" size="sm" type="number" step="0.05" min="0" max="1.5" value="${body.friction ?? 0.35}"></jg-input></jg-field>
+        : html`<jg-field label="${t('physics-lab.angleDegrees', 'Angle degrees')}"><jg-input id="angle" size="sm" type="number" step="5" value="${Math.round((((body.angle ?? 0) * 180) / Math.PI) * 10) / 10}"></jg-input></jg-field>`}
+      <jg-field label="${t('physics-lab.density', 'Density')}"><jg-input id="density" size="sm" type="number" step="0.1" min="0.05" value="${body.density ?? 1}"></jg-input></jg-field>
+      <jg-field label="${t('physics-lab.bounce', 'Bounce')}"><jg-input id="restitution" size="sm" type="number" step="0.05" min="0" max="1" value="${body.restitution ?? 0.2}"></jg-input></jg-field>
+      <jg-field label="${t('physics-lab.friction', 'Friction')}"><jg-input id="friction" size="sm" type="number" step="0.05" min="0" max="1.5" value="${body.friction ?? 0.35}"></jg-input></jg-field>
       <label class="row tight" style="gap:6px">
         <input type="checkbox" id="pinned" ${body.pinned ? 'checked' : ''} />
-        <span class="hint">Held in place</span>
+        <span class="hint">${t('physics-lab.heldInPlace', 'Held in place')}</span>
       </label>
       <div class="hint">Mass ${live && live.mass ? `${live.mass.toFixed(2)} kg` : 'fixed'}</div>
-      <jg-button size="sm" variant="outline" id="drop">Remove body</jg-button>
+      <jg-button size="sm" variant="outline" id="drop">${t('physics-lab.removeBody', 'Remove body')}</jg-button>
     `;
 
     const bind = (id, key) => {

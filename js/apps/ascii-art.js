@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText, download } from '../core/util.js';
 
 const sheet = css`
@@ -192,49 +193,49 @@ class AsciiArt extends JGApp {
       <jg-tabs id="mode"></jg-tabs>
 
       <div id="banner-panel" class="stack tight">
-        <jg-field label="Text"><jg-input id="text" value="TOOLBOX" placeholder="TOOLBOX"></jg-input></jg-field>
+        <jg-field label="${t('ascii-art.text', 'Text')}"><jg-input id="text" value="TOOLBOX" placeholder="${t('ascii-art.toolbox', 'TOOLBOX')}"></jg-input></jg-field>
         <div class="fields">
-          <jg-field label="Style">
+          <jg-field label="${t('ascii-art.style', 'Style')}">
             <jg-select id="style" value="solid">
-              <option value="solid">Solid</option>
-              <option value="outline">Outline</option>
-              <option value="shadow">Shadow</option>
-              <option value="3d">3D extrude</option>
+              <option value="solid">${t('ascii-art.solid', 'Solid')}</option>
+              <option value="outline">${t('ascii-art.outline', 'Outline')}</option>
+              <option value="shadow">${t('ascii-art.shadow', 'Shadow')}</option>
+              <option value="3d">${t('ascii-art.3dExtrude', '3D extrude')}</option>
             </jg-select>
           </jg-field>
-          <jg-field label="Depth" id="depthfield" hidden><jg-slider id="depth" min="1" max="4" value="2"></jg-slider></jg-field>
-          <jg-field label="Character">
+          <jg-field label="${t('ascii-art.depth', 'Depth')}" id="depthfield" hidden><jg-slider id="depth" min="1" max="4" value="2"></jg-slider></jg-field>
+          <jg-field label="${t('ascii-art.character', 'Character')}">
             <jg-select id="fill" value="█">
-              <option value="█">Block</option>
-              <option value="#">Hash</option>
-              <option value="*">Star</option>
-              <option value="@">At</option>
-              <option value="▓">Shade</option>
+              <option value="█">${t('ascii-art.block', 'Block')}</option>
+              <option value="#">${t('ascii-art.hash', 'Hash')}</option>
+              <option value="*">${t('ascii-art.star', 'Star')}</option>
+              <option value="@">${t('ascii-art.at', 'At')}</option>
+              <option value="▓">${t('ascii-art.shade', 'Shade')}</option>
             </jg-select>
           </jg-field>
-          <jg-field label="Letter spacing"><jg-slider id="spacing" min="1" max="4" value="1"></jg-slider></jg-field>
+          <jg-field label="${t('ascii-art.letterSpacing', 'Letter spacing')}"><jg-slider id="spacing" min="1" max="4" value="1"></jg-slider></jg-field>
         </div>
       </div>
 
       <div id="image-panel" class="stack tight" hidden>
-        <div class="drop" id="drop">Drop an image here, or click to choose one</div>
+        <div class="drop" id="drop">${t('ascii-art.dropAnImageHereOr', 'Drop an image here, or click to choose one')}</div>
         <div class="fields">
-          <jg-field label="Columns"><jg-slider id="columns" min="20" max="220" value="100"></jg-slider></jg-field>
-          <jg-field label="Contrast"><jg-slider id="contrast" min="5" max="30" value="10"></jg-slider></jg-field>
-          <jg-field label="Ramp">
+          <jg-field label="${t('ascii-art.columns', 'Columns')}"><jg-slider id="columns" min="20" max="220" value="100"></jg-slider></jg-field>
+          <jg-field label="${t('ascii-art.contrast', 'Contrast')}"><jg-slider id="contrast" min="5" max="30" value="10"></jg-slider></jg-field>
+          <jg-field label="${t('ascii-art.ramp', 'Ramp')}">
             <jg-select id="ramp" value="standard">
               ${Object.keys(RAMPS).map((key) => html`<option value="${key}">${key}</option>`)}
             </jg-select>
           </jg-field>
-          <jg-field label="Invert" row><jg-switch id="invert"></jg-switch></jg-field>
+          <jg-field label="${t('ascii-art.invert', 'Invert')}" row><jg-switch id="invert"></jg-switch></jg-field>
         </div>
       </div>
 
       <pre class="out" id="out"></pre>
 
       <div class="row">
-        <jg-button size="sm" variant="outline" id="copy">Copy</jg-button>
-        <jg-button size="sm" variant="ghost" id="save">Download .txt</jg-button>
+        <jg-button size="sm" variant="outline" id="copy">${t('ascii-art.copy', 'Copy')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="save">${t('ascii-art.downloadTxt', 'Download .txt')}</jg-button>
         <span class="grow"></span>
         <span class="hint" id="size"></span>
       </div>
@@ -243,8 +244,8 @@ class AsciiArt extends JGApp {
     </div>`);
 
     this.$('#mode').items = [
-      { value: 'banner', label: 'Text banner' },
-      { value: 'image', label: 'Image to ASCII' },
+      { value: 'banner', label: t('ascii-art.textBanner', 'Text banner') },
+      { value: 'image', label: t('ascii-art.imageToAscii', 'Image to ASCII') },
     ];
     this.$('#mode').value = this.#mode;
 

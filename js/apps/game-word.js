@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { toast } from '../core/util.js';
 
 const sheet = css`
@@ -79,10 +80,10 @@ class GameWord extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-badge id="status" tone="muted">Guess the word</jg-badge>
+        <jg-badge id="status" tone="muted">${t('game-word.guessTheWord', 'Guess the word')}</jg-badge>
         <span class="grow"></span>
         <span class="hint" id="streak"></span>
-        <jg-button size="sm" variant="outline" id="new">New word</jg-button>
+        <jg-button size="sm" variant="outline" id="new">${t('game-word.newWord', 'New word')}</jg-button>
       </div>
 
       <div class="board-wrap">
@@ -211,9 +212,9 @@ class GameWord extends JGApp {
 
     this.$('#keyboard').innerHTML = KEYS.map(
       (row, index) => html`<div class="krow">
-        ${index === 2 ? html`<button class="key" data-wide="true" data-key="enter">enter</button>` : ''}
+        ${index === 2 ? html`<button class="key" data-wide="true" data-key="enter">${t('game-word.enter', 'enter')}</button>` : ''}
         ${[...row].map((letter) => html`<button class="key" data-key="${letter}" data-state="${best[letter] ?? ''}">${letter}</button>`)}
-        ${index === 2 ? html`<button class="key" data-wide="true" data-key="back">delete</button>` : ''}
+        ${index === 2 ? html`<button class="key" data-wide="true" data-key="back">${t('game-word.delete', 'delete')}</button>` : ''}
       </div>`,
     ).join('');
 

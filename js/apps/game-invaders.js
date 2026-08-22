@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 
 const sheet = css`
   .head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -88,21 +89,21 @@ class Invaders extends JGApp {
 
     this.paint(html`<div class="app">
       <div class="head">
-        <span class="title">Invaders</span>
+        <span class="title">${t('game-invaders.invaders', 'Invaders')}</span>
         <span class="grow"></span>
-        <span class="stat">Score <span id="score">0</span></span>
-        <span class="stat">Best <span id="best">${this.#best}</span></span>
-        <span class="stat">Lives <span id="lives">3</span></span>
-        <span class="stat">Wave <span id="wave">1</span></span>
-        <jg-button size="sm" variant="outline" id="new">Restart</jg-button>
+        <span class="stat">${t('game-invaders.score', 'Score')} <span id="score">0</span></span>
+        <span class="stat">${t('game-invaders.best', 'Best')} <span id="best">${this.#best}</span></span>
+        <span class="stat">${t('game-invaders.lives', 'Lives')} <span id="lives">3</span></span>
+        <span class="stat">${t('game-invaders.wave', 'Wave')} <span id="wave">1</span></span>
+        <jg-button size="sm" variant="outline" id="new">${t('game-invaders.restart', 'Restart')}</jg-button>
       </div>
       <div class="wrap">
         <canvas id="view" width="${WIDTH}" height="${HEIGHT}"></canvas>
         <div class="overlay" id="overlay">
           <div class="card">
-            <h3 id="title">Hold the line</h3>
-            <div class="hint">Arrows move, space fires.</div>
-            <jg-button size="sm" id="start">Play</jg-button>
+            <h3 id="title">${t('game-invaders.holdTheLine', 'Hold the line')}</h3>
+            <div class="hint">${t('game-invaders.arrowsMoveSpaceFires', 'Arrows move, space fires.')}</div>
+            <jg-button size="sm" id="start">${t('game-invaders.play', 'Play')}</jg-button>
           </div>
         </div>
       </div>

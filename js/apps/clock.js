@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 
 const sheet = css`
   .face { display: grid; gap: 4px; justify-items: center; padding: 6px 0 2px; }
@@ -61,8 +62,8 @@ const offsetLabel = (zone) => {
 class ClockApp extends JGApp {
   static appId = 'clock';
   static settings = [
-    { key: 'hour12', label: '12-hour time', type: 'switch', default: false },
-    { key: 'seconds', label: 'Show seconds', type: 'switch', default: true },
+    { key: 'hour12', label: t('clock.12HourTime', '12-hour time'), type: 'switch', default: false },
+    { key: 'seconds', label: t('clock.showSeconds', 'Show seconds'), type: 'switch', default: true },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -111,9 +112,9 @@ class ClockApp extends JGApp {
       <div id="body" class="fill"></div>
     </div>`);
     this.$('#tabs').items = [
-      { value: 'world', label: 'World Clock' },
-      { value: 'stopwatch', label: 'Stopwatch' },
-      { value: 'timer', label: 'Timer' },
+      { value: 'world', label: t('clock.worldClock', 'World Clock') },
+      { value: 'stopwatch', label: t('clock.stopwatch', 'Stopwatch') },
+      { value: 'timer', label: t('clock.timer', 'Timer') },
     ];
     this.$('#tabs').value = this.#tab;
     this.on(this.$('#tabs'), 'change', (event) => {
@@ -146,7 +147,7 @@ class ClockApp extends JGApp {
         <jg-select id="zone" class="grow">
           ${ZONES.map((zone) => html`<option value="${zone}">${zone.replace(/_/g, ' ')}</option>`)}
         </jg-select>
-        <jg-button id="add" variant="secondary">Add</jg-button>
+        <jg-button id="add" variant="secondary">${t('clock.add', 'Add')}</jg-button>
       </div>
       <div class="zones" id="zones"></div>
     `;
@@ -199,8 +200,8 @@ class ClockApp extends JGApp {
       <div class="face"><div class="digits" id="digits">00:00.00</div></div>
       <div class="row" style="justify-content:center">
         <jg-button id="toggle">${this.#watch.running ? 'Pause' : 'Start'}</jg-button>
-        <jg-button id="lap" variant="secondary">Lap</jg-button>
-        <jg-button id="reset" variant="outline">Reset</jg-button>
+        <jg-button id="lap" variant="secondary">${t('clock.lap', 'Lap')}</jg-button>
+        <jg-button id="reset" variant="outline">${t('clock.reset', 'Reset')}</jg-button>
       </div>
       <div class="laps panel flush" id="laps"></div>
     `;
@@ -215,7 +216,7 @@ class ClockApp extends JGApp {
         ? this.#watch.laps
             .map((lap, index) => html`<div class="lap"><span>Lap ${this.#watch.laps.length - index}</span><span>${formatDuration(lap)}</span></div>`)
             .join('')
-        : html`<div class="lap muted"><span>No laps recorded</span></div>`;
+        : html`<div class="lap muted"><span>${t('clock.noLapsRecorded', 'No laps recorded')}</span></div>`;
     };
 
     this.on(body.querySelector('#toggle'), 'click', () => {
@@ -255,9 +256,9 @@ class ClockApp extends JGApp {
       <div class="row nowrap">
         <jg-input id="mins" type="number" min="0" max="600" value="${Math.round(this.#timerState.duration / 60000)}" suffix="min" class="grow"></jg-input>
         <jg-button id="toggle">${this.#timerState.running ? 'Pause' : 'Start'}</jg-button>
-        <jg-button id="reset" variant="outline">Reset</jg-button>
+        <jg-button id="reset" variant="outline">${t('clock.reset', 'Reset')}</jg-button>
       </div>
-      <div class="hint">The timer keeps running while other apps are open.</div>
+      <div class="hint">${t('clock.theTimerKeepsRunningWhile', 'The timer keeps running while other apps are open.')}</div>
     `;
 
     body.querySelectorAll('[data-minutes]').forEach((node) =>

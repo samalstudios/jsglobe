@@ -1,4 +1,5 @@
 import { JGApp, define, html } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce } from '../core/util.js';
 
 const slugify = (text, { separator = '-', lower = true, strict = true, maxLength = 0 } = {}) => {
@@ -24,24 +25,24 @@ class Slugify extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="Text">
-        <jg-textarea id="input" rows="3" sans placeholder="10 Ways to Build a Café Menu - 2024 Edition"></jg-textarea>
+      <jg-field label="${t('slugify.text', 'Text')}">
+        <jg-textarea id="input" rows="3" sans placeholder="${t('slugify.10WaysToBuildA', '10 Ways to Build a Café Menu - 2024 Edition')}"></jg-textarea>
       </jg-field>
 
       <div class="row">
         <jg-select id="separator" value="-" style="width:150px">
-          <option value="-">Dash (-)</option>
-          <option value="_">Underscore (_)</option>
-          <option value=".">Dot (.)</option>
+          <option value="-">${t('slugify.dash', 'Dash (-)')}</option>
+          <option value="_">${t('slugify.underscore', 'Underscore (_)')}</option>
+          <option value=".">${t('slugify.dot', 'Dot (.)')}</option>
         </jg-select>
-        <jg-switch id="lower" checked></jg-switch><span class="hint">Lowercase</span>
-        <jg-switch id="strict" checked></jg-switch><span class="hint">Strip symbols</span>
+        <jg-switch id="lower" checked></jg-switch><span class="hint">${t('slugify.lowercase', 'Lowercase')}</span>
+        <jg-switch id="strict" checked></jg-switch><span class="hint">${t('slugify.stripSymbols', 'Strip symbols')}</span>
         <jg-input id="max" type="number" min="0" max="200" value="0" suffix="max" style="width:120px"></jg-input>
       </div>
 
-      <jg-field label="Slug"><jg-output id="out"></jg-output></jg-field>
+      <jg-field label="${t('slugify.slug', 'Slug')}"><jg-output id="out"></jg-output></jg-field>
 
-      <jg-card title="Variations">
+      <jg-card title="${t('slugify.variations', 'Variations')}">
         <div class="kv" id="variations"></div>
       </jg-card>
     </div>`);
@@ -56,11 +57,11 @@ class Slugify extends JGApp {
       };
       this.$('#out').value = slugify(text, options);
       this.$('#variations').innerHTML = html`
-        <div>Kebab</div><div class="mono">${slugify(text, { separator: '-' })}</div>
-        <div>Snake</div><div class="mono">${slugify(text, { separator: '_' })}</div>
-        <div>Dot</div><div class="mono">${slugify(text, { separator: '.' })}</div>
-        <div>Preserved case</div><div class="mono">${slugify(text, { lower: false })}</div>
-        <div>Length</div><div class="mono">${slugify(text, options).length} characters</div>
+        <div>${t('slugify.kebab', 'Kebab')}</div><div class="mono">${slugify(text, { separator: '-' })}</div>
+        <div>${t('slugify.snake', 'Snake')}</div><div class="mono">${slugify(text, { separator: '_' })}</div>
+        <div>${t('slugify.dot2', 'Dot')}</div><div class="mono">${slugify(text, { separator: '.' })}</div>
+        <div>${t('slugify.preservedCase', 'Preserved case')}</div><div class="mono">${slugify(text, { lower: false })}</div>
+        <div>${t('slugify.length', 'Length')}</div><div class="mono">${slugify(text, options).length} characters</div>
       `;
     }, 130);
 

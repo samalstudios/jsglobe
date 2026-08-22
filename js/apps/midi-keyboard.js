@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 
 const sheet = css`
   .board {
@@ -81,8 +82,8 @@ class MidiKeyboard extends JGApp {
     this.paint(html`<div class="app">
       <div class="row">
         <jg-button-group>
-          <jg-button size="sm" variant="outline" id="down">Octave −</jg-button>
-          <jg-button size="sm" variant="outline" id="up">Octave +</jg-button>
+          <jg-button size="sm" variant="outline" id="down">${t('midi-keyboard.octave', 'Octave −')}</jg-button>
+          <jg-button size="sm" variant="outline" id="up">${t('midi-keyboard.octave2', 'Octave +')}</jg-button>
         </jg-button-group>
         <jg-badge mono id="octave">C4</jg-badge>
         <span class="grow"></span>
@@ -92,20 +93,20 @@ class MidiKeyboard extends JGApp {
       <div class="board" id="board"></div>
 
       <div class="grid">
-        <jg-field label="Waveform">
+        <jg-field label="${t('midi-keyboard.waveform', 'Waveform')}">
           <jg-select id="wave" value="triangle">
             ${WAVES.map((wave) => html`<option value="${wave}">${wave}</option>`)}
           </jg-select>
         </jg-field>
-        <jg-field label="Volume"><jg-slider id="volume" min="0" max="100" value="45"></jg-slider></jg-field>
-        <jg-field label="Attack"><jg-slider id="attack" min="1" max="400" value="12"></jg-slider></jg-field>
-        <jg-field label="Release"><jg-slider id="release" min="20" max="1200" value="260"></jg-slider></jg-field>
+        <jg-field label="${t('midi-keyboard.volume', 'Volume')}"><jg-slider id="volume" min="0" max="100" value="45"></jg-slider></jg-field>
+        <jg-field label="${t('midi-keyboard.attack', 'Attack')}"><jg-slider id="attack" min="1" max="400" value="12"></jg-slider></jg-field>
+        <jg-field label="${t('midi-keyboard.release', 'Release')}"><jg-slider id="release" min="20" max="1200" value="260"></jg-slider></jg-field>
       </div>
 
-      <jg-card title="MIDI input" sub="Connect a controller to play it directly">
+      <jg-card title="${t('midi-keyboard.midiInput', 'MIDI input')}" sub="Connect a controller to play it directly">
         <div class="row">
-          <jg-button size="sm" variant="outline" id="connect">Connect MIDI device</jg-button>
-          <span class="hint" id="midi">Not connected</span>
+          <jg-button size="sm" variant="outline" id="connect">${t('midi-keyboard.connectMidiDevice', 'Connect MIDI device')}</jg-button>
+          <span class="hint" id="midi">${t('midi-keyboard.notConnected', 'Not connected')}</span>
         </div>
       </jg-card>
 

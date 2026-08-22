@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { createLogic, GATES, SEGMENTS } from '../lib/logic.js';
 import { icon } from '../ui/icons.js';
 import { copyText, toast } from '../core/util.js';
@@ -157,29 +158,29 @@ const GRID = 26;
 const MATRIX = 8;
 
 const KINDS = {
-  toggle: { label: 'Switch', icon: 'toggle', inputs: 0, outputs: 1, width: 3, height: 2 },
-  clock: { label: 'Clock', icon: 'timer', inputs: 0, outputs: 1, width: 3, height: 2, value: 2 },
-  high: { label: 'Logic 1', icon: 'plus', inputs: 0, outputs: 1, width: 2, height: 2 },
-  low: { label: 'Logic 0', icon: 'minus', inputs: 0, outputs: 1, width: 2, height: 2 },
-  and: { label: 'AND', icon: 'gate', inputs: 2, outputs: 1, width: 4, height: 3 },
-  or: { label: 'OR', icon: 'gate', inputs: 2, outputs: 1, width: 4, height: 3 },
-  nand: { label: 'NAND', icon: 'gate', inputs: 2, outputs: 1, width: 4, height: 3 },
-  nor: { label: 'NOR', icon: 'gate', inputs: 2, outputs: 1, width: 4, height: 3 },
-  xor: { label: 'XOR', icon: 'gate', inputs: 2, outputs: 1, width: 4, height: 3 },
-  xnor: { label: 'XNOR', icon: 'gate', inputs: 2, outputs: 1, width: 4, height: 3 },
-  not: { label: 'NOT', icon: 'gate', inputs: 1, outputs: 1, width: 4, height: 2 },
-  buffer: { label: 'Buffer', icon: 'gate', inputs: 1, outputs: 1, width: 4, height: 2 },
-  dff: { label: 'D flip-flop', icon: 'blocks', inputs: 2, outputs: 2, width: 5, height: 4 },
-  tff: { label: 'T flip-flop', icon: 'blocks', inputs: 2, outputs: 1, width: 5, height: 4 },
-  counter: { label: '4 bit counter', icon: 'binary', inputs: 2, outputs: 4, width: 5, height: 6 },
-  decoder: { label: '2 to 4 decoder', icon: 'blocks', inputs: 3, outputs: 4, width: 6, height: 6 },
-  encoder: { label: '4 to 2 encoder', icon: 'blocks', inputs: 4, outputs: 3, width: 6, height: 6 },
-  mux: { label: '4 to 1 mux', icon: 'transform', inputs: 6, outputs: 1, width: 6, height: 7 },
-  demux: { label: '1 to 4 demux', icon: 'transform', inputs: 3, outputs: 4, width: 6, height: 6 },
-  node: { label: 'Splitter', icon: 'square', inputs: 1, outputs: 2, width: 2, height: 3 },
-  led: { label: 'LED', icon: 'sparkles', inputs: 1, outputs: 0, width: 2, height: 2 },
-  seven: { label: '7 segment', icon: 'spec', inputs: 4, outputs: 0, width: 5, height: 7 },
-  matrix: { label: '8x8 matrix', icon: 'grid', inputs: 16, outputs: 0, rows: 8, width: 10, height: 10 },
+  toggle: { label: t('logic-lab.switch', 'Switch'), icon: 'toggle', inputs: 0, outputs: 1, width: 3, height: 2 },
+  clock: { label: t('logic-lab.clock', 'Clock'), icon: 'timer', inputs: 0, outputs: 1, width: 3, height: 2, value: 2 },
+  high: { label: t('logic-lab.logic1', 'Logic 1'), icon: 'plus', inputs: 0, outputs: 1, width: 2, height: 2 },
+  low: { label: t('logic-lab.logic0', 'Logic 0'), icon: 'minus', inputs: 0, outputs: 1, width: 2, height: 2 },
+  and: { label: t('logic-lab.and', 'AND'), icon: 'gate', inputs: 2, outputs: 1, width: 4, height: 3 },
+  or: { label: t('logic-lab.or', 'OR'), icon: 'gate', inputs: 2, outputs: 1, width: 4, height: 3 },
+  nand: { label: t('logic-lab.nand', 'NAND'), icon: 'gate', inputs: 2, outputs: 1, width: 4, height: 3 },
+  nor: { label: t('logic-lab.nor', 'NOR'), icon: 'gate', inputs: 2, outputs: 1, width: 4, height: 3 },
+  xor: { label: t('logic-lab.xor', 'XOR'), icon: 'gate', inputs: 2, outputs: 1, width: 4, height: 3 },
+  xnor: { label: t('logic-lab.xnor', 'XNOR'), icon: 'gate', inputs: 2, outputs: 1, width: 4, height: 3 },
+  not: { label: t('logic-lab.not', 'NOT'), icon: 'gate', inputs: 1, outputs: 1, width: 4, height: 2 },
+  buffer: { label: t('logic-lab.buffer', 'Buffer'), icon: 'gate', inputs: 1, outputs: 1, width: 4, height: 2 },
+  dff: { label: t('logic-lab.dFlipFlop', 'D flip-flop'), icon: 'blocks', inputs: 2, outputs: 2, width: 5, height: 4 },
+  tff: { label: t('logic-lab.tFlipFlop', 'T flip-flop'), icon: 'blocks', inputs: 2, outputs: 1, width: 5, height: 4 },
+  counter: { label: t('logic-lab.4BitCounter', '4 bit counter'), icon: 'binary', inputs: 2, outputs: 4, width: 5, height: 6 },
+  decoder: { label: t('logic-lab.2To4Decoder', '2 to 4 decoder'), icon: 'blocks', inputs: 3, outputs: 4, width: 6, height: 6 },
+  encoder: { label: t('logic-lab.4To2Encoder', '4 to 2 encoder'), icon: 'blocks', inputs: 4, outputs: 3, width: 6, height: 6 },
+  mux: { label: t('logic-lab.4To1Mux', '4 to 1 mux'), icon: 'transform', inputs: 6, outputs: 1, width: 6, height: 7 },
+  demux: { label: t('logic-lab.1To4Demux', '1 to 4 demux'), icon: 'transform', inputs: 3, outputs: 4, width: 6, height: 6 },
+  node: { label: t('logic-lab.splitter', 'Splitter'), icon: 'square', inputs: 1, outputs: 2, width: 2, height: 3 },
+  led: { label: t('logic-lab.led', 'LED'), icon: 'sparkles', inputs: 1, outputs: 0, width: 2, height: 2 },
+  seven: { label: t('logic-lab.7Segment', '7 segment'), icon: 'spec', inputs: 4, outputs: 0, width: 5, height: 7 },
+  matrix: { label: t('logic-lab.8x8Matrix', '8x8 matrix'), icon: 'grid', inputs: 16, outputs: 0, rows: 8, width: 10, height: 10 },
 };
 
 const PIN_NAMES = {
@@ -281,7 +282,7 @@ const SAMPLES = {
 class LogicLab extends JGApp {
   static appId = 'logic-lab';
   static settings = [
-    { key: 'rate', label: 'Ticks per second', type: 'number', default: 60, min: 4, max: 240 },
+    { key: 'rate', label: t('logic-lab.ticksPerSecond', 'Ticks per second'), type: 'number', default: 60, min: 4, max: 240 },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -412,7 +413,7 @@ class LogicLab extends JGApp {
     if (!target) return;
     const rows = this.#designs.list();
     if (!rows.length) {
-      target.innerHTML = html`<span class="hint">Nothing saved yet. Name a circuit above and save it.</span>`;
+      target.innerHTML = html`<span class="hint">${t('logic-lab.nothingSavedYetNameA', 'Nothing saved yet. Name a circuit above and save it.')}</span>`;
       return;
     }
     target.innerHTML = rows
@@ -479,8 +480,8 @@ class LogicLab extends JGApp {
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
       <div class="stack tight">
-        <div class="label">Logic Lab</div>
-        <div class="hint">Gates, flip-flops, counters, decoders and LED displays.</div>
+        <div class="label">${t('logic-lab.logicLab', 'Logic Lab')}</div>
+        <div class="hint">${t('logic-lab.gatesFlipFlopsCountersDecoders', 'Gates, flip-flops, counters, decoders and LED displays.')}</div>
       </div>
     </div>`);
   }
@@ -492,24 +493,24 @@ class LogicLab extends JGApp {
         <div class="palette" id="palette"></div>
         <div class="board">
           <canvas id="view"></canvas>
-          <div class="hint-bar"><b id="tool-name">Select</b><span id="tool-hint"></span></div>
+          <div class="hint-bar"><b id="tool-name">${t('logic-lab.select', 'Select')}</b><span id="tool-hint"></span></div>
         </div>
         <aside class="side">
-          <div class="label">Circuits</div>
+          <div class="label">${t('logic-lab.circuits', 'Circuits')}</div>
           <div class="samples">
             ${Object.entries(SAMPLES).map(([key, sample]) => html`<button data-sample="${key}">${sample.name}</button>`)}
           </div>
           <div class="sep"></div>
-          <div class="label">Saved</div>
+          <div class="label">${t('logic-lab.saved', 'Saved')}</div>
           <div class="save-row">
-            <jg-input id="save-name" size="sm" placeholder="Name this circuit"></jg-input>
-            <jg-button size="sm" variant="outline" id="save">Save</jg-button>
+            <jg-input id="save-name" size="sm" placeholder="${t('logic-lab.nameThisCircuit', 'Name this circuit')}"></jg-input>
+            <jg-button size="sm" variant="outline" id="save">${t('logic-lab.save', 'Save')}</jg-button>
           </div>
           <div class="saved" id="saved"></div>
           <div class="sep"></div>
           <div id="inspector"></div>
           <div class="sep"></div>
-          <div class="label">Truth table</div>
+          <div class="label">${t('logic-lab.truthTable', 'Truth table')}</div>
           <div id="truth"></div>
         </aside>
       </div>
@@ -523,45 +524,45 @@ class LogicLab extends JGApp {
         tone: this.#running ? 'pause' : 'run',
         action: () => this.#toggleRun(),
       },
-      { id: 'reset', label: 'Reset', icon: 'repeat', tone: 'stop', action: () => this.#logic.reset() },
+      { id: 'reset', label: t('logic-lab.reset', 'Reset'), icon: 'repeat', tone: 'stop', action: () => this.#logic.reset() },
       { separator: true },
-      { id: 'new', label: 'New', icon: 'file', iconOnly: true, title: 'Start an empty board', action: () => this.#blank() },
-      { id: 'undo', label: 'Undo', icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#undo() },
-      { id: 'zoom-out', label: 'Zoom out', icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
-      { id: 'zoom-fit', label: 'Fit', icon: 'maximize', iconOnly: true, title: 'Fit the board to the view', action: () => { this.#fit(); this.#draw(); } },
-      { id: 'zoom-in', label: 'Zoom in', icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
-      { id: 'copy-part', label: 'Copy', icon: 'copy', iconOnly: true, title: 'Copy the selected part', action: () => this.#copy() },
-      { id: 'paste-part', label: 'Paste', icon: 'clipboard', iconOnly: true, title: 'Paste a copy', action: () => this.#paste() },
-      { id: 'rotate', label: 'Rotate', icon: 'rotate', iconOnly: true, title: 'Rotate 90 degrees (R)', action: () => this.#turn(90) },
-      { id: 'flip', label: 'Flip', icon: 'flip', iconOnly: true, title: 'Mirror left to right (F)', action: () => this.#mirror() },
-      { id: 'delete', label: 'Delete', icon: 'eraser', iconOnly: true, title: 'Delete the selection', action: () => this.#remove() },
+      { id: 'new', label: t('logic-lab.new', 'New'), icon: 'file', iconOnly: true, title: 'Start an empty board', action: () => this.#blank() },
+      { id: 'undo', label: t('logic-lab.undo', 'Undo'), icon: 'undo', iconOnly: true, title: 'Undo', action: () => this.#undo() },
+      { id: 'zoom-out', label: t('logic-lab.zoomOut', 'Zoom out'), icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
+      { id: 'zoom-fit', label: t('logic-lab.fit', 'Fit'), icon: 'maximize', iconOnly: true, title: 'Fit the board to the view', action: () => { this.#fit(); this.#draw(); } },
+      { id: 'zoom-in', label: t('logic-lab.zoomIn', 'Zoom in'), icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
+      { id: 'copy-part', label: t('logic-lab.copy', 'Copy'), icon: 'copy', iconOnly: true, title: 'Copy the selected part', action: () => this.#copy() },
+      { id: 'paste-part', label: t('logic-lab.paste', 'Paste'), icon: 'clipboard', iconOnly: true, title: 'Paste a copy', action: () => this.#paste() },
+      { id: 'rotate', label: t('logic-lab.rotate', 'Rotate'), icon: 'rotate', iconOnly: true, title: 'Rotate 90 degrees (R)', action: () => this.#turn(90) },
+      { id: 'flip', label: t('logic-lab.flip', 'Flip'), icon: 'flip', iconOnly: true, title: 'Mirror left to right (F)', action: () => this.#mirror() },
+      { id: 'delete', label: t('logic-lab.delete', 'Delete'), icon: 'eraser', iconOnly: true, title: 'Delete the selection', action: () => this.#remove() },
       { spacer: true },
-      { id: 'import', label: 'Open file', icon: 'upload', iconOnly: true, title: 'Open a circuit from a file', action: () => this.#importFile() },
-      { id: 'export', label: 'Save file', icon: 'download', iconOnly: true, title: 'Save this circuit to a file', action: () => this.#exportFile() },
-      { id: 'copy', label: 'Copy netlist', icon: 'copy', action: () => copyText(this.#netlist()) },
+      { id: 'import', label: t('logic-lab.openFile', 'Open file'), icon: 'upload', iconOnly: true, title: 'Open a circuit from a file', action: () => this.#importFile() },
+      { id: 'export', label: t('logic-lab.saveFile', 'Save file'), icon: 'download', iconOnly: true, title: 'Save this circuit to a file', action: () => this.#exportFile() },
+      { id: 'copy', label: t('logic-lab.copyNetlist', 'Copy netlist'), icon: 'copy', action: () => copyText(this.#netlist()) },
     ];
 
     this.$('#palette').innerHTML = html`
-      <div class="group">Edit</div>
+      <div class="group">${t('logic-lab.edit', 'Edit')}</div>
       ${[
-        { id: 'select', label: 'Select', icon: 'launcher' },
-        { id: 'wire', label: 'Wire', icon: 'link' },
+        { id: 'select', label: t('logic-lab.select', 'Select'), icon: 'launcher' },
+        { id: 'wire', label: t('logic-lab.wire', 'Wire'), icon: 'link' },
       ].map(
         (tool) => html`<button class="tool" data-tool="${tool.id}" aria-pressed="${String(this.#tool === tool.id)}">
           ${icon(tool.icon, 15)}<span>${tool.label}</span>
         </button>`,
       )}
-      <div class="group">Inputs</div>
+      <div class="group">${t('logic-lab.inputs', 'Inputs')}</div>
       ${['toggle', 'clock', 'high', 'low'].map((kind) => this.#toolButton(kind))}
-      <div class="group">Gates</div>
+      <div class="group">${t('logic-lab.gates', 'Gates')}</div>
       ${['and', 'or', 'not', 'nand', 'nor', 'xor', 'xnor', 'buffer'].map((kind) => this.#toolButton(kind))}
-      <div class="group">Memory</div>
+      <div class="group">${t('logic-lab.memory', 'Memory')}</div>
       ${['dff', 'tff', 'counter'].map((kind) => this.#toolButton(kind))}
-      <div class="group">Blocks</div>
+      <div class="group">${t('logic-lab.blocks', 'Blocks')}</div>
       ${['decoder', 'encoder', 'mux', 'demux'].map((kind) => this.#toolButton(kind))}
-      <div class="group">Wiring</div>
+      <div class="group">${t('logic-lab.wiring', 'Wiring')}</div>
       ${['node'].map((kind) => this.#toolButton(kind))}
-      <div class="group">Output</div>
+      <div class="group">${t('logic-lab.output', 'Output')}</div>
       ${['led', 'seven', 'matrix'].map((kind) => this.#toolButton(kind))}
     `;
 
@@ -1756,10 +1757,10 @@ class LogicLab extends JGApp {
     if (!part && this.#selectedLink) {
       const link = this.#selectedLink;
       target.innerHTML = html`
-        <div class="label">Wire</div>
-        <div class="hint">Drag the middle of a wire to move its bend. Double click it to straighten.</div>
-        <jg-button size="sm" variant="outline" id="straighten">Straighten</jg-button>
-        <jg-button size="sm" variant="outline" id="cut">Remove wire</jg-button>
+        <div class="label">${t('logic-lab.wire', 'Wire')}</div>
+        <div class="hint">${t('logic-lab.dragTheMiddleOfA', 'Drag the middle of a wire to move its bend. Double click it to straighten.')}</div>
+        <jg-button size="sm" variant="outline" id="straighten">${t('logic-lab.straighten', 'Straighten')}</jg-button>
+        <jg-button size="sm" variant="outline" id="cut">${t('logic-lab.removeWire', 'Remove wire')}</jg-button>
       `;
       target.querySelector('#straighten')?.addEventListener('click', () => {
         this.#snapshot();
@@ -1770,18 +1771,18 @@ class LogicLab extends JGApp {
       return;
     }
     if (!part) {
-      target.innerHTML = html`<div class="hint">Pick a part to change it, or drop a new one from the palette.</div>`;
+      target.innerHTML = html`<div class="hint">${t('logic-lab.pickAPartToChange', 'Pick a part to change it, or drop a new one from the palette.')}</div>`;
       return;
     }
     const gate = GATES[part.kind];
     target.innerHTML = html`
       <div class="label">${KINDS[part.kind]?.label ?? part.kind}</div>
       ${gate?.wide
-        ? html`<jg-field label="Inputs">
+        ? html`<jg-field label="${t('logic-lab.inputs', 'Inputs')}">
               <jg-input id="inputs" size="sm" type="number" min="2" max="8" value="${this.#inputCount(part)}"></jg-input>
             </jg-field>
             <div class="stack tight">
-              <span class="hint">Invert an input</span>
+              <span class="hint">${t('logic-lab.invertAnInput', 'Invert an input')}</span>
               ${Array.from({ length: this.#inputCount(part) }, (item, index) => html`<label class="row tight" style="gap:6px">
                 <input type="checkbox" data-invert="${index}" ${part.inverted?.[index] ? 'checked' : ''} />
                 <span class="hint">input ${String.fromCharCode(65 + index)}</span>
@@ -1789,26 +1790,26 @@ class LogicLab extends JGApp {
             </div>`
         : ''}
       ${!KINDS[part.kind].outputs && part.kind !== 'matrix'
-        ? html`<jg-field label="Pins on">
+        ? html`<jg-field label="${t('logic-lab.pinsOn', 'Pins on')}">
             <jg-select id="side" size="sm" value="${part.side ?? 'left'}">
-              <option value="left">Left</option>
-              <option value="right">Right</option>
-              <option value="top">Top</option>
-              <option value="bottom">Bottom</option>
+              <option value="left">${t('logic-lab.left', 'Left')}</option>
+              <option value="right">${t('logic-lab.right', 'Right')}</option>
+              <option value="top">${t('logic-lab.top', 'Top')}</option>
+              <option value="bottom">${t('logic-lab.bottom', 'Bottom')}</option>
             </jg-select>
           </jg-field>`
         : ''}
       ${part.kind === 'clock'
-        ? html`<jg-field label="Rate"><jg-input id="rate" size="sm" type="number" value="${part.value}" min="0.2" max="30" step="0.1"></jg-input></jg-field>`
+        ? html`<jg-field label="${t('logic-lab.rate', 'Rate')}"><jg-input id="rate" size="sm" type="number" value="${part.value}" min="0.2" max="30" step="0.1"></jg-input></jg-field>`
         : ''}
       ${part.kind === 'toggle'
-        ? html`<div class="row"><jg-switch id="on" ${part.on ? 'checked' : ''}></jg-switch><span class="hint">Closed</span></div>
+        ? html`<div class="row"><jg-switch id="on" ${part.on ? 'checked' : ''}></jg-switch><span class="hint">${t('logic-lab.closed', 'Closed')}</span></div>
             <label class="row tight" style="gap:6px">
               <input type="checkbox" id="momentary" ${part.momentary ? 'checked' : ''} />
-              <span class="hint">Push button, on only while held</span>
+              <span class="hint">${t('logic-lab.pushButtonOnOnlyWhile', 'Push button, on only while held')}</span>
             </label>`
         : ''}
-      <jg-button size="sm" variant="outline" id="drop">Remove part</jg-button>
+      <jg-button size="sm" variant="outline" id="drop">${t('logic-lab.removePart', 'Remove part')}</jg-button>
     `;
     const inputs = this.$('#inputs');
     if (inputs) {
@@ -1881,7 +1882,7 @@ class LogicLab extends JGApp {
     if (!gate) {
       if (target.dataset.kind !== 'none') {
         target.dataset.kind = 'none';
-        target.innerHTML = html`<div class="hint">Select a gate to see its table.</div>`;
+        target.innerHTML = html`<div class="hint">${t('logic-lab.selectAGateToSee', 'Select a gate to see its table.')}</div>`;
       }
       return;
     }

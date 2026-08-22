@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 
 const sheet = css`
   .head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -62,21 +63,21 @@ class Breakout extends JGApp {
 
     this.paint(html`<div class="app">
       <div class="head">
-        <span class="title">Breakout</span>
+        <span class="title">${t('game-breakout.breakout', 'Breakout')}</span>
         <span class="grow"></span>
-        <span class="stat">Score <span id="score">0</span></span>
-        <span class="stat">Best <span id="best">${this.#best}</span></span>
-        <span class="stat">Lives <span id="lives">3</span></span>
-        <span class="stat">Level <span id="level">1</span></span>
-        <jg-button size="sm" variant="outline" id="new">Restart</jg-button>
+        <span class="stat">${t('game-breakout.score', 'Score')} <span id="score">0</span></span>
+        <span class="stat">${t('game-breakout.best', 'Best')} <span id="best">${this.#best}</span></span>
+        <span class="stat">${t('game-breakout.lives', 'Lives')} <span id="lives">3</span></span>
+        <span class="stat">${t('game-breakout.level', 'Level')} <span id="level">1</span></span>
+        <jg-button size="sm" variant="outline" id="new">${t('game-breakout.restart', 'Restart')}</jg-button>
       </div>
       <div class="wrap">
         <canvas id="view" width="${WIDTH}" height="${HEIGHT}"></canvas>
         <div class="overlay" id="overlay">
           <div class="card">
-            <h3 id="title">Break every brick</h3>
-            <div class="hint">Move with the mouse or arrow keys. Space serves.</div>
-            <jg-button size="sm" id="start">Play</jg-button>
+            <h3 id="title">${t('game-breakout.breakEveryBrick', 'Break every brick')}</h3>
+            <div class="hint">${t('game-breakout.moveWithTheMouseOr', 'Move with the mouse or arrow keys. Space serves.')}</div>
+            <jg-button size="sm" id="start">${t('game-breakout.play', 'Play')}</jg-button>
           </div>
         </div>
       </div>

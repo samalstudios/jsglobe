@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 
 const sheet = css`
   .app { gap: 12px; }
@@ -72,12 +73,12 @@ const sheet = css`
 const NOTES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
 const PRESETS = {
-  standard: { label: 'Guitar standard', strings: ['E2', 'A2', 'D3', 'G3', 'B3', 'E4'] },
-  dropD: { label: 'Guitar drop D', strings: ['D2', 'A2', 'D3', 'G3', 'B3', 'E4'] },
-  halfStep: { label: 'Guitar half step down', strings: ['D#2', 'G#2', 'C#3', 'F#3', 'A#3', 'D#4'] },
-  openG: { label: 'Guitar open G', strings: ['D2', 'G2', 'D3', 'G3', 'B3', 'D4'] },
-  bass: { label: 'Bass 4 string', strings: ['E1', 'A1', 'D2', 'G2'] },
-  ukulele: { label: 'Ukulele', strings: ['G4', 'C4', 'E4', 'A4'] },
+  standard: { label: t('tuner.guitarStandard', 'Guitar standard'), strings: ['E2', 'A2', 'D3', 'G3', 'B3', 'E4'] },
+  dropD: { label: t('tuner.guitarDropD', 'Guitar drop D'), strings: ['D2', 'A2', 'D3', 'G3', 'B3', 'E4'] },
+  halfStep: { label: t('tuner.guitarHalfStepDown', 'Guitar half step down'), strings: ['D#2', 'G#2', 'C#3', 'F#3', 'A#3', 'D#4'] },
+  openG: { label: t('tuner.guitarOpenG', 'Guitar open G'), strings: ['D2', 'G2', 'D3', 'G3', 'B3', 'D4'] },
+  bass: { label: t('tuner.bass4String', 'Bass 4 string'), strings: ['E1', 'A1', 'D2', 'G2'] },
+  ukulele: { label: t('tuner.ukulele', 'Ukulele'), strings: ['G4', 'C4', 'E4', 'A4'] },
 };
 
 const midiOf = (name) => {
@@ -145,7 +146,7 @@ const detect = (buffer, sampleRate) => {
 class Tuner extends JGApp {
   static appId = 'tuner';
   static settings = [
-    { key: 'reference', label: 'Reference pitch (A4)', type: 'number', default: 440, min: 415, max: 466 },
+    { key: 'reference', label: t('tuner.referencePitchA4', 'Reference pitch (A4)'), type: 'number', default: 440, min: 415, max: 466 },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -171,14 +172,14 @@ class Tuner extends JGApp {
         </jg-select>
         <jg-input id="reference" type="number" min="415" max="466" value="${this.config.get('reference', 440)}" suffix="Hz A4" style="width:140px"></jg-input>
         <span class="grow"></span>
-        <jg-button id="start">Start listening</jg-button>
-        <jg-button id="stop" variant="outline" hidden>Stop</jg-button>
+        <jg-button id="start">${t('tuner.startListening', 'Start listening')}</jg-button>
+        <jg-button id="stop" variant="outline" hidden>${t('tuner.stop', 'Stop')}</jg-button>
       </div>
 
       <div class="readout">
         <div class="note" id="note">-</div>
-        <div class="freq" id="freq">Play a string</div>
-        <div class="verdict" id="verdict" data-state="idle">Microphone is off</div>
+        <div class="freq" id="freq">${t('tuner.playAString', 'Play a string')}</div>
+        <div class="verdict" id="verdict" data-state="idle">${t('tuner.microphoneIsOff', 'Microphone is off')}</div>
       </div>
 
       <div class="meter">
@@ -188,7 +189,7 @@ class Tuner extends JGApp {
         </div>
         <div class="needle" id="needle" data-in="false"></div>
       </div>
-      <div class="scale"><span>-50</span><span>-25</span><span>0</span><span>+25</span><span>+50 cents</span></div>
+      <div class="scale"><span>-50</span><span>-25</span><span>0</span><span>+25</span><span>${t('tuner.50Cents', '+50 cents')}</span></div>
 
       <div class="strings" id="strings"></div>
 

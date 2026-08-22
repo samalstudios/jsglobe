@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { escapeHtml } from '../core/dom.js';
 import { copyText, debounce, download } from '../core/util.js';
 
@@ -203,18 +204,18 @@ class MarkdownPreview extends JGApp {
         <jg-tabs id="mode"></jg-tabs>
         <span class="grow"></span>
         <span class="hint" id="stats"></span>
-        <jg-button size="sm" variant="outline" id="sample">Sample</jg-button>
-        <jg-button size="sm" variant="outline" id="copy">Copy HTML</jg-button>
-        <jg-button size="sm" variant="outline" id="save">Download</jg-button>
+        <jg-button size="sm" variant="outline" id="sample">${t('markdown-preview.sample', 'Sample')}</jg-button>
+        <jg-button size="sm" variant="outline" id="copy">${t('markdown-preview.copyHtml', 'Copy HTML')}</jg-button>
+        <jg-button size="sm" variant="outline" id="save">${t('markdown-preview.download', 'Download')}</jg-button>
       </div>
 
       <div class="split">
         <div class="pane">
-          <span class="label">Markdown</span>
-          <jg-code id="input" grow gutter language="markdown" placeholder="# Title"></jg-code>
+          <span class="label">${t('markdown-preview.markdown', 'Markdown')}</span>
+          <jg-code id="input" grow gutter language="markdown" placeholder="${t('markdown-preview.title', '# Title')}"></jg-code>
         </div>
         <div class="pane">
-          <span class="label" id="rightlabel">Preview</span>
+          <span class="label" id="rightlabel">${t('markdown-preview.preview', 'Preview')}</span>
           <div class="preview" id="preview"></div>
           <jg-code id="htmlout" grow gutter language="html" readonly hidden></jg-code>
         </div>
@@ -222,7 +223,7 @@ class MarkdownPreview extends JGApp {
     </div>`);
 
     this.$('#mode').items = [
-      { value: 'preview', label: 'Preview' },
+      { value: 'preview', label: t('markdown-preview.preview', 'Preview') },
       { value: 'html', label: 'HTML' },
     ];
 

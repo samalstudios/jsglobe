@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { clamp, debounce } from '../core/util.js';
 
 const sheet = css`
@@ -146,9 +147,9 @@ class ColorConverter extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row nowrap">
-        <jg-input id="input" class="grow" placeholder="#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple"></jg-input>
+        <jg-input id="input" class="grow" placeholder="${t('color-converter.6f7cffRgb111124255', '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple')}"></jg-input>
         <jg-input id="picker" type="color" style="width:56px"></jg-input>
-        <jg-button variant="outline" id="random">Random</jg-button>
+        <jg-button variant="outline" id="random">${t('color-converter.random', 'Random')}</jg-button>
       </div>
 
       <div class="swatch" id="swatch"></div>
@@ -158,15 +159,15 @@ class ColorConverter extends JGApp {
         <div class="format"><span class="label">RGB</span><jg-output data-out="rgb"></jg-output></div>
         <div class="format"><span class="label">HSL</span><jg-output data-out="hsl"></jg-output></div>
         <div class="format"><span class="label">OKLCH</span><jg-output data-out="oklch"></jg-output></div>
-        <div class="format"><span class="label">CSS variable</span><jg-output data-out="var"></jg-output></div>
-        <div class="format"><span class="label">Swift / Android</span><jg-output data-out="platform"></jg-output></div>
+        <div class="format"><span class="label">${t('color-converter.cssVariable', 'CSS variable')}</span><jg-output data-out="var"></jg-output></div>
+        <div class="format"><span class="label">${t('color-converter.swiftAndroid', 'Swift / Android')}</span><jg-output data-out="platform"></jg-output></div>
       </div>
 
-      <jg-card title="Tints and shades" sub="Click any step to load it">
+      <jg-card title="${t('color-converter.tintsAndShades', 'Tints and shades')}" sub="Click any step to load it">
         <div class="ramp" id="ramp"></div>
       </jg-card>
 
-      <jg-card title="Contrast" sub="WCAG 2.1 ratio against black and white">
+      <jg-card title="${t('color-converter.contrast', 'Contrast')}" sub="WCAG 2.1 ratio against black and white">
         <div class="contrast">
           <div class="chip" id="onwhite"></div>
           <div class="chip" id="onblack"></div>

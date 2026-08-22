@@ -1,4 +1,5 @@
 import { JGApp, define, html, css, raw } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { settings } from '../core/settings.js';
 import { appSettings } from '../core/app-settings.js';
 import { workspaces } from '../core/workspaces.js';
@@ -122,15 +123,15 @@ const sheet = css`
 const ACCENTS = ['#8a1c3b', '#6f7cff', '#8b5cf6', '#ec4899', '#f97316', '#22c55e', '#14b8a6', '#0ea5e9'];
 
 const SECTIONS = [
-  { id: 'appearance', label: 'Appearance', icon: 'palette' },
-  { id: 'home', label: 'Home Screen', icon: 'home' },
-  { id: 'behavior', label: 'Behaviour', icon: 'cog' },
-  { id: 'ai', label: 'Local AI', icon: 'sparkles' },
-  { id: 'media', label: 'Media engine', icon: 'film' },
-  { id: 'workspaces', label: 'Workspaces', icon: 'layers' },
-  { id: 'apps', label: 'Apps', icon: 'launcher' },
-  { id: 'data', label: 'Data', icon: 'database' },
-  { id: 'about', label: 'About', icon: 'info' },
+  { id: 'appearance', label: t('settings-app.appearance', 'Appearance'), icon: 'palette' },
+  { id: 'home', label: t('settings-app.homeScreen', 'Home Screen'), icon: 'home' },
+  { id: 'behavior', label: t('settings-app.behaviour', 'Behaviour'), icon: 'cog' },
+  { id: 'ai', label: t('settings-app.localAi', 'Local AI'), icon: 'sparkles' },
+  { id: 'media', label: t('settings-app.mediaEngine', 'Media engine'), icon: 'film' },
+  { id: 'workspaces', label: t('settings-app.workspaces', 'Workspaces'), icon: 'layers' },
+  { id: 'apps', label: t('settings-app.apps', 'Apps'), icon: 'launcher' },
+  { id: 'data', label: t('settings-app.data', 'Data'), icon: 'database' },
+  { id: 'about', label: t('settings-app.about', 'About'), icon: 'info' },
 ];
 
 class SettingsApp extends JGApp {
@@ -150,7 +151,7 @@ class SettingsApp extends JGApp {
 
   renderWidget() {
     this.paint(html`<div class="app"><div class="stack tight">
-      <div class="label">Workspace</div>
+      <div class="label">${t('settings-app.workspace', 'Workspace')}</div>
       <div class="title">${workspaces.active().name}</div>
       <div class="hint">${registry.all().length} tools installed</div>
     </div></div>`);
@@ -160,7 +161,7 @@ class SettingsApp extends JGApp {
     this.paint(html`
       <div class="shell">
         <nav class="nav">
-          <jg-input id="find" size="sm" placeholder="Search settings" value="${this.#query}"></jg-input>
+          <jg-input id="find" size="sm" placeholder="${t('settings-app.searchSettings', 'Search settings')}" value="${this.#query}"></jg-input>
           ${SECTIONS.map(
             (section) => html`<button class="nav-item" data-section="${section.id}" aria-current="${String(section.id === this.#section)}">
               <span class="nav-icon">${icon(section.icon, 16)}</span><span>${section.label}</span>
@@ -265,7 +266,7 @@ class SettingsApp extends JGApp {
             'Theme',
             'Follow the system or lock to a mode.',
             html`<jg-select data-setting="appearance.theme" value="${theme}" size="sm">
-              <option value="dark">Dark</option><option value="light">Light</option><option value="auto">System</option>
+              <option value="dark">${t('settings-app.dark', 'Dark')}</option><option value="light">${t('settings-app.light', 'Light')}</option><option value="auto">${t('settings-app.system', 'System')}</option>
             </jg-select>`,
           ),
         }}
@@ -274,7 +275,7 @@ class SettingsApp extends JGApp {
             'Density',
             'Overall spacing of controls.',
             html`<jg-select data-setting="appearance.density" value="${settings.get('appearance.density')}" size="sm">
-              <option value="compact">Compact</option><option value="cozy">Cozy</option><option value="roomy">Roomy</option>
+              <option value="compact">${t('settings-app.compact', 'Compact')}</option><option value="cozy">${t('settings-app.cozy', 'Cozy')}</option><option value="roomy">${t('settings-app.roomy', 'Roomy')}</option>
             </jg-select>`,
           ),
         }}
@@ -283,9 +284,9 @@ class SettingsApp extends JGApp {
             'Icon colour',
             'How much colour the app icons carry.',
             html`<jg-select data-setting="appearance.iconTint" value="${settings.get('appearance.iconTint')}" size="sm" style="width:160px">
-              <option value="category">By category</option>
-              <option value="accent">Accent only</option>
-              <option value="neutral">Neutral</option>
+              <option value="category">${t('settings-app.byCategory', 'By category')}</option>
+              <option value="accent">${t('settings-app.accentOnly', 'Accent only')}</option>
+              <option value="neutral">${t('settings-app.neutral', 'Neutral')}</option>
             </jg-select>`,
           ),
         }}
@@ -294,8 +295,8 @@ class SettingsApp extends JGApp {
             'Icon style',
             'Flat keeps the drawn icons plain. Skeuomorphic adds gloss, a bevel and depth.',
             html`<jg-select data-setting="appearance.icons" value="${settings.get('appearance.icons')}" size="sm" style="width:160px">
-              <option value="flat">Flat</option>
-              <option value="skeuomorphic">Skeuomorphic</option>
+              <option value="flat">${t('settings-app.flat', 'Flat')}</option>
+              <option value="skeuomorphic">${t('settings-app.skeuomorphic', 'Skeuomorphic')}</option>
             </jg-select>`,
           ),
         }}
@@ -308,7 +309,7 @@ class SettingsApp extends JGApp {
         }}
       </div>
       <div class="panel stack">
-        <div class="label">Accent</div>
+        <div class="label">${t('settings-app.accent', 'Accent')}</div>
         <div class="swatches">
           ${ACCENTS.map(
             (color) => html`<button class="swatch" data-accent="${color}" style="background:${color}" aria-pressed="${String(color === ring)}"></button>`,
@@ -316,7 +317,7 @@ class SettingsApp extends JGApp {
         </div>
       </div>
       <div class="panel stack">
-        <div class="label">Wallpaper</div>
+        <div class="label">${t('settings-app.wallpaper', 'Wallpaper')}</div>
         <div class="papers">
           ${wallpapers.map(
             (item) => html`<button
@@ -342,7 +343,7 @@ class SettingsApp extends JGApp {
             'Icon size',
             'Size of app icons on the home grid.',
             html`<jg-select data-setting="home.iconSize" value="${settings.get('home.iconSize')}" size="sm">
-              <option value="small">Small</option><option value="medium">Medium</option><option value="large">Large</option>
+              <option value="small">${t('settings-app.small', 'Small')}</option><option value="medium">${t('settings-app.medium', 'Medium')}</option><option value="large">${t('settings-app.large', 'Large')}</option>
             </jg-select>`,
           ),
         }}
@@ -351,7 +352,7 @@ class SettingsApp extends JGApp {
             'Columns',
             'Fixed column count or automatic.',
             html`<jg-select data-setting="home.columns" value="${settings.get('home.columns')}" size="sm">
-              <option value="auto">Auto</option><option value="4">4</option><option value="5">5</option>
+              <option value="auto">${t('settings-app.auto', 'Auto')}</option><option value="4">4</option><option value="5">5</option>
               <option value="6">6</option><option value="7">7</option><option value="8">8</option>
             </jg-select>`,
           ),
@@ -405,8 +406,8 @@ class SettingsApp extends JGApp {
             'Dock position',
             'Where the dock sits on screen.',
             html`<jg-select data-setting="dock.position" value="${settings.get('dock.position')}" size="sm">
-              <option value="bottom">Bottom</option><option value="left">Left</option>
-              <option value="right">Right</option><option value="hidden">Hidden</option>
+              <option value="bottom">${t('settings-app.bottom', 'Bottom')}</option><option value="left">${t('settings-app.left', 'Left')}</option>
+              <option value="right">${t('settings-app.right', 'Right')}</option><option value="hidden">${t('settings-app.hidden', 'Hidden')}</option>
             </jg-select>`,
           ),
         }}
@@ -415,8 +416,8 @@ class SettingsApp extends JGApp {
             'Dock appears',
             'Keep the dock to the search page or show it everywhere.',
             html`<jg-select data-setting="dock.scope" value="${settings.get('dock.scope')}" size="sm" style="width:170px">
-              <option value="search">Search page only</option>
-              <option value="always">Everywhere</option>
+              <option value="search">${t('settings-app.searchPageOnly', 'Search page only')}</option>
+              <option value="always">${t('settings-app.everywhere', 'Everywhere')}</option>
             </jg-select>`,
           ),
         }}
@@ -445,10 +446,10 @@ class SettingsApp extends JGApp {
 
       <div class="panel stack">
         <div class="spread">
-          <div><div class="name strong">Layout</div><div class="hint">Pages, dock and widget arrangement.</div></div>
+          <div><div class="name strong">${t('settings-app.layout', 'Layout')}</div><div class="hint">${t('settings-app.pagesDockAndWidgetArrangement', 'Pages, dock and widget arrangement.')}</div></div>
           <div class="row tight">
-            <jg-button variant="outline" size="sm" id="reset-usage">Clear usage data</jg-button>
-            <jg-button variant="outline" size="sm" id="reset-layout">Reset layout</jg-button>
+            <jg-button variant="outline" size="sm" id="reset-usage">${t('settings-app.clearUsageData', 'Clear usage data')}</jg-button>
+            <jg-button variant="outline" size="sm" id="reset-layout">${t('settings-app.resetLayout', 'Reset layout')}</jg-button>
           </div>
         </div>
       </div>
@@ -464,7 +465,7 @@ class SettingsApp extends JGApp {
             'Open apps as',
             'Floating windows or full screen.',
             html`<jg-select data-setting="behavior.openMode" value="${settings.get('behavior.openMode')}" size="sm">
-              <option value="window">Windows</option><option value="fullscreen">Full screen</option>
+              <option value="window">${t('settings-app.windows', 'Windows')}</option><option value="fullscreen">${t('settings-app.fullScreen', 'Full screen')}</option>
             </jg-select>`,
           ),
         }}
@@ -497,9 +498,9 @@ class SettingsApp extends JGApp {
             'Provider',
             'WebLLM downloads a model and runs it on the GPU. A local server keeps the weights outside the browser.',
             html`<jg-select data-setting="ai.provider" value="${provider}" size="sm" style="width:190px">
-              <option value="off">Off</option>
-              <option value="webllm">WebLLM in browser</option>
-              <option value="endpoint">Local server (OpenAI API)</option>
+              <option value="off">${t('settings-app.off', 'Off')}</option>
+              <option value="webllm">${t('settings-app.webllmInBrowser', 'WebLLM in browser')}</option>
+              <option value="endpoint">${t('settings-app.localServerOpenaiApi', 'Local server (OpenAI API)')}</option>
             </jg-select>`,
           ),
         }}
@@ -507,7 +508,7 @@ class SettingsApp extends JGApp {
 
       ${provider === 'webllm'
         ? html`<div class="panel stack">
-            <div class="label">Model</div>
+            <div class="label">${t('settings-app.model', 'Model')}</div>
             <jg-select data-setting="ai.model" value="${settings.get('ai.model')}">
               ${aiModels.map((model) => html`<option value="${model.id}">${model.label} (${model.size}) - ${model.note}</option>`)}
             </jg-select>
@@ -515,20 +516,20 @@ class SettingsApp extends JGApp {
               The model is downloaded once and cached by the browser. It needs WebGPU:
               ${navigator.gpu ? 'this browser supports it.' : 'this browser does not support it yet.'}
             </div>
-            <div class="label">Runtime module</div>
+            <div class="label">${t('settings-app.runtimeModule', 'Runtime module')}</div>
             <jg-input data-setting="ai.moduleUrl" value="${settings.get('ai.moduleUrl')}" mono></jg-input>
-            <div class="hint">Point this at a self-hosted copy of WebLLM if you would rather not use a CDN.</div>
+            <div class="hint">${t('settings-app.pointThisAtASelf', 'Point this at a self-hosted copy of WebLLM if you would rather not use a CDN.')}</div>
           </div>`
         : ''}
 
       ${provider === 'endpoint'
         ? html`<div class="panel stack">
-            <div class="label">Server</div>
+            <div class="label">${t('settings-app.server', 'Server')}</div>
             <jg-input data-setting="ai.endpoint" value="${settings.get('ai.endpoint')}" mono></jg-input>
-            <div class="hint">Ollama uses http://localhost:11434/v1 and LM Studio uses http://localhost:1234/v1.</div>
-            <div class="label">Model name</div>
+            <div class="hint">${t('settings-app.ollamaUsesHttpLocalhost11434', 'Ollama uses http://localhost:11434/v1 and LM Studio uses http://localhost:1234/v1.')}</div>
+            <div class="label">${t('settings-app.modelName', 'Model name')}</div>
             <jg-input data-setting="ai.model" value="${settings.get('ai.model')}" mono></jg-input>
-            <div class="label">API key (optional)</div>
+            <div class="label">${t('settings-app.apiKeyOptional', 'API key (optional)')}</div>
             <jg-input data-setting="ai.apiKey" type="password" value="${settings.get('ai.apiKey')}"></jg-input>
           </div>`
         : ''}
@@ -553,7 +554,7 @@ class SettingsApp extends JGApp {
           </div>`}
 
       <div class="panel stack">
-        <div class="label">Speech to text</div>
+        <div class="label">${t('settings-app.speechToText', 'Speech to text')}</div>
         <div class="hint">
           Voice Recorder transcribes with Whisper running locally. Text models such as WebLLM cannot read audio, so
           this is a separate download the first time you transcribe.
@@ -561,12 +562,12 @@ class SettingsApp extends JGApp {
         <jg-select data-setting="speech.model" value="${settings.get('speech.model')}">
           ${whisperModels.map((model) => html`<option value="${model.id}">${model.label} (${model.size})</option>`)}
         </jg-select>
-        <div class="label">Speech runtime</div>
+        <div class="label">${t('settings-app.speechRuntime', 'Speech runtime')}</div>
         <jg-input data-setting="speech.moduleUrl" value="${settings.get('speech.moduleUrl')}" mono></jg-input>
       </div>
 
       <div class="panel stack">
-        <div class="label">Privacy</div>
+        <div class="label">${t('settings-app.privacy', 'Privacy')}</div>
         <div class="hint">
           Prompts stay on this machine. WebLLM downloads model weights from the model host the first time and then
           works offline; a local server never leaves your network.
@@ -579,9 +580,9 @@ class SettingsApp extends JGApp {
     return html`
       ${{ raw: this.#head('Media engine', 'Video and audio conversion runs through an FFmpeg WebAssembly build.') }}
       <div class="panel stack">
-        <div class="label">FFmpeg module</div>
+        <div class="label">${t('settings-app.ffmpegModule', 'FFmpeg module')}</div>
         <jg-input data-setting="media.moduleUrl" value="${settings.get('media.moduleUrl')}" mono></jg-input>
-        <div class="label">Core files</div>
+        <div class="label">${t('settings-app.coreFiles', 'Core files')}</div>
         <jg-input data-setting="media.coreUrl" value="${settings.get('media.coreUrl')}" mono></jg-input>
         <div class="hint">
           The folder holding ffmpeg-core.js and ffmpeg-core.wasm. For a locked down deployment, copy those files into
@@ -589,7 +590,7 @@ class SettingsApp extends JGApp {
         </div>
       </div>
       <div class="panel stack">
-        <div class="label">Notes</div>
+        <div class="label">${t('settings-app.notes', 'Notes')}</div>
         <div class="hint">
           The single threaded core needs no special headers. Conversion speed is roughly a quarter of native FFmpeg,
           so keep clips short. Images are handled by the Image Converter without any download.
@@ -612,27 +613,27 @@ class SettingsApp extends JGApp {
             </div>
             <div class="row tight">
               ${workspace.id === active
-                ? html`<jg-badge tone="accent">Active</jg-badge>`
-                : html`<jg-button size="sm" variant="outline" data-switch="${workspace.id}">Use</jg-button>`}
-              <jg-button size="sm" variant="ghost" data-rename="${workspace.id}">Rename</jg-button>
-              <jg-button size="sm" variant="ghost" data-export="${workspace.id}">Export</jg-button>
-              <jg-button size="sm" variant="ghost" data-duplicate="${workspace.id}">Duplicate</jg-button>
-              <jg-button size="sm" variant="destructive" data-delete="${workspace.id}">Delete</jg-button>
+                ? html`<jg-badge tone="accent">${t('settings-app.active', 'Active')}</jg-badge>`
+                : html`<jg-button size="sm" variant="outline" data-switch="${workspace.id}">${t('settings-app.use', 'Use')}</jg-button>`}
+              <jg-button size="sm" variant="ghost" data-rename="${workspace.id}">${t('settings-app.rename', 'Rename')}</jg-button>
+              <jg-button size="sm" variant="ghost" data-export="${workspace.id}">${t('settings-app.export', 'Export')}</jg-button>
+              <jg-button size="sm" variant="ghost" data-duplicate="${workspace.id}">${t('settings-app.duplicate', 'Duplicate')}</jg-button>
+              <jg-button size="sm" variant="destructive" data-delete="${workspace.id}">${t('settings-app.delete', 'Delete')}</jg-button>
             </div>
           </div>`,
         )}
       </div>
       <div class="panel stack">
-        <div class="label">New workspace</div>
+        <div class="label">${t('settings-app.newWorkspace', 'New workspace')}</div>
         <div class="row nowrap">
-          <jg-input id="ws-name" placeholder="Design team" class="grow"></jg-input>
+          <jg-input id="ws-name" placeholder="${t('settings-app.designTeam', 'Design team')}" class="grow"></jg-input>
           <jg-select id="ws-kind" value="personal" style="width:140px">
-            <option value="personal">Personal</option><option value="team">Team</option>
+            <option value="personal">${t('settings-app.personal', 'Personal')}</option><option value="team">${t('settings-app.team', 'Team')}</option>
           </jg-select>
-          <jg-button id="ws-create">Create</jg-button>
+          <jg-button id="ws-create">${t('settings-app.create', 'Create')}</jg-button>
         </div>
-        <div class="hint">Workspaces keep their own home layout, widgets and per-app settings. Export one to share it with a teammate.</div>
-        <div class="row"><jg-button variant="outline" size="sm" id="ws-import">Import workspace file</jg-button></div>
+        <div class="hint">${t('settings-app.workspacesKeepTheirOwnHome', 'Workspaces keep their own home layout, widgets and per-app settings. Export one to share it with a teammate.')}</div>
+        <div class="row"><jg-button variant="outline" size="sm" id="ws-import">${t('settings-app.importWorkspaceFile', 'Import workspace file')}</jg-button></div>
       </div>
     `;
   }
@@ -646,7 +647,7 @@ class SettingsApp extends JGApp {
       ${{ raw: this.#head('Apps', 'Per-app preferences and what appears on the home screen.') }}
       ${hidden.length
         ? html`<div class="panel stack">
-            <div class="label">Hidden from home</div>
+            <div class="label">${t('settings-app.hiddenFromHome', 'Hidden from home')}</div>
             <div class="row">
               ${hidden.map((id) => {
                 const meta = registry.find(id);
@@ -655,14 +656,14 @@ class SettingsApp extends JGApp {
             </div>
           </div>`
         : ''}
-      <jg-progress id="scan" size="sm" label="Reading app preferences" indeterminate ${this.#scanning ? '' : 'hidden'}></jg-progress>
+      <jg-progress id="scan" size="sm" label="${t('settings-app.readingAppPreferences', 'Reading app preferences')}" indeterminate ${this.#scanning ? '' : 'hidden'}></jg-progress>
       ${configurable.map((app) => {
         const fields = appSettings.schema(app.id);
         return html`<div class="panel stack" style="--tint:${registry.tint(app)}">
           <div class="row nowrap">
             <span class="app-badge">${icon(app.icon, 15)}</span>
             <div class="grow"><div class="strong">${app.name}</div><div class="hint">${app.tagline}</div></div>
-            <jg-button size="sm" variant="ghost" data-reset-app="${app.id}">Reset</jg-button>
+            <jg-button size="sm" variant="ghost" data-reset-app="${app.id}">${t('settings-app.reset', 'Reset')}</jg-button>
           </div>
           <div class="rows">
             ${fields.map((field) => {
@@ -683,7 +684,7 @@ class SettingsApp extends JGApp {
         </div>`;
       })}
       <div class="panel stack">
-        <div class="label">Installed</div>
+        <div class="label">${t('settings-app.installed', 'Installed')}</div>
         ${registry.categories().map(
           (group) => html`<div class="stack tight">
             <div class="hint strong">${group.name}</div>
@@ -733,9 +734,9 @@ class SettingsApp extends JGApp {
     return html`
       ${{ raw: this.#head('Data', 'Everything is stored locally in this browser. Nothing leaves your device.') }}
       <div class="panel stack">
-        <div class="spread"><span class="label">Local storage</span><span class="hint mono">${formatBytes(bytes)} · ${keys.length} keys</span></div>
+        <div class="spread"><span class="label">${t('settings-app.localStorage', 'Local storage')}</span><span class="hint mono">${formatBytes(bytes)} · ${keys.length} keys</span></div>
         <div class="meter"><i style="width:${Math.min(100, (bytes / 5_000_000) * 100).toFixed(1)}%"></i></div>
-        <div class="hint">Browser quota is typically around 5 MB per origin.</div>
+        <div class="hint">${t('settings-app.browserQuotaIsTypicallyAround', 'Browser quota is typically around 5 MB per origin.')}</div>
       </div>
       <div class="rows panel">
         ${{
@@ -751,24 +752,24 @@ class SettingsApp extends JGApp {
             consent.decided
               ? `You chose to ${consent.granted ? 'allow' : 'decline'} analytics cookies.`
               : 'You have not answered the cookie banner yet.',
-            html`<jg-button size="sm" variant="outline" id="open-privacy">Read policy</jg-button>`,
+            html`<jg-button size="sm" variant="outline" id="open-privacy">${t('settings-app.readPolicy', 'Read policy')}</jg-button>`,
           ),
         }}
       </div>
 
       <div class="panel stack">
-        <div class="label">Backup</div>
+        <div class="label">${t('settings-app.backup', 'Backup')}</div>
         <div class="row">
-          <jg-button variant="outline" size="sm" id="export-all">Export everything</jg-button>
-          <jg-button variant="outline" size="sm" id="import-all">Import backup</jg-button>
-          <jg-button variant="outline" size="sm" id="export-ws">Export this workspace</jg-button>
+          <jg-button variant="outline" size="sm" id="export-all">${t('settings-app.exportEverything', 'Export everything')}</jg-button>
+          <jg-button variant="outline" size="sm" id="import-all">${t('settings-app.importBackup', 'Import backup')}</jg-button>
+          <jg-button variant="outline" size="sm" id="export-ws">${t('settings-app.exportThisWorkspace', 'Export this workspace')}</jg-button>
         </div>
       </div>
       <div class="panel stack">
-        <div class="label">Danger zone</div>
+        <div class="label">${t('settings-app.dangerZone', 'Danger zone')}</div>
         <div class="row">
-          <jg-button variant="destructive" size="sm" id="reset-settings">Reset settings</jg-button>
-          <jg-button variant="destructive" size="sm" id="reset-all">Erase all data</jg-button>
+          <jg-button variant="destructive" size="sm" id="reset-settings">${t('settings-app.resetSettings', 'Reset settings')}</jg-button>
+          <jg-button variant="destructive" size="sm" id="reset-all">${t('settings-app.eraseAllData', 'Erase all data')}</jg-button>
         </div>
       </div>
     `;
@@ -779,23 +780,23 @@ class SettingsApp extends JGApp {
       ${{ raw: this.#head('About JS Globe', 'A home screen for small, fast developer tools.') }}
       <div class="panel stack">
         <div class="kv">
-          <div>Tools installed</div><div>${registry.all().length}</div>
-          <div>Categories</div><div>${registry.categories().length}</div>
-          <div>Runtime</div><div>Custom elements, no framework</div>
-          <div>Storage</div><div>Local only - nothing is uploaded</div>
-          <div>Direct links</div><div class="mono">jsglobe.com/apps/&lt;app-id&gt;</div>
+          <div>${t('settings-app.toolsInstalled', 'Tools installed')}</div><div>${registry.all().length}</div>
+          <div>${t('settings-app.categories', 'Categories')}</div><div>${registry.categories().length}</div>
+          <div>${t('settings-app.runtime', 'Runtime')}</div><div>${t('settings-app.customElementsNoFramework', 'Custom elements, no framework')}</div>
+          <div>${t('settings-app.storage', 'Storage')}</div><div>${t('settings-app.localOnlyNothingIsUploaded', 'Local only - nothing is uploaded')}</div>
+          <div>${t('settings-app.directLinks', 'Direct links')}</div><div class="mono">${t('settings-app.jsglobeComAppsLtApp', 'jsglobe.com/apps/&lt;app-id&gt;')}</div>
         </div>
         <div class="row">
           <jg-button size="sm" variant="outline" id="open-repo">${icon('github', 14)} GitHub</jg-button>
-          <jg-button size="sm" variant="outline" id="about-privacy">Privacy policy</jg-button>
+          <jg-button size="sm" variant="outline" id="about-privacy">${t('settings-app.privacyPolicy', 'Privacy policy')}</jg-button>
         </div>
       </div>
       <div class="panel stack">
-        <div class="label">Keyboard</div>
+        <div class="label">${t('settings-app.keyboard', 'Keyboard')}</div>
         <div class="kv">
-          <div>⌘K / Ctrl+K</div><div>Search every tool</div>
-          <div>⌘/ / Ctrl+/</div><div>Open the app library</div>
-          <div>Esc</div><div>Back to the home screen</div>
+          <div>${t('settings-app.kCtrlK', '⌘K / Ctrl+K')}</div><div>${t('settings-app.searchEveryTool', 'Search every tool')}</div>
+          <div>${t('settings-app.ctrl', '⌘/ / Ctrl+/')}</div><div>${t('settings-app.openTheAppLibrary', 'Open the app library')}</div>
+          <div>${t('settings-app.esc', 'Esc')}</div><div>${t('settings-app.backToTheHomeScreen', 'Back to the home screen')}</div>
         </div>
       </div>
     `;

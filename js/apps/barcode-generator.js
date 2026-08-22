@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText, download, toast } from '../core/util.js';
 
 const sheet = css`
@@ -131,10 +132,10 @@ const encodeCode39 = (input) => {
 };
 
 const FORMATS = {
-  code128: { label: 'Code 128', hint: 'Any printable ASCII', build: (value) => ({ bits: widthsToBits(encodeCode128(value)), text: value }) },
-  ean13: { label: 'EAN-13', hint: '12 or 13 digits', build: encodeEan13 },
-  ean8: { label: 'EAN-8', hint: '7 or 8 digits', build: encodeEan8 },
-  code39: { label: 'Code 39', hint: 'A-Z, digits and - . $ / + %', build: encodeCode39 },
+  code128: { label: t('barcode-generator.code128', 'Code 128'), hint: 'Any printable ASCII', build: (value) => ({ bits: widthsToBits(encodeCode128(value)), text: value }) },
+  ean13: { label: t('barcode-generator.ean13', 'EAN-13'), hint: '12 or 13 digits', build: encodeEan13 },
+  ean8: { label: t('barcode-generator.ean8', 'EAN-8'), hint: '7 or 8 digits', build: encodeEan8 },
+  code39: { label: t('barcode-generator.code39', 'Code 39'), hint: 'A-Z, digits and - . $ / + %', build: encodeCode39 },
 };
 
 const PRESETS = {
@@ -158,28 +159,28 @@ class BarcodeGenerator extends JGApp {
       <div class="stage" id="stage"></div>
 
       <div class="fields">
-        <jg-field label="Format">
+        <jg-field label="${t('barcode-generator.format', 'Format')}">
           <jg-select id="format" value="${this.#format}">
             ${Object.entries(FORMATS).map(([key, format]) => html`<option value="${key}">${format.label}</option>`)}
           </jg-select>
         </jg-field>
-        <jg-field label="Value"><jg-input id="value" mono value="${saved.value || PRESETS[this.#format][0]}"></jg-input></jg-field>
-        <jg-field label="Bar width"><jg-slider id="width" min="1" max="6" value="2"></jg-slider></jg-field>
-        <jg-field label="Height"><jg-slider id="height" min="40" max="220" value="120"></jg-slider></jg-field>
+        <jg-field label="${t('barcode-generator.value', 'Value')}"><jg-input id="value" mono value="${saved.value || PRESETS[this.#format][0]}"></jg-input></jg-field>
+        <jg-field label="${t('barcode-generator.barWidth', 'Bar width')}"><jg-slider id="width" min="1" max="6" value="2"></jg-slider></jg-field>
+        <jg-field label="${t('barcode-generator.height', 'Height')}"><jg-slider id="height" min="40" max="220" value="120"></jg-slider></jg-field>
       </div>
 
       <div class="row">
-        <jg-switch id="caption" checked></jg-switch><span class="hint">Print the value under the bars</span>
+        <jg-switch id="caption" checked></jg-switch><span class="hint">${t('barcode-generator.printTheValueUnderThe', 'Print the value under the bars')}</span>
         <span class="grow"></span>
-        <jg-badge id="status" tone="muted">Ready</jg-badge>
+        <jg-badge id="status" tone="muted">${t('barcode-generator.ready', 'Ready')}</jg-badge>
       </div>
 
       <div class="presets" id="presets"></div>
 
       <div class="row">
-        <jg-button size="sm" variant="outline" id="copy">Copy SVG</jg-button>
-        <jg-button size="sm" variant="ghost" id="save-svg">Download SVG</jg-button>
-        <jg-button size="sm" variant="ghost" id="save-png">Download PNG</jg-button>
+        <jg-button size="sm" variant="outline" id="copy">${t('barcode-generator.copySvg', 'Copy SVG')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="save-svg">${t('barcode-generator.downloadSvg', 'Download SVG')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="save-png">${t('barcode-generator.downloadPng', 'Download PNG')}</jg-button>
       </div>
 
       <div class="hint" id="hint"></div>

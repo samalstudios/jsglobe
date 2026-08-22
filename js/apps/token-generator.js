@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { copyText, randomInt, shuffle } from '../core/util.js';
 
 const sheet = css`
@@ -26,10 +27,10 @@ const SETS = {
 const AMBIGUOUS = /[Il1O0o]/g;
 
 const strength = (bits) => {
-  if (bits < 40) return { label: 'Weak', color: 'var(--destructive)', ratio: 0.25 };
-  if (bits < 64) return { label: 'Fair', color: 'var(--warning)', ratio: 0.5 };
-  if (bits < 96) return { label: 'Strong', color: 'var(--success)', ratio: 0.75 };
-  return { label: 'Excellent', color: 'var(--success)', ratio: 1 };
+  if (bits < 40) return { label: t('token-generator.weak', 'Weak'), color: 'var(--destructive)', ratio: 0.25 };
+  if (bits < 64) return { label: t('token-generator.fair', 'Fair'), color: 'var(--warning)', ratio: 0.5 };
+  if (bits < 96) return { label: t('token-generator.strong', 'Strong'), color: 'var(--success)', ratio: 0.75 };
+  return { label: t('token-generator.excellent', 'Excellent'), color: 'var(--success)', ratio: 1 };
 };
 
 const build = ({ length, sets, avoidAmbiguous }) => {
@@ -50,8 +51,8 @@ const build = ({ length, sets, avoidAmbiguous }) => {
 class TokenGenerator extends JGApp {
   static appId = 'token-generator';
   static settings = [
-    { key: 'length', label: 'Default length', type: 'number', default: 32, min: 4, max: 512 },
-    { key: 'symbols', label: 'Include symbols', type: 'switch', default: true },
+    { key: 'length', label: t('token-generator.defaultLength', 'Default length'), type: 'number', default: 32, min: 4, max: 512 },
+    { key: 'symbols', label: t('token-generator.includeSymbols', 'Include symbols'), type: 'switch', default: true },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -60,8 +61,8 @@ class TokenGenerator extends JGApp {
       <div class="widget">
         <div class="value" id="value"></div>
         <div class="row tight">
-          <jg-button size="sm" id="new" class="grow">Generate</jg-button>
-          <jg-button size="sm" variant="outline" id="copy">Copy</jg-button>
+          <jg-button size="sm" id="new" class="grow">${t('token-generator.generate', 'Generate')}</jg-button>
+          <jg-button size="sm" variant="outline" id="copy">${t('token-generator.copy', 'Copy')}</jg-button>
         </div>
       </div>
     </div>`);
@@ -80,10 +81,10 @@ class TokenGenerator extends JGApp {
   renderApp() {
     const length = this.config.get('length', 32);
     this.paint(html`<div class="app">
-      <jg-card title="Generated token" sub="Created with crypto.getRandomValues in this tab">
+      <jg-card title="${t('token-generator.generatedToken', 'Generated token')}" sub="Created with crypto.getRandomValues in this tab">
         <div slot="action" class="row tight">
-          <jg-button size="sm" variant="outline" id="copy">Copy</jg-button>
-          <jg-button size="sm" id="new">Regenerate</jg-button>
+          <jg-button size="sm" variant="outline" id="copy">${t('token-generator.copy', 'Copy')}</jg-button>
+          <jg-button size="sm" id="new">${t('token-generator.regenerate', 'Regenerate')}</jg-button>
         </div>
         <div class="value" id="value"></div>
         <div class="meter"><i id="bar"></i></div>
@@ -93,24 +94,24 @@ class TokenGenerator extends JGApp {
         </div>
       </jg-card>
 
-      <jg-card title="Options">
-        <jg-field label="Length" row>
+      <jg-card title="${t('token-generator.options', 'Options')}">
+        <jg-field label="${t('token-generator.length', 'Length')}" row>
           <jg-slider id="length" min="6" max="128" value="${length}" style="width:220px"></jg-slider>
         </jg-field>
         <div class="row">
           <jg-switch id="lower" checked></jg-switch><span class="hint">a-z</span>
           <jg-switch id="upper" checked></jg-switch><span class="hint">A-Z</span>
           <jg-switch id="digits" checked></jg-switch><span class="hint">0-9</span>
-          <jg-switch id="symbols" ${this.config.get('symbols', true) ? 'checked' : ''}></jg-switch><span class="hint">symbols</span>
-          <jg-switch id="ambiguous"></jg-switch><span class="hint">avoid look-alikes</span>
+          <jg-switch id="symbols" ${this.config.get('symbols', true) ? 'checked' : ''}></jg-switch><span class="hint">${t('token-generator.symbols', 'symbols')}</span>
+          <jg-switch id="ambiguous"></jg-switch><span class="hint">${t('token-generator.avoidLookAlikes', 'avoid look-alikes')}</span>
         </div>
       </jg-card>
 
-      <jg-card title="Batch" sub="Generate several at once">
+      <jg-card title="${t('token-generator.batch', 'Batch')}" sub="Generate several at once">
         <div class="row nowrap">
           <jg-input id="count" type="number" min="1" max="100" value="8" suffix="qty" style="width:120px"></jg-input>
-          <jg-button variant="secondary" id="batch">Generate batch</jg-button>
-          <jg-button variant="ghost" size="sm" id="copybatch">Copy batch</jg-button>
+          <jg-button variant="secondary" id="batch">${t('token-generator.generateBatch', 'Generate batch')}</jg-button>
+          <jg-button variant="ghost" size="sm" id="copybatch">${t('token-generator.copyBatch', 'Copy batch')}</jg-button>
         </div>
         <pre class="code scroll" id="list" style="max-height:180px"></pre>
       </jg-card>

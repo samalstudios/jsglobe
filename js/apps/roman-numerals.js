@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce } from '../core/util.js';
 
 const sheet = css`
@@ -53,17 +54,17 @@ class RomanNumerals extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="cols equal">
-        <jg-card title="Number → Roman">
+        <jg-card title="${t('roman-numerals.numberRoman', 'Number → Roman')}">
           <jg-input id="number" type="number" min="1" max="3999" value="2024"></jg-input>
           <jg-output id="roman"></jg-output>
         </jg-card>
-        <jg-card title="Roman → Number">
+        <jg-card title="${t('roman-numerals.romanNumber', 'Roman → Number')}">
           <jg-input id="roman-in" value="MMXXIV" mono></jg-input>
           <jg-output id="number-out"></jg-output>
         </jg-card>
       </div>
 
-      <jg-card title="Reference" sub="Valid range is 1 to 3999">
+      <jg-card title="${t('roman-numerals.reference', 'Reference')}" sub="Valid range is 1 to 3999">
         <div class="table">
           ${NUMERALS.map((pair) => html`<div class="pair"><span>${pair[1]}</span><span class="muted">${pair[0]}</span></div>`)}
         </div>

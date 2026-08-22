@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { toYaml, fromYaml } from '../core/yaml.js';
 import { debounce, copyText, download, toast } from '../core/util.js';
 
@@ -142,18 +143,18 @@ class ApiSpec extends JGApp {
     this.paint(html`<div class="app">
       <div class="shell">
         <div class="pane">
-          <jg-code id="editor" grow gutter language="yaml" placeholder="Paste an OpenAPI document"></jg-code>
+          <jg-code id="editor" grow gutter language="yaml" placeholder="${t('api-spec.pasteAnOpenapiDocument', 'Paste an OpenAPI document')}"></jg-code>
           <div class="row">
-            <jg-badge id="status" tone="muted">Waiting</jg-badge>
+            <jg-badge id="status" tone="muted">${t('api-spec.waiting', 'Waiting')}</jg-badge>
             <span class="hint" id="summary"></span>
           </div>
         </div>
 
         <div class="pane side">
-          <jg-card title="Endpoints" sub="Click one to jump to it">
+          <jg-card title="${t('api-spec.endpoints', 'Endpoints')}" sub="Click one to jump to it">
             <div class="stack tight" id="routes"></div>
           </jg-card>
-          <jg-card title="Checks">
+          <jg-card title="${t('api-spec.checks', 'Checks')}">
             <div class="issues" id="issues"></div>
           </jg-card>
         </div>
@@ -164,13 +165,13 @@ class ApiSpec extends JGApp {
       { id: 'yaml', label: 'YAML', icon: 'braces', select: true, action: () => this.#convert('yaml') },
       { id: 'json', label: 'JSON', icon: 'code', select: true, action: () => this.#convert('json') },
       { separator: true },
-      { id: 'sample', label: 'Sample', icon: 'spec', action: () => this.#sample() },
-      { id: 'format', label: 'Tidy', icon: 'alignLeft', action: () => this.#tidy() },
+      { id: 'sample', label: t('api-spec.sample', 'Sample'), icon: 'spec', action: () => this.#sample() },
+      { id: 'format', label: t('api-spec.tidy', 'Tidy'), icon: 'alignLeft', action: () => this.#tidy() },
       { spacer: true },
-      { id: 'copy', label: 'Copy', icon: 'fileText', action: () => copyText(this.$('#editor').value) },
+      { id: 'copy', label: t('api-spec.copy', 'Copy'), icon: 'fileText', action: () => copyText(this.$('#editor').value) },
       {
         id: 'download',
-        label: 'Download',
+        label: t('api-spec.download', 'Download'),
         icon: 'server',
         action: () => download(`openapi.${this.#format}`, this.$('#editor').value, 'text/plain'),
       },
@@ -268,7 +269,7 @@ class ApiSpec extends JGApp {
             </button>`,
           )
           .join('')
-      : html`<span class="hint">No operations found.</span>`;
+      : html`<span class="hint">${t('api-spec.noOperationsFound', 'No operations found.')}</span>`;
 
     this.bind('.route', 'click', (event) => this.#jump(event.currentTarget.dataset.path));
 
@@ -276,7 +277,7 @@ class ApiSpec extends JGApp {
       ? issues
           .map((issue) => html`<div class="issue ${issue.level === 'bad' ? 'bad' : ''}"><b>${issue.level === 'bad' ? '!' : '?'}</b><span>${issue.text}</span></div>`)
           .join('')
-      : html`<span class="hint">Everything the linter checks looks fine.</span>`;
+      : html`<span class="hint">${t('api-spec.everythingTheLinterChecksLooks', 'Everything the linter checks looks fine.')}</span>`;
   }
 
   #jump(path) {

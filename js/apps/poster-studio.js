@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { CANVAS_SIZES, THEMES, FRAMES, GALLERY, makeText, makeShape, newId, icsFor } from '../lib/poster.js';
 import { encodeQr } from '../lib/qr.js';
 import { createDesigns } from '../lib/designs.js';
@@ -219,7 +220,7 @@ const fittedSize = (item) => {
 class PosterStudio extends JGApp {
   static appId = 'poster-studio';
   static styles = [...JGApp.styles, sheet];
-  static settings = [{ key: 'export', label: 'Export scale', type: 'number', value: 2, min: 1, max: 4 }];
+  static settings = [{ key: 'export', label: t('poster-studio.exportScale', 'Export scale'), type: 'number', value: 2, min: 1, max: 4 }];
 
   #size = 'poster';
   #theme = 'ink';
@@ -288,8 +289,8 @@ class PosterStudio extends JGApp {
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
       <div class="stack tight">
-        <div class="label">Poster Studio</div>
-        <div class="hint">Posters and social variants from a set of templates.</div>
+        <div class="label">${t('poster-studio.posterStudio', 'Poster Studio')}</div>
+        <div class="hint">${t('poster-studio.postersAndSocialVariantsFrom', 'Posters and social variants from a set of templates.')}</div>
       </div>
     </div>`);
   }
@@ -303,19 +304,19 @@ class PosterStudio extends JGApp {
           <canvas id="view"></canvas>
           <div class="blank" id="blank" hidden>
             <div>
-              <p>An empty page. Start from one of the designs in the gallery, or add a piece from the left.</p>
-              <jg-button size="sm" id="blank-open">Browse the gallery</jg-button>
+              <p>${t('poster-studio.anEmptyPageStartFrom', 'An empty page. Start from one of the designs in the gallery, or add a piece from the left.')}</p>
+              <jg-button size="sm" id="blank-open">${t('poster-studio.browseTheGallery', 'Browse the gallery')}</jg-button>
             </div>
           </div>
-          <div class="hint-bar" id="hint">Drag to move, drag a corner to resize, drag the round handle to turn. Double click text to edit it.</div>
+          <div class="hint-bar" id="hint">${t('poster-studio.dragToMoveDragA', 'Drag to move, drag a corner to resize, drag the round handle to turn. Double click text to edit it.')}</div>
         </div>
         <aside class="side" id="side"></aside>
       </div>
 
       <jg-dialog id="picker" title-text="Gallery" sub="Pick a design to start from. It replaces what is on the page.">
-        <jg-input id="hunt" size="sm" placeholder="Search the gallery" autocomplete="off"></jg-input>
+        <jg-input id="hunt" size="sm" placeholder="${t('poster-studio.searchTheGallery', 'Search the gallery')}" autocomplete="off"></jg-input>
         <div class="gallery" id="gallery"></div>
-        <p class="nothing" id="nothing" hidden>Nothing matches that.</p>
+        <p class="nothing" id="nothing" hidden>${t('poster-studio.nothingMatchesThat', 'Nothing matches that.')}</p>
       </jg-dialog>
     </div>`);
 
@@ -374,31 +375,31 @@ class PosterStudio extends JGApp {
 
   #toolbar() {
     this.$('#bar').items = [
-      { id: 'gallery', label: 'Gallery', icon: 'widgets', action: () => this.#openPicker() },
+      { id: 'gallery', label: t('poster-studio.gallery', 'Gallery'), icon: 'widgets', action: () => this.#openPicker() },
       { separator: true },
-      { id: 'fit', label: 'Fit', icon: 'maximize', iconOnly: true, title: 'Fit the poster in view', action: () => this.#fit() },
-      { id: 'front', label: 'Bring to front', icon: 'toFront', iconOnly: true, title: 'Bring to front', action: () => this.#lift(true) },
-      { id: 'back', label: 'Send to back', icon: 'toBack', iconOnly: true, title: 'Send to back', action: () => this.#lift(false) },
-      { id: 'copy', label: 'Duplicate', icon: 'copy', iconOnly: true, title: 'Duplicate the selection', action: () => this.#duplicate() },
-      { id: 'delete', label: 'Delete', icon: 'eraser', iconOnly: true, title: 'Delete the selection', action: () => this.#remove() },
+      { id: 'fit', label: t('poster-studio.fit', 'Fit'), icon: 'maximize', iconOnly: true, title: 'Fit the poster in view', action: () => this.#fit() },
+      { id: 'front', label: t('poster-studio.bringToFront', 'Bring to front'), icon: 'toFront', iconOnly: true, title: 'Bring to front', action: () => this.#lift(true) },
+      { id: 'back', label: t('poster-studio.sendToBack', 'Send to back'), icon: 'toBack', iconOnly: true, title: 'Send to back', action: () => this.#lift(false) },
+      { id: 'copy', label: t('poster-studio.duplicate', 'Duplicate'), icon: 'copy', iconOnly: true, title: 'Duplicate the selection', action: () => this.#duplicate() },
+      { id: 'delete', label: t('poster-studio.delete', 'Delete'), icon: 'eraser', iconOnly: true, title: 'Delete the selection', action: () => this.#remove() },
       { spacer: true },
-      { id: 'variants', label: 'Social sizes', icon: 'grid', iconOnly: true, title: 'Save the square, story and wide versions', action: () => this.#variants() },
+      { id: 'variants', label: t('poster-studio.socialSizes', 'Social sizes'), icon: 'grid', iconOnly: true, title: 'Save the square, story and wide versions', action: () => this.#variants() },
       { id: 'svg', label: 'SVG', icon: 'vector', iconOnly: true, title: 'Export as SVG', action: () => this.#exportSvg() },
-      { id: 'png', label: 'Export PNG', icon: 'download', action: () => this.#exportPng() },
+      { id: 'png', label: t('poster-studio.exportPng', 'Export PNG'), icon: 'download', action: () => this.#exportPng() },
     ];
   }
 
   #rail() {
     this.$('#rail').innerHTML = html`
-      <div class="group">Add</div>
-      <button class="tool" data-add="heading">${icon('type', 15)}<span>Heading</span></button>
-      <button class="tool" data-add="body">${icon('alignLeft', 15)}<span>Body text</span></button>
-      <button class="tool" data-add="rect">${icon('square', 15)}<span>Rectangle</span></button>
-      <button class="tool" data-add="circle">${icon('circle', 15)}<span>Circle</span></button>
-      <button class="tool" data-add="line">${icon('minus', 15)}<span>Rule</span></button>
-      <button class="tool" data-add="image">${icon('image', 15)}<span>Picture</span></button>
-      <button class="tool" data-add="qr">${icon('qr', 15)}<span>Event QR</span></button>
-      <div class="group">Canvas</div>
+      <div class="group">${t('poster-studio.add', 'Add')}</div>
+      <button class="tool" data-add="heading">${icon('type', 15)}<span>${t('poster-studio.heading', 'Heading')}</span></button>
+      <button class="tool" data-add="body">${icon('alignLeft', 15)}<span>${t('poster-studio.bodyText', 'Body text')}</span></button>
+      <button class="tool" data-add="rect">${icon('square', 15)}<span>${t('poster-studio.rectangle', 'Rectangle')}</span></button>
+      <button class="tool" data-add="circle">${icon('circle', 15)}<span>${t('poster-studio.circle', 'Circle')}</span></button>
+      <button class="tool" data-add="line">${icon('minus', 15)}<span>${t('poster-studio.rule', 'Rule')}</span></button>
+      <button class="tool" data-add="image">${icon('image', 15)}<span>${t('poster-studio.picture', 'Picture')}</span></button>
+      <button class="tool" data-add="qr">${icon('qr', 15)}<span>${t('poster-studio.eventQr', 'Event QR')}</span></button>
+      <div class="group">${t('poster-studio.canvas', 'Canvas')}</div>
       ${Object.entries(CANVAS_SIZES).map(
         ([key, spec]) => html`<button class="tool" data-size="${key}" aria-pressed="${String(this.#size === key)}">${icon('frame', 15)}<span>${spec.label}</span></button>`,
       )}
@@ -534,7 +535,7 @@ class PosterStudio extends JGApp {
     const item = this.#items.find((entry) => entry.id === this.#selected);
 
     target.innerHTML = html`
-      <div class="label">Theme</div>
+      <div class="label">${t('poster-studio.theme', 'Theme')}</div>
       <div class="swatches">
         ${Object.entries(THEMES).map(
           ([key, theme]) => html`<button class="swatch" data-theme="${key}" title="${theme.label}" aria-pressed="${String(this.#theme === key)}"
@@ -542,7 +543,7 @@ class PosterStudio extends JGApp {
         )}
       </div>
 
-      <div class="label">Frame</div>
+      <div class="label">${t('poster-studio.frame', 'Frame')}</div>
       <div class="chips">
         ${Object.entries(FRAMES).map(
           ([key, spec]) => html`<button data-frame="${key}" aria-pressed="${String(this.#frame === key)}">${spec.label}</button>`,
@@ -550,20 +551,20 @@ class PosterStudio extends JGApp {
       </div>
 
       <div class="sep"></div>
-      ${item ? this.#itemPanel(item) : html`<div class="hint">Pick something on the poster to change it, or add a piece from the left.</div>`}
+      ${item ? this.#itemPanel(item) : html`<div class="hint">${t('poster-studio.pickSomethingOnThePoster', 'Pick something on the poster to change it, or add a piece from the left.')}</div>`}
 
       <div class="sep"></div>
-      <div class="label">Event</div>
-      <jg-field label="Title"><jg-input id="evTitle" size="sm" value="${this.#event.title ?? ''}"></jg-input></jg-field>
-      <jg-field label="Starts"><jg-input id="evStart" size="sm" type="datetime-local" value="${this.#event.start ?? ''}"></jg-input></jg-field>
-      <jg-field label="Place"><jg-input id="evPlace" size="sm" value="${this.#event.place ?? ''}"></jg-input></jg-field>
-      <div class="hint">The event QR carries these so a phone can add it to a calendar.</div>
+      <div class="label">${t('poster-studio.event', 'Event')}</div>
+      <jg-field label="${t('poster-studio.title', 'Title')}"><jg-input id="evTitle" size="sm" value="${this.#event.title ?? ''}"></jg-input></jg-field>
+      <jg-field label="${t('poster-studio.starts', 'Starts')}"><jg-input id="evStart" size="sm" type="datetime-local" value="${this.#event.start ?? ''}"></jg-input></jg-field>
+      <jg-field label="${t('poster-studio.place', 'Place')}"><jg-input id="evPlace" size="sm" value="${this.#event.place ?? ''}"></jg-input></jg-field>
+      <div class="hint">${t('poster-studio.theEventQrCarriesThese', 'The event QR carries these so a phone can add it to a calendar.')}</div>
 
       <div class="sep"></div>
-      <div class="label">Saved</div>
+      <div class="label">${t('poster-studio.saved', 'Saved')}</div>
       <div class="save-row">
-        <jg-input id="save-name" size="sm" placeholder="Name this poster"></jg-input>
-        <jg-button size="sm" variant="outline" id="save">Save</jg-button>
+        <jg-input id="save-name" size="sm" placeholder="${t('poster-studio.nameThisPoster', 'Name this poster')}"></jg-input>
+        <jg-button size="sm" variant="outline" id="save">${t('poster-studio.save', 'Save')}</jg-button>
       </div>
       <div class="saved" id="saved"></div>
     `;
@@ -603,76 +604,76 @@ class PosterStudio extends JGApp {
   #itemPanel(item) {
     if (item.kind === 'text') {
       return html`
-        <div class="label">Text</div>
-        <jg-field label="Words"><jg-textarea id="itText" rows="3" value="${item.value}"></jg-textarea></jg-field>
+        <div class="label">${t('poster-studio.text', 'Text')}</div>
+        <jg-field label="${t('poster-studio.words', 'Words')}"><jg-textarea id="itText" rows="3" value="${item.value}"></jg-textarea></jg-field>
         <div class="row2">
-          <jg-field label="Size"><jg-input id="itSize" size="sm" type="number" step="2" min="4" value="${Math.round(item.size)}"></jg-input></jg-field>
-          <jg-field label="Weight">
+          <jg-field label="${t('poster-studio.size', 'Size')}"><jg-input id="itSize" size="sm" type="number" step="2" min="4" value="${Math.round(item.size)}"></jg-input></jg-field>
+          <jg-field label="${t('poster-studio.weight', 'Weight')}">
             <jg-select id="itWeight" size="sm" value="${String(item.weight)}">
-              <option value="400">Regular</option>
-              <option value="600">Medium</option>
-              <option value="800">Bold</option>
+              <option value="400">${t('poster-studio.regular', 'Regular')}</option>
+              <option value="600">${t('poster-studio.medium', 'Medium')}</option>
+              <option value="800">${t('poster-studio.bold', 'Bold')}</option>
             </jg-select>
           </jg-field>
         </div>
         <div class="row2">
-          <jg-field label="Typeface">
+          <jg-field label="${t('poster-studio.typeface', 'Typeface')}">
             <jg-select id="itFamily" size="sm" value="${item.family}">
-              <option value="sans">Sans</option>
-              <option value="serif">Serif</option>
-              <option value="mono">Mono</option>
+              <option value="sans">${t('poster-studio.sans', 'Sans')}</option>
+              <option value="serif">${t('poster-studio.serif', 'Serif')}</option>
+              <option value="mono">${t('poster-studio.mono', 'Mono')}</option>
             </jg-select>
           </jg-field>
-          <jg-field label="Align">
+          <jg-field label="${t('poster-studio.align', 'Align')}">
             <jg-select id="itAlign" size="sm" value="${item.align}">
-              <option value="left">Left</option>
-              <option value="center">Centre</option>
-              <option value="right">Right</option>
+              <option value="left">${t('poster-studio.left', 'Left')}</option>
+              <option value="center">${t('poster-studio.centre', 'Centre')}</option>
+              <option value="right">${t('poster-studio.right', 'Right')}</option>
             </jg-select>
           </jg-field>
         </div>
-        <jg-field label="Colour">
+        <jg-field label="${t('poster-studio.colour', 'Colour')}">
           <jg-select id="itTone" size="sm" value="${item.tone}">
-            <option value="ink">Ink</option>
-            <option value="accent">Accent</option>
-            <option value="muted">Muted</option>
-            <option value="paper">Paper</option>
+            <option value="ink">${t('poster-studio.ink', 'Ink')}</option>
+            <option value="accent">${t('poster-studio.accent', 'Accent')}</option>
+            <option value="muted">${t('poster-studio.muted', 'Muted')}</option>
+            <option value="paper">${t('poster-studio.paper', 'Paper')}</option>
           </jg-select>
         </jg-field>
         <label class="row tight" style="gap:6px">
-          <input type="checkbox" id="itCaps" ${item.caps ? 'checked' : ''} /><span class="hint">Capitals</span>
+          <input type="checkbox" id="itCaps" ${item.caps ? 'checked' : ''} /><span class="hint">${t('poster-studio.capitals', 'Capitals')}</span>
         </label>
       `;
     }
 
     if (item.kind === 'qr') {
       return html`
-        <div class="label">Event QR</div>
-        <div class="hint">Built from the event details below. It carries a calendar entry.</div>
-        <jg-field label="Size"><jg-input id="itWidth" size="sm" type="number" step="10" min="60" value="${Math.round(item.width)}"></jg-input></jg-field>
+        <div class="label">${t('poster-studio.eventQr', 'Event QR')}</div>
+        <div class="hint">${t('poster-studio.builtFromTheEventDetails', 'Built from the event details below. It carries a calendar entry.')}</div>
+        <jg-field label="${t('poster-studio.size', 'Size')}"><jg-input id="itWidth" size="sm" type="number" step="10" min="60" value="${Math.round(item.width)}"></jg-input></jg-field>
       `;
     }
 
     if (item.kind === 'image') {
       return html`
-        <div class="label">Picture</div>
-        <jg-field label="Width"><jg-input id="itWidth" size="sm" type="number" step="10" min="20" value="${Math.round(item.width)}"></jg-input></jg-field>
-        <jg-button size="sm" variant="outline" id="itReplace">Replace picture</jg-button>
+        <div class="label">${t('poster-studio.picture', 'Picture')}</div>
+        <jg-field label="${t('poster-studio.width', 'Width')}"><jg-input id="itWidth" size="sm" type="number" step="10" min="20" value="${Math.round(item.width)}"></jg-input></jg-field>
+        <jg-button size="sm" variant="outline" id="itReplace">${t('poster-studio.replacePicture', 'Replace picture')}</jg-button>
       `;
     }
 
     return html`
-      <div class="label">Shape</div>
-      <jg-field label="Colour">
+      <div class="label">${t('poster-studio.shape', 'Shape')}</div>
+      <jg-field label="${t('poster-studio.colour', 'Colour')}">
         <jg-select id="itTone" size="sm" value="${item.tone}">
-          <option value="accent">Accent</option>
-          <option value="ink">Ink</option>
-          <option value="muted">Muted</option>
-          <option value="paper">Paper</option>
+          <option value="accent">${t('poster-studio.accent', 'Accent')}</option>
+          <option value="ink">${t('poster-studio.ink', 'Ink')}</option>
+          <option value="muted">${t('poster-studio.muted', 'Muted')}</option>
+          <option value="paper">${t('poster-studio.paper', 'Paper')}</option>
         </jg-select>
       </jg-field>
-      <jg-field label="Fade"><jg-slider id="itOpacity" min="5" max="100" step="5" value="${Math.round((item.opacity ?? 1) * 100)}"></jg-slider></jg-field>
-      <jg-field label="Corner radius"><jg-input id="itRadius" size="sm" type="number" step="2" min="0" value="${Math.round(item.radius ?? 0)}"></jg-input></jg-field>
+      <jg-field label="${t('poster-studio.fade', 'Fade')}"><jg-slider id="itOpacity" min="5" max="100" step="5" value="${Math.round((item.opacity ?? 1) * 100)}"></jg-slider></jg-field>
+      <jg-field label="${t('poster-studio.cornerRadius', 'Corner radius')}"><jg-input id="itRadius" size="sm" type="number" step="2" min="0" value="${Math.round(item.radius ?? 0)}"></jg-input></jg-field>
     `;
   }
 
@@ -1268,7 +1269,7 @@ class PosterStudio extends JGApp {
     if (!target) return;
     const rows = this.#designs.list();
     if (!rows.length) {
-      target.innerHTML = html`<span class="hint">Nothing saved yet.</span>`;
+      target.innerHTML = html`<span class="hint">${t('poster-studio.nothingSavedYet', 'Nothing saved yet.')}</span>`;
       return;
     }
     target.innerHTML = rows

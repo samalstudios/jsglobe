@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { copyText, download } from '../core/util.js';
 
 const sheet = css`
@@ -146,7 +147,7 @@ const hex = (view) =>
 class BluetoothScanner extends JGApp {
   static appId = 'bluetooth-scanner';
   static settings = [
-    { key: 'autoNotify', label: 'Subscribe automatically', type: 'switch', default: true },
+    { key: 'autoNotify', label: t('bluetooth-scanner.subscribeAutomatically', 'Subscribe automatically'), type: 'switch', default: true },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -158,7 +159,7 @@ class BluetoothScanner extends JGApp {
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
       <div class="stack tight">
-        <div class="label">Bluetooth</div>
+        <div class="label">${t('bluetooth-scanner.bluetooth', 'Bluetooth')}</div>
         <div class="hint">${navigator.bluetooth ? 'Explore GATT services, subscribe and write' : 'Needs Chrome or Edge'}</div>
       </div>
     </div>`);
@@ -177,9 +178,9 @@ class BluetoothScanner extends JGApp {
   renderApp() {
     if (!navigator.bluetooth) {
       this.paint(html`<div class="app"><div class="unsupported">
-        <div class="title">Web Bluetooth is not available here</div>
+        <div class="title">${t('bluetooth-scanner.webBluetoothIsNotAvailable', 'Web Bluetooth is not available here')}</div>
         <p class="hint" style="max-width:48ch">
-          Chrome, Edge and Opera on desktop and Android expose <code>navigator.bluetooth</code>. Safari and Firefox have
+          Chrome, Edge and Opera on desktop and Android expose <code>${t('bluetooth-scanner.navigatorBluetooth', 'navigator.bluetooth')}</code>. Safari and Firefox have
           not shipped it, and iOS blocks it entirely. A secure origin is required.
         </p>
       </div></div>`);
@@ -189,12 +190,12 @@ class BluetoothScanner extends JGApp {
     this.paint(html`<div class="app">
       <div class="head">
         <span class="dot" id="dot"></span>
-        <span class="title" id="state">Nothing paired</span>
+        <span class="title" id="state">${t('bluetooth-scanner.nothingPaired', 'Nothing paired')}</span>
         <span class="hint mono tiny" id="rssi"></span>
         <span class="grow"></span>
-        <jg-switch id="all"></jg-switch><span class="hint">Any device</span>
-        <jg-button size="sm" id="pick">Choose a device</jg-button>
-        <jg-button size="sm" variant="outline" id="drop" disabled>Disconnect</jg-button>
+        <jg-switch id="all"></jg-switch><span class="hint">${t('bluetooth-scanner.anyDevice', 'Any device')}</span>
+        <jg-button size="sm" id="pick">${t('bluetooth-scanner.chooseADevice', 'Choose a device')}</jg-button>
+        <jg-button size="sm" variant="outline" id="drop" disabled>${t('bluetooth-scanner.disconnect', 'Disconnect')}</jg-button>
       </div>
       <div class="body">
         <div class="tree" id="tree">
@@ -205,13 +206,13 @@ class BluetoothScanner extends JGApp {
         </div>
         <div class="log-pane">
           <div class="row" style="padding:10px 12px 0">
-            <span class="label">Live log</span>
+            <span class="label">${t('bluetooth-scanner.liveLog', 'Live log')}</span>
             <span class="grow"></span>
-            <jg-button size="sm" variant="ghost" id="copy-log">Copy</jg-button>
-            <jg-button size="sm" variant="ghost" id="save-log">Save</jg-button>
-            <jg-button size="sm" variant="ghost" id="clear-log">Clear</jg-button>
+            <jg-button size="sm" variant="ghost" id="copy-log">${t('bluetooth-scanner.copy', 'Copy')}</jg-button>
+            <jg-button size="sm" variant="ghost" id="save-log">${t('bluetooth-scanner.save', 'Save')}</jg-button>
+            <jg-button size="sm" variant="ghost" id="clear-log">${t('bluetooth-scanner.clear', 'Clear')}</jg-button>
           </div>
-          <div class="log" id="log"><span class="sys">Waiting for a device.</span></div>
+          <div class="log" id="log"><span class="sys">${t('bluetooth-scanner.waitingForADevice', 'Waiting for a device.')}</span></div>
         </div>
       </div>
       <span class="error" id="error" style="padding:0 14px 10px"></span>
@@ -346,16 +347,16 @@ class BluetoothScanner extends JGApp {
       </div>
       <div class="value" data-value>-</div>
       <div class="actions">
-        ${characteristic.properties.read ? html`<jg-button size="sm" variant="outline" data-read>Read</jg-button>` : ''}
+        ${characteristic.properties.read ? html`<jg-button size="sm" variant="outline" data-read>${t('bluetooth-scanner.read', 'Read')}</jg-button>` : ''}
         ${characteristic.properties.notify || characteristic.properties.indicate
-          ? html`<jg-button size="sm" variant="outline" data-notify>Subscribe</jg-button>`
+          ? html`<jg-button size="sm" variant="outline" data-notify>${t('bluetooth-scanner.subscribe', 'Subscribe')}</jg-button>`
           : ''}
         ${characteristic.properties.write || characteristic.properties.writeWithoutResponse
-          ? html`<jg-input size="sm" data-payload placeholder="hex or text" style="width:150px"></jg-input>
+          ? html`<jg-input size="sm" data-payload placeholder="${t('bluetooth-scanner.hexOrText', 'hex or text')}" style="width:150px"></jg-input>
               <jg-select size="sm" data-format value="hex" style="width:88px">
-                <option value="hex">hex</option><option value="text">text</option>
+                <option value="hex">${t('bluetooth-scanner.hex', 'hex')}</option><option value="text">${t('bluetooth-scanner.text', 'text')}</option>
               </jg-select>
-              <jg-button size="sm" data-write>Write</jg-button>`
+              <jg-button size="sm" data-write>${t('bluetooth-scanner.write', 'Write')}</jg-button>`
           : ''}
       </div>
     `;

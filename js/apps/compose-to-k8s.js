@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { fromYaml, toYaml } from '../core/yaml.js';
 import { convert, CONTROLLERS, slug } from '../lib/compose-k8s.js';
 import { debounce, copyText, download } from '../core/util.js';
@@ -80,8 +81,8 @@ class ComposeToK8s extends JGApp {
   static appId = 'compose-to-k8s';
   static styles = [...JGApp.styles, sheet];
   static settings = [
-    { key: 'storage', label: 'Default volume size', type: 'text', value: '1Gi' },
-    { key: 'replicas', label: 'Replicas when compose does not say', type: 'number', value: 1, min: 1, max: 20 },
+    { key: 'storage', label: t('compose-to-k8s.defaultVolumeSize', 'Default volume size'), type: 'text', value: '1Gi' },
+    { key: 'replicas', label: t('compose-to-k8s.replicasWhenComposeDoesNot', 'Replicas when compose does not say'), type: 'number', value: 1, min: 1, max: 20 },
   ];
 
   #documents = [];
@@ -93,35 +94,35 @@ class ComposeToK8s extends JGApp {
       <jg-toolbar id="bar"></jg-toolbar>
 
       <div class="controls">
-        <jg-field label="Namespace"><jg-input id="namespace" mono value="${saved.namespace ?? 'default'}"></jg-input></jg-field>
-        <jg-field label="Ingress controller">
+        <jg-field label="${t('compose-to-k8s.namespace', 'Namespace')}"><jg-input id="namespace" mono value="${saved.namespace ?? 'default'}"></jg-input></jg-field>
+        <jg-field label="${t('compose-to-k8s.ingressController', 'Ingress controller')}">
           <jg-select id="controller" value="${saved.controller ?? 'nginx'}">
             ${Object.entries(CONTROLLERS).map(([key, meta]) => html`<option value="${key}">${meta.label}</option>`)}
           </jg-select>
         </jg-field>
-        <jg-field label="Host domain"><jg-input id="domain" mono value="${saved.domain ?? 'example.com'}"></jg-input></jg-field>
-        <jg-field label="Image pull policy">
+        <jg-field label="${t('compose-to-k8s.hostDomain', 'Host domain')}"><jg-input id="domain" mono value="${saved.domain ?? 'example.com'}"></jg-input></jg-field>
+        <jg-field label="${t('compose-to-k8s.imagePullPolicy', 'Image pull policy')}">
           <jg-select id="pullPolicy" value="${saved.pullPolicy ?? 'IfNotPresent'}">
             ${POLICIES.map((policy) => html`<option value="${policy}">${policy}</option>`)}
           </jg-select>
         </jg-field>
         <div class="flags">
-          <label><jg-switch id="tls" ${saved.tls ? 'checked' : ''}></jg-switch>Request TLS</label>
+          <label><jg-switch id="tls" ${saved.tls ? 'checked' : ''}></jg-switch>${t('compose-to-k8s.requestTls', 'Request TLS')}</label>
         </div>
       </div>
 
       <div class="shell">
         <div class="pane">
           <div class="row" style="justify-content:space-between">
-            <span class="label">docker-compose.yml</span>
-            <jg-button size="sm" variant="ghost" id="sample">Load a sample</jg-button>
+            <span class="label">${t('compose-to-k8s.dockerComposeYml', 'docker-compose.yml')}</span>
+            <jg-button size="sm" variant="ghost" id="sample">${t('compose-to-k8s.loadASample', 'Load a sample')}</jg-button>
           </div>
-          <jg-code id="in" grow gutter language="yaml" placeholder="Paste a compose file"></jg-code>
+          <jg-code id="in" grow gutter language="yaml" placeholder="${t('compose-to-k8s.pasteAComposeFile', 'Paste a compose file')}"></jg-code>
         </div>
 
         <div class="pane">
           <div class="row" style="justify-content:space-between">
-            <span class="label">Kubernetes manifests</span>
+            <span class="label">${t('compose-to-k8s.kubernetesManifests', 'Kubernetes manifests')}</span>
             <span class="tally" id="tally"></span>
           </div>
           <jg-code id="out" grow gutter language="yaml" readonly></jg-code>
@@ -131,10 +132,10 @@ class ComposeToK8s extends JGApp {
     </div>`);
 
     this.$('#bar').items = [
-      { id: 'copy', label: 'Copy', icon: 'copy', action: () => copyText(this.$('#out').value) },
-      { id: 'download', label: 'Download', icon: 'download', action: () => this.#download() },
+      { id: 'copy', label: t('compose-to-k8s.copy', 'Copy'), icon: 'copy', action: () => copyText(this.$('#out').value) },
+      { id: 'download', label: t('compose-to-k8s.download', 'Download'), icon: 'download', action: () => this.#download() },
       { spacer: true },
-      { id: 'clear', label: 'Clear', icon: 'eraser', iconOnly: true, title: 'Empty the input', action: () => this.#clear() },
+      { id: 'clear', label: t('compose-to-k8s.clear', 'Clear'), icon: 'eraser', iconOnly: true, title: 'Empty the input', action: () => this.#clear() },
     ];
 
     this.$('#in').value = saved.source ?? SAMPLE;

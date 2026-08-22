@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce } from '../core/util.js';
 
 const sheet = css`
@@ -25,52 +26,52 @@ class ListConverter extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="grid3">
-        <jg-field label="Separator" hint="How the output is joined">
+        <jg-field label="${t('list-converter.separator', 'Separator')}" hint="${t('list-converter.howTheOutputIsJoined', 'How the output is joined')}">
           <jg-select id="separator" value="\n">
-            <option value="\n">New line</option>
-            <option value=", ">Comma and space</option>
-            <option value=",">Comma</option>
-            <option value=" ">Space</option>
-            <option value=" | ">Pipe</option>
-            <option value="; ">Semicolon</option>
+            <option value="\n">${t('list-converter.newLine', 'New line')}</option>
+            <option value=", ">${t('list-converter.commaAndSpace', 'Comma and space')}</option>
+            <option value=",">${t('list-converter.comma', 'Comma')}</option>
+            <option value=" ">${t('list-converter.space', 'Space')}</option>
+            <option value=" | ">${t('list-converter.pipe', 'Pipe')}</option>
+            <option value="; ">${t('list-converter.semicolon', 'Semicolon')}</option>
           </jg-select>
         </jg-field>
-        <jg-field label="Sort">
+        <jg-field label="${t('list-converter.sort', 'Sort')}">
           <jg-select id="sort" value="none">
             ${Object.entries(SORTS).map(([key, label]) => html`<option value="${key}">${label}</option>`)}
           </jg-select>
         </jg-field>
-        <jg-field label="Wrap each item" hint="Use {} for the value">
+        <jg-field label="${t('list-converter.wrapEachItem', 'Wrap each item')}" hint="Use {} for the value">
           <jg-input id="wrap" placeholder="'{}'"></jg-input>
         </jg-field>
-        <jg-field label="Prefix"><jg-input id="prefix"></jg-input></jg-field>
-        <jg-field label="Suffix"><jg-input id="suffix"></jg-input></jg-field>
-        <jg-field label="Split input on">
+        <jg-field label="${t('list-converter.prefix', 'Prefix')}"><jg-input id="prefix"></jg-input></jg-field>
+        <jg-field label="${t('list-converter.suffix', 'Suffix')}"><jg-input id="suffix"></jg-input></jg-field>
+        <jg-field label="${t('list-converter.splitInputOn', 'Split input on')}">
           <jg-select id="split" value="lines">
-            <option value="lines">New lines</option>
-            <option value="comma">Commas</option>
-            <option value="space">Whitespace</option>
-            <option value="semicolon">Semicolons</option>
+            <option value="lines">${t('list-converter.newLines', 'New lines')}</option>
+            <option value="comma">${t('list-converter.commas', 'Commas')}</option>
+            <option value="space">${t('list-converter.whitespace', 'Whitespace')}</option>
+            <option value="semicolon">${t('list-converter.semicolons', 'Semicolons')}</option>
           </jg-select>
         </jg-field>
       </div>
 
       <div class="row">
-        <jg-switch id="trim" checked></jg-switch><span class="hint">Trim</span>
-        <jg-switch id="dedupe"></jg-switch><span class="hint">Remove duplicates</span>
-        <jg-switch id="empty" checked></jg-switch><span class="hint">Drop empty items</span>
-        <jg-switch id="lower"></jg-switch><span class="hint">Lowercase</span>
-        <jg-switch id="numbered"></jg-switch><span class="hint">Number the items</span>
+        <jg-switch id="trim" checked></jg-switch><span class="hint">${t('list-converter.trim', 'Trim')}</span>
+        <jg-switch id="dedupe"></jg-switch><span class="hint">${t('list-converter.removeDuplicates', 'Remove duplicates')}</span>
+        <jg-switch id="empty" checked></jg-switch><span class="hint">${t('list-converter.dropEmptyItems', 'Drop empty items')}</span>
+        <jg-switch id="lower"></jg-switch><span class="hint">${t('list-converter.lowercase', 'Lowercase')}</span>
+        <jg-switch id="numbered"></jg-switch><span class="hint">${t('list-converter.numberTheItems', 'Number the items')}</span>
       </div>
 
       <div class="split">
         <div class="pane">
-          <div class="spread"><span class="label">Input</span><span class="hint" id="incount"></span></div>
-          <jg-textarea id="input" grow sans placeholder="One item per line"></jg-textarea>
+          <div class="spread"><span class="label">${t('list-converter.input', 'Input')}</span><span class="hint" id="incount"></span></div>
+          <jg-textarea id="input" grow sans placeholder="${t('list-converter.oneItemPerLine', 'One item per line')}"></jg-textarea>
         </div>
         <div class="pane">
           <div class="spread">
-            <span class="label">Output</span>
+            <span class="label">${t('list-converter.output', 'Output')}</span>
             <span class="row tight"><span class="hint" id="outcount"></span><jg-copy from="#output" size="icon"></jg-copy></span>
           </div>
           <jg-textarea id="output" grow sans></jg-textarea>

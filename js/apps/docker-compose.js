@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { toYaml, fromYaml } from '../core/yaml.js';
 import { debounce, copyText, download } from '../core/util.js';
 
@@ -221,29 +222,29 @@ class DockerCompose extends JGApp {
     this.paint(html`<div class="app">
       <div class="split">
         <div class="pane">
-          <span class="label" id="in-label">docker run command</span>
-          <jg-code id="input" grow gutter language="shell" placeholder="docker run -p 80:80 nginx"></jg-code>
+          <span class="label" id="in-label">${t('docker-compose.dockerRunCommand', 'docker run command')}</span>
+          <jg-code id="input" grow gutter language="shell" placeholder="${t('docker-compose.dockerRunP8080', 'docker run -p 80:80 nginx')}"></jg-code>
         </div>
         <div class="pane">
-          <span class="label" id="out-label">compose.yaml</span>
+          <span class="label" id="out-label">${t('docker-compose.composeYaml', 'compose.yaml')}</span>
           <jg-code id="output" grow gutter language="yaml" readonly></jg-code>
         </div>
       </div>
 
       <div class="row">
-        <jg-badge id="status" tone="muted">Waiting</jg-badge>
+        <jg-badge id="status" tone="muted">${t('docker-compose.waiting', 'Waiting')}</jg-badge>
         <span class="grow"></span>
-        <span class="hint">Compose v2 syntax, no version key</span>
+        <span class="hint">${t('docker-compose.composeV2SyntaxNoVersion', 'Compose v2 syntax, no version key')}</span>
       </div>
     </div>`);
 
     this.setActions([
-      { id: 'to-compose', label: 'Run to Compose', icon: 'docker', select: true, action: () => this.#swap('to-compose') },
-      { id: 'to-run', label: 'Compose to Run', icon: 'transform', select: true, action: () => this.#swap('to-run') },
+      { id: 'to-compose', label: t('docker-compose.runToCompose', 'Run to Compose'), icon: 'docker', select: true, action: () => this.#swap('to-compose') },
+      { id: 'to-run', label: t('docker-compose.composeToRun', 'Compose to Run'), icon: 'transform', select: true, action: () => this.#swap('to-run') },
       { separator: true },
       {
         id: 'sample',
-        label: 'Sample',
+        label: t('docker-compose.sample', 'Sample'),
         icon: 'spec',
         action: () => {
           this.$('#input').value = this.#direction === 'to-compose' ? SAMPLE_RUN : toCompose(SAMPLE_RUN);
@@ -251,10 +252,10 @@ class DockerCompose extends JGApp {
         },
       },
       { spacer: true },
-      { id: 'copy', label: 'Copy result', icon: 'fileText', action: () => copyText(this.$('#output').value) },
+      { id: 'copy', label: t('docker-compose.copyResult', 'Copy result'), icon: 'fileText', action: () => copyText(this.$('#output').value) },
       {
         id: 'download',
-        label: 'Download',
+        label: t('docker-compose.download', 'Download'),
         icon: 'server',
         action: () =>
           download(

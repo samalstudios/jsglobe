@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce } from '../core/util.js';
 
 const sheet = css`
@@ -74,13 +75,13 @@ class JsonDiff extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="split">
-        <jg-field label="Original"><jg-code id="left" rows="7" gutter language="json" placeholder="{ }"></jg-code></jg-field>
-        <jg-field label="Changed"><jg-code id="right" rows="7" gutter language="json" placeholder="{ }"></jg-code></jg-field>
+        <jg-field label="${t('json-diff.original', 'Original')}"><jg-code id="left" rows="7" gutter language="json" placeholder="{ }"></jg-code></jg-field>
+        <jg-field label="${t('json-diff.changed', 'Changed')}"><jg-code id="right" rows="7" gutter language="json" placeholder="{ }"></jg-code></jg-field>
       </div>
 
       <div class="row">
-        <jg-button size="sm" variant="outline" id="sample">Load sample</jg-button>
-        <jg-switch id="ignoreOrder"></jg-switch><span class="hint">Ignore array order</span>
+        <jg-button size="sm" variant="outline" id="sample">${t('json-diff.loadSample', 'Load sample')}</jg-button>
+        <jg-switch id="ignoreOrder"></jg-switch><span class="hint">${t('json-diff.ignoreArrayOrder', 'Ignore array order')}</span>
         <span class="grow"></span>
         <span class="hint" id="summary"></span>
       </div>
@@ -116,7 +117,7 @@ class JsonDiff extends JGApp {
     const rightText = this.$('#right').value.trim();
 
     if (!leftText || !rightText) {
-      result.innerHTML = html`<div class="change"><span class="mark">·</span><span class="value muted">Paste JSON on both sides.</span></div>`;
+      result.innerHTML = html`<div class="change"><span class="mark">·</span><span class="value muted">${t('json-diff.pasteJsonOnBothSides', 'Paste JSON on both sides.')}</span></div>`;
       summary.textContent = '';
       return;
     }
@@ -168,7 +169,7 @@ class JsonDiff extends JGApp {
             </div>`,
           )
           .join('')
-      : html`<div class="change"><span class="mark">=</span><span class="value muted">No differences found.</span></div>`;
+      : html`<div class="change"><span class="mark">=</span><span class="value muted">${t('json-diff.noDifferencesFound', 'No differences found.')}</span></div>`;
   }
 }
 

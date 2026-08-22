@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { download, toast } from '../core/util.js';
 
 const sheet = css`
@@ -74,13 +75,13 @@ class WebsocketTester extends JGApp {
 
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-input id="url" mono style="flex:1;min-width:220px" value="${saved.url}" placeholder="wss://example.com/socket"></jg-input>
-        <jg-input id="protocol" size="sm" mono style="width:150px" placeholder="Subprotocol"></jg-input>
-        <jg-button id="toggle">Connect</jg-button>
+        <jg-input id="url" mono style="flex:1;min-width:220px" value="${saved.url}" placeholder="${t('websocket-tester.wssExampleComSocket', 'wss://example.com/socket')}"></jg-input>
+        <jg-input id="protocol" size="sm" mono style="width:150px" placeholder="${t('websocket-tester.subprotocol', 'Subprotocol')}"></jg-input>
+        <jg-button id="toggle">${t('websocket-tester.connect', 'Connect')}</jg-button>
       </div>
 
       <div class="row">
-        <jg-badge id="status" tone="muted">Closed</jg-badge>
+        <jg-badge id="status" tone="muted">${t('websocket-tester.closed', 'Closed')}</jg-badge>
         <span class="hint" id="detail"></span>
         <span class="grow"></span>
         <span class="hint" id="counts"></span>
@@ -89,23 +90,23 @@ class WebsocketTester extends JGApp {
       <div class="shell">
         <div class="stack tight" style="min-height:0">
           <div class="log" id="log"></div>
-          <jg-field label="Message">
+          <jg-field label="${t('websocket-tester.message', 'Message')}">
             <jg-code id="message" rows="4" language="json" placeholder='{"type":"hello"}'></jg-code>
           </jg-field>
           <div class="row">
-            <jg-button size="sm" id="send" disabled>Send</jg-button>
-            <jg-button size="sm" variant="outline" id="save-snippet">Save message</jg-button>
+            <jg-button size="sm" id="send" disabled>${t('websocket-tester.send', 'Send')}</jg-button>
+            <jg-button size="sm" variant="outline" id="save-snippet">${t('websocket-tester.saveMessage', 'Save message')}</jg-button>
             <span class="grow"></span>
-            <jg-button size="sm" variant="ghost" id="clear">Clear log</jg-button>
-            <jg-button size="sm" variant="ghost" id="export">Export log</jg-button>
+            <jg-button size="sm" variant="ghost" id="clear">${t('websocket-tester.clearLog', 'Clear log')}</jg-button>
+            <jg-button size="sm" variant="ghost" id="export">${t('websocket-tester.exportLog', 'Export log')}</jg-button>
           </div>
         </div>
 
         <div class="side">
-          <jg-card title="Saved messages" sub="Click to load one">
+          <jg-card title="${t('websocket-tester.savedMessages', 'Saved messages')}" sub="Click to load one">
             <div class="saved" id="snippets"></div>
           </jg-card>
-          <jg-card title="Notes">
+          <jg-card title="${t('websocket-tester.notes', 'Notes')}">
             <div class="hint">
               Browsers only allow secure pages to open wss:// sockets, and a server must accept the connection
               for anything to appear here. There is no preflight, so unlike HTTP this is not blocked by CORS.
@@ -161,7 +162,7 @@ class WebsocketTester extends JGApp {
             </div>`,
           )
           .join('')
-      : html`<span class="hint">Saved messages appear here.</span>`;
+      : html`<span class="hint">${t('websocket-tester.savedMessagesAppearHere', 'Saved messages appear here.')}</span>`;
 
     this.bind('[data-load]', 'click', (event) => {
       const snippet = this.#snippets.find((item) => item.id === event.currentTarget.dataset.load);
@@ -193,7 +194,7 @@ class WebsocketTester extends JGApp {
             </div>`,
           )
           .join('')
-      : html`<span class="hint">Frames appear here once you connect.</span>`;
+      : html`<span class="hint">${t('websocket-tester.framesAppearHereOnceYou', 'Frames appear here once you connect.')}</span>`;
 
     log.scrollTop = log.scrollHeight;
 

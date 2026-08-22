@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { toast } from '../core/util.js';
 
 const sheet = css`
@@ -147,7 +148,7 @@ class GameSudoku extends JGApp {
       <div class="row">
         <jg-segment id="level"></jg-segment>
         <span class="grow"></span>
-        <jg-button size="sm" variant="outline" id="new">New game</jg-button>
+        <jg-button size="sm" variant="outline" id="new">${t('game-sudoku.newGame', 'New game')}</jg-button>
       </div>
 
       <div class="layout">
@@ -155,9 +156,9 @@ class GameSudoku extends JGApp {
 
         <div class="side">
           <div class="stats">
-            <div class="stat"><div class="value" id="time">0:00</div><div class="name">Time</div></div>
-            <div class="stat"><div class="value" id="mistakes">0</div><div class="name">Mistakes</div></div>
-            <div class="stat"><div class="value" id="left">0</div><div class="name">Empty</div></div>
+            <div class="stat"><div class="value" id="time">0:00</div><div class="name">${t('game-sudoku.time', 'Time')}</div></div>
+            <div class="stat"><div class="value" id="mistakes">0</div><div class="name">${t('game-sudoku.mistakes', 'Mistakes')}</div></div>
+            <div class="stat"><div class="value" id="left">0</div><div class="name">${t('game-sudoku.empty', 'Empty')}</div></div>
           </div>
 
           <div class="pad" id="pad">
@@ -165,12 +166,12 @@ class GameSudoku extends JGApp {
           </div>
 
           <div class="row">
-            <jg-button size="sm" variant="outline" id="notes">Notes off</jg-button>
-            <jg-button size="sm" variant="ghost" id="erase">Erase</jg-button>
+            <jg-button size="sm" variant="outline" id="notes">${t('game-sudoku.notesOff', 'Notes off')}</jg-button>
+            <jg-button size="sm" variant="ghost" id="erase">${t('game-sudoku.erase', 'Erase')}</jg-button>
           </div>
           <div class="row">
-            <jg-button size="sm" variant="ghost" id="hint">Hint</jg-button>
-            <jg-button size="sm" variant="ghost" id="check">Check</jg-button>
+            <jg-button size="sm" variant="ghost" id="hint">${t('game-sudoku.hint', 'Hint')}</jg-button>
+            <jg-button size="sm" variant="ghost" id="check">${t('game-sudoku.check', 'Check')}</jg-button>
           </div>
 
           <div class="hint">

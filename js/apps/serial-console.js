@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { copyText, download } from '../core/util.js';
 
 const sheet = css`
@@ -38,14 +39,14 @@ const BAUD = [300, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200, 230400, 
 class SerialConsole extends JGApp {
   static appId = 'serial-console';
   static settings = [
-    { key: 'baud', label: 'Default baud rate', type: 'select', default: '115200', options: BAUD.map((rate) => ({ value: String(rate), label: String(rate) })) },
-    { key: 'newline', label: 'Line ending', type: 'select', default: 'lf', options: [
-      { value: 'lf', label: 'LF' },
-      { value: 'crlf', label: 'CRLF' },
-      { value: 'cr', label: 'CR' },
-      { value: 'none', label: 'None' },
+    { key: 'baud', label: t('serial-console.defaultBaudRate', 'Default baud rate'), type: 'select', default: '115200', options: BAUD.map((rate) => ({ value: String(rate), label: String(rate) })) },
+    { key: 'newline', label: t('serial-console.lineEnding', 'Line ending'), type: 'select', default: 'lf', options: [
+      { value: 'lf', label: t('serial-console.lf', 'LF') },
+      { value: 'crlf', label: t('serial-console.crlf', 'CRLF') },
+      { value: 'cr', label: t('serial-console.cr', 'CR') },
+      { value: 'none', label: t('serial-console.none', 'None') },
     ] },
-    { key: 'echo', label: 'Echo what you send', type: 'switch', default: true },
+    { key: 'echo', label: t('serial-console.echoWhatYouSend', 'Echo what you send'), type: 'switch', default: true },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -57,7 +58,7 @@ class SerialConsole extends JGApp {
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
       <div class="stack tight">
-        <div class="label">Serial</div>
+        <div class="label">${t('serial-console.serial', 'Serial')}</div>
         <div class="hint">${navigator.serial ? 'Talk to a serial device over USB' : 'Needs Chrome or Edge'}</div>
       </div>
     </div>`);
@@ -71,9 +72,9 @@ class SerialConsole extends JGApp {
   renderApp() {
     if (!navigator.serial) {
       this.paint(html`<div class="app"><div class="unsupported">
-        <div class="title">Web Serial is not available here</div>
+        <div class="title">${t('serial-console.webSerialIsNotAvailable', 'Web Serial is not available here')}</div>
         <p class="hint" style="max-width:46ch">
-          Chrome, Edge and Opera on desktop expose <code>navigator.serial</code>. Safari and Firefox have not shipped it,
+          Chrome, Edge and Opera on desktop expose <code>${t('serial-console.navigatorSerial', 'navigator.serial')}</code>. Safari and Firefox have not shipped it,
           and it needs a secure origin.
         </p>
       </div></div>`);
@@ -83,39 +84,39 @@ class SerialConsole extends JGApp {
     this.paint(html`<div class="app">
       <div class="head">
         <span class="dot" id="dot"></span>
-        <span class="title" id="state">Not connected</span>
+        <span class="title" id="state">${t('serial-console.notConnected', 'Not connected')}</span>
         <span class="grow"></span>
         <jg-select id="baud" size="sm" value="${this.config.get('baud', '115200')}" style="width:120px">
           ${BAUD.map((rate) => html`<option value="${rate}">${rate} baud</option>`)}
         </jg-select>
         <jg-select id="databits" size="sm" value="8" style="width:96px">
-          <option value="8">8 data</option><option value="7">7 data</option>
+          <option value="8">${t('serial-console.8Data', '8 data')}</option><option value="7">${t('serial-console.7Data', '7 data')}</option>
         </jg-select>
         <jg-select id="parity" size="sm" value="none" style="width:110px">
-          <option value="none">No parity</option><option value="even">Even</option><option value="odd">Odd</option>
+          <option value="none">${t('serial-console.noParity', 'No parity')}</option><option value="even">${t('serial-console.even', 'Even')}</option><option value="odd">${t('serial-console.odd', 'Odd')}</option>
         </jg-select>
         <jg-select id="stopbits" size="sm" value="1" style="width:100px">
-          <option value="1">1 stop</option><option value="2">2 stop</option>
+          <option value="1">${t('serial-console.1Stop', '1 stop')}</option><option value="2">${t('serial-console.2Stop', '2 stop')}</option>
         </jg-select>
-        <jg-button size="sm" id="connect">Connect</jg-button>
+        <jg-button size="sm" id="connect">${t('serial-console.connect', 'Connect')}</jg-button>
       </div>
 
       <div class="body">
-        <div class="log" id="log"><span class="sys">Pick a port to begin. The browser asks you to choose the device.</span></div>
+        <div class="log" id="log"><span class="sys">${t('serial-console.pickAPortToBegin', 'Pick a port to begin. The browser asks you to choose the device.')}</span></div>
         <div class="row">
-          <jg-input id="line" class="grow" placeholder="Type a command and press enter" disabled></jg-input>
+          <jg-input id="line" class="grow" placeholder="${t('serial-console.typeACommandAndPress', 'Type a command and press enter')}" disabled></jg-input>
           <jg-select id="newline" size="sm" value="${this.config.get('newline', 'lf')}" style="width:110px">
-            <option value="lf">LF</option><option value="crlf">CRLF</option><option value="cr">CR</option><option value="none">None</option>
+            <option value="lf">${t('serial-console.lf', 'LF')}</option><option value="crlf">${t('serial-console.crlf', 'CRLF')}</option><option value="cr">${t('serial-console.cr', 'CR')}</option><option value="none">${t('serial-console.none', 'None')}</option>
           </jg-select>
-          <jg-button size="sm" variant="outline" id="send" disabled>Send</jg-button>
+          <jg-button size="sm" variant="outline" id="send" disabled>${t('serial-console.send', 'Send')}</jg-button>
         </div>
         <div class="row">
-          <jg-switch id="hex"></jg-switch><span class="hint">Show bytes as hex</span>
+          <jg-switch id="hex"></jg-switch><span class="hint">${t('serial-console.showBytesAsHex', 'Show bytes as hex')}</span>
           <span class="grow"></span>
-          <span class="hint mono tiny" id="stats">0 in · 0 out</span>
-          <jg-button size="sm" variant="ghost" id="copy">Copy log</jg-button>
-          <jg-button size="sm" variant="ghost" id="save">Save log</jg-button>
-          <jg-button size="sm" variant="ghost" id="clear">Clear</jg-button>
+          <span class="hint mono tiny" id="stats">${t('serial-console.0In0Out', '0 in · 0 out')}</span>
+          <jg-button size="sm" variant="ghost" id="copy">${t('serial-console.copyLog', 'Copy log')}</jg-button>
+          <jg-button size="sm" variant="ghost" id="save">${t('serial-console.saveLog', 'Save log')}</jg-button>
+          <jg-button size="sm" variant="ghost" id="clear">${t('serial-console.clear', 'Clear')}</jg-button>
         </div>
       </div>
     </div>`);

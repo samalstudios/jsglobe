@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { media } from '../core/media.js';
 import { bus } from '../core/bus.js';
 import { download, formatBytes } from '../core/util.js';
@@ -53,18 +54,18 @@ const sheet = css`
 
 const PRESETS = {
   video: [
-    { value: 'mp4', label: 'MP4 (H.264)', ext: 'mp4', args: (o) => ['-c:v', 'libx264', '-preset', 'veryfast', '-crf', String(o.crf), '-c:a', 'aac', '-b:a', `${o.audioBitrate}k`] },
-    { value: 'webm', label: 'WebM (VP9)', ext: 'webm', args: (o) => ['-c:v', 'libvpx-vp9', '-crf', String(o.crf), '-b:v', '0', '-c:a', 'libopus'] },
-    { value: 'gif', label: 'Animated GIF', ext: 'gif', args: (o) => ['-vf', `fps=${o.fps},scale=${o.width || 480}:-1:flags=lanczos`, '-loop', '0'] },
-    { value: 'mute', label: 'Remove audio', ext: 'mp4', args: () => ['-c', 'copy', '-an'] },
-    { value: 'frames', label: 'First frame (PNG)', ext: 'png', args: () => ['-frames:v', '1'] },
+    { value: 'mp4', label: t('media-converter.mp4H264', 'MP4 (H.264)'), ext: 'mp4', args: (o) => ['-c:v', 'libx264', '-preset', 'veryfast', '-crf', String(o.crf), '-c:a', 'aac', '-b:a', `${o.audioBitrate}k`] },
+    { value: 'webm', label: t('media-converter.webmVp9', 'WebM (VP9)'), ext: 'webm', args: (o) => ['-c:v', 'libvpx-vp9', '-crf', String(o.crf), '-b:v', '0', '-c:a', 'libopus'] },
+    { value: 'gif', label: t('media-converter.animatedGif', 'Animated GIF'), ext: 'gif', args: (o) => ['-vf', `fps=${o.fps},scale=${o.width || 480}:-1:flags=lanczos`, '-loop', '0'] },
+    { value: 'mute', label: t('media-converter.removeAudio', 'Remove audio'), ext: 'mp4', args: () => ['-c', 'copy', '-an'] },
+    { value: 'frames', label: t('media-converter.firstFramePng', 'First frame (PNG)'), ext: 'png', args: () => ['-frames:v', '1'] },
   ],
   audio: [
     { value: 'mp3', label: 'MP3', ext: 'mp3', args: (o) => ['-vn', '-c:a', 'libmp3lame', '-b:a', `${o.audioBitrate}k`] },
     { value: 'wav', label: 'WAV', ext: 'wav', args: () => ['-vn', '-c:a', 'pcm_s16le'] },
-    { value: 'ogg', label: 'OGG (Vorbis)', ext: 'ogg', args: (o) => ['-vn', '-c:a', 'libvorbis', '-b:a', `${o.audioBitrate}k`] },
-    { value: 'opus', label: 'Opus', ext: 'opus', args: (o) => ['-vn', '-c:a', 'libopus', '-b:a', `${o.audioBitrate}k`] },
-    { value: 'flac', label: 'FLAC', ext: 'flac', args: () => ['-vn', '-c:a', 'flac'] },
+    { value: 'ogg', label: t('media-converter.oggVorbis', 'OGG (Vorbis)'), ext: 'ogg', args: (o) => ['-vn', '-c:a', 'libvorbis', '-b:a', `${o.audioBitrate}k`] },
+    { value: 'opus', label: t('media-converter.opus', 'Opus'), ext: 'opus', args: (o) => ['-vn', '-c:a', 'libopus', '-b:a', `${o.audioBitrate}k`] },
+    { value: 'flac', label: t('media-converter.flac', 'FLAC'), ext: 'flac', args: () => ['-vn', '-c:a', 'flac'] },
   ],
 };
 
@@ -86,12 +87,12 @@ class MediaConverter extends JGApp {
       <div class="bar" id="status">
         <span class="dot"></span>
         <span class="grow" id="statustext"></span>
-        <jg-button size="sm" variant="outline" id="settings">Engine settings</jg-button>
+        <jg-button size="sm" variant="outline" id="settings">${t('media-converter.engineSettings', 'Engine settings')}</jg-button>
       </div>
 
       <div class="drop" id="drop">
-        <span class="strong">Drop a video or audio file, or click to choose</span>
-        <span class="hint">Transcoding runs locally through WebAssembly. Large files take a while.</span>
+        <span class="strong">${t('media-converter.dropAVideoOrAudio', 'Drop a video or audio file, or click to choose')}</span>
+        <span class="hint">${t('media-converter.transcodingRunsLocallyThroughWebassembly', 'Transcoding runs locally through WebAssembly. Large files take a while.')}</span>
       </div>
 
       <div id="details" hidden>
@@ -102,25 +103,25 @@ class MediaConverter extends JGApp {
           </div>
 
           <div class="grid3">
-            <jg-field label="Output">
+            <jg-field label="${t('media-converter.output', 'Output')}">
               <jg-select id="preset"></jg-select>
             </jg-field>
-            <jg-field label="Quality (CRF)" hint="Lower is better quality">
+            <jg-field label="${t('media-converter.qualityCrf', 'Quality (CRF)')}" hint="${t('media-converter.lowerIsBetterQuality', 'Lower is better quality')}">
               <jg-slider id="crf" min="18" max="40" value="28"></jg-slider>
             </jg-field>
-            <jg-field label="Audio bitrate">
+            <jg-field label="${t('media-converter.audioBitrate', 'Audio bitrate')}">
               <jg-select id="audioBitrate" value="128">
-                <option value="96">96 kbps</option><option value="128">128 kbps</option>
-                <option value="192">192 kbps</option><option value="320">320 kbps</option>
+                <option value="96">${t('media-converter.96Kbps', '96 kbps')}</option><option value="128">${t('media-converter.128Kbps', '128 kbps')}</option>
+                <option value="192">${t('media-converter.192Kbps', '192 kbps')}</option><option value="320">${t('media-converter.320Kbps', '320 kbps')}</option>
               </jg-select>
             </jg-field>
-            <jg-field label="Width" hint="0 keeps the original">
+            <jg-field label="${t('media-converter.width', 'Width')}" hint="${t('media-converter.0KeepsTheOriginal', '0 keeps the original')}">
               <jg-input id="width" type="number" min="0" max="4096" value="0" suffix="px"></jg-input>
             </jg-field>
-            <jg-field label="GIF frame rate">
+            <jg-field label="${t('media-converter.gifFrameRate', 'GIF frame rate')}">
               <jg-input id="fps" type="number" min="5" max="30" value="12" suffix="fps"></jg-input>
             </jg-field>
-            <jg-field label="Trim" hint="Start and duration in seconds">
+            <jg-field label="${t('media-converter.trim', 'Trim')}" hint="${t('media-converter.startAndDurationInSeconds', 'Start and duration in seconds')}">
               <div class="row tight nowrap">
                 <jg-input id="start" type="number" min="0" value="0" class="grow"></jg-input>
                 <jg-input id="duration" type="number" min="0" value="0" class="grow"></jg-input>
@@ -129,8 +130,8 @@ class MediaConverter extends JGApp {
           </div>
 
           <div class="row">
-            <jg-button id="convert">Convert</jg-button>
-            <jg-button id="save" variant="outline" hidden>Save result</jg-button>
+            <jg-button id="convert">${t('media-converter.convert', 'Convert')}</jg-button>
+            <jg-button id="save" variant="outline" hidden>${t('media-converter.saveResult', 'Save result')}</jg-button>
             <span class="grow"></span>
             <span class="hint" id="resultinfo"></span>
           </div>

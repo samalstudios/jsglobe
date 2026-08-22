@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText } from '../core/util.js';
 
 const sheet = css`
@@ -95,16 +96,16 @@ class Statistics extends JGApp {
     this.paint(html`<div class="app">
       <div class="split">
         <div class="stack tight">
-          <jg-field label="Numbers" grow>
-            <jg-textarea id="input" rows="14" grow placeholder="Paste numbers separated by spaces, commas or new lines"></jg-textarea>
+          <jg-field label="${t('statistics.numbers', 'Numbers')}" grow>
+            <jg-textarea id="input" rows="14" grow placeholder="${t('statistics.pasteNumbersSeparatedBySpaces', 'Paste numbers separated by spaces, commas or new lines')}"></jg-textarea>
           </jg-field>
           <div class="row">
-            <jg-button size="sm" variant="outline" id="sample">Sample</jg-button>
-            <jg-button size="sm" variant="ghost" id="sort">Sort</jg-button>
-            <jg-button size="sm" variant="ghost" id="copy">Copy summary</jg-button>
+            <jg-button size="sm" variant="outline" id="sample">${t('statistics.sample', 'Sample')}</jg-button>
+            <jg-button size="sm" variant="ghost" id="sort">${t('statistics.sort', 'Sort')}</jg-button>
+            <jg-button size="sm" variant="ghost" id="copy">${t('statistics.copySummary', 'Copy summary')}</jg-button>
           </div>
           <div class="row">
-            <span class="hint">Bins</span>
+            <span class="hint">${t('statistics.bins', 'Bins')}</span>
             <jg-slider id="bins" min="4" max="30" value="10" style="max-width:180px"></jg-slider>
           </div>
         </div>
@@ -112,15 +113,15 @@ class Statistics extends JGApp {
         <div class="right">
           <div class="summary" id="summary"></div>
 
-          <jg-card title="Distribution" sub="Histogram of the values">
+          <jg-card title="${t('statistics.distribution', 'Distribution')}" sub="Histogram of the values">
             <svg id="histogram" viewBox="0 0 600 220" preserveAspectRatio="none"></svg>
           </jg-card>
 
-          <jg-card title="Spread" sub="Box plot with quartiles, whiskers and outliers">
+          <jg-card title="${t('statistics.spread', 'Spread')}" sub="Box plot with quartiles, whiskers and outliers">
             <svg id="box" viewBox="0 0 600 130"></svg>
           </jg-card>
 
-          <jg-card title="All values">
+          <jg-card title="${t('statistics.allValues', 'All values')}">
             <div class="kv" id="detail"></div>
           </jg-card>
         </div>
@@ -176,7 +177,7 @@ class Statistics extends JGApp {
     this.store.write({ text: this.$('#input').value });
 
     if (!stats) {
-      this.$('#summary').innerHTML = html`<span class="hint">Paste some numbers to see the summary.</span>`;
+      this.$('#summary').innerHTML = html`<span class="hint">${t('statistics.pasteSomeNumbersToSee', 'Paste some numbers to see the summary.')}</span>`;
       this.$('#histogram').innerHTML = '';
       this.$('#box').innerHTML = '';
       this.$('#detail').innerHTML = '';
@@ -197,17 +198,17 @@ class Statistics extends JGApp {
       .join('');
 
     this.$('#detail').innerHTML = html`
-      <div>Sum</div><div class="mono">${round(stats.sum)}</div>
-      <div>Range</div><div class="mono">${round(stats.range)}</div>
-      <div>Mode</div><div class="mono">${stats.modes.length ? stats.modes.join(', ') : 'no repeated value'}</div>
-      <div>Variance</div><div class="mono">${round(stats.variance)}</div>
-      <div>Population sd</div><div class="mono">${round(stats.deviation)}</div>
-      <div>Sample sd</div><div class="mono">${round(stats.sampleDeviation)}</div>
+      <div>${t('statistics.sum', 'Sum')}</div><div class="mono">${round(stats.sum)}</div>
+      <div>${t('statistics.range', 'Range')}</div><div class="mono">${round(stats.range)}</div>
+      <div>${t('statistics.mode', 'Mode')}</div><div class="mono">${stats.modes.length ? stats.modes.join(', ') : 'no repeated value'}</div>
+      <div>${t('statistics.variance', 'Variance')}</div><div class="mono">${round(stats.variance)}</div>
+      <div>${t('statistics.populationSd', 'Population sd')}</div><div class="mono">${round(stats.deviation)}</div>
+      <div>${t('statistics.sampleSd', 'Sample sd')}</div><div class="mono">${round(stats.sampleDeviation)}</div>
       <div>Q1 / Q3</div><div class="mono">${round(stats.q1)} / ${round(stats.q3)}</div>
-      <div>Interquartile range</div><div class="mono">${round(stats.iqr)}</div>
-      <div>Geometric mean</div><div class="mono">${stats.geometric === null ? 'needs positive values' : round(stats.geometric)}</div>
-      <div>Skewness</div><div class="mono">${round(stats.skew)}</div>
-      <div>Outliers</div><div class="mono">${
+      <div>${t('statistics.interquartileRange', 'Interquartile range')}</div><div class="mono">${round(stats.iqr)}</div>
+      <div>${t('statistics.geometricMean', 'Geometric mean')}</div><div class="mono">${stats.geometric === null ? 'needs positive values' : round(stats.geometric)}</div>
+      <div>${t('statistics.skewness', 'Skewness')}</div><div class="mono">${round(stats.skew)}</div>
+      <div>${t('statistics.outliers', 'Outliers')}</div><div class="mono">${
         stats.sorted.filter((value) => value < stats.lowerFence || value > stats.upperFence).join(', ') || 'none'
       }</div>
     `;

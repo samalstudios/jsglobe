@@ -100,7 +100,7 @@ class Base64Converter extends JGApp {
         <span class="hint" id="info">${t('base64.filesStay', 'Files never leave your browser.')}</span>
       </div>
       <img id="preview" class="preview" hidden alt="" />
-      <jg-field label="Data URI" grow>
+      <jg-field label="${t('base64-converter.dataUri', 'Data URI')}" grow>
         <div slot="action"><jg-copy from="#out" size="icon"></jg-copy></div>
         <jg-textarea id="out" grow placeholder="${t('base64.outputHere', 'Base64 output appears here')}"></jg-textarea>
       </jg-field>

@@ -34,7 +34,7 @@ class HashText extends JGApp {
     this.paint(html`<div class="app" style="padding:12px">
       <jg-input id="input" placeholder="${t('hash-text.textToHash', 'Text to hash')}" size="sm"></jg-input>
       <div class="stack tight">
-        <div class="label">SHA-256</div>
+        <div class="label">${t('hash-text.sha256', 'SHA-256')}</div>
         <jg-output id="out" placeholder="-"></jg-output>
       </div>
     </div>`);
@@ -56,7 +56,7 @@ class HashText extends JGApp {
         </jg-select>
       </div>
 
-      <jg-field label="Input" hint="Hashed locally - nothing is uploaded">
+      <jg-field label="${t('hash-text.input', 'Input')}" hint="${t('hash-text.hashedLocallyNothingIsUploaded', 'Hashed locally - nothing is uploaded')}">
         <jg-textarea id="input" rows="5" placeholder="${t('hash-text.typeOrPaste', 'Type or paste text to hash')}"></jg-textarea>
       </jg-field>
 

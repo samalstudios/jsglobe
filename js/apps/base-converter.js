@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, chunk } from '../core/util.js';
 
 const sheet = css`
@@ -8,12 +9,12 @@ const sheet = css`
 `;
 
 const COMMON = [
-  { base: 2, label: 'Binary (base 2)' },
-  { base: 8, label: 'Octal (base 8)' },
-  { base: 10, label: 'Decimal (base 10)' },
-  { base: 16, label: 'Hexadecimal (base 16)' },
-  { base: 32, label: 'Base 32' },
-  { base: 36, label: 'Base 36' },
+  { base: 2, label: t('base-converter.binaryBase2', 'Binary (base 2)') },
+  { base: 8, label: t('base-converter.octalBase8', 'Octal (base 8)') },
+  { base: 10, label: t('base-converter.decimalBase10', 'Decimal (base 10)') },
+  { base: 16, label: t('base-converter.hexadecimalBase16', 'Hexadecimal (base 16)') },
+  { base: 32, label: t('base-converter.base32', 'Base 32') },
+  { base: 36, label: t('base-converter.base36', 'Base 36') },
 ];
 
 class BaseConverter extends JGApp {
@@ -23,7 +24,7 @@ class BaseConverter extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row nowrap">
-        <jg-input id="value" class="grow" placeholder="Enter a number" value="255"></jg-input>
+        <jg-input id="value" class="grow" placeholder="${t('base-converter.enterANumber', 'Enter a number')}" value="255"></jg-input>
         <jg-select id="from" value="10" style="width:170px">
           ${Array.from({ length: 35 }, (unused, index) => index + 2).map(
             (base) => html`<option value="${base}">From base ${base}</option>`,
@@ -41,14 +42,14 @@ class BaseConverter extends JGApp {
         )}
       </div>
 
-      <jg-card title="Custom base">
+      <jg-card title="${t('base-converter.customBase', 'Custom base')}">
         <div class="row nowrap">
           <jg-input id="custom" type="number" min="2" max="36" value="7" suffix="base" style="width:130px"></jg-input>
           <jg-output id="customout" class="grow"></jg-output>
         </div>
       </jg-card>
 
-      <jg-card title="Bit view" sub="32-bit representation grouped in nibbles">
+      <jg-card title="${t('base-converter.bitView', 'Bit view')}" sub="32-bit representation grouped in nibbles">
         <div class="bits" id="bits"></div>
         <div class="kv" id="extra"></div>
       </jg-card>
@@ -100,10 +101,10 @@ class BaseConverter extends JGApp {
     const bits = value.toString(2).padStart(32, '0').slice(-64);
     this.$('#bits').textContent = chunk([...bits], 4).map((group) => group.join('')).join(' ');
     this.$('#extra').innerHTML = html`
-      <div>Bit length</div><div>${value.toString(2).length}</div>
-      <div>Bytes</div><div>${Math.ceil(value.toString(2).length / 8)}</div>
-      <div>Fits in</div><div>${['int8', 'int16', 'int32', 'int64'].find((type) => value < 2n ** BigInt(Number(type.slice(3)) - 1)) ?? 'bigint'}</div>
-      <div>Scientific</div><div>${Number(value).toExponential(4)}</div>
+      <div>${t('base-converter.bitLength', 'Bit length')}</div><div>${value.toString(2).length}</div>
+      <div>${t('base-converter.bytes', 'Bytes')}</div><div>${Math.ceil(value.toString(2).length / 8)}</div>
+      <div>${t('base-converter.fitsIn', 'Fits in')}</div><div>${['int8', 'int16', 'int32', 'int64'].find((type) => value < 2n ** BigInt(Number(type.slice(3)) - 1)) ?? 'bigint'}</div>
+      <div>${t('base-converter.scientific', 'Scientific')}</div><div>${Number(value).toExponential(4)}</div>
     `;
   }
 }

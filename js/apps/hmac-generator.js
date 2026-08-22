@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { encodeBytes, toHex, toBase64, fromHex, debounce } from '../core/util.js';
 
 const sheet = css`
@@ -13,18 +14,18 @@ class HmacGenerator extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="Secret key">
+      <jg-field label="${t('hmac-generator.secretKey', 'Secret key')}">
         <div class="row nowrap">
-          <jg-input id="key" class="grow" placeholder="shared secret" value="secret"></jg-input>
+          <jg-input id="key" class="grow" placeholder="${t('hmac-generator.sharedSecret', 'shared secret')}" value="secret"></jg-input>
           <jg-select id="keyfmt" value="utf8" style="width:130px">
             <option value="utf8">UTF-8</option>
-            <option value="hex">Hex</option>
+            <option value="hex">${t('hmac-generator.hex', 'Hex')}</option>
           </jg-select>
         </div>
       </jg-field>
 
-      <jg-field label="Message">
-        <jg-textarea id="message" rows="5" placeholder="Message to sign">hello world</jg-textarea>
+      <jg-field label="${t('hmac-generator.message', 'Message')}">
+        <jg-textarea id="message" rows="5" placeholder="${t('hmac-generator.messageToSign', 'Message to sign')}">${t('hmac-generator.helloWorld', 'hello world')}</jg-textarea>
       </jg-field>
 
       <div class="row">
@@ -32,18 +33,18 @@ class HmacGenerator extends JGApp {
           ${ALGORITHMS.map((algorithm) => html`<option value="${algorithm}">HMAC-${algorithm}</option>`)}
         </jg-select>
         <jg-select id="encoding" value="hex" style="width:150px">
-          <option value="hex">Hexadecimal</option>
+          <option value="hex">${t('hmac-generator.hexadecimal', 'Hexadecimal')}</option>
           <option value="base64">Base64</option>
         </jg-select>
       </div>
 
-      <jg-field label="Signature">
+      <jg-field label="${t('hmac-generator.signature', 'Signature')}">
         <jg-output id="out" placeholder="-"></jg-output>
       </jg-field>
 
-      <jg-card title="Verify" sub="Paste a signature to compare in constant view">
+      <jg-card title="${t('hmac-generator.verify', 'Verify')}" sub="Paste a signature to compare in constant view">
         <div class="row nowrap">
-          <jg-input id="expected" class="grow" mono placeholder="Expected signature"></jg-input>
+          <jg-input id="expected" class="grow" mono placeholder="${t('hmac-generator.expectedSignature', 'Expected signature')}"></jg-input>
           <jg-badge id="verdict">-</jg-badge>
         </div>
       </jg-card>

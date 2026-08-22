@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { ai } from '../core/ai.js';
 import { copyText, debounce } from '../core/util.js';
 import '../ui/jg-ai-bar.js';
@@ -55,8 +56,8 @@ const TONES = {
 class AiTranslate extends JGApp {
   static appId = 'ai-translate';
   static settings = [
-    { key: 'target', label: 'Default target language', type: 'text', default: 'English' },
-    { key: 'auto', label: 'Translate as I type', type: 'switch', default: false },
+    { key: 'target', label: t('ai-translate.defaultTargetLanguage', 'Default target language'), type: 'text', default: 'English' },
+    { key: 'auto', label: t('ai-translate.translateAsIType', 'Translate as I type'), type: 'switch', default: false },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -71,10 +72,10 @@ class AiTranslate extends JGApp {
 
       <div class="row nowrap">
         <jg-select id="source" class="grow" value="${source}">
-          <option value="Detect">Detect language</option>
+          <option value="Detect">${t('ai-translate.detectLanguage', 'Detect language')}</option>
           ${LANGUAGES.map((language) => html`<option value="${language}">${language}</option>`)}
         </jg-select>
-        <jg-button size="icon" variant="outline" id="swap" title="Swap languages">⇄</jg-button>
+        <jg-button size="icon" variant="outline" id="swap" title="${t('ai-translate.swapLanguages', 'Swap languages')}">⇄</jg-button>
         <jg-select id="target" class="grow" value="${target}">
           ${LANGUAGES.map((language) => html`<option value="${language}">${language}</option>`)}
         </jg-select>
@@ -87,36 +88,36 @@ class AiTranslate extends JGApp {
       <div class="split">
         <div class="pane">
           <div class="spread">
-            <span class="label">Source</span>
-            <span class="count" id="incount">0 characters</span>
+            <span class="label">${t('ai-translate.source', 'Source')}</span>
+            <span class="count" id="incount">${t('ai-translate.0Characters', '0 characters')}</span>
           </div>
-          <jg-textarea id="input" grow sans placeholder="Type or paste text to translate"></jg-textarea>
+          <jg-textarea id="input" grow sans placeholder="${t('ai-translate.typeOrPasteTextTo', 'Type or paste text to translate')}"></jg-textarea>
         </div>
 
         <div class="swap-cell">
-          <jg-button id="run">Translate</jg-button>
+          <jg-button id="run">${t('ai-translate.translate', 'Translate')}</jg-button>
         </div>
 
         <div class="pane">
           <div class="spread">
-            <span class="label">Translation</span>
+            <span class="label">${t('ai-translate.translation', 'Translation')}</span>
             <span class="row tight">
-              <jg-button size="sm" variant="ghost" id="copy">Copy</jg-button>
-              <jg-button size="sm" variant="ghost" id="stop" hidden>Stop</jg-button>
+              <jg-button size="sm" variant="ghost" id="copy">${t('ai-translate.copy', 'Copy')}</jg-button>
+              <jg-button size="sm" variant="ghost" id="stop" hidden>${t('ai-translate.stop', 'Stop')}</jg-button>
             </span>
           </div>
-          <div class="out" id="out" data-placeholder="The translation appears here."></div>
+          <div class="out" id="out" data-placeholder="${t('ai-translate.theTranslationAppearsHere', 'The translation appears here.')}"></div>
         </div>
       </div>
 
       <div class="row">
         <jg-select id="tone" value="neutral" size="sm" style="width:150px">
-          <option value="neutral">Neutral tone</option>
-          <option value="formal">Formal tone</option>
-          <option value="casual">Casual tone</option>
+          <option value="neutral">${t('ai-translate.neutralTone', 'Neutral tone')}</option>
+          <option value="formal">${t('ai-translate.formalTone', 'Formal tone')}</option>
+          <option value="casual">${t('ai-translate.casualTone', 'Casual tone')}</option>
         </jg-select>
         <jg-switch id="auto" ${this.config.get('auto', false) ? 'checked' : ''}></jg-switch>
-        <span class="hint">Translate as I type</span>
+        <span class="hint">${t('ai-translate.translateAsIType', 'Translate as I type')}</span>
         <span class="grow"></span>
         <span class="hint" id="status"></span>
       </div>

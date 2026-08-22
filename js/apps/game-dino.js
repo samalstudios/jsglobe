@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { settings } from '../core/settings.js';
 
 const sheet = css`
@@ -227,7 +228,7 @@ const JUMP = -13.6;
 class Dino extends JGApp {
   static appId = 'game-dino';
   static settings = [
-    { key: 'sound', label: 'Sound effects', type: 'switch', default: true },
+    { key: 'sound', label: t('game-dino.soundEffects', 'Sound effects'), type: 'switch', default: true },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -261,20 +262,20 @@ class Dino extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="head">
-        <span class="title">T-Rex Run</span>
+        <span class="title">${t('game-dino.tRexRun', 'T-Rex Run')}</span>
         <span class="grow"></span>
-        <span class="stat">Score <span id="score">00000</span></span>
-        <span class="stat">Best <span id="best">${String(this.#best).padStart(5, '0')}</span></span>
+        <span class="stat">${t('game-dino.score', 'Score')} <span id="score">00000</span></span>
+        <span class="stat">${t('game-dino.best', 'Best')} <span id="best">${String(this.#best).padStart(5, '0')}</span></span>
         <jg-button size="sm" variant="ghost" id="sound">${this.config.get('sound', true) ? 'Sound on' : 'Sound off'}</jg-button>
-        <jg-button size="sm" variant="outline" id="new">Restart</jg-button>
+        <jg-button size="sm" variant="outline" id="new">${t('game-dino.restart', 'Restart')}</jg-button>
       </div>
       <div class="wrap">
-        <canvas id="view" width="${WIDTH}" height="${HEIGHT}" tabindex="0" aria-label="T-Rex runner"></canvas>
+        <canvas id="view" width="${WIDTH}" height="${HEIGHT}" tabindex="0" aria-label="${t('game-dino.tRexRunner', 'T-Rex runner')}"></canvas>
         <div class="overlay" id="overlay">
           <div class="panel">
-            <h3 id="title">Jump the cacti</h3>
-            <div class="keys" id="hint"><kbd>space</kbd> jump &nbsp; <kbd>↓</kbd> duck</div>
-            <jg-button size="sm" id="start">Play</jg-button>
+            <h3 id="title">${t('game-dino.jumpTheCacti', 'Jump the cacti')}</h3>
+            <div class="keys" id="hint"><kbd>${t('game-dino.space', 'space')}</kbd> ${t('game-dino.jumpNbsp', 'jump &nbsp;')} <kbd>↓</kbd> ${t('game-dino.duck', 'duck')}</div>
+            <jg-button size="sm" id="start">${t('game-dino.play', 'Play')}</jg-button>
           </div>
         </div>
       </div>

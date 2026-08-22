@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { uid, download, toast, pickFile } from '../core/util.js';
 
 const sheet = css`
@@ -56,9 +57,9 @@ const sheet = css`
 const PALETTE = ['#8a1c3b', '#3f6b91', '#4a7a58', '#96703f', '#5b5b8a', '#3f7a75', '#875a6b', '#847a44', '#9c6440', '#5b6470'];
 
 const PROVIDERS = {
-  manual: { label: 'Manual prices' },
+  manual: { label: t('portfolio.manualPrices', 'Manual prices') },
   coingecko: {
-    label: 'CoinGecko',
+    label: t('portfolio.coingecko', 'CoinGecko'),
     note: 'Free public API, no account. Use CoinGecko ids such as bitcoin or ethereum.',
     async quotes(symbols, currency) {
       const ids = symbols.map((symbol) => symbol.toLowerCase()).join(',');
@@ -74,7 +75,7 @@ const PROVIDERS = {
     },
   },
   currency: {
-    label: 'Currency rates',
+    label: t('portfolio.currencyRates', 'Currency rates'),
     note: 'Open source exchange rate data. Use currency or crypto tickers such as USD, CHF or BTC.',
     async quotes(symbols, currency) {
       const base = currency.toLowerCase();
@@ -99,16 +100,16 @@ const percent = (value) => `${value >= 0 ? '+' : ''}${(value * 100).toFixed(2)}%
 class Portfolio extends JGApp {
   static appId = 'portfolio';
   static settings = [
-    { key: 'currency', label: 'Currency', type: 'select', default: 'USD', options: [
-      { value: 'USD', label: 'USD' }, { value: 'EUR', label: 'EUR' }, { value: 'GBP', label: 'GBP' },
-      { value: 'CHF', label: 'CHF' }, { value: 'CAD', label: 'CAD' }, { value: 'AUD', label: 'AUD' },
-      { value: 'JPY', label: 'JPY' }, { value: 'AED', label: 'AED' },
+    { key: 'currency', label: t('portfolio.currency', 'Currency'), type: 'select', default: 'USD', options: [
+      { value: 'USD', label: t('portfolio.usd', 'USD') }, { value: 'EUR', label: t('portfolio.eur', 'EUR') }, { value: 'GBP', label: t('portfolio.gbp', 'GBP') },
+      { value: 'CHF', label: t('portfolio.chf', 'CHF') }, { value: 'CAD', label: t('portfolio.cad', 'CAD') }, { value: 'AUD', label: t('portfolio.aud', 'AUD') },
+      { value: 'JPY', label: t('portfolio.jpy', 'JPY') }, { value: 'AED', label: t('portfolio.aed', 'AED') },
     ] },
-    { key: 'provider', label: 'Price provider', type: 'select', default: 'manual', options: [
-      { value: 'manual', label: 'Manual prices' },
-      { value: 'finnhub', label: 'Finnhub' },
-      { value: 'twelvedata', label: 'Twelve Data' },
-      { value: 'coingecko', label: 'CoinGecko' },
+    { key: 'provider', label: t('portfolio.priceProvider', 'Price provider'), type: 'select', default: 'manual', options: [
+      { value: 'manual', label: t('portfolio.manualPrices', 'Manual prices') },
+      { value: 'finnhub', label: t('portfolio.finnhub', 'Finnhub') },
+      { value: 'twelvedata', label: t('portfolio.twelveData', 'Twelve Data') },
+      { value: 'coingecko', label: t('portfolio.coingecko', 'CoinGecko') },
     ] },
   ];
   static styles = [...JGApp.styles, sheet];
@@ -150,7 +151,7 @@ class Portfolio extends JGApp {
     const cost = rows.reduce((total, row) => total + row.cost, 0);
 
     this.paint(html`<div class="app" style="padding:12px">
-      <div class="label">Portfolio</div>
+      <div class="label">${t('portfolio.portfolio', 'Portfolio')}</div>
       <div class="total" style="border:0;padding:0;background:none">
         <span class="n">${money(value, this.#currency())}</span>
         <span class="l ${profit >= 0 ? 'up' : 'down'}">
@@ -169,50 +170,50 @@ class Portfolio extends JGApp {
         <jg-select id="provider" value="${provider}" size="sm" style="width:180px">
           ${Object.entries(PROVIDERS).map(([key, item]) => html`<option value="${key}">${item.label}</option>`)}
         </jg-select>
-        <jg-button size="sm" variant="outline" id="refresh" ${provider === 'manual' ? 'hidden' : ''}>Refresh prices</jg-button>
+        <jg-button size="sm" variant="outline" id="refresh" ${provider === 'manual' ? 'hidden' : ''}>${t('portfolio.refreshPrices', 'Refresh prices')}</jg-button>
         <span class="grow"></span>
         <jg-select id="currency" value="${this.#currency()}" size="sm" style="width:110px">
           ${['USD', 'EUR', 'GBP', 'CHF', 'CAD', 'AUD', 'JPY', 'AED'].map((code) => html`<option value="${code}">${code}</option>`)}
         </jg-select>
-        <jg-button size="sm" variant="ghost" id="export">Export</jg-button>
-        <jg-button size="sm" variant="ghost" id="import">Import</jg-button>
+        <jg-button size="sm" variant="ghost" id="export">${t('portfolio.export', 'Export')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="import">${t('portfolio.import', 'Import')}</jg-button>
       </div>
 
       <div class="totals" id="totals"></div>
 
-      <jg-card title="Allocation and result">
+      <jg-card title="${t('portfolio.allocationAndResult', 'Allocation and result')}">
         <div class="charts">
           <div class="donut" id="donut"></div>
           <div class="bars" id="bars"></div>
         </div>
       </jg-card>
 
-      <jg-card title="Value over time" sub="A snapshot is kept each day you update prices">
+      <jg-card title="${t('portfolio.valueOverTime', 'Value over time')}" sub="A snapshot is kept each day you update prices">
         <svg class="history" id="history" preserveAspectRatio="none"></svg>
       </jg-card>
 
-      <jg-card title="Positions">
+      <jg-card title="${t('portfolio.positions', 'Positions')}">
         <div class="form">
-          <jg-field label="Symbol"><jg-input id="f-symbol" mono placeholder="AAPL"></jg-input></jg-field>
-          <jg-field label="Name"><jg-input id="f-name" placeholder="Apple"></jg-input></jg-field>
-          <jg-field label="Quantity"><jg-input id="f-qty" type="number" step="any" value=""></jg-input></jg-field>
-          <jg-field label="Average cost"><jg-input id="f-cost" type="number" step="any" value=""></jg-input></jg-field>
-          <jg-field label="Current price"><jg-input id="f-price" type="number" step="any" value=""></jg-input></jg-field>
-          <jg-button id="add">Add</jg-button>
+          <jg-field label="${t('portfolio.symbol', 'Symbol')}"><jg-input id="f-symbol" mono placeholder="${t('portfolio.aapl', 'AAPL')}"></jg-input></jg-field>
+          <jg-field label="${t('portfolio.name', 'Name')}"><jg-input id="f-name" placeholder="${t('portfolio.apple', 'Apple')}"></jg-input></jg-field>
+          <jg-field label="${t('portfolio.quantity', 'Quantity')}"><jg-input id="f-qty" type="number" step="any" value=""></jg-input></jg-field>
+          <jg-field label="${t('portfolio.averageCost', 'Average cost')}"><jg-input id="f-cost" type="number" step="any" value=""></jg-input></jg-field>
+          <jg-field label="${t('portfolio.currentPrice', 'Current price')}"><jg-input id="f-price" type="number" step="any" value=""></jg-input></jg-field>
+          <jg-button id="add">${t('portfolio.add', 'Add')}</jg-button>
         </div>
 
         <div style="overflow:auto">
           <table>
             <thead>
               <tr>
-                <th>Symbol</th>
-                <th class="right">Qty</th>
-                <th class="right">Cost</th>
-                <th class="right">Price</th>
-                <th class="right">Value</th>
+                <th>${t('portfolio.symbol', 'Symbol')}</th>
+                <th class="right">${t('portfolio.qty', 'Qty')}</th>
+                <th class="right">${t('portfolio.cost', 'Cost')}</th>
+                <th class="right">${t('portfolio.price', 'Price')}</th>
+                <th class="right">${t('portfolio.value', 'Value')}</th>
                 <th class="right">P&L</th>
-                <th class="right">Return</th>
-                <th class="right">Weight</th>
+                <th class="right">${t('portfolio.return', 'Return')}</th>
+                <th class="right">${t('portfolio.weight', 'Weight')}</th>
                 <th></th>
               </tr>
             </thead>
@@ -333,17 +334,17 @@ class Portfolio extends JGApp {
     const profit = value - cost;
 
     this.$('#totals').innerHTML = html`
-      <div class="total"><span class="n">${money(value, currency)}</span><span class="l">Market value</span></div>
-      <div class="total"><span class="n">${money(cost, currency)}</span><span class="l">Invested</span></div>
+      <div class="total"><span class="n">${money(value, currency)}</span><span class="l">${t('portfolio.marketValue', 'Market value')}</span></div>
+      <div class="total"><span class="n">${money(cost, currency)}</span><span class="l">${t('portfolio.invested', 'Invested')}</span></div>
       <div class="total">
         <span class="n ${profit >= 0 ? 'up' : 'down'}">${profit >= 0 ? '+' : ''}${money(profit, currency)}</span>
-        <span class="l">Profit and loss</span>
+        <span class="l">${t('portfolio.profitAndLoss', 'Profit and loss')}</span>
       </div>
       <div class="total">
         <span class="n ${profit >= 0 ? 'up' : 'down'}">${cost ? percent(profit / cost) : '-'}</span>
-        <span class="l">Total return</span>
+        <span class="l">${t('portfolio.totalReturn', 'Total return')}</span>
       </div>
-      <div class="total"><span class="n">${rows.length}</span><span class="l">Positions</span></div>
+      <div class="total"><span class="n">${rows.length}</span><span class="l">${t('portfolio.positions', 'Positions')}</span></div>
     `;
 
     this.#paintDonut(rows, value, currency);
@@ -355,7 +356,7 @@ class Portfolio extends JGApp {
   #paintDonut(rows, total, currency) {
     const node = this.$('#donut');
     if (!rows.length || !total) {
-      node.innerHTML = html`<span class="hint">Add a position to see the split.</span>`;
+      node.innerHTML = html`<span class="hint">${t('portfolio.addAPositionToSee', 'Add a position to see the split.')}</span>`;
       return;
     }
 
@@ -390,7 +391,7 @@ class Portfolio extends JGApp {
   #paintBars(rows, currency) {
     const node = this.$('#bars');
     if (!rows.length) {
-      node.innerHTML = html`<span class="hint">Profit and loss per position appears here.</span>`;
+      node.innerHTML = html`<span class="hint">${t('portfolio.profitAndLossPerPosition', 'Profit and loss per position appears here.')}</span>`;
       return;
     }
 
@@ -417,7 +418,7 @@ class Portfolio extends JGApp {
     const history = this.#data().history;
     const svg = this.$('#history');
     if (history.length < 2) {
-      svg.innerHTML = html`<text x="8" y="50" fill="var(--muted-foreground)" font-size="12">Snapshots appear once you update prices on more than one day.</text>`;
+      svg.innerHTML = html`<text x="8" y="50" fill="var(--muted-foreground)" font-size="12">${t('portfolio.snapshotsAppearOnceYouUpdate', 'Snapshots appear once you update prices on more than one day.')}</text>`;
       return;
     }
 
@@ -457,7 +458,7 @@ class Portfolio extends JGApp {
   #paintRows(rows, total, currency) {
     const body = this.$('#rows');
     if (!rows.length) {
-      body.innerHTML = html`<tr><td colspan="9" class="hint" style="padding:14px 0">No positions yet.</td></tr>`;
+      body.innerHTML = html`<tr><td colspan="9" class="hint" style="padding:14px 0">${t('portfolio.noPositionsYet', 'No positions yet.')}</td></tr>`;
       return;
     }
 
@@ -474,8 +475,8 @@ class Portfolio extends JGApp {
           <td class="right">${total ? ((row.value / total) * 100).toFixed(1) : '0.0'}%</td>
           <td>
             <span class="row-acts">
-              <jg-button size="icon-sm" variant="ghost" data-edit="${row.id}" title="Edit">✎</jg-button>
-              <jg-button size="icon-sm" variant="ghost" data-del="${row.id}" title="Remove">✕</jg-button>
+              <jg-button size="icon-sm" variant="ghost" data-edit="${row.id}" title="${t('portfolio.edit', 'Edit')}">✎</jg-button>
+              <jg-button size="icon-sm" variant="ghost" data-del="${row.id}" title="${t('portfolio.remove', 'Remove')}">✕</jg-button>
             </span>
           </td>
         </tr>`,

@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { escapeHtml } from '../core/dom.js';
 import { debounce } from '../core/util.js';
 
@@ -74,7 +75,7 @@ class RegexTester extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="Pattern">
+      <jg-field label="${t('regex-tester.pattern', 'Pattern')}">
         <div class="row nowrap">
           <span class="mono muted">/</span>
           <jg-input id="pattern" class="grow" mono value="(\\w+)@(\\w+)\\.(com|dev|io)"></jg-input>
@@ -91,18 +92,18 @@ class RegexTester extends JGApp {
         )}
       </div>
 
-      <jg-field label="Test string">
-        <jg-textarea id="subject" rows="5">Contact ada@example.com or grace@jsglobe.dev for access. Invalid: nobody@localhost</jg-textarea>
+      <jg-field label="${t('regex-tester.testString', 'Test string')}">
+        <jg-textarea id="subject" rows="5">${t('regex-tester.contactAdaExampleComOr', 'Contact ada@example.com or grace@jsglobe.dev for access. Invalid: nobody@localhost')}</jg-textarea>
       </jg-field>
 
-      <div class="spread"><span class="label">Highlighted</span><span class="hint" id="summary"></span></div>
+      <div class="spread"><span class="label">${t('regex-tester.highlighted', 'Highlighted')}</span><span class="hint" id="summary"></span></div>
       <div class="subject" id="preview"></div>
 
-      <jg-card title="Matches">
+      <jg-card title="${t('regex-tester.matches', 'Matches')}">
         <div class="matches" id="matches"></div>
       </jg-card>
 
-      <jg-card title="Cheat sheet">
+      <jg-card title="${t('regex-tester.cheatSheet', 'Cheat sheet')}">
         <div class="cheats">
           ${CHEATS.map((cheat) => html`<div class="cheat"><code>${cheat[0]}</code><span class="muted">${cheat[1]}</span></div>`)}
         </div>
@@ -177,7 +178,7 @@ class RegexTester extends JGApp {
             </div>`,
           )
           .join('')
-      : html`<div class="match muted">No matches</div>`;
+      : html`<div class="match muted">${t('regex-tester.noMatches', 'No matches')}</div>`;
   }
 }
 

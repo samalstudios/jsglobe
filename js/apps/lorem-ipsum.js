@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { copyText, randomInt } from '../core/util.js';
 
 const sheet = css`
@@ -32,28 +33,28 @@ class LoremIpsum extends JGApp {
         <jg-tabs id="kind"></jg-tabs>
         <span class="grow"></span>
         <jg-input id="count" type="number" min="1" max="100" value="3" suffix="qty" style="width:120px"></jg-input>
-        <jg-button id="generate">Generate</jg-button>
+        <jg-button id="generate">${t('lorem-ipsum.generate', 'Generate')}</jg-button>
       </div>
 
       <div class="row">
-        <jg-switch id="classic" checked></jg-switch><span class="hint">Start with "Lorem ipsum dolor sit amet"</span>
-        <jg-switch id="html"></jg-switch><span class="hint">Wrap in HTML tags</span>
+        <jg-switch id="classic" checked></jg-switch><span class="hint">${t('lorem-ipsum.startWithLoremIpsumDolor', 'Start with "Lorem ipsum dolor sit amet"')}</span>
+        <jg-switch id="html"></jg-switch><span class="hint">${t('lorem-ipsum.wrapInHtmlTags', 'Wrap in HTML tags')}</span>
       </div>
 
-      <jg-field label="Output" grow>
+      <jg-field label="${t('lorem-ipsum.output', 'Output')}" grow>
         <div slot="action" class="row tight">
           <span class="hint" id="stats"></span>
-          <jg-button size="sm" variant="outline" id="copy">Copy</jg-button>
+          <jg-button size="sm" variant="outline" id="copy">${t('lorem-ipsum.copy', 'Copy')}</jg-button>
         </div>
         <jg-textarea id="out" grow sans class="out"></jg-textarea>
       </jg-field>
     </div>`);
 
     this.$('#kind').items = [
-      { value: 'paragraphs', label: 'Paragraphs' },
-      { value: 'sentences', label: 'Sentences' },
-      { value: 'words', label: 'Words' },
-      { value: 'list', label: 'List items' },
+      { value: 'paragraphs', label: t('lorem-ipsum.paragraphs', 'Paragraphs') },
+      { value: 'sentences', label: t('lorem-ipsum.sentences', 'Sentences') },
+      { value: 'words', label: t('lorem-ipsum.words', 'Words') },
+      { value: 'list', label: t('lorem-ipsum.listItems', 'List items') },
     ];
 
     this.on(this.$('#generate'), 'click', () => this.#run());

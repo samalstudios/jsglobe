@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, chunk } from '../core/util.js';
 
 const sheet = css`
@@ -25,7 +26,7 @@ class SubnetCalculator extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="IPv4 address with prefix">
+      <jg-field label="${t('subnet-calculator.ipv4AddressWithPrefix', 'IPv4 address with prefix')}">
         <div class="row nowrap">
           <jg-input id="address" class="grow" mono value="192.168.1.130"></jg-input>
           <jg-select id="prefix" value="24" style="width:130px">
@@ -35,15 +36,15 @@ class SubnetCalculator extends JGApp {
       </jg-field>
       <div class="hint" id="status"></div>
 
-      <jg-card title="Network">
+      <jg-card title="${t('subnet-calculator.network', 'Network')}">
         <div class="kv" id="details"></div>
       </jg-card>
 
-      <jg-card title="Binary" sub="Network bits in accent, host bits muted">
+      <jg-card title="${t('subnet-calculator.binary', 'Binary')}" sub="Network bits in accent, host bits muted">
         <div class="binary" id="binary"></div>
       </jg-card>
 
-      <jg-card title="Split into subnets">
+      <jg-card title="${t('subnet-calculator.splitIntoSubnets', 'Split into subnets')}">
         <div class="row nowrap">
           <jg-select id="split" value="0" style="width:170px"></jg-select>
           <span class="hint" id="splitinfo"></span>
@@ -67,7 +68,7 @@ class SubnetCalculator extends JGApp {
     const parts = address.split('.');
     const valid = parts.length === 4 && parts.every((part) => /^\d+$/.test(part) && Number(part) <= 255);
     if (!valid) {
-      status.innerHTML = html`<span class="error">Enter a valid IPv4 address such as 10.0.0.1</span>`;
+      status.innerHTML = html`<span class="error">${t('subnet-calculator.enterAValidIpv4Address', 'Enter a valid IPv4 address such as 10.0.0.1')}</span>`;
       return;
     }
 
@@ -81,16 +82,16 @@ class SubnetCalculator extends JGApp {
     status.textContent = `${toAddress(network)}/${prefix} · ${isPrivate(value) ? 'private range' : 'public range'}`;
 
     this.$('#details').innerHTML = html`
-      <div>Network address</div><div class="mono">${toAddress(network)}</div>
-      <div>Broadcast</div><div class="mono">${toAddress(broadcast)}</div>
-      <div>First host</div><div class="mono">${prefix >= 31 ? toAddress(network) : toAddress(network + 1)}</div>
-      <div>Last host</div><div class="mono">${prefix >= 31 ? toAddress(broadcast) : toAddress(broadcast - 1)}</div>
-      <div>Subnet mask</div><div class="mono">${toAddress(mask)}</div>
-      <div>Wildcard mask</div><div class="mono">${toAddress(~mask >>> 0)}</div>
-      <div>Total addresses</div><div class="mono">${total.toLocaleString()}</div>
-      <div>Usable hosts</div><div class="mono">${usable.toLocaleString()}</div>
+      <div>${t('subnet-calculator.networkAddress', 'Network address')}</div><div class="mono">${toAddress(network)}</div>
+      <div>${t('subnet-calculator.broadcast', 'Broadcast')}</div><div class="mono">${toAddress(broadcast)}</div>
+      <div>${t('subnet-calculator.firstHost', 'First host')}</div><div class="mono">${prefix >= 31 ? toAddress(network) : toAddress(network + 1)}</div>
+      <div>${t('subnet-calculator.lastHost', 'Last host')}</div><div class="mono">${prefix >= 31 ? toAddress(broadcast) : toAddress(broadcast - 1)}</div>
+      <div>${t('subnet-calculator.subnetMask', 'Subnet mask')}</div><div class="mono">${toAddress(mask)}</div>
+      <div>${t('subnet-calculator.wildcardMask', 'Wildcard mask')}</div><div class="mono">${toAddress(~mask >>> 0)}</div>
+      <div>${t('subnet-calculator.totalAddresses', 'Total addresses')}</div><div class="mono">${total.toLocaleString()}</div>
+      <div>${t('subnet-calculator.usableHosts', 'Usable hosts')}</div><div class="mono">${usable.toLocaleString()}</div>
       <div>CIDR</div><div class="mono">${toAddress(network)}/${prefix}</div>
-      <div>Range</div><div class="mono">${toAddress(network)} - ${toAddress(broadcast)}</div>
+      <div>${t('subnet-calculator.range', 'Range')}</div><div class="mono">${toAddress(network)} - ${toAddress(broadcast)}</div>
     `;
 
     const bits = toBinary(value).replace(/\./g, '');

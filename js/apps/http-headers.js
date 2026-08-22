@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText } from '../core/util.js';
 
 const sheet = css`
@@ -193,18 +194,18 @@ class HttpHeaders extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-button size="sm" variant="outline" id="sample">Sample response</jg-button>
-        <jg-button size="sm" variant="ghost" id="clear">Clear</jg-button>
+        <jg-button size="sm" variant="outline" id="sample">${t('http-headers.sampleResponse', 'Sample response')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="clear">${t('http-headers.clear', 'Clear')}</jg-button>
         <span class="grow"></span>
-        <jg-button size="sm" variant="ghost" id="copy">Copy report</jg-button>
+        <jg-button size="sm" variant="ghost" id="copy">${t('http-headers.copyReport', 'Copy report')}</jg-button>
       </div>
 
       <div class="split">
         <div class="pane">
-          <span class="label">Paste response headers</span>
-          <jg-code id="input" grow language="plain" placeholder="curl -I https://example.com"></jg-code>
+          <span class="label">${t('http-headers.pasteResponseHeaders', 'Paste response headers')}</span>
+          <jg-code id="input" grow language="plain" placeholder="${t('http-headers.curlIHttpsExampleCom', 'curl -I https://example.com')}"></jg-code>
           <div class="hint">
-            Paste the output of <span class="mono">curl -I</span> or the response headers from developer tools.
+            Paste the output of <span class="mono">${t('http-headers.curlI', 'curl -I')}</span> or the response headers from developer tools.
             Nothing is requested from here, so no site sees the check.
           </div>
         </div>
@@ -213,7 +214,7 @@ class HttpHeaders extends JGApp {
           <div class="grade">
             <span class="badge-grade" id="grade">-</span>
             <div>
-              <div id="summary" style="font-weight:600">Waiting for headers</div>
+              <div id="summary" style="font-weight:600">${t('http-headers.waitingForHeaders', 'Waiting for headers')}</div>
               <div class="hint" id="counts"></div>
             </div>
           </div>

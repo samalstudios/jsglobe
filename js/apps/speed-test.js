@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { formatBytes } from '../core/util.js';
 
 const sheet = css`
@@ -25,8 +26,8 @@ const sheet = css`
 `;
 
 const PRESETS = {
-  cloudflare: { label: 'Cloudflare', down: 'https://speed.cloudflare.com/__down?bytes=', up: 'https://speed.cloudflare.com/__up' },
-  origin: { label: 'This server', down: '', up: '' },
+  cloudflare: { label: t('speed-test.cloudflare', 'Cloudflare'), down: 'https://speed.cloudflare.com/__down?bytes=', up: 'https://speed.cloudflare.com/__up' },
+  origin: { label: t('speed-test.thisServer', 'This server'), down: '', up: '' },
 };
 
 const mbps = (bytes, seconds) => (bytes * 8) / seconds / 1e6;
@@ -34,9 +35,9 @@ const mbps = (bytes, seconds) => (bytes * 8) / seconds / 1e6;
 class SpeedTest extends JGApp {
   static appId = 'speed-test';
   static settings = [
-    { key: 'server', label: 'Test server', type: 'select', default: 'cloudflare', options: [
-      { value: 'cloudflare', label: 'Cloudflare' },
-      { value: 'origin', label: 'This server' },
+    { key: 'server', label: t('speed-test.testServer', 'Test server'), type: 'select', default: 'cloudflare', options: [
+      { value: 'cloudflare', label: t('speed-test.cloudflare', 'Cloudflare') },
+      { value: 'origin', label: t('speed-test.thisServer', 'This server') },
     ] },
   ];
   static styles = [...JGApp.styles, sheet];
@@ -57,28 +58,28 @@ class SpeedTest extends JGApp {
           ${Object.entries(PRESETS).map(([key, preset]) => html`<option value="${key}">${preset.label}</option>`)}
         </jg-select>
         <span class="grow"></span>
-        <jg-button id="start">Start test</jg-button>
-        <jg-button id="stop" variant="outline" hidden>Stop</jg-button>
+        <jg-button id="start">${t('speed-test.startTest', 'Start test')}</jg-button>
+        <jg-button id="stop" variant="outline" hidden>${t('speed-test.stop', 'Stop')}</jg-button>
       </div>
 
       <jg-card>
         <div class="gauge">
           <span class="value" id="value">-</span>
-          <span class="unit" id="unit">Mbps</span>
-          <span class="phase" id="phase">Ready to measure your connection.</span>
+          <span class="unit" id="unit">${t('speed-test.mbps', 'Mbps')}</span>
+          <span class="phase" id="phase">${t('speed-test.readyToMeasureYourConnection', 'Ready to measure your connection.')}</span>
         </div>
         <div class="track"><i id="progress" style="width:0%"></i></div>
         <div class="spark" id="spark"></div>
       </jg-card>
 
       <div class="results">
-        <div class="result"><span class="n" id="r-down">-</span><span class="l">Download Mbps</span></div>
-        <div class="result"><span class="n" id="r-up">-</span><span class="l">Upload Mbps</span></div>
-        <div class="result"><span class="n" id="r-latency">-</span><span class="l">Latency ms</span></div>
-        <div class="result"><span class="n" id="r-jitter">-</span><span class="l">Jitter ms</span></div>
+        <div class="result"><span class="n" id="r-down">-</span><span class="l">${t('speed-test.downloadMbps', 'Download Mbps')}</span></div>
+        <div class="result"><span class="n" id="r-up">-</span><span class="l">${t('speed-test.uploadMbps', 'Upload Mbps')}</span></div>
+        <div class="result"><span class="n" id="r-latency">-</span><span class="l">${t('speed-test.latencyMs', 'Latency ms')}</span></div>
+        <div class="result"><span class="n" id="r-jitter">-</span><span class="l">${t('speed-test.jitterMs', 'Jitter ms')}</span></div>
       </div>
 
-      <jg-card title="Connection">
+      <jg-card title="${t('speed-test.connection', 'Connection')}">
         <div class="kv" id="connection"></div>
       </jg-card>
 
@@ -107,10 +108,10 @@ class SpeedTest extends JGApp {
   #connection() {
     const link = navigator.connection ?? {};
     this.$('#connection').innerHTML = html`
-      <div>Reported type</div><div>${link.effectiveType ?? 'unknown'}</div>
-      <div>Reported downlink</div><div>${link.downlink ? `${link.downlink} Mbps` : 'unknown'}</div>
-      <div>Round trip estimate</div><div>${link.rtt ? `${link.rtt} ms` : 'unknown'}</div>
-      <div>Data saver</div><div>${link.saveData ? 'on' : 'off'}</div>
+      <div>${t('speed-test.reportedType', 'Reported type')}</div><div>${link.effectiveType ?? 'unknown'}</div>
+      <div>${t('speed-test.reportedDownlink', 'Reported downlink')}</div><div>${link.downlink ? `${link.downlink} Mbps` : 'unknown'}</div>
+      <div>${t('speed-test.roundTripEstimate', 'Round trip estimate')}</div><div>${link.rtt ? `${link.rtt} ms` : 'unknown'}</div>
+      <div>${t('speed-test.dataSaver', 'Data saver')}</div><div>${link.saveData ? 'on' : 'off'}</div>
     `;
   }
 

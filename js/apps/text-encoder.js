@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, encodeBytes, decodeBytes } from '../core/util.js';
 
 const sheet = css`
@@ -34,32 +35,32 @@ const rot = (text, shift) =>
 
 const CODECS = {
   binary: {
-    label: 'Binary',
+    label: t('text-encoder.binary', 'Binary'),
     encode: (text) => [...encodeBytes(text)].map((byte) => byte.toString(2).padStart(8, '0')).join(' '),
     decode: (text) => decodeBytes(Uint8Array.from(text.trim().split(/\s+/).map((part) => parseInt(part, 2)))),
   },
   hex: {
-    label: 'Hexadecimal',
+    label: t('text-encoder.hexadecimal', 'Hexadecimal'),
     encode: (text) => [...encodeBytes(text)].map((byte) => byte.toString(16).padStart(2, '0')).join(' '),
     decode: (text) => decodeBytes(Uint8Array.from(text.trim().split(/\s+/).map((part) => parseInt(part, 16)))),
   },
   decimal: {
-    label: 'Decimal bytes',
+    label: t('text-encoder.decimalBytes', 'Decimal bytes'),
     encode: (text) => [...encodeBytes(text)].join(' '),
     decode: (text) => decodeBytes(Uint8Array.from(text.trim().split(/\s+/).map(Number))),
   },
   unicode: {
-    label: 'Unicode escapes',
+    label: t('text-encoder.unicodeEscapes', 'Unicode escapes'),
     encode: (text) => [...text].map((char) => `\\u${char.codePointAt(0).toString(16).padStart(4, '0')}`).join(''),
     decode: (text) => text.replace(/\\u\{?([0-9a-f]+)\}?/gi, (match, code) => String.fromCodePoint(parseInt(code, 16))),
   },
   entities: {
-    label: 'Numeric entities',
+    label: t('text-encoder.numericEntities', 'Numeric entities'),
     encode: (text) => [...text].map((char) => `&#${char.codePointAt(0)};`).join(''),
     decode: (text) => text.replace(/&#(\d+);/g, (match, code) => String.fromCodePoint(Number(code))),
   },
   nato: {
-    label: 'NATO alphabet',
+    label: t('text-encoder.natoAlphabet', 'NATO alphabet'),
     encode: (text) => [...text.toLowerCase()].map((char) => NATO[char] ?? char).join(' '),
     decode: (text) => {
       const lookup = Object.fromEntries(Object.entries(NATO).map(([key, value]) => [value.toLowerCase(), key]));
@@ -67,7 +68,7 @@ const CODECS = {
     },
   },
   morse: {
-    label: 'Morse code',
+    label: t('text-encoder.morseCode', 'Morse code'),
     encode: (text) =>
       text
         .toLowerCase()
@@ -82,17 +83,17 @@ const CODECS = {
         .join(' '),
   },
   rot13: {
-    label: 'ROT13',
+    label: t('text-encoder.rot13', 'ROT13'),
     encode: (text) => rot(text, 13),
     decode: (text) => rot(text, 13),
   },
   reverse: {
-    label: 'Reversed',
+    label: t('text-encoder.reversed', 'Reversed'),
     encode: (text) => [...text].reverse().join(''),
     decode: (text) => [...text].reverse().join(''),
   },
   numeronym: {
-    label: 'Numeronym',
+    label: t('text-encoder.numeronym', 'Numeronym'),
     encode: (text) =>
       text
         .split(/\s+/)
@@ -113,17 +114,17 @@ class TextEncoderApp extends JGApp {
           ${Object.entries(CODECS).map(([key, codec]) => html`<option value="${key}">${codec.label}</option>`)}
         </jg-select>
         <span class="grow"></span>
-        <jg-button size="sm" variant="outline" id="swap">Swap ⇅</jg-button>
+        <jg-button size="sm" variant="outline" id="swap">${t('text-encoder.swap', 'Swap ⇅')}</jg-button>
       </div>
 
       <div class="split">
         <div class="pane">
-          <div class="spread"><span class="label">Plain text</span><jg-copy from="#plain" size="icon"></jg-copy></div>
-          <jg-textarea id="plain" grow sans placeholder="Type text to encode"></jg-textarea>
+          <div class="spread"><span class="label">${t('text-encoder.plainText', 'Plain text')}</span><jg-copy from="#plain" size="icon"></jg-copy></div>
+          <jg-textarea id="plain" grow sans placeholder="${t('text-encoder.typeTextToEncode', 'Type text to encode')}"></jg-textarea>
         </div>
         <div class="pane">
-          <div class="spread"><span class="label" id="outlabel">Encoded</span><jg-copy from="#encoded" size="icon"></jg-copy></div>
-          <jg-textarea id="encoded" grow placeholder="Paste encoded text to decode"></jg-textarea>
+          <div class="spread"><span class="label" id="outlabel">${t('text-encoder.encoded', 'Encoded')}</span><jg-copy from="#encoded" size="icon"></jg-copy></div>
+          <jg-textarea id="encoded" grow placeholder="${t('text-encoder.pasteEncodedTextToDecode', 'Paste encoded text to decode')}"></jg-textarea>
         </div>
       </div>
 

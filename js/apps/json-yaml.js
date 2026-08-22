@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText } from '../core/util.js';
 import { toYaml, fromYaml } from '../core/yaml.js';
 
@@ -17,7 +18,7 @@ class JsonYaml extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-button size="sm" variant="outline" id="sample">Load sample</jg-button>
+        <jg-button size="sm" variant="outline" id="sample">${t('json-yaml.loadSample', 'Load sample')}</jg-button>
         <span class="grow"></span>
         <span class="hint" id="status"></span>
       </div>
@@ -28,10 +29,10 @@ class JsonYaml extends JGApp {
         </div>
         <div class="pane">
           <div class="spread"><span class="label">YAML</span><jg-copy from="#yaml" size="icon"></jg-copy></div>
-          <jg-code id="yaml" grow gutter language="yaml" placeholder="key: value"></jg-code>
+          <jg-code id="yaml" grow gutter language="yaml" placeholder="${t('json-yaml.keyValue', 'key: value')}"></jg-code>
         </div>
       </div>
-      <div class="hint">The YAML parser covers the common configuration subset: nested maps, lists and scalars.</div>
+      <div class="hint">${t('json-yaml.theYamlParserCoversThe', 'The YAML parser covers the common configuration subset: nested maps, lists and scalars.')}</div>
     </div>`);
 
     const json = this.$('#json');

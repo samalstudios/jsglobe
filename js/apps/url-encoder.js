@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce } from '../core/util.js';
 
 const sheet = css`
@@ -16,24 +17,24 @@ class UrlEncoder extends JGApp {
       <div class="row">
         <jg-tabs id="strategy"></jg-tabs>
         <span class="grow"></span>
-        <jg-button size="sm" variant="outline" id="swap">Swap ⇅</jg-button>
+        <jg-button size="sm" variant="outline" id="swap">${t('url-encoder.swap', 'Swap ⇅')}</jg-button>
       </div>
       <div class="split">
         <div class="pane">
-          <div class="spread"><span class="label">Decoded</span><jg-copy from="#plain" size="icon"></jg-copy></div>
+          <div class="spread"><span class="label">${t('url-encoder.decoded', 'Decoded')}</span><jg-copy from="#plain" size="icon"></jg-copy></div>
           <jg-textarea id="plain" grow placeholder="https://example.com/search?q=hello world"></jg-textarea>
         </div>
         <div class="pane">
-          <div class="spread"><span class="label">Encoded</span><jg-copy from="#encoded" size="icon"></jg-copy></div>
-          <jg-textarea id="encoded" grow placeholder="https%3A%2F%2Fexample.com"></jg-textarea>
+          <div class="spread"><span class="label">${t('url-encoder.encoded', 'Encoded')}</span><jg-copy from="#encoded" size="icon"></jg-copy></div>
+          <jg-textarea id="encoded" grow placeholder="${t('url-encoder.https3a2f2fexampleCom', 'https%3A%2F%2Fexample.com')}"></jg-textarea>
         </div>
       </div>
       <div class="hint" id="status"></div>
     </div>`);
 
     this.$('#strategy').items = [
-      { value: 'component', label: 'Component' },
-      { value: 'uri', label: 'Full URI' },
+      { value: 'component', label: t('url-encoder.component', 'Component') },
+      { value: 'uri', label: t('url-encoder.fullUri', 'Full URI') },
     ];
 
     const plain = this.$('#plain');

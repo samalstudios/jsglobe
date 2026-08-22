@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce } from '../core/util.js';
 
 const sheet = css`
@@ -50,15 +51,15 @@ class HtmlEntities extends JGApp {
       </div>
       <div class="split">
         <div class="pane">
-          <div class="spread"><span class="label">Plain</span><jg-copy from="#plain" size="icon"></jg-copy></div>
-          <jg-textarea id="plain" grow placeholder="<div class=&quot;box&quot;>café & crème</div>"></jg-textarea>
+          <div class="spread"><span class="label">${t('html-entities.plain', 'Plain')}</span><jg-copy from="#plain" size="icon"></jg-copy></div>
+          <jg-textarea id="plain" grow placeholder="<div class=&quot;box&quot;>${t('html-entities.cafCrMe', 'café & crème')}</div>"></jg-textarea>
         </div>
         <div class="pane">
-          <div class="spread"><span class="label">Escaped</span><jg-copy from="#escaped" size="icon"></jg-copy></div>
-          <jg-textarea id="escaped" grow placeholder="&lt;div&gt;"></jg-textarea>
+          <div class="spread"><span class="label">${t('html-entities.escaped', 'Escaped')}</span><jg-copy from="#escaped" size="icon"></jg-copy></div>
+          <jg-textarea id="escaped" grow placeholder="${t('html-entities.ltDivGt', '&lt;div&gt;')}"></jg-textarea>
         </div>
       </div>
-      <jg-card title="Common entities" sub="Click to insert">
+      <jg-card title="${t('html-entities.commonEntities', 'Common entities')}" sub="Click to insert">
         <div class="table">
           ${NAMED.map(
             (pair) => html`<button class="entity" data-entity="${pair[1]}"><span>${pair[0]}</span><span class="muted">${pair[1]}</span></button>`,
@@ -68,9 +69,9 @@ class HtmlEntities extends JGApp {
     </div>`);
 
     this.$('#mode').items = [
-      { value: 'minimal', label: 'Minimal' },
-      { value: 'named', label: 'Named' },
-      { value: 'all', label: 'All non-ASCII' },
+      { value: 'minimal', label: t('html-entities.minimal', 'Minimal') },
+      { value: 'named', label: t('html-entities.named', 'Named') },
+      { value: 'all', label: t('html-entities.allNonAscii', 'All non-ASCII') },
     ];
 
     const plain = this.$('#plain');

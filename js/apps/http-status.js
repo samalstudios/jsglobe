@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce } from '../core/util.js';
 
 const sheet = css`
@@ -76,13 +77,13 @@ class HttpStatus extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-input id="search" placeholder="Search by code or meaning - 404, timeout, redirect"></jg-input>
+      <jg-input id="search" placeholder="${t('http-status.searchByCodeOrMeaning', 'Search by code or meaning - 404, timeout, redirect')}"></jg-input>
       <div class="row"><jg-tabs id="filter"></jg-tabs></div>
       <div id="list"></div>
     </div>`);
 
     this.$('#filter').items = [
-      { value: 'all', label: 'All' },
+      { value: 'all', label: t('http-status.all', 'All') },
       ...Object.entries(CLASSES).map(([key, label]) => ({ value: key, label: `${key}xx ${label}` })),
     ];
 
@@ -117,7 +118,7 @@ class HttpStatus extends JGApp {
             </div>`,
           )
           .join('')
-      : html`<jg-empty glyph="⌕" title="No matches">Try a code like 404 or a word like "timeout".</jg-empty>`;
+      : html`<jg-empty glyph="⌕" title="${t('http-status.noMatches', 'No matches')}">${t('http-status.tryACodeLike404', 'Try a code like 404 or a word like "timeout".')}</jg-empty>`;
   }
 }
 

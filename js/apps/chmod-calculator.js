@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 
 const sheet = css`
   .matrix { display: grid; grid-template-columns: 110px repeat(3, 1fr); gap: 6px; align-items: center; }
@@ -44,7 +45,7 @@ class ChmodCalculator extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-card title="Permissions">
+      <jg-card title="${t('chmod-calculator.permissions', 'Permissions')}">
         <div class="matrix">
           <span></span>
           ${GROUPS.map((group) => html`<span class="head" style="text-align:center">${group}</span>`)}
@@ -59,20 +60,20 @@ class ChmodCalculator extends JGApp {
         </div>
       </jg-card>
 
-      <jg-card title="Result">
+      <jg-card title="${t('chmod-calculator.result', 'Result')}">
         <div class="octal" id="octal">000</div>
         <div class="symbolic" id="symbolic">---------</div>
-        <jg-field label="Command"><jg-output id="command"></jg-output></jg-field>
+        <jg-field label="${t('chmod-calculator.command', 'Command')}"><jg-output id="command"></jg-output></jg-field>
       </jg-card>
 
-      <jg-card title="From octal">
+      <jg-card title="${t('chmod-calculator.fromOctal', 'From octal')}">
         <div class="row nowrap">
           <jg-input id="input" mono placeholder="644" style="width:140px"></jg-input>
           <span class="hint" id="explain"></span>
         </div>
       </jg-card>
 
-      <jg-card title="Presets">
+      <jg-card title="${t('chmod-calculator.presets', 'Presets')}">
         <div class="presets">
           ${PRESETS.map((preset) => html`<button class="preset" data-mode="${preset[1]}"><span>${preset[0]}</span></button>`)}
         </div>

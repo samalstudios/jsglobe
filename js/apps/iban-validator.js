@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText } from '../core/util.js';
 
 const sheet = css`
@@ -89,23 +90,23 @@ class IbanValidator extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="IBAN">
-        <jg-input id="input" mono placeholder="DE89 3704 0044 0532 0130 00"></jg-input>
+      <jg-field label="${t('iban-validator.iban', 'IBAN')}">
+        <jg-input id="input" mono placeholder="${t('iban-validator.de893704004405320130', 'DE89 3704 0044 0532 0130 00')}"></jg-input>
       </jg-field>
 
       <div class="state">
-        <jg-badge id="badge" tone="muted">Waiting</jg-badge>
+        <jg-badge id="badge" tone="muted">${t('iban-validator.waiting', 'Waiting')}</jg-badge>
         <span class="hint" id="reason"></span>
         <span class="grow"></span>
-        <jg-button size="sm" variant="ghost" id="copy">Copy formatted</jg-button>
+        <jg-button size="sm" variant="ghost" id="copy">${t('iban-validator.copyFormatted', 'Copy formatted')}</jg-button>
       </div>
 
-      <jg-card title="Breakdown">
+      <jg-card title="${t('iban-validator.breakdown', 'Breakdown')}">
         <div class="formatted" id="formatted"></div>
         <div class="kv" id="parts"></div>
       </jg-card>
 
-      <jg-card title="Try a sample">
+      <jg-card title="${t('iban-validator.tryASample', 'Try a sample')}">
         <div class="samples">
           ${SAMPLES.map((sample) => html`<button class="sample" data-iban="${sample}">${sample.slice(0, 2)} ${sample.slice(2, 9)}...</button>`)}
         </div>
@@ -142,12 +143,12 @@ class IbanValidator extends JGApp {
     this.$('#parts').innerHTML =
       result.state === 'valid'
         ? html`
-            <div>Country</div><div>${COUNTRIES[result.country] ?? result.country} (${result.country})</div>
-            <div>Check digits</div><div class="mono">${result.check}</div>
-            <div>Bank identifier</div><div class="mono">${result.bank}</div>
-            <div>Account part</div><div class="mono">${result.bban}</div>
-            <div>Length</div><div class="mono">${result.iban.length} characters</div>
-            <div>Electronic format</div><div class="mono">${result.iban}</div>
+            <div>${t('iban-validator.country', 'Country')}</div><div>${COUNTRIES[result.country] ?? result.country} (${result.country})</div>
+            <div>${t('iban-validator.checkDigits', 'Check digits')}</div><div class="mono">${result.check}</div>
+            <div>${t('iban-validator.bankIdentifier', 'Bank identifier')}</div><div class="mono">${result.bank}</div>
+            <div>${t('iban-validator.accountPart', 'Account part')}</div><div class="mono">${result.bban}</div>
+            <div>${t('iban-validator.length', 'Length')}</div><div class="mono">${result.iban.length} characters</div>
+            <div>${t('iban-validator.electronicFormat', 'Electronic format')}</div><div class="mono">${result.iban}</div>
           `
         : '';
   }

@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { ai } from '../core/ai.js';
 import { copyText, download } from '../core/util.js';
 import '../ui/jg-ai-bar.js';
@@ -65,7 +66,7 @@ const PRESETS = [
 class AiChat extends JGApp {
   static appId = 'ai-chat';
   static settings = [
-    { key: 'system', label: 'System prompt', type: 'text', default: 'You are a concise, accurate assistant for developers.' },
+    { key: 'system', label: t('ai-chat.systemPrompt', 'System prompt'), type: 'text', default: 'You are a concise, accurate assistant for developers.' },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -83,9 +84,9 @@ class AiChat extends JGApp {
     const thread = this.#thread();
     const last = [...thread].reverse().find((message) => message.role === 'assistant');
     this.paint(html`<div class="app" style="padding:12px">
-      <div class="label">Local AI</div>
+      <div class="label">${t('ai-chat.localAi', 'Local AI')}</div>
       <div class="hint" style="flex:1;overflow:hidden">${last ? last.content.slice(0, 160) : 'No conversation yet.'}</div>
-      <jg-button size="sm" variant="outline" id="open">Open chat</jg-button>
+      <jg-button size="sm" variant="outline" id="open">${t('ai-chat.openChat', 'Open chat')}</jg-button>
     </div>`);
     this.on(this.$('#open'), 'click', () => {
       window.location.assign('/ai-chat');
@@ -96,23 +97,23 @@ class AiChat extends JGApp {
     this.paint(html`<div class="app">
       <jg-ai-bar></jg-ai-bar>
 
-      <jg-field label="System prompt" hint="Sets the behaviour for the whole conversation">
+      <jg-field label="${t('ai-chat.systemPrompt', 'System prompt')}" hint="${t('ai-chat.setsTheBehaviourForThe', 'Sets the behaviour for the whole conversation')}">
         <jg-input id="system" value="${this.config.get('system', 'You are a concise, accurate assistant for developers.')}"></jg-input>
       </jg-field>
 
       <div class="row">
         ${PRESETS.map((preset) => html`<jg-button size="sm" variant="outline" data-preset="${preset[1]}">${preset[0]}</jg-button>`)}
         <span class="grow"></span>
-        <jg-button size="sm" variant="ghost" id="export">Export</jg-button>
-        <jg-button size="sm" variant="ghost" id="clear">Clear</jg-button>
+        <jg-button size="sm" variant="ghost" id="export">${t('ai-chat.export', 'Export')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="clear">${t('ai-chat.clear', 'Clear')}</jg-button>
       </div>
 
       <div class="thread" id="thread"></div>
 
       <div class="composer">
-        <jg-textarea id="input" rows="2" sans class="grow" placeholder="Ask anything. Shift+Enter for a new line."></jg-textarea>
-        <jg-button id="send">Send</jg-button>
-        <jg-button id="stop" variant="outline" hidden>Stop</jg-button>
+        <jg-textarea id="input" rows="2" sans class="grow" placeholder="${t('ai-chat.askAnythingShiftEnterFor', 'Ask anything. Shift+Enter for a new line.')}"></jg-textarea>
+        <jg-button id="send">${t('ai-chat.send', 'Send')}</jg-button>
+        <jg-button id="stop" variant="outline" hidden>${t('ai-chat.stop', 'Stop')}</jg-button>
       </div>
     </div>`);
 
@@ -151,7 +152,7 @@ class AiChat extends JGApp {
     if (!node) return;
 
     if (!thread.length && !streaming) {
-      node.innerHTML = html`<jg-empty glyph="✦" title="Nothing yet">Everything you type stays on this device.</jg-empty>`;
+      node.innerHTML = html`<jg-empty glyph="✦" title="${t('ai-chat.nothingYet', 'Nothing yet')}">${t('ai-chat.everythingYouTypeStaysOn', 'Everything you type stays on this device.')}</jg-empty>`;
       return;
     }
 
@@ -165,7 +166,7 @@ class AiChat extends JGApp {
       ),
       streaming
         ? html`<div class="msg" data-role="assistant">
-            <span class="who">AI</span>
+            <span class="who">${t('ai-chat.ai', 'AI')}</span>
             <span class="bubble caret">${streaming}</span>
           </div>`
         : '',

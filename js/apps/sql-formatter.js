@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { escapeHtml } from '../core/dom.js';
 import { copyText, debounce } from '../core/util.js';
 
@@ -71,22 +72,22 @@ class SqlFormatter extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-switch id="upper" checked></jg-switch><span class="hint">Uppercase keywords</span>
+        <jg-switch id="upper" checked></jg-switch><span class="hint">${t('sql-formatter.uppercaseKeywords', 'Uppercase keywords')}</span>
         <jg-select id="indent" value="2" size="sm" style="width:130px">
-          <option value="2">2 spaces</option><option value="4">4 spaces</option>
+          <option value="2">${t('sql-formatter.2Spaces', '2 spaces')}</option><option value="4">${t('sql-formatter.4Spaces', '4 spaces')}</option>
         </jg-select>
         <span class="grow"></span>
-        <jg-button size="sm" variant="outline" id="sample">Sample</jg-button>
-        <jg-button size="sm" variant="outline" id="copy">Copy</jg-button>
+        <jg-button size="sm" variant="outline" id="sample">${t('sql-formatter.sample', 'Sample')}</jg-button>
+        <jg-button size="sm" variant="outline" id="copy">${t('sql-formatter.copy', 'Copy')}</jg-button>
       </div>
 
       <div class="split">
         <div class="pane">
-          <span class="label">Input</span>
-          <jg-code id="input" grow gutter language="sql" placeholder="select * from users where id = 1"></jg-code>
+          <span class="label">${t('sql-formatter.input', 'Input')}</span>
+          <jg-code id="input" grow gutter language="sql" placeholder="${t('sql-formatter.selectFromUsersWhereId', 'select * from users where id = 1')}"></jg-code>
         </div>
         <div class="pane">
-          <span class="label">Formatted</span>
+          <span class="label">${t('sql-formatter.formatted', 'Formatted')}</span>
           <div class="view" id="output"></div>
         </div>
       </div>

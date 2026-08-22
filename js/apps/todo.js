@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { uid } from '../core/util.js';
 
 const sheet = css`
@@ -61,7 +62,7 @@ class TodoApp extends JGApp {
             <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${task.text}</span>
           </div>`,
         )}
-        ${tasks.length ? '' : html`<div class="hint">Nothing on the list.</div>`}
+        ${tasks.length ? '' : html`<div class="hint">${t('todo.nothingOnTheList', 'Nothing on the list.')}</div>`}
       </div>
     </div>`);
   }
@@ -74,8 +75,8 @@ class TodoApp extends JGApp {
 
     this.paint(html`<div class="app">
       <div class="row nowrap">
-        <jg-input id="input" class="grow" placeholder="What needs doing?"></jg-input>
-        <jg-button id="add">Add</jg-button>
+        <jg-input id="input" class="grow" placeholder="${t('todo.whatNeedsDoing', 'What needs doing?')}"></jg-input>
+        <jg-button id="add">${t('todo.add', 'Add')}</jg-button>
       </div>
 
       <div class="spread">
@@ -92,18 +93,18 @@ class TodoApp extends JGApp {
                 <jg-button class="del" size="icon-sm" variant="ghost" data-remove="${task.id}">✕</jg-button>
               </div>`,
             )
-          : html`<jg-empty glyph="✓" title="All clear">Nothing in this view.</jg-empty>`}
+          : html`<jg-empty glyph="✓" title="${t('todo.allClear', 'All clear')}">${t('todo.nothingInThisView', 'Nothing in this view.')}</jg-empty>`}
       </div>
 
       ${tasks.some((task) => task.done)
-        ? html`<div class="row"><jg-button size="sm" variant="ghost" id="clear">Clear completed</jg-button></div>`
+        ? html`<div class="row"><jg-button size="sm" variant="ghost" id="clear">${t('todo.clearCompleted', 'Clear completed')}</jg-button></div>`
         : ''}
     </div>`);
 
     this.$('#filter').items = [
-      { value: 'all', label: 'All' },
-      { value: 'open', label: 'Open' },
-      { value: 'done', label: 'Done' },
+      { value: 'all', label: t('todo.all', 'All') },
+      { value: 'open', label: t('todo.open', 'Open') },
+      { value: 'done', label: t('todo.done', 'Done') },
     ];
     this.$('#filter').value = this.#filter;
     this.on(this.$('#filter'), 'change', (event) => {

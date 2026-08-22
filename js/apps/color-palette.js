@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { palette, scaleFromHex, rgbToOklch, oklchToHex, SHADES } from '../lib/palette.js';
 import { copyText, download } from '../core/util.js';
 
@@ -174,14 +175,14 @@ class ColorPalette extends JGApp {
       <div class="row">
         <jg-tabs id="tab"></jg-tabs>
         <span class="grow"></span>
-        <jg-button size="sm" variant="ghost" id="save">Save colour</jg-button>
+        <jg-button size="sm" variant="ghost" id="save">${t('color-palette.saveColour', 'Save colour')}</jg-button>
         <jg-select id="exportAs" size="sm" style="width:160px">
-          <option value="css">CSS variables</option>
-          <option value="tailwind">Tailwind config</option>
+          <option value="css">${t('color-palette.cssVariables', 'CSS variables')}</option>
+          <option value="tailwind">${t('color-palette.tailwindConfig', 'Tailwind config')}</option>
           <option value="json">JSON</option>
-          <option value="scss">SCSS</option>
+          <option value="scss">${t('color-palette.scss', 'SCSS')}</option>
         </jg-select>
-        <jg-button size="sm" variant="outline" id="export">Export scale</jg-button>
+        <jg-button size="sm" variant="outline" id="export">${t('color-palette.exportScale', 'Export scale')}</jg-button>
       </div>
 
       <div class="preview">
@@ -195,16 +196,16 @@ class ColorPalette extends JGApp {
       <div id="body"></div>
 
       <div class="stack tight">
-        <span class="label">Saved</span>
+        <span class="label">${t('color-palette.saved', 'Saved')}</span>
         <div class="saved" id="savedList"></div>
       </div>
     </div>`);
 
     this.$('#tab').items = [
-      { value: 'palette', label: 'Palette' },
-      { value: 'wheel', label: 'Wheel' },
-      { value: 'scale', label: 'Scale' },
-      { value: 'harmony', label: 'Harmony' },
+      { value: 'palette', label: t('color-palette.palette', 'Palette') },
+      { value: 'wheel', label: t('color-palette.wheel', 'Wheel') },
+      { value: 'scale', label: t('color-palette.scale', 'Scale') },
+      { value: 'harmony', label: t('color-palette.harmony', 'Harmony') },
     ];
     this.$('#tab').value = this.#tab;
     this.on(this.$('#tab'), 'change', (event) => {
@@ -267,7 +268,7 @@ class ColorPalette extends JGApp {
     const list = this.$('#savedList');
     list.innerHTML = saved.length
       ? saved.map((hex) => html`<button class="dot" data-pick="${hex}" style="background:${hex}" title="${hex}"></button>`).join('')
-      : html`<span class="hint">Nothing saved yet.</span>`;
+      : html`<span class="hint">${t('color-palette.nothingSavedYet', 'Nothing saved yet.')}</span>`;
     this.bind('[data-pick]', 'click', (event) => this.#select(event.currentTarget.dataset.pick));
     this.bind('[data-pick]', 'contextmenu', (event) => {
       event.preventDefault();
@@ -304,7 +305,7 @@ class ColorPalette extends JGApp {
           `,
         )}
       </div>
-      <div class="hint" style="margin-top:8px">Click a swatch to select it, click a name to copy the whole scale.</div>
+      <div class="hint" style="margin-top:8px">${t('color-palette.clickASwatchToSelect', 'Click a swatch to select it, click a name to copy the whole scale.')}</div>
     `;
 
     this.bind('.swatch', 'click', (event) => this.#select(event.currentTarget.dataset.hex));
@@ -322,13 +323,13 @@ class ColorPalette extends JGApp {
           <span class="knob" id="knob"></span>
         </div>
         <div class="stack">
-          <jg-field label="Lightness">
+          <jg-field label="${t('color-palette.lightness', 'Lightness')}">
             <jg-slider id="lightness" min="8" max="98" value="${Math.round(this.#wheelLightness * 100)}"></jg-slider>
           </jg-field>
-          <jg-field label="Hex">
+          <jg-field label="${t('color-palette.hex', 'Hex')}">
             <jg-input id="hex" mono value="${this.#selected}"></jg-input>
           </jg-field>
-          <jg-field label="Native picker">
+          <jg-field label="${t('color-palette.nativePicker', 'Native picker')}">
             <jg-input id="native" type="color" value="${this.#selected}"></jg-input>
           </jg-field>
           <div class="hint">The wheel maps hue around the circle and chroma from the centre outwards in OKLCH, so

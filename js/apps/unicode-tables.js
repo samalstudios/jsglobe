@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText, toast } from '../core/util.js';
 
 const sheet = css`
@@ -38,24 +39,24 @@ const sheet = css`
 `;
 
 const BLOCKS = [
-  { id: 'ascii', label: 'Basic Latin', from: 0x20, to: 0x7e, icon: 'type' },
-  { id: 'latin1', label: 'Latin-1', from: 0xa0, to: 0xff, icon: 'type' },
-  { id: 'latinext', label: 'Latin Extended', from: 0x100, to: 0x17f, icon: 'type' },
-  { id: 'greek', label: 'Greek', from: 0x370, to: 0x3ff, icon: 'languages' },
-  { id: 'cyrillic', label: 'Cyrillic', from: 0x400, to: 0x4ff, icon: 'languages' },
-  { id: 'arabic', label: 'Arabic', from: 0x600, to: 0x6ff, icon: 'languages' },
-  { id: 'hebrew', label: 'Hebrew', from: 0x590, to: 0x5ff, icon: 'languages' },
-  { id: 'punctuation', label: 'Punctuation', from: 0x2000, to: 0x206f, icon: 'asterisk' },
-  { id: 'currency', label: 'Currency', from: 0x20a0, to: 0x20bf, icon: 'landmark' },
-  { id: 'letterlike', label: 'Letterlike', from: 0x2100, to: 0x214f, icon: 'badge' },
-  { id: 'arrows', label: 'Arrows', from: 0x2190, to: 0x21ff, icon: 'transform' },
-  { id: 'math', label: 'Math operators', from: 0x2200, to: 0x22ff, icon: 'calculator' },
-  { id: 'technical', label: 'Technical', from: 0x2300, to: 0x23ff, icon: 'gear' },
-  { id: 'boxes', label: 'Box drawing', from: 0x2500, to: 0x257f, icon: 'grid' },
-  { id: 'blocks', label: 'Block elements', from: 0x2580, to: 0x259f, icon: 'blocks' },
-  { id: 'geometric', label: 'Geometric shapes', from: 0x25a0, to: 0x25ff, icon: 'vector' },
-  { id: 'dingbats', label: 'Dingbats', from: 0x2700, to: 0x27bf, icon: 'sparkles' },
-  { id: 'braille', label: 'Braille', from: 0x2800, to: 0x28ff, icon: 'binary' },
+  { id: 'ascii', label: t('unicode-tables.basicLatin', 'Basic Latin'), from: 0x20, to: 0x7e, icon: 'type' },
+  { id: 'latin1', label: t('unicode-tables.latin1', 'Latin-1'), from: 0xa0, to: 0xff, icon: 'type' },
+  { id: 'latinext', label: t('unicode-tables.latinExtended', 'Latin Extended'), from: 0x100, to: 0x17f, icon: 'type' },
+  { id: 'greek', label: t('unicode-tables.greek', 'Greek'), from: 0x370, to: 0x3ff, icon: 'languages' },
+  { id: 'cyrillic', label: t('unicode-tables.cyrillic', 'Cyrillic'), from: 0x400, to: 0x4ff, icon: 'languages' },
+  { id: 'arabic', label: t('unicode-tables.arabic', 'Arabic'), from: 0x600, to: 0x6ff, icon: 'languages' },
+  { id: 'hebrew', label: t('unicode-tables.hebrew', 'Hebrew'), from: 0x590, to: 0x5ff, icon: 'languages' },
+  { id: 'punctuation', label: t('unicode-tables.punctuation', 'Punctuation'), from: 0x2000, to: 0x206f, icon: 'asterisk' },
+  { id: 'currency', label: t('unicode-tables.currency', 'Currency'), from: 0x20a0, to: 0x20bf, icon: 'landmark' },
+  { id: 'letterlike', label: t('unicode-tables.letterlike', 'Letterlike'), from: 0x2100, to: 0x214f, icon: 'badge' },
+  { id: 'arrows', label: t('unicode-tables.arrows', 'Arrows'), from: 0x2190, to: 0x21ff, icon: 'transform' },
+  { id: 'math', label: t('unicode-tables.mathOperators', 'Math operators'), from: 0x2200, to: 0x22ff, icon: 'calculator' },
+  { id: 'technical', label: t('unicode-tables.technical', 'Technical'), from: 0x2300, to: 0x23ff, icon: 'gear' },
+  { id: 'boxes', label: t('unicode-tables.boxDrawing', 'Box drawing'), from: 0x2500, to: 0x257f, icon: 'grid' },
+  { id: 'blocks', label: t('unicode-tables.blockElements', 'Block elements'), from: 0x2580, to: 0x259f, icon: 'blocks' },
+  { id: 'geometric', label: t('unicode-tables.geometricShapes', 'Geometric shapes'), from: 0x25a0, to: 0x25ff, icon: 'vector' },
+  { id: 'dingbats', label: t('unicode-tables.dingbats', 'Dingbats'), from: 0x2700, to: 0x27bf, icon: 'sparkles' },
+  { id: 'braille', label: t('unicode-tables.braille', 'Braille'), from: 0x2800, to: 0x28ff, icon: 'binary' },
 ];
 
 const CATEGORIES = [
@@ -90,8 +91,8 @@ class UnicodeTables extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-input id="search" size="sm" placeholder="Search a character, U+00E9 or 233" style="flex:1;min-width:200px"></jg-input>
-        <jg-button size="sm" variant="ghost" id="copy-char">Copy character</jg-button>
+        <jg-input id="search" size="sm" placeholder="${t('unicode-tables.searchACharacterU00e9', 'Search a character, U+00E9 or 233')}" style="flex:1;min-width:200px"></jg-input>
+        <jg-button size="sm" variant="ghost" id="copy-char">${t('unicode-tables.copyCharacter', 'Copy character')}</jg-button>
       </div>
 
       <div class="shell">
@@ -151,7 +152,7 @@ class UnicodeTables extends JGApp {
             </button>`,
           )
           .join('')
-      : html`<div class="hint" style="grid-column:1/-1;padding:12px">Nothing to show for that search.</div>`;
+      : html`<div class="hint" style="grid-column:1/-1;padding:12px">${t('unicode-tables.nothingToShowForThat', 'Nothing to show for that search.')}</div>`;
 
     this.bind('[data-point]', 'click', (event) => {
       const point = Number(event.currentTarget.dataset.point);
@@ -170,13 +171,13 @@ class UnicodeTables extends JGApp {
 
     this.$('#big').textContent = character;
     this.$('#info').innerHTML = html`
-      <div>Code point</div><div class="mono">U+${hex}</div>
-      <div>Decimal</div><div class="mono">${point}</div>
-      <div>Kind</div><div>${describe(point)}</div>
+      <div>${t('unicode-tables.codePoint', 'Code point')}</div><div class="mono">U+${hex}</div>
+      <div>${t('unicode-tables.decimal', 'Decimal')}</div><div class="mono">${point}</div>
+      <div>${t('unicode-tables.kind', 'Kind')}</div><div>${describe(point)}</div>
       <div>HTML</div><div class="mono">&amp;#${point}; &nbsp; &amp;#x${hex};</div>
-      <div>JavaScript</div><div class="mono">${point > 0xffff ? `\\u{${hex}}` : `\\u${hex}`}</div>
+      <div>${t('unicode-tables.javascript', 'JavaScript')}</div><div class="mono">${point > 0xffff ? `\\u{${hex}}` : `\\u${hex}`}</div>
       <div>UTF-8</div><div class="mono">${utf8Bytes(character).join(' ')}</div>
-      <div>URL encoded</div><div class="mono">${encodeURIComponent(character)}</div>
+      <div>${t('unicode-tables.urlEncoded', 'URL encoded')}</div><div class="mono">${encodeURIComponent(character)}</div>
     `;
   }
 }

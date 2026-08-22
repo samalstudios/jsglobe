@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce } from '../core/util.js';
 
 const sheet = css`
@@ -70,17 +71,17 @@ class TextStats extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="Text">
-        <jg-textarea id="input" rows="7" sans placeholder="Paste or write text to analyse"></jg-textarea>
+      <jg-field label="${t('text-stats.text', 'Text')}">
+        <jg-textarea id="input" rows="7" sans placeholder="${t('text-stats.pasteOrWriteTextTo', 'Paste or write text to analyse')}"></jg-textarea>
       </jg-field>
 
       <div class="tiles" id="tiles"></div>
 
-      <jg-card title="Readability">
+      <jg-card title="${t('text-stats.readability', 'Readability')}">
         <div class="kv" id="readability"></div>
       </jg-card>
 
-      <jg-card title="Most frequent words">
+      <jg-card title="${t('text-stats.mostFrequentWords', 'Most frequent words')}">
         <div class="bars" id="frequency"></div>
       </jg-card>
     </div>`);
@@ -110,11 +111,11 @@ class TextStats extends JGApp {
       stats.readingEase >= 80 ? 'Very easy' : stats.readingEase >= 60 ? 'Plain English' : stats.readingEase >= 40 ? 'Fairly difficult' : 'Difficult';
 
     this.$('#readability').innerHTML = html`
-      <div>Reading time</div><div>${stats.readingTime} min at 200 wpm</div>
-      <div>Speaking time</div><div>${stats.speakingTime} min at 130 wpm</div>
-      <div>Flesch reading ease</div><div>${stats.readingEase} - ${grade}</div>
-      <div>Average word length</div><div>${stats.averageWord} letters</div>
-      <div>Longest word</div><div class="mono">${stats.longest || '-'}</div>
+      <div>${t('text-stats.readingTime', 'Reading time')}</div><div>${stats.readingTime} min at 200 wpm</div>
+      <div>${t('text-stats.speakingTime', 'Speaking time')}</div><div>${stats.speakingTime} min at 130 wpm</div>
+      <div>${t('text-stats.fleschReadingEase', 'Flesch reading ease')}</div><div>${stats.readingEase} - ${grade}</div>
+      <div>${t('text-stats.averageWordLength', 'Average word length')}</div><div>${stats.averageWord} letters</div>
+      <div>${t('text-stats.longestWord', 'Longest word')}</div><div class="mono">${stats.longest || '-'}</div>
     `;
 
     const top = stats.frequency[0]?.[1] ?? 1;
@@ -128,7 +129,7 @@ class TextStats extends JGApp {
             </div>`,
           )
           .join('')
-      : html`<span class="hint">Not enough text yet.</span>`;
+      : html`<span class="hint">${t('text-stats.notEnoughTextYet', 'Not enough text yet.')}</span>`;
   }
 }
 

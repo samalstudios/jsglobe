@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { copyText, download, debounce, formatBytes, toast } from '../core/util.js';
 
 const sheet = css`
@@ -143,11 +144,11 @@ const prettify = (markup) => {
 const COLOUR_PATTERN = /#[0-9a-f]{3,8}\b|rgba?\([^)]+\)|hsla?\([^)]+\)/gi;
 
 const PANELS = [
-  { value: 'document', label: 'Document' },
-  { value: 'transform', label: 'Transform' },
-  { value: 'style', label: 'Style' },
-  { value: 'colours', label: 'Colours' },
-  { value: 'layers', label: 'Elements' },
+  { value: 'document', label: t('svg-editor.document', 'Document') },
+  { value: 'transform', label: t('svg-editor.transform', 'Transform') },
+  { value: 'style', label: t('svg-editor.style', 'Style') },
+  { value: 'colours', label: t('svg-editor.colours', 'Colours') },
+  { value: 'layers', label: t('svg-editor.elements', 'Elements') },
 ];
 
 class SvgEditor extends JGApp {
@@ -163,40 +164,40 @@ class SvgEditor extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-button size="sm" id="open">Open</jg-button>
-        <jg-button size="sm" variant="outline" id="sample">Sample</jg-button>
-        <jg-button size="sm" variant="outline" id="format">Format</jg-button>
-        <jg-button size="sm" variant="outline" id="minify">Minify</jg-button>
-        <jg-button size="sm" variant="outline" id="clean">Optimise</jg-button>
-        <jg-button size="sm" variant="ghost" id="undo">Undo</jg-button>
-        <jg-button size="sm" variant="ghost" id="redo">Redo</jg-button>
+        <jg-button size="sm" id="open">${t('svg-editor.open', 'Open')}</jg-button>
+        <jg-button size="sm" variant="outline" id="sample">${t('svg-editor.sample', 'Sample')}</jg-button>
+        <jg-button size="sm" variant="outline" id="format">${t('svg-editor.format', 'Format')}</jg-button>
+        <jg-button size="sm" variant="outline" id="minify">${t('svg-editor.minify', 'Minify')}</jg-button>
+        <jg-button size="sm" variant="outline" id="clean">${t('svg-editor.optimise', 'Optimise')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="undo">${t('svg-editor.undo', 'Undo')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="redo">${t('svg-editor.redo', 'Redo')}</jg-button>
         <span class="grow"></span>
         <jg-select id="bg" value="grid" size="sm" style="width:120px">
-          <option value="grid">Checker</option>
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-          <option value="accent">Accent</option>
+          <option value="grid">${t('svg-editor.checker', 'Checker')}</option>
+          <option value="light">${t('svg-editor.light', 'Light')}</option>
+          <option value="dark">${t('svg-editor.dark', 'Dark')}</option>
+          <option value="accent">${t('svg-editor.accent', 'Accent')}</option>
         </jg-select>
       </div>
 
       <div class="split">
         <div class="pane">
           <div class="spread">
-            <span class="label">Source</span>
+            <span class="label">${t('svg-editor.source', 'Source')}</span>
             <jg-copy from="#source" size="icon"></jg-copy>
           </div>
-          <jg-code id="source" grow gutter language="svg" placeholder="Paste SVG markup here"></jg-code>
-          <div class="drop" id="drop">Drop an SVG file here</div>
+          <jg-code id="source" grow gutter language="svg" placeholder="${t('svg-editor.pasteSvgMarkupHere', 'Paste SVG markup here')}"></jg-code>
+          <div class="drop" id="drop">${t('svg-editor.dropAnSvgFileHere', 'Drop an SVG file here')}</div>
         </div>
 
         <div class="pane">
           <div class="spread">
-            <span class="label">Preview</span>
+            <span class="label">${t('svg-editor.preview', 'Preview')}</span>
             <span class="row tight">
               <jg-button size="icon-sm" variant="ghost" id="out">−</jg-button>
               <span class="hint mono" id="zoom">100%</span>
               <jg-button size="icon-sm" variant="ghost" id="in">＋</jg-button>
-              <jg-button size="sm" variant="ghost" id="fit">Fit</jg-button>
+              <jg-button size="sm" variant="ghost" id="fit">${t('svg-editor.fit', 'Fit')}</jg-button>
             </span>
           </div>
           <div class="canvas" id="canvas" data-bg="grid">
@@ -212,15 +213,15 @@ class SvgEditor extends JGApp {
       </div>
 
       <div class="row">
-        <jg-button size="sm" variant="outline" id="saveSvg">Save SVG</jg-button>
+        <jg-button size="sm" variant="outline" id="saveSvg">${t('svg-editor.saveSvg', 'Save SVG')}</jg-button>
         <jg-select id="scale" value="2" size="sm" style="width:110px">
-          <option value="1">PNG 1x</option><option value="2">PNG 2x</option><option value="4">PNG 4x</option>
+          <option value="1">${t('svg-editor.png1x', 'PNG 1x')}</option><option value="2">${t('svg-editor.png2x', 'PNG 2x')}</option><option value="4">${t('svg-editor.png4x', 'PNG 4x')}</option>
         </jg-select>
-        <jg-button size="sm" variant="outline" id="savePng">Save PNG</jg-button>
+        <jg-button size="sm" variant="outline" id="savePng">${t('svg-editor.savePng', 'Save PNG')}</jg-button>
         <span class="grow"></span>
-        <jg-button size="sm" variant="ghost" id="copyUri">Data URI</jg-button>
+        <jg-button size="sm" variant="ghost" id="copyUri">${t('svg-editor.dataUri', 'Data URI')}</jg-button>
         <jg-button size="sm" variant="ghost" id="copyCss">CSS</jg-button>
-        <jg-button size="sm" variant="ghost" id="copyJsx">JSX</jg-button>
+        <jg-button size="sm" variant="ghost" id="copyJsx">${t('svg-editor.jsx', 'JSX')}</jg-button>
       </div>
     </div>`);
 
@@ -377,7 +378,7 @@ class SvgEditor extends JGApp {
     const body = this.$('#panel-body');
     const doc = this.#doc();
     if (!doc) {
-      body.innerHTML = html`<span class="hint">Fix the markup to use the editing tools.</span>`;
+      body.innerHTML = html`<span class="hint">${t('svg-editor.fixTheMarkupToUse', 'Fix the markup to use the editing tools.')}</span>`;
       return;
     }
 
@@ -396,25 +397,25 @@ class SvgEditor extends JGApp {
   #panelDocument(body, svg, box) {
     body.innerHTML = html`
       <div class="fields">
-        <jg-field label="Width"><jg-input id="doc-w" value="${svg.getAttribute('width') ?? ''}" placeholder="auto"></jg-input></jg-field>
-        <jg-field label="Height"><jg-input id="doc-h" value="${svg.getAttribute('height') ?? ''}" placeholder="auto"></jg-input></jg-field>
-        <jg-field label="viewBox"><jg-input id="doc-vb" mono value="${svg.getAttribute('viewBox') ?? `${box.x} ${box.y} ${box.width} ${box.height}`}"></jg-input></jg-field>
-        <jg-field label="preserveAspectRatio">
+        <jg-field label="${t('svg-editor.width', 'Width')}"><jg-input id="doc-w" value="${svg.getAttribute('width') ?? ''}" placeholder="${t('svg-editor.auto', 'auto')}"></jg-input></jg-field>
+        <jg-field label="${t('svg-editor.height', 'Height')}"><jg-input id="doc-h" value="${svg.getAttribute('height') ?? ''}" placeholder="${t('svg-editor.auto', 'auto')}"></jg-input></jg-field>
+        <jg-field label="${t('svg-editor.viewbox', 'viewBox')}"><jg-input id="doc-vb" mono value="${svg.getAttribute('viewBox') ?? `${box.x} ${box.y} ${box.width} ${box.height}`}"></jg-input></jg-field>
+        <jg-field label="${t('svg-editor.preserveaspectratio', 'preserveAspectRatio')}">
           <jg-select id="doc-par" value="${svg.getAttribute('preserveAspectRatio') ?? 'xMidYMid meet'}">
-            <option value="xMidYMid meet">xMidYMid meet</option>
-            <option value="xMidYMid slice">xMidYMid slice</option>
-            <option value="none">none</option>
+            <option value="xMidYMid meet">${t('svg-editor.xmidymidMeet', 'xMidYMid meet')}</option>
+            <option value="xMidYMid slice">${t('svg-editor.xmidymidSlice', 'xMidYMid slice')}</option>
+            <option value="none">${t('svg-editor.none', 'none')}</option>
           </jg-select>
         </jg-field>
-        <jg-field label="Precision"><jg-input id="precision" type="number" min="0" max="6" value="2"></jg-input></jg-field>
+        <jg-field label="${t('svg-editor.precision', 'Precision')}"><jg-input id="precision" type="number" min="0" max="6" value="2"></jg-input></jg-field>
       </div>
       <div class="row">
-        <jg-button size="sm" id="doc-apply">Apply</jg-button>
-        <jg-button size="sm" variant="outline" id="doc-fit">Fit viewBox to content</jg-button>
-        <jg-button size="sm" variant="outline" id="doc-responsive">Make responsive</jg-button>
-        <jg-button size="sm" variant="outline" id="doc-square">Square it</jg-button>
+        <jg-button size="sm" id="doc-apply">${t('svg-editor.apply', 'Apply')}</jg-button>
+        <jg-button size="sm" variant="outline" id="doc-fit">${t('svg-editor.fitViewboxToContent', 'Fit viewBox to content')}</jg-button>
+        <jg-button size="sm" variant="outline" id="doc-responsive">${t('svg-editor.makeResponsive', 'Make responsive')}</jg-button>
+        <jg-button size="sm" variant="outline" id="doc-square">${t('svg-editor.squareIt', 'Square it')}</jg-button>
       </div>
-      <span class="hint">Make responsive drops width and height so the SVG scales with its container.</span>
+      <span class="hint">${t('svg-editor.makeResponsiveDropsWidthAnd', 'Make responsive drops width and height so the SVG scales with its container.')}</span>
     `;
 
     this.on(this.$('#doc-apply'), 'click', () => {
@@ -473,23 +474,23 @@ class SvgEditor extends JGApp {
 
     body.innerHTML = html`
       <div class="row">
-        <jg-button size="sm" variant="outline" id="rot-left">Rotate −90°</jg-button>
-        <jg-button size="sm" variant="outline" id="rot-right">Rotate +90°</jg-button>
-        <jg-button size="sm" variant="outline" id="flip-h">Flip horizontal</jg-button>
-        <jg-button size="sm" variant="outline" id="flip-v">Flip vertical</jg-button>
+        <jg-button size="sm" variant="outline" id="rot-left">${t('svg-editor.rotate90', 'Rotate −90°')}</jg-button>
+        <jg-button size="sm" variant="outline" id="rot-right">${t('svg-editor.rotate902', 'Rotate +90°')}</jg-button>
+        <jg-button size="sm" variant="outline" id="flip-h">${t('svg-editor.flipHorizontal', 'Flip horizontal')}</jg-button>
+        <jg-button size="sm" variant="outline" id="flip-v">${t('svg-editor.flipVertical', 'Flip vertical')}</jg-button>
       </div>
       <div class="fields">
-        <jg-field label="Rotate by"><jg-input id="t-angle" type="number" value="15" suffix="deg"></jg-input></jg-field>
-        <jg-field label="Scale"><jg-input id="t-scale" type="number" min="1" max="400" value="110" suffix="%"></jg-input></jg-field>
-        <jg-field label="Move X"><jg-input id="t-x" type="number" value="0"></jg-input></jg-field>
-        <jg-field label="Move Y"><jg-input id="t-y" type="number" value="0"></jg-input></jg-field>
-        <jg-field label="Padding"><jg-input id="t-pad" type="number" value="8"></jg-input></jg-field>
+        <jg-field label="${t('svg-editor.rotateBy', 'Rotate by')}"><jg-input id="t-angle" type="number" value="15" suffix="deg"></jg-input></jg-field>
+        <jg-field label="${t('svg-editor.scale', 'Scale')}"><jg-input id="t-scale" type="number" min="1" max="400" value="110" suffix="%"></jg-input></jg-field>
+        <jg-field label="${t('svg-editor.moveX', 'Move X')}"><jg-input id="t-x" type="number" value="0"></jg-input></jg-field>
+        <jg-field label="${t('svg-editor.moveY', 'Move Y')}"><jg-input id="t-y" type="number" value="0"></jg-input></jg-field>
+        <jg-field label="${t('svg-editor.padding', 'Padding')}"><jg-input id="t-pad" type="number" value="8"></jg-input></jg-field>
       </div>
       <div class="row">
-        <jg-button size="sm" variant="outline" id="t-rotate">Rotate</jg-button>
-        <jg-button size="sm" variant="outline" id="t-scale-go">Scale</jg-button>
-        <jg-button size="sm" variant="outline" id="t-move">Move</jg-button>
-        <jg-button size="sm" variant="outline" id="t-padding">Add padding</jg-button>
+        <jg-button size="sm" variant="outline" id="t-rotate">${t('svg-editor.rotate', 'Rotate')}</jg-button>
+        <jg-button size="sm" variant="outline" id="t-scale-go">${t('svg-editor.scale', 'Scale')}</jg-button>
+        <jg-button size="sm" variant="outline" id="t-move">${t('svg-editor.move', 'Move')}</jg-button>
+        <jg-button size="sm" variant="outline" id="t-padding">${t('svg-editor.addPadding', 'Add padding')}</jg-button>
       </div>
       <span class="hint">
         Transforms wrap the artwork in a group. Rotating a non square canvas may crop it, so follow with
@@ -525,29 +526,29 @@ class SvgEditor extends JGApp {
   #panelStyle(body) {
     body.innerHTML = html`
       <div class="fields">
-        <jg-field label="Fill"><jg-input id="s-fill" type="color" value="#8a1c3b"></jg-input></jg-field>
-        <jg-field label="Stroke"><jg-input id="s-stroke" type="color" value="#8a1c3b"></jg-input></jg-field>
-        <jg-field label="Stroke width"><jg-input id="s-width" type="number" min="0" step="0.5" value="2"></jg-input></jg-field>
-        <jg-field label="Line cap">
-          <jg-select id="s-cap" value="round"><option value="butt">butt</option><option value="round">round</option><option value="square">square</option></jg-select>
+        <jg-field label="${t('svg-editor.fill', 'Fill')}"><jg-input id="s-fill" type="color" value="#8a1c3b"></jg-input></jg-field>
+        <jg-field label="${t('svg-editor.stroke', 'Stroke')}"><jg-input id="s-stroke" type="color" value="#8a1c3b"></jg-input></jg-field>
+        <jg-field label="${t('svg-editor.strokeWidth', 'Stroke width')}"><jg-input id="s-width" type="number" min="0" step="0.5" value="2"></jg-input></jg-field>
+        <jg-field label="${t('svg-editor.lineCap', 'Line cap')}">
+          <jg-select id="s-cap" value="round"><option value="butt">${t('svg-editor.butt', 'butt')}</option><option value="round">${t('svg-editor.round', 'round')}</option><option value="square">${t('svg-editor.square', 'square')}</option></jg-select>
         </jg-field>
-        <jg-field label="Line join">
-          <jg-select id="s-join" value="round"><option value="miter">miter</option><option value="round">round</option><option value="bevel">bevel</option></jg-select>
+        <jg-field label="${t('svg-editor.lineJoin', 'Line join')}">
+          <jg-select id="s-join" value="round"><option value="miter">${t('svg-editor.miter', 'miter')}</option><option value="round">${t('svg-editor.round', 'round')}</option><option value="bevel">${t('svg-editor.bevel', 'bevel')}</option></jg-select>
         </jg-field>
-        <jg-field label="Opacity"><jg-input id="s-opacity" type="number" min="0" max="1" step="0.05" value="1"></jg-input></jg-field>
+        <jg-field label="${t('svg-editor.opacity', 'Opacity')}"><jg-input id="s-opacity" type="number" min="0" max="1" step="0.05" value="1"></jg-input></jg-field>
       </div>
       <div class="row">
-        <jg-button size="sm" variant="outline" id="s-apply-fill">Set fill</jg-button>
-        <jg-button size="sm" variant="outline" id="s-apply-stroke">Set stroke</jg-button>
-        <jg-button size="sm" variant="outline" id="s-apply-width">Set stroke width</jg-button>
-        <jg-button size="sm" variant="outline" id="s-apply-caps">Set caps and joins</jg-button>
-        <jg-button size="sm" variant="outline" id="s-apply-opacity">Set opacity</jg-button>
+        <jg-button size="sm" variant="outline" id="s-apply-fill">${t('svg-editor.setFill', 'Set fill')}</jg-button>
+        <jg-button size="sm" variant="outline" id="s-apply-stroke">${t('svg-editor.setStroke', 'Set stroke')}</jg-button>
+        <jg-button size="sm" variant="outline" id="s-apply-width">${t('svg-editor.setStrokeWidth', 'Set stroke width')}</jg-button>
+        <jg-button size="sm" variant="outline" id="s-apply-caps">${t('svg-editor.setCapsAndJoins', 'Set caps and joins')}</jg-button>
+        <jg-button size="sm" variant="outline" id="s-apply-opacity">${t('svg-editor.setOpacity', 'Set opacity')}</jg-button>
       </div>
       <div class="row">
-        <jg-button size="sm" variant="ghost" id="s-no-fill">Fill none</jg-button>
-        <jg-button size="sm" variant="ghost" id="s-no-stroke">Stroke none</jg-button>
-        <jg-button size="sm" variant="ghost" id="s-current">Use currentColor</jg-button>
-        <jg-button size="sm" variant="ghost" id="s-strip">Strip all styling</jg-button>
+        <jg-button size="sm" variant="ghost" id="s-no-fill">${t('svg-editor.fillNone', 'Fill none')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="s-no-stroke">${t('svg-editor.strokeNone', 'Stroke none')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="s-current">${t('svg-editor.useCurrentcolor', 'Use currentColor')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="s-strip">${t('svg-editor.stripAllStyling', 'Strip all styling')}</jg-button>
       </div>
     `;
 
@@ -608,9 +609,9 @@ class SvgEditor extends JGApp {
               </span>`,
             )}
           </div>
-          <span class="hint">Changing a swatch replaces every use of that colour in the document.</span>
+          <span class="hint">${t('svg-editor.changingASwatchReplacesEvery', 'Changing a swatch replaces every use of that colour in the document.')}</span>
         `
-      : html`<span class="hint">No literal colours found. The artwork may inherit currentColor or use gradients.</span>`;
+      : html`<span class="hint">${t('svg-editor.noLiteralColoursFoundThe', 'No literal colours found. The artwork may inherit currentColor or use gradients.')}</span>`;
 
     this.$$('[data-colour]').forEach((input) =>
       this.on(input, 'change', () => {
@@ -634,16 +635,16 @@ class SvgEditor extends JGApp {
               <span class="swatch" style="background:${fill === 'none' ? 'transparent' : fill}"></span>
               <span class="name">${label}</span>
               <span class="acts">
-                <jg-button size="icon-sm" variant="ghost" data-toggle="${index}" title="Show or hide">◎</jg-button>
-                <jg-button size="icon-sm" variant="ghost" data-up="${index}" title="Move up">↑</jg-button>
-                <jg-button size="icon-sm" variant="ghost" data-down="${index}" title="Move down">↓</jg-button>
-                <jg-button size="icon-sm" variant="ghost" data-dup="${index}" title="Duplicate">⧉</jg-button>
-                <jg-button size="icon-sm" variant="destructive" data-del="${index}" title="Delete">✕</jg-button>
+                <jg-button size="icon-sm" variant="ghost" data-toggle="${index}" title="${t('svg-editor.showOrHide', 'Show or hide')}">◎</jg-button>
+                <jg-button size="icon-sm" variant="ghost" data-up="${index}" title="${t('svg-editor.moveUp', 'Move up')}">↑</jg-button>
+                <jg-button size="icon-sm" variant="ghost" data-down="${index}" title="${t('svg-editor.moveDown', 'Move down')}">↓</jg-button>
+                <jg-button size="icon-sm" variant="ghost" data-dup="${index}" title="${t('svg-editor.duplicate', 'Duplicate')}">⧉</jg-button>
+                <jg-button size="icon-sm" variant="destructive" data-del="${index}" title="${t('svg-editor.delete', 'Delete')}">✕</jg-button>
               </span>
             </div>`;
           })}
         </div>`
-      : html`<span class="hint">This document has no top level shapes.</span>`;
+      : html`<span class="hint">${t('svg-editor.thisDocumentHasNoTop', 'This document has no top level shapes.')}</span>`;
 
     const withChild = (index, work) => {
       const doc = this.#doc();
@@ -710,7 +711,7 @@ class SvgEditor extends JGApp {
 
     const doc = this.#doc();
     if (!doc) {
-      holder.innerHTML = html`<div class="broken">That is not valid SVG markup.</div>`;
+      holder.innerHTML = html`<div class="broken">${t('svg-editor.thatIsNotValidSvg', 'That is not valid SVG markup.')}</div>`;
       this.$('#stats').innerHTML = '';
       this.#renderPanel();
       return;
@@ -728,9 +729,9 @@ class SvgEditor extends JGApp {
 
     this.$('#stats').innerHTML = html`
       <div class="stat"><div class="n">${formatBytes(bytes)}</div><div class="l">${saved ? `${saved}% smaller` : 'Size'}</div></div>
-      <div class="stat"><div class="n">${elements}</div><div class="l">Elements</div></div>
-      <div class="stat"><div class="n">${paths}</div><div class="l">Paths</div></div>
-      <div class="stat"><div class="n mono" style="font-size:11px">${viewBox}</div><div class="l">viewBox</div></div>
+      <div class="stat"><div class="n">${elements}</div><div class="l">${t('svg-editor.elements', 'Elements')}</div></div>
+      <div class="stat"><div class="n">${paths}</div><div class="l">${t('svg-editor.paths', 'Paths')}</div></div>
+      <div class="stat"><div class="n mono" style="font-size:11px">${viewBox}</div><div class="l">${t('svg-editor.viewbox', 'viewBox')}</div></div>
     `;
 
     this.#renderPanel();

@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { ai } from '../core/ai.js';
 import { copyText } from '../core/util.js';
 import '../ui/jg-ai-bar.js';
@@ -23,13 +24,13 @@ const sheet = css`
 `;
 
 const TASKS = [
-  { value: 'summarise', label: 'Summarise', prompt: 'Summarise the text in at most five bullet points.' },
-  { value: 'rewrite', label: 'Rewrite', prompt: 'Rewrite the text so it is clearer and shorter, keeping the meaning.' },
-  { value: 'tone', label: 'Change tone', prompt: 'Rewrite the text in the requested tone.' },
-  { value: 'translate', label: 'Translate', prompt: 'Translate the text into the requested language. Return only the translation.' },
-  { value: 'proofread', label: 'Proofread', prompt: 'Fix grammar, spelling and punctuation. Return only the corrected text.' },
-  { value: 'bullets', label: 'To bullets', prompt: 'Turn the text into a tight bulleted list.' },
-  { value: 'commit', label: 'Commit message', prompt: 'Write a conventional commit message for this diff. One subject line under 72 characters, then a short body.' },
+  { value: 'summarise', label: t('ai-writer.summarise', 'Summarise'), prompt: 'Summarise the text in at most five bullet points.' },
+  { value: 'rewrite', label: t('ai-writer.rewrite', 'Rewrite'), prompt: 'Rewrite the text so it is clearer and shorter, keeping the meaning.' },
+  { value: 'tone', label: t('ai-writer.changeTone', 'Change tone'), prompt: 'Rewrite the text in the requested tone.' },
+  { value: 'translate', label: t('ai-writer.translate', 'Translate'), prompt: 'Translate the text into the requested language. Return only the translation.' },
+  { value: 'proofread', label: t('ai-writer.proofread', 'Proofread'), prompt: 'Fix grammar, spelling and punctuation. Return only the corrected text.' },
+  { value: 'bullets', label: t('ai-writer.toBullets', 'To bullets'), prompt: 'Turn the text into a tight bulleted list.' },
+  { value: 'commit', label: t('ai-writer.commitMessage', 'Commit message'), prompt: 'Write a conventional commit message for this diff. One subject line under 72 characters, then a short body.' },
 ];
 
 const TONES = ['neutral', 'friendly', 'formal', 'confident', 'playful', 'technical'];
@@ -50,20 +51,20 @@ class AiWriter extends JGApp {
         <jg-select id="tone" style="width:150px" hidden>
           ${TONES.map((tone) => html`<option value="${tone}">${tone}</option>`)}
         </jg-select>
-        <jg-input id="language" placeholder="Language" style="width:150px" hidden></jg-input>
-        <jg-button id="run">Run</jg-button>
-        <jg-button id="stop" variant="outline" hidden>Stop</jg-button>
+        <jg-input id="language" placeholder="${t('ai-writer.language', 'Language')}" style="width:150px" hidden></jg-input>
+        <jg-button id="run">${t('ai-writer.run', 'Run')}</jg-button>
+        <jg-button id="stop" variant="outline" hidden>${t('ai-writer.stop', 'Stop')}</jg-button>
       </div>
 
       <div class="split">
         <div class="pane">
-          <span class="label">Input</span>
-          <jg-textarea id="input" grow sans placeholder="Paste text, notes or a diff"></jg-textarea>
+          <span class="label">${t('ai-writer.input', 'Input')}</span>
+          <jg-textarea id="input" grow sans placeholder="${t('ai-writer.pasteTextNotesOrA', 'Paste text, notes or a diff')}"></jg-textarea>
         </div>
         <div class="pane">
           <div class="spread">
-            <span class="label">Result</span>
-            <jg-button size="sm" variant="ghost" id="copy">Copy</jg-button>
+            <span class="label">${t('ai-writer.result', 'Result')}</span>
+            <jg-button size="sm" variant="ghost" id="copy">${t('ai-writer.copy', 'Copy')}</jg-button>
           </div>
           <div class="out" id="out"></div>
         </div>

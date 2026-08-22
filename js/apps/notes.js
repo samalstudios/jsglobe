@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { uid, debounce, download } from '../core/util.js';
 import { router } from '../core/router.js';
 
@@ -51,7 +52,7 @@ class NotesApp extends JGApp {
       <div class="widget">
         <div class="strong">${latest ? preview(latest.text).slice(0, 40) : 'No notes yet'}</div>
         <div class="body">${latest ? latest.text.split('\n').slice(1, 6).join('\n') : 'Open Notes to write something.'}</div>
-        <jg-button size="sm" variant="outline" id="new">New note</jg-button>
+        <jg-button size="sm" variant="outline" id="new">${t('notes.newNote', 'New note')}</jg-button>
       </div>
     </div>`);
     this.on(this.$('#new'), 'click', () => {
@@ -69,7 +70,7 @@ class NotesApp extends JGApp {
     this.paint(html`<div class="app">
       <div class="shell">
         <aside class="sidebar">
-          <jg-button id="new" size="sm">New note</jg-button>
+          <jg-button id="new" size="sm">${t('notes.newNote', 'New note')}</jg-button>
           <div class="notes">
             ${notes.length
               ? notes.map(
@@ -78,7 +79,7 @@ class NotesApp extends JGApp {
                     <span class="d">${new Date(note.updated).toLocaleDateString()} · ${note.text.trim().split(/\s+/).filter(Boolean).length} words</span>
                   </button>`,
                 )
-              : html`<div class="hint" style="padding:8px">No notes yet</div>`}
+              : html`<div class="hint" style="padding:8px">${t('notes.noNotesYet', 'No notes yet')}</div>`}
           </div>
         </aside>
         <div class="editor">
@@ -87,13 +88,13 @@ class NotesApp extends JGApp {
                 <div class="spread">
                   <span class="hint">Edited ${new Date(active.updated).toLocaleString()}</span>
                   <span class="row tight">
-                    <jg-button size="sm" variant="ghost" id="export">Export</jg-button>
-                    <jg-button size="sm" variant="destructive" id="delete">Delete</jg-button>
+                    <jg-button size="sm" variant="ghost" id="export">${t('notes.export', 'Export')}</jg-button>
+                    <jg-button size="sm" variant="destructive" id="delete">${t('notes.delete', 'Delete')}</jg-button>
                   </span>
                 </div>
-                <jg-textarea id="text" grow sans placeholder="Start typing..."></jg-textarea>
+                <jg-textarea id="text" grow sans placeholder="${t('notes.startTyping', 'Start typing...')}"></jg-textarea>
               `
-            : html`<jg-empty glyph="✎" title="Nothing selected">Create a note to get started.</jg-empty>`}
+            : html`<jg-empty glyph="✎" title="${t('notes.nothingSelected', 'Nothing selected')}">${t('notes.createANoteToGet', 'Create a note to get started.')}</jg-empty>`}
         </div>
       </div>
     </div>`);

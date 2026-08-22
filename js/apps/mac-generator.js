@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { randomBytes, copyText, debounce } from '../core/util.js';
 
 const sheet = css`
@@ -6,10 +7,10 @@ const sheet = css`
 `;
 
 const SEPARATORS = [
-  { value: ':', label: 'Colon - 00:1b:44' },
-  { value: '-', label: 'Hyphen - 00-1b-44' },
-  { value: '.', label: 'Cisco - 001b.4411' },
-  { value: '', label: 'None - 001b4411' },
+  { value: ':', label: t('mac-generator.colon001b44', 'Colon - 00:1b:44') },
+  { value: '-', label: t('mac-generator.hyphen001b44', 'Hyphen - 00-1b-44') },
+  { value: '.', label: t('mac-generator.cisco001b4411', 'Cisco - 001b.4411') },
+  { value: '', label: t('mac-generator.none001b4411', 'None - 001b4411') },
 ];
 
 const format = (bytes, separator, upper) => {
@@ -38,26 +39,26 @@ class MacGenerator extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row nowrap">
-        <jg-input id="prefix" class="grow" mono placeholder="Optional OUI prefix, e.g. 00:1B:44"></jg-input>
+        <jg-input id="prefix" class="grow" mono placeholder="${t('mac-generator.optionalOuiPrefixEG', 'Optional OUI prefix, e.g. 00:1B:44')}"></jg-input>
         <jg-input id="count" type="number" min="1" max="200" value="5" suffix="qty" style="width:120px"></jg-input>
-        <jg-button id="generate">Generate</jg-button>
+        <jg-button id="generate">${t('mac-generator.generate', 'Generate')}</jg-button>
       </div>
 
       <div class="row">
         <jg-select id="separator" value=":" style="width:200px">
           ${SEPARATORS.map((item) => html`<option value="${item.value}">${item.label}</option>`)}
         </jg-select>
-        <jg-switch id="upper"></jg-switch><span class="hint">Uppercase</span>
-        <jg-switch id="unicast" checked></jg-switch><span class="hint">Unicast</span>
-        <jg-switch id="universal" checked></jg-switch><span class="hint">Universally administered</span>
+        <jg-switch id="upper"></jg-switch><span class="hint">${t('mac-generator.uppercase', 'Uppercase')}</span>
+        <jg-switch id="unicast" checked></jg-switch><span class="hint">${t('mac-generator.unicast', 'Unicast')}</span>
+        <jg-switch id="universal" checked></jg-switch><span class="hint">${t('mac-generator.universallyAdministered', 'Universally administered')}</span>
       </div>
 
-      <jg-field label="Addresses" grow>
-        <div slot="action"><jg-button size="sm" variant="outline" id="copy">Copy all</jg-button></div>
+      <jg-field label="${t('mac-generator.addresses', 'Addresses')}" grow>
+        <div slot="action"><jg-button size="sm" variant="outline" id="copy">${t('mac-generator.copyAll', 'Copy all')}</jg-button></div>
         <pre class="code tall scroll list" id="out"></pre>
       </jg-field>
 
-      <jg-card title="Analyse an address">
+      <jg-card title="${t('mac-generator.analyseAnAddress', 'Analyse an address')}">
         <jg-input id="analyse" mono placeholder="00:1b:44:11:3a:b7"></jg-input>
         <div class="kv" id="details"></div>
       </jg-card>
@@ -88,17 +89,17 @@ class MacGenerator extends JGApp {
     const raw = this.$('#analyse').value.replace(/[^0-9a-f]/gi, '');
     const details = this.$('#details');
     if (raw.length !== 12) {
-      details.innerHTML = html`<div>Status</div><div>${raw.length ? 'Needs 12 hex digits' : 'Waiting for input'}</div>`;
+      details.innerHTML = html`<div>${t('mac-generator.status', 'Status')}</div><div>${raw.length ? 'Needs 12 hex digits' : 'Waiting for input'}</div>`;
       return;
     }
     const bytes = Uint8Array.from(raw.match(/../g).map((pair) => parseInt(pair, 16)));
     details.innerHTML = html`
-      <div>Normalised</div><div class="mono">${format(bytes, ':', false)}</div>
-      <div>OUI</div><div class="mono">${format(bytes.slice(0, 3), ':', true)}</div>
-      <div>Device id</div><div class="mono">${format(bytes.slice(3), ':', true)}</div>
-      <div>Cast</div><div>${bytes[0] & 0x01 ? 'Multicast' : 'Unicast'}</div>
-      <div>Administration</div><div>${bytes[0] & 0x02 ? 'Locally administered' : 'Universally administered'}</div>
-      <div>EUI-64</div><div class="mono">${format(Uint8Array.from([bytes[0] ^ 0x02, bytes[1], bytes[2], 0xff, 0xfe, bytes[3], bytes[4], bytes[5]]), ':', false)}</div>
+      <div>${t('mac-generator.normalised', 'Normalised')}</div><div class="mono">${format(bytes, ':', false)}</div>
+      <div>${t('mac-generator.oui', 'OUI')}</div><div class="mono">${format(bytes.slice(0, 3), ':', true)}</div>
+      <div>${t('mac-generator.deviceId', 'Device id')}</div><div class="mono">${format(bytes.slice(3), ':', true)}</div>
+      <div>${t('mac-generator.cast', 'Cast')}</div><div>${bytes[0] & 0x01 ? 'Multicast' : 'Unicast'}</div>
+      <div>${t('mac-generator.administration', 'Administration')}</div><div>${bytes[0] & 0x02 ? 'Locally administered' : 'Universally administered'}</div>
+      <div>${t('mac-generator.eui64', 'EUI-64')}</div><div class="mono">${format(Uint8Array.from([bytes[0] ^ 0x02, bytes[1], bytes[2], 0xff, 0xfe, bytes[3], bytes[4], bytes[5]]), ':', false)}</div>
     `;
   }
 }

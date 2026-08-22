@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce } from '../core/util.js';
 
 const sheet = css`
@@ -68,11 +69,11 @@ const analyse = (password) => {
 };
 
 const grade = (bits) => {
-  if (bits < 28) return { label: 'Very weak', color: 'var(--destructive)', ratio: 0.15 };
-  if (bits < 40) return { label: 'Weak', color: 'var(--destructive)', ratio: 0.32 };
-  if (bits < 60) return { label: 'Reasonable', color: 'var(--warning)', ratio: 0.55 };
-  if (bits < 90) return { label: 'Strong', color: 'var(--success)', ratio: 0.78 };
-  return { label: 'Very strong', color: 'var(--success)', ratio: 1 };
+  if (bits < 28) return { label: t('password-strength.veryWeak', 'Very weak'), color: 'var(--destructive)', ratio: 0.15 };
+  if (bits < 40) return { label: t('password-strength.weak', 'Weak'), color: 'var(--destructive)', ratio: 0.32 };
+  if (bits < 60) return { label: t('password-strength.reasonable', 'Reasonable'), color: 'var(--warning)', ratio: 0.55 };
+  if (bits < 90) return { label: t('password-strength.strong', 'Strong'), color: 'var(--success)', ratio: 0.78 };
+  return { label: t('password-strength.veryStrong', 'Very strong'), color: 'var(--success)', ratio: 1 };
 };
 
 class PasswordStrength extends JGApp {
@@ -81,31 +82,31 @@ class PasswordStrength extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="Password" hint="Checked entirely on this device, nothing is sent anywhere">
+      <jg-field label="${t('password-strength.password', 'Password')}" hint="${t('password-strength.checkedEntirelyOnThisDevice', 'Checked entirely on this device, nothing is sent anywhere')}">
         <div class="row nowrap">
-          <jg-input id="input" type="password" class="grow" placeholder="Type or paste a password"></jg-input>
-          <jg-button size="sm" variant="outline" id="reveal">Show</jg-button>
+          <jg-input id="input" type="password" class="grow" placeholder="${t('password-strength.typeOrPasteAPassword', 'Type or paste a password')}"></jg-input>
+          <jg-button size="sm" variant="outline" id="reveal">${t('password-strength.show', 'Show')}</jg-button>
         </div>
       </jg-field>
 
-      <jg-card title="Strength">
+      <jg-card title="${t('password-strength.strength', 'Strength')}">
         <div class="spread">
           <span class="verdict" id="verdict">-</span>
-          <jg-badge id="entropy">0 bits</jg-badge>
+          <jg-badge id="entropy">${t('password-strength.0Bits', '0 bits')}</jg-badge>
         </div>
         <div class="meter"><i id="bar"></i></div>
         <div class="hint" id="summary"></div>
       </jg-card>
 
-      <jg-card title="Composition">
+      <jg-card title="${t('password-strength.composition', 'Composition')}">
         <div class="checks" id="checks"></div>
       </jg-card>
 
-      <jg-card title="Time to crack" sub="Assuming the attacker knows the character set">
+      <jg-card title="${t('password-strength.timeToCrack', 'Time to crack')}" sub="Assuming the attacker knows the character set">
         <div class="kv" id="times"></div>
       </jg-card>
 
-      <jg-card title="Weaknesses" id="issuescard" hidden>
+      <jg-card title="${t('password-strength.weaknesses', 'Weaknesses')}" id="issuescard" hidden>
         <ul class="stack tight" id="issues"></ul>
       </jg-card>
     </div>`);
@@ -143,10 +144,10 @@ class PasswordStrength extends JGApp {
         </div>`,
       ),
       html`<div class="check" data-pass="${String(password.length >= 12)}">
-        <span class="mark">${password.length >= 12 ? '✓' : '○'}</span><span>At least 12 characters</span>
+        <span class="mark">${password.length >= 12 ? '✓' : '○'}</span><span>${t('password-strength.atLeast12Characters', 'At least 12 characters')}</span>
       </div>`,
       html`<div class="check" data-pass="${String(password.length >= 16)}">
-        <span class="mark">${password.length >= 16 ? '✓' : '○'}</span><span>At least 16 characters</span>
+        <span class="mark">${password.length >= 16 ? '✓' : '○'}</span><span>${t('password-strength.atLeast16Characters', 'At least 16 characters')}</span>
       </div>`,
     ].join('');
 

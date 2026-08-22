@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce } from '../core/util.js';
 
 const sheet = css`
@@ -134,7 +135,7 @@ class CrontabGenerator extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="Cron expression">
+      <jg-field label="${t('crontab-generator.cronExpression', 'Cron expression')}">
         <jg-input id="input" mono value="30 8 * * 1-5"></jg-input>
       </jg-field>
 
@@ -148,16 +149,16 @@ class CrontabGenerator extends JGApp {
         )}
       </div>
 
-      <jg-card title="Meaning">
+      <jg-card title="${t('crontab-generator.meaning', 'Meaning')}">
         <div class="expr" id="expr"></div>
         <div id="description" class="center"></div>
       </jg-card>
 
-      <jg-card title="Next runs" sub="Based on this machine's clock and timezone">
+      <jg-card title="${t('crontab-generator.nextRuns', 'Next runs')}" sub="Based on this machine's clock and timezone">
         <div class="kv" id="runs"></div>
       </jg-card>
 
-      <jg-card title="Presets">
+      <jg-card title="${t('crontab-generator.presets', 'Presets')}">
         <div class="presets">
           ${PRESETS.map(
             (preset) => html`<button class="preset" data-cron="${preset[1]}"><span>${preset[0]}</span><code>${preset[1]}</code></button>`,
@@ -191,7 +192,7 @@ class CrontabGenerator extends JGApp {
     }
 
     if (parts.length !== 5) {
-      description.innerHTML = html`<span class="error">A cron expression needs five fields.</span>`;
+      description.innerHTML = html`<span class="error">${t('crontab-generator.aCronExpressionNeedsFive', 'A cron expression needs five fields.')}</span>`;
       this.$('#runs').innerHTML = '';
       return;
     }
@@ -206,7 +207,7 @@ class CrontabGenerator extends JGApp {
                 html`<div>Run ${index + 1}</div><div class="mono">${date.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}</div>`,
             )
             .join('')
-        : html`<div>Next run</div><div>No match within the next year</div>`;
+        : html`<div>${t('crontab-generator.nextRun', 'Next run')}</div><div>${t('crontab-generator.noMatchWithinTheNext', 'No match within the next year')}</div>`;
     } catch (error) {
       description.innerHTML = html`<span class="error">${error.message}</span>`;
       this.$('#runs').innerHTML = '';

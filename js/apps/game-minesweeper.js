@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 
 const sheet = css`
   .head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -57,9 +58,9 @@ const sheet = css`
 `;
 
 const LEVELS = {
-  easy: { cols: 9, rows: 9, mines: 10, label: 'Easy' },
-  medium: { cols: 16, rows: 16, mines: 40, label: 'Medium' },
-  hard: { cols: 24, rows: 16, mines: 70, label: 'Hard' },
+  easy: { cols: 9, rows: 9, mines: 10, label: t('game-minesweeper.easy', 'Easy') },
+  medium: { cols: 16, rows: 16, mines: 40, label: t('game-minesweeper.medium', 'Medium') },
+  hard: { cols: 24, rows: 16, mines: 70, label: t('game-minesweeper.hard', 'Hard') },
 };
 
 class Minesweeper extends JGApp {
@@ -86,7 +87,7 @@ class Minesweeper extends JGApp {
         <span class="grow"></span>
         <span class="stat" id="mines">0</span>
         <span class="stat" id="clock">0:00</span>
-        <jg-button size="sm" variant="outline" id="new">New game</jg-button>
+        <jg-button size="sm" variant="outline" id="new">${t('game-minesweeper.newGame', 'New game')}</jg-button>
       </div>
 
       <div class="wrap"><div class="board" id="board"></div></div>

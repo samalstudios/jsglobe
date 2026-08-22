@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 
 const sheet = css`
   .layout { display: flex; gap: 16px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
@@ -85,19 +86,19 @@ class GameTetris extends JGApp {
         <div class="well" id="well"></div>
 
         <div class="side">
-          <span class="label">Next</span>
+          <span class="label">${t('game-tetris.next', 'Next')}</span>
           <div class="preview" id="preview"></div>
 
           <div class="stats">
-            <div class="stat"><span>Score</span><b id="score">0</b></div>
-            <div class="stat"><span>Lines</span><b id="lines">0</b></div>
-            <div class="stat"><span>Level</span><b id="level">1</b></div>
-            <div class="stat"><span>Best</span><b id="best">0</b></div>
+            <div class="stat"><span>${t('game-tetris.score', 'Score')}</span><b id="score">0</b></div>
+            <div class="stat"><span>${t('game-tetris.lines', 'Lines')}</span><b id="lines">0</b></div>
+            <div class="stat"><span>${t('game-tetris.level', 'Level')}</span><b id="level">1</b></div>
+            <div class="stat"><span>${t('game-tetris.best', 'Best')}</span><b id="best">0</b></div>
           </div>
 
           <div class="row">
-            <jg-button size="sm" id="play">Play</jg-button>
-            <jg-button size="sm" variant="outline" id="pause">Pause</jg-button>
+            <jg-button size="sm" id="play">${t('game-tetris.play', 'Play')}</jg-button>
+            <jg-button size="sm" variant="outline" id="pause">${t('game-tetris.pause', 'Pause')}</jg-button>
           </div>
 
           <div class="hint">
@@ -294,11 +295,11 @@ class GameTetris extends JGApp {
 
     const overlay =
       this.#state === 'over'
-        ? html`<div class="overlay"><div>Game over<br /><span class="hint">Score ${this.#score}. Press space to play again.</span></div></div>`
+        ? html`<div class="overlay"><div>${t('game-tetris.gameOver', 'Game over')}<br /><span class="hint">Score ${this.#score}. Press space to play again.</span></div></div>`
         : this.#state === 'paused'
-          ? html`<div class="overlay">Paused</div>`
+          ? html`<div class="overlay">${t('game-tetris.paused', 'Paused')}</div>`
           : this.#state === 'idle'
-            ? html`<div class="overlay"><div>Press play<br /><span class="hint">or hit space</span></div></div>`
+            ? html`<div class="overlay"><div>${t('game-tetris.pressPlay', 'Press play')}<br /><span class="hint">${t('game-tetris.orHitSpace', 'or hit space')}</span></div></div>`
             : '';
 
     this.$('#well').innerHTML =

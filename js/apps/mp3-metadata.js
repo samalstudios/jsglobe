@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { download, toast, formatBytes } from '../core/util.js';
 
 const sheet = css`
@@ -83,19 +84,19 @@ const sheet = css`
 `;
 
 const FRAMES = {
-  TIT2: { key: 'title', label: 'Title' },
-  TPE1: { key: 'artist', label: 'Artist' },
-  TPE2: { key: 'albumArtist', label: 'Album artist' },
-  TALB: { key: 'album', label: 'Album' },
-  TYER: { key: 'year', label: 'Year' },
-  TDRC: { key: 'year', label: 'Year' },
-  TRCK: { key: 'track', label: 'Track' },
-  TPOS: { key: 'disc', label: 'Disc' },
-  TCON: { key: 'genre', label: 'Genre' },
-  TCOM: { key: 'composer', label: 'Composer' },
-  TPUB: { key: 'publisher', label: 'Publisher' },
-  TBPM: { key: 'bpm', label: 'BPM' },
-  COMM: { key: 'comment', label: 'Comment' },
+  TIT2: { key: 'title', label: t('mp3-metadata.title', 'Title') },
+  TPE1: { key: 'artist', label: t('mp3-metadata.artist', 'Artist') },
+  TPE2: { key: 'albumArtist', label: t('mp3-metadata.albumArtist', 'Album artist') },
+  TALB: { key: 'album', label: t('mp3-metadata.album', 'Album') },
+  TYER: { key: 'year', label: t('mp3-metadata.year', 'Year') },
+  TDRC: { key: 'year', label: t('mp3-metadata.year', 'Year') },
+  TRCK: { key: 'track', label: t('mp3-metadata.track', 'Track') },
+  TPOS: { key: 'disc', label: t('mp3-metadata.disc', 'Disc') },
+  TCON: { key: 'genre', label: t('mp3-metadata.genre', 'Genre') },
+  TCOM: { key: 'composer', label: t('mp3-metadata.composer', 'Composer') },
+  TPUB: { key: 'publisher', label: t('mp3-metadata.publisher', 'Publisher') },
+  TBPM: { key: 'bpm', label: t('mp3-metadata.bpm', 'BPM') },
+  COMM: { key: 'comment', label: t('mp3-metadata.comment', 'Comment') },
 };
 
 const WRITE_ORDER = [
@@ -271,7 +272,7 @@ class Mp3Metadata extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <div class="drop" id="drop">Drop MP3 files here, or click to choose them</div>
+      <div class="drop" id="drop">${t('mp3-metadata.dropMp3FilesHereOr', 'Drop MP3 files here, or click to choose them')}</div>
 
       <div class="shell" id="body" hidden>
         <div class="list-pane">
@@ -285,26 +286,26 @@ class Mp3Metadata extends JGApp {
         <div class="edit">
           <div class="split">
             <div class="stack tight">
-              <div class="cover" id="cover">No artwork</div>
-              <jg-button size="sm" variant="outline" id="pick-cover">Replace artwork</jg-button>
-              <jg-button size="sm" variant="ghost" id="drop-cover">Remove artwork</jg-button>
+              <div class="cover" id="cover">${t('mp3-metadata.noArtwork', 'No artwork')}</div>
+              <jg-button size="sm" variant="outline" id="pick-cover">${t('mp3-metadata.replaceArtwork', 'Replace artwork')}</jg-button>
+              <jg-button size="sm" variant="ghost" id="drop-cover">${t('mp3-metadata.removeArtwork', 'Remove artwork')}</jg-button>
             </div>
 
             <div class="stack tight">
               <div class="fields">
-                <jg-field label="Title"><jg-input id="title"></jg-input></jg-field>
-                <jg-field label="Artist"><jg-input id="artist"></jg-input></jg-field>
-                <jg-field label="Album"><jg-input id="album"></jg-input></jg-field>
-                <jg-field label="Album artist"><jg-input id="albumArtist"></jg-input></jg-field>
-                <jg-field label="Year"><jg-input id="year" placeholder="2026"></jg-input></jg-field>
-                <jg-field label="Track"><jg-input id="track" placeholder="1/12"></jg-input></jg-field>
-                <jg-field label="Disc"><jg-input id="disc" placeholder="1/1"></jg-input></jg-field>
-                <jg-field label="Genre"><jg-input id="genre" placeholder="${GENRES.slice(0, 3).join(', ')}"></jg-input></jg-field>
-                <jg-field label="Composer"><jg-input id="composer"></jg-input></jg-field>
-                <jg-field label="Publisher"><jg-input id="publisher"></jg-input></jg-field>
-                <jg-field label="BPM"><jg-input id="bpm" type="number" min="0" max="400"></jg-input></jg-field>
+                <jg-field label="${t('mp3-metadata.title', 'Title')}"><jg-input id="title"></jg-input></jg-field>
+                <jg-field label="${t('mp3-metadata.artist', 'Artist')}"><jg-input id="artist"></jg-input></jg-field>
+                <jg-field label="${t('mp3-metadata.album', 'Album')}"><jg-input id="album"></jg-input></jg-field>
+                <jg-field label="${t('mp3-metadata.albumArtist', 'Album artist')}"><jg-input id="albumArtist"></jg-input></jg-field>
+                <jg-field label="${t('mp3-metadata.year', 'Year')}"><jg-input id="year" placeholder="2026"></jg-input></jg-field>
+                <jg-field label="${t('mp3-metadata.track', 'Track')}"><jg-input id="track" placeholder="1/12"></jg-input></jg-field>
+                <jg-field label="${t('mp3-metadata.disc', 'Disc')}"><jg-input id="disc" placeholder="1/1"></jg-input></jg-field>
+                <jg-field label="${t('mp3-metadata.genre', 'Genre')}"><jg-input id="genre" placeholder="${GENRES.slice(0, 3).join(', ')}"></jg-input></jg-field>
+                <jg-field label="${t('mp3-metadata.composer', 'Composer')}"><jg-input id="composer"></jg-input></jg-field>
+                <jg-field label="${t('mp3-metadata.publisher', 'Publisher')}"><jg-input id="publisher"></jg-input></jg-field>
+                <jg-field label="${t('mp3-metadata.bpm', 'BPM')}"><jg-input id="bpm" type="number" min="0" max="400"></jg-input></jg-field>
               </div>
-              <jg-field label="Comment"><jg-textarea id="comment" rows="2" sans></jg-textarea></jg-field>
+              <jg-field label="${t('mp3-metadata.comment', 'Comment')}"><jg-textarea id="comment" rows="2" sans></jg-textarea></jg-field>
               <div class="kv" id="file"></div>
             </div>
           </div>
@@ -321,14 +322,14 @@ class Mp3Metadata extends JGApp {
     </div>`);
 
     this.setActions([
-      { id: 'add', label: 'Add files', icon: 'plus' },
+      { id: 'add', label: t('mp3-metadata.addFiles', 'Add files'), icon: 'plus' },
       { separator: true },
-      { id: 'apply', label: 'Apply shared fields', icon: 'copy', title: 'Copy artist, album, year and the rest to every ticked file' },
-      { id: 'number', label: 'Number tracks', icon: 'list', title: 'Number the ticked files in list order' },
-      { id: 'from-name', label: 'Titles from filenames', icon: 'type', title: 'Read the title and track number from each filename' },
+      { id: 'apply', label: t('mp3-metadata.applySharedFields', 'Apply shared fields'), icon: 'copy', title: 'Copy artist, album, year and the rest to every ticked file' },
+      { id: 'number', label: t('mp3-metadata.numberTracks', 'Number tracks'), icon: 'list', title: 'Number the ticked files in list order' },
+      { id: 'from-name', label: t('mp3-metadata.titlesFromFilenames', 'Titles from filenames'), icon: 'type', title: 'Read the title and track number from each filename' },
       { spacer: true },
-      { id: 'save', label: 'Save selected', icon: 'music' },
-      { id: 'remove', label: 'Remove', icon: 'close', danger: true },
+      { id: 'save', label: t('mp3-metadata.saveSelected', 'Save selected'), icon: 'music' },
+      { id: 'remove', label: t('mp3-metadata.remove', 'Remove'), icon: 'close', danger: true },
     ].map((item) => (item.id ? { ...item, action: () => this.#action(item.id) } : item)));
 
     const picker = this.$('#picker');
@@ -455,10 +456,10 @@ class Mp3Metadata extends JGApp {
     });
 
     this.$('#file').innerHTML = html`
-      <div>Name</div><div class="mono">${track.file.name}</div>
-      <div>Size</div><div>${formatBytes(track.file.size)}</div>
-      <div>Tag</div><div>${track.version ? `ID3v${track.version}, ${formatBytes(track.tagSize)}` : 'none found'}</div>
-      <div>Audio</div><div>${formatBytes(track.file.size - track.tagSize)}</div>
+      <div>${t('mp3-metadata.name', 'Name')}</div><div class="mono">${track.file.name}</div>
+      <div>${t('mp3-metadata.size', 'Size')}</div><div>${formatBytes(track.file.size)}</div>
+      <div>${t('mp3-metadata.tag', 'Tag')}</div><div>${track.version ? `ID3v${track.version}, ${formatBytes(track.tagSize)}` : 'none found'}</div>
+      <div>${t('mp3-metadata.audio', 'Audio')}</div><div>${formatBytes(track.file.size - track.tagSize)}</div>
     `;
 
     this.#paintCover();

@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { copyText } from '../core/util.js';
 
 const sheet = css`
@@ -44,8 +45,8 @@ const TYPES = ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'NS', 'SOA', 'SRV', 'CAA', 'PT
 const DEFAULT_TYPES = ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'NS'];
 
 const RESOLVERS = {
-  cloudflare: { label: 'Cloudflare', url: 'https://cloudflare-dns.com/dns-query' },
-  google: { label: 'Google', url: 'https://dns.google/resolve' },
+  cloudflare: { label: t('dns-lookup.cloudflare', 'Cloudflare'), url: 'https://cloudflare-dns.com/dns-query' },
+  google: { label: t('dns-lookup.google', 'Google'), url: 'https://dns.google/resolve' },
 };
 
 const CODES = {
@@ -81,9 +82,9 @@ const reverseName = (value) => {
 class DnsLookup extends JGApp {
   static appId = 'dns-lookup';
   static settings = [
-    { key: 'resolver', label: 'Resolver', type: 'select', default: 'cloudflare', options: [
-      { value: 'cloudflare', label: 'Cloudflare' },
-      { value: 'google', label: 'Google' },
+    { key: 'resolver', label: t('dns-lookup.resolver', 'Resolver'), type: 'select', default: 'cloudflare', options: [
+      { value: 'cloudflare', label: t('dns-lookup.cloudflare', 'Cloudflare') },
+      { value: 'google', label: t('dns-lookup.google', 'Google') },
     ] },
   ];
   static styles = [...JGApp.styles, sheet];
@@ -93,13 +94,13 @@ class DnsLookup extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="Domain or IP address" hint="An IP address is looked up as a reverse PTR record">
+      <jg-field label="${t('dns-lookup.domainOrIpAddress', 'Domain or IP address')}" hint="${t('dns-lookup.anIpAddressIsLooked', 'An IP address is looked up as a reverse PTR record')}">
         <div class="row nowrap">
           <jg-input id="query" class="grow" mono placeholder="example.com" value="jsglobe.com"></jg-input>
           <jg-select id="resolver" value="${this.config.get('resolver', 'cloudflare')}" style="width:150px">
             ${Object.entries(RESOLVERS).map(([key, item]) => html`<option value="${key}">${item.label}</option>`)}
           </jg-select>
-          <jg-button id="run">Look up</jg-button>
+          <jg-button id="run">${t('dns-lookup.lookUp', 'Look up')}</jg-button>
         </div>
       </jg-field>
 
@@ -108,11 +109,11 @@ class DnsLookup extends JGApp {
       </div>
 
       <div class="row">
-        <jg-button size="sm" variant="ghost" id="common">Common</jg-button>
-        <jg-button size="sm" variant="ghost" id="all">All types</jg-button>
+        <jg-button size="sm" variant="ghost" id="common">${t('dns-lookup.common', 'Common')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="all">${t('dns-lookup.allTypes', 'All types')}</jg-button>
         <span class="grow"></span>
         <span class="flags" id="flags"></span>
-        <jg-button size="sm" variant="outline" id="copy">Copy results</jg-button>
+        <jg-button size="sm" variant="outline" id="copy">${t('dns-lookup.copyResults', 'Copy results')}</jg-button>
       </div>
 
       <div id="results"></div>
@@ -146,7 +147,7 @@ class DnsLookup extends JGApp {
       this.#paintTypes();
     });
 
-    this.$('#results').innerHTML = html`<jg-empty glyph="⌕" title="No lookup yet">Enter a domain and choose the record types you care about.</jg-empty>`;
+    this.$('#results').innerHTML = html`<jg-empty glyph="⌕" title="${t('dns-lookup.noLookupYet', 'No lookup yet')}">${t('dns-lookup.enterADomainAndChoose', 'Enter a domain and choose the record types you care about.')}</jg-empty>`;
   }
 
   #paintTypes() {
@@ -166,7 +167,7 @@ class DnsLookup extends JGApp {
     const types = reverse ? ['PTR'] : [...this.#selected];
 
     if (!types.length) {
-      results.innerHTML = html`<jg-empty glyph="⌕" title="No record types selected">Pick at least one type above.</jg-empty>`;
+      results.innerHTML = html`<jg-empty glyph="⌕" title="${t('dns-lookup.noRecordTypesSelected', 'No record types selected')}">${t('dns-lookup.pickAtLeastOneType', 'Pick at least one type above.')}</jg-empty>`;
       return;
     }
 
@@ -193,8 +194,8 @@ class DnsLookup extends JGApp {
     if (status) {
       flags.innerHTML = [
         html`<jg-badge tone="${status.Status === 0 ? 'success' : 'danger'}">${CODES[status.Status] ?? `RCODE ${status.Status}`}</jg-badge>`,
-        status.AD ? html`<jg-badge tone="accent">DNSSEC verified</jg-badge>` : '',
-        status.TC ? html`<jg-badge tone="warning">truncated</jg-badge>` : '',
+        status.AD ? html`<jg-badge tone="accent">${t('dns-lookup.dnssecVerified', 'DNSSEC verified')}</jg-badge>` : '',
+        status.TC ? html`<jg-badge tone="warning">${t('dns-lookup.truncated', 'truncated')}</jg-badge>` : '',
       ].join('');
     }
 
@@ -221,7 +222,7 @@ class DnsLookup extends JGApp {
         return html`<div class="group">
           <h3>${answer.type} <jg-badge>${records.length}</jg-badge></h3>
           <table>
-            <thead><tr><th>Name</th><th>TTL</th><th>Value</th></tr></thead>
+            <thead><tr><th>${t('dns-lookup.name', 'Name')}</th><th>${t('dns-lookup.ttl', 'TTL')}</th><th>${t('dns-lookup.value', 'Value')}</th></tr></thead>
             <tbody>
               ${records.map(
                 (record) => html`<tr>

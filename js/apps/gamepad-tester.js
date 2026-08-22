@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 
 const sheet = css`
   .app { container-type: inline-size; }
@@ -69,7 +70,7 @@ const sheet = css`
 class GamepadTester extends JGApp {
   static appId = 'gamepad-tester';
   static settings = [
-    { key: 'deadzone', label: 'Stick dead zone', type: 'number', default: 8, min: 0, max: 40 },
+    { key: 'deadzone', label: t('gamepad-tester.stickDeadZone', 'Stick dead zone'), type: 'number', default: 8, min: 0, max: 40 },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -80,8 +81,8 @@ class GamepadTester extends JGApp {
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
       <div class="stack tight">
-        <div class="label">Gamepad</div>
-        <div class="hint" id="count">Press a button on a controller</div>
+        <div class="label">${t('gamepad-tester.gamepad', 'Gamepad')}</div>
+        <div class="hint" id="count">${t('gamepad-tester.pressAButtonOnA', 'Press a button on a controller')}</div>
       </div>
     </div>`);
     const tick = () => {
@@ -99,11 +100,11 @@ class GamepadTester extends JGApp {
       <div class="row">
         <jg-select id="pick" size="sm" style="width:260px"></jg-select>
         <span class="grow"></span>
-        <jg-button size="sm" variant="outline" id="rumble">Test rumble</jg-button>
+        <jg-button size="sm" variant="outline" id="rumble">${t('gamepad-tester.testRumble', 'Test rumble')}</jg-button>
       </div>
       <div class="empty" id="empty">
-        <div class="title">No controller yet</div>
-        <div class="hint">Plug in a gamepad and press any button. Browsers only reveal a pad after it sends input.</div>
+        <div class="title">${t('gamepad-tester.noControllerYet', 'No controller yet')}</div>
+        <div class="hint">${t('gamepad-tester.plugInAGamepadAnd', 'Plug in a gamepad and press any button. Browsers only reveal a pad after it sends input.')}</div>
       </div>
       <div class="pad" id="pad" hidden>
         <div class="ident">
@@ -112,11 +113,11 @@ class GamepadTester extends JGApp {
         </div>
         <div class="sticks" id="sticks"></div>
         <div class="stack tight">
-          <div class="label">Buttons</div>
+          <div class="label">${t('gamepad-tester.buttons', 'Buttons')}</div>
           <div class="buttons" id="buttons"></div>
         </div>
         <div class="stack tight">
-          <div class="label">Axes</div>
+          <div class="label">${t('gamepad-tester.axes', 'Axes')}</div>
           <div class="axes" id="axes"></div>
         </div>
       </div>

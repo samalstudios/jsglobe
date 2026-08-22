@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { copyText, toast } from '../core/util.js';
 
 const sheet = css`
@@ -104,26 +105,26 @@ class TimezonePlanner extends JGApp {
     this.paint(html`<div class="app">
       <div class="row">
         <jg-select id="picker" size="sm" style="flex:1;min-width:200px">
-          <option value="">Add a city</option>
+          <option value="">${t('timezone-planner.addACity', 'Add a city')}</option>
           ${SUGGESTIONS.map((zone) => html`<option value="${zone}">${cityName(zone)} - ${zone}</option>`)}
         </jg-select>
         <jg-input id="date" type="date" size="sm" style="width:170px"></jg-input>
-        <jg-button size="sm" variant="ghost" id="today">Today</jg-button>
+        <jg-button size="sm" variant="ghost" id="today">${t('timezone-planner.today', 'Today')}</jg-button>
       </div>
 
       <div class="row">
-        <span class="hint">Working hours</span>
+        <span class="hint">${t('timezone-planner.workingHours', 'Working hours')}</span>
         <jg-input id="from" type="number" min="0" max="23" size="sm" style="width:80px" value="${saved.work[0]}"></jg-input>
-        <span class="hint">to</span>
+        <span class="hint">${t('timezone-planner.to', 'to')}</span>
         <jg-input id="to" type="number" min="1" max="24" size="sm" style="width:80px" value="${saved.work[1]}"></jg-input>
         <span class="grow"></span>
-        <jg-button size="sm" variant="ghost" id="copy">Copy plan</jg-button>
+        <jg-button size="sm" variant="ghost" id="copy">${t('timezone-planner.copyPlan', 'Copy plan')}</jg-button>
       </div>
 
       <div class="scale" id="scale"></div>
       <div class="rows" id="rows"></div>
 
-      <jg-card title="Overlapping hours" sub="Slots that fall inside working hours everywhere">
+      <jg-card title="${t('timezone-planner.overlappingHours', 'Overlapping hours')}" sub="Slots that fall inside working hours everywhere">
         <div class="best" id="best"></div>
       </jg-card>
 
@@ -240,8 +241,8 @@ class TimezonePlanner extends JGApp {
           </span>
           <span class="strip">${cells}</span>
           <span class="row tight">
-            <jg-button size="icon-sm" variant="ghost" data-home-set="${row.zone}" title="Make this the reference">◎</jg-button>
-            <jg-button size="icon-sm" variant="ghost" data-drop="${row.zone}" title="Remove">✕</jg-button>
+            <jg-button size="icon-sm" variant="ghost" data-home-set="${row.zone}" title="${t('timezone-planner.makeThisTheReference', 'Make this the reference')}">◎</jg-button>
+            <jg-button size="icon-sm" variant="ghost" data-drop="${row.zone}" title="${t('timezone-planner.remove', 'Remove')}">✕</jg-button>
           </span>
         </div>`;
       })
@@ -279,7 +280,7 @@ class TimezonePlanner extends JGApp {
             (hour) => html`<jg-badge mono tone="success">${String(hour).padStart(2, '0')}:00 ${cityName(this.#home)}</jg-badge>`,
           )
           .join('')
-      : html`<span class="hint">No hour works for everyone. Widen the working hours or drop a city.</span>`;
+      : html`<span class="hint">${t('timezone-planner.noHourWorksForEveryone', 'No hour works for everyone. Widen the working hours or drop a city.')}</span>`;
   }
 }
 

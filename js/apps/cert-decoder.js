@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText } from '../core/util.js';
 
 const sheet = css`
@@ -304,16 +305,16 @@ class CertDecoder extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-button size="sm" variant="outline" id="paste-file">Open a .pem or .crt file</jg-button>
-        <jg-button size="sm" variant="ghost" id="clear">Clear</jg-button>
+        <jg-button size="sm" variant="outline" id="paste-file">${t('cert-decoder.openAPemOrCrt', 'Open a .pem or .crt file')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="clear">${t('cert-decoder.clear', 'Clear')}</jg-button>
         <span class="grow"></span>
-        <jg-badge id="status" tone="muted">Waiting</jg-badge>
+        <jg-badge id="status" tone="muted">${t('cert-decoder.waiting', 'Waiting')}</jg-badge>
       </div>
 
       <div class="split">
         <div class="pane">
-          <span class="label">PEM or base64</span>
-          <jg-code id="input" grow language="plain" placeholder="-----BEGIN CERTIFICATE-----"></jg-code>
+          <span class="label">${t('cert-decoder.pemOrBase64', 'PEM or base64')}</span>
+          <jg-code id="input" grow language="plain" placeholder="${t('cert-decoder.beginCertificate', '-----BEGIN CERTIFICATE-----')}"></jg-code>
         </div>
         <div class="pane" id="out"></div>
       </div>
@@ -387,34 +388,34 @@ class CertDecoder extends JGApp {
     this.$('#out').innerHTML = html`
       <jg-card title="${parsed.kind}">
         <div class="kv">
-          <div>Subject</div><div class="mono">${parsed.subject.join(', ') || 'none'}</div>
-          ${parsed.issuer ? html`<div>Issuer</div><div class="mono">${parsed.issuer.join(', ') || 'none'}</div>` : ''}
-          ${parsed.serial ? html`<div>Serial</div><div class="mono">${parsed.serial}</div>` : ''}
-          ${parsed.version ? html`<div>Version</div><div class="mono">v${parsed.version}</div>` : ''}
-          <div>Key</div><div class="mono">${parsed.key.type}, ${parsed.key.detail}</div>
-          <div>Signature</div><div class="mono">${parsed.signature}</div>
+          <div>${t('cert-decoder.subject', 'Subject')}</div><div class="mono">${parsed.subject.join(', ') || 'none'}</div>
+          ${parsed.issuer ? html`<div>${t('cert-decoder.issuer', 'Issuer')}</div><div class="mono">${parsed.issuer.join(', ') || 'none'}</div>` : ''}
+          ${parsed.serial ? html`<div>${t('cert-decoder.serial', 'Serial')}</div><div class="mono">${parsed.serial}</div>` : ''}
+          ${parsed.version ? html`<div>${t('cert-decoder.version', 'Version')}</div><div class="mono">v${parsed.version}</div>` : ''}
+          <div>${t('cert-decoder.key', 'Key')}</div><div class="mono">${parsed.key.type}, ${parsed.key.detail}</div>
+          <div>${t('cert-decoder.signature', 'Signature')}</div><div class="mono">${parsed.signature}</div>
         </div>
       </jg-card>
 
       ${parsed.notBefore
-        ? html`<jg-card title="Validity">
+        ? html`<jg-card title="${t('cert-decoder.validity', 'Validity')}">
             <div class="kv">
-              <div>Not before</div><div class="mono">${parsed.notBefore.toISOString().replace('T', ' ').slice(0, 19)}</div>
-              <div>Not after</div><div class="mono">${parsed.notAfter.toISOString().replace('T', ' ').slice(0, 19)}</div>
-              <div>Remaining</div><div class="mono">${expired ? `expired ${Math.abs(days)} days ago` : `${days} days`}</div>
+              <div>${t('cert-decoder.notBefore', 'Not before')}</div><div class="mono">${parsed.notBefore.toISOString().replace('T', ' ').slice(0, 19)}</div>
+              <div>${t('cert-decoder.notAfter', 'Not after')}</div><div class="mono">${parsed.notAfter.toISOString().replace('T', ' ').slice(0, 19)}</div>
+              <div>${t('cert-decoder.remaining', 'Remaining')}</div><div class="mono">${expired ? `expired ${Math.abs(days)} days ago` : `${days} days`}</div>
             </div>
             <div class="life" style="margin-top:8px"><i style="width:${used.toFixed(1)}%"></i></div>
           </jg-card>`
         : ''}
 
       ${parsed.names.length
-        ? html`<jg-card title="Covers these names" sub="${parsed.names.length} entries">
+        ? html`<jg-card title="${t('cert-decoder.coversTheseNames', 'Covers these names')}" sub="${parsed.names.length} entries">
             <div class="names">${parsed.names.map((entry) => html`<div>${entry.kind}: ${entry.value}</div>`)}</div>
           </jg-card>`
         : ''}
 
       ${parsed.extensions.length
-        ? html`<jg-card title="Extensions">
+        ? html`<jg-card title="${t('cert-decoder.extensions', 'Extensions')}">
             <div class="kv">
               ${parsed.extensions.flatMap((extension) => [
                 html`<div>${extension.label}${extension.critical ? ' (critical)' : ''}</div>`,
@@ -424,14 +425,14 @@ class CertDecoder extends JGApp {
           </jg-card>`
         : ''}
 
-      <jg-card title="Fingerprints">
+      <jg-card title="${t('cert-decoder.fingerprints', 'Fingerprints')}">
         <div class="kv">
-          <div>SHA-256</div><div class="mono" style="overflow-wrap:anywhere">${hex(new Uint8Array(digest), ':')}</div>
-          <div>SHA-1</div><div class="mono" style="overflow-wrap:anywhere">${hex(new Uint8Array(sha1), ':')}</div>
-          <div>Size</div><div class="mono">${bytes.length} bytes</div>
+          <div>${t('cert-decoder.sha256', 'SHA-256')}</div><div class="mono" style="overflow-wrap:anywhere">${hex(new Uint8Array(digest), ':')}</div>
+          <div>${t('cert-decoder.sha1', 'SHA-1')}</div><div class="mono" style="overflow-wrap:anywhere">${hex(new Uint8Array(sha1), ':')}</div>
+          <div>${t('cert-decoder.size', 'Size')}</div><div class="mono">${bytes.length} bytes</div>
         </div>
         <div class="row" style="margin-top:8px">
-          <jg-button size="sm" variant="ghost" id="copy-sha">Copy SHA-256</jg-button>
+          <jg-button size="sm" variant="ghost" id="copy-sha">${t('cert-decoder.copySha256', 'Copy SHA-256')}</jg-button>
         </div>
       </jg-card>
     `;

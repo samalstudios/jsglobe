@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { copyText, debounce } from '../core/util.js';
 
 const sheet = css`
@@ -51,28 +52,28 @@ class XmlFormatter extends JGApp {
       <div class="row">
         <jg-tabs id="mode"></jg-tabs>
         <jg-select id="indent" value="2" size="sm" style="width:130px">
-          <option value="2">2 spaces</option><option value="4">4 spaces</option><option value="tab">Tab</option>
+          <option value="2">${t('xml-formatter.2Spaces', '2 spaces')}</option><option value="4">${t('xml-formatter.4Spaces', '4 spaces')}</option><option value="tab">${t('xml-formatter.tab', 'Tab')}</option>
         </jg-select>
         <span class="grow"></span>
-        <jg-button size="sm" variant="outline" id="sample">Sample</jg-button>
-        <jg-button size="sm" variant="outline" id="copy">Copy</jg-button>
+        <jg-button size="sm" variant="outline" id="sample">${t('xml-formatter.sample', 'Sample')}</jg-button>
+        <jg-button size="sm" variant="outline" id="copy">${t('xml-formatter.copy', 'Copy')}</jg-button>
       </div>
 
       <div class="split">
         <div class="pane">
-          <span class="label">Input</span>
+          <span class="label">${t('xml-formatter.input', 'Input')}</span>
           <jg-code id="input" grow gutter language="xml" placeholder="<root><item/></root>"></jg-code>
         </div>
         <div class="pane">
-          <div class="spread"><span class="label">Output</span><span class="hint" id="status"></span></div>
+          <div class="spread"><span class="label">${t('xml-formatter.output', 'Output')}</span><span class="hint" id="status"></span></div>
           <jg-code id="output" grow gutter language="xml" readonly></jg-code>
         </div>
       </div>
     </div>`);
 
     this.$('#mode').items = [
-      { value: 'pretty', label: 'Format' },
-      { value: 'minify', label: 'Minify' },
+      { value: 'pretty', label: t('xml-formatter.format', 'Format') },
+      { value: 'minify', label: t('xml-formatter.minify', 'Minify') },
     ];
 
     const run = debounce(() => this.#run(), 150);

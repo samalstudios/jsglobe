@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, chunk } from '../core/util.js';
 
 const sheet = css`
@@ -49,21 +50,21 @@ class IpConverter extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="IPv4 address or numeric form" hint="Accepts dotted quad, decimal, 0x hex or binary">
+      <jg-field label="${t('ip-converter.ipv4AddressOrNumericForm', 'IPv4 address or numeric form')}" hint="${t('ip-converter.acceptsDottedQuadDecimal0x', 'Accepts dotted quad, decimal, 0x hex or binary')}">
         <jg-input id="input" mono value="192.168.1.1"></jg-input>
       </jg-field>
       <div class="hint" id="status"></div>
 
       <div class="formats">
-        <div class="format"><span class="label">Dotted decimal</span><jg-output data-out="dotted"></jg-output></div>
-        <div class="format"><span class="label">Decimal</span><jg-output data-out="decimal"></jg-output></div>
-        <div class="format"><span class="label">Hexadecimal</span><jg-output data-out="hex"></jg-output></div>
-        <div class="format"><span class="label">Octal</span><jg-output data-out="octal"></jg-output></div>
-        <div class="format"><span class="label">Binary</span><jg-output data-out="binary"></jg-output></div>
-        <div class="format"><span class="label">IPv6 mapped</span><jg-output data-out="ipv6"></jg-output></div>
+        <div class="format"><span class="label">${t('ip-converter.dottedDecimal', 'Dotted decimal')}</span><jg-output data-out="dotted"></jg-output></div>
+        <div class="format"><span class="label">${t('ip-converter.decimal', 'Decimal')}</span><jg-output data-out="decimal"></jg-output></div>
+        <div class="format"><span class="label">${t('ip-converter.hexadecimal', 'Hexadecimal')}</span><jg-output data-out="hex"></jg-output></div>
+        <div class="format"><span class="label">${t('ip-converter.octal', 'Octal')}</span><jg-output data-out="octal"></jg-output></div>
+        <div class="format"><span class="label">${t('ip-converter.binary', 'Binary')}</span><jg-output data-out="binary"></jg-output></div>
+        <div class="format"><span class="label">${t('ip-converter.ipv6Mapped', 'IPv6 mapped')}</span><jg-output data-out="ipv6"></jg-output></div>
       </div>
 
-      <jg-card title="Classification">
+      <jg-card title="${t('ip-converter.classification', 'Classification')}">
         <div class="kv" id="details"></div>
       </jg-card>
     </div>`);
@@ -77,7 +78,7 @@ class IpConverter extends JGApp {
     const status = this.$('#status');
 
     if (value === null) {
-      status.innerHTML = html`<span class="error">Could not read that address.</span>`;
+      status.innerHTML = html`<span class="error">${t('ip-converter.couldNotReadThatAddress', 'Could not read that address.')}</span>`;
       this.$$('[data-out]').forEach((node) => {
         node.value = '';
       });
@@ -105,11 +106,11 @@ class IpConverter extends JGApp {
     const scope = RANGES.find(([pattern]) => pattern.test(dotted))?.[1] ?? 'Public';
 
     this.$('#details').innerHTML = html`
-      <div>Class</div><div>${klass}</div>
-      <div>Scope</div><div>${scope}</div>
-      <div>Octets</div><div class="mono">${bytes.join(' · ')}</div>
-      <div>Reverse DNS</div><div class="mono">${[...bytes].reverse().join('.')}.in-addr.arpa</div>
-      <div>Integer range</div><div class="mono">0 - 4294967295</div>
+      <div>${t('ip-converter.class', 'Class')}</div><div>${klass}</div>
+      <div>${t('ip-converter.scope', 'Scope')}</div><div>${scope}</div>
+      <div>${t('ip-converter.octets', 'Octets')}</div><div class="mono">${bytes.join(' · ')}</div>
+      <div>${t('ip-converter.reverseDns', 'Reverse DNS')}</div><div class="mono">${[...bytes].reverse().join('.')}.in-addr.arpa</div>
+      <div>${t('ip-converter.integerRange', 'Integer range')}</div><div class="mono">0 - 4294967295</div>
     `;
   }
 }

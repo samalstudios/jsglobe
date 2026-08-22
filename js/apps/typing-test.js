@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 
 const sheet = css`
   .stage {
@@ -97,7 +98,7 @@ class TypingTest extends JGApp {
         <jg-tabs id="mode"></jg-tabs>
         <jg-segment id="duration"></jg-segment>
         <span class="grow"></span>
-        <jg-button size="sm" variant="outline" id="restart">Restart</jg-button>
+        <jg-button size="sm" variant="outline" id="restart">${t('typing-test.restart', 'Restart')}</jg-button>
       </div>
 
       <div class="stage" id="stage" tabindex="0">
@@ -107,19 +108,19 @@ class TypingTest extends JGApp {
 
       <div class="stats" id="stats"></div>
 
-      <jg-card title="Trouble keys" sub="Where the mistakes landed">
+      <jg-card title="${t('typing-test.troubleKeys', 'Trouble keys')}" sub="Where the mistakes landed">
         <div class="keys" id="keys"></div>
       </jg-card>
 
-      <jg-card title="Personal bests" sub="Saved in this workspace">
+      <jg-card title="${t('typing-test.personalBests', 'Personal bests')}" sub="Saved in this workspace">
         <div class="bests" id="bests"></div>
       </jg-card>
     </div>`);
 
     const modes = this.$('#mode');
     modes.items = [
-      { value: 'words', label: 'Words' },
-      { value: 'quote', label: 'Quote' },
+      { value: 'words', label: t('typing-test.words', 'Words') },
+      { value: 'quote', label: t('typing-test.quote', 'Quote') },
     ];
     modes.value = this.#mode;
     this.on(modes, 'change', (event) => {
@@ -323,7 +324,7 @@ class TypingTest extends JGApp {
       ? entries
           .map(([key, count]) => html`<span class="key" style="--heat:${(count / peak).toFixed(2)}" title="${count} misses">${key === ' ' ? '␣' : key}</span>`)
           .join('')
-      : html`<span class="hint">No mistakes recorded yet.</span>`;
+      : html`<span class="hint">${t('typing-test.noMistakesRecordedYet', 'No mistakes recorded yet.')}</span>`;
   }
 
   #remember(result) {
@@ -348,7 +349,7 @@ class TypingTest extends JGApp {
             </div>`,
           )
           .join('')
-      : html`<span class="hint">Finish a run to record a best.</span>`;
+      : html`<span class="hint">${t('typing-test.finishARunToRecord', 'Finish a run to record a best.')}</span>`;
   }
 }
 

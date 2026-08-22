@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText, download } from '../core/util.js';
 
 const sheet = css`
@@ -52,9 +53,9 @@ const hashSeed = (text) => {
 const slug = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 const TYPES = {
-  id: { label: 'Row number', make: (random, index) => index + 1 },
+  id: { label: t('mock-data.rowNumber', 'Row number'), make: (random, index) => index + 1 },
   uuid: {
-    label: 'UUID v4',
+    label: t('mock-data.uuidV4', 'UUID v4'),
     make: (random) => {
       const hex = Array.from({ length: 32 }, () => Math.floor(random() * 16).toString(16));
       hex[12] = '4';
@@ -63,49 +64,49 @@ const TYPES = {
       return `${text.slice(0, 8)}-${text.slice(8, 12)}-${text.slice(12, 16)}-${text.slice(16, 20)}-${text.slice(20)}`;
     },
   },
-  firstName: { label: 'First name', make: (random) => FIRST[Math.floor(random() * FIRST.length)] },
-  lastName: { label: 'Last name', make: (random) => LAST[Math.floor(random() * LAST.length)] },
-  fullName: { label: 'Full name', make: (random) => `${FIRST[Math.floor(random() * FIRST.length)]} ${LAST[Math.floor(random() * LAST.length)]}` },
+  firstName: { label: t('mock-data.firstName', 'First name'), make: (random) => FIRST[Math.floor(random() * FIRST.length)] },
+  lastName: { label: t('mock-data.lastName', 'Last name'), make: (random) => LAST[Math.floor(random() * LAST.length)] },
+  fullName: { label: t('mock-data.fullName', 'Full name'), make: (random) => `${FIRST[Math.floor(random() * FIRST.length)]} ${LAST[Math.floor(random() * LAST.length)]}` },
   email: {
-    label: 'Email',
+    label: t('mock-data.email', 'Email'),
     make: (random) =>
       `${slug(FIRST[Math.floor(random() * FIRST.length)])}.${slug(LAST[Math.floor(random() * LAST.length)])}@${DOMAINS[Math.floor(random() * DOMAINS.length)]}`,
   },
   username: {
-    label: 'Username',
+    label: t('mock-data.username', 'Username'),
     make: (random) => `${slug(FIRST[Math.floor(random() * FIRST.length)])}${Math.floor(random() * 900 + 100)}`,
   },
-  phone: { label: 'Phone', make: (random) => `+${Math.floor(random() * 60 + 20)} ${Math.floor(random() * 900 + 100)} ${Math.floor(random() * 9000 + 1000)}` },
+  phone: { label: t('mock-data.phone', 'Phone'), make: (random) => `+${Math.floor(random() * 60 + 20)} ${Math.floor(random() * 900 + 100)} ${Math.floor(random() * 9000 + 1000)}` },
   company: {
-    label: 'Company',
+    label: t('mock-data.company', 'Company'),
     make: (random) =>
       `${COMPANY_A[Math.floor(random() * COMPANY_A.length)]}${COMPANY_B[Math.floor(random() * COMPANY_B.length)]} ${COMPANY_C[Math.floor(random() * COMPANY_C.length)]}`,
   },
-  role: { label: 'Job title', make: (random) => `${DEPARTMENTS[Math.floor(random() * DEPARTMENTS.length)]} ${ROLES[Math.floor(random() * ROLES.length)]}` },
-  department: { label: 'Department', make: (random) => DEPARTMENTS[Math.floor(random() * DEPARTMENTS.length)] },
-  product: { label: 'Product', make: (random) => PRODUCTS[Math.floor(random() * PRODUCTS.length)] },
-  street: { label: 'Street address', make: (random) => `${Math.floor(random() * 200 + 1)} ${STREETS[Math.floor(random() * STREETS.length)]} Street` },
-  city: { label: 'City', make: (random) => CITIES[Math.floor(random() * CITIES.length)][0] },
-  country: { label: 'Country', make: (random) => CITIES[Math.floor(random() * CITIES.length)][1] },
-  countryCode: { label: 'Country code', make: (random) => CITIES[Math.floor(random() * CITIES.length)][2] },
-  postcode: { label: 'Post code', make: (random) => String(Math.floor(random() * 90000 + 10000)) },
-  latitude: { label: 'Latitude', make: (random) => Number((random() * 180 - 90).toFixed(5)) },
-  longitude: { label: 'Longitude', make: (random) => Number((random() * 360 - 180).toFixed(5)) },
-  integer: { label: 'Integer', make: (random) => Math.floor(random() * 1000) },
-  price: { label: 'Price', make: (random) => Number((random() * 400 + 5).toFixed(2)) },
-  currency: { label: 'Currency', make: (random) => CURRENCIES[Math.floor(random() * CURRENCIES.length)] },
-  boolean: { label: 'Boolean', make: (random) => random() > 0.5 },
-  status: { label: 'Status', make: (random) => STATUSES[Math.floor(random() * STATUSES.length)] },
+  role: { label: t('mock-data.jobTitle', 'Job title'), make: (random) => `${DEPARTMENTS[Math.floor(random() * DEPARTMENTS.length)]} ${ROLES[Math.floor(random() * ROLES.length)]}` },
+  department: { label: t('mock-data.department', 'Department'), make: (random) => DEPARTMENTS[Math.floor(random() * DEPARTMENTS.length)] },
+  product: { label: t('mock-data.product', 'Product'), make: (random) => PRODUCTS[Math.floor(random() * PRODUCTS.length)] },
+  street: { label: t('mock-data.streetAddress', 'Street address'), make: (random) => `${Math.floor(random() * 200 + 1)} ${STREETS[Math.floor(random() * STREETS.length)]} Street` },
+  city: { label: t('mock-data.city', 'City'), make: (random) => CITIES[Math.floor(random() * CITIES.length)][0] },
+  country: { label: t('mock-data.country', 'Country'), make: (random) => CITIES[Math.floor(random() * CITIES.length)][1] },
+  countryCode: { label: t('mock-data.countryCode', 'Country code'), make: (random) => CITIES[Math.floor(random() * CITIES.length)][2] },
+  postcode: { label: t('mock-data.postCode', 'Post code'), make: (random) => String(Math.floor(random() * 90000 + 10000)) },
+  latitude: { label: t('mock-data.latitude', 'Latitude'), make: (random) => Number((random() * 180 - 90).toFixed(5)) },
+  longitude: { label: t('mock-data.longitude', 'Longitude'), make: (random) => Number((random() * 360 - 180).toFixed(5)) },
+  integer: { label: t('mock-data.integer', 'Integer'), make: (random) => Math.floor(random() * 1000) },
+  price: { label: t('mock-data.price', 'Price'), make: (random) => Number((random() * 400 + 5).toFixed(2)) },
+  currency: { label: t('mock-data.currency', 'Currency'), make: (random) => CURRENCIES[Math.floor(random() * CURRENCIES.length)] },
+  boolean: { label: t('mock-data.boolean', 'Boolean'), make: (random) => random() > 0.5 },
+  status: { label: t('mock-data.status', 'Status'), make: (random) => STATUSES[Math.floor(random() * STATUSES.length)] },
   date: {
-    label: 'Date',
+    label: t('mock-data.date', 'Date'),
     make: (random) => new Date(Date.UTC(2020 + Math.floor(random() * 6), Math.floor(random() * 12), Math.floor(random() * 28) + 1)).toISOString().slice(0, 10),
   },
   datetime: {
-    label: 'Date and time',
+    label: t('mock-data.dateAndTime', 'Date and time'),
     make: (random) => new Date(Date.UTC(2020 + Math.floor(random() * 6), Math.floor(random() * 12), Math.floor(random() * 28) + 1, Math.floor(random() * 24), Math.floor(random() * 60))).toISOString(),
   },
   sentence: {
-    label: 'Sentence',
+    label: t('mock-data.sentence', 'Sentence'),
     make: (random) => {
       const length = Math.floor(random() * 8) + 5;
       const words = Array.from({ length }, () => WORDS[Math.floor(random() * WORDS.length)]);
@@ -113,7 +114,7 @@ const TYPES = {
     },
   },
   paragraph: {
-    label: 'Paragraph',
+    label: t('mock-data.paragraph', 'Paragraph'),
     make: (random) => {
       const sentences = Math.floor(random() * 3) + 2;
       return Array.from({ length: sentences }, () => {
@@ -125,7 +126,7 @@ const TYPES = {
   },
   url: { label: 'URL', make: (random) => `https://${DOMAINS[Math.floor(random() * DOMAINS.length)]}/${slug(PRODUCTS[Math.floor(random() * PRODUCTS.length)])}` },
   ipv4: { label: 'IPv4', make: (random) => Array.from({ length: 4 }, () => Math.floor(random() * 254) + 1).join('.') },
-  colour: { label: 'Hex colour', make: (random) => `#${Math.floor(random() * 0xffffff).toString(16).padStart(6, '0')}` },
+  colour: { label: t('mock-data.hexColour', 'Hex colour'), make: (random) => `#${Math.floor(random() * 0xffffff).toString(16).padStart(6, '0')}` },
 };
 
 const DEFAULT_FIELDS = [
@@ -168,22 +169,22 @@ class MockData extends JGApp {
       <div class="shell">
         <div class="fields">
           <div class="row">
-            <jg-field label="Rows" style="flex:1"><jg-input id="count" type="number" min="1" max="5000" value="${saved.count}"></jg-input></jg-field>
-            <jg-field label="Seed" style="flex:1"><jg-input id="seed" mono value="${saved.seed}"></jg-input></jg-field>
+            <jg-field label="${t('mock-data.rows', 'Rows')}" style="flex:1"><jg-input id="count" type="number" min="1" max="5000" value="${saved.count}"></jg-input></jg-field>
+            <jg-field label="${t('mock-data.seed', 'Seed')}" style="flex:1"><jg-input id="seed" mono value="${saved.seed}"></jg-input></jg-field>
           </div>
           <div class="row">
-            <jg-switch id="table-name-on" checked></jg-switch><span class="hint">Wrap JSON in an array</span>
+            <jg-switch id="table-name-on" checked></jg-switch><span class="hint">${t('mock-data.wrapJsonInAnArray', 'Wrap JSON in an array')}</span>
           </div>
-          <span class="label">Fields</span>
+          <span class="label">${t('mock-data.fields', 'Fields')}</span>
           <div class="list" id="list"></div>
-          <jg-button size="sm" variant="outline" id="add">Add field</jg-button>
+          <jg-button size="sm" variant="outline" id="add">${t('mock-data.addField', 'Add field')}</jg-button>
         </div>
 
         <div class="out">
           <jg-code id="out" grow gutter language="json" readonly></jg-code>
           <div class="row">
-            <jg-button size="sm" variant="outline" id="copy">Copy</jg-button>
-            <jg-button size="sm" variant="ghost" id="download">Download</jg-button>
+            <jg-button size="sm" variant="outline" id="copy">${t('mock-data.copy', 'Copy')}</jg-button>
+            <jg-button size="sm" variant="ghost" id="download">${t('mock-data.download', 'Download')}</jg-button>
             <span class="grow"></span>
             <span class="hint" id="stats"></span>
           </div>
@@ -202,7 +203,7 @@ class MockData extends JGApp {
       { separator: true },
       {
         id: 'shuffle',
-        label: 'New seed',
+        label: t('mock-data.newSeed', 'New seed'),
         icon: 'undo',
         action: () => {
           this.$('#seed').value = Math.random().toString(36).slice(2, 8);

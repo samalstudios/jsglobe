@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { elements, CATEGORIES, categoryOf } from '../lib/elements.js';
 import { copyText } from '../core/util.js';
 
@@ -169,11 +170,11 @@ const sheet = css`
 `;
 
 const MODES = [
-  { value: 'category', label: 'Category' },
-  { value: 'state', label: 'State' },
-  { value: 'block', label: 'Block' },
-  { value: 'electronegativity', label: 'Electronegativity' },
-  { value: 'mass', label: 'Atomic mass' },
+  { value: 'category', label: t('periodic-table.category', 'Category') },
+  { value: 'state', label: t('periodic-table.state', 'State') },
+  { value: 'block', label: t('periodic-table.block', 'Block') },
+  { value: 'electronegativity', label: t('periodic-table.electronegativity', 'Electronegativity') },
+  { value: 'mass', label: t('periodic-table.atomicMass', 'Atomic mass') },
 ];
 
 const BLOCKS = { s: '#4a6fa5', p: '#4f7f6b', d: '#b0553f', f: '#96496f' };
@@ -209,12 +210,12 @@ const mix = (ratio, low, high) => {
 class PeriodicTable extends JGApp {
   static appId = 'periodic-table';
   static settings = [
-    { key: 'mode', label: 'Colour by', type: 'select', default: 'category', options: MODES.map((mode) => ({ value: mode.value, label: mode.label })) },
-    { key: 'zoom', label: 'Cell size', type: 'number', default: 38, min: 22, max: 84 },
-    { key: 'units', label: 'Temperature unit', type: 'select', default: 'K', options: [
-      { value: 'K', label: 'Kelvin' },
-      { value: 'C', label: 'Celsius' },
-      { value: 'F', label: 'Fahrenheit' },
+    { key: 'mode', label: t('periodic-table.colourBy', 'Colour by'), type: 'select', default: 'category', options: MODES.map((mode) => ({ value: mode.value, label: mode.label })) },
+    { key: 'zoom', label: t('periodic-table.cellSize', 'Cell size'), type: 'number', default: 38, min: 22, max: 84 },
+    { key: 'units', label: t('periodic-table.temperatureUnit', 'Temperature unit'), type: 'select', default: 'K', options: [
+      { value: 'K', label: t('periodic-table.kelvin', 'Kelvin') },
+      { value: 'C', label: t('periodic-table.celsius', 'Celsius') },
+      { value: 'F', label: t('periodic-table.fahrenheit', 'Fahrenheit') },
     ] },
   ];
   static styles = [...JGApp.styles, sheet];
@@ -273,7 +274,7 @@ class PeriodicTable extends JGApp {
       </div>
       <div class="body">
       <div class="row">
-        <jg-input id="search" size="sm" placeholder="Find an element" value="${this.#query}" style="width:180px"></jg-input>
+        <jg-input id="search" size="sm" placeholder="${t('periodic-table.findAnElement', 'Find an element')}" value="${this.#query}" style="width:180px"></jg-input>
         <span class="grow"></span>
         <div class="scale" id="scale"></div>
       </div>
@@ -285,10 +286,10 @@ class PeriodicTable extends JGApp {
               <div class="board" id="board"></div>
             </div>
             <div class="rail">
-              <button id="zoom-in" title="Zoom in">+</button>
+              <button id="zoom-in" title="${t('periodic-table.zoomIn', 'Zoom in')}">+</button>
               <jg-slider id="zoom" min="22" max="84" step="1" value="${this.#zoom}" orient="vertical"></jg-slider>
-              <button id="zoom-out" title="Zoom out">-</button>
-              <button id="zoom-fit" title="Fit to width">⤢</button>
+              <button id="zoom-out" title="${t('periodic-table.zoomOut', 'Zoom out')}">-</button>
+              <button id="zoom-fit" title="${t('periodic-table.fitToWidth', 'Fit to width')}">⤢</button>
               <span class="amount" id="zoom-amount">${this.#zoom}</span>
             </div>
           </div>
@@ -310,9 +311,9 @@ class PeriodicTable extends JGApp {
         action: () => this.#setMode(mode.value),
       })),
       { spacer: true },
-      { id: 'zoom-out', label: 'Smaller', icon: 'minus', action: () => this.#setZoom(this.#zoom - 6) },
-      { id: 'zoom-in', label: 'Bigger', icon: 'plus', action: () => this.#setZoom(this.#zoom + 6) },
-      { id: 'copy', label: 'Copy facts', icon: 'copy', action: () => copyText(this.#facts()) },
+      { id: 'zoom-out', label: t('periodic-table.smaller', 'Smaller'), icon: 'minus', action: () => this.#setZoom(this.#zoom - 6) },
+      { id: 'zoom-in', label: t('periodic-table.bigger', 'Bigger'), icon: 'plus', action: () => this.#setZoom(this.#zoom + 6) },
+      { id: 'copy', label: t('periodic-table.copyFacts', 'Copy facts'), icon: 'copy', action: () => copyText(this.#facts()) },
     ];
     this.$('#bar').value = this.#mode;
 
@@ -460,7 +461,7 @@ class PeriodicTable extends JGApp {
     const scale = this.$('#scale');
     scale.innerHTML =
       this.#mode === 'state'
-        ? html`<span>Temperature</span>
+        ? html`<span>${t('periodic-table.temperature', 'Temperature')}</span>
             <jg-slider id="temp" min="1" max="6000" step="1" value="${this.#temp}" style="width:150px"></jg-slider>
             <span class="mono">${temperature(this.#temp, this.#unit)}</span>`
         : this.#mode === 'electronegativity'

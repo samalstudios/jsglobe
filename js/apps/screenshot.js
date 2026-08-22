@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { download, toast, formatBytes } from '../core/util.js';
 
 const sheet = css`
@@ -58,16 +59,16 @@ const sheet = css`
 `;
 
 const TOOLS = [
-  { id: 'pen', label: 'Pen' },
-  { id: 'arrow', label: 'Arrow' },
-  { id: 'rect', label: 'Box' },
-  { id: 'ellipse', label: 'Circle' },
-  { id: 'highlight', label: 'Marker' },
-  { id: 'text', label: 'Text' },
-  { id: 'blur', label: 'Blur' },
-  { id: 'pixelate', label: 'Pixelate' },
-  { id: 'block', label: 'Block' },
-  { id: 'crop', label: 'Crop' },
+  { id: 'pen', label: t('screenshot.pen', 'Pen') },
+  { id: 'arrow', label: t('screenshot.arrow', 'Arrow') },
+  { id: 'rect', label: t('screenshot.box', 'Box') },
+  { id: 'ellipse', label: t('screenshot.circle', 'Circle') },
+  { id: 'highlight', label: t('screenshot.marker', 'Marker') },
+  { id: 'text', label: t('screenshot.text', 'Text') },
+  { id: 'blur', label: t('screenshot.blur', 'Blur') },
+  { id: 'pixelate', label: t('screenshot.pixelate', 'Pixelate') },
+  { id: 'block', label: t('screenshot.block', 'Block') },
+  { id: 'crop', label: t('screenshot.crop', 'Crop') },
 ];
 
 const COLORS = ['#ef4444', '#f59e0b', '#22c55e', '#0ea5e9', '#8a1c3b', '#111827', '#ffffff'];
@@ -87,12 +88,12 @@ class Screenshot extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="bar">
-        <jg-button id="capture">Capture screen</jg-button>
-        <jg-button variant="outline" id="upload">Open image</jg-button>
+        <jg-button id="capture">${t('screenshot.captureScreen', 'Capture screen')}</jg-button>
+        <jg-button variant="outline" id="upload">${t('screenshot.openImage', 'Open image')}</jg-button>
         <span class="grow"></span>
-        <jg-button size="sm" variant="ghost" id="undo">Undo</jg-button>
-        <jg-button size="sm" variant="ghost" id="redoBtn">Redo</jg-button>
-        <jg-button size="sm" variant="ghost" id="clear">Clear marks</jg-button>
+        <jg-button size="sm" variant="ghost" id="undo">${t('screenshot.undo', 'Undo')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="redoBtn">${t('screenshot.redo', 'Redo')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="clear">${t('screenshot.clearMarks', 'Clear marks')}</jg-button>
       </div>
 
       <div class="bar">
@@ -112,19 +113,19 @@ class Screenshot extends JGApp {
           <span class="handle" id="handle"></span>
         </div>
         <div class="empty" id="empty">
-          <jg-empty glyph="▤" title="Nothing loaded">
+          <jg-empty glyph="▤" title="${t('screenshot.nothingLoaded', 'Nothing loaded')}">
             Capture a screen or window, open an image file, or paste one from the clipboard.
           </jg-empty>
         </div>
       </div>
 
       <div class="bar">
-        <jg-switch id="compare"></jg-switch><span class="hint">Before and after</span>
+        <jg-switch id="compare"></jg-switch><span class="hint">${t('screenshot.beforeAndAfter', 'Before and after')}</span>
         <jg-slider id="split" min="0" max="100" value="50" style="width:180px"></jg-slider>
         <span class="grow"></span>
         <span class="hint" id="info"></span>
-        <jg-button size="sm" variant="outline" id="copy">Copy</jg-button>
-        <jg-button size="sm" variant="outline" id="save">Save PNG</jg-button>
+        <jg-button size="sm" variant="outline" id="copy">${t('screenshot.copy', 'Copy')}</jg-button>
+        <jg-button size="sm" variant="outline" id="save">${t('screenshot.savePng', 'Save PNG')}</jg-button>
       </div>
     </div>`);
 

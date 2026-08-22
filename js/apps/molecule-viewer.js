@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { molecules, GROUPS, ATOM, fallbackAtom } from '../lib/molecules.js';
 import { createGlRenderer } from '../lib/gl-molecule.js';
 import { settings } from '../core/settings.js';
@@ -113,10 +114,10 @@ const sheet = css`
 `;
 
 const STYLES = [
-  { value: 'ball', label: 'Ball and stick' },
-  { value: 'space', label: 'Space filling' },
-  { value: 'stick', label: 'Sticks' },
-  { value: 'diagram', label: 'Flat diagram' },
+  { value: 'ball', label: t('molecule-viewer.ballAndStick', 'Ball and stick') },
+  { value: 'space', label: t('molecule-viewer.spaceFilling', 'Space filling') },
+  { value: 'stick', label: t('molecule-viewer.sticks', 'Sticks') },
+  { value: 'diagram', label: t('molecule-viewer.flatDiagram', 'Flat diagram') },
 ];
 
 const SHAPE = {
@@ -266,9 +267,9 @@ const principalAxes = (coords) => {
 class MoleculeViewer extends JGApp {
   static appId = 'molecule-viewer';
   static settings = [
-    { key: 'style', label: 'Default style', type: 'select', default: 'ball', options: STYLES.map((style) => ({ value: style.value, label: style.label })) },
-    { key: 'hydrogens', label: 'Show hydrogens', type: 'switch', default: true },
-    { key: 'spin', label: 'Spin automatically', type: 'switch', default: true },
+    { key: 'style', label: t('molecule-viewer.defaultStyle', 'Default style'), type: 'select', default: 'ball', options: STYLES.map((style) => ({ value: style.value, label: style.label })) },
+    { key: 'hydrogens', label: t('molecule-viewer.showHydrogens', 'Show hydrogens'), type: 'switch', default: true },
+    { key: 'spin', label: t('molecule-viewer.spinAutomatically', 'Spin automatically'), type: 'switch', default: true },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -299,7 +300,7 @@ class MoleculeViewer extends JGApp {
     const molecule = LIBRARY[Math.floor(Date.now() / 86400000) % LIBRARY.length];
     this.paint(html`<div class="app" style="padding:12px;gap:10px">
       <div class="stack tight">
-        <div class="label">Molecule of the day</div>
+        <div class="label">${t('molecule-viewer.moleculeOfTheDay', 'Molecule of the day')}</div>
         <div class="title">${molecule.name}</div>
         <div class="hint mono">${molecule.formula}</div>
         <div class="hint">${molecule.elements.length} atoms</div>
@@ -338,12 +339,12 @@ class MoleculeViewer extends JGApp {
         action: () => this.#setStyle(style.value),
       })),
       { separator: true },
-      { id: 'hydrogens', label: 'Hydrogens', icon: 'atom', toggle: true, active: this.#hydrogens, action: () => this.#toggle('hydrogens') },
-      { id: 'labels', label: 'Labels', icon: 'type', toggle: true, active: this.#labels, action: () => this.#toggle('labels') },
-      { id: 'spin', label: 'Spin', icon: 'repeat', toggle: true, active: this.#spin, action: () => this.#toggle('spin') },
+      { id: 'hydrogens', label: t('molecule-viewer.hydrogens', 'Hydrogens'), icon: 'atom', toggle: true, active: this.#hydrogens, action: () => this.#toggle('hydrogens') },
+      { id: 'labels', label: t('molecule-viewer.labels', 'Labels'), icon: 'type', toggle: true, active: this.#labels, action: () => this.#toggle('labels') },
+      { id: 'spin', label: t('molecule-viewer.spin', 'Spin'), icon: 'repeat', toggle: true, active: this.#spin, action: () => this.#toggle('spin') },
       { spacer: true },
-      { id: 'copy', label: 'Copy XYZ', icon: 'copy', action: () => copyText(this.#xyz()) },
-      { id: 'png', label: 'Save PNG', icon: 'download', action: () => this.#savePng() },
+      { id: 'copy', label: t('molecule-viewer.copyXyz', 'Copy XYZ'), icon: 'copy', action: () => copyText(this.#xyz()) },
+      { id: 'png', label: t('molecule-viewer.savePng', 'Save PNG'), icon: 'download', action: () => this.#savePng() },
     ];
     this.$('#bar').value = this.#style;
 
@@ -478,9 +479,9 @@ class MoleculeViewer extends JGApp {
     )}`;
 
     this.$('#info').innerHTML = html`
-      <div class="stat"><b>${molecule.elements.length}</b><span>atoms</span></div>
-      <div class="stat"><b>${molecule.bonds.length}</b><span>bonds</span></div>
-      ${molecule.weight ? html`<div class="stat"><b>${molecule.weight}</b><span>g/mol</span></div>` : ''}
+      <div class="stat"><b>${molecule.elements.length}</b><span>${t('molecule-viewer.atoms', 'atoms')}</span></div>
+      <div class="stat"><b>${molecule.bonds.length}</b><span>${t('molecule-viewer.bonds', 'bonds')}</span></div>
+      ${molecule.weight ? html`<div class="stat"><b>${molecule.weight}</b><span>${t('molecule-viewer.gMol', 'g/mol')}</span></div>` : ''}
       <p class="note">${molecule.note}</p>
       ${molecule.cid ? html`<span class="hint mono tiny">PubChem CID ${molecule.cid}</span>` : ''}
     `;

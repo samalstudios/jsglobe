@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 
 const sheet = css`
   .app { padding: 0; gap: 0; container-type: inline-size; overflow: hidden; }
@@ -115,9 +116,9 @@ const CARD = { width: 74, height: 104, gapX: 90, stack: 26, closed: 8 };
 class Solitaire extends JGApp {
   static appId = 'game-solitaire';
   static settings = [
-    { key: 'draw', label: 'Cards per deal', type: 'select', default: '1', options: [
-      { value: '1', label: 'Draw one' },
-      { value: '3', label: 'Draw three' },
+    { key: 'draw', label: t('game-solitaire.cardsPerDeal', 'Cards per deal'), type: 'select', default: '1', options: [
+      { value: '1', label: t('game-solitaire.drawOne', 'Draw one') },
+      { value: '3', label: t('game-solitaire.drawThree', 'Draw three') },
     ] },
   ];
   static styles = [...JGApp.styles, sheet];
@@ -139,16 +140,16 @@ class Solitaire extends JGApp {
 
     this.paint(html`<div class="app">
       <div class="head">
-        <span class="title">Solitaire</span>
+        <span class="title">${t('game-solitaire.solitaire', 'Solitaire')}</span>
         <span class="grow"></span>
-        <span class="stat">Moves <span id="moves">0</span></span>
-        <span class="stat">Time <span id="time">0:00</span></span>
-        <span class="stat">Best <span id="best">${this.#best ? this.#clock(this.#best) : '-'}</span></span>
+        <span class="stat">${t('game-solitaire.moves', 'Moves')} <span id="moves">0</span></span>
+        <span class="stat">${t('game-solitaire.time', 'Time')} <span id="time">0:00</span></span>
+        <span class="stat">${t('game-solitaire.best', 'Best')} <span id="best">${this.#best ? this.#clock(this.#best) : '-'}</span></span>
         <jg-select id="draw" size="sm" value="${this.config.get('draw', '1')}" style="width:130px">
-          <option value="1">Draw one</option><option value="3">Draw three</option>
+          <option value="1">${t('game-solitaire.drawOne', 'Draw one')}</option><option value="3">${t('game-solitaire.drawThree', 'Draw three')}</option>
         </jg-select>
-        <jg-button size="sm" variant="ghost" id="undo">Undo</jg-button>
-        <jg-button size="sm" variant="outline" id="new">New game</jg-button>
+        <jg-button size="sm" variant="ghost" id="undo">${t('game-solitaire.undo', 'Undo')}</jg-button>
+        <jg-button size="sm" variant="outline" id="new">${t('game-solitaire.newGame', 'New game')}</jg-button>
       </div>
       <div class="table">
         <div class="board" id="board" style="--card-w:${CARD.width}px;--card-h:${CARD.height}px"></div>
@@ -320,9 +321,9 @@ class Solitaire extends JGApp {
     this.$('#board').insertAdjacentHTML(
       'beforeend',
       html`<div class="win"><div class="card-panel">
-        <h3 style="margin:0">You cleared the table</h3>
+        <h3 style="margin:0">${t('game-solitaire.youClearedTheTable', 'You cleared the table')}</h3>
         <div class="hint">${this.#moves} moves in ${this.#clock(seconds)}</div>
-        <jg-button size="sm" id="again">New game</jg-button>
+        <jg-button size="sm" id="again">${t('game-solitaire.newGame', 'New game')}</jg-button>
       </div></div>`,
     );
     const again = this.$('#again');

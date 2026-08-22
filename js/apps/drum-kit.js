@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 
 const sheet = css`
   .pads {
@@ -58,14 +59,14 @@ const sheet = css`
 `;
 
 const KITS = {
-  kick: { label: 'Kick', key: 'a' },
-  snare: { label: 'Snare', key: 's' },
-  clap: { label: 'Clap', key: 'd' },
-  rim: { label: 'Rim', key: 'f' },
-  hatClosed: { label: 'Closed hat', key: 'g' },
-  hatOpen: { label: 'Open hat', key: 'h' },
-  tom: { label: 'Tom', key: 'j' },
-  cymbal: { label: 'Cymbal', key: 'k' },
+  kick: { label: t('drum-kit.kick', 'Kick'), key: 'a' },
+  snare: { label: t('drum-kit.snare', 'Snare'), key: 's' },
+  clap: { label: t('drum-kit.clap', 'Clap'), key: 'd' },
+  rim: { label: t('drum-kit.rim', 'Rim'), key: 'f' },
+  hatClosed: { label: t('drum-kit.closedHat', 'Closed hat'), key: 'g' },
+  hatOpen: { label: t('drum-kit.openHat', 'Open hat'), key: 'h' },
+  tom: { label: t('drum-kit.tom', 'Tom'), key: 'j' },
+  cymbal: { label: t('drum-kit.cymbal', 'Cymbal'), key: 'k' },
 };
 
 const STEPS = 16;
@@ -92,13 +93,13 @@ class DrumKit extends JGApp {
         )}
       </div>
 
-      <jg-card title="Step sequencer" sub="16 steps, click to toggle">
+      <jg-card title="${t('drum-kit.stepSequencer', 'Step sequencer')}" sub="16 steps, click to toggle">
         <div class="row">
-          <jg-button size="sm" id="play">Play</jg-button>
-          <jg-button size="sm" variant="outline" id="clear">Clear</jg-button>
-          <jg-button size="sm" variant="ghost" id="demo">Load beat</jg-button>
+          <jg-button size="sm" id="play">${t('drum-kit.play', 'Play')}</jg-button>
+          <jg-button size="sm" variant="outline" id="clear">${t('drum-kit.clear', 'Clear')}</jg-button>
+          <jg-button size="sm" variant="ghost" id="demo">${t('drum-kit.loadBeat', 'Load beat')}</jg-button>
           <span class="grow"></span>
-          <span class="hint">Tempo</span>
+          <span class="hint">${t('drum-kit.tempo', 'Tempo')}</span>
           <jg-slider id="tempo" min="60" max="180" value="100" style="max-width:200px"></jg-slider>
         </div>
         <div class="steps" id="steps"></div>

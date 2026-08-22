@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce } from '../core/util.js';
 
 const sheet = css`
@@ -98,18 +99,18 @@ class UnitConverter extends JGApp {
       <jg-tabs id="category" full></jg-tabs>
 
       <div class="row-convert">
-        <jg-field label="From">
+        <jg-field label="${t('unit-converter.from', 'From')}">
           <jg-input id="value" type="number" value="1"></jg-input>
           <jg-select id="from"></jg-select>
         </jg-field>
         <jg-button class="swap" variant="outline" size="icon" id="swap">⇄</jg-button>
-        <jg-field label="To">
+        <jg-field label="${t('unit-converter.to', 'To')}">
           <jg-output id="result"></jg-output>
           <jg-select id="to"></jg-select>
         </jg-field>
       </div>
 
-      <jg-card title="All units">
+      <jg-card title="${t('unit-converter.allUnits', 'All units')}">
         <div class="all" id="all"></div>
       </jg-card>
     </div>`);

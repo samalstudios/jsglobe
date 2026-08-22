@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { formatBytes } from '../core/util.js';
 
 const sheet = css`
@@ -43,43 +44,43 @@ class DeviceInfo extends JGApp {
     const parsed = parseAgent(agent);
 
     this.paint(html`<div class="app">
-      <jg-card title="Browser">
+      <jg-card title="${t('device-info.browser', 'Browser')}">
         <div class="kv">
-          <div>Browser</div><div>${parsed.browser}</div>
-          <div>Operating system</div><div>${parsed.system}</div>
-          <div>Platform</div><div>${navigator.platform ?? '-'}</div>
-          <div>Languages</div><div>${navigator.languages?.join(', ') ?? navigator.language}</div>
-          <div>Cookies enabled</div><div>${yes(navigator.cookieEnabled)}</div>
-          <div>Do not track</div><div>${navigator.doNotTrack ?? 'not set'}</div>
-          <div>Online</div><div id="online">${yes(navigator.onLine)}</div>
+          <div>${t('device-info.browser', 'Browser')}</div><div>${parsed.browser}</div>
+          <div>${t('device-info.operatingSystem', 'Operating system')}</div><div>${parsed.system}</div>
+          <div>${t('device-info.platform', 'Platform')}</div><div>${navigator.platform ?? '-'}</div>
+          <div>${t('device-info.languages', 'Languages')}</div><div>${navigator.languages?.join(', ') ?? navigator.language}</div>
+          <div>${t('device-info.cookiesEnabled', 'Cookies enabled')}</div><div>${yes(navigator.cookieEnabled)}</div>
+          <div>${t('device-info.doNotTrack', 'Do not track')}</div><div>${navigator.doNotTrack ?? 'not set'}</div>
+          <div>${t('device-info.online', 'Online')}</div><div id="online">${yes(navigator.onLine)}</div>
         </div>
       </jg-card>
 
-      <jg-card title="Screen and window">
+      <jg-card title="${t('device-info.screenAndWindow', 'Screen and window')}">
         <div class="kv live" id="screen"></div>
       </jg-card>
 
-      <jg-card title="Hardware">
+      <jg-card title="${t('device-info.hardware', 'Hardware')}">
         <div class="kv">
-          <div>CPU threads</div><div>${navigator.hardwareConcurrency ?? 'unknown'}</div>
-          <div>Device memory</div><div>${navigator.deviceMemory ? `${navigator.deviceMemory} GB (approx)` : 'unknown'}</div>
-          <div>Max touch points</div><div>${navigator.maxTouchPoints ?? 0}</div>
-          <div>Pointer</div><div>${matchMedia('(pointer: coarse)').matches ? 'Coarse (touch)' : 'Fine (mouse)'}</div>
-          <div>Storage estimate</div><div id="storage">checking...</div>
+          <div>${t('device-info.cpuThreads', 'CPU threads')}</div><div>${navigator.hardwareConcurrency ?? 'unknown'}</div>
+          <div>${t('device-info.deviceMemory', 'Device memory')}</div><div>${navigator.deviceMemory ? `${navigator.deviceMemory} GB (approx)` : 'unknown'}</div>
+          <div>${t('device-info.maxTouchPoints', 'Max touch points')}</div><div>${navigator.maxTouchPoints ?? 0}</div>
+          <div>${t('device-info.pointer', 'Pointer')}</div><div>${matchMedia('(pointer: coarse)').matches ? 'Coarse (touch)' : 'Fine (mouse)'}</div>
+          <div>${t('device-info.storageEstimate', 'Storage estimate')}</div><div id="storage">${t('device-info.checking', 'checking...')}</div>
         </div>
       </jg-card>
 
-      <jg-card title="Preferences">
+      <jg-card title="${t('device-info.preferences', 'Preferences')}">
         <div class="kv">
-          <div>Colour scheme</div><div>${matchMedia('(prefers-color-scheme: dark)').matches ? 'Dark' : 'Light'}</div>
-          <div>Reduced motion</div><div>${yes(matchMedia('(prefers-reduced-motion: reduce)').matches)}</div>
-          <div>Contrast</div><div>${matchMedia('(prefers-contrast: more)').matches ? 'More' : 'Standard'}</div>
-          <div>Timezone</div><div>${Intl.DateTimeFormat().resolvedOptions().timeZone}</div>
-          <div>Locale</div><div>${Intl.DateTimeFormat().resolvedOptions().locale}</div>
+          <div>${t('device-info.colourScheme', 'Colour scheme')}</div><div>${matchMedia('(prefers-color-scheme: dark)').matches ? 'Dark' : 'Light'}</div>
+          <div>${t('device-info.reducedMotion', 'Reduced motion')}</div><div>${yes(matchMedia('(prefers-reduced-motion: reduce)').matches)}</div>
+          <div>${t('device-info.contrast', 'Contrast')}</div><div>${matchMedia('(prefers-contrast: more)').matches ? 'More' : 'Standard'}</div>
+          <div>${t('device-info.timezone', 'Timezone')}</div><div>${Intl.DateTimeFormat().resolvedOptions().timeZone}</div>
+          <div>${t('device-info.locale', 'Locale')}</div><div>${Intl.DateTimeFormat().resolvedOptions().locale}</div>
         </div>
       </jg-card>
 
-      <jg-card title="Capabilities">
+      <jg-card title="${t('device-info.capabilities', 'Capabilities')}">
         <div class="row">
           ${[
             ['Web Crypto', Boolean(window.crypto?.subtle)],
@@ -96,7 +97,7 @@ class DeviceInfo extends JGApp {
         </div>
       </jg-card>
 
-      <jg-card title="User agent">
+      <jg-card title="${t('device-info.userAgent', 'User agent')}">
         <jg-output id="agent"></jg-output>
       </jg-card>
     </div>`);
@@ -107,12 +108,12 @@ class DeviceInfo extends JGApp {
       const node = this.$('#screen');
       if (!node) return;
       node.innerHTML = html`
-        <div>Window</div><div>${window.innerWidth} × ${window.innerHeight}</div>
-        <div>Screen</div><div>${screen.width} × ${screen.height}</div>
-        <div>Available</div><div>${screen.availWidth} × ${screen.availHeight}</div>
-        <div>Device pixel ratio</div><div>${window.devicePixelRatio}</div>
-        <div>Colour depth</div><div>${screen.colorDepth}-bit</div>
-        <div>Orientation</div><div>${screen.orientation?.type ?? 'unknown'}</div>
+        <div>${t('device-info.window', 'Window')}</div><div>${window.innerWidth} × ${window.innerHeight}</div>
+        <div>${t('device-info.screen', 'Screen')}</div><div>${screen.width} × ${screen.height}</div>
+        <div>${t('device-info.available', 'Available')}</div><div>${screen.availWidth} × ${screen.availHeight}</div>
+        <div>${t('device-info.devicePixelRatio', 'Device pixel ratio')}</div><div>${window.devicePixelRatio}</div>
+        <div>${t('device-info.colourDepth', 'Colour depth')}</div><div>${screen.colorDepth}-bit</div>
+        <div>${t('device-info.orientation', 'Orientation')}</div><div>${screen.orientation?.type ?? 'unknown'}</div>
       `;
       const online = this.$('#online');
       if (online) online.textContent = yes(navigator.onLine);

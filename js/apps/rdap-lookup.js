@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { copyText, toast } from '../core/util.js';
 
 const sheet = css`
@@ -80,21 +81,21 @@ class RdapLookup extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="row">
-        <jg-input id="query" style="flex:1;min-width:200px" mono placeholder="example.com, 8.8.8.8 or AS15169"></jg-input>
-        <jg-button id="go">Look up</jg-button>
-        <jg-button size="sm" variant="ghost" id="copy">Copy JSON</jg-button>
+        <jg-input id="query" style="flex:1;min-width:200px" mono placeholder="${t('rdap-lookup.exampleCom888', 'example.com, 8.8.8.8 or AS15169')}"></jg-input>
+        <jg-button id="go">${t('rdap-lookup.lookUp', 'Look up')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="copy">${t('rdap-lookup.copyJson', 'Copy JSON')}</jg-button>
       </div>
 
       <div class="history" id="history"></div>
 
       <div class="row">
-        <jg-badge id="status" tone="muted">Ready</jg-badge>
+        <jg-badge id="status" tone="muted">${t('rdap-lookup.ready', 'Ready')}</jg-badge>
         <span class="hint" id="note"></span>
       </div>
 
       <div class="cards" id="cards"></div>
 
-      <jg-card title="Raw response" sub="Exactly what the registry returned">
+      <jg-card title="${t('rdap-lookup.rawResponse', 'Raw response')}" sub="Exactly what the registry returned">
         <jg-code id="raw" rows="12" gutter language="json" readonly></jg-code>
       </jg-card>
 
@@ -212,14 +213,14 @@ class RdapLookup extends JGApp {
     ].filter(Boolean);
 
     this.$('#cards').innerHTML = html`
-      <jg-card title="Overview">
+      <jg-card title="${t('rdap-lookup.overview', 'Overview')}">
         <div class="kv">
           ${overview.map(([name, value]) => html`<div>${name}</div><div class="mono">${value}</div>`)}
         </div>
       </jg-card>
 
       ${events.length
-        ? html`<jg-card title="Timeline">
+        ? html`<jg-card title="${t('rdap-lookup.timeline', 'Timeline')}">
             <div class="events">
               ${events.map((event) => html`<div class="event"><span>${event.label}</span><span class="when">${event.when}</span></div>`)}
             </div>
@@ -227,7 +228,7 @@ class RdapLookup extends JGApp {
         : ''}
 
       ${statuses.length
-        ? html`<jg-card title="Status" sub="Locks and pending operations reported by the registry">
+        ? html`<jg-card title="${t('rdap-lookup.status', 'Status')}" sub="Locks and pending operations reported by the registry">
             <div class="chips">${statuses.map((entry) => html`<jg-badge>${entry}</jg-badge>`)}</div>
             <div class="events" style="margin-top:8px">
               ${statuses
@@ -238,13 +239,13 @@ class RdapLookup extends JGApp {
         : ''}
 
       ${nameservers.length
-        ? html`<jg-card title="Nameservers">
+        ? html`<jg-card title="${t('rdap-lookup.nameservers', 'Nameservers')}">
             <div class="servers">${nameservers.map((server) => html`<div>${server.toLowerCase()}</div>`)}</div>
           </jg-card>`
         : ''}
 
       ${contacts.length
-        ? html`<jg-card title="Contacts" sub="Registries redact most personal details">
+        ? html`<jg-card title="${t('rdap-lookup.contacts', 'Contacts')}" sub="Registries redact most personal details">
             <div class="kv">
               ${contacts.flatMap((contact) => [
                 html`<div>${contact.role}</div>`,

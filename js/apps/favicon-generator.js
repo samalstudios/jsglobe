@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText, download, toast } from '../core/util.js';
 
 const sheet = css`
@@ -67,53 +68,53 @@ class FaviconGenerator extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <div class="drop" id="drop">Drop a PNG, JPEG or SVG here, or click to choose one</div>
+      <div class="drop" id="drop">${t('favicon-generator.dropAPngJpegOr', 'Drop a PNG, JPEG or SVG here, or click to choose one')}</div>
 
       <div class="shell" id="body" hidden>
         <div class="stack tight">
-          <jg-card title="Generated sizes" sub="Rendered from your image on this device">
+          <jg-card title="${t('favicon-generator.generatedSizes', 'Generated sizes')}" sub="Rendered from your image on this device">
             <div class="sizes" id="sizes"></div>
           </jg-card>
 
-          <jg-card title="Browser tab preview">
+          <jg-card title="${t('favicon-generator.browserTabPreview', 'Browser tab preview')}">
             <div class="chrome">
               <canvas id="tab" width="16" height="16" style="width:16px;height:16px"></canvas>
-              <span class="label" id="tab-label">Your site</span>
+              <span class="label" id="tab-label">${t('favicon-generator.yourSite', 'Your site')}</span>
             </div>
           </jg-card>
         </div>
 
         <div class="stack tight">
           <div class="fields">
-            <jg-field label="Shape">
+            <jg-field label="${t('favicon-generator.shape', 'Shape')}">
               <jg-select id="shape" value="rounded">
-                <option value="square">Square</option>
-                <option value="rounded">Rounded square</option>
-                <option value="circle">Circle</option>
+                <option value="square">${t('favicon-generator.square', 'Square')}</option>
+                <option value="rounded">${t('favicon-generator.roundedSquare', 'Rounded square')}</option>
+                <option value="circle">${t('favicon-generator.circle', 'Circle')}</option>
               </jg-select>
             </jg-field>
-            <jg-field label="Background">
+            <jg-field label="${t('favicon-generator.background', 'Background')}">
               <div class="row">
                 <input type="color" id="bg" value="#8a1c3b" />
-                <jg-switch id="transparent" checked></jg-switch><span class="hint">Transparent</span>
+                <jg-switch id="transparent" checked></jg-switch><span class="hint">${t('favicon-generator.transparent', 'Transparent')}</span>
               </div>
             </jg-field>
-            <jg-field label="Padding"><jg-slider id="padding" min="0" max="30" value="0"></jg-slider></jg-field>
-            <jg-field label="Site name"><jg-input id="site" value="Your site"></jg-input></jg-field>
-            <jg-field label="Theme colour"><input type="color" id="theme" value="#8a1c3b" /></jg-field>
+            <jg-field label="${t('favicon-generator.padding', 'Padding')}"><jg-slider id="padding" min="0" max="30" value="0"></jg-slider></jg-field>
+            <jg-field label="${t('favicon-generator.siteName', 'Site name')}"><jg-input id="site" value="Your site"></jg-input></jg-field>
+            <jg-field label="${t('favicon-generator.themeColour', 'Theme colour')}"><input type="color" id="theme" value="#8a1c3b" /></jg-field>
           </div>
 
           <div class="row">
-            <jg-button size="sm" id="save-all">Download all</jg-button>
-            <jg-button size="sm" variant="outline" id="save-ico">Download .ico</jg-button>
+            <jg-button size="sm" id="save-all">${t('favicon-generator.downloadAll', 'Download all')}</jg-button>
+            <jg-button size="sm" variant="outline" id="save-ico">${t('favicon-generator.downloadIco', 'Download .ico')}</jg-button>
           </div>
 
           <jg-field label="HTML"><jg-code id="html-out" rows="7" language="html" readonly></jg-code></jg-field>
-          <jg-field label="manifest.webmanifest"><jg-code id="manifest-out" rows="9" language="json" readonly></jg-code></jg-field>
+          <jg-field label="${t('favicon-generator.manifestWebmanifest', 'manifest.webmanifest')}"><jg-code id="manifest-out" rows="9" language="json" readonly></jg-code></jg-field>
           <div class="row">
-            <jg-button size="sm" variant="ghost" id="copy-html">Copy HTML</jg-button>
-            <jg-button size="sm" variant="ghost" id="copy-manifest">Copy manifest</jg-button>
-            <jg-button size="sm" variant="ghost" id="save-manifest">Save manifest</jg-button>
+            <jg-button size="sm" variant="ghost" id="copy-html">${t('favicon-generator.copyHtml', 'Copy HTML')}</jg-button>
+            <jg-button size="sm" variant="ghost" id="copy-manifest">${t('favicon-generator.copyManifest', 'Copy manifest')}</jg-button>
+            <jg-button size="sm" variant="ghost" id="save-manifest">${t('favicon-generator.saveManifest', 'Save manifest')}</jg-button>
           </div>
         </div>
       </div>

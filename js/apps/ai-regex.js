@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { escapeHtml } from '../core/dom.js';
 import { ai } from '../core/ai.js';
 import { copyText } from '../core/util.js';
@@ -41,29 +42,29 @@ class AiRegex extends JGApp {
     this.paint(html`<div class="app">
       <jg-ai-bar></jg-ai-bar>
 
-      <jg-field label="Describe what to match" hint="Plain language, for example: an ISO date followed by a comma">
+      <jg-field label="${t('ai-regex.describeWhatToMatch', 'Describe what to match')}" hint="${t('ai-regex.plainLanguageForExampleAn', 'Plain language, for example: an ISO date followed by a comma')}">
         <div class="row nowrap">
-          <jg-input id="prompt" class="grow" placeholder="A UK postcode, case insensitive"></jg-input>
-          <jg-button id="run">Generate</jg-button>
-          <jg-button id="stop" variant="outline" hidden>Stop</jg-button>
+          <jg-input id="prompt" class="grow" placeholder="${t('ai-regex.aUkPostcodeCaseInsensitive', 'A UK postcode, case insensitive')}"></jg-input>
+          <jg-button id="run">${t('ai-regex.generate', 'Generate')}</jg-button>
+          <jg-button id="stop" variant="outline" hidden>${t('ai-regex.stop', 'Stop')}</jg-button>
         </div>
       </jg-field>
 
-      <jg-card title="Pattern">
+      <jg-card title="${t('ai-regex.pattern', 'Pattern')}">
         <div class="pattern" id="pattern">-</div>
         <div class="row">
-          <jg-button size="sm" variant="outline" id="copy">Copy</jg-button>
-          <jg-button size="sm" variant="ghost" id="explain">Explain this pattern</jg-button>
+          <jg-button size="sm" variant="outline" id="copy">${t('ai-regex.copy', 'Copy')}</jg-button>
+          <jg-button size="sm" variant="ghost" id="explain">${t('ai-regex.explainThisPattern', 'Explain this pattern')}</jg-button>
           <span class="hint" id="status"></span>
         </div>
       </jg-card>
 
-      <jg-field label="Test against">
-        <jg-textarea id="sample" rows="4" placeholder="Paste sample text to see live matches"></jg-textarea>
+      <jg-field label="${t('ai-regex.testAgainst', 'Test against')}">
+        <jg-textarea id="sample" rows="4" placeholder="${t('ai-regex.pasteSampleTextToSee', 'Paste sample text to see live matches')}"></jg-textarea>
       </jg-field>
       <div class="preview" id="preview"></div>
 
-      <jg-card title="Explanation" id="explaincard" hidden>
+      <jg-card title="${t('ai-regex.explanation', 'Explanation')}" id="explaincard" hidden>
         <div class="out" id="explanation"></div>
       </jg-card>
     </div>`);

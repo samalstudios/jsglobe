@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { encodeBytes, decodeBytes, toBase64, fromBase64, randomBytes } from '../core/util.js';
 
 const sheet = css`
@@ -25,21 +26,21 @@ class Encryption extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-card title="Passphrase" sub="AES-256-GCM with PBKDF2 key derivation (250k iterations)">
-        <jg-input id="passphrase" type="password" placeholder="Passphrase"></jg-input>
+      <jg-card title="${t('encryption.passphrase', 'Passphrase')}" sub="AES-256-GCM with PBKDF2 key derivation (250k iterations)">
+        <jg-input id="passphrase" type="password" placeholder="${t('encryption.passphrase', 'Passphrase')}"></jg-input>
       </jg-card>
 
       <div class="split">
-        <jg-card title="Encrypt">
-          <jg-textarea id="plain" rows="5" sans placeholder="Text to encrypt"></jg-textarea>
-          <jg-button id="encrypt">Encrypt</jg-button>
-          <jg-output id="cipher" scroll placeholder="Ciphertext appears here"></jg-output>
+        <jg-card title="${t('encryption.encrypt', 'Encrypt')}">
+          <jg-textarea id="plain" rows="5" sans placeholder="${t('encryption.textToEncrypt', 'Text to encrypt')}"></jg-textarea>
+          <jg-button id="encrypt">${t('encryption.encrypt', 'Encrypt')}</jg-button>
+          <jg-output id="cipher" scroll placeholder="${t('encryption.ciphertextAppearsHere', 'Ciphertext appears here')}"></jg-output>
         </jg-card>
 
-        <jg-card title="Decrypt">
-          <jg-textarea id="cipherin" rows="5" placeholder="Paste ciphertext"></jg-textarea>
-          <jg-button id="decrypt" variant="secondary">Decrypt</jg-button>
-          <jg-output id="plainout" scroll placeholder="Decrypted text appears here"></jg-output>
+        <jg-card title="${t('encryption.decrypt', 'Decrypt')}">
+          <jg-textarea id="cipherin" rows="5" placeholder="${t('encryption.pasteCiphertext', 'Paste ciphertext')}"></jg-textarea>
+          <jg-button id="decrypt" variant="secondary">${t('encryption.decrypt', 'Decrypt')}</jg-button>
+          <jg-output id="plainout" scroll placeholder="${t('encryption.decryptedTextAppearsHere', 'Decrypted text appears here')}"></jg-output>
         </jg-card>
       </div>
 

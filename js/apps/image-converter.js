@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { download, formatBytes, toast } from '../core/util.js';
 
 const sheet = css`
@@ -45,7 +46,7 @@ const sheet = css`
 const FORMATS = [
   { value: 'image/png', label: 'PNG', extension: 'png' },
   { value: 'image/jpeg', label: 'JPEG', extension: 'jpg' },
-  { value: 'image/webp', label: 'WebP', extension: 'webp' },
+  { value: 'image/webp', label: t('image-converter.webp', 'WebP'), extension: 'webp' },
 ];
 
 const supports = (type) => {
@@ -64,35 +65,35 @@ class ImageConverter extends JGApp {
     this.paint(html`<div class="app">
       <div class="drop" id="drop">
         <span class="glyph">▤</span>
-        <span class="strong">Drop images here or click to choose</span>
-        <span class="hint">Everything is converted in this tab with canvas. Files never leave the device.</span>
+        <span class="strong">${t('image-converter.dropImagesHereOrClick', 'Drop images here or click to choose')}</span>
+        <span class="hint">${t('image-converter.everythingIsConvertedInThis', 'Everything is converted in this tab with canvas. Files never leave the device.')}</span>
       </div>
 
       <div class="grid3">
-        <jg-field label="Convert to">
+        <jg-field label="${t('image-converter.convertTo', 'Convert to')}">
           <jg-select id="format" value="image/webp">
             ${FORMATS.filter((format) => supports(format.value)).map(
               (format) => html`<option value="${format.value}">${format.label}</option>`,
             )}
           </jg-select>
         </jg-field>
-        <jg-field label="Quality" hint="JPEG and WebP only">
+        <jg-field label="${t('image-converter.quality', 'Quality')}" hint="${t('image-converter.jpegAndWebpOnly', 'JPEG and WebP only')}">
           <jg-slider id="quality" min="10" max="100" value="82"></jg-slider>
         </jg-field>
-        <jg-field label="Max width" hint="0 keeps the original">
+        <jg-field label="${t('image-converter.maxWidth', 'Max width')}" hint="${t('image-converter.0KeepsTheOriginal', '0 keeps the original')}">
           <jg-input id="width" type="number" min="0" max="10000" value="0" suffix="px"></jg-input>
         </jg-field>
-        <jg-field label="Max height" hint="0 keeps the original">
+        <jg-field label="${t('image-converter.maxHeight', 'Max height')}" hint="${t('image-converter.0KeepsTheOriginal', '0 keeps the original')}">
           <jg-input id="height" type="number" min="0" max="10000" value="0" suffix="px"></jg-input>
         </jg-field>
       </div>
 
       <div class="row">
-        <jg-switch id="keepRatio" checked></jg-switch><span class="hint">Keep aspect ratio</span>
-        <jg-switch id="background"></jg-switch><span class="hint">Flatten transparency onto white</span>
+        <jg-switch id="keepRatio" checked></jg-switch><span class="hint">${t('image-converter.keepAspectRatio', 'Keep aspect ratio')}</span>
+        <jg-switch id="background"></jg-switch><span class="hint">${t('image-converter.flattenTransparencyOntoWhite', 'Flatten transparency onto white')}</span>
         <span class="grow"></span>
-        <jg-button variant="outline" size="sm" id="clear">Clear</jg-button>
-        <jg-button id="convert">Convert all</jg-button>
+        <jg-button variant="outline" size="sm" id="clear">${t('image-converter.clear', 'Clear')}</jg-button>
+        <jg-button id="convert">${t('image-converter.convertAll', 'Convert all')}</jg-button>
       </div>
 
       <div class="items" id="items"></div>
@@ -150,7 +151,7 @@ class ImageConverter extends JGApp {
   #paint() {
     const node = this.$('#items');
     if (!this.#items.length) {
-      node.innerHTML = html`<jg-empty glyph="▤" title="No images yet">Add PNG, JPEG, WebP, GIF, AVIF or SVG files.</jg-empty>`;
+      node.innerHTML = html`<jg-empty glyph="▤" title="${t('image-converter.noImagesYet', 'No images yet')}">${t('image-converter.addPngJpegWebpGif', 'Add PNG, JPEG, WebP, GIF, AVIF or SVG files.')}</jg-empty>`;
       return;
     }
 
@@ -170,7 +171,7 @@ class ImageConverter extends JGApp {
             </span>
           </span>
           <span class="row tight">
-            ${item.result ? html`<jg-button size="sm" variant="outline" data-save="${index}">Save</jg-button>` : ''}
+            ${item.result ? html`<jg-button size="sm" variant="outline" data-save="${index}">${t('image-converter.save', 'Save')}</jg-button>` : ''}
             <jg-button size="icon-sm" variant="ghost" data-remove="${index}">✕</jg-button>
           </span>
         </div>`;

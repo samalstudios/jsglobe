@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText } from '../core/util.js';
 
 const sheet = css`
@@ -59,22 +60,22 @@ class MorseCode extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="Text">
-        <jg-textarea id="text" rows="4" sans placeholder="hello world"></jg-textarea>
+      <jg-field label="${t('morse-code.text', 'Text')}">
+        <jg-textarea id="text" rows="4" sans placeholder="${t('morse-code.helloWorld', 'hello world')}"></jg-textarea>
       </jg-field>
 
-      <jg-field label="Morse">
+      <jg-field label="${t('morse-code.morse', 'Morse')}">
         <jg-textarea id="code" rows="4" placeholder=".... . .-.. .-.. ---"></jg-textarea>
       </jg-field>
 
       <div class="row">
-        <jg-button size="sm" variant="outline" id="play">Play tone</jg-button>
-        <jg-button size="sm" variant="ghost" id="copy">Copy morse</jg-button>
+        <jg-button size="sm" variant="outline" id="play">${t('morse-code.playTone', 'Play tone')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="copy">${t('morse-code.copyMorse', 'Copy morse')}</jg-button>
         <span class="grow"></span>
-        <span class="hint">Slash separates words</span>
+        <span class="hint">${t('morse-code.slashSeparatesWords', 'Slash separates words')}</span>
       </div>
 
-      <jg-card title="Reference" sub="International Morse code">
+      <jg-card title="${t('morse-code.reference', 'Reference')}" sub="International Morse code">
         <div class="chart">
           ${Object.entries(TABLE).map(([key, value]) => html`<div class="cell"><b>${key}</b><span>${value}</span></div>`)}
         </div>

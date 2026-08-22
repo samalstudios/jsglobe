@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText } from '../core/util.js';
 import { evaluate, CONSTANTS, FUNCTIONS } from '../core/expression.js';
 
@@ -33,7 +34,7 @@ class MathEvaluator extends JGApp {
   renderWidget() {
     this.paint(html`<div class="app" style="padding:0">
       <div class="widget">
-        <jg-input id="input" size="sm" mono placeholder="2 + 2 * pi"></jg-input>
+        <jg-input id="input" size="sm" mono placeholder="${t('math-evaluator.22Pi', '2 + 2 * pi')}"></jg-input>
         <div class="result" style="font-size:20px" id="out">-</div>
       </div>
     </div>`);
@@ -49,23 +50,23 @@ class MathEvaluator extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="Expression" hint="Supports + − × ÷ ^ % !, functions and constants">
+      <jg-field label="${t('math-evaluator.expression', 'Expression')}" hint="${t('math-evaluator.supportsFunctionsAndConstants', 'Supports + − × ÷ ^ % !, functions and constants')}">
         <jg-input id="input" mono value="sqrt(16) + 2^8 / pi"></jg-input>
       </jg-field>
 
-      <jg-card title="Result">
+      <jg-card title="${t('math-evaluator.result', 'Result')}">
         <div class="result" id="result">-</div>
         <div class="spread">
           <span class="hint" id="detail"></span>
-          <jg-button size="sm" variant="outline" id="copy">Copy</jg-button>
+          <jg-button size="sm" variant="outline" id="copy">${t('math-evaluator.copy', 'Copy')}</jg-button>
         </div>
       </jg-card>
 
-      <jg-card title="History" sub="Click an entry to load it">
+      <jg-card title="${t('math-evaluator.history', 'History')}" sub="Click an entry to load it">
         <div class="history" id="history"></div>
       </jg-card>
 
-      <jg-card title="Reference">
+      <jg-card title="${t('math-evaluator.reference', 'Reference')}">
         <div class="refs">
           ${Object.keys(FUNCTIONS).map((name) => html`<div class="ref"><code>${name}()</code></div>`)}
           ${Object.keys(CONSTANTS).map((name) => html`<div class="ref"><code>${name}</code></div>`)}

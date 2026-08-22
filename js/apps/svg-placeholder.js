@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText, download } from '../core/util.js';
 
 const sheet = css`
@@ -64,23 +65,23 @@ class SvgPlaceholder extends JGApp {
       <div class="stage" id="stage"></div>
 
       <div class="fields">
-        <jg-field label="Width"><jg-input id="w" type="number" min="8" max="4000" value="600"></jg-input></jg-field>
-        <jg-field label="Height"><jg-input id="h" type="number" min="8" max="4000" value="400"></jg-input></jg-field>
-        <jg-field label="Corner radius"><jg-input id="radius" type="number" min="0" max="200" value="0"></jg-input></jg-field>
-        <jg-field label="Font size"><jg-input id="font" type="number" min="0" max="400" value="0" placeholder="auto"></jg-input></jg-field>
-        <jg-field label="Pattern">
+        <jg-field label="${t('svg-placeholder.width', 'Width')}"><jg-input id="w" type="number" min="8" max="4000" value="600"></jg-input></jg-field>
+        <jg-field label="${t('svg-placeholder.height', 'Height')}"><jg-input id="h" type="number" min="8" max="4000" value="400"></jg-input></jg-field>
+        <jg-field label="${t('svg-placeholder.cornerRadius', 'Corner radius')}"><jg-input id="radius" type="number" min="0" max="200" value="0"></jg-input></jg-field>
+        <jg-field label="${t('svg-placeholder.fontSize', 'Font size')}"><jg-input id="font" type="number" min="0" max="400" value="0" placeholder="${t('svg-placeholder.auto', 'auto')}"></jg-input></jg-field>
+        <jg-field label="${t('svg-placeholder.pattern', 'Pattern')}">
           <jg-select id="pattern" value="none">
-            <option value="none">Plain</option>
-            <option value="grid">Grid</option>
-            <option value="cross">Diagonals</option>
+            <option value="none">${t('svg-placeholder.plain', 'Plain')}</option>
+            <option value="grid">${t('svg-placeholder.grid', 'Grid')}</option>
+            <option value="cross">${t('svg-placeholder.diagonals', 'Diagonals')}</option>
           </jg-select>
         </jg-field>
-        <jg-field label="Label"><jg-input id="text" placeholder="600 x 400"></jg-input></jg-field>
+        <jg-field label="${t('svg-placeholder.label', 'Label')}"><jg-input id="text" placeholder="600 x 400"></jg-input></jg-field>
       </div>
 
       <div class="row">
-        <jg-field label="Background" row><input type="color" id="bg" value="#e2e8f0" /></jg-field>
-        <jg-field label="Text" row><input type="color" id="fg" value="#64748b" /></jg-field>
+        <jg-field label="${t('svg-placeholder.background', 'Background')}" row><input type="color" id="bg" value="#e2e8f0" /></jg-field>
+        <jg-field label="${t('svg-placeholder.text', 'Text')}" row><input type="color" id="fg" value="#64748b" /></jg-field>
         <span class="grow"></span>
         <div class="swatches">
           ${THEMES.map(
@@ -94,13 +95,13 @@ class SvgPlaceholder extends JGApp {
         </div>
       </div>
 
-      <jg-field label="Markup"><jg-code id="out" rows="9" language="svg" readonly></jg-code></jg-field>
+      <jg-field label="${t('svg-placeholder.markup', 'Markup')}"><jg-code id="out" rows="9" language="svg" readonly></jg-code></jg-field>
 
       <div class="row">
-        <jg-button size="sm" variant="outline" id="copy">Copy SVG</jg-button>
-        <jg-button size="sm" variant="outline" id="copy-url">Copy data URI</jg-button>
-        <jg-button size="sm" variant="ghost" id="copy-img">Copy img tag</jg-button>
-        <jg-button size="sm" variant="ghost" id="download">Download</jg-button>
+        <jg-button size="sm" variant="outline" id="copy">${t('svg-placeholder.copySvg', 'Copy SVG')}</jg-button>
+        <jg-button size="sm" variant="outline" id="copy-url">${t('svg-placeholder.copyDataUri', 'Copy data URI')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="copy-img">${t('svg-placeholder.copyImgTag', 'Copy img tag')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="download">${t('svg-placeholder.download', 'Download')}</jg-button>
       </div>
     </div>`);
 

@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce, copyText, toast } from '../core/util.js';
 
 const sheet = css`
@@ -63,14 +64,14 @@ class CurrencyConverter extends JGApp {
 
     this.paint(html`<div class="app">
       <div class="convert">
-        <jg-field label="From">
+        <jg-field label="${t('currency-converter.from', 'From')}">
           <div class="row">
             <jg-input id="amount" type="number" step="any" value="${saved.amount}" style="flex:1"></jg-input>
             <jg-select id="from" value="${saved.from}" style="width:150px"></jg-select>
           </div>
         </jg-field>
-        <jg-button class="swap" size="icon" variant="outline" id="swap" title="Swap">⇄</jg-button>
-        <jg-field label="To">
+        <jg-button class="swap" size="icon" variant="outline" id="swap" title="${t('currency-converter.swap', 'Swap')}">⇄</jg-button>
+        <jg-field label="${t('currency-converter.to', 'To')}">
           <div class="row">
             <jg-input id="converted" readonly style="flex:1"></jg-input>
             <jg-select id="to" value="${saved.to}" style="width:150px"></jg-select>
@@ -84,14 +85,14 @@ class CurrencyConverter extends JGApp {
       </div>
 
       <div class="row">
-        <jg-badge id="status" tone="muted">Loading rates</jg-badge>
+        <jg-badge id="status" tone="muted">${t('currency-converter.loadingRates', 'Loading rates')}</jg-badge>
         <span class="hint" id="stamp"></span>
         <span class="grow"></span>
-        <jg-button size="sm" variant="ghost" id="refresh">Refresh</jg-button>
-        <jg-button size="sm" variant="ghost" id="copy">Copy</jg-button>
+        <jg-button size="sm" variant="ghost" id="refresh">${t('currency-converter.refresh', 'Refresh')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="copy">${t('currency-converter.copy', 'Copy')}</jg-button>
       </div>
 
-      <jg-card title="At a glance" sub="The same amount in other currencies">
+      <jg-card title="${t('currency-converter.atAGlance', 'At a glance')}" sub="The same amount in other currencies">
         <div class="table" id="table"></div>
       </jg-card>
 
