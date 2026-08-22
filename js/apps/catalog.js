@@ -70,6 +70,7 @@ import rdap_lookup from './rdap-lookup/meta.js';
 import websocket_tester from './websocket-tester/meta.js';
 import cert_decoder from './cert-decoder/meta.js';
 import typing_test from './typing-test/meta.js';
+import chess from './chess/meta.js';
 import game_sudoku from './game-sudoku/meta.js';
 import game_tetris from './game-tetris/meta.js';
 import game_memory from './game-memory/meta.js';
@@ -194,6 +195,7 @@ export const catalog = [
   websocket_tester,
   cert_decoder,
   typing_test,
+  chess,
   game_sudoku,
   game_tetris,
   game_memory,

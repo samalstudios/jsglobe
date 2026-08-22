@@ -71,6 +71,7 @@
   "websocket-tester",
   "cert-decoder",
   "typing-test",
+  "chess",
   "game-sudoku",
   "game-tetris",
   "game-memory",

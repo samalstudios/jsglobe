@@ -3169,6 +3169,50 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/typing-test"/>
   </url>
   <url>
+    <loc>https://jsglobe.com/apps/chess</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/chess"/>
+  </url>
+  <url>
+    <loc>https://jsglobe.com/de/apps/chess</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/chess"/>
+  </url>
+  <url>
+    <loc>https://jsglobe.com/es/apps/chess</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/chess"/>
+  </url>
+  <url>
+    <loc>https://jsglobe.com/zh/apps/chess</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/apps/chess"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/chess"/>
+  </url>
+  <url>
     <loc>https://jsglobe.com/apps/game-sudoku</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
