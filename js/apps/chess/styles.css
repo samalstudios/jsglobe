@@ -22,11 +22,17 @@
   padding: 16px;
 }
 
+/* The cell size is an exact whole number of pixels, set from script, so all
+   64 squares measure the same. Fractional 1fr tracks round unevenly and leave
+   some squares a pixel wider than their neighbours. */
+.boardside { --cell: 56px; }
+
 .board {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  width: min(100%, 60vh, 560px);
-  aspect-ratio: 1;
+  grid-template-columns: repeat(8, var(--cell));
+  grid-template-rows: repeat(8, var(--cell));
+  width: calc(var(--cell) * 8);
+  height: calc(var(--cell) * 8);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -67,7 +73,7 @@
 }
 
 .man {
-  font-size: min(7.4vh, 42px);
+  font-size: calc(var(--cell) * 0.74);
   line-height: 1;
   pointer-events: none;
   user-select: none;
@@ -90,7 +96,7 @@
   align-items: center;
   gap: 1px;
   min-height: 20px;
-  width: min(100%, 60vh, 560px);
+  width: calc(var(--cell) * 8);
   font-size: 17px;
   color: var(--muted-foreground);
 }

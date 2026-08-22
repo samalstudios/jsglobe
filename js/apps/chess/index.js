@@ -109,6 +109,39 @@ class Chess extends JGApp {
     this.#toolbar();
     this.#draw();
     this.#pane();
+    this.#watchSize();
+  }
+
+  // Give every square the same whole number of pixels. Fractional track sizes
+  // round unevenly, which shows up as a board with a few fatter squares.
+  #fitBoard() {
+    const side = this.$('.boardside');
+    const board = this.$('#board');
+    if (!side || !board) return;
+
+    const style = getComputedStyle(side);
+    const padX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+    const padY = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+    const gaps = parseFloat(style.rowGap) || 0;
+
+    const spare = [...side.children].reduce(
+      (total, child) => (child === board ? total : total + child.getBoundingClientRect().height),
+      0,
+    );
+
+    const across = side.clientWidth - padX - 2;
+    const down = side.clientHeight - padY - spare - gaps * 3 - 2;
+    const cell = Math.max(24, Math.floor(Math.min(across, down, 560) / 8));
+    side.style.setProperty('--cell', `${cell}px`);
+  }
+
+  #watchSize() {
+    const side = this.$('.boardside');
+    if (!side) return;
+    this.#fitBoard();
+    const watcher = new ResizeObserver(() => this.#fitBoard());
+    watcher.observe(side);
+    this.track(() => watcher.disconnect());
   }
 
   #toolbar() {
