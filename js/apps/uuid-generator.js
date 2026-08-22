@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { copyText, randomBytes, toHex } from '../core/util.js';
 
 const sheet = css`
@@ -56,8 +57,8 @@ class UuidGenerator extends JGApp {
       <div class="widget">
         <div class="value" id="value">${uuidV4()}</div>
         <div class="row tight">
-          <jg-button size="sm" id="new" class="grow">New</jg-button>
-          <jg-button size="sm" variant="outline" id="copy">Copy</jg-button>
+          <jg-button size="sm" id="new" class="grow">${t('uuid.new', 'New')}</jg-button>
+          <jg-button size="sm" variant="outline" id="copy">${t('action.copy', 'Copy')}</jg-button>
         </div>
       </div>
     </div>`);
@@ -73,18 +74,18 @@ class UuidGenerator extends JGApp {
         <jg-tabs id="kind"></jg-tabs>
         <span class="grow"></span>
         <jg-input id="count" type="number" min="1" max="500" value="5" suffix="qty" style="width:110px"></jg-input>
-        <jg-button id="generate">Generate</jg-button>
+        <jg-button id="generate">${t('action.generate', 'Generate')}</jg-button>
       </div>
 
       <div class="row">
-        <jg-switch id="upper"></jg-switch><span class="hint">Uppercase</span>
-        <jg-switch id="braces"></jg-switch><span class="hint">Wrap in braces</span>
-        <jg-switch id="dashes" checked></jg-switch><span class="hint">Keep dashes</span>
+        <jg-switch id="upper"></jg-switch><span class="hint">${t('uuid.uppercase', 'Uppercase')}</span>
+        <jg-switch id="braces"></jg-switch><span class="hint">${t('uuid.braces', 'Wrap in braces')}</span>
+        <jg-switch id="dashes" checked></jg-switch><span class="hint">${t('uuid.dashes', 'Keep dashes')}</span>
       </div>
 
       <jg-field label="Output" grow>
         <div slot="action" class="row tight">
-          <jg-button size="sm" variant="outline" id="copy">Copy all</jg-button>
+          <jg-button size="sm" variant="outline" id="copy">${t('uuid.copyAll', 'Copy all')}</jg-button>
         </div>
         <pre class="code tall scroll list" id="out"></pre>
       </jg-field>
@@ -96,8 +97,8 @@ class UuidGenerator extends JGApp {
       { value: 'v4', label: 'UUID v4' },
       { value: 'v7', label: 'UUID v7' },
       { value: 'ulid', label: 'ULID' },
-      { value: 'short', label: 'Short ID' },
-      { value: 'nil', label: 'Nil' },
+      { value: 'short', label: t('uuid.shortId', 'Short ID') },
+      { value: 'nil', label: t('uuid.nil', 'Nil') },
     ];
 
     ['#kind', '#upper', '#braces', '#dashes'].forEach((selector) =>

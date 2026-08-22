@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { md5 } from '../lib/md5.js';
 import { encodeBytes, toHex, toBase64, debounce, formatBytes, pickFile } from '../core/util.js';
 
@@ -14,9 +15,9 @@ const ALGORITHMS = ['MD5', 'SHA-1', 'SHA-256', 'SHA-384', 'SHA-512'];
 class HashText extends JGApp {
   static appId = 'hash-text';
   static settings = [
-    { key: 'case', label: 'Output case', type: 'select', default: 'lower', options: [
-      { value: 'lower', label: 'lowercase' },
-      { value: 'upper', label: 'UPPERCASE' },
+    { key: 'case', label: t('hash-text.outputCase', 'Output case'), type: 'select', default: 'lower', options: [
+      { value: 'lower', label: t('hash-text.lower', 'lowercase') },
+      { value: 'upper', label: t('hash-text.upper', 'UPPERCASE') },
     ] },
   ];
   static styles = [...JGApp.styles, sheet];
@@ -31,7 +32,7 @@ class HashText extends JGApp {
 
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
-      <jg-input id="input" placeholder="Text to hash" size="sm"></jg-input>
+      <jg-input id="input" placeholder="${t('hash-text.textToHash', 'Text to hash')}" size="sm"></jg-input>
       <div class="stack tight">
         <div class="label">SHA-256</div>
         <jg-output id="out" placeholder="-"></jg-output>
@@ -50,18 +51,18 @@ class HashText extends JGApp {
         <jg-tabs id="source"></jg-tabs>
         <span class="grow"></span>
         <jg-select id="encoding" size="sm" value="hex" style="width:130px">
-          <option value="hex">Hexadecimal</option>
+          <option value="hex">${t('hash-text.hex', 'Hexadecimal')}</option>
           <option value="base64">Base64</option>
         </jg-select>
       </div>
 
       <jg-field label="Input" hint="Hashed locally - nothing is uploaded">
-        <jg-textarea id="input" rows="5" placeholder="Type or paste text to hash"></jg-textarea>
+        <jg-textarea id="input" rows="5" placeholder="${t('hash-text.typeOrPaste', 'Type or paste text to hash')}"></jg-textarea>
       </jg-field>
 
       <div class="row" id="filerow" hidden>
-        <jg-button variant="outline" size="sm" id="pick">Choose file...</jg-button>
-        <span class="hint" id="fileinfo">No file selected</span>
+        <jg-button variant="outline" size="sm" id="pick">${t('hash-text.chooseFile', 'Choose file...')}</jg-button>
+        <span class="hint" id="fileinfo">${t('hash-text.noFile', 'No file selected')}</span>
       </div>
 
       <div class="digests" id="digests">
@@ -75,8 +76,8 @@ class HashText extends JGApp {
     </div>`);
 
     this.$('#source').items = [
-      { value: 'text', label: 'Text' },
-      { value: 'file', label: 'File' },
+      { value: 'text', label: t('common.text', 'Text') },
+      { value: 'file', label: t('common.file', 'File') },
     ];
 
     this.on(this.$('#source'), 'change', (event) => {

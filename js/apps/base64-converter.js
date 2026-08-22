@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { toBase64, fromBase64, base64Url, fromBase64Url, encodeBytes, decodeBytes, pickFile, formatBytes, copyText, debounce } from '../core/util.js';
 
 const sheet = css`
@@ -20,8 +21,8 @@ class Base64Converter extends JGApp {
       <div id="body" class="fill"></div>
     </div>`);
     this.$('#tab').items = [
-      { value: 'text', label: 'Text' },
-      { value: 'file', label: 'File → Base64' },
+      { value: 'text', label: t('common.text', 'Text') },
+      { value: 'file', label: t('base64.fileToBase64', 'File → Base64') },
     ];
     this.$('#tab').value = this.#tab;
     this.on(this.$('#tab'), 'change', (event) => {
@@ -40,21 +41,21 @@ class Base64Converter extends JGApp {
   #text(body) {
     body.innerHTML = html`
       <div class="row">
-        <jg-switch id="urlsafe"></jg-switch><span class="hint">URL-safe alphabet</span>
+        <jg-switch id="urlsafe"></jg-switch><span class="hint">${t('base64.urlSafe', 'URL-safe alphabet')}</span>
         <span class="grow"></span>
-        <jg-button size="sm" variant="outline" id="swap">Swap ⇅</jg-button>
+        <jg-button size="sm" variant="outline" id="swap">${t('base64.swap', 'Swap ⇅')}</jg-button>
       </div>
       <div class="split">
         <div class="pane">
-          <div class="spread"><span class="label">Plain text</span><jg-copy from="#plain" size="icon"></jg-copy></div>
-          <jg-textarea id="plain" grow placeholder="Text to encode"></jg-textarea>
+          <div class="spread"><span class="label">${t('base64.plainText', 'Plain text')}</span><jg-copy from="#plain" size="icon"></jg-copy></div>
+          <jg-textarea id="plain" grow placeholder="${t('base64.textToEncode', 'Text to encode')}"></jg-textarea>
         </div>
         <div class="pane">
           <div class="spread"><span class="label">Base64</span><jg-copy from="#encoded" size="icon"></jg-copy></div>
-          <jg-textarea id="encoded" grow placeholder="Base64 to decode"></jg-textarea>
+          <jg-textarea id="encoded" grow placeholder="${t('base64.base64ToDecode', 'Base64 to decode')}"></jg-textarea>
         </div>
       </div>
-      <div class="hint" id="status">Type in either side.</div>
+      <div class="hint" id="status">${t('base64.typeEitherSide', 'Type in either side.')}</div>
     `;
 
     const plain = body.querySelector('#plain');
@@ -95,16 +96,16 @@ class Base64Converter extends JGApp {
   #file(body) {
     body.innerHTML = html`
       <div class="row">
-        <jg-button variant="outline" id="pick">Choose a file...</jg-button>
-        <span class="hint" id="info">Files never leave your browser.</span>
+        <jg-button variant="outline" id="pick">${t('base64.chooseFile', 'Choose a file...')}</jg-button>
+        <span class="hint" id="info">${t('base64.filesStay', 'Files never leave your browser.')}</span>
       </div>
       <img id="preview" class="preview" hidden alt="" />
       <jg-field label="Data URI" grow>
         <div slot="action"><jg-copy from="#out" size="icon"></jg-copy></div>
-        <jg-textarea id="out" grow placeholder="Base64 output appears here"></jg-textarea>
+        <jg-textarea id="out" grow placeholder="${t('base64.outputHere', 'Base64 output appears here')}"></jg-textarea>
       </jg-field>
       <div class="row">
-        <jg-button size="sm" variant="ghost" id="copyraw">Copy without data URI prefix</jg-button>
+        <jg-button size="sm" variant="ghost" id="copyraw">${t('base64.copyNoPrefix', 'Copy without data URI prefix')}</jg-button>
       </div>
     `;
 
