@@ -14,10 +14,20 @@
   "es": "&lt;div&gt;",
   "zh": "&lt;div&gt;"
  },
+ "+50 cents": {
+  "de": "+50 Cent",
+  "es": "+50 centésimas",
+  "zh": "+50 音分"
+ },
  "-----BEGIN CERTIFICATE-----": {
   "de": "-----BEGIN CERTIFICATE-----",
   "es": "-----BEGIN CERTIFICATE-----",
   "zh": "-----BEGIN CERTIFICATE-----"
+ },
+ "/usr/bin/backup": {
+  "de": "/usr/bin/backup",
+  "es": "/usr/bin/backup",
+  "zh": "/usr/bin/backup"
  },
  "0 bits": {
   "de": "0 Bit",
@@ -28,6 +38,11 @@
   "de": "0 Zeichen",
   "es": "0 caracteres",
   "zh": "0 个字符"
+ },
+ "0 in · 0 out": {
+  "de": "0 empfangen · 0 gesendet",
+  "es": "0 entrada · 0 salida",
+  "zh": "接收 0 · 发送 0"
  },
  "0 keeps the original": {
   "de": "0 behält das Original",
@@ -63,6 +78,11 @@
   "de": "1/50 Geschwindigkeit",
   "es": "Velocidad 1/50",
   "zh": "1/50 速度"
+ },
+ "10 Ways to Build a Café Menu - 2024 Edition": {
+  "de": "10 Wege zu einer Café-Karte - Ausgabe 2024",
+  "es": "10 formas de crear una carta de cafetería - Edición 2024",
+  "zh": "打造咖啡馆菜单的 10 种方法 - 2024 版"
  },
  "100 µs/div": {
   "de": "100 µs/Div",
@@ -239,10 +259,20 @@
   "es": "Una expresión cron necesita cinco campos.",
   "zh": "cron 表达式需要五个字段。"
  },
+ "AAPL": {
+  "de": "AAPL",
+  "es": "AAPL",
+  "zh": "AAPL"
+ },
  "AC source": {
   "de": "Wechselspannungsquelle",
   "es": "Fuente de CA",
   "zh": "交流电源"
+ },
+ "AED": {
+  "de": "AED",
+  "es": "AED",
+  "zh": "迪拉姆"
  },
  "AI": {
   "de": "KI",
@@ -258,6 +288,16 @@
   "de": "API-Schlüssel (optional)",
   "es": "Clave de API (opcional)",
   "zh": "API 密钥（可选）"
+ },
+ "AUD": {
+  "de": "AUD",
+  "es": "AUD",
+  "zh": "澳元"
+ },
+ "About": {
+  "de": "Über",
+  "es": "Acerca de",
+  "zh": "关于"
  },
  "Accent": {
   "de": "Akzentfarbe",
@@ -298,6 +338,11 @@
   "de": "PNG-, JPEG-, WebP-, GIF-, AVIF- oder SVG-Dateien hinzufügen.",
   "es": "Añade archivos PNG, JPEG, WebP, GIF, AVIF o SVG.",
   "zh": "添加 PNG、JPEG、WebP、GIF、AVIF 或 SVG 文件。"
+ },
+ "Add a city": {
+  "de": "Eine Stadt hinzufügen",
+  "es": "Añadir una ciudad",
+  "zh": "添加城市"
  },
  "Add a jack or a motor first, then this button can drive it.": {
   "de": "Zuerst einen Zylinder oder Motor hinzufügen, dann kann dieser Knopf ihn antreiben.",
@@ -343,6 +388,11 @@
   "de": "Funktion hinzufügen",
   "es": "Añadir función",
   "zh": "添加函数"
+ },
+ "Add padding": {
+  "de": "Innenabstand hinzufügen",
+  "es": "Añadir relleno",
+  "zh": "添加内边距"
  },
  "Add readiness and liveness probes": {
   "de": "Readiness- und Liveness-Probes hinzufügen",
@@ -409,6 +459,11 @@
   "es": "Todo",
   "zh": "全部"
  },
+ "All clear": {
+  "de": "Alles erledigt",
+  "es": "Todo hecho",
+  "zh": "全部完成"
+ },
  "All day": {
   "de": "Ganztägig",
   "es": "Todo el día",
@@ -423,6 +478,16 @@
   "de": "Alle Typen",
   "es": "Todos los tipos",
   "zh": "所有类型"
+ },
+ "All units": {
+  "de": "Alle Einheiten",
+  "es": "Todas las unidades",
+  "zh": "所有单位"
+ },
+ "All values": {
+  "de": "Alle Werte",
+  "es": "Todos los valores",
+  "zh": "全部数值"
  },
  "Allocation and result": {
   "de": "Aufteilung und Ergebnis",
@@ -469,6 +534,16 @@
   "es": "Vale cualquier separador: espacios, guiones, guiones bajos o mayúsculas internas",
   "zh": "任何分隔符都可以：空格、连字符、下划线或驼峰"
  },
+ "Appearance": {
+  "de": "Darstellung",
+  "es": "Apariencia",
+  "zh": "外观"
+ },
+ "Append this to ~/.ssh/authorized_keys on the server": {
+  "de": "Dies an ~/.ssh/authorized_keys auf dem Server anhängen",
+  "es": "Añade esto a ~/.ssh/authorized_keys en el servidor",
+  "zh": "把这行追加到服务器的 ~/.ssh/authorized_keys 中"
+ },
  "Apple": {
   "de": "Apple",
   "es": "Apple",
@@ -484,6 +559,11 @@
   "es": "Aplicar los campos comunes",
   "zh": "应用共用字段"
  },
+ "Apps": {
+  "de": "Apps",
+  "es": "Apps",
+  "zh": "应用"
+ },
  "Arabic": {
   "de": "Arabisch",
   "es": "Árabe",
@@ -498,6 +578,11 @@
   "de": "Mit den Pfeiltasten oder WASD steuern, Leertaste pausiert. Auf Touchscreens wischen.",
   "es": "Usa las flechas o WASD para dirigir, espacio para pausar. Desliza en pantallas táctiles.",
   "zh": "用方向键或 WASD 控制方向，空格暂停。触摸屏可滑动。"
+ },
+ "Arrows": {
+  "de": "Pfeile",
+  "es": "Flechas",
+  "zh": "箭头"
  },
  "Arrows move, space fires.": {
   "de": "Pfeiltasten bewegen, Leertaste schießt.",
@@ -579,6 +664,11 @@
   "es": "Coste medio",
   "zh": "平均成本"
  },
+ "Average word length": {
+  "de": "Durchschnittliche Wortlänge",
+  "es": "Longitud media de palabra",
+  "zh": "平均词长"
+ },
  "Axes": {
   "de": "Achsen",
   "es": "Ejes",
@@ -589,6 +679,11 @@
   "es": "BPM",
   "zh": "BPM"
  },
+ "Back to the home screen": {
+  "de": "Zurück zum Startbildschirm",
+  "es": "Volver a la pantalla de inicio",
+  "zh": "返回主屏幕"
+ },
  "Backdrop": {
   "de": "Hintergrundbild",
   "es": "Fondo",
@@ -598,6 +693,11 @@
   "de": "Hintergrund",
   "es": "Fondo",
   "zh": "背景"
+ },
+ "Backup": {
+  "de": "Sicherung",
+  "es": "Copia de seguridad",
+  "zh": "备份"
  },
  "Ball": {
   "de": "Kugel",
@@ -644,10 +744,25 @@
   "es": "Credenciales en Base64",
   "zh": "Base64 凭据"
  },
+ "Basic Latin": {
+  "de": "Basis-Latein",
+  "es": "Latín básico",
+  "zh": "基本拉丁字母"
+ },
  "Basic YWRtaW46aHVudGVyMg==": {
   "de": "Basic YWRtaW46aHVudGVyMg==",
   "es": "Basic YWRtaW46aHVudGVyMg==",
   "zh": "Basic YWRtaW46aHVudGVyMg=="
+ },
+ "Bass 4 string": {
+  "de": "Bass viersaitig",
+  "es": "Bajo de 4 cuerdas",
+  "zh": "四弦贝斯"
+ },
+ "Batch": {
+  "de": "Stapel",
+  "es": "Lote",
+  "zh": "批量"
  },
  "Battery": {
   "de": "Batterie",
@@ -658,6 +773,11 @@
   "de": "Vorher und nachher",
   "es": "Antes y después",
   "zh": "前后对比"
+ },
+ "Behaviour": {
+  "de": "Verhalten",
+  "es": "Comportamiento",
+  "zh": "行为"
  },
  "Best": {
   "de": "Bestwert",
@@ -684,6 +804,11 @@
   "es": "Binario (base 2)",
   "zh": "二进制（基数 2）"
  },
+ "Bins": {
+  "de": "Klassen",
+  "es": "Intervalos",
+  "zh": "分组数"
+ },
  "Bit length": {
   "de": "Bitlänge",
   "es": "Longitud en bits",
@@ -708,6 +833,11 @@
   "de": "Block",
   "es": "Bloque",
   "zh": "块"
+ },
+ "Block elements": {
+  "de": "Blockelemente",
+  "es": "Elementos de bloque",
+  "zh": "方块元素"
  },
  "Blocks": {
   "de": "Blöcke",
@@ -779,6 +909,16 @@
   "es": "Recuadro",
   "zh": "方框"
  },
+ "Box drawing": {
+  "de": "Rahmenzeichen",
+  "es": "Dibujo de cajas",
+  "zh": "制表符"
+ },
+ "Braille": {
+  "de": "Braille",
+  "es": "Braille",
+  "zh": "盲文"
+ },
  "Break every brick": {
   "de": "Jeden Stein zerschlagen",
   "es": "Rompe todos los ladrillos",
@@ -804,6 +944,11 @@
   "es": "Traer al frente",
   "zh": "移到最前"
  },
+ "Broadcast": {
+  "de": "Broadcast",
+  "es": "Difusión",
+  "zh": "广播地址"
+ },
  "Browse the gallery": {
   "de": "Galerie durchsuchen",
   "es": "Explorar la galería",
@@ -813,6 +958,11 @@
   "de": "Browser",
   "es": "Navegador",
   "zh": "浏览器"
+ },
+ "Browser quota is typically around 5 MB per origin.": {
+  "de": "Das Browser-Kontingent liegt üblicherweise bei etwa 5 MB pro Origin.",
+  "es": "La cuota del navegador suele rondar los 5 MB por origen.",
+  "zh": "浏览器配额通常为每个源约 5 MB。"
  },
  "Browser tab preview": {
   "de": "Vorschau im Browser-Tab",
@@ -858,6 +1008,16 @@
   "de": "Bytes",
   "es": "Bytes",
   "zh": "字节"
+ },
+ "CAD": {
+  "de": "CAD",
+  "es": "CAD",
+  "zh": "加元"
+ },
+ "CHF": {
+  "de": "CHF",
+  "es": "CHF",
+  "zh": "瑞士法郎"
  },
  "CONSTANT_CASE": {
   "de": "CONSTANT_CASE",
@@ -984,6 +1144,11 @@
   "es": "Tono informal",
   "zh": "随意语气"
  },
+ "Categories": {
+  "de": "Kategorien",
+  "es": "Categorías",
+  "zh": "类别"
+ },
  "Category": {
   "de": "Kategorie",
   "es": "Categoría",
@@ -1019,6 +1184,11 @@
   "es": "Modificado",
   "zh": "修改后"
  },
+ "Changing a swatch replaces every use of that colour in the document.": {
+  "de": "Ein Farbfeld zu ändern ersetzt jede Verwendung dieser Farbe im Dokument.",
+  "es": "Cambiar una muestra sustituye todos los usos de ese color en el documento.",
+  "zh": "修改一个色块会替换文档中该颜色的所有用法。"
+ },
  "Character": {
   "de": "Zeichen",
   "es": "Carácter",
@@ -1043,6 +1213,11 @@
   "de": "Vollständig auf diesem Gerät geprüft, nichts wird irgendwohin gesendet",
   "es": "Se comprueba enteramente en este dispositivo, no se envía nada a ninguna parte",
   "zh": "完全在本机检查，不会发送到任何地方"
+ },
+ "Checker": {
+  "de": "Karomuster",
+  "es": "Cuadrícula",
+  "zh": "棋盘格"
  },
  "Checks": {
   "de": "Prüfungen",
@@ -1114,6 +1289,21 @@
   "es": "Limpiar",
   "zh": "清空"
  },
+ "Clear all": {
+  "de": "Alle löschen",
+  "es": "Borrar todo",
+  "zh": "全部清除"
+ },
+ "Clear completed": {
+  "de": "Erledigte entfernen",
+  "es": "Quitar las completadas",
+  "zh": "清除已完成"
+ },
+ "Clear log": {
+  "de": "Protokoll leeren",
+  "es": "Vaciar el registro",
+  "zh": "清空日志"
+ },
  "Clear marks": {
   "de": "Markierungen entfernen",
   "es": "Borrar las marcas",
@@ -1179,6 +1369,16 @@
   "es": "Code 39",
   "zh": "Code 39"
  },
+ "Code point": {
+  "de": "Codepunkt",
+  "es": "Punto de código",
+  "zh": "码位"
+ },
+ "CoinGecko": {
+  "de": "CoinGecko",
+  "es": "CoinGecko",
+  "zh": "CoinGecko"
+ },
  "Colon - 00:1b:44": {
   "de": "Doppelpunkt - 00:1b:44",
   "es": "Dos puntos - 00:1b:44",
@@ -1203,6 +1403,11 @@
   "de": "Farbschema",
   "es": "Esquema de color",
   "zh": "配色方案"
+ },
+ "Colours": {
+  "de": "Farben",
+  "es": "Colores",
+  "zh": "颜色"
  },
  "Columns": {
   "de": "Spalten",
@@ -1259,6 +1464,11 @@
   "es": "Empresa",
   "zh": "公司"
  },
+ "Component": {
+  "de": "Komponente",
+  "es": "Componente",
+  "zh": "组件"
+ },
  "Component name": {
   "de": "Komponentenname",
   "es": "Nombre del componente",
@@ -1309,10 +1519,20 @@
   "es": "Conectar un dispositivo MIDI",
   "zh": "连接 MIDI 设备"
  },
+ "Connection": {
+  "de": "Verbindung",
+  "es": "Conexión",
+  "zh": "连接"
+ },
  "Contact": {
   "de": "Kontakt",
   "es": "Contacto",
   "zh": "联系人"
+ },
+ "Contact ada@example.com or grace@jsglobe.dev for access. Invalid: nobody@localhost": {
+  "de": "Für Zugang ada@example.com oder grace@jsglobe.dev kontaktieren. Ungültig: nobody@localhost",
+  "es": "Contacta con ada@example.com o grace@jsglobe.dev para obtener acceso. No válido: nobody@localhost",
+  "zh": "如需访问权限，请联系 ada@example.com 或 grace@jsglobe.dev。无效示例：nobody@localhost"
  },
  "Contacts": {
   "de": "Kontakte",
@@ -1414,10 +1634,25 @@
   "es": "Copiar todo",
   "zh": "复制全部"
  },
+ "Copy batch": {
+  "de": "Stapel kopieren",
+  "es": "Copiar el lote",
+  "zh": "复制批量结果"
+ },
+ "Copy character": {
+  "de": "Zeichen kopieren",
+  "es": "Copiar el carácter",
+  "zh": "复制字符"
+ },
  "Copy code point": {
   "de": "Codepunkt kopieren",
   "es": "Copiar punto de código",
   "zh": "复制码位"
+ },
+ "Copy data URI": {
+  "de": "Data-URI kopieren",
+  "es": "Copiar el data URI",
+  "zh": "复制 data URI"
  },
  "Copy emoji": {
   "de": "Emoji kopieren",
@@ -1433,6 +1668,11 @@
   "de": "Formatiert kopieren",
   "es": "Copiar con formato",
   "zh": "复制格式化结果"
+ },
+ "Copy img tag": {
+  "de": "img-Tag kopieren",
+  "es": "Copiar la etiqueta img",
+  "zh": "复制 img 标签"
  },
  "Copy log": {
   "de": "Protokoll kopieren",
@@ -1464,6 +1704,11 @@
   "es": "Copiar netlist",
   "zh": "复制网表"
  },
+ "Copy plan": {
+  "de": "Plan kopieren",
+  "es": "Copiar el plan",
+  "zh": "复制方案"
+ },
  "Copy report": {
   "de": "Bericht kopieren",
   "es": "Copiar el informe",
@@ -1478,6 +1723,11 @@
   "de": "Ergebnisse kopieren",
   "es": "Copiar resultados",
   "zh": "复制结果"
+ },
+ "Copy summary": {
+  "de": "Kennzahlen kopieren",
+  "es": "Copiar el resumen",
+  "zh": "复制摘要"
  },
  "Copy text": {
   "de": "Text kopieren",
@@ -1584,6 +1834,11 @@
   "es": "Color personalizado",
   "zh": "自定义颜色"
  },
+ "Custom elements, no framework": {
+  "de": "Custom Elements, kein Framework",
+  "es": "Custom elements, sin framework",
+  "zh": "自定义元素，无框架"
+ },
  "Cycles per second": {
   "de": "Zyklen pro Sekunde",
   "es": "Ciclos por segundo",
@@ -1593,6 +1848,11 @@
   "de": "Becken",
   "es": "Platillo",
   "zh": "镲片"
+ },
+ "Cyrillic": {
+  "de": "Kyrillisch",
+  "es": "Cirílico",
+  "zh": "西里尔字母"
  },
  "D flip-flop": {
   "de": "D-Flipflop",
@@ -1614,15 +1874,35 @@
   "es": "Amortiguación",
   "zh": "阻尼"
  },
+ "Danger zone": {
+  "de": "Gefahrenbereich",
+  "es": "Zona de riesgo",
+  "zh": "危险操作"
+ },
  "Dark": {
   "de": "Dunkel",
   "es": "Oscuro",
   "zh": "深色"
  },
+ "Dash (-)": {
+  "de": "Bindestrich (-)",
+  "es": "Guion (-)",
+  "zh": "连字符 (-)"
+ },
+ "Data": {
+  "de": "Daten",
+  "es": "Datos",
+  "zh": "数据"
+ },
  "Data URI": {
   "de": "Data-URI",
   "es": "Data URI",
   "zh": "Data URI"
+ },
+ "Data saver": {
+  "de": "Datensparmodus",
+  "es": "Ahorro de datos",
+  "zh": "流量节省"
  },
  "Date": {
   "de": "Datum",
@@ -1659,10 +1939,20 @@
   "es": "Decimal (base 10)",
   "zh": "十进制（基数 10）"
  },
+ "Decimal bytes": {
+  "de": "Dezimale Bytes",
+  "es": "Bytes decimales",
+  "zh": "十进制字节"
+ },
  "Decode": {
   "de": "Dekodieren",
   "es": "Decodificar",
   "zh": "解码"
+ },
+ "Decoded": {
+  "de": "Dekodiert",
+  "es": "Decodificado",
+  "zh": "已解码"
  },
  "Decrypt": {
   "de": "Entschlüsseln",
@@ -1678,6 +1968,16 @@
   "de": "Standard-Baudrate",
   "es": "Velocidad en baudios por defecto",
   "zh": "默认波特率"
+ },
+ "Default key type": {
+  "de": "Standard-Schlüsseltyp",
+  "es": "Tipo de clave por defecto",
+  "zh": "默认密钥类型"
+ },
+ "Default length": {
+  "de": "Standardlänge",
+  "es": "Longitud por defecto",
+  "zh": "默认长度"
  },
  "Default style": {
   "de": "Standardstil",
@@ -1749,6 +2049,11 @@
   "es": "Detalles",
   "zh": "详情"
  },
+ "Detect": {
+  "de": "Erkennen",
+  "es": "Detectar",
+  "zh": "自动检测"
+ },
  "Detect formats": {
   "de": "Formate erkennen",
   "es": "Detectar formatos",
@@ -1774,10 +2079,25 @@
   "es": "Relación de píxeles",
   "zh": "设备像素比"
  },
+ "Diagonals": {
+  "de": "Diagonalen",
+  "es": "Diagonales",
+  "zh": "对角线"
+ },
+ "Dingbats": {
+  "de": "Dingbats",
+  "es": "Dingbats",
+  "zh": "装饰符号"
+ },
  "Diode": {
   "de": "Diode",
   "es": "Diodo",
   "zh": "二极管"
+ },
+ "Direct links": {
+  "de": "Direktlinks",
+  "es": "Enlaces directos",
+  "zh": "直接链接"
  },
  "Direction": {
   "de": "Richtung",
@@ -1794,6 +2114,11 @@
   "es": "Desconectar",
   "zh": "断开连接"
  },
+ "Distribution": {
+  "de": "Verteilung",
+  "es": "Distribución",
+  "zh": "分布"
+ },
  "Do not track": {
   "de": "Do Not Track",
   "es": "No rastrear",
@@ -1808,6 +2133,21 @@
   "de": "Domain oder IP-Adresse",
   "es": "Dominio o dirección IP",
   "zh": "域名或 IP 地址"
+ },
+ "Done": {
+  "de": "Erledigt",
+  "es": "Hecho",
+  "zh": "已完成"
+ },
+ "Dot": {
+  "de": "Punkt",
+  "es": "Punto",
+  "zh": "点"
+ },
+ "Dot (.)": {
+  "de": "Punkt (.)",
+  "es": "Punto (.)",
+  "zh": "点 (.)"
  },
  "Dotted decimal": {
   "de": "Punktnotation",
@@ -1828,6 +2168,11 @@
   "de": ".txt herunterladen",
   "es": "Descargar .txt",
   "zh": "下载 .txt"
+ },
+ "Download Mbps": {
+  "de": "Download Mbit/s",
+  "es": "Descarga Mbps",
+  "zh": "下载 Mbps"
  },
  "Download PNG": {
   "de": "PNG herunterladen",
@@ -1914,6 +2259,11 @@
   "es": "Suelta un archivo de vídeo o audio, o haz clic para elegir",
   "zh": "拖入视频或音频文件，或点击选择"
  },
+ "Drop an SVG file here": {
+  "de": "Eine SVG-Datei hierher ziehen",
+  "es": "Suelta un archivo SVG aquí",
+  "zh": "把 SVG 文件拖到这里"
+ },
  "Drop an image here, or click to choose one": {
   "de": "Ein Bild hierher ziehen oder klicken, um eines zu wählen",
   "es": "Suelta una imagen aquí, o haz clic para elegir una",
@@ -1964,10 +2314,30 @@
   "es": "ECDSA P-384",
   "zh": "ECDSA P-384"
  },
+ "ECDSA nistp256": {
+  "de": "ECDSA nistp256",
+  "es": "ECDSA nistp256",
+  "zh": "ECDSA nistp256"
+ },
+ "ECDSA nistp384": {
+  "de": "ECDSA nistp384",
+  "es": "ECDSA nistp384",
+  "zh": "ECDSA nistp384"
+ },
+ "ECDSA nistp521": {
+  "de": "ECDSA nistp521",
+  "es": "ECDSA nistp521",
+  "zh": "ECDSA nistp521"
+ },
  "EUI-64": {
   "de": "EUI-64",
   "es": "EUI-64",
   "zh": "EUI-64"
+ },
+ "EUR": {
+  "de": "EUR",
+  "es": "EUR",
+  "zh": "欧元"
  },
  "Easing": {
   "de": "Beschleunigung",
@@ -1984,6 +2354,11 @@
   "es": "Mostrar lo que envías",
   "zh": "回显发送的内容"
  },
+ "Ed25519 (recommended)": {
+  "de": "Ed25519 (empfohlen)",
+  "es": "Ed25519 (recomendado)",
+  "zh": "Ed25519（推荐）"
+ },
  "Edit": {
   "de": "Bearbeiten",
   "es": "Editar",
@@ -1998,6 +2373,11 @@
   "de": "Elektronisches Format",
   "es": "Formato electrónico",
   "zh": "电子格式"
+ },
+ "Elements": {
+  "de": "Elemente",
+  "es": "Elementos",
+  "zh": "元素"
  },
  "Ellipse": {
   "de": "Ellipse",
@@ -2039,6 +2419,11 @@
   "es": "Ajustes del motor",
   "zh": "引擎设置"
  },
+ "English": {
+  "de": "Englisch",
+  "es": "Inglés",
+  "zh": "英语"
+ },
  "Enter a domain and choose the record types you care about.": {
   "de": "Eine Domain eingeben und die gewünschten Eintragstypen wählen.",
   "es": "Introduce un dominio y elige los tipos de registro que te interesen.",
@@ -2048,6 +2433,11 @@
   "de": "Eine Zahl eingeben",
   "es": "Introduce un número",
   "zh": "输入一个数字"
+ },
+ "Enter a valid IPv4 address such as 10.0.0.1": {
+  "de": "Eine gültige IPv4-Adresse wie 10.0.0.1 eingeben",
+  "es": "Introduce una dirección IPv4 válida como 10.0.0.1",
+  "zh": "请输入有效的 IPv4 地址，例如 10.0.0.1"
  },
  "Environment": {
   "de": "Umgebungsvariablen",
@@ -2059,6 +2449,11 @@
   "es": "Borrar",
   "zh": "擦除"
  },
+ "Erase all data": {
+  "de": "Alle Daten löschen",
+  "es": "Borrar todos los datos",
+  "zh": "清除全部数据"
+ },
  "Eraser": {
   "de": "Radiergummi",
   "es": "Goma",
@@ -2068,6 +2463,11 @@
   "de": "Fehlerkorrektur",
   "es": "Corrección de errores",
   "zh": "纠错级别"
+ },
+ "Esc": {
+  "de": "Esc",
+  "es": "Esc",
+  "zh": "Esc"
  },
  "Escaped": {
   "de": "Maskiert",
@@ -2119,6 +2519,11 @@
   "es": "En todas partes",
   "zh": "所有位置"
  },
+ "Excellent": {
+  "de": "Ausgezeichnet",
+  "es": "Excelente",
+  "zh": "极佳"
+ },
  "Expected signature": {
   "de": "Erwartete Signatur",
   "es": "Firma esperada",
@@ -2149,10 +2554,25 @@
   "es": "Exportar PNG",
   "zh": "导出 PNG"
  },
+ "Export everything": {
+  "de": "Alles exportieren",
+  "es": "Exportar todo",
+  "zh": "导出全部"
+ },
+ "Export log": {
+  "de": "Protokoll exportieren",
+  "es": "Exportar el registro",
+  "zh": "导出日志"
+ },
  "Export scale": {
   "de": "Exportgröße",
   "es": "Escala de exportación",
   "zh": "导出比例"
+ },
+ "Export this workspace": {
+  "de": "Diesen Arbeitsbereich exportieren",
+  "es": "Exportar este espacio de trabajo",
+  "zh": "导出此工作区"
  },
  "Expression": {
   "de": "Ausdruck",
@@ -2194,6 +2614,16 @@
   "es": "Fahrenheit",
   "zh": "华氏度"
  },
+ "Fair": {
+  "de": "Mäßig",
+  "es": "Regular",
+  "zh": "一般"
+ },
+ "Farsi": {
+  "de": "Persisch",
+  "es": "Persa",
+  "zh": "波斯语"
+ },
  "Fast": {
   "de": "Schnell",
   "es": "Rápido",
@@ -2204,10 +2634,20 @@
   "es": "Campos",
   "zh": "字段"
  },
+ "Fill": {
+  "de": "Füllung",
+  "es": "Relleno",
+  "zh": "填充"
+ },
  "Fill mode": {
   "de": "Füllmodus",
   "es": "Modo de relleno",
   "zh": "填充模式"
+ },
+ "Fill none": {
+  "de": "Keine Füllung",
+  "es": "Sin relleno",
+  "zh": "无填充"
  },
  "Fill with colour": {
   "de": "Mit Farbe füllen",
@@ -2229,10 +2669,25 @@
   "es": "Huellas",
   "zh": "指纹"
  },
+ "Finish a run to record a best.": {
+  "de": "Einen Durchgang beenden, um einen Bestwert festzuhalten.",
+  "es": "Termina una ronda para registrar un récord.",
+  "zh": "完成一轮以记录最佳成绩。"
+ },
+ "Finnhub": {
+  "de": "Finnhub",
+  "es": "Finnhub",
+  "zh": "Finnhub"
+ },
  "First frame (PNG)": {
   "de": "Erstes Bild (PNG)",
   "es": "Primer fotograma (PNG)",
   "zh": "首帧（PNG）"
+ },
+ "First host": {
+  "de": "Erster Host",
+  "es": "Primer host",
+  "zh": "首个主机"
  },
  "First name": {
   "de": "Vorname",
@@ -2254,6 +2709,11 @@
   "es": "Ajustar al ancho",
   "zh": "适应宽度"
  },
+ "Fit viewBox to content": {
+  "de": "viewBox an Inhalt anpassen",
+  "es": "Ajustar el viewBox al contenido",
+  "zh": "让 viewBox 适应内容"
+ },
  "Fit y axis": {
   "de": "y-Achse einpassen",
   "es": "Ajustar el eje y",
@@ -2263,6 +2723,11 @@
   "de": "Passt in",
   "es": "Cabe en",
   "zh": "可容纳于"
+ },
+ "Fix the markup to use the editing tools.": {
+  "de": "Das Markup korrigieren, um die Bearbeitungswerkzeuge zu nutzen.",
+  "es": "Corrige el marcado para poder usar las herramientas de edición.",
+  "zh": "修正标记后才能使用编辑工具。"
  },
  "Flags": {
   "de": "Flaggen",
@@ -2284,6 +2749,11 @@
   "es": "Aplanar la transparencia sobre blanco",
   "zh": "将透明区域合成到白底"
  },
+ "Flesch reading ease": {
+  "de": "Flesch-Lesbarkeitsindex",
+  "es": "Facilidad de lectura de Flesch",
+  "zh": "Flesch 易读度"
+ },
  "Flip": {
   "de": "Spiegeln",
   "es": "Voltear",
@@ -2299,10 +2769,25 @@
   "es": "Voltear en vertical",
   "zh": "垂直翻转"
  },
+ "Flip horizontal": {
+  "de": "Waagerecht spiegeln",
+  "es": "Voltear en horizontal",
+  "zh": "水平翻转"
+ },
+ "Flip vertical": {
+  "de": "Senkrecht spiegeln",
+  "es": "Voltear en vertical",
+  "zh": "垂直翻转"
+ },
  "Flood light": {
   "de": "Flächenlicht",
   "es": "Luz difusa",
   "zh": "泛光"
+ },
+ "Font size": {
+  "de": "Schriftgröße",
+  "es": "Tamaño de letra",
+  "zh": "字号"
  },
  "Food": {
   "de": "Essen",
@@ -2324,15 +2809,30 @@
   "es": "Formato",
   "zh": "格式"
  },
+ "Formatted": {
+  "de": "Formatiert",
+  "es": "Formateado",
+  "zh": "已格式化"
+ },
  "Frame": {
   "de": "Rahmen",
   "es": "Marco",
   "zh": "边框"
  },
+ "Frames appear here once you connect.": {
+  "de": "Frames erscheinen hier, sobald du verbunden bist.",
+  "es": "Los frames aparecen aquí cuando te conectas.",
+  "zh": "连接后数据帧会显示在这里。"
+ },
  "Freeze": {
   "de": "Einfrieren",
   "es": "Congelar",
   "zh": "定格"
+ },
+ "French": {
+  "de": "Französisch",
+  "es": "Francés",
+  "zh": "法语"
  },
  "Frequency": {
   "de": "Frequenz",
@@ -2359,6 +2859,11 @@
   "es": "Desde octal",
   "zh": "由八进制"
  },
+ "Full URI": {
+  "de": "Vollständige URI",
+  "es": "URI completa",
+  "zh": "完整 URI"
+ },
  "Full name": {
   "de": "Vollständiger Name",
   "es": "Nombre completo",
@@ -2368,6 +2873,11 @@
   "de": "Vollbild",
   "es": "Pantalla completa",
   "zh": "全屏"
+ },
+ "GBP": {
+  "de": "GBP",
+  "es": "GBP",
+  "zh": "英镑"
  },
  "GIF frame rate": {
   "de": "GIF-Bildrate",
@@ -2409,6 +2919,16 @@
   "es": "Generar",
   "zh": "生成"
  },
+ "Generate and inspect OpenSSH keys without leaving the browser.": {
+  "de": "OpenSSH-Schlüssel erzeugen und prüfen, ohne den Browser zu verlassen.",
+  "es": "Genera e inspecciona claves OpenSSH sin salir del navegador.",
+  "zh": "无需离开浏览器即可生成并查看 OpenSSH 密钥。"
+ },
+ "Generate batch": {
+  "de": "Stapel erzeugen",
+  "es": "Generar un lote",
+  "zh": "批量生成"
+ },
  "Generate key pair": {
   "de": "Schlüsselpaar erzeugen",
   "es": "Generar el par de claves",
@@ -2424,10 +2944,30 @@
   "es": "Tamaños generados",
   "zh": "生成的尺寸"
  },
+ "Generated token": {
+  "de": "Erzeugtes Token",
+  "es": "Token generado",
+  "zh": "生成的令牌"
+ },
  "Genre": {
   "de": "Genre",
   "es": "Género",
   "zh": "流派"
+ },
+ "Geometric mean": {
+  "de": "Geometrisches Mittel",
+  "es": "Media geométrica",
+  "zh": "几何平均数"
+ },
+ "Geometric shapes": {
+  "de": "Geometrische Formen",
+  "es": "Formas geométricas",
+  "zh": "几何图形"
+ },
+ "German": {
+  "de": "Deutsch",
+  "es": "Alemán",
+  "zh": "德语"
  },
  "Google": {
   "de": "Google",
@@ -2439,6 +2979,16 @@
   "es": "Gravedad",
   "zh": "重力"
  },
+ "Greek": {
+  "de": "Griechisch",
+  "es": "Griego",
+  "zh": "希腊字母"
+ },
+ "Grid": {
+  "de": "Raster",
+  "es": "Cuadrícula",
+  "zh": "网格"
+ },
  "Ground": {
   "de": "Masse",
   "es": "Tierra",
@@ -2448,6 +2998,26 @@
   "de": "Das Wort erraten",
   "es": "Adivina la palabra",
   "zh": "猜出单词"
+ },
+ "Guitar drop D": {
+  "de": "Gitarre Drop D",
+  "es": "Guitarra Drop D",
+  "zh": "吉他 Drop D"
+ },
+ "Guitar half step down": {
+  "de": "Gitarre einen Halbton tiefer",
+  "es": "Guitarra medio tono abajo",
+  "zh": "吉他降半音"
+ },
+ "Guitar open G": {
+  "de": "Gitarre Open G",
+  "es": "Guitarra Open G",
+  "zh": "吉他开放 G 调弦"
+ },
+ "Guitar standard": {
+  "de": "Gitarre Standard",
+  "es": "Guitarra estándar",
+  "zh": "吉他标准调弦"
  },
  "Half speed": {
   "de": "Halbe Geschwindigkeit",
@@ -2488,6 +3058,11 @@
   "de": "Überschrift",
   "es": "Titular",
   "zh": "标题"
+ },
+ "Hebrew": {
+  "de": "Hebräisch",
+  "es": "Hebreo",
+  "zh": "希伯来字母"
  },
  "Height": {
   "de": "Höhe",
@@ -2564,6 +3139,11 @@
   "es": "Aguanta la línea",
   "zh": "守住阵线"
  },
+ "Home Screen": {
+  "de": "Startbildschirm",
+  "es": "Pantalla de inicio",
+  "zh": "主屏幕"
+ },
  "Home network": {
   "de": "Heimnetzwerk",
   "es": "Red de casa",
@@ -2603,6 +3183,11 @@
   "de": "IPv4-Adresse oder numerische Form",
   "es": "Dirección IPv4 o forma numérica",
   "zh": "IPv4 地址或数值形式"
+ },
+ "IPv4 address with prefix": {
+  "de": "IPv4-Adresse mit Präfix",
+  "es": "Dirección IPv4 con prefijo",
+  "zh": "带前缀的 IPv4 地址"
  },
  "IPv6 mapped": {
   "de": "IPv6-abgebildet",
@@ -2649,6 +3234,11 @@
   "es": "Importar",
   "zh": "导入"
  },
+ "Import backup": {
+  "de": "Sicherung importieren",
+  "es": "Importar una copia de seguridad",
+  "zh": "导入备份"
+ },
  "Import workspace file": {
   "de": "Arbeitsbereich-Datei importieren",
   "es": "Importar un archivo de espacio de trabajo",
@@ -2658,6 +3248,11 @@
   "de": "Beispiele einschließen",
   "es": "Incluir ejemplos",
   "zh": "包含示例"
+ },
+ "Include symbols": {
+  "de": "Sonderzeichen einschließen",
+  "es": "Incluir símbolos",
+  "zh": "包含符号"
  },
  "Inductor": {
   "de": "Spule",
@@ -2709,6 +3304,16 @@
   "es": "Insertar",
   "zh": "插入"
  },
+ "Inspect": {
+  "de": "Untersuchen",
+  "es": "Inspeccionar",
+  "zh": "检查"
+ },
+ "Installed": {
+  "de": "Installiert",
+  "es": "Instalado",
+  "zh": "已安装"
+ },
  "Integer": {
   "de": "Ganzzahl",
   "es": "Entero",
@@ -2718,6 +3323,11 @@
   "de": "Ganzzahlbereich",
   "es": "Rango entero",
   "zh": "整数范围"
+ },
+ "Interquartile range": {
+  "de": "Interquartilsabstand",
+  "es": "Rango intercuartílico",
+  "zh": "四分位距"
  },
  "Invaders": {
   "de": "Invaders",
@@ -2749,6 +3359,11 @@
   "es": "Solo JPEG y WebP",
   "zh": "仅 JPEG 和 WebP"
  },
+ "JPY": {
+  "de": "JPY",
+  "es": "JPY",
+  "zh": "日元"
+ },
  "JSON Schema": {
   "de": "JSON-Schema",
   "es": "Esquema JSON",
@@ -2763,6 +3378,11 @@
   "de": "JSON Lines",
   "es": "JSON lines",
   "zh": "JSON Lines"
+ },
+ "JSX": {
+  "de": "JSX",
+  "es": "JSX",
+  "zh": "JSX"
  },
  "JSX component": {
   "de": "JSX-Komponente",
@@ -2779,6 +3399,21 @@
   "es": "Cilindro",
   "zh": "液压缸"
  },
+ "Japanese": {
+  "de": "Japanisch",
+  "es": "Japonés",
+  "zh": "日语"
+ },
+ "JavaScript": {
+  "de": "JavaScript",
+  "es": "JavaScript",
+  "zh": "JavaScript"
+ },
+ "Jitter ms": {
+  "de": "Jitter ms",
+  "es": "Jitter ms",
+  "zh": "抖动 ms"
+ },
  "Job title": {
   "de": "Position",
   "es": "Puesto",
@@ -2793,6 +3428,11 @@
   "de": "SCHLÜSSEL",
   "es": "CLAVE",
   "zh": "KEY"
+ },
+ "Kebab": {
+  "de": "Kebab",
+  "es": "Kebab",
+  "zh": "kebab"
  },
  "Keep aspect ratio": {
   "de": "Seitenverhältnis beibehalten",
@@ -2809,6 +3449,11 @@
   "es": "Mantener el perfil de color",
   "zh": "保留色彩配置文件"
  },
+ "Keep this file at chmod 600 and never share it": {
+  "de": "Diese Datei auf chmod 600 halten und niemals weitergeben",
+  "es": "Mantén este archivo en chmod 600 y no lo compartas nunca",
+  "zh": "请将此文件保持为 chmod 600，且绝不要分享。"
+ },
  "Kelvin": {
   "de": "Kelvin",
   "es": "Kelvin",
@@ -2819,6 +3464,16 @@
   "es": "Clave",
   "zh": "密钥"
  },
+ "Key type": {
+  "de": "Schlüsseltyp",
+  "es": "Tipo de clave",
+  "zh": "密钥类型"
+ },
+ "Keyboard": {
+  "de": "Tastatur",
+  "es": "Teclado",
+  "zh": "键盘"
+ },
  "Keys are created with the Web Crypto API and never leave this tab.": {
   "de": "Die Schlüssel werden mit der Web-Crypto-API erzeugt und verlassen diesen Tab nie.",
   "es": "Las claves se crean con la Web Crypto API y nunca salen de esta pestaña.",
@@ -2828,6 +3483,11 @@
   "de": "Bassdrum",
   "es": "Bombo",
   "zh": "底鼓"
+ },
+ "Kind": {
+  "de": "Art",
+  "es": "Tipo",
+  "zh": "种类"
  },
  "Kubernetes manifests": {
   "de": "Kubernetes-Manifeste",
@@ -2879,10 +3539,30 @@
   "es": "Grande",
   "zh": "大"
  },
+ "Last host": {
+  "de": "Letzter Host",
+  "es": "Último host",
+  "zh": "末个主机"
+ },
  "Last name": {
   "de": "Nachname",
   "es": "Apellido",
   "zh": "姓"
+ },
+ "Latency ms": {
+  "de": "Latenz ms",
+  "es": "Latencia ms",
+  "zh": "延迟 ms"
+ },
+ "Latin Extended": {
+  "de": "Latein erweitert",
+  "es": "Latín extendido",
+  "zh": "拉丁字母扩展"
+ },
+ "Latin-1": {
+  "de": "Latin-1",
+  "es": "Latin-1",
+  "zh": "Latin-1"
  },
  "Latitude": {
   "de": "Breitengrad",
@@ -2914,6 +3594,11 @@
   "es": "Espaciado",
   "zh": "字距"
  },
+ "Letterlike": {
+  "de": "Buchstabenähnlich",
+  "es": "Similares a letras",
+  "zh": "类字母符号"
+ },
  "Level": {
   "de": "Level",
   "es": "Nivel",
@@ -2934,10 +3619,20 @@
   "es": "Línea",
   "zh": "直线"
  },
+ "Line cap": {
+  "de": "Linienenden",
+  "es": "Extremo de línea",
+  "zh": "线端样式"
+ },
  "Line ending": {
   "de": "Zeilenende",
   "es": "Fin de línea",
   "zh": "行结束符"
+ },
+ "Line join": {
+  "de": "Linienverbindung",
+  "es": "Unión de líneas",
+  "zh": "拐角样式"
  },
  "Linear": {
   "de": "Linear",
@@ -2963,6 +3658,11 @@
   "de": "Listeneinträge",
   "es": "Elementos de lista",
   "zh": "列表项"
+ },
+ "Live captions while recording": {
+  "de": "Live-Untertitel während der Aufnahme",
+  "es": "Subtítulos en vivo mientras grabas",
+  "zh": "录制时实时字幕"
  },
  "Live log": {
   "de": "Live-Protokoll",
@@ -3009,10 +3709,20 @@
   "es": "IA local",
   "zh": "本地 AI"
  },
+ "Local only - nothing is uploaded": {
+  "de": "Nur lokal - nichts wird hochgeladen",
+  "es": "Solo local: no se sube nada",
+  "zh": "仅本地，不上传任何内容"
+ },
  "Local server (OpenAI API)": {
   "de": "Lokaler Server (OpenAI-API)",
   "es": "Servidor local (API de OpenAI)",
   "zh": "本地服务器（OpenAI API）"
+ },
+ "Local storage": {
+  "de": "Lokaler Speicher",
+  "es": "Almacenamiento local",
+  "zh": "本地存储"
  },
  "Locale": {
   "de": "Gebietsschema",
@@ -3049,6 +3759,11 @@
   "es": "Máxima",
   "zh": "最长"
  },
+ "Longest word": {
+  "de": "Längstes Wort",
+  "es": "Palabra más larga",
+  "zh": "最长的词"
+ },
  "Longitude": {
   "de": "Längengrad",
   "es": "Longitud",
@@ -3079,6 +3794,21 @@
   "es": "MP4 (H.264)",
   "zh": "MP4 (H.264)"
  },
+ "Make responsive": {
+  "de": "Responsiv machen",
+  "es": "Hacerlo adaptable",
+  "zh": "设为自适应"
+ },
+ "Make responsive drops width and height so the SVG scales with its container.": {
+  "de": "Responsiv entfernt width und height, damit das SVG mit seinem Container skaliert.",
+  "es": "Hacerlo adaptable elimina width y height para que el SVG escale con su contenedor.",
+  "zh": "设为自适应会移除 width 和 height，使 SVG 随容器缩放。"
+ },
+ "Make this the reference": {
+  "de": "Als Bezug festlegen",
+  "es": "Usar esta como referencia",
+  "zh": "以此为基准"
+ },
  "Manual prices": {
   "de": "Manuelle Kurse",
   "es": "Precios manuales",
@@ -3104,10 +3834,20 @@
   "es": "Valor de mercado",
   "zh": "市值"
  },
+ "Markup": {
+  "de": "Markup",
+  "es": "Marcado",
+  "zh": "标记"
+ },
  "Matches": {
   "de": "Treffer",
   "es": "Coincidencias",
   "zh": "匹配项"
+ },
+ "Math operators": {
+  "de": "Mathematische Operatoren",
+  "es": "Operadores matemáticos",
+  "zh": "数学运算符"
  },
  "Max height": {
   "de": "Maximale Höhe",
@@ -3129,10 +3869,20 @@
   "es": "Ancho máximo",
   "zh": "最大宽度"
  },
+ "Mbps": {
+  "de": "Mbit/s",
+  "es": "Mbps",
+  "zh": "Mbps"
+ },
  "Meaning": {
   "de": "Bedeutung",
   "es": "Significado",
   "zh": "含义"
+ },
+ "Media engine": {
+  "de": "Medien-Engine",
+  "es": "Motor multimedia",
+  "zh": "媒体引擎"
  },
  "Medium": {
   "de": "Mittel",
@@ -3194,6 +3944,11 @@
   "es": "Metadatos",
   "zh": "元数据"
  },
+ "Microphone is off": {
+  "de": "Mikrofon ist aus",
+  "es": "El micrófono está apagado",
+  "zh": "麦克风已关闭"
+ },
  "Minify": {
   "de": "Minimieren",
   "es": "Minificar",
@@ -3213,6 +3968,11 @@
   "de": "Fehler",
   "es": "Errores",
   "zh": "错误"
+ },
+ "Mode": {
+  "de": "Modus",
+  "es": "Moda",
+  "zh": "众数"
  },
  "Model": {
   "de": "Modell",
@@ -3259,10 +4019,45 @@
   "es": "Morse",
   "zh": "摩尔斯码"
  },
+ "Morse code": {
+  "de": "Morsecode",
+  "es": "Código morse",
+  "zh": "摩尔斯电码"
+ },
+ "Most frequent words": {
+  "de": "Häufigste Wörter",
+  "es": "Palabras más frecuentes",
+  "zh": "高频词"
+ },
  "Motor": {
   "de": "Motor",
   "es": "Motor",
   "zh": "马达"
+ },
+ "Move": {
+  "de": "Verschieben",
+  "es": "Mover",
+  "zh": "移动"
+ },
+ "Move X": {
+  "de": "Verschieben X",
+  "es": "Mover X",
+  "zh": "平移 X"
+ },
+ "Move Y": {
+  "de": "Verschieben Y",
+  "es": "Mover Y",
+  "zh": "平移 Y"
+ },
+ "Move down": {
+  "de": "Nach unten",
+  "es": "Bajar",
+  "zh": "下移"
+ },
+ "Move up": {
+  "de": "Nach oben",
+  "es": "Subir",
+  "zh": "上移"
  },
  "Move with the mouse or arrow keys. Space serves.": {
   "de": "Mit der Maus oder den Pfeiltasten bewegen. Leertaste spielt an.",
@@ -3298,6 +4093,11 @@
   "de": "NAND",
   "es": "NAND",
   "zh": "NAND"
+ },
+ "NATO alphabet": {
+  "de": "NATO-Alphabet",
+  "es": "Alfabeto OTAN",
+  "zh": "北约字母表"
  },
  "NOR": {
   "de": "NOR",
@@ -3358,6 +4158,16 @@
   "de": "Natur",
   "es": "Naturaleza",
   "zh": "自然"
+ },
+ "Network": {
+  "de": "Netz",
+  "es": "Red",
+  "zh": "网络"
+ },
+ "Network address": {
+  "de": "Netzadresse",
+  "es": "Dirección de red",
+  "zh": "网络地址"
  },
  "Network name (SSID)": {
   "de": "Netzwerkname (SSID)",
@@ -3469,6 +4279,11 @@
   "es": "No hay ningún archivo abierto",
   "zh": "未打开文件"
  },
+ "No hour works for everyone. Widen the working hours or drop a city.": {
+  "de": "Keine Stunde passt allen. Die Arbeitszeiten erweitern oder eine Stadt entfernen.",
+  "es": "No hay ninguna hora que valga para todos. Amplía el horario laboral o quita una ciudad.",
+  "zh": "没有对所有人都合适的时段。请放宽工作时间，或移除一个城市。"
+ },
  "No images yet": {
   "de": "Noch keine Bilder",
   "es": "Todavía no hay imágenes",
@@ -3478,6 +4293,11 @@
   "de": "Keine Runden aufgezeichnet",
   "es": "No hay vueltas registradas",
   "zh": "未记录任何计次"
+ },
+ "No literal colours found. The artwork may inherit currentColor or use gradients.": {
+  "de": "Keine festen Farben gefunden. Die Grafik erbt vielleicht currentColor oder nutzt Verläufe.",
+  "es": "No se han encontrado colores literales. El dibujo puede heredar currentColor o usar degradados.",
+  "zh": "未找到字面颜色值。该图形可能继承 currentColor 或使用了渐变。"
  },
  "No lookup yet": {
   "de": "Noch keine Abfrage",
@@ -3493,6 +4313,11 @@
   "de": "Keine Treffer",
   "es": "Sin coincidencias",
   "zh": "无匹配项"
+ },
+ "No mistakes recorded yet.": {
+  "de": "Noch keine Fehler aufgezeichnet.",
+  "es": "Todavía no se han registrado errores.",
+  "zh": "尚未记录任何错误。"
  },
  "No notes yet": {
   "de": "Noch keine Notizen",
@@ -3518,6 +4343,11 @@
   "de": "Keine Eintragstypen gewählt",
   "es": "No hay tipos de registro seleccionados",
   "zh": "未选择记录类型"
+ },
+ "No recordings yet": {
+  "de": "Noch keine Aufnahmen",
+  "es": "Todavía no hay grabaciones",
+  "zh": "暂无录音"
  },
  "No sign changes in the visible range.": {
   "de": "Kein Vorzeichenwechsel im sichtbaren Bereich.",
@@ -3564,6 +4394,11 @@
   "es": "Sin conexión",
   "zh": "未连接"
  },
+ "Not enough text yet.": {
+  "de": "Noch nicht genug Text.",
+  "es": "Todavía no hay texto suficiente.",
+  "zh": "文本还不够。"
+ },
  "Notes": {
   "de": "Notizen",
   "es": "Notas",
@@ -3574,6 +4409,11 @@
   "es": "Notas desactivadas",
   "zh": "关闭笔记"
  },
+ "Nothing in this view.": {
+  "de": "Nichts in dieser Ansicht.",
+  "es": "No hay nada en esta vista.",
+  "zh": "此视图中没有内容。"
+ },
  "Nothing loaded": {
   "de": "Nichts geladen",
   "es": "No hay nada cargado",
@@ -3583,6 +4423,11 @@
   "de": "Dazu passt nichts.",
   "es": "No hay nada que coincida.",
   "zh": "没有匹配的结果。"
+ },
+ "Nothing on the list.": {
+  "de": "Nichts auf der Liste.",
+  "es": "No hay nada en la lista.",
+  "zh": "列表是空的。"
  },
  "Nothing paired": {
   "de": "Nichts gekoppelt",
@@ -3619,6 +4464,11 @@
   "es": "No hay nada seleccionado",
   "zh": "未选中任何内容"
  },
+ "Nothing to show for that search.": {
+  "de": "Für diese Suche gibt es nichts.",
+  "es": "No hay nada que mostrar para esa búsqueda.",
+  "zh": "该搜索没有结果。"
+ },
  "Nothing yet": {
   "de": "Noch nichts",
   "es": "Todavía nada",
@@ -3648,6 +4498,21 @@
   "de": "Zahl → Römisch",
   "es": "Número → Romano",
   "zh": "数字 → 罗马数字"
+ },
+ "Numbers": {
+  "de": "Zahlen",
+  "es": "Números",
+  "zh": "数字"
+ },
+ "Numeric entities": {
+  "de": "Numerische Entities",
+  "es": "Entidades numéricas",
+  "zh": "数字实体"
+ },
+ "Numeronym": {
+  "de": "Numeronym",
+  "es": "Numerónimo",
+  "zh": "数字缩写"
  },
  "OGG (Vorbis)": {
   "de": "OGG (Vorbis)",
@@ -3724,6 +4589,11 @@
   "es": "En línea",
   "zh": "在线"
  },
+ "Opacity": {
+  "de": "Deckkraft",
+  "es": "Opacidad",
+  "zh": "不透明度"
+ },
  "Open": {
   "de": "Öffnen",
   "es": "Abrir",
@@ -3759,6 +4629,11 @@
   "es": "Abrir imagen",
   "zh": "打开图片"
  },
+ "Open the app library": {
+  "de": "App-Bibliothek öffnen",
+  "es": "Abrir la biblioteca de apps",
+  "zh": "打开应用库"
+ },
  "Operating system": {
   "de": "Betriebssystem",
   "es": "Sistema operativo",
@@ -3768,6 +4643,11 @@
   "de": "Stärke des Gegners",
   "es": "Nivel del rival",
   "zh": "对手强度"
+ },
+ "Optimise": {
+  "de": "Optimieren",
+  "es": "Optimizar",
+  "zh": "优化"
  },
  "Optional OUI prefix, e.g. 00:1B:44": {
   "de": "Optionales OUI-Präfix, z. B. 00:1B:44",
@@ -3799,6 +4679,11 @@
   "es": "Original",
   "zh": "原文"
  },
+ "Outliers": {
+  "de": "Ausreißer",
+  "es": "Valores atípicos",
+  "zh": "离群值"
+ },
  "Outline": {
   "de": "Umriss",
   "es": "Contorno",
@@ -3813,6 +4698,11 @@
   "de": "Schnittmenge",
   "es": "Intersección",
   "zh": "相交"
+ },
+ "Overlapping hours": {
+  "de": "Gemeinsame Stunden",
+  "es": "Horas coincidentes",
+  "zh": "重叠时段"
  },
  "Overview": {
   "de": "Überblick",
@@ -3833,6 +4723,21 @@
   "de": "PEM oder Base64",
   "es": "PEM o base64",
   "zh": "PEM 或 base64"
+ },
+ "PNG 1x": {
+  "de": "PNG 1x",
+  "es": "PNG 1x",
+  "zh": "PNG 1x"
+ },
+ "PNG 2x": {
+  "de": "PNG 2x",
+  "es": "PNG 2x",
+  "zh": "PNG 2x"
+ },
+ "PNG 4x": {
+  "de": "PNG 4x",
+  "es": "PNG 4x",
+  "zh": "PNG 4x"
  },
  "PNP": {
   "de": "PNP",
@@ -3919,6 +4824,11 @@
   "es": "Pega JSON en ambos lados.",
   "zh": "请在两侧都粘贴 JSON。"
  },
+ "Paste SVG markup here": {
+  "de": "SVG-Markup hier einfügen",
+  "es": "Pega aquí el marcado SVG",
+  "zh": "在此粘贴 SVG 标记"
+ },
  "Paste a React SVG component": {
   "de": "Eine React-SVG-Komponente einfügen",
   "es": "Pega un componente SVG de React",
@@ -3934,6 +4844,11 @@
   "es": "Pega un documento OpenAPI",
   "zh": "粘贴一份 OpenAPI 文档"
  },
+ "Paste an authorized_keys or known_hosts entry": {
+  "de": "Einen Eintrag aus authorized_keys oder known_hosts einfügen",
+  "es": "Pega una entrada de authorized_keys o known_hosts",
+  "zh": "粘贴一条 authorized_keys 或 known_hosts 记录"
+ },
  "Paste ciphertext": {
   "de": "Geheimtext einfügen",
   "es": "Pega el texto cifrado",
@@ -3944,10 +4859,20 @@
   "es": "Pega el código aquí",
   "zh": "在此粘贴代码"
  },
+ "Paste encoded text to decode": {
+  "de": "Kodierten Text zum Dekodieren einfügen",
+  "es": "Pega el texto codificado para decodificarlo",
+  "zh": "粘贴要解码的编码文本"
+ },
  "Paste into an authenticator app": {
   "de": "In eine Authenticator-App einfügen",
   "es": "Pégalo en una app de autenticación",
   "zh": "粘贴到身份验证器应用中"
+ },
+ "Paste numbers separated by spaces, commas or new lines": {
+  "de": "Zahlen durch Leerzeichen, Kommas oder Zeilenumbrüche getrennt einfügen",
+  "es": "Pega números separados por espacios, comas o saltos de línea",
+  "zh": "粘贴以空格、逗号或换行分隔的数字"
  },
  "Paste one or more JSON documents": {
   "de": "Ein oder mehrere JSON-Dokumente einfügen",
@@ -3959,6 +4884,11 @@
   "es": "Pegar o exportar",
   "zh": "粘贴或导出"
  },
+ "Paste or write text to analyse": {
+  "de": "Text zum Auswerten einfügen oder schreiben",
+  "es": "Pega o escribe el texto que quieras analizar",
+  "zh": "粘贴或输入要分析的文本"
+ },
  "Paste response headers": {
   "de": "Antwort-Header einfügen",
   "es": "Pega las cabeceras de respuesta",
@@ -3969,10 +4899,20 @@
   "es": "Pega texto de ejemplo para ver las coincidencias en vivo",
   "zh": "粘贴示例文本以实时查看匹配"
  },
+ "Paste some numbers to see the summary.": {
+  "de": "Ein paar Zahlen einfügen, um die Kennzahlen zu sehen.",
+  "es": "Pega algunos números para ver el resumen.",
+  "zh": "粘贴一些数字以查看统计摘要。"
+ },
  "Paste text, notes or a diff": {
   "de": "Text, Notizen oder ein Diff einfügen",
   "es": "Pega texto, notas o un diff",
   "zh": "粘贴文本、笔记或 diff"
+ },
+ "Paths": {
+  "de": "Pfade",
+  "es": "Trazados",
+  "zh": "路径"
  },
  "Pattern": {
   "de": "Muster",
@@ -4023,6 +4963,11 @@
   "de": "Persönlich",
   "es": "Personal",
   "zh": "个人"
+ },
+ "Personal bests": {
+  "de": "Persönliche Bestwerte",
+  "es": "Récords personales",
+  "zh": "个人最佳"
  },
  "Phone": {
   "de": "Telefon",
@@ -4114,6 +5059,11 @@
   "es": "En lenguaje corriente, por ejemplo: una fecha ISO seguida de una coma",
   "zh": "用日常语言描述，例如：一个 ISO 日期后面跟一个逗号"
  },
+ "Plain text": {
+  "de": "Klartext",
+  "es": "Texto plano",
+  "zh": "纯文本"
+ },
  "Platform": {
   "de": "Plattform",
   "es": "Plataforma",
@@ -4123,6 +5073,11 @@
   "de": "Start",
   "es": "Iniciar",
   "zh": "开始"
+ },
+ "Play a string": {
+  "de": "Eine Saite anspielen",
+  "es": "Toca una cuerda",
+  "zh": "弹一根弦"
  },
  "Play tone": {
   "de": "Ton abspielen",
@@ -4159,6 +5114,11 @@
   "es": "Aparición",
   "zh": "弹出"
  },
+ "Population sd": {
+  "de": "Standardabweichung (Grundgesamtheit)",
+  "es": "Desviación típica poblacional",
+  "zh": "总体标准差"
+ },
  "Portfolio": {
   "de": "Portfolio",
   "es": "Cartera",
@@ -4194,6 +5154,11 @@
   "es": "Potencia",
   "zh": "功率"
  },
+ "Precision": {
+  "de": "Genauigkeit",
+  "es": "Precisión",
+  "zh": "精度"
+ },
  "Preferences": {
   "de": "Einstellungen",
   "es": "Preferencias",
@@ -4203,6 +5168,11 @@
   "de": "Präfix",
   "es": "Prefijo",
   "zh": "前缀"
+ },
+ "Preserved case": {
+  "de": "Schreibweise erhalten",
+  "es": "Mayúsculas conservadas",
+  "zh": "保留大小写"
  },
  "Presets": {
   "de": "Vorlagen",
@@ -4269,6 +5239,11 @@
   "es": "Privacidad",
   "zh": "隐私"
  },
+ "Privacy policy": {
+  "de": "Datenschutzerklärung",
+  "es": "Política de privacidad",
+  "zh": "隐私政策"
+ },
  "Private key": {
   "de": "Privater Schlüssel",
   "es": "Clave privada",
@@ -4304,6 +5279,11 @@
   "es": "Clave pública",
   "zh": "公钥"
  },
+ "Public key line": {
+  "de": "Zeile mit öffentlichem Schlüssel",
+  "es": "Línea de clave pública",
+  "zh": "公钥行"
+ },
  "Publisher": {
   "de": "Verlag",
   "es": "Editor",
@@ -4313,6 +5293,11 @@
   "de": "Pulsieren",
   "es": "Pulso",
   "zh": "脉动"
+ },
+ "Punctuation": {
+  "de": "Satzzeichen",
+  "es": "Puntuación",
+  "zh": "标点符号"
  },
  "Push button, on only while held": {
   "de": "Taster, nur solange gedrückt an",
@@ -4349,10 +5334,20 @@
   "es": "Zona de silencio",
   "zh": "静区"
  },
+ "Quote": {
+  "de": "Textvorlage",
+  "es": "Cita",
+  "zh": "文段"
+ },
  "RFC 2822": {
   "de": "RFC 2822",
   "es": "RFC 2822",
   "zh": "RFC 2822"
+ },
+ "ROT13": {
+  "de": "ROT13",
+  "es": "ROT13",
+  "zh": "ROT13"
  },
  "RSA 2048": {
   "de": "RSA 2048",
@@ -4363,6 +5358,11 @@
   "de": "RSA 2048 (Verschlüsselung)",
   "es": "RSA 2048 (cifrado)",
   "zh": "RSA 2048（加密）"
+ },
+ "RSA 3072": {
+  "de": "RSA 3072",
+  "es": "RSA 3072",
+  "zh": "RSA 3072"
  },
  "RSA 4096": {
   "de": "RSA 4096",
@@ -4414,15 +5414,35 @@
   "es": "Leer",
   "zh": "读取"
  },
+ "Read policy": {
+  "de": "Richtlinie lesen",
+  "es": "Leer la política",
+  "zh": "阅读政策"
+ },
+ "Readability": {
+  "de": "Lesbarkeit",
+  "es": "Legibilidad",
+  "zh": "可读性"
+ },
  "Reading app preferences": {
   "de": "App-Einstellungen werden gelesen",
   "es": "Leyendo las preferencias de la app",
   "zh": "正在读取应用偏好设置"
  },
+ "Reading time": {
+  "de": "Lesezeit",
+  "es": "Tiempo de lectura",
+  "zh": "阅读时间"
+ },
  "Ready": {
   "de": "Bereit",
   "es": "Listo",
   "zh": "就绪"
+ },
+ "Ready to measure your connection.": {
+  "de": "Bereit, deine Verbindung zu messen.",
+  "es": "Listo para medir tu conexión.",
+  "zh": "已准备好测量你的连接。"
  },
  "Real time": {
   "de": "Echtzeit",
@@ -4438,6 +5458,16 @@
   "de": "Zuletzt gedrückte Tasten",
   "es": "Teclas recientes",
   "zh": "最近按下的键"
+ },
+ "Record": {
+  "de": "Aufnehmen",
+  "es": "Grabar",
+  "zh": "录制"
+ },
+ "Recordings": {
+  "de": "Aufnahmen",
+  "es": "Grabaciones",
+  "zh": "录音"
  },
  "Rectangle": {
   "de": "Rechteck",
@@ -4459,6 +5489,11 @@
   "es": "Referencia",
   "zh": "参考"
  },
+ "Reference pitch (A4)": {
+  "de": "Kammerton (A4)",
+  "es": "Tono de referencia (La4)",
+  "zh": "基准音高（A4）"
+ },
  "Refresh": {
   "de": "Aktualisieren",
   "es": "Actualizar",
@@ -4468,6 +5503,11 @@
   "de": "Kurse aktualisieren",
   "es": "Actualizar los precios",
   "zh": "刷新价格"
+ },
+ "Regenerate": {
+  "de": "Neu erzeugen",
+  "es": "Volver a generar",
+  "zh": "重新生成"
  },
  "Regular": {
   "de": "Normal",
@@ -4574,6 +5614,16 @@
   "es": "Réplicas cuando compose no lo indica",
   "zh": "compose 未指定时的副本数"
  },
+ "Reported downlink": {
+  "de": "Gemeldete Downlink-Rate",
+  "es": "Enlace de bajada informado",
+  "zh": "报告的下行速率"
+ },
+ "Reported type": {
+  "de": "Gemeldeter Typ",
+  "es": "Tipo informado",
+  "zh": "报告的类型"
+ },
  "Request TLS": {
   "de": "TLS anfordern",
   "es": "Solicitar TLS",
@@ -4588,6 +5638,16 @@
   "de": "Zurücksetzen",
   "es": "Restablecer",
   "zh": "重置"
+ },
+ "Reset layout": {
+  "de": "Anordnung zurücksetzen",
+  "es": "Restablecer la disposición",
+  "zh": "重置布局"
+ },
+ "Reset settings": {
+  "de": "Einstellungen zurücksetzen",
+  "es": "Restablecer los ajustes",
+  "zh": "重置设置"
  },
  "Reset view": {
   "de": "Ansicht zurücksetzen",
@@ -4638,6 +5698,11 @@
   "de": "Reverse DNS",
   "es": "DNS inverso",
   "zh": "反向 DNS"
+ },
+ "Reversed": {
+  "de": "Umgekehrt",
+  "es": "Invertido",
+  "zh": "倒序"
  },
  "Review": {
   "de": "Prüfen",
@@ -4699,6 +5764,26 @@
   "es": "Rotar",
   "zh": "旋转"
  },
+ "Rotate +90°": {
+  "de": "+90° drehen",
+  "es": "Rotar +90°",
+  "zh": "旋转 +90°"
+ },
+ "Rotate by": {
+  "de": "Drehen um",
+  "es": "Rotar",
+  "zh": "旋转角度"
+ },
+ "Rotate −90°": {
+  "de": "−90° drehen",
+  "es": "Rotar −90°",
+  "zh": "旋转 −90°"
+ },
+ "Round trip estimate": {
+  "de": "Geschätzte Umlaufzeit",
+  "es": "Estimación de ida y vuelta",
+  "zh": "往返时延估算"
+ },
  "Rounded square": {
   "de": "Abgerundetes Quadrat",
   "es": "Cuadrado redondeado",
@@ -4729,6 +5814,11 @@
   "es": "De run a Compose",
   "zh": "run 转 Compose"
  },
+ "Runtime": {
+  "de": "Laufzeit",
+  "es": "Entorno de ejecución",
+  "zh": "运行时"
+ },
  "Runtime module": {
   "de": "Laufzeitmodul",
   "es": "Módulo de ejecución",
@@ -4754,6 +5844,11 @@
   "es": "SHA-512",
   "zh": "SHA-512"
  },
+ "SHA256": {
+  "de": "SHA256",
+  "es": "SHA256",
+  "zh": "SHA256"
+ },
  "SMS": {
   "de": "SMS",
   "es": "SMS",
@@ -4763,6 +5858,11 @@
   "de": "SQL-Datum/Zeit",
   "es": "Fecha y hora SQL",
   "zh": "SQL 日期时间"
+ },
+ "SSH Keys": {
+  "de": "SSH-Schlüssel",
+  "es": "Claves SSH",
+  "zh": "SSH 密钥"
  },
  "SVG markup": {
   "de": "SVG-Markup",
@@ -4794,6 +5894,11 @@
   "es": "Respuesta de ejemplo",
   "zh": "示例响应"
  },
+ "Sample sd": {
+  "de": "Standardabweichung (Stichprobe)",
+  "es": "Desviación típica muestral",
+  "zh": "样本标准差"
+ },
  "Sans": {
   "de": "Serifenlos",
   "es": "Sans",
@@ -4808,6 +5913,11 @@
   "de": "Speichern",
   "es": "Guardar",
   "zh": "保存"
+ },
+ "Save .pub": {
+  "de": ".pub speichern",
+  "es": "Guardar .pub",
+  "zh": "保存 .pub"
  },
  "Save .txt": {
   "de": ".txt speichern",
@@ -4824,6 +5934,11 @@
   "es": "Guardar PNG",
   "zh": "保存 PNG"
  },
+ "Save SVG": {
+  "de": "SVG speichern",
+  "es": "Guardar SVG",
+  "zh": "保存 SVG"
+ },
  "Save cleaned copy": {
   "de": "Bereinigte Kopie speichern",
   "es": "Guardar una copia limpia",
@@ -4839,6 +5954,11 @@
   "es": "Guardar archivo",
   "zh": "保存文件"
  },
+ "Save key": {
+  "de": "Schlüssel speichern",
+  "es": "Guardar la clave",
+  "zh": "保存密钥"
+ },
  "Save log": {
   "de": "Protokoll speichern",
   "es": "Guardar el registro",
@@ -4848,6 +5968,11 @@
   "de": "Manifest speichern",
   "es": "Guardar el manifiesto",
   "zh": "保存 manifest"
+ },
+ "Save message": {
+  "de": "Nachricht speichern",
+  "es": "Guardar el mensaje",
+  "zh": "保存消息"
  },
  "Save photo": {
   "de": "Foto speichern",
@@ -4864,10 +5989,25 @@
   "es": "Guardar la selección",
   "zh": "保存所选"
  },
+ "Save text": {
+  "de": "Text speichern",
+  "es": "Guardar el texto",
+  "zh": "保存文本"
+ },
  "Saved": {
   "de": "Gespeichert",
   "es": "Guardado",
   "zh": "已保存"
+ },
+ "Saved messages": {
+  "de": "Gespeicherte Nachrichten",
+  "es": "Mensajes guardados",
+  "zh": "已保存的消息"
+ },
+ "Saved messages appear here.": {
+  "de": "Gespeicherte Nachrichten erscheinen hier.",
+  "es": "Aquí aparecen los mensajes guardados.",
+  "zh": "已保存的消息会显示在这里。"
  },
  "Scale": {
   "de": "Skalierung",
@@ -4909,6 +6049,11 @@
   "es": "Pantalla y ventana",
   "zh": "屏幕与窗口"
  },
+ "Search a character, U+00E9 or 233": {
+  "de": "Ein Zeichen, U+00E9 oder 233 suchen",
+  "es": "Busca un carácter, U+00E9 o 233",
+  "zh": "搜索字符、U+00E9 或 233"
+ },
  "Search by code or meaning - 404, timeout, redirect": {
   "de": "Nach Code oder Bedeutung suchen - 404, Timeout, Weiterleitung",
   "es": "Busca por código o significado: 404, timeout, redirección",
@@ -4918,6 +6063,11 @@
   "de": "Nach Namen suchen oder ein Emoji einfügen",
   "es": "Busca por nombre o pega un emoji",
   "zh": "按名称搜索或粘贴一个 emoji"
+ },
+ "Search every tool": {
+  "de": "Alle Werkzeuge durchsuchen",
+  "es": "Buscar en todas las herramientas",
+  "zh": "搜索所有工具"
  },
  "Search page only": {
   "de": "Nur auf der Suchseite",
@@ -5044,6 +6194,31 @@
   "es": "Tipo de servicio",
   "zh": "服务类型"
  },
+ "Set caps and joins": {
+  "de": "Enden und Verbindungen setzen",
+  "es": "Aplicar extremos y uniones",
+  "zh": "设置线端与拐角"
+ },
+ "Set fill": {
+  "de": "Füllung setzen",
+  "es": "Aplicar el relleno",
+  "zh": "设置填充"
+ },
+ "Set opacity": {
+  "de": "Deckkraft setzen",
+  "es": "Aplicar la opacidad",
+  "zh": "设置不透明度"
+ },
+ "Set stroke": {
+  "de": "Kontur setzen",
+  "es": "Aplicar el trazo",
+  "zh": "设置描边"
+ },
+ "Set stroke width": {
+  "de": "Konturstärke setzen",
+  "es": "Aplicar el grosor del trazo",
+  "zh": "设置描边宽度"
+ },
  "Sets the behaviour for the whole conversation": {
   "de": "Legt das Verhalten für das ganze Gespräch fest",
   "es": "Define el comportamiento de toda la conversación",
@@ -5099,6 +6274,11 @@
   "es": "Mostrar tensiones de nodo",
   "zh": "显示节点电压"
  },
+ "Show or hide": {
+  "de": "Ein- oder ausblenden",
+  "es": "Mostrar u ocultar",
+  "zh": "显示或隐藏"
+ },
  "Show seconds": {
   "de": "Sekunden anzeigen",
   "es": "Mostrar segundos",
@@ -5144,6 +6324,11 @@
   "es": "Skeuomórfico",
   "zh": "拟物"
  },
+ "Skewness": {
+  "de": "Schiefe",
+  "es": "Asimetría",
+  "zh": "偏度"
+ },
  "Slash separates words": {
   "de": "Schrägstrich trennt Wörter",
   "es": "La barra separa palabras",
@@ -5158,6 +6343,11 @@
   "de": "Schieberegler",
   "es": "Deslizador",
   "zh": "滑块"
+ },
+ "Slug": {
+  "de": "Slug",
+  "es": "Slug",
+  "zh": "Slug"
  },
  "Small": {
   "de": "Klein",
@@ -5244,6 +6434,16 @@
   "es": "Modelo compacto",
   "zh": "空间填充模型"
  },
+ "Spanish": {
+  "de": "Spanisch",
+  "es": "Español",
+  "zh": "西班牙语"
+ },
+ "Speaking time": {
+  "de": "Sprechzeit",
+  "es": "Tiempo de lectura en voz alta",
+  "zh": "朗读时间"
+ },
  "Speech runtime": {
   "de": "Sprach-Laufzeit",
   "es": "Motor de voz",
@@ -5279,6 +6479,11 @@
   "es": "Dividir la entrada por",
   "zh": "按此拆分输入"
  },
+ "Split into subnets": {
+  "de": "In Subnetze aufteilen",
+  "es": "Dividir en subredes",
+  "zh": "划分子网"
+ },
  "Splitter": {
   "de": "Aufteiler",
   "es": "Divisor",
@@ -5289,6 +6494,11 @@
   "es": "Espray",
   "zh": "喷枪"
  },
+ "Spread": {
+  "de": "Streuung",
+  "es": "Dispersión",
+  "zh": "离散度"
+ },
  "Spring": {
   "de": "Feder",
   "es": "Muelle",
@@ -5298,6 +6508,11 @@
   "de": "Quadrat",
   "es": "Cuadrado",
   "zh": "方形"
+ },
+ "Square it": {
+  "de": "Quadratisch machen",
+  "es": "Hacerlo cuadrado",
+  "zh": "改为正方形"
  },
  "Stand up": {
   "de": "Stand-up",
@@ -5313,6 +6528,16 @@
   "de": "Start und Dauer in Sekunden",
   "es": "Inicio y duración en segundos",
   "zh": "起点与时长（秒）"
+ },
+ "Start listening": {
+  "de": "Zuhören starten",
+  "es": "Empezar a escuchar",
+  "zh": "开始聆听"
+ },
+ "Start test": {
+  "de": "Test starten",
+  "es": "Iniciar la prueba",
+  "zh": "开始测试"
  },
  "Start typing...": {
   "de": "Losschreiben...",
@@ -5374,6 +6599,11 @@
   "es": "Cronómetro",
   "zh": "秒表"
  },
+ "Storage": {
+  "de": "Speicher",
+  "es": "Almacenamiento",
+  "zh": "存储"
+ },
  "Storage estimate": {
   "de": "Speicherschätzung",
   "es": "Estimación de almacenamiento",
@@ -5394,10 +6624,35 @@
   "es": "Fuerza",
   "zh": "强度"
  },
+ "Strip all styling": {
+  "de": "Alle Stile entfernen",
+  "es": "Quitar todos los estilos",
+  "zh": "清除全部样式"
+ },
  "Strip everything": {
   "de": "Alles entfernen",
   "es": "Quitar todo",
   "zh": "清除全部"
+ },
+ "Strip symbols": {
+  "de": "Sonderzeichen entfernen",
+  "es": "Quitar los símbolos",
+  "zh": "去除符号"
+ },
+ "Stroke": {
+  "de": "Kontur",
+  "es": "Trazo",
+  "zh": "描边"
+ },
+ "Stroke none": {
+  "de": "Keine Kontur",
+  "es": "Sin trazo",
+  "zh": "无描边"
+ },
+ "Stroke width": {
+  "de": "Konturstärke",
+  "es": "Grosor del trazo",
+  "zh": "描边宽度"
  },
  "Strong": {
   "de": "Stark",
@@ -5413,6 +6668,16 @@
   "de": "Betreff",
   "es": "Asunto",
   "zh": "主题"
+ },
+ "Subnet mask": {
+  "de": "Subnetzmaske",
+  "es": "Máscara de subred",
+  "zh": "子网掩码"
+ },
+ "Subprotocol": {
+  "de": "Subprotokoll",
+  "es": "Subprotocolo",
+  "zh": "子协议"
  },
  "Subscribe": {
   "de": "Abonnieren",
@@ -5438,6 +6703,11 @@
   "de": "Suffix",
   "es": "Sufijo",
   "zh": "后缀"
+ },
+ "Sum": {
+  "de": "Summe",
+  "es": "Suma",
+  "zh": "总和"
  },
  "Summarise": {
   "de": "Zusammenfassen",
@@ -5529,6 +6799,11 @@
   "es": "TTL",
   "zh": "TTL"
  },
+ "Tab": {
+  "de": "Tabulator",
+  "es": "Tabulación",
+  "zh": "制表符"
+ },
  "Tag": {
   "de": "Tag",
   "es": "Etiqueta",
@@ -5553,6 +6828,11 @@
   "de": "Team-Standup",
   "es": "Reunión del equipo",
   "zh": "团队站会"
+ },
+ "Technical": {
+  "de": "Technisch",
+  "es": "Técnicos",
+  "zh": "技术符号"
  },
  "Teeth": {
   "de": "Zähne",
@@ -5584,6 +6864,11 @@
   "es": "Probar la vibración",
   "zh": "测试震动"
  },
+ "Test server": {
+  "de": "Testserver",
+  "es": "Servidor de prueba",
+  "zh": "测试服务器"
+ },
  "Test string": {
   "de": "Testtext",
   "es": "Cadena de prueba",
@@ -5613,6 +6898,11 @@
   "de": "Zu verschlüsselnder Text",
   "es": "Texto para cifrar",
   "zh": "要加密的文本"
+ },
+ "That is not valid SVG markup.": {
+  "de": "Das ist kein gültiges SVG-Markup.",
+  "es": "Eso no es marcado SVG válido.",
+  "zh": "这不是有效的 SVG 标记。"
  },
  "The YAML parser covers the common configuration subset: nested maps, lists and scalars.": {
   "de": "Der YAML-Parser deckt die übliche Konfigurationsuntermenge ab: verschachtelte Maps, Listen und Skalare.",
@@ -5648,6 +6938,21 @@
   "de": "Themenfarbe",
   "es": "Color del tema",
   "zh": "主题色"
+ },
+ "This document has no top level shapes.": {
+  "de": "Dieses Dokument hat keine Formen auf oberster Ebene.",
+  "es": "Este documento no tiene formas de primer nivel.",
+  "zh": "此文档没有顶层图形。"
+ },
+ "This server": {
+  "de": "Dieser Server",
+  "es": "Este servidor",
+  "zh": "本服务器"
+ },
+ "Tick the limits you want in front of the key": {
+  "de": "Die gewünschten Einschränkungen vor dem Schlüssel ankreuzen",
+  "es": "Marca las restricciones que quieras poner delante de la clave",
+  "zh": "勾选你想加在密钥前面的限制项"
  },
  "Ticks per second": {
   "de": "Takte pro Sekunde",
@@ -5754,6 +7059,11 @@
   "es": "Tom",
   "zh": "嗵鼓"
  },
+ "Tools installed": {
+  "de": "Installierte Werkzeuge",
+  "es": "Herramientas instaladas",
+  "zh": "已安装的工具"
+ },
  "Top": {
   "de": "Oben",
   "es": "Arriba",
@@ -5768,6 +7078,11 @@
   "de": "Oben rechts",
   "es": "Arriba a la derecha",
   "zh": "右上"
+ },
+ "Total addresses": {
+  "de": "Adressen gesamt",
+  "es": "Direcciones totales",
+  "zh": "地址总数"
  },
  "Total return": {
   "de": "Gesamtrendite",
@@ -5793,6 +7108,16 @@
   "de": "Die Umwandlung läuft lokal über WebAssembly. Große Dateien dauern eine Weile.",
   "es": "La transcodificación se hace en local con WebAssembly. Los archivos grandes tardan un rato.",
   "zh": "转码通过 WebAssembly 在本地进行，大文件需要一些时间。"
+ },
+ "Transcription language": {
+  "de": "Sprache der Transkription",
+  "es": "Idioma de la transcripción",
+  "zh": "转写语言"
+ },
+ "Transform": {
+  "de": "Transformieren",
+  "es": "Transformar",
+  "zh": "变换"
  },
  "Translate": {
   "de": "Übersetzen",
@@ -5824,6 +7149,11 @@
   "es": "Recortar",
   "zh": "修剪"
  },
+ "Trouble keys": {
+  "de": "Problemtasten",
+  "es": "Teclas problemáticas",
+  "zh": "易错键"
+ },
  "Truth table": {
   "de": "Wahrheitstabelle",
   "es": "Tabla de verdad",
@@ -5854,6 +7184,11 @@
   "es": "Encender la cámara",
   "zh": "打开摄像头"
  },
+ "Twelve Data": {
+  "de": "Twelve Data",
+  "es": "Twelve Data",
+  "zh": "Twelve Data"
+ },
  "Twice": {
   "de": "Zweimal",
   "es": "Dos veces",
@@ -5879,6 +7214,11 @@
   "es": "Escribe o pega el texto que quieras traducir",
   "zh": "输入或粘贴要翻译的文本"
  },
+ "Type text to encode": {
+  "de": "Text zum Kodieren eingeben",
+  "es": "Escribe el texto que quieras codificar",
+  "zh": "输入要编码的文本"
+ },
  "Typeface": {
   "de": "Schriftart",
   "es": "Tipografía",
@@ -5889,6 +7229,16 @@
   "es": "MAYÚSCULAS",
   "zh": "全部大写"
  },
+ "URL encoded": {
+  "de": "URL-kodiert",
+  "es": "Codificado para URL",
+  "zh": "URL 编码"
+ },
+ "USD": {
+  "de": "USD",
+  "es": "USD",
+  "zh": "美元"
+ },
  "UTC": {
   "de": "UTC",
   "es": "UTC",
@@ -5898,6 +7248,21 @@
   "de": "UUID v4",
   "es": "UUID v4",
   "zh": "UUID v4"
+ },
+ "UUID v7": {
+  "de": "UUID v7",
+  "es": "UUID v7",
+  "zh": "UUID v7"
+ },
+ "Ukulele": {
+  "de": "Ukulele",
+  "es": "Ukelele",
+  "zh": "尤克里里"
+ },
+ "Underscore (_)": {
+  "de": "Unterstrich (_)",
+  "es": "Guion bajo (_)",
+  "zh": "下划线 (_)"
  },
  "Undo": {
   "de": "Rückgängig",
@@ -5913,6 +7278,11 @@
   "de": "Unicode",
   "es": "Unicode",
   "zh": "Unicode"
+ },
+ "Unicode escapes": {
+  "de": "Unicode-Escapes",
+  "es": "Escapes Unicode",
+  "zh": "Unicode 转义"
  },
  "Universally administered": {
   "de": "Universell vergeben",
@@ -5934,15 +7304,35 @@
   "es": "Tiempo Unix",
   "zh": "Unix 时间"
  },
+ "Upload Mbps": {
+  "de": "Upload Mbit/s",
+  "es": "Subida Mbps",
+  "zh": "上传 Mbps"
+ },
  "Uppercase": {
   "de": "Großbuchstaben",
   "es": "Mayúsculas",
   "zh": "大写"
  },
+ "Uppercase keywords": {
+  "de": "Schlüsselwörter in Großbuchstaben",
+  "es": "Palabras clave en mayúsculas",
+  "zh": "关键字大写"
+ },
+ "Usable hosts": {
+  "de": "Nutzbare Hosts",
+  "es": "Hosts utilizables",
+  "zh": "可用主机数"
+ },
  "Use": {
   "de": "Verwenden",
   "es": "Usar",
   "zh": "使用"
+ },
+ "Use currentColor": {
+  "de": "currentColor verwenden",
+  "es": "Usar currentColor",
+  "zh": "使用 currentColor"
  },
  "User agent": {
   "de": "User-Agent",
@@ -5978,6 +7368,16 @@
   "de": "Werte außerhalb von 0 bis 1 auf der senkrechten Achse schießen über das Ziel hinaus, was den Federeffekt erzeugt.",
   "es": "Los valores fuera de 0 a 1 en el eje vertical se pasan de largo, y eso es lo que da la sensación de muelle.",
   "zh": "纵轴上超出 0 到 1 的值会过冲，这正是弹簧感的来源。"
+ },
+ "Variance": {
+  "de": "Varianz",
+  "es": "Varianza",
+  "zh": "方差"
+ },
+ "Variations": {
+  "de": "Varianten",
+  "es": "Variantes",
+  "zh": "变体"
  },
  "Verify": {
   "de": "Prüfen",
@@ -6129,6 +7529,11 @@
   "es": "Soldadura",
   "zh": "焊接"
  },
+ "What needs doing?": {
+  "de": "Was ist zu tun?",
+  "es": "¿Qué hay que hacer?",
+  "zh": "有什么要做的？"
+ },
  "Wheel": {
   "de": "Farbkreis",
   "es": "Rueda",
@@ -6164,6 +7569,11 @@
   "es": "Ancho m",
   "zh": "宽度 m"
  },
+ "Wildcard mask": {
+  "de": "Wildcard-Maske",
+  "es": "Máscara comodín",
+  "zh": "通配符掩码"
+ },
  "Window": {
   "de": "Fenster",
   "es": "Ventana",
@@ -6189,9 +7599,19 @@
   "es": "Palabras",
   "zh": "词数"
  },
+ "Working hours": {
+  "de": "Arbeitszeiten",
+  "es": "Horario laboral",
+  "zh": "工作时间"
+ },
  "Workspace": {
   "de": "Arbeitsbereich",
   "es": "Espacio de trabajo",
+  "zh": "工作区"
+ },
+ "Workspaces": {
+  "de": "Arbeitsbereiche",
+  "es": "Espacios de trabajo",
   "zh": "工作区"
  },
  "Workspaces keep their own home layout, widgets and per-app settings. Export one to share it with a teammate.": {
@@ -6299,6 +7719,11 @@
   "es": "átomos",
   "zh": "个原子"
  },
+ "authorized_keys line": {
+  "de": "authorized_keys-Zeile",
+  "es": "Línea de authorized_keys",
+  "zh": "authorized_keys 行"
+ },
  "auto": {
   "de": "automatisch",
   "es": "automático",
@@ -6309,10 +7734,20 @@
   "es": "med",
   "zh": "平均"
  },
+ "avoid look-alikes": {
+  "de": "Verwechselbare meiden",
+  "es": "evitar caracteres parecidos",
+  "zh": "避免易混字符"
+ },
  "backwards": {
   "de": "backwards",
   "es": "backwards",
   "zh": "backwards"
+ },
+ "bevel": {
+  "de": "bevel",
+  "es": "bevel",
+  "zh": "bevel"
  },
  "bonds": {
   "de": "Bindungen",
@@ -6323,6 +7758,11 @@
   "de": "both",
   "es": "both",
   "zh": "both"
+ },
+ "butt": {
+  "de": "butt",
+  "es": "butt",
+  "zh": "butt"
  },
  "café & crème": {
   "de": "Café & Crème",
@@ -6338,6 +7778,11 @@
   "de": "wird geprüft...",
   "es": "comprobando...",
   "zh": "正在检查..."
+ },
+ "command=": {
+  "de": "command=",
+  "es": "command=",
+  "zh": "command="
  },
  "compose.yaml": {
   "de": "compose.yaml",
@@ -6444,6 +7889,11 @@
   "es": "frec",
   "zh": "频率"
  },
+ "from=": {
+  "de": "from=",
+  "es": "from=",
+  "zh": "from="
+ },
  "g/mol": {
   "de": "g/mol",
   "es": "g/mol",
@@ -6469,10 +7919,20 @@
   "es": "hex o texto",
   "zh": "十六进制或文本"
  },
+ "https%3A%2F%2Fexample.com": {
+  "de": "https%3A%2F%2Fexample.com",
+  "es": "https%3A%2F%2Fexample.com",
+  "zh": "https%3A%2F%2Fexample.com"
+ },
  "hunter2": {
   "de": "hunter2",
   "es": "hunter2",
   "zh": "hunter2"
+ },
+ "jsglobe.com/apps/&lt;app-id&gt;": {
+  "de": "jsglobe.com/de/apps/&lt;app-id&gt;",
+  "es": "jsglobe.com/es/apps/&lt;app-id&gt;",
+  "zh": "jsglobe.com/zh/apps/&lt;app-id&gt;"
  },
  "jump &nbsp;": {
   "de": "springen &nbsp;",
@@ -6509,6 +7969,11 @@
   "es": "mín",
   "zh": "最小"
  },
+ "miter": {
+  "de": "miter",
+  "es": "miter",
+  "zh": "miter"
+ },
  "name,role,city": {
   "de": "name,rolle,stadt",
   "es": "nombre,rol,ciudad",
@@ -6528,6 +7993,26 @@
   "de": "keine Messspitze",
   "es": "sin sonda",
   "zh": "无探针"
+ },
+ "no-X11-forwarding": {
+  "de": "no-X11-forwarding",
+  "es": "no-X11-forwarding",
+  "zh": "no-X11-forwarding"
+ },
+ "no-agent-forwarding": {
+  "de": "no-agent-forwarding",
+  "es": "no-agent-forwarding",
+  "zh": "no-agent-forwarding"
+ },
+ "no-port-forwarding": {
+  "de": "no-port-forwarding",
+  "es": "no-port-forwarding",
+  "zh": "no-port-forwarding"
+ },
+ "no-pty": {
+  "de": "no-pty",
+  "es": "no-pty",
+  "zh": "no-pty"
  },
  "none": {
   "de": "keine",
@@ -6574,6 +8059,16 @@
   "es": "Worker de pdf.js",
   "zh": "pdf.js worker"
  },
+ "preserveAspectRatio": {
+  "de": "preserveAspectRatio",
+  "es": "preserveAspectRatio",
+  "zh": "preserveAspectRatio"
+ },
+ "restrict": {
+  "de": "restrict",
+  "es": "restrict",
+  "zh": "restrict"
+ },
  "reverse": {
   "de": "reverse",
   "es": "reverse",
@@ -6583,6 +8078,16 @@
   "de": "Effektiv",
   "es": "eficaz",
   "zh": "有效值"
+ },
+ "round": {
+  "de": "round",
+  "es": "round",
+  "zh": "round"
+ },
+ "select * from users where id = 1": {
+  "de": "select * from users where id = 1",
+  "es": "select * from users where id = 1",
+  "zh": "select * from users where id = 1"
  },
  "shared secret": {
   "de": "gemeinsames Geheimnis",
@@ -6604,10 +8109,35 @@
   "es": "espacio",
   "zh": "空格"
  },
+ "square": {
+  "de": "square",
+  "es": "square",
+  "zh": "square"
+ },
+ "ssh-ed25519 AAAAC3Nza... you@machine": {
+  "de": "ssh-ed25519 AAAAC3Nza... du@rechner",
+  "es": "ssh-ed25519 AAAAC3Nza... tu@equipo",
+  "zh": "ssh-ed25519 AAAAC3Nza... you@machine"
+ },
+ "ssh-keygen -p -f &lt;file&gt;": {
+  "de": "ssh-keygen -p -f &lt;datei&gt;",
+  "es": "ssh-keygen -p -f &lt;archivo&gt;",
+  "zh": "ssh-keygen -p -f &lt;文件&gt;"
+ },
+ "symbols": {
+  "de": "Sonderzeichen",
+  "es": "símbolos",
+  "zh": "符号"
+ },
  "text": {
   "de": "Text",
   "es": "texto",
   "zh": "文本"
+ },
+ "to": {
+  "de": "bis",
+  "es": "a",
+  "zh": "至"
  },
  "truncated": {
   "de": "gekürzt",
@@ -6618,5 +8148,40 @@
   "de": "Wert",
   "es": "valor",
   "zh": "值"
+ },
+ "viewBox": {
+  "de": "viewBox",
+  "es": "viewBox",
+  "zh": "viewBox"
+ },
+ "wss://example.com/socket": {
+  "de": "wss://example.com/socket",
+  "es": "wss://example.com/socket",
+  "zh": "wss://example.com/socket"
+ },
+ "xMidYMid meet": {
+  "de": "xMidYMid meet",
+  "es": "xMidYMid meet",
+  "zh": "xMidYMid meet"
+ },
+ "xMidYMid slice": {
+  "de": "xMidYMid slice",
+  "es": "xMidYMid slice",
+  "zh": "xMidYMid slice"
+ },
+ "you@machine": {
+  "de": "du@rechner",
+  "es": "tu@equipo",
+  "zh": "you@machine"
+ },
+ "⌘/ / Ctrl+/": {
+  "de": "⌘/ / Strg+/",
+  "es": "⌘/ / Ctrl+/",
+  "zh": "⌘/ / Ctrl+/"
+ },
+ "⌘K / Ctrl+K": {
+  "de": "⌘K / Strg+K",
+  "es": "⌘K / Ctrl+K",
+  "zh": "⌘K / Ctrl+K"
  }
 }
