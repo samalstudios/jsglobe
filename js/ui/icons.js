@@ -174,6 +174,8 @@ const PATHS = {
   terminalKey: '<path d="M9.4 3.2h5.2"/>',
   transistor: '<path d="M9.4 6.4v11.2"/><path d="M3.4 12h6M9.4 9.6 20 4.6M9.4 14.4 20 19.4"/><path d="m15.2 15.4 3.2 1.4-1.2-3.2"/>',
   gate: '<path d="M4.4 5.6h6.4a6.4 6.4 0 0 1 0 12.8H4.4Z"/><path d="M2 8.8h2.4M2 15.2h2.4M17.2 12h4.4"/>',
+  toFront: '<rect x="3.4" y="3.4" width="11" height="11" rx="2" fill="currentColor"/><path d="M9.6 20.6h9a2 2 0 0 0 2-2v-9"/>',
+  toBack: '<rect x="9.6" y="9.6" width="11" height="11" rx="2" fill="currentColor"/><path d="M14.4 3.4h-9a2 2 0 0 0-2 2v9"/>',
   pause: '<rect x="6.4" y="4.6" width="4" height="14.8" rx="1.4" fill="currentColor"/><rect x="13.6" y="4.6" width="4" height="14.8" rx="1.4" fill="currentColor"/>',
   stop: '<rect x="5.2" y="5.2" width="13.6" height="13.6" rx="2.4" fill="currentColor"/>',
   cradle: '<path d="M3.8 3.8h16.4"/><path d="M6.6 3.8 5.2 13.4M11 3.8l-.4 9.6M15.4 3.8l.6 9.6M19.4 3.8l1.4 9.6"/><circle cx="5" cy="16.4" r="3"/><circle cx="10.6" cy="16.4" r="3"/><circle cx="16.2" cy="16.4" r="3"/>',

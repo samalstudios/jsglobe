@@ -84,6 +84,7 @@ class JGWindowLayer extends JGElement {
     this.#order.push(appId);
     this.#applyStacking();
     this.#wire(win, appId);
+    this.#syncMaximized();
     this.#emitChange();
 
     const element = await registry.create(appId, this.#appMode());
@@ -118,6 +119,8 @@ class JGWindowLayer extends JGElement {
       width: options.width ?? width,
       height: options.height ?? height,
     });
+
+    if (preferred.maximized && !options.width && !options.height) win.toggleMaximize();
   }
 
   #wire(win, appId) {

@@ -799,7 +799,7 @@ export const catalog = [
     icon: 'table',
     keywords: ['csv', 'tsv', 'spreadsheet', 'table', 'json', 'sql', 'markdown', 'convert', 'excel'],
     tag: 'jg-app-csv-studio',
-    window: { width: 1120, height: 880 },
+    window: { width: 1120, height: 880, maximized: true },
     load: () => import('./csv-studio.js'),
   },
   {
@@ -847,7 +847,7 @@ export const catalog = [
     icon: 'curve',
     keywords: ['plot', 'graph', 'function', 'chart', 'derivative', 'roots', 'calculator', 'math'],
     tag: 'jg-app-function-plotter',
-    window: { width: 1000, height: 820 },
+    window: { width: 1000, height: 820, maximized: true },
     load: () => import('./function-plotter.js'),
   },
   {
@@ -1015,7 +1015,7 @@ export const catalog = [
     icon: 'exif',
     keywords: ['exif', 'metadata', 'photo', 'jpeg', 'gps', 'privacy', 'strip'],
     tag: 'jg-app-exif-editor',
-    window: { width: 900, height: 800 },
+    window: { width: 900, height: 800, maximized: true },
     load: () => import('./exif-editor.js'),
   },
   {
@@ -1052,7 +1052,7 @@ export const catalog = [
     tint: '#3b6fb6',
     keywords: ['docker', 'compose', 'kubernetes', 'k8s', 'convert', 'manifest', 'deployment', 'service', 'ingress', 'nginx', 'traefik', 'yaml', 'devops', 'migrate'],
     tag: 'jg-app-compose-to-k8s',
-    window: { width: 1180, height: 860 },
+    window: { width: 1180, height: 860, maximized: true },
     load: () => import('./compose-to-k8s.js'),
   },
   {
@@ -1161,7 +1161,7 @@ export const catalog = [
     tint: '#e11d48',
     keywords: ['svg', 'vector', 'viewer', 'editor', 'optimise', 'optimize', 'icon', 'minify', 'png'],
     tag: 'jg-app-svg-editor',
-    window: { width: 1080, height: 860 },
+    window: { width: 1080, height: 860, maximized: true },
     load: () => import('./svg-editor.js'),
   },
 
@@ -1283,7 +1283,7 @@ export const catalog = [
     keywords: ['element', 'chemistry', 'periodic', 'atomic', 'science', 'mendeleev'],
     tag: 'jg-app-periodic-table',
     widget: true,
-    window: { width: 1080, height: 860 },
+    window: { width: 1080, height: 860, maximized: true },
     load: () => import('./periodic-table.js'),
   },
 
@@ -1298,7 +1298,7 @@ export const catalog = [
     keywords: ['molecule', '3d', 'chemistry', 'vitamin', 'protein', 'dna', 'structure', 'science'],
     tag: 'jg-app-molecule-viewer',
     widget: true,
-    window: { width: 1020, height: 780 },
+    window: { width: 1020, height: 780, maximized: true },
     load: () => import('./molecule-viewer.js'),
   },
 
@@ -1312,7 +1312,7 @@ export const catalog = [
     tint: '#4a7a58',
     keywords: ['circuit', 'electronics', 'simulator', 'resistor', 'capacitor', 'spice', 'ohm', 'science'],
     tag: 'jg-app-circuit-lab',
-    window: { width: 1080, height: 760 },
+    window: { width: 1080, height: 760, maximized: true },
     load: () => import('./circuit-lab.js'),
   },
 
@@ -1326,7 +1326,7 @@ export const catalog = [
     tint: '#8a1c3b',
     keywords: ['paint', 'draw', 'canvas', 'pixel', 'sketch', 'bitmap', 'image'],
     tag: 'jg-app-paint',
-    window: { width: 1040, height: 760 },
+    window: { width: 1040, height: 760, maximized: true },
     load: () => import('./paint.js'),
   },
 
@@ -1462,7 +1462,7 @@ export const catalog = [
     tint: '#3f7f6d',
     keywords: ['physics', 'simulation', 'mechanics', 'gravity', 'spring', 'pendulum', 'collision', 'rigid body', 'motor', 'friction', 'sandbox'],
     tag: 'jg-app-physics-lab',
-    window: { width: 1120, height: 800 },
+    window: { width: 1120, height: 800, maximized: true },
     load: () => import('./physics-lab.js'),
   },
 
@@ -1476,7 +1476,7 @@ export const catalog = [
     tint: '#4a6fa5',
     keywords: ['logic', 'digital', 'gate', 'and', 'or', 'xor', 'flip-flop', 'counter', 'seven segment', 'led matrix', 'decoder', 'multiplexer', 'boolean', 'circuit'],
     tag: 'jg-app-logic-lab',
-    window: { width: 1100, height: 780 },
+    window: { width: 1100, height: 780, maximized: true },
     load: () => import('./logic-lab.js'),
   },
 
@@ -1490,7 +1490,7 @@ export const catalog = [
     tint: '#96703f',
     keywords: ['pdf', 'merge', 'split', 'rotate', 'convert', 'image', 'png', 'extract', 'text', 'combine'],
     tag: 'jg-app-pdf-studio',
-    window: { width: 1080, height: 800 },
+    window: { width: 1080, height: 800, maximized: true },
     load: () => import('./pdf-studio.js'),
   },
 

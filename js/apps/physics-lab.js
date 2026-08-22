@@ -691,6 +691,8 @@ export default class PhysicsLab extends JGApp {
       { id: 'zoom-out', label: 'Zoom out', icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
       { id: 'zoom-fit', label: 'Fit', icon: 'maximize', iconOnly: true, title: 'Fit the scene', action: () => { this.#touched = false; this.#fit(); } },
       { id: 'zoom-in', label: 'Zoom in', icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
+      { id: 'front', label: 'Bring to front', icon: 'toFront', iconOnly: true, title: 'Bring the selected body to the front', action: () => this.#lift(true) },
+      { id: 'back', label: 'Send to back', icon: 'toBack', iconOnly: true, title: 'Send the selected body to the back', action: () => this.#lift(false) },
       { id: 'delete', label: 'Delete', icon: 'eraser', iconOnly: true, title: 'Delete the selection', action: () => this.#remove() },
       { spacer: true },
       { id: 'import', label: 'Open file', icon: 'upload', iconOnly: true, title: 'Open a scene from a file', action: () => this.#importFile() },
@@ -1397,6 +1399,19 @@ export default class PhysicsLab extends JGApp {
     this.#inspector();
   }
 
+  #lift(toFront) {
+    if (this.#selected == null) return;
+    const at = this.#bodies.findIndex((body) => body.id === this.#selected);
+    if (at < 0) return;
+    this.#snapshot();
+    this.#sync();
+    const [body] = this.#bodies.splice(at, 1);
+    if (toFront) this.#bodies.push(body);
+    else this.#bodies.unshift(body);
+    this.#reset();
+    this.#draw();
+  }
+
   #remove() {
     if (this.#selectedControl) {
       this.#snapshot();
@@ -1791,8 +1806,8 @@ export default class PhysicsLab extends JGApp {
     context.lineWidth = 1.6 / (SCALE * this.#zoom);
 
     this.#drawTrail(context, paint);
-    this.#joints.forEach((joint) => this.#drawJoint(context, joint, paint));
     this.#world.bodies.forEach((body) => this.#drawBody(context, body, paint));
+    this.#joints.forEach((joint) => this.#drawJoint(context, joint, paint));
 
     if (this.#linkFrom && this.#cursor) {
       const start =
