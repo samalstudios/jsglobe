@@ -147,6 +147,7 @@ class Paint extends JGApp {
       { id: 'rotate', label: t('paint.rotate', 'Rotate'), icon: 'rotate', iconOnly: true, title: t('paint.rotateRight', 'Rotate right'), action: () => this.#rotate(1) },
       { id: 'flip-h', label: t('paint.flipAcross', 'Flip across'), icon: 'flip', iconOnly: true, title: t('paint.flipHorizontally', 'Flip horizontally'), action: () => this.#flip('h') },
       { id: 'flip-v', label: t('paint.flipDown', 'Flip down'), icon: 'flip-v', iconOnly: true, title: t('paint.flipVertically', 'Flip vertically'), action: () => this.#flip('v') },
+      { separator: true },
       { id: 'resize', label: t('paint.resize', 'Resize'), icon: 'scale', title: t('paint.resizeTheCanvas', 'Resize the canvas'), action: () => this.$('#resize').open() },
       { id: 'adjust', label: t('paint.adjust', 'Adjust'), icon: 'gauge', title: t('paint.brightnessContrastAndColour', 'Brightness, contrast and colour'), action: () => this.$('#adjust').open() },
       { spacer: true },
