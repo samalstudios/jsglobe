@@ -49,11 +49,42 @@
   background: var(--card);
   transition: background 0.1s ease;
 }
-.cell.light { background: color-mix(in srgb, var(--muted) 40%, var(--card)); }
-.cell.dark { background: color-mix(in srgb, var(--ring) 22%, var(--card)); }
-.cell.trail { background: color-mix(in srgb, var(--warning) 30%, var(--card)); }
-.cell.picked { background: color-mix(in srgb, var(--ring) 46%, var(--card)); }
-.cell.check { background: color-mix(in srgb, var(--destructive) 42%, var(--card)); }
+/* Board colours are set on the board, not taken from the app theme, so a
+   board looks the same in light and dark. The states paint as a wash on top,
+   which keeps the square underneath readable in every palette. */
+[data-board='paper'],
+.board[data-theme='paper'] { --light: #f2f3f1; --dark: #b8c2ba; }
+[data-board='wood'],
+.board[data-theme='wood'] { --light: #f0d9b5; --dark: #b58863; }
+[data-board='forest'],
+.board[data-theme='forest'] { --light: #eeeed2; --dark: #769656; }
+[data-board='ocean'],
+.board[data-theme='ocean'] { --light: #dfe6ea; --dark: #7891a0; }
+[data-board='slate'],
+.board[data-theme='slate'] { --light: #dcdee1; --dark: #7c8696; }
+[data-board='rose'],
+.board[data-theme='rose'] { --light: #f7e8ea; --dark: #c08497; }
+[data-board='ink'],
+.board[data-theme='ink'] { --light: #e9e9e9; --dark: #565659; }
+
+.cell.light { background: var(--light, #f0d9b5); }
+.cell.dark { background: var(--dark, #b58863); }
+.cell.trail { box-shadow: inset 0 0 0 99px rgba(238, 180, 40, 0.34); }
+.cell.picked { box-shadow: inset 0 0 0 99px rgba(48, 132, 244, 0.36); }
+.cell.check { box-shadow: inset 0 0 0 99px rgba(214, 62, 52, 0.44); }
+
+.swatches { display: flex; flex-wrap: wrap; gap: 6px; }
+.swatch {
+  width: 30px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--light) 0 50%, var(--dark) 50% 100%);
+  cursor: pointer;
+}
+.swatch:hover { border-color: var(--border-strong); }
+.swatch.on { box-shadow: 0 0 0 2px var(--ring); border-color: transparent; }
 
 .cell.go::after,
 .cell.take::after {
@@ -65,11 +96,11 @@
 .cell.go::after {
   width: 26%;
   height: 26%;
-  background: color-mix(in srgb, var(--ring) 55%, transparent);
+  background: rgba(20, 20, 24, 0.3);
 }
 .cell.take::after {
   inset: 6%;
-  border: 3px solid color-mix(in srgb, var(--ring) 65%, transparent);
+  border: 3px solid rgba(20, 20, 24, 0.3);
 }
 
 .man {
@@ -78,6 +109,14 @@
   pointer-events: none;
   user-select: none;
 }
+.man.ghost {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
 .man.white {
   color: #fcfcfb;
   -webkit-text-stroke: 1.4px #2a2a30;

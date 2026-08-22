@@ -35,6 +35,19 @@ const GLYPH = {
 
 const VALUE = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
 
+const THEMES = ['paper', 'wood', 'forest', 'ocean', 'slate', 'rose', 'ink'];
+
+const themeName = (id) =>
+  ({
+    paper: t('chess.theme.paper', 'Paper'),
+    wood: t('chess.theme.wood', 'Wood'),
+    forest: t('chess.theme.forest', 'Forest'),
+    ocean: t('chess.theme.ocean', 'Ocean'),
+    slate: t('chess.theme.slate', 'Slate'),
+    rose: t('chess.theme.rose', 'Rose'),
+    ink: t('chess.theme.ink', 'Ink'),
+  })[id] ?? id;
+
 const levelName = (id) =>
   ({
     gentle: t('chess.level.gentle', 'Gentle'),
@@ -55,6 +68,13 @@ class Chess extends JGApp {
       default: 'casual',
       options: Object.keys(LEVELS).map((id) => ({ value: id, label: levelName(id) })),
     },
+    {
+      key: 'theme',
+      label: t('chess.boardTheme', 'Board colours'),
+      type: 'select',
+      default: 'wood',
+      options: THEMES.map((id) => ({ value: id, label: themeName(id) })),
+    },
     { key: 'coach', label: t('chess.coachEveryMove', 'Comment on every move'), type: 'switch', default: true },
     { key: 'hints', label: t('chess.showLegalMoves', 'Show where a piece can go'), type: 'switch', default: true },
   ];
@@ -64,6 +84,7 @@ class Chess extends JGApp {
   #history = [];
   #pick = null;
   #last = null;
+  #slide = null;
   #side = WHITE;
   #view = 'play';
   #thinking = false;
@@ -170,6 +191,7 @@ class Chess extends JGApp {
   #draw() {
     const board = this.$('#board');
     if (!board) return;
+    board.dataset.theme = this.config.get('theme', 'wood');
     const state = this.#lessonState ?? this.#state;
     const showHints = this.config.get('hints', true);
     const targets = new Set();
@@ -200,6 +222,7 @@ class Chess extends JGApp {
     this.bind('.cell', 'click', (event) => this.#tap(Number(event.currentTarget.dataset.square)));
     this.#status();
     this.#taken();
+    this.#animate();
   }
 
   #kingAt(state, colour) {
@@ -275,12 +298,75 @@ class Chess extends JGApp {
   }
 
   #commit(move, san) {
-    this.#history.push({ fen: toFen(this.#state), move, san });
-    this.#state = applyMove(this.#state, move).state;
+    const before = this.#state;
+    this.#history.push({ fen: toFen(before), move, san });
+    const { state, captured } = applyMove(before, move);
+    this.#state = state;
     this.#last = move;
+    this.#slide = { move, captured, board: before.board };
     this.#opening = this.#matchOpening();
     this.#draw();
     this.#pane();
+  }
+
+  #squareIndex(square) {
+    return this.#squares().indexOf(square);
+  }
+
+  // Slide the arriving piece in from where it came, and fade out whatever it
+  // took. The board is rebuilt on every change, so the piece is already in
+  // place: it is pushed back and released.
+  #animate() {
+    const slide = this.#slide;
+    this.#slide = null;
+    if (!slide) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const board = this.$('#board');
+    if (!board) return;
+    const cell = board.getBoundingClientRect().width / 8;
+    if (!cell) return;
+
+    const offset = (from, to) => {
+      const a = this.#squareIndex(from);
+      const b = this.#squareIndex(to);
+      if (a < 0 || b < 0) return null;
+      return { x: ((b % 8) - (a % 8)) * cell, y: (Math.floor(b / 8) - Math.floor(a / 8)) * cell };
+    };
+
+    const glide = (from, to) => {
+      const shift = offset(from, to);
+      const cellNode = board.querySelector(`[data-square="${to}"]`);
+      const man = cellNode?.querySelector('.man');
+      if (!shift || !man) return;
+      man.animate(
+        [{ transform: `translate(${-shift.x}px, ${-shift.y}px)` }, { transform: 'none' }],
+        { duration: 190, easing: 'cubic-bezier(0.22, 0.7, 0.28, 1)' },
+      );
+    };
+
+    glide(slide.move.from, slide.move.to);
+
+    // a castling rook travels with the king
+    if (slide.move.castle) {
+      const home = rankOf(slide.move.from) * 16;
+      const short = slide.move.castle === 'k';
+      glide(home + (short ? 7 : 0), home + (short ? 5 : 3));
+    }
+
+    if (!slide.captured) return;
+    const takenAt = slide.move.enPassant ? (rankOf(slide.move.from) << 4) | fileOf(slide.move.to) : slide.move.to;
+    const host = board.querySelector(`[data-square="${takenAt}"]`);
+    if (!host) return;
+    const ghost = document.createElement('span');
+    ghost.className = `man ghost ${slide.captured === slide.captured.toUpperCase() ? 'white' : 'black'}`;
+    ghost.textContent = GLYPH[slide.captured];
+    host.appendChild(ghost);
+    const fade = ghost.animate([{ opacity: 0.85, transform: 'scale(1)' }, { opacity: 0, transform: 'scale(0.6)' }], {
+      duration: 200,
+      easing: 'ease-out',
+    });
+    fade.finished.then(() => ghost.remove()).catch(() => ghost.remove());
   }
 
   #finish() {
@@ -394,6 +480,20 @@ class Chess extends JGApp {
         </jg-select>
       </jg-field>
 
+      <jg-field label="${t('chess.boardTheme', 'Board colours')}">
+        <div class="swatches">
+          ${THEMES.map(
+            (id) => html`<button
+              class="swatch ${this.config.get('theme', 'wood') === id ? 'on' : ''}"
+              data-theme="${id}"
+              data-board="${id}"
+              title="${themeName(id)}"
+              aria-label="${themeName(id)}"
+            ></button>`,
+          )}
+        </div>
+      </jg-field>
+
       ${this.#opening
         ? html`<div class="card opening">
             <div class="eco">${this.#opening.eco}</div>
@@ -427,6 +527,12 @@ class Chess extends JGApp {
         this.#pane();
       });
     }
+
+    this.bind('[data-theme]', 'click', (event) => {
+      this.config.set('theme', event.currentTarget.dataset.theme);
+      this.#draw();
+      this.#pane();
+    });
   }
 
   #verdictWords(note) {
@@ -490,6 +596,8 @@ class Chess extends JGApp {
     this.#draw();
     this.#pane();
     toast(t('chess.openingLoaded', '{name} is on the board. Play on from here.', { name: opening.name }));
+    // the line may end on the computer's turn, so let it answer
+    if (!this.#over && this.#state.turn !== this.#side) this.#playComputer();
   }
 
   #matchOpening() {
