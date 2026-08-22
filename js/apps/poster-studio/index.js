@@ -1,4 +1,5 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
+import { collapsibleGroups, paletteSheet } from '../../ui/palette.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { CANVAS_SIZES, THEMES, FRAMES, GALLERY, makeText, makeShape, newId, icsFor } from '../../lib/poster.js';
@@ -33,7 +34,7 @@ const fittedSize = (item) => {
 
 class PosterStudio extends JGApp {
   static appId = 'poster-studio';
-  static styles = [...JGApp.styles, sheet];
+  static styles = [...JGApp.styles, paletteSheet, sheet];
   static settings = [{ key: 'export', label: t('poster-studio.exportScale', 'Export scale'), type: 'number', value: 2, min: 1, max: 4 }];
 
   #size = 'poster';
@@ -218,6 +219,8 @@ class PosterStudio extends JGApp {
         ([key, spec]) => html`<button class="tool" data-size="${key}" aria-pressed="${String(this.#size === key)}">${icon('frame', 15)}<span>${spec.label}</span></button>`,
       )}
     `;
+
+    collapsibleGroups(this.$('#rail'), { store: this.state, key: 'palette.folded' });
 
 
     this.bind('[data-add]', 'click', (event) => this.#add(event.currentTarget.dataset.add));

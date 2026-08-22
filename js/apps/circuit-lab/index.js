@@ -1,4 +1,5 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
+import { collapsibleGroups, paletteSheet } from '../../ui/palette.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { createCircuit } from '../../lib/circuit.js';
@@ -195,7 +196,7 @@ class CircuitLab extends JGApp {
     { key: 'step', label: t('circuit-lab.timeStepS', 'Time step (µs)'), type: 'number', default: 20, min: 1, max: 500 },
     { key: 'labels', label: t('circuit-lab.showNodeVoltages', 'Show node voltages'), type: 'switch', default: true },
   ];
-  static styles = [...JGApp.styles, sheet];
+  static styles = [...JGApp.styles, paletteSheet, sheet];
 
   #parts = [];
   #tool = 'select';
@@ -488,6 +489,8 @@ class CircuitLab extends JGApp {
         </button>`,
       )}
     `;
+
+    collapsibleGroups(this.$('#palette'), { store: this.state, key: 'palette.folded' });
     this.bind('.tool', 'click', (event) => this.#setTool(event.currentTarget.dataset.tool));
     this.bind('#collapse', 'click', () => {
       const palette = this.$('#palette');

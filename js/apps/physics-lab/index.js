@@ -1,4 +1,5 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
+import { collapsibleGroups, paletteSheet } from '../../ui/palette.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { createWorld, bodyCorners, worldPoint, localPoint, spanOf, hull, polyMass, simpleLoop } from '../../lib/physics.js';
@@ -242,7 +243,7 @@ const SAMPLES = {
 
 export default class PhysicsLab extends JGApp {
   static appId = 'physics-lab';
-  static styles = [sheet];
+  static styles = [...JGApp.styles, paletteSheet, sheet];
   static settings = [
     { key: 'vectors', label: t('physics-lab.showVelocityArrows', 'Show velocity arrows'), type: 'switch', value: false },
     { key: 'trails', label: t('physics-lab.traceTheSelectedBody', 'Trace the selected body'), type: 'switch', value: true },
@@ -477,6 +478,8 @@ export default class PhysicsLab extends JGApp {
       )}
     `;
 
+    collapsibleGroups(this.$('#palette'), { store: this.state, key: 'palette.folded' });
+
     this.bind('.tool', 'click', (event) => {
       const tool = event.currentTarget.dataset.tool;
       if (tool) this.#setTool(tool);
@@ -626,6 +629,16 @@ export default class PhysicsLab extends JGApp {
       { id: 'copy', label: t('physics-lab.copy', 'Copy'), icon: 'copy', iconOnly: true, title: 'Copy the selection', action: () => this.#copy() },
       { id: 'paste', label: t('physics-lab.paste', 'Paste'), icon: 'clipboard', iconOnly: true, title: 'Paste a copy', action: () => this.#paste() },
       { id: 'turn', label: t('physics-lab.rotate', 'Rotate'), icon: 'rotate', iconOnly: true, title: 'Turn the selected body (R, shift R the other way)', action: () => this.#turn(Math.PI / 12) },
+      {
+        id: 'snap',
+        label: t('physics-lab.snap', 'Snap'),
+        icon: 'magnet',
+        iconOnly: true,
+        toggle: true,
+        active: this.config.get('snap', true),
+        title: t('physics-lab.snapTitle', 'Snap links to centres and corners'),
+        action: (item) => this.config.set('snap', item.active),
+      },
       { id: 'union', label: t('physics-lab.merge', 'Merge'), icon: 'union', iconOnly: true, title: 'Merge the two selected shapes', action: () => this.#combine('union') },
       { id: 'subtract', label: t('physics-lab.subtract', 'Subtract'), icon: 'subtract', iconOnly: true, title: 'Cut the second shape out of the first', action: () => this.#combine('subtract') },
       { id: 'intersect', label: t('physics-lab.overlap', 'Overlap'), icon: 'intersect', iconOnly: true, title: 'Keep only where the two shapes overlap', action: () => this.#combine('intersect') },
@@ -916,6 +929,19 @@ export default class PhysicsLab extends JGApp {
     });
   }
 
+  #pointJointAt(point) {
+    const reach = 0.2 / this.#zoom;
+    let best = null;
+    this.#joints.forEach((joint) => {
+      if (joint.kind !== 'pin' && joint.kind !== 'motor') return;
+      const spot = this.#anchor(joint, 'b') ?? this.#anchor(joint, 'a');
+      if (!spot) return;
+      const away = Math.hypot(point.x - spot.x, point.y - spot.y);
+      if (away < reach && (!best || away < best.away)) best = { joint, away };
+    });
+    return best?.joint ?? null;
+  }
+
   #jointAt(point) {
     const reach = 0.22 / this.#zoom;
     let best = null;
@@ -973,7 +999,7 @@ export default class PhysicsLab extends JGApp {
   }
 
   #down(event) {
-    const point = this.#point(event);
+    let point = this.#point(event);
     this.$('#view').setPointerCapture(event.pointerId);
 
     if (this.#tool === 'backdrop') {
@@ -1094,6 +1120,14 @@ export default class PhysicsLab extends JGApp {
     }
 
     if (this.#tool === 'erase') {
+      const marker = this.#pointJointAt(point);
+      if (marker) {
+        this.#snapshot();
+        this.#joints = this.#joints.filter((entry) => entry !== marker);
+        this.#reset();
+        this.#inspector();
+        return;
+      }
       const body = this.#world.at(point.x, point.y);
       if (body) {
         this.#snapshot();
@@ -1119,6 +1153,16 @@ export default class PhysicsLab extends JGApp {
       this.#selectedJoint = control.joint;
       this.#selected = null;
       this.#drag = { kind: 'jack', joint: control.joint };
+      this.#inspector();
+      return;
+    }
+
+    const pointJoint = this.#pointJointAt(point);
+    if (pointJoint) {
+      this.#selectedJoint = pointJoint;
+      this.#selected = null;
+      this.#alsoSelected.clear();
+      this.#selectedControl = null;
       this.#inspector();
       return;
     }

@@ -1,5 +1,7 @@
 export default {
   de: {
+    'physics-lab.snap': 'Einrasten',
+    'physics-lab.snapTitle': 'Verbindungen an Mittelpunkten und Ecken einrasten',
     'physics-lab.ball': 'Kugel',
     'physics-lab.block': 'Block',
     'physics-lab.wall': 'Wand',
@@ -95,6 +97,8 @@ export default {
     'physics-lab.removeBody': 'Körper entfernen',
   },
   es: {
+    'physics-lab.snap': 'Ajuste',
+    'physics-lab.snapTitle': 'Ajustar los enlaces a centros y esquinas',
     'physics-lab.ball': 'Bola',
     'physics-lab.block': 'Bloque',
     'physics-lab.wall': 'Muro',
@@ -190,6 +194,8 @@ export default {
     'physics-lab.removeBody': 'Quitar el cuerpo',
   },
   zh: {
+    'physics-lab.snap': '吸附',
+    'physics-lab.snapTitle': '将连接吸附到中心与角点',
     'physics-lab.ball': '小球',
     'physics-lab.block': '块',
     'physics-lab.wall': '墙体',

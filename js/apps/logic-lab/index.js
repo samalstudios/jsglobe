@@ -1,4 +1,5 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
+import { collapsibleGroups, paletteSheet } from '../../ui/palette.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { createLogic, GATES, SEGMENTS } from '../../lib/logic.js';
@@ -140,7 +141,7 @@ class LogicLab extends JGApp {
   static settings = [
     { key: 'rate', label: t('logic-lab.ticksPerSecond', 'Ticks per second'), type: 'number', default: 60, min: 4, max: 240 },
   ];
-  static styles = [...JGApp.styles, sheet];
+  static styles = [...JGApp.styles, paletteSheet, sheet];
 
   #parts = [];
   #links = [];
@@ -421,6 +422,8 @@ class LogicLab extends JGApp {
       <div class="group">${t('logic-lab.output', 'Output')}</div>
       ${['led', 'seven', 'matrix'].map((kind) => this.#toolButton(kind))}
     `;
+
+    collapsibleGroups(this.$('#palette'), { store: this.state, key: 'palette.folded' });
 
     this.bind('.tool', 'click', (event) => this.#setTool(event.currentTarget.dataset.tool));
     this.bind('[data-sample]', 'click', (event) => {
