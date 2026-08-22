@@ -480,6 +480,15 @@ export default class PhysicsLab extends JGApp {
       { id: 'subtract', label: t('physics-lab.subtract', 'Subtract'), icon: 'subtract', iconOnly: true, title: t('physics-lab.cutTheSecondShapeOut', 'Cut the second shape out of the first'), action: () => this.#combine('subtract') },
       { id: 'intersect', label: t('physics-lab.overlap', 'Overlap'), icon: 'intersect', iconOnly: true, title: t('physics-lab.keepOnlyWhereTheTwo', 'Keep only where the two shapes overlap'), action: () => this.#combine('intersect') },
       { separator: true },
+      { id: 'align-left', label: t('physics-lab.alignLeft', 'Align left'), icon: 'edgeLeft', iconOnly: true, title: t('physics-lab.alignLeftEdges', 'Line the selection up on its left edges'), action: () => this.#align('left') },
+      { id: 'align-middle-x', label: t('physics-lab.alignMiddleX', 'Centre across'), icon: 'middleX', iconOnly: true, title: t('physics-lab.alignMiddleXTitle', 'Centre the selection across'), action: () => this.#align('middleX') },
+      { id: 'align-right', label: t('physics-lab.alignRight', 'Align right'), icon: 'edgeRight', iconOnly: true, title: t('physics-lab.alignRightEdges', 'Line the selection up on its right edges'), action: () => this.#align('right') },
+      { id: 'align-top', label: t('physics-lab.alignTop', 'Align top'), icon: 'edgeTop', iconOnly: true, title: t('physics-lab.alignTopEdges', 'Line the selection up on its top edges'), action: () => this.#align('top') },
+      { id: 'align-middle-y', label: t('physics-lab.alignMiddleY', 'Centre down'), icon: 'middleY', iconOnly: true, title: t('physics-lab.alignMiddleYTitle', 'Centre the selection down'), action: () => this.#align('middleY') },
+      { id: 'align-bottom', label: t('physics-lab.alignBottom', 'Align bottom'), icon: 'edgeBottom', iconOnly: true, title: t('physics-lab.alignBottomEdges', 'Line the selection up on its bottom edges'), action: () => this.#align('bottom') },
+      { id: 'spread-x', label: t('physics-lab.spreadX', 'Spread across'), icon: 'spreadX', iconOnly: true, title: t('physics-lab.spreadXTitle', 'Space the selection evenly across'), action: () => this.#align('spreadX') },
+      { id: 'spread-y', label: t('physics-lab.spreadY', 'Spread down'), icon: 'spreadY', iconOnly: true, title: t('physics-lab.spreadYTitle', 'Space the selection evenly down'), action: () => this.#align('spreadY') },
+      { separator: true },
       { id: 'front', label: t('physics-lab.bringToFront', 'Bring to front'), icon: 'toFront', iconOnly: true, title: t('physics-lab.bringTheSelectedBodyTo', 'Bring the selected body to the front'), action: () => this.#lift(true) },
       { id: 'back', label: t('physics-lab.sendToBack', 'Send to back'), icon: 'toBack', iconOnly: true, title: t('physics-lab.sendTheSelectedBodyTo', 'Send the selected body to the back'), action: () => this.#lift(false) },
       { separator: true },
@@ -1577,6 +1586,66 @@ export default class PhysicsLab extends JGApp {
       const angle = body.angle + (index / steps) * Math.PI * 2;
       return { x: body.x + Math.cos(angle) * body.radius, y: body.y + Math.sin(angle) * body.radius };
     });
+  }
+
+  #chosenBodies() {
+    const ids = [this.#selected, ...this.#alsoSelected].filter((id) => id != null);
+    return ids.map((id) => this.#bodies.find((body) => body.id === id)).filter(Boolean);
+  }
+
+  #boundsOf(body) {
+    const live = this.#world.body(body.id) ?? body;
+    const span = spanOf(live);
+    return { left: live.x - span.x, right: live.x + span.x, top: live.y - span.y, bottom: live.y + span.y, x: live.x, y: live.y, span };
+  }
+
+  #align(mode) {
+    const chosen = this.#chosenBodies();
+    if (chosen.length < 2) {
+      toast(t('physics-lab.pickTwoOrMoreShapes', 'Pick two or more shapes to line up.'), 'danger');
+      return;
+    }
+
+    const boxes = new Map(chosen.map((body) => [body.id, this.#boundsOf(body)]));
+    const all = [...boxes.values()];
+    const left = Math.min(...all.map((box) => box.left));
+    const right = Math.max(...all.map((box) => box.right));
+    const top = Math.min(...all.map((box) => box.top));
+    const bottom = Math.max(...all.map((box) => box.bottom));
+
+    this.#snapshot();
+    this.#sync();
+
+    if (mode === 'spreadX' || mode === 'spreadY') {
+      const across = mode === 'spreadX';
+      const order = [...chosen].sort((a, b) => (across ? boxes.get(a.id).x - boxes.get(b.id).x : boxes.get(a.id).y - boxes.get(b.id).y));
+      if (order.length > 2) {
+        const first = boxes.get(order[0].id);
+        const last = boxes.get(order[order.length - 1].id);
+        const from = across ? first.x : first.y;
+        const to = across ? last.x : last.y;
+        const step = (to - from) / (order.length - 1);
+        order.forEach((body, index) => {
+          if (index === 0 || index === order.length - 1) return;
+          const box = boxes.get(body.id);
+          if (across) body.x += from + step * index - box.x;
+          else body.y += from + step * index - box.y;
+        });
+      }
+    } else {
+      chosen.forEach((body) => {
+        const box = boxes.get(body.id);
+        if (mode === 'left') body.x += left - box.left;
+        if (mode === 'right') body.x += right - box.right;
+        if (mode === 'top') body.y += top - box.top;
+        if (mode === 'bottom') body.y += bottom - box.bottom;
+        if (mode === 'middleX') body.x += (left + right) / 2 - box.x;
+        if (mode === 'middleY') body.y += (top + bottom) / 2 - box.y;
+      });
+    }
+
+    this.#reset();
+    this.#inspector();
   }
 
   #combine(mode) {
