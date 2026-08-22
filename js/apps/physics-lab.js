@@ -1,6 +1,7 @@
 import { JGApp, define, html, css } from '../core/app.js';
 import { createWorld, bodyCorners, worldPoint, localPoint, spanOf, hull, polyMass, simpleLoop } from '../lib/physics.js';
 import { createDesigns } from '../lib/designs.js';
+import { clipPolygons, polygonArea } from '../lib/clip.js';
 import { icon } from '../ui/icons.js';
 import { toast } from '../core/util.js';
 
@@ -421,6 +422,7 @@ export default class PhysicsLab extends JGApp {
   #controls = [];
   #held = new Set();
   #selectedControl = null;
+  #alsoSelected = new Set();
   #touched = false;
 
   connectedCallback() {
@@ -716,6 +718,9 @@ export default class PhysicsLab extends JGApp {
       { id: 'zoom-out', label: 'Zoom out', icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
       { id: 'zoom-fit', label: 'Fit', icon: 'maximize', iconOnly: true, title: 'Fit the scene', action: () => { this.#touched = false; this.#fit(); } },
       { id: 'zoom-in', label: 'Zoom in', icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
+      { id: 'union', label: 'Merge', icon: 'union', iconOnly: true, title: 'Merge the two selected shapes', action: () => this.#combine('union') },
+      { id: 'subtract', label: 'Subtract', icon: 'subtract', iconOnly: true, title: 'Cut the second shape out of the first', action: () => this.#combine('subtract') },
+      { id: 'intersect', label: 'Overlap', icon: 'intersect', iconOnly: true, title: 'Keep only where the two shapes overlap', action: () => this.#combine('intersect') },
       { id: 'front', label: 'Bring to front', icon: 'toFront', iconOnly: true, title: 'Bring the selected body to the front', action: () => this.#lift(true) },
       { id: 'back', label: 'Send to back', icon: 'toBack', iconOnly: true, title: 'Send the selected body to the back', action: () => this.#lift(false) },
       { id: 'delete', label: 'Delete', icon: 'eraser', iconOnly: true, title: 'Delete the selection', action: () => this.#remove() },
@@ -751,7 +756,7 @@ export default class PhysicsLab extends JGApp {
           ? 'Drag from one corner to the other, or click to drop a default one.'
         : tool === 'erase'
           ? 'Click a body or a link to remove it.'
-          : 'Drag a body to throw it, drag the board to pan, Space runs and pauses.';
+          : 'Drag a body to throw it, shift click a second shape to merge or subtract, Space runs and pauses.';
   }
 
   #snapshot() {
@@ -1182,6 +1187,14 @@ export default class PhysicsLab extends JGApp {
 
     const body = this.#world.at(point.x, point.y);
     if (body) {
+      if (event.shiftKey && this.#selected != null && this.#selected !== body.id) {
+        if (this.#alsoSelected.has(body.id)) this.#alsoSelected.delete(body.id);
+        else this.#alsoSelected.add(body.id);
+        this.#inspector();
+        this.#draw();
+        return;
+      }
+      this.#alsoSelected.clear();
       this.#selected = body.id;
       this.#selectedJoint = null;
       this.#selectedControl = null;
@@ -1207,6 +1220,7 @@ export default class PhysicsLab extends JGApp {
     }
 
     this.#selected = null;
+    this.#alsoSelected.clear();
     this.#selectedJoint = null;
     this.#selectedControl = null;
     this.#touched = true;
@@ -1471,6 +1485,62 @@ export default class PhysicsLab extends JGApp {
     this.#reset();
     this.#setTool('select');
     this.#inspector();
+  }
+
+  #combine(mode) {
+    const first = this.#bodies.find((body) => body.id === this.#selected);
+    const secondId = [...this.#alsoSelected][0];
+    const second = this.#bodies.find((body) => body.id === secondId);
+    if (!first || !second) {
+      toast('Pick one shape, then shift click a second one.', 'danger');
+      return;
+    }
+
+    const liveA = this.#world.body(first.id);
+    const liveB = this.#world.body(second.id);
+    if (!liveA || !liveB || liveA.kind === 'circle' || liveB.kind === 'circle') {
+      toast('Only blocks, walls and drawn shapes can be combined.', 'danger');
+      return;
+    }
+
+    const rings = clipPolygons(bodyCorners(liveA), bodyCorners(liveB), mode);
+    if (!rings) {
+      toast('Those shapes do not touch, so there is nothing to merge.', 'danger');
+      return;
+    }
+    const kept = rings.filter((ring) => polygonArea(ring) > 0.01);
+    if (!kept.length) {
+      toast('That leaves nothing behind.', 'danger');
+      return;
+    }
+
+    this.#snapshot();
+    this.#sync();
+    this.#bodies = this.#bodies.filter((body) => body.id !== first.id && body.id !== second.id);
+    this.#joints = this.#joints.filter((joint) => ![first.id, second.id].includes(joint.a) && ![first.id, second.id].includes(joint.b));
+
+    const made = kept.map((ring) => {
+      const shape = polyMass(ring);
+      return {
+        id: this.#seq++,
+        kind: 'poly',
+        x: shape.centre.x,
+        y: shape.centre.y,
+        angle: 0,
+        points: ring.map((point) => ({ x: point.x - shape.centre.x, y: point.y - shape.centre.y })),
+        density: first.density ?? 1,
+        restitution: first.restitution ?? 0.15,
+        friction: first.friction ?? 0.5,
+        pinned: first.pinned ?? false,
+      };
+    });
+    this.#bodies.push(...made);
+
+    this.#alsoSelected.clear();
+    this.#selected = made[0].id;
+    this.#reset();
+    this.#inspector();
+    this.#draw();
   }
 
   #lift(toFront) {
@@ -1959,7 +2029,7 @@ export default class PhysicsLab extends JGApp {
   }
 
   #drawBody(context, body, paint) {
-    const picked = body.id === this.#selected;
+    const picked = body.id === this.#selected || this.#alsoSelected.has(body.id);
     const held = !body.invMass;
     context.save();
     context.strokeStyle = picked ? paint.ring : paint.line;
