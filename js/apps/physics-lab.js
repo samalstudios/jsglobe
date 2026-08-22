@@ -176,6 +176,17 @@ const LINKS = {
   weld: { label: 'Weld', icon: 'lock' },
 };
 
+const CONTROLS = {
+  button: { label: 'Button', icon: 'toggle' },
+  slider: { label: 'Slider', icon: 'tuning' },
+};
+
+const BUTTON_WIDTH = 1.5;
+const BUTTON_HEIGHT = 0.62;
+const SLIDER_WIDTH = 0.8;
+const SLIDER_HEIGHT = 3.2;
+const SLIDER_GRIP = 0.5;
+
 const SAMPLES = {
   pendulum: {
     name: 'Pendulum',
@@ -280,6 +291,58 @@ const SAMPLES = {
     ],
     joints: [],
   },
+  excavator: {
+    name: 'Excavator arm',
+    gravity: 9.81,
+    bodies: [
+      { id: 1, kind: 'box', x: 0, y: 6.1, width: 30, height: 0.8, pinned: true, friction: 0.9 },
+      { id: 2, kind: 'poly', x: -4.9, y: 4.963, angle: 0, pinned: true, friction: 0.9, points: [{ x: -2.3, y: -0.363 }, { x: 2.3, y: -0.363 }, { x: 1.9, y: 0.387 }, { x: -1.9, y: 0.387 }] },
+      { id: 3, kind: 'poly', x: -5.1, y: 3.8, angle: 0, pinned: true, friction: 0.8, points: [{ x: -1.8, y: -0.8 }, { x: 1.8, y: -0.8 }, { x: 1.8, y: 0.8 }, { x: -1.8, y: 0.8 } ] },
+      { id: 4, kind: 'poly', x: -5.723, y: 2.271, angle: 0, pinned: true, friction: 0.8, points: [{ x: -0.877, y: -0.771 }, { x: 0.723, y: -0.771 }, { x: 1.023, y: 0.729 }, { x: -0.877, y: 0.729 }] },
+      { id: 5, kind: 'poly', x: -1.919, y: 1.683, angle: 0, density: 1, friction: 0.6, points: [{ x: -2.155, y: 1.397 }, { x: 1.988, y: -1.988 }, { x: 2.298, y: -1.62 }, { x: -1.743, y: 1.887 }] },
+      { id: 6, kind: 'poly', x: 0.895, y: 1.097, angle: 0, density: 0.9, friction: 0.6, points: [{ x: -0.936, y: -1.46 }, { x: 1.413, y: 1.335 }, { x: 1.143, y: 1.573 }, { x: -1.326, y: -1.116 }] },
+      { id: 7, kind: 'poly', x: 1.736, y: 2.799, angle: 0, density: 1.1, friction: 0.95, points: [{ x: 0.643, y: -0.285 }, { x: 0.419, y: 0.127 }, { x: -0.285, y: 0.485 }, { x: -0.747, y: 0.127 }, { x: -0.48, y: -0.172 }, { x: -0.182, y: 0.039 }, { x: 0.212, y: -0.331 }, { x: 0.153, y: -0.699 }] },
+      { id: 8, kind: 'box', x: 5.4, y: 5.3, width: 0.8, height: 0.8, friction: 0.8, restitution: 0 },
+      { id: 9, kind: 'box', x: 6.4, y: 5.3, width: 0.8, height: 0.8, friction: 0.8, restitution: 0 },
+      { id: 10, kind: 'circle', x: 7.4, y: 5.35, radius: 0.35, friction: 0.7, restitution: 0.1 },
+    ],
+    joints: [
+      { id: 20, kind: 'pin', a: 3, b: 5, aWorld: { x: -3.6, y: 3.1 }, bWorld: { x: -3.6, y: 3.1 } },
+      { id: 21, kind: 'pin', a: 5, b: 6, aWorld: { x: -0.005, y: 0.072 }, bWorld: { x: -0.005, y: 0.072 } },
+      { id: 22, kind: 'pin', a: 6, b: 7, aWorld: { x: 1.975, y: 2.326 }, bWorld: { x: 1.975, y: 2.326 } },
+      { id: 23, kind: 'jack', a: 3, b: 5, aWorld: { x: -5.4, y: 1.6 }, bWorld: { x: -2.702, y: 0.906 }, manual: true, extend: 0.5, rest: 2.786, min: 2.4, max: 3.18 },
+      { id: 24, kind: 'jack', a: 5, b: 6, aWorld: { x: -1.386, y: 0.451 }, bWorld: { x: 1.342, y: 1.151 }, manual: true, extend: 0.5, rest: 2.816, min: 2.42, max: 3.21 },
+      { id: 25, kind: 'jack', a: 6, b: 7, aWorld: { x: 2.03, y: 1.479 }, bWorld: { x: 2.512, y: 3.348 }, manual: true, extend: 0.5, rest: 1.93, min: 1.66, max: 2.2 },
+    ],
+    controls: [
+      { id: 30, kind: 'slider', x: -10.6, y: -1.4, target: 23, value: 0.5, label: 'Boom' },
+      { id: 31, kind: 'slider', x: -9.3, y: -1.4, target: 24, value: 0.5, label: 'Stick' },
+      { id: 32, kind: 'slider', x: -8, y: -1.4, target: 25, value: 0.5, label: 'Bucket' },
+    ],
+  },
+  fourbar: {
+    name: 'Four bar linkage',
+    gravity: 9.81,
+    bodies: [
+      { id: 1, kind: 'box', x: 0, y: 5.6, width: 20, height: 0.6, pinned: true, friction: 0.8 },
+      { id: 2, kind: 'circle', x: -2.5, y: 2, radius: 0.2, pinned: true },
+      { id: 3, kind: 'circle', x: 2.5, y: 2, radius: 0.2, pinned: true },
+      { id: 4, kind: 'box', x: -1.9, y: 2, width: 1.2, height: 0.22, angle: 0, density: 1.2, ghost: true },
+      { id: 5, kind: 'box', x: 0.492, y: 0.905, width: 4.2, height: 0.22, angle: -0.548, density: 1.2, ghost: true },
+      { id: 6, kind: 'box', x: 2.392, y: 0.905, width: 2.2, height: 0.22, angle: -1.669, density: 1.2, ghost: true },
+    ],
+    joints: [
+      { id: 20, kind: 'motor', a: 2, b: 4, aWorld: { x: -2.5, y: 2 }, bWorld: { x: -2.5, y: 2 }, speed: 2.2, torque: 220 },
+      { id: 21, kind: 'pin', a: 4, b: 5, aWorld: { x: -1.3, y: 2 }, bWorld: { x: -1.3, y: 2 } },
+      { id: 22, kind: 'pin', a: 5, b: 6, aWorld: { x: 2.284, y: -0.189 }, bWorld: { x: 2.284, y: -0.189 } },
+      { id: 23, kind: 'pin', a: 3, b: 6, aWorld: { x: 2.5, y: 2 }, bWorld: { x: 2.5, y: 2 } },
+    ],
+    controls: [
+      { id: 30, kind: 'slider', x: -5.4, y: -1.2, target: 20, value: 0.78, label: 'Motor' },
+      { id: 31, kind: 'button', x: -3.4, y: -2.2, target: 20, action: 'run', label: 'Turn' },
+      { id: 32, kind: 'button', x: -3.4, y: -1.4, target: 20, action: 'reverse', label: 'Reverse' },
+    ],
+  },
   orbits: {
     name: 'Three bodies',
     gravity: 0,
@@ -330,6 +393,9 @@ export default class PhysicsLab extends JGApp {
   #attraction = 0;
   #damping = 0.02;
   #sketch = null;
+  #controls = [];
+  #held = new Set();
+  #selectedControl = null;
   #touched = false;
 
   connectedCallback() {
@@ -363,10 +429,12 @@ export default class PhysicsLab extends JGApp {
     const sample = SAMPLES[name] ?? SAMPLES.pendulum;
     this.#bodies = sample.bodies.map((body) => ({ ...body }));
     this.#joints = this.#anchorsFromWorld(this.#bodies, sample.joints);
+    this.#controls = (sample.controls ?? []).map((button) => ({ ...button }));
     this.#gravity = sample.gravity ?? 9.81;
     this.#attraction = sample.attraction ?? 0;
     this.#damping = sample.damping ?? 0.02;
     this.#seq = this.#bodies.reduce((top, body) => Math.max(top, body.id), 0) + 1;
+    this.#stampIds();
     this.#openName = null;
     this.#reset();
   }
@@ -374,17 +442,34 @@ export default class PhysicsLab extends JGApp {
   #restore(design) {
     this.#bodies = (design.bodies ?? []).map((body) => ({ ...body }));
     this.#joints = (design.joints ?? []).map((joint) => ({ ...joint }));
+    this.#controls = (design.controls ?? design.buttons ?? []).map((button) => ({ ...button }));
     this.#gravity = design.gravity ?? 9.81;
     this.#attraction = design.attraction ?? 0;
     this.#damping = design.damping ?? 0.02;
     this.#seq = this.#bodies.reduce((top, body) => Math.max(top, Number(body.id) || 0), 0) + 1;
+    this.#stampIds();
     this.#reset();
+  }
+
+  #stampIds() {
+    const taken = [...this.#joints, ...this.#controls].reduce(
+      (top, item) => Math.max(top, Number(item.id) || 0),
+      this.#seq - 1,
+    );
+    this.#seq = taken + 1;
+    this.#joints.forEach((joint) => {
+      if (joint.id == null) joint.id = this.#seq++;
+    });
+    this.#controls.forEach((button) => {
+      if (button.id == null) button.id = this.#seq++;
+    });
   }
 
   #design() {
     return {
       bodies: this.#bodies.map((body) => ({ ...body })),
       joints: this.#joints.map((joint) => ({ ...joint })),
+      controls: this.#controls.map((button) => ({ ...button })),
       gravity: this.#gravity,
       attraction: this.#attraction,
       damping: this.#damping,
@@ -474,6 +559,12 @@ export default class PhysicsLab extends JGApp {
       )}
       <div class="group">Links</div>
       ${Object.entries(LINKS).map(
+        ([kind, meta]) => html`<button class="tool" data-tool="${kind}" aria-pressed="${String(this.#tool === kind)}">
+          ${icon(meta.icon, 15)}<span>${meta.label}</span>
+        </button>`,
+      )}
+      <div class="group">Controls</div>
+      ${Object.entries(CONTROLS).map(
         ([kind, meta]) => html`<button class="tool" data-tool="${kind}" aria-pressed="${String(this.#tool === kind)}">
           ${icon(meta.icon, 15)}<span>${meta.label}</span>
         </button>`,
@@ -621,7 +712,9 @@ export default class PhysicsLab extends JGApp {
     name.textContent = tool === 'select' ? 'Select' : tool === 'erase' ? 'Erase' : (SHAPES[tool] ?? LINKS[tool])?.label ?? tool;
     hint.textContent = tool === 'pin' || tool === 'motor'
       ? 'Click where two bodies overlap to hinge them, or one body to hinge it to the world.'
-      : tool === 'linkage'
+      : CONTROLS[tool]
+        ? 'Click a jack or a motor to add a control for it, then use the control to drive it.'
+        : tool === 'linkage'
         ? 'Click a point on one body, then a point on another, to join them with a hinged bar.'
         : LINKS[tool]
           ? 'Click one body, then the other. Click empty space to anchor to the world.'
@@ -665,6 +758,9 @@ export default class PhysicsLab extends JGApp {
     this.#snapshot();
     this.#bodies = [];
     this.#joints = [];
+    this.#controls = [];
+    this.#held.clear();
+    this.#selectedControl = null;
     this.#gravity = 9.81;
     this.#attraction = 0;
     this.#damping = 0.02;
@@ -747,6 +843,127 @@ export default class PhysicsLab extends JGApp {
     };
   }
 
+  #controlBox(control) {
+    const wide = control.kind === 'slider' ? SLIDER_WIDTH : BUTTON_WIDTH;
+    const tall = control.kind === 'slider' ? SLIDER_HEIGHT : BUTTON_HEIGHT;
+    return {
+      left: control.x - wide / 2,
+      top: control.y - tall / 2,
+      right: control.x + wide / 2,
+      bottom: control.y + tall / 2,
+      width: wide,
+      height: tall,
+    };
+  }
+
+  #sliderValue(control, point) {
+    const box = this.#controlBox(control);
+    const travel = box.height - SLIDER_GRIP;
+    const from = box.top + SLIDER_GRIP / 2;
+    return Math.max(0, Math.min(1, 1 - (point.y - from) / travel));
+  }
+
+  #widgetAt(point) {
+    for (let index = this.#controls.length - 1; index >= 0; index -= 1) {
+      const box = this.#controlBox(this.#controls[index]);
+      if (point.x >= box.left && point.x <= box.right && point.y >= box.top && point.y <= box.bottom) {
+        return this.#controls[index];
+      }
+    }
+    return null;
+  }
+
+  #drivable() {
+    return this.#joints.filter((joint) => joint.kind === 'jack' || joint.kind === 'motor');
+  }
+
+  #liveJoint(id) {
+    return this.#world.joints.find((joint) => joint.id === id) ?? null;
+  }
+
+  #addControl(point) {
+    const joint = this.#jointAt(point);
+    const target = joint && (joint.kind === 'jack' || joint.kind === 'motor') ? joint : this.#drivable()[0] ?? null;
+    this.#snapshot();
+    const button = {
+      id: this.#seq++,
+      kind: this.#tool,
+      x: Math.round(point.x * 2) / 2,
+      y: Math.round(point.y * 2) / 2,
+      target: target?.id ?? null,
+      action: target?.kind === 'motor' ? 'run' : 'extend',
+      label: '',
+      value: target?.kind === 'motor' ? 0.5 : (target?.extend ?? 0.5),
+    };
+    this.#controls.push(button);
+    this.#selectedControl = button;
+    this.#selected = null;
+    this.#selectedJoint = null;
+    this.#setTool('select');
+    this.#inspector();
+  }
+
+  #controlName(button) {
+    if (button.label) return button.label;
+    const joint = this.#joints.find((entry) => entry.id === button.target);
+    if (!joint) return 'unbound';
+    if (button.kind === 'slider') return joint.kind === 'motor' ? 'speed' : 'length';
+    const which = { extend: 'Extend', retract: 'Retract', run: 'Run', reverse: 'Reverse' }[button.action] ?? button.action;
+    return `${which} ${joint.kind}`;
+  }
+
+  #press(button) {
+    this.#held.add(button.id);
+    if (!this.#running) this.#toggleRun();
+  }
+
+  #release() {
+    this.#held.clear();
+  }
+
+  #driveControls(dt) {
+    const driven = new Set();
+
+    this.#controls.forEach((control) => {
+      const joint = this.#joints.find((entry) => entry.id === control.target);
+      const live = joint ? this.#liveJoint(joint.id) : null;
+      if (!joint || !live) return;
+
+      if (control.kind === 'slider') {
+        driven.add(joint.id);
+        if (joint.kind === 'jack') {
+          live.manual = true;
+          live.extend = control.value ?? 0.5;
+          joint.extend = live.extend;
+          return;
+        }
+        const power = Math.abs(joint.speed ?? 2.4);
+        live.speed = ((control.value ?? 0.5) - 0.5) * 2 * power;
+        return;
+      }
+
+      if (!this.#held.has(control.id)) return;
+      driven.add(joint.id);
+
+      if (joint.kind === 'jack') {
+        live.manual = true;
+        const step = (control.action === 'retract' ? -1 : 1) * dt * 0.4;
+        live.extend = Math.max(0, Math.min(1, (live.extend ?? 0.5) + step));
+        joint.extend = live.extend;
+        return;
+      }
+      const power = Math.abs(joint.speed ?? 2.4);
+      live.speed = control.action === 'reverse' ? -power : power;
+    });
+
+    this.#controls.forEach((control) => {
+      const joint = this.#joints.find((entry) => entry.id === control.target);
+      const live = joint ? this.#liveJoint(joint.id) : null;
+      if (!joint || !live || joint.kind !== 'motor') return;
+      if (control.kind === 'button' && !driven.has(joint.id)) live.speed = 0;
+    });
+  }
+
   #jointAt(point) {
     const reach = 0.22 / this.#zoom;
     let best = null;
@@ -807,6 +1024,29 @@ export default class PhysicsLab extends JGApp {
     const point = this.#point(event);
     this.$('#view').setPointerCapture(event.pointerId);
 
+    if (CONTROLS[this.#tool]) {
+      this.#addControl(point);
+      return;
+    }
+
+    if (this.#tool === 'select') {
+      const widget = this.#widgetAt(point);
+      if (widget) {
+        this.#selectedControl = widget;
+        this.#selected = null;
+        this.#selectedJoint = null;
+        if (widget.kind === 'slider') {
+          widget.value = this.#sliderValue(widget, point);
+          if (!this.#running) this.#toggleRun();
+        } else {
+          this.#press(widget);
+        }
+        this.#drag = { kind: 'widget', widget, from: point, origin: { x: widget.x, y: widget.y } };
+        this.#inspector();
+        return;
+      }
+    }
+
     if (this.#tool === 'pin' || this.#tool === 'motor') {
       const found = this.#world.allAt(point.x, point.y);
       if (!found.length) return;
@@ -814,6 +1054,7 @@ export default class PhysicsLab extends JGApp {
       const top = found[0];
       const under = found.find((body) => body !== top) ?? null;
       const joint = {
+        id: this.#seq++,
         kind: this.#tool,
         a: under ? under.id : null,
         b: top.id,
@@ -916,6 +1157,7 @@ export default class PhysicsLab extends JGApp {
     if (body) {
       this.#selected = body.id;
       this.#selectedJoint = null;
+      this.#selectedControl = null;
       this.#trail = new Map();
       if (this.#running) {
         this.#grab = { id: body.id, local: localPoint(body, point) };
@@ -932,12 +1174,14 @@ export default class PhysicsLab extends JGApp {
     if (joint) {
       this.#selectedJoint = joint;
       this.#selected = null;
+      this.#selectedControl = null;
       this.#inspector();
       return;
     }
 
     this.#selected = null;
     this.#selectedJoint = null;
+    this.#selectedControl = null;
     this.#touched = true;
     this.#panDrag = { from: [event.clientX, event.clientY], origin: { ...this.#pan } };
     this.#inspector();
@@ -956,6 +1200,24 @@ export default class PhysicsLab extends JGApp {
     this.#cursor = point;
     this.#hover = this.#tool === 'select' && !this.#drag ? this.#world.at(point.x, point.y) : null;
     this.$('#view').dataset.grab = String(Boolean(this.#hover));
+
+    if (this.#drag?.kind === 'widget') {
+      const widget = this.#drag.widget;
+      if (widget.kind === 'slider') {
+        widget.value = this.#sliderValue(widget, point);
+        return;
+      }
+      const moved = Math.hypot(point.x - this.#drag.from.x, point.y - this.#drag.from.y);
+      if (moved > 0.25) {
+        if (this.#held.size) {
+          this.#release();
+          this.#snapshot();
+        }
+        widget.x = Math.round((this.#drag.origin.x + (point.x - this.#drag.from.x)) * 2) / 2;
+        widget.y = Math.round((this.#drag.origin.y + (point.y - this.#drag.from.y)) * 2) / 2;
+      }
+      return;
+    }
 
     if (this.#drag?.kind === 'jack') {
       const joint = this.#drag.joint;
@@ -989,6 +1251,7 @@ export default class PhysicsLab extends JGApp {
   }
 
   #up(event) {
+    this.#release();
     if (this.#drag?.kind === 'create') {
       const point = this.#point(event);
       this.#addBody(this.#drag.shape, this.#drag.from, point);
@@ -1089,8 +1352,8 @@ export default class PhysicsLab extends JGApp {
     this.#reset();
 
     const live = this.#world.body(bar.id);
-    this.#joints.push({ kind: 'pin', a: from.id, b: bar.id, aAt: from.at, bAt: localPoint(live, a) });
-    this.#joints.push({ kind: 'pin', a: to.id, b: bar.id, aAt: to.at, bAt: localPoint(live, b) });
+    this.#joints.push({ id: this.#seq++, kind: 'pin', a: from.id, b: bar.id, aAt: from.at, bAt: localPoint(live, a) });
+    this.#joints.push({ id: this.#seq++, kind: 'pin', a: to.id, b: bar.id, aAt: to.at, bAt: localPoint(live, b) });
 
     this.#selected = bar.id;
     this.#selectedJoint = null;
@@ -1107,7 +1370,7 @@ export default class PhysicsLab extends JGApp {
     const pointB = to.id == null ? anchorB : worldPoint(this.#world.body(to.id), anchorB);
     const span = Math.hypot(pointB.x - pointA.x, pointB.y - pointA.y);
 
-    const joint = { kind: this.#tool, a: from.id, b: to.id, aAt: anchorA, bAt: anchorB };
+    const joint = { id: this.#seq++, kind: this.#tool, a: from.id, b: to.id, aAt: anchorA, bAt: anchorB };
     if (this.#tool === 'spring') {
       joint.rest = span;
       joint.stiffness = 90;
@@ -1135,8 +1398,17 @@ export default class PhysicsLab extends JGApp {
   }
 
   #remove() {
+    if (this.#selectedControl) {
+      this.#snapshot();
+      this.#controls = this.#controls.filter((button) => button !== this.#selectedControl);
+      this.#selectedControl = null;
+      this.#inspector();
+      this.#draw();
+      return;
+    }
     if (this.#selectedJoint) {
       this.#snapshot();
+      this.#controls = this.#controls.filter((button) => button.target !== this.#selectedJoint.id);
       this.#joints = this.#joints.filter((joint) => joint !== this.#selectedJoint);
       this.#selectedJoint = null;
       this.#reset();
@@ -1241,6 +1513,52 @@ export default class PhysicsLab extends JGApp {
   #inspector() {
     const target = this.$('#inspector');
     if (!target) return;
+
+    if (this.#selectedControl) {
+      const button = this.#selectedControl;
+      const targets = this.#drivable();
+      const joint = targets.find((entry) => entry.id === button.target);
+      const actions = joint?.kind === 'motor'
+        ? [['run', 'Run forward'], ['reverse', 'Run backward']]
+        : [['extend', 'Extend'], ['retract', 'Retract']];
+      const isSlider = button.kind === 'slider';
+
+      target.innerHTML = html`
+        <div class="label">${isSlider ? 'Slider' : 'Button'}</div>
+        ${targets.length
+          ? html`<jg-field label="Drives">
+                <jg-select id="target" size="sm" value="${String(button.target ?? '')}">
+                  ${targets.map((entry) => html`<option value="${entry.id}">${entry.kind} ${entry.id}</option>`)}
+                </jg-select>
+              </jg-field>
+              ${isSlider
+                ? html`<div class="hint">${joint?.kind === 'motor' ? 'Middle stops the motor, either side runs it.' : 'Slide to set how far the jack reaches.'}</div>`
+                : html`<jg-field label="While held">
+                    <jg-select id="action" size="sm" value="${button.action}">
+                      ${actions.map(([value, name]) => html`<option value="${value}">${name}</option>`)}
+                    </jg-select>
+                  </jg-field>`}
+              <jg-field label="Label"><jg-input id="label" size="sm" value="${button.label ?? ''}" placeholder="${this.#controlName(button)}"></jg-input></jg-field>`
+          : html`<div class="hint">Add a jack or a motor first, then this button can drive it.</div>`}
+        <jg-button size="sm" variant="outline" id="drop">Remove ${isSlider ? 'slider' : 'button'}</jg-button>
+      `;
+
+      const bind = (id, key, cast = (value) => value) => {
+        const field = this.$(`#${id}`);
+        if (!field) return;
+        this.on(field, 'change', () => {
+          this.#snapshot();
+          button[key] = cast(field.value);
+          this.#inspector();
+          this.#draw();
+        });
+      };
+      bind('target', 'target', Number);
+      bind('action', 'action');
+      bind('label', 'label');
+      this.on(this.$('#drop'), 'click', () => this.#remove());
+      return;
+    }
 
     if (this.#selectedJoint) {
       const joint = this.#selectedJoint;
@@ -1510,6 +1828,8 @@ export default class PhysicsLab extends JGApp {
     }
 
     if (this.config.get('vectors', false)) this.#drawVectors(context, paint);
+
+    this.#controls.forEach((button) => this.#drawControl(context, button, paint));
   }
 
   #gridFill(context, width, height, paint) {
@@ -1717,6 +2037,73 @@ export default class PhysicsLab extends JGApp {
       context.restore();
     }
 
+    context.restore();
+  }
+
+  #drawControl(context, control, paint) {
+    if (control.kind === 'slider') return this.#drawSlider(context, control, paint);
+    const button = control;
+    const box = this.#controlBox(button);
+    const down = this.#held.has(button.id);
+    const picked = button === this.#selectedControl;
+    const bound = this.#joints.some((joint) => joint.id === button.target);
+
+    context.save();
+    context.beginPath();
+    context.roundRect(box.left, box.top, BUTTON_WIDTH, BUTTON_HEIGHT, 0.14);
+    context.fillStyle = down
+      ? paint.ring
+      : bound
+        ? `color-mix(in srgb, ${paint.ring} 16%, ${paint.card})`
+        : `color-mix(in srgb, ${paint.soft} 22%, ${paint.card})`;
+    context.fill();
+    context.strokeStyle = picked ? paint.ring : bound ? `color-mix(in srgb, ${paint.ring} 60%, transparent)` : paint.soft;
+    context.lineWidth = (picked ? 2.6 : 1.7) / (SCALE * this.#zoom);
+    context.stroke();
+
+    context.fillStyle = down ? paint.card : paint.line;
+    context.font = `600 ${0.24}px ${paint.font}`;
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.fillText(this.#controlName(button), button.x, button.y);
+    context.restore();
+  }
+
+  #drawSlider(context, control, paint) {
+    const box = this.#controlBox(control);
+    const picked = control === this.#selectedControl;
+    const bound = this.#joints.some((joint) => joint.id === control.target);
+    const value = control.value ?? 0.5;
+    const travel = box.height - SLIDER_GRIP;
+    const middle = box.top + SLIDER_GRIP / 2 + (1 - value) * travel;
+
+    context.save();
+    context.beginPath();
+    context.roundRect(box.left, box.top, box.width, box.height, 0.16);
+    context.fillStyle = `color-mix(in srgb, ${paint.soft} 18%, ${paint.card})`;
+    context.fill();
+    context.strokeStyle = picked ? paint.ring : bound ? `color-mix(in srgb, ${paint.ring} 55%, transparent)` : paint.soft;
+    context.lineWidth = (picked ? 2.6 : 1.7) / (SCALE * this.#zoom);
+    context.stroke();
+
+    context.save();
+    context.beginPath();
+    context.roundRect(box.left, box.top, box.width, box.height, 0.16);
+    context.clip();
+    context.fillStyle = `color-mix(in srgb, ${paint.ring} 30%, transparent)`;
+    context.fillRect(box.left, middle, box.width, box.bottom - middle);
+    context.restore();
+
+    context.beginPath();
+    context.roundRect(box.left + 0.06, middle - SLIDER_GRIP / 2, box.width - 0.12, SLIDER_GRIP, 0.1);
+    context.fillStyle = paint.ring;
+    context.fill();
+
+    context.fillStyle = paint.soft;
+    context.font = `600 0.22px ${paint.font}`;
+    context.textAlign = 'center';
+    context.textBaseline = 'top';
+    context.fillText(this.#controlName(control), control.x, box.bottom + 0.12);
     context.restore();
   }
 

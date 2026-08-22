@@ -518,6 +518,7 @@ export const createWorld = () => {
   let bodies = [];
   let joints = [];
   let cache = new Map();
+  let jointed = new Set();
   let time = 0;
   let settled = true;
 
@@ -553,8 +554,45 @@ export const createWorld = () => {
     }
   };
 
+  const jackTarget = (joint, dt) => {
+    const low = joint.min ?? 0.5;
+    const high = joint.max ?? 3;
+    if (joint.manual) {
+      const want = low + clamp(joint.extend ?? 0.5, 0, 1) * (high - low);
+      const held = joint.rest ?? want;
+      const rate = (joint.rate ?? 1.1) * dt;
+      joint.rest = held + clamp(want - held, -rate, rate);
+      return joint.rest;
+    }
+    const swing = (high - low) / 2;
+    joint.rest = low + swing + swing * Math.sin(time * (joint.speed ?? 0.6) * Math.PI);
+    return joint.rest;
+  };
+
   const springForces = (dt) => {
     joints.forEach((joint) => {
+      if (joint.kind === 'jack') {
+        const a = anchorOf(joint, 'a');
+        const b = anchorOf(joint, 'b');
+        const dx = b.point.x - a.point.x;
+        const dy = b.point.y - a.point.y;
+        const span = Math.hypot(dx, dy);
+        if (span < 1e-9) return;
+        const axis = { x: dx / span, y: dy / span };
+        const target = jackTarget(joint, dt);
+        const velA = a.body ? velocityAt(a.body, a.rx, a.ry) : { x: 0, y: 0 };
+        const velB = b.body ? velocityAt(b.body, b.rx, b.ry) : { x: 0, y: 0 };
+        const closing = (velB.x - velA.x) * axis.x + (velB.y - velA.y) * axis.y;
+        const load = 1 / ((a.body ? a.body.invMass : 0) + (b.body ? b.body.invMass : 0) || 1);
+        const stiffness = (joint.stiffness ?? 4000) * load;
+        const damping = (joint.damping ?? 260) * load;
+        const force = -stiffness * (span - target) - damping * closing;
+        const ix = axis.x * force * dt;
+        const iy = axis.y * force * dt;
+        if (a.body) applyImpulse(a.body, -ix, -iy, a.rx, a.ry);
+        if (b.body) applyImpulse(b.body, ix, iy, b.rx, b.ry);
+        return;
+      }
       if (joint.kind !== 'spring') return;
       const a = anchorOf(joint, 'a');
       const b = anchorOf(joint, 'b');
@@ -616,8 +654,7 @@ export const createWorld = () => {
       (b.body ? b.body.invMass + b.body.invInertia * crossB * crossB : 0);
     if (share < 1e-12) return;
 
-    const bias = (options.correction * error) / dt;
-    const impulse = -(closing + bias) / share;
+    const impulse = -closing / share;
     const ix = axis.x * impulse;
     const iy = axis.y * impulse;
     if (a.body) applyImpulse(a.body, -ix, -iy, a.rx, a.ry);
@@ -670,8 +707,8 @@ export const createWorld = () => {
 
     const velA = a.body ? velocityAt(a.body, a.rx, a.ry) : { x: 0, y: 0 };
     const velB = b.body ? velocityAt(b.body, b.rx, b.ry) : { x: 0, y: 0 };
-    const relX = velB.x - velA.x + (options.correction * gapX) / dt;
-    const relY = velB.y - velA.y + (options.correction * gapY) / dt;
+    const relX = velB.x - velA.x;
+    const relY = velB.y - velA.y;
 
     const invA = a.body ? a.body.invMass : 0;
     const invB = b.body ? b.body.invMass : 0;
@@ -703,6 +740,63 @@ export const createWorld = () => {
     if (b) b.spin += impulse * b.invInertia;
   };
 
+  const nudgePin = (joint, dt) => {
+    const a = anchorOf(joint, 'a');
+    const b = anchorOf(joint, 'b');
+    const gapX = b.point.x - a.point.x;
+    const gapY = b.point.y - a.point.y;
+    if (Math.hypot(gapX, gapY) < 1e-6) return;
+
+    const driftA = a.body ? nudgeAt(a.body, a.rx, a.ry) : { x: 0, y: 0 };
+    const driftB = b.body ? nudgeAt(b.body, b.rx, b.ry) : { x: 0, y: 0 };
+    const relX = driftB.x - driftA.x + (0.8 * gapX) / dt;
+    const relY = driftB.y - driftA.y + (0.8 * gapY) / dt;
+
+    const invA = a.body ? a.body.invMass : 0;
+    const invB = b.body ? b.body.invMass : 0;
+    const rotA = a.body ? a.body.invInertia : 0;
+    const rotB = b.body ? b.body.invInertia : 0;
+
+    const k11 = invA + invB + rotA * a.ry * a.ry + rotB * b.ry * b.ry;
+    const k12 = -rotA * a.rx * a.ry - rotB * b.rx * b.ry;
+    const k22 = invA + invB + rotA * a.rx * a.rx + rotB * b.rx * b.rx;
+    const det = k11 * k22 - k12 * k12;
+    if (Math.abs(det) < 1e-12) return;
+
+    const ix = -(k22 * relX - k12 * relY) / det;
+    const iy = -(k11 * relY - k12 * relX) / det;
+    if (a.body) applyNudge(a.body, -ix, -iy, a.rx, a.ry);
+    if (b.body) applyNudge(b.body, ix, iy, b.rx, b.ry);
+  };
+
+  const nudgeAxis = (joint, dt) => {
+    const a = anchorOf(joint, 'a');
+    const b = anchorOf(joint, 'b');
+    const dx = b.point.x - a.point.x;
+    const dy = b.point.y - a.point.y;
+    const span = Math.hypot(dx, dy);
+    if (span < 1e-9) return;
+    const axis = { x: dx / span, y: dy / span };
+    const error = span - (joint.rest ?? span);
+    if (joint.kind === 'rope' && error < 0) return;
+    if (Math.abs(error) < 1e-6) return;
+
+    const driftA = a.body ? nudgeAt(a.body, a.rx, a.ry) : { x: 0, y: 0 };
+    const driftB = b.body ? nudgeAt(b.body, b.rx, b.ry) : { x: 0, y: 0 };
+    const closing = (driftB.x - driftA.x) * axis.x + (driftB.y - driftA.y) * axis.y;
+
+    const crossA = a.rx * axis.y - a.ry * axis.x;
+    const crossB = b.rx * axis.y - b.ry * axis.x;
+    const share =
+      (a.body ? a.body.invMass + a.body.invInertia * crossA * crossA : 0) +
+      (b.body ? b.body.invMass + b.body.invInertia * crossB * crossB : 0);
+    if (share < 1e-12) return;
+
+    const impulse = -(closing + (0.8 * error) / dt) / share;
+    if (a.body) applyNudge(a.body, -axis.x * impulse, -axis.y * impulse, a.rx, a.ry);
+    if (b.body) applyNudge(b.body, axis.x * impulse, axis.y * impulse, b.rx, b.ry);
+  };
+
   const contacts = () => {
     const found = [];
     for (let i = 0; i < bodies.length; i += 1) {
@@ -711,6 +805,7 @@ export const createWorld = () => {
         const b = bodies[j];
         if (a.invMass === 0 && b.invMass === 0) continue;
         if (a.ghost || b.ghost) continue;
+        if (jointed.has(`${Math.min(a.id, b.id)}:${Math.max(a.id, b.id)}`)) continue;
         const reach = support(a) + support(b);
         if (Math.hypot(b.x - a.x, b.y - a.y) > reach) continue;
         collide(a, b).forEach((hit) => {
@@ -836,6 +931,13 @@ export const createWorld = () => {
     load(nextBodies, nextJoints) {
       bodies = nextBodies.map((body) => makeBody(body));
       joints = nextJoints.map((joint) => ({ ...joint }));
+      jointed = new Set();
+      joints.forEach((joint) => {
+        if (joint.a == null || joint.b == null) return;
+        if (joint.collide) return;
+        if (joint.kind === 'spring' || joint.kind === 'rope') return;
+        jointed.add(`${Math.min(joint.a, joint.b)}:${Math.max(joint.a, joint.b)}`);
+      });
       cache = new Map();
       time = 0;
     },
@@ -883,12 +985,18 @@ export const createWorld = () => {
           else if (joint.kind === 'motor') {
             solvePin(joint, dt);
             solveMotor(joint);
-          } else if (joint.kind !== 'spring') solveAxis(joint, dt, pass);
+          } else if (joint.kind !== 'spring' && joint.kind !== 'jack') solveAxis(joint, dt, pass);
         });
         solveContacts(list);
       }
 
-      for (let pass = 0; pass < options.iterations; pass += 1) solveDrift(list);
+      for (let pass = 0; pass < options.iterations; pass += 1) {
+        joints.forEach((joint) => {
+          if (joint.kind === 'pin' || joint.kind === 'weld' || joint.kind === 'motor') nudgePin(joint, dt);
+          else if (joint.kind === 'rod' || joint.kind === 'rope' || joint.kind === 'jack') nudgeAxis(joint, dt);
+        });
+        solveDrift(list);
+      }
 
       cache = new Map(list.map((contact) => [contact.key, contact]));
       settled = bodies.every((body) => Number.isFinite(body.x) && Number.isFinite(body.y));
