@@ -1,4 +1,6 @@
-export default {
+import generated from './de-apps.generated.js';
+
+const manual = {
   'action.copy': 'Kopieren',
   'action.download': 'Herunterladen',
   'action.upload': 'Hochladen',
@@ -105,3 +107,5 @@ export default {
   'url-parser.components': 'Bestandteile',
   'url-parser.queryParams': 'Query-Parameter',
 };
+
+export default { ...generated, ...manual };

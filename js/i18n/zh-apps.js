@@ -1,4 +1,6 @@
-export default {
+import generated from './zh-apps.generated.js';
+
+const manual = {
   'action.copy': '复制',
   'action.download': '下载',
   'action.upload': '上传',
@@ -105,3 +107,5 @@ export default {
   'url-parser.components': '组成部分',
   'url-parser.queryParams': '查询参数',
 };
+
+export default { ...generated, ...manual };

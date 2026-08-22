@@ -1,0 +1,687 @@
+{
+ "Accent": {
+  "de": "Akzentfarbe",
+  "es": "Color de acento",
+  "zh": "强调色"
+ },
+ "Add": {
+  "de": "Hinzufügen",
+  "es": "Añadir",
+  "zh": "添加"
+ },
+ "All": {
+  "de": "Alle",
+  "es": "Todo",
+  "zh": "全部"
+ },
+ "Background": {
+  "de": "Hintergrund",
+  "es": "Fondo",
+  "zh": "背景"
+ },
+ "Best": {
+  "de": "Bestwert",
+  "es": "Récord",
+  "zh": "最佳"
+ },
+ "Binary": {
+  "de": "Binär",
+  "es": "Binario",
+  "zh": "二进制"
+ },
+ "Block": {
+  "de": "Block",
+  "es": "Bloque",
+  "zh": "块"
+ },
+ "Bounce": {
+  "de": "Sprung",
+  "es": "Rebote",
+  "zh": "弹跳"
+ },
+ "Cancel": {
+  "de": "Abbrechen",
+  "es": "Cancelar",
+  "zh": "取消"
+ },
+ "Circle": {
+  "de": "Kreis",
+  "es": "Círculo",
+  "zh": "圆形"
+ },
+ "Clear": {
+  "de": "Leeren",
+  "es": "Limpiar",
+  "zh": "清空"
+ },
+ "Closed": {
+  "de": "Geschlossen",
+  "es": "Cerrado",
+  "zh": "已关闭"
+ },
+ "Contrast": {
+  "de": "Kontrast",
+  "es": "Contraste",
+  "zh": "对比度"
+ },
+ "Convert": {
+  "de": "Umwandeln",
+  "es": "Convertir",
+  "zh": "转换"
+ },
+ "Copy": {
+  "de": "Kopieren",
+  "es": "Copiar",
+  "zh": "复制"
+ },
+ "Copy CSS": {
+  "de": "CSS kopieren",
+  "es": "Copiar CSS",
+  "zh": "复制 CSS"
+ },
+ "Copy HTML": {
+  "de": "HTML kopieren",
+  "es": "Copiar HTML",
+  "zh": "复制 HTML"
+ },
+ "Copy SVG": {
+  "de": "SVG kopieren",
+  "es": "Copiar SVG",
+  "zh": "复制 SVG"
+ },
+ "Copy Tailwind": {
+  "de": "Tailwind kopieren",
+  "es": "Copiar Tailwind",
+  "zh": "复制 Tailwind"
+ },
+ "Copy result": {
+  "de": "Ergebnis kopieren",
+  "es": "Copiar resultado",
+  "zh": "复制结果"
+ },
+ "Country": {
+  "de": "Land",
+  "es": "País",
+  "zh": "国家"
+ },
+ "Currency": {
+  "de": "Währung",
+  "es": "Moneda",
+  "zh": "货币"
+ },
+ "Data URI": {
+  "de": "Data-URI",
+  "es": "Data URI",
+  "zh": "Data URI"
+ },
+ "Decimal": {
+  "de": "Dezimal",
+  "es": "Decimal",
+  "zh": "十进制"
+ },
+ "Delete": {
+  "de": "Löschen",
+  "es": "Eliminar",
+  "zh": "删除"
+ },
+ "Details": {
+  "de": "Details",
+  "es": "Detalles",
+  "zh": "详情"
+ },
+ "Detect language": {
+  "de": "Sprache erkennen",
+  "es": "Detectar idioma",
+  "zh": "检测语言"
+ },
+ "Document": {
+  "de": "Dokument",
+  "es": "Documento",
+  "zh": "文档"
+ },
+ "Download": {
+  "de": "Herunterladen",
+  "es": "Descargar",
+  "zh": "下载"
+ },
+ "Download PNG": {
+  "de": "PNG herunterladen",
+  "es": "Descargar PNG",
+  "zh": "下载 PNG"
+ },
+ "Download SVG": {
+  "de": "SVG herunterladen",
+  "es": "Descargar SVG",
+  "zh": "下载 SVG"
+ },
+ "Duplicate": {
+  "de": "Duplizieren",
+  "es": "Duplicar",
+  "zh": "复制一份"
+ },
+ "Easy": {
+  "de": "Leicht",
+  "es": "Fácil",
+  "zh": "简单"
+ },
+ "Edit": {
+  "de": "Bearbeiten",
+  "es": "Editar",
+  "zh": "编辑"
+ },
+ "Ellipse": {
+  "de": "Ellipse",
+  "es": "Elipse",
+  "zh": "椭圆"
+ },
+ "Erase": {
+  "de": "Radieren",
+  "es": "Borrar",
+  "zh": "擦除"
+ },
+ "Export": {
+  "de": "Exportieren",
+  "es": "Exportar",
+  "zh": "导出"
+ },
+ "Fingerprints": {
+  "de": "Fingerabdrücke",
+  "es": "Huellas",
+  "zh": "指纹"
+ },
+ "Fit": {
+  "de": "Einpassen",
+  "es": "Ajustar",
+  "zh": "适应"
+ },
+ "Flip": {
+  "de": "Spiegeln",
+  "es": "Voltear",
+  "zh": "翻转"
+ },
+ "Format": {
+  "de": "Format",
+  "es": "Formato",
+  "zh": "格式"
+ },
+ "From": {
+  "de": "Von",
+  "es": "De",
+  "zh": "发件人"
+ },
+ "Generate": {
+  "de": "Erzeugen",
+  "es": "Generar",
+  "zh": "生成"
+ },
+ "Hard": {
+  "de": "Schwer",
+  "es": "Difícil",
+  "zh": "困难"
+ },
+ "Height": {
+  "de": "Höhe",
+  "es": "Alto",
+  "zh": "高度"
+ },
+ "Hex": {
+  "de": "Hex",
+  "es": "Hex",
+  "zh": "十六进制"
+ },
+ "Hexadecimal": {
+  "de": "Hexadezimal",
+  "es": "Hexadecimal",
+  "zh": "十六进制"
+ },
+ "Input": {
+  "de": "Eingabe",
+  "es": "Entrada",
+  "zh": "输入"
+ },
+ "Left": {
+  "de": "Links",
+  "es": "Izquierda",
+  "zh": "左"
+ },
+ "Length": {
+  "de": "Länge",
+  "es": "Longitud",
+  "zh": "长度"
+ },
+ "Level": {
+  "de": "Level",
+  "es": "Nivel",
+  "zh": "关卡"
+ },
+ "Lives": {
+  "de": "Leben",
+  "es": "Vidas",
+  "zh": "生命"
+ },
+ "Load sample": {
+  "de": "Beispiel laden",
+  "es": "Cargar ejemplo",
+  "zh": "加载示例"
+ },
+ "Local AI": {
+  "de": "Lokale KI",
+  "es": "IA local",
+  "zh": "本地 AI"
+ },
+ "Location": {
+  "de": "Ort",
+  "es": "Ubicación",
+  "zh": "位置"
+ },
+ "Look up": {
+  "de": "Abfragen",
+  "es": "Consultar",
+  "zh": "查询"
+ },
+ "Markdown": {
+  "de": "Markdown",
+  "es": "Markdown",
+  "zh": "Markdown"
+ },
+ "Medium": {
+  "de": "Mittel",
+  "es": "Medio",
+  "zh": "中"
+ },
+ "Message": {
+  "de": "Nachricht",
+  "es": "Mensaje",
+  "zh": "消息"
+ },
+ "Moves": {
+  "de": "Züge",
+  "es": "Movimientos",
+  "zh": "步数"
+ },
+ "Name": {
+  "de": "Name",
+  "es": "Nombre",
+  "zh": "名称"
+ },
+ "Namespace": {
+  "de": "Namensraum",
+  "es": "Espacio de nombres",
+  "zh": "命名空间"
+ },
+ "New": {
+  "de": "Neu",
+  "es": "Nuevo",
+  "zh": "新建"
+ },
+ "New game": {
+  "de": "Neues Spiel",
+  "es": "Partida nueva",
+  "zh": "新游戏"
+ },
+ "Next": {
+  "de": "Weiter",
+  "es": "Siguiente",
+  "zh": "下一个"
+ },
+ "No matches": {
+  "de": "Keine Treffer",
+  "es": "Sin coincidencias",
+  "zh": "无匹配项"
+ },
+ "Normal": {
+  "de": "Normal",
+  "es": "Normal",
+  "zh": "普通"
+ },
+ "Nothing yet": {
+  "de": "Noch nichts",
+  "es": "Todavía nada",
+  "zh": "暂无内容"
+ },
+ "Open": {
+  "de": "Öffnen",
+  "es": "Abrir",
+  "zh": "打开"
+ },
+ "Open file": {
+  "de": "Datei öffnen",
+  "es": "Abrir archivo",
+  "zh": "打开文件"
+ },
+ "Output": {
+  "de": "Ausgabe",
+  "es": "Salida",
+  "zh": "输出"
+ },
+ "Padding": {
+  "de": "Innenabstand",
+  "es": "Relleno",
+  "zh": "内边距"
+ },
+ "Password": {
+  "de": "Passwort",
+  "es": "Contraseña",
+  "zh": "密码"
+ },
+ "Paste": {
+  "de": "Einfügen",
+  "es": "Pegar",
+  "zh": "粘贴"
+ },
+ "Pattern": {
+  "de": "Muster",
+  "es": "Patrón",
+  "zh": "模式"
+ },
+ "Pause": {
+  "de": "Pause",
+  "es": "Pausar",
+  "zh": "暂停"
+ },
+ "Plain": {
+  "de": "Einfach",
+  "es": "Simple",
+  "zh": "纯文本"
+ },
+ "Play": {
+  "de": "Start",
+  "es": "Iniciar",
+  "zh": "开始"
+ },
+ "Presets": {
+  "de": "Vorlagen",
+  "es": "Preajustes",
+  "zh": "预设"
+ },
+ "Random": {
+  "de": "Zufällig",
+  "es": "Aleatorio",
+  "zh": "随机"
+ },
+ "Range": {
+  "de": "Bereich",
+  "es": "Rango",
+  "zh": "范围"
+ },
+ "Ready": {
+  "de": "Bereit",
+  "es": "Listo",
+  "zh": "就绪"
+ },
+ "Redo": {
+  "de": "Wiederholen",
+  "es": "Rehacer",
+  "zh": "重做"
+ },
+ "Reference": {
+  "de": "Referenz",
+  "es": "Referencia",
+  "zh": "参考"
+ },
+ "Remove": {
+  "de": "Entfernen",
+  "es": "Quitar",
+  "zh": "移除"
+ },
+ "Repeat": {
+  "de": "Wiederholen",
+  "es": "Repetir",
+  "zh": "重复"
+ },
+ "Reset": {
+  "de": "Zurücksetzen",
+  "es": "Restablecer",
+  "zh": "重置"
+ },
+ "Restart": {
+  "de": "Neu starten",
+  "es": "Reiniciar",
+  "zh": "重新开始"
+ },
+ "Result": {
+  "de": "Ergebnis",
+  "es": "Resultado",
+  "zh": "结果"
+ },
+ "Reverse": {
+  "de": "Umkehren",
+  "es": "Invertir",
+  "zh": "反向"
+ },
+ "Right": {
+  "de": "Rechts",
+  "es": "Derecha",
+  "zh": "右"
+ },
+ "Rotate": {
+  "de": "Drehen",
+  "es": "Rotar",
+  "zh": "旋转"
+ },
+ "Run": {
+  "de": "Ausführen",
+  "es": "Ejecutar",
+  "zh": "运行"
+ },
+ "Sample": {
+  "de": "Beispiel",
+  "es": "Ejemplo",
+  "zh": "示例"
+ },
+ "Save": {
+  "de": "Speichern",
+  "es": "Guardar",
+  "zh": "保存"
+ },
+ "Save PNG": {
+  "de": "PNG speichern",
+  "es": "Guardar PNG",
+  "zh": "保存 PNG"
+ },
+ "Save file": {
+  "de": "Datei speichern",
+  "es": "Guardar archivo",
+  "zh": "保存文件"
+ },
+ "Saved": {
+  "de": "Gespeichert",
+  "es": "Guardado",
+  "zh": "已保存"
+ },
+ "Scale": {
+  "de": "Skalierung",
+  "es": "Escala",
+  "zh": "缩放"
+ },
+ "Scope": {
+  "de": "Geltungsbereich",
+  "es": "Ámbito",
+  "zh": "范围"
+ },
+ "Score": {
+  "de": "Punkte",
+  "es": "Puntuación",
+  "zh": "得分"
+ },
+ "Select": {
+  "de": "Auswählen",
+  "es": "Seleccionar",
+  "zh": "选择"
+ },
+ "Send": {
+  "de": "Senden",
+  "es": "Enviar",
+  "zh": "发送"
+ },
+ "Serial": {
+  "de": "Seriennummer",
+  "es": "Número de serie",
+  "zh": "序列号"
+ },
+ "Shape": {
+  "de": "Form",
+  "es": "Forma",
+  "zh": "形状"
+ },
+ "Signature": {
+  "de": "Signatur",
+  "es": "Firma",
+  "zh": "签名"
+ },
+ "Size": {
+  "de": "Größe",
+  "es": "Tamaño",
+  "zh": "大小"
+ },
+ "Snake": {
+  "de": "Snake",
+  "es": "Snake",
+  "zh": "贪吃蛇"
+ },
+ "Sort": {
+  "de": "Sortieren",
+  "es": "Ordenar",
+  "zh": "排序"
+ },
+ "Source": {
+  "de": "Quelle",
+  "es": "Origen",
+  "zh": "源"
+ },
+ "Spin": {
+  "de": "Drehung",
+  "es": "Giro",
+  "zh": "旋转"
+ },
+ "Status": {
+  "de": "Status",
+  "es": "Estado",
+  "zh": "状态"
+ },
+ "Stop": {
+  "de": "Stopp",
+  "es": "Detener",
+  "zh": "停止"
+ },
+ "Style": {
+  "de": "Stil",
+  "es": "Estilo",
+  "zh": "样式"
+ },
+ "Subject": {
+  "de": "Betreff",
+  "es": "Asunto",
+  "zh": "主题"
+ },
+ "Swap": {
+  "de": "Tauschen",
+  "es": "Intercambiar",
+  "zh": "交换"
+ },
+ "Switch": {
+  "de": "Schalter",
+  "es": "Interruptor",
+  "zh": "开关"
+ },
+ "Text": {
+  "de": "Text",
+  "es": "Texto",
+  "zh": "文本"
+ },
+ "Tidy": {
+  "de": "Aufräumen",
+  "es": "Ordenar",
+  "zh": "整理"
+ },
+ "Time": {
+  "de": "Zeit",
+  "es": "Hora",
+  "zh": "时间"
+ },
+ "Timezone": {
+  "de": "Zeitzone",
+  "es": "Zona horaria",
+  "zh": "时区"
+ },
+ "Title": {
+  "de": "Titel",
+  "es": "Título",
+  "zh": "标题"
+ },
+ "To": {
+  "de": "An",
+  "es": "Para",
+  "zh": "收件人"
+ },
+ "Today": {
+  "de": "Heute",
+  "es": "Hoy",
+  "zh": "今天"
+ },
+ "Translate": {
+  "de": "Übersetzen",
+  "es": "Traducir",
+  "zh": "翻译"
+ },
+ "Type": {
+  "de": "Typ",
+  "es": "Tipo",
+  "zh": "类型"
+ },
+ "Undo": {
+  "de": "Rückgängig",
+  "es": "Deshacer",
+  "zh": "撤销"
+ },
+ "Username": {
+  "de": "Benutzername",
+  "es": "Usuario",
+  "zh": "用户名"
+ },
+ "Value": {
+  "de": "Wert",
+  "es": "Valor",
+  "zh": "值"
+ },
+ "Waiting": {
+  "de": "Warten",
+  "es": "Esperando",
+  "zh": "等待中"
+ },
+ "Width": {
+  "de": "Breite",
+  "es": "Ancho",
+  "zh": "宽度"
+ },
+ "Wire": {
+  "de": "Leitung",
+  "es": "Cable",
+  "zh": "导线"
+ },
+ "Words": {
+  "de": "Wörter",
+  "es": "Palabras",
+  "zh": "词数"
+ },
+ "Year": {
+  "de": "Jahr",
+  "es": "Año",
+  "zh": "年"
+ },
+ "Zoom in": {
+  "de": "Vergrößern",
+  "es": "Acercar",
+  "zh": "放大"
+ },
+ "Zoom out": {
+  "de": "Verkleinern",
+  "es": "Alejar",
+  "zh": "缩小"
+ },
+ "none": {
+  "de": "keine",
+  "es": "ninguno",
+  "zh": "无"
+ }
+}
