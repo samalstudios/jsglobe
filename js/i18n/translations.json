@@ -1,4 +1,9 @@
 {
+ "# Title": {
+  "de": "# Titel",
+  "es": "# Título",
+  "zh": "# 标题"
+ },
  "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple": {
   "de": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
   "es": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
@@ -14,6 +19,11 @@
   "es": "-----BEGIN CERTIFICATE-----",
   "zh": "-----BEGIN CERTIFICATE-----"
  },
+ "0 bits": {
+  "de": "0 Bit",
+  "es": "0 bits",
+  "zh": "0 位"
+ },
  "0 characters": {
   "de": "0 Zeichen",
   "es": "0 caracteres",
@@ -23,6 +33,11 @@
   "de": "0 behält das Original",
   "es": "0 mantiene el original",
   "zh": "0 表示保持原样"
+ },
+ "1 to 4 demux": {
+  "de": "1-zu-4-Demultiplexer",
+  "es": "Demultiplexor 1 a 4",
+  "zh": "1 分 4 解复用器"
  },
  "1/10 speed": {
   "de": "1/10 Geschwindigkeit",
@@ -54,6 +69,16 @@
   "es": "Formato de 12 horas",
   "zh": "12 小时制"
  },
+ "1700000000, 2024-01-31T09:00:00Z, or ": {
+  "de": "1700000000, 2024-01-31T09:00:00Z, oder ",
+  "es": "1700000000, 2024-01-31T09:00:00Z, o ",
+  "zh": "1700000000、2024-01-31T09:00:00Z 或 "
+ },
+ "2 + 2 * pi": {
+  "de": "2 + 2 * pi",
+  "es": "2 + 2 * pi",
+  "zh": "2 + 2 * pi"
+ },
  "2 ms/div": {
   "de": "2 ms/Div",
   "es": "2 ms/div",
@@ -63,6 +88,11 @@
   "de": "2 Leerzeichen",
   "es": "2 espacios",
   "zh": "2 个空格"
+ },
+ "2 to 4 decoder": {
+  "de": "2-zu-4-Decoder",
+  "es": "Decodificador 2 a 4",
+  "zh": "2-4 译码器"
  },
  "20 ms/div": {
   "de": "20 ms/Div",
@@ -84,6 +114,11 @@
   "es": "3 veces",
   "zh": "三次"
  },
+ "30 seconds": {
+  "de": "30 Sekunden",
+  "es": "30 segundos",
+  "zh": "30 秒"
+ },
  "3D extrude": {
   "de": "3D-Extrusion",
   "es": "Extrusión 3D",
@@ -94,10 +129,25 @@
   "es": "Superficie 3D",
   "zh": "三维曲面"
  },
+ "4 bit counter": {
+  "de": "4-Bit-Zähler",
+  "es": "Contador de 4 bits",
+  "zh": "4 位计数器"
+ },
  "4 spaces": {
   "de": "4 Leerzeichen",
   "es": "4 espacios",
   "zh": "4 个空格"
+ },
+ "4 to 1 mux": {
+  "de": "4-zu-1-Multiplexer",
+  "es": "Multiplexor 4 a 1",
+  "zh": "4 选 1 多路器"
+ },
+ "4 to 2 encoder": {
+  "de": "4-zu-2-Encoder",
+  "es": "Codificador 4 a 2",
+  "zh": "4-2 编码器"
  },
  "5 ms/div": {
   "de": "5 ms/Div",
@@ -113,6 +163,31 @@
   "de": "500 µs/Div",
   "es": "500 µs/div",
   "zh": "500 µs/格"
+ },
+ "6 digits": {
+  "de": "6 Stellen",
+  "es": "6 dígitos",
+  "zh": "6 位"
+ },
+ "60 seconds": {
+  "de": "60 Sekunden",
+  "es": "60 segundos",
+  "zh": "60 秒"
+ },
+ "7 segment": {
+  "de": "7-Segment",
+  "es": "7 segmentos",
+  "zh": "七段数码管"
+ },
+ "8 digits": {
+  "de": "8 Stellen",
+  "es": "8 dígitos",
+  "zh": "8 位"
+ },
+ "8x8 matrix": {
+  "de": "8x8-Matrix",
+  "es": "Matriz 8x8",
+  "zh": "8x8 点阵"
  },
  "A UK postcode, case insensitive": {
   "de": "Eine britische Postleitzahl, Groß- und Kleinschreibung egal",
@@ -133,6 +208,11 @@
   "de": "KI",
   "es": "IA",
   "zh": "AI"
+ },
+ "AND": {
+  "de": "AND",
+  "es": "AND",
+  "zh": "AND"
  },
  "Accent": {
   "de": "Akzentfarbe",
@@ -179,6 +259,16 @@
   "es": "Añadir evento",
   "zh": "添加活动"
  },
+ "Add field": {
+  "de": "Feld hinzufügen",
+  "es": "Añadir campo",
+  "zh": "添加字段"
+ },
+ "Add files": {
+  "de": "Dateien hinzufügen",
+  "es": "Añadir archivos",
+  "zh": "添加文件"
+ },
  "Add function": {
   "de": "Funktion hinzufügen",
   "es": "Añadir función",
@@ -204,6 +294,41 @@
   "es": "Añadir variable",
   "zh": "添加变量"
  },
+ "Addresses": {
+  "de": "Adressen",
+  "es": "Direcciones",
+  "zh": "地址"
+ },
+ "Adjacent codes": {
+  "de": "Benachbarte Codes",
+  "es": "Códigos adyacentes",
+  "zh": "相邻时段的验证码"
+ },
+ "Adjust": {
+  "de": "Anpassen",
+  "es": "Ajustar",
+  "zh": "调整"
+ },
+ "Adjustments preview live and only touch the canvas when you apply them.": {
+  "de": "Anpassungen werden live angezeigt und ändern die Leinwand erst beim Anwenden.",
+  "es": "Los ajustes se previsualizan en vivo y solo modifican el lienzo cuando los aplicas.",
+  "zh": "调整会实时预览，只有在应用后才会改动画布。"
+ },
+ "Administration": {
+  "de": "Vergabe",
+  "es": "Administración",
+  "zh": "管理方式"
+ },
+ "Album": {
+  "de": "Album",
+  "es": "Álbum",
+  "zh": "专辑"
+ },
+ "Album artist": {
+  "de": "Album-Interpret",
+  "es": "Artista del álbum",
+  "zh": "专辑艺术家"
+ },
  "All": {
   "de": "Alle",
   "es": "Todo",
@@ -224,10 +349,20 @@
   "es": "Una dirección IP se consulta como registro PTR inverso",
   "zh": "IP 地址会作为反向 PTR 记录查询"
  },
+ "Analyse an address": {
+  "de": "Eine Adresse analysieren",
+  "es": "Analizar una dirección",
+  "zh": "分析一个地址"
+ },
  "Angle": {
   "de": "Winkel",
   "es": "Ángulo",
   "zh": "角度"
+ },
+ "Animated GIF": {
+  "de": "Animiertes GIF",
+  "es": "GIF animado",
+  "zh": "动态 GIF"
  },
  "Any device": {
   "de": "Beliebiges Gerät",
@@ -244,6 +379,11 @@
   "es": "Aplicar",
   "zh": "应用"
  },
+ "Apply shared fields": {
+  "de": "Gemeinsame Felder anwenden",
+  "es": "Aplicar los campos comunes",
+  "zh": "应用共用字段"
+ },
  "Arabic": {
   "de": "Arabisch",
   "es": "Árabe",
@@ -259,6 +399,11 @@
   "es": "Las flechas mueven, espacio dispara.",
   "zh": "方向键移动，空格射击。"
  },
+ "Artist": {
+  "de": "Interpret",
+  "es": "Artista",
+  "zh": "艺术家"
+ },
  "Ask anything. Shift+Enter for a new line.": {
   "de": "Frag alles. Umschalt+Eingabe für eine neue Zeile.",
   "es": "Pregunta lo que quieras. Mayús+Intro para una línea nueva.",
@@ -273,6 +418,31 @@
   "de": "Auf einen Blick",
   "es": "De un vistazo",
   "zh": "概览"
+ },
+ "At least 12 characters": {
+  "de": "Mindestens 12 Zeichen",
+  "es": "Al menos 12 caracteres",
+  "zh": "至少 12 个字符"
+ },
+ "At least 16 characters": {
+  "de": "Mindestens 16 Zeichen",
+  "es": "Al menos 16 caracteres",
+  "zh": "至少 16 个字符"
+ },
+ "Attack": {
+  "de": "Anstieg",
+  "es": "Ataque",
+  "zh": "起音"
+ },
+ "Audio": {
+  "de": "Audio",
+  "es": "Audio",
+  "zh": "音频"
+ },
+ "Audio bitrate": {
+  "de": "Audio-Bitrate",
+  "es": "Bitrate de audio",
+  "zh": "音频码率"
  },
  "Authorization header": {
   "de": "Authorization-Header",
@@ -294,10 +464,20 @@
   "es": "Ejes",
   "zh": "摇杆轴"
  },
+ "BPM": {
+  "de": "BPM",
+  "es": "BPM",
+  "zh": "BPM"
+ },
  "Background": {
   "de": "Hintergrund",
   "es": "Fondo",
   "zh": "背景"
+ },
+ "Ball and stick": {
+  "de": "Kugel-Stab-Modell",
+  "es": "Bolas y varillas",
+  "zh": "球棍模型"
  },
  "Bank identifier": {
   "de": "Bankkennung",
@@ -318,6 +498,11 @@
   "de": "Basis 36",
   "es": "Base 36",
   "zh": "三十六进制"
+ },
+ "Base32 secret": {
+  "de": "Base32-Secret",
+  "es": "Secreto en Base32",
+  "zh": "Base32 密钥"
  },
  "Base64 credentials": {
   "de": "Base64-Zugangsdaten",
@@ -379,6 +564,11 @@
   "es": "Bloque",
   "zh": "块"
  },
+ "Blocks": {
+  "de": "Blöcke",
+  "es": "Bloques",
+  "zh": "功能块"
+ },
  "Bluetooth": {
   "de": "Bluetooth",
   "es": "Bluetooth",
@@ -388,6 +578,16 @@
   "de": "Weichzeichnen",
   "es": "Desenfocar",
   "zh": "模糊"
+ },
+ "Boolean": {
+  "de": "Wahrheitswert",
+  "es": "Booleano",
+  "zh": "布尔值"
+ },
+ "Border size": {
+  "de": "Randstärke",
+  "es": "Grosor del borde",
+  "zh": "边框粗细"
  },
  "Bottom": {
   "de": "Unten",
@@ -443,6 +643,16 @@
   "de": "Vorschau im Browser-Tab",
   "es": "Vista previa de la pestaña",
   "zh": "浏览器标签页预览"
+ },
+ "Brush": {
+  "de": "Pinsel",
+  "es": "Pincel",
+  "zh": "画笔"
+ },
+ "Buffer": {
+  "de": "Treiber",
+  "es": "Buffer",
+  "zh": "缓冲器"
  },
  "Build resistors, capacitors and diodes, then watch the scope.": {
   "de": "Widerstände, Kondensatoren und Dioden bauen und dann das Oszilloskop beobachten.",
@@ -509,10 +719,25 @@
   "es": "Tranquilo",
   "zh": "平缓"
  },
+ "Camera is off": {
+  "de": "Kamera ist aus",
+  "es": "La cámara está apagada",
+  "zh": "摄像头已关闭"
+ },
  "Cancel": {
   "de": "Abbrechen",
   "es": "Cancelar",
   "zh": "取消"
+ },
+ "Canvas height": {
+  "de": "Leinwandhöhe",
+  "es": "Alto del lienzo",
+  "zh": "画布高度"
+ },
+ "Canvas width": {
+  "de": "Leinwandbreite",
+  "es": "Ancho del lienzo",
+  "zh": "画布宽度"
  },
  "Capabilities": {
   "de": "Fähigkeiten",
@@ -529,6 +754,11 @@
   "es": "Cartas por reparto",
   "zh": "每次发牌张数"
  },
+ "Cast": {
+  "de": "Adresstyp",
+  "es": "Tipo de envío",
+  "zh": "传输类型"
+ },
  "Casual tone": {
   "de": "Lockerer Ton",
   "es": "Tono informal",
@@ -543,6 +773,11 @@
   "de": "Ton ändern",
   "es": "Cambiar el tono",
   "zh": "改变语气"
+ },
+ "Changed": {
+  "de": "Geändert",
+  "es": "Modificado",
+  "zh": "修改后"
  },
  "Character": {
   "de": "Zeichen",
@@ -559,6 +794,11 @@
   "es": "Dígitos de control",
   "zh": "校验位"
  },
+ "Checked entirely on this device, nothing is sent anywhere": {
+  "de": "Vollständig auf diesem Gerät geprüft, nichts wird irgendwohin gesendet",
+  "es": "Se comprueba enteramente en este dispositivo, no se envía nada a ninguna parte",
+  "zh": "完全在本机检查，不会发送到任何地方"
+ },
  "Checks": {
   "de": "Prüfungen",
   "es": "Comprobaciones",
@@ -568,6 +808,11 @@
   "de": "Ein Gerät wählen",
   "es": "Elegir un dispositivo",
   "zh": "选择设备"
+ },
+ "Choose files": {
+  "de": "Dateien wählen",
+  "es": "Elegir archivos",
+  "zh": "选择文件"
  },
  "Ciphertext appears here": {
   "de": "Der Geheimtext erscheint hier",
@@ -588,6 +833,11 @@
   "de": "Schaltungen",
   "es": "Circuitos",
   "zh": "电路"
+ },
+ "City": {
+  "de": "Stadt",
+  "es": "Ciudad",
+  "zh": "城市"
  },
  "Claims": {
   "de": "Claims",
@@ -633,6 +883,11 @@
   "de": "Zuerst hier klicken, dann eine Taste drücken. Auch Modifier-Kombinationen werden erfasst.",
   "es": "Haz clic aquí primero y luego pulsa una tecla. También se capturan las combinaciones con modificadores.",
   "zh": "先点击这里，然后按键。组合键也会被捕获。"
+ },
+ "Clock": {
+  "de": "Takt",
+  "es": "Reloj",
+  "zh": "时钟"
  },
  "Closed": {
   "de": "Geschlossen",
@@ -719,6 +974,11 @@
   "es": "Entidades habituales",
   "zh": "常见实体"
  },
+ "Company": {
+  "de": "Firma",
+  "es": "Empresa",
+  "zh": "公司"
+ },
  "Component name": {
   "de": "Komponentenname",
   "es": "Nombre del componente",
@@ -734,6 +994,21 @@
   "es": "Sintaxis de Compose v2, sin clave version",
   "zh": "Compose v2 语法，不含 version 键"
  },
+ "Composer": {
+  "de": "Komponist",
+  "es": "Compositor",
+  "zh": "作曲"
+ },
+ "Composition": {
+  "de": "Zusammensetzung",
+  "es": "Composición",
+  "zh": "组成"
+ },
+ "Composition guides": {
+  "de": "Kompositionslinien",
+  "es": "Guías de composición",
+  "zh": "构图参考线"
+ },
  "ConfigMap": {
   "de": "ConfigMap",
   "es": "ConfigMap",
@@ -748,6 +1023,11 @@
   "de": "Verbinden",
   "es": "Conectar",
   "zh": "连接"
+ },
+ "Connect MIDI device": {
+  "de": "MIDI-Gerät verbinden",
+  "es": "Conectar un dispositivo MIDI",
+  "zh": "连接 MIDI 设备"
  },
  "Container port": {
   "de": "Container-Port",
@@ -814,6 +1094,16 @@
   "es": "Copiar Tailwind",
   "zh": "复制 Tailwind"
  },
+ "Copy XYZ": {
+  "de": "XYZ kopieren",
+  "es": "Copiar XYZ",
+  "zh": "复制 XYZ"
+ },
+ "Copy all": {
+  "de": "Alle kopieren",
+  "es": "Copiar todo",
+  "zh": "复制全部"
+ },
  "Copy code point": {
   "de": "Codepunkt kopieren",
   "es": "Copiar punto de código",
@@ -844,6 +1134,11 @@
   "es": "Copiar metadatos como JSON",
   "zh": "以 JSON 复制元数据"
  },
+ "Copy morse": {
+  "de": "Morsecode kopieren",
+  "es": "Copiar el morse",
+  "zh": "复制摩尔斯码"
+ },
  "Copy netlist": {
   "de": "Netzliste kopieren",
   "es": "Copiar netlist",
@@ -863,6 +1158,11 @@
   "de": "Ergebnisse kopieren",
   "es": "Copiar resultados",
   "zh": "复制结果"
+ },
+ "Copy text": {
+  "de": "Text kopieren",
+  "es": "Copiar el texto",
+  "zh": "复制文本"
  },
  "Corner radius": {
   "de": "Eckenradius",
@@ -884,10 +1184,20 @@
   "es": "País",
   "zh": "国家"
  },
+ "Country code": {
+  "de": "Ländercode",
+  "es": "Código de país",
+  "zh": "国家代码"
+ },
  "Covers these names": {
   "de": "Gilt für diese Namen",
   "es": "Cubre estos nombres",
   "zh": "涵盖这些名称"
+ },
+ "Create a note to get started.": {
+  "de": "Eine Notiz anlegen, um loszulegen.",
+  "es": "Crea una nota para empezar.",
+  "zh": "创建一条笔记开始使用。"
  },
  "Cron expression": {
   "de": "Cron-Ausdruck",
@@ -909,15 +1219,30 @@
   "es": "Corriente",
   "zh": "电流"
  },
+ "Current code": {
+  "de": "Aktueller Code",
+  "es": "Código actual",
+  "zh": "当前验证码"
+ },
  "Custom base": {
   "de": "Eigene Basis",
   "es": "Base personalizada",
   "zh": "自定义进制"
  },
+ "Custom colour": {
+  "de": "Eigene Farbe",
+  "es": "Color personalizado",
+  "zh": "自定义颜色"
+ },
  "Cymbal": {
   "de": "Becken",
   "es": "Platillo",
   "zh": "镲片"
+ },
+ "D flip-flop": {
+  "de": "D-Flipflop",
+  "es": "Biestable D",
+  "zh": "D 触发器"
  },
  "DE89 3704 0044 0532 0130 00": {
   "de": "DE89 3704 0044 0532 0130 00",
@@ -938,6 +1263,16 @@
   "de": "Data-URI",
   "es": "Data URI",
   "zh": "Data URI"
+ },
+ "Date": {
+  "de": "Datum",
+  "es": "Fecha",
+  "zh": "日期"
+ },
+ "Date and time": {
+  "de": "Datum und Zeit",
+  "es": "Fecha y hora",
+  "zh": "日期与时间"
  },
  "Day": {
   "de": "Tag",
@@ -979,6 +1314,11 @@
   "es": "El texto descifrado aparece aquí",
   "zh": "解密后的文本会显示在这里"
  },
+ "Default style": {
+  "de": "Standardstil",
+  "es": "Estilo por defecto",
+  "zh": "默认样式"
+ },
  "Default target language": {
   "de": "Standard-Zielsprache",
   "es": "Idioma de destino por defecto",
@@ -998,6 +1338,11 @@
   "de": "Löschen",
   "es": "Eliminar",
   "zh": "删除"
+ },
+ "Department": {
+  "de": "Abteilung",
+  "es": "Departamento",
+  "zh": "部门"
  },
  "Deployment": {
   "de": "Deployment",
@@ -1034,6 +1379,11 @@
   "es": "Detectar idioma",
   "zh": "检测语言"
  },
+ "Device id": {
+  "de": "Geräte-ID",
+  "es": "ID del dispositivo",
+  "zh": "设备标识"
+ },
  "Device memory": {
   "de": "Gerätespeicher",
   "es": "Memoria del dispositivo",
@@ -1053,6 +1403,11 @@
   "de": "Richtung",
   "es": "Dirección",
   "zh": "方向"
+ },
+ "Disc": {
+  "de": "CD",
+  "es": "Disco",
+  "zh": "碟片"
  },
  "Disconnect": {
   "de": "Trennen",
@@ -1109,6 +1464,11 @@
   "es": "Descargar todo",
   "zh": "全部下载"
  },
+ "Drag the middle of a wire to move its bend. Double click it to straighten.": {
+  "de": "Die Mitte einer Leitung ziehen, um den Knick zu verschieben. Doppelklick begradigt sie.",
+  "es": "Arrastra el centro de un cable para mover su codo. Haz doble clic para enderezarlo.",
+  "zh": "拖动导线中部可移动折点，双击可拉直。"
+ },
  "Drag to rotate, scroll to zoom": {
   "de": "Ziehen zum Drehen, scrollen zum Zoomen",
   "es": "Arrastra para rotar, usa la rueda para acercar",
@@ -1124,6 +1484,16 @@
   "es": "Robar tres",
   "zh": "每次翻三张"
  },
+ "Drop MP3 files here, or click to choose them": {
+  "de": "MP3-Dateien hierher ziehen oder klicken, um sie zu wählen",
+  "es": "Suelta archivos MP3 aquí, o haz clic para elegirlos",
+  "zh": "把 MP3 文件拖到这里，或点击选择"
+ },
+ "Drop PDFs or images here": {
+  "de": "PDFs oder Bilder hierher ziehen",
+  "es": "Suelta PDF o imágenes aquí",
+  "zh": "把 PDF 或图片拖到这里"
+ },
  "Drop a CSV or TSV file here, or click to choose one": {
   "de": "Eine CSV- oder TSV-Datei hierher ziehen oder klicken, um eine zu wählen",
   "es": "Suelta un archivo CSV o TSV aquí, o haz clic para elegir uno",
@@ -1138,6 +1508,11 @@
   "de": "Ein PNG, JPEG oder SVG hierher ziehen oder klicken, um eines zu wählen",
   "es": "Suelta un PNG, JPEG o SVG aquí, o haz clic para elegir uno",
   "zh": "把 PNG、JPEG 或 SVG 拖到这里，或点击选择一个"
+ },
+ "Drop a video or audio file, or click to choose": {
+  "de": "Eine Video- oder Audiodatei hierher ziehen oder klicken, um zu wählen",
+  "es": "Suelta un archivo de vídeo o audio, o haz clic para elegir",
+  "zh": "拖入视频或音频文件，或点击选择"
  },
  "Drop an image here, or click to choose one": {
   "de": "Ein Bild hierher ziehen oder klicken, um eines zu wählen",
@@ -1173,6 +1548,11 @@
   "de": "EAN-8",
   "es": "EAN-8",
   "zh": "EAN-8"
+ },
+ "EUI-64": {
+  "de": "EUI-64",
+  "es": "EUI-64",
+  "zh": "EUI-64"
  },
  "Easing": {
   "de": "Beschleunigung",
@@ -1224,6 +1604,11 @@
   "es": "Endpoints",
   "zh": "接口"
  },
+ "Engine settings": {
+  "de": "Engine-Einstellungen",
+  "es": "Ajustes del motor",
+  "zh": "引擎设置"
+ },
  "Enter a domain and choose the record types you care about.": {
   "de": "Eine Domain eingeben und die gewünschten Eintragstypen wählen.",
   "es": "Introduce un dominio y elige los tipos de registro que te interesen.",
@@ -1243,6 +1628,11 @@
   "de": "Radieren",
   "es": "Borrar",
   "zh": "擦除"
+ },
+ "Eraser": {
+  "de": "Radiergummi",
+  "es": "Goma",
+  "zh": "橡皮擦"
  },
  "Escaped": {
   "de": "Maskiert",
@@ -1309,6 +1699,11 @@
   "es": "Escala de exportación",
   "zh": "导出比例"
  },
+ "Expression": {
+  "de": "Ausdruck",
+  "es": "Expresión",
+  "zh": "表达式"
+ },
  "Extensions": {
   "de": "Erweiterungen",
   "es": "Extensiones",
@@ -1329,20 +1724,45 @@
   "es": "Rápido",
   "zh": "快速"
  },
+ "Fields": {
+  "de": "Felder",
+  "es": "Campos",
+  "zh": "字段"
+ },
  "Fill mode": {
   "de": "Füllmodus",
   "es": "Modo de relleno",
   "zh": "填充模式"
+ },
+ "Fill with colour": {
+  "de": "Mit Farbe füllen",
+  "es": "Rellenar con color",
+  "zh": "用颜色填充"
  },
  "Filter rows": {
   "de": "Zeilen filtern",
   "es": "Filtrar filas",
   "zh": "筛选行"
  },
+ "Find an element": {
+  "de": "Ein Element finden",
+  "es": "Buscar un elemento",
+  "zh": "查找元素"
+ },
  "Fingerprints": {
   "de": "Fingerabdrücke",
   "es": "Huellas",
   "zh": "指纹"
+ },
+ "First frame (PNG)": {
+  "de": "Erstes Bild (PNG)",
+  "es": "Primer fotograma (PNG)",
+  "zh": "首帧（PNG）"
+ },
+ "First name": {
+  "de": "Vorname",
+  "es": "Nombre",
+  "zh": "名"
  },
  "First row is a header": {
   "de": "Erste Zeile ist die Kopfzeile",
@@ -1369,6 +1789,11 @@
   "es": "Banderas",
   "zh": "旗帜"
  },
+ "Flat diagram": {
+  "de": "Flaches Diagramm",
+  "es": "Diagrama plano",
+  "zh": "平面结构图"
+ },
  "Flatten transparency onto white": {
   "de": "Transparenz auf Weiß reduzieren",
   "es": "Aplanar la transparencia sobre blanco",
@@ -1378,6 +1803,21 @@
   "de": "Spiegeln",
   "es": "Voltear",
   "zh": "翻转"
+ },
+ "Flip across": {
+  "de": "Waagerecht spiegeln",
+  "es": "Voltear en horizontal",
+  "zh": "水平翻转"
+ },
+ "Flip down": {
+  "de": "Senkrecht spiegeln",
+  "es": "Voltear en vertical",
+  "zh": "垂直翻转"
+ },
+ "Flood light": {
+  "de": "Flächenlicht",
+  "es": "Luz difusa",
+  "zh": "泛光"
  },
  "Food": {
   "de": "Essen",
@@ -1394,6 +1834,11 @@
   "es": "Formato",
   "zh": "格式"
  },
+ "Freeze": {
+  "de": "Einfrieren",
+  "es": "Congelar",
+  "zh": "定格"
+ },
  "Frequency": {
   "de": "Frequenz",
   "es": "Frecuencia",
@@ -1404,15 +1849,30 @@
   "es": "De",
   "zh": "发件人"
  },
+ "From images": {
+  "de": "Aus Bildern",
+  "es": "Desde imágenes",
+  "zh": "由图片生成"
+ },
  "From octal": {
   "de": "Aus Oktal",
   "es": "Desde octal",
   "zh": "由八进制"
  },
+ "Full name": {
+  "de": "Vollständiger Name",
+  "es": "Nombre completo",
+  "zh": "全名"
+ },
  "Full screen": {
   "de": "Vollbild",
   "es": "Pantalla completa",
   "zh": "全屏"
+ },
+ "GIF frame rate": {
+  "de": "GIF-Bildrate",
+  "es": "Fotogramas por segundo del GIF",
+  "zh": "GIF 帧率"
  },
  "Game over": {
   "de": "Spiel vorbei",
@@ -1423,6 +1883,16 @@
   "de": "Gamepad",
   "es": "Mando",
   "zh": "手柄"
+ },
+ "Gates": {
+  "de": "Gatter",
+  "es": "Puertas",
+  "zh": "逻辑门"
+ },
+ "Gates, flip-flops, counters, decoders and LED displays.": {
+  "de": "Gatter, Flipflops, Zähler, Decoder und LED-Anzeigen.",
+  "es": "Puertas, biestables, contadores, decodificadores y pantallas LED.",
+  "zh": "逻辑门、触发器、计数器、译码器与 LED 显示。"
  },
  "Generate": {
   "de": "Erzeugen",
@@ -1438,6 +1908,11 @@
   "de": "Erzeugte Größen",
   "es": "Tamaños generados",
   "zh": "生成的尺寸"
+ },
+ "Genre": {
+  "de": "Genre",
+  "es": "Género",
+  "zh": "流派"
  },
  "Google": {
   "de": "Google",
@@ -1499,6 +1974,11 @@
   "es": "Hex",
   "zh": "十六进制"
  },
+ "Hex colour": {
+  "de": "Hex-Farbe",
+  "es": "Color hex",
+  "zh": "十六进制颜色"
+ },
  "Hexadecimal": {
   "de": "Hexadezimal",
   "es": "Hexadecimal",
@@ -1513,6 +1993,11 @@
   "de": "Tipp",
   "es": "Pista",
   "zh": "提示"
+ },
+ "History": {
+  "de": "Verlauf",
+  "es": "Historial",
+  "zh": "历史"
  },
  "Hold": {
   "de": "Halten",
@@ -1538,6 +2023,11 @@
   "de": "Wie die Ausgabe verbunden wird",
   "es": "Cómo se une la salida",
   "zh": "输出如何拼接"
+ },
+ "Hydrogens": {
+  "de": "Wasserstoffatome",
+  "es": "Hidrógenos",
+  "zh": "氢原子"
  },
  "IBAN": {
   "de": "IBAN",
@@ -1573,6 +2063,11 @@
   "de": "Bild",
   "es": "Imagen",
   "zh": "镜像"
+ },
+ "Image export scale": {
+  "de": "Bild-Exportgröße",
+  "es": "Escala de exportación de imagen",
+  "zh": "图片导出比例"
  },
  "Image pull policy": {
   "de": "Image-Pull-Policy",
@@ -1624,6 +2119,21 @@
   "es": "Entrada",
   "zh": "输入"
  },
+ "Inputs": {
+  "de": "Eingänge",
+  "es": "Entradas",
+  "zh": "输入"
+ },
+ "Insert": {
+  "de": "Einfügen",
+  "es": "Insertar",
+  "zh": "插入"
+ },
+ "Integer": {
+  "de": "Ganzzahl",
+  "es": "Entero",
+  "zh": "整数"
+ },
  "Integer range": {
   "de": "Ganzzahlbereich",
   "es": "Rango entero",
@@ -1638,6 +2148,11 @@
   "de": "Invertieren",
   "es": "Invertir",
   "zh": "反相"
+ },
+ "Invert an input": {
+  "de": "Einen Eingang invertieren",
+  "es": "Invertir una entrada",
+  "zh": "反相一个输入"
  },
  "Issuer": {
   "de": "Aussteller",
@@ -1669,6 +2184,11 @@
   "es": "JSX a SVG",
   "zh": "JSX 转 SVG"
  },
+ "Job title": {
+  "de": "Position",
+  "es": "Puesto",
+  "zh": "职位"
+ },
  "Jump the cacti": {
   "de": "Über die Kakteen springen",
   "es": "Salta los cactus",
@@ -1683,6 +2203,11 @@
   "de": "Seitenverhältnis beibehalten",
   "es": "Mantener la proporción",
   "zh": "保持宽高比"
+ },
+ "Keep proportions": {
+  "de": "Proportionen beibehalten",
+  "es": "Mantener las proporciones",
+  "zh": "保持比例"
  },
  "Keep the colour profile": {
   "de": "Farbprofil behalten",
@@ -1714,6 +2239,11 @@
   "es": "Etiqueta",
   "zh": "标签"
  },
+ "Labels": {
+  "de": "Beschriftungen",
+  "es": "Etiquetas",
+  "zh": "标注"
+ },
  "Lamp": {
   "de": "Lampe",
   "es": "Lámpara",
@@ -1733,6 +2263,11 @@
   "de": "Runde",
   "es": "Vuelta",
   "zh": "计次"
+ },
+ "Last name": {
+  "de": "Nachname",
+  "es": "Apellido",
+  "zh": "姓"
  },
  "Latitude": {
   "de": "Breitengrad",
@@ -1774,6 +2309,11 @@
   "es": "Luminosidad",
   "zh": "明度"
  },
+ "Line": {
+  "de": "Linie",
+  "es": "Línea",
+  "zh": "直线"
+ },
  "Linear": {
   "de": "Linear",
   "es": "Lineal",
@@ -1783,6 +2323,11 @@
   "de": "Reihen",
   "es": "Líneas",
   "zh": "消行"
+ },
+ "List items": {
+  "de": "Listeneinträge",
+  "es": "Elementos de lista",
+  "zh": "列表项"
  },
  "Live log": {
   "de": "Live-Protokoll",
@@ -1834,6 +2379,21 @@
   "es": "Ubicación",
   "zh": "位置"
  },
+ "Logic 0": {
+  "de": "Logisch 0",
+  "es": "Lógico 0",
+  "zh": "逻辑 0"
+ },
+ "Logic 1": {
+  "de": "Logisch 1",
+  "es": "Lógico 1",
+  "zh": "逻辑 1"
+ },
+ "Logic Lab": {
+  "de": "Logiklabor",
+  "es": "Laboratorio de lógica",
+  "zh": "逻辑实验室"
+ },
  "Longitude": {
   "de": "Längengrad",
   "es": "Longitud",
@@ -1844,10 +2404,20 @@
   "es": "Consultar",
   "zh": "查询"
  },
+ "Lower is better quality": {
+  "de": "Niedriger heißt bessere Qualität",
+  "es": "Cuanto más bajo, mejor calidad",
+  "zh": "数值越低质量越好"
+ },
  "Lowercase": {
   "de": "Kleinbuchstaben",
   "es": "Minúsculas",
   "zh": "小写"
+ },
+ "MIDI input": {
+  "de": "MIDI-Eingang",
+  "es": "Entrada MIDI",
+  "zh": "MIDI 输入"
  },
  "Mark properties required": {
   "de": "Eigenschaften als erforderlich markieren",
@@ -1884,6 +2454,11 @@
   "es": "Medio",
   "zh": "中"
  },
+ "Memory": {
+  "de": "Speicher",
+  "es": "Memoria",
+  "zh": "存储"
+ },
  "Memory limit": {
   "de": "Speichergrenze",
   "es": "Límite de memoria",
@@ -1893,6 +2468,11 @@
   "de": "Speicheranforderung",
   "es": "Solicitud de memoria",
   "zh": "内存请求量"
+ },
+ "Merge, split, rotate, and convert to or from images.": {
+  "de": "Zusammenführen, teilen, drehen und von oder zu Bildern umwandeln.",
+  "es": "Une, divide, rota y convierte a o desde imágenes.",
+  "zh": "合并、拆分、旋转，并与图片互相转换。"
  },
  "Message": {
   "de": "Nachricht",
@@ -1919,6 +2499,11 @@
   "es": "Mínimo",
   "zh": "最少"
  },
+ "Mirror the image": {
+  "de": "Bild spiegeln",
+  "es": "Reflejar la imagen",
+  "zh": "镜像画面"
+ },
  "Mistakes": {
   "de": "Fehler",
   "es": "Errores",
@@ -1929,6 +2514,11 @@
   "es": "Modificadores",
   "zh": "修饰键"
  },
+ "Molecule of the day": {
+  "de": "Molekül des Tages",
+  "es": "Molécula del día",
+  "zh": "今日分子"
+ },
  "Monday": {
   "de": "Montag",
   "es": "Lunes",
@@ -1938,6 +2528,11 @@
   "de": "Monat",
   "es": "Mes",
   "zh": "月"
+ },
+ "Morse": {
+  "de": "Morse",
+  "es": "Morse",
+  "zh": "摩尔斯码"
  },
  "Move with the mouse or arrow keys. Space serves.": {
   "de": "Mit der Maus oder den Pfeiltasten bewegen. Leertaste spielt an.",
@@ -1958,6 +2553,21 @@
   "de": "N-MOSFET",
   "es": "MOSFET de canal N",
   "zh": "N 沟道 MOSFET"
+ },
+ "NAND": {
+  "de": "NAND",
+  "es": "NAND",
+  "zh": "NAND"
+ },
+ "NOR": {
+  "de": "NOR",
+  "es": "NOR",
+  "zh": "NOR"
+ },
+ "NOT": {
+  "de": "NOT",
+  "es": "NOT",
+  "zh": "NOT"
  },
  "NPN": {
   "de": "NPN",
@@ -2024,6 +2634,16 @@
   "es": "Saltos de línea",
   "zh": "换行符"
  },
+ "New note": {
+  "de": "Neue Notiz",
+  "es": "Nota nueva",
+  "zh": "新建笔记"
+ },
+ "New seed": {
+  "de": "Neuer Startwert",
+  "es": "Semilla nueva",
+  "zh": "新的随机种子"
+ },
  "New word": {
   "de": "Neues Wort",
   "es": "Palabra nueva",
@@ -2044,10 +2664,20 @@
   "es": "Próximas ejecuciones",
   "zh": "接下来的运行"
  },
+ "Next window": {
+  "de": "Nächstes Zeitfenster",
+  "es": "Ventana siguiente",
+  "zh": "下一个时段"
+ },
  "No Exif tags found in this file.": {
   "de": "In dieser Datei wurden keine Exif-Tags gefunden.",
   "es": "No se han encontrado etiquetas Exif en este archivo.",
   "zh": "在此文件中未找到 Exif 标签。"
+ },
+ "No artwork": {
+  "de": "Kein Cover",
+  "es": "Sin carátula",
+  "zh": "无封面"
  },
  "No controller yet": {
   "de": "Noch kein Controller",
@@ -2063,6 +2693,11 @@
   "de": "Keine zusätzlichen Eigenschaften",
   "es": "Sin propiedades adicionales",
   "zh": "不允许额外属性"
+ },
+ "No file open": {
+  "de": "Keine Datei geöffnet",
+  "es": "No hay ningún archivo abierto",
+  "zh": "未打开文件"
  },
  "No images yet": {
   "de": "Noch keine Bilder",
@@ -2089,6 +2724,11 @@
   "es": "Sin coincidencias",
   "zh": "无匹配项"
  },
+ "No notes yet": {
+  "de": "Noch keine Notizen",
+  "es": "Todavía no hay notas",
+  "zh": "暂无笔记"
+ },
  "No operations found.": {
   "de": "Keine Operationen gefunden.",
   "es": "No se han encontrado operaciones.",
@@ -2113,6 +2753,11 @@
   "de": "Normal",
   "es": "Normal",
   "zh": "普通"
+ },
+ "Normalised": {
+  "de": "Normalisiert",
+  "es": "Normalizada",
+  "zh": "规范化"
  },
  "Not after": {
   "de": "Nicht nach",
@@ -2164,6 +2809,11 @@
   "es": "Nada programado",
   "zh": "没有安排"
  },
+ "Nothing selected": {
+  "de": "Nichts ausgewählt",
+  "es": "No hay nada seleccionado",
+  "zh": "未选中任何内容"
+ },
  "Nothing yet": {
   "de": "Noch nichts",
   "es": "Todavía nada",
@@ -2179,6 +2829,21 @@
   "es": "Numerar los elementos",
   "zh": "为各项编号"
  },
+ "Number tracks": {
+  "de": "Titel nummerieren",
+  "es": "Numerar las pistas",
+  "zh": "为音轨编号"
+ },
+ "OR": {
+  "de": "OR",
+  "es": "OR",
+  "zh": "OR"
+ },
+ "OUI": {
+  "de": "OUI",
+  "es": "OUI",
+  "zh": "OUI"
+ },
  "Objects": {
   "de": "Objekte",
   "es": "Objetos",
@@ -2193,6 +2858,16 @@
   "de": "Oktal (Basis 8)",
   "es": "Octal (base 8)",
   "zh": "八进制（基数 8）"
+ },
+ "Octave +": {
+  "de": "Oktave +",
+  "es": "Octava +",
+  "zh": "八度 +"
+ },
+ "Octave −": {
+  "de": "Oktave −",
+  "es": "Octava −",
+  "zh": "八度 −"
  },
  "Octets": {
   "de": "Oktette",
@@ -2224,6 +2899,11 @@
   "es": "Abre un archivo .pem o .crt",
   "zh": "打开 .pem 或 .crt 文件"
  },
+ "Open a PDF to merge, split, rotate or convert it.": {
+  "de": "Ein PDF öffnen, um es zusammenzuführen, zu teilen, zu drehen oder umzuwandeln.",
+  "es": "Abre un PDF para unirlo, dividirlo, rotarlo o convertirlo.",
+  "zh": "打开一个 PDF 以进行合并、拆分、旋转或转换。"
+ },
  "Open chat": {
   "de": "Chat öffnen",
   "es": "Abrir chat",
@@ -2249,6 +2929,11 @@
   "es": "Nivel del rival",
   "zh": "对手强度"
  },
+ "Optional OUI prefix, e.g. 00:1B:44": {
+  "de": "Optionales OUI-Präfix, z. B. 00:1B:44",
+  "es": "Prefijo OUI opcional, p. ej. 00:1B:44",
+  "zh": "可选的 OUI 前缀，例如 00:1B:44"
+ },
  "Options": {
   "de": "Optionen",
   "es": "Opciones",
@@ -2258,6 +2943,11 @@
   "de": "Ausrichtung",
   "es": "Orientación",
   "zh": "方向"
+ },
+ "Original": {
+  "de": "Original",
+  "es": "Original",
+  "zh": "原文"
  },
  "Outline": {
   "de": "Umriss",
@@ -2274,6 +2964,11 @@
   "es": "MOSFET de canal P",
   "zh": "P 沟道 MOSFET"
  },
+ "PDF Studio": {
+  "de": "PDF-Studio",
+  "es": "PDF Studio",
+  "zh": "PDF 工作台"
+ },
  "PEM or base64": {
   "de": "PEM oder Base64",
   "es": "PEM o base64",
@@ -2289,6 +2984,16 @@
   "es": "Relleno",
   "zh": "内边距"
  },
+ "Pages": {
+  "de": "Seiten",
+  "es": "Páginas",
+  "zh": "页面"
+ },
+ "Paint": {
+  "de": "Malen",
+  "es": "Pintura",
+  "zh": "画板"
+ },
  "Pairs": {
   "de": "Paare",
   "es": "Parejas",
@@ -2298,6 +3003,16 @@
   "de": "Palette",
   "es": "Paleta",
   "zh": "调色板"
+ },
+ "Paragraph": {
+  "de": "Absatz",
+  "es": "Párrafo",
+  "zh": "段落"
+ },
+ "Paragraphs": {
+  "de": "Absätze",
+  "es": "Párrafos",
+  "zh": "段落"
  },
  "Part current": {
   "de": "Bauteilstrom",
@@ -2359,6 +3074,11 @@
   "es": "Pega el código aquí",
   "zh": "在此粘贴代码"
  },
+ "Paste into an authenticator app": {
+  "de": "In eine Authenticator-App einfügen",
+  "es": "Pégalo en una app de autenticación",
+  "zh": "粘贴到身份验证器应用中"
+ },
  "Paste one or more JSON documents": {
   "de": "Ein oder mehrere JSON-Dokumente einfügen",
   "es": "Pega uno o varios documentos JSON",
@@ -2404,6 +3124,16 @@
   "es": "Payload",
   "zh": "载荷"
  },
+ "Pencil": {
+  "de": "Stift",
+  "es": "Lápiz",
+  "zh": "铅笔"
+ },
+ "Pencil, shapes, fill and spray on a plain canvas.": {
+  "de": "Stift, Formen, Füllen und Sprühdose auf einer leeren Leinwand.",
+  "es": "Lápiz, formas, relleno y spray sobre un lienzo en blanco.",
+  "zh": "在空白画布上使用铅笔、形状、填充与喷枪。"
+ },
  "People": {
   "de": "Menschen",
   "es": "Personas",
@@ -2419,6 +3149,16 @@
   "es": "Teléfono",
   "zh": "电话"
  },
+ "Pick a colour": {
+  "de": "Eine Farbe aufnehmen",
+  "es": "Elegir un color",
+  "zh": "拾取颜色"
+ },
+ "Pick a part to change it, or drop a new one from the palette.": {
+  "de": "Ein Bauteil wählen, um es zu ändern, oder ein neues aus der Palette ziehen.",
+  "es": "Elige un componente para modificarlo, o arrastra uno nuevo desde la paleta.",
+  "zh": "选中一个元件进行修改，或从元件面板拖入一个新元件。"
+ },
  "Pick a time above or click a slot in the week view.": {
   "de": "Oben eine Zeit wählen oder in der Wochenansicht auf einen Slot klicken.",
   "es": "Elige una hora arriba o haz clic en un hueco de la vista semanal.",
@@ -2433,6 +3173,11 @@
   "de": "Gewählte Emoji landen hier.",
   "es": "Los emoji que elijas aparecen aquí.",
   "zh": "选过的 emoji 会出现在这里。"
+ },
+ "Pins on": {
+  "de": "Anschlüsse an",
+  "es": "Pines en",
+  "zh": "引脚位于"
  },
  "Pipe": {
   "de": "Senkrechter Strich",
@@ -2458,6 +3203,11 @@
   "de": "Start",
   "es": "Iniciar",
   "zh": "开始"
+ },
+ "Play tone": {
+  "de": "Ton abspielen",
+  "es": "Reproducir el tono",
+  "zh": "播放音调"
  },
  "Plug in a gamepad and press any button. Browsers only reveal a pad after it sends input.": {
   "de": "Ein Gamepad anschließen und eine beliebige Taste drücken. Browser zeigen ein Pad erst, wenn es Eingaben sendet.",
@@ -2488,6 +3238,11 @@
   "de": "Position",
   "es": "Posición",
   "zh": "位置"
+ },
+ "Post code": {
+  "de": "Postleitzahl",
+  "es": "Código postal",
+  "zh": "邮政编码"
  },
  "Power": {
   "de": "Leistung",
@@ -2534,10 +3289,20 @@
   "es": "Vista previa",
   "zh": "预览"
  },
+ "Preview size": {
+  "de": "Vorschaugröße",
+  "es": "Tamaño de la vista previa",
+  "zh": "预览大小"
+ },
  "Previous": {
   "de": "Zurück",
   "es": "Anterior",
   "zh": "上一个"
+ },
+ "Previous window": {
+  "de": "Vorheriges Zeitfenster",
+  "es": "Ventana anterior",
+  "zh": "上一个时段"
  },
  "Price": {
   "de": "Preis",
@@ -2559,6 +3324,11 @@
   "es": "Sonda",
   "zh": "探针"
  },
+ "Product": {
+  "de": "Produkt",
+  "es": "Producto",
+  "zh": "产品"
+ },
  "Proofread": {
   "de": "Korrekturlesen",
   "es": "Corregir",
@@ -2569,15 +3339,30 @@
   "es": "Clave pública",
   "zh": "公钥"
  },
+ "Publisher": {
+  "de": "Verlag",
+  "es": "Editor",
+  "zh": "发行方"
+ },
  "Pulse": {
   "de": "Pulsieren",
   "es": "Pulso",
   "zh": "脉动"
  },
+ "Push button, on only while held": {
+  "de": "Taster, nur solange gedrückt an",
+  "es": "Pulsador, activo solo mientras se mantiene",
+  "zh": "点动按钮，仅在按住时导通"
+ },
  "Quality": {
   "de": "Qualität",
   "es": "Calidad",
   "zh": "质量"
+ },
+ "Quality (CRF)": {
+  "de": "Qualität (CRF)",
+  "es": "Calidad (CRF)",
+  "zh": "质量（CRF）"
  },
  "Quarter": {
   "de": "Quartal",
@@ -2624,6 +3409,11 @@
   "es": "Rango",
   "zh": "范围"
  },
+ "Rate": {
+  "de": "Takt",
+  "es": "Frecuencia",
+  "zh": "频率"
+ },
  "Read": {
   "de": "Lesen",
   "es": "Leer",
@@ -2638,6 +3428,11 @@
   "de": "Echtzeit",
   "es": "Tiempo real",
   "zh": "实时"
+ },
+ "Reasonable": {
+  "de": "Brauchbar",
+  "es": "Aceptable",
+  "zh": "尚可"
  },
  "Recent keys": {
   "de": "Zuletzt gedrückte Tasten",
@@ -2674,6 +3469,11 @@
   "es": "Relativo",
   "zh": "相对时间"
  },
+ "Release": {
+  "de": "Ausklang",
+  "es": "Liberación",
+  "zh": "释音"
+ },
  "Remaining": {
   "de": "Verbleibend",
   "es": "Restante",
@@ -2683,6 +3483,16 @@
   "de": "Entfernen",
   "es": "Quitar",
   "zh": "移除"
+ },
+ "Remove artwork": {
+  "de": "Cover entfernen",
+  "es": "Quitar la carátula",
+  "zh": "移除封面"
+ },
+ "Remove audio": {
+  "de": "Ton entfernen",
+  "es": "Quitar el audio",
+  "zh": "移除音频"
  },
  "Remove duplicates": {
   "de": "Duplikate entfernen",
@@ -2694,6 +3504,11 @@
   "es": "Quitar componente",
   "zh": "移除元件"
  },
+ "Remove wire": {
+  "de": "Leitung entfernen",
+  "es": "Quitar el cable",
+  "zh": "移除导线"
+ },
  "Repeat": {
   "de": "Wiederholen",
   "es": "Repetir",
@@ -2703,6 +3518,11 @@
   "de": "Wiederholt linear",
   "es": "Lineal repetido",
   "zh": "重复线性"
+ },
+ "Replace artwork": {
+  "de": "Cover ersetzen",
+  "es": "Sustituir la carátula",
+  "zh": "替换封面"
  },
  "Replay": {
   "de": "Erneut abspielen",
@@ -2743,6 +3563,11 @@
   "de": "Widerstand",
   "es": "Resistencia",
   "zh": "电阻"
+ },
+ "Resize": {
+  "de": "Größe ändern",
+  "es": "Cambiar el tamaño",
+  "zh": "调整大小"
  },
  "Resolver": {
   "de": "Resolver",
@@ -2789,6 +3614,16 @@
   "es": "Aro",
   "zh": "边击"
  },
+ "Ring light": {
+  "de": "Ringlicht",
+  "es": "Aro de luz",
+  "zh": "环形补光"
+ },
+ "Ring light level": {
+  "de": "Ringlicht-Stärke",
+  "es": "Intensidad del aro de luz",
+  "zh": "环形补光强度"
+ },
  "Roots and extrema": {
   "de": "Nullstellen und Extrema",
   "es": "Raíces y extremos",
@@ -2803,6 +3638,16 @@
   "de": "Abgerundetes Quadrat",
   "es": "Cuadrado redondeado",
   "zh": "圆角方形"
+ },
+ "Row number": {
+  "de": "Zeilennummer",
+  "es": "Número de fila",
+  "zh": "行号"
+ },
+ "Rows": {
+  "de": "Zeilen",
+  "es": "Filas",
+  "zh": "行数"
  },
  "Run": {
   "de": "Ausführen",
@@ -2829,6 +3674,11 @@
   "es": "SHA-256",
   "zh": "SHA-256"
  },
+ "SHA-512": {
+  "de": "SHA-512",
+  "es": "SHA-512",
+  "zh": "SHA-512"
+ },
  "SQL datetime": {
   "de": "SQL-Datum/Zeit",
   "es": "Fecha y hora SQL",
@@ -2843,6 +3693,11 @@
   "de": "SVG zu JSX",
   "es": "SVG a JSX",
   "zh": "SVG 转 JSX"
+ },
+ "Same format authenticator apps use": {
+  "de": "Dasselbe Format, das Authenticator-Apps verwenden",
+  "es": "El mismo formato que usan las apps de autenticación",
+  "zh": "与身份验证器应用使用的格式相同"
  },
  "Sample": {
   "de": "Beispiel",
@@ -2859,10 +3714,25 @@
   "es": "Respuesta de ejemplo",
   "zh": "示例响应"
  },
+ "Saturation": {
+  "de": "Sättigung",
+  "es": "Saturación",
+  "zh": "饱和度"
+ },
  "Save": {
   "de": "Speichern",
   "es": "Guardar",
   "zh": "保存"
+ },
+ "Save .txt": {
+  "de": ".txt speichern",
+  "es": "Guardar .txt",
+  "zh": "保存 .txt"
+ },
+ "Save PDF": {
+  "de": "PDF speichern",
+  "es": "Guardar PDF",
+  "zh": "保存 PDF"
  },
  "Save PNG": {
   "de": "PNG speichern",
@@ -2888,6 +3758,21 @@
   "de": "Manifest speichern",
   "es": "Guardar el manifiesto",
   "zh": "保存 manifest"
+ },
+ "Save photo": {
+  "de": "Foto speichern",
+  "es": "Guardar la foto",
+  "zh": "保存照片"
+ },
+ "Save result": {
+  "de": "Ergebnis speichern",
+  "es": "Guardar el resultado",
+  "zh": "保存结果"
+ },
+ "Save selected": {
+  "de": "Auswahl speichern",
+  "es": "Guardar la selección",
+  "zh": "保存所选"
  },
  "Saved": {
   "de": "Gespeichert",
@@ -2939,10 +3824,35 @@
   "es": "Clave secreta",
   "zh": "密钥"
  },
+ "Seed": {
+  "de": "Startwert",
+  "es": "Semilla",
+  "zh": "随机种子"
+ },
  "Select": {
   "de": "Auswählen",
   "es": "Seleccionar",
   "zh": "选择"
+ },
+ "Select a gate to see its table.": {
+  "de": "Ein Gatter auswählen, um seine Tabelle zu sehen.",
+  "es": "Selecciona una puerta para ver su tabla.",
+  "zh": "选择一个逻辑门以查看它的真值表。"
+ },
+ "Select all": {
+  "de": "Alle auswählen",
+  "es": "Seleccionar todo",
+  "zh": "全选"
+ },
+ "Select an area": {
+  "de": "Einen Bereich auswählen",
+  "es": "Seleccionar un área",
+  "zh": "选择区域"
+ },
+ "Select none": {
+  "de": "Auswahl aufheben",
+  "es": "No seleccionar nada",
+  "zh": "取消全选"
  },
  "Semicolon": {
   "de": "Semikolon",
@@ -2964,10 +3874,20 @@
   "es": "Enviar al fondo",
   "zh": "移到最后"
  },
+ "Sentence": {
+  "de": "Satz",
+  "es": "Frase",
+  "zh": "句子"
+ },
  "Sentence case": {
   "de": "Satz schreibweise",
   "es": "Tipo oración",
   "zh": "句首大写"
+ },
+ "Sentences": {
+  "de": "Sätze",
+  "es": "Frases",
+  "zh": "句子"
  },
  "Separator": {
   "de": "Trennzeichen",
@@ -3019,10 +3939,20 @@
   "es": "Forma",
   "zh": "形状"
  },
+ "Show": {
+  "de": "Anzeigen",
+  "es": "Mostrar",
+  "zh": "显示"
+ },
  "Show derivative": {
   "de": "Ableitung anzeigen",
   "es": "Mostrar la derivada",
   "zh": "显示导数"
+ },
+ "Show hydrogens": {
+  "de": "Wasserstoff anzeigen",
+  "es": "Mostrar los hidrógenos",
+  "zh": "显示氢原子"
  },
  "Show node voltages": {
   "de": "Knotenspannungen anzeigen",
@@ -3058,6 +3988,11 @@
   "de": "Größe",
   "es": "Tamaño",
   "zh": "大小"
+ },
+ "Slash separates words": {
+  "de": "Schrägstrich trennt Wörter",
+  "es": "La barra separa palabras",
+  "zh": "斜杠用于分隔单词"
  },
  "Slide up": {
   "de": "Hochschieben",
@@ -3114,6 +4049,11 @@
   "es": "Espacio",
   "zh": "空格"
  },
+ "Space filling": {
+  "de": "Kalottenmodell",
+  "es": "Modelo compacto",
+  "zh": "空间填充模型"
+ },
  "Speed": {
   "de": "Geschwindigkeit",
   "es": "Velocidad",
@@ -3124,10 +4064,25 @@
   "es": "Giro",
   "zh": "旋转"
  },
+ "Spin automatically": {
+  "de": "Automatisch drehen",
+  "es": "Girar automáticamente",
+  "zh": "自动旋转"
+ },
  "Split input on": {
   "de": "Eingabe trennen bei",
   "es": "Dividir la entrada por",
   "zh": "按此拆分输入"
+ },
+ "Splitter": {
+  "de": "Aufteiler",
+  "es": "Divisor",
+  "zh": "分线器"
+ },
+ "Spray can": {
+  "de": "Sprühdose",
+  "es": "Espray",
+  "zh": "喷枪"
  },
  "Square": {
   "de": "Quadrat",
@@ -3143,6 +4098,21 @@
   "de": "Stern",
   "es": "Estrella",
   "zh": "星号"
+ },
+ "Start and duration in seconds": {
+  "de": "Start und Dauer in Sekunden",
+  "es": "Inicio y duración en segundos",
+  "zh": "起点与时长（秒）"
+ },
+ "Start typing...": {
+  "de": "Losschreiben...",
+  "es": "Empieza a escribir...",
+  "zh": "开始输入..."
+ },
+ "Start with \"Lorem ipsum dolor sit amet\"": {
+  "de": "Mit \"Lorem ipsum dolor sit amet\" beginnen",
+  "es": "Empezar con \"Lorem ipsum dolor sit amet\"",
+  "zh": "以 \"Lorem ipsum dolor sit amet\" 开头"
  },
  "Starts": {
   "de": "Beginn",
@@ -3164,6 +4134,11 @@
   "es": "Zona muerta del stick",
   "zh": "摇杆死区"
  },
+ "Sticks": {
+  "de": "Stabmodell",
+  "es": "Varillas",
+  "zh": "棍状模型"
+ },
  "Stop": {
   "de": "Stopp",
   "es": "Detener",
@@ -3178,6 +4153,21 @@
   "de": "Speicherschätzung",
   "es": "Estimación de almacenamiento",
   "zh": "存储估算"
+ },
+ "Straighten": {
+  "de": "Begradigen",
+  "es": "Enderezar",
+  "zh": "拉直"
+ },
+ "Street address": {
+  "de": "Straße und Hausnummer",
+  "es": "Dirección",
+  "zh": "街道地址"
+ },
+ "Strength": {
+  "de": "Stärke",
+  "es": "Fuerza",
+  "zh": "强度"
  },
  "Strip everything": {
   "de": "Alles entfernen",
@@ -3229,6 +4219,11 @@
   "es": "Domingo",
   "zh": "星期日"
  },
+ "Supports + − × ÷ ^ % !, functions and constants": {
+  "de": "Unterstützt + − × ÷ ^ % !, Funktionen und Konstanten",
+  "es": "Admite + − × ÷ ^ % !, funciones y constantes",
+  "zh": "支持 + − × ÷ ^ % !、函数与常量"
+ },
  "Swap": {
   "de": "Tauschen",
   "es": "Intercambiar",
@@ -3269,6 +4264,11 @@
   "es": "Prompt del sistema",
   "zh": "系统提示词"
  },
+ "T flip-flop": {
+  "de": "T-Flipflop",
+  "es": "Biestable T",
+  "zh": "T 触发器"
+ },
  "T-Rex Run": {
   "de": "T-Rex-Lauf",
   "es": "Carrera del T-Rex",
@@ -3288,6 +4288,11 @@
   "de": "TTL",
   "es": "TTL",
   "zh": "TTL"
+ },
+ "Tag": {
+  "de": "Tag",
+  "es": "Etiqueta",
+  "zh": "标签"
  },
  "Tailwind config": {
   "de": "Tailwind-Konfiguration",
@@ -3324,6 +4329,11 @@
   "es": "Banner de texto",
   "zh": "文字横幅"
  },
+ "Text is pulled from the PDF's own text layer. Scanned pages hold pictures, not letters, so they come out empty.": {
+  "de": "Der Text stammt aus der Textebene des PDFs. Gescannte Seiten enthalten Bilder statt Buchstaben und bleiben deshalb leer.",
+  "es": "El texto se extrae de la propia capa de texto del PDF. Las páginas escaneadas contienen imágenes, no letras, así que salen vacías.",
+  "zh": "文本取自 PDF 自带的文本层。扫描页里是图像而不是文字，因此会是空的。"
+ },
  "Text to encrypt": {
   "de": "Zu verschlüsselnder Text",
   "es": "Texto para cifrar",
@@ -3354,6 +4364,11 @@
   "es": "Color del tema",
   "zh": "主题色"
  },
+ "Ticks per second": {
+  "de": "Takte pro Sekunde",
+  "es": "Pulsos por segundo",
+  "zh": "每秒节拍数"
+ },
  "Tidy": {
   "de": "Aufräumen",
   "es": "Ordenar",
@@ -3373,6 +4388,11 @@
   "de": "Zeitschritt (µs)",
   "es": "Paso de tiempo (µs)",
   "zh": "时间步长（µs）"
+ },
+ "Time to crack": {
+  "de": "Zeit zum Knacken",
+  "es": "Tiempo para descifrarla",
+  "zh": "破解所需时间"
  },
  "Timer": {
   "de": "Timer",
@@ -3404,6 +4424,11 @@
   "es": "Tipo Título",
   "zh": "标题大写"
  },
+ "Titles from filenames": {
+  "de": "Titel aus Dateinamen",
+  "es": "Títulos a partir de los nombres de archivo",
+  "zh": "用文件名作为标题"
+ },
  "To": {
   "de": "An",
   "es": "Para",
@@ -3413,6 +4438,16 @@
   "de": "In Stichpunkte",
   "es": "A viñetas",
   "zh": "转为要点"
+ },
+ "To images": {
+  "de": "Zu Bildern",
+  "es": "A imágenes",
+  "zh": "转为图片"
+ },
+ "To text": {
+  "de": "Zu Text",
+  "es": "A texto",
+  "zh": "转为文本"
  },
  "Today": {
   "de": "Heute",
@@ -3428,6 +4463,11 @@
   "de": "Tom",
   "es": "Tom",
   "zh": "嗵鼓"
+ },
+ "Top": {
+  "de": "Oben",
+  "es": "Arriba",
+  "zh": "顶部"
  },
  "Top left": {
   "de": "Oben links",
@@ -3448,6 +4488,11 @@
   "de": "Train-Case",
   "es": "Train-Case",
   "zh": "Train-Case"
+ },
+ "Transcoding runs locally through WebAssembly. Large files take a while.": {
+  "de": "Die Umwandlung läuft lokal über WebAssembly. Große Dateien dauern eine Weile.",
+  "es": "La transcodificación se hace en local con WebAssembly. Los archivos grandes tardan un rato.",
+  "zh": "转码通过 WebAssembly 在本地进行，大文件需要一些时间。"
  },
  "Translate": {
   "de": "Übersetzen",
@@ -3479,10 +4524,30 @@
   "es": "Recortar",
   "zh": "修剪"
  },
+ "Truth table": {
+  "de": "Wahrheitstabelle",
+  "es": "Tabla de verdad",
+  "zh": "真值表"
+ },
+ "Try a code like 404 or a word like \"timeout\".": {
+  "de": "Einen Code wie 404 oder ein Wort wie \"Timeout\" probieren.",
+  "es": "Prueba con un código como 404 o una palabra como \"timeout\".",
+  "zh": "试试像 404 这样的状态码，或者像 timeout 这样的词。"
+ },
  "Try a sample": {
   "de": "Ein Beispiel probieren",
   "es": "Probar un ejemplo",
   "zh": "试试示例"
+ },
+ "Turn off": {
+  "de": "Ausschalten",
+  "es": "Apagar",
+  "zh": "关闭"
+ },
+ "Turn on camera": {
+  "de": "Kamera einschalten",
+  "es": "Encender la cámara",
+  "zh": "打开摄像头"
  },
  "Twice": {
   "de": "Zweimal",
@@ -3493,6 +4558,11 @@
   "de": "Typ",
   "es": "Tipo",
   "zh": "类型"
+ },
+ "Type or paste a password": {
+  "de": "Ein Passwort eingeben oder einfügen",
+  "es": "Escribe o pega una contraseña",
+  "zh": "输入或粘贴一个密码"
  },
  "Type or paste text to translate": {
   "de": "Text zum Übersetzen eingeben oder einfügen",
@@ -3519,10 +4589,20 @@
   "es": "Deshacer",
   "zh": "撤销"
  },
+ "Unicast": {
+  "de": "Unicast",
+  "es": "Unidifusión",
+  "zh": "单播"
+ },
  "Unicode": {
   "de": "Unicode",
   "es": "Unicode",
   "zh": "Unicode"
+ },
+ "Universally administered": {
+  "de": "Universell vergeben",
+  "es": "Administrada universalmente",
+  "zh": "全球管理"
  },
  "Unix milliseconds": {
   "de": "Unix-Millisekunden",
@@ -3538,6 +4618,11 @@
   "de": "Unix-Zeit",
   "es": "Tiempo Unix",
   "zh": "Unix 时间"
+ },
+ "Uppercase": {
+  "de": "Großbuchstaben",
+  "es": "Mayúsculas",
+  "zh": "大写"
  },
  "User agent": {
   "de": "User-Agent",
@@ -3579,6 +4664,16 @@
   "es": "Versión",
   "zh": "版本"
  },
+ "Very strong": {
+  "de": "Sehr stark",
+  "es": "Muy fuerte",
+  "zh": "非常强"
+ },
+ "Very weak": {
+  "de": "Sehr schwach",
+  "es": "Muy débil",
+  "zh": "非常弱"
+ },
  "Voltage": {
   "de": "Spannung",
   "es": "Tensión",
@@ -3588,6 +4683,11 @@
   "de": "Volt/Div",
   "es": "Voltios/div",
   "zh": "伏/格"
+ },
+ "Volume": {
+  "de": "Lautstärke",
+  "es": "Volumen",
+  "zh": "音量"
  },
  "Vpp": {
   "de": "Vss",
@@ -3609,15 +4709,30 @@
   "es": "Esperando cabeceras",
   "zh": "等待响应头"
  },
+ "Warmth": {
+  "de": "Farbtemperatur",
+  "es": "Calidez",
+  "zh": "色温"
+ },
  "Wave": {
   "de": "Welle",
   "es": "Oleada",
   "zh": "波次"
  },
+ "Waveform": {
+  "de": "Wellenform",
+  "es": "Forma de onda",
+  "zh": "波形"
+ },
  "Weak": {
   "de": "Schwach",
   "es": "Débil",
   "zh": "弱"
+ },
+ "Weaknesses": {
+  "de": "Schwachstellen",
+  "es": "Puntos débiles",
+  "zh": "弱点"
  },
  "Web Bluetooth is not available here": {
   "de": "Web Bluetooth ist hier nicht verfügbar",
@@ -3674,6 +4789,11 @@
   "es": "Cable",
   "zh": "导线"
  },
+ "Wiring": {
+  "de": "Verdrahtung",
+  "es": "Cableado",
+  "zh": "连线"
+ },
  "Words": {
   "de": "Wörter",
   "es": "Palabras",
@@ -3684,10 +4804,20 @@
   "es": "Reloj mundial",
   "zh": "世界时钟"
  },
+ "Wrap JSON in an array": {
+  "de": "JSON in ein Array packen",
+  "es": "Envolver el JSON en un array",
+  "zh": "用数组包裹 JSON"
+ },
  "Wrap each item": {
   "de": "Jeden Eintrag umschließen",
   "es": "Envolver cada elemento",
   "zh": "包裹每一项"
+ },
+ "Wrap in HTML tags": {
+  "de": "In HTML-Tags einschließen",
+  "es": "Envolver en etiquetas HTML",
+  "zh": "用 HTML 标签包裹"
  },
  "Write": {
   "de": "Schreiben",
@@ -3698,6 +4828,16 @@
   "de": "Tests schreiben",
   "es": "Escribir pruebas",
   "zh": "编写测试"
+ },
+ "XNOR": {
+  "de": "XNOR",
+  "es": "XNOR",
+  "zh": "XNOR"
+ },
+ "XOR": {
+  "de": "XOR",
+  "es": "XOR",
+  "zh": "XOR"
  },
  "Year": {
   "de": "Jahr",
@@ -3718,6 +4858,11 @@
   "de": "Deine Website",
   "es": "Tu sitio",
   "zh": "你的网站"
+ },
+ "Zoom": {
+  "de": "Zoom",
+  "es": "Zoom",
+  "zh": "缩放"
  },
  "Zoom in": {
   "de": "Vergrößern",
@@ -3749,6 +4894,11 @@
   "es": "alternate-reverse",
   "zh": "alternate-reverse"
  },
+ "atoms": {
+  "de": "Atome",
+  "es": "átomos",
+  "zh": "个原子"
+ },
  "auto": {
   "de": "automatisch",
   "es": "automático",
@@ -3763,6 +4913,11 @@
   "de": "backwards",
   "es": "backwards",
   "zh": "backwards"
+ },
+ "bonds": {
+  "de": "Bindungen",
+  "es": "enlaces",
+  "zh": "个化学键"
  },
  "both": {
   "de": "both",
@@ -3884,6 +5039,11 @@
   "es": "frec",
   "zh": "频率"
  },
+ "g/mol": {
+  "de": "g/mol",
+  "es": "g/mol",
+  "zh": "g/mol"
+ },
  "hello world": {
   "de": "hallo welt",
   "es": "hola mundo",
@@ -3908,6 +5068,11 @@
   "de": "hunter2",
   "es": "hunter2",
   "zh": "hunter2"
+ },
+ "jump &nbsp;": {
+  "de": "springen &nbsp;",
+  "es": "saltar &nbsp;",
+  "zh": "跳跃 &nbsp;"
  },
  "kebab-case": {
   "de": "kebab-case",
@@ -3973,6 +5138,11 @@
   "de": "oder Leertaste drücken",
   "es": "o pulsa espacio",
   "zh": "或按空格"
+ },
+ "otpauth URI": {
+  "de": "otpauth-URI",
+  "es": "URI otpauth",
+  "zh": "otpauth URI"
  },
  "path/case": {
   "de": "path/case",
