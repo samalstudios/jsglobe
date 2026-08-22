@@ -194,9 +194,11 @@ const segments = (subject, clip, keepSubjectInside, keepClipInside) => {
   return rings.length ? rings : null;
 };
 
+const JITTER = { x: 7.3e-7, y: 1.1e-6 };
+
 export const clipPolygons = (a, b, mode) => {
   const subject = forward(a);
-  const clip = forward(b);
+  const clip = forward(b).map((point) => ({ x: point.x + JITTER.x, y: point.y + JITTER.y }));
 
   const insideSubject = clip.every((point) => holds(subject, point));
   const insideClip = subject.every((point) => holds(clip, point));

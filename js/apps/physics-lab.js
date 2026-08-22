@@ -2,8 +2,9 @@ import { JGApp, define, html, css } from '../core/app.js';
 import { createWorld, bodyCorners, worldPoint, localPoint, spanOf, hull, polyMass, simpleLoop } from '../lib/physics.js';
 import { createDesigns } from '../lib/designs.js';
 import { clipPolygons, polygonArea } from '../lib/clip.js';
+import { shapesFromSvg } from '../lib/svg-shapes.js';
 import { icon } from '../ui/icons.js';
-import { toast } from '../core/util.js';
+import { toast, pickFile } from '../core/util.js';
 
 const sheet = css`
   .app { padding: 0; gap: 0; container-type: inline-size; overflow: hidden; }
@@ -182,6 +183,10 @@ const LINKS = {
 const CONTROLS = {
   button: { label: 'Button', icon: 'toggle' },
   slider: { label: 'Slider', icon: 'tuning' },
+};
+
+const SCENERY = {
+  backdrop: { label: 'Backdrop', icon: 'image' },
 };
 
 const BUTTON_WIDTH = 1.5;
@@ -423,6 +428,8 @@ export default class PhysicsLab extends JGApp {
   #held = new Set();
   #selectedControl = null;
   #alsoSelected = new Set();
+  #backdrop = null;
+  #backdropImage = null;
   #touched = false;
 
   connectedCallback() {
@@ -457,6 +464,7 @@ export default class PhysicsLab extends JGApp {
     this.#bodies = sample.bodies.map((body) => ({ ...body }));
     this.#joints = this.#anchorsFromWorld(this.#bodies, sample.joints);
     this.#controls = (sample.controls ?? []).map((button) => ({ ...button }));
+    this.#setBackdrop(null);
     this.#gravity = sample.gravity ?? 9.81;
     this.#attraction = sample.attraction ?? 0;
     this.#damping = sample.damping ?? 0.02;
@@ -470,6 +478,7 @@ export default class PhysicsLab extends JGApp {
     this.#bodies = (design.bodies ?? []).map((body) => ({ ...body }));
     this.#joints = (design.joints ?? []).map((joint) => ({ ...joint }));
     this.#controls = (design.controls ?? design.buttons ?? []).map((button) => ({ ...button }));
+    this.#setBackdrop(design.backdrop ?? null);
     this.#gravity = design.gravity ?? 9.81;
     this.#attraction = design.attraction ?? 0;
     this.#damping = design.damping ?? 0.02;
@@ -596,9 +605,22 @@ export default class PhysicsLab extends JGApp {
           ${icon(meta.icon, 15)}<span>${meta.label}</span>
         </button>`,
       )}
+      <div class="group">Scene</div>
+      <button class="tool" id="svg-in">${icon('vector', 15)}<span>Load SVG</span></button>
+      <button class="tool" id="backdrop-in">${icon('image', 15)}<span>Backdrop</span></button>
+      ${Object.entries(SCENERY).map(
+        ([kind, meta]) => html`<button class="tool" data-tool="${kind}" aria-pressed="${String(this.#tool === kind)}">
+          ${icon(meta.icon, 15)}<span>Move ${meta.label.toLowerCase()}</span>
+        </button>`,
+      )}
     `;
 
-    this.bind('.tool', 'click', (event) => this.#setTool(event.currentTarget.dataset.tool));
+    this.bind('.tool', 'click', (event) => {
+      const tool = event.currentTarget.dataset.tool;
+      if (tool) this.#setTool(tool);
+    });
+    this.bind('#svg-in', 'click', () => this.#importSvg());
+    this.bind('#backdrop-in', 'click', () => this.#loadBackdrop());
     this.bind('[data-sample]', 'click', (event) => {
       this.#load(event.currentTarget.dataset.sample);
       this.#designs.setOpen(null);
@@ -741,10 +763,13 @@ export default class PhysicsLab extends JGApp {
     const name = this.$('#tool-name');
     const hint = this.$('#tool-hint');
     if (!name || !hint) return;
-    name.textContent = tool === 'select' ? 'Select' : tool === 'erase' ? 'Erase' : (SHAPES[tool] ?? LINKS[tool])?.label ?? tool;
+    if (tool === 'backdrop' || this.#tool === 'backdrop') this.#inspector();
+    name.textContent = tool === 'select' ? 'Select' : tool === 'erase' ? 'Erase' : (SHAPES[tool] ?? LINKS[tool] ?? CONTROLS[tool] ?? SCENERY[tool])?.label ?? tool;
     hint.textContent = tool === 'pin' || tool === 'motor'
       ? 'Click where two bodies overlap to hinge them, or one body to hinge it to the world.'
-      : CONTROLS[tool]
+      : tool === 'backdrop'
+        ? 'Drag to move the backdrop. Its size and fade are in the panel.'
+        : CONTROLS[tool]
         ? 'Click a jack or a motor to add a control for it, then use the control to drive it.'
         : tool === 'linkage'
         ? 'Click a point on one body, then a point on another, to join them with a hinged bar.'
@@ -791,6 +816,7 @@ export default class PhysicsLab extends JGApp {
     this.#bodies = [];
     this.#joints = [];
     this.#controls = [];
+    this.#setBackdrop(null);
     this.#held.clear();
     this.#selectedControl = null;
     this.#gravity = 9.81;
@@ -1056,6 +1082,16 @@ export default class PhysicsLab extends JGApp {
     const point = this.#point(event);
     this.$('#view').setPointerCapture(event.pointerId);
 
+    if (this.#tool === 'backdrop') {
+      if (!this.#backdrop) {
+        toast('Load a backdrop first.', 'danger');
+        return;
+      }
+      this.#snapshot();
+      this.#drag = { kind: 'backdrop', from: point, origin: { x: this.#backdrop.x, y: this.#backdrop.y } };
+      return;
+    }
+
     if (CONTROLS[this.#tool]) {
       this.#addControl(point);
       return;
@@ -1241,6 +1277,12 @@ export default class PhysicsLab extends JGApp {
     this.#cursor = point;
     this.#hover = this.#tool === 'select' && !this.#drag ? this.#world.at(point.x, point.y) : null;
     this.$('#view').dataset.grab = String(Boolean(this.#hover));
+
+    if (this.#drag?.kind === 'backdrop' && this.#backdrop) {
+      this.#backdrop.x = this.#drag.origin.x + (point.x - this.#drag.from.x);
+      this.#backdrop.y = this.#drag.origin.y + (point.y - this.#drag.from.y);
+      return;
+    }
 
     if (this.#drag?.kind === 'widget') {
       const widget = this.#drag.widget;
@@ -1487,6 +1529,101 @@ export default class PhysicsLab extends JGApp {
     this.#inspector();
   }
 
+  #setBackdrop(next) {
+    this.#backdrop = next ? { ...next } : null;
+    this.#backdropImage = null;
+    if (!next?.src) return;
+    const image = new Image();
+    image.onload = () => {
+      this.#backdropImage = image;
+      this.#draw();
+    };
+    image.src = next.src;
+  }
+
+  async #loadBackdrop() {
+    const picked = await pickFile('image/*', false);
+    if (!picked) return;
+    const blob = new Blob([picked.data]);
+    const bitmap = await createImageBitmap(blob);
+    const cap = 1600;
+    const scale = Math.min(1, cap / Math.max(bitmap.width, bitmap.height));
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(bitmap.width * scale);
+    canvas.height = Math.round(bitmap.height * scale);
+    canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    const src = canvas.toDataURL('image/jpeg', 0.82);
+    bitmap.close?.();
+
+    this.#snapshot();
+    const wide = 12;
+    this.#setBackdrop({
+      src,
+      x: 0,
+      y: 0,
+      width: wide,
+      height: (wide * canvas.height) / canvas.width,
+      opacity: 0.6,
+    });
+    this.#setTool('backdrop');
+    this.#inspector();
+  }
+
+  async #importSvg() {
+    try {
+      const picked = await pickFile('image/svg+xml,.svg');
+      if (!picked) return;
+      const rings = shapesFromSvg(picked.data, { size: 5 });
+      const middle = this.#middleOfView();
+      this.#snapshot();
+      const made = rings
+        .map((ring) => {
+          const shape = polyMass(ring);
+          if (shape.area < 0.005) return null;
+          return {
+            id: this.#seq++,
+            kind: 'poly',
+            x: middle.x + shape.centre.x,
+            y: middle.y + shape.centre.y,
+            angle: 0,
+            points: ring.map((point) => ({ x: point.x - shape.centre.x, y: point.y - shape.centre.y })),
+            density: 1,
+            restitution: 0.15,
+            friction: 0.5,
+          };
+        })
+        .filter(Boolean);
+      if (!made.length) throw new Error('Those outlines were too small to use.');
+      this.#bodies.push(...made);
+      this.#selected = made[0].id;
+      this.#reset();
+      this.#inspector();
+      this.#draw();
+      toast(`Added ${made.length} shape${made.length > 1 ? 's' : ''} from the drawing.`);
+    } catch (error) {
+      toast(error.message, 'danger');
+    }
+  }
+
+  #middleOfView() {
+    const canvas = this.$('#view');
+    if (!canvas) return { x: 0, y: 0 };
+    const span = SCALE * this.#zoom;
+    return {
+      x: (canvas.clientWidth / 2 - this.#pan.x) / span,
+      y: (canvas.clientHeight / 2 - this.#pan.y) / span,
+    };
+  }
+
+  #outlineOf(body) {
+    if (body.kind !== 'circle') return bodyCorners(body);
+    const steps = Math.max(16, Math.min(48, Math.round(body.radius * 24)));
+    return Array.from({ length: steps }, (item, index) => {
+      const angle = body.angle + (index / steps) * Math.PI * 2;
+      return { x: body.x + Math.cos(angle) * body.radius, y: body.y + Math.sin(angle) * body.radius };
+    });
+  }
+
   #combine(mode) {
     const first = this.#bodies.find((body) => body.id === this.#selected);
     const secondId = [...this.#alsoSelected][0];
@@ -1498,12 +1635,9 @@ export default class PhysicsLab extends JGApp {
 
     const liveA = this.#world.body(first.id);
     const liveB = this.#world.body(second.id);
-    if (!liveA || !liveB || liveA.kind === 'circle' || liveB.kind === 'circle') {
-      toast('Only blocks, walls and drawn shapes can be combined.', 'danger');
-      return;
-    }
+    if (!liveA || !liveB) return;
 
-    const rings = clipPolygons(bodyCorners(liveA), bodyCorners(liveB), mode);
+    const rings = clipPolygons(this.#outlineOf(liveA), this.#outlineOf(liveB), mode);
     if (!rings) {
       toast('Those shapes do not touch, so there is nothing to merge.', 'danger');
       return;
@@ -1792,6 +1926,36 @@ export default class PhysicsLab extends JGApp {
     }
 
     const body = this.#bodies.find((entry) => entry.id === this.#selected);
+    if (!body && this.#tool === 'backdrop' && this.#backdrop) {
+      const back = this.#backdrop;
+      target.innerHTML = html`
+        <div class="label">Backdrop</div>
+        <jg-field label="Width m"><jg-input id="backWidth" size="sm" type="number" step="0.5" min="0.5" value="${back.width.toFixed(1)}"></jg-input></jg-field>
+        <jg-field label="Fade"><jg-slider id="backFade" min="5" max="100" step="5" value="${Math.round((back.opacity ?? 0.6) * 100)}"></jg-slider></jg-field>
+        <jg-button size="sm" variant="outline" id="backDrop">Remove backdrop</jg-button>
+      `;
+      const width = this.$('#backWidth');
+      this.on(width, 'change', () => {
+        this.#snapshot();
+        const ratio = back.height / back.width;
+        back.width = Math.max(0.5, Number(width.value) || back.width);
+        back.height = back.width * ratio;
+        this.#draw();
+      });
+      const fade = this.$('#backFade');
+      this.on(fade, 'input', () => {
+        back.opacity = Number(fade.value) / 100;
+        this.#draw();
+      });
+      this.on(this.$('#backDrop'), 'click', () => {
+        this.#snapshot();
+        this.#setBackdrop(null);
+        this.#setTool('select');
+        this.#inspector();
+        this.#draw();
+      });
+      return;
+    }
     if (!body) {
       target.innerHTML = html`<div class="hint">Pick a body or a link to change it, or drop a new one from the palette.</div>`;
       return;
@@ -1948,6 +2112,32 @@ export default class PhysicsLab extends JGApp {
     context.translate(this.#pan.x, this.#pan.y);
     context.scale(SCALE * this.#zoom, SCALE * this.#zoom);
     context.lineWidth = 1.6 / (SCALE * this.#zoom);
+
+    if (this.#backdrop && this.#backdropImage) {
+      context.save();
+      context.globalAlpha = this.#backdrop.opacity ?? 0.6;
+      context.drawImage(
+        this.#backdropImage,
+        this.#backdrop.x - this.#backdrop.width / 2,
+        this.#backdrop.y - this.#backdrop.height / 2,
+        this.#backdrop.width,
+        this.#backdrop.height,
+      );
+      context.restore();
+      if (this.#tool === 'backdrop') {
+        context.save();
+        context.setLineDash([0.16, 0.12]);
+        context.strokeStyle = paint.ring;
+        context.lineWidth = 2 / (SCALE * this.#zoom);
+        context.strokeRect(
+          this.#backdrop.x - this.#backdrop.width / 2,
+          this.#backdrop.y - this.#backdrop.height / 2,
+          this.#backdrop.width,
+          this.#backdrop.height,
+        );
+        context.restore();
+      }
+    }
 
     this.#drawTrail(context, paint);
     this.#world.bodies.forEach((body) => this.#drawBody(context, body, paint));
