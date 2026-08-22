@@ -14,6 +14,12 @@ export const THEMES = {
   forest: { label: 'Forest', paper: '#eef3ec', ink: '#14261a', accent: '#2f6d44', muted: '#5c7263' },
   slate: { label: 'Slate', paper: '#eceff3', ink: '#1b2430', accent: '#2f6fb0', muted: '#5f6b7a' },
   sun: { label: 'Sun', paper: '#fff6e5', ink: '#2b1c05', accent: '#e07a00', muted: '#8a6f45' },
+  coral: { label: 'Coral', paper: '#fff1ec', ink: '#33140c', accent: '#e2523b', muted: '#96695e' },
+  mint: { label: 'Mint', paper: '#eaf5f1', ink: '#0f2a24', accent: '#0f8f6f', muted: '#5c7d75' },
+  noir: { label: 'Noir', paper: '#0e0e0f', ink: '#f4f2ee', accent: '#e8e2d4', muted: '#7d7a74' },
+  violet: { label: 'Violet', paper: '#f2eefb', ink: '#221436', accent: '#6b3fd4', muted: '#6f6288' },
+  sand: { label: 'Sand', paper: '#efe7da', ink: '#2a2419', accent: '#a2703b', muted: '#7d715e' },
+  ice: { label: 'Ice', paper: '#eef4f8', ink: '#12242e', accent: '#0d7c93', muted: '#5d7480' },
 };
 
 export const FRAMES = {
@@ -33,7 +39,7 @@ const text = (spec) => ({
   y: spec.y,
   width: spec.width,
   height: spec.height ?? 0,
-  angle: 0,
+  angle: spec.angle ?? 0,
   value: spec.value,
   size: spec.size,
   weight: spec.weight ?? 600,
@@ -59,61 +65,189 @@ const shape = (spec) => ({
   opacity: spec.opacity ?? 1,
 });
 
-export const TEMPLATES = {
-  gig: {
-    label: 'Gig night',
+export const GALLERY = {
+  concert: {
+    label: 'Concert',
     theme: 'midnight',
     frame: 'hairline',
     size: 'poster',
     build: (w, h) => [
-      shape({ form: 'rect', x: w * 0.5, y: h * 0.27, width: w * 0.72, height: h * 0.006, tone: 'accent' }),
-      text({ value: 'LIVE AT\nTHE UNION', x: w * 0.5, y: h * 0.16, width: w * 0.8, size: h * 0.075, align: 'center', caps: true, weight: 800, spacing: 2 }),
-      text({ value: 'Friday 12 September · 8pm', x: w * 0.5, y: h * 0.31, width: w * 0.8, size: h * 0.026, align: 'center', tone: 'accent', weight: 600 }),
-      text({ value: 'THE\nPAPER\nKITES', x: w * 0.5, y: h * 0.46, width: w * 0.86, size: h * 0.11, align: 'center', caps: true, weight: 800, leading: 0.95 }),
-      text({ value: 'with Sea Change and Novak', x: w * 0.5, y: h * 0.72, width: w * 0.8, size: h * 0.024, align: 'center', tone: 'muted' }),
-      text({ value: 'Tickets £14 · union.example.com', x: w * 0.5, y: h * 0.88, width: w * 0.8, size: h * 0.022, align: 'center', tone: 'muted' }),
+      text({ value: 'Friday 12 September · doors 8pm', x: w * 0.5, y: h * 0.13, width: w * 0.82, size: h * 0.021, align: 'center', tone: 'accent', caps: true, spacing: 5 }),
+      shape({ form: 'rect', x: w * 0.5, y: h * 0.175, width: w * 0.74, height: h * 0.005, tone: 'accent' }),
+      text({ value: 'HANS\nMUSTERMANN', x: w * 0.5, y: h * 0.38, width: w * 0.88, size: h * 0.105, align: 'center', caps: true, weight: 800, leading: 0.93 }),
+      shape({ form: 'circle', x: w * 0.5, y: h * 0.63, width: h * 0.2, height: h * 0.2, tone: 'accent', opacity: 0.16 }),
+      text({ value: 'with Jane Doe\nand the Erika Mustermann Trio', x: w * 0.5, y: h * 0.63, width: w * 0.78, size: h * 0.026, align: 'center', leading: 1.5 }),
+      text({ value: 'The Union · Tickets 14', x: w * 0.5, y: h * 0.88, width: w * 0.8, size: h * 0.022, align: 'center', tone: 'muted' }),
     ],
   },
-  talk: {
-    label: 'Talk',
-    theme: 'slate',
+  splitBlock: {
+    label: 'Split block',
+    theme: 'coral',
+    frame: 'none',
+    size: 'poster',
+    build: (w, h) => [
+      shape({ form: 'rect', x: w * 0.5, y: h * 0.25, width: w, height: h * 0.5, tone: 'accent' }),
+      text({ value: 'SUMMER\nSCHOOL', x: w * 0.5, y: h * 0.22, width: w * 0.86, size: h * 0.1, align: 'center', caps: true, weight: 800, leading: 0.94, tone: 'paper' }),
+      text({ value: 'Six evenings of drawing', x: w * 0.5, y: h * 0.4, width: w * 0.8, size: h * 0.024, align: 'center', tone: 'paper' }),
+      text({ value: 'Taught by\nErika Mustermann', x: w * 0.5, y: h * 0.63, width: w * 0.8, size: h * 0.05, align: 'center', weight: 700, leading: 1.15, family: 'serif' }),
+      shape({ form: 'rect', x: w * 0.5, y: h * 0.75, width: w * 0.16, height: h * 0.004, tone: 'ink' }),
+      text({ value: 'Begins 4 October · Studio Two\nEnrol at the front desk', x: w * 0.5, y: h * 0.85, width: w * 0.8, size: h * 0.022, align: 'center', tone: 'muted', leading: 1.5 }),
+    ],
+  },
+  sunrise: {
+    label: 'Sunrise',
+    theme: 'sun',
+    frame: 'none',
+    size: 'poster',
+    build: (w, h) => [
+      shape({ form: 'circle', x: w * 0.5, y: h * 0.42, width: w * 0.72, height: w * 0.72, tone: 'accent', opacity: 0.9 }),
+      text({ value: 'LONG\nDAYS', x: w * 0.5, y: h * 0.4, width: w * 0.8, size: h * 0.11, align: 'center', caps: true, weight: 800, leading: 0.92, tone: 'paper' }),
+      text({ value: 'An exhibition by Jane Doe', x: w * 0.5, y: h * 0.68, width: w * 0.8, size: h * 0.032, align: 'center', family: 'serif' }),
+      shape({ form: 'rect', x: w * 0.5, y: h * 0.76, width: w * 0.5, height: h * 0.003, tone: 'ink' }),
+      text({ value: '2 – 30 November · Gallery Two · Free', x: w * 0.5, y: h * 0.85, width: w * 0.84, size: h * 0.021, align: 'center', tone: 'muted', caps: true, spacing: 2 }),
+    ],
+  },
+  diagonal: {
+    label: 'Diagonal',
+    theme: 'violet',
+    frame: 'none',
+    size: 'poster',
+    build: (w, h) => [
+      shape({ form: 'rect', x: w * 0.5, y: h * 0.47, width: w * 1.7, height: h * 0.12, tone: 'accent', angle: -0.35 }),
+      text({ value: 'DESIGN\nWEEK', x: w * 0.5, y: h * 0.22, width: w * 0.86, size: h * 0.09, align: 'center', caps: true, weight: 800, leading: 0.95 }),
+      text({ value: 'Talks · Workshops · Studio visits', x: w * 0.5, y: h * 0.465, width: w * 0.66, size: h * 0.026, align: 'center', tone: 'paper', weight: 700, angle: -0.35 }),
+      text({ value: 'John Doe\nErika Mustermann\nHans Mustermann', x: w * 0.5, y: h * 0.7, width: w * 0.8, size: h * 0.03, align: 'center', leading: 1.5 }),
+      text({ value: '18 – 24 March', x: w * 0.5, y: h * 0.88, width: w * 0.8, size: h * 0.024, align: 'center', tone: 'muted', caps: true, spacing: 4 }),
+    ],
+  },
+  stripes: {
+    label: 'Stripes',
+    theme: 'ice',
+    frame: 'none',
+    size: 'poster',
+    build: (w, h) => [
+      ...[0.14, 0.175, 0.21].map((at, index) =>
+        shape({ form: 'rect', x: w * 0.5, y: h * at, width: w * 0.8, height: h * (0.004 + index * 0.004), tone: 'accent' }),
+      ),
+      text({ value: 'THE\nQUIET\nHOUR', x: w * 0.5, y: h * 0.42, width: w * 0.86, size: h * 0.105, align: 'center', caps: true, weight: 800, leading: 0.94 }),
+      ...[0.6, 0.635, 0.67].map((at, index) =>
+        shape({ form: 'rect', x: w * 0.5, y: h * at, width: w * 0.8, height: h * (0.012 - index * 0.004), tone: 'accent' }),
+      ),
+      text({ value: 'A reading by Jane Doe', x: w * 0.5, y: h * 0.76, width: w * 0.8, size: h * 0.03, align: 'center', family: 'serif' }),
+      text({ value: 'Thursday 7pm · Room 4', x: w * 0.5, y: h * 0.87, width: w * 0.8, size: h * 0.021, align: 'center', tone: 'muted' }),
+    ],
+  },
+  editorial: {
+    label: 'Editorial',
+    theme: 'sand',
     frame: 'double',
     size: 'poster',
     build: (w, h) => [
-      text({ value: 'Public lecture', x: w * 0.5, y: h * 0.14, width: w * 0.8, size: h * 0.024, align: 'center', tone: 'accent', caps: true, spacing: 4 }),
-      text({ value: 'What the sea\nremembers', x: w * 0.5, y: h * 0.26, width: w * 0.82, size: h * 0.068, align: 'center', weight: 700, family: 'serif' }),
-      shape({ form: 'rect', x: w * 0.5, y: h * 0.42, width: w * 0.18, height: h * 0.004, tone: 'ink' }),
-      text({ value: 'Dr Amara Osei', x: w * 0.5, y: h * 0.5, width: w * 0.8, size: h * 0.034, align: 'center', weight: 600 }),
-      text({ value: 'Thursday 4 October, 18:30\nLecture Theatre B, Main Building', x: w * 0.5, y: h * 0.62, width: w * 0.8, size: h * 0.024, align: 'center', tone: 'muted', leading: 1.5 }),
-      text({ value: 'Free · no booking needed', x: w * 0.5, y: h * 0.86, width: w * 0.8, size: h * 0.022, align: 'center', tone: 'accent' }),
+      text({ value: 'Public lecture', x: w * 0.5, y: h * 0.15, width: w * 0.8, size: h * 0.022, align: 'center', tone: 'accent', caps: true, spacing: 6 }),
+      text({ value: 'What the\nsea remembers', x: w * 0.5, y: h * 0.31, width: w * 0.84, size: h * 0.062, align: 'center', weight: 600, family: 'serif', leading: 1.2 }),
+      shape({ form: 'rect', x: w * 0.5, y: h * 0.45, width: w * 0.14, height: h * 0.003, tone: 'ink' }),
+      text({ value: 'Dr Erika Mustermann', x: w * 0.5, y: h * 0.55, width: w * 0.8, size: h * 0.034, align: 'center', weight: 600 }),
+      text({ value: 'Thursday 4 October, 18:30\nLecture Theatre B', x: w * 0.5, y: h * 0.68, width: w * 0.8, size: h * 0.023, align: 'center', tone: 'muted', leading: 1.6 }),
+      text({ value: 'Free · no booking needed', x: w * 0.5, y: h * 0.86, width: w * 0.8, size: h * 0.021, align: 'center', tone: 'accent' }),
+    ],
+  },
+  grid: {
+    label: 'Grid',
+    theme: 'forest',
+    frame: 'hairline',
+    size: 'poster',
+    build: (w, h) => {
+      const cells = [];
+      for (let row = 0; row < 4; row += 1) {
+        for (let column = 0; column < 4; column += 1) {
+          cells.push(
+            shape({
+              form: (row + column) % 3 === 0 ? 'circle' : 'rect',
+              x: w * (0.24 + column * 0.174),
+              y: h * (0.17 + row * 0.086),
+              width: w * 0.1,
+              height: w * 0.1,
+              tone: 'accent',
+              opacity: 0.18 + ((row + column) % 4) * 0.2,
+              radius: 6,
+            }),
+          );
+        }
+      }
+      return [
+        ...cells,
+        text({ value: 'OPEN\nSTUDIOS', x: w * 0.5, y: h * 0.62, width: w * 0.86, size: h * 0.085, align: 'center', caps: true, weight: 800, leading: 0.95 }),
+        text({ value: 'Twenty makers · one building', x: w * 0.5, y: h * 0.76, width: w * 0.8, size: h * 0.026, align: 'center' }),
+        text({ value: 'Saturday and Sunday · 11am – 6pm', x: w * 0.5, y: h * 0.87, width: w * 0.84, size: h * 0.021, align: 'center', tone: 'muted' }),
+      ];
+    },
+  },
+  numeral: {
+    label: 'Numeral',
+    theme: 'noir',
+    frame: 'none',
+    size: 'poster',
+    build: (w, h) => [
+      text({ value: '09', x: w * 0.5, y: h * 0.36, width: w * 0.9, size: h * 0.32, align: 'center', weight: 800, tone: 'accent', leading: 0.9 }),
+      shape({ form: 'rect', x: w * 0.5, y: h * 0.55, width: w * 0.62, height: h * 0.004, tone: 'ink' }),
+      text({ value: 'NINE YEARS OF\nTHE LATE SHOW', x: w * 0.5, y: h * 0.66, width: w * 0.84, size: h * 0.045, align: 'center', caps: true, weight: 700, leading: 1.2 }),
+      text({ value: 'Hosted by John Doe', x: w * 0.5, y: h * 0.79, width: w * 0.8, size: h * 0.024, align: 'center', tone: 'muted' }),
+      text({ value: 'Every Thursday · 10pm', x: w * 0.5, y: h * 0.89, width: w * 0.8, size: h * 0.02, align: 'center', tone: 'muted', caps: true, spacing: 3 }),
+    ],
+  },
+  framed: {
+    label: 'Framed',
+    theme: 'bloom',
+    frame: 'corners',
+    size: 'poster',
+    build: (w, h) => [
+      shape({ form: 'rect', x: w * 0.5, y: h * 0.42, width: w * 0.68, height: h * 0.36, tone: 'accent', opacity: 0.13, radius: 10 }),
+      text({ value: 'New work by\nJane Doe', x: w * 0.5, y: h * 0.36, width: w * 0.62, size: h * 0.048, align: 'center', family: 'serif', weight: 600, leading: 1.25 }),
+      text({ value: 'STILL\nWATER', x: w * 0.5, y: h * 0.66, width: w * 0.86, size: h * 0.1, align: 'center', caps: true, weight: 800, leading: 0.95 }),
+      text({ value: '2 – 30 November · Gallery Two', x: w * 0.5, y: h * 0.85, width: w * 0.82, size: h * 0.023, align: 'center', tone: 'muted' }),
     ],
   },
   market: {
     label: 'Market day',
-    theme: 'sun',
+    theme: 'mint',
     frame: 'bold',
     size: 'poster',
     build: (w, h) => [
-      text({ value: 'SATURDAY', x: w * 0.5, y: h * 0.2, width: w * 0.8, size: h * 0.038, align: 'center', caps: true, spacing: 8, tone: 'muted' }),
-      text({ value: 'FARMERS\nMARKET', x: w * 0.5, y: h * 0.36, width: w * 0.84, size: h * 0.105, align: 'center', caps: true, weight: 800, leading: 0.95, tone: 'accent' }),
-      shape({ form: 'circle', x: w * 0.5, y: h * 0.6, width: h * 0.14, height: h * 0.14, tone: 'ink', opacity: 0.08 }),
+      text({ value: 'SATURDAY', x: w * 0.5, y: h * 0.19, width: w * 0.8, size: h * 0.034, align: 'center', caps: true, spacing: 9, tone: 'muted' }),
+      text({ value: 'FARMERS\nMARKET', x: w * 0.5, y: h * 0.36, width: w * 0.84, size: h * 0.105, align: 'center', caps: true, weight: 800, leading: 0.94, tone: 'accent' }),
+      shape({ form: 'circle', x: w * 0.3, y: h * 0.58, width: h * 0.09, height: h * 0.09, tone: 'accent', opacity: 0.2 }),
+      shape({ form: 'circle', x: w * 0.7, y: h * 0.58, width: h * 0.09, height: h * 0.09, tone: 'accent', opacity: 0.2 }),
       text({ value: '7am – 1pm\nRiverside Square', x: w * 0.5, y: h * 0.62, width: w * 0.8, size: h * 0.03, align: 'center', leading: 1.4 }),
-      text({ value: 'Bread · Cheese · Flowers · Coffee', x: w * 0.5, y: h * 0.86, width: w * 0.86, size: h * 0.022, align: 'center', tone: 'muted' }),
+      text({ value: 'Bread · Cheese · Flowers · Coffee', x: w * 0.5, y: h * 0.86, width: w * 0.86, size: h * 0.021, align: 'center', tone: 'muted' }),
     ],
   },
-  exhibit: {
-    label: 'Exhibition',
-    theme: 'ink',
-    frame: 'corners',
-    size: 'poster',
+  story: {
+    label: 'Story post',
+    theme: 'slate',
+    frame: 'none',
+    size: 'story',
     build: (w, h) => [
-      shape({ form: 'rect', x: w * 0.5, y: h * 0.36, width: w * 0.7, height: h * 0.32, tone: 'accent', opacity: 0.14, radius: 8 }),
-      text({ value: 'New work by\nElin Marsh', x: w * 0.5, y: h * 0.36, width: w * 0.66, size: h * 0.052, align: 'center', family: 'serif', weight: 600 }),
-      text({ value: 'STILL\nWATER', x: w * 0.5, y: h * 0.63, width: w * 0.86, size: h * 0.1, align: 'center', caps: true, weight: 800, leading: 0.95 }),
-      text({ value: '2 – 30 November · Gallery Two', x: w * 0.5, y: h * 0.83, width: w * 0.8, size: h * 0.024, align: 'center', tone: 'muted' }),
+      shape({ form: 'rect', x: w * 0.5, y: h * 0.5, width: w * 0.86, height: h * 0.62, tone: 'accent', opacity: 0.12, radius: 24 }),
+      text({ value: 'NOW\nBOOKING', x: w * 0.5, y: h * 0.3, width: w * 0.82, size: h * 0.075, align: 'center', caps: true, weight: 800, leading: 0.95 }),
+      text({ value: 'Portraits with\nHans Mustermann', x: w * 0.5, y: h * 0.5, width: w * 0.78, size: h * 0.032, align: 'center', family: 'serif', leading: 1.35 }),
+      shape({ form: 'rect', x: w * 0.5, y: h * 0.6, width: w * 0.24, height: h * 0.003, tone: 'ink' }),
+      text({ value: 'Studio dates in March', x: w * 0.5, y: h * 0.68, width: w * 0.8, size: h * 0.024, align: 'center', tone: 'muted' }),
     ],
   },
-  minimal: {
+  ticket: {
+    label: 'Ticket',
+    theme: 'ink',
+    frame: 'hairline',
+    size: 'ticket',
+    build: (w, h) => [
+      shape({ form: 'rect', x: w * 0.27, y: h * 0.5, width: w * 0.004, height: h * 0.64, tone: 'muted', opacity: 0.5 }),
+      text({ value: 'ADMIT\nONE', x: w * 0.135, y: h * 0.5, width: w * 0.2, size: h * 0.12, align: 'center', caps: true, weight: 800, leading: 0.95, tone: 'accent' }),
+      text({ value: 'An evening with Erika Mustermann', x: w * 0.62, y: h * 0.34, width: w * 0.62, size: h * 0.085, align: 'center', weight: 700 }),
+      text({ value: 'Friday 12 September · 8pm · The Union', x: w * 0.62, y: h * 0.58, width: w * 0.62, size: h * 0.055, align: 'center', tone: 'muted' }),
+      text({ value: 'Row C · Seat 14', x: w * 0.62, y: h * 0.75, width: w * 0.62, size: h * 0.05, align: 'center', tone: 'accent', caps: true, spacing: 3 }),
+    ],
+  },
+  plain: {
     label: 'Plain',
     theme: 'ink',
     frame: 'none',

@@ -1,5 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
-import { CANVAS_SIZES, THEMES, FRAMES, TEMPLATES, makeText, makeShape, newId, icsFor } from '../lib/poster.js';
+import { CANVAS_SIZES, THEMES, FRAMES, GALLERY, makeText, makeShape, newId, icsFor } from '../lib/poster.js';
 import { encodeQr } from '../lib/qr.js';
 import { createDesigns } from '../lib/designs.js';
 import { icon } from '../ui/icons.js';
@@ -11,7 +11,7 @@ const sheet = css`
   .body { flex: 1; min-height: 0; display: flex; }
 
   .rail {
-    width: 168px;
+    width: 268px;
     flex: none;
     border-right: 1px solid var(--border);
     padding: 8px 10px;
@@ -50,6 +50,34 @@ const sheet = css`
     color: var(--foreground);
     font-weight: 600;
   }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+    gap: 10px;
+    padding: 4px 2px 8px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    color: var(--muted-foreground);
+    font: 500 11px/1.2 var(--font-sans);
+  }
+  .card canvas {
+    display: block;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-raise);
+    transition: transform 0.12s ease, border-color 0.12s ease;
+  }
+  .card:hover canvas { transform: translateY(-2px); border-color: var(--ring); }
+  .card:hover { color: var(--foreground); }
 
   .stage { position: relative; flex: 1; min-width: 0; background: var(--muted); overflow: hidden; }
   canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: default; }
@@ -137,6 +165,18 @@ const FAMILIES = {
 
 const HANDLE = 9;
 
+const gauge = document.createElement('canvas').getContext('2d');
+
+const wordsOf = (item) => (item.caps ? String(item.value ?? '').toUpperCase() : String(item.value ?? ''));
+
+const fittedSize = (item) => {
+  const lines = wordsOf(item).split('\n');
+  gauge.font = `${item.weight} ${item.size}px ${FAMILIES[item.family] ?? FAMILIES.sans}`;
+  if (gauge.letterSpacing !== undefined) gauge.letterSpacing = `${item.spacing ?? 0}px`;
+  const widest = Math.max(...lines.map((line) => gauge.measureText(line).width), 1);
+  return widest > item.width ? item.size * (item.width / widest) : item.size;
+};
+
 class PosterStudio extends JGApp {
   static appId = 'poster-studio';
   static styles = [...JGApp.styles, sheet];
@@ -162,7 +202,7 @@ class PosterStudio extends JGApp {
       this.#restore(saved);
       this.#openName = open;
     } else {
-      this.#template('gig');
+      this.#template('concert');
     }
     super.connectedCallback();
   }
@@ -176,7 +216,7 @@ class PosterStudio extends JGApp {
   }
 
   #template(name) {
-    const spec = TEMPLATES[name] ?? TEMPLATES.minimal;
+    const spec = GALLERY[name] ?? GALLERY.plain;
     this.#size = spec.size ?? 'poster';
     this.#theme = spec.theme ?? 'ink';
     this.#frame = spec.frame ?? 'none';
@@ -296,10 +336,8 @@ class PosterStudio extends JGApp {
 
   #rail() {
     this.$('#rail').innerHTML = html`
-      <div class="group">Templates</div>
-      ${Object.entries(TEMPLATES).map(
-        ([key, spec]) => html`<button class="tool" data-template="${key}">${icon('image', 15)}<span>${spec.label}</span></button>`,
-      )}
+      <div class="group">Gallery</div>
+      <div class="gallery" id="gallery"></div>
       <div class="group">Add</div>
       <button class="tool" data-add="heading">${icon('type', 15)}<span>Heading</span></button>
       <button class="tool" data-add="body">${icon('alignLeft', 15)}<span>Body text</span></button>
@@ -314,16 +352,54 @@ class PosterStudio extends JGApp {
       )}
     `;
 
-    this.bind('[data-template]', 'click', (event) => {
-      this.#template(event.currentTarget.dataset.template);
-      this.#side();
-      this.#draw();
-    });
+    this.#gallery();
     this.bind('[data-add]', 'click', (event) => this.#add(event.currentTarget.dataset.add));
     this.bind('[data-size]', 'click', (event) => {
       this.#resize(event.currentTarget.dataset.size);
       this.#rail();
       this.#side();
+    });
+  }
+
+  #gallery() {
+    const target = this.$('#gallery');
+    if (!target) return;
+
+    target.innerHTML = Object.entries(GALLERY)
+      .map(
+        ([key, spec]) => html`<button class="card" data-template="${key}" title="${spec.label}">
+          <canvas data-thumb="${key}"></canvas><span>${spec.label}</span>
+        </button>`,
+      )
+      .join('');
+
+    Object.entries(GALLERY).forEach(([key, spec]) => {
+      const canvas = target.querySelector(`[data-thumb="${key}"]`);
+      if (!canvas) return;
+      const paper = CANVAS_SIZES[spec.size] ?? CANVAS_SIZES.poster;
+      const wide = 118;
+      const scale = wide / paper.width;
+      const ratio = Math.min(2, window.devicePixelRatio || 1);
+      canvas.style.width = `${wide}px`;
+      canvas.style.height = `${Math.round(paper.height * scale)}px`;
+      canvas.width = Math.round(wide * ratio);
+      canvas.height = Math.round(paper.height * scale * ratio);
+      const context = canvas.getContext('2d');
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+      this.#drawPoster(context, scale, {
+        size: spec.size,
+        theme: spec.theme,
+        frame: spec.frame,
+        items: spec.build(paper.width, paper.height),
+      });
+    });
+
+    this.bind('[data-template]', 'click', (event) => {
+      this.#template(event.currentTarget.dataset.template);
+      this.#openName = null;
+      this.#rail();
+      this.#side();
+      this.#draw();
     });
   }
 
@@ -665,8 +741,8 @@ class PosterStudio extends JGApp {
   }
 
   #textHeight(item) {
-    const lines = String(item.value ?? '').split('\n').length;
-    return lines * item.size * (item.leading ?? 1.14);
+    const lines = wordsOf(item).split('\n').length;
+    return lines * fittedSize(item) * (item.leading ?? 1.14);
   }
 
   #localOf(item, point) {
@@ -783,30 +859,32 @@ class PosterStudio extends JGApp {
     this.#draw();
   }
 
-  #tone(name) {
-    const theme = this.#palette;
+  #tone(name, theme = this.#palette) {
     return { ink: theme.ink, accent: theme.accent, muted: theme.muted, paper: theme.paper }[name] ?? theme.ink;
   }
 
-  #drawPoster(context, scale) {
-    const { width, height } = this.#canvasSize;
-    const theme = this.#palette;
+  #scene() {
+    return { size: this.#size, theme: this.#theme, frame: this.#frame, items: this.#items };
+  }
+
+  #drawPoster(context, scale, scene = this.#scene()) {
+    const { width, height } = CANVAS_SIZES[scene.size] ?? CANVAS_SIZES.poster;
+    const theme = THEMES[scene.theme] ?? THEMES.ink;
 
     context.save();
     context.scale(scale, scale);
     context.fillStyle = theme.paper;
     context.fillRect(0, 0, width, height);
 
-    this.#items.forEach((item) => this.#drawItem(context, item));
-    this.#drawFrame(context);
+    scene.items.forEach((item) => this.#drawItem(context, item, theme));
+    this.#drawFrame(context, scene, theme);
     context.restore();
   }
 
-  #drawFrame(context) {
-    const spec = FRAMES[this.#frame];
-    if (!spec || this.#frame === 'none') return;
-    const { width, height } = this.#canvasSize;
-    const theme = this.#palette;
+  #drawFrame(context, scene = this.#scene(), theme = this.#palette) {
+    const spec = FRAMES[scene.frame];
+    if (!spec || scene.frame === 'none') return;
+    const { width, height } = CANVAS_SIZES[scene.size] ?? CANVAS_SIZES.poster;
     const inset = spec.inset ?? 30;
 
     context.save();
@@ -850,7 +928,7 @@ class PosterStudio extends JGApp {
     context.restore();
   }
 
-  #drawItem(context, item) {
+  #drawItem(context, item, theme = this.#palette) {
     const height = item.kind === 'text' ? this.#textHeight(item) : item.height;
     context.save();
     context.translate(item.x, item.y);
@@ -858,20 +936,21 @@ class PosterStudio extends JGApp {
     context.globalAlpha = item.opacity ?? 1;
 
     if (item.kind === 'text') {
-      const words = item.caps ? String(item.value).toUpperCase() : String(item.value);
-      context.fillStyle = this.#tone(item.tone);
-      context.font = `${item.weight} ${item.size}px ${FAMILIES[item.family] ?? FAMILIES.sans}`;
+      const words = wordsOf(item);
+      const size = fittedSize(item);
+      context.fillStyle = this.#tone(item.tone, theme);
+      context.font = `${item.weight} ${size}px ${FAMILIES[item.family] ?? FAMILIES.sans}`;
       context.textAlign = item.align === 'left' ? 'left' : item.align === 'right' ? 'right' : 'center';
       context.textBaseline = 'middle';
       if (context.letterSpacing !== undefined) context.letterSpacing = `${item.spacing ?? 0}px`;
       const lines = words.split('\n');
-      const step = item.size * (item.leading ?? 1.14);
+      const step = size * (item.leading ?? 1.14);
       const anchor = item.align === 'left' ? -item.width / 2 : item.align === 'right' ? item.width / 2 : 0;
       lines.forEach((line, index) => {
         context.fillText(line, anchor, (index - (lines.length - 1) / 2) * step);
       });
     } else if (item.kind === 'shape') {
-      context.fillStyle = this.#tone(item.tone);
+      context.fillStyle = this.#tone(item.tone, theme);
       if (item.form === 'circle') {
         context.beginPath();
         context.ellipse(0, 0, item.width / 2, item.height / 2, 0, 0, Math.PI * 2);
@@ -893,7 +972,7 @@ class PosterStudio extends JGApp {
       }
       if (item.image) context.drawImage(item.image, -item.width / 2, -height / 2, item.width, height);
       else {
-        context.strokeStyle = this.#tone('muted');
+        context.strokeStyle = this.#tone('muted', theme);
         context.strokeRect(-item.width / 2, -height / 2, item.width, height);
       }
     } else if (item.kind === 'qr') {
@@ -901,9 +980,9 @@ class PosterStudio extends JGApp {
       const cells = grid.size;
       const quiet = 2;
       const unit = item.width / (cells + quiet * 2);
-      context.fillStyle = this.#palette.paper;
+      context.fillStyle = theme.paper;
       context.fillRect(-item.width / 2, -item.width / 2, item.width, item.width);
-      context.fillStyle = this.#palette.ink;
+      context.fillStyle = theme.ink;
       for (let y = 0; y < cells; y += 1) {
         for (let x = 0; x < cells; x += 1) {
           if (!grid.modules[y][x]) continue;
@@ -977,13 +1056,13 @@ class PosterStudio extends JGApp {
     context.restore();
   }
 
-  #render(scale) {
-    const { width, height } = this.#canvasSize;
+  #render(scale, scene = this.#scene()) {
+    const { width, height } = CANVAS_SIZES[scene.size] ?? CANVAS_SIZES.poster;
     const canvas = document.createElement('canvas');
     canvas.width = Math.round(width * scale);
     canvas.height = Math.round(height * scale);
     const context = canvas.getContext('2d');
-    this.#drawPoster(context, scale);
+    this.#drawPoster(context, scale, scene);
     return canvas;
   }
 
@@ -1005,16 +1084,17 @@ class PosterStudio extends JGApp {
     this.#items.forEach((item) => {
       const turn = `rotate(${((item.angle ?? 0) * 180) / Math.PI} ${item.x} ${item.y})`;
       if (item.kind === 'text') {
-        const words = item.caps ? String(item.value).toUpperCase() : String(item.value);
+        const words = wordsOf(item);
+        const size = fittedSize(item);
         const lines = words.split('\n');
-        const step = item.size * (item.leading ?? 1.14);
+        const step = size * (item.leading ?? 1.14);
         const anchor = item.align === 'left' ? 'start' : item.align === 'right' ? 'end' : 'middle';
         const at = item.align === 'left' ? item.x - item.width / 2 : item.align === 'right' ? item.x + item.width / 2 : item.x;
         const spans = lines
-          .map((line, index) => `<tspan x="${at}" y="${item.y + (index - (lines.length - 1) / 2) * step + item.size * 0.34}">${escape(line)}</tspan>`)
+          .map((line, index) => `<tspan x="${at}" y="${item.y + (index - (lines.length - 1) / 2) * step + size * 0.34}">${escape(line)}</tspan>`)
           .join('');
         parts.push(
-          `<text transform="${turn}" font-family="${item.family === 'serif' ? 'Georgia, serif' : item.family === 'mono' ? 'monospace' : 'system-ui, sans-serif'}" font-size="${item.size}" font-weight="${item.weight}" fill="${this.#tone(item.tone)}" text-anchor="${anchor}">${spans}</text>`,
+          `<text transform="${turn}" font-family="${item.family === 'serif' ? 'Georgia, serif' : item.family === 'mono' ? 'monospace' : 'system-ui, sans-serif'}" font-size="${size}" font-weight="${item.weight}" fill="${this.#tone(item.tone)}" text-anchor="${anchor}">${spans}</text>`,
         );
       } else if (item.kind === 'shape') {
         if (item.form === 'circle') {
