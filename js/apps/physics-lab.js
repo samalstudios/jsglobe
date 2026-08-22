@@ -164,7 +164,7 @@ const SHAPES = {
   box: { label: 'Block', icon: 'square' },
   wall: { label: 'Wall', icon: 'frame' },
   shape: { label: 'Shape', icon: 'vector' },
-  gear: { label: 'Gear', icon: 'gear' },
+  gear: { label: 'Gear', icon: 'gearWheel' },
 };
 
 const LINKS = {
@@ -174,7 +174,7 @@ const LINKS = {
   jack: { label: 'Jack', icon: 'piston' },
   pin: { label: 'Pin', icon: 'hinge' },
   motor: { label: 'Motor', icon: 'motorised' },
-  mesh: { label: 'Mesh gears', icon: 'cog' },
+  mesh: { label: 'Mesh gears', icon: 'gearPair' },
   linkage: { label: 'Linkage', icon: 'ruler' },
   track: { label: 'Track', icon: 'rail' },
   weld: { label: 'Weld', icon: 'weldSeam' },
@@ -1392,7 +1392,7 @@ export default class PhysicsLab extends JGApp {
       density: 1,
       friction: 0.7,
       restitution: 0,
-      teeth: Math.max(8, Math.round(radius * 14)),
+      teeth: Math.max(8, Math.round(radius * 12)),
     };
     this.#bodies.push(axle, wheel);
     this.#joints.push({ id: this.#seq++, kind: 'pin', a: axle.id, b: wheel.id, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 } });
@@ -1497,7 +1497,7 @@ export default class PhysicsLab extends JGApp {
         b: to.id,
         aAt: { x: 0, y: 0 },
         bAt: { x: 0, y: 0 },
-        ratio: wheelB.radius / wheelA.radius,
+        ratio: this.#gearRatio(from.id, to.id),
       };
       this.#joints.push(mesh);
       this.#selectedJoint = mesh;
@@ -1619,6 +1619,22 @@ export default class PhysicsLab extends JGApp {
       x: (canvas.clientWidth / 2 - this.#pan.x) / span,
       y: (canvas.clientHeight / 2 - this.#pan.y) / span,
     };
+  }
+
+  #gearRatio(aId, bId) {
+    const a = this.#bodies.find((body) => body.id === aId);
+    const b = this.#bodies.find((body) => body.id === bId);
+    if (!a || !b) return 1;
+    if (a.teeth && b.teeth) return b.teeth / a.teeth;
+    return (b.radius ?? 1) / (a.radius ?? 1);
+  }
+
+  #retuneMeshes(bodyId) {
+    this.#joints
+      .filter((joint) => joint.kind === 'gear' && (joint.a === bodyId || joint.b === bodyId))
+      .forEach((joint) => {
+        joint.ratio = this.#gearRatio(joint.a, joint.b);
+      });
   }
 
   #outlineOf(body) {
@@ -1980,8 +1996,12 @@ export default class PhysicsLab extends JGApp {
 
     const live = this.#world.body(body.id);
     target.innerHTML = html`
-      <div class="label">${body.ghost ? 'Linkage bar' : body.kind === 'circle' ? 'Ball' : body.kind === 'poly' ? 'Shape' : body.pinned ? 'Wall' : 'Block'}</div>
-      ${body.kind === 'circle'
+      <div class="label">${body.ghost ? 'Linkage bar' : body.teeth ? 'Gear' : body.kind === 'circle' ? 'Ball' : body.kind === 'poly' ? 'Shape' : body.pinned ? 'Wall' : 'Block'}</div>
+      ${body.kind === 'circle' && body.teeth
+        ? html`<jg-field label="Radius m"><jg-input id="radius" size="sm" type="number" step="0.05" min="0.2" value="${body.radius}"></jg-input></jg-field>
+            <jg-field label="Teeth"><jg-input id="teeth" size="sm" type="number" step="1" min="6" max="72" value="${Math.round(body.teeth)}"></jg-input></jg-field>
+            <div class="hint">Meshed wheels turn in the ratio of their teeth.</div>`
+        : body.kind === 'circle'
         ? html`<jg-field label="Radius m"><jg-input id="radius" size="sm" type="number" step="0.05" min="0.05" value="${body.radius}"></jg-input></jg-field>`
         : body.kind === 'poly'
           ? html`<div class="hint">${body.points.length} corners</div>`
@@ -2011,7 +2031,30 @@ export default class PhysicsLab extends JGApp {
         this.#inspector();
       });
     };
-    bind('radius', 'radius');
+    const teeth = this.$('#teeth');
+    if (teeth) {
+      this.on(teeth, 'change', () => {
+        this.#snapshot();
+        body.teeth = Math.max(6, Math.round(Number(teeth.value) || body.teeth));
+        this.#retuneMeshes(body.id);
+        this.#reset();
+        this.#inspector();
+        this.#draw();
+      });
+    }
+    const radius = this.$('#radius');
+    if (radius && body.teeth) {
+      this.on(radius, 'change', () => {
+        this.#snapshot();
+        body.radius = Math.max(0.2, Number(radius.value) || body.radius);
+        this.#retuneMeshes(body.id);
+        this.#reset();
+        this.#inspector();
+        this.#draw();
+      });
+    } else {
+      bind('radius', 'radius');
+    }
     bind('width', 'width');
     bind('height', 'height');
     const angle = this.$('#angle');
@@ -2257,28 +2300,54 @@ export default class PhysicsLab extends JGApp {
     context.fillStyle = held ? `color-mix(in srgb, ${paint.soft} 34%, transparent)` : paint.card;
 
     if (body.kind === 'circle' && body.teeth) {
-      const count = body.teeth;
-      const root = body.radius * 0.86;
+      const count = Math.max(6, Math.round(body.teeth));
       const tip = body.radius;
+      const module = (2 * tip) / (count + 2);
+      const pitch = tip - module;
+      const root = Math.max(tip * 0.35, pitch - module * 1.25);
+      const step = (Math.PI * 2) / count;
+      const wideRoot = step * 0.29;
+      const wideTip = step * 0.17;
+      const at = (radius, angle) => [body.x + Math.cos(angle) * radius, body.y + Math.sin(angle) * radius];
+
       context.beginPath();
       for (let index = 0; index < count; index += 1) {
-        const step = (Math.PI * 2) / count;
         const base = body.angle + index * step;
-        const edge = step * 0.26;
-        const at = (radius, angle) => [body.x + Math.cos(angle) * radius, body.y + Math.sin(angle) * radius];
-        const points = [
-          at(root, base - step * 0.5 + edge),
-          at(tip, base - edge),
-          at(tip, base + edge),
-          at(root, base + step * 0.5 - edge),
-        ];
-        points.forEach((point, slot) => (index === 0 && slot === 0 ? context.moveTo(...point) : context.lineTo(...point)));
+        if (index === 0) context.moveTo(...at(root, base - wideRoot));
+        else context.arc(body.x, body.y, root, base - step + wideRoot, base - wideRoot);
+        context.lineTo(...at(pitch, base - wideRoot * 0.82));
+        context.lineTo(...at(tip, base - wideTip));
+        context.arc(body.x, body.y, tip, base - wideTip, base + wideTip);
+        context.lineTo(...at(pitch, base + wideRoot * 0.82));
+        context.lineTo(...at(root, base + wideRoot));
       }
+      context.arc(body.x, body.y, root, body.angle + (count - 1) * step + wideRoot, body.angle + Math.PI * 2 - wideRoot);
       context.closePath();
       context.fill();
       context.stroke();
+
+      const hub = Math.max(0.06, tip * 0.16);
       context.beginPath();
-      context.arc(body.x, body.y, body.radius * 0.22, 0, Math.PI * 2);
+      context.arc(body.x, body.y, hub, 0, Math.PI * 2);
+      context.fillStyle = paint.card;
+      context.fill();
+      context.stroke();
+
+      if (root > tip * 0.5 && count >= 10) {
+        const holes = 5;
+        const ring = (root * 0.62 + hub * 1.4) / 2 + root * 0.12;
+        for (let index = 0; index < holes; index += 1) {
+          const angle = body.angle + (index / holes) * Math.PI * 2;
+          context.beginPath();
+          context.arc(body.x + Math.cos(angle) * ring, body.y + Math.sin(angle) * ring, root * 0.17, 0, Math.PI * 2);
+          context.strokeStyle = paint.soft;
+          context.stroke();
+        }
+      }
+
+      context.beginPath();
+      context.moveTo(body.x, body.y);
+      context.lineTo(...at(hub, body.angle));
       context.strokeStyle = paint.soft;
       context.stroke();
       context.restore();
