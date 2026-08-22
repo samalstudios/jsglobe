@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { uid, debounce, download } from '../../core/util.js';
@@ -6,31 +6,7 @@ import { router } from '../../core/router.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .shell { display: grid; grid-template-columns: 220px 1fr; gap: 12px; height: 100%; min-height: 0; }
-  @media (max-width: 640px) { .shell { grid-template-columns: 1fr; } .sidebar { max-height: 180px; } }
-  .sidebar { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
-  .notes { display: flex; flex-direction: column; gap: 4px; overflow: auto; min-height: 0; }
-  .note {
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding: 9px 10px;
-    border: 1px solid transparent;
-    border-radius: var(--radius-md);
-    background: transparent;
-    color: inherit;
-    font-family: inherit;
-    cursor: pointer;
-  }
-  .note:hover { background: var(--accent); }
-  .note[aria-current="true"] { background: var(--card); border-color: var(--border); }
-  .note .t { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .note .d { font-size: 11px; color: var(--muted-foreground); }
-  .editor { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
-  .widget { display: flex; flex-direction: column; gap: 6px; height: 100%; padding: 0 12px 12px; }
-  .widget .body { flex: 1; font-size: 12px; color: var(--muted-foreground); overflow: hidden; white-space: pre-wrap; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const preview = (text) => text.split('\n').find((line) => line.trim()) ?? 'Untitled';
 

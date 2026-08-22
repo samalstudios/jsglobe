@@ -1,56 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { copyText, uid } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .preview {
-    flex: none;
-    height: 220px;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border);
-    background-image: var(--gradient);
-  }
-  .track {
-    position: relative;
-    flex: none;
-    height: 34px;
-    margin: 14px 6px 10px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background-image: var(--strip);
-    cursor: copy;
-  }
-  .stop {
-    position: absolute;
-    top: -6px;
-    width: 18px;
-    height: 46px;
-    margin-left: -9px;
-    border-radius: 6px;
-    border: 2px solid var(--background);
-    box-shadow: 0 0 0 1px var(--border-strong), var(--shadow-sm);
-    cursor: grab;
-  }
-  .stop[data-active="true"] { box-shadow: 0 0 0 2px var(--ring), var(--shadow-md); z-index: 2; }
-  .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
-  .stops { display: flex; flex-wrap: wrap; gap: 6px; }
-  .chip {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 8px 4px 4px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-  }
-  .chip input[type="color"] { width: 22px; height: 22px; border: 0; border-radius: 999px; padding: 0; background: none; }
-  .presets { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 8px; }
-  .preset { height: 44px; border-radius: var(--radius-sm); border: 1px solid var(--border); cursor: pointer; padding: 0; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const PRESETS = [
   ['#8a1c3b', '#f97316'],

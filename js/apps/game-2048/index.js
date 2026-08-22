@@ -1,75 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { randomInt } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .head { display: flex; align-items: center; gap: 10px; }
-  .score {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 78px;
-    padding: 6px 12px;
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 75%, transparent);
-    border: 1px solid var(--border);
-  }
-  .score .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted-foreground); }
-  .score .value { font: 700 18px/1.2 var(--font-sans); font-variant-numeric: tabular-nums; }
-  .board {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    padding: 8px;
-    width: min(560px, 100%, 68vh);
-    aspect-ratio: 1;
-    margin: 0 auto;
-    border-radius: var(--radius-lg);
-    background: color-mix(in srgb, var(--muted) 80%, transparent);
-    border: 1px solid var(--border);
-    touch-action: none;
-    user-select: none;
-  }
-  .tile {
-    display: grid;
-    place-items: center;
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--foreground) 5%, transparent);
-    font: 700 clamp(18px, 6vw, 34px)/1 var(--font-sans);
-    color: var(--foreground);
-    transition: transform 0.1s ease;
-  }
-  .tile[data-value="0"] { color: transparent; }
-  .tile[data-new="true"] { animation: pop 0.16s ease; }
-  @keyframes pop { from { transform: scale(0.6); } to { transform: none; } }
-  .tile[data-value="2"] { background: #eee4da; color: #6b6154; }
-  .tile[data-value="4"] { background: #ede0c8; color: #6b6154; }
-  .tile[data-value="8"] { background: #f2b179; color: #fff; }
-  .tile[data-value="16"] { background: #f59563; color: #fff; }
-  .tile[data-value="32"] { background: #f67c5f; color: #fff; }
-  .tile[data-value="64"] { background: #f65e3b; color: #fff; }
-  .tile[data-value="128"] { background: #edcf72; color: #fff; font-size: clamp(16px, 5vw, 29px); }
-  .tile[data-value="256"] { background: #edcc61; color: #fff; font-size: clamp(16px, 5vw, 29px); }
-  .tile[data-value="512"] { background: #edc850; color: #fff; font-size: clamp(16px, 5vw, 29px); }
-  .tile[data-value="1024"] { background: #edc53f; color: #fff; font-size: clamp(14px, 4.2vw, 24px); }
-  .tile[data-value="2048"] { background: #edc22e; color: #fff; font-size: clamp(14px, 4.2vw, 24px); }
-  .overlay {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    gap: 10px;
-    border-radius: var(--radius-lg);
-    background: color-mix(in srgb, var(--background) 72%, transparent);
-    backdrop-filter: blur(3px);
-    text-align: center;
-  }
-  .overlay h3 { margin: 0; font-size: 22px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const EMPTY = () => Array.from({ length: 4 }, () => [0, 0, 0, 0]);
 

@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { fromYaml, toYaml } from '../../core/yaml.js';
@@ -7,35 +7,7 @@ import { debounce, copyText, download } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .shell { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
-  @container (max-width: 900px) { .shell { grid-template-columns: 1fr; } }
-  .app { container-type: inline-size; }
-  .pane { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
-  .controls {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
-    gap: 10px;
-    align-items: end;
-  }
-  .flags { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-  .flags label { display: flex; align-items: center; gap: 6px; font: 500 12px/1 var(--font-sans); color: var(--muted-foreground); }
-  .notes {
-    max-height: 132px;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 9px 11px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: var(--muted);
-  }
-  .notes p { margin: 0; font: 400 11.5px/1.45 var(--font-sans); color: var(--muted-foreground); }
-  .notes p::before { content: '•'; margin-right: 6px; color: var(--ring); }
-  .tally { display: flex; gap: 10px; flex-wrap: wrap; font: 500 11.5px/1 var(--font-mono); color: var(--muted-foreground); }
-  .bad { color: var(--destructive); font: 500 12px/1.4 var(--font-sans); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SAMPLE = `services:
   web:

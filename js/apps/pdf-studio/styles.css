@@ -1,0 +1,73 @@
+.app { padding: 0; gap: 0; container-type: inline-size; overflow: hidden; }
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  flex: none;
+}
+
+.body { flex: 1; min-height: 0; display: flex; }
+.stage { flex: 1; min-width: 0; overflow: auto; padding: 14px; }
+.side {
+  width: 236px;
+  flex: none;
+  border-left: 1px solid var(--border);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: auto;
+}
+
+.drop {
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  min-height: 240px;
+  border: 1px dashed var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--muted) 50%, transparent);
+  text-align: center;
+  padding: 28px;
+}
+.drop[data-over="true"] { border-color: var(--ring); background: color-mix(in srgb, var(--ring) 10%, transparent); }
+
+.pages { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 12px; }
+.page {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  padding: 8px;
+  display: grid;
+  gap: 6px;
+  cursor: pointer;
+}
+.page[data-picked="true"] { border-color: var(--ring); box-shadow: 0 0 0 2px color-mix(in srgb, var(--ring) 40%, transparent); }
+.page canvas { width: 100%; border-radius: var(--radius-sm); background: #fff; display: block; }
+.page .meta { display: flex; align-items: center; justify-content: space-between; font: 500 11px/1 var(--font-mono); color: var(--muted-foreground); }
+.page .tools { display: flex; gap: 4px; }
+.page .tools button {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  color: var(--muted-foreground);
+  font-size: 11px;
+  cursor: pointer;
+}
+.page .tools button:hover { color: var(--foreground); border-color: var(--border-strong); }
+
+.text { width: 100%; min-height: 320px; }
+.status { font-size: 12px; color: var(--muted-foreground); }
+
+@container (max-width: 760px) {
+  .body { flex-direction: column; }
+  .side { width: auto; border-left: 0; border-top: 1px solid var(--border); }
+}

@@ -1,14 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { words, titleCase, debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px; }
-  .case { display: flex; flex-direction: column; gap: 4px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const CASES = [
   { id: 'camel', label: t('case-converter.camelcase', 'camelCase'), fn: (parts) => parts.map((word, index) => (index ? titleCase(word) : word.toLowerCase())).join('') },

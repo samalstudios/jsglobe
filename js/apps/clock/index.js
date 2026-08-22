@@ -1,35 +1,10 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .face { display: grid; gap: 4px; justify-items: center; padding: 6px 0 2px; }
-  .time { font: 600 clamp(30px, 8vw, 54px)/1 var(--font-sans); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
-  .sub { font-size: 13px; color: var(--muted-foreground); }
-  .zones { display: grid; gap: 8px; }
-  .zone {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--card);
-  }
-  .zone .city { font-size: 13.5px; font-weight: 500; }
-  .zone .offset { font-size: 11.5px; color: var(--muted-foreground); }
-  .zone .t { margin-left: auto; font: 600 17px/1 var(--font-mono); font-variant-numeric: tabular-nums; }
-  .zone .del { opacity: 0; }
-  .zone:hover .del { opacity: 1; }
-  .digits { font: 600 clamp(28px, 7vw, 46px)/1 var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
-  .laps { max-height: 190px; overflow: auto; }
-  .lap { display: flex; justify-content: space-between; padding: 6px 8px; border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 12.5px; }
-  .widget-face { display: grid; gap: 2px; align-content: center; height: 100%; padding: 0 12px 12px; }
-  .widget-time { font: 600 30px/1 var(--font-sans); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
-  .ring { display: grid; place-items: center; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const ZONES = [
   'UTC',

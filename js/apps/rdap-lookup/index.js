@@ -1,29 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { copyText, toast } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .cards { display: grid; gap: 12px; }
-  .events { display: grid; gap: 5px; }
-  .event { display: grid; grid-template-columns: 150px 1fr; gap: 10px; font-size: 12.5px; }
-  .event .when { font-family: var(--font-mono); color: var(--muted-foreground); }
-  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
-  .servers { display: grid; gap: 3px; font-family: var(--font-mono); font-size: 12px; }
-  .history { display: flex; flex-wrap: wrap; gap: 6px; }
-  .past {
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: transparent;
-    color: var(--muted-foreground);
-    font: 500 11.5px/1 var(--font-mono);
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  .past:hover { color: var(--foreground); border-color: var(--border-strong); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const STATUS_NOTES = {
   'client transfer prohibited': 'Transfers to another registrar are locked by the registrar.',

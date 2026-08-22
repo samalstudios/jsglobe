@@ -1,0 +1,66 @@
+.app { gap: 12px; }
+.readout { display: grid; place-items: center; gap: 2px; padding: 6px 0 0; }
+.note { font: 700 clamp(46px, 14vw, 78px)/1 var(--font-sans); letter-spacing: -0.05em; }
+.note small { font-size: 0.42em; font-weight: 600; color: var(--muted-foreground); margin-left: 4px; }
+.freq { font: 500 13px/1 var(--font-mono); color: var(--muted-foreground); }
+.verdict { font-size: 13px; font-weight: 600; min-height: 20px; }
+.verdict[data-state="flat"], .verdict[data-state="sharp"] { color: var(--warning); }
+.verdict[data-state="in"] { color: var(--success); }
+.verdict[data-state="idle"] { color: var(--muted-foreground); font-weight: 500; }
+
+.meter {
+  position: relative;
+  height: 66px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--muted) 60%, transparent);
+  overflow: hidden;
+}
+.ticks { position: absolute; inset: 0; display: flex; justify-content: space-between; padding: 0 6px; }
+.ticks span { width: 1px; background: var(--border-strong); }
+.ticks span:nth-child(6) { background: var(--success); width: 2px; }
+.zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 47%;
+  width: 6%;
+  background: color-mix(in srgb, var(--success) 14%, transparent);
+}
+.needle {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--ring);
+  left: 50%;
+  transform: translateX(-50%);
+  transition: left 0.09s linear, background 0.2s ease;
+}
+.needle[data-in="true"] { background: var(--success); }
+.scale { display: flex; justify-content: space-between; font: 500 10px/1 var(--font-mono); color: var(--muted-foreground); }
+
+.strings { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.string {
+  display: grid;
+  place-items: center;
+  gap: 1px;
+  min-width: 58px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  color: var(--foreground);
+  font-family: inherit;
+  cursor: pointer;
+}
+.string b { font-size: 15px; }
+.string span { font-size: 10.5px; color: var(--muted-foreground); font-family: var(--font-mono); }
+.string[data-active="true"] {
+  border-color: var(--ring);
+  background: color-mix(in srgb, var(--ring) 14%, transparent);
+}
+.string[data-tuned="true"] { border-color: var(--success); background: color-mix(in srgb, var(--success) 14%, transparent); }
+.level { height: 5px; border-radius: 999px; background: var(--muted); overflow: hidden; }
+.level i { display: block; height: 100%; background: var(--ring); transition: width 0.08s linear; }

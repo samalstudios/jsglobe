@@ -1,35 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText, download } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .stage {
-    display: grid;
-    place-items: center;
-    flex: none;
-    min-height: 240px;
-    padding: 16px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background:
-      repeating-conic-gradient(color-mix(in srgb, var(--muted) 70%, transparent) 0% 25%, transparent 0% 50%) 50% / 18px 18px;
-    overflow: auto;
-  }
-  .stage svg { max-width: 100%; height: auto; box-shadow: var(--shadow-md); border-radius: 4px; }
-  .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
-  .swatches { display: flex; flex-wrap: wrap; gap: 6px; }
-  .swatch {
-    width: 30px;
-    height: 30px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    padding: 0;
-  }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const THEMES = [
   { id: 'slate', background: '#e2e8f0', foreground: '#64748b' },

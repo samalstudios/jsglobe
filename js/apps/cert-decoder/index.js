@@ -1,19 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
-  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
-  .pane { display: flex; flex-direction: column; gap: 8px; min-width: 0; min-height: 0; overflow: auto; scrollbar-width: thin; }
-  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
-  .names { display: grid; gap: 3px; font-family: var(--font-mono); font-size: 12px; }
-  .life { height: 8px; border-radius: 999px; background: var(--muted); overflow: hidden; }
-  .life i { display: block; height: 100%; background: var(--ring); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const OIDS = {
   '2.5.4.3': 'CN', '2.5.4.6': 'C', '2.5.4.7': 'L', '2.5.4.8': 'ST', '2.5.4.10': 'O',

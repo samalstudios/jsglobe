@@ -1,0 +1,3 @@
+.binary { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; overflow-wrap: anywhere; }
+.net { color: var(--ring); }
+.host { color: var(--muted-foreground); }

@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { blobs } from '../../core/blobs.js';
@@ -9,66 +9,7 @@ import { download, formatBytes, copyText, toast, uid } from '../../core/util.js'
 
 const t = appText(strings);
 
-const sheet = css`
-  .app { gap: 12px; }
-  .recorder {
-    display: grid;
-    gap: 10px;
-    padding: 14px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background: var(--card);
-  }
-  .wave { width: 100%; height: 84px; display: block; border-radius: var(--radius-md); background: color-mix(in srgb, var(--muted) 70%, transparent); }
-  .timer { font: 700 clamp(26px, 7vw, 40px)/1 var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
-  .rec-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 999px;
-    background: var(--destructive);
-    animation: pulse 1.1s ease-in-out infinite;
-  }
-  @keyframes pulse { 50% { opacity: 0.25; } }
-
-  .item {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 8px 12px;
-    padding: 11px 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--card);
-  }
-  .item[data-open="true"] { border-color: color-mix(in srgb, var(--ring) 45%, transparent); }
-  .item .name { font-size: 13.5px; font-weight: 600; overflow-wrap: anywhere; }
-  .item .meta { font-size: 11.5px; color: var(--muted-foreground); }
-  .item audio { width: 100%; height: 34px; grid-column: 1 / -1; }
-  .item .body { grid-column: 1 / -1; display: grid; gap: 8px; }
-  .transcript {
-    max-height: 240px;
-    overflow: auto;
-    padding: 11px 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: color-mix(in srgb, var(--muted) 60%, transparent);
-    font-size: 13px;
-    line-height: 1.7;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-  .cue { display: flex; gap: 8px; padding: 2px 0; }
-  .cue button {
-    border: 0;
-    background: transparent;
-    color: var(--ring);
-    font: 600 11px/1.6 var(--font-mono);
-    cursor: pointer;
-    padding: 0;
-    flex: none;
-  }
-  .engine { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--muted-foreground); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const clock = (seconds) => {
   const total = Math.floor(seconds);

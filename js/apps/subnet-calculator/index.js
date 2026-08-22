@@ -1,15 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, chunk } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .binary { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; overflow-wrap: anywhere; }
-  .net { color: var(--ring); }
-  .host { color: var(--muted-foreground); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const toInt = (address) =>
   address.split('.').reduce((total, part) => (total << 8) + (Number(part) & 255), 0) >>> 0;

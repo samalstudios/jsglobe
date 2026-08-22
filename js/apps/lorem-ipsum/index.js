@@ -1,13 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { copyText, randomInt } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .out { line-height: 1.75; white-space: pre-wrap; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const WORDS = `lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna
 aliqua enim ad minim veniam quis nostrud exercitation ullamco laboris nisi aliquip ex ea commodo consequat duis aute irure

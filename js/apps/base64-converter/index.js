@@ -1,16 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { toBase64, fromBase64, base64Url, fromBase64Url, encodeBytes, decodeBytes, pickFile, formatBytes, copyText, debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
-  @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
-  .pane { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
-  .preview { max-height: 160px; border-radius: var(--radius-md); border: 1px solid var(--border); object-fit: contain; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 class Base64Converter extends JGApp {
   static appId = 'base64-converter';

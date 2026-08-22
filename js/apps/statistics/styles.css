@@ -1,0 +1,21 @@
+.split { display: grid; grid-template-columns: 320px 1fr; gap: 14px; flex: 1; min-height: 0; }
+@media (max-width: 880px) { .split { grid-template-columns: 1fr; } }
+.right { display: flex; flex-direction: column; gap: 12px; min-width: 0; overflow: auto; scrollbar-width: thin; }
+.summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(116px, 1fr)); gap: 8px; }
+.stat {
+  display: grid;
+  gap: 2px;
+  padding: 9px 11px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--muted) 45%, transparent);
+}
+.stat .value { font: 600 16px/1.2 var(--font-mono); letter-spacing: -0.02em; }
+.stat .name { font-size: 11px; color: var(--muted-foreground); }
+svg { display: block; width: 100%; height: auto; overflow: visible; }
+.bar { fill: var(--ring); }
+.axis { stroke: var(--border-strong); stroke-width: 1; }
+.tick { fill: var(--muted-foreground); font-family: var(--font-mono); font-size: 9px; }
+.box { fill: color-mix(in srgb, var(--ring) 22%, transparent); stroke: var(--ring); stroke-width: 1.6; }
+.whisker { stroke: var(--muted-foreground); stroke-width: 1.4; }
+.outlier { fill: var(--destructive); }

@@ -1,41 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { copyText, download } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .app { padding: 0; gap: 0; container-type: inline-size; overflow: hidden; }
-  .head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--border);
-    flex: none;
-    flex-wrap: wrap;
-  }
-  .body { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 14px; gap: 12px; }
-  .log {
-    flex: 1;
-    min-height: 0;
-    overflow: auto;
-    padding: 10px 12px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border);
-    background: color-mix(in srgb, var(--muted) 75%, transparent);
-    font: 12.5px/1.5 var(--font-mono);
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-  .log .rx { color: var(--foreground); }
-  .log .tx { color: var(--ring); }
-  .log .sys { color: var(--muted-foreground); font-style: italic; }
-  .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--muted-foreground); flex: none; }
-  .dot[data-open="true"] { background: var(--success, #4a7a58); }
-  .unsupported { display: grid; place-items: center; gap: 10px; padding: 48px 20px; text-align: center; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const BAUD = [300, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200, 230400, 460800, 921600];
 

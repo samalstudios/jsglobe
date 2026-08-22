@@ -1,36 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
-  .result {
-    max-height: 420px;
-    overflow: auto;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 65%, transparent);
-    font-family: var(--font-mono);
-    font-size: 12.5px;
-  }
-  .change { display: grid; grid-template-columns: 20px 1fr; gap: 8px; padding: 5px 10px; border-bottom: 1px solid var(--border); }
-  .change:last-child { border-bottom: 0; }
-  .change .mark { font-weight: 700; text-align: center; }
-  .change[data-kind="added"] { background: color-mix(in srgb, var(--success) 12%, transparent); }
-  .change[data-kind="added"] .mark { color: var(--success); }
-  .change[data-kind="removed"] { background: color-mix(in srgb, var(--destructive) 12%, transparent); }
-  .change[data-kind="removed"] .mark { color: var(--destructive); }
-  .change[data-kind="changed"] { background: color-mix(in srgb, var(--warning) 12%, transparent); }
-  .change[data-kind="changed"] .mark { color: var(--warning); }
-  .path { color: var(--ring); }
-  .value { color: var(--foreground); overflow-wrap: anywhere; }
-  .from { color: var(--destructive); }
-  .to { color: var(--success); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const kindOf = (value) => (Array.isArray(value) ? 'array' : value === null ? 'null' : typeof value);
 

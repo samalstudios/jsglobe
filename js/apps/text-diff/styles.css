@@ -1,0 +1,24 @@
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
+.diff {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: auto;
+  max-height: 420px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.65;
+  background: color-mix(in srgb, var(--muted) 65%, transparent);
+}
+.line { display: grid; grid-template-columns: 46px 46px 1fr; gap: 0; }
+.line span { padding: 1px 8px; }
+.line .n { color: var(--muted-foreground); text-align: right; font-size: 11px; user-select: none; }
+.line .text { white-space: pre-wrap; overflow-wrap: anywhere; }
+.line[data-kind="add"] { background: color-mix(in srgb, var(--success) 14%, transparent); }
+.line[data-kind="del"] { background: color-mix(in srgb, var(--destructive) 14%, transparent); }
+.line[data-kind="add"] .text::before { content: "+ "; color: var(--success); }
+.line[data-kind="del"] .text::before { content: "− "; color: var(--destructive); }
+.line[data-kind="same"] .text::before { content: "  "; }
+ins, del { text-decoration: none; border-radius: 3px; padding: 0 1px; }
+ins { background: color-mix(in srgb, var(--success) 32%, transparent); }
+del { background: color-mix(in srgb, var(--destructive) 32%, transparent); }

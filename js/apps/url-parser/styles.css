@@ -1,0 +1,3 @@
+.params { width: 100%; }
+.params td { font-family: var(--font-mono); font-size: 12px; overflow-wrap: anywhere; }
+.params td:first-child { color: var(--ring); width: 32%; }

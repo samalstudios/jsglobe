@@ -1,13 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { encodeBytes, toHex, toBase64, fromHex, debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .out { font-family: var(--font-mono); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const ALGORITHMS = ['SHA-1', 'SHA-256', 'SHA-384', 'SHA-512'];
 

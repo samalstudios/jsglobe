@@ -1,0 +1,23 @@
+.stage {
+  display: grid;
+  place-items: center;
+  flex: none;
+  min-height: 190px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
+}
+.stage svg { max-width: 100%; height: auto; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.presets { display: flex; flex-wrap: wrap; gap: 6px; }
+.preset {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted-foreground);
+  font: 500 11.5px/1 var(--font-mono);
+  padding: 6px 11px;
+  cursor: pointer;
+}
+.preset:hover { color: var(--foreground); border-color: var(--border-strong); }

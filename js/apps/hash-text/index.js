@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { md5 } from '../../lib/md5.js';
@@ -6,12 +6,7 @@ import { encodeBytes, toHex, toBase64, debounce, formatBytes, pickFile } from '.
 
 const t = appText(strings);
 
-const sheet = css`
-  .digests { display: flex; flex-direction: column; gap: 8px; }
-  .digest { display: grid; grid-template-columns: 88px 1fr auto; align-items: center; gap: 10px; }
-  .algo { font: 600 12px/1 var(--font-mono); color: var(--muted-foreground); }
-  @media (max-width: 560px) { .digest { grid-template-columns: 1fr; } }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const ALGORITHMS = ['MD5', 'SHA-1', 'SHA-256', 'SHA-384', 'SHA-512'];
 

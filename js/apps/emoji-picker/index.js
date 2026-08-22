@@ -1,55 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText, toast } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .shell { display: grid; grid-template-columns: 168px 1fr; gap: 12px; flex: 1; min-height: 0; }
-  @media (max-width: 720px) { .shell { grid-template-columns: 1fr; } }
-  .main { display: flex; flex-direction: column; gap: 10px; min-width: 0; min-height: 0; }
-  .grid {
-    flex: 1;
-    min-height: 200px;
-    overflow: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
-    gap: 4px;
-    padding: 6px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 40%, transparent);
-    scrollbar-width: thin;
-    align-content: start;
-  }
-  .cell {
-    appearance: none;
-    border: 1px solid transparent;
-    border-radius: var(--radius-sm);
-    background: transparent;
-    font-size: 25px;
-    line-height: 1;
-    aspect-ratio: 1;
-    cursor: pointer;
-    transition: background 0.1s ease, transform 0.1s ease;
-  }
-  .cell:hover { background: var(--card); border-color: var(--border); transform: scale(1.08); }
-  .detail {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 14px;
-    align-items: center;
-    padding: 12px 14px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-  }
-  .detail .big { font-size: 42px; line-height: 1; }
-  .codes { display: grid; gap: 3px; font-family: var(--font-mono); font-size: 12px; color: var(--muted-foreground); }
-  .codes b { color: var(--foreground); font-weight: 500; font-family: var(--font-sans); font-size: 13px; }
-  .recent { display: flex; flex-wrap: wrap; gap: 4px; }
-  .recent button { font-size: 20px; background: none; border: 0; cursor: pointer; padding: 2px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const GROUPS = [
   {

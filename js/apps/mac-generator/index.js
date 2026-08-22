@@ -1,13 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { randomBytes, copyText, debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .list { font-family: var(--font-mono); font-size: 12.5px; line-height: 1.9; user-select: all; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SEPARATORS = [
   { value: ':', label: t('mac-generator.colon001b44', 'Colon - 00:1b:44') },

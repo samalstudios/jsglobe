@@ -1,23 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { encodeBytes, copyText } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .code {
-    font: 600 clamp(30px, 8vw, 44px)/1 var(--font-mono);
-    letter-spacing: 0.14em;
-    text-align: center;
-    padding: 14px 0 6px;
-    user-select: all;
-  }
-  .ring { height: 5px; border-radius: 999px; background: var(--muted); overflow: hidden; }
-  .ring i { display: block; height: 100%; background: var(--ring); transition: width 1s linear; }
-  .widget { display: grid; gap: 6px; align-content: center; height: 100%; padding: 0 12px 12px; }
-  .widget .code { font-size: 24px; padding: 0; letter-spacing: 0.1em; text-align: left; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const BASE32 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 

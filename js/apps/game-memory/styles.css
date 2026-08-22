@@ -1,0 +1,48 @@
+.board {
+  display: grid;
+  gap: 8px;
+  width: min(560px, 100%);
+  margin: 0 auto;
+}
+.card {
+  position: relative;
+  aspect-ratio: 1;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  perspective: 600px;
+}
+.inner {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.3, 1.1);
+  transform-style: preserve-3d;
+}
+.card[data-face="up"] .inner { transform: rotateY(180deg); }
+.face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-md);
+  backface-visibility: hidden;
+  font-size: clamp(20px, 5vw, 30px);
+}
+.back {
+  background: linear-gradient(160deg, color-mix(in srgb, var(--ring) 85%, #fff 12%), var(--ring));
+  box-shadow: var(--shadow-sm);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 16px;
+}
+.front {
+  transform: rotateY(180deg);
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+.card[data-done="true"] .front { border-color: color-mix(in srgb, var(--success) 55%, transparent); background: color-mix(in srgb, var(--success) 12%, var(--card)); }
+.card[data-done="true"] { cursor: default; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 8px; }
+.stat { padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--radius-md); text-align: center; }
+.stat .value { font: 650 18px/1.2 var(--font-mono); }
+.stat .name { font-size: 10.5px; color: var(--muted-foreground); }

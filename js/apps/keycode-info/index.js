@@ -1,26 +1,10 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .stage {
-    display: grid;
-    place-items: center;
-    gap: 10px;
-    padding: 26px 16px;
-    border: 1px dashed var(--border-strong);
-    border-radius: var(--radius-lg);
-    background: color-mix(in srgb, var(--muted) 50%, transparent);
-    text-align: center;
-  }
-  .key {
-    font: 600 clamp(28px, 8vw, 44px)/1 var(--font-mono);
-    letter-spacing: -0.02em;
-  }
-  .history { display: flex; flex-wrap: wrap; gap: 6px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 class KeycodeInfo extends JGApp {
   static appId = 'keycode-info';

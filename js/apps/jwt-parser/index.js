@@ -1,18 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { fromBase64Url, decodeBytes, debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .token { font-family: var(--font-mono); font-size: 12.5px; overflow-wrap: anywhere; line-height: 1.7; }
-  .part-0 { color: #f472b6; }
-  .part-1 { color: #a78bfa; }
-  .part-2 { color: #38bdf8; }
-  .cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  @media (max-width: 760px) { .cols2 { grid-template-columns: 1fr; } }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SAMPLE =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkYSBMb3ZlbGFjZSIsImFkbWluIjp0cnVlLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTg5MzQ1NjAwMH0.4pcPyMD09olPSyXnrXCjTwXyr4BsezdI1AVTmud2fU4';

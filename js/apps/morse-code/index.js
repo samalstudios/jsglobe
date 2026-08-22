@@ -1,25 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .chart { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 6px; }
-  .cell {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    padding: 6px 10px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-mono);
-    font-size: 12px;
-  }
-  .cell b { font-size: 13px; color: var(--foreground); }
-  .cell span { color: var(--muted-foreground); letter-spacing: 1px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const TABLE = {
   a: '.-', b: '-...', c: '-.-.', d: '-..', e: '.', f: '..-.', g: '--.', h: '....',

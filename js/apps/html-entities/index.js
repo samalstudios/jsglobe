@@ -1,28 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
-  @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
-  .pane { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
-  .table { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 6px; }
-  .entity {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-    padding: 6px 9px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    cursor: pointer;
-  }
-  .entity:hover { border-color: var(--border-strong); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const NAMED = [
   ['&', '&amp;'], ['<', '&lt;'], ['>', '&gt;'], ['"', '&quot;'], ["'", '&#39;'],

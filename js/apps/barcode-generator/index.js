@@ -1,35 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText, download, toast } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .stage {
-    display: grid;
-    place-items: center;
-    flex: none;
-    min-height: 190px;
-    padding: 20px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background: #ffffff;
-  }
-  .stage svg { max-width: 100%; height: auto; }
-  .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
-  .presets { display: flex; flex-wrap: wrap; gap: 6px; }
-  .preset {
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: transparent;
-    color: var(--muted-foreground);
-    font: 500 11.5px/1 var(--font-mono);
-    padding: 6px 11px;
-    cursor: pointer;
-  }
-  .preset:hover { color: var(--foreground); border-color: var(--border-strong); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const CODE128 = [
   '212222', '222122', '222221', '121223', '121322', '131222', '122213', '122312', '132212', '221213',

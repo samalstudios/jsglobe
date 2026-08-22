@@ -1,0 +1,2 @@
+.cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px; }
+.case { display: flex; flex-direction: column; gap: 4px; }

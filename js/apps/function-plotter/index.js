@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { evaluate } from '../../core/expression.js';
@@ -6,38 +6,7 @@ import { debounce, download } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .board {
-    position: relative;
-    flex: 1;
-    min-height: 260px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    background: color-mix(in srgb, var(--muted) 35%, transparent);
-    touch-action: none;
-    cursor: crosshair;
-  }
-  canvas { display: block; width: 100%; height: 100%; }
-  .readout {
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    padding: 5px 9px;
-    border-radius: var(--radius-sm);
-    background: var(--glass-strong);
-    border: 1px solid var(--glass-border);
-    font-family: var(--font-mono);
-    font-size: 11.5px;
-    pointer-events: none;
-  }
-  .curves { display: grid; gap: 6px; }
-  .surface { display: grid; gap: 8px; }
-  .surface[hidden] { display: none; }
-  .curve { display: grid; grid-template-columns: auto 1fr auto auto; gap: 7px; align-items: center; }
-  .swatch { width: 14px; height: 14px; border-radius: 4px; border: 1px solid var(--border); }
-  .roots { display: flex; flex-wrap: wrap; gap: 6px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const COLOURS = ['#8a1c3b', '#3f6b91', '#4a7a58', '#96703f', '#6a5a8c', '#3f7a75'];
 const uid = () => Math.random().toString(36).slice(2, 8);

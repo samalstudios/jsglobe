@@ -1,14 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { encodeBytes, decodeBytes, toBase64, fromBase64, randomBytes } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const ITERATIONS = 250000;
 

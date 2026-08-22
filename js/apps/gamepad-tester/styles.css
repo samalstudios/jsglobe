@@ -1,0 +1,63 @@
+.app { container-type: inline-size; }
+.empty { display: grid; place-items: center; gap: 10px; padding: 48px 20px; text-align: center; }
+.pad { display: grid; gap: 14px; }
+.ident { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.ident .name { font-size: 14px; font-weight: 600; }
+.ident .meta { font: 500 11.5px/1 var(--font-mono); color: var(--muted-foreground); }
+
+.sticks { display: flex; gap: 16px; flex-wrap: wrap; }
+.stick {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--muted) 70%, transparent);
+  box-shadow: var(--shadow-well);
+}
+.stick::before,
+.stick::after {
+  content: '';
+  position: absolute;
+  background: var(--border);
+}
+.stick::before { left: 0; right: 0; top: 50%; height: 1px; }
+.stick::after { top: 0; bottom: 0; left: 50%; width: 1px; }
+.dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  background: var(--ring);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.03s linear;
+}
+.stick[data-pressed="true"] { border-color: var(--ring); }
+.stick-label { font: 500 11px/1 var(--font-mono); color: var(--muted-foreground); text-align: center; margin-top: 6px; }
+
+.buttons { display: grid; grid-template-columns: repeat(auto-fill, minmax(74px, 1fr)); gap: 6px; }
+.btn {
+  display: grid;
+  gap: 3px;
+  padding: 7px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--card);
+  font: 500 11px/1 var(--font-mono);
+  color: var(--muted-foreground);
+}
+.btn b { font: 600 12px/1 var(--font-sans); color: var(--foreground); }
+.btn[data-on="true"] {
+  border-color: var(--ring);
+  background: color-mix(in srgb, var(--ring) 18%, var(--card));
+  color: var(--foreground);
+}
+.btn .bar { height: 3px; border-radius: 999px; background: var(--border-strong); overflow: hidden; }
+.btn .bar i { display: block; height: 100%; background: var(--ring); }
+
+.axes { display: grid; gap: 6px; }
+.axis { display: grid; grid-template-columns: 60px 1fr 56px; gap: 10px; align-items: center; font: 500 11.5px/1 var(--font-mono); }
+.track { position: relative; height: 8px; border-radius: 999px; background: color-mix(in srgb, var(--muted) 88%, var(--foreground) 6%); box-shadow: var(--shadow-well); }
+.track i { position: absolute; top: 0; bottom: 0; width: 3px; border-radius: 999px; background: var(--ring); }
+.track::after { content: ''; position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: var(--border-strong); }

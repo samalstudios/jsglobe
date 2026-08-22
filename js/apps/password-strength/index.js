@@ -1,21 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .meter { height: 8px; border-radius: 999px; background: var(--muted); overflow: hidden; }
-  .meter i { display: block; height: 100%; transition: width 0.25s ease, background 0.25s ease; }
-  .verdict { font: 600 20px/1.2 var(--font-sans); letter-spacing: -0.02em; }
-  .checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 6px; }
-  .check { display: flex; align-items: center; gap: 8px; font-size: 12.5px; }
-  .check .mark { width: 16px; text-align: center; }
-  .check[data-pass="true"] .mark { color: var(--success); }
-  .check[data-pass="false"] .mark { color: var(--muted-foreground); }
-  .check[data-pass="false"] span { color: var(--muted-foreground); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const COMMON = [
   'password', 'passw0rd', '123456', '12345678', 'qwerty', 'abc123', 'letmein', 'monkey', 'dragon',

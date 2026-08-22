@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { encodeQr, qrToSvg } from '../../lib/qr.js';
@@ -6,20 +6,7 @@ import { download, copyText, debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .stage { display: grid; place-items: center; padding: 12px; }
-  .frame {
-    display: grid;
-    place-items: center;
-    padding: 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background: var(--card);
-  }
-  .frame svg, .frame canvas { max-width: 100%; height: auto; border-radius: 6px; }
-  .presets { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 6px; }
-  .cols3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const PRESETS = [
   { id: 'text', label: t('qr-generator.textOrUrl', 'Text or URL') },

@@ -1,25 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .state { display: flex; align-items: center; gap: 10px; }
-  .formatted { font-family: var(--font-mono); font-size: 16px; letter-spacing: 0.08em; }
-  .samples { display: flex; flex-wrap: wrap; gap: 6px; }
-  .sample {
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: transparent;
-    color: var(--muted-foreground);
-    font: 500 12px/1 var(--font-sans);
-    padding: 6px 12px;
-    cursor: pointer;
-  }
-  .sample:hover { color: var(--foreground); border-color: var(--border-strong); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const LENGTHS = {
   AD: 24, AE: 23, AL: 28, AT: 20, AZ: 28, BA: 20, BE: 16, BG: 22, BH: 22, BR: 29,

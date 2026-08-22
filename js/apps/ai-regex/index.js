@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { escapeHtml } from '../../core/dom.js';
@@ -8,29 +8,7 @@ import '../../ui/jg-ai-bar.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .pattern { font-family: var(--font-mono); font-size: 14px; overflow-wrap: anywhere; }
-  .preview {
-    max-height: 180px;
-    overflow: auto;
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 65%, transparent);
-    font-family: var(--font-mono);
-    font-size: 12.5px;
-    line-height: 1.7;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-  mark {
-    background: color-mix(in srgb, var(--ring) 34%, transparent);
-    color: inherit;
-    border-radius: 3px;
-    outline: 1px solid color-mix(in srgb, var(--ring) 55%, transparent);
-  }
-  .out { white-space: pre-wrap; font-size: 13px; line-height: 1.7; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SYSTEM =
   'You write JavaScript regular expressions. Reply with a single line containing only the pattern between slashes, for example /^a.*z$/i. No explanation, no code fences.';

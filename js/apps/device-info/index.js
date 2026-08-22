@@ -1,13 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { formatBytes } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .live { font-family: var(--font-mono); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const yes = (value) => (value ? 'Yes' : 'No');
 

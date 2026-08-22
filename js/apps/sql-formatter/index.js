@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { escapeHtml } from '../../core/dom.js';
@@ -6,28 +6,7 @@ import { copyText, debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
-  @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
-  .pane { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
-  .view {
-    flex: 1;
-    min-height: 200px;
-    overflow: auto;
-    padding: 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 72%, transparent);
-    font-family: var(--font-mono);
-    font-size: 12.5px;
-    line-height: 1.7;
-    white-space: pre;
-  }
-  .kw { color: var(--syn-bool); font-weight: 600; }
-  .str { color: var(--syn-str); }
-  .num { color: var(--syn-num); }
-  .cmt { color: var(--muted-foreground); font-style: italic; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const MAIN = ['SELECT', 'FROM', 'WHERE', 'GROUP BY', 'HAVING', 'ORDER BY', 'LIMIT', 'OFFSET', 'UNION ALL', 'UNION', 'INSERT INTO', 'VALUES', 'UPDATE', 'SET', 'DELETE FROM', 'RETURNING', 'WITH'];
 const JOINS = ['LEFT OUTER JOIN', 'RIGHT OUTER JOIN', 'FULL OUTER JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'INNER JOIN', 'CROSS JOIN', 'JOIN'];

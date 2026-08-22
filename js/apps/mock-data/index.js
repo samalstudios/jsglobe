@@ -1,18 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText, download } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .shell { display: grid; grid-template-columns: 340px 1fr; gap: 14px; flex: 1; min-height: 0; }
-  @media (max-width: 900px) { .shell { grid-template-columns: 1fr; } }
-  .fields { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
-  .list { display: grid; gap: 6px; overflow: auto; scrollbar-width: thin; padding-right: 4px; }
-  .field { display: grid; grid-template-columns: 1fr 1fr auto; gap: 6px; align-items: center; }
-  .out { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const FIRST = ['Ada', 'Grace', 'Alan', 'Katherine', 'Linus', 'Barbara', 'Dennis', 'Radia', 'Ken', 'Margaret', 'Edsger', 'Hedy', 'Tim', 'Anita', 'Guido', 'Shafi', 'Bjarne', 'Frances', 'Donald', 'Jean', 'Leslie', 'Sophie', 'Omar', 'Mira', 'Yusuf', 'Nadia', 'Hugo', 'Lena', 'Marco', 'Ines'];
 const LAST = ['Lovelace', 'Hopper', 'Turing', 'Johnson', 'Torvalds', 'Liskov', 'Ritchie', 'Perlman', 'Thompson', 'Hamilton', 'Dijkstra', 'Lamarr', 'Berners-Lee', 'Borg', 'Rossum', 'Goldwasser', 'Stroustrup', 'Allen', 'Knuth', 'Bartik', 'Lamport', 'Wilson', 'Haddad', 'Kovacs', 'Demir', 'Rahman', 'Moreau', 'Fischer', 'Rossi', 'Silva'];

@@ -1,0 +1,4 @@
+.formats { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px; }
+.format { display: flex; flex-direction: column; gap: 4px; }
+.widget { display: grid; gap: 3px; align-content: center; height: 100%; padding: 0 12px 12px; }
+.widget .epoch { font: 600 22px/1 var(--font-mono); letter-spacing: -0.02em; }

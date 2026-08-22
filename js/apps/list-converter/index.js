@@ -1,16 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
-  @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
-  .pane { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
-  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SORTS = {
   none: 'Keep order',

@@ -1,24 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { copyText, randomInt, shuffle } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .value {
-    font-family: var(--font-mono);
-    font-size: 15px;
-    line-height: 1.6;
-    overflow-wrap: anywhere;
-    user-select: all;
-    min-height: 52px;
-  }
-  .meter { height: 6px; border-radius: 999px; background: var(--muted); overflow: hidden; }
-  .meter i { display: block; height: 100%; transition: width 0.25s ease, background 0.25s ease; }
-  .widget { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 0 12px 12px; }
-  .widget .value { font-size: 11.5px; min-height: 0; flex: 1; color: var(--muted-foreground); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SETS = {
   lower: 'abcdefghijklmnopqrstuvwxyz',

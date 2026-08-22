@@ -1,15 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .params { width: 100%; }
-  .params td { font-family: var(--font-mono); font-size: 12px; overflow-wrap: anywhere; }
-  .params td:first-child { color: var(--ring); width: 32%; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 class UrlParser extends JGApp {
   static appId = 'url-parser';

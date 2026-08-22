@@ -1,26 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  @media (max-width: 820px) { .split { grid-template-columns: 1fr; } }
-  .pane { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-  .preview {
-    display: grid;
-    place-items: center;
-    min-height: 170px;
-    padding: 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background:
-      repeating-conic-gradient(color-mix(in srgb, var(--muted) 70%, transparent) 0% 25%, transparent 0% 50%) 50% / 16px 16px;
-  }
-  .preview svg { max-width: 100%; max-height: 200px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SAMPLE_JSX = `export const Check = (props) => (
   <svg

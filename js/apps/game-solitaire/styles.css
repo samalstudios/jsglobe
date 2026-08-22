@@ -1,0 +1,99 @@
+.app { padding: 0; gap: 0; container-type: inline-size; overflow: hidden; }
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  flex: none;
+  flex-wrap: wrap;
+}
+.stat {
+  display: inline-flex;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--muted) 75%, transparent);
+  border: 1px solid var(--border);
+  font: 600 12.5px/1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.table {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 16px;
+  background:
+    radial-gradient(120% 100% at 50% 0%, color-mix(in srgb, var(--foreground) 5%, transparent), transparent 70%),
+    var(--muted);
+  user-select: none;
+}
+.board { position: relative; width: 100%; min-width: 660px; height: 100%; min-height: 520px; }
+
+.slot {
+  position: absolute;
+  width: var(--card-w);
+  height: var(--card-h);
+  border-radius: 7px;
+  border: 1px dashed color-mix(in srgb, var(--foreground) 22%, transparent);
+}
+.slot[data-hint="true"] { border-color: var(--ring); }
+
+.card {
+  position: absolute;
+  width: var(--card-w);
+  height: var(--card-h);
+  border-radius: 7px;
+  border: 1px solid color-mix(in srgb, var(--foreground) 18%, transparent);
+  background: #fdfdfb;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  color: #1f2933;
+  font: 600 13px/1 var(--font-sans);
+  padding: 5px 6px;
+  cursor: pointer;
+  transition: transform 0.08s ease;
+}
+.card[data-red="true"] { color: #b5473f; }
+.card[data-face="false"] {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-opacity='0.62' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.83 8.83a4 4 0 0 0-5.66-5.66l-12 12a4 4 0 1 0 5.66 5.66Z'/%3E%3Cpath d='M18 11.66V22a4 4 0 0 0 4-4V6'/%3E%3Cpath d='M3 2v1c0 1 2 1 2 2S3 6 3 7s2 1 2 2-2 1-2 2 2 1 2 2'/%3E%3C/svg%3E") center / 34px no-repeat,
+    linear-gradient(150deg, #a52348, #8a1c3b 55%, #6b1430);
+  border-color: #59102a;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.14), 0 1px 2px rgba(0, 0, 0, 0.25);
+  color: transparent;
+}
+.card[data-drag="true"] { box-shadow: 0 10px 22px rgba(0, 0, 0, 0.32); transform: scale(1.02); }
+.card .rank { display: block; }
+.card .suit { display: block; font-size: 14px; margin-top: 1px; }
+.card .big {
+  position: absolute;
+  right: 5px;
+  bottom: 4px;
+  font-size: 17px;
+  opacity: 0.85;
+}
+.card[data-face="false"] .rank,
+.card[data-face="false"] .suit,
+.card[data-face="false"] .big { visibility: hidden; }
+
+.win {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--background) 60%, transparent);
+  backdrop-filter: blur(4px);
+}
+.win .card-panel {
+  padding: 18px 22px;
+  border-radius: var(--radius-lg);
+  background: var(--glass-strong);
+  border: 1px solid var(--glass-border);
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  text-align: center;
+}

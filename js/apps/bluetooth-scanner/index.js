@@ -1,87 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { copyText, download } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .app { padding: 0; gap: 0; container-type: inline-size; overflow: hidden; }
-  .head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--border);
-    flex: none;
-    flex-wrap: wrap;
-  }
-  .body { flex: 1; min-height: 0; display: flex; }
-  .tree { flex: 1; min-width: 0; overflow: auto; padding: 14px; display: grid; gap: 10px; align-content: start; }
-  .log-pane {
-    width: 300px;
-    flex: none;
-    border-left: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-  }
-  .log {
-    flex: 1;
-    min-height: 0;
-    overflow: auto;
-    padding: 10px 12px;
-    font: 11.5px/1.55 var(--font-mono);
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-  .log .stamp { color: var(--muted-foreground); }
-  .log .notify { color: var(--ring); }
-  .log .sys { color: var(--muted-foreground); font-style: italic; }
-
-  .unsupported { display: grid; place-items: center; gap: 10px; padding: 48px 20px; text-align: center; }
-  .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--muted-foreground); flex: none; }
-  .dot[data-on="true"] { background: var(--success, #4a7a58); }
-
-  .service { border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--card); overflow: hidden; }
-  .service > header {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    padding: 9px 12px;
-    border-bottom: 1px solid var(--border);
-    background: color-mix(in srgb, var(--muted) 60%, transparent);
-  }
-  .service .label { font-size: 12.5px; font-weight: 600; }
-  .service .uuid { font: 500 11px/1 var(--font-mono); color: var(--muted-foreground); }
-
-  .char { display: grid; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--border); }
-  .char:last-child { border-bottom: 0; }
-  .char .top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .char .value {
-    font: 12px/1.4 var(--font-mono);
-    color: var(--foreground);
-    background: color-mix(in srgb, var(--muted) 70%, transparent);
-    padding: 6px 8px;
-    border-radius: var(--radius-sm);
-    overflow-wrap: anywhere;
-  }
-  .char .reading { font-weight: 600; color: var(--ring); }
-  .flags { display: flex; gap: 4px; flex-wrap: wrap; }
-  .flag {
-    font: 500 10px/1 var(--font-mono);
-    padding: 3px 6px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    color: var(--muted-foreground);
-  }
-  .actions { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-
-  @container (max-width: 760px) {
-    .body { flex-direction: column; }
-    .log-pane { width: auto; border-left: 0; border-top: 1px solid var(--border); max-height: 220px; }
-  }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SERVICES = {
   '00001800': 'Generic access',

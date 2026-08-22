@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { media } from '../../core/media.js';
@@ -8,52 +8,7 @@ import { router } from '../../core/router.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .drop {
-    display: grid;
-    place-items: center;
-    gap: 8px;
-    padding: 24px 18px;
-    border: 1px dashed var(--border-strong);
-    border-radius: var(--radius-lg);
-    background: color-mix(in srgb, var(--muted) 40%, transparent);
-    text-align: center;
-    cursor: pointer;
-  }
-  .drop[data-over="true"] { border-color: var(--ring); background: color-mix(in srgb, var(--ring) 12%, transparent); }
-  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
-  .bar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 9px 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 60%, transparent);
-    font-size: 12.5px;
-  }
-  .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--muted-foreground); flex: none; }
-  .bar[data-status="ready"] .dot { background: var(--success); }
-  .bar[data-status="loading"] .dot, .bar[data-status="working"] .dot { background: var(--warning); animation: pulse 1s infinite; }
-  .bar[data-status="error"] .dot { background: var(--destructive); }
-  @keyframes pulse { 50% { opacity: 0.3; } }
-  .track { height: 5px; border-radius: 999px; background: var(--border); overflow: hidden; }
-  .track i { display: block; height: 100%; background: var(--ring); transition: width 0.2s ease; }
-  .log {
-    max-height: 150px;
-    overflow: auto;
-    padding: 10px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 70%, transparent);
-    font-family: var(--font-mono);
-    font-size: 11px;
-    line-height: 1.55;
-    white-space: pre-wrap;
-    color: var(--muted-foreground);
-  }
-  video, audio { width: 100%; border-radius: var(--radius-md); background: #000; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const PRESETS = {
   video: [

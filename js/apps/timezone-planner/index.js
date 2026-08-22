@@ -1,46 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { copyText, toast } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .rows { display: grid; gap: 6px; }
-  .zone {
-    display: grid;
-    grid-template-columns: 190px 1fr auto;
-    gap: 10px;
-    align-items: center;
-    padding: 7px 9px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-  }
-  @media (max-width: 760px) { .zone { grid-template-columns: 1fr; } }
-  .zone[data-home="true"] { border-color: color-mix(in srgb, var(--ring) 45%, transparent); background: color-mix(in srgb, var(--ring) 7%, transparent); }
-  .label { display: grid; gap: 1px; min-width: 0; }
-  .label .city { font-size: 13px; font-weight: 550; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .label .meta { font-family: var(--font-mono); font-size: 10.5px; color: var(--muted-foreground); }
-  .strip { display: grid; grid-template-columns: repeat(24, 1fr); gap: 1px; }
-  .hour {
-    position: relative;
-    height: 30px;
-    display: grid;
-    place-items: center;
-    font-family: var(--font-mono);
-    font-size: 9.5px;
-    color: var(--muted-foreground);
-    background: color-mix(in srgb, var(--muted) 60%, transparent);
-    border-radius: 2px;
-  }
-  .hour[data-work="true"] { background: color-mix(in srgb, var(--success) 26%, transparent); color: var(--foreground); }
-  .hour[data-edge="true"] { background: color-mix(in srgb, var(--warning) 26%, transparent); color: var(--foreground); }
-  .hour[data-now="true"] { box-shadow: inset 0 0 0 2px var(--ring); }
-  .hour[data-selected="true"] { outline: 2px solid var(--foreground); outline-offset: -2px; }
-  .scale { display: grid; grid-template-columns: repeat(24, 1fr); gap: 1px; font-family: var(--font-mono); font-size: 9px; color: var(--muted-foreground); }
-  .scale span { text-align: center; }
-  .best { display: flex; flex-wrap: wrap; gap: 6px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SUGGESTIONS = [
   'Europe/Berlin', 'Europe/London', 'Europe/Lisbon', 'Europe/Madrid', 'Europe/Paris', 'Europe/Amsterdam',

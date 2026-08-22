@@ -1,4 +1,4 @@
-import { JGApp, define, html, css, raw } from '../../core/app.js';
+import { JGApp, define, html, raw, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { escapeHtml } from '../../core/dom.js';
@@ -6,33 +6,7 @@ import { copyText, download, debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
-  @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
-  .pane { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
-  .view {
-    flex: 1;
-    min-height: 180px;
-    overflow: auto;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 72%, transparent);
-    padding: 12px;
-    font-family: var(--font-mono);
-    font-size: 12.5px;
-    line-height: 1.65;
-    white-space: pre;
-    tab-size: 2;
-  }
-  .status { display: flex; align-items: center; gap: 8px; min-height: 22px; }
-  .tok-key { color: var(--syn-key); }
-  .tok-str { color: var(--syn-str); }
-  .tok-num { color: var(--syn-num); }
-  .tok-bool { color: var(--syn-bool); }
-  .tok-null { color: var(--muted-foreground); }
-  details { margin-left: 12px; }
-  summary { cursor: pointer; color: var(--muted-foreground); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SAMPLE = `{"name":"jsglobe","version":1,"tools":["json","hash","uuid"],"private":false,"meta":{"stars":null}}`;
 

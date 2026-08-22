@@ -1,65 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { download, toast, formatBytes } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .app { gap: 10px; }
-  .bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .tools { display: flex; gap: 4px; flex-wrap: wrap; }
-  .tool {
-    display: grid;
-    place-items: center;
-    min-width: 34px;
-    height: 30px;
-    padding: 0 9px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: transparent;
-    color: var(--muted-foreground);
-    font: 500 12px/1 var(--font-sans);
-    cursor: pointer;
-  }
-  .tool:hover { color: var(--foreground); border-color: var(--border-strong); }
-  .tool[aria-pressed="true"] {
-    color: var(--foreground);
-    background: color-mix(in srgb, var(--ring) 16%, transparent);
-    border-color: color-mix(in srgb, var(--ring) 50%, transparent);
-  }
-  .swatches { display: flex; gap: 4px; }
-  .swatch { width: 22px; height: 22px; border-radius: 6px; border: 2px solid transparent; cursor: pointer; padding: 0; }
-  .swatch[aria-pressed="true"] { border-color: var(--foreground); }
-  .stage {
-    position: relative;
-    flex: 1;
-    min-height: 300px;
-    display: grid;
-    place-items: center;
-    padding: 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background:
-      repeating-conic-gradient(color-mix(in srgb, var(--muted) 70%, transparent) 0% 25%, transparent 0% 50%) 50% / 18px 18px;
-    overflow: auto;
-  }
-  .holder { position: relative; line-height: 0; }
-  canvas { max-width: 100%; border-radius: var(--radius-sm); box-shadow: var(--shadow-md); touch-action: none; cursor: crosshair; }
-  canvas.original { position: absolute; inset: 0; pointer-events: none; }
-  .handle {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: #fff;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
-    pointer-events: none;
-    display: none;
-  }
-  .stage[data-compare="true"] .handle { display: block; }
-  .empty { display: grid; place-items: center; gap: 12px; text-align: center; padding: 40px 20px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const TOOLS = [
   { id: 'pen', label: t('screenshot.pen', 'Pen') },

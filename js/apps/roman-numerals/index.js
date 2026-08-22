@@ -1,23 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .value { font-family: var(--font-mono); font-size: 26px; letter-spacing: 0.06em; }
-  .table { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 6px; }
-  .pair {
-    display: flex;
-    justify-content: space-between;
-    padding: 6px 9px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-mono);
-    font-size: 12px;
-  }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const NUMERALS = [
   [1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'],

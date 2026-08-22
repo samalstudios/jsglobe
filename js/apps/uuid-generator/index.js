@@ -1,15 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { copyText, randomBytes, toHex } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .list { font-family: var(--font-mono); font-size: 12.5px; line-height: 1.9; user-select: all; }
-  .widget { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 0 12px 12px; }
-  .widget .value { font-family: var(--font-mono); font-size: 11px; overflow-wrap: anywhere; color: var(--muted-foreground); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const CROCKFORD = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
 

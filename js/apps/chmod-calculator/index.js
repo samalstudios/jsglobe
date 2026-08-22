@@ -1,30 +1,10 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .matrix { display: grid; grid-template-columns: 110px repeat(3, 1fr); gap: 6px; align-items: center; }
-  .head { font-size: 11.5px; font-weight: 600; color: var(--muted-foreground); text-transform: uppercase; letter-spacing: 0.04em; }
-  .cell { display: flex; align-items: center; gap: 7px; justify-content: center; }
-  .octal { font: 600 clamp(30px, 8vw, 46px)/1 var(--font-mono); text-align: center; letter-spacing: 0.1em; }
-  .symbolic { font: 500 18px/1 var(--font-mono); text-align: center; color: var(--muted-foreground); letter-spacing: 0.14em; }
-  .presets { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 6px; }
-  .preset {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 10px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: transparent;
-    color: inherit;
-    font-family: inherit;
-    font-size: 12px;
-    cursor: pointer;
-  }
-  .preset:hover { border-color: var(--border-strong); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const GROUPS = ['owner', 'group', 'others'];
 const PERMS = [

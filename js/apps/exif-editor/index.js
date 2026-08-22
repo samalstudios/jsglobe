@@ -1,39 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { download, toast, formatBytes } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .drop {
-    display: grid;
-    place-items: center;
-    flex: none;
-    min-height: 130px;
-    border: 1px dashed var(--border-strong);
-    border-radius: var(--radius-md);
-    color: var(--muted-foreground);
-    font-size: 13px;
-    cursor: pointer;
-    text-align: center;
-    padding: 12px;
-  }
-  .drop[data-over="true"] { border-color: var(--ring); color: var(--foreground); }
-  .split { display: grid; grid-template-columns: 260px 1fr; gap: 14px; }
-  @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
-  .shot {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    background: color-mix(in srgb, var(--muted) 50%, transparent);
-  }
-  .shot img { display: block; width: 100%; height: auto; }
-  .tags { display: grid; gap: 6px; }
-  .tag { display: grid; grid-template-columns: 168px 1fr auto; gap: 8px; align-items: center; }
-  .tag .name { font-size: 12px; color: var(--muted-foreground); }
-  .removed { opacity: 0.45; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const EXIF_TAGS = {
   0x010f: 'Make',

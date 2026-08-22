@@ -73,6 +73,26 @@ export class JGApp extends JGElement {
 
 export { html, raw, css } from './dom.js';
 
+const sheets = new Map();
+
+export async function styleSheet(base, file = 'styles.css') {
+  const href = new URL(file, base).href;
+  if (!sheets.has(href)) {
+    sheets.set(
+      href,
+      fetch(href)
+        .then((response) => (response.ok ? response.text() : ''))
+        .catch(() => '')
+        .then((text) => {
+          const sheet = new CSSStyleSheet();
+          sheet.replaceSync(text);
+          return sheet;
+        }),
+    );
+  }
+  return sheets.get(href);
+}
+
 export function define(tag, ctor) {
   appSettings.define(ctor.appId, ctor.settings);
   return defineElement(tag, ctor);

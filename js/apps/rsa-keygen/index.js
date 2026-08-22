@@ -1,29 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { toBase64, download, chunk, toast } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .keys { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  @media (max-width: 820px) { .keys { grid-template-columns: 1fr; } }
-  .pem {
-    min-height: 190px;
-    max-height: 320px;
-    overflow: auto;
-    padding: 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 68%, transparent);
-    font-family: var(--font-mono);
-    font-size: 11px;
-    line-height: 1.6;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-    user-select: all;
-  }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const ALGORITHMS = {
   'rsa-2048': { label: t('rsa-keygen.rsa2048', 'RSA 2048'), params: { name: 'RSASSA-PKCS1-v1_5', modulusLength: 2048, publicExponent: new Uint8Array([1, 0, 1]), hash: 'SHA-256' }, uses: ['sign', 'verify'] },

@@ -1,48 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { copyText } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .stage {
-    display: grid;
-    place-items: center;
-    flex: none;
-    height: 210px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background: color-mix(in srgb, var(--muted) 55%, transparent);
-    overflow: hidden;
-  }
-  .box {
-    width: 74px;
-    height: 74px;
-    border-radius: 16px;
-    background: linear-gradient(160deg, color-mix(in srgb, var(--ring) 80%, #fff 20%), var(--ring));
-    box-shadow: var(--shadow-md);
-  }
-  .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
-  .presets { display: flex; flex-wrap: wrap; gap: 6px; }
-  .preset {
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: transparent;
-    color: var(--muted-foreground);
-    font: 500 12px/1 var(--font-sans);
-    padding: 6px 12px;
-    cursor: pointer;
-  }
-  .preset[aria-pressed="true"] {
-    color: var(--foreground);
-    border-color: color-mix(in srgb, var(--ring) 50%, transparent);
-    background: color-mix(in srgb, var(--ring) 14%, transparent);
-  }
-  .bezier { display: grid; grid-template-columns: 180px 1fr; gap: 14px; align-items: center; }
-  @media (max-width: 640px) { .bezier { grid-template-columns: 1fr; } }
-  .curve { border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--card); touch-action: none; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const ANIMATIONS = {
   fade: { label: t('css-animation.fadeIn', 'Fade in'), frames: { '0%': 'opacity: 0', '100%': 'opacity: 1' } },

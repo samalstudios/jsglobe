@@ -1,0 +1,6 @@
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+.pane { display: flex; flex-direction: column; gap: 6px; min-width: 0; min-height: 0; }
+.issues { display: grid; gap: 5px; }
+.issue { display: grid; grid-template-columns: 180px 1fr; gap: 10px; font-size: 12.5px; }
+.issue .path { font-family: var(--font-mono); color: var(--destructive); overflow-wrap: anywhere; }

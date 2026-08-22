@@ -1,48 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { copyText } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .app { gap: 12px; }
-  .types { display: flex; flex-wrap: wrap; gap: 4px; }
-  .type {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: transparent;
-    color: var(--muted-foreground);
-    font: 600 11.5px/1 var(--font-mono);
-    padding: 6px 10px;
-    cursor: pointer;
-  }
-  .type:hover { color: var(--foreground); border-color: var(--border-strong); }
-  .type[aria-pressed="true"] {
-    color: var(--foreground);
-    background: color-mix(in srgb, var(--ring) 16%, transparent);
-    border-color: color-mix(in srgb, var(--ring) 50%, transparent);
-  }
-  .group { margin-bottom: 14px; }
-  .group h3 {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0 0 6px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--muted-foreground);
-  }
-  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
-  th { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; }
-  td { font-family: var(--font-mono); overflow-wrap: anywhere; vertical-align: top; }
-  td.name { color: var(--ring); }
-  td.ttl { color: var(--muted-foreground); white-space: nowrap; width: 90px; }
-  .flags { display: flex; gap: 6px; flex-wrap: wrap; }
-  .empty-type { font-size: 12px; color: var(--muted-foreground); padding: 4px 0 8px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const TYPES = ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'NS', 'SOA', 'SRV', 'CAA', 'PTR', 'DNSKEY', 'DS'];
 const DEFAULT_TYPES = ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'NS'];

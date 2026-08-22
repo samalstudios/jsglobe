@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText } from '../../core/util.js';
@@ -6,11 +6,7 @@ import { toYaml, fromYaml } from '../../core/yaml.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
-  @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
-  .pane { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SAMPLE = { name: 'jsglobe', version: 1, tools: ['json', 'yaml'], server: { port: 8080, tls: true } };
 

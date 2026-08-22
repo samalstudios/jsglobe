@@ -1,16 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .formats { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px; }
-  .format { display: flex; flex-direction: column; gap: 4px; }
-  .widget { display: grid; gap: 3px; align-content: center; height: 100%; padding: 0 12px 12px; }
-  .widget .epoch { font: 600 22px/1 var(--font-mono); letter-spacing: -0.02em; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const RELATIVE = new Intl.RelativeTimeFormat(undefined, { numeric: 'auto' });
 

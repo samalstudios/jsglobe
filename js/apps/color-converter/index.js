@@ -1,30 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { clamp, debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .swatch {
-    height: 92px;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border);
-    display: grid;
-    place-items: center;
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 600;
-  }
-  .formats { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; }
-  .format { display: flex; flex-direction: column; gap: 4px; }
-  .ramp { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; }
-  .step { aspect-ratio: 1; border-radius: 7px; border: 1px solid var(--border); cursor: pointer; }
-  .contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .chip { padding: 12px; border-radius: var(--radius-md); text-align: center; font-size: 13px; font-weight: 600; }
-  .widget { display: flex; flex-direction: column; gap: 6px; height: 100%; padding: 0 12px 12px; }
-  .widget .box { flex: 1; border-radius: var(--radius-md); border: 1px solid var(--border); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const clamp255 = (value) => clamp(Math.round(value), 0, 255);
 

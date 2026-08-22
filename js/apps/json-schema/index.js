@@ -1,18 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText, download } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
-  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
-  .pane { display: flex; flex-direction: column; gap: 6px; min-width: 0; min-height: 0; }
-  .issues { display: grid; gap: 5px; }
-  .issue { display: grid; grid-template-columns: 180px 1fr; gap: 10px; font-size: 12.5px; }
-  .issue .path { font-family: var(--font-mono); color: var(--destructive); overflow-wrap: anywhere; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SAMPLE = `{
   "id": "8f1c",

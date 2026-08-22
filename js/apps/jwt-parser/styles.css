@@ -1,0 +1,6 @@
+.token { font-family: var(--font-mono); font-size: 12.5px; overflow-wrap: anywhere; line-height: 1.7; }
+.part-0 { color: #f472b6; }
+.part-1 { color: #a78bfa; }
+.part-2 { color: #38bdf8; }
+.cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 760px) { .cols2 { grid-template-columns: 1fr; } }

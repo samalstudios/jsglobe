@@ -1,61 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { uid, download, toast, pickFile } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .app { gap: 12px; }
-  .totals { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
-  .total {
-    display: grid;
-    gap: 2px;
-    padding: 12px 14px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--card);
-  }
-  .total .n { font: 700 20px/1.15 var(--font-sans); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-  .total .l { font-size: 11.5px; color: var(--muted-foreground); }
-  .up { color: var(--success); }
-  .down { color: var(--destructive); }
-
-  .charts { display: grid; grid-template-columns: minmax(0, 240px) minmax(0, 1fr); gap: 14px; align-items: center; }
-  @media (max-width: 760px) { .charts { grid-template-columns: 1fr; } }
-  .donut { display: grid; place-items: center; position: relative; }
-  .donut svg { transform: rotate(-90deg); }
-  .donut .middle {
-    position: absolute;
-    display: grid;
-    justify-items: center;
-    gap: 1px;
-    text-align: center;
-  }
-  .donut .middle .v { font: 700 17px/1.1 var(--font-sans); font-variant-numeric: tabular-nums; }
-  .donut .middle .k { font-size: 10.5px; color: var(--muted-foreground); }
-
-  .bars { display: flex; flex-direction: column; gap: 6px; }
-  .bar { display: grid; grid-template-columns: 82px 1fr 96px; gap: 10px; align-items: center; font-size: 12px; }
-  .bar .sym { font-family: var(--font-mono); font-weight: 600; overflow: hidden; text-overflow: ellipsis; }
-  .bar .track { position: relative; height: 16px; border-radius: 5px; background: color-mix(in srgb, var(--muted) 70%, transparent); overflow: hidden; }
-  .bar .track i { position: absolute; top: 0; bottom: 0; border-radius: 4px; }
-  .bar .val { text-align: right; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
-
-  .history { width: 100%; height: 92px; display: block; }
-
-  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
-  th { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
-  td { font-variant-numeric: tabular-nums; white-space: nowrap; }
-  td.sym { font-family: var(--font-mono); font-weight: 600; }
-  td.name { white-space: normal; color: var(--muted-foreground); font-size: 11.5px; }
-  th.right, td.right { text-align: right; }
-  .row-acts { display: flex; gap: 2px; justify-content: flex-end; opacity: 0; }
-  tbody tr:hover .row-acts { opacity: 1; }
-  .dotmark { display: inline-block; width: 8px; height: 8px; border-radius: 999px; margin-right: 6px; }
-
-  .form { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; align-items: end; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const PALETTE = ['#8a1c3b', '#3f6b91', '#4a7a58', '#96703f', '#5b5b8a', '#3f7a75', '#875a6b', '#847a44', '#9c6440', '#5b6470'];
 

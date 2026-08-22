@@ -1,51 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { randomInt } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .stat {
-    display: inline-flex;
-    gap: 6px;
-    padding: 5px 11px;
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 75%, transparent);
-    border: 1px solid var(--border);
-    font: 600 13px/1 var(--font-mono);
-    font-variant-numeric: tabular-nums;
-  }
-  .wrap { position: relative; display: grid; place-items: center; }
-  canvas {
-    width: min(720px, 100%, 74vh);
-    aspect-ratio: 1;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border);
-    background: color-mix(in srgb, var(--muted) 80%, transparent);
-    touch-action: none;
-  }
-  .overlay {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    gap: 10px;
-    text-align: center;
-  }
-  .overlay .card {
-    padding: 18px 22px;
-    border-radius: var(--radius-lg);
-    background: var(--glass-strong);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: var(--glass-blur);
-    display: grid;
-    gap: 10px;
-    justify-items: center;
-  }
-  .overlay h3 { margin: 0; font-size: 19px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SIZE = 20;
 const SPEEDS = { calm: 150, normal: 105, fast: 70 };

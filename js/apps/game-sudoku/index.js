@@ -1,73 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { toast } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .layout { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; justify-content: center; }
-  .board {
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    width: min(460px, 100%);
-    aspect-ratio: 1;
-    border: 2px solid var(--foreground);
-    border-radius: 6px;
-    overflow: hidden;
-    background: var(--border-strong);
-    gap: 1px;
-  }
-  .cell {
-    position: relative;
-    display: grid;
-    place-items: center;
-    background: var(--card);
-    border: 0;
-    font-family: var(--font-sans);
-    font-size: clamp(15px, 3.4vw, 22px);
-    font-weight: 500;
-    color: var(--ring);
-    cursor: pointer;
-    padding: 0;
-  }
-  .cell[data-given="true"] { color: var(--foreground); font-weight: 650; cursor: default; }
-  .cell[data-peer="true"] { background: color-mix(in srgb, var(--foreground) 5%, var(--card)); }
-  .cell[data-same="true"] { background: color-mix(in srgb, var(--ring) 16%, var(--card)); }
-  .cell[data-selected="true"] { background: color-mix(in srgb, var(--ring) 28%, var(--card)); }
-  .cell[data-wrong="true"] { color: var(--destructive); }
-  .cell[data-edge-right="true"] { box-shadow: 2px 0 0 var(--foreground); z-index: 1; }
-  .cell[data-edge-bottom="true"] { box-shadow: 0 2px 0 var(--foreground); z-index: 1; }
-  .cell[data-edge-right="true"][data-edge-bottom="true"] { box-shadow: 2px 0 0 var(--foreground), 0 2px 0 var(--foreground); }
-  .notes {
-    position: absolute;
-    inset: 2px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    font-size: 8px;
-    line-height: 1;
-    color: var(--muted-foreground);
-    pointer-events: none;
-  }
-  .notes span { display: grid; place-items: center; }
-  .side { display: flex; flex-direction: column; gap: 12px; width: min(240px, 100%); }
-  .pad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
-  .pad button {
-    aspect-ratio: 1.35;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--card);
-    color: var(--foreground);
-    font: 600 17px/1 var(--font-sans);
-    cursor: pointer;
-  }
-  .pad button:hover { border-color: var(--border-strong); background: var(--accent); }
-  .pad button[data-done="true"] { opacity: 0.35; }
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; text-align: center; }
-  .stat { padding: 7px 4px; border: 1px solid var(--border); border-radius: var(--radius-md); }
-  .stat .value { font: 650 16px/1.2 var(--font-mono); }
-  .stat .name { font-size: 10.5px; color: var(--muted-foreground); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const LEVELS = { easy: 40, medium: 32, hard: 27, expert: 24 };
 

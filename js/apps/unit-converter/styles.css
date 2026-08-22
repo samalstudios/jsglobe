@@ -1,0 +1,15 @@
+.row-convert { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: end; }
+@media (max-width: 640px) { .row-convert { grid-template-columns: 1fr; } }
+.swap { align-self: center; }
+.all { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 6px; }
+.unit {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  font-size: 12.5px;
+}
+.unit .v { font-family: var(--font-mono); }

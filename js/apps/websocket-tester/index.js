@@ -1,61 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { download, toast } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .shell { display: grid; grid-template-columns: 1fr 300px; gap: 12px; flex: 1; min-height: 0; }
-  @media (max-width: 880px) { .shell { grid-template-columns: 1fr; } }
-  .log {
-    flex: 1;
-    min-height: 200px;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 8px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 40%, transparent);
-    scrollbar-width: thin;
-  }
-  .frame {
-    display: grid;
-    grid-template-columns: 62px 1fr;
-    gap: 8px;
-    padding: 5px 7px;
-    border-radius: var(--radius-sm);
-    font-family: var(--font-mono);
-    font-size: 11.5px;
-    line-height: 1.5;
-  }
-  .frame .time { color: var(--muted-foreground); font-size: 10.5px; }
-  .frame .body { white-space: pre-wrap; overflow-wrap: anywhere; }
-  .frame[data-kind="in"] { background: color-mix(in srgb, var(--success) 12%, transparent); }
-  .frame[data-kind="out"] { background: color-mix(in srgb, var(--ring) 14%, transparent); }
-  .frame[data-kind="system"] { color: var(--muted-foreground); }
-  .frame[data-kind="error"] { background: color-mix(in srgb, var(--destructive) 14%, transparent); color: var(--destructive); }
-  .side { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
-  .saved { display: grid; gap: 5px; overflow: auto; scrollbar-width: thin; }
-  .snippet { display: grid; grid-template-columns: 1fr auto; gap: 6px; align-items: center; }
-  .snippet button {
-    text-align: left;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: transparent;
-    color: var(--foreground);
-    font-family: var(--font-mono);
-    font-size: 11.5px;
-    padding: 6px 8px;
-    cursor: pointer;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .snippet button:hover { background: var(--accent); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const ECHO = 'wss://echo.websocket.org';
 const uid = () => Math.random().toString(36).slice(2, 8);

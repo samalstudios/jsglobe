@@ -1,84 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText, download, toast, formatBytes } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .grid-wrap {
-    flex: 1;
-    min-height: 200px;
-    overflow: auto;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    scrollbar-width: thin;
-  }
-  table { border-collapse: separate; border-spacing: 0; width: max-content; min-width: 100%; font-size: 12.5px; }
-  th, td {
-    border-bottom: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-    padding: 0;
-    max-width: 320px;
-  }
-  thead th {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    background: color-mix(in srgb, var(--muted) 92%, var(--background));
-    backdrop-filter: blur(6px);
-  }
-  .head {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 9px;
-    font-weight: 600;
-    white-space: nowrap;
-    cursor: pointer;
-    user-select: none;
-  }
-  .head .sort { color: var(--muted-foreground); font-size: 10px; }
-  .num {
-    position: sticky;
-    left: 0;
-    z-index: 1;
-    background: color-mix(in srgb, var(--muted) 70%, var(--background));
-    color: var(--muted-foreground);
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    text-align: right;
-    padding: 0 8px;
-    user-select: none;
-  }
-  thead .num { z-index: 3; }
-  .cell {
-    display: block;
-    padding: 5px 9px;
-    min-width: 60px;
-    outline: none;
-    white-space: pre;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .cell:focus { background: color-mix(in srgb, var(--ring) 14%, transparent); box-shadow: inset 0 0 0 1px var(--ring); }
-  tbody tr:hover .cell { background: color-mix(in srgb, var(--foreground) 4%, transparent); }
-  .drop {
-    display: grid;
-    place-items: center;
-    flex: none;
-    min-height: 90px;
-    border: 1px dashed var(--border-strong);
-    border-radius: var(--radius-md);
-    color: var(--muted-foreground);
-    font-size: 13px;
-    cursor: pointer;
-    padding: 12px;
-    text-align: center;
-  }
-  .drop[data-over="true"] { border-color: var(--ring); color: var(--foreground); }
-  .panes { display: grid; grid-template-columns: 1fr; gap: 10px; flex: 1; min-height: 0; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const DELIMITERS = { ',': 'Comma', ';': 'Semicolon', '\t': 'Tab', '|': 'Pipe' };
 

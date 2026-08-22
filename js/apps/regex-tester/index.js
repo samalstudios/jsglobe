@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { escapeHtml } from '../../core/dom.js';
@@ -6,52 +6,7 @@ import { debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .subject {
-    min-height: 150px;
-    max-height: 320px;
-    overflow: auto;
-    padding: 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 70%, transparent);
-    font-family: var(--font-mono);
-    font-size: 12.5px;
-    line-height: 1.7;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-  mark {
-    background: color-mix(in srgb, var(--ring) 34%, transparent);
-    color: inherit;
-    border-radius: 3px;
-    padding: 1px 0;
-    outline: 1px solid color-mix(in srgb, var(--ring) 55%, transparent);
-  }
-  .flags { display: flex; flex-wrap: wrap; gap: 4px; }
-  .flag {
-    appearance: none;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--muted-foreground);
-    font: 500 12px/1 var(--font-mono);
-    padding: 6px 10px;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-  }
-  .flag[aria-pressed="true"] {
-    color: var(--foreground);
-    border-color: color-mix(in srgb, var(--ring) 50%, transparent);
-    background: color-mix(in srgb, var(--ring) 15%, transparent);
-  }
-  .matches { max-height: 260px; overflow: auto; }
-  .match { padding: 8px 10px; border-bottom: 1px solid var(--border); font-size: 12.5px; }
-  .match .idx { color: var(--muted-foreground); font-family: var(--font-mono); font-size: 11.5px; }
-  .groups { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
-  .cheats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 4px; }
-  .cheat { display: flex; gap: 8px; font-size: 12px; }
-  .cheat code { font-family: var(--font-mono); color: var(--ring); min-width: 44px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const FLAGS = [
   ['g', 'global'],

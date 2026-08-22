@@ -1,32 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .expr { font: 600 clamp(20px, 5vw, 30px)/1.2 var(--font-mono); letter-spacing: 0.06em; text-align: center; padding: 6px 0; }
-  .fields { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-  @media (max-width: 620px) { .fields { grid-template-columns: repeat(2, 1fr); } }
-  .presets { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 6px; }
-  .preset {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-    padding: 8px 10px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: transparent;
-    color: var(--foreground);
-    font-family: inherit;
-    font-size: 12px;
-    cursor: pointer;
-    text-align: left;
-  }
-  .preset:hover { border-color: var(--border-strong); }
-  .preset code { font-family: var(--font-mono); color: var(--muted-foreground); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const FIELDS = [
   { name: 'Minute', min: 0, max: 59 },

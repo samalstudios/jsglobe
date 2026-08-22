@@ -1,55 +1,10 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .layout { display: flex; gap: 16px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
-  .well {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(20, 1fr);
-    gap: 1px;
-    width: min(320px, 74vw);
-    aspect-ratio: 1 / 2;
-    padding: 3px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 55%, transparent);
-  }
-  .brick { border-radius: 2px; background: color-mix(in srgb, var(--foreground) 6%, transparent); }
-  .brick[data-fill] { background: var(--brick); box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.25); }
-  .brick[data-ghost="true"] { background: color-mix(in srgb, var(--brick) 26%, transparent); }
-  .overlay {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    gap: 8px;
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--background) 74%, transparent);
-    backdrop-filter: blur(3px);
-    font-weight: 600;
-    text-align: center;
-    padding: 16px;
-  }
-  .side { display: flex; flex-direction: column; gap: 12px; width: min(200px, 100%); }
-  .preview {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 2px;
-    padding: 8px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    aspect-ratio: 2;
-  }
-  .stats { display: grid; gap: 6px; }
-  .stat { display: flex; justify-content: space-between; font-size: 12.5px; }
-  .stat b { font-family: var(--font-mono); font-weight: 600; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SHAPES = {
   I: { colour: '#3f7a75', cells: [[0, 1], [1, 1], [2, 1], [3, 1]], size: 4 },

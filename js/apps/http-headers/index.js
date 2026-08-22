@@ -1,44 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
-  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
-  .pane { display: flex; flex-direction: column; gap: 8px; min-width: 0; min-height: 0; overflow: auto; scrollbar-width: thin; }
-  .grade {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 16px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-  }
-  .badge-grade {
-    display: grid;
-    place-items: center;
-    width: 54px;
-    height: 54px;
-    border-radius: 16px;
-    font: 700 24px/1 var(--font-sans);
-    color: #fff;
-    flex: none;
-  }
-  .finding { display: grid; gap: 3px; padding: 9px 11px; border: 1px solid var(--border); border-radius: var(--radius-md); }
-  .finding .head { display: flex; align-items: center; gap: 8px; }
-  .finding .name { font-family: var(--font-mono); font-size: 12px; font-weight: 600; }
-  .finding .note { font-size: 12px; color: var(--muted-foreground); line-height: 1.55; }
-  .finding .value { font-family: var(--font-mono); font-size: 11px; color: var(--foreground); overflow-wrap: anywhere; }
-  .findings { display: grid; gap: 6px; }
-  .dot { width: 8px; height: 8px; border-radius: 999px; flex: none; }
-  .dot[data-level="good"] { background: var(--success); }
-  .dot[data-level="warn"] { background: var(--warning); }
-  .dot[data-level="bad"] { background: var(--destructive); }
-  .dot[data-level="info"] { background: var(--muted-foreground); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const SAMPLE = `HTTP/2 200
 content-type: text/html; charset=utf-8

@@ -1,50 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { download, formatBytes, toast } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .drop {
-    display: grid;
-    place-items: center;
-    gap: 8px;
-    padding: 26px 18px;
-    border: 1px dashed var(--border-strong);
-    border-radius: var(--radius-lg);
-    background: color-mix(in srgb, var(--muted) 40%, transparent);
-    text-align: center;
-    cursor: pointer;
-    transition: border-color 0.15s ease, background 0.15s ease;
-  }
-  .drop[data-over="true"] { border-color: var(--ring); background: color-mix(in srgb, var(--ring) 12%, transparent); }
-  .drop .glyph { font-size: 22px; opacity: 0.6; }
-  .items { display: flex; flex-direction: column; gap: 8px; }
-  .item {
-    display: grid;
-    grid-template-columns: 56px 1fr auto;
-    gap: 12px;
-    align-items: center;
-    padding: 9px 11px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--card);
-  }
-  .thumb {
-    width: 56px;
-    height: 44px;
-    border-radius: 6px;
-    object-fit: cover;
-    background: color-mix(in srgb, var(--muted) 70%, transparent);
-  }
-  .meta { min-width: 0; }
-  .meta .name { font-size: 13px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .meta .info { font-size: 11.5px; color: var(--muted-foreground); }
-  .saving { color: var(--success); }
-  .growth { color: var(--warning); }
-  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const FORMATS = [
   { value: 'image/png', label: 'PNG', extension: 'png' },

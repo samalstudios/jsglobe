@@ -1,45 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText, toast } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .shell { display: grid; grid-template-columns: 186px 1fr; gap: 12px; flex: 1; min-height: 0; }
-  @media (max-width: 760px) { .shell { grid-template-columns: 1fr; } }
-  .main { display: flex; flex-direction: column; gap: 10px; min-width: 0; min-height: 0; }
-  .grid {
-    flex: 1;
-    min-height: 220px;
-    overflow: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(58px, 1fr));
-    gap: 4px;
-    padding: 6px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 40%, transparent);
-    align-content: start;
-    scrollbar-width: thin;
-  }
-  .cell {
-    appearance: none;
-    display: grid;
-    gap: 1px;
-    padding: 5px 2px;
-    border: 1px solid transparent;
-    border-radius: var(--radius-sm);
-    background: transparent;
-    cursor: pointer;
-    color: var(--foreground);
-  }
-  .cell:hover { background: var(--card); border-color: var(--border); }
-  .cell .glyph { font-size: 20px; line-height: 1.2; }
-  .cell .point { font-family: var(--font-mono); font-size: 9px; color: var(--muted-foreground); }
-  .detail { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; padding: 12px 14px; border: 1px solid var(--border); border-radius: var(--radius-md); }
-  .detail .big { font-size: 44px; line-height: 1; min-width: 56px; text-align: center; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const BLOCKS = [
   { id: 'ascii', label: t('unicode-tables.basicLatin', 'Basic Latin'), from: 0x20, to: 0x7e, icon: 'type' },

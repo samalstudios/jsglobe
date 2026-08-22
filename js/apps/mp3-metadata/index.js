@@ -1,90 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { download, toast, formatBytes } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .drop {
-    display: grid;
-    place-items: center;
-    flex: none;
-    min-height: 120px;
-    border: 1px dashed var(--border-strong);
-    border-radius: var(--radius-md);
-    color: var(--muted-foreground);
-    font-size: 13px;
-    cursor: pointer;
-    text-align: center;
-    padding: 12px;
-  }
-  .drop[data-over="true"] { border-color: var(--ring); color: var(--foreground); }
-  .drop { min-height: 88px; }
-
-  .shell { display: grid; grid-template-columns: 290px 1fr; gap: 14px; flex: 1; min-height: 0; }
-  @media (max-width: 900px) { .shell { grid-template-columns: 1fr; } }
-  .list-pane { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
-  .list-head { display: flex; align-items: center; gap: 8px; }
-  .list {
-    flex: 1;
-    min-height: 160px;
-    overflow: auto;
-    display: grid;
-    gap: 3px;
-    align-content: start;
-    padding: 5px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 40%, transparent);
-    scrollbar-width: thin;
-  }
-  .row {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 8px;
-    align-items: center;
-    padding: 5px 7px;
-    border: 1px solid transparent;
-    border-radius: var(--radius-sm);
-  }
-  .row[data-current="true"] { background: var(--card); border-color: transparent; box-shadow: var(--shadow-raise); }
-  .row:hover { background: color-mix(in srgb, var(--card) 70%, transparent); }
-  .open {
-    display: grid;
-    gap: 1px;
-    min-width: 0;
-    text-align: left;
-    border: 0;
-    background: none;
-    padding: 0;
-    cursor: pointer;
-    color: var(--foreground);
-    font-family: inherit;
-  }
-  .open .name { font-size: 12.5px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .open .sub { font-size: 11px; color: var(--muted-foreground); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .mark { font-family: var(--font-mono); font-size: 11px; color: var(--muted-foreground); }
-  .mark[data-dirty="true"]::after { content: " *"; color: var(--warning); }
-
-  .edit { min-width: 0; overflow: auto; scrollbar-width: thin; }
-  .split { display: grid; grid-template-columns: 190px 1fr; gap: 14px; }
-  @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
-  .cover {
-    display: grid;
-    place-items: center;
-    aspect-ratio: 1;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 55%, transparent);
-    color: var(--muted-foreground);
-    font-size: 12px;
-    overflow: hidden;
-  }
-  .cover img { width: 100%; height: 100%; object-fit: cover; }
-  .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 620px) { .fields { grid-template-columns: 1fr; } }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const FRAMES = {
   TIT2: { key: 'title', label: t('mp3-metadata.title', 'Title') },

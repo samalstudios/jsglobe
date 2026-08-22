@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { generate, describe, inspect } from '../../lib/ssh-keys.js';
@@ -6,36 +6,7 @@ import { copyText, download } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .app { container-type: inline-size; }
-  .art {
-    font: 12px/1.25 var(--font-mono);
-    white-space: pre;
-    margin: 0;
-    padding: 10px 12px;
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 75%, transparent);
-    border: 1px solid var(--border);
-    overflow-x: auto;
-  }
-  .marks { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 12.5px; align-items: baseline; }
-  .marks dt { color: var(--muted-foreground); }
-  .marks dd { margin: 0; font-family: var(--font-mono); overflow-wrap: anywhere; }
-  .pair { display: grid; grid-template-columns: minmax(0, 1fr) 128px; gap: 12px; align-items: start; }
-  .pair .stack { padding-top: 22px; }
-  @container (max-width: 620px) {
-    .pair { grid-template-columns: minmax(0, 1fr); }
-    .pair .stack { padding-top: 0; flex-direction: row; }
-  }
-  .warn {
-    font-size: 12.5px;
-    color: var(--muted-foreground);
-    border-left: 2px solid color-mix(in srgb, var(--ring) 60%, transparent);
-    padding-left: 10px;
-  }
-  .opts { display: flex; flex-wrap: wrap; gap: 6px 14px; }
-  .opts label { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const TYPES = [
   { value: 'ed25519', label: t('ssh-keys.ed25519Recommended', 'Ed25519 (recommended)') },

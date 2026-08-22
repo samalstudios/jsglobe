@@ -1,0 +1,20 @@
+.group { margin-bottom: 16px; }
+.group h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-foreground); margin: 0 0 8px; }
+.status {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  margin-bottom: 6px;
+}
+.code { font: 700 17px/1.2 var(--font-mono); }
+.status[data-class="1"] .code { color: #60a5fa; }
+.status[data-class="2"] .code { color: var(--success); }
+.status[data-class="3"] .code { color: var(--warning); }
+.status[data-class="4"] .code { color: #fb923c; }
+.status[data-class="5"] .code { color: var(--destructive); }
+.name { font-size: 13.5px; font-weight: 600; }
+.desc { font-size: 12.5px; color: var(--muted-foreground); }

@@ -1,15 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, chunk } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .bases { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; }
-  .base { display: flex; flex-direction: column; gap: 4px; }
-  .bits { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; overflow-wrap: anywhere; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const COMMON = [
   { base: 2, label: t('base-converter.binaryBase2', 'Binary (base 2)') },

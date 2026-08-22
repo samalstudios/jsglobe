@@ -1,64 +1,10 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .stat {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 11px;
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 75%, transparent);
-    border: 1px solid var(--border);
-    font: 600 13px/1 var(--font-mono);
-    font-variant-numeric: tabular-nums;
-  }
-  .wrap { display: grid; place-items: center; }
-  .board {
-    display: grid;
-    gap: 2px;
-    padding: 8px;
-    border-radius: var(--radius-lg);
-    background: color-mix(in srgb, var(--muted) 80%, transparent);
-    border: 1px solid var(--border);
-    user-select: none;
-    touch-action: manipulation;
-    max-width: 100%;
-    overflow: auto;
-  }
-  .cell {
-    width: 34px;
-    height: 34px;
-    display: grid;
-    place-items: center;
-    border: 0;
-    border-radius: 5px;
-    background: color-mix(in srgb, var(--foreground) 10%, transparent);
-    font: 700 15px/1 var(--font-sans);
-    color: transparent;
-    cursor: pointer;
-    padding: 0;
-  }
-  .cell:hover { background: color-mix(in srgb, var(--foreground) 16%, transparent); }
-  .cell[data-open="true"] {
-    background: color-mix(in srgb, var(--muted) 55%, transparent);
-    cursor: default;
-  }
-  .cell[data-flag="true"] { color: var(--warning); }
-  .cell[data-mine="true"][data-open="true"] { background: color-mix(in srgb, var(--destructive) 45%, transparent); color: #fff; }
-  .cell[data-count="1"] { color: #3b82f6; }
-  .cell[data-count="2"] { color: #16a34a; }
-  .cell[data-count="3"] { color: #ef4444; }
-  .cell[data-count="4"] { color: #7c3aed; }
-  .cell[data-count="5"] { color: #b45309; }
-  .cell[data-count="6"] { color: #0891b2; }
-  .cell[data-count="7"] { color: var(--foreground); }
-  .cell[data-count="8"] { color: var(--muted-foreground); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const LEVELS = {
   easy: { cols: 9, rows: 9, mines: 10, label: t('game-minesweeper.easy', 'Easy') },

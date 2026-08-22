@@ -1,65 +1,10 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .pads {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    flex: none;
-  }
-  @media (max-width: 640px) { .pads { grid-template-columns: repeat(2, 1fr); } }
-  .pad {
-    appearance: none;
-    display: grid;
-    gap: 4px;
-    place-content: center;
-    aspect-ratio: 1.35;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background: linear-gradient(180deg, color-mix(in srgb, var(--card) 92%, transparent), color-mix(in srgb, var(--muted) 70%, transparent));
-    color: var(--foreground);
-    cursor: pointer;
-    user-select: none;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.06s ease, box-shadow 0.12s ease, border-color 0.12s ease;
-  }
-  .pad .name { font: 600 12.5px/1 var(--font-sans); }
-  .pad .key {
-    justify-self: center;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted-foreground);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 2px 6px;
-  }
-  .pad[data-hit="true"] {
-    transform: translateY(2px) scale(0.97);
-    border-color: color-mix(in srgb, var(--ring) 60%, transparent);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 24%, transparent);
-    background: color-mix(in srgb, var(--ring) 18%, var(--card));
-  }
-  .steps { display: grid; gap: 6px; }
-  .lane { display: grid; grid-template-columns: 92px 1fr; gap: 8px; align-items: center; }
-  .lane .label { font-size: 11.5px; color: var(--muted-foreground); }
-  .cells { display: grid; grid-template-columns: repeat(16, 1fr); gap: 3px; }
-  .step {
-    appearance: none;
-    height: 26px;
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    background: color-mix(in srgb, var(--muted) 55%, transparent);
-    cursor: pointer;
-    padding: 0;
-  }
-  .step[data-beat="true"] { border-color: var(--border-strong); }
-  .step[data-on="true"] { background: var(--ring); border-color: transparent; }
-  .step[data-cursor="true"] { outline: 2px solid color-mix(in srgb, var(--foreground) 45%, transparent); outline-offset: 1px; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const KITS = {
   kick: { label: t('drum-kit.kick', 'Kick'), key: 'a' },

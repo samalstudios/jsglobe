@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { ai } from '../../core/ai.js';
@@ -7,38 +7,7 @@ import '../../ui/jg-ai-bar.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .split { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: stretch; flex: 1; min-height: 0; }
-  @media (max-width: 820px) { .split { grid-template-columns: 1fr; } .swap-cell { justify-self: center; } }
-  .pane { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
-  .swap-cell { display: grid; place-items: center; }
-  .out {
-    flex: 1;
-    min-height: 190px;
-    overflow: auto;
-    padding: 12px 14px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--card);
-    font-size: 14px;
-    line-height: 1.7;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-  .out:empty::before { content: attr(data-placeholder); color: var(--muted-foreground); }
-  .count { font-size: 11.5px; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
-  .quick { display: flex; flex-wrap: wrap; gap: 4px; }
-  .quick button {
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: transparent;
-    color: var(--muted-foreground);
-    font: 500 11.5px/1 var(--font-sans);
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  .quick button:hover { color: var(--foreground); border-color: var(--border-strong); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const LANGUAGES = [
   'Arabic', 'Bengali', 'Bulgarian', 'Chinese (Simplified)', 'Chinese (Traditional)', 'Czech', 'Danish',

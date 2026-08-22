@@ -1,0 +1,49 @@
+.app { gap: 10px; }
+.thread {
+  flex: 1;
+  min-height: 220px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+.msg { display: flex; gap: 10px; align-items: flex-start; }
+.who {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  font-size: 10.5px;
+  font-weight: 700;
+  flex: none;
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+.msg[data-role="user"] .who { background: var(--ring); color: #fff; }
+.bubble { flex: 1; min-width: 0; font-size: 13.5px; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }
+.bubble code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: color-mix(in srgb, var(--muted) 80%, transparent);
+  padding: 1px 5px;
+  border-radius: 5px;
+}
+.actions { display: flex; gap: 4px; opacity: 0; }
+.msg:hover .actions { opacity: 1; }
+.composer { display: flex; gap: 8px; align-items: flex-end; }
+.caret::after {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  margin-left: 2px;
+  background: var(--ring);
+  vertical-align: text-bottom;
+  animation: blink 1s steps(2) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }

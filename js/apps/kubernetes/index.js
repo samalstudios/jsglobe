@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { toYaml } from '../../core/yaml.js';
@@ -6,14 +6,7 @@ import { debounce, copyText, download } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .shell { display: grid; grid-template-columns: 320px 1fr; gap: 14px; flex: 1; min-height: 0; }
-  @media (max-width: 880px) { .shell { grid-template-columns: 1fr; } }
-  .form { display: flex; flex-direction: column; gap: 10px; overflow: auto; scrollbar-width: thin; padding-right: 4px; }
-  .pair { display: grid; grid-template-columns: 1fr 1fr auto; gap: 6px; align-items: center; }
-  .list { display: grid; gap: 6px; }
-  .out { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const uid = () => Math.random().toString(36).slice(2, 8);
 

@@ -1,41 +1,11 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText, download } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .out {
-    flex: none;
-    margin: 0;
-    padding: 14px;
-    min-height: 180px;
-    max-height: 420px;
-    overflow: auto;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 45%, transparent);
-    font-family: var(--font-mono);
-    font-size: 11px;
-    line-height: 1;
-    white-space: pre;
-    scrollbar-width: thin;
-  }
-  .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
-  .drop {
-    display: grid;
-    place-items: center;
-    flex: none;
-    min-height: 120px;
-    border: 1px dashed var(--border-strong);
-    border-radius: var(--radius-md);
-    color: var(--muted-foreground);
-    font-size: 13px;
-    cursor: pointer;
-  }
-  .drop[data-over="true"] { border-color: var(--ring); color: var(--foreground); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const GLYPHS = {
   A: '.###.|#...#|#####|#...#|#...#',

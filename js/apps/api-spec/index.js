@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { toYaml, fromYaml } from '../../core/yaml.js';
@@ -6,47 +6,7 @@ import { debounce, copyText, download, toast } from '../../core/util.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .shell { display: grid; grid-template-columns: 1fr 340px; gap: 12px; flex: 1; min-height: 0; }
-  @media (max-width: 900px) { .shell { grid-template-columns: 1fr; } }
-  .pane { display: flex; flex-direction: column; gap: 8px; min-width: 0; min-height: 0; }
-  .side { overflow: auto; scrollbar-width: thin; gap: 10px; }
-  .route {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 8px;
-    align-items: baseline;
-    width: 100%;
-    text-align: left;
-    padding: 7px 9px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: transparent;
-    color: var(--foreground);
-    cursor: pointer;
-  }
-  .route:hover { background: var(--accent); }
-  .route .path { font-family: var(--font-mono); font-size: 11.5px; overflow-wrap: anywhere; }
-  .route .summary { grid-column: 2; font-size: 11px; color: var(--muted-foreground); }
-  .verb {
-    font: 600 9.5px/1 var(--font-mono);
-    letter-spacing: 0.06em;
-    padding: 4px 6px;
-    border-radius: 4px;
-    color: #fff;
-    text-transform: uppercase;
-  }
-  .verb[data-m="get"] { background: #3f6b91; }
-  .verb[data-m="post"] { background: #4a7a58; }
-  .verb[data-m="put"] { background: #96703f; }
-  .verb[data-m="patch"] { background: #6a5a8c; }
-  .verb[data-m="delete"] { background: #8a1c3b; }
-  .verb[data-m="head"], .verb[data-m="options"] { background: #5b6470; }
-  .issues { display: grid; gap: 5px; }
-  .issue { display: flex; gap: 7px; align-items: baseline; font-size: 12px; color: var(--muted-foreground); }
-  .issue b { color: var(--warning); font-weight: 600; }
-  .issue.bad b { color: var(--destructive); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const METHODS = ['get', 'post', 'put', 'patch', 'delete', 'head', 'options'];
 

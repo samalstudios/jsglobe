@@ -1,69 +1,10 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .stage {
-    position: relative;
-    flex: none;
-    padding: 20px 22px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background: color-mix(in srgb, var(--muted) 40%, transparent);
-    font-family: var(--font-mono);
-    font-size: 19px;
-    line-height: 1.9;
-    letter-spacing: 0.01em;
-    cursor: text;
-    user-select: none;
-    max-height: 240px;
-    overflow: hidden;
-  }
-  .stage:focus-within { border-color: color-mix(in srgb, var(--ring) 60%, var(--border)); box-shadow: var(--shadow-ring); }
-  .word { display: inline-block; margin-right: 0.6ch; white-space: nowrap; }
-  .ch { color: var(--muted-foreground); }
-  .ch[data-state="good"] { color: var(--foreground); }
-  .ch[data-state="bad"] { color: var(--destructive); background: color-mix(in srgb, var(--destructive) 14%, transparent); border-radius: 2px; }
-  .ch[data-state="extra"] { color: var(--destructive); opacity: 0.6; }
-  .caret {
-    display: inline-block;
-    width: 2px;
-    height: 1.1em;
-    vertical-align: text-bottom;
-    margin-right: -2px;
-    background: var(--ring);
-    animation: blink 1.1s steps(1) infinite;
-  }
-  @keyframes blink { 50% { opacity: 0; } }
-  .hidden-input { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(104px, 1fr)); gap: 8px; }
-  .stat {
-    display: grid;
-    gap: 2px;
-    padding: 9px 11px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-  }
-  .stat .value { font: 650 20px/1.1 var(--font-sans); letter-spacing: -0.02em; }
-  .stat .name { font-size: 11px; color: var(--muted-foreground); }
-  .keys { display: flex; flex-wrap: wrap; gap: 4px; }
-  .key {
-    display: grid;
-    place-items: center;
-    width: 30px;
-    height: 30px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    background: color-mix(in srgb, var(--destructive) calc(var(--heat) * 45%), transparent);
-  }
-  .bests { display: grid; gap: 4px; font-size: 12.5px; }
-  .best { display: grid; grid-template-columns: 1fr auto auto; gap: 10px; }
-  .best span:not(:first-child) { font-family: var(--font-mono); color: var(--muted-foreground); }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const COMMON = 'the be to of and a in that have I it for not on with he as you do at this but his by from they we say her she or an will my one all would there their what so up out if about who get which go me when make can like time no just him know take people into year your good some could them see other than then now look only come its over think also back after use two how our work first well way even new want because any these give day most us is are was were been has had said each she which their time will about if up out many then them can only other new some what would make like him into has two more her go see no way could my than first been call who oil sit now find down day did get come made may part'.split(' ');
 

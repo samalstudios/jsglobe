@@ -1,4 +1,4 @@
-import { JGApp, define, html, css } from '../../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { ai } from '../../core/ai.js';
@@ -7,24 +7,7 @@ import '../../ui/jg-ai-bar.js';
 
 const t = appText(strings);
 
-const sheet = css`
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
-  @media (max-width: 820px) { .split { grid-template-columns: 1fr; } }
-  .pane { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
-  .out {
-    flex: 1;
-    min-height: 200px;
-    overflow: auto;
-    padding: 14px 16px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--card);
-    font-size: 13.5px;
-    line-height: 1.75;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-`;
+const sheet = await styleSheet(import.meta.url);
 
 const TASKS = [
   { value: 'summarise', label: t('ai-writer.summarise', 'Summarise'), prompt: 'Summarise the text in at most five bullet points.' },
