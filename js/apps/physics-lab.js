@@ -1722,6 +1722,7 @@ export default class PhysicsLab extends JGApp {
       let guard = 0;
       while (carry >= dt && guard < 24) {
         if (this.#running) {
+          this.#driveControls(dt);
           if (this.#grab && this.#cursor) this.#world.pull(this.#grab.id, this.#grab.local, this.#cursor, dt);
           this.#world.step(dt);
         }
