@@ -303,29 +303,26 @@ const SAMPLES = {
     name: 'Excavator arm',
     gravity: 9.81,
     bodies: [
-      { id: 1, kind: 'box', x: 0, y: 6.1, width: 30, height: 0.8, pinned: true, friction: 0.9 },
-      { id: 2, kind: 'poly', x: -4.9, y: 4.963, angle: 0, pinned: true, friction: 0.9, points: [{ x: -2.3, y: -0.363 }, { x: 2.3, y: -0.363 }, { x: 1.9, y: 0.387 }, { x: -1.9, y: 0.387 }] },
-      { id: 3, kind: 'poly', x: -5.1, y: 3.8, angle: 0, pinned: true, friction: 0.8, points: [{ x: -1.8, y: -0.8 }, { x: 1.8, y: -0.8 }, { x: 1.8, y: 0.8 }, { x: -1.8, y: 0.8 } ] },
-      { id: 4, kind: 'poly', x: -5.723, y: 2.271, angle: 0, pinned: true, friction: 0.8, points: [{ x: -0.877, y: -0.771 }, { x: 0.723, y: -0.771 }, { x: 1.023, y: 0.729 }, { x: -0.877, y: 0.729 }] },
-      { id: 5, kind: 'poly', x: -1.919, y: 1.683, angle: 0, density: 1, friction: 0.6, points: [{ x: -2.155, y: 1.397 }, { x: 1.988, y: -1.988 }, { x: 2.298, y: -1.62 }, { x: -1.743, y: 1.887 }] },
-      { id: 6, kind: 'poly', x: 0.895, y: 1.097, angle: 0, density: 0.9, friction: 0.6, points: [{ x: -0.936, y: -1.46 }, { x: 1.413, y: 1.335 }, { x: 1.143, y: 1.573 }, { x: -1.326, y: -1.116 }] },
-      { id: 7, kind: 'poly', x: 1.736, y: 2.799, angle: 0, density: 1.1, friction: 0.95, points: [{ x: 0.643, y: -0.285 }, { x: 0.419, y: 0.127 }, { x: -0.285, y: 0.485 }, { x: -0.747, y: 0.127 }, { x: -0.48, y: -0.172 }, { x: -0.182, y: 0.039 }, { x: 0.212, y: -0.331 }, { x: 0.153, y: -0.699 }] },
-      { id: 8, kind: 'box', x: 5.4, y: 5.3, width: 0.8, height: 0.8, friction: 0.8, restitution: 0 },
-      { id: 9, kind: 'box', x: 6.4, y: 5.3, width: 0.8, height: 0.8, friction: 0.8, restitution: 0 },
-      { id: 10, kind: 'circle', x: 7.4, y: 5.35, radius: 0.35, friction: 0.7, restitution: 0.1 },
+      { id: 42, kind: 'poly', x: 14.923, y: 11.639, angle: 0.8755, points: [{ x: -0.509, y: -1.25 }, { x: -0.518, y: -1.252 }, { x: -0.557, y: -1.278 }, { x: -0.583, y: -1.317 }, { x: -0.592, y: -1.362 }, { x: -0.583, y: -1.408 }, { x: -0.557, y: -1.447 }, { x: -0.518, y: -1.473 }, { x: -0.487, y: -1.479 }, { x: -0.487, y: -1.479 }, { x: -0.366, y: -1.528 }, { x: -0.049, y: -1.631 }, { x: -0.049, y: -1.631 }, { x: 0.096, y: -2.46 }, { x: 0.13, y: -2.459 }, { x: 0.145, y: -2.536 }, { x: 0.199, y: -2.617 }, { x: 0.28, y: -2.672 }, { x: 0.376, y: -2.691 }, { x: 0.472, y: -2.672 }, { x: 0.553, y: -2.617 }, { x: 0.607, y: -2.536 }, { x: 0.624, y: -2.448 }, { x: 0.624, y: -2.448 }, { x: 0.639, y: -2.448 }, { x: 0.622, y: -0.486 }, { x: -0.231, y: 2.591 }, { x: -0.25, y: 2.683 }, { x: -0.312, y: 2.777 }, { x: -0.406, y: 2.839 }, { x: -0.517, y: 2.861 }, { x: -0.628, y: 2.839 }, { x: -0.722, y: 2.777 }, { x: -0.784, y: 2.683 }, { x: -0.806, y: 2.572 }, { x: -0.784, y: 2.461 }, { x: -0.757, y: 2.42 }, { x: -0.757, y: 2.42 }, { x: -0.722, y: 2.223 }, { x: -0.722, y: 2.223 }, { x: -0.725, y: 2.223 }, { x: -0.725, y: 2.223 }, { x: -0.682, y: 1.938 }, { x: -0.682, y: 1.938 }, { x: -0.673, y: 1.939 }, { x: -0.673, y: 1.939 }, { x: -0.13, y: -1.168 }, { x: -0.508, y: -1.245 }], density: 1, restitution: 0.35, friction: 0.35 },
+      { id: 43, kind: 'box', x: 20.406, y: 15.637, angle: 0, width: 2.462, height: 0.884, restitution: 0.15, friction: 0.5, pinned: true },
+      { id: 8, kind: 'poly', x: 18.849, y: 13.329, angle: -0.0006, points: [{ x: 1.023, y: -0.656 }, { x: 1.023, y: -0.656 }, { x: 1.039, y: -0.68 }, { x: 1.109, y: -0.726 }, { x: 1.19, y: -0.742 }, { x: 1.272, y: -0.726 }, { x: 1.341, y: -0.68 }, { x: 1.387, y: -0.61 }, { x: 1.404, y: -0.529 }, { x: 1.392, y: -0.471 }, { x: 1.392, y: -0.471 }, { x: 1.399, y: -0.468 }, { x: 2.014, y: 2.77 }, { x: 1.27, y: 2.744 }, { x: 0.534, y: 0.508 }, { x: -3.038, y: -1.618 }, { x: -3.069, y: -1.624 }, { x: -3.166, y: -1.689 }, { x: -3.231, y: -1.786 }, { x: -3.254, y: -1.901 }, { x: -3.231, y: -2.016 }, { x: -3.166, y: -2.113 }, { x: -3.069, y: -2.178 }, { x: -2.954, y: -2.201 }, { x: -2.852, y: -2.18 }, { x: -2.852, y: -2.18 }, { x: -2.844, y: -2.189 }, { x: 0.899, y: -0.462 }, { x: 1.005, y: -0.665 }], density: 1, restitution: 0.35, friction: 0.35 },
+      { id: 32, kind: 'poly', x: 11.698, y: 13.258, angle: 0.9391, points: [{ x: -0.32, y: -0.61 }, { x: -0.32, y: -0.61 }, { x: -0.366, y: -0.64 }, { x: -0.399, y: -0.689 }, { x: -0.41, y: -0.746 }, { x: -0.399, y: -0.804 }, { x: -0.366, y: -0.852 }, { x: -0.317, y: -0.885 }, { x: -0.26, y: -0.896 }, { x: -0.203, y: -0.885 }, { x: -0.154, y: -0.852 }, { x: -0.121, y: -0.804 }, { x: -0.116, y: -0.777 }, { x: -0.116, y: -0.777 }, { x: 0.024, y: -0.787 }, { x: 0.071, y: -0.892 }, { x: 0.071, y: -0.892 }, { x: 0.068, y: -0.907 }, { x: 0.08, y: -0.966 }, { x: 0.114, y: -1.017 }, { x: 0.164, y: -1.051 }, { x: 0.224, y: -1.062 }, { x: 0.283, y: -1.051 }, { x: 0.334, y: -1.017 }, { x: 0.367, y: -0.966 }, { x: 0.379, y: -0.907 }, { x: 0.367, y: -0.847 }, { x: 0.34, y: -0.807 }, { x: 0.34, y: -0.807 }, { x: 0.351, y: -0.734 }, { x: 0.351, y: -0.734 }, { x: 0.364, y: -0.735 }, { x: 0.696, y: 0.945 }, { x: 0.187, y: 0.763 }, { x: 0.187, y: 0.763 }, { x: 0.189, y: 0.784 }, { x: -0.068, y: 0.784 }, { x: -0.314, y: 0.694 }, { x: -0.515, y: 0.525 }, { x: -0.646, y: 0.298 }, { x: -0.692, y: 0.04 }, { x: -0.646, y: -0.218 }, { x: -0.515, y: -0.446 }], density: 1, restitution: 0.15, friction: 0.5 },
+      { id: 37, kind: 'poly', x: 12.863, y: 12.338, angle: 0.982, points: [{ x: -0.399, y: 0.12 }, { x: -0.402, y: 0.12 }, { x: -0.448, y: 0.111 }, { x: -0.487, y: 0.085 }, { x: -0.513, y: 0.046 }, { x: -0.522, y: 0 }, { x: -0.513, y: -0.046 }, { x: -0.487, y: -0.085 }, { x: -0.448, y: -0.111 }, { x: -0.402, y: -0.12 }, { x: -0.401, y: -0.12 }, { x: -0.401, y: -0.12 }, { x: -0.401, y: -0.12 }, { x: 0.414, y: -0.12 }, { x: 0.414, y: -0.115 }, { x: 0.414, y: -0.115 }, { x: 0.447, y: -0.108 }, { x: 0.486, y: -0.082 }, { x: 0.512, y: -0.043 }, { x: 0.522, y: 0.003 }, { x: 0.512, y: 0.049 }, { x: 0.486, y: 0.088 }, { x: 0.447, y: 0.114 }, { x: 0.402, y: 0.123 }, { x: 0.384, y: 0.12 }, { x: 0.384, y: 0.12 }], density: 1, restitution: 0.35, friction: 0.35 },
+      { id: 58, kind: 'box', x: 12.509, y: 12.463, angle: 2.8213, width: 0.732, height: 0.22, density: 1.2, restitution: 0.1, friction: 0.5, ghost: true },
     ],
     joints: [
-      { id: 20, kind: 'pin', a: 3, b: 5, aWorld: { x: -3.6, y: 3.1 }, bWorld: { x: -3.6, y: 3.1 } },
-      { id: 21, kind: 'pin', a: 5, b: 6, aWorld: { x: -0.005, y: 0.072 }, bWorld: { x: -0.005, y: 0.072 } },
-      { id: 22, kind: 'pin', a: 6, b: 7, aWorld: { x: 1.975, y: 2.326 }, bWorld: { x: 1.975, y: 2.326 } },
-      { id: 23, kind: 'jack', a: 3, b: 5, aWorld: { x: -5.4, y: 1.6 }, bWorld: { x: -2.702, y: 0.906 }, manual: true, extend: 0.5, rest: 2.786, min: 2.4, max: 3.18 },
-      { id: 24, kind: 'jack', a: 5, b: 6, aWorld: { x: -1.386, y: 0.451 }, bWorld: { x: 1.342, y: 1.151 }, manual: true, extend: 0.5, rest: 2.816, min: 2.42, max: 3.21 },
-      { id: 25, kind: 'jack', a: 6, b: 7, aWorld: { x: 2.03, y: 1.479 }, bWorld: { x: 2.512, y: 3.348 }, manual: true, extend: 0.5, rest: 1.93, min: 1.66, max: 2.2 },
+      { id: 44, kind: 'weld', a: 8, b: 43, aAt: { x: 1.502, y: 2.208 }, bAt: { x: -0.053, y: -0.102 } },
+      { id: 45, kind: 'pin', a: 42, b: 8, aAt: { x: 0.438, y: -0.878 }, bAt: { x: -2.972, y: -1.918 } },
+      { id: 46, kind: 'pin', a: 42, b: 32, aAt: { x: -0.55, y: 2.606 }, bAt: { x: 0.217, y: -0.923 } },
+      { id: 47, kind: 'pin', a: 42, b: 37, aAt: { x: -0.36, y: 2.056 }, bAt: { x: 0.422, y: -0.009 } },
+      { id: 50, kind: 'jack', a: 8, b: 42, aAt: { x: 1.154, y: -0.524 }, bAt: { x: 0.402, y: -2.478 }, rest: 5.119, min: 3.072, max: 5.222, speed: 0.4, manual: true, extend: 0.9522 },
+      { id: 59, kind: 'pin', a: 37, b: 58, aAt: { x: 0.007, y: 0 }, bAt: { x: -0.366, y: 0 } },
+      { id: 60, kind: 'pin', a: 32, b: 58, aAt: { x: -0.275, y: -0.775 }, bAt: { x: 0.366, y: 0 } },
+      { id: 61, kind: 'jack', a: 42, b: 37, aAt: { x: -0.492, y: -1.379 }, bAt: { x: -0.412, y: 0.002 }, rest: 3.516, min: 3, max: 4.6, speed: 0.4, manual: true, extend: 0.3225 },
     ],
     controls: [
-      { id: 30, kind: 'slider', x: -10.6, y: -1.4, target: 23, value: 0.5, label: 'Boom' },
-      { id: 31, kind: 'slider', x: -9.3, y: -1.4, target: 24, value: 0.5, label: 'Stick' },
-      { id: 32, kind: 'slider', x: -8, y: -1.4, target: 25, value: 0.5, label: 'Bucket' },
+      { id: 51, kind: 'slider', x: 6.5, y: 15, target: 50, value: 0.9522, label: 'Long' },
+      { id: 64, kind: 'slider', x: 5, y: 15, target: 61, value: 0.3225, label: 'Cap' },
     ],
   },
   fourbar: {
@@ -439,8 +436,14 @@ export default class PhysicsLab extends JGApp {
     if (saved) {
       this.#restore(saved);
       this.#openName = open;
+    } else if (SAMPLES[open]) {
+      this.#load(open);
     } else {
-      this.#load(SAMPLES[open] ? open : 'pendulum');
+      this.#bodies = [];
+      this.#joints = [];
+      this.#controls = [];
+      this.#seq = 1;
+      this.#reset();
     }
     super.connectedCallback();
   }
@@ -897,6 +900,14 @@ export default class PhysicsLab extends JGApp {
       },
       { left: Infinity, top: Infinity, right: -Infinity, bottom: -Infinity },
     );
+    this.#controls.forEach((control) => {
+      const box = this.#controlBox(control);
+      bounds.left = Math.min(bounds.left, box.left);
+      bounds.right = Math.max(bounds.right, box.right);
+      bounds.top = Math.min(bounds.top, box.top);
+      bounds.bottom = Math.max(bounds.bottom, box.bottom + 0.4);
+    });
+
     const pad = 36;
     const width = Math.max(0.5, bounds.right - bounds.left) * SCALE;
     const height = Math.max(0.5, bounds.bottom - bounds.top) * SCALE;
@@ -1246,7 +1257,15 @@ export default class PhysicsLab extends JGApp {
       } else {
         this.#snapshot();
         const source = this.#bodies.find((entry) => entry.id === body.id);
-        this.#drag = { kind: 'move', body: source, from: point, origin: { x: source.x, y: source.y } };
+        const riders = this.#ridersOf(source);
+        this.#drag = {
+          kind: 'move',
+          body: source,
+          riders,
+          from: point,
+          origin: { x: source.x, y: source.y },
+          starts: riders.map((rider) => ({ x: rider.x, y: rider.y })),
+        };
       }
       this.#inspector();
       return;
@@ -1326,16 +1345,21 @@ export default class PhysicsLab extends JGApp {
     }
 
     if (this.#drag?.kind === 'move') {
-      this.#drag.body.x = this.#drag.origin.x + (point.x - this.#drag.from.x);
-      this.#drag.body.y = this.#drag.origin.y + (point.y - this.#drag.from.y);
-      const live = this.#world.body(this.#drag.body.id);
-      if (live) {
-        live.x = this.#drag.body.x;
-        live.y = this.#drag.body.y;
+      const shiftX = point.x - this.#drag.from.x;
+      const shiftY = point.y - this.#drag.from.y;
+      const place = (entry, at) => {
+        entry.x = at.x + shiftX;
+        entry.y = at.y + shiftY;
+        const live = this.#world.body(entry.id);
+        if (!live) return;
+        live.x = entry.x;
+        live.y = entry.y;
         live.vx = 0;
         live.vy = 0;
         live.spin = 0;
-      }
+      };
+      place(this.#drag.body, this.#drag.origin);
+      (this.#drag.riders ?? []).forEach((rider, index) => place(rider, this.#drag.starts[index]));
     }
   }
 
@@ -1383,6 +1407,7 @@ export default class PhysicsLab extends JGApp {
     const radius = Math.max(0.35, Math.hypot(to.x - from.x, to.y - from.y) || 0.9);
     this.#snapshot();
     const axle = { id: this.#seq++, kind: 'circle', x: from.x, y: from.y, radius: 0.12, pinned: true };
+    axle.axleFor = this.#seq;
     const wheel = {
       id: this.#seq++,
       kind: 'circle',
@@ -1619,6 +1644,24 @@ export default class PhysicsLab extends JGApp {
       x: (canvas.clientWidth / 2 - this.#pan.x) / span,
       y: (canvas.clientHeight / 2 - this.#pan.y) / span,
     };
+  }
+
+  #ridersOf(body) {
+    const held = (entry) => entry.pinned || entry.axleFor != null;
+    const joined = new Set();
+    this.#joints.forEach((joint) => {
+      if (!['pin', 'motor', 'weld'].includes(joint.kind)) return;
+      if (joint.a === body.id && joint.b != null) joined.add(joint.b);
+      if (joint.b === body.id && joint.a != null) joined.add(joint.a);
+    });
+
+    return this.#bodies.filter((entry) => {
+      if (entry.id === body.id) return false;
+      if (entry.axleFor === body.id) return true;
+      if (!joined.has(entry.id) || !held(entry)) return false;
+      const live = this.#world.body(body.id);
+      return live ? this.#world.holds(live, entry.x, entry.y) : false;
+    });
   }
 
   #gearRatio(aId, bId) {
