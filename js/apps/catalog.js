@@ -1453,6 +1453,20 @@ export const catalog = [
   },
 
   {
+    id: 'poster-studio',
+    name: 'Poster Studio',
+    tagline: 'Design posters and social variants with an event QR',
+    category: 'design',
+    glyph: 'P',
+    icon: 'image',
+    tint: '#a8443c',
+    keywords: ['poster', 'flyer', 'design', 'layout', 'template', 'event', 'qr', 'social', 'instagram', 'story', 'banner', 'print', 'typography'],
+    tag: 'jg-app-poster-studio',
+    window: { width: 1240, height: 880, maximized: true },
+    load: () => import('./poster-studio.js'),
+  },
+
+  {
     id: 'physics-lab',
     name: 'Physics Lab',
     tagline: 'Balls, blocks, springs, rods, jacks and motors',

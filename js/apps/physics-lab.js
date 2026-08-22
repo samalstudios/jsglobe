@@ -704,6 +704,11 @@ export default class PhysicsLab extends JGApp {
       if (event.key === 'Backspace' || event.key === 'Delete') {
         event.preventDefault();
         this.#remove();
+        return;
+      }
+      if (event.key.toLowerCase() === 'r' && !event.metaKey && !event.ctrlKey) {
+        event.preventDefault();
+        this.#turn((event.shiftKey ? -1 : 1) * (Math.PI / 12));
       }
     });
 
@@ -740,6 +745,7 @@ export default class PhysicsLab extends JGApp {
       { id: 'zoom-out', label: 'Zoom out', icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
       { id: 'zoom-fit', label: 'Fit', icon: 'maximize', iconOnly: true, title: 'Fit the scene', action: () => { this.#touched = false; this.#fit(); } },
       { id: 'zoom-in', label: 'Zoom in', icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
+      { id: 'turn', label: 'Rotate', icon: 'rotate', iconOnly: true, title: 'Turn the selected body (R, shift R the other way)', action: () => this.#turn(Math.PI / 12) },
       { id: 'union', label: 'Merge', icon: 'union', iconOnly: true, title: 'Merge the two selected shapes', action: () => this.#combine('union') },
       { id: 'subtract', label: 'Subtract', icon: 'subtract', iconOnly: true, title: 'Cut the second shape out of the first', action: () => this.#combine('subtract') },
       { id: 'intersect', label: 'Overlap', icon: 'intersect', iconOnly: true, title: 'Keep only where the two shapes overlap', action: () => this.#combine('intersect') },
@@ -781,7 +787,7 @@ export default class PhysicsLab extends JGApp {
           ? 'Drag from one corner to the other, or click to drop a default one.'
         : tool === 'erase'
           ? 'Click a body or a link to remove it.'
-          : 'Drag a body to throw it, shift click a second shape to merge or subtract, Space runs and pauses.';
+          : 'Drag a body to throw it, R turns it, shift click a second shape to merge or subtract.';
   }
 
   #snapshot() {
@@ -1677,6 +1683,17 @@ export default class PhysicsLab extends JGApp {
     this.#draw();
   }
 
+  #turn(radians) {
+    const body = this.#bodies.find((entry) => entry.id === this.#selected);
+    if (!body || body.kind === 'circle') return;
+    this.#snapshot();
+    this.#sync();
+    body.angle = (body.angle ?? 0) + radians;
+    this.#reset();
+    this.#inspector();
+    this.#draw();
+  }
+
   #lift(toFront) {
     if (this.#selected == null) return;
     const at = this.#bodies.findIndex((body) => body.id === this.#selected);
@@ -1970,6 +1987,9 @@ export default class PhysicsLab extends JGApp {
           ? html`<div class="hint">${body.points.length} corners</div>`
           : html`<jg-field label="Width m"><jg-input id="width" size="sm" type="number" step="0.1" min="0.1" value="${body.width}"></jg-input></jg-field>
               <jg-field label="Height m"><jg-input id="height" size="sm" type="number" step="0.1" min="0.1" value="${body.height}"></jg-input></jg-field>`}
+      ${body.kind === 'circle'
+        ? ''
+        : html`<jg-field label="Angle degrees"><jg-input id="angle" size="sm" type="number" step="5" value="${Math.round((((body.angle ?? 0) * 180) / Math.PI) * 10) / 10}"></jg-input></jg-field>`}
       <jg-field label="Density"><jg-input id="density" size="sm" type="number" step="0.1" min="0.05" value="${body.density ?? 1}"></jg-input></jg-field>
       <jg-field label="Bounce"><jg-input id="restitution" size="sm" type="number" step="0.05" min="0" max="1" value="${body.restitution ?? 0.2}"></jg-input></jg-field>
       <jg-field label="Friction"><jg-input id="friction" size="sm" type="number" step="0.05" min="0" max="1.5" value="${body.friction ?? 0.35}"></jg-input></jg-field>
@@ -1994,6 +2014,16 @@ export default class PhysicsLab extends JGApp {
     bind('radius', 'radius');
     bind('width', 'width');
     bind('height', 'height');
+    const angle = this.$('#angle');
+    if (angle) {
+      this.on(angle, 'change', () => {
+        this.#snapshot();
+        this.#sync();
+        body.angle = ((Number(angle.value) || 0) * Math.PI) / 180;
+        this.#reset();
+        this.#draw();
+      });
+    }
     bind('density', 'density');
     bind('restitution', 'restitution');
     bind('friction', 'friction');
