@@ -68,7 +68,7 @@ class Kubernetes extends JGApp {
             <jg-switch id="tls" checked></jg-switch><span class="hint">${t('kubernetes.requestTlsOnTheIngress', 'Request TLS on the ingress')}</span>
           </div>
 
-          <jg-card title="${t('kubernetes.environment', 'Environment')}" sub="Written into a ConfigMap and referenced by the pod">
+          <jg-card title="${t('kubernetes.environment', 'Environment')}" sub="${t('kubernetes.writtenIntoAConfigmapAnd', 'Written into a ConfigMap and referenced by the pod')}">
             <div class="list" id="env"></div>
             <jg-button size="sm" variant="outline" id="add-env">${t('kubernetes.addVariable', 'Add variable')}</jg-button>
           </jg-card>

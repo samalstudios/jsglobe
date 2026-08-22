@@ -103,7 +103,7 @@ class WebsocketTester extends JGApp {
         </div>
 
         <div class="side">
-          <jg-card title="${t('websocket-tester.savedMessages', 'Saved messages')}" sub="Click to load one">
+          <jg-card title="${t('websocket-tester.savedMessages', 'Saved messages')}" sub="${t('websocket-tester.clickToLoadOne', 'Click to load one')}">
             <div class="saved" id="snippets"></div>
           </jg-card>
           <jg-card title="${t('websocket-tester.notes', 'Notes')}">

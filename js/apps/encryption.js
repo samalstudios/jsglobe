@@ -26,7 +26,7 @@ class Encryption extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-card title="${t('encryption.passphrase', 'Passphrase')}" sub="AES-256-GCM with PBKDF2 key derivation (250k iterations)">
+      <jg-card title="${t('encryption.passphrase', 'Passphrase')}" sub="${t('encryption.aes256GcmWithPbkdf2', 'AES-256-GCM with PBKDF2 key derivation (250k iterations)')}">
         <jg-input id="passphrase" type="password" placeholder="${t('encryption.passphrase', 'Passphrase')}"></jg-input>
       </jg-card>
 

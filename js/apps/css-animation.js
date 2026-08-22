@@ -112,7 +112,7 @@ class CssAnimation extends JGApp {
         </jg-field>
       </div>
 
-      <jg-card title="${t('css-animation.timingCurve', 'Timing curve')}" sub="Drag the handles to shape the easing">
+      <jg-card title="${t('css-animation.timingCurve', 'Timing curve')}" sub="${t('css-animation.dragTheHandlesToShape', 'Drag the handles to shape the easing')}">
         <div class="bezier">
           <canvas class="curve" id="curve" width="360" height="360" style="width:180px;height:180px"></canvas>
           <div class="stack tight">

@@ -59,7 +59,7 @@ class HtmlEntities extends JGApp {
           <jg-textarea id="escaped" grow placeholder="${t('html-entities.ltDivGt', '&lt;div&gt;')}"></jg-textarea>
         </div>
       </div>
-      <jg-card title="${t('html-entities.commonEntities', 'Common entities')}" sub="Click to insert">
+      <jg-card title="${t('html-entities.commonEntities', 'Common entities')}" sub="${t('html-entities.clickToInsert', 'Click to insert')}">
         <div class="table">
           ${NAMED.map(
             (pair) => html`<button class="entity" data-entity="${pair[1]}"><span>${pair[0]}</span><span class="muted">${pair[1]}</span></button>`,

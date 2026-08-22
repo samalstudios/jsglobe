@@ -170,7 +170,7 @@ class Tuner extends JGApp {
         <jg-select id="preset" value="${this.config.get('preset', 'standard')}" style="width:220px">
           ${Object.entries(PRESETS).map(([key, preset]) => html`<option value="${key}">${preset.label}</option>`)}
         </jg-select>
-        <jg-input id="reference" type="number" min="415" max="466" value="${this.config.get('reference', 440)}" suffix="Hz A4" style="width:140px"></jg-input>
+        <jg-input id="reference" type="number" min="415" max="466" value="${this.config.get('reference', 440)}" suffix="${t('tuner.hzA4', 'Hz A4')}" style="width:140px"></jg-input>
         <span class="grow"></span>
         <jg-button id="start">${t('tuner.startListening', 'Start listening')}</jg-button>
         <jg-button id="stop" variant="outline" hidden>${t('tuner.stop', 'Stop')}</jg-button>

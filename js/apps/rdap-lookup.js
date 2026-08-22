@@ -95,7 +95,7 @@ class RdapLookup extends JGApp {
 
       <div class="cards" id="cards"></div>
 
-      <jg-card title="${t('rdap-lookup.rawResponse', 'Raw response')}" sub="Exactly what the registry returned">
+      <jg-card title="${t('rdap-lookup.rawResponse', 'Raw response')}" sub="${t('rdap-lookup.exactlyWhatTheRegistryReturned', 'Exactly what the registry returned')}">
         <jg-code id="raw" rows="12" gutter language="json" readonly></jg-code>
       </jg-card>
 
@@ -228,7 +228,7 @@ class RdapLookup extends JGApp {
         : ''}
 
       ${statuses.length
-        ? html`<jg-card title="${t('rdap-lookup.status', 'Status')}" sub="Locks and pending operations reported by the registry">
+        ? html`<jg-card title="${t('rdap-lookup.status', 'Status')}" sub="${t('rdap-lookup.locksAndPendingOperationsReported', 'Locks and pending operations reported by the registry')}">
             <div class="chips">${statuses.map((entry) => html`<jg-badge>${entry}</jg-badge>`)}</div>
             <div class="events" style="margin-top:8px">
               ${statuses
@@ -245,7 +245,7 @@ class RdapLookup extends JGApp {
         : ''}
 
       ${contacts.length
-        ? html`<jg-card title="${t('rdap-lookup.contacts', 'Contacts')}" sub="Registries redact most personal details">
+        ? html`<jg-card title="${t('rdap-lookup.contacts', 'Contacts')}" sub="${t('rdap-lookup.registriesRedactMostPersonalDetails', 'Registries redact most personal details')}">
             <div class="kv">
               ${contacts.flatMap((contact) => [
                 html`<div>${contact.role}</div>`,

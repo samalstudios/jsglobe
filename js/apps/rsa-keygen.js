@@ -51,7 +51,7 @@ class RsaKeygen extends JGApp {
       <div class="hint" id="status">${t('rsa-keygen.keysAreCreatedWithThe', 'Keys are created with the Web Crypto API and never leave this tab.')}</div>
 
       <div class="keys">
-        <jg-card title="${t('rsa-keygen.publicKey', 'Public key')}" sub="SPKI, PEM encoded">
+        <jg-card title="${t('rsa-keygen.publicKey', 'Public key')}" sub="${t('rsa-keygen.spkiPemEncoded', 'SPKI, PEM encoded')}">
           <div slot="action" class="row tight">
             <jg-button size="sm" variant="ghost" id="copy-public">${t('rsa-keygen.copy', 'Copy')}</jg-button>
             <jg-button size="sm" variant="ghost" id="save-public">${t('rsa-keygen.save', 'Save')}</jg-button>
@@ -59,7 +59,7 @@ class RsaKeygen extends JGApp {
           <div class="pem" id="public"></div>
         </jg-card>
 
-        <jg-card title="${t('rsa-keygen.privateKey', 'Private key')}" sub="PKCS#8, PEM encoded">
+        <jg-card title="${t('rsa-keygen.privateKey', 'Private key')}" sub="${t('rsa-keygen.pkcs8PemEncoded', 'PKCS#8, PEM encoded')}">
           <div slot="action" class="row tight">
             <jg-button size="sm" variant="ghost" id="copy-private">${t('rsa-keygen.copy', 'Copy')}</jg-button>
             <jg-button size="sm" variant="ghost" id="save-private">${t('rsa-keygen.save', 'Save')}</jg-button>

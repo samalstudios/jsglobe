@@ -127,7 +127,7 @@ export const wrap = (source, appId) => {
 
   const translateMarkup = (chunk) => {
     let out = chunk.replace(
-      /\b(placeholder|title|aria-label|label|hint|empty)="([^"<>${}\\]+)"/g,
+      /\b(placeholder|title|aria-label|label|hint|empty|sub|suffix|title-text)="([^"<>${}\\]+)"/g,
       (match, attribute, text) => {
         if (skip(text)) return match;
         return `${attribute}="\${t('${key(text)}', '${quote(text)}')}"`;

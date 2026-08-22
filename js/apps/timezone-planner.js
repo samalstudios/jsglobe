@@ -124,7 +124,7 @@ class TimezonePlanner extends JGApp {
       <div class="scale" id="scale"></div>
       <div class="rows" id="rows"></div>
 
-      <jg-card title="${t('timezone-planner.overlappingHours', 'Overlapping hours')}" sub="Slots that fall inside working hours everywhere">
+      <jg-card title="${t('timezone-planner.overlappingHours', 'Overlapping hours')}" sub="${t('timezone-planner.slotsThatFallInsideWorking', 'Slots that fall inside working hours everywhere')}">
         <div class="best" id="best"></div>
       </jg-card>
 

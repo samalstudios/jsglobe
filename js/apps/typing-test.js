@@ -108,11 +108,11 @@ class TypingTest extends JGApp {
 
       <div class="stats" id="stats"></div>
 
-      <jg-card title="${t('typing-test.troubleKeys', 'Trouble keys')}" sub="Where the mistakes landed">
+      <jg-card title="${t('typing-test.troubleKeys', 'Trouble keys')}" sub="${t('typing-test.whereTheMistakesLanded', 'Where the mistakes landed')}">
         <div class="keys" id="keys"></div>
       </jg-card>
 
-      <jg-card title="${t('typing-test.personalBests', 'Personal bests')}" sub="Saved in this workspace">
+      <jg-card title="${t('typing-test.personalBests', 'Personal bests')}" sub="${t('typing-test.savedInThisWorkspace', 'Saved in this workspace')}">
         <div class="bests" id="bests"></div>
       </jg-card>
     </div>`);

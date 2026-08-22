@@ -151,7 +151,7 @@ class ApiSpec extends JGApp {
         </div>
 
         <div class="pane side">
-          <jg-card title="${t('api-spec.endpoints', 'Endpoints')}" sub="Click one to jump to it">
+          <jg-card title="${t('api-spec.endpoints', 'Endpoints')}" sub="${t('api-spec.clickOneToJumpTo', 'Click one to jump to it')}">
             <div class="stack tight" id="routes"></div>
           </jg-card>
           <jg-card title="${t('api-spec.checks', 'Checks')}">

@@ -215,7 +215,7 @@ class Paint extends JGApp {
         </div>
       </div>
 
-      <jg-sheet id="adjust" side="right" title-text="Adjust image">
+      <jg-sheet id="adjust" side="right" title-text="${t('paint.adjustImage', 'Adjust image')}">
         <div class="stack" style="padding:14px;gap:14px">
           <jg-field label="${t('paint.brightness', 'Brightness')}"><jg-slider id="brightness" min="0" max="200" step="1" value="100"></jg-slider></jg-field>
           <jg-field label="${t('paint.contrast', 'Contrast')}"><jg-slider id="contrast" min="0" max="200" step="1" value="100"></jg-slider></jg-field>
@@ -231,7 +231,7 @@ class Paint extends JGApp {
         </div>
       </jg-sheet>
 
-      <jg-dialog id="resize" title-text="Resize canvas">
+      <jg-dialog id="resize" title-text="${t('paint.resizeCanvas', 'Resize canvas')}">
         <div class="stack" style="gap:12px">
           <div class="row">
             <jg-field label="${t('paint.width', 'Width')}"><jg-input id="new-width" type="number" size="sm" value="${width}"></jg-input></jg-field>

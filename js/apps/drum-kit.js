@@ -93,7 +93,7 @@ class DrumKit extends JGApp {
         )}
       </div>
 
-      <jg-card title="${t('drum-kit.stepSequencer', 'Step sequencer')}" sub="16 steps, click to toggle">
+      <jg-card title="${t('drum-kit.stepSequencer', 'Step sequencer')}" sub="${t('drum-kit.16StepsClickToToggle', '16 steps, click to toggle')}">
         <div class="row">
           <jg-button size="sm" id="play">${t('drum-kit.play', 'Play')}</jg-button>
           <jg-button size="sm" variant="outline" id="clear">${t('drum-kit.clear', 'Clear')}</jg-button>

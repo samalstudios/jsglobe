@@ -62,7 +62,7 @@ class MathEvaluator extends JGApp {
         </div>
       </jg-card>
 
-      <jg-card title="${t('math-evaluator.history', 'History')}" sub="Click an entry to load it">
+      <jg-card title="${t('math-evaluator.history', 'History')}" sub="${t('math-evaluator.clickAnEntryToLoad', 'Click an entry to load it')}">
         <div class="history" id="history"></div>
       </jg-card>
 

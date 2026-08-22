@@ -18,7 +18,7 @@ class BasicAuth extends JGApp {
       <jg-field label="${t('basic-auth.curl', 'curl')}"><jg-output id="curl"></jg-output></jg-field>
       <jg-field label="${t('basic-auth.fetch', 'fetch')}"><jg-output id="fetch" scroll></jg-output></jg-field>
 
-      <jg-card title="${t('basic-auth.decode', 'Decode')}" sub="Paste an existing header or base64 pair">
+      <jg-card title="${t('basic-auth.decode', 'Decode')}" sub="${t('basic-auth.pasteAnExistingHeaderOr', 'Paste an existing header or base64 pair')}">
         <jg-input id="decode-in" mono placeholder="${t('basic-auth.basicYwrtaw46ahvudgvymg', 'Basic YWRtaW46aHVudGVyMg==')}"></jg-input>
         <jg-output id="decode-out"></jg-output>
       </jg-card>

@@ -44,12 +44,12 @@ class BaseConverter extends JGApp {
 
       <jg-card title="${t('base-converter.customBase', 'Custom base')}">
         <div class="row nowrap">
-          <jg-input id="custom" type="number" min="2" max="36" value="7" suffix="base" style="width:130px"></jg-input>
+          <jg-input id="custom" type="number" min="2" max="36" value="7" suffix="${t('base-converter.base', 'base')}" style="width:130px"></jg-input>
           <jg-output id="customout" class="grow"></jg-output>
         </div>
       </jg-card>
 
-      <jg-card title="${t('base-converter.bitView', 'Bit view')}" sub="32-bit representation grouped in nibbles">
+      <jg-card title="${t('base-converter.bitView', 'Bit view')}" sub="${t('base-converter.32BitRepresentationGroupedIn', '32-bit representation grouped in nibbles')}">
         <div class="bits" id="bits"></div>
         <div class="kv" id="extra"></div>
       </jg-card>

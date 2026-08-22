@@ -116,10 +116,10 @@ class MediaConverter extends JGApp {
               </jg-select>
             </jg-field>
             <jg-field label="${t('media-converter.width', 'Width')}" hint="${t('media-converter.0KeepsTheOriginal', '0 keeps the original')}">
-              <jg-input id="width" type="number" min="0" max="4096" value="0" suffix="px"></jg-input>
+              <jg-input id="width" type="number" min="0" max="4096" value="0" suffix="${t('media-converter.px', 'px')}"></jg-input>
             </jg-field>
             <jg-field label="${t('media-converter.gifFrameRate', 'GIF frame rate')}">
-              <jg-input id="fps" type="number" min="5" max="30" value="12" suffix="fps"></jg-input>
+              <jg-input id="fps" type="number" min="5" max="30" value="12" suffix="${t('media-converter.fps', 'fps')}"></jg-input>
             </jg-field>
             <jg-field label="${t('media-converter.trim', 'Trim')}" hint="${t('media-converter.startAndDurationInSeconds', 'Start and duration in seconds')}">
               <div class="row tight nowrap">

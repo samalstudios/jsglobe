@@ -212,7 +212,7 @@ class ExifEditor extends JGApp {
           <div class="kv" id="file"></div>
         </div>
         <div class="stack tight">
-          <jg-card title="${t('exif-editor.metadata', 'Metadata')}" sub="Untick a tag to drop it from the saved copy">
+          <jg-card title="${t('exif-editor.metadata', 'Metadata')}" sub="${t('exif-editor.untickATagToDrop', 'Untick a tag to drop it from the saved copy')}">
             <div class="tags" id="tags"></div>
           </jg-card>
           <div class="row">

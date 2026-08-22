@@ -81,7 +81,7 @@ class TokenGenerator extends JGApp {
   renderApp() {
     const length = this.config.get('length', 32);
     this.paint(html`<div class="app">
-      <jg-card title="${t('token-generator.generatedToken', 'Generated token')}" sub="Created with crypto.getRandomValues in this tab">
+      <jg-card title="${t('token-generator.generatedToken', 'Generated token')}" sub="${t('token-generator.createdWithCryptoGetrandomvaluesIn', 'Created with crypto.getRandomValues in this tab')}">
         <div slot="action" class="row tight">
           <jg-button size="sm" variant="outline" id="copy">${t('token-generator.copy', 'Copy')}</jg-button>
           <jg-button size="sm" id="new">${t('token-generator.regenerate', 'Regenerate')}</jg-button>
@@ -107,9 +107,9 @@ class TokenGenerator extends JGApp {
         </div>
       </jg-card>
 
-      <jg-card title="${t('token-generator.batch', 'Batch')}" sub="Generate several at once">
+      <jg-card title="${t('token-generator.batch', 'Batch')}" sub="${t('token-generator.generateSeveralAtOnce', 'Generate several at once')}">
         <div class="row nowrap">
-          <jg-input id="count" type="number" min="1" max="100" value="8" suffix="qty" style="width:120px"></jg-input>
+          <jg-input id="count" type="number" min="1" max="100" value="8" suffix="${t('token-generator.qty', 'qty')}" style="width:120px"></jg-input>
           <jg-button variant="secondary" id="batch">${t('token-generator.generateBatch', 'Generate batch')}</jg-button>
           <jg-button variant="ghost" size="sm" id="copybatch">${t('token-generator.copyBatch', 'Copy batch')}</jg-button>
         </div>

@@ -75,7 +75,7 @@ class MorseCode extends JGApp {
         <span class="hint">${t('morse-code.slashSeparatesWords', 'Slash separates words')}</span>
       </div>
 
-      <jg-card title="${t('morse-code.reference', 'Reference')}" sub="International Morse code">
+      <jg-card title="${t('morse-code.reference', 'Reference')}" sub="${t('morse-code.internationalMorseCode', 'International Morse code')}">
         <div class="chart">
           ${Object.entries(TABLE).map(([key, value]) => html`<div class="cell"><b>${key}</b><span>${value}</span></div>`)}
         </div>

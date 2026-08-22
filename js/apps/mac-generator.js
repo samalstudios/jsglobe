@@ -40,7 +40,7 @@ class MacGenerator extends JGApp {
     this.paint(html`<div class="app">
       <div class="row nowrap">
         <jg-input id="prefix" class="grow" mono placeholder="${t('mac-generator.optionalOuiPrefixEG', 'Optional OUI prefix, e.g. 00:1B:44')}"></jg-input>
-        <jg-input id="count" type="number" min="1" max="200" value="5" suffix="qty" style="width:120px"></jg-input>
+        <jg-input id="count" type="number" min="1" max="200" value="5" suffix="${t('mac-generator.qty', 'qty')}" style="width:120px"></jg-input>
         <jg-button id="generate">${t('mac-generator.generate', 'Generate')}</jg-button>
       </div>
 

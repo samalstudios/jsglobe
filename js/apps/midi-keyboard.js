@@ -103,7 +103,7 @@ class MidiKeyboard extends JGApp {
         <jg-field label="${t('midi-keyboard.release', 'Release')}"><jg-slider id="release" min="20" max="1200" value="260"></jg-slider></jg-field>
       </div>
 
-      <jg-card title="${t('midi-keyboard.midiInput', 'MIDI input')}" sub="Connect a controller to play it directly">
+      <jg-card title="${t('midi-keyboard.midiInput', 'MIDI input')}" sub="${t('midi-keyboard.connectAControllerToPlay', 'Connect a controller to play it directly')}">
         <div class="row">
           <jg-button size="sm" variant="outline" id="connect">${t('midi-keyboard.connectMidiDevice', 'Connect MIDI device')}</jg-button>
           <span class="hint" id="midi">${t('midi-keyboard.notConnected', 'Not connected')}</span>

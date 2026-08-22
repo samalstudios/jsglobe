@@ -299,7 +299,7 @@ class PeriodicTable extends JGApp {
       </div>
 
       </div>
-      <jg-sheet id="sheet" side="right" title-text="Element"><div class="sheet-body" id="sheet-detail"></div></jg-sheet>
+      <jg-sheet id="sheet" side="right" title-text="${t('periodic-table.element', 'Element')}"><div class="sheet-body" id="sheet-detail"></div></jg-sheet>
     </div>`);
 
     this.$('#bar').items = [

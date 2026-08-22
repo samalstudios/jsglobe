@@ -154,7 +154,7 @@ class CrontabGenerator extends JGApp {
         <div id="description" class="center"></div>
       </jg-card>
 
-      <jg-card title="${t('crontab-generator.nextRuns', 'Next runs')}" sub="Based on this machine's clock and timezone">
+      <jg-card title="${t('crontab-generator.nextRuns', 'Next runs')}" sub="${t('crontab-generator.basedOnThisMachineS', 'Based on this machine\'s clock and timezone')}">
         <div class="kv" id="runs"></div>
       </jg-card>
 

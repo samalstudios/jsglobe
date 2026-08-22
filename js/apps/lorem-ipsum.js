@@ -32,7 +32,7 @@ class LoremIpsum extends JGApp {
       <div class="row">
         <jg-tabs id="kind"></jg-tabs>
         <span class="grow"></span>
-        <jg-input id="count" type="number" min="1" max="100" value="3" suffix="qty" style="width:120px"></jg-input>
+        <jg-input id="count" type="number" min="1" max="100" value="3" suffix="${t('lorem-ipsum.qty', 'qty')}" style="width:120px"></jg-input>
         <jg-button id="generate">${t('lorem-ipsum.generate', 'Generate')}</jg-button>
       </div>
 

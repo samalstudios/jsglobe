@@ -254,7 +254,7 @@ class ClockApp extends JGApp {
         ${[1, 5, 10, 25].map((minutes) => html`<jg-button size="sm" variant="outline" data-minutes="${minutes}">${minutes}m</jg-button>`)}
       </div>
       <div class="row nowrap">
-        <jg-input id="mins" type="number" min="0" max="600" value="${Math.round(this.#timerState.duration / 60000)}" suffix="min" class="grow"></jg-input>
+        <jg-input id="mins" type="number" min="0" max="600" value="${Math.round(this.#timerState.duration / 60000)}" suffix="${t('clock.min', 'min')}" class="grow"></jg-input>
         <jg-button id="toggle">${this.#timerState.running ? 'Pause' : 'Start'}</jg-button>
         <jg-button id="reset" variant="outline">${t('clock.reset', 'Reset')}</jg-button>
       </div>

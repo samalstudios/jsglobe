@@ -73,7 +73,7 @@ class UuidGenerator extends JGApp {
       <div class="row">
         <jg-tabs id="kind"></jg-tabs>
         <span class="grow"></span>
-        <jg-input id="count" type="number" min="1" max="500" value="5" suffix="qty" style="width:110px"></jg-input>
+        <jg-input id="count" type="number" min="1" max="500" value="5" suffix="${t('uuid-generator.qty', 'qty')}" style="width:110px"></jg-input>
         <jg-button id="generate">${t('action.generate', 'Generate')}</jg-button>
       </div>
 

@@ -99,6 +99,11 @@
   "es": "128 kbps",
   "zh": "128 kbps"
  },
+ "16 steps, click to toggle": {
+  "de": "16 Schritte, zum Umschalten klicken",
+  "es": "16 pasos, haz clic para activarlos",
+  "zh": "16 个步位，点击可切换"
+ },
  "1700000000, 2024-01-31T09:00:00Z, or ": {
   "de": "1700000000, 2024-01-31T09:00:00Z, oder ",
   "es": "1700000000, 2024-01-31T09:00:00Z, o ",
@@ -158,6 +163,11 @@
   "de": "30 Sekunden",
   "es": "30 segundos",
   "zh": "30 秒"
+ },
+ "32-bit representation grouped in nibbles": {
+  "de": "32-Bit-Darstellung in Nibbles gruppiert",
+  "es": "Representación de 32 bits agrupada en nibbles",
+  "zh": "按半字节分组的 32 位表示"
  },
  "320 kbps": {
   "de": "320 kbit/s",
@@ -259,6 +269,11 @@
   "es": "Una expresión cron necesita cinco campos.",
   "zh": "cron 表达式需要五个字段。"
  },
+ "A snapshot is kept each day you update prices": {
+  "de": "An jedem Tag, an dem du Kurse aktualisierst, wird eine Momentaufnahme gespeichert",
+  "es": "Se guarda una instantánea cada día que actualizas los precios",
+  "zh": "每次更新价格的当天都会保存一份快照"
+ },
  "AAPL": {
   "de": "AAPL",
   "es": "AAPL",
@@ -273,6 +288,11 @@
   "de": "AED",
   "es": "AED",
   "zh": "迪拉姆"
+ },
+ "AES-256-GCM with PBKDF2 key derivation (250k iterations)": {
+  "de": "AES-256-GCM mit PBKDF2-Schlüsselableitung (250k Iterationen)",
+  "es": "AES-256-GCM con derivación de clave PBKDF2 (250k iteraciones)",
+  "zh": "AES-256-GCM，使用 PBKDF2 派生密钥（25 万次迭代）"
  },
  "AI": {
   "de": "KI",
@@ -428,6 +448,11 @@
   "de": "Anpassen",
   "es": "Ajustar",
   "zh": "调整"
+ },
+ "Adjust image": {
+  "de": "Bild anpassen",
+  "es": "Ajustar la imagen",
+  "zh": "调整图片"
  },
  "Adjustments preview live and only touch the canvas when you apply them.": {
   "de": "Anpassungen werden live angezeigt und ändern die Leinwand erst beim Anwenden.",
@@ -599,6 +624,11 @@
   "es": "Pregunta lo que quieras. Mayús+Intro para una línea nueva.",
   "zh": "随便问。按 Shift+Enter 换行。"
  },
+ "Assuming the attacker knows the character set": {
+  "de": "Unter der Annahme, dass der Angreifer den Zeichensatz kennt",
+  "es": "Suponiendo que el atacante conoce el conjunto de caracteres",
+  "zh": "假设攻击者知道所用的字符集"
+ },
  "At": {
   "de": "At-Zeichen",
   "es": "Arroba",
@@ -743,6 +773,11 @@
   "de": "Base64-Zugangsdaten",
   "es": "Credenciales en Base64",
   "zh": "Base64 凭据"
+ },
+ "Based on this machine's clock and timezone": {
+  "de": "Basierend auf Uhr und Zeitzone dieses Rechners",
+  "es": "Según el reloj y la zona horaria de este equipo",
+  "zh": "基于本机的时钟和时区"
  },
  "Basic Latin": {
   "de": "Basis-Latein",
@@ -913,6 +948,11 @@
   "de": "Rahmenzeichen",
   "es": "Dibujo de cajas",
   "zh": "制表符"
+ },
+ "Box plot with quartiles, whiskers and outliers": {
+  "de": "Boxplot mit Quartilen, Antennen und Ausreißern",
+  "es": "Diagrama de caja con cuartiles, bigotes y valores atípicos",
+  "zh": "含四分位、须线与离群值的箱线图"
  },
  "Braille": {
   "de": "Braille",
@@ -1234,6 +1274,11 @@
   "es": "Elegir archivos",
   "zh": "选择文件"
  },
+ "Choose what appears in the grid": {
+  "de": "Wählen, was im Raster erscheint",
+  "es": "Elige qué aparece en la cuadrícula",
+  "zh": "选择网格中显示的内容"
+ },
  "Ciphertext appears here": {
   "de": "Der Geheimtext erscheint hier",
   "es": "El texto cifrado aparece aquí",
@@ -1329,10 +1374,35 @@
   "es": "Haz clic en un nodo del cableado para medirlo, o en un componente para editarlo.",
   "zh": "点击导线节点进行测量，或点击元件进行编辑。"
  },
+ "Click an entry to load it": {
+  "de": "Auf einen Eintrag klicken, um ihn zu laden",
+  "es": "Haz clic en una entrada para cargarla",
+  "zh": "点击某条记录以加载它"
+ },
+ "Click any step to load it": {
+  "de": "Auf eine beliebige Stufe klicken, um sie zu laden",
+  "es": "Haz clic en cualquier paso para cargarlo",
+  "zh": "点击任意色阶以加载它"
+ },
  "Click here first, then press a key. Modifier combinations are captured too.": {
   "de": "Zuerst hier klicken, dann eine Taste drücken. Auch Modifier-Kombinationen werden erfasst.",
   "es": "Haz clic aquí primero y luego pulsa una tecla. También se capturan las combinaciones con modificadores.",
   "zh": "先点击这里，然后按键。组合键也会被捕获。"
+ },
+ "Click one to jump to it": {
+  "de": "Auf eines klicken, um dorthin zu springen",
+  "es": "Haz clic en uno para saltar a él",
+  "zh": "点击其中一个可跳转过去"
+ },
+ "Click to insert": {
+  "de": "Zum Einfügen klicken",
+  "es": "Haz clic para insertarlo",
+  "zh": "点击即可插入"
+ },
+ "Click to load one": {
+  "de": "Zum Laden klicken",
+  "es": "Haz clic para cargar uno",
+  "zh": "点击加载一个"
  },
  "Clock": {
   "de": "Takt",
@@ -1518,6 +1588,11 @@
   "de": "MIDI-Gerät verbinden",
   "es": "Conectar un dispositivo MIDI",
   "zh": "连接 MIDI 设备"
+ },
+ "Connect a controller to play it directly": {
+  "de": "Einen Controller anschließen, um direkt zu spielen",
+  "es": "Conecta un mando para jugar directamente",
+  "zh": "接上手柄即可直接游玩"
  },
  "Connection": {
   "de": "Verbindung",
@@ -1788,6 +1863,11 @@
   "de": "Eine Notiz anlegen, um loszulegen.",
   "es": "Crea una nota para empezar.",
   "zh": "创建一条笔记开始使用。"
+ },
+ "Created with crypto.getRandomValues in this tab": {
+  "de": "Mit crypto.getRandomValues in diesem Tab erzeugt",
+  "es": "Creado con crypto.getRandomValues en esta pestaña",
+  "zh": "在此标签页内用 crypto.getRandomValues 生成"
  },
  "Cron expression": {
   "de": "Cron-Ausdruck",
@@ -2189,6 +2269,11 @@
   "es": "Descargar todo",
   "zh": "全部下载"
  },
+ "Drag the handles to shape the easing": {
+  "de": "An den Griffen ziehen, um die Beschleunigung zu formen",
+  "es": "Arrastra los tiradores para dar forma al suavizado",
+  "zh": "拖动手柄以调整缓动曲线"
+ },
  "Drag the middle of a wire to move its bend. Double click it to straighten.": {
   "de": "Die Mitte einer Leitung ziehen, um den Knick zu verschieben. Doppelklick begradigt sie.",
   "es": "Arrastra el centro de un cable para mover su codo. Haz doble clic para enderezarlo.",
@@ -2374,6 +2459,11 @@
   "es": "Formato electrónico",
   "zh": "电子格式"
  },
+ "Element": {
+  "de": "Element",
+  "es": "Elemento",
+  "zh": "元素"
+ },
  "Elements": {
   "de": "Elemente",
   "es": "Elementos",
@@ -2518,6 +2608,11 @@
   "de": "Überall",
   "es": "En todas partes",
   "zh": "所有位置"
+ },
+ "Exactly what the registry returned": {
+  "de": "Genau das, was die Registry zurückgegeben hat",
+  "es": "Exactamente lo que ha devuelto el registro",
+  "zh": "注册局返回的原始内容"
  },
  "Excellent": {
   "de": "Ausgezeichnet",
@@ -2814,6 +2909,11 @@
   "es": "Formateado",
   "zh": "已格式化"
  },
+ "Found by scanning the visible range": {
+  "de": "Durch Abtasten des sichtbaren Bereichs gefunden",
+  "es": "Encontrado al recorrer el rango visible",
+  "zh": "通过扫描可见范围找到"
+ },
  "Frame": {
   "de": "Rahmen",
   "es": "Marco",
@@ -2933,6 +3033,11 @@
   "de": "Schlüsselpaar erzeugen",
   "es": "Generar el par de claves",
   "zh": "生成密钥对"
+ },
+ "Generate several at once": {
+  "de": "Mehrere auf einmal erzeugen",
+  "es": "Genera varios a la vez",
+  "zh": "一次生成多个"
  },
  "Generated CSS": {
   "de": "Erzeugtes CSS",
@@ -3124,6 +3229,11 @@
   "es": "Pista",
   "zh": "提示"
  },
+ "Histogram of the values": {
+  "de": "Histogramm der Werte",
+  "es": "Histograma de los valores",
+  "zh": "数值的直方图"
+ },
  "History": {
   "de": "Verlauf",
   "es": "Historial",
@@ -3173,6 +3283,11 @@
   "de": "Bindestrich - 00-1b-44",
   "es": "Guion - 00-1b-44",
   "zh": "连字符 - 00-1b-44"
+ },
+ "Hz A4": {
+  "de": "Hz A4",
+  "es": "Hz La4",
+  "zh": "Hz A4"
  },
  "IBAN": {
   "de": "IBAN",
@@ -3323,6 +3438,11 @@
   "de": "Ganzzahlbereich",
   "es": "Rango entero",
   "zh": "整数范围"
+ },
+ "International Morse code": {
+  "de": "Internationaler Morsecode",
+  "es": "Código morse internacional",
+  "zh": "国际摩尔斯电码"
  },
  "Interquartile range": {
   "de": "Interquartilsabstand",
@@ -3733,6 +3853,11 @@
   "de": "Ort",
   "es": "Ubicación",
   "zh": "位置"
+ },
+ "Locks and pending operations reported by the registry": {
+  "de": "Sperren und offene Vorgänge laut Registry",
+  "es": "Bloqueos y operaciones pendientes informados por el registro",
+  "zh": "注册局报告的锁定与待处理操作"
  },
  "Logic 0": {
   "de": "Logisch 0",
@@ -4169,6 +4294,11 @@
   "es": "Dirección de red",
   "zh": "网络地址"
  },
+ "Network bits in accent, host bits muted": {
+  "de": "Netzbits in Akzentfarbe, Hostbits gedämpft",
+  "es": "Los bits de red en color de acento, los de host apagados",
+  "zh": "网络位用强调色，主机位用淡色"
+ },
  "Network name (SSID)": {
   "de": "Netzwerkname (SSID)",
   "es": "Nombre de red (SSID)",
@@ -4193,6 +4323,11 @@
   "de": "Neuer Kalender",
   "es": "Calendario nuevo",
   "zh": "新建日历"
+ },
+ "New event": {
+  "de": "Neuer Termin",
+  "es": "Evento nuevo",
+  "zh": "新建活动"
  },
  "New game": {
   "de": "Neues Spiel",
@@ -4724,6 +4859,11 @@
   "es": "PEM o base64",
   "zh": "PEM 或 base64"
  },
+ "PKCS#8, PEM encoded": {
+  "de": "PKCS#8, PEM-kodiert",
+  "es": "PKCS#8, codificado en PEM",
+  "zh": "PKCS#8，PEM 编码"
+ },
  "PNG 1x": {
   "de": "PNG 1x",
   "es": "PNG 1x",
@@ -4839,6 +4979,11 @@
   "es": "Pega un archivo compose",
   "zh": "粘贴一个 compose 文件"
  },
+ "Paste a signature to compare in constant view": {
+  "de": "Eine Signatur zum Vergleich in konstanter Zeit einfügen",
+  "es": "Pega una firma para compararla en tiempo constante",
+  "zh": "粘贴一个签名以进行恒定时间比较"
+ },
  "Paste an OpenAPI document": {
   "de": "Ein OpenAPI-Dokument einfügen",
   "es": "Pega un documento OpenAPI",
@@ -4848,6 +4993,11 @@
   "de": "Einen Eintrag aus authorized_keys oder known_hosts einfügen",
   "es": "Pega una entrada de authorized_keys o known_hosts",
   "zh": "粘贴一条 authorized_keys 或 known_hosts 记录"
+ },
+ "Paste an existing header or base64 pair": {
+  "de": "Einen vorhandenen Header oder ein Base64-Paar einfügen",
+  "es": "Pega una cabecera existente o un par en base64",
+  "zh": "粘贴已有的请求头或 base64 凭据对"
  },
  "Paste ciphertext": {
   "de": "Geheimtext einfügen",
@@ -4988,6 +5138,11 @@
   "de": "Eine Farbe aufnehmen",
   "es": "Elegir un color",
   "zh": "拾取颜色"
+ },
+ "Pick a design to start from. It replaces what is on the page.": {
+  "de": "Einen Entwurf als Ausgangspunkt wählen. Er ersetzt, was auf der Seite ist.",
+  "es": "Elige un diseño de partida. Sustituye lo que hay en la página.",
+  "zh": "选择一个起始设计。它会替换页面上的现有内容。"
  },
  "Pick a part to change it, or drop a new one from the palette.": {
   "de": "Ein Bauteil wählen, um es zu ändern, oder ein neues aus der Palette ziehen.",
@@ -5509,6 +5664,11 @@
   "es": "Volver a generar",
   "zh": "重新生成"
  },
+ "Registries redact most personal details": {
+  "de": "Registries schwärzen die meisten persönlichen Angaben",
+  "es": "Los registros ocultan la mayoría de los datos personales",
+  "zh": "注册局会隐去大部分个人信息"
+ },
  "Regular": {
   "de": "Normal",
   "es": "Normal",
@@ -5578,6 +5738,11 @@
   "de": "Umbenennen",
   "es": "Renombrar",
   "zh": "重命名"
+ },
+ "Rendered from your image on this device": {
+  "de": "Auf diesem Gerät aus deinem Bild erzeugt",
+  "es": "Generado a partir de tu imagen en este dispositivo",
+  "zh": "在本机根据你的图片生成"
  },
  "Repeat": {
   "de": "Wiederholen",
@@ -5663,6 +5828,11 @@
   "de": "Größe ändern",
   "es": "Cambiar el tamaño",
   "zh": "调整大小"
+ },
+ "Resize canvas": {
+  "de": "Leinwandgröße ändern",
+  "es": "Cambiar el tamaño del lienzo",
+  "zh": "调整画布大小"
  },
  "Resolver": {
   "de": "Resolver",
@@ -5854,6 +6024,11 @@
   "es": "SMS",
   "zh": "短信"
  },
+ "SPKI, PEM encoded": {
+  "de": "SPKI, PEM-kodiert",
+  "es": "SPKI, codificado en PEM",
+  "zh": "SPKI，PEM 编码"
+ },
  "SQL datetime": {
   "de": "SQL-Datum/Zeit",
   "es": "Fecha y hora SQL",
@@ -5998,6 +6173,11 @@
   "de": "Gespeichert",
   "es": "Guardado",
   "zh": "已保存"
+ },
+ "Saved in this workspace": {
+  "de": "In diesem Arbeitsbereich gespeichert",
+  "es": "Guardado en este espacio de trabajo",
+  "zh": "保存在此工作区中"
  },
  "Saved messages": {
   "de": "Gespeicherte Nachrichten",
@@ -6343,6 +6523,11 @@
   "de": "Schieberegler",
   "es": "Deslizador",
   "zh": "滑块"
+ },
+ "Slots that fall inside working hours everywhere": {
+  "de": "Zeitfenster, die überall in die Arbeitszeit fallen",
+  "es": "Huecos que caen dentro del horario laboral en todas partes",
+  "zh": "在各地都处于工作时间内的时段"
  },
  "Slug": {
   "de": "Slug",
@@ -6914,6 +7099,11 @@
   "es": "El QR del evento lleva estos datos para que un móvil pueda añadirlo al calendario.",
   "zh": "活动二维码携带这些信息，方便手机把它加入日历。"
  },
+ "The same amount in other currencies": {
+  "de": "Derselbe Betrag in anderen Währungen",
+  "es": "La misma cantidad en otras monedas",
+  "zh": "相同金额换算成其他货币"
+ },
  "The solver could not settle. Check for shorted sources.": {
   "de": "Der Löser konnte sich nicht einpendeln. Auf kurzgeschlossene Quellen prüfen.",
   "es": "El solucionador no pudo estabilizarse. Comprueba si hay fuentes en cortocircuito.",
@@ -7304,6 +7494,11 @@
   "es": "Tiempo Unix",
   "zh": "Unix 时间"
  },
+ "Untick a tag to drop it from the saved copy": {
+  "de": "Ein Tag abwählen, um es aus der gespeicherten Kopie zu entfernen",
+  "es": "Desmarca una etiqueta para quitarla de la copia guardada",
+  "zh": "取消勾选某个标签即可从保存的副本中移除它"
+ },
  "Upload Mbps": {
   "de": "Upload Mbit/s",
   "es": "Subida Mbps",
@@ -7334,6 +7529,11 @@
   "es": "Usar currentColor",
   "zh": "使用 currentColor"
  },
+ "Useful when a server allows drift": {
+  "de": "Nützlich, wenn ein Server eine Abweichung zulässt",
+  "es": "Útil cuando un servidor admite cierto desfase",
+  "zh": "当服务器允许时间偏移时很有用"
+ },
  "User agent": {
   "de": "User-Agent",
   "es": "User agent",
@@ -7343,6 +7543,11 @@
   "de": "Benutzername",
   "es": "Usuario",
   "zh": "用户名"
+ },
+ "Valid range is 1 to 3999": {
+  "de": "Der gültige Bereich ist 1 bis 3999",
+  "es": "El rango válido es de 1 a 3999",
+  "zh": "有效范围是 1 到 3999"
  },
  "Validate against schema": {
   "de": "Gegen Schema prüfen",
@@ -7418,6 +7623,11 @@
   "de": "Vss",
   "es": "Vpp",
   "zh": "峰峰值"
+ },
+ "WCAG 2.1 ratio against black and white": {
+  "de": "WCAG-2.1-Verhältnis gegen Schwarz und Weiß",
+  "es": "Ratio WCAG 2.1 frente a blanco y negro",
+  "zh": "相对黑色与白色的 WCAG 2.1 对比度"
  },
  "WEP": {
   "de": "WEP",
@@ -7539,6 +7749,11 @@
   "es": "Rueda",
   "zh": "色轮"
  },
+ "Where the mistakes landed": {
+  "de": "Wo die Fehler passiert sind",
+  "es": "Dónde se han producido los errores",
+  "zh": "错误出现在哪里"
+ },
  "While held": {
   "de": "Solange gedrückt",
   "es": "Mientras se mantiene",
@@ -7649,6 +7864,11 @@
   "es": "Escribir pruebas",
   "zh": "编写测试"
  },
+ "Written into a ConfigMap and referenced by the pod": {
+  "de": "Wird in eine ConfigMap geschrieben und vom Pod referenziert",
+  "es": "Se escribe en un ConfigMap y el pod lo referencia",
+  "zh": "写入 ConfigMap 并由 Pod 引用"
+ },
  "XNOR": {
   "de": "XNOR",
   "es": "XNOR",
@@ -7744,6 +7964,11 @@
   "es": "backwards",
   "zh": "backwards"
  },
+ "base": {
+  "de": "Basis",
+  "es": "base",
+  "zh": "进制"
+ },
  "bevel": {
   "de": "bevel",
   "es": "bevel",
@@ -7808,6 +8033,11 @@
   "de": "benutzerdefiniert",
   "es": "personalizado",
   "zh": "自定义"
+ },
+ "deg": {
+  "de": "Grad",
+  "es": "grados",
+  "zh": "度"
  },
  "delete": {
   "de": "Löschen",
@@ -7883,6 +8113,11 @@
   "de": "forwards",
   "es": "forwards",
   "zh": "forwards"
+ },
+ "fps": {
+  "de": "fps",
+  "es": "fps",
+  "zh": "fps"
  },
  "freq": {
   "de": "Frequenz",
@@ -8063,6 +8298,16 @@
   "de": "preserveAspectRatio",
   "es": "preserveAspectRatio",
   "zh": "preserveAspectRatio"
+ },
+ "px": {
+  "de": "px",
+  "es": "px",
+  "zh": "px"
+ },
+ "qty": {
+  "de": "Stück",
+  "es": "cant.",
+  "zh": "数量"
  },
  "restrict": {
   "de": "restrict",

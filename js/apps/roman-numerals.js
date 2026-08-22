@@ -64,7 +64,7 @@ class RomanNumerals extends JGApp {
         </jg-card>
       </div>
 
-      <jg-card title="${t('roman-numerals.reference', 'Reference')}" sub="Valid range is 1 to 3999">
+      <jg-card title="${t('roman-numerals.reference', 'Reference')}" sub="${t('roman-numerals.validRangeIs1To', 'Valid range is 1 to 3999')}">
         <div class="table">
           ${NUMERALS.map((pair) => html`<div class="pair"><span>${pair[1]}</span><span class="muted">${pair[0]}</span></div>`)}
         </div>

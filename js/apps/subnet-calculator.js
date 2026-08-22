@@ -40,7 +40,7 @@ class SubnetCalculator extends JGApp {
         <div class="kv" id="details"></div>
       </jg-card>
 
-      <jg-card title="${t('subnet-calculator.binary', 'Binary')}" sub="Network bits in accent, host bits muted">
+      <jg-card title="${t('subnet-calculator.binary', 'Binary')}" sub="${t('subnet-calculator.networkBitsInAccentHost', 'Network bits in accent, host bits muted')}">
         <div class="binary" id="binary"></div>
       </jg-card>
 

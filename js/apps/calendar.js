@@ -470,11 +470,11 @@ class CalendarApp extends JGApp {
         ${this.#view === 'year' ? '' : html`<aside class="side" id="side"></aside>`}
       </div>
 
-      <jg-sheet id="calendar-sheet" title-text="Calendars" sub="Choose what appears in the grid">
+      <jg-sheet id="calendar-sheet" title-text="${t('calendar.calendars', 'Calendars')}" sub="${t('calendar.chooseWhatAppearsInThe', 'Choose what appears in the grid')}">
         <div id="calendar-list"></div>
       </jg-sheet>
 
-      <jg-dialog id="event-dialog" title-text="New event">
+      <jg-dialog id="event-dialog" title-text="${t('calendar.newEvent', 'New event')}">
         <jg-field label="${t('calendar.title', 'Title')}"><jg-input id="title-input" placeholder="${t('calendar.standUp', 'Stand up')}" autofocus></jg-input></jg-field>
         <div class="times">
           <jg-field label="${t('calendar.from', 'From')}"><jg-input id="from" type="time"></jg-input></jg-field>

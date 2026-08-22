@@ -42,7 +42,7 @@ class HmacGenerator extends JGApp {
         <jg-output id="out" placeholder="-"></jg-output>
       </jg-field>
 
-      <jg-card title="${t('hmac-generator.verify', 'Verify')}" sub="Paste a signature to compare in constant view">
+      <jg-card title="${t('hmac-generator.verify', 'Verify')}" sub="${t('hmac-generator.pasteASignatureToCompare', 'Paste a signature to compare in constant view')}">
         <div class="row nowrap">
           <jg-input id="expected" class="grow" mono placeholder="${t('hmac-generator.expectedSignature', 'Expected signature')}"></jg-input>
           <jg-badge id="verdict">-</jg-badge>

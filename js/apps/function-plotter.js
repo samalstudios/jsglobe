@@ -91,7 +91,7 @@ class FunctionPlotter extends JGApp {
         <div class="readout" id="readout"></div>
       </div>
 
-      <jg-card title="${t('function-plotter.rootsAndExtrema', 'Roots and extrema')}" sub="Found by scanning the visible range" id="roots-card">
+      <jg-card title="${t('function-plotter.rootsAndExtrema', 'Roots and extrema')}" sub="${t('function-plotter.foundByScanningTheVisible', 'Found by scanning the visible range')}" id="roots-card">
         <div class="roots" id="roots"></div>
       </jg-card>
     </div>`);

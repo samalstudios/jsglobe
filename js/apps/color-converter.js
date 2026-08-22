@@ -163,11 +163,11 @@ class ColorConverter extends JGApp {
         <div class="format"><span class="label">${t('color-converter.swiftAndroid', 'Swift / Android')}</span><jg-output data-out="platform"></jg-output></div>
       </div>
 
-      <jg-card title="${t('color-converter.tintsAndShades', 'Tints and shades')}" sub="Click any step to load it">
+      <jg-card title="${t('color-converter.tintsAndShades', 'Tints and shades')}" sub="${t('color-converter.clickAnyStepToLoad', 'Click any step to load it')}">
         <div class="ramp" id="ramp"></div>
       </jg-card>
 
-      <jg-card title="${t('color-converter.contrast', 'Contrast')}" sub="WCAG 2.1 ratio against black and white">
+      <jg-card title="${t('color-converter.contrast', 'Contrast')}" sub="${t('color-converter.wcag21RatioAgainst', 'WCAG 2.1 ratio against black and white')}">
         <div class="contrast">
           <div class="chip" id="onwhite"></div>
           <div class="chip" id="onblack"></div>

@@ -113,11 +113,11 @@ class Statistics extends JGApp {
         <div class="right">
           <div class="summary" id="summary"></div>
 
-          <jg-card title="${t('statistics.distribution', 'Distribution')}" sub="Histogram of the values">
+          <jg-card title="${t('statistics.distribution', 'Distribution')}" sub="${t('statistics.histogramOfTheValues', 'Histogram of the values')}">
             <svg id="histogram" viewBox="0 0 600 220" preserveAspectRatio="none"></svg>
           </jg-card>
 
-          <jg-card title="${t('statistics.spread', 'Spread')}" sub="Box plot with quartiles, whiskers and outliers">
+          <jg-card title="${t('statistics.spread', 'Spread')}" sub="${t('statistics.boxPlotWithQuartilesWhiskers', 'Box plot with quartiles, whiskers and outliers')}">
             <svg id="box" viewBox="0 0 600 130"></svg>
           </jg-card>
 

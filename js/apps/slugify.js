@@ -37,7 +37,7 @@ class Slugify extends JGApp {
         </jg-select>
         <jg-switch id="lower" checked></jg-switch><span class="hint">${t('slugify.lowercase', 'Lowercase')}</span>
         <jg-switch id="strict" checked></jg-switch><span class="hint">${t('slugify.stripSymbols', 'Strip symbols')}</span>
-        <jg-input id="max" type="number" min="0" max="200" value="0" suffix="max" style="width:120px"></jg-input>
+        <jg-input id="max" type="number" min="0" max="200" value="0" suffix="${t('slugify.max', 'max')}" style="width:120px"></jg-input>
       </div>
 
       <jg-field label="${t('slugify.slug', 'Slug')}"><jg-output id="out"></jg-output></jg-field>

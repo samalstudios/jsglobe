@@ -313,7 +313,7 @@ class PosterStudio extends JGApp {
         <aside class="side" id="side"></aside>
       </div>
 
-      <jg-dialog id="picker" title-text="Gallery" sub="Pick a design to start from. It replaces what is on the page.">
+      <jg-dialog id="picker" title-text="${t('poster-studio.gallery', 'Gallery')}" sub="${t('poster-studio.pickADesignToStart', 'Pick a design to start from. It replaces what is on the page.')}">
         <jg-input id="hunt" size="sm" placeholder="${t('poster-studio.searchTheGallery', 'Search the gallery')}" autocomplete="off"></jg-input>
         <div class="gallery" id="gallery"></div>
         <p class="nothing" id="nothing" hidden>${t('poster-studio.nothingMatchesThat', 'Nothing matches that.')}</p>

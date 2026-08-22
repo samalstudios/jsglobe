@@ -112,7 +112,7 @@ class OtpGenerator extends JGApp {
         <jg-output id="uri"></jg-output>
       </jg-field>
 
-      <jg-card title="${t('otp-generator.adjacentCodes', 'Adjacent codes')}" sub="Useful when a server allows drift">
+      <jg-card title="${t('otp-generator.adjacentCodes', 'Adjacent codes')}" sub="${t('otp-generator.usefulWhenAServerAllows', 'Useful when a server allows drift')}">
         <div class="kv" id="drift"></div>
       </jg-card>
     </div>`);

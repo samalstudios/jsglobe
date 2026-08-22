@@ -81,10 +81,10 @@ class ImageConverter extends JGApp {
           <jg-slider id="quality" min="10" max="100" value="82"></jg-slider>
         </jg-field>
         <jg-field label="${t('image-converter.maxWidth', 'Max width')}" hint="${t('image-converter.0KeepsTheOriginal', '0 keeps the original')}">
-          <jg-input id="width" type="number" min="0" max="10000" value="0" suffix="px"></jg-input>
+          <jg-input id="width" type="number" min="0" max="10000" value="0" suffix="${t('image-converter.px', 'px')}"></jg-input>
         </jg-field>
         <jg-field label="${t('image-converter.maxHeight', 'Max height')}" hint="${t('image-converter.0KeepsTheOriginal', '0 keeps the original')}">
-          <jg-input id="height" type="number" min="0" max="10000" value="0" suffix="px"></jg-input>
+          <jg-input id="height" type="number" min="0" max="10000" value="0" suffix="${t('image-converter.px', 'px')}"></jg-input>
         </jg-field>
       </div>
 

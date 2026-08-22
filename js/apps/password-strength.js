@@ -102,7 +102,7 @@ class PasswordStrength extends JGApp {
         <div class="checks" id="checks"></div>
       </jg-card>
 
-      <jg-card title="${t('password-strength.timeToCrack', 'Time to crack')}" sub="Assuming the attacker knows the character set">
+      <jg-card title="${t('password-strength.timeToCrack', 'Time to crack')}" sub="${t('password-strength.assumingTheAttackerKnowsThe', 'Assuming the attacker knows the character set')}">
         <div class="kv" id="times"></div>
       </jg-card>
 

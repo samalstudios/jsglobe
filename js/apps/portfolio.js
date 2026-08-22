@@ -188,7 +188,7 @@ class Portfolio extends JGApp {
         </div>
       </jg-card>
 
-      <jg-card title="${t('portfolio.valueOverTime', 'Value over time')}" sub="A snapshot is kept each day you update prices">
+      <jg-card title="${t('portfolio.valueOverTime', 'Value over time')}" sub="${t('portfolio.aSnapshotIsKeptEach', 'A snapshot is kept each day you update prices')}">
         <svg class="history" id="history" preserveAspectRatio="none"></svg>
       </jg-card>
 

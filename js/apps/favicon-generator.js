@@ -72,7 +72,7 @@ class FaviconGenerator extends JGApp {
 
       <div class="shell" id="body" hidden>
         <div class="stack tight">
-          <jg-card title="${t('favicon-generator.generatedSizes', 'Generated sizes')}" sub="Rendered from your image on this device">
+          <jg-card title="${t('favicon-generator.generatedSizes', 'Generated sizes')}" sub="${t('favicon-generator.renderedFromYourImageOn', 'Rendered from your image on this device')}">
             <div class="sizes" id="sizes"></div>
           </jg-card>
 

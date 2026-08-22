@@ -92,7 +92,7 @@ class CurrencyConverter extends JGApp {
         <jg-button size="sm" variant="ghost" id="copy">${t('currency-converter.copy', 'Copy')}</jg-button>
       </div>
 
-      <jg-card title="${t('currency-converter.atAGlance', 'At a glance')}" sub="The same amount in other currencies">
+      <jg-card title="${t('currency-converter.atAGlance', 'At a glance')}" sub="${t('currency-converter.theSameAmountInOther', 'The same amount in other currencies')}">
         <div class="table" id="table"></div>
       </jg-card>
 

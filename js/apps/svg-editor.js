@@ -480,7 +480,7 @@ class SvgEditor extends JGApp {
         <jg-button size="sm" variant="outline" id="flip-v">${t('svg-editor.flipVertical', 'Flip vertical')}</jg-button>
       </div>
       <div class="fields">
-        <jg-field label="${t('svg-editor.rotateBy', 'Rotate by')}"><jg-input id="t-angle" type="number" value="15" suffix="deg"></jg-input></jg-field>
+        <jg-field label="${t('svg-editor.rotateBy', 'Rotate by')}"><jg-input id="t-angle" type="number" value="15" suffix="${t('svg-editor.deg', 'deg')}"></jg-input></jg-field>
         <jg-field label="${t('svg-editor.scale', 'Scale')}"><jg-input id="t-scale" type="number" min="1" max="400" value="110" suffix="%"></jg-input></jg-field>
         <jg-field label="${t('svg-editor.moveX', 'Move X')}"><jg-input id="t-x" type="number" value="0"></jg-input></jg-field>
         <jg-field label="${t('svg-editor.moveY', 'Move Y')}"><jg-input id="t-y" type="number" value="0"></jg-input></jg-field>
