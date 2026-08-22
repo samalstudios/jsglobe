@@ -50,6 +50,7 @@ const BUTTON_HEIGHT = 0.62;
 const SLIDER_WIDTH = 0.8;
 const SLIDER_HEIGHT = 3.2;
 const SLIDER_GRIP = 0.5;
+const HANDLE_HEIGHT = 0.3;
 
 const SAMPLES = {
   pendulum: {
@@ -799,7 +800,7 @@ export default class PhysicsLab extends JGApp {
       const box = this.#controlBox(control);
       bounds.left = Math.min(bounds.left, box.left);
       bounds.right = Math.max(bounds.right, box.right);
-      bounds.top = Math.min(bounds.top, box.top);
+      bounds.top = Math.min(bounds.top, box.top - HANDLE_HEIGHT);
       bounds.bottom = Math.max(bounds.bottom, box.bottom + 0.4);
     });
 
@@ -841,6 +842,33 @@ export default class PhysicsLab extends JGApp {
       }
     }
     return null;
+  }
+
+  #handleBox(control) {
+    const box = this.#controlBox(control);
+    return {
+      left: box.left,
+      right: box.right,
+      top: box.top - HANDLE_HEIGHT,
+      bottom: box.top,
+      width: box.width,
+      height: HANDLE_HEIGHT,
+    };
+  }
+
+  #handleAt(point) {
+    for (let index = this.#controls.length - 1; index >= 0; index -= 1) {
+      const box = this.#handleBox(this.#controls[index]);
+      if (point.x >= box.left && point.x <= box.right && point.y >= box.top && point.y <= box.bottom) {
+        return this.#controls[index];
+      }
+    }
+    return null;
+  }
+
+  #moveWidget(widget, point) {
+    widget.x = Math.round((this.#drag.origin.x + (point.x - this.#drag.from.x)) * 2) / 2;
+    widget.y = Math.round((this.#drag.origin.y + (point.y - this.#drag.from.y)) * 2) / 2;
   }
 
   #drivable() {
@@ -1023,14 +1051,31 @@ export default class PhysicsLab extends JGApp {
     }
 
     if (this.#tool === 'select') {
+      const grip = this.#handleAt(point);
+      if (grip) {
+        this.#selectedControl = grip;
+        this.#selected = null;
+        this.#selectedJoint = null;
+        this.#snapshot();
+        this.#drag = { kind: 'widget-move', widget: grip, from: point, origin: { x: grip.x, y: grip.y } };
+        this.#inspector();
+        return;
+      }
+
       const widget = this.#widgetAt(point);
       if (widget) {
         this.#selectedControl = widget;
         this.#selected = null;
         this.#selectedJoint = null;
+        // while the scene is paused the controls are being arranged, not driven
+        if (!this.#running) {
+          this.#snapshot();
+          this.#drag = { kind: 'widget-move', widget, from: point, origin: { x: widget.x, y: widget.y } };
+          this.#inspector();
+          return;
+        }
         if (widget.kind === 'slider') {
           widget.value = this.#sliderValue(widget, point);
-          if (!this.#running) this.#toggleRun();
         } else {
           this.#press(widget);
         }
@@ -1244,6 +1289,11 @@ export default class PhysicsLab extends JGApp {
       return;
     }
 
+    if (this.#drag?.kind === 'widget-move') {
+      this.#moveWidget(this.#drag.widget, point);
+      return;
+    }
+
     if (this.#drag?.kind === 'widget') {
       const widget = this.#drag.widget;
       if (widget.kind === 'slider') {
@@ -1256,8 +1306,7 @@ export default class PhysicsLab extends JGApp {
           this.#release();
           this.#snapshot();
         }
-        widget.x = Math.round((this.#drag.origin.x + (point.x - this.#drag.from.x)) * 2) / 2;
-        widget.y = Math.round((this.#drag.origin.y + (point.y - this.#drag.from.y)) * 2) / 2;
+        this.#moveWidget(widget, point);
       }
       return;
     }
@@ -2636,6 +2685,7 @@ export default class PhysicsLab extends JGApp {
   #drawControl(context, control, paint) {
     if (control.kind === 'slider') return this.#drawSlider(context, control, paint);
     const button = control;
+    this.#drawHandle(context, button, paint);
     const box = this.#controlBox(button);
     const down = this.#held.has(button.id);
     const picked = button === this.#selectedControl;
@@ -2662,7 +2712,31 @@ export default class PhysicsLab extends JGApp {
     context.restore();
   }
 
+  #drawHandle(context, control, paint) {
+    const box = this.#handleBox(control);
+    const picked = control === this.#selectedControl;
+    const inset = 0.05;
+
+    context.save();
+    context.beginPath();
+    context.roundRect(box.left + inset, box.top, box.width - inset * 2, box.height - 0.04, 0.1);
+    context.fillStyle = picked ? `color-mix(in srgb, ${paint.ring} 55%, transparent)` : `color-mix(in srgb, ${paint.soft} 40%, ${paint.card})`;
+    context.fill();
+
+    const dots = 3;
+    const gap = 0.11;
+    const middle = box.top + (box.height - 0.04) / 2;
+    context.fillStyle = picked ? paint.card : paint.soft;
+    for (let index = 0; index < dots; index += 1) {
+      context.beginPath();
+      context.arc(control.x + (index - (dots - 1) / 2) * gap, middle, 0.032, 0, Math.PI * 2);
+      context.fill();
+    }
+    context.restore();
+  }
+
   #drawSlider(context, control, paint) {
+    this.#drawHandle(context, control, paint);
     const box = this.#controlBox(control);
     const picked = control === this.#selectedControl;
     const bound = this.#joints.some((joint) => joint.id === control.target);
