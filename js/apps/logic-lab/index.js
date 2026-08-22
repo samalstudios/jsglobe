@@ -29,6 +29,8 @@ const KINDS = {
   buffer: { label: t('logic-lab.buffer', 'Buffer'), icon: 'gate', inputs: 1, outputs: 1, width: 4, height: 2 },
   dff: { label: t('logic-lab.dFlipFlop', 'D flip-flop'), icon: 'blocks', inputs: 2, outputs: 2, width: 5, height: 4 },
   tff: { label: t('logic-lab.tFlipFlop', 'T flip-flop'), icon: 'blocks', inputs: 2, outputs: 1, width: 5, height: 4 },
+  jkff: { label: t('logic-lab.jkFlipFlop', 'JK flip-flop'), icon: 'blocks', inputs: 3, outputs: 2, width: 5, height: 5 },
+  rsff: { label: t('logic-lab.rsLatch', 'RS latch'), icon: 'blocks', inputs: 2, outputs: 2, width: 5, height: 4 },
   counter: { label: t('logic-lab.4BitCounter', '4 bit counter'), icon: 'binary', inputs: 2, outputs: 4, width: 5, height: 6 },
   decoder: { label: t('logic-lab.2To4Decoder', '2 to 4 decoder'), icon: 'blocks', inputs: 3, outputs: 4, width: 6, height: 6 },
   encoder: { label: t('logic-lab.4To2Encoder', '4 to 2 encoder'), icon: 'blocks', inputs: 4, outputs: 3, width: 6, height: 6 },
@@ -43,6 +45,8 @@ const KINDS = {
 const PIN_NAMES = {
   dff: { in0: 'D', in1: 'CLK', out0: 'Q', out1: 'Q\u0305' },
   tff: { in0: 'T', in1: 'CLK', out0: 'Q' },
+  jkff: { in0: 'J', in1: 'K', in2: 'CLK', out0: 'Q', out1: 'Q\u0305' },
+  rsff: { in0: 'S', in1: 'R', out0: 'Q', out1: 'Q\u0305' },
   counter: { in0: 'CLK', in1: 'RST', out0: 'Q0', out1: 'Q1', out2: 'Q2', out3: 'Q3' },
   decoder: { in0: 'A0', in1: 'A1', in2: 'EN', out0: 'Y0', out1: 'Y1', out2: 'Y2', out3: 'Y3' },
   encoder: { in0: 'I0', in1: 'I1', in2: 'I2', in3: 'I3', out0: 'A0', out1: 'A1', out2: 'V' },
@@ -417,7 +421,7 @@ class LogicLab extends JGApp {
       <div class="group">${t('logic-lab.gates', 'Gates')}</div>
       ${['and', 'or', 'not', 'nand', 'nor', 'xor', 'xnor', 'buffer'].map((kind) => this.#toolButton(kind))}
       <div class="group">${t('logic-lab.memory', 'Memory')}</div>
-      ${['dff', 'tff', 'counter'].map((kind) => this.#toolButton(kind))}
+      ${['dff', 'tff', 'jkff', 'rsff', 'counter'].map((kind) => this.#toolButton(kind))}
       <div class="group">${t('logic-lab.blocks', 'Blocks')}</div>
       ${['decoder', 'encoder', 'mux', 'demux'].map((kind) => this.#toolButton(kind))}
       <div class="group">${t('logic-lab.wiring', 'Wiring')}</div>
@@ -1426,7 +1430,7 @@ class LogicLab extends JGApp {
       });
     });
 
-    if (part.kind === 'dff' || part.kind === 'tff' || part.kind === 'counter') {
+    if (part.kind === 'dff' || part.kind === 'tff' || part.kind === 'jkff' || part.kind === 'rsff' || part.kind === 'counter') {
       const clock = this.#localPins(part).find((pin) => names[pin.pin] === 'CLK');
       if (clock) {
         const down = y + clock.local.y * GRID;

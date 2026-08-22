@@ -1,5 +1,7 @@
 export default {
   de: {
+    'logic-lab.jkFlipFlop': 'JK-Flipflop',
+    'logic-lab.rsLatch': 'RS-Latch',
     'logic-lab.switch': 'Schalter',
     'logic-lab.clock': 'Takt',
     'logic-lab.logic1': 'Logisch 1',
@@ -81,6 +83,8 @@ export default {
     'logic-lab.selectAGateToSee': 'Ein Gatter auswählen, um seine Tabelle zu sehen.',
   },
   es: {
+    'logic-lab.jkFlipFlop': 'Biestable JK',
+    'logic-lab.rsLatch': 'Cerrojo RS',
     'logic-lab.switch': 'Interruptor',
     'logic-lab.clock': 'Reloj',
     'logic-lab.logic1': 'Lógico 1',
@@ -162,6 +166,8 @@ export default {
     'logic-lab.selectAGateToSee': 'Selecciona una puerta para ver su tabla.',
   },
   zh: {
+    'logic-lab.jkFlipFlop': 'JK 触发器',
+    'logic-lab.rsLatch': 'RS 锁存器',
     'logic-lab.switch': '开关',
     'logic-lab.clock': '时钟',
     'logic-lab.logic1': '逻辑 1',

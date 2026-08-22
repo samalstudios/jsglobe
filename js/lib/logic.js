@@ -172,6 +172,28 @@ export const createLogic = () => {
         if (clock && !memory.clock && read(part.id, 'in0')) memory.q = !memory.q;
         memory.clock = clock;
         write(part.id, 'out0', memory.q);
+      } else if (part.kind === 'jkff') {
+        // J and K on a rising clock: set, reset, hold, or toggle
+        const clock = read(part.id, 'in2');
+        if (clock && !memory.clock) {
+          const j = read(part.id, 'in0');
+          const k = read(part.id, 'in1');
+          if (j && k) memory.q = !memory.q;
+          else if (j) memory.q = true;
+          else if (k) memory.q = false;
+        }
+        memory.clock = clock;
+        write(part.id, 'out0', memory.q);
+        write(part.id, 'out1', !memory.q);
+      } else if (part.kind === 'rsff') {
+        // A latch rather than an edge triggered part: it follows S and R while
+        // they are held. Both high at once is the forbidden state, so it holds.
+        const set = read(part.id, 'in0');
+        const reset = read(part.id, 'in1');
+        if (set && !reset) memory.q = true;
+        else if (reset && !set) memory.q = false;
+        write(part.id, 'out0', memory.q);
+        write(part.id, 'out1', !memory.q);
       } else if (part.kind === 'counter') {
         const clock = read(part.id, 'in0');
         const reset = read(part.id, 'in1');
