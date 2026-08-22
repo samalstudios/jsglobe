@@ -860,6 +860,27 @@ export default class PhysicsLab extends JGApp {
     return null;
   }
 
+  #turnGrip(body) {
+    if (!body) return null;
+    const span = spanOf(body);
+    const reach = Math.max(span.x, span.y) + 0.55;
+    return {
+      x: body.x + Math.sin(body.angle ?? 0) * reach,
+      y: body.y - Math.cos(body.angle ?? 0) * reach,
+      radius: 0.16,
+      from: { x: body.x, y: body.y },
+    };
+  }
+
+  #turnGripAt(point) {
+    if (this.#selected == null) return null;
+    const body = this.#world.body(this.#selected);
+    const grip = this.#turnGrip(body);
+    if (!grip) return null;
+    const reach = Math.max(grip.radius, 0.22 / this.#zoom);
+    return Math.hypot(point.x - grip.x, point.y - grip.y) <= reach ? body : null;
+  }
+
   #handleBox(control) {
     const box = this.#controlBox(control);
     return {
@@ -1067,6 +1088,20 @@ export default class PhysicsLab extends JGApp {
     }
 
     if (this.#tool === 'select') {
+      const spun = this.#turnGripAt(point);
+      if (spun) {
+        this.#snapshot();
+        const shape = this.#bodies.find((entry) => entry.id === spun.id);
+        this.#drag = {
+          kind: 'rotate',
+          shape,
+          centre: { x: spun.x, y: spun.y },
+          start: Math.atan2(point.y - spun.y, point.x - spun.x),
+          origin: shape?.angle ?? 0,
+        };
+        return;
+      }
+
       const grip = this.#handleAt(point);
       if (grip) {
         this.#selectedControl = grip;
@@ -1302,6 +1337,21 @@ export default class PhysicsLab extends JGApp {
     if (this.#drag?.kind === 'backdrop' && this.#backdrop) {
       this.#backdrop.x = this.#drag.origin.x + (point.x - this.#drag.from.x);
       this.#backdrop.y = this.#drag.origin.y + (point.y - this.#drag.from.y);
+      return;
+    }
+
+    if (this.#drag?.kind === 'rotate') {
+      const drag = this.#drag;
+      if (!drag.shape) return;
+      const now = Math.atan2(point.y - drag.centre.y, point.x - drag.centre.x);
+      let angle = drag.origin + (now - drag.start);
+      if (event.shiftKey) {
+        const step = Math.PI / 12;
+        angle = Math.round(angle / step) * step;
+      }
+      drag.shape.angle = angle;
+      this.#reset();
+      this.#inspector();
       return;
     }
 
@@ -2354,6 +2404,7 @@ export default class PhysicsLab extends JGApp {
     this.#drawTrail(context, paint);
     this.#world.bodies.forEach((body) => this.#drawBody(context, body, paint));
     this.#joints.forEach((joint) => this.#drawJoint(context, joint, paint));
+    this.#drawTurnGrip(context, paint);
 
     if (this.#linkFrom && this.#cursor) {
       const start =
@@ -2725,6 +2776,31 @@ export default class PhysicsLab extends JGApp {
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.fillText(this.#controlName(button), button.x, button.y);
+    context.restore();
+  }
+
+  #drawTurnGrip(context, paint) {
+    if (this.#selected == null || this.#running) return;
+    const body = this.#world.body(this.#selected);
+    const grip = this.#turnGrip(body);
+    if (!grip) return;
+
+    const line = 1.6 / (SCALE * this.#zoom);
+    context.save();
+    context.strokeStyle = `color-mix(in srgb, ${paint.ring} 70%, transparent)`;
+    context.lineWidth = line;
+    context.beginPath();
+    context.moveTo(grip.from.x, grip.from.y);
+    context.lineTo(grip.x, grip.y);
+    context.stroke();
+
+    context.beginPath();
+    context.arc(grip.x, grip.y, grip.radius, 0, Math.PI * 2);
+    context.fillStyle = paint.card;
+    context.fill();
+    context.strokeStyle = paint.ring;
+    context.lineWidth = line * 1.5;
+    context.stroke();
     context.restore();
   }
 
