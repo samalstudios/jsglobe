@@ -1,4 +1,5 @@
 import { JGApp, define, html, css, raw } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { escapeHtml } from '../core/dom.js';
 import { copyText, download, debounce } from '../core/util.js';
 
@@ -71,12 +72,12 @@ const describe = (value) => {
 class JsonFormatter extends JGApp {
   static appId = 'json-formatter';
   static settings = [
-    { key: 'indent', label: 'Indent', type: 'select', default: '2', options: [
-      { value: '2', label: '2 spaces' },
-      { value: '4', label: '4 spaces' },
-      { value: 'tab', label: 'Tab' },
+    { key: 'indent', label: t('json-formatter.indent', 'Indent'), type: 'select', default: '2', options: [
+      { value: '2', label: t('json-formatter.spaces2', '2 spaces') },
+      { value: '4', label: t('json-formatter.spaces4', '4 spaces') },
+      { value: 'tab', label: t('json-formatter.tab', 'Tab') },
     ] },
-    { key: 'sortKeys', label: 'Sort keys', type: 'switch', default: false },
+    { key: 'sortKeys', label: t('json-formatter.sortKeys', 'Sort keys'), type: 'switch', default: false },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -89,19 +90,19 @@ class JsonFormatter extends JGApp {
         <jg-tabs id="mode"></jg-tabs>
         <span class="grow"></span>
         <jg-select id="indent" size="sm" value="${indent}" style="width:120px">
-          <option value="2">2 spaces</option>
-          <option value="4">4 spaces</option>
-          <option value="tab">Tab</option>
+          <option value="2">${t('json-formatter.spaces2', '2 spaces')}</option>
+          <option value="4">${t('json-formatter.spaces4', '4 spaces')}</option>
+          <option value="tab">${t('json-formatter.tab', 'Tab')}</option>
         </jg-select>
-        <jg-button size="sm" variant="outline" id="sample">Sample</jg-button>
-        <jg-button size="sm" variant="outline" id="copy">Copy</jg-button>
-        <jg-button size="sm" variant="outline" id="save">Download</jg-button>
+        <jg-button size="sm" variant="outline" id="sample">${t('json-formatter.sample', 'Sample')}</jg-button>
+        <jg-button size="sm" variant="outline" id="copy">${t('action.copy', 'Copy')}</jg-button>
+        <jg-button size="sm" variant="outline" id="save">${t('action.download', 'Download')}</jg-button>
       </div>
 
       <div class="split">
         <div class="pane">
-          <div class="label">Input</div>
-          <jg-code id="input" grow gutter language="json" placeholder="Paste JSON here"></jg-code>
+          <div class="label">${t('json-formatter.input', 'Input')}</div>
+          <jg-code id="input" grow gutter language="json" placeholder="${t('json-formatter.paste', 'Paste JSON here')}"></jg-code>
         </div>
         <div class="pane">
           <div class="status" id="status"></div>
@@ -111,9 +112,9 @@ class JsonFormatter extends JGApp {
     </div>`);
 
     this.$('#mode').items = [
-      { value: 'pretty', label: 'Formatted' },
-      { value: 'minify', label: 'Minified' },
-      { value: 'tree', label: 'Tree' },
+      { value: 'pretty', label: t('json-formatter.formatted', 'Formatted') },
+      { value: 'minify', label: t('json-formatter.minified', 'Minified') },
+      { value: 'tree', label: t('json-formatter.tree', 'Tree') },
     ];
 
     this.on(this.$('#input'), 'input', debounce(() => this.#run(), 150));
@@ -151,7 +152,7 @@ class JsonFormatter extends JGApp {
 
     if (!source) {
       this.#parsed = null;
-      status.innerHTML = html`<span class="hint">Waiting for input</span>`;
+      status.innerHTML = html`<span class="hint">${t('json-formatter.waiting', 'Waiting for input')}</span>`;
       output.innerHTML = '';
       return;
     }
@@ -162,15 +163,15 @@ class JsonFormatter extends JGApp {
       this.#parsed = null;
       const position = Number(/position (\d+)/.exec(error.message)?.[1] ?? -1);
       const line = position >= 0 ? source.slice(0, position).split('\n').length : null;
-      status.innerHTML = html`<jg-badge tone="danger">Invalid JSON</jg-badge><span class="error">${error.message}</span>`;
-      output.innerHTML = html`<span class="muted">${line ? `Check line ${line}.` : 'Fix the syntax to continue.'}</span>`;
+      status.innerHTML = html`<jg-badge tone="danger">${t('json-formatter.invalid', 'Invalid JSON')}</jg-badge><span class="error">${error.message}</span>`;
+      output.innerHTML = html`<span class="muted">${line ? t('json-formatter.checkLine', `Check line ${line}.`, { line }) : t('json-formatter.fixSyntax', 'Fix the syntax to continue.')}</span>`;
       return;
     }
 
     const stats = describe(this.#parsed);
     const text = this.#output();
-    status.innerHTML = html`<jg-badge tone="success">Valid</jg-badge>
-      <span class="hint">${stats.nodes} nodes · depth ${stats.depth} · ${text.length} chars</span>`;
+    status.innerHTML = html`<jg-badge tone="success">${t('json-formatter.valid', 'Valid')}</jg-badge>
+      <span class="hint">${t('json-formatter.stats', `${stats.nodes} nodes · depth ${stats.depth} · ${text.length} chars`, { nodes: stats.nodes, depth: stats.depth, chars: text.length })}</span>`;
 
     if (this.$('#mode').value === 'tree') {
       output.style.whiteSpace = 'normal';

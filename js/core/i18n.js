@@ -10,6 +10,12 @@ const loaders = {
   zh: () => import('../i18n/zh.js'),
 };
 
+const appLoaders = {
+  de: () => import('../i18n/de-apps.js'),
+  es: () => import('../i18n/es-apps.js'),
+  zh: () => import('../i18n/zh-apps.js'),
+};
+
 export const language = () => active;
 
 export const isTranslated = () => active !== DEFAULT_LANGUAGE;
@@ -21,9 +27,13 @@ export const loadLanguage = async (code) => {
     active = code;
     pack = { ui: {}, apps: {}, categories: {} };
   } else {
-    const module = await loaders[code]();
+    const [module, appModule] = await Promise.all([
+      loaders[code](),
+      appLoaders[code]().catch(() => ({ default: {} })),
+    ]);
     active = code;
     pack = { ui: {}, apps: {}, categories: {}, ...module.default };
+    pack.ui = { ...pack.ui, ...appModule.default };
   }
   const entry = languageOf(active);
   document.documentElement.lang = entry.locale;
