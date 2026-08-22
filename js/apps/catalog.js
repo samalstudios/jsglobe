@@ -1456,7 +1456,7 @@ export const catalog = [
     id: 'poster-studio',
     name: 'Poster Studio',
     tagline: 'Design posters and social variants with an event QR',
-    category: 'design',
+    category: 'media',
     glyph: 'P',
     icon: 'image',
     tint: '#a8443c',
