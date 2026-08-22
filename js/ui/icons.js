@@ -186,6 +186,7 @@ const PATHS = {
   rail: '<path d="M3 16.4h18"/><rect x="8.2" y="6.6" width="7.6" height="6.4" rx="1.6"/><path d="M10.4 16.4v-3.4M13.6 16.4v-3.4"/>',
   weldSeam: '<path d="M4 15.4h16"/><path d="m5.6 15.4 1.6-3 1.6 3 1.6-3 1.6 3 1.6-3 1.6 3 1.6-3 1.6 3"/><path d="M4 19.4h16"/>',
   coil: '<path d="M2.8 12h2.6"/><path d="M5.4 12c0-2.6 1.5-3.6 2.6-3.6S10.6 9.4 10.6 12s1.5 3.6 2.6 3.6S15.8 14.6 15.8 12s1.5-3.6 2.6-3.6"/><path d="M18.4 12h2.8"/>',
+  clipboard: '<rect x="6.4" y="4.6" width="11.2" height="15.4" rx="2.2"/><path d="M9.6 4.6V3.4a1.6 1.6 0 0 1 1.6-1.6h1.6a1.6 1.6 0 0 1 1.6 1.6v1.2Z" fill="currentColor"/><path d="M9.6 11h4.8M9.6 14.6h3.2"/>',
   toFront: '<rect x="3.4" y="3.4" width="11" height="11" rx="2" fill="currentColor"/><path d="M9.6 20.6h9a2 2 0 0 0 2-2v-9"/>',
   toBack: '<rect x="9.6" y="9.6" width="11" height="11" rx="2" fill="currentColor"/><path d="M14.4 3.4h-9a2 2 0 0 0-2 2v9"/>',
   pause: '<rect x="6.4" y="4.6" width="4" height="14.8" rx="1.4" fill="currentColor"/><rect x="13.6" y="4.6" width="4" height="14.8" rx="1.4" fill="currentColor"/>',

@@ -438,6 +438,7 @@ class CircuitLab extends JGApp {
   #zoom = 1;
   #panDrag = null;
   #hoverEnd = null;
+  #clipboard = null;
   #paint = null;
   #touched = false;
 
@@ -669,6 +670,8 @@ class CircuitLab extends JGApp {
       { id: 'zoom-out', label: 'Zoom out', icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
       { id: 'zoom-fit', label: 'Fit', icon: 'maximize', iconOnly: true, title: 'Fit the circuit to the view', action: () => { this.#touched = false; this.#zoomFit(); } },
       { id: 'zoom-in', label: 'Zoom in', icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
+      { id: 'copy-part', label: 'Copy', icon: 'copy', iconOnly: true, title: 'Copy the selected part', action: () => this.#copy() },
+      { id: 'paste-part', label: 'Paste', icon: 'clipboard', iconOnly: true, title: 'Paste a copy', action: () => this.#paste() },
       { id: 'rotate', label: 'Rotate', icon: 'rotate', iconOnly: true, title: 'Rotate 90 degrees (R)', action: () => this.#turn(90) },
       { id: 'flip', label: 'Flip', icon: 'flip', iconOnly: true, title: 'Mirror the part (F)', action: () => this.#mirror() },
       { id: 'delete', label: 'Delete', icon: 'eraser', iconOnly: true, title: 'Delete the selected part', action: () => this.#remove() },
@@ -753,6 +756,22 @@ class CircuitLab extends JGApp {
       if (event.key === 'Backspace' || event.key === 'Delete') {
         event.preventDefault();
         this.#remove();
+        return;
+      }
+      if ((event.metaKey || event.ctrlKey) && key === 'c') {
+        event.preventDefault();
+        this.#copy();
+        return;
+      }
+      if ((event.metaKey || event.ctrlKey) && key === 'v') {
+        event.preventDefault();
+        this.#paste();
+        return;
+      }
+      if ((event.metaKey || event.ctrlKey) && key === 'd') {
+        event.preventDefault();
+        this.#copy();
+        this.#paste();
         return;
       }
       if (key === 'r' && !event.metaKey && !event.ctrlKey) {
@@ -1037,6 +1056,31 @@ class CircuitLab extends JGApp {
         closed: true,
       });
     });
+  }
+
+  #copy() {
+    const part = this.#parts.find((entry) => entry.id === this.#selected);
+    if (!part) return;
+    this.#clipboard = { ...part, a: [...part.a], b: [...part.b], c: part.c ? [...part.c] : undefined };
+  }
+
+  #paste() {
+    if (!this.#clipboard) return;
+    this.#snapshot();
+    const shift = ([x, y]) => [x + 2, y + 2];
+    const held = this.#clipboard;
+    const copy = {
+      ...held,
+      id: this.#seq++,
+      a: shift(held.a),
+      b: shift(held.b),
+      c: held.c ? shift(held.c) : undefined,
+    };
+    this.#parts.push(copy);
+    this.#selected = copy.id;
+    this.#rebuild();
+    this.#inspector();
+    this.#draw();
   }
 
   #turn(degrees) {

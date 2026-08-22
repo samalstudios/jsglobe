@@ -301,6 +301,7 @@ class LogicLab extends JGApp {
   #designs = null;
   #openName = null;
   #press = null;
+  #clipboard = null;
   #drag = null;
   #hover = null;
   #logic = createLogic();
@@ -529,6 +530,8 @@ class LogicLab extends JGApp {
       { id: 'zoom-out', label: 'Zoom out', icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
       { id: 'zoom-fit', label: 'Fit', icon: 'maximize', iconOnly: true, title: 'Fit the board to the view', action: () => { this.#fit(); this.#draw(); } },
       { id: 'zoom-in', label: 'Zoom in', icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
+      { id: 'copy-part', label: 'Copy', icon: 'copy', iconOnly: true, title: 'Copy the selected part', action: () => this.#copy() },
+      { id: 'paste-part', label: 'Paste', icon: 'clipboard', iconOnly: true, title: 'Paste a copy', action: () => this.#paste() },
       { id: 'rotate', label: 'Rotate', icon: 'rotate', iconOnly: true, title: 'Rotate 90 degrees (R)', action: () => this.#turn(90) },
       { id: 'flip', label: 'Flip', icon: 'flip', iconOnly: true, title: 'Mirror left to right (F)', action: () => this.#mirror() },
       { id: 'delete', label: 'Delete', icon: 'eraser', iconOnly: true, title: 'Delete the selection', action: () => this.#remove() },
@@ -635,6 +638,22 @@ class LogicLab extends JGApp {
         this.#remove();
         return;
       }
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'c') {
+        event.preventDefault();
+        this.#copy();
+        return;
+      }
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'v') {
+        event.preventDefault();
+        this.#paste();
+        return;
+      }
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'd') {
+        event.preventDefault();
+        this.#copy();
+        this.#paste();
+        return;
+      }
       if (event.key.toLowerCase() === 'r' && !event.metaKey && !event.ctrlKey) {
         event.preventDefault();
         this.#turn(event.shiftKey ? -90 : 90);
@@ -714,6 +733,24 @@ class LogicLab extends JGApp {
     if (!canvas) return;
     const box = canvas.getBoundingClientRect();
     this.#zoomAt(factor, box.left + box.width / 2, box.top + box.height / 2);
+    this.#draw();
+  }
+
+  #copy() {
+    const part = this.#parts.find((entry) => entry.id === this.#selected);
+    if (!part) return;
+    this.#clipboard = { ...part };
+  }
+
+  #paste() {
+    if (!this.#clipboard) return;
+    this.#snapshot();
+    const copy = { ...this.#clipboard, id: this.#seq++, x: this.#clipboard.x + 2, y: this.#clipboard.y + 2 };
+    this.#parts.push(copy);
+    this.#selected = copy.id;
+    this.#selectedLink = null;
+    this.#rebuild();
+    this.#inspector();
     this.#draw();
   }
 

@@ -391,6 +391,8 @@ export default class PhysicsLab extends JGApp {
   static settings = [
     { key: 'vectors', label: 'Show velocity arrows', type: 'switch', value: false },
     { key: 'trails', label: 'Trace the selected body', type: 'switch', value: true },
+    { key: 'centres', label: 'Show the centre of each body', type: 'switch', value: true },
+    { key: 'snap', label: 'Snap links to centres and corners', type: 'switch', value: true },
     { key: 'accuracy', label: 'Solver passes per frame', type: 'number', value: 8, min: 3, max: 20 },
   ];
 
@@ -425,6 +427,8 @@ export default class PhysicsLab extends JGApp {
   #held = new Set();
   #selectedControl = null;
   #alsoSelected = new Set();
+  #clipboard = null;
+  #snapHint = null;
   #backdrop = null;
   #backdropImage = null;
   #touched = false;
@@ -709,6 +713,22 @@ export default class PhysicsLab extends JGApp {
         this.#remove();
         return;
       }
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'c') {
+        event.preventDefault();
+        this.#copy();
+        return;
+      }
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'v') {
+        event.preventDefault();
+        this.#paste();
+        return;
+      }
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'd') {
+        event.preventDefault();
+        this.#copy();
+        this.#paste();
+        return;
+      }
       if (event.key.toLowerCase() === 'r' && !event.metaKey && !event.ctrlKey) {
         event.preventDefault();
         this.#turn((event.shiftKey ? -1 : 1) * (Math.PI / 12));
@@ -748,6 +768,8 @@ export default class PhysicsLab extends JGApp {
       { id: 'zoom-out', label: 'Zoom out', icon: 'minus', iconOnly: true, title: 'Zoom out', action: () => this.#step(1 / 1.25) },
       { id: 'zoom-fit', label: 'Fit', icon: 'maximize', iconOnly: true, title: 'Fit the scene', action: () => { this.#touched = false; this.#fit(); } },
       { id: 'zoom-in', label: 'Zoom in', icon: 'plus', iconOnly: true, title: 'Zoom in', action: () => this.#step(1.25) },
+      { id: 'copy', label: 'Copy', icon: 'copy', iconOnly: true, title: 'Copy the selection', action: () => this.#copy() },
+      { id: 'paste', label: 'Paste', icon: 'clipboard', iconOnly: true, title: 'Paste a copy', action: () => this.#paste() },
       { id: 'turn', label: 'Rotate', icon: 'rotate', iconOnly: true, title: 'Turn the selected body (R, shift R the other way)', action: () => this.#turn(Math.PI / 12) },
       { id: 'union', label: 'Merge', icon: 'union', iconOnly: true, title: 'Merge the two selected shapes', action: () => this.#combine('union') },
       { id: 'subtract', label: 'Subtract', icon: 'subtract', iconOnly: true, title: 'Cut the second shape out of the first', action: () => this.#combine('subtract') },
@@ -1133,10 +1155,13 @@ export default class PhysicsLab extends JGApp {
     }
 
     if (this.#tool === 'pin' || this.#tool === 'motor') {
-      const found = this.#world.allAt(point.x, point.y);
+      const snap = this.#snapPoint(point);
+      const at = snap ? { x: snap.x, y: snap.y } : point;
+      const found = this.#world.allAt(at.x, at.y);
       if (!found.length) return;
       this.#snapshot();
       const top = found[0];
+      point = at;
       const under = found.find((body) => body !== top) ?? null;
       const joint = {
         id: this.#seq++,
@@ -1160,6 +1185,8 @@ export default class PhysicsLab extends JGApp {
     }
 
     if (this.#tool === 'linkage') {
+      const snap = this.#snapPoint(point);
+      if (snap) point = { x: snap.x, y: snap.y };
       const body = this.#world.at(point.x, point.y);
       const end = {
         id: body ? body.id : null,
@@ -1176,6 +1203,8 @@ export default class PhysicsLab extends JGApp {
     }
 
     if (LINKS[this.#tool]) {
+      const snap = this.#snapPoint(point);
+      if (snap) point = { x: snap.x, y: snap.y };
       const body = this.#world.at(point.x, point.y);
       const end = body ? { id: body.id, at: localPoint(body, point) } : { id: null, at: { x: point.x, y: point.y } };
       if (!this.#linkFrom) {
@@ -1300,6 +1329,7 @@ export default class PhysicsLab extends JGApp {
 
     const point = this.#point(event);
     this.#cursor = point;
+    this.#snapHint = LINKS[this.#tool] || this.#tool === 'linkage' ? this.#snapPoint(point) : null;
     this.#hover = this.#tool === 'select' && !this.#drag ? this.#world.at(point.x, point.y) : null;
     this.$('#view').dataset.grab = String(Boolean(this.#hover));
 
@@ -1680,6 +1710,42 @@ export default class PhysicsLab extends JGApp {
       });
   }
 
+  #anchorPoints(body) {
+    const spots = [{ x: body.x, y: body.y, what: 'centre' }];
+    if (body.kind === 'circle') {
+      [0, Math.PI / 2, Math.PI, -Math.PI / 2].forEach((step) => {
+        spots.push({
+          x: body.x + Math.cos(body.angle + step) * body.radius,
+          y: body.y + Math.sin(body.angle + step) * body.radius,
+          what: 'edge',
+        });
+      });
+      return spots;
+    }
+    const corners = bodyCorners(body);
+    corners.forEach((corner, index) => {
+      spots.push({ x: corner.x, y: corner.y, what: 'corner' });
+      const next = corners[(index + 1) % corners.length];
+      spots.push({ x: (corner.x + next.x) / 2, y: (corner.y + next.y) / 2, what: 'edge' });
+    });
+    return spots;
+  }
+
+  #snapPoint(point, skip = null) {
+    if (!this.config.get('snap', true)) return null;
+    const reach = 0.34 / this.#zoom;
+    let best = null;
+    this.#world.bodies.forEach((body) => {
+      if (body === skip) return;
+      this.#anchorPoints(body).forEach((spot) => {
+        const away = Math.hypot(point.x - spot.x, point.y - spot.y);
+        const bias = spot.what === 'centre' ? away * 0.7 : away;
+        if (away < reach && (!best || bias < best.bias)) best = { ...spot, body, away, bias };
+      });
+    });
+    return best;
+  }
+
   #outlineOf(body) {
     if (body.kind !== 'circle') return bodyCorners(body);
     const steps = Math.max(16, Math.min(48, Math.round(body.radius * 24)));
@@ -1748,6 +1814,66 @@ export default class PhysicsLab extends JGApp {
     this.#snapshot();
     this.#sync();
     body.angle = (body.angle ?? 0) + radians;
+    this.#reset();
+    this.#inspector();
+    this.#draw();
+  }
+
+  #copy() {
+    const ids = new Set([this.#selected, ...this.#alsoSelected].filter((id) => id != null));
+    if (!ids.size) return;
+    this.#sync();
+    const bodies = this.#bodies.filter((body) => ids.has(body.id));
+    const joints = this.#joints.filter((joint) => ids.has(joint.a) && ids.has(joint.b));
+    const controls = this.#controls.filter((control) => joints.some((joint) => joint.id === control.target));
+    this.#clipboard = {
+      bodies: bodies.map((body) => ({ ...body })),
+      joints: joints.map((joint) => ({ ...joint })),
+      controls: controls.map((control) => ({ ...control })),
+    };
+    toast(`Copied ${bodies.length} part${bodies.length > 1 ? 's' : ''}.`);
+  }
+
+  #paste() {
+    const held = this.#clipboard;
+    if (!held?.bodies.length) return;
+    this.#snapshot();
+    this.#sync();
+
+    const shift = 0.6;
+    const swap = new Map();
+    const bodies = held.bodies.map((body) => {
+      const copy = { ...body, id: this.#seq++, x: body.x + shift, y: body.y + shift };
+      swap.set(body.id, copy.id);
+      return copy;
+    });
+    bodies.forEach((body) => {
+      if (body.axleFor != null && swap.has(body.axleFor)) body.axleFor = swap.get(body.axleFor);
+    });
+
+    const joints = held.joints.map((joint) => ({
+      ...joint,
+      id: this.#seq++,
+      a: swap.get(joint.a) ?? joint.a,
+      b: swap.get(joint.b) ?? joint.b,
+    }));
+    const jointSwap = new Map(held.joints.map((joint, index) => [joint.id, joints[index].id]));
+    const controls = held.controls.map((control) => ({
+      ...control,
+      id: this.#seq++,
+      x: control.x + shift,
+      y: control.y + shift,
+      target: jointSwap.get(control.target) ?? control.target,
+    }));
+
+    this.#bodies.push(...bodies);
+    this.#joints.push(...joints);
+    this.#controls.push(...controls);
+
+    this.#selected = bodies[0].id;
+    this.#alsoSelected = new Set(bodies.slice(1).map((body) => body.id));
+    this.#selectedJoint = null;
+    this.#selectedControl = null;
     this.#reset();
     this.#inspector();
     this.#draw();
@@ -2294,6 +2420,47 @@ export default class PhysicsLab extends JGApp {
     }
 
     if (this.config.get('vectors', false)) this.#drawVectors(context, paint);
+
+    if (this.config.get('centres', true)) {
+      context.save();
+      context.strokeStyle = paint.soft;
+      context.lineWidth = 1.2 / (SCALE * this.#zoom);
+      const arm = 0.09;
+      this.#world.bodies.forEach((body) => {
+        if (!body.invMass && body.radius && body.radius < 0.2) return;
+        context.beginPath();
+        context.moveTo(body.x - arm, body.y);
+        context.lineTo(body.x + arm, body.y);
+        context.moveTo(body.x, body.y - arm);
+        context.lineTo(body.x, body.y + arm);
+        context.stroke();
+        context.beginPath();
+        context.arc(body.x, body.y, arm * 0.42, 0, Math.PI * 2);
+        context.stroke();
+      });
+      context.restore();
+    }
+
+    if (this.#snapHint) {
+      context.save();
+      context.beginPath();
+      context.arc(this.#snapHint.x, this.#snapHint.y, 0.16, 0, Math.PI * 2);
+      context.fillStyle = `color-mix(in srgb, ${paint.ring} 30%, transparent)`;
+      context.fill();
+      context.strokeStyle = paint.ring;
+      context.lineWidth = 2 / (SCALE * this.#zoom);
+      context.stroke();
+      if (this.#snapHint.what === 'centre') {
+        const arm = 0.13;
+        context.beginPath();
+        context.moveTo(this.#snapHint.x - arm, this.#snapHint.y);
+        context.lineTo(this.#snapHint.x + arm, this.#snapHint.y);
+        context.moveTo(this.#snapHint.x, this.#snapHint.y - arm);
+        context.lineTo(this.#snapHint.x, this.#snapHint.y + arm);
+        context.stroke();
+      }
+      context.restore();
+    }
 
     this.#controls.forEach((button) => this.#drawControl(context, button, paint));
   }
