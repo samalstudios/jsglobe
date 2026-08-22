@@ -11,7 +11,7 @@ const sheet = css`
   .body { flex: 1; min-height: 0; display: flex; }
 
   .rail {
-    width: 268px;
+    width: 172px;
     flex: none;
     border-right: 1px solid var(--border);
     padding: 8px 10px;
@@ -51,33 +51,72 @@ const sheet = css`
     font-weight: 600;
   }
 
+  jg-dialog { --dialog-width: 960px; }
+  #hunt { margin-bottom: 12px; }
   .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
-    gap: 10px;
-    padding: 4px 2px 8px;
+    padding: 2px 2px 8px;
+    max-height: min(60vh, 560px);
+    overflow: auto;
   }
+  .gallery .band { padding: 2px 2px 8px; }
+  .gallery .band + .band { padding-top: 16px; }
+  .gallery .band h4 {
+    margin: 0 0 10px;
+    font: 600 10.5px/1 var(--font-sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+  .gallery .band .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(146px, 1fr));
+    gap: 18px 16px;
+  }
+  .nothing { margin: 4px 2px 8px; font: 500 12.5px/1.5 var(--font-sans); color: var(--muted-foreground); }
   .card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
     padding: 0;
     border: 0;
     background: transparent;
     cursor: pointer;
     color: var(--muted-foreground);
-    font: 500 11px/1.2 var(--font-sans);
+    font: 500 12px/1.2 var(--font-sans);
   }
   .card canvas {
     display: block;
-    border-radius: 4px;
+    border-radius: 5px;
     border: 1px solid var(--border);
     box-shadow: var(--shadow-raise);
-    transition: transform 0.12s ease, border-color 0.12s ease;
+    transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
   }
-  .card:hover canvas { transform: translateY(-2px); border-color: var(--ring); }
+  .card:hover canvas { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--ring); }
   .card:hover { color: var(--foreground); }
+  .card:focus-visible canvas { outline: 2px solid var(--ring); outline-offset: 3px; }
+
+  .blank {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+  }
+  .blank div {
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 26px 30px;
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--card) 88%, transparent);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+  }
+  .blank p { margin: 0; font: 500 13px/1.5 var(--font-sans); color: var(--muted-foreground); max-width: 240px; }
 
   .stage { position: relative; flex: 1; min-width: 0; background: var(--muted); overflow: hidden; }
   canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: default; }
@@ -262,15 +301,29 @@ class PosterStudio extends JGApp {
         <div class="rail" id="rail"></div>
         <div class="stage">
           <canvas id="view"></canvas>
+          <div class="blank" id="blank" hidden>
+            <div>
+              <p>An empty page. Start from one of the designs in the gallery, or add a piece from the left.</p>
+              <jg-button size="sm" id="blank-open">Browse the gallery</jg-button>
+            </div>
+          </div>
           <div class="hint-bar" id="hint">Drag to move, drag a corner to resize, drag the round handle to turn. Double click text to edit it.</div>
         </div>
         <aside class="side" id="side"></aside>
       </div>
+
+      <jg-dialog id="picker" title-text="Gallery" sub="Pick a design to start from. It replaces what is on the page.">
+        <jg-input id="hunt" size="sm" placeholder="Search the gallery" autocomplete="off"></jg-input>
+        <div class="gallery" id="gallery"></div>
+        <p class="nothing" id="nothing" hidden>Nothing matches that.</p>
+      </jg-dialog>
     </div>`);
 
     this.#toolbar();
     this.#rail();
     this.#side();
+
+    this.bind('#blank-open', 'click', () => this.#openPicker());
 
     const canvas = this.$('#view');
     this.on(canvas, 'pointerdown', (event) => this.#down(event));
@@ -321,8 +374,7 @@ class PosterStudio extends JGApp {
 
   #toolbar() {
     this.$('#bar').items = [
-      { id: 'png', label: 'Export PNG', icon: 'download', action: () => this.#exportPng() },
-      { id: 'svg', label: 'SVG', icon: 'vector', iconOnly: true, title: 'Export as SVG', action: () => this.#exportSvg() },
+      { id: 'gallery', label: 'Gallery', icon: 'widgets', action: () => this.#openPicker() },
       { separator: true },
       { id: 'fit', label: 'Fit', icon: 'maximize', iconOnly: true, title: 'Fit the poster in view', action: () => this.#fit() },
       { id: 'front', label: 'Bring to front', icon: 'toFront', iconOnly: true, title: 'Bring to front', action: () => this.#lift(true) },
@@ -330,14 +382,14 @@ class PosterStudio extends JGApp {
       { id: 'copy', label: 'Duplicate', icon: 'copy', iconOnly: true, title: 'Duplicate the selection', action: () => this.#duplicate() },
       { id: 'delete', label: 'Delete', icon: 'eraser', iconOnly: true, title: 'Delete the selection', action: () => this.#remove() },
       { spacer: true },
-      { id: 'variants', label: 'Social sizes', icon: 'grid', action: () => this.#variants() },
+      { id: 'variants', label: 'Social sizes', icon: 'grid', iconOnly: true, title: 'Save the square, story and wide versions', action: () => this.#variants() },
+      { id: 'svg', label: 'SVG', icon: 'vector', iconOnly: true, title: 'Export as SVG', action: () => this.#exportSvg() },
+      { id: 'png', label: 'Export PNG', icon: 'download', action: () => this.#exportPng() },
     ];
   }
 
   #rail() {
     this.$('#rail').innerHTML = html`
-      <div class="group">Gallery</div>
-      <div class="gallery" id="gallery"></div>
       <div class="group">Add</div>
       <button class="tool" data-add="heading">${icon('type', 15)}<span>Heading</span></button>
       <button class="tool" data-add="body">${icon('alignLeft', 15)}<span>Body text</span></button>
@@ -352,7 +404,7 @@ class PosterStudio extends JGApp {
       )}
     `;
 
-    this.#gallery();
+
     this.bind('[data-add]', 'click', (event) => this.#add(event.currentTarget.dataset.add));
     this.bind('[data-size]', 'click', (event) => {
       this.#resize(event.currentTarget.dataset.size);
@@ -361,15 +413,35 @@ class PosterStudio extends JGApp {
     });
   }
 
+  #openPicker() {
+    this.#gallery();
+    this.$('#picker')?.open();
+  }
+
   #gallery() {
     const target = this.$('#gallery');
-    if (!target) return;
+    if (!target || target.dataset.built === 'true') return;
+    target.dataset.built = 'true';
 
-    target.innerHTML = Object.entries(GALLERY)
+    const bands = new Map();
+    Object.entries(GALLERY).forEach(([key, spec]) => {
+      const group = spec.group ?? 'Other';
+      if (!bands.has(group)) bands.set(group, []);
+      bands.get(group).push([key, spec]);
+    });
+
+    target.innerHTML = [...bands.entries()]
       .map(
-        ([key, spec]) => html`<button class="card" data-template="${key}" title="${spec.label}">
-          <canvas data-thumb="${key}"></canvas><span>${spec.label}</span>
-        </button>`,
+        ([group, entries]) => html`<div class="band" data-band="${group}">
+          <h4>${group}</h4>
+          <div class="row">
+            ${entries.map(
+              ([key, spec]) => html`<button class="card" data-template="${key}" data-hunt="${this.#hay(key, spec)}" title="${spec.label}">
+                <canvas data-thumb="${key}"></canvas><span>${spec.label}</span>
+              </button>`,
+            )}
+          </div>
+        </div>`,
       )
       .join('');
 
@@ -377,7 +449,7 @@ class PosterStudio extends JGApp {
       const canvas = target.querySelector(`[data-thumb="${key}"]`);
       if (!canvas) return;
       const paper = CANVAS_SIZES[spec.size] ?? CANVAS_SIZES.poster;
-      const wide = 118;
+      const wide = 146;
       const scale = wide / paper.width;
       const ratio = Math.min(2, window.devicePixelRatio || 1);
       canvas.style.width = `${wide}px`;
@@ -397,10 +469,48 @@ class PosterStudio extends JGApp {
     this.bind('[data-template]', 'click', (event) => {
       this.#template(event.currentTarget.dataset.template);
       this.#openName = null;
+      this.$('#picker')?.close();
       this.#rail();
       this.#side();
       this.#draw();
     });
+
+    const hunt = this.$('#hunt');
+    if (hunt) this.on(hunt, 'input', () => this.#sift(hunt.value));
+  }
+
+  #hay(key, spec) {
+    const paper = CANVAS_SIZES[spec.size] ?? CANVAS_SIZES.poster;
+    const words = spec
+      .build(paper.width, paper.height)
+      .filter((item) => item.kind === 'text')
+      .map((item) => item.value)
+      .join(' ');
+    return `${key} ${spec.label} ${spec.group ?? ''} ${spec.keywords ?? ''} ${spec.theme} ${spec.size} ${words}`
+      .toLowerCase()
+      .replace(/\s+/g, ' ')
+      .replace(/"/g, '');
+  }
+
+  #sift(term) {
+    const target = this.$('#gallery');
+    if (!target) return;
+    const needle = String(term ?? '').trim().toLowerCase();
+    let shown = 0;
+
+    target.querySelectorAll('.band').forEach((band) => {
+      let live = 0;
+      band.querySelectorAll('[data-template]').forEach((card) => {
+        const hit = !needle || card.dataset.hunt.includes(needle);
+        card.hidden = !hit;
+        if (hit) live += 1;
+      });
+      band.hidden = live === 0;
+      shown += live;
+    });
+
+    const nothing = this.$('#nothing');
+    if (nothing) nothing.hidden = shown > 0;
   }
 
   #resize(key) {
@@ -1007,6 +1117,9 @@ class PosterStudio extends JGApp {
     if (!width || !height) return;
     if (canvas.width !== width * ratio) canvas.width = width * ratio;
     if (canvas.height !== height * ratio) canvas.height = height * ratio;
+
+    const blank = this.$('#blank');
+    if (blank) blank.hidden = this.#items.length > 0;
 
     const context = canvas.getContext('2d');
     context.setTransform(ratio, 0, 0, ratio, 0, 0);

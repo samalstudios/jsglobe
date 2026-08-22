@@ -68,6 +68,8 @@ const shape = (spec) => ({
 export const GALLERY = {
   concert: {
     label: 'Concert',
+    group: 'Events',
+    keywords: 'gig band live music night club show gig',
     theme: 'midnight',
     frame: 'hairline',
     size: 'poster',
@@ -82,6 +84,8 @@ export const GALLERY = {
   },
   splitBlock: {
     label: 'Split block',
+    group: 'Talks and courses',
+    keywords: 'course class school workshop teaching enrol term',
     theme: 'coral',
     frame: 'none',
     size: 'poster',
@@ -96,6 +100,8 @@ export const GALLERY = {
   },
   sunrise: {
     label: 'Sunrise',
+    group: 'Exhibitions',
+    keywords: 'art show gallery summer opening private view',
     theme: 'sun',
     frame: 'none',
     size: 'poster',
@@ -109,6 +115,8 @@ export const GALLERY = {
   },
   diagonal: {
     label: 'Diagonal',
+    group: 'Events',
+    keywords: 'festival conference week programme lineup speakers',
     theme: 'violet',
     frame: 'none',
     size: 'poster',
@@ -122,6 +130,8 @@ export const GALLERY = {
   },
   stripes: {
     label: 'Stripes',
+    group: 'Talks and courses',
+    keywords: 'reading talk lecture literature author evening',
     theme: 'ice',
     frame: 'none',
     size: 'poster',
@@ -139,6 +149,8 @@ export const GALLERY = {
   },
   editorial: {
     label: 'Editorial',
+    group: 'Talks and courses',
+    keywords: 'lecture academic seminar university serif formal',
     theme: 'sand',
     frame: 'double',
     size: 'poster',
@@ -153,6 +165,8 @@ export const GALLERY = {
   },
   grid: {
     label: 'Grid',
+    group: 'Exhibitions',
+    keywords: 'open studios makers craft pattern squares',
     theme: 'forest',
     frame: 'hairline',
     size: 'poster',
@@ -184,6 +198,8 @@ export const GALLERY = {
   },
   numeral: {
     label: 'Numeral',
+    group: 'Events',
+    keywords: 'anniversary birthday number date late show radio',
     theme: 'noir',
     frame: 'none',
     size: 'poster',
@@ -197,6 +213,8 @@ export const GALLERY = {
   },
   framed: {
     label: 'Framed',
+    group: 'Exhibitions',
+    keywords: 'artist solo show painting gallery new work',
     theme: 'bloom',
     frame: 'corners',
     size: 'poster',
@@ -209,6 +227,8 @@ export const GALLERY = {
   },
   market: {
     label: 'Market day',
+    group: 'Events',
+    keywords: 'market fair stall food farmers weekend shop',
     theme: 'mint',
     frame: 'bold',
     size: 'poster',
@@ -223,6 +243,8 @@ export const GALLERY = {
   },
   story: {
     label: 'Story post',
+    group: 'Social',
+    keywords: 'instagram story vertical booking promo portrait',
     theme: 'slate',
     frame: 'none',
     size: 'story',
@@ -236,6 +258,8 @@ export const GALLERY = {
   },
   ticket: {
     label: 'Ticket',
+    group: 'Events',
+    keywords: 'ticket admission entry pass stub seat',
     theme: 'ink',
     frame: 'hairline',
     size: 'ticket',
@@ -249,6 +273,8 @@ export const GALLERY = {
   },
   plain: {
     label: 'Plain',
+    group: 'Blank',
+    keywords: 'empty simple start scratch minimal',
     theme: 'ink',
     frame: 'none',
     size: 'poster',

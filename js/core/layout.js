@@ -17,6 +17,7 @@ const FAVOURITES = [
   'molecule-viewer',
   'periodic-table',
   'pdf-studio',
+  'poster-studio',
   'csv-studio',
   'svg-editor',
   'function-plotter',
@@ -40,7 +41,6 @@ const FAVOURITES = [
   'encryption',
   'math-evaluator',
   'unit-converter',
-  'qr-generator',
   'settings',
 ];
 
