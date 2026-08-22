@@ -1,7 +1,5 @@
 export default {
   de: {
-    'logic-lab.jkFlipFlop': 'JK-Flipflop',
-    'logic-lab.rsLatch': 'RS-Latch',
     'logic-lab.switch': 'Schalter',
     'logic-lab.clock': 'Takt',
     'logic-lab.logic1': 'Logisch 1',
@@ -16,6 +14,8 @@ export default {
     'logic-lab.buffer': 'Treiber',
     'logic-lab.dFlipFlop': 'D-Flipflop',
     'logic-lab.tFlipFlop': 'T-Flipflop',
+    'logic-lab.jkFlipFlop': 'JK-Flipflop',
+    'logic-lab.rsLatch': 'RS-Latch',
     'logic-lab.4BitCounter': '4-Bit-Zähler',
     'logic-lab.2To4Decoder': '2-zu-4-Decoder',
     'logic-lab.4To2Encoder': '4-zu-2-Encoder',
@@ -83,8 +83,6 @@ export default {
     'logic-lab.selectAGateToSee': 'Ein Gatter auswählen, um seine Tabelle zu sehen.',
   },
   es: {
-    'logic-lab.jkFlipFlop': 'Biestable JK',
-    'logic-lab.rsLatch': 'Cerrojo RS',
     'logic-lab.switch': 'Interruptor',
     'logic-lab.clock': 'Reloj',
     'logic-lab.logic1': 'Lógico 1',
@@ -99,6 +97,8 @@ export default {
     'logic-lab.buffer': 'Buffer',
     'logic-lab.dFlipFlop': 'Biestable D',
     'logic-lab.tFlipFlop': 'Biestable T',
+    'logic-lab.jkFlipFlop': 'Biestable JK',
+    'logic-lab.rsLatch': 'Cerrojo RS',
     'logic-lab.4BitCounter': 'Contador de 4 bits',
     'logic-lab.2To4Decoder': 'Decodificador 2 a 4',
     'logic-lab.4To2Encoder': 'Codificador 4 a 2',
@@ -166,8 +166,6 @@ export default {
     'logic-lab.selectAGateToSee': 'Selecciona una puerta para ver su tabla.',
   },
   zh: {
-    'logic-lab.jkFlipFlop': 'JK 触发器',
-    'logic-lab.rsLatch': 'RS 锁存器',
     'logic-lab.switch': '开关',
     'logic-lab.clock': '时钟',
     'logic-lab.logic1': '逻辑 1',
@@ -182,6 +180,8 @@ export default {
     'logic-lab.buffer': '缓冲器',
     'logic-lab.dFlipFlop': 'D 触发器',
     'logic-lab.tFlipFlop': 'T 触发器',
+    'logic-lab.jkFlipFlop': 'JK 触发器',
+    'logic-lab.rsLatch': 'RS 锁存器',
     'logic-lab.4BitCounter': '4 位计数器',
     'logic-lab.2To4Decoder': '2-4 译码器',
     'logic-lab.4To2Encoder': '4-2 编码器',
