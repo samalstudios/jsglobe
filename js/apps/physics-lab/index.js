@@ -39,7 +39,7 @@ const LINKS = {
 
 const CONTROLS = {
   button: { label: t('physics-lab.button', 'Button'), icon: 'toggle' },
-  slider: { label: t('physics-lab.slider', 'Slider'), icon: 'tuning' },
+  slider: { label: t('physics-lab.slider', 'Slider'), icon: 'fader' },
 };
 
 const SCENERY = {
