@@ -2029,6 +2029,12 @@ export default class PhysicsLab extends JGApp {
       ${body.kind === 'circle'
         ? ''
         : html`<jg-field label="${t('physics-lab.angleDegrees', 'Angle degrees')}"><jg-input id="angle" size="sm" type="number" step="5" value="${Math.round((((body.angle ?? 0) * 180) / Math.PI) * 10) / 10}"></jg-input></jg-field>`}
+      <jg-field label="${t('physics-lab.colour', 'Colour')}">
+        <div class="row tight" style="gap:6px">
+          <jg-input id="color" size="sm" type="color" value="${body.color ?? '#ffffff'}"></jg-input>
+          <jg-button size="sm" variant="ghost" id="colorClear">${t('physics-lab.clearColour', 'Clear')}</jg-button>
+        </div>
+      </jg-field>
       <jg-field label="${t('physics-lab.density', 'Density')}"><jg-input id="density" size="sm" type="number" step="0.1" min="0.05" value="${body.density ?? 1}"></jg-input></jg-field>
       <jg-field label="${t('physics-lab.bounce', 'Bounce')}"><jg-input id="restitution" size="sm" type="number" step="0.05" min="0" max="1" value="${body.restitution ?? 0.2}"></jg-input></jg-field>
       <jg-field label="${t('physics-lab.friction', 'Friction')}"><jg-input id="friction" size="sm" type="number" step="0.05" min="0" max="1.5" value="${body.friction ?? 0.35}"></jg-input></jg-field>
@@ -2097,6 +2103,24 @@ export default class PhysicsLab extends JGApp {
         this.#draw();
       });
     }
+    const color = this.$('#color');
+    if (color) {
+      this.on(color, 'change', () => {
+        this.#snapshot();
+        body.color = color.value;
+        this.#draw();
+      });
+    }
+    const colorClear = this.$('#colorClear');
+    if (colorClear) {
+      this.on(colorClear, 'click', () => {
+        this.#snapshot();
+        delete body.color;
+        this.#draw();
+        this.#inspector();
+      });
+    }
+
     bind('density', 'density');
     bind('restitution', 'restitution');
     bind('friction', 'friction');
@@ -2369,7 +2393,14 @@ export default class PhysicsLab extends JGApp {
     context.save();
     context.strokeStyle = picked ? paint.ring : paint.line;
     context.lineWidth = (picked ? 2.6 : 1.7) / (SCALE * this.#zoom);
-    context.fillStyle = held ? `color-mix(in srgb, ${paint.soft} 34%, transparent)` : paint.card;
+    const tint = this.#bodies.find((entry) => entry.id === body.id)?.color;
+    context.fillStyle = tint
+      ? held
+        ? `color-mix(in srgb, ${tint} 55%, transparent)`
+        : tint
+      : held
+        ? `color-mix(in srgb, ${paint.soft} 34%, transparent)`
+        : paint.card;
 
     if (body.kind === 'circle' && body.teeth) {
       const count = Math.max(6, Math.round(body.teeth));

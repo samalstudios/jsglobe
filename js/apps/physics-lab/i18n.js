@@ -1,5 +1,7 @@
 export default {
   de: {
+    'physics-lab.colour': 'Farbe',
+    'physics-lab.clearColour': 'Zurücksetzen',
     'physics-lab.radiusMm': 'Radius mm',
     'physics-lab.widthMm': 'Breite mm',
     'physics-lab.heightMm': 'Höhe mm',
@@ -132,6 +134,8 @@ export default {
     'physics-lab.removeBody': 'Körper entfernen',
   },
   es: {
+    'physics-lab.colour': 'Color',
+    'physics-lab.clearColour': 'Quitar',
     'physics-lab.radiusMm': 'Radio mm',
     'physics-lab.widthMm': 'Ancho mm',
     'physics-lab.heightMm': 'Alto mm',
@@ -264,6 +268,8 @@ export default {
     'physics-lab.removeBody': 'Quitar el cuerpo',
   },
   zh: {
+    'physics-lab.colour': '颜色',
+    'physics-lab.clearColour': '清除',
     'physics-lab.radiusMm': '半径 mm',
     'physics-lab.widthMm': '宽度 mm',
     'physics-lab.heightMm': '高度 mm',
