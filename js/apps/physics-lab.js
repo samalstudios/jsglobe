@@ -162,6 +162,7 @@ const SHAPES = {
   box: { label: 'Block', icon: 'square' },
   wall: { label: 'Wall', icon: 'frame' },
   shape: { label: 'Shape', icon: 'vector' },
+  gear: { label: 'Gear', icon: 'gear' },
 };
 
 const LINKS = {
@@ -171,6 +172,7 @@ const LINKS = {
   jack: { label: 'Jack', icon: 'transform' },
   pin: { label: 'Pin', icon: 'asterisk' },
   motor: { label: 'Motor', icon: 'gear' },
+  mesh: { label: 'Mesh gears', icon: 'cog' },
   linkage: { label: 'Linkage', icon: 'ruler' },
   track: { label: 'Track', icon: 'swap' },
   weld: { label: 'Weld', icon: 'lock' },
@@ -341,6 +343,29 @@ const SAMPLES = {
       { id: 30, kind: 'slider', x: -5.4, y: -1.2, target: 20, value: 0.78, label: 'Motor' },
       { id: 31, kind: 'button', x: -3.4, y: -2.2, target: 20, action: 'run', label: 'Turn' },
       { id: 32, kind: 'button', x: -3.4, y: -1.4, target: 20, action: 'reverse', label: 'Reverse' },
+    ],
+  },
+  gears: {
+    name: 'Gear train',
+    gravity: 0,
+    bodies: [
+      { id: 1, kind: 'circle', x: -3.2, y: 0, radius: 0.12, pinned: true },
+      { id: 2, kind: 'circle', x: -3.2, y: 0, radius: 1.2, density: 1, teeth: 17, friction: 0.7 },
+      { id: 3, kind: 'circle', x: -0.4, y: 0, radius: 0.12, pinned: true },
+      { id: 4, kind: 'circle', x: -0.4, y: 0, radius: 1.6, density: 1, teeth: 22, friction: 0.7 },
+      { id: 5, kind: 'circle', x: 2.2, y: 0, radius: 0.12, pinned: true },
+      { id: 6, kind: 'circle', x: 2.2, y: 0, radius: 1, density: 1, teeth: 14, friction: 0.7 },
+    ],
+    joints: [
+      { id: 20, kind: 'pin', a: 1, b: 2, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 } },
+      { id: 21, kind: 'pin', a: 3, b: 4, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 } },
+      { id: 22, kind: 'pin', a: 5, b: 6, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 } },
+      { id: 23, kind: 'motor', a: 1, b: 2, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 }, speed: 1.6, torque: 300 },
+      { id: 24, kind: 'gear', a: 2, b: 4, ratio: 1.3333 },
+      { id: 25, kind: 'gear', a: 4, b: 6, ratio: 0.625 },
+    ],
+    controls: [
+      { id: 30, kind: 'slider', x: -6, y: 0, target: 23, value: 0.75, label: 'Drive' },
     ],
   },
   orbits: {
@@ -1292,7 +1317,33 @@ export default class PhysicsLab extends JGApp {
     this.#inspector();
   }
 
+  #addGear(from, to) {
+    const radius = Math.max(0.35, Math.hypot(to.x - from.x, to.y - from.y) || 0.9);
+    this.#snapshot();
+    const axle = { id: this.#seq++, kind: 'circle', x: from.x, y: from.y, radius: 0.12, pinned: true };
+    const wheel = {
+      id: this.#seq++,
+      kind: 'circle',
+      x: from.x,
+      y: from.y,
+      radius,
+      density: 1,
+      friction: 0.7,
+      restitution: 0,
+      teeth: Math.max(8, Math.round(radius * 14)),
+    };
+    this.#bodies.push(axle, wheel);
+    this.#joints.push({ id: this.#seq++, kind: 'pin', a: axle.id, b: wheel.id, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 } });
+    this.#selected = wheel.id;
+    this.#selectedJoint = null;
+    this.#selectedControl = null;
+    this.#reset();
+    this.#setTool('select');
+    this.#inspector();
+  }
+
   #addBody(shape, from, to) {
+    if (shape === 'gear') return this.#addGear(from, to);
     const dx = to.x - from.x;
     const dy = to.y - from.y;
     const dragged = Math.hypot(dx, dy) > 0.25;
@@ -1371,6 +1422,29 @@ export default class PhysicsLab extends JGApp {
     const pointA = from.id == null ? anchorA : worldPoint(this.#world.body(from.id), anchorA);
     const pointB = to.id == null ? anchorB : worldPoint(this.#world.body(to.id), anchorB);
     const span = Math.hypot(pointB.x - pointA.x, pointB.y - pointA.y);
+
+    if (this.#tool === 'mesh') {
+      const wheelA = this.#world.body(from.id);
+      const wheelB = this.#world.body(to.id);
+      if (!wheelA || !wheelB || wheelA.kind !== 'circle' || wheelB.kind !== 'circle') return;
+      this.#snapshot();
+      const mesh = {
+        id: this.#seq++,
+        kind: 'gear',
+        a: from.id,
+        b: to.id,
+        aAt: { x: 0, y: 0 },
+        bAt: { x: 0, y: 0 },
+        ratio: wheelB.radius / wheelA.radius,
+      };
+      this.#joints.push(mesh);
+      this.#selectedJoint = mesh;
+      this.#selected = null;
+      this.#reset();
+      this.#setTool('select');
+      this.#inspector();
+      return;
+    }
 
     const joint = { id: this.#seq++, kind: this.#tool, a: from.id, b: to.id, aAt: anchorA, bAt: anchorB };
     if (this.#tool === 'spring') {
@@ -1891,6 +1965,35 @@ export default class PhysicsLab extends JGApp {
     context.strokeStyle = picked ? paint.ring : paint.line;
     context.lineWidth = (picked ? 2.6 : 1.7) / (SCALE * this.#zoom);
     context.fillStyle = held ? `color-mix(in srgb, ${paint.soft} 34%, transparent)` : paint.card;
+
+    if (body.kind === 'circle' && body.teeth) {
+      const count = body.teeth;
+      const root = body.radius * 0.86;
+      const tip = body.radius;
+      context.beginPath();
+      for (let index = 0; index < count; index += 1) {
+        const step = (Math.PI * 2) / count;
+        const base = body.angle + index * step;
+        const edge = step * 0.26;
+        const at = (radius, angle) => [body.x + Math.cos(angle) * radius, body.y + Math.sin(angle) * radius];
+        const points = [
+          at(root, base - step * 0.5 + edge),
+          at(tip, base - edge),
+          at(tip, base + edge),
+          at(root, base + step * 0.5 - edge),
+        ];
+        points.forEach((point, slot) => (index === 0 && slot === 0 ? context.moveTo(...point) : context.lineTo(...point)));
+      }
+      context.closePath();
+      context.fill();
+      context.stroke();
+      context.beginPath();
+      context.arc(body.x, body.y, body.radius * 0.22, 0, Math.PI * 2);
+      context.strokeStyle = paint.soft;
+      context.stroke();
+      context.restore();
+      return;
+    }
 
     if (body.kind === 'circle') {
       context.beginPath();

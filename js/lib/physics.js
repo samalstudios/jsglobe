@@ -252,6 +252,7 @@ export const makeBody = (spec) => {
     pinned: spec.pinned ?? false,
     fixedAngle: spec.fixedAngle ?? false,
     ghost: spec.ghost ?? false,
+    teeth: spec.teeth ?? 0,
     driftX: 0,
     driftY: 0,
     driftSpin: 0,
@@ -727,6 +728,21 @@ export const createWorld = () => {
     if (b.body) applyImpulse(b.body, ix, iy, b.rx, b.ry);
   };
 
+  const solveGear = (joint, dt) => {
+    const a = find(joint.a);
+    const b = find(joint.b);
+    if (!a || !b) return;
+    const ratio = joint.ratio ?? 1;
+    const share = (a.invInertia ?? 0) + (b.invInertia ?? 0) * ratio * ratio;
+    if (share < 1e-12) return;
+    const held = joint.twist ?? 0;
+    const error = b.angle * ratio + a.angle - held;
+    const closing = b.spin * ratio + a.spin;
+    const impulse = -(closing + (options.correction * error) / dt) / share;
+    a.spin += impulse * a.invInertia;
+    b.spin += impulse * ratio * b.invInertia;
+  };
+
   const solveMotor = (joint) => {
     const a = find(joint.a);
     const b = find(joint.b);
@@ -981,7 +997,8 @@ export const createWorld = () => {
           else if (joint.kind === 'weld') {
             solvePin(joint, dt);
             solveTwist(joint, dt);
-          } else if (joint.kind === 'track') solveTrack(joint, dt);
+          } else if (joint.kind === 'gear') solveGear(joint, dt);
+          else if (joint.kind === 'track') solveTrack(joint, dt);
           else if (joint.kind === 'motor') {
             solvePin(joint, dt);
             solveMotor(joint);
