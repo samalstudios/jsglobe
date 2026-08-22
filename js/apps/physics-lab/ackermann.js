@@ -1,5 +1,6 @@
 export default {
   name: 'Ackermann steering',
+  group: 'machines',
   gravity: 9.81,
   attraction: 0,
   damping: 0.02,

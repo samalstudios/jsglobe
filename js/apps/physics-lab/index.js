@@ -1,4 +1,4 @@
-import { JGApp, define, html, styleSheet } from '../../core/app.js';
+import { JGApp, define, html, raw, styleSheet } from '../../core/app.js';
 import SAMPLES from './scenes.js';
 import { collapsibleGroups, paletteSheet } from '../../ui/palette.js';
 import { appText } from '../../core/i18n.js';
@@ -73,6 +73,19 @@ const sceneNames = () => ({
   gears: t('physics-lab.sceneGears', 'Gear train'),
   orbits: t('physics-lab.sceneOrbits', 'Three bodies'),
   ackermann: t('physics-lab.sceneAckermann', 'Ackermann steering'),
+  car: t('physics-lab.sceneCar', 'Car and suspension'),
+  bridge: t('physics-lab.sceneBridge', 'Rope bridge'),
+  scales: t('physics-lab.sceneScales', 'Balance scales'),
+  windmill: t('physics-lab.sceneWindmill', 'Windmill'),
+  lift: t('physics-lab.sceneLift', 'Scissor lift'),
+  funnel: t('physics-lab.sceneFunnel', 'Marble funnel'),
+});
+
+const sceneGroups = () => ({
+  basics: t('physics-lab.groupBasics', 'Basics'),
+  machines: t('physics-lab.groupMachines', 'Machines'),
+  structures: t('physics-lab.groupStructures', 'Structures'),
+  physics: t('physics-lab.groupPhysics', 'Physics'),
 });
 
 export default class PhysicsLab extends JGApp {
@@ -248,11 +261,6 @@ export default class PhysicsLab extends JGApp {
           <div class="hint-bar"><b id="tool-name">${t('physics-lab.select', 'Select')}</b><span id="tool-hint"></span></div>
         </div>
         <aside class="side">
-          <div class="label">${t('physics-lab.scenes', 'Scenes')}</div>
-          <div class="samples">
-            ${Object.entries(SAMPLES).map(([key, sample]) => html`<button data-sample="${key}">${sceneNames()[key] ?? sample.name}</button>`)}
-          </div>
-          <div class="sep"></div>
           <jg-field label="${t('physics-lab.gravity', 'Gravity')}">
             <jg-input id="gravity" size="sm" type="number" step="0.5" min="-20" max="30" value="${this.#gravity}"></jg-input>
           </jg-field>
@@ -270,6 +278,12 @@ export default class PhysicsLab extends JGApp {
           <div id="inspector"></div>
         </aside>
       </div>
+
+      <jg-dialog id="gallery" title-text="${t('physics-lab.gallery', 'Gallery')}" sub="${t('physics-lab.pickASceneToStart', 'Pick a scene to start from. It replaces what is on the board.')}">
+        <jg-input id="hunt" size="sm" placeholder="${t('physics-lab.searchTheGallery', 'Search the gallery')}" autocomplete="off"></jg-input>
+        <div class="gallery" id="scenes"></div>
+        <p class="nothing" id="nothing" hidden>${t('physics-lab.nothingMatchesThat', 'Nothing matches that.')}</p>
+      </jg-dialog>
     </div>`);
 
     this.#toolbar();
@@ -455,6 +469,7 @@ export default class PhysicsLab extends JGApp {
       { id: 'step', label: t('physics-lab.step', 'Step'), icon: 'stepOver', iconOnly: true, title: t('physics-lab.advanceOneFrame', 'Advance one frame'), action: () => this.#stepOnce() },
       { id: 'reset', label: t('physics-lab.reset', 'Reset'), icon: 'repeat', tone: 'stop', action: () => this.#rewind() },
       { separator: true },
+      { id: 'gallery', label: t('physics-lab.gallery', 'Gallery'), icon: 'widgets', action: () => this.#openGallery() },
       { id: 'new', label: t('physics-lab.new', 'New'), icon: 'file', iconOnly: true, title: t('physics-lab.startAnEmptyScene', 'Start an empty scene'), action: () => this.#blank() },
       { id: 'undo', label: t('physics-lab.undo', 'Undo'), icon: 'undo', iconOnly: true, title: t('physics-lab.undo', 'Undo'), action: () => this.#undo() },
       { separator: true },
@@ -1150,10 +1165,12 @@ export default class PhysicsLab extends JGApp {
     }
 
     const point = this.#point(event);
+    const wasNear = this.#controls.some((control) => this.#nearControl(control) > 0.01);
     this.#cursor = point;
     this.#snapHint = LINKS[this.#tool] || this.#tool === 'linkage' ? this.#snapPoint(point) : null;
     this.#hover = this.#tool === 'select' && !this.#drag ? this.#world.at(point.x, point.y) : null;
     this.$('#view').dataset.grab = String(Boolean(this.#hover));
+    if (!this.#running && (wasNear || this.#controls.some((control) => this.#nearControl(control) > 0.01))) this.#draw();
 
     if (this.#drag?.kind === 'backdrop' && this.#backdrop) {
       this.#backdrop.x = this.#drag.origin.x + (point.x - this.#drag.from.x);
@@ -1586,6 +1603,110 @@ export default class PhysicsLab extends JGApp {
       const angle = body.angle + (index / steps) * Math.PI * 2;
       return { x: body.x + Math.cos(angle) * body.radius, y: body.y + Math.sin(angle) * body.radius };
     });
+  }
+
+  #openGallery() {
+    this.#buildGallery();
+    this.$('#gallery')?.open();
+  }
+
+  #buildGallery() {
+    const target = this.$('#scenes');
+    if (!target || target.dataset.built === 'true') return;
+    target.dataset.built = 'true';
+
+    const titles = sceneGroups();
+    const bands = new Map();
+    Object.entries(SAMPLES).forEach(([key, scene]) => {
+      const group = scene.group ?? 'basics';
+      if (!bands.has(group)) bands.set(group, []);
+      bands.get(group).push([key, scene]);
+    });
+
+    const order = ['basics', 'machines', 'structures', 'physics'];
+    const sorted = [...bands.entries()].sort((a, b) => order.indexOf(a[0]) - order.indexOf(b[0]));
+
+    target.innerHTML = html`${sorted.map(
+      ([group, list]) => html`<section class="band" data-band="${group}">
+        <h4>${titles[group] ?? group}</h4>
+        <div class="row">
+          ${list.map(
+            ([key, scene]) => html`<button class="card" data-sample="${key}" data-hunt="${`${sceneNames()[key] ?? scene.name} ${titles[group] ?? ''}`.toLowerCase()}">
+              <span class="shot">${this.#sceneThumb(scene)}</span>
+              <span class="name">${sceneNames()[key] ?? scene.name}</span>
+            </button>`,
+          )}
+        </div>
+      </section>`,
+    )}`;
+
+    this.bind('#scenes [data-sample]', 'click', (event) => {
+      this.#load(event.currentTarget.dataset.sample);
+      this.#touched = false;
+      this.#fit();
+      this.$('#gallery')?.close();
+      this.#inspector();
+    });
+
+    const hunt = this.$('#hunt');
+    if (hunt) {
+      this.on(hunt, 'input', () => {
+        const term = hunt.value.trim().toLowerCase();
+        let shown = 0;
+        this.$$('#scenes [data-sample]').forEach((card) => {
+          const match = !term || card.dataset.hunt.includes(term);
+          card.hidden = !match;
+          if (match) shown += 1;
+        });
+        this.$$('#scenes .band').forEach((band) => {
+          band.hidden = ![...band.querySelectorAll('[data-sample]')].some((card) => !card.hidden);
+        });
+        const nothing = this.$('#nothing');
+        if (nothing) nothing.hidden = shown > 0;
+      });
+    }
+  }
+
+  #sceneThumb(scene) {
+    // a quick outline of the scene, drawn straight from its bodies
+    const bodies = scene.bodies ?? [];
+    if (!bodies.length) return '';
+    let left = Infinity;
+    let right = -Infinity;
+    let top = Infinity;
+    let bottom = -Infinity;
+    const boxes = bodies.map((body) => {
+      const half = body.kind === 'circle'
+        ? { x: body.radius ?? 0.5, y: body.radius ?? 0.5 }
+        : body.points
+          ? {
+              x: Math.max(...body.points.map((point) => Math.abs(point.x))),
+              y: Math.max(...body.points.map((point) => Math.abs(point.y))),
+            }
+          : { x: (body.width ?? 1) / 2, y: (body.height ?? 1) / 2 };
+      left = Math.min(left, body.x - half.x);
+      right = Math.max(right, body.x + half.x);
+      top = Math.min(top, body.y - half.y);
+      bottom = Math.max(bottom, body.y + half.y);
+      return { body, half };
+    });
+
+    const width = Math.max(0.5, right - left);
+    const height = Math.max(0.5, bottom - top);
+    const pad = Math.max(width, height) * 0.06;
+    const view = `${left - pad} ${top - pad} ${width + pad * 2} ${height + pad * 2}`;
+    const line = Math.max(width, height) / 90;
+
+    const shapes = boxes.map(({ body, half }) => {
+      const fill = body.pinned ? 'currentColor' : 'none';
+      const fade = body.pinned ? '0.22' : '0.75';
+      if (body.kind === 'circle') {
+        return `<circle cx="${body.x}" cy="${body.y}" r="${body.radius ?? 0.5}" fill="${fill}" fill-opacity="${fade}" stroke="currentColor" stroke-opacity="0.75" stroke-width="${line}"/>`;
+      }
+      return `<rect x="${body.x - half.x}" y="${body.y - half.y}" width="${half.x * 2}" height="${half.y * 2}" fill="${fill}" fill-opacity="${fade}" stroke="currentColor" stroke-opacity="0.75" stroke-width="${line}" transform="rotate(${((body.angle ?? 0) * 180) / Math.PI} ${body.x} ${body.y})"/>`;
+    });
+
+    return raw(`<svg viewBox="${view}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${shapes.join('')}</svg>`);
   }
 
   #chosenBodies() {
@@ -2745,12 +2866,30 @@ export default class PhysicsLab extends JGApp {
     context.restore();
   }
 
+  #nearControl(control) {
+    if (control === this.#selectedControl) return 1;
+    if (this.#drag?.widget === control) return 1;
+    const point = this.#cursor;
+    if (!point) return 0;
+    const box = this.#controlBox(control);
+    const reach = 0.75;
+    const away = Math.hypot(
+      Math.max(box.left - point.x, 0, point.x - box.right),
+      Math.max(box.top - HANDLE_HEIGHT - point.y, 0, point.y - box.bottom),
+    );
+    if (away > reach) return 0;
+    return Math.min(1, 1 - away / reach + 0.25);
+  }
+
   #drawHandle(context, control, paint) {
+    const show = this.#nearControl(control);
+    if (show <= 0.01) return;
     const box = this.#handleBox(control);
     const picked = control === this.#selectedControl;
     const inset = 0.05;
 
     context.save();
+    context.globalAlpha = show;
     context.beginPath();
     context.roundRect(box.left + inset, box.top, box.width - inset * 2, box.height - 0.04, 0.1);
     context.fillStyle = picked ? `color-mix(in srgb, ${paint.ring} 55%, transparent)` : `color-mix(in srgb, ${paint.soft} 40%, ${paint.card})`;

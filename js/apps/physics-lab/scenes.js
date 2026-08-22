@@ -7,6 +7,7 @@ const t = appText(strings);
 const SCENES = {
   pendulum: {
     name: 'Pendulum',
+    group: 'basics',
     gravity: 9.81,
     bodies: [
       { id: 1, kind: 'box', x: 0, y: 5.6, width: 16, height: 0.6, pinned: true, friction: 0.6 },
@@ -22,6 +23,7 @@ const SCENES = {
   },
   stack: {
     name: 'Stack and ball',
+    group: 'basics',
     gravity: 9.81,
     bodies: [
       { id: 1, kind: 'box', x: 0, y: 5.6, width: 18, height: 0.6, pinned: true, friction: 0.7 },
@@ -36,6 +38,7 @@ const SCENES = {
   },
   ramp: {
     name: 'Ramp',
+    group: 'basics',
     gravity: 9.81,
     bodies: [
       { id: 1, kind: 'box', x: 0, y: 5.6, width: 18, height: 0.6, pinned: true, friction: 0.7 },
@@ -48,6 +51,7 @@ const SCENES = {
   },
   cradle: {
     name: "Newton's cradle",
+    group: 'physics',
     gravity: 9.81,
     bodies: [
       { id: 1, kind: 'circle', x: -2.1, y: -3, radius: 0.14, pinned: true },
@@ -71,6 +75,7 @@ const SCENES = {
   },
   crank: {
     name: 'Crank and piston',
+    group: 'machines',
     gravity: 9.81,
     bodies: [
       { id: 1, kind: 'box', x: 0, y: 5.6, width: 20, height: 0.6, pinned: true, friction: 0.8 },
@@ -87,6 +92,7 @@ const SCENES = {
   },
   dominoes: {
     name: 'Domino run',
+    group: 'basics',
     gravity: 9.81,
     bodies: [
       { id: 1, kind: 'box', x: 0, y: 5.6, width: 22, height: 0.6, pinned: true, friction: 0.8 },
@@ -110,6 +116,7 @@ const SCENES = {
   },
   excavator: {
     name: 'Excavator arm',
+    group: 'machines',
     gravity: 9.81,
     bodies: [
       { id: 42, kind: 'poly', x: 14.923, y: 11.639, angle: 0.8755, points: [{ x: -0.509, y: -1.25 }, { x: -0.518, y: -1.252 }, { x: -0.557, y: -1.278 }, { x: -0.583, y: -1.317 }, { x: -0.592, y: -1.362 }, { x: -0.583, y: -1.408 }, { x: -0.557, y: -1.447 }, { x: -0.518, y: -1.473 }, { x: -0.487, y: -1.479 }, { x: -0.487, y: -1.479 }, { x: -0.366, y: -1.528 }, { x: -0.049, y: -1.631 }, { x: -0.049, y: -1.631 }, { x: 0.096, y: -2.46 }, { x: 0.13, y: -2.459 }, { x: 0.145, y: -2.536 }, { x: 0.199, y: -2.617 }, { x: 0.28, y: -2.672 }, { x: 0.376, y: -2.691 }, { x: 0.472, y: -2.672 }, { x: 0.553, y: -2.617 }, { x: 0.607, y: -2.536 }, { x: 0.624, y: -2.448 }, { x: 0.624, y: -2.448 }, { x: 0.639, y: -2.448 }, { x: 0.622, y: -0.486 }, { x: -0.231, y: 2.591 }, { x: -0.25, y: 2.683 }, { x: -0.312, y: 2.777 }, { x: -0.406, y: 2.839 }, { x: -0.517, y: 2.861 }, { x: -0.628, y: 2.839 }, { x: -0.722, y: 2.777 }, { x: -0.784, y: 2.683 }, { x: -0.806, y: 2.572 }, { x: -0.784, y: 2.461 }, { x: -0.757, y: 2.42 }, { x: -0.757, y: 2.42 }, { x: -0.722, y: 2.223 }, { x: -0.722, y: 2.223 }, { x: -0.725, y: 2.223 }, { x: -0.725, y: 2.223 }, { x: -0.682, y: 1.938 }, { x: -0.682, y: 1.938 }, { x: -0.673, y: 1.939 }, { x: -0.673, y: 1.939 }, { x: -0.13, y: -1.168 }, { x: -0.508, y: -1.245 }], density: 1, restitution: 0.35, friction: 0.35 },
@@ -136,6 +143,7 @@ const SCENES = {
   },
   fourbar: {
     name: 'Four bar linkage',
+    group: 'machines',
     gravity: 9.81,
     bodies: [
       { id: 1, kind: 'box', x: 0, y: 5.6, width: 20, height: 0.6, pinned: true, friction: 0.8 },
@@ -159,6 +167,7 @@ const SCENES = {
   },
   gears: {
     name: 'Gear train',
+    group: 'machines',
     gravity: 0,
     bodies: [
       { id: 1, kind: 'circle', x: -3.2, y: 0, radius: 0.12, pinned: true },
@@ -182,6 +191,7 @@ const SCENES = {
   },
   orbits: {
     name: 'Three bodies',
+    group: 'physics',
     gravity: 0,
     damping: 0,
     attraction: 16,
@@ -193,6 +203,150 @@ const SCENES = {
     joints: [],
   },
   ackermann,
+  car: {
+  name: 'Car and suspension',
+  group: 'machines',
+  gravity: 9.81,
+  bodies: [
+      { id: 1, kind: 'box', x: 0, y: 4.4, width: 34, height: 0.8, pinned: true, friction: 0.9 },
+      { id: 2, kind: 'box', x: -6, y: 3.4, width: 2.4, height: 0.5, angle: -0.28, pinned: true, friction: 0.9 },
+      { id: 3, kind: 'box', x: 0, y: 1.6, width: 3.6, height: 0.7, density: 1.6, friction: 0.6 },
+      { id: 4, kind: 'circle', x: -1.2, y: 3.2, radius: 0.72, density: 1.1, friction: 1.4, restitution: 0.05 },
+      { id: 5, kind: 'circle', x: 1.2, y: 3.2, radius: 0.72, density: 1.1, friction: 1.4, restitution: 0.05 },
+      { id: 6, kind: 'box', x: -1.2, y: 2.4, width: 0.35, height: 0.35, density: 0.6 },
+      { id: 7, kind: 'box', x: 1.2, y: 2.4, width: 0.35, height: 0.35, density: 0.6 },
+  ],
+  joints: [
+      { kind: 'spring', a: 3, b: 6, aWorld: { x: -1.2, y: 1.8 }, bWorld: { x: -1.2, y: 2.4 }, rest: 0.58, stiffness: 260, damping: 22 },
+      { kind: 'spring', a: 3, b: 7, aWorld: { x: 1.2, y: 1.8 }, bWorld: { x: 1.2, y: 2.4 }, rest: 0.58, stiffness: 260, damping: 22 },
+      { kind: 'track', a: 3, b: 6, aWorld: { x: -1.2, y: 1.8 }, bWorld: { x: -1.2, y: 2.4 }, axis: { x: 0, y: 1 } },
+      { kind: 'track', a: 3, b: 7, aWorld: { x: 1.2, y: 1.8 }, bWorld: { x: 1.2, y: 2.4 }, axis: { x: 0, y: 1 } },
+      { kind: 'pin', a: 6, b: 4, aWorld: { x: -1.2, y: 3.2 }, bWorld: { x: -1.2, y: 3.2 } },
+      { kind: 'motor', a: 7, b: 5, aWorld: { x: 1.2, y: 3.2 }, bWorld: { x: 1.2, y: 3.2 }, speed: 4, torque: 55 },
+  ],
+  controls: [
+      { id: 40, kind: 'button', x: 6.5, y: 0.4, target: null, action: 'run', label: 'Drive', value: 0.5 },
+  ],
+  },
+  bridge: {
+  name: 'Rope bridge',
+  group: 'structures',
+  gravity: 9.81,
+  bodies: [
+      { id: 1, kind: 'box', x: -9, y: 2, width: 4, height: 3, pinned: true, friction: 0.8 },
+      { id: 2, kind: 'box', x: 9, y: 2, width: 4, height: 3, pinned: true, friction: 0.8 },
+      ...Array.from({ length: 11 }, (item, index) => ({
+        id: 10 + index,
+        kind: 'box',
+        x: -6.4 + index * 1.28,
+        y: 0.6,
+        width: 1.2,
+        height: 0.18,
+        density: 0.8,
+        friction: 0.9,
+      })),
+      { id: 40, kind: 'circle', x: 0, y: -6, radius: 0.7, density: 6, restitution: 0.1, friction: 0.7 },
+      { id: 50, kind: 'box', x: 0, y: 9, width: 30, height: 0.6, pinned: true, friction: 0.8 },
+  ],
+  joints: [
+      { kind: 'pin', a: 1, b: 10, aWorld: { x: -7, y: 0.6 }, bWorld: { x: -7, y: 0.6 } },
+      ...Array.from({ length: 10 }, (item, index) => ({
+        kind: 'pin',
+        a: 10 + index,
+        b: 11 + index,
+        aWorld: { x: -5.76 + index * 1.28, y: 0.6 },
+        bWorld: { x: -5.76 + index * 1.28, y: 0.6 },
+      })),
+      { kind: 'pin', a: 20, b: 2, aWorld: { x: 7, y: 0.6 }, bWorld: { x: 7, y: 0.6 } },
+  ],
+  },
+  scales: {
+  name: 'Balance scales',
+  group: 'basics',
+  gravity: 9.81,
+  bodies: [
+      { id: 1, kind: 'box', x: 0, y: 5.6, width: 20, height: 0.6, pinned: true, friction: 0.7 },
+      { id: 2, kind: 'box', x: 0, y: 3.4, width: 0.5, height: 3.6, pinned: true },
+      { id: 3, kind: 'box', x: 0, y: 1.4, width: 7, height: 0.24, density: 1.4 },
+      { id: 4, kind: 'box', x: -3.2, y: 2.6, width: 1.8, height: 0.2, density: 1 },
+      { id: 5, kind: 'box', x: 3.2, y: 2.6, width: 1.8, height: 0.2, density: 1 },
+      { id: 6, kind: 'circle', x: -3.2, y: 1.9, radius: 0.34, density: 5 },
+      { id: 7, kind: 'circle', x: 3.2, y: 1.9, radius: 0.26, density: 5 },
+  ],
+  joints: [
+      { kind: 'pin', a: 2, b: 3, aWorld: { x: 0, y: 1.4 }, bWorld: { x: 0, y: 1.4 } },
+      { kind: 'rod', a: 3, b: 4, aWorld: { x: -3.2, y: 1.4 }, bWorld: { x: -3.2, y: 2.6 }, rest: 1.2 },
+      { kind: 'rod', a: 3, b: 5, aWorld: { x: 3.2, y: 1.4 }, bWorld: { x: 3.2, y: 2.6 }, rest: 1.2 },
+  ],
+  },
+  windmill: {
+  name: 'Windmill',
+  group: 'machines',
+  gravity: 9.81,
+  bodies: [
+      { id: 1, kind: 'box', x: 0, y: 5.6, width: 20, height: 0.6, pinned: true, friction: 0.7 },
+      { id: 2, kind: 'box', x: 0, y: 3.4, width: 0.9, height: 4, pinned: true },
+      { id: 3, kind: 'circle', x: 0, y: 1.2, radius: 0.28, pinned: true },
+      { id: 4, kind: 'box', x: 0, y: 1.2, width: 6.4, height: 0.34, density: 0.9 },
+      { id: 5, kind: 'box', x: 0, y: 1.2, width: 0.34, height: 6.4, density: 0.9 },
+      { id: 10, kind: 'circle', x: -4.6, y: -1.4, radius: 0.32, density: 1.2, restitution: 0.3, friction: 0.5 },
+      { id: 11, kind: 'circle', x: 4.6, y: -1.4, radius: 0.32, density: 1.2, restitution: 0.3, friction: 0.5 },
+  ],
+  joints: [
+      { kind: 'weld', a: 4, b: 5, aWorld: { x: 0, y: 1.2 }, bWorld: { x: 0, y: 1.2 } },
+      { kind: 'motor', a: 3, b: 4, aWorld: { x: 0, y: 1.2 }, bWorld: { x: 0, y: 1.2 }, speed: 1.5, torque: 90 },
+  ],
+  controls: [
+      { id: 40, kind: 'slider', x: 6.4, y: 0.6, target: null, action: 'run', label: 'Speed', value: 0.6 },
+  ],
+  },
+  lift: {
+  name: 'Scissor lift',
+  group: 'machines',
+  gravity: 9.81,
+  bodies: [
+      { id: 1, kind: 'box', x: 0, y: 5.6, width: 18, height: 0.6, pinned: true, friction: 0.8 },
+      { id: 2, kind: 'box', x: 0, y: 5, width: 6, height: 0.4, pinned: true },
+      { id: 3, kind: 'box', x: -0.9, y: 3.4, width: 4.6, height: 0.3, angle: -0.6, density: 1.2 },
+      { id: 4, kind: 'box', x: 0.9, y: 3.4, width: 4.6, height: 0.3, angle: 0.6, density: 1.2 },
+      { id: 5, kind: 'box', x: 0, y: 1.7, width: 6, height: 0.4, density: 1.2 },
+      { id: 6, kind: 'circle', x: 0, y: 1.1, radius: 0.42, density: 3, restitution: 0.2 },
+  ],
+  joints: [
+      { kind: 'pin', a: 3, b: 4, aWorld: { x: 0, y: 3.4 }, bWorld: { x: 0, y: 3.4 } },
+      { kind: 'pin', a: 2, b: 3, aWorld: { x: -2.7, y: 4.8 }, bWorld: { x: -2.7, y: 4.8 } },
+      { kind: 'pin', a: 2, b: 4, aWorld: { x: 2.7, y: 4.8 }, bWorld: { x: 2.7, y: 4.8 } },
+      { kind: 'pin', a: 5, b: 3, aWorld: { x: 2.7, y: 2 }, bWorld: { x: 2.7, y: 2 } },
+      { kind: 'pin', a: 5, b: 4, aWorld: { x: -2.7, y: 2 }, bWorld: { x: -2.7, y: 2 } },
+      { kind: 'jack', a: 2, b: 5, aWorld: { x: 0, y: 4.8 }, bWorld: { x: 0, y: 2 }, min: 1.1, max: 2.9, manual: true, extend: 0.35 },
+  ],
+  controls: [
+      { id: 40, kind: 'slider', x: 6, y: 2, target: null, action: 'extend', label: 'Raise', value: 0.35 },
+  ],
+  },
+  funnel: {
+  name: 'Marble funnel',
+  group: 'basics',
+  gravity: 9.81,
+  bodies: [
+      { id: 1, kind: 'box', x: 0, y: 6, width: 20, height: 0.6, pinned: true, friction: 0.6 },
+      { id: 2, kind: 'box', x: -2.6, y: 2.4, width: 5.4, height: 0.35, angle: 0.62, pinned: true, friction: 0.25 },
+      { id: 3, kind: 'box', x: 2.6, y: 2.4, width: 5.4, height: 0.35, angle: -0.62, pinned: true, friction: 0.25 },
+      { id: 4, kind: 'box', x: -1.5, y: 5, width: 0.35, height: 2.4, pinned: true, friction: 0.4 },
+      { id: 5, kind: 'box', x: 1.5, y: 5, width: 0.35, height: 2.4, pinned: true, friction: 0.4 },
+      ...Array.from({ length: 14 }, (item, index) => ({
+        id: 20 + index,
+        kind: 'circle',
+        x: -2.4 + (index % 7) * 0.8,
+        y: -3.4 - Math.floor(index / 7) * 1,
+        radius: 0.3,
+        density: 1.4,
+        restitution: 0.28,
+        friction: 0.25,
+      })),
+  ],
+  joints: [],
+  },
 };
 
 export default SCENES;
