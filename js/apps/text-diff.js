@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { escapeHtml } from '../core/dom.js';
 import { debounce } from '../core/util.js';
 
@@ -88,14 +89,14 @@ class TextDiff extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <div class="split">
-        <jg-field label="Original"><jg-textarea id="left" rows="6" placeholder="Paste the original text"></jg-textarea></jg-field>
-        <jg-field label="Changed"><jg-textarea id="right" rows="6" placeholder="Paste the changed text"></jg-textarea></jg-field>
+        <jg-field label="${t('text-diff.original', 'Original')}"><jg-textarea id="left" rows="6" placeholder="${t('text-diff.pasteOriginal', 'Paste the original text')}"></jg-textarea></jg-field>
+        <jg-field label="${t('text-diff.changed', 'Changed')}"><jg-textarea id="right" rows="6" placeholder="${t('text-diff.pasteChanged', 'Paste the changed text')}"></jg-textarea></jg-field>
       </div>
 
       <div class="row">
-        <jg-switch id="trim" checked></jg-switch><span class="hint">Ignore trailing whitespace</span>
-        <jg-switch id="case"></jg-switch><span class="hint">Ignore case</span>
-        <jg-switch id="words" checked></jg-switch><span class="hint">Highlight word changes</span>
+        <jg-switch id="trim" checked></jg-switch><span class="hint">${t('text-diff.ignoreWhitespace', 'Ignore trailing whitespace')}</span>
+        <jg-switch id="case"></jg-switch><span class="hint">${t('text-diff.ignoreCase', 'Ignore case')}</span>
+        <jg-switch id="words" checked></jg-switch><span class="hint">${t('text-diff.highlightWords', 'Highlight word changes')}</span>
         <span class="grow"></span>
         <span class="hint" id="summary"></span>
       </div>

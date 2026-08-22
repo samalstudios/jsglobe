@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { debounce } from '../core/util.js';
 
 const sheet = css`
@@ -18,11 +19,11 @@ class UrlParser extends JGApp {
       </jg-field>
       <div class="hint" id="status"></div>
 
-      <jg-card title="Components">
+      <jg-card title="${t('url-parser.components', 'Components')}">
         <div class="kv" id="parts"></div>
       </jg-card>
 
-      <jg-card title="Query parameters" id="paramcard">
+      <jg-card title="${t('url-parser.queryParams', 'Query parameters')}" id="paramcard">
         <table class="params"><tbody id="params"></tbody></table>
       </jg-card>
     </div>`);
@@ -48,7 +49,7 @@ class UrlParser extends JGApp {
     try {
       url = new URL(value);
     } catch {
-      status.innerHTML = html`<span class="error">Not a valid absolute URL.</span>`;
+      status.innerHTML = html`<span class="error">${t('url-parser.invalid', 'Not a valid absolute URL.')}</span>`;
       parts.innerHTML = '';
       params.innerHTML = '';
       return;
@@ -56,16 +57,16 @@ class UrlParser extends JGApp {
 
     status.textContent = `${url.protocol.replace(':', '').toUpperCase()} · ${url.host}`;
     const rows = [
-      ['Protocol', url.protocol.replace(':', '')],
-      ['Username', url.username],
-      ['Password', url.password ? '•'.repeat(url.password.length) : ''],
-      ['Hostname', url.hostname],
-      ['Port', url.port || (url.protocol === 'https:' ? '443 (default)' : url.protocol === 'http:' ? '80 (default)' : '')],
-      ['Origin', url.origin],
-      ['Path', url.pathname],
-      ['Query', url.search],
-      ['Fragment', url.hash.replace('#', '')],
-      ['Segments', url.pathname.split('/').filter(Boolean).join(' › ')],
+      [t('url-parser.protocol', 'Protocol'), url.protocol.replace(':', '')],
+      [t('url-parser.username', 'Username'), url.username],
+      [t('url-parser.password', 'Password'), url.password ? '•'.repeat(url.password.length) : ''],
+      [t('url-parser.hostname', 'Hostname'), url.hostname],
+      [t('url-parser.port', 'Port'), url.port || (url.protocol === 'https:' ? `443 (${t('url-parser.default', 'default')})` : url.protocol === 'http:' ? `80 (${t('url-parser.default', 'default')})` : '')],
+      [t('url-parser.origin', 'Origin'), url.origin],
+      [t('url-parser.path', 'Path'), url.pathname],
+      [t('url-parser.query', 'Query'), url.search],
+      [t('url-parser.fragment', 'Fragment'), url.hash.replace('#', '')],
+      [t('url-parser.segments', 'Segments'), url.pathname.split('/').filter(Boolean).join(' › ')],
     ];
 
     parts.innerHTML = rows

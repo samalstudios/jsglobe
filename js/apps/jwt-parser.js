@@ -1,4 +1,5 @@
 import { JGApp, define, html, css } from '../core/app.js';
+import { t } from '../core/i18n.js';
 import { fromBase64Url, decodeBytes, debounce } from '../core/util.js';
 
 const sheet = css`
@@ -34,7 +35,7 @@ class JwtParser extends JGApp {
   renderApp() {
     this.paint(html`<div class="app">
       <jg-field label="Token">
-        <div slot="action"><jg-button size="sm" variant="outline" id="sample">Sample</jg-button></div>
+        <div slot="action"><jg-button size="sm" variant="outline" id="sample">${t('action.sample', 'Sample')}</jg-button></div>
         <jg-textarea id="input" rows="4" placeholder="eyJhbGciOi..."></jg-textarea>
       </jg-field>
 
@@ -79,7 +80,7 @@ class JwtParser extends JGApp {
     colored.innerHTML = parts.map((part, index) => html`<span class="part-${index}">${part}</span>`).join('<span class="muted">.</span>');
 
     if (parts.length !== 3) {
-      badges.innerHTML = html`<jg-badge tone="danger">A JWT needs three dot-separated parts</jg-badge>`;
+      badges.innerHTML = html`<jg-badge tone="danger">${t('jwt.threeParts', 'A JWT needs three dot-separated parts')}</jg-badge>`;
       header.textContent = payload.textContent = '';
       claims.innerHTML = '';
       return;
@@ -93,7 +94,7 @@ class JwtParser extends JGApp {
       head = decode(parts[0]);
       body = decode(parts[1]);
     } catch {
-      badges.innerHTML = html`<jg-badge tone="danger">Header or payload is not valid base64url JSON</jg-badge>`;
+      badges.innerHTML = html`<jg-badge tone="danger">${t('jwt.badEncoding', 'Header or payload is not valid base64url JSON')}</jg-badge>`;
       return;
     }
 
@@ -111,8 +112,8 @@ class JwtParser extends JGApp {
       body.exp
         ? html`<jg-badge tone="${expired ? 'danger' : 'success'}">${expired ? 'Expired' : 'Valid window'}</jg-badge>`
         : '',
-      early ? html`<jg-badge tone="warning">Not yet valid</jg-badge>` : '',
-      html`<jg-badge>Signature not verified</jg-badge>`,
+      early ? html`<jg-badge tone="warning">${t('jwt.notYetValid', 'Not yet valid')}</jg-badge>` : '',
+      html`<jg-badge>${t('jwt.notVerified', 'Signature not verified')}</jg-badge>`,
     ].join('');
 
     claims.innerHTML = Object.entries(body)
