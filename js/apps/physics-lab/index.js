@@ -1,5 +1,5 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
-import ackermann from './ackermann.js';
+import SAMPLES from './scenes.js';
 import { collapsibleGroups, paletteSheet } from '../../ui/palette.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
@@ -74,197 +74,6 @@ const sceneNames = () => ({
   orbits: t('physics-lab.sceneOrbits', 'Three bodies'),
   ackermann: t('physics-lab.sceneAckermann', 'Ackermann steering'),
 });
-
-const SAMPLES = {
-  pendulum: {
-    name: 'Pendulum',
-    gravity: 9.81,
-    bodies: [
-      { id: 1, kind: 'box', x: 0, y: 5.6, width: 16, height: 0.6, pinned: true, friction: 0.6 },
-      { id: 2, kind: 'circle', x: -0.4, y: -2.6, radius: 0.22, pinned: true },
-      { id: 3, kind: 'circle', x: 2.2, y: -2.2, radius: 0.42, density: 3, restitution: 0.3 },
-      { id: 4, kind: 'circle', x: -2.6, y: -2.6, radius: 0.22, pinned: true },
-      { id: 5, kind: 'circle', x: -2.6, y: 0.4, radius: 0.34, density: 2, restitution: 0.5 },
-    ],
-    joints: [
-      { kind: 'rod', a: 2, b: 3, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 }, rest: 2.64 },
-      { kind: 'spring', a: 4, b: 5, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 }, rest: 2, stiffness: 90, damping: 0.6 },
-    ],
-  },
-  stack: {
-    name: 'Stack and ball',
-    gravity: 9.81,
-    bodies: [
-      { id: 1, kind: 'box', x: 0, y: 5.6, width: 18, height: 0.6, pinned: true, friction: 0.7 },
-      { id: 2, kind: 'box', x: 1.4, y: 4.85, width: 1.5, height: 0.9, friction: 0.7, restitution: 0 },
-      { id: 3, kind: 'box', x: 1.4, y: 3.9, width: 1.5, height: 0.9, friction: 0.7, restitution: 0 },
-      { id: 4, kind: 'box', x: 1.4, y: 2.95, width: 1.5, height: 0.9, friction: 0.7, restitution: 0 },
-      { id: 5, kind: 'box', x: 1.4, y: 2, width: 1.5, height: 0.9, friction: 0.7, restitution: 0 },
-      { id: 6, kind: 'circle', x: -4.6, y: -1.6, radius: 0.24, pinned: true },
-      { id: 7, kind: 'circle', x: -4.6, y: 2.6, radius: 0.55, density: 6, restitution: 0.15 },
-    ],
-    joints: [{ kind: 'rod', a: 6, b: 7, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 }, rest: 4.2 }],
-  },
-  ramp: {
-    name: 'Ramp',
-    gravity: 9.81,
-    bodies: [
-      { id: 1, kind: 'box', x: 0, y: 5.6, width: 18, height: 0.6, pinned: true, friction: 0.7 },
-      { id: 2, kind: 'box', x: -2.4, y: 2.4, width: 9, height: 0.4, angle: 0.42, pinned: true, friction: 0.35 },
-      { id: 3, kind: 'circle', x: -5.4, y: 0.4, radius: 0.42, friction: 0.35, restitution: 0.1 },
-      { id: 4, kind: 'box', x: -4.2, y: -0.4, width: 0.9, height: 0.9, friction: 0.5, restitution: 0 },
-      { id: 5, kind: 'box', x: 5.4, y: 4.7, width: 0.9, height: 1.2, friction: 0.7, restitution: 0 },
-    ],
-    joints: [],
-  },
-  cradle: {
-    name: "Newton's cradle",
-    gravity: 9.81,
-    bodies: [
-      { id: 1, kind: 'circle', x: -2.1, y: -3, radius: 0.14, pinned: true },
-      { id: 2, kind: 'circle', x: -1.05, y: -3, radius: 0.14, pinned: true },
-      { id: 3, kind: 'circle', x: 0, y: -3, radius: 0.14, pinned: true },
-      { id: 4, kind: 'circle', x: 1.05, y: -3, radius: 0.14, pinned: true },
-      { id: 5, kind: 'circle', x: 2.1, y: -3, radius: 0.14, pinned: true },
-      { id: 6, kind: 'circle', x: -5.1, y: -3, radius: 0.52, restitution: 1, friction: 0 },
-      { id: 7, kind: 'circle', x: -1.05, y: 0, radius: 0.52, restitution: 1, friction: 0 },
-      { id: 8, kind: 'circle', x: 0, y: 0, radius: 0.52, restitution: 1, friction: 0 },
-      { id: 9, kind: 'circle', x: 1.05, y: 0, radius: 0.52, restitution: 1, friction: 0 },
-      { id: 10, kind: 'circle', x: 2.1, y: 0, radius: 0.52, restitution: 1, friction: 0 },
-    ],
-    joints: [
-      { kind: 'rod', a: 1, b: 6, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 }, rest: 3 },
-      { kind: 'rod', a: 2, b: 7, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 }, rest: 3 },
-      { kind: 'rod', a: 3, b: 8, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 }, rest: 3 },
-      { kind: 'rod', a: 4, b: 9, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 }, rest: 3 },
-      { kind: 'rod', a: 5, b: 10, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 }, rest: 3 },
-    ],
-  },
-  crank: {
-    name: 'Crank and piston',
-    gravity: 9.81,
-    bodies: [
-      { id: 1, kind: 'box', x: 0, y: 5.6, width: 20, height: 0.6, pinned: true, friction: 0.8 },
-      { id: 2, kind: 'box', x: -2.6, y: 3.8, width: 1.4, height: 3, pinned: true, friction: 0.8 },
-      { id: 3, kind: 'circle', x: -2.6, y: 2, radius: 1, density: 2.6, friction: 0.6 },
-      { id: 4, kind: 'box', x: 2.4, y: 2, width: 2.8, height: 0.12, pinned: true },
-      { id: 5, kind: 'box', x: 2.4, y: 2, width: 0.9, height: 0.8, density: 2, fixedAngle: true, friction: 0.2 },
-    ],
-    joints: [
-      { kind: 'motor', a: 2, b: 3, aWorld: { x: -2.6, y: 2 }, bWorld: { x: -2.6, y: 2 }, speed: 3.2, torque: 160 },
-      { kind: 'track', a: 4, b: 5, aWorld: { x: 2.4, y: 2 }, bWorld: { x: 2.4, y: 2 }, axis: { x: 1, y: 0 } },
-      { kind: 'rod', a: 3, b: 5, aWorld: { x: -1.9, y: 2 }, bWorld: { x: 2.4, y: 2 }, rest: 4.3 },
-    ],
-  },
-  dominoes: {
-    name: 'Domino run',
-    gravity: 9.81,
-    bodies: [
-      { id: 1, kind: 'box', x: 0, y: 5.6, width: 22, height: 0.6, pinned: true, friction: 0.8 },
-      { id: 2, kind: 'box', x: -5.6, y: 3.9, width: 4.2, height: 0.25, angle: 0.5, pinned: true, friction: 0.25 },
-      { id: 3, kind: 'circle', x: -7.1, y: 2.7, radius: 0.3, density: 4, friction: 0.25, restitution: 0.05 },
-      { id: 10, kind: 'box', x: -3, y: 4.7, width: 0.16, height: 1.2, friction: 0.5, restitution: 0 },
-      { id: 11, kind: 'box', x: -2.38, y: 4.7, width: 0.16, height: 1.2, friction: 0.5, restitution: 0 },
-      { id: 12, kind: 'box', x: -1.76, y: 4.7, width: 0.16, height: 1.2, friction: 0.5, restitution: 0 },
-      { id: 13, kind: 'box', x: -1.14, y: 4.7, width: 0.16, height: 1.2, friction: 0.5, restitution: 0 },
-      { id: 14, kind: 'box', x: -0.52, y: 4.7, width: 0.16, height: 1.2, friction: 0.5, restitution: 0 },
-      { id: 15, kind: 'box', x: 0.1, y: 4.7, width: 0.16, height: 1.2, friction: 0.5, restitution: 0 },
-      { id: 16, kind: 'box', x: 0.72, y: 4.7, width: 0.16, height: 1.2, friction: 0.5, restitution: 0 },
-      { id: 17, kind: 'box', x: 1.34, y: 4.7, width: 0.16, height: 1.2, friction: 0.5, restitution: 0 },
-      { id: 18, kind: 'box', x: 1.96, y: 4.7, width: 0.16, height: 1.2, friction: 0.5, restitution: 0 },
-      { id: 19, kind: 'box', x: 2.58, y: 4.7, width: 0.16, height: 1.2, friction: 0.5, restitution: 0 },
-      { id: 20, kind: 'box', x: 3.2, y: 4.7, width: 0.16, height: 1.2, friction: 0.5, restitution: 0 },
-      { id: 21, kind: 'box', x: 3.82, y: 4.7, width: 0.16, height: 1.2, friction: 0.5, restitution: 0 },
-      { id: 30, kind: 'box', x: 4.75, y: 4.4, width: 0.5, height: 1.8, density: 0.3, friction: 0.6, restitution: 0 },
-    ],
-    joints: [],
-  },
-  excavator: {
-    name: 'Excavator arm',
-    gravity: 9.81,
-    bodies: [
-      { id: 42, kind: 'poly', x: 14.923, y: 11.639, angle: 0.8755, points: [{ x: -0.509, y: -1.25 }, { x: -0.518, y: -1.252 }, { x: -0.557, y: -1.278 }, { x: -0.583, y: -1.317 }, { x: -0.592, y: -1.362 }, { x: -0.583, y: -1.408 }, { x: -0.557, y: -1.447 }, { x: -0.518, y: -1.473 }, { x: -0.487, y: -1.479 }, { x: -0.487, y: -1.479 }, { x: -0.366, y: -1.528 }, { x: -0.049, y: -1.631 }, { x: -0.049, y: -1.631 }, { x: 0.096, y: -2.46 }, { x: 0.13, y: -2.459 }, { x: 0.145, y: -2.536 }, { x: 0.199, y: -2.617 }, { x: 0.28, y: -2.672 }, { x: 0.376, y: -2.691 }, { x: 0.472, y: -2.672 }, { x: 0.553, y: -2.617 }, { x: 0.607, y: -2.536 }, { x: 0.624, y: -2.448 }, { x: 0.624, y: -2.448 }, { x: 0.639, y: -2.448 }, { x: 0.622, y: -0.486 }, { x: -0.231, y: 2.591 }, { x: -0.25, y: 2.683 }, { x: -0.312, y: 2.777 }, { x: -0.406, y: 2.839 }, { x: -0.517, y: 2.861 }, { x: -0.628, y: 2.839 }, { x: -0.722, y: 2.777 }, { x: -0.784, y: 2.683 }, { x: -0.806, y: 2.572 }, { x: -0.784, y: 2.461 }, { x: -0.757, y: 2.42 }, { x: -0.757, y: 2.42 }, { x: -0.722, y: 2.223 }, { x: -0.722, y: 2.223 }, { x: -0.725, y: 2.223 }, { x: -0.725, y: 2.223 }, { x: -0.682, y: 1.938 }, { x: -0.682, y: 1.938 }, { x: -0.673, y: 1.939 }, { x: -0.673, y: 1.939 }, { x: -0.13, y: -1.168 }, { x: -0.508, y: -1.245 }], density: 1, restitution: 0.35, friction: 0.35 },
-      { id: 43, kind: 'box', x: 20.406, y: 15.637, angle: 0, width: 2.462, height: 0.884, restitution: 0.15, friction: 0.5, pinned: true },
-      { id: 8, kind: 'poly', x: 18.849, y: 13.329, angle: -0.0006, points: [{ x: 1.023, y: -0.656 }, { x: 1.023, y: -0.656 }, { x: 1.039, y: -0.68 }, { x: 1.109, y: -0.726 }, { x: 1.19, y: -0.742 }, { x: 1.272, y: -0.726 }, { x: 1.341, y: -0.68 }, { x: 1.387, y: -0.61 }, { x: 1.404, y: -0.529 }, { x: 1.392, y: -0.471 }, { x: 1.392, y: -0.471 }, { x: 1.399, y: -0.468 }, { x: 2.014, y: 2.77 }, { x: 1.27, y: 2.744 }, { x: 0.534, y: 0.508 }, { x: -3.038, y: -1.618 }, { x: -3.069, y: -1.624 }, { x: -3.166, y: -1.689 }, { x: -3.231, y: -1.786 }, { x: -3.254, y: -1.901 }, { x: -3.231, y: -2.016 }, { x: -3.166, y: -2.113 }, { x: -3.069, y: -2.178 }, { x: -2.954, y: -2.201 }, { x: -2.852, y: -2.18 }, { x: -2.852, y: -2.18 }, { x: -2.844, y: -2.189 }, { x: 0.899, y: -0.462 }, { x: 1.005, y: -0.665 }], density: 1, restitution: 0.35, friction: 0.35 },
-      { id: 32, kind: 'poly', x: 11.698, y: 13.258, angle: 0.9391, points: [{ x: -0.32, y: -0.61 }, { x: -0.32, y: -0.61 }, { x: -0.366, y: -0.64 }, { x: -0.399, y: -0.689 }, { x: -0.41, y: -0.746 }, { x: -0.399, y: -0.804 }, { x: -0.366, y: -0.852 }, { x: -0.317, y: -0.885 }, { x: -0.26, y: -0.896 }, { x: -0.203, y: -0.885 }, { x: -0.154, y: -0.852 }, { x: -0.121, y: -0.804 }, { x: -0.116, y: -0.777 }, { x: -0.116, y: -0.777 }, { x: 0.024, y: -0.787 }, { x: 0.071, y: -0.892 }, { x: 0.071, y: -0.892 }, { x: 0.068, y: -0.907 }, { x: 0.08, y: -0.966 }, { x: 0.114, y: -1.017 }, { x: 0.164, y: -1.051 }, { x: 0.224, y: -1.062 }, { x: 0.283, y: -1.051 }, { x: 0.334, y: -1.017 }, { x: 0.367, y: -0.966 }, { x: 0.379, y: -0.907 }, { x: 0.367, y: -0.847 }, { x: 0.34, y: -0.807 }, { x: 0.34, y: -0.807 }, { x: 0.351, y: -0.734 }, { x: 0.351, y: -0.734 }, { x: 0.364, y: -0.735 }, { x: 0.696, y: 0.945 }, { x: 0.187, y: 0.763 }, { x: 0.187, y: 0.763 }, { x: 0.189, y: 0.784 }, { x: -0.068, y: 0.784 }, { x: -0.314, y: 0.694 }, { x: -0.515, y: 0.525 }, { x: -0.646, y: 0.298 }, { x: -0.692, y: 0.04 }, { x: -0.646, y: -0.218 }, { x: -0.515, y: -0.446 }], density: 1, restitution: 0.15, friction: 0.5 },
-      { id: 37, kind: 'poly', x: 12.863, y: 12.338, angle: 0.982, points: [{ x: -0.399, y: 0.12 }, { x: -0.402, y: 0.12 }, { x: -0.448, y: 0.111 }, { x: -0.487, y: 0.085 }, { x: -0.513, y: 0.046 }, { x: -0.522, y: 0 }, { x: -0.513, y: -0.046 }, { x: -0.487, y: -0.085 }, { x: -0.448, y: -0.111 }, { x: -0.402, y: -0.12 }, { x: -0.401, y: -0.12 }, { x: -0.401, y: -0.12 }, { x: -0.401, y: -0.12 }, { x: 0.414, y: -0.12 }, { x: 0.414, y: -0.115 }, { x: 0.414, y: -0.115 }, { x: 0.447, y: -0.108 }, { x: 0.486, y: -0.082 }, { x: 0.512, y: -0.043 }, { x: 0.522, y: 0.003 }, { x: 0.512, y: 0.049 }, { x: 0.486, y: 0.088 }, { x: 0.447, y: 0.114 }, { x: 0.402, y: 0.123 }, { x: 0.384, y: 0.12 }, { x: 0.384, y: 0.12 }], density: 1, restitution: 0.35, friction: 0.35 },
-      { id: 58, kind: 'box', x: 12.509, y: 12.463, angle: 2.8213, width: 0.732, height: 0.22, density: 1.2, restitution: 0.1, friction: 0.5, ghost: true },
-    ],
-    joints: [
-      { id: 44, kind: 'weld', a: 8, b: 43, aAt: { x: 1.502, y: 2.208 }, bAt: { x: -0.053, y: -0.102 } },
-      { id: 45, kind: 'pin', a: 42, b: 8, aAt: { x: 0.438, y: -0.878 }, bAt: { x: -2.972, y: -1.918 } },
-      { id: 46, kind: 'pin', a: 42, b: 32, aAt: { x: -0.55, y: 2.606 }, bAt: { x: 0.217, y: -0.923 } },
-      { id: 47, kind: 'pin', a: 42, b: 37, aAt: { x: -0.36, y: 2.056 }, bAt: { x: 0.422, y: -0.009 } },
-      { id: 50, kind: 'jack', a: 8, b: 42, aAt: { x: 1.154, y: -0.524 }, bAt: { x: 0.402, y: -2.478 }, rest: 5.119, min: 3.072, max: 5.222, speed: 0.4, manual: true, extend: 0.9522 },
-      { id: 59, kind: 'pin', a: 37, b: 58, aAt: { x: 0.007, y: 0 }, bAt: { x: -0.366, y: 0 } },
-      { id: 60, kind: 'pin', a: 32, b: 58, aAt: { x: -0.275, y: -0.775 }, bAt: { x: 0.366, y: 0 } },
-      { id: 61, kind: 'jack', a: 42, b: 37, aAt: { x: -0.492, y: -1.379 }, bAt: { x: -0.412, y: 0.002 }, rest: 3.516, min: 3, max: 4.6, speed: 0.4, manual: true, extend: 0.3225 },
-    ],
-    controls: [
-      { id: 51, kind: 'slider', x: 6.5, y: 15, target: 50, value: 0.9522, label: t('physics-lab.long', 'Long') },
-      { id: 64, kind: 'slider', x: 5, y: 15, target: 61, value: 0.3225, label: t('physics-lab.cap', 'Cap') },
-    ],
-  },
-  fourbar: {
-    name: 'Four bar linkage',
-    gravity: 9.81,
-    bodies: [
-      { id: 1, kind: 'box', x: 0, y: 5.6, width: 20, height: 0.6, pinned: true, friction: 0.8 },
-      { id: 2, kind: 'circle', x: -2.5, y: 2, radius: 0.2, pinned: true },
-      { id: 3, kind: 'circle', x: 2.5, y: 2, radius: 0.2, pinned: true },
-      { id: 4, kind: 'box', x: -1.9, y: 2, width: 1.2, height: 0.22, angle: 0, density: 1.2, ghost: true },
-      { id: 5, kind: 'box', x: 0.492, y: 0.905, width: 4.2, height: 0.22, angle: -0.548, density: 1.2, ghost: true },
-      { id: 6, kind: 'box', x: 2.392, y: 0.905, width: 2.2, height: 0.22, angle: -1.669, density: 1.2, ghost: true },
-    ],
-    joints: [
-      { id: 20, kind: 'motor', a: 2, b: 4, aWorld: { x: -2.5, y: 2 }, bWorld: { x: -2.5, y: 2 }, speed: 2.2, torque: 220 },
-      { id: 21, kind: 'pin', a: 4, b: 5, aWorld: { x: -1.3, y: 2 }, bWorld: { x: -1.3, y: 2 } },
-      { id: 22, kind: 'pin', a: 5, b: 6, aWorld: { x: 2.284, y: -0.189 }, bWorld: { x: 2.284, y: -0.189 } },
-      { id: 23, kind: 'pin', a: 3, b: 6, aWorld: { x: 2.5, y: 2 }, bWorld: { x: 2.5, y: 2 } },
-    ],
-    controls: [
-      { id: 30, kind: 'slider', x: -5.4, y: -1.2, target: 20, value: 0.78, label: t('physics-lab.motor', 'Motor') },
-      { id: 31, kind: 'button', x: -3.4, y: -2.2, target: 20, action: 'run', label: t('physics-lab.turn', 'Turn') },
-      { id: 32, kind: 'button', x: -3.4, y: -1.4, target: 20, action: 'reverse', label: t('physics-lab.reverse', 'Reverse') },
-    ],
-  },
-  gears: {
-    name: 'Gear train',
-    gravity: 0,
-    bodies: [
-      { id: 1, kind: 'circle', x: -3.2, y: 0, radius: 0.12, pinned: true },
-      { id: 2, kind: 'circle', x: -3.2, y: 0, radius: 1.2, density: 1, teeth: 17, friction: 0.7 },
-      { id: 3, kind: 'circle', x: -0.4, y: 0, radius: 0.12, pinned: true },
-      { id: 4, kind: 'circle', x: -0.4, y: 0, radius: 1.6, density: 1, teeth: 22, friction: 0.7 },
-      { id: 5, kind: 'circle', x: 2.2, y: 0, radius: 0.12, pinned: true },
-      { id: 6, kind: 'circle', x: 2.2, y: 0, radius: 1, density: 1, teeth: 14, friction: 0.7 },
-    ],
-    joints: [
-      { id: 20, kind: 'pin', a: 1, b: 2, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 } },
-      { id: 21, kind: 'pin', a: 3, b: 4, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 } },
-      { id: 22, kind: 'pin', a: 5, b: 6, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 } },
-      { id: 23, kind: 'motor', a: 1, b: 2, aAt: { x: 0, y: 0 }, bAt: { x: 0, y: 0 }, speed: 1.6, torque: 300 },
-      { id: 24, kind: 'gear', a: 2, b: 4, ratio: 1.3333 },
-      { id: 25, kind: 'gear', a: 4, b: 6, ratio: 0.625 },
-    ],
-    controls: [
-      { id: 30, kind: 'slider', x: -6, y: 0, target: 23, value: 0.75, label: t('physics-lab.drive', 'Drive') },
-    ],
-  },
-  orbits: {
-    name: 'Three bodies',
-    gravity: 0,
-    damping: 0,
-    attraction: 16,
-    bodies: [
-      { id: 1, kind: 'circle', x: 2.91, y: -0.7293, radius: 0.16, density: 12.434, vx: 1.0767, vy: 0.9985, restitution: 1 },
-      { id: 2, kind: 'circle', x: -2.91, y: 0.7293, radius: 0.16, density: 12.434, vx: 1.0767, vy: 0.9985, restitution: 1 },
-      { id: 3, kind: 'circle', x: 0, y: 0, radius: 0.16, density: 12.434, vx: -2.1533, vy: -1.997, restitution: 1 },
-    ],
-    joints: [],
-  },
-  ackermann,
-};
 
 export default class PhysicsLab extends JGApp {
   static appId = 'physics-lab';
@@ -1772,32 +1581,49 @@ export default class PhysicsLab extends JGApp {
 
   #combine(mode) {
     const first = this.#bodies.find((body) => body.id === this.#selected);
-    const secondId = [...this.#alsoSelected][0];
-    const second = this.#bodies.find((body) => body.id === secondId);
-    if (!first || !second) {
+    const others = [...this.#alsoSelected]
+      .map((id) => this.#bodies.find((body) => body.id === id))
+      .filter(Boolean);
+    if (!first || !others.length) {
       toast(t('physics-lab.pickOneShapeThenShift', 'Pick one shape, then shift click a second one.'), 'danger');
       return;
     }
 
-    const liveA = this.#world.body(first.id);
-    const liveB = this.#world.body(second.id);
-    if (!liveA || !liveB) return;
+    const liveOf = (body) => this.#world.body(body.id);
+    if (!liveOf(first) || others.some((body) => !liveOf(body))) return;
 
-    const rings = clipPolygons(this.#outlineOf(liveA), this.#outlineOf(liveB), mode);
-    if (!rings) {
-      toast(t('physics-lab.thoseShapesDoNotTouch', 'Those shapes do not touch, so there is nothing to merge.'), 'danger');
-      return;
+    // fold each further shape into the running result, so three or more combine
+    let kept = [this.#outlineOf(liveOf(first))];
+    for (const other of others) {
+      const cut = this.#outlineOf(liveOf(other));
+      const next = [];
+      let touched = false;
+      for (const ring of kept) {
+        const rings = clipPolygons(ring, cut, mode);
+        if (!rings) {
+          // this ring and the cutter do not meet
+          if (mode === 'intersect') continue;
+          next.push(ring);
+          continue;
+        }
+        touched = true;
+        next.push(...rings);
+      }
+      if (mode === 'union' && !touched) next.push(cut);
+      kept = next.filter((ring) => ring && polygonArea(ring) > 0.01);
+      if (!kept.length) break;
     }
-    const kept = rings.filter((ring) => polygonArea(ring) > 0.01);
+
     if (!kept.length) {
       toast(t('physics-lab.thatLeavesNothingBehind', 'That leaves nothing behind.'), 'danger');
       return;
     }
 
+    const gone = [first.id, ...others.map((body) => body.id)];
     this.#snapshot();
     this.#sync();
-    this.#bodies = this.#bodies.filter((body) => body.id !== first.id && body.id !== second.id);
-    this.#joints = this.#joints.filter((joint) => ![first.id, second.id].includes(joint.a) && ![first.id, second.id].includes(joint.b));
+    this.#bodies = this.#bodies.filter((body) => !gone.includes(body.id));
+    this.#joints = this.#joints.filter((joint) => !gone.includes(joint.a) && !gone.includes(joint.b));
 
     const made = kept.map((ring) => {
       const shape = polyMass(ring);

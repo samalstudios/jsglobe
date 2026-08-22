@@ -196,9 +196,42 @@ const segments = (subject, clip, keepSubjectInside, keepClipInside) => {
 
 const JITTER = { x: 7.3e-7, y: 1.1e-6 };
 
+// The jitter keeps a vertex from landing exactly on an edge, but it must not
+// end up in the result: a ring carrying it drifts a little further on every
+// boolean until shapes that plainly overlap no longer meet.
+const settle = (rings, sources) => {
+  if (!rings) return rings;
+  const grid = new Map();
+  const key = (x, y) => `${Math.round(x * 1e5)}:${Math.round(y * 1e5)}`;
+  sources.forEach((ring) =>
+    ring.forEach((point) => {
+      for (let dx = -1; dx <= 1; dx += 1) {
+        for (let dy = -1; dy <= 1; dy += 1) {
+          const slot = `${Math.round(point.x * 1e5) + dx}:${Math.round(point.y * 1e5) + dy}`;
+          if (!grid.has(slot)) grid.set(slot, point);
+        }
+      }
+    }),
+  );
+
+  return rings.map((ring) => {
+    const out = [];
+    ring.forEach((point) => {
+      const source = grid.get(key(point.x, point.y));
+      const settled = source ? { x: source.x, y: source.y } : { x: point.x, y: point.y };
+      const last = out[out.length - 1];
+      if (last && near(last, settled)) return;
+      out.push(settled);
+    });
+    while (out.length > 1 && near(out[0], out[out.length - 1])) out.pop();
+    return out;
+  });
+};
+
 export const clipPolygons = (a, b, mode) => {
   const subject = forward(a);
   const clip = forward(b).map((point) => ({ x: point.x + JITTER.x, y: point.y + JITTER.y }));
+  const sources = [forward(a), forward(b)];
 
   const insideSubject = clip.every((point) => holds(subject, point));
   const insideClip = subject.every((point) => holds(clip, point));
@@ -206,22 +239,22 @@ export const clipPolygons = (a, b, mode) => {
 
   if (!meets) {
     if (mode === 'union') {
-      if (insideSubject) return [subject];
-      if (insideClip) return [clip];
+      if (insideSubject) return settle([subject], sources);
+      if (insideClip) return settle([clip], sources);
       return null;
     }
     if (mode === 'subtract') {
       if (insideClip) return [];
-      return [subject];
+      return settle([subject], sources);
     }
-    if (insideSubject) return [clip];
-    if (insideClip) return [subject];
+    if (insideSubject) return settle([clip], sources);
+    if (insideClip) return settle([subject], sources);
     return [];
   }
 
-  if (mode === 'union') return segments(subject, clip, false, false);
-  if (mode === 'intersect') return segments(subject, clip, true, true);
-  return segments(subject, [...clip].reverse(), false, true);
+  if (mode === 'union') return settle(segments(subject, clip, false, false), sources);
+  if (mode === 'intersect') return settle(segments(subject, clip, true, true), sources);
+  return settle(segments(subject, [...clip].reverse(), false, true), sources);
 };
 
 export const polygonArea = (points) => Math.abs(area(points));
