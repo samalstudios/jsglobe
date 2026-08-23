@@ -3,7 +3,10 @@ import { readdir, readFile } from 'node:fs/promises';
 const problems = [];
 const fail = (message) => problems.push(message);
 
-const libFiles = (await readdir('js/lib')).filter((name) => name.endsWith('.js'));
+// a worker entry point is loaded by URL, not imported, so it is not a domain
+const WORKERS = new Set(['chess-worker.js']);
+
+const libFiles = (await readdir('js/lib')).filter((name) => name.endsWith('.js') && !WORKERS.has(name));
 
 // 1. the library layer must not reach upwards
 for (const name of libFiles) {

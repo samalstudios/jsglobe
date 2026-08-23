@@ -174,8 +174,8 @@ export const LEVELS = {
   gentle: { depth: 1, wobble: 90, time: 400 },
   casual: { depth: 2, wobble: 40, time: 700 },
   steady: { depth: 3, wobble: 12, time: 1400 },
-  sharp: { depth: 4, wobble: 0, time: 2600 },
-  fierce: { depth: 5, wobble: 0, time: 5000 },
+  sharp: { depth: 4, wobble: 0, time: 2000 },
+  fierce: { depth: 5, wobble: 0, time: 3500 },
 };
 
 export function pickMove(state, level = 'steady') {

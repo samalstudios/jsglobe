@@ -17,6 +17,7 @@
 export * as physics from './lib/physics.js';
 export * as logic from './lib/logic.js';
 export * as circuit from './lib/circuit.js';
+export * as optics from './lib/optics.js';
 
 // ---- geometry --------------------------------------------------------
 export * as clip from './lib/clip.js';
@@ -38,6 +39,7 @@ export * as sshKeys from './lib/ssh-keys.js';
 // ---- games -----------------------------------------------------------
 export * as chess from './lib/chess.js';
 export * as chessAi from './lib/chess-ai.js';
+export * as chessEngine from './lib/chess-engine.js';
 export * as chessOpenings from './lib/chess-openings.js';
 
 // ---- reference data --------------------------------------------------
@@ -58,6 +60,7 @@ export const SURFACE = {
   physics: 'Rigid body simulation: bodies, pins, rods, springs, jacks, motors, gears, collision and joint solving.',
   logic: 'Digital logic: gates, flip flops, counters, decoders, multiplexers and displays over a net list.',
   circuit: 'Analogue circuits: modified nodal analysis with diodes, transistors and time stepping.',
+  optics: 'Ray tracing in two dimensions: refraction, reflection, total internal reflection and dispersion.',
   clip: 'Polygon booleans: union, subtract and intersect, with exact vertices.',
   svgShapes: 'Read an SVG into simplified outlines that a solver can use.',
   glyphs: 'The drawn icon outlines as data, on a 24 by 24 grid.',
@@ -71,6 +74,7 @@ export const SURFACE = {
   sshKeys: 'Generate and read OpenSSH keys.',
   chess: 'Chess rules: move generation, check, mate, FEN and SAN.',
   chessAi: 'Chess search and evaluation, with a move judge for coaching.',
+  chessEngine: 'Runs the chess search in a worker so a long think never freezes the page.',
   chessOpenings: 'Opening lines with the idea behind each, and a short course.',
   elements: 'The periodic table with full properties.',
   molecules: 'Molecule structures with atoms and bonds.',

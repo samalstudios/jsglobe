@@ -20,7 +20,8 @@ import {
   fileOf,
   rankOf,
 } from '../../lib/chess.js';
-import { pickMove, judgeMove, LEVELS } from '../../lib/chess-ai.js';
+import { LEVELS } from '../../lib/chess-ai.js';
+import { createEngine } from '../../lib/chess-engine.js';
 import { OPENINGS, FAMILIES, LESSONS } from '../../lib/chess-openings.js';
 
 const t = appText(strings);
@@ -103,6 +104,7 @@ class Chess extends JGApp {
   #lesson = 0;
   #lessonState = null;
   #lessonDone = new Set();
+  #engine = createEngine();
 
   renderApp() {
     this.paint(html`<div class="app">
@@ -140,6 +142,7 @@ class Chess extends JGApp {
     this.#draw();
     this.#pane();
     this.#watchSize();
+    this.keep(() => this.#engine.dispose());
   }
 
   // Give every square the same whole number of pixels. Fractional track sizes
@@ -282,24 +285,44 @@ class Chess extends JGApp {
   async #playHuman(move) {
     const before = this.#state;
     const san = moveToSan(before, move);
-    if (this.config.get('coach', true)) {
-      const verdict = judgeMove(before, move, 2);
-      this.#notes.push({ ply: this.#history.length + 1, san, ...verdict });
-    }
+    const ply = this.#history.length + 1;
+
     this.#commit(move, san);
     if (this.#finish()) return;
+
+    // The verdict is only a comment, so it must never hold up the reply.
+    if (this.config.get('coach', true)) {
+      const fen = toFen(before);
+      this.#engine
+        .judge(fen, move, 2)
+        .then((verdict) => {
+          this.#notes.push({ ply, san, ...verdict });
+          if (this.#view === 'play') this.#pane();
+        })
+        .catch(() => {});
+    }
+
     await this.#playComputer();
   }
 
   async #playComputer() {
     this.#thinking = true;
     this.#status();
-    await new Promise((resolve) => setTimeout(resolve, 40));
+
     const level = this.config.get('level', 'casual');
-    const move = pickMove(this.#state, level);
+    const fen = toFen(this.#state);
+
+    let move = null;
+    try {
+      move = await this.#engine.think(fen, level);
+    } catch {
+      move = null;
+    }
+
     this.#thinking = false;
-    if (!move) {
-      this.#finish();
+    // the board may have been reset or taken back while the engine was thinking
+    if (!move || toFen(this.#state) !== fen) {
+      this.#status();
       return;
     }
     this.#commit(move, moveToSan(this.#state, move));
@@ -730,6 +753,8 @@ class Chess extends JGApp {
   // ---- game actions ---------------------------------------------------
 
   #newGame(options = {}) {
+    this.#engine.stop();
+    this.#thinking = false;
     this.#state = parseFen(START_FEN);
     this.#history = [];
     this.#notes = [];
@@ -754,6 +779,8 @@ class Chess extends JGApp {
   #undo() {
     if (this.#view === 'train') return this.#openLesson(this.#lesson);
     if (!this.#history.length) return;
+    this.#engine.stop();
+    this.#thinking = false;
     // step back over the computer's reply and your own move
     const back = this.#history.length >= 2 ? 2 : 1;
     for (let index = 0; index < back; index += 1) {
@@ -781,11 +808,15 @@ class Chess extends JGApp {
       return;
     }
     if (this.#over || this.#state.turn !== this.#side) return;
-    const move = pickMove(state, 'steady');
-    if (!move) return;
-    this.#pick = move.from;
-    this.#draw();
-    toast(t('chess.tryThisPiece', 'Try the piece on {square}.', { square: squareName(move.from) }));
+    this.#engine
+      .think(toFen(state), 'steady')
+      .then((move) => {
+        if (!move) return;
+        this.#pick = move.from;
+        this.#draw();
+        toast(t('chess.tryThisPiece', 'Try the piece on {square}.', { square: squareName(move.from) }));
+      })
+      .catch(() => {});
   }
 
   #pgn() {

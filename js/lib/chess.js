@@ -98,30 +98,64 @@ export const cloneState = (state) => ({
   full: state.full,
 });
 
+const ROOK_WAYS = [-16, 16, -1, 1];
+const BISHOP_WAYS = [-17, -15, 15, 17];
+const KNIGHT_WAYS = STEPS.n;
+const KING_WAYS = STEPS.k;
+
+// Walk outward from the square being asked about rather than scanning the whole
+// board for every piece. Legality checks call this once per candidate move, so
+// the difference decides how deep the search can go.
 export function attacked(state, square, by) {
-  for (let from = 0; from < 128; from += 1) {
+  const board = state.board;
+  const white = by === WHITE;
+
+  // a pawn attacking this square sits where it could have captured from
+  for (const step of PAWN_TAKES[by]) {
+    const from = square - step;
     if (from & OFF) continue;
-    const piece = state.board[from];
-    if (!piece || colourOf(piece) !== by) continue;
-    const kind = kindOf(piece);
+    const piece = board[from];
+    if (piece && (white ? piece === 'P' : piece === 'p')) return true;
+  }
 
-    if (kind === 'p') {
-      for (const step of PAWN_TAKES[by]) {
-        if (from + step === square) return true;
-      }
-      continue;
-    }
+  for (const step of KNIGHT_WAYS) {
+    const from = square + step;
+    if (from & OFF) continue;
+    const piece = board[from];
+    if (piece && (white ? piece === 'N' : piece === 'n')) return true;
+  }
 
-    const steps = STEPS[kind];
-    for (const step of steps) {
-      let to = from + step;
-      while (onBoard(to)) {
-        if (to === square) return true;
-        if (state.board[to] || !SLIDES[kind]) break;
-        to += step;
+  for (const step of KING_WAYS) {
+    const from = square + step;
+    if (from & OFF) continue;
+    const piece = board[from];
+    if (piece && (white ? piece === 'K' : piece === 'k')) return true;
+  }
+
+  for (const step of ROOK_WAYS) {
+    let to = square + step;
+    while (!(to & OFF)) {
+      const piece = board[to];
+      if (piece) {
+        if (white ? piece === 'R' || piece === 'Q' : piece === 'r' || piece === 'q') return true;
+        break;
       }
+      to += step;
     }
   }
+
+  for (const step of BISHOP_WAYS) {
+    let to = square + step;
+    while (!(to & OFF)) {
+      const piece = board[to];
+      if (piece) {
+        if (white ? piece === 'B' || piece === 'Q' : piece === 'b' || piece === 'q') return true;
+        break;
+      }
+      to += step;
+    }
+  }
+
   return false;
 }
 
