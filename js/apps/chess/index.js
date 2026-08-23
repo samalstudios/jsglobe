@@ -231,7 +231,16 @@ class Chess extends JGApp {
       </button>`;
     })}`;
 
-    this.bind('.cell', 'click', (event) => this.#tap(Number(event.currentTarget.dataset.square)));
+    // One delegated listener, attached once. Binding each square on every
+    // redraw left a listener and a cleanup entry behind per square per move,
+    // which is what made a long game crawl.
+    if (!board.dataset.wired) {
+      board.dataset.wired = 'true';
+      this.on(board, 'click', (event) => {
+        const square = event.target.closest?.('.cell')?.dataset.square;
+        if (square !== undefined) this.#tap(Number(square));
+      });
+    }
     this.#status();
     this.#taken();
     this.#animate();
@@ -488,6 +497,40 @@ class Chess extends JGApp {
   #pane() {
     const target = this.$('#pane');
     if (!target) return;
+
+    if (!target.dataset.wired) {
+      target.dataset.wired = 'true';
+      this.on(target, 'click', (event) => {
+        const tone = event.target.closest?.('[data-theme]');
+        if (tone) {
+          this.config.set('theme', tone.dataset.theme);
+          this.#draw();
+          this.#pane();
+          return;
+        }
+        const opening = event.target.closest?.('[data-opening]');
+        if (opening) {
+          this.#showOpening(opening.dataset.opening);
+          return;
+        }
+        const lesson = event.target.closest?.('[data-lesson]');
+        if (lesson) {
+          this.#openLesson(Number(lesson.dataset.lesson));
+          return;
+        }
+        const button = event.target.closest?.('jg-button');
+        if (button?.id === 'prev') this.#openLesson(this.#lesson - 1);
+        if (button?.id === 'next') this.#openLesson(this.#lesson + 1);
+        if (button?.id === 'reveal') this.#revealLesson();
+      });
+      this.on(target, 'change', (event) => {
+        if (event.target.id === 'level') {
+          this.config.set('level', event.target.value);
+          this.#pane();
+        }
+      });
+    }
+
     if (this.#view === 'openings') return this.#openingsPane(target);
     if (this.#view === 'train') return this.#trainPane(target);
     return this.#playPane(target);
@@ -552,19 +595,6 @@ class Chess extends JGApp {
         : ''}
     `;
 
-    const level = this.$('#level');
-    if (level) {
-      this.on(level, 'change', () => {
-        this.config.set('level', level.value);
-        this.#pane();
-      });
-    }
-
-    this.bind('[data-theme]', 'click', (event) => {
-      this.config.set('theme', event.currentTarget.dataset.theme);
-      this.#draw();
-      this.#pane();
-    });
   }
 
   #verdictWords(note) {
@@ -609,7 +639,6 @@ class Chess extends JGApp {
       )}
     `;
 
-    this.bind('[data-opening]', 'click', (event) => this.#showOpening(event.currentTarget.dataset.opening));
   }
 
   #showOpening(id) {
@@ -676,10 +705,6 @@ class Chess extends JGApp {
       </ol>
     `;
 
-    this.on(this.$('#prev'), 'click', () => this.#openLesson(this.#lesson - 1));
-    this.on(this.$('#next'), 'click', () => this.#openLesson(this.#lesson + 1));
-    this.on(this.$('#reveal'), 'click', () => this.#revealLesson());
-    this.bind('[data-lesson]', 'click', (event) => this.#openLesson(Number(event.currentTarget.dataset.lesson)));
   }
 
   #openLesson(index) {
