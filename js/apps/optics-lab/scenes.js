@@ -1,5 +1,3 @@
-// Each scene is a plain list of elements. The app turns them into surfaces and
-// rays every frame, so a scene is only ever data.
 const SCENES = {
   focus: {
     name: 'Lens brings light to a focus',

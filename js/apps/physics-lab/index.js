@@ -1668,7 +1668,6 @@ export default class PhysicsLab extends JGApp {
   }
 
   #sceneThumb(scene) {
-    // a quick outline of the scene, drawn straight from its bodies
     const bodies = scene.bodies ?? [];
     if (!bodies.length) return '';
     let left = Infinity;
@@ -1697,16 +1696,72 @@ export default class PhysicsLab extends JGApp {
     const view = `${left - pad} ${top - pad} ${width + pad * 2} ${height + pad * 2}`;
     const line = Math.max(width, height) / 90;
 
+    const byId = new Map(bodies.map((body) => [body.id, body]));
+    const anchorOf = (joint, side) => {
+      const world = joint[`${side}World`];
+      if (world) return world;
+      const body = byId.get(joint[side]);
+      if (!body) return null;
+      const local = joint[`${side}At`] ?? { x: 0, y: 0 };
+      const angle = body.angle ?? 0;
+      const cos = Math.cos(angle);
+      const sin = Math.sin(angle);
+      return { x: body.x + local.x * cos - local.y * sin, y: body.y + local.x * sin + local.y * cos };
+    };
+
+    const links = [];
+    for (const joint of scene.joints ?? []) {
+      const a = anchorOf(joint, 'a');
+      const b = anchorOf(joint, 'b');
+      if (!a || !b) continue;
+
+      if (joint.kind === 'gear') {
+        const one = byId.get(joint.a);
+        const two = byId.get(joint.b);
+        if (one && two) {
+          links.push(`<line x1="${one.x}" y1="${one.y}" x2="${two.x}" y2="${two.y}" stroke="currentColor" stroke-opacity="0.4" stroke-width="${line}" stroke-dasharray="${line * 3} ${line * 3}"/>`);
+        }
+        continue;
+      }
+
+      const far = Math.hypot(b.x - a.x, b.y - a.y);
+      if (joint.kind === 'pin' || joint.kind === 'motor' || far < line * 2) {
+        links.push(`<circle cx="${a.x}" cy="${a.y}" r="${line * 2.6}" fill="none" stroke="currentColor" stroke-opacity="0.65" stroke-width="${line}"/>`);
+        continue;
+      }
+
+      if (joint.kind === 'spring') {
+        const steps = 8;
+        const nx = (b.x - a.x) / far;
+        const ny = (b.y - a.y) / far;
+        const points = [];
+        for (let step = 0; step <= steps; step += 1) {
+          const along = (far * step) / steps;
+          const swing = step === 0 || step === steps ? 0 : (step % 2 ? 1 : -1) * line * 2.2;
+          points.push(`${a.x + nx * along - ny * swing},${a.y + ny * along + nx * swing}`);
+        }
+        links.push(`<polyline points="${points.join(' ')}" fill="none" stroke="currentColor" stroke-opacity="0.65" stroke-width="${line}" stroke-linejoin="round"/>`);
+        continue;
+      }
+
+      links.push(`<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="currentColor" stroke-opacity="0.65" stroke-width="${line * 1.2}" stroke-linecap="round"/>`);
+    }
+
     const shapes = boxes.map(({ body, half }) => {
       const fill = body.pinned ? 'currentColor' : 'none';
       const fade = body.pinned ? '0.22' : '0.75';
+      const turn = ((body.angle ?? 0) * 180) / Math.PI;
       if (body.kind === 'circle') {
         return `<circle cx="${body.x}" cy="${body.y}" r="${body.radius ?? 0.5}" fill="${fill}" fill-opacity="${fade}" stroke="currentColor" stroke-opacity="0.75" stroke-width="${line}"/>`;
       }
-      return `<rect x="${body.x - half.x}" y="${body.y - half.y}" width="${half.x * 2}" height="${half.y * 2}" fill="${fill}" fill-opacity="${fade}" stroke="currentColor" stroke-opacity="0.75" stroke-width="${line}" transform="rotate(${((body.angle ?? 0) * 180) / Math.PI} ${body.x} ${body.y})"/>`;
+      if (body.points?.length) {
+        const points = body.points.map((point) => `${(body.x + point.x).toFixed(4)},${(body.y + point.y).toFixed(4)}`).join(' ');
+        return `<polygon points="${points}" fill="${fill}" fill-opacity="${fade}" stroke="currentColor" stroke-opacity="0.75" stroke-width="${line}" stroke-linejoin="round" transform="rotate(${turn} ${body.x} ${body.y})"/>`;
+      }
+      return `<rect x="${body.x - half.x}" y="${body.y - half.y}" width="${half.x * 2}" height="${half.y * 2}" fill="${fill}" fill-opacity="${fade}" stroke="currentColor" stroke-opacity="0.75" stroke-width="${line}" transform="rotate(${turn} ${body.x} ${body.y})"/>`;
     });
 
-    return raw(`<svg viewBox="${view}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${shapes.join('')}</svg>`);
+    return raw(`<svg viewBox="${view}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${links.join('')}${shapes.join('')}</svg>`);
   }
 
   #chosenBodies() {

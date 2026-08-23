@@ -77,6 +77,11 @@ export const PATHS = {
   snake: '<path d="M4 6.6h8.4a3 3 0 0 1 0 6H8a3 3 0 0 0 0 6h8.4"/><circle cx="19" cy="18.6" r="1.6"/><path d="M4 6.6V4.4"/>',
   gauge2: '<path d="M12 20.4a8.4 8.4 0 1 0-8.4-8.4"/><path d="M12 12l5-4.4"/><circle cx="12" cy="12" r="1.6"/>',
   mirror: '<rect x="4.4" y="2.6" width="15.2" height="18.8" rx="7.6"/><path d="M9 18.4h6"/><circle cx="12" cy="10" r="2.8"/>',
+  mirrorConcave: '<path d="M8.6 3.4Q16.4 12 8.6 20.6"/><path d="M3.2 12h3.6"/>',
+  lensConvex: '<path d="M12 3.2Q17.4 12 12 20.8Q6.6 12 12 3.2Z"/>',
+  prismLight: '<path d="M12 4.2 20.2 18.8H3.8z"/><path d="M1.8 11.4h6.4"/><path d="M15.6 11.6 22.2 12.4M16 12.9 22.2 15M16.4 14.2 21.9 17.4"/>',
+  lensConcave: '<path d="M7.6 3.2h8.8Q12 12 16.4 20.8H7.6Q12 12 7.6 3.2Z"/>',
+  mirrorConvex: '<path d="M15.4 3.4Q7.6 12 15.4 20.6"/><path d="M17.2 12h3.6"/>',
   screenshot: '<path d="M4 8.4V6.4A2.4 2.4 0 0 1 6.4 4h2M15.6 4h2A2.4 2.4 0 0 1 20 6.4v2M20 15.6v2a2.4 2.4 0 0 1-2.4 2.4h-2M8.4 20h-2A2.4 2.4 0 0 1 4 17.6v-2"/><circle cx="12" cy="12" r="3"/>',
   tuning: '<path d="M8 3v7.4a4 4 0 0 0 8 0V3"/><path d="M12 14.4V21M9.4 21h5.2"/>',
   fader: '<path d="M12 3.4v17.2"/><rect x="7.4" y="7.9" width="9.2" height="4.2" rx="1.7"/>',
@@ -209,6 +214,7 @@ export const PATHS = {
 };
 
 export const ACCENTS = {
+  prismLight: '<path d="M15.6 11.6 22.2 12.4M16 12.9 22.2 15M16.4 14.2 21.9 17.4"/>',
   gradient: '<path d="M3.4 15.6 15.6 3.4M8.2 20.4 20.4 8.2"/>',
   motion: '<circle cx="6.6" cy="17.6" r="2"/>',
   jsx: '<path d="M12 8.4 9 15.6h6L12 8.4Z"/>',

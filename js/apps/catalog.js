@@ -119,6 +119,7 @@ import physics_lab from './physics-lab/meta.js';
 import logic_lab from './logic-lab/meta.js';
 import pdf_studio from './pdf-studio/meta.js';
 import settings from './settings/meta.js';
+import optics_lab from './optics-lab/meta.js';
 import { categories } from './categories.js';
 
 export { categories };
@@ -245,4 +246,5 @@ export const catalog = [
   logic_lab,
   pdf_studio,
   settings,
+  optics_lab,
 ];

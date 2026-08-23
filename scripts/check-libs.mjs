@@ -4,7 +4,8 @@
 import { parseFen, perft, START_FEN } from '../js/lib/chess.js';
 import {
   traceRay, refract, criticalAngle, glassBlock, prism, planeMirror, curvedMirror,
-  idealLens, beamRays, indexAt, minimumDeviation, thinLensImage,
+  idealLens, beamRays, indexAt, minimumDeviation, thinLensImage, glassSphere,
+  sphericalLens, concaveLens,
 } from '../js/lib/optics.js';
 import { clipPolygons, polygonArea } from '../js/lib/clip.js';
 
@@ -107,6 +108,30 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
   const through = traceRay({ surfaces: slab }, { origin: { x: -200, y: -60 }, direction: { x: Math.cos(rad(20)), y: Math.sin(rad(20)) } }, { bounces: 8 });
   const last = { x: through.path.at(-1).x - through.path.at(-2).x, y: through.path.at(-1).y - through.path.at(-2).y };
   close('optics a slab shifts a ray without turning it', deg(Math.atan2(last.y, last.x)), 20);
+
+  const spread = (surfaces, height) => {
+    const [ray] = beamRays(-300, 0, height * 2, 0, 1).length ? [{ origin: { x: -300, y: height }, direction: { x: 1, y: 0 } }] : [];
+    const { path, events } = traceRay({ surfaces }, ray, { bounces: 12, reach: 600 });
+    const a = path.at(-2);
+    const b = path.at(-1);
+    return { angle: deg(Math.atan2(b.y - a.y, b.x - a.x)), events };
+  };
+
+  const convex = spread(sphericalLens(0, 0, 150, 0.0035, 0.0035, 0, { index: 1.52 }), -50);
+  const concave = spread(concaveLens(0, 0, 150, 0.0035, 0, { index: 1.52 }), -50);
+  ok('optics a convex lens bends a ray towards the axis', convex.angle > 1, `${convex.angle.toFixed(2)} degrees`);
+  ok('optics a concave lens bends a ray away from the axis', concave.angle < -1, `${concave.angle.toFixed(2)} degrees`);
+  ok('optics a concave lens is entered before it is left', concave.events[0]?.fromIndex === 1 && concave.events[0]?.toIndex > 1, `${concave.events[0]?.fromIndex}->${concave.events[0]?.toIndex}`);
+
+  const ball = glassSphere(0, 0, 100, { index: 1.5 });
+  const middle = traceRay({ surfaces: ball }, { origin: { x: -300, y: 0 }, direction: { x: 1, y: 0 } }, { bounces: 8 });
+  const straight = { x: middle.path.at(-1).x - middle.path.at(-2).x, y: middle.path.at(-1).y - middle.path.at(-2).y };
+  close('optics a ray through the centre of a sphere is not bent', deg(Math.atan2(straight.y, straight.x)), 0, 1e-9);
+
+  const offset = traceRay({ surfaces: ball }, { origin: { x: -300, y: 40 }, direction: { x: 1, y: 0 } }, { bounces: 8 });
+  const bent = { x: offset.path.at(-1).x - offset.path.at(-2).x, y: offset.path.at(-1).y - offset.path.at(-2).y };
+  ok('optics a sphere bends a ray that misses the centre', Math.abs(deg(Math.atan2(bent.y, bent.x))) > 1, `${deg(Math.atan2(bent.y, bent.x)).toFixed(2)} degrees`);
+  ok('optics a sphere refracts in and out', offset.events.filter((event) => event.kind === 'refract').length === 2, offset.events.map((event) => event.kind).join(','));
 
   const image = thinLensImage(100, 200);
   close('optics an object at 2f images at 2f', image.distance, 200, 1e-9);

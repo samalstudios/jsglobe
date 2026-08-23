@@ -85,7 +85,8 @@ function hitArc(ray, surface) {
     const point = add(ray.origin, scale(ray.direction, distance));
     const angle = Math.atan2(point.y - surface.centre.y, point.x - surface.centre.x);
     if (!angleWithin(angle, surface.from, surface.to)) continue;
-    const normal = unit(sub(point, surface.centre));
+    const outward = unit(sub(point, surface.centre));
+    const normal = surface.flip ? scale(outward, -1) : outward;
     return { distance, point, normal, surface };
   }
   return null;
@@ -218,6 +219,12 @@ export const glassBlock = (x, y, width, height, angle = 0, spec = {}) => {
   return glassPolygon(corners, spec);
 };
 
+// A full circle of glass, built as two halves because an arc needs a span.
+export const glassSphere = (x, y, radius, spec = {}) => [
+  arc({ x, y }, radius, -Math.PI / 2, Math.PI / 2, { role: 'glass', ...spec }),
+  arc({ x, y }, radius, Math.PI / 2, (Math.PI * 3) / 2, { role: 'glass', ...spec }),
+];
+
 export const prism = (x, y, size, angle = 0, spec = {}) => {
   const corners = [0, 1, 2].map((index) => {
     const turn = angle - Math.PI / 2 + (index / 3) * Math.PI * 2;
@@ -230,29 +237,42 @@ export const prism = (x, y, size, angle = 0, spec = {}) => {
 // that side flat, which is how a plano lens is built.
 export function sphericalLens(x, y, diameter, curveLeft, curveRight, angle = 0, spec = {}) {
   const half = diameter / 2;
+  const { thickness = 2, ...glass } = spec;
   const side = (curvature, sign) => {
+    const shift = (sign * thickness) / 2;
     if (Math.abs(curvature) < 1e-4) {
-      const offset = sign * 1;
       return [
         segment(
-          rotate({ x: x + offset, y: y - half }, angle, { x, y }),
-          rotate({ x: x + offset, y: y + half }, angle, { x, y }),
-          { role: 'glass', ...spec },
+          rotate({ x: x + shift, y: y - half }, angle, { x, y }),
+          rotate({ x: x + shift, y: y + half }, angle, { x, y }),
+          { role: 'glass', ...glass },
         ),
       ];
     }
     const radius = 1 / curvature;
     const bulge = Math.abs(radius) - Math.sqrt(Math.max(0, radius * radius - half * half));
-    const centreX = x + sign * (Math.abs(radius) - bulge) * Math.sign(radius) * -1;
+    const centreX = x + shift + sign * (Math.abs(radius) - bulge) * Math.sign(radius) * -1;
     const centre = rotate({ x: centreX, y }, angle, { x, y });
     const span = Math.asin(Math.min(1, half / Math.abs(radius)));
     const facing = sign * Math.sign(radius) > 0 ? 0 : Math.PI;
     return [
-      arc(centre, Math.abs(radius), angle + facing - span, angle + facing + span, { role: 'glass', ...spec }),
+      arc(centre, Math.abs(radius), angle + facing - span, angle + facing + span, { role: 'glass', flip: curvature < 0, ...glass }),
     ];
   };
   return [...side(curveLeft, -1), ...side(curveRight, 1)];
 }
+
+export const sagOf = (diameter, curve) => {
+  const radius = 1 / Math.max(1e-6, Math.abs(curve));
+  const half = diameter / 2;
+  return radius - Math.sqrt(Math.max(0, radius * radius - half * half));
+};
+
+export const concaveLens = (x, y, diameter, curve, angle = 0, spec = {}) => {
+  const edge = spec.thickness ?? sagOf(diameter, curve) * 2 + Math.max(6, diameter * 0.06);
+  const bow = -Math.abs(curve);
+  return sphericalLens(x, y, diameter, bow, bow, angle, { ...spec, thickness: edge });
+};
 
 export const idealLens = (x, y, diameter, focal, angle = 0) => {
   const half = diameter / 2;

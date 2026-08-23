@@ -4,7 +4,7 @@ export default {
   tagline: "Lenses, mirrors and prisms with real ray tracing",
   category: "science",
   glyph: "◐",
-  icon: "flask",
+  icon: "prismLight",
   tint: "#3aa6d8",
   keywords: ["optics", "light", "lens", "mirror", "prism", "refraction", "physics", "ray", "rainbow"],
   tag: "jg-app-optics-lab",

@@ -222,10 +222,10 @@ const SCENES = {
       { kind: 'track', a: 3, b: 6, aWorld: { x: -1.2, y: 1.8 }, bWorld: { x: -1.2, y: 2.4 }, axis: { x: 0, y: 1 } },
       { kind: 'track', a: 3, b: 7, aWorld: { x: 1.2, y: 1.8 }, bWorld: { x: 1.2, y: 2.4 }, axis: { x: 0, y: 1 } },
       { kind: 'pin', a: 6, b: 4, aWorld: { x: -1.2, y: 3.2 }, bWorld: { x: -1.2, y: 3.2 } },
-      { kind: 'motor', a: 7, b: 5, aWorld: { x: 1.2, y: 3.2 }, bWorld: { x: 1.2, y: 3.2 }, speed: 4, torque: 55 },
+      { id: 41, kind: 'motor', a: 7, b: 5, aWorld: { x: 1.2, y: 3.2 }, bWorld: { x: 1.2, y: 3.2 }, speed: 4, torque: 55 },
   ],
   controls: [
-      { id: 40, kind: 'button', x: 6.5, y: 0.4, target: null, action: 'run', label: 'Drive', value: 0.5 },
+      { id: 40, kind: 'button', x: 6.5, y: 0.4, target: 41, action: 'run', label: 'Drive', value: 0.5 },
   ],
   },
   bridge: {
@@ -280,24 +280,26 @@ const SCENES = {
   ],
   },
   windmill: {
-  name: 'Windmill',
-  group: 'machines',
-  gravity: 9.81,
-  bodies: [
-      { id: 1, kind: 'box', x: 0, y: 5.6, width: 20, height: 0.6, pinned: true, friction: 0.7 },
+    name: 'Windmill',
+    group: 'machines',
+    gravity: 9.81,
+    bodies: [
+      { id: 1, kind: 'box', x: 0, y: 5.6, width: 20, height: 0.6, friction: 0.7, pinned: true },
       { id: 2, kind: 'box', x: 0, y: 3.4, width: 0.9, height: 4, pinned: true },
-      { id: 3, kind: 'circle', x: 0, y: 1.2, radius: 0.28, pinned: true },
-      { id: 4, kind: 'box', x: 0, y: 1.2, width: 6.4, height: 0.34, density: 0.9 },
-      { id: 5, kind: 'box', x: 0, y: 1.2, width: 0.34, height: 6.4, density: 0.9 },
       { id: 10, kind: 'circle', x: -4.6, y: -1.4, radius: 0.32, density: 1.2, restitution: 0.3, friction: 0.5 },
       { id: 11, kind: 'circle', x: 4.6, y: -1.4, radius: 0.32, density: 1.2, restitution: 0.3, friction: 0.5 },
+      { id: 43, kind: 'poly', x: 0.0377, y: 1.9218, angle: 0, density: 0.9, restitution: 0.15, friction: 0.5, points: [
+        { x: -0.17, y: -0.17 }, { x: -0.17, y: -3.2 }, { x: 0.17, y: -3.2 },
+        { x: 0.17, y: -0.17 }, { x: 3.2, y: -0.17 }, { x: 3.2, y: 0.17 },
+        { x: 0.17, y: 0.17 }, { x: 0.17, y: 3.2 }, { x: -0.17, y: 3.2 },
+        { x: -0.17, y: 0.17 }, { x: -3.2, y: 0.17 }, { x: -3.2, y: -0.17 },
+      ] },
   ],
   joints: [
-      { kind: 'weld', a: 4, b: 5, aWorld: { x: 0, y: 1.2 }, bWorld: { x: 0, y: 1.2 } },
-      { kind: 'motor', a: 3, b: 4, aWorld: { x: 0, y: 1.2 }, bWorld: { x: 0, y: 1.2 }, speed: 1.5, torque: 90 },
+      { id: 44, kind: 'motor', a: 2, b: 43, aAt: { x: 0.0377, y: -1.4782 }, bAt: { x: 0, y: 0 }, speed: 2.4, torque: 60 },
   ],
   controls: [
-      { id: 40, kind: 'slider', x: 6.4, y: 0.6, target: null, action: 'run', label: 'Speed', value: 0.6 },
+      { id: 40, kind: 'slider', x: 6.4, y: 0.6, target: 44, action: 'run', label: 'Speed', value: 0.85 },
   ],
   },
   lift: {
@@ -318,10 +320,10 @@ const SCENES = {
       { kind: 'pin', a: 2, b: 4, aWorld: { x: 2.7, y: 4.8 }, bWorld: { x: 2.7, y: 4.8 } },
       { kind: 'pin', a: 5, b: 3, aWorld: { x: 2.7, y: 2 }, bWorld: { x: 2.7, y: 2 } },
       { kind: 'pin', a: 5, b: 4, aWorld: { x: -2.7, y: 2 }, bWorld: { x: -2.7, y: 2 } },
-      { kind: 'jack', a: 2, b: 5, aWorld: { x: 0, y: 4.8 }, bWorld: { x: 0, y: 2 }, min: 1.1, max: 2.9, manual: true, extend: 0.35 },
+      { id: 41, kind: 'jack', a: 2, b: 5, aWorld: { x: 0, y: 4.8 }, bWorld: { x: 0, y: 2 }, min: 1.1, max: 2.9, manual: true, extend: 0.35 },
   ],
   controls: [
-      { id: 40, kind: 'slider', x: 6, y: 2, target: null, action: 'extend', label: 'Raise', value: 0.35 },
+      { id: 40, kind: 'slider', x: 6, y: 2, target: 41, action: 'extend', label: 'Raise', value: 0.35 },
   ],
   },
   funnel: {
