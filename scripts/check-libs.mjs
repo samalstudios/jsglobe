@@ -8,6 +8,7 @@ import {
   sphericalLens, concaveLens,
 } from '../js/lib/optics.js';
 import { clipPolygons, polygonArea } from '../js/lib/clip.js';
+import { encodeQr } from '../js/lib/qr.js';
 
 let pass = 0;
 const failures = [];
@@ -164,10 +165,264 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
   ok('clip keeps vertices exact', spread.every((point) => Number.isInteger(point.x * 2) && Number.isInteger(point.y * 2)));
 }
 
+// ---- qr: read the code back the way a scanner does ------------------
+{
+  const ECC_PER_BLOCK = {
+    L: [-1, 7, 10, 15, 20, 26, 18, 20, 24, 30, 18, 20, 24, 26, 30, 22, 24, 28, 30, 28, 28, 28, 28, 30, 30, 26, 28, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
+    M: [-1, 10, 16, 26, 18, 24, 16, 18, 22, 22, 26, 30, 22, 22, 24, 24, 28, 28, 26, 26, 26, 26, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28],
+    Q: [-1, 13, 22, 18, 26, 18, 24, 18, 22, 20, 24, 28, 26, 24, 20, 30, 24, 28, 28, 26, 30, 28, 30, 30, 30, 30, 28, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
+    H: [-1, 17, 28, 22, 16, 22, 28, 26, 26, 24, 28, 24, 28, 22, 24, 24, 30, 28, 28, 26, 28, 30, 24, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
+  };
+  const BLOCKS = {
+    L: [-1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 4, 4, 4, 4, 4, 6, 6, 6, 6, 7, 8, 8, 9, 9, 10, 12, 12, 12, 13, 14, 15, 16, 17, 18, 19, 19, 20, 21, 22, 24, 25],
+    M: [-1, 1, 1, 1, 2, 2, 4, 4, 4, 5, 5, 5, 8, 9, 9, 10, 10, 11, 13, 14, 16, 17, 17, 18, 20, 21, 23, 25, 26, 28, 29, 31, 33, 35, 37, 38, 40, 43, 45, 47, 49],
+    Q: [-1, 1, 1, 2, 2, 4, 4, 6, 6, 8, 8, 8, 10, 12, 16, 12, 17, 16, 18, 21, 20, 23, 23, 25, 27, 29, 34, 34, 35, 38, 40, 43, 45, 48, 51, 53, 56, 59, 62, 65, 68],
+    H: [-1, 1, 1, 2, 4, 4, 4, 5, 6, 8, 8, 11, 11, 16, 16, 18, 16, 19, 21, 25, 25, 25, 34, 30, 32, 35, 37, 40, 42, 45, 48, 51, 54, 57, 60, 63, 66, 70, 74, 77, 81],
+  };
+  const ECL_OF = { 1: 'L', 0: 'M', 3: 'Q', 2: 'H' };
+
+  const EXP = new Uint8Array(512);
+  const LOG = new Uint8Array(256);
+  let seed = 1;
+  for (let i = 0; i < 255; i += 1) {
+    EXP[i] = seed;
+    LOG[seed] = i;
+    seed <<= 1;
+    if (seed & 0x100) seed ^= 0x11d;
+  }
+  for (let i = 255; i < 512; i += 1) EXP[i] = EXP[i - 255];
+  const times = (a, b) => (a === 0 || b === 0 ? 0 : EXP[LOG[a] + LOG[b]]);
+
+  const rawModules = (version) => {
+    let total = (16 * version + 128) * version + 64;
+    if (version >= 2) {
+      const count = Math.floor(version / 7) + 2;
+      total -= (25 * count - 10) * count - 55;
+      if (version >= 7) total -= 36;
+    }
+    return total;
+  };
+  const dataWords = (version, ecl) => Math.floor(rawModules(version) / 8) - ECC_PER_BLOCK[ecl][version] * BLOCKS[ecl][version];
+
+  const alignAt = (version) => {
+    if (version === 1) return [];
+    const count = Math.floor(version / 7) + 2;
+    const step = version === 32 ? 26 : Math.ceil((version * 4 + 4) / (count * 2 - 2)) * 2;
+    const spots = [6];
+    for (let at = version * 4 + 10; spots.length < count; at -= step) spots.splice(1, 0, at);
+    return spots;
+  };
+
+  const functionMap = (version) => {
+    const size = version * 4 + 17;
+    const map = Array.from({ length: size }, () => new Array(size).fill(false));
+    const fill = (x0, y0, w, h) => {
+      for (let y = y0; y < y0 + h; y += 1) {
+        for (let x = x0; x < x0 + w; x += 1) if (x >= 0 && y >= 0 && x < size && y < size) map[y][x] = true;
+      }
+    };
+    fill(0, 0, 8, 8);
+    fill(size - 8, 0, 8, 8);
+    fill(0, size - 8, 8, 8);
+    for (let i = 0; i < size; i += 1) {
+      map[6][i] = true;
+      map[i][6] = true;
+    }
+    const spots = alignAt(version);
+    for (const cy of spots) {
+      for (const cx of spots) {
+        if ((cx === 6 && cy === 6) || (cx === 6 && cy === size - 7) || (cx === size - 7 && cy === 6)) continue;
+        fill(cx - 2, cy - 2, 5, 5);
+      }
+    }
+    for (let i = 0; i < 9; i += 1) {
+      map[8][i] = true;
+      map[i][8] = true;
+    }
+    for (let i = 0; i < 8; i += 1) {
+      map[8][size - 1 - i] = true;
+      map[size - 1 - i][8] = true;
+    }
+    if (version >= 7) {
+      for (let i = 0; i < 18; i += 1) {
+        const a = Math.floor(i / 3);
+        const b = size - 11 + (i % 3);
+        map[b][a] = true;
+        map[a][b] = true;
+      }
+    }
+    return map;
+  };
+
+  const MASKS = [
+    (x, y) => (x + y) % 2 === 0,
+    (x, y) => y % 2 === 0,
+    (x) => x % 3 === 0,
+    (x, y) => (x + y) % 3 === 0,
+    (x, y) => (Math.floor(y / 2) + Math.floor(x / 3)) % 2 === 0,
+    (x, y) => ((x * y) % 2) + ((x * y) % 3) === 0,
+    (x, y) => (((x * y) % 2) + ((x * y) % 3)) % 2 === 0,
+    (x, y) => (((x + y) % 2) + ((x * y) % 3)) % 2 === 0,
+  ];
+
+  const readFormat = (modules) => {
+    const bits = [];
+    for (let i = 0; i < 6; i += 1) bits.push(modules[i][8] ? 1 : 0);
+    bits.push(modules[7][8] ? 1 : 0);
+    bits.push(modules[8][8] ? 1 : 0);
+    bits.push(modules[8][7] ? 1 : 0);
+    for (let i = 9; i < 15; i += 1) bits.push(modules[8][14 - i] ? 1 : 0);
+    let value = 0;
+    bits.forEach((bit, index) => {
+      value |= bit << index;
+    });
+    value ^= 0x5412;
+    let best = null;
+    for (let candidate = 0; candidate < 32; candidate += 1) {
+      let rest = candidate;
+      for (let i = 0; i < 10; i += 1) rest = (rest << 1) ^ ((rest >>> 9) * 0x537);
+      const full = (candidate << 10) | rest;
+      let apart = 0;
+      let diff = full ^ value;
+      while (diff) {
+        apart += diff & 1;
+        diff >>>= 1;
+      }
+      if (!best || apart < best.apart) best = { apart, candidate };
+    }
+    return { ecl: ECL_OF[best.candidate >> 3], mask: best.candidate & 7, apart: best.apart };
+  };
+
+  const readWords = (modules, version, mask) => {
+    const size = version * 4 + 17;
+    const map = functionMap(version);
+    const bits = [];
+    let right = size - 1;
+    while (right >= 1) {
+      if (right === 6) right = 5;
+      for (let vertical = 0; vertical < size; vertical += 1) {
+        for (let offset = 0; offset < 2; offset += 1) {
+          const x = right - offset;
+          const upward = ((right + 1) & 2) === 0;
+          const y = upward ? size - 1 - vertical : vertical;
+          if (map[y][x]) continue;
+          let bit = modules[y][x] ? 1 : 0;
+          if (MASKS[mask](x, y)) bit ^= 1;
+          bits.push(bit);
+        }
+      }
+      right -= 2;
+    }
+    const words = [];
+    for (let i = 0; i + 8 <= bits.length; i += 8) {
+      let byte = 0;
+      for (let k = 0; k < 8; k += 1) byte = (byte << 1) | bits[i + k];
+      words.push(byte);
+    }
+    return words;
+  };
+
+  const syndromesZero = (data, ecc) => {
+    const message = [...data, ...ecc];
+    for (let i = 0; i < ecc.length; i += 1) {
+      let sum = 0;
+      for (const byte of message) sum = times(sum, EXP[i]) ^ byte;
+      if (sum !== 0) return false;
+    }
+    return true;
+  };
+
+  const readQr = (code) => {
+    const format = readFormat(code.modules);
+    const words = readWords(code.modules, code.version, format.mask);
+    const total = dataWords(code.version, format.ecl);
+    const count = BLOCKS[format.ecl][code.version];
+    const eccLength = ECC_PER_BLOCK[format.ecl][code.version];
+    const short = Math.floor(total / count);
+    const longOnes = total % count;
+    const lengths = Array.from({ length: count }, (unused, i) => short + (i >= count - longOnes ? 1 : 0));
+
+    const blocks = Array.from({ length: count }, () => []);
+    let at = 0;
+    for (let i = 0; i < Math.max(...lengths); i += 1) {
+      for (let b = 0; b < count; b += 1) {
+        if (i < lengths[b]) blocks[b].push(words[at++]);
+      }
+    }
+    const eccs = Array.from({ length: count }, () => []);
+    for (let i = 0; i < eccLength; i += 1) {
+      for (let b = 0; b < count; b += 1) eccs[b].push(words[at++]);
+    }
+
+    const eccOk = blocks.every((block, b) => syndromesZero(block, eccs[b]));
+
+    const stream = blocks.flat();
+    const bits = [];
+    for (const byte of stream) {
+      for (let k = 7; k >= 0; k -= 1) bits.push((byte >>> k) & 1);
+    }
+    let cursor = 0;
+    const take = (length) => {
+      let value = 0;
+      for (let i = 0; i < length; i += 1) value = (value << 1) | bits[cursor++];
+      return value;
+    };
+    const mode = take(4);
+    const length = take(code.version < 10 ? 8 : 16);
+    const bytes = [];
+    for (let i = 0; i < length; i += 1) bytes.push(take(8));
+    const text = new TextDecoder().decode(Uint8Array.from(bytes));
+    return { text, eccOk, mode, format };
+  };
+
+  const payloads = [
+    ['a url', 'https://jsglobe.com'],
+    ['a wi-fi join', 'WIFI:T:WPA;S:Home network;P:hunter2;;'],
+    ['an email', 'mailto:hans.mustermann@example.com?subject=Hallo'],
+    ['an sms', 'SMSTO:+15550100:Running late'],
+    ['a location', 'geo:52.520008,13.404954'],
+    ['a contact card', 'BEGIN:VCARD\nVERSION:3.0\nFN:Erika Mustermann\nTEL:+15550100\nEND:VCARD'],
+    ['an event', 'BEGIN:VEVENT\nSUMMARY:Team standup\nDTSTART:20260901T090000Z\nEND:VEVENT'],
+    ['accented text', 'Grüße aus München'],
+    ['han characters', '光学实验室'],
+    ['one byte', 'a'],
+    ['the last byte of version 1', 'a'.repeat(17)],
+    ['the first byte of version 2', 'a'.repeat(18)],
+    ['an eight bit length', 'a'.repeat(182)],
+    ['a sixteen bit length', 'a'.repeat(183)],
+    ['a long payload', 'x'.repeat(900)],
+  ];
+
+  for (const [label, text] of payloads) {
+    for (const ecl of ['L', 'M', 'Q', 'H']) {
+      const code = encodeQr(text, ecl);
+      const read = readQr(code);
+      ok(`qr ${label} survives ${ecl} error correction`, read.eccOk, `version ${code.version}`);
+      ok(`qr ${label} reads back at ${ecl}`, read.text === text, `got ${read.text.slice(0, 24)}`);
+      ok(`qr ${label} states its level at ${ecl}`, read.format.ecl === ecl && read.format.apart === 0);
+      ok(`qr ${label} states its mask at ${ecl}`, read.format.mask === code.mask);
+    }
+  }
+
+  const one = encodeQr('https://jsglobe.com', 'M');
+  const corner = (cx, cy) => {
+    for (let dy = -3; dy <= 3; dy += 1) {
+      for (let dx = -3; dx <= 3; dx += 1) {
+        const ring = Math.max(Math.abs(dx), Math.abs(dy));
+        if (one.modules[cy + dy][cx + dx] !== (ring !== 2)) return false;
+      }
+    }
+    return true;
+  };
+  ok('qr draws the three finder patterns', corner(3, 3) && corner(one.size - 4, 3) && corner(3, one.size - 4));
+  ok('qr draws the timing patterns', [...Array(one.size - 16)].every((unused, i) => one.modules[6][i + 8] === (i % 2 === 0) && one.modules[i + 8][6] === (i % 2 === 0)));
+  ok('qr sets the dark module', one.modules[one.size - 8][8] === true);
+}
+
 if (failures.length) {
   console.error(`library check failed with ${failures.length} problem${failures.length === 1 ? '' : 's'}:`);
   failures.forEach((problem) => console.error(`  - ${problem}`));
   process.exit(1);
 }
 
-console.log(`libraries ok: ${pass} checks across chess move generation, optics and polygon clipping`);
+console.log(`libraries ok: ${pass} checks across chess move generation, optics, polygon clipping and qr codes`);

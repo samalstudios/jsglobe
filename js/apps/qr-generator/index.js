@@ -207,14 +207,18 @@ class QrGenerator extends JGApp {
     if (!payload.trim() || payload === 'WIFI:T:WPA;S:;;') {
       this.#code = null;
       frame.innerHTML = '';
-      status.textContent = 'Fill in the fields to generate a code.';
+      status.textContent = t('qr-generator.fillInTheFields', 'Fill in the fields to generate a code.');
       return;
     }
 
     try {
       this.#code = encodeQr(payload, this.$('#ecl').value);
       frame.innerHTML = this.#svg();
-      status.textContent = `Version ${this.#code.version} · ${this.#code.size}×${this.#code.size} modules · mask ${this.#code.mask} · ${this.#code.used} of ${this.#code.capacity} bytes used`;
+      status.textContent = t(
+        'qr-generator.codeSummary',
+        'Version {version} · {size}×{size} modules · mask {mask} · {used} of {capacity} bytes used',
+        { version: this.#code.version, size: this.#code.size, mask: this.#code.mask, used: this.#code.used, capacity: this.#code.capacity },
+      );
     } catch (error) {
       this.#code = null;
       frame.innerHTML = '';

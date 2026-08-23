@@ -43,6 +43,8 @@ export default {
     'qr-generator.allDay': 'Ganztägig',
     'qr-generator.latitude': 'Breitengrad',
     'qr-generator.longitude': 'Längengrad',
+    'qr-generator.fillInTheFields': 'Fülle die Felder aus, um einen Code zu erzeugen.',
+    'qr-generator.codeSummary': 'Version {version} · {size}×{size} Module · Maske {mask} · {used} von {capacity} Bytes belegt',
   },
   es: {
     'qr-generator.textOrUrl': 'Texto o URL',
@@ -88,6 +90,8 @@ export default {
     'qr-generator.allDay': 'Todo el día',
     'qr-generator.latitude': 'Latitud',
     'qr-generator.longitude': 'Longitud',
+    'qr-generator.fillInTheFields': 'Rellena los campos para generar un código.',
+    'qr-generator.codeSummary': 'Versión {version} · {size}×{size} módulos · máscara {mask} · {used} de {capacity} bytes usados',
   },
   zh: {
     'qr-generator.textOrUrl': '文本或网址',
@@ -133,5 +137,7 @@ export default {
     'qr-generator.allDay': '全天',
     'qr-generator.latitude': '纬度',
     'qr-generator.longitude': '经度',
+    'qr-generator.fillInTheFields': '填写字段以生成二维码。',
+    'qr-generator.codeSummary': '版本 {version} · {size}×{size} 模块 · 掩码 {mask} · 已用 {used}/{capacity} 字节',
   },
 };

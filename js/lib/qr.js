@@ -62,16 +62,16 @@ const generatorPolynomial = (degree) => {
     }
     result = next;
   }
-  return result;
+  return result.reverse();
 };
 
 const remainder = (data, degree) => {
-  const generator = generatorPolynomial(degree);
+  const divisor = generatorPolynomial(degree).slice(1);
   const result = new Array(degree).fill(0);
   data.forEach((byte) => {
     const factor = byte ^ result.shift();
     result.push(0);
-    generator.slice(1).forEach((coefficient, index) => {
+    divisor.forEach((coefficient, index) => {
       result[index] ^= multiply(coefficient, factor);
     });
   });

@@ -209,6 +209,7 @@ class JGInput extends JGElement {
     ['min', 'max', 'step'].forEach((attr) => {
       if (this.hasAttribute(attr)) control.setAttribute(attr, this.getAttribute(attr));
     });
+    this.on(control, 'input', () => this.emit('input', { value: control.value }));
     this.on(control, 'change', () => this.emit('change', { value: control.value }));
   }
 
@@ -279,8 +280,10 @@ class JGTextarea extends JGElement {
       ></textarea>
     `);
     const control = this.$('.control');
-    control.value = this.getAttribute('value') ?? this.#value;
+    control.value = this.getAttribute('value') ?? this.#value ?? '';
+    if (!control.value) control.value = this.textContent.trim();
     control.disabled = this.hasAttribute('disabled');
+    this.on(control, 'input', () => this.emit('input', { value: control.value }));
     this.on(control, 'change', () => this.emit('change', { value: control.value }));
   }
 
@@ -900,7 +903,9 @@ class JGSlider extends JGElement {
     `);
     this.on(this.$('input'), 'input', (event) => {
       this.$('.value').textContent = event.target.value;
+      this.emit('input', { value: Number(event.target.value) });
     });
+    this.on(this.$('input'), 'change', (event) => this.emit('change', { value: Number(event.target.value) }));
   }
 }
 
