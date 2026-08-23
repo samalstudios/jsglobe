@@ -1,7 +1,7 @@
 // Icon parts are generated rather than drawn one by one: each family takes a
 // few numbers and turns them into a distinct shape, so a handful of families
 // covers thousands of pieces. Everything is drawn inside a 0..100 box.
-import { iconNames, iconPath } from '../ui/icons.js';
+import { glyphNames, glyphPath } from './glyphs.js';
 
 const round = (value) => Math.round(value * 100) / 100;
 const point = (angle, radius, cx = 50, cy = 50) => [
@@ -491,7 +491,7 @@ const combos = (grid) => {
 };
 
 // The drawn icon set doubles as a source of parts.
-const GLYPHS = iconNames.map((name) => ({
+const GLYPHS = glyphNames.map((name) => ({
   id: `glyph:${name}`,
   family: 'glyph',
   group: 'symbols',
@@ -567,7 +567,7 @@ export const searchParts = (query, limit = 240) => {
 export function partMarkup(part, options = {}) {
   const { fill = 'currentColor', stroke = 'none', width = 6 } = options;
   if (part.kind === 'glyph') {
-    const body = iconPath(part.glyph);
+    const body = glyphPath(part.glyph);
     return `<g transform="translate(2 2) scale(4)" fill="none" stroke="${fill}" stroke-width="${width / 4}" stroke-linecap="round" stroke-linejoin="round">${body}</g>`;
   }
   return `<path d="${part.path}" fill="${fill}" stroke="${stroke}" stroke-width="${width}" stroke-linejoin="round" />`;

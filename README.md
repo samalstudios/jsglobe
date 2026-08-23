@@ -1,7 +1,8 @@
 # JS Globe
 
 A home screen for small developer tools. Pure JavaScript, custom elements, no framework, no build step.
-Every tool is a lazily loaded ES module with its own URL: `jsglobe.com/json-formatter`.
+Every tool is a lazily loaded ES module with its own URL: `jsglobe.com/apps/json-formatter`, in English,
+German, Spanish and Chinese.
 
 <img width="1624" height="1005" alt="demo" src="https://github.com/user-attachments/assets/c88bf003-c513-48a1-8341-cb93cfaebf34" />
 
@@ -36,12 +37,20 @@ reads it and prefixes every link.
 index.html            shell document, sets <base> and loads the module graph
 css/theme.css         design tokens (light and dark), toast styles
 js/main.js            entry point: theme, router
-js/core/              runtime: dom, router, storage, settings, layout, registry, usage, workspaces
+js/core/              runtime: dom, router, storage, settings, layout, registry, usage, workspaces, i18n
 js/ui/                shell elements: shell, home, dock, windows, spotlight, library, menus, icons, kit
-js/apps/catalog.js    the app store manifest
-js/apps/*.js          one file per tool
-js/lib/               dependency-free algorithms (md5, qr, holidays)
+js/platform.js        the platform library, grouped by domain
+js/lib/               the libraries themselves, app agnostic
+js/i18n/              interface translations per language
+js/apps/<id>/         one folder per tool: index.js, meta.js, styles.css, i18n.js
+js/apps/catalog.js    generated from the meta files, do not edit by hand
+js/apps/order.json    home screen order
 scripts/serve.mjs     static dev server with SPA fallback
+scripts/build-catalog.mjs   rebuild the catalog after adding a tool
+scripts/build-seo.mjs       prerender every page in every language
+scripts/check-seo.mjs       verify the prerendered pages and the sitemap
+scripts/check-platform.mjs  verify the library layering
+scripts/i18n-build.mjs      rebuild the per app dictionaries
 ```
 
 ### Core concepts
@@ -55,14 +64,25 @@ scripts/serve.mjs     static dev server with SPA fallback
 
 ## Adding a tool
 
-Two steps. First write the element in `js/apps/your-tool.js`:
+A tool is a folder. Nothing outside it needs editing by hand.
+
+```
+js/apps/word-count/
+  index.js     the element
+  meta.js      the catalog entry
+  styles.css   the tool's own styles
+  i18n.js      its translations
+```
+
+`index.js` holds the element:
 
 ```js
-import { JGApp, define, html, css } from '../core/app.js';
+import { JGApp, define, html, styleSheet } from '../../core/app.js';
+import { appText } from '../../core/i18n.js';
+import strings from './i18n.js';
 
-const sheet = css`
-  .out { font-family: var(--font-mono); }
-`;
+const t = appText(strings);
+const sheet = await styleSheet(import.meta.url);
 
 class WordCount extends JGApp {
   static appId = 'word-count';
@@ -70,14 +90,15 @@ class WordCount extends JGApp {
 
   renderApp() {
     this.paint(html`<div class="app">
-      <jg-field label="Text">
-        <jg-textarea id="input" rows="6" placeholder="Paste text"></jg-textarea>
+      <jg-field label="${t('word-count.text', 'Text')}">
+        <jg-textarea id="input" rows="6" placeholder="${t('word-count.paste', 'Paste text')}"></jg-textarea>
       </jg-field>
       <jg-output id="out"></jg-output>
     </div>`);
 
     this.on(this.$('#input'), 'input', () => {
-      this.$('#out').value = `${this.$('#input').value.trim().split(/\s+/).filter(Boolean).length} words`;
+      const words = this.$('#input').value.trim().split(/\s+/).filter(Boolean).length;
+      this.$('#out').value = t('word-count.count', '{n} words', { n: words });
     });
   }
 
@@ -89,10 +110,10 @@ class WordCount extends JGApp {
 define('jg-app-word-count', WordCount);
 ```
 
-Then register it in `js/apps/catalog.js`:
+`meta.js` is the catalog entry, including the translated name and tagline:
 
 ```js
-{
+export default {
   id: 'word-count',
   name: 'Word Count',
   tagline: 'Count words, characters and lines',
@@ -103,16 +124,39 @@ Then register it in `js/apps/catalog.js`:
   keywords: ['words', 'count', 'length'],
   tag: 'jg-app-word-count',
   widget: true,
-  load: () => import('./word-count.js'),
-  settings: [
-    { key: 'live', label: 'Live counting', type: 'switch', default: true },
-  ],
-}
+  i18n: {
+    de: { name: 'Wortzähler', tagline: 'Wörter, Zeichen und Zeilen zählen' },
+    es: { name: 'Contador de palabras', tagline: 'Cuenta palabras, caracteres y líneas' },
+    zh: { name: '字数统计', tagline: '统计词数、字符数和行数' },
+  },
+  load: () => import('./index.js'),
+};
 ```
 
-That is all. The tool now appears on the home screen and in the library, is searchable, has the URL
-`/word-count`, can be pinned or added as a widget, and its `settings` schema is rendered automatically
-in the Settings app.
+`i18n.js` maps the keys used in `index.js`, one block per language:
+
+```js
+export default {
+  de: { 'word-count.text': 'Text', 'word-count.paste': 'Text einfügen', 'word-count.count': '{n} Wörter' },
+  es: { 'word-count.text': 'Texto', 'word-count.paste': 'Pega el texto', 'word-count.count': '{n} palabras' },
+  zh: { 'word-count.text': '文本', 'word-count.paste': '粘贴文本', 'word-count.count': '{n} 个词' },
+};
+```
+
+Then rebuild the generated files:
+
+```sh
+node scripts/build-catalog.mjs
+node scripts/build-seo.mjs
+```
+
+The tool now appears on the home screen and in the library, is searchable in every language, has the
+URL `/apps/word-count` with a prerendered page per language, can be pinned or added as a widget, and
+its `settings` schema is rendered automatically in the Settings app.
+
+Keys always carry an English fallback as the second argument to `t()`, so a tool reads correctly before
+any translation exists. Use a literal key: `t('word-count.text', 'Text')`, never a template literal,
+or `scripts/i18n-build.mjs` cannot see it and will report the key as dropped.
 
 ### What a tool gets
 
@@ -136,8 +180,79 @@ Colours come from tokens only (`--background`, `--foreground`, `--card`, `--bord
 
 ### Icons
 
-`js/ui/icons.js` holds a duotone line set drawn on a 24x24 grid. Add a path there and reference it by
-name from the catalog. An optional entry in `ACCENTS` is drawn in the secondary colour.
+`js/lib/glyphs.js` holds a duotone line set drawn on a 24x24 grid as plain data. Add a path there and
+reference it by name from `meta.js`. An optional entry in `ACCENTS` is drawn in the secondary colour.
+`js/ui/icons.js` wraps the data in the `icon()` renderer for the interface.
+
+## Platform library
+
+`js/lib` holds the algorithms, and `js/platform.js` publishes them grouped by domain. Nothing in
+`js/lib` imports from `js/apps` or `js/ui`, so any tool can use any of it:
+
+```js
+import { physics, qr, chess } from '../../platform.js';
+
+const world = physics.createWorld();
+```
+
+Import a single domain directly when that is all a tool needs, which keeps the download smaller:
+
+```js
+import { createWorld } from '../../lib/physics.js';
+```
+
+| Domain | What it offers |
+| --- | --- |
+| `physics` | Rigid bodies, pins, rods, springs, jacks, motors, gears, collisions |
+| `logic` | Gates, flip flops, counters, decoders, multiplexers over a net list |
+| `circuit` | Modified nodal analysis with diodes, transistors and time stepping |
+| `clip` | Polygon union, subtract and intersect |
+| `svgShapes` | Read an SVG into simplified outlines |
+| `glyphs` | The drawn icon outlines as data |
+| `iconParts` | Thousands of generated icon parts, searchable and grouped |
+| `iconCompose` | Turn words into a stack of icon parts |
+| `poster` | Poster canvases, themes, frames, gallery |
+| `palette` | Colour scales, harmonies and contrast |
+| `molecule3d` | Draw molecules in 3D on a canvas |
+| `qr` | QR codes and barcodes as matrices |
+| `md5`, `sshKeys` | Digests and OpenSSH keys |
+| `chess`, `chessAi`, `chessOpenings` | Rules, search and opening theory |
+| `elements`, `molecules`, `holidays` | Reference data |
+| `composeK8s` | Compose files to Kubernetes manifests |
+| `designs` | Named document storage per tool, with import and export |
+
+`node scripts/check-platform.mjs` verifies the layering: no library reaching upwards, every library
+published, every domain described.
+
+## Languages
+
+The site runs in English, German, Spanish and Chinese. The language is part of the path: English stays
+at `/`, the others take a prefix.
+
+```
+/apps/json-formatter        English
+/de/apps/json-formatter     German
+/es/apps/json-formatter     Spanish
+/zh/apps/json-formatter     Chinese
+```
+
+The router reads the prefix, strips it from the route and puts it back on every link it builds, so
+navigation stays inside the language. The picker in the title bar switches without a reload.
+
+- `js/core/languages.js` lists the languages. Adding one means a line here, a dictionary in `js/i18n`,
+  a `handle` block in the `Caddyfile`, and a rerun of `build-seo.mjs`.
+- `js/i18n/<lang>.js` translates the shell, the categories and the prerendered page copy.
+- `js/apps/<id>/i18n.js` translates that tool, loaded with the tool rather than up front.
+- `js/apps/<id>/meta.js` carries the translated name and tagline, which is what the home screen,
+  library, spotlight, window titles and search all read.
+
+`scripts/build-seo.mjs` prerenders every page in every language with translated titles, descriptions
+and crawlable body, reciprocal `hreflang` alternates plus `x-default`, per language `og:locale` and
+`html lang`, and one sitemap carrying every alternate. `scripts/check-seo.mjs` verifies all of it.
+
+`scripts/i18n-build.mjs` rebuilds the per tool dictionaries from `js/i18n/glossary.json`, keeping any
+translation already written. It reports keys it cannot see as literal `t()` calls, which are about to
+be dropped.
 
 ## Local AI
 
