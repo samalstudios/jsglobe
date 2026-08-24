@@ -18,6 +18,7 @@ const fill = (text, vars) =>
   vars ? String(text).replace(/\{(\w+)\}/g, (match, key) => (key in vars ? String(vars[key]) : match)) : text;
 
 const T = (lang, key, english, vars) => fill(packs[lang]?.seo?.[key] ?? english, vars);
+const U = (lang, key, english) => packs[lang]?.ui?.[key] ?? english;
 
 const appName = (lang, app) => app.i18n?.[lang]?.name ?? app.name;
 const appTagline = (lang, app) => app.i18n?.[lang]?.tagline ?? app.tagline;
@@ -88,6 +89,17 @@ ${[]
   .join('\n')}
 ${MARK_CLOSE}`.trim();
 
+const siteFooter = (lang) =>
+  `<footer><nav>` +
+  [
+    [`/apps`, U(lang, 'nav.allTools', 'All tools')],
+    [`/privacy`, U(lang, 'nav.privacy', 'Privacy')],
+    [`/disclaimer`, U(lang, 'nav.disclaimer', 'Disclaimer')],
+  ]
+    .map(([path, label]) => `<a href="${link(lang, path)}">${escape(label)}</a>`)
+    .join(' ') +
+  `</nav></footer>`;
+
 const page = (meta, body) => {
   let out = template;
   out = out.replace(/\s*<meta name="description"[^>]*>/, '');
@@ -97,7 +109,7 @@ const page = (meta, body) => {
   out = out.replace(/<html lang="[^"]*"/, `<html lang="${localeOf(meta.lang)}"`);
   out = out.replace(/<title>[\s\S]*?<\/title>/, `<title>${escape(meta.title)}</title>`);
   out = out.replace('</head>', `${head(meta)}\n</head>`);
-  out = out.replace('<noscript>NOSCRIPT</noscript>', body);
+  out = out.replace('<noscript>NOSCRIPT</noscript>', body.replace('</noscript>', `${siteFooter(meta.lang)}</noscript>`));
   return out;
 };
 
