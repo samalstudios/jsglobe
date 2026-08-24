@@ -363,7 +363,7 @@ class JGHome extends JGElement {
     this.style.setProperty('--tile-size', `${tile}px`);
 
     const descriptors = this.#descriptors();
-    if (this.#page === null) this.#page = descriptors[0]?.type === 'search' ? Math.min(1, descriptors.length - 1) : 0;
+    if (this.#page === null) this.#page = 0;
     this.#page = clamp(this.#page, 0, descriptors.length - 1);
 
     this.paint(html`

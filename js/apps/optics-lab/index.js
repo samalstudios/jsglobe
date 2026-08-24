@@ -571,6 +571,53 @@ class OpticsLab extends JGApp {
     context.restore();
   }
 
+  #hatchBack(context, element, surfaces, paint) {
+    const gap = 7 / this.#zoom;
+    const tick = 7 / this.#zoom;
+    const inward = element.kind === 'mirrorConvex';
+
+    context.save();
+    context.strokeStyle = paint.line;
+    context.globalAlpha = 0.5;
+    context.lineWidth = 1.1 / this.#zoom;
+    context.beginPath();
+
+    for (const surface of surfaces) {
+      if (surface.kind === 'arc') {
+        const sweep = surface.to - surface.from;
+        const length = Math.abs(sweep) * surface.radius;
+        const steps = Math.max(2, Math.round(length / gap));
+        for (let i = 0; i <= steps; i += 1) {
+          const angle = surface.from + (sweep * i) / steps;
+          const px = surface.centre.x + Math.cos(angle) * surface.radius;
+          const py = surface.centre.y + Math.sin(angle) * surface.radius;
+          const nx = (inward ? -1 : 1) * Math.cos(angle);
+          const ny = (inward ? -1 : 1) * Math.sin(angle);
+          context.moveTo(px, py);
+          context.lineTo(px + (nx - ny) * tick * 0.7, py + (ny + nx) * tick * 0.7);
+        }
+        continue;
+      }
+
+      const dx = surface.b.x - surface.a.x;
+      const dy = surface.b.y - surface.a.y;
+      const length = Math.hypot(dx, dy);
+      if (!length) continue;
+      const ux = dx / length;
+      const uy = dy / length;
+      const steps = Math.max(2, Math.round(length / gap));
+      for (let i = 0; i <= steps; i += 1) {
+        const px = surface.a.x + (ux * length * i) / steps;
+        const py = surface.a.y + (uy * length * i) / steps;
+        context.moveTo(px, py);
+        context.lineTo(px + (-uy + ux) * tick * 0.7, py + (ux + uy) * tick * 0.7);
+      }
+    }
+
+    context.stroke();
+    context.restore();
+  }
+
   #drawHandle(context, element, paint) {
     const handle = this.#handleAt(element);
     context.save();
@@ -650,6 +697,7 @@ class OpticsLab extends JGApp {
     } else if (element.kind === 'mirrorPlane' || element.kind === 'mirrorConcave' || element.kind === 'mirrorConvex') {
       context.lineWidth = (picked ? 5 : 4) / this.#zoom;
       stroke(surfaces);
+      this.#hatchBack(context, element, surfaces, paint);
     } else if (element.kind === 'screen') {
       context.setLineDash([8 / this.#zoom, 6 / this.#zoom]);
       context.lineWidth = (picked ? 4 : 3) / this.#zoom;

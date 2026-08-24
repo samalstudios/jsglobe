@@ -33,6 +33,8 @@ export * as molecule3d from './lib/gl-molecule.js';
 
 // ---- codes -----------------------------------------------------------
 export * as qr from './lib/qr.js';
+export * as qrDecode from './lib/qr-decode.js';
+export * as barcode from './lib/barcode.js';
 export * as md5 from './lib/md5.js';
 export * as sshKeys from './lib/ssh-keys.js';
 
@@ -69,7 +71,9 @@ export const SURFACE = {
   poster: 'Poster canvases, themes, frames and the gallery of designs.',
   palette: 'Colour scales, harmonies and contrast.',
   molecule3d: 'Draw molecules in 3D on a canvas.',
-  qr: 'QR codes and barcodes as matrices, ready to draw.',
+  qr: 'QR codes as matrices, ready to draw.',
+  qrDecode: 'Read a QR code from a picture, repairing damage as a scanner does.',
+  barcode: 'Draw and read the common bar codes: EAN, UPC, Code 128, Code 39 and ITF.',
   md5: 'MD5 digests.',
   sshKeys: 'Generate and read OpenSSH keys.',
   chess: 'Chess rules: move generation, check, mate, FEN and SAN.',

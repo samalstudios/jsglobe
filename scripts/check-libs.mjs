@@ -9,6 +9,10 @@ import {
 } from '../js/lib/optics.js';
 import { clipPolygons, polygonArea } from '../js/lib/clip.js';
 import { encodeQr } from '../js/lib/qr.js';
+import { decodeQrMatrix, scanQrImage, correctBlock } from '../js/lib/qr-decode.js';
+import {
+  encodeCode128, encodeEan13, encodeEan8, encodeCode39, decodeBarcodeRuns, eanCheckDigit,
+} from '../js/lib/barcode.js';
 
 let pass = 0;
 const failures = [];
@@ -419,10 +423,174 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
   ok('qr sets the dark module', one.modules[one.size - 8][8] === true);
 }
 
+// ---- reading codes back out of a picture -----------------------------
+{
+  const seedFrom = (start) => {
+    let value = start;
+    return () => {
+      value = (value * 1103515245 + 12345) & 0x7fffffff;
+      return value / 0x7fffffff;
+    };
+  };
+
+  for (const [text, level] of [
+    ['https://jsglobe.com/apps/scanner', 'M'],
+    ['Grüße aus München, Erika Mustermann', 'Q'],
+    ['光学实验室 と 日本語', 'H'],
+    ['WIFI:T:WPA;S:Home network;P:hunter2;;', 'L'],
+    ['0123456789', 'M'],
+    ['x'.repeat(700), 'L'],
+  ]) {
+    const code = encodeQr(text, level);
+    const read = decodeQrMatrix(code.modules);
+    ok(`qr reader gets back ${JSON.stringify(text.slice(0, 18))}`, read?.text === text, read ? read.text.slice(0, 20) : 'nothing');
+    ok(`qr reader names the level of ${JSON.stringify(text.slice(0, 18))}`, read?.level === level && read?.version === code.version);
+  }
+
+  const guarded = encodeQr('https://jsglobe.com/apps/scanner', 'H');
+  const roll = seedFrom(20260824);
+  let survived = 0;
+  let mistaken = 0;
+  for (let run = 0; run < 40; run += 1) {
+    const copy = guarded.modules.map((row) => [...row]);
+    for (let hit = 0; hit < 20; hit += 1) {
+      const x = Math.floor(roll() * guarded.size);
+      const y = Math.floor(roll() * guarded.size);
+      copy[y][x] = !copy[y][x];
+    }
+    const read = decodeQrMatrix(copy);
+    if (read?.text === 'https://jsglobe.com/apps/scanner') survived += 1;
+    else if (read) mistaken += 1;
+  }
+  ok('qr reader repairs a damaged code', survived >= 36, `${survived} of 40 with 20 modules flipped`);
+  ok('qr reader never invents a reading', mistaken === 0, `${mistaken} wrong`);
+
+  ok('qr reader reports a clean code as unrepaired', decodeQrMatrix(encodeQr('check', 'M').modules)?.repaired === 0);
+
+  const table = new Uint8Array(512);
+  const place = new Uint8Array(256);
+  let walk = 1;
+  for (let i = 0; i < 255; i += 1) {
+    table[i] = walk;
+    place[walk] = i;
+    walk <<= 1;
+    if (walk & 0x100) walk ^= 0x11d;
+  }
+  for (let i = 255; i < 512; i += 1) table[i] = table[i - 255];
+  const times = (a, b) => (a === 0 || b === 0 ? 0 : table[place[a] + place[b]]);
+
+  const divisorOf = (degree) => {
+    let poly = [1];
+    for (let i = 0; i < degree; i += 1) {
+      const next = new Array(poly.length + 1).fill(0);
+      for (let j = 0; j < poly.length; j += 1) {
+        next[j] ^= times(poly[j], table[i]);
+        next[j + 1] ^= poly[j];
+      }
+      poly = next;
+    }
+    return poly.reverse().slice(1);
+  };
+  const parityOf = (data, degree) => {
+    const divisor = divisorOf(degree);
+    const rest = new Array(degree).fill(0);
+    for (const byte of data) {
+      const factor = byte ^ rest.shift();
+      rest.push(0);
+      divisor.forEach((coefficient, index) => {
+        rest[index] ^= times(coefficient, factor);
+      });
+    }
+    return rest;
+  };
+
+  const mendable = [64, 84, 132, 84, 196, 196, 240, 236, 17, 236, 17, 236, 17, 236, 17, 236];
+  const sound = [...mendable, ...parityOf(mendable, 10)];
+  ok('qr reader accepts a sound block untouched', correctBlock(sound, 10)?.fixed === 0);
+
+  for (const breaks of [1, 2, 3, 4, 5]) {
+    const nudged = [...sound];
+    for (let i = 0; i < breaks; i += 1) nudged[i * 3] ^= 0x5a + i;
+    const mended = correctBlock(nudged, 10);
+    ok(`qr reader mends ${breaks} broken code word${breaks === 1 ? '' : 's'}`, mended?.data.join() === sound.join(), `${mended ? mended.fixed : 'gave up'}`);
+  }
+
+  const wrecked = sound.map((value, index) => (index < 6 ? value ^ 0x7f : value));
+  ok('qr reader gives up rather than guess', correctBlock(wrecked, 10) === null);
+
+  const draw = (code, { scale = 6, margin = 4, rotate = 0 } = {}) => {
+    const span = (code.size + margin * 2) * scale;
+    const width = Math.ceil(span * 1.7);
+    const height = width;
+    const data = new Uint8ClampedArray(width * height * 4).fill(255);
+    const cos = Math.cos(rotate);
+    const sin = Math.sin(rotate);
+    for (let py = 0; py < height; py += 1) {
+      for (let px = 0; px < width; px += 1) {
+        const ux = px - width / 2;
+        const uy = py - height / 2;
+        const sx = ux * cos + uy * sin + span / 2;
+        const sy = -ux * sin + uy * cos + span / 2;
+        const mx = Math.floor(sx / scale) - margin;
+        const my = Math.floor(sy / scale) - margin;
+        const on = mx >= 0 && my >= 0 && mx < code.size && my < code.size ? code.modules[my][mx] : false;
+        const at = (py * width + px) * 4;
+        const value = on ? 20 : 235;
+        data[at] = value;
+        data[at + 1] = value;
+        data[at + 2] = value;
+        data[at + 3] = 255;
+      }
+    }
+    return { data, width, height };
+  };
+
+  const photo = encodeQr('https://jsglobe.com/apps/scanner', 'M');
+  for (const [label, options] of [
+    ['straight on', {}],
+    ['small modules', { scale: 3 }],
+    ['a quarter turn', { rotate: Math.PI / 2 }],
+    ['upside down', { rotate: Math.PI }],
+    ['on the diagonal', { rotate: Math.PI / 4 }],
+    ['slightly tilted', { rotate: Math.PI / 12 }],
+  ]) {
+    const read = scanQrImage(draw(photo, options));
+    ok(`qr found in a picture ${label}`, read?.text === 'https://jsglobe.com/apps/scanner', read ? 'wrong text' : 'not found');
+  }
+
+  const runsOf = (bits) => {
+    const runs = [];
+    let at = 0;
+    while (at < bits.length) {
+      let length = 1;
+      while (at + length < bits.length && bits[at + length] === bits[at]) length += 1;
+      runs.push(length * 4);
+      at += length;
+    }
+    return runs;
+  };
+
+  for (const [label, built, want, format] of [
+    ['code 128', encodeCode128('TOOLBOX-2026'), 'TOOLBOX-2026', 'Code 128'],
+    ['code 128 with a url', encodeCode128('https://jsglobe.com'), 'https://jsglobe.com', 'Code 128'],
+    ['ean-13', encodeEan13('4006381333931'), '4006381333931', 'EAN-13'],
+    ['upc-a', encodeEan13('0036000291452'), '036000291452', 'UPC-A'],
+    ['ean-8', encodeEan8('96385074'), '96385074', 'EAN-8'],
+    ['code 39', encodeCode39('PART 42-A'), 'PART 42-A', 'Code 39'],
+  ]) {
+    const read = decodeBarcodeRuns(runsOf(built.bits), built.bits[0] === '1');
+    ok(`bar code reader gets back ${label}`, read?.text === want, read ? read.text : 'nothing');
+    ok(`bar code reader names ${label}`, read?.format === format, read ? read.format : 'nothing');
+  }
+
+  ok('bar code check digit follows the standard', eanCheckDigit('400638133393') === 1 && eanCheckDigit('003600029145') === 2);
+  ok('bar code reader turns down noise', decodeBarcodeRuns([3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7], true) === null);
+}
+
 if (failures.length) {
   console.error(`library check failed with ${failures.length} problem${failures.length === 1 ? '' : 's'}:`);
   failures.forEach((problem) => console.error(`  - ${problem}`));
   process.exit(1);
 }
 
-console.log(`libraries ok: ${pass} checks across chess move generation, optics, polygon clipping and qr codes`);
+console.log(`libraries ok: ${pass} checks across chess move generation, optics, polygon clipping, and writing and reading codes`);

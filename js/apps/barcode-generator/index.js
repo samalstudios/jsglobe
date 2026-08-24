@@ -2,116 +2,14 @@ import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { debounce, copyText, download, toast } from '../../core/util.js';
+import { encodeCode128, encodeEan13, encodeEan8, encodeCode39 } from '../../lib/barcode.js';
 
 const t = appText(strings);
 
 const sheet = await styleSheet(import.meta.url);
 
-const CODE128 = [
-  '212222', '222122', '222221', '121223', '121322', '131222', '122213', '122312', '132212', '221213',
-  '221312', '231212', '112232', '122132', '122231', '113222', '123122', '123221', '223211', '221132',
-  '221231', '213212', '223112', '312131', '311222', '321122', '321221', '312212', '322112', '322211',
-  '212123', '212321', '232121', '111323', '131123', '131321', '112313', '132113', '132311', '211313',
-  '231113', '231311', '112133', '112331', '132131', '113123', '113321', '133121', '313121', '211331',
-  '231131', '213113', '213311', '213131', '311123', '311321', '331121', '312113', '312311', '332111',
-  '314111', '221411', '431111', '111224', '111422', '121124', '121421', '141122', '141221', '112214',
-  '112412', '122114', '122411', '142112', '142211', '241211', '221114', '413111', '241112', '134111',
-  '111242', '121142', '121241', '114212', '124112', '124211', '411212', '421112', '421211', '212141',
-  '214121', '412121', '111143', '111341', '131141', '114113', '114311', '411113', '411311', '113141',
-  '114131', '311141', '411131', '211412', '211214', '211232', '2331112',
-];
-
-const EAN_LEFT_ODD = ['0001101', '0011001', '0010011', '0111101', '0100011', '0110001', '0101111', '0111011', '0110111', '0001011'];
-const EAN_LEFT_EVEN = ['0100111', '0110011', '0011011', '0100001', '0011101', '0111001', '0000101', '0010001', '0001001', '0010111'];
-const EAN_RIGHT = ['1110010', '1100110', '1101100', '1000010', '1011100', '1001110', '1010000', '1000100', '1001000', '1110100'];
-const EAN_PARITY = ['OOOOOO', 'OOEOEE', 'OOEEOE', 'OOEEEO', 'OEOOEE', 'OEEOOE', 'OEEEOO', 'OEOEOE', 'OEOEEO', 'OEEOEO'];
-
-const CODE39 = {
-  0: '101001101101', 1: '110100101011', 2: '101100101011', 3: '110110010101', 4: '101001101011',
-  5: '110100110101', 6: '101100110101', 7: '101001011011', 8: '110100101101', 9: '101100101101',
-  A: '110101001011', B: '101101001011', C: '110110100101', D: '101011001011', E: '110101100101',
-  F: '101101100101', G: '101010011011', H: '110101001101', I: '101101001101', J: '101011001101',
-  K: '110101010011', L: '101101010011', M: '110110101001', N: '101011010011', O: '110101101001',
-  P: '101101101001', Q: '101010110011', R: '110101011001', S: '101101011001', T: '101011011001',
-  U: '110010101011', V: '100110101011', W: '110011010101', X: '100101101011', Y: '110010110101',
-  Z: '100110110101', '-': '100101011011', '.': '110010101101', ' ': '100110101101', $: '100100100101',
-  '/': '100100101001', '+': '100101001001', '%': '101001001001', '*': '100101101101',
-};
-
-const checksum128 = (values) => values.reduce((total, value, index) => total + value * (index === 0 ? 1 : index), 0) % 103;
-
-const encodeCode128 = (text) => {
-  if (/[^\x20-\x7e]/.test(text)) throw new Error('Code 128 here supports printable ASCII only');
-  const values = [104];
-  [...text].forEach((character) => values.push(character.charCodeAt(0) - 32));
-  values.push(checksum128(values));
-  values.push(106);
-  return values.map((value) => CODE128[value]).join('');
-};
-
-const widthsToBits = (widths) => {
-  let bits = '';
-  let dark = true;
-  [...widths].forEach((width) => {
-    bits += (dark ? '1' : '0').repeat(Number(width));
-    dark = !dark;
-  });
-  return bits;
-};
-
-const eanCheckDigit = (digits) => {
-  const total = [...digits].reduce((sum, digit, index) => {
-    const weight = digits.length === 12 ? (index % 2 === 0 ? 1 : 3) : index % 2 === 0 ? 3 : 1;
-    return sum + Number(digit) * weight;
-  }, 0);
-  return (10 - (total % 10)) % 10;
-};
-
-const encodeEan13 = (input) => {
-  const digits = input.replace(/\D/g, '');
-  if (digits.length < 12) throw new Error('EAN-13 needs 12 or 13 digits');
-  const body = digits.slice(0, 12);
-  const check = digits.length >= 13 ? Number(digits[12]) : eanCheckDigit(body);
-  if (digits.length >= 13 && check !== eanCheckDigit(body)) throw new Error(`Check digit should be ${eanCheckDigit(body)}`);
-
-  const parity = EAN_PARITY[Number(body[0])];
-  let bits = '101';
-  for (let index = 1; index <= 6; index += 1) {
-    const digit = Number(body[index]);
-    bits += parity[index - 1] === 'O' ? EAN_LEFT_ODD[digit] : EAN_LEFT_EVEN[digit];
-  }
-  bits += '01010';
-  for (let index = 7; index < 12; index += 1) bits += EAN_RIGHT[Number(body[index])];
-  bits += EAN_RIGHT[check];
-  bits += '101';
-
-  return { bits, text: `${body}${check}` };
-};
-
-const encodeEan8 = (input) => {
-  const digits = input.replace(/\D/g, '');
-  if (digits.length < 7) throw new Error('EAN-8 needs 7 or 8 digits');
-  const body = digits.slice(0, 7);
-  const check = digits.length >= 8 ? Number(digits[7]) : eanCheckDigit(body);
-
-  let bits = '101';
-  for (let index = 0; index < 4; index += 1) bits += EAN_LEFT_ODD[Number(body[index])];
-  bits += '01010';
-  for (let index = 4; index < 7; index += 1) bits += EAN_RIGHT[Number(body[index])];
-  bits += EAN_RIGHT[check];
-  bits += '101';
-
-  return { bits, text: `${body}${check}` };
-};
-
-const encodeCode39 = (input) => {
-  const text = input.toUpperCase();
-  if ([...text].some((character) => !CODE39[character])) throw new Error('Code 39 supports A-Z, 0-9, space and - . $ / + %');
-  return { bits: [...`*${text}*`].map((character) => CODE39[character]).join('0'), text };
-};
-
 const FORMATS = {
-  code128: { label: t('barcode-generator.code128', 'Code 128'), hint: 'Any printable ASCII', build: (value) => ({ bits: widthsToBits(encodeCode128(value)), text: value }) },
+  code128: { label: t('barcode-generator.code128', 'Code 128'), hint: 'Any printable ASCII', build: encodeCode128 },
   ean13: { label: t('barcode-generator.ean13', 'EAN-13'), hint: '12 or 13 digits', build: encodeEan13 },
   ean8: { label: t('barcode-generator.ean8', 'EAN-8'), hint: '7 or 8 digits', build: encodeEan8 },
   code39: { label: t('barcode-generator.code39', 'Code 39'), hint: 'A-Z, digits and - . $ / + %', build: encodeCode39 },
