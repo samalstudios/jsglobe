@@ -86,7 +86,7 @@ const DEFAULTS = {
   lensIdeal: { angle: 0, height: 160, focal: 150 },
   lensGlass: { angle: 0, height: 150, curve: 0.0035, index: 1.52 },
   lensConcave: { angle: 0, height: 150, curve: 0.0035, index: 1.52 },
-  mirrorPlane: { angle: Math.PI / 2, length: 160 },
+  mirrorPlane: { angle: -Math.PI / 2, length: 160 },
   mirrorConcave: { angle: Math.PI, radius: 300, span: 1 },
   mirrorConvex: { angle: 0, radius: 300, span: 1 },
   block: { angle: 0, width: 160, height: 200, index: 1.52 },
@@ -229,6 +229,13 @@ class OpticsLab extends JGApp {
   }
 
   #wireBoard() {
+    this.hotkeys((event) => {
+      if (event.key !== 'Delete' && event.key !== 'Backspace') return;
+      if (!this.#current()) return;
+      event.preventDefault();
+      this.#remove();
+    });
+
     const canvas = this.$('#view');
     this.on(canvas, 'pointerdown', (event) => this.#down(event));
     this.on(canvas, 'pointermove', (event) => this.#move(event));

@@ -151,6 +151,10 @@ export function traceRay(scene, start, options = {}) {
     const entering = dot(ray.direction, hit.normal) < 0;
 
     if (role === 'mirror') {
+      if (!entering) {
+        events.push({ kind: 'block', point: hit.point, surface: hit.surface });
+        break;
+      }
       ray = { origin: hit.point, direction: unit(reflect(ray.direction, facing)) };
       events.push({ kind: 'reflect', point: hit.point });
       continue;
@@ -305,7 +309,7 @@ export const curvedMirror = (x, y, radius, span, angle = 0, concave = true) => {
   const centre = { x: x + Math.cos(angle) * (concave ? radius : -radius), y: y + Math.sin(angle) * (concave ? radius : -radius) };
   const facing = concave ? angle + Math.PI : angle;
   const half = span / 2;
-  return [arc(centre, Math.abs(radius), facing - half, facing + half, { role: 'mirror' })];
+  return [arc(centre, Math.abs(radius), facing - half, facing + half, { role: 'mirror', flip: concave })];
 };
 
 export const screen = (x, y, length, angle = 0) => {

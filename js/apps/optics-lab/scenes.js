@@ -80,8 +80,8 @@ const SCENES = {
     group: 'mirrors',
     elements: [
       { kind: 'beam', x: -320, y: -120, angle: 0, width: 60, rays: 5 },
-      { kind: 'mirrorPlane', x: 0, y: -120, angle: Math.PI / 4, length: 130 },
-      { kind: 'mirrorPlane', x: 0, y: 120, angle: -Math.PI / 4, length: 130 },
+      { kind: 'mirrorPlane', x: 0, y: -120, angle: (Math.PI * 5) / 4, length: 130 },
+      { kind: 'mirrorPlane', x: 0, y: 120, angle: Math.PI / 4, length: 130 },
       { kind: 'screen', x: 300, y: 120, angle: Math.PI / 2, height: 200 },
     ],
   },

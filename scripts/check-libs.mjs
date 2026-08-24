@@ -59,15 +59,25 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
   const mirror = planeMirror(0, 0, 400, 0);
   const bounce = traceRay({ surfaces: mirror }, { origin: { x: -100, y: -100 }, direction: { x: Math.cos(rad(45)), y: Math.sin(rad(45)) } }, { bounces: 3 });
   const leg = { x: bounce.path[2].x - bounce.path[1].x, y: bounce.path[2].y - bounce.path[1].y };
+  const mirrorFace = (surfaces, origin, direction) =>
+    traceRay({ surfaces }, { origin, direction }, { bounces: 4, reach: 400 }).events.map((event) => event.kind).join(',');
+  ok('optics a flat mirror reflects off its face', mirrorFace(planeMirror(0, 0, 200, -Math.PI / 2), { x: -100, y: 0 }, { x: 1, y: 0 }) === 'reflect');
+  ok('optics a flat mirror does not reflect off its back', mirrorFace(planeMirror(0, 0, 200, -Math.PI / 2), { x: 100, y: 0 }, { x: -1, y: 0 }) === 'block');
+  ok('optics a concave mirror reflects off its hollow', mirrorFace(curvedMirror(0, 0, 300, 1, Math.PI, true), { x: -200, y: 0 }, { x: 1, y: 0 }) === 'reflect');
+  ok('optics a concave mirror does not reflect off its back', mirrorFace(curvedMirror(0, 0, 300, 1, Math.PI, true), { x: 200, y: 0 }, { x: -1, y: 0 }) === 'block');
+  ok('optics a convex mirror reflects off its bulge', mirrorFace(curvedMirror(0, 0, 300, 1, 0, false), { x: 200, y: 0 }, { x: -1, y: 0 }) === 'reflect');
+  ok('optics a convex mirror does not reflect off its back', mirrorFace(curvedMirror(0, 0, 300, 1, 0, false), { x: -200, y: 0 }, { x: 1, y: 0 }) === 'block');
+
   close('optics mirror reflects at the same angle', Math.abs(deg(Math.atan2(-leg.y, leg.x))), 45);
 
   const radius = 200;
-  const dish = curvedMirror(0, 0, radius, rad(50), 0, true);
+  const dish = curvedMirror(0, 0, radius, rad(50), Math.PI, true);
   const axisCross = [];
   for (const ray of beamRays(-300, 0, 40, 0, 5)) {
     const { path } = traceRay({ surfaces: dish }, ray, { bounces: 3, reach: 2000 });
     if (path.length < 3) continue;
     const [, a, b] = path;
+    if (Math.abs(b.y - a.y) < 1e-6) continue;
     const t = (0 - a.y) / (b.y - a.y);
     if (Number.isFinite(t)) axisCross.push(a.x + (b.x - a.x) * t);
   }
