@@ -5369,6 +5369,50 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/scanner"/>
   </url>
   <url>
+    <loc>https://jsglobe.com/apps/tax-calculator</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/tax-calculator"/>
+  </url>
+  <url>
+    <loc>https://jsglobe.com/de/apps/tax-calculator</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/tax-calculator"/>
+  </url>
+  <url>
+    <loc>https://jsglobe.com/es/apps/tax-calculator</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/tax-calculator"/>
+  </url>
+  <url>
+    <loc>https://jsglobe.com/zh/apps/tax-calculator</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/apps/tax-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/tax-calculator"/>
+  </url>
+  <url>
     <loc>https://jsglobe.com/apps/category/crypto</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>

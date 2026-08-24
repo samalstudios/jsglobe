@@ -9,6 +9,8 @@ import {
 } from '../js/lib/optics.js';
 import { clipPolygons, polygonArea } from '../js/lib/clip.js';
 import { encodeQr } from '../js/lib/qr.js';
+import { COUNTRIES as TAX_COUNTRIES } from '../js/lib/tax-countries.js';
+import { rates as taxRates, progressive as taxBands } from '../js/lib/tax.js';
 import { decodeQrMatrix, scanQrImage, correctBlock } from '../js/lib/qr-decode.js';
 import {
   encodeCode128, encodeEan13, encodeEan8, encodeCode39, decodeBarcodeRuns, eanCheckDigit,
@@ -597,10 +599,79 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
   ok('bar code reader turns down noise', decodeBarcodeRuns([3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7], true) === null);
 }
 
+// ---- tax: worked by hand from the published bands ---------------------
+{
+  const country = (id) => TAX_COUNTRIES.find((entry) => entry.id === id);
+  const at = (id, input) => {
+    const home = country(id);
+    const filled = {};
+    for (const field of home.fields) filled[field.key] = field.default;
+    return taxRates(home, { ...filled, ...input });
+  };
+  const lineOf = (result, label) => result.lines.find((line) => line.label === label)?.amount ?? 0;
+
+  const ukAtLimit = at('uk', { gross: 50270 });
+  close('tax uk basic rate band', lineOf(ukAtLimit, 'Income tax'), 37700 * 0.2, 0.01);
+  close('tax uk national insurance to the limit', lineOf(ukAtLimit, 'National Insurance'), 37700 * 0.08, 0.01);
+  close('tax uk allowance gone by the top', lineOf(at('uk', { gross: 125140 }), 'Income tax'), 37700 * 0.2 + (125140 - 37700) * 0.4, 0.01);
+  ok('tax uk nothing owed at the allowance', at('uk', { gross: 12570 }).taken === 0);
+  close('tax uk the sixty two percent trap', at('uk', { gross: 110000 }).marginal, 0.62, 0.005);
+  close('tax uk forty seven above the trap', at('uk', { gross: 130000 }).marginal, 0.47, 0.005);
+  close('tax uk scotland top rate', at('uk', { gross: 200000, region: 'scotland' }).marginal, 0.5, 0.005);
+
+  const usAt100 = at('us', { gross: 100000 });
+  close('tax us federal on a hundred thousand', lineOf(usAt100, 'Federal income tax'),
+    11925 * 0.1 + (48475 - 11925) * 0.12 + (85000 - 48475) * 0.22, 0.01);
+  close('tax us social security', lineOf(usAt100, 'Social Security'), 6200, 0.01);
+  close('tax us medicare', lineOf(usAt100, 'Medicare'), 1450, 0.01);
+  close('tax us social security stops at the ceiling', lineOf(at('us', { gross: 400000 }), 'Social Security'), 176100 * 0.062, 0.01);
+  ok('tax us joint keeps more than single', at('us', { gross: 120000, status: 'joint' }).net > at('us', { gross: 120000 }).net);
+
+  const deAt55 = at('de', { gross: 55000 });
+  const z = (55000 - 1230 - 17443) / 10000;
+  close('tax germany follows the official formula', lineOf(deAt55, 'Income tax'), (176.64 * z + 2397) * z + 1015.13, 1);
+  ok('tax germany splitting helps a couple', at('de', { gross: 90000, married: 'joint' }).net > at('de', { gross: 90000 }).net);
+  ok('tax germany church tax is optional', at('de', { gross: 55000, church: 'nine' }).taken > deAt55.taken);
+
+  const frAt45 = at('fr', { gross: 45000 });
+  const frBase = 45000 * 0.78 - Math.min(45000 * 0.78 * 0.1, 14171);
+  close('tax france taxes pay after contributions', lineOf(frAt45, 'Income tax'),
+    taxBands(frBase, [{ upTo: 11497, rate: 0 }, { upTo: 29315, rate: 0.11 }, { upTo: 83823, rate: 0.3 }, { upTo: 180294, rate: 0.41 }, { rate: 0.45 }]), 1);
+  ok('tax france children lower the bill', at('fr', { gross: 60000, children: 2 }).taken < at('fr', { gross: 60000 }).taken);
+
+  ok('tax ireland has no cliff at the prsi line',
+    at('ie', { gross: 18400 }).net > at('ie', { gross: 18200 }).net - 100,
+    `${at('ie', { gross: 18200 }).net} then ${at('ie', { gross: 18400 }).net}`);
+
+  const wide = ['HUF', 'CZK', 'SEK', 'NOK', 'DKK', 'PLN', 'RON'];
+  for (const home of TAX_COUNTRIES) {
+    const scale = wide.includes(home.currency) ? 40 : 1;
+    const filled = {};
+    for (const field of home.fields) filled[field.key] = field.default;
+
+    ok(`tax ${home.id} takes nothing from nothing`, taxRates(home, { ...filled, gross: 0 }).taken === 0);
+
+    let last = -Infinity;
+    let worst = 0;
+    let steepest = 0;
+    let adds = true;
+    for (let gross = 0; gross <= 260000 * scale; gross += 500 * scale) {
+      const result = taxRates(home, { ...filled, gross });
+      if (Math.abs(result.gross - (result.net + result.taken)) > 0.05) adds = false;
+      if (result.net < last) worst = Math.max(worst, last - result.net);
+      last = result.net;
+      steepest = Math.max(steepest, result.marginal);
+    }
+    ok(`tax ${home.id} lines add back to the gross`, adds);
+    ok(`tax ${home.id} never pays less for earning more`, worst <= 200 * scale, `worst drop ${worst.toFixed(0)}`);
+    ok(`tax ${home.id} keeps the marginal rate believable`, steepest <= 0.85, `${(steepest * 100).toFixed(0)}%`);
+  }
+}
+
 if (failures.length) {
   console.error(`library check failed with ${failures.length} problem${failures.length === 1 ? '' : 's'}:`);
   failures.forEach((problem) => console.error(`  - ${problem}`));
   process.exit(1);
 }
 
-console.log(`libraries ok: ${pass} checks across chess move generation, optics, polygon clipping, and writing and reading codes`);
+console.log(`libraries ok: ${pass} checks across chess move generation, optics, polygon clipping, writing and reading codes, and tax`);

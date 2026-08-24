@@ -32,6 +32,8 @@ export * as palette from './lib/palette.js';
 export * as molecule3d from './lib/gl-molecule.js';
 
 // ---- codes -----------------------------------------------------------
+export * as tax from './lib/tax.js';
+export * as taxCountries from './lib/tax-countries.js';
 export * as qr from './lib/qr.js';
 export * as qrDecode from './lib/qr-decode.js';
 export * as barcode from './lib/barcode.js';
@@ -71,6 +73,8 @@ export const SURFACE = {
   poster: 'Poster canvases, themes, frames and the gallery of designs.',
   palette: 'Colour scales, harmonies and contrast.',
   molecule3d: 'Draw molecules in 3D on a canvas.',
+  tax: 'Progressive bands, ceilings and tapers for working out tax.',
+  taxCountries: 'Take-home pay models for twenty three countries.',
   qr: 'QR codes as matrices, ready to draw.',
   qrDecode: 'Read a QR code from a picture, repairing damage as a scanner does.',
   barcode: 'Draw and read the common bar codes: EAN, UPC, Code 128, Code 39 and ITF.',

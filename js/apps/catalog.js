@@ -121,6 +121,7 @@ import pdf_studio from './pdf-studio/meta.js';
 import settings from './settings/meta.js';
 import optics_lab from './optics-lab/meta.js';
 import scanner from './scanner/meta.js';
+import tax_calculator from './tax-calculator/meta.js';
 import { categories } from './categories.js';
 
 export { categories };
@@ -249,4 +250,5 @@ export const catalog = [
   settings,
   optics_lab,
   scanner,
+  tax_calculator,
 ];
