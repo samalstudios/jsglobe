@@ -16,6 +16,7 @@ import './jg-spotlight.js';
 import './jg-commands.js';
 import './jg-library.js';
 import './jg-privacy.js';
+import './jg-disclaimer.js';
 import './jg-consent.js';
 
 const SITE_TITLE = 'Toolbox';
@@ -152,6 +153,7 @@ class JGShell extends JGElement {
       { id: 'search', group: 'Navigate', label: t('shell.searchTools', 'Search tools'), icon: 'search', shortcut: '⌘K', action: () => this.$('jg-spotlight').open() },
       { id: 'settings', group: 'Navigate', label: t('shell.openSettings', 'Open settings'), icon: 'cog', action: () => router.app('settings') },
       { id: 'privacy', group: 'Navigate', label: t('shell.openPrivacy', 'Open privacy policy'), icon: 'shield', action: () => router.go('/privacy') },
+      { id: 'disclaimer', group: 'Navigate', label: t('shell.openDisclaimer', 'Open the disclaimer'), icon: 'info', action: () => router.go('/disclaimer') },
 
       { id: 'theme-light', group: 'Appearance', label: t('shell.useLight', 'Use light theme'), icon: 'sun', value: theme === 'light' ? 'active' : '', action: () => settings.set('appearance.theme', 'light') },
       { id: 'theme-dark', group: 'Appearance', label: t('shell.useDark', 'Use dark theme'), icon: 'moon', value: theme === 'dark' ? 'active' : '', action: () => settings.set('appearance.theme', 'dark') },
@@ -232,11 +234,18 @@ class JGShell extends JGElement {
 
     if (route.name !== 'directory') this.$('jg-library')?.remove();
     if (route.name !== 'privacy') this.$('jg-privacy')?.remove();
+    if (route.name !== 'disclaimer') this.$('jg-disclaimer')?.remove();
     this.$('.missing')?.remove();
 
     if (route.name === 'privacy') {
       if (!this.$('jg-privacy')) this.$('.surface').append(document.createElement('jg-privacy'));
       document.title = `${t('privacy.pageTitle', 'Privacy policy')} | ${SITE_TITLE}`;
+      return;
+    }
+
+    if (route.name === 'disclaimer') {
+      if (!this.$('jg-disclaimer')) this.$('.surface').append(document.createElement('jg-disclaimer'));
+      document.title = `${t('disclaimer.title', 'Disclaimer')} | ${SITE_TITLE}`;
       return;
     }
 

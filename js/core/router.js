@@ -20,6 +20,7 @@ const parse = () => {
   if (!head) return { ...base, name: 'home' };
   if (head === 'search') return { ...base, name: 'search', query: params.q ?? '' };
   if (head === 'privacy') return { ...base, name: 'privacy' };
+  if (head === 'disclaimer') return { ...base, name: 'disclaimer' };
   if (head !== 'apps') return { ...base, name: 'app', appId: head, path: rest, legacy: true };
   if (!rest.length) return { ...base, name: 'directory', category: params.category ?? null };
   if (rest[0] === 'category') return { ...base, name: 'directory', category: rest[1] ?? null };

@@ -4,6 +4,7 @@ import strings from './i18n.js';
 import { icon } from '../../ui/icons.js';
 import { COUNTRIES } from '../../lib/tax-countries.js';
 import { rates } from '../../lib/tax.js';
+import { countryName, fieldLabel, optionLabel, hintLabel, noteLabel, lineLabel } from './labels.js';
 
 const t = appText(strings);
 const sheet = await styleSheet(import.meta.url);
@@ -41,7 +42,7 @@ class TaxCalculator extends JGApp {
         <aside class="ask">
           <jg-field label="${t('tax-calculator.country', 'Country')}">
             <jg-select id="country" value="${this.#country.id}">
-              ${COUNTRIES.map((entry) => html`<option value="${entry.id}">${entry.name}</option>`)}
+              ${COUNTRIES.map((entry) => html`<option value="${entry.id}">${countryName(entry.id, entry.name)}</option>`)}
             </jg-select>
           </jg-field>
 
@@ -107,14 +108,14 @@ class TaxCalculator extends JGApp {
     const shown = this.#country.fields.filter((field) => !field.when || field.when(this.#answers));
     host.innerHTML = html`${shown.map((field) => {
       if (field.type === 'select') {
-        return html`<jg-field label="${field.label}" hint="${field.hint ?? ''}">
+        return html`<jg-field label="${fieldLabel(field.label)}" hint="${field.hint ? hintLabel(field.hint) : ''}">
           <jg-select data-key="${field.key}" value="${String(this.#answers[field.key])}">
-            ${field.options.map((option) => html`<option value="${option.value}">${option.label}</option>`)}
+            ${field.options.map((option) => html`<option value="${option.value}">${optionLabel(option.label)}</option>`)}
           </jg-select>
         </jg-field>`;
       }
       const money = field.type === 'money';
-      return html`<jg-field label="${field.label}" hint="${field.hint ?? ''}">
+      return html`<jg-field label="${fieldLabel(field.label)}" hint="${field.hint ? hintLabel(field.hint) : ''}">
         <jg-input data-key="${field.key}" ${money ? 'grouped' : `type="number" min="0" step="${field.type === 'percent' ? '0.5' : '1'}"`}
           value="${String(this.#answers[field.key])}" suffix="${field.type === 'percent' ? '%' : money ? this.#country.currency : ''}"></jg-input>
       </jg-field>`;
@@ -140,7 +141,7 @@ class TaxCalculator extends JGApp {
   #paintNotes() {
     const list = this.$('#notes');
     if (!list) return;
-    list.innerHTML = html`${this.#country.notes.map((note) => html`<li>${note}</li>`)}
+    list.innerHTML = html`${this.#country.notes.map((note) => html`<li>${noteLabel(note)}</li>`)}
       <li>${t('tax-calculator.taxYear', 'Figures are for the {year} tax year.', { year: String(this.#country.year) })}</li>`;
   }
 
@@ -190,7 +191,7 @@ class TaxCalculator extends JGApp {
       <table class="rows">
         <tbody>
           ${result.lines.map((line) => html`<tr class="${line.kind}">
-            <td>${line.label}</td>
+            <td>${lineLabel(line.label)}</td>
             <td class="num">${this.#money(line.amount)}</td>
             <td class="num pct">${share(line.amount).toFixed(1)}%</td>
           </tr>`)}

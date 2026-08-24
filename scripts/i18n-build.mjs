@@ -16,9 +16,11 @@ const dropped = [];
 let written = 0;
 
 for (const id of targets) {
-  const file = `${APPS}/${id}/index.js`;
-  if (!existsSync(file)) continue;
-  const code = await readFile(file, 'utf8');
+  if (!existsSync(`${APPS}/${id}/index.js`)) continue;
+  const sources = (await readdir(`${APPS}/${id}`))
+    .filter((name) => name.endsWith('.js') && name !== 'i18n.js' && name !== 'meta.js')
+    .sort();
+  const code = (await Promise.all(sources.map((name) => readFile(`${APPS}/${id}/${name}`, 'utf8')))).join('\n');
 
   const keys = [...code.matchAll(/\bt\(\s*'((?:[^'\\]|\\.)*)'/g)].map((m) => m[1].replace(/\\'/g, "'"));
   if (!keys.length) continue;

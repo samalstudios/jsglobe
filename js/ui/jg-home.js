@@ -397,6 +397,8 @@ class JGHome extends JGElement {
                     <span>·</span>
                     <a href="${router.href('/privacy')}">${icon('shieldCheck', 14)}${t('nav.privacy', 'Privacy')}</a>
                     <span>·</span>
+                    <a href="${router.href('/disclaimer')}">${icon('info', 14)}${t('nav.disclaimer', 'Disclaimer')}</a>
+                    <span>·</span>
                     <a href="${REPO_URL}" target="_blank" rel="noopener noreferrer">${icon('github', 14)}GitHub</a>
                   </footer>
                 </section>`

@@ -430,6 +430,54 @@ for (const entry of LANGUAGES) {
   written.push(`${dir(lang, 'privacy')}/index.html`);
   if (lang === DEFAULT_LANGUAGE) routes.push({ path: '/privacy', priority: '0.3', freq: 'yearly' });
 
+  const disclaimerVars = { brand: NAME, repo: REPO };
+  const disclaimerBody = `<noscript>
+  <main>
+    <h1>${escape(T(lang, 'disclaimer.h1', 'Disclaimer'))}</h1>
+    <p>${escape(T(lang, 'disclaimer.intro', `The tools on ${NAME} are simplified models, checked against worked examples but leaving things out. Treat every result as a starting point to be confirmed.`, disclaimerVars))}</p>
+    <h2>${escape(T(lang, 'disclaimer.advice.h', 'Not professional advice'))}</h2>
+    <p>${escape(T(lang, 'disclaimer.advice.p', 'Nothing here is legal, tax, financial, medical or engineering advice, and using it creates no professional relationship. For anything that carries real consequence, ask someone qualified who knows your circumstances.'))}</p>
+    <h2>${escape(T(lang, 'disclaimer.data.h', 'Data from elsewhere'))}</h2>
+    <p>${escape(T(lang, 'disclaimer.data.p', 'Some tools fetch data from public services when you ask them to, such as exchange rates, prices and domain lookups. That data belongs to those services, may be delayed or wrong, and is passed on as it arrives without any checking.'))}</p>
+    <h2>${escape(T(lang, 'disclaimer.asis.h', 'Offered as they are'))}</h2>
+    <p>${escape(T(lang, 'disclaimer.asis.p', 'These tools come without warranty of any kind. They may contain mistakes, may be unavailable, and may change or disappear. To the extent the law allows, no liability is accepted for any loss arising from using them or relying on what they produce.'))}</p>
+    <h2>${escape(T(lang, 'disclaimer.source.h', 'Read the code'))}</h2>
+    <p>${escape(T(lang, 'disclaimer.source.p', `The site is open source at ${REPO}, so you can check exactly what any tool does.`, disclaimerVars)).replace(escape(REPO), `<a href="${REPO}">${REPO}</a>`)}</p>
+    <p><a href="${link(lang, '/apps')}">${escape(browseAll)}</a></p>
+  </main>
+</noscript>`;
+
+  await mkdir(dir(lang, 'disclaimer'), { recursive: true });
+  await writeFile(
+    `${dir(lang, 'disclaimer')}/index.html`,
+    page(
+      {
+        lang,
+        path: '/disclaimer',
+        title: T(lang, 'disclaimer.title', `Disclaimer - ${NAME}`, disclaimerVars),
+        description: T(
+          lang,
+          'disclaimer.description',
+          `What ${NAME} can and cannot be relied on for: results are estimates, nothing here is professional advice, and the tools come without warranty.`,
+          disclaimerVars,
+        ),
+        url: link(lang, '/disclaimer'),
+        keywords: T(lang, 'disclaimer.keywords', 'disclaimer, no warranty, not advice, terms of use'),
+        schema: {
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          name: T(lang, 'disclaimer.title', `Disclaimer - ${NAME}`, disclaimerVars),
+          url: link(lang, '/disclaimer'),
+          inLanguage: localeOf(lang),
+          publisher: { '@type': 'Organization', name: NAME, url: SITE },
+        },
+      },
+      disclaimerBody,
+    ),
+  );
+  written.push(`${dir(lang, 'disclaimer')}/index.html`);
+  if (lang === DEFAULT_LANGUAGE) routes.push({ path: '/disclaimer', priority: '0.3', freq: 'yearly' });
+
   const homeBody = `<noscript>
   <main>
     <h1>${NAME}</h1>

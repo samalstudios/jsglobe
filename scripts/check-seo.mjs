@@ -87,6 +87,7 @@ const routes = [
   { path: '', route: '/', label: 'home' },
   { path: 'apps', route: '/apps', label: 'library' },
   { path: 'privacy', route: '/privacy', label: 'privacy' },
+  { path: 'disclaimer', route: '/disclaimer', label: 'disclaimer' },
   ...groups.map((group) => ({
     path: `apps/category/${group.id}`,
     route: `/apps/category/${group.id}`,

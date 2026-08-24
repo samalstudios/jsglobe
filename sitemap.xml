@@ -6029,6 +6029,50 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/privacy"/>
   </url>
   <url>
+    <loc>https://jsglobe.com/disclaimer</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/disclaimer"/>
+  </url>
+  <url>
+    <loc>https://jsglobe.com/de/disclaimer</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/disclaimer"/>
+  </url>
+  <url>
+    <loc>https://jsglobe.com/es/disclaimer</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/disclaimer"/>
+  </url>
+  <url>
+    <loc>https://jsglobe.com/zh/disclaimer</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/disclaimer"/>
+  </url>
+  <url>
     <loc>https://jsglobe.com/</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
