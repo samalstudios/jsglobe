@@ -215,47 +215,129 @@ const germanBase = (income) => {
   return 0.45 * x - 19246.67;
 };
 
+const GERMAN_STATES = {
+  bw: { label: 'Baden-Wurttemberg', church: 0.08 },
+  by: { label: 'Bavaria', church: 0.08 },
+  be: { label: 'Berlin', church: 0.09 },
+  bb: { label: 'Brandenburg', church: 0.09 },
+  hb: { label: 'Bremen', church: 0.09 },
+  hh: { label: 'Hamburg', church: 0.09 },
+  he: { label: 'Hesse', church: 0.09 },
+  mv: { label: 'Mecklenburg-Vorpommern', church: 0.09 },
+  ni: { label: 'Lower Saxony', church: 0.09 },
+  nw: { label: 'North Rhine-Westphalia', church: 0.09 },
+  rp: { label: 'Rhineland-Palatinate', church: 0.09 },
+  sl: { label: 'Saarland', church: 0.09 },
+  sn: { label: 'Saxony', church: 0.09, careShift: 0.005 },
+  st: { label: 'Saxony-Anhalt', church: 0.09 },
+  sh: { label: 'Schleswig-Holstein', church: 0.09 },
+  th: { label: 'Thuringia', church: 0.09 },
+};
+
+const PENSION_CEILING = 96600;
+const HEALTH_CEILING = 66150;
+
+const germanTarif = (income) => {
+  const x = Math.floor(Math.max(0, income));
+  if (x <= 12096) return 0;
+  if (x <= 17443) {
+    const y = (x - 12096) / 10000;
+    return (932.3 * y + 1400) * y;
+  }
+  if (x <= 68480) {
+    const z = (x - 17443) / 10000;
+    return (176.64 * z + 2397) * z + 1015.13;
+  }
+  if (x <= 277825) return 0.42 * x - 10911.92;
+  return 0.45 * x - 19246.67;
+};
+
+const germanClassTax = (zvE, taxClass) => {
+  if (taxClass === 'three') return 2 * germanTarif(zvE / 2);
+  if (taxClass === 'five' || taxClass === 'six') {
+    const upper = germanTarif(zvE * 1.25);
+    const lower = germanTarif(zvE * 0.75);
+    return Math.max(germanTarif(zvE), 2 * (upper - lower));
+  }
+  return germanTarif(zvE);
+};
+
 const germany = {
   id: 'de',
   name: 'Germany',
   currency: 'EUR',
   year: YEAR,
   notes: [
-    'The official income tax formula, with the employee allowance for work costs.',
-    'Married couples are taxed by splitting, as class III or IV.',
-    'Pension contributions are not deducted from taxable income, so the tax shown runs a little high.',
-    'Health and care insurance use the average extra contribution.',
+    'The official tarif for the year, with the tax class applied as payroll does it.',
+    'Contributions are taken off before tax through the Vorsorgepauschale.',
+    'Child allowances lower the solidarity surcharge and church tax, not the income tax itself.',
+    'Saxony charges the employee half a point more for care insurance.',
   ],
   fields: [
-    { key: 'married', label: 'Assessment', type: 'select', default: 'single',
-      options: [{ value: 'single', label: 'On your own' }, { value: 'joint', label: 'Married, taxed jointly' }] },
-    { key: 'church', label: 'Church tax', type: 'select', default: 'none',
-      options: [{ value: 'none', label: 'None' }, { value: 'nine', label: '9 percent' }, { value: 'eight', label: '8 percent (Bavaria, Baden-Wurttemberg)' }] },
-    { key: 'children', label: 'Children', type: 'number', default: 0, hint: 'Changes the care insurance rate' },
+    { key: 'taxClass', label: 'Tax class', type: 'select', default: 'one',
+      options: [
+        { value: 'one', label: 'I, on your own' },
+        { value: 'two', label: 'II, single parent' },
+        { value: 'three', label: 'III, married, the higher earner' },
+        { value: 'four', label: 'IV, married, both earning alike' },
+        { value: 'five', label: 'V, married, the lower earner' },
+        { value: 'six', label: 'VI, a second job' },
+      ] },
+    { key: 'state', label: 'Federal state', type: 'select', default: 'nw',
+      options: Object.entries(GERMAN_STATES).map(([value, entry]) => ({ value, label: entry.label })) },
+    { key: 'church', label: 'Church member', type: 'select', default: 'no',
+      options: [{ value: 'no', label: 'No' }, { value: 'yes', label: 'Yes' }] },
+    { key: 'children', label: 'Children', type: 'number', default: 0, hint: 'Child allowances counted for you' },
+    { key: 'young', label: 'Under 23 and childless', type: 'select', default: 'no',
+      options: [{ value: 'no', label: 'No' }, { value: 'yes', label: 'Yes' }], hint: 'Under 23 you are spared the childless surcharge' },
+    { key: 'health', label: 'Health insurance', type: 'select', default: 'statutory',
+      options: [{ value: 'statutory', label: 'Statutory' }, { value: 'private', label: 'Private' }] },
+    { key: 'extra', label: 'Extra health contribution', type: 'percent', default: 2.5,
+      hint: 'Your fund sets this, 2.5 on average', when: (input) => (input.health ?? 'statutory') === 'statutory' },
+    { key: 'premium', label: 'Private premium a month', type: 'money', default: 750,
+      hint: 'Your share of health and care cover', when: (input) => input.health === 'private' },
   ],
-  compute({ gross, married = 'single', church = 'none', children = 0 }) {
-    const forTax = Math.max(0, gross - 1230);
-    const joint = married === 'joint';
-    const incomeTax = joint ? 2 * germanBase(forTax / 2) : germanBase(forTax);
+  compute({ gross, taxClass = 'one', state = 'nw', church = 'no', children = 0, young = 'no', health = 'statutory', extra = 2.5, premium = 750 }) {
+    const home = GERMAN_STATES[state] ?? GERMAN_STATES.nw;
+    const kids = Math.max(0, Math.floor(Number(children) || 0));
 
-    const freeOfSoli = joint ? 39900 : 19950;
-    const soli = incomeTax <= freeOfSoli ? 0 : Math.min(0.119 * (incomeTax - freeOfSoli), 0.055 * incomeTax);
-    const churchRate = church === 'nine' ? 0.09 : church === 'eight' ? 0.08 : 0;
+    const pension = capped(gross, 0.093, PENSION_CEILING);
+    const unemployment = capped(gross, 0.013, PENSION_CEILING);
 
-    const pension = capped(gross, 0.093, 96600);
-    const unemployment = capped(gross, 0.013, 96600);
-    const health = capped(gross, 0.073 + 0.0125, 66150);
-    const careRate = Number(children) > 0 ? 0.018 : 0.023;
-    const care = capped(gross, careRate, 66150);
+    let healthCost = 0;
+    let careCost = 0;
+    if (health === 'private') {
+      healthCost = Math.max(0, Number(premium) || 0) * 12;
+    } else {
+      const extraRate = Math.max(0, Number(extra) || 0) / 100;
+      healthCost = capped(gross, 0.073 + extraRate / 2, HEALTH_CEILING);
+      let careRate = 0.018;
+      if (kids === 0 && young !== 'yes') careRate += 0.006;
+      if (kids >= 2) careRate -= Math.min(kids, 5) === kids ? (Math.min(kids, 5) - 1) * 0.0025 : 0.01;
+      careRate = Math.max(0.008, careRate) + (home.careShift ?? 0);
+      careCost = capped(gross, careRate, HEALTH_CEILING);
+    }
+
+    const contributions = pension + unemployment + healthCost + careCost;
+    const zvE = Math.max(0, gross - 1230 - 36 - contributions);
+
+    const single = taxClass === 'two' ? Math.max(0, zvE - (4260 + Math.max(0, kids - 1) * 240)) : zvE;
+    const incomeTax = germanClassTax(single, taxClass);
+
+    const childAllowance = kids * (taxClass === 'three' ? 9600 : 4800);
+    const surchargeBase = germanClassTax(Math.max(0, single - childAllowance), taxClass);
+    const freeOf = taxClass === 'three' ? 39900 : 19950;
+    const soli = surchargeBase <= freeOf ? 0 : Math.min(0.119 * (surchargeBase - freeOf), 0.055 * surchargeBase);
+    const churchTax = church === 'yes' ? surchargeBase * home.church : 0;
 
     return summarise(gross, [
       { label: 'Income tax', amount: incomeTax, kind: 'tax' },
       { label: 'Solidarity surcharge', amount: soli, kind: 'tax' },
-      { label: 'Church tax', amount: incomeTax * churchRate, kind: 'tax' },
+      { label: 'Church tax', amount: churchTax, kind: 'tax' },
       { label: 'Pension insurance', amount: pension, kind: 'social' },
       { label: 'Unemployment insurance', amount: unemployment, kind: 'social' },
-      { label: 'Health insurance', amount: health, kind: 'social' },
-      { label: 'Care insurance', amount: care, kind: 'social' },
+      { label: health === 'private' ? 'Private health cover' : 'Health insurance', amount: healthCost, kind: 'social' },
+      { label: 'Care insurance', amount: careCost, kind: 'social' },
     ]);
   },
 };

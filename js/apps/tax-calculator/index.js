@@ -46,7 +46,7 @@ class TaxCalculator extends JGApp {
           </jg-field>
 
           <jg-field label="${t('tax-calculator.grossPay', 'Gross pay a year')}" hint="${t('tax-calculator.beforeAnythingIsTaken', 'Before anything is taken off')}">
-            <jg-input id="gross" type="number" min="0" step="1000" value="${this.#gross}" suffix="${this.#country.currency}"></jg-input>
+            <jg-input id="gross" grouped inputmode="decimal" value="${this.#gross}" suffix="${this.#country.currency}"></jg-input>
           </jg-field>
 
           <div id="extra"></div>
@@ -104,7 +104,8 @@ class TaxCalculator extends JGApp {
   #paintFields() {
     const host = this.$('#extra');
     if (!host) return;
-    host.innerHTML = html`${this.#country.fields.map((field) => {
+    const shown = this.#country.fields.filter((field) => !field.when || field.when(this.#answers));
+    host.innerHTML = html`${shown.map((field) => {
       if (field.type === 'select') {
         return html`<jg-field label="${field.label}" hint="${field.hint ?? ''}">
           <jg-select data-key="${field.key}" value="${String(this.#answers[field.key])}">
@@ -112,9 +113,10 @@ class TaxCalculator extends JGApp {
           </jg-select>
         </jg-field>`;
       }
+      const money = field.type === 'money';
       return html`<jg-field label="${field.label}" hint="${field.hint ?? ''}">
-        <jg-input data-key="${field.key}" type="number" min="0" step="${field.type === 'percent' ? '0.5' : '1'}"
-          value="${String(this.#answers[field.key])}" suffix="${field.type === 'percent' ? '%' : ''}"></jg-input>
+        <jg-input data-key="${field.key}" ${money ? 'grouped' : `type="number" min="0" step="${field.type === 'percent' ? '0.5' : '1'}"`}
+          value="${String(this.#answers[field.key])}" suffix="${field.type === 'percent' ? '%' : money ? this.#country.currency : ''}"></jg-input>
       </jg-field>`;
     })}`;
 
@@ -125,7 +127,9 @@ class TaxCalculator extends JGApp {
         if (!key) return;
         const raw = event.detail?.value ?? event.target.value;
         const field = this.#country.fields.find((entry) => entry.key === key);
-        this.#answers[key] = field && field.type !== 'select' ? Number(raw) || 0 : raw;
+        const wasSelect = field && field.type === 'select';
+        this.#answers[key] = wasSelect ? raw : Number(raw) || 0;
+        if (wasSelect && this.#country.fields.some((entry) => entry.when)) this.#paintFields();
         this.#paintOut();
       };
       this.on(host, 'change', take);
@@ -203,7 +207,7 @@ class TaxCalculator extends JGApp {
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
       <div class="stack tight">
-        <div class="label">${t('tax-calculator.takeHomePay', 'Take-home Pay')}</div>
+        <div class="label">${t('tax-calculator.taxCalculator', 'Tax Calculator')}</div>
         <div class="hint">${t('tax-calculator.widgetBlurb', 'Net pay after tax in 23 countries, worked out on your device.')}</div>
       </div>
     </div>`);

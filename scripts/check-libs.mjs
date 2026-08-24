@@ -628,10 +628,31 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
   ok('tax us joint keeps more than single', at('us', { gross: 120000, status: 'joint' }).net > at('us', { gross: 120000 }).net);
 
   const deAt55 = at('de', { gross: 55000 });
-  const z = (55000 - 1230 - 17443) / 10000;
+  const deSocial = deAt55.social;
+  const zvE = 55000 - 1230 - 36 - deSocial;
+  const z = (zvE - 17443) / 10000;
   close('tax germany follows the official formula', lineOf(deAt55, 'Income tax'), (176.64 * z + 2397) * z + 1015.13, 1);
-  ok('tax germany splitting helps a couple', at('de', { gross: 90000, married: 'joint' }).net > at('de', { gross: 90000 }).net);
-  ok('tax germany church tax is optional', at('de', { gross: 55000, church: 'nine' }).taken > deAt55.taken);
+  ok('tax germany takes contributions off before tax', deSocial > 0 && zvE < 55000 - 1230);
+  ok('tax germany class three keeps more than class one', at('de', { gross: 90000, taxClass: 'three' }).net > at('de', { gross: 90000 }).net);
+  ok('tax germany class five keeps less than class one', at('de', { gross: 90000, taxClass: 'five' }).net < at('de', { gross: 90000 }).net);
+  ok('tax germany class four matches class one', at('de', { gross: 60000, taxClass: 'four' }).net === at('de', { gross: 60000 }).net);
+  ok('tax germany church tax costs more', at('de', { gross: 55000, church: 'yes' }).taken > deAt55.taken);
+  close('tax germany church tax is nine percent of the tax',
+    lineOf(at('de', { gross: 55000, church: 'yes' }), 'Church tax'), lineOf(deAt55, 'Income tax') * 0.09, 1);
+  close('tax germany bavaria charges eight percent',
+    lineOf(at('de', { gross: 55000, church: 'yes', state: 'by' }), 'Church tax'), lineOf(deAt55, 'Income tax') * 0.08, 1);
+  close('tax germany childless pay the care surcharge',
+    lineOf(at('de', { gross: 55000 }), 'Care insurance'), 55000 * 0.024, 0.01);
+  close('tax germany one child drops the surcharge',
+    lineOf(at('de', { gross: 55000, children: 1 }), 'Care insurance'), 55000 * 0.018, 0.01);
+  close('tax germany three children lower it further',
+    lineOf(at('de', { gross: 55000, children: 3 }), 'Care insurance'), 55000 * 0.013, 0.01);
+  close('tax germany saxony charges half a point more',
+    lineOf(at('de', { gross: 55000, state: 'sn' }), 'Care insurance'), 55000 * 0.029, 0.01);
+  close('tax germany pension stops at the ceiling',
+    lineOf(at('de', { gross: 200000 }), 'Pension insurance'), 96600 * 0.093, 0.01);
+  close('tax germany health stops at its own ceiling',
+    lineOf(at('de', { gross: 200000 }), 'Health insurance'), 66150 * 0.0855, 0.01);
 
   const frAt45 = at('fr', { gross: 45000 });
   const frBase = 45000 * 0.78 - Math.min(45000 * 0.78 * 0.1, 14171);

@@ -22,7 +22,7 @@ export default {
     'tax-calculator.socialContributions': 'Sozialabgaben',
     'tax-calculator.otherDeductions': 'Sonstiges',
     'tax-calculator.takeHome': 'Netto',
-    'tax-calculator.takeHomePay': 'Nettolohn',
+    'tax-calculator.taxCalculator': 'Steuerrechner',
     'tax-calculator.widgetBlurb': 'Nettolohn nach Steuern in 23 Ländern, auf deinem Gerät berechnet.',
   },
   es: {
@@ -48,7 +48,7 @@ export default {
     'tax-calculator.socialContributions': 'Cotizaciones sociales',
     'tax-calculator.otherDeductions': 'Otros',
     'tax-calculator.takeHome': 'Neto',
-    'tax-calculator.takeHomePay': 'Sueldo neto',
+    'tax-calculator.taxCalculator': 'Calculadora de impuestos',
     'tax-calculator.widgetBlurb': 'Salario neto tras impuestos en 23 países, calculado en tu dispositivo.',
   },
   zh: {
@@ -74,7 +74,7 @@ export default {
     'tax-calculator.socialContributions': '社会保险',
     'tax-calculator.otherDeductions': '其他',
     'tax-calculator.takeHome': '实得',
-    'tax-calculator.takeHomePay': '税后收入',
+    'tax-calculator.taxCalculator': '税费计算器',
     'tax-calculator.widgetBlurb': '计算 23 个国家的税后收入，全部在本机完成。',
   },
 };

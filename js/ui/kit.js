@@ -173,22 +173,70 @@ class JGInput extends JGElement {
 
   #value = '';
 
+  get #marks() {
+    const parts = new Intl.NumberFormat().formatToParts(12345.6);
+    return {
+      group: parts.find((part) => part.type === 'group')?.value ?? ',',
+      point: parts.find((part) => part.type === 'decimal')?.value ?? '.',
+    };
+  }
+
+  #bare(text) {
+    const { group, point } = this.#marks;
+    return String(text ?? '')
+      .split(group)
+      .join('')
+      .replace(point, '.')
+      .replace(/[^\d.-]/g, '');
+  }
+
+  #grouped(text) {
+    const { group, point } = this.#marks;
+    const bare = this.#bare(text);
+    if (!bare || bare === '-') return bare;
+    const sign = bare.startsWith('-') ? '-' : '';
+    const [whole, ...rest] = bare.replace('-', '').split('.');
+    const spaced = whole.replace(/\B(?=(\d{3})+(?!\d))/g, group);
+    return `${sign}${spaced}${rest.length ? point + rest.join('') : ''}`;
+  }
+
   get value() {
-    return this.$('.control')?.value ?? this.#value;
+    const shown = this.$('.control')?.value ?? this.#value;
+    return this.hasAttribute('grouped') ? this.#bare(shown) : shown;
   }
 
   set value(next) {
     this.#value = String(next ?? '');
     const control = this.$('.control');
-    if (control) control.value = this.#value;
+    if (control) control.value = this.hasAttribute('grouped') ? this.#grouped(this.#value) : this.#value;
   }
 
   get valueAsNumber() {
     return Number(this.value);
   }
 
+  #regroup(control) {
+    const before = control.value;
+    const digitsBefore = before.slice(0, control.selectionStart ?? before.length).replace(/\D/g, '').length;
+    const after = this.#grouped(before);
+    if (after === before) return;
+    control.value = after;
+    let seen = 0;
+    let at = after.length;
+    for (let i = 0; i < after.length; i += 1) {
+      if (/\d/.test(after[i])) seen += 1;
+      if (seen === digitsBefore) {
+        at = i + 1;
+        break;
+      }
+    }
+    if (digitsBefore === 0) at = 0;
+    control.setSelectionRange(at, at);
+  }
+
   render() {
-    const type = this.getAttribute('type') ?? 'text';
+    const grouped = this.hasAttribute('grouped');
+    const type = grouped ? 'text' : this.getAttribute('type') ?? 'text';
     const suffix = this.getAttribute('suffix');
     this.paint(html`
       <div class="wrap">
@@ -204,20 +252,28 @@ class JGInput extends JGElement {
       </div>
     `);
     const control = this.$('.control');
-    control.value = this.getAttribute('value') ?? this.#value;
+    const seed = this.getAttribute('value') ?? this.#value;
+    control.value = grouped ? this.#grouped(seed) : seed;
     control.disabled = this.hasAttribute('disabled');
+    if (grouped) control.setAttribute('inputmode', 'decimal');
     ['min', 'max', 'step'].forEach((attr) => {
       if (this.hasAttribute(attr)) control.setAttribute(attr, this.getAttribute(attr));
     });
-    this.on(control, 'input', () => this.emit('input', { value: control.value }));
-    this.on(control, 'change', () => this.emit('change', { value: control.value }));
+    this.on(control, 'input', () => {
+      if (grouped) this.#regroup(control);
+      this.emit('input', { value: this.value });
+    });
+    this.on(control, 'change', () => {
+      if (grouped) control.value = this.#grouped(control.value);
+      this.emit('change', { value: this.value });
+    });
   }
 
   attributeChangedCallback(name, previous, next) {
     if (previous === next) return;
     const control = this.$('.control');
     if (!control) return;
-    if (name === 'value') control.value = next ?? '';
+    if (name === 'value') control.value = this.hasAttribute('grouped') ? this.#grouped(next ?? '') : next ?? '';
     else if (name === 'disabled') control.disabled = this.hasAttribute('disabled');
     else if (name === 'placeholder') control.placeholder = next ?? '';
     else if (next === null) control.removeAttribute(name);
