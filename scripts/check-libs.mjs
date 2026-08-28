@@ -9,6 +9,9 @@ import {
 } from '../js/lib/optics.js';
 import { clipPolygons, polygonArea } from '../js/lib/clip.js';
 import { encodeQr } from '../js/lib/qr.js';
+import { createPdf, widthOf as pdfWidth, wrapText as pdfWrap, toWinAnsi } from '../js/lib/pdf.js';
+import { layoutDocument } from '../js/lib/doc-layout.js';
+import { blocksToMarkdown, blocksToText, countWords, outlineOf } from '../js/lib/richtext.js';
 import { COUNTRIES as TAX_COUNTRIES } from '../js/lib/tax-countries.js';
 import { rates as taxRates, progressive as taxBands } from '../js/lib/tax.js';
 import { decodeQrMatrix, scanQrImage, correctBlock } from '../js/lib/qr-decode.js';
@@ -689,10 +692,71 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
   }
 }
 
+// ---- documents: pdf structure and page layout -------------------------
+{
+  close('pdf helvetica measures a known string', pdfWidth('Hello', 'helvetica', 12), (722 + 556 + 222 + 222 + 556) * 12 / 1000, 1e-9);
+  close('pdf courier is monospaced', pdfWidth('iiii', 'courier', 10), pdfWidth('WWWW', 'courier', 10), 1e-9);
+  ok('pdf bold is wider than regular', pdfWidth('Handgloves', 'helveticaBold', 12) > pdfWidth('Handgloves', 'helvetica', 12));
+  ok('pdf maps a curly quote into WinAnsi', toWinAnsi('’')[0] === 146);
+  ok('pdf keeps plain ascii as it is', toWinAnsi('A')[0] === 65);
+
+  const wrapped = pdfWrap('The quick brown fox jumps over the lazy dog and keeps on running', 'helvetica', 12, 150);
+  ok('pdf wraps to more than one line', wrapped.length > 1);
+  ok('pdf keeps every wrapped line inside the limit', wrapped.every((line) => pdfWidth(line, 'helvetica', 12) <= 150), `widest ${Math.max(...wrapped.map((line) => pdfWidth(line, 'helvetica', 12))).toFixed(1)}`);
+  ok('pdf loses no words when wrapping', wrapped.join(' ').split(/\s+/).join(' ') === 'The quick brown fox jumps over the lazy dog and keeps on running');
+
+  const doc = createPdf({ size: 'a4' });
+  doc.text('First', { x: 72, y: 100 });
+  doc.addPage();
+  doc.text('Second', { x: 72, y: 100, font: 'timesBold' });
+  const bytes = doc.save({ title: 'Check' });
+  const text = new TextDecoder('latin1').decode(bytes);
+
+  ok('pdf starts with the header', text.startsWith('%PDF-'));
+  ok('pdf ends with the marker', text.trimEnd().endsWith('%%EOF'));
+  ok('pdf reports both pages', doc.pageCount === 2);
+
+  const startxref = Number(text.slice(text.lastIndexOf('startxref') + 9).trim().split(/\s/)[0]);
+  ok('pdf points at its own table', text.slice(startxref, startxref + 4) === 'xref');
+  const rows = [...text.slice(startxref).matchAll(/^(\d{10}) (\d{5}) ([nf])/gm)];
+  const offsets = rows.map((row, index) => ({ index, at: Number(row[1]), free: row[3] === 'f' }));
+  ok('pdf lists every object in the table', offsets.length > 4);
+  ok(
+    'pdf offsets land on their objects',
+    offsets.every((row) => row.free || new RegExp(`^${row.index} 0 obj`).test(text.slice(row.at, row.at + 24))),
+  );
+
+  const blocks = [{ type: 'h1', runs: [{ text: 'Title' }] }];
+  for (let i = 0; i < 60; i += 1) blocks.push({ type: 'p', align: 'left', runs: [{ text: `Paragraph ${i}. ${'word '.repeat(40)}` }] });
+  const layout = layoutDocument(blocks, { size: 'a4', margin: 72 });
+  ok('layout runs onto several pages', layout.pages.length > 2, `${layout.pages.length} pages`);
+  ok('layout keeps every line above the bottom margin',
+    layout.pages.every((page) => page.items.every((item) => item.y <= layout.height - layout.margin + 14)));
+  ok('layout keeps every line inside the left margin',
+    layout.pages.every((page) => page.items.every((item) => item.x >= layout.margin - 20)));
+  ok('layout puts something on every page', layout.pages.every((page) => page.items.length > 0));
+
+  const narrow = layoutDocument(blocks, { size: 'a5', margin: 72 });
+  ok('layout needs more pages on smaller paper', narrow.pages.length > layout.pages.length);
+
+  const rich = [
+    { type: 'h1', runs: [{ text: 'Report' }] },
+    { type: 'p', runs: [{ text: 'Plain ' }, { text: 'bold', bold: true }] },
+    { type: 'bullet', depth: 0, runs: [{ text: 'One' }] },
+    { type: 'ordered', depth: 0, runs: [{ text: 'Two' }] },
+  ];
+  ok('markdown keeps the heading level', blocksToMarkdown(rich).startsWith('# Report'));
+  ok('markdown marks bold', blocksToMarkdown(rich).includes('**bold**'));
+  ok('markdown numbers an ordered item', blocksToMarkdown(rich).includes('1. Two'));
+  ok('text drops the marks', blocksToText(rich).includes('Plain bold'));
+  ok('the outline finds the heading', outlineOf(rich).length === 1 && outlineOf(rich)[0].text === 'Report');
+  ok('word count counts the words', countWords(rich).words === 5, `${countWords(rich).words}`);
+}
+
 if (failures.length) {
   console.error(`library check failed with ${failures.length} problem${failures.length === 1 ? '' : 's'}:`);
   failures.forEach((problem) => console.error(`  - ${problem}`));
   process.exit(1);
 }
 
-console.log(`libraries ok: ${pass} checks across chess move generation, optics, polygon clipping, writing and reading codes, and tax`);
+console.log(`libraries ok: ${pass} checks across chess move generation, optics, polygon clipping, writing and reading codes, tax, and documents`);

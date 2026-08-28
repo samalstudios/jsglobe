@@ -119,6 +119,7 @@ import physics_lab from './physics-lab/meta.js';
 import logic_lab from './logic-lab/meta.js';
 import pdf_studio from './pdf-studio/meta.js';
 import settings from './settings/meta.js';
+import doc_editor from './doc-editor/meta.js';
 import optics_lab from './optics-lab/meta.js';
 import scanner from './scanner/meta.js';
 import tax_calculator from './tax-calculator/meta.js';
@@ -248,6 +249,7 @@ export const catalog = [
   logic_lab,
   pdf_studio,
   settings,
+  doc_editor,
   optics_lab,
   scanner,
   tax_calculator,

@@ -34,6 +34,10 @@ export * as molecule3d from './lib/gl-molecule.js';
 // ---- codes -----------------------------------------------------------
 export * as tax from './lib/tax.js';
 export * as taxCountries from './lib/tax-countries.js';
+export * as pdf from './lib/pdf.js';
+export * as docx from './lib/docx.js';
+export * as richtext from './lib/richtext.js';
+export * as docLayout from './lib/doc-layout.js';
 export * as qr from './lib/qr.js';
 export * as qrDecode from './lib/qr-decode.js';
 export * as barcode from './lib/barcode.js';
@@ -75,6 +79,10 @@ export const SURFACE = {
   molecule3d: 'Draw molecules in 3D on a canvas.',
   tax: 'Progressive bands, ceilings and tapers for working out tax.',
   taxCountries: 'Take-home pay models for twenty three countries.',
+  pdf: 'Write PDF files: pages, the standard fonts, text, lines, images and links.',
+  docx: 'Write Word files from a block document.',
+  richtext: 'A block document model, read from and written back to HTML, markdown and plain text.',
+  docLayout: 'Lay a block document onto pages, for drawing on screen or writing to PDF.',
   qr: 'QR codes as matrices, ready to draw.',
   qrDecode: 'Read a QR code from a picture, repairing damage as a scanner does.',
   barcode: 'Draw and read the common bar codes: EAN, UPC, Code 128, Code 39 and ITF.',

@@ -421,7 +421,7 @@ class JGSelect extends JGElement {
       </div>
     `);
     const control = this.$('.control');
-    control.value = this.getAttribute('value') ?? this.#value ?? inline[0]?.value;
+    control.value = this.getAttribute('value') ?? (this.#value || inline[0]?.value) ?? '';
     control.disabled = this.hasAttribute('disabled');
     this.on(control, 'change', () => {
       this.#value = control.value;
