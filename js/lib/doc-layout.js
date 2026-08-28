@@ -105,47 +105,68 @@ export function layoutDocument(blocks, options = {}) {
   const margin = options.margin ?? 72;
   const base = options.font ?? 'helvetica';
   const spacing = options.spacing ?? 1.45;
-  const limit = width - margin * 2;
+  const full = width - margin * 2;
   const bottom = height - margin;
+  const columns = Math.max(1, Math.min(3, Math.round(options.columns ?? 1)));
+  const gutter = columns > 1 ? 26 : 0;
+  const limit = (full - gutter * (columns - 1)) / columns;
 
   const pages = [];
   let page = null;
   let y = margin;
+  let column = 0;
 
   const openPage = () => {
-    page = { items: [] };
+    page = { items: [], starts: [], last: -1 };
     pages.push(page);
     y = margin;
+    column = 0;
   };
   openPage();
 
+  const columnLeft = () => margin + column * (limit + gutter);
+
   const room = (needed) => {
     if (y + needed <= bottom) return;
+    if (column < columns - 1) {
+      column += 1;
+      y = margin;
+      return;
+    }
     openPage();
   };
 
   let counter = [];
 
+  let blockIndex = -1;
   for (const block of blocks) {
+    blockIndex += 1;
+    if (block.type === 'break') {
+      if (page.items.length) openPage();
+      continue;
+    }
     const style = BLOCK_STYLE[block.type] ?? BLOCK_STYLE.p;
+    page.starts.push(blockIndex);
+    page.last = blockIndex;
     const indent = (style.indent ?? 0) * ((block.depth ?? 0) + (style.indent ? 1 : 0)) + (block.indent ?? 0) * 36;
-    const left = margin + indent;
+    const left = columnLeft() + indent;
     const span = limit - indent;
     y += style.before;
 
     if (block.type === 'rule') {
       room(6);
-      page.items.push({ type: 'rule', x: margin, y, width: limit });
+      page.items.push({ type: 'rule', x: columnLeft(), y, width: limit });
       y += style.after;
       continue;
     }
 
     if (block.type === 'image' && block.src) {
       const ratio = block.jpeg?.ratio ?? (block.height && block.width ? block.height / block.width : 0.6);
-      const drawWidth = Math.min(span, block.width || span);
+      const drawWidth = Math.min(span, span * (block.share ?? 1));
       const drawHeight = drawWidth * ratio;
       room(drawHeight);
-      page.items.push({ type: 'image', x: left, y, width: drawWidth, height: drawHeight, src: block.src, jpeg: block.jpeg });
+      const shift = block.align === 'center' ? (span - drawWidth) / 2 : block.align === 'right' ? span - drawWidth : 0;
+      page.items.push({ type: 'image', x: left + shift, y, width: drawWidth, height: drawHeight, src: block.src, jpeg: block.jpeg });
       y += drawHeight + style.after;
       continue;
     }
@@ -155,9 +176,10 @@ export function layoutDocument(blocks, options = {}) {
       const cellWidth = span / columns;
       for (const row of block.rows) {
         const cells = row.map((cell) => breakLines(splitRuns(cell.runs, base, { ...style, bold: cell.head }), cellWidth - 10));
+        void cells;
         const tall = Math.max(...cells.map((lines) => lines.length)) * style.size * spacing + 6;
         room(tall);
-        page.items.push({ type: 'row', x: margin + indent, y, width: span, height: tall, columns });
+        page.items.push({ type: 'row', x: columnLeft() + indent, y, width: span, height: tall, columns: cells.length });
         cells.forEach((lines, column) => {
           lines.forEach((line, index) => {
             let cursor = left + column * cellWidth + 5;
@@ -216,7 +238,7 @@ export function layoutDocument(blocks, options = {}) {
     y += style.after;
   }
 
-  return { pages, width, height, margin };
+  return { pages, width, height, margin, columns };
 }
 
 export const pageCount = (layout) => layout.pages.length;
@@ -260,6 +282,9 @@ export function layoutToPdf(layout, meta = {}) {
       }
     }
 
+    if (meta.header) {
+      doc.text(meta.header, { x: layout.margin, y: layout.margin / 2 + 4, font: 'helvetica', size: 8.5, color: '#7a828a' });
+    }
     if (meta.numbers || meta.footer) {
       const foot = layout.height - layout.margin / 2;
       if (meta.footer) {

@@ -8,7 +8,7 @@ export default {
   tint: "#3b6fd4",
   keywords: ["document", "word processor", "editor", "docx", "pdf", "write", "rich text", "export", "pages"],
   tag: "jg-app-doc-editor",
-  window: { width: 1180, height: 820 },
+  window: { width: 1180, height: 820, maximized: true },
   i18n: {
     de: { name: 'Dokumentenstudio', tagline: 'Dokumente schreiben, formatieren und als PDF oder Word exportieren, ganz im Browser' },
     es: { name: 'Estudio de documentos', tagline: 'Escribe, da formato y exporta documentos como PDF o Word, todo en el navegador' },

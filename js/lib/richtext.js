@@ -88,6 +88,28 @@ const listBlocks = (node, ordered, depth, out) => {
   }
 };
 
+export function blockNodes(root) {
+  const nodes = [];
+  for (const node of root.children) {
+    const tag = node.tagName;
+    if (tag === 'UL' || tag === 'OL') {
+      const walk = (list) => {
+        for (const item of list.children) {
+          if (item.tagName !== 'LI') continue;
+          nodes.push(item);
+          for (const child of item.children) {
+            if (child.tagName === 'UL' || child.tagName === 'OL') walk(child);
+          }
+        }
+      };
+      walk(node);
+      continue;
+    }
+    nodes.push(node);
+  }
+  return nodes;
+}
+
 export function htmlToBlocks(root) {
   const blocks = [];
   for (const node of root.children) {
@@ -97,12 +119,22 @@ export function htmlToBlocks(root) {
       continue;
     }
     if (tag === 'HR') {
-      blocks.push({ type: 'rule' });
+      blocks.push({ type: node.dataset?.break === 'page' ? 'break' : 'rule' });
       continue;
     }
     if (tag === 'FIGURE' || (tag === 'DIV' && node.querySelector('img'))) {
       const image = node.querySelector('img');
-      if (image) blocks.push({ type: 'image', src: image.getAttribute('src'), width: image.width, height: image.height, align: alignOf(node) });
+      if (image) {
+        const share = { small: 0.34, medium: 0.62, full: 1 }[node.dataset?.size ?? 'medium'] ?? 0.62;
+        blocks.push({
+          type: 'image',
+          src: image.getAttribute('src'),
+          width: image.width,
+          height: image.height,
+          share,
+          align: node.dataset?.align ?? alignOf(node),
+        });
+      }
       continue;
     }
     if (tag === 'TABLE') {
@@ -168,12 +200,16 @@ export function blocksToHtml(blocks) {
       continue;
     }
     closeList();
+    if (block.type === 'break') {
+      out.push('<hr data-break="page">');
+      continue;
+    }
     if (block.type === 'rule') {
       out.push('<hr>');
       continue;
     }
     if (block.type === 'image') {
-      out.push(`<figure><img src="${escapeHtml(block.src)}" alt=""></figure>`);
+      out.push(`<figure data-align="${block.align ?? 'center'}"><img src="${escapeHtml(block.src)}" alt=""></figure>`);
       continue;
     }
     if (block.type === 'table') {
@@ -198,6 +234,7 @@ export const blocksToText = (blocks) =>
   blocks
     .map((block) => {
       if (block.type === 'rule') return '---';
+      if (block.type === 'break') return '';
       if (block.type === 'image') return '';
       if (block.type === 'table') return block.rows.map((row) => row.map((cell) => cell.runs.map((r) => r.text).join('')).join('\t')).join('\n');
       const text = (block.runs ?? []).map((run) => run.text).join('');
@@ -223,6 +260,7 @@ export function blocksToMarkdown(blocks) {
     .map((block) => {
       const body = (block.runs ?? []).map(mark).join('');
       if (block.type === 'rule') return '---';
+      if (block.type === 'break') return '---';
       if (block.type === 'image') return `![](${block.src})`;
       if (block.type === 'quote') return `> ${body}`;
       if (block.type === 'code') return '```\n' + (block.runs ?? []).map((r) => r.text).join('') + '\n```';

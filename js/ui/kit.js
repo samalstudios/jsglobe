@@ -7,6 +7,7 @@ import './jg-sheet.js';
 import './jg-dialog.js';
 import './jg-popover.js';
 import './jg-drop.js';
+import './jg-color-picker.js';
 import './jg-stat.js';
 import './jg-progress.js';
 
