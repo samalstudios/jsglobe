@@ -269,3 +269,87 @@ export const countWords = (blocks) => {
     paragraphs: blocks.filter((block) => block.runs?.length).length,
   };
 };
+
+const inlineMarkdown = (text) =>
+  escapeHtml(text)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>')
+    .replace(/(^|[^*])\*([^*]+)\*/g, '$1<i>$2</i>')
+    .replace(/~~([^~]+)~~/g, '<s>$1</s>')
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
+
+export function markdownToHtml(source) {
+  const lines = String(source).replace(/\r\n?/g, '\n').split('\n');
+  const out = [];
+  let list = null;
+  let fence = null;
+
+  const closeList = () => {
+    if (list) out.push(list === 'ol' ? '</ol>' : '</ul>');
+    list = null;
+  };
+
+  for (const line of lines) {
+    if (/^```/.test(line.trim())) {
+      if (fence === null) {
+        closeList();
+        fence = [];
+      } else {
+        out.push(`<pre>${escapeHtml(fence.join('\n'))}</pre>`);
+        fence = null;
+      }
+      continue;
+    }
+    if (fence !== null) {
+      fence.push(line);
+      continue;
+    }
+
+    if (!line.trim()) {
+      closeList();
+      continue;
+    }
+    if (/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(line)) {
+      closeList();
+      out.push('<hr>');
+      continue;
+    }
+    const heading = /^(#{1,6})\s+(.*)$/.exec(line);
+    if (heading) {
+      closeList();
+      out.push(`<h${heading[1].length}>${inlineMarkdown(heading[2])}</h${heading[1].length}>`);
+      continue;
+    }
+    const quote = /^>\s?(.*)$/.exec(line);
+    if (quote) {
+      closeList();
+      out.push(`<blockquote>${inlineMarkdown(quote[1])}</blockquote>`);
+      continue;
+    }
+    const bullet = /^(\s*)[-*+]\s+(.*)$/.exec(line);
+    if (bullet) {
+      if (list !== 'ul') {
+        closeList();
+        out.push('<ul>');
+        list = 'ul';
+      }
+      out.push(`<li>${inlineMarkdown(bullet[2])}</li>`);
+      continue;
+    }
+    const ordered = /^(\s*)\d+[.)]\s+(.*)$/.exec(line);
+    if (ordered) {
+      if (list !== 'ol') {
+        closeList();
+        out.push('<ol>');
+        list = 'ol';
+      }
+      out.push(`<li>${inlineMarkdown(ordered[2])}</li>`);
+      continue;
+    }
+    closeList();
+    out.push(`<p>${inlineMarkdown(line)}</p>`);
+  }
+  closeList();
+  if (fence !== null) out.push(`<pre>${escapeHtml(fence.join('\n'))}</pre>`);
+  return out.join('\n');
+}

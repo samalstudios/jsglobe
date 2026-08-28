@@ -141,11 +141,11 @@ export function layoutDocument(blocks, options = {}) {
     }
 
     if (block.type === 'image' && block.src) {
-      const ratio = block.height && block.width ? block.height / block.width : 0.6;
-      const drawWidth = Math.min(span, block.width ?? span);
+      const ratio = block.jpeg?.ratio ?? (block.height && block.width ? block.height / block.width : 0.6);
+      const drawWidth = Math.min(span, block.width || span);
       const drawHeight = drawWidth * ratio;
       room(drawHeight);
-      page.items.push({ type: 'image', x: left, y, width: drawWidth, height: drawHeight, src: block.src });
+      page.items.push({ type: 'image', x: left, y, width: drawWidth, height: drawHeight, src: block.src, jpeg: block.jpeg });
       y += drawHeight + style.after;
       continue;
     }
@@ -257,6 +257,18 @@ export function layoutToPdf(layout, meta = {}) {
       });
       if (item.link) {
         doc.link(item.x, item.y - item.size, widthOf(item.text, item.font, item.size), item.size * 1.2, item.link);
+      }
+    }
+
+    if (meta.numbers || meta.footer) {
+      const foot = layout.height - layout.margin / 2;
+      if (meta.footer) {
+        doc.text(meta.footer, { x: layout.margin, y: foot, font: 'helvetica', size: 8.5, color: '#7a828a' });
+      }
+      if (meta.numbers) {
+        const label = `${index + 1} / ${layout.pages.length}`;
+        const wide = widthOf(label, 'helvetica', 8.5);
+        doc.text(label, { x: layout.width - layout.margin - wide, y: foot, font: 'helvetica', size: 8.5, color: '#7a828a' });
       }
     }
   });

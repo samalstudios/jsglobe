@@ -2,10 +2,13 @@ import { JGApp, define, html, raw, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { icon } from '../../ui/icons.js';
-import { toast, download, debounce } from '../../core/util.js';
-import { htmlToBlocks, blocksToHtml, blocksToText, blocksToMarkdown, outlineOf, countWords } from '../../lib/richtext.js';
+import { toast, download, debounce, pickFile } from '../../core/util.js';
+import { createDesigns } from '../../lib/designs.js';
+import { toJpeg } from '../../lib/raster.js';
+import { readZip } from '../../core/zip.js';
+import { htmlToBlocks, blocksToHtml, blocksToText, blocksToMarkdown, markdownToHtml, outlineOf, countWords } from '../../lib/richtext.js';
 import { layoutDocument, layoutToPdf } from '../../lib/doc-layout.js';
-import { writeDocx } from '../../lib/docx.js';
+import { writeDocx, docxToHtml } from '../../lib/docx.js';
 
 const t = appText(strings);
 const sheet = await styleSheet(import.meta.url);
@@ -75,14 +78,23 @@ class DocEditor extends JGApp {
   #side = 'pages';
   #view = 'write';
   #name = 'Untitled document';
+  #zoom = 1;
+  #files = createDesigns(this.store, 'documents');
+  #hits = [];
+  #hit = -1;
+  #fade = null;
+  #range = null;
 
   renderApp() {
     this.paint(html`<div class="app">
       <div class="bar">
         <jg-input id="name" size="sm" value="${this.#name}" aria-label="${t('doc-editor.documentName', 'Document name')}"></jg-input>
+        <span class="saved" id="saved"></span>
         <div class="spring"></div>
         <jg-segment id="view"></jg-segment>
-        <jg-button size="sm" variant="outline" id="export">${icon('download', 14)}${t('doc-editor.export', 'Export')}</jg-button>
+        <jg-button size="sm" variant="ghost" id="library">${icon('folder', 14)}${t('doc-editor.documents', 'Documents')}</jg-button>
+        <jg-button size="sm" variant="outline" id="open">${icon('upload', 14)}${t('doc-editor.open', 'Open')}</jg-button>
+        <jg-button size="sm" id="export">${icon('download', 14)}${t('doc-editor.export', 'Export')}</jg-button>
       </div>
 
       <div class="tools" id="tools">
@@ -108,6 +120,9 @@ class DocEditor extends JGApp {
             <button class="tool" data-pop="mark" title="${t('doc-editor.highlight', 'Highlight')}">${icon('highlight', 15)}</button>
             <div class="sheet" data-for="mark">${MARKERS.map((colour) => html`<button class="chip" data-mark="${colour}" style="background:${colour === 'transparent' ? 'var(--card)' : colour}" title="${colour}"></button>`)}</div>
           </div>
+          <button class="tool" data-act="superscript" title="${t('doc-editor.superscript', 'Superscript')}">${icon('chevronUp', 15)}</button>
+          <button class="tool" data-act="subscript" title="${t('doc-editor.subscript', 'Subscript')}">${icon('chevronDown', 15)}</button>
+          <button class="tool" data-act="case" title="${t('doc-editor.changeCase', 'Change the case')}">${icon('type', 15)}</button>
           <button class="tool" data-act="removeFormat" title="${t('doc-editor.clearFormatting', 'Clear formatting')} (Ctrl \\)">${icon('eraser', 15)}</button>
         </div>
         <div class="cluster">
@@ -121,6 +136,12 @@ class DocEditor extends JGApp {
           <button class="tool" data-act="insertOrderedList" title="${t('doc-editor.numberedList', 'Numbered list')} (Ctrl Shift 7)">${icon('listOrdered', 15)}</button>
           <button class="tool" data-act="outdent" title="${t('doc-editor.decreaseIndent', 'Decrease indent')}">${icon('outdent', 15)}</button>
           <button class="tool" data-act="indent" title="${t('doc-editor.increaseIndent', 'Increase indent')}">${icon('indent', 15)}</button>
+          <jg-select id="spacing" size="sm" value="1.6" title="${t('doc-editor.lineSpacing', 'Line spacing')}">
+            <option value="1.15">1.15</option>
+            <option value="1.4">1.4</option>
+            <option value="1.6">1.6</option>
+            <option value="2">2.0</option>
+          </jg-select>
         </div>
         <div class="cluster">
           <button class="tool" data-act="link" title="${t('doc-editor.insertLink', 'Insert link')} (Ctrl K)">${icon('link', 15)}</button>
@@ -137,6 +158,8 @@ class DocEditor extends JGApp {
 
       <div class="find" id="find" hidden>
         <jg-input id="needle" size="sm" placeholder="${t('doc-editor.find', 'Find')}"></jg-input>
+        <button class="tool" id="find-prev" title="${t('doc-editor.previous', 'Previous')}">${icon('chevronUp', 14)}</button>
+        <button class="tool" id="find-next" title="${t('doc-editor.next', 'Next')}">${icon('chevronDown', 14)}</button>
         <jg-input id="swap" size="sm" placeholder="${t('doc-editor.replaceWith', 'Replace with')}"></jg-input>
         <jg-button size="sm" variant="outline" id="replace-one">${t('doc-editor.replace', 'Replace')}</jg-button>
         <jg-button size="sm" variant="outline" id="replace-all">${t('doc-editor.replaceAll', 'Replace all')}</jg-button>
@@ -169,6 +192,38 @@ class DocEditor extends JGApp {
       </div>
 
       <input type="file" id="picture" accept="image/*" hidden />
+
+      <jg-dialog id="library-box" title-text="${t('doc-editor.documents', 'Documents')}" sub="${t('doc-editor.everythingStaysHere', 'Everything is kept in this browser only.')}">
+        <div class="row tight">
+          <jg-button size="sm" id="new-doc">${t('doc-editor.newDocument', 'New document')}</jg-button>
+          <jg-button size="sm" variant="outline" id="save-doc">${t('doc-editor.saveACopy', 'Save a copy')}</jg-button>
+        </div>
+        <div class="files" id="files"></div>
+      </jg-dialog>
+
+      <jg-dialog id="link-box" title-text="${t('doc-editor.insertLink', 'Insert link')}">
+        <jg-field label="${t('doc-editor.linkAddress', 'Link address')}"><jg-input id="link-url" placeholder="https://" autofocus></jg-input></jg-field>
+        <jg-field label="${t('doc-editor.linkText', 'Text to show')}" hint="${t('doc-editor.leaveEmptyToKeep', 'Leave empty to keep what is selected')}"><jg-input id="link-text"></jg-input></jg-field>
+        <div class="row end">
+          <jg-button size="sm" variant="outline" id="link-cancel">${t('doc-editor.cancel', 'Cancel')}</jg-button>
+          <jg-button size="sm" id="link-apply">${t('doc-editor.insert', 'Insert')}</jg-button>
+        </div>
+      </jg-dialog>
+
+      <jg-dialog id="export-box" title-text="${t('doc-editor.export', 'Export')}" sub="${t('doc-editor.chooseAFormat', 'Choose a format. The file is built on this device.')}">
+        <div class="formats">
+          <button class="format" data-kind="pdf"><b>PDF</b><span>${t('doc-editor.pdfHint', 'Laid out exactly as the page view shows')}</span></button>
+          <button class="format" data-kind="docx"><b>Word</b><span>${t('doc-editor.docxHint', 'A .docx that Word and Pages both open')}</span></button>
+          <button class="format" data-kind="html"><b>HTML</b><span>${t('doc-editor.htmlHint', 'A single page with the formatting kept')}</span></button>
+          <button class="format" data-kind="md"><b>Markdown</b><span>${t('doc-editor.mdHint', 'Headings, lists, links and emphasis')}</span></button>
+          <button class="format" data-kind="txt"><b>${t('doc-editor.plainText', 'Plain text')}</b><span>${t('doc-editor.txtHint', 'Just the words')}</span></button>
+          <button class="format" data-kind="print"><b>${t('doc-editor.print', 'Print')}</b><span>${t('doc-editor.printHint', 'Send the pages to a printer')}</span></button>
+        </div>
+        <div class="row wrap">
+          <jg-switch id="numbers"></jg-switch><span class="hint">${t('doc-editor.pageNumbers', 'Number the pages')}</span>
+          <jg-input id="footer" size="sm" placeholder="${t('doc-editor.footerText', 'Footer text, optional')}"></jg-input>
+        </div>
+      </jg-dialog>
     </div>`);
 
     const editor = this.$('#editor');
@@ -181,7 +236,31 @@ class DocEditor extends JGApp {
     this.$('#view').value = this.#view;
 
     this.#wire();
+    this.#restore();
     this.#sync();
+  }
+
+  #restore() {
+    const saved = this.store.read();
+    const open = saved?.current;
+    if (open?.html) {
+      this.$('#editor').innerHTML = open.html;
+      this.#name = open.name ?? this.#name;
+      this.$('#name').value = this.#name;
+    }
+  }
+
+  #keep() {
+    const state = this.store.read() ?? {};
+    state.current = { name: this.#name, html: this.$('#editor').innerHTML, at: Date.now() };
+    this.store.write(state);
+    const stamp = this.$('#saved');
+    if (stamp) {
+      stamp.textContent = t('doc-editor.savedJustNow', 'Saved');
+      stamp.classList.add('show');
+      clearTimeout(this.#fade);
+      this.#fade = setTimeout(() => stamp.classList.remove('show'), 1600);
+    }
   }
 
   #wire() {
@@ -233,12 +312,62 @@ class DocEditor extends JGApp {
     });
     this.on(this.$('#family'), 'change', (event) => this.#wrapStyle('fontFamily', event.detail.value));
     this.on(this.$('#size'), 'change', (event) => this.#wrapStyle('fontSize', `${event.detail.value}px`));
+    this.on(this.$('#spacing'), 'change', (event) => {
+      this.$('#editor').style.lineHeight = event.detail.value;
+      this.#sync();
+    });
 
     this.on(this.$('#view'), 'change', (event) => {
       this.#view = event.detail.value;
       this.#showView();
     });
-    this.on(this.$('#export'), 'click', () => this.#exportMenu());
+    this.on(this.$('#export'), 'click', () => this.$('#export-box').open());
+    this.on(this.$('#open'), 'click', () => this.#openFile());
+    this.on(this.$('#library'), 'click', () => {
+      this.#paintFiles();
+      this.$('#library-box').open();
+    });
+
+    this.on(this.$('#export-box'), 'click', (event) => {
+      const choice = event.target.closest('[data-kind]');
+      if (choice) this.#exportAs(choice.dataset.kind);
+    });
+
+    this.on(this.$('#files'), 'click', (event) => {
+      const open = event.target.closest('[data-open]');
+      if (open) {
+        const design = this.#files.get(open.dataset.open);
+        if (!design) return;
+        this.$('#editor').innerHTML = design.html ?? '';
+        this.#name = open.dataset.open;
+        this.$('#name').value = this.#name;
+        this.$('#library-box').close();
+        this.#sync();
+        return;
+      }
+      const drop = event.target.closest('[data-drop]');
+      if (drop) {
+        this.#files.remove(drop.dataset.drop);
+        this.#paintFiles();
+      }
+    });
+
+    this.on(this.$('#new-doc'), 'click', () => {
+      this.$('#editor').innerHTML = '<h1><br></h1><p><br></p>';
+      this.#name = t('doc-editor.untitled', 'Untitled document');
+      this.$('#name').value = this.#name;
+      this.$('#library-box').close();
+      this.#sync();
+    });
+
+    this.on(this.$('#save-doc'), 'click', () => {
+      this.#files.save(this.#name, { html: this.$('#editor').innerHTML });
+      this.#paintFiles();
+      toast(t('doc-editor.copySaved', 'Saved a copy of {name}', { name: this.#name }));
+    });
+
+    this.on(this.$('#link-cancel'), 'click', () => this.$('#link-box').close());
+    this.on(this.$('#link-apply'), 'click', () => this.#applyLink());
     this.on(this.$('#name'), 'change', (event) => {
       this.#name = event.detail.value.trim() || 'Untitled document';
     });
@@ -286,6 +415,13 @@ class DocEditor extends JGApp {
 
     this.on(this.$('#close-find'), 'click', () => this.#toggleFind(false));
     this.on(this.$('#needle'), 'input', () => this.#countHits());
+    this.on(this.$('#needle'), 'keydown', (event) => {
+      if (event.key !== 'Enter') return;
+      event.preventDefault();
+      this.#gotoHit(event.shiftKey ? -1 : 1);
+    });
+    this.on(this.$('#find-next'), 'click', () => this.#gotoHit(1));
+    this.on(this.$('#find-prev'), 'click', () => this.#gotoHit(-1));
     this.on(this.$('#replace-one'), 'click', () => this.#replace(false));
     this.on(this.$('#replace-all'), 'click', () => this.#replace(true));
 
@@ -313,6 +449,21 @@ class DocEditor extends JGApp {
       if (key === 'f') {
         event.preventDefault();
         this.#toggleFind(true);
+        return;
+      }
+      if (key === 'z') {
+        event.preventDefault();
+        this.#act(event.shiftKey ? 'redo' : 'undo');
+        return;
+      }
+      if (key === 'y') {
+        event.preventDefault();
+        this.#act('redo');
+        return;
+      }
+      if (key === 'p') {
+        event.preventDefault();
+        this.#savePdf(true, false, '');
         return;
       }
       if (key === 's') {
@@ -391,8 +542,11 @@ class DocEditor extends JGApp {
   #act(action) {
     if (action === 'undo' || action === 'redo') return this.#run(action);
     if (action === 'link') {
-      const url = prompt(t('doc-editor.linkAddress', 'Link address'), 'https://');
-      if (url) this.#run('createLink', url);
+      const selection = (this.shadowRoot.getSelection?.() ?? window.getSelection())?.toString() ?? '';
+      this.#range = this.#snapRange();
+      this.$('#link-text').value = selection;
+      this.$('#link-url').value = 'https://';
+      this.$('#link-box').open();
       return;
     }
     if (action === 'image') return this.$('#picture').click();
@@ -403,11 +557,48 @@ class DocEditor extends JGApp {
       return this.#run('insertHTML', `<table>${head}${row}${row}</table><p><br></p>`);
     }
     if (action === 'find') return this.#toggleFind(true);
+    if (action === 'case') return this.#changeCase();
     if (action === 'side') {
       this.$('#panel').classList.toggle('away');
       return;
     }
     this.#run(action);
+  }
+
+  #changeCase() {
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    const text = selection?.toString() ?? '';
+    if (!text.trim()) {
+      toast(t('doc-editor.selectSomeText', 'Select some text first'), 'danger');
+      return;
+    }
+    const upper = text.toUpperCase();
+    const lower = text.toLowerCase();
+    const title = lower.replace(/\b\p{L}/gu, (letter) => letter.toUpperCase());
+    const next = text === lower ? title : text === title ? upper : lower;
+    this.#run('insertText', next);
+  }
+
+  #snapRange() {
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    return selection && selection.rangeCount ? selection.getRangeAt(0).cloneRange() : null;
+  }
+
+  #applyLink() {
+    const url = this.$('#link-url').value.trim();
+    if (!url) return;
+    const label = this.$('#link-text').value.trim();
+    this.$('#link-box').close();
+    this.#focus();
+    if (this.#range) {
+      const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(this.#range);
+    }
+    const safe = url.replace(/"/g, '%22');
+    const text = label || (this.#range && !this.#range.collapsed ? null : url);
+    if (text) this.#run('insertHTML', `<a href="${safe}">${text.replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]))}</a>`);
+    else this.#run('createLink', url);
   }
 
   #reflect() {
@@ -433,16 +624,59 @@ class DocEditor extends JGApp {
     else this.#focus();
   }
 
-  #countHits() {
+  #findAll() {
     const needle = this.$('#needle').value;
+    this.#hits = [];
+    this.#hit = -1;
+    if (!needle) return;
+    const editor = this.$('#editor');
+    const walker = document.createTreeWalker(editor, NodeFilter.SHOW_TEXT);
+    const lower = needle.toLowerCase();
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      const text = node.nodeValue.toLowerCase();
+      let at = text.indexOf(lower);
+      while (at !== -1) {
+        const range = document.createRange();
+        range.setStart(node, at);
+        range.setEnd(node, at + needle.length);
+        this.#hits.push(range);
+        at = text.indexOf(lower, at + needle.length);
+      }
+    }
+  }
+
+  #countHits() {
+    this.#findAll();
+    this.#showHits();
+  }
+
+  #showHits() {
     const hits = this.$('#hits');
-    if (!needle) {
+    if (!hits) return;
+    if (!this.$('#needle').value) {
       hits.textContent = '';
       return;
     }
-    const text = this.$('#editor').textContent ?? '';
-    const count = needle ? text.split(needle).length - 1 : 0;
-    hits.textContent = t('doc-editor.matches', '{count} found', { count });
+    hits.textContent = this.#hits.length
+      ? t('doc-editor.matchAt', '{at} of {count}', { at: this.#hit + 1 || 1, count: this.#hits.length })
+      : t('doc-editor.noMatches', 'Nothing found');
+  }
+
+  #gotoHit(step) {
+    if (!this.#hits.length) this.#findAll();
+    if (!this.#hits.length) {
+      this.#showHits();
+      return;
+    }
+    this.#hit = (this.#hit + step + this.#hits.length) % this.#hits.length;
+    const range = this.#hits[this.#hit];
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    const holder = range.startContainer.parentElement;
+    holder?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    this.#showHits();
   }
 
   #replace(all) {
@@ -462,6 +696,8 @@ class DocEditor extends JGApp {
     }
     if (changed) {
       this.#sync();
+      this.#hits = [];
+      this.#hit = -1;
       this.#countHits();
       toast(t('doc-editor.replaced', 'Replaced {count}', { count: changed }));
     }
@@ -476,6 +712,7 @@ class DocEditor extends JGApp {
   }
 
   #sync() {
+    this.#keep();
     this.#blocks = htmlToBlocks(this.$('#editor'));
     this.#layout = layoutDocument(this.#blocks, this.#paper());
     this.#drawThumbs();
@@ -593,41 +830,82 @@ class DocEditor extends JGApp {
     }
   }
 
-  async #exportMenu() {
-    const choice = prompt(
-      t('doc-editor.exportPrompt', 'Type a format: pdf, docx, html, md or txt'),
-      'pdf',
-    );
-    if (!choice) return;
-    const kind = choice.trim().toLowerCase();
-    if (kind === 'pdf') return this.#savePdf();
-    if (kind === 'docx' || kind === 'word') return this.#saveDocx();
-    if (kind === 'html') {
-      download(`${this.#name}.html`, `<!doctype html><meta charset="utf-8"><title>${this.#name}</title>\n${blocksToHtml(this.#blocks)}\n`, 'text/html');
-      return;
+  async #withPictures() {
+    const blocks = this.#blocks.map((block) => ({ ...block }));
+    for (const block of blocks) {
+      if (block.type !== 'image' || !block.src || block.jpeg) continue;
+      try {
+        block.jpeg = await toJpeg(block.src, { maxWidth: 1400 });
+      } catch {
+        block.jpeg = null;
+      }
     }
-    if (kind === 'md' || kind === 'markdown') {
-      download(`${this.#name}.md`, blocksToMarkdown(this.#blocks), 'text/markdown');
-      return;
-    }
-    if (kind === 'txt' || kind === 'text') {
-      download(`${this.#name}.txt`, blocksToText(this.#blocks), 'text/plain');
-      return;
-    }
-    toast(t('doc-editor.unknownFormat', 'That format is not one of pdf, docx, html, md or txt'), 'danger');
+    return blocks;
   }
 
-  #savePdf() {
+  async #exportAs(kind) {
+    this.$('#export-box')?.close();
+    const numbers = this.$('#numbers')?.checked;
+    const footer = this.$('#footer')?.value?.trim() ?? '';
+
+    if (kind === 'pdf' || kind === 'print') return this.#savePdf(kind === 'print', numbers, footer);
+    if (kind === 'docx') return this.#saveDocx();
+    if (kind === 'html') {
+      const body = blocksToHtml(this.#blocks);
+      download(
+        `${this.#name}.html`,
+        `<!doctype html>\n<meta charset="utf-8">\n<title>${this.#name}</title>\n<style>body{max-width:44rem;margin:3rem auto;padding:0 1.2rem;font:16px/1.65 Georgia,serif;color:#111}img{max-width:100%}table{border-collapse:collapse}td,th{border:1px solid #d5dae0;padding:6px 9px}</style>\n${body}\n`,
+        'text/html',
+      );
+      toast(t('doc-editor.savedHtml', 'Saved as HTML'));
+      return;
+    }
+    if (kind === 'md') {
+      download(`${this.#name}.md`, blocksToMarkdown(this.#blocks), 'text/markdown');
+      toast(t('doc-editor.savedMarkdown', 'Saved as Markdown'));
+      return;
+    }
+    if (kind === 'txt') {
+      download(`${this.#name}.txt`, blocksToText(this.#blocks), 'text/plain');
+      toast(t('doc-editor.savedText', 'Saved as text'));
+    }
+  }
+
+  async #savePdf(toPrinter = false, numbers = false, footer = '') {
     const paper = this.#paper();
-    const layout = layoutDocument(this.#blocks, paper);
-    const bytes = layoutToPdf(layout, { ...paper, title: this.#name, creator: 'Toolbox' });
+    const blocks = await this.#withPictures();
+    const layout = layoutDocument(blocks, paper);
+    const bytes = layoutToPdf(layout, {
+      ...paper,
+      title: this.#name,
+      creator: 'Toolbox',
+      numbers,
+      footer,
+    });
+    if (toPrinter) {
+      const url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+      const frame = document.createElement('iframe');
+      frame.style.cssText = 'position:fixed;width:0;height:0;border:0;opacity:0';
+      frame.src = url;
+      frame.onload = () => {
+        frame.contentWindow?.focus();
+        frame.contentWindow?.print();
+        setTimeout(() => {
+          frame.remove();
+          URL.revokeObjectURL(url);
+        }, 60000);
+      };
+      document.body.append(frame);
+      return;
+    }
     download(`${this.#name}.pdf`, bytes, 'application/pdf');
     toast(t('doc-editor.savedPdf', 'Saved as PDF'));
   }
 
   async #saveDocx() {
     const paper = this.#paper();
-    const bytes = await writeDocx(this.#blocks, {
+    const blocks = await this.#withPictures();
+    const bytes = await writeDocx(blocks, {
       title: this.#name,
       width: this.#layout.width,
       height: this.#layout.height,
@@ -635,6 +913,48 @@ class DocEditor extends JGApp {
     });
     download(`${this.#name}.docx`, bytes, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
     toast(t('doc-editor.savedWord', 'Saved as Word'));
+  }
+
+  async #openFile() {
+    const picked = await pickFile('.txt,.md,.markdown,.html,.htm,.docx', false);
+    if (!picked) return;
+    const name = picked.name.replace(/\.[^.]+$/, '');
+    try {
+      if (/\.docx$/i.test(picked.name)) {
+        const zip = await readZip(picked.data);
+        const xml = await zip.text('word/document.xml');
+        if (!xml) throw new Error('empty');
+        this.$('#editor').innerHTML = docxToHtml(xml);
+      } else {
+        const text = typeof picked.data === 'string' ? picked.data : new TextDecoder().decode(picked.data);
+        if (/\.html?$/i.test(picked.name)) {
+          const body = /<body[^>]*>([\s\S]*?)<\/body>/i.exec(text);
+          this.$('#editor').innerHTML = (body ? body[1] : text).replace(/<script[\s\S]*?<\/script>/gi, '');
+        } else if (/\.(md|markdown)$/i.test(picked.name)) {
+          this.$('#editor').innerHTML = markdownToHtml(text);
+        } else {
+          this.$('#editor').innerHTML = text
+            .split(/\n{2,}/)
+            .map((piece) => `<p>${piece.replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c])).replace(/\n/g, '<br>')}</p>`)
+            .join('');
+        }
+      }
+      this.#name = name || this.#name;
+      this.$('#name').value = this.#name;
+      this.#sync();
+      toast(t('doc-editor.opened', 'Opened {name}', { name: picked.name }));
+    } catch {
+      toast(t('doc-editor.couldNotOpen', 'That file could not be opened'), 'danger');
+    }
+  }
+
+  #paintFiles() {
+    const host = this.$('#files');
+    if (!host) return;
+    const saved = this.#files.list();
+    host.innerHTML = saved.length
+      ? html`${saved.map((entry) => html`<div class="file"><button class="open" data-open="${entry.name}">${entry.name}</button><button class="drop" data-drop="${entry.name}" title="${t('doc-editor.delete', 'Delete')}">${icon('eraser', 13)}</button></div>`)}`
+      : html`<div class="hint">${t('doc-editor.nothingSavedYet', 'Documents you save a copy of will be listed here.')}</div>`;
   }
 
   renderWidget() {

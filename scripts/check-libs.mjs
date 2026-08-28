@@ -10,8 +10,8 @@ import {
 import { clipPolygons, polygonArea } from '../js/lib/clip.js';
 import { encodeQr } from '../js/lib/qr.js';
 import { createPdf, widthOf as pdfWidth, wrapText as pdfWrap, toWinAnsi } from '../js/lib/pdf.js';
-import { layoutDocument } from '../js/lib/doc-layout.js';
-import { blocksToMarkdown, blocksToText, countWords, outlineOf } from '../js/lib/richtext.js';
+import { layoutDocument, layoutToPdf, baseFor } from '../js/lib/doc-layout.js';
+import { blocksToMarkdown, blocksToText, countWords, outlineOf, markdownToHtml } from '../js/lib/richtext.js';
 import { COUNTRIES as TAX_COUNTRIES } from '../js/lib/tax-countries.js';
 import { rates as taxRates, progressive as taxBands } from '../js/lib/tax.js';
 import { decodeQrMatrix, scanQrImage, correctBlock } from '../js/lib/qr-decode.js';
@@ -738,6 +738,10 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
 
   const narrow = layoutDocument(blocks, { size: 'a5', margin: 72 });
   ok('layout needs more pages on smaller paper', narrow.pages.length > layout.pages.length);
+  ok('a serif family maps to Times', baseFor('Georgia, Times New Roman, serif') === 'times');
+  ok('a sans family maps to Helvetica', baseFor('Verdana, Geneva, sans-serif') === 'helvetica');
+  ok('a mono family maps to Courier', baseFor('Courier New, Courier, monospace') === 'courier');
+  ok('an unknown family falls back', baseFor('Nonsense') === 'helvetica');
 
   const rich = [
     { type: 'h1', runs: [{ text: 'Report' }] },
@@ -751,6 +755,26 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
   ok('text drops the marks', blocksToText(rich).includes('Plain bold'));
   ok('the outline finds the heading', outlineOf(rich).length === 1 && outlineOf(rich)[0].text === 'Report');
   ok('word count counts the words', countWords(rich).words === 5, `${countWords(rich).words}`);
+  ok('word count leaves out the list marker', countWords([{ type: 'bullet', depth: 0, runs: [{ text: 'one two' }] }]).words === 2);
+
+  const back = markdownToHtml('# Title\n\nSome **bold** and *slanted* text.\n\n- one\n- two\n\n1. first\n\n> quoted\n\n---\n\n[link](https://example.com)');
+  ok('markdown reads a heading', back.includes('<h1>Title</h1>'));
+  ok('markdown reads bold', back.includes('<b>bold</b>'));
+  ok('markdown reads italics', back.includes('<i>slanted</i>'));
+  ok('markdown reads a bulleted list', back.includes('<ul>') && back.includes('<li>one</li>'));
+  ok('markdown reads a numbered list', back.includes('<ol>') && back.includes('<li>first</li>'));
+  ok('markdown reads a quote', back.includes('<blockquote>quoted</blockquote>'));
+  ok('markdown reads a rule', back.includes('<hr>'));
+  ok('markdown reads a link', back.includes('href="https://example.com"'));
+  ok('markdown escapes stray angle brackets', markdownToHtml('a < b & c').includes('&lt;'));
+
+  const roundTrip = blocksToMarkdown(rich);
+  ok('markdown survives a round trip through html', markdownToHtml(roundTrip).includes('<h1>Report</h1>'));
+
+  const numbered = layoutToPdf(layoutDocument([{ type: 'p', runs: [{ text: 'one' }] }], { size: 'a4' }), { numbers: true });
+  const plainPdf = layoutToPdf(layoutDocument([{ type: 'p', runs: [{ text: 'one' }] }], { size: 'a4' }), {});
+  ok('page numbers add to the file', numbered.length > plainPdf.length);
+  ok('a footer lands on the page', layoutToPdf(layoutDocument([{ type: 'p', runs: [{ text: 'one' }] }], { size: 'a4' }), { footer: 'Draft' }).length > plainPdf.length);
 }
 
 if (failures.length) {

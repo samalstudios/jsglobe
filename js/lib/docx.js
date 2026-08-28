@@ -129,8 +129,28 @@ const NUMBERING = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
   <w:num w:numId="2"><w:abstractNumId w:val="1"/></w:num>
 </w:numbering>`;
 
+const EMU = (points) => Math.round(points * 12700);
+
+const drawingXml = (picture, index) => {
+  const width = EMU(picture.drawWidth);
+  const height = EMU(picture.drawHeight);
+  return (
+    `<w:p><w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0">` +
+    `<wp:extent cx="${width}" cy="${height}"/><wp:docPr id="${index + 1}" name="Picture ${index + 1}"/>` +
+    `<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">` +
+    `<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">` +
+    `<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">` +
+    `<pic:nvPicPr><pic:cNvPr id="${index + 1}" name="Picture ${index + 1}"/><pic:cNvPicPr/></pic:nvPicPr>` +
+    `<pic:blipFill><a:blip r:embed="${picture.id}"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill>` +
+    `<pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${width}" cy="${height}"/></a:xfrm>` +
+    `<a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic>` +
+    `</a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>`
+  );
+};
+
 export async function writeDocx(blocks, options = {}) {
   const links = [];
+  const pictures = [];
   const width = options.width ?? 595.28;
   const height = options.height ?? 841.89;
   const margin = options.margin ?? 72;
@@ -139,7 +159,21 @@ export async function writeDocx(blocks, options = {}) {
     .map((block) => {
       if (block.type === 'table') return tableXml(block, links);
       if (block.type === 'rule') return '<w:p><w:pPr><w:pBdr><w:bottom w:val="single" w:sz="6" w:color="C8CDD2"/></w:pBdr></w:pPr></w:p>';
-      if (block.type === 'image') return '<w:p/>';
+      if (block.type === 'image') {
+        if (!block.jpeg?.data) return '<w:p/>';
+        const index = pictures.length;
+        const room = (options.width ?? 595.28) - (options.margin ?? 72) * 2;
+        const drawWidth = Math.min(room, block.width || room);
+        const picture = {
+          id: `rIdImage${index}`,
+          name: `media/image${index + 1}.jpeg`,
+          data: block.jpeg.data,
+          drawWidth,
+          drawHeight: drawWidth * (block.jpeg.ratio ?? 0.6),
+        };
+        pictures.push(picture);
+        return drawingXml(picture, index);
+      }
       return paragraphXml(block, links);
     })
     .join('');
@@ -149,7 +183,7 @@ export async function writeDocx(blocks, options = {}) {
     `<w:pgMar w:top="${TWIP(margin)}" w:right="${TWIP(margin)}" w:bottom="${TWIP(margin)}" w:left="${TWIP(margin)}"/></w:sectPr>`;
 
   const document = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing">
   <w:body>${body}${section}</w:body>
 </w:document>`;
 
@@ -158,13 +192,23 @@ export async function writeDocx(blocks, options = {}) {
       (link) =>
         `<Relationship Id="${link.id}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" Target="${escapeXml(link.target)}" TargetMode="External"/>`,
     )
+    .concat(
+      pictures.map(
+        (picture) =>
+          `<Relationship Id="${picture.id}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="${picture.name}"/>`,
+      ),
+    )
     .join('');
+
+  const media = {};
+  for (const picture of pictures) media[`word/${picture.name}`] = picture.data;
 
   return writeZip({
     '[Content_Types].xml': `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
   <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
   <Default Extension="xml" ContentType="application/xml"/>
+  <Default Extension="jpeg" ContentType="image/jpeg"/>
   <Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
   <Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/>
   <Override PartName="/word/numbering.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml"/>
@@ -189,5 +233,92 @@ export async function writeDocx(blocks, options = {}) {
     'word/styles.xml': STYLES,
     'word/numbering.xml': NUMBERING,
     'word/document.xml': document,
+    ...media,
   });
+}
+
+const textOf = (node) =>
+  [...node.getElementsByTagNameNS('*', 't')].map((entry) => entry.textContent).join('');
+
+export function docxToHtml(xml) {
+  const doc = new DOMParser().parseFromString(xml, 'application/xml');
+  if (doc.querySelector('parsererror')) throw new Error('That document could not be read');
+
+  const out = [];
+  let list = null;
+  const closeList = () => {
+    if (list) out.push(list === 'ol' ? '</ol>' : '</ul>');
+    list = null;
+  };
+
+  const body = doc.getElementsByTagNameNS('*', 'body')[0];
+  if (!body) return '';
+
+  for (const node of body.children) {
+    const local = node.localName;
+
+    if (local === 'tbl') {
+      closeList();
+      const rows = [...node.getElementsByTagNameNS('*', 'tr')]
+        .map((row) => {
+          const cells = [...row.getElementsByTagNameNS('*', 'tc')]
+            .map((cell) => `<td>${escapeXml(textOf(cell))}</td>`)
+            .join('');
+          return `<tr>${cells}</tr>`;
+        })
+        .join('');
+      out.push(`<table>${rows}</table>`);
+      continue;
+    }
+
+    if (local !== 'p') continue;
+
+    const style = node.getElementsByTagNameNS('*', 'pStyle')[0]?.getAttribute('w:val') ?? '';
+    const numbered = node.getElementsByTagNameNS('*', 'numPr').length > 0;
+    const numId = node.getElementsByTagNameNS('*', 'numId')[0]?.getAttribute('w:val');
+
+    const runs = [...node.getElementsByTagNameNS('*', 'r')]
+      .map((run) => {
+        const props = run.getElementsByTagNameNS('*', 'rPr')[0];
+        let piece = escapeXml(textOf(run));
+        if (!piece) return '';
+        if (props) {
+          if (props.getElementsByTagNameNS('*', 'b').length) piece = `<b>${piece}</b>`;
+          if (props.getElementsByTagNameNS('*', 'i').length) piece = `<i>${piece}</i>`;
+          if (props.getElementsByTagNameNS('*', 'u').length) piece = `<u>${piece}</u>`;
+          if (props.getElementsByTagNameNS('*', 'strike').length) piece = `<s>${piece}</s>`;
+        }
+        return piece;
+      })
+      .join('');
+
+    if (numbered) {
+      const want = numId === '2' ? 'ol' : 'ul';
+      if (list !== want) {
+        closeList();
+        out.push(want === 'ol' ? '<ol>' : '<ul>');
+        list = want;
+      }
+      out.push(`<li>${runs || '<br>'}</li>`);
+      continue;
+    }
+    closeList();
+
+    const heading = /^Heading([1-6])$/.exec(style);
+    if (heading) {
+      out.push(`<h${heading[1]}>${runs || '<br>'}</h${heading[1]}>`);
+      continue;
+    }
+    if (style === 'Quote') {
+      out.push(`<blockquote>${runs || '<br>'}</blockquote>`);
+      continue;
+    }
+    if (style === 'Code') {
+      out.push(`<pre>${runs || '<br>'}</pre>`);
+      continue;
+    }
+    out.push(`<p>${runs || '<br>'}</p>`);
+  }
+  closeList();
+  return out.join('\n');
 }
