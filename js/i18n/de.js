@@ -1,5 +1,10 @@
 export default {
   ui: {
+    'color.pick': 'Farbe wählen',
+    'color.custom': 'Eigene',
+    'color.none': 'Keine',
+    'font.search': 'Schriften durchsuchen',
+    'search.nothing': 'Nichts passt',
     'nav.disclaimer': 'Haftungsausschluss',
     'shell.openDisclaimer': 'Haftungsausschluss öffnen',
     'disclaimer.title': 'Haftungsausschluss',

@@ -8,6 +8,10 @@ import './jg-dialog.js';
 import './jg-popover.js';
 import './jg-drop.js';
 import './jg-color-picker.js';
+import './jg-selector.js';
+import './jg-lookup.js';
+import './jg-font-selector.js';
+import './jg-size-selector.js';
 import './jg-stat.js';
 import './jg-progress.js';
 

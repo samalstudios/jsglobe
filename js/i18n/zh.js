@@ -1,5 +1,10 @@
 export default {
   ui: {
+    'color.pick': '选择颜色',
+    'color.custom': '自定义',
+    'color.none': '无',
+    'font.search': '搜索字体',
+    'search.nothing': '无匹配项',
     'nav.disclaimer': '免责声明',
     'shell.openDisclaimer': '打开免责声明',
     'disclaimer.title': '免责声明',

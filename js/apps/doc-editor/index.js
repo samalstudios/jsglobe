@@ -16,29 +16,13 @@ const t = appText(strings);
 const sheet = await styleSheet(import.meta.url);
 
 const STYLES = [
-  { value: 'p', label: () => t('doc-editor.body', 'Body text'), tag: 'p' },
-  { value: 'h1', label: () => t('doc-editor.title', 'Title'), tag: 'h1' },
-  { value: 'h2', label: () => t('doc-editor.heading1', 'Heading 1'), tag: 'h2' },
-  { value: 'h3', label: () => t('doc-editor.heading2', 'Heading 2'), tag: 'h3' },
-  { value: 'h4', label: () => t('doc-editor.heading3', 'Heading 3'), tag: 'h4' },
-  { value: 'blockquote', label: () => t('doc-editor.quote', 'Quote'), tag: 'blockquote' },
-  { value: 'pre', label: () => t('doc-editor.codeBlock', 'Code'), tag: 'pre' },
-];
-
-const FAMILIES = [
-  { value: 'Helvetica Neue, Helvetica, Arial, sans-serif', label: 'Helvetica' },
-  { value: 'Arial, Helvetica, sans-serif', label: 'Arial' },
-  { value: 'Verdana, Geneva, sans-serif', label: 'Verdana' },
-  { value: 'Tahoma, Geneva, sans-serif', label: 'Tahoma' },
-  { value: 'Trebuchet MS, Helvetica, sans-serif', label: 'Trebuchet' },
-  { value: 'Calibri, Candara, Segoe UI, sans-serif', label: 'Calibri' },
-  { value: 'Times New Roman, Times, serif', label: 'Times New Roman' },
-  { value: 'Georgia, Times New Roman, serif', label: 'Georgia' },
-  { value: 'Garamond, Baskerville, serif', label: 'Garamond' },
-  { value: 'Palatino, Palatino Linotype, Book Antiqua, serif', label: 'Palatino' },
-  { value: 'Cambria, Georgia, serif', label: 'Cambria' },
-  { value: 'Courier New, Courier, monospace', label: 'Courier New' },
-  { value: 'Menlo, Consolas, monospace', label: 'Consolas' },
+  { value: 'p', label: () => t('doc-editor.body', 'Body text'), tag: 'p', style: 'font-size:13px' },
+  { value: 'h1', label: () => t('doc-editor.title', 'Title'), tag: 'h1', style: 'font-size:19px;font-weight:650' },
+  { value: 'h2', label: () => t('doc-editor.heading1', 'Heading 1'), tag: 'h2', style: 'font-size:16px;font-weight:650' },
+  { value: 'h3', label: () => t('doc-editor.heading2', 'Heading 2'), tag: 'h3', style: 'font-size:14px;font-weight:650' },
+  { value: 'h4', label: () => t('doc-editor.heading3', 'Heading 3'), tag: 'h4', style: 'font-size:13px;font-weight:650' },
+  { value: 'blockquote', label: () => t('doc-editor.quote', 'Quote'), tag: 'blockquote', style: 'font-style:italic' },
+  { value: 'pre', label: () => t('doc-editor.codeBlock', 'Code'), tag: 'pre', style: 'font-family:Menlo,monospace;font-size:12px' },
 ];
 
 const SIZES = [9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48];
@@ -151,6 +135,7 @@ class DocEditor extends JGApp {
   #eye = null;
   #stamp = 0;
   #range = null;
+  #lastRange = null;
   #header = '';
   #footer = '';
   #numbers = false;
@@ -183,24 +168,22 @@ class DocEditor extends JGApp {
             <button class="tool" data-act="printNow" title="${t('doc-editor.print', 'Print')} (Ctrl P)">${icon('printer', 16)}</button>
           </div>
           <div class="cluster">
-            <jg-select id="style" size="sm" value="p">${STYLES.map((entry) => html`<option value="${entry.value}">${entry.label()}</option>`)}</jg-select>
-            <jg-select id="family" size="sm" value="Helvetica Neue, Helvetica, Arial, sans-serif" title="${EXPORT_NOTE()}">${FAMILIES.map((entry) => html`<option value="${entry.value}">${entry.label}</option>`)}</jg-select>
-            <button class="tool" data-act="smaller" title="${t('doc-editor.smaller', 'Smaller')}">${icon('minus', 15)}</button>
-            <jg-select id="size" size="sm" value="11">${SIZES.map((value) => html`<option value="${value}">${value}</option>`)}</jg-select>
-            <button class="tool" data-act="bigger" title="${t('doc-editor.bigger', 'Bigger')}">${icon('plus', 15)}</button>
+            <jg-selector id="style" value="p"></jg-selector>
+            <jg-font-selector id="family" value="Helvetica Neue, Helvetica, Arial, sans-serif" title="${EXPORT_NOTE()}"></jg-font-selector>
+            <jg-size-selector id="size" value="11"></jg-size-selector>
           </div>
           <div class="cluster">
             <button class="tool" data-act="bold" title="${t('doc-editor.bold', 'Bold')} (Ctrl B)">${icon('bold', 16)}</button>
             <button class="tool" data-act="italic" title="${t('doc-editor.italic', 'Italic')} (Ctrl I)">${icon('italic', 16)}</button>
             <button class="tool" data-act="underline" title="${t('doc-editor.underline', 'Underline')} (Ctrl U)">${icon('underline', 16)}</button>
             <button class="tool" data-act="strikeThrough" title="${t('doc-editor.strikethrough', 'Strikethrough')} (Ctrl Shift X)">${icon('strikethrough', 16)}</button>
-            <button class="tool" data-act="superscript" title="${t('doc-editor.superscript', 'Superscript')}">${icon('chevronUp', 16)}</button>
-            <button class="tool" data-act="subscript" title="${t('doc-editor.subscript', 'Subscript')}">${icon('chevronDown', 16)}</button>
+            <button class="tool" data-act="superscript" title="${t('doc-editor.superscript', 'Superscript')}">${icon('superscript', 16)}</button>
+            <button class="tool" data-act="subscript" title="${t('doc-editor.subscript', 'Subscript')}">${icon('subscript', 16)}</button>
           </div>
           <div class="cluster">
-            <jg-color-picker id="ink" value="#111111" label="${t('doc-editor.textColour', 'Text colour')}">${icon('palette', 16)}</jg-color-picker>
+            <jg-color-picker id="ink" value="#111111" label="${t('doc-editor.textColour', 'Text colour')}">${icon('textColour', 16)}</jg-color-picker>
             <jg-color-picker id="mark" value="#fff3a3" clearable label="${t('doc-editor.highlight', 'Highlight')}">${icon('highlight', 16)}</jg-color-picker>
-            <button class="tool" data-act="case" title="${t('doc-editor.changeCase', 'Change the case')}">${icon('type', 16)}</button>
+            <button class="tool" data-act="case" title="${t('doc-editor.changeCase', 'Change the case')}">${icon('letterCase', 16)}</button>
             <button class="tool" data-act="removeFormat" title="${t('doc-editor.clearFormatting', 'Clear formatting')} (Ctrl \\)">${icon('eraser', 16)}</button>
           </div>
           <div class="spring"></div>
@@ -242,11 +225,11 @@ class DocEditor extends JGApp {
             <button class="tool" data-act="image" title="${t('doc-editor.insertPicture', 'Insert picture')}">${icon('image', 16)}</button>
             <button class="tool" data-act="table" title="${t('doc-editor.insertTable', 'Insert table')}">${icon('table', 16)}</button>
             <button class="tool" data-act="rule" title="${t('doc-editor.insertRule', 'Insert a line')}">${icon('minus', 16)}</button>
-            <button class="tool" data-act="pageBreak" title="${t('doc-editor.pageBreak', 'Page break')} (Ctrl Enter)">${icon('file', 16)}</button>
+            <button class="tool" data-act="pageBreak" title="${t('doc-editor.pageBreak', 'Page break')} (Ctrl Enter)">${icon('pageBreak', 16)}</button>
             <button class="tool" data-act="today" title="${t('doc-editor.insertDate', 'Insert today')}">${icon('calendar', 16)}</button>
             <button class="tool" data-act="contents" title="${t('doc-editor.tableOfContents', 'Table of contents')}">${icon('list', 16)}</button>
             <button class="tool" data-act="chart" title="${t('doc-editor.chart', 'Chart')}">${icon('barChart', 16)}</button>
-            <button class="tool" data-act="formula" title="${t('doc-editor.formula', 'Formula')}">${icon('calculator', 16)}</button>
+            <button class="tool" data-act="formula" title="${t('doc-editor.formula', 'Formula')}">${icon('sigma', 16)}</button>
             <button class="tool" data-act="footnote" title="${t('doc-editor.footnote', 'Footnote')}">${icon('quote', 16)}</button>
           </div>
           <div class="cluster">
@@ -288,8 +271,8 @@ class DocEditor extends JGApp {
           <button class="tool" data-table="columnRight" title="${t('doc-editor.columnRight', 'Column to the right')}">${icon('chevronRight', 15)}</button>
         </div>
         <div class="cluster">
-          <button class="tool" data-table="dropRow" title="${t('doc-editor.deleteRow', 'Delete this row')}">${icon('outdent', 15)}</button>
-          <button class="tool" data-table="dropColumn" title="${t('doc-editor.deleteColumn', 'Delete this column')}">${icon('indent', 15)}</button>
+          <button class="tool" data-table="dropRow" title="${t('doc-editor.deleteRow', 'Delete this row')}">${icon('rowRemove', 15)}</button>
+          <button class="tool" data-table="dropColumn" title="${t('doc-editor.deleteColumn', 'Delete this column')}">${icon('columnRemove', 15)}</button>
           <button class="tool" data-table="header" title="${t('doc-editor.toggleHeaderRow', 'Turn the first row into a header')}">${icon('heading', 15)}</button>
         </div>
         <div class="cluster">
@@ -409,12 +392,15 @@ class DocEditor extends JGApp {
           </jg-select>
           <jg-input id="chart-title" size="sm" placeholder="${t('doc-editor.chartTitle', 'Title, optional')}"></jg-input>
         </div>
-        <jg-field label="${t('doc-editor.data', 'Data')}">
-          <jg-textarea id="chart-data" rows="6" sans>Germany, 31149
-France, 32458
-Spain, 28900
-Italy, 27400</jg-textarea>
-        </jg-field>
+        <div class="label">${t('doc-editor.data', 'Data')}</div>
+        <table class="datagrid" id="chart-grid">
+          <thead><tr><th>${t('doc-editor.label', 'Label')}</th><th>${t('doc-editor.value', 'Value')}</th><th></th></tr></thead>
+          <tbody id="chart-rows"></tbody>
+        </table>
+        <div class="row tight">
+          <jg-button size="sm" variant="outline" id="chart-add">${t('doc-editor.addRow', 'Add a row')}</jg-button>
+          <jg-button size="sm" variant="ghost" id="chart-paste">${t('doc-editor.pasteRows', 'Paste rows')}</jg-button>
+        </div>
         <canvas id="chart-preview" class="preview-chart"></canvas>
         <div class="row end">
           <jg-button size="sm" variant="outline" id="chart-cancel">${t('doc-editor.cancel', 'Cancel')}</jg-button>
@@ -424,6 +410,11 @@ Italy, 27400</jg-textarea>
 
       <jg-dialog id="formula-box" title-text="${t('doc-editor.formula', 'Formula')}" sub="${t('doc-editor.formulaHint', 'Type it plainly: x^2 for powers, x_1 for subscripts, \\alpha for Greek, \\frac{a}{b} for a fraction.')}">
         <jg-field label="${t('doc-editor.formula', 'Formula')}"><jg-input id="formula-source" value="a^2 + b^2 = c^2" autofocus></jg-input></jg-field>
+        <div class="keys" id="formula-keys">
+          ${[['x^2', '^{}'], ['x_2', '_{}'], ['a/b', '\\frac{}{}'], ['√', '\\sqrt{}'], ['±', '\\pm '], ['×', '\\times '], ['≤', '\\leq '], ['≥', '\\geq '], ['≠', '\\neq '], ['≈', '\\approx '], ['∑', '\\sum '], ['∫', '\\int '], ['∞', '\\infty '], ['π', '\\pi '], ['α', '\\alpha '], ['β', '\\beta '], ['θ', '\\theta '], ['Δ', '\\Delta '], ['→', '\\rightarrow '], ['∂', '\\partial ']].map(
+            ([face, code]) => html`<button class="key" data-code="${code}">${face}</button>`,
+          )}
+        </div>
         <div class="formula-preview" id="formula-preview"></div>
         <div class="samples" id="formula-samples">${FORMULAS.map((entry) => html`<button class="pill" data-sample="${entry.source.replace(/"/g, '&quot;')}">${entry.label}</button>`)}</div>
         <div class="row end">
@@ -502,8 +493,16 @@ Italy, 27400</jg-textarea>
     const settle = debounce(() => this.#sync(), 260);
 
     this.on(editor, 'input', settle);
-    this.on(editor, 'keyup', () => this.#reflect());
-    this.on(editor, 'mouseup', () => this.#reflect());
+    this.on(editor, 'keyup', () => {
+      this.#remember();
+      this.#reflect();
+    });
+    this.on(editor, 'mouseup', () => {
+      this.#remember();
+      this.#reflect();
+    });
+    this.on(editor, 'blur', () => this.#remember());
+    this.listen(document, 'selectionchange', () => this.#remember());
     this.on(editor, 'paste', (event) => {
       const text = event.clipboardData?.getData('text/plain');
       if (event.clipboardData?.types?.includes('text/html')) return;
@@ -559,6 +558,7 @@ Italy, 27400</jg-textarea>
 
     this.listen(document, 'click', () => this.$$('.pop').forEach((node) => node.classList.remove('open')));
 
+    this.$('#style').items = STYLES.map((entry) => ({ value: entry.value, label: entry.label(), style: entry.style ?? '' }));
     this.on(this.$('#style'), 'change', (event) => {
       const entry = STYLES.find((item) => item.value === event.detail.value);
       this.#run('formatBlock', `<${entry?.tag ?? 'p'}>`);
@@ -648,14 +648,53 @@ Italy, 27400</jg-textarea>
 
     this.on(this.$('#save-doc'), 'click', () => this.#act('saveCopy'));
 
-    for (const id of ['#chart-kind', '#chart-title', '#chart-data']) {
+    for (const id of ['#chart-kind', '#chart-title']) {
       this.on(this.$(id), 'input', () => this.#drawChartPreview());
       this.on(this.$(id), 'change', () => this.#drawChartPreview());
     }
+    this.on(this.$('#chart-grid'), 'input', () => this.#drawChartPreview());
+    this.on(this.$('#chart-grid'), 'click', (event) => {
+      if (!event.target.closest('.g-drop')) return;
+      event.target.closest('tr').remove();
+      this.#drawChartPreview();
+    });
+    this.on(this.$('#chart-add'), 'click', () => {
+      this.#chartRows([...this.#chartSpec().points, { label: '', value: 0 }]);
+      this.#drawChartPreview();
+    });
+    this.on(this.$('#chart-paste'), 'click', async () => {
+      try {
+        const text = await navigator.clipboard.readText();
+        const points = parseSeries(text);
+        if (!points.length) return toast(t('doc-editor.nothingToPaste', 'Nothing in the clipboard looked like rows'), 'danger');
+        this.#chartRows(points);
+        this.#drawChartPreview();
+      } catch {
+        toast(t('doc-editor.clipboardBlocked', 'The clipboard could not be read'), 'danger');
+      }
+    });
     this.on(this.$('#chart-cancel'), 'click', () => this.$('#chart-box').close());
     this.on(this.$('#chart-apply'), 'click', () => this.#insertChart());
 
     this.on(this.$('#formula-source'), 'input', () => this.#showFormula());
+    this.on(this.$('#formula-keys'), 'mousedown', (event) => event.preventDefault());
+    this.on(this.$('#formula-keys'), 'click', (event) => {
+      const key = event.target.closest('[data-code]');
+      if (!key) return;
+      const field = this.$('#formula-source');
+      const inner = field.shadowRoot.querySelector('.control');
+      const code = key.dataset.code;
+      const at = inner.selectionStart ?? inner.value.length;
+      const end = inner.selectionEnd ?? at;
+      const before = inner.value.slice(0, at);
+      const after = inner.value.slice(end);
+      inner.value = before + code + after;
+      const brace = code.indexOf('{}');
+      const caret = brace === -1 ? at + code.length : at + brace + 1;
+      inner.focus();
+      inner.setSelectionRange(caret, caret);
+      this.#showFormula();
+    });
     this.on(this.$('#formula-samples'), 'click', (event) => {
       const pill = event.target.closest('[data-sample]');
       if (!pill) return;
@@ -856,11 +895,25 @@ Italy, 27400</jg-textarea>
     return Boolean(anchor && (anchor.parentElement?.closest('li') || anchor.nodeName === 'LI'));
   }
 
+  #remember() {
+    const editor = this.$('#editor');
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    if (!editor || !selection?.rangeCount) return;
+    const range = selection.getRangeAt(0);
+    if (editor.contains(range.commonAncestorContainer)) this.#lastRange = range.cloneRange();
+  }
+
   #focus() {
     const editor = this.$('#editor');
     if (this.shadowRoot.activeElement !== editor) editor.focus();
     const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
-    const inside = selection?.anchorNode && editor.contains(selection.anchorNode);
+    const inside = selection?.rangeCount && editor.contains(selection.getRangeAt(0).commonAncestorContainer);
+
+    if (!inside && this.#lastRange && editor.contains(this.#lastRange.commonAncestorContainer)) {
+      selection.removeAllRanges();
+      selection.addRange(this.#lastRange);
+      return editor;
+    }
     if (!inside) {
       const range = document.createRange();
       const last = editor.lastElementChild ?? editor;
@@ -909,9 +962,21 @@ Italy, 27400</jg-textarea>
   }
 
   #wrapStyle(property, value) {
-    this.#focus();
+    const editor = this.#focus();
     const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
-    if (!selection || selection.isCollapsed) return;
+    if (!selection) return;
+
+    const kept = this.#lastRange;
+    const live = selection.rangeCount ? selection.getRangeAt(0) : null;
+    const usable = live && !live.collapsed;
+    if (!usable && kept && !kept.collapsed && editor.contains(kept.commonAncestorContainer)) {
+      selection.removeAllRanges();
+      selection.addRange(kept);
+    }
+    if (!selection.rangeCount || selection.getRangeAt(0).collapsed) {
+      toast(t('doc-editor.selectSomeText', 'Select some text first'), 'danger');
+      return;
+    }
     const range = selection.getRangeAt(0);
     const span = document.createElement('span');
     span.style[property] = value;
@@ -922,6 +987,7 @@ Italy, 27400</jg-textarea>
       const next = document.createRange();
       next.selectNodeContents(span);
       selection.addRange(next);
+      this.#lastRange = next.cloneRange();
     } catch {
       document.execCommand('insertHTML', false, span.outerHTML);
     }
@@ -984,6 +1050,14 @@ Italy, 27400</jg-textarea>
     if (action === 'checklist') return this.#checklist();
     if (action === 'contents') return this.#insertContents();
     if (action === 'chart') {
+      if (!this.shadowRoot.querySelectorAll('#chart-rows tr').length) {
+        this.#chartRows([
+          { label: 'Germany', value: 31149 },
+          { label: 'France', value: 32458 },
+          { label: 'Spain', value: 28900 },
+          { label: 'Italy', value: 27400 },
+        ]);
+      }
       this.#drawChartPreview();
       return this.$('#chart-box').open();
     }
@@ -1049,11 +1123,30 @@ Italy, 27400</jg-textarea>
   }
 
   #chartSpec() {
+    const points = [...this.shadowRoot.querySelectorAll('#chart-rows tr')]
+      .map((row) => ({
+        label: row.querySelector('.g-label')?.value ?? '',
+        value: Number(row.querySelector('.g-value')?.value),
+      }))
+      .filter((point) => Number.isFinite(point.value));
     return {
       kind: this.$('#chart-kind')?.value ?? 'bar',
       title: this.$('#chart-title')?.value?.trim() ?? '',
-      points: parseSeries(this.$('#chart-data')?.value ?? ''),
+      points,
     };
+  }
+
+  #chartRows(points) {
+    const body = this.$('#chart-rows');
+    if (!body) return;
+    body.innerHTML = points
+      .map(
+        (point) =>
+          `<tr><td><input class="g-label" value="${String(point.label ?? '').replace(/"/g, '&quot;')}"></td>` +
+          `<td><input class="g-value" type="number" step="any" value="${point.value ?? ''}"></td>` +
+          `<td><button class="g-drop" title="${t('doc-editor.removeRow', 'Remove')}">✕</button></td></tr>`,
+      )
+      .join('');
   }
 
   #drawChartPreview() {
@@ -1148,11 +1241,11 @@ Italy, 27400</jg-textarea>
   }
 
   #stepSize(step) {
-    const select = this.$('#size');
-    const now = Number(select.value) || 11;
+    const picker = this.$('#size');
+    const now = Number(picker.value) || 11;
     const at = SIZES.indexOf(now);
     const next = SIZES[Math.max(0, Math.min(SIZES.length - 1, (at === -1 ? SIZES.indexOf(11) : at) + step))];
-    select.value = String(next);
+    picker.value = String(next);
     this.#wrapStyle('fontSize', `${next}px`);
   }
 
