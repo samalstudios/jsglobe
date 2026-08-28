@@ -1,5 +1,10 @@
 export default {
   ui: {
+    'formula.structure': '结构',
+    'formula.operators': '运算符',
+    'formula.symbols': '符号',
+    'formula.greek': '希腊字母',
+    'formula.blank': '公式将在你输入时显示于此',
     'color.pick': '选择颜色',
     'color.custom': '自定义',
     'color.none': '无',

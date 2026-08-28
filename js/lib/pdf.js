@@ -179,7 +179,12 @@ export function createPdf(options = {}) {
       return { width: size[0], height: size[1] };
     },
 
-    addPage() {
+    addPage(paper) {
+      if (paper?.width && paper?.height) {
+        page = { width: paper.width, height: paper.height, parts: [], links: [] };
+        pages.push(page);
+        return page;
+      }
       return start();
     },
 

@@ -158,7 +158,7 @@ export async function writeDocx(blocks, options = {}) {
   const body = blocks
     .map((block) => {
       if (block.type === 'table') return tableXml(block, links);
-      if (block.type === 'break') return '<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
+      if (block.type === 'break' || block.type === 'section') return '<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
       if (block.type === 'rule') return '<w:p><w:pPr><w:pBdr><w:bottom w:val="single" w:sz="6" w:color="C8CDD2"/></w:pBdr></w:pPr></w:p>';
       if (block.type === 'image') {
         if (!block.jpeg?.data) return '<w:p/>';

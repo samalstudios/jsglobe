@@ -771,6 +771,26 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
   const roundTrip = blocksToMarkdown(rich);
   ok('markdown survives a round trip through html', markdownToHtml(roundTrip).includes('<h1>Report</h1>'));
 
+  const mixed = layoutDocument(
+    [
+      { type: 'h1', runs: [{ text: 'Portrait' }] },
+      { type: 'section', setup: { size: 'a4', orientation: 'landscape', margin: 72 } },
+      { type: 'h1', runs: [{ text: 'Landscape' }] },
+      { type: 'section', setup: { size: 'a5', orientation: 'portrait', margin: 36 } },
+      { type: 'h1', runs: [{ text: 'Small' }] },
+    ],
+    { size: 'a4', margin: 72 },
+  );
+  ok('a section starts a page of its own', mixed.pages.length === 3, `${mixed.pages.length} pages`);
+  ok('a section can turn the paper sideways', mixed.pages[1].width > mixed.pages[1].height);
+  ok('a section can change the paper size', Math.round(mixed.pages[2].width) === 420);
+  ok('a section carries its own margin', mixed.pages[2].margin === 36);
+  ok('the first page keeps the original paper', Math.round(mixed.pages[0].width) === 595 && Math.round(mixed.pages[0].height) === 842);
+
+  const mixedPdf = new TextDecoder('latin1').decode(layoutToPdf(mixed, { title: 'Mixed' }));
+  const boxes = [...mixedPdf.matchAll(/MediaBox \[0 0 ([\d.]+) ([\d.]+)\]/g)].map((row) => `${Math.round(Number(row[1]))}x${Math.round(Number(row[2]))}`);
+  ok('the pdf gives every page its own size', boxes.join(',') === '595x842,842x595,420x595', boxes.join(','));
+
   const numbered = layoutToPdf(layoutDocument([{ type: 'p', runs: [{ text: 'one' }] }], { size: 'a4' }), { numbers: true });
   const plainPdf = layoutToPdf(layoutDocument([{ type: 'p', runs: [{ text: 'one' }] }], { size: 'a4' }), {});
   ok('page numbers add to the file', numbered.length > plainPdf.length);

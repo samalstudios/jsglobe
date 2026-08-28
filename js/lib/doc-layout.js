@@ -97,19 +97,31 @@ const breakLines = (pieces, limit) => {
 
 const lineWidth = (line) => line.reduce((sum, piece) => sum + widthOf(piece.text, piece.font, piece.size), 0);
 
+export const paperOf = (setup = {}) => {
+  const [w, h] = PAGE_SIZES[setup.size ?? 'a4'] ?? PAGE_SIZES.a4;
+  const landscape = setup.orientation === 'landscape';
+  return {
+    width: landscape ? h : w,
+    height: landscape ? w : h,
+    margin: setup.margin ?? 72,
+    columns: Math.max(1, Math.min(3, Math.round(setup.columns ?? 1))),
+  };
+};
+
 export function layoutDocument(blocks, options = {}) {
-  const [paperWidth, paperHeight] = PAGE_SIZES[options.size ?? 'a4'] ?? PAGE_SIZES.a4;
-  const landscape = options.orientation === 'landscape';
-  const width = landscape ? paperHeight : paperWidth;
-  const height = landscape ? paperWidth : paperHeight;
-  const margin = options.margin ?? 72;
   const base = options.font ?? 'helvetica';
   const spacing = options.spacing ?? 1.45;
-  const full = width - margin * 2;
-  const bottom = height - margin;
-  const columns = Math.max(1, Math.min(3, Math.round(options.columns ?? 1)));
-  const gutter = columns > 1 ? 26 : 0;
-  const limit = (full - gutter * (columns - 1)) / columns;
+
+  let paper = paperOf(options);
+  let width = paper.width;
+  let height = paper.height;
+  let margin = paper.margin;
+  let columns = paper.columns;
+  let gutter = columns > 1 ? 26 : 0;
+  let limit = (width - margin * 2 - gutter * (columns - 1)) / columns;
+  let bottom = height - margin;
+
+  const first = { width, height, margin };
 
   const pages = [];
   let page = null;
@@ -117,12 +129,23 @@ export function layoutDocument(blocks, options = {}) {
   let column = 0;
 
   const openPage = () => {
-    page = { items: [], starts: [], last: -1 };
+    page = { items: [], starts: [], last: -1, width, height, margin, columns };
     pages.push(page);
     y = margin;
     column = 0;
   };
   openPage();
+
+  const usePaper = (setup) => {
+    paper = paperOf({ ...options, ...setup });
+    width = paper.width;
+    height = paper.height;
+    margin = paper.margin;
+    columns = paper.columns;
+    gutter = columns > 1 ? 26 : 0;
+    limit = (width - margin * 2 - gutter * (columns - 1)) / columns;
+    bottom = height - margin;
+  };
 
   const columnLeft = () => margin + column * (limit + gutter);
 
@@ -143,6 +166,17 @@ export function layoutDocument(blocks, options = {}) {
     blockIndex += 1;
     if (block.type === 'break') {
       if (page.items.length) openPage();
+      continue;
+    }
+    if (block.type === 'section') {
+      usePaper(block.setup ?? {});
+      if (page.items.length) openPage();
+      else {
+        page.width = width;
+        page.height = height;
+        page.margin = margin;
+        page.columns = columns;
+      }
       continue;
     }
     const style = BLOCK_STYLE[block.type] ?? BLOCK_STYLE.p;
@@ -238,7 +272,7 @@ export function layoutDocument(blocks, options = {}) {
     y += style.after;
   }
 
-  return { pages, width, height, margin, columns };
+  return { pages, width: first.width, height: first.height, margin: first.margin, columns };
 }
 
 export const pageCount = (layout) => layout.pages.length;
@@ -246,7 +280,7 @@ export const pageCount = (layout) => layout.pages.length;
 export function layoutToPdf(layout, meta = {}) {
   const doc = createPdf({ size: meta.size ?? 'a4', orientation: meta.orientation });
   layout.pages.forEach((page, index) => {
-    if (index) doc.addPage();
+    if (index) doc.addPage({ width: page.width, height: page.height });
     for (const item of page.items) {
       if (item.type === 'rule') {
         doc.line(item.x, item.y, item.x + item.width, item.y, { color: '#c8cdd2', width: 1 });
@@ -283,17 +317,17 @@ export function layoutToPdf(layout, meta = {}) {
     }
 
     if (meta.header) {
-      doc.text(meta.header, { x: layout.margin, y: layout.margin / 2 + 4, font: 'helvetica', size: 8.5, color: '#7a828a' });
+      doc.text(meta.header, { x: page.margin, y: page.margin / 2 + 4, font: 'helvetica', size: 8.5, color: '#7a828a' });
     }
     if (meta.numbers || meta.footer) {
-      const foot = layout.height - layout.margin / 2;
+      const foot = page.height - page.margin / 2;
       if (meta.footer) {
-        doc.text(meta.footer, { x: layout.margin, y: foot, font: 'helvetica', size: 8.5, color: '#7a828a' });
+        doc.text(meta.footer, { x: page.margin, y: foot, font: 'helvetica', size: 8.5, color: '#7a828a' });
       }
       if (meta.numbers) {
         const label = `${index + 1} / ${layout.pages.length}`;
         const wide = widthOf(label, 'helvetica', 8.5);
-        doc.text(label, { x: layout.width - layout.margin - wide, y: foot, font: 'helvetica', size: 8.5, color: '#7a828a' });
+        doc.text(label, { x: page.width - page.margin - wide, y: foot, font: 'helvetica', size: 8.5, color: '#7a828a' });
       }
     }
   });

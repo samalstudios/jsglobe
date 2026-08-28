@@ -119,6 +119,17 @@ export function htmlToBlocks(root) {
       continue;
     }
     if (tag === 'HR') {
+      if (node.dataset?.section) {
+        blocks.push({
+          type: 'section',
+          setup: {
+            size: node.dataset.size || 'a4',
+            orientation: node.dataset.orient || 'portrait',
+            margin: Number(node.dataset.margin) || 72,
+          },
+        });
+        continue;
+      }
       blocks.push({ type: node.dataset?.break === 'page' ? 'break' : 'rule' });
       continue;
     }
@@ -200,6 +211,13 @@ export function blocksToHtml(blocks) {
       continue;
     }
     closeList();
+    if (block.type === 'section') {
+      const setup = block.setup ?? {};
+      out.push(
+        `<hr data-section="1" data-size="${setup.size ?? 'a4'}" data-orient="${setup.orientation ?? 'portrait'}" data-margin="${setup.margin ?? 72}">`,
+      );
+      continue;
+    }
     if (block.type === 'break') {
       out.push('<hr data-break="page">');
       continue;
@@ -234,7 +252,7 @@ export const blocksToText = (blocks) =>
   blocks
     .map((block) => {
       if (block.type === 'rule') return '---';
-      if (block.type === 'break') return '';
+      if (block.type === 'break' || block.type === 'section') return '';
       if (block.type === 'image') return '';
       if (block.type === 'table') return block.rows.map((row) => row.map((cell) => cell.runs.map((r) => r.text).join('')).join('\t')).join('\n');
       const text = (block.runs ?? []).map((run) => run.text).join('');
@@ -260,7 +278,7 @@ export function blocksToMarkdown(blocks) {
     .map((block) => {
       const body = (block.runs ?? []).map(mark).join('');
       if (block.type === 'rule') return '---';
-      if (block.type === 'break') return '---';
+      if (block.type === 'break' || block.type === 'section') return '---';
       if (block.type === 'image') return `![](${block.src})`;
       if (block.type === 'quote') return `> ${body}`;
       if (block.type === 'code') return '```\n' + (block.runs ?? []).map((r) => r.text).join('') + '\n```';

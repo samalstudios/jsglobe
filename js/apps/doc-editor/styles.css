@@ -534,3 +534,5 @@
   cursor: pointer;
 }
 .key:hover { border-color: var(--ring); background: var(--accent); }
+
+jg-formula-input { display: block; margin-top: 12px; }

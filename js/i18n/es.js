@@ -1,5 +1,10 @@
 export default {
   ui: {
+    'formula.structure': 'Estructura',
+    'formula.operators': 'Operadores',
+    'formula.symbols': 'Símbolos',
+    'formula.greek': 'Griego',
+    'formula.blank': 'La fórmula aparece aquí mientras escribes',
     'color.pick': 'Elegir un color',
     'color.custom': 'Personalizado',
     'color.none': 'Ninguno',

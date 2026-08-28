@@ -6,7 +6,7 @@ import { toast, download, debounce, pickFile } from '../../core/util.js';
 import { createDesigns } from '../../lib/designs.js';
 import { toJpeg } from '../../lib/raster.js';
 import { drawChart, parseSeries } from '../../lib/chart.js';
-import { formulaToHtml, SAMPLES as FORMULAS } from '../../lib/formula.js';
+import { SAMPLES as FORMULAS } from '../../lib/formula.js';
 import { readZip } from '../../core/zip.js';
 import { htmlToBlocks, blockNodes, blocksToHtml, blocksToText, blocksToMarkdown, markdownToHtml, outlineOf, countWords } from '../../lib/richtext.js';
 import { layoutDocument, layoutToPdf } from '../../lib/doc-layout.js';
@@ -369,6 +369,12 @@ class DocEditor extends JGApp {
             </jg-select>
           </jg-field>
         </div>
+        <jg-field label="${t('doc-editor.appliesTo', 'Applies to')}">
+          <jg-select id="setup-scope" value="all">
+            <option value="all">${t('doc-editor.wholeDocument', 'The whole document')}</option>
+            <option value="here">${t('doc-editor.fromHereOn', 'From here on, as a new section')}</option>
+          </jg-select>
+        </jg-field>
         <div class="row end">
           <jg-button size="sm" id="setup-apply">${t('doc-editor.done', 'Done')}</jg-button>
         </div>
@@ -409,13 +415,7 @@ class DocEditor extends JGApp {
       </jg-dialog>
 
       <jg-dialog id="formula-box" title-text="${t('doc-editor.formula', 'Formula')}" sub="${t('doc-editor.formulaHint', 'Type it plainly: x^2 for powers, x_1 for subscripts, \\alpha for Greek, \\frac{a}{b} for a fraction.')}">
-        <jg-field label="${t('doc-editor.formula', 'Formula')}"><jg-input id="formula-source" value="a^2 + b^2 = c^2" autofocus></jg-input></jg-field>
-        <div class="keys" id="formula-keys">
-          ${[['x^2', '^{}'], ['x_2', '_{}'], ['a/b', '\\frac{}{}'], ['√', '\\sqrt{}'], ['±', '\\pm '], ['×', '\\times '], ['≤', '\\leq '], ['≥', '\\geq '], ['≠', '\\neq '], ['≈', '\\approx '], ['∑', '\\sum '], ['∫', '\\int '], ['∞', '\\infty '], ['π', '\\pi '], ['α', '\\alpha '], ['β', '\\beta '], ['θ', '\\theta '], ['Δ', '\\Delta '], ['→', '\\rightarrow '], ['∂', '\\partial ']].map(
-            ([face, code]) => html`<button class="key" data-code="${code}">${face}</button>`,
-          )}
-        </div>
-        <div class="formula-preview" id="formula-preview"></div>
+        <jg-formula-input id="formula-source" value="a^2 + b^2 = c^2"></jg-formula-input>
         <div class="samples" id="formula-samples">${FORMULAS.map((entry) => html`<button class="pill" data-sample="${entry.source.replace(/"/g, '&quot;')}">${entry.label}</button>`)}</div>
         <div class="row end">
           <jg-button size="sm" variant="outline" id="formula-cancel">${t('doc-editor.cancel', 'Cancel')}</jg-button>
@@ -592,11 +592,23 @@ class DocEditor extends JGApp {
     });
 
     this.on(this.$('#setup-apply'), 'click', () => {
-      this.config.set('paper', this.$('#setup-size').value);
-      this.config.set('orientation', this.$('#setup-orient').value);
-      this.config.set('margin', String(Math.max(0, Math.min(200, Number(this.$('#setup-margin').value) || 72))));
-      this.config.set('bodyFont', this.$('#setup-font').value);
+      const size = this.$('#setup-size').value;
+      const orientation = this.$('#setup-orient').value;
+      const margin = String(Math.max(0, Math.min(200, Number(this.$('#setup-margin').value) || 72)));
       this.$('#setup-box').close();
+
+      if (this.$('#setup-scope').value === 'here') {
+        this.#insertNode(
+          `<hr data-section="1" data-size="${size}" data-orient="${orientation}" data-margin="${margin}"><p><br></p>`,
+        );
+        toast(t('doc-editor.sectionAdded', 'A new section starts here'));
+        return;
+      }
+
+      this.config.set('paper', size);
+      this.config.set('orientation', orientation);
+      this.config.set('margin', margin);
+      this.config.set('bodyFont', this.$('#setup-font').value);
       this.#applyPaper();
       this.#sync();
     });
@@ -676,30 +688,10 @@ class DocEditor extends JGApp {
     this.on(this.$('#chart-cancel'), 'click', () => this.$('#chart-box').close());
     this.on(this.$('#chart-apply'), 'click', () => this.#insertChart());
 
-    this.on(this.$('#formula-source'), 'input', () => this.#showFormula());
-    this.on(this.$('#formula-keys'), 'mousedown', (event) => event.preventDefault());
-    this.on(this.$('#formula-keys'), 'click', (event) => {
-      const key = event.target.closest('[data-code]');
-      if (!key) return;
-      const field = this.$('#formula-source');
-      const inner = field.shadowRoot.querySelector('.control');
-      const code = key.dataset.code;
-      const at = inner.selectionStart ?? inner.value.length;
-      const end = inner.selectionEnd ?? at;
-      const before = inner.value.slice(0, at);
-      const after = inner.value.slice(end);
-      inner.value = before + code + after;
-      const brace = code.indexOf('{}');
-      const caret = brace === -1 ? at + code.length : at + brace + 1;
-      inner.focus();
-      inner.setSelectionRange(caret, caret);
-      this.#showFormula();
-    });
     this.on(this.$('#formula-samples'), 'click', (event) => {
       const pill = event.target.closest('[data-sample]');
       if (!pill) return;
       this.$('#formula-source').value = pill.dataset.sample;
-      this.#showFormula();
     });
     this.on(this.$('#formula-cancel'), 'click', () => this.$('#formula-box').close());
     this.on(this.$('#formula-apply'), 'click', () => this.#insertFormula());
@@ -1066,10 +1058,7 @@ class DocEditor extends JGApp {
       this.#drawChartPreview();
       return this.$('#chart-box').open();
     }
-    if (action === 'formula') {
-      this.#showFormula();
-      return this.$('#formula-box').open();
-    }
+    if (action === 'formula') return this.$('#formula-box').open();
     if (action === 'footnote') return this.#footnote();
     if (action.startsWith('table')) return this.#tableAct(action.slice(5, 6).toLowerCase() + action.slice(6));
     if (action.startsWith('picture')) return this.#pictureAct(action.slice(7).toLowerCase());
@@ -1177,13 +1166,9 @@ class DocEditor extends JGApp {
     this.#insertNode(`<figure data-align="center" data-size="full"><img src="${canvas.toDataURL('image/png')}" alt=""></figure><p><br></p>`);
   }
 
-  #showFormula() {
-    const preview = this.$('#formula-preview');
-    if (preview) preview.innerHTML = formulaToHtml(this.$('#formula-source')?.value ?? '');
-  }
-
   #insertFormula() {
-    const body = formulaToHtml(this.$('#formula-source').value);
+    const field = this.$('#formula-source');
+    const body = field?.html ?? '';
     if (!body.trim()) return;
     this.$('#formula-box').close();
     this.#insertNode(`<span class="maths">${body}</span>`);
@@ -1622,7 +1607,7 @@ class DocEditor extends JGApp {
     context.setTransform(1, 0, 0, 1, 0, 0);
     context.fillStyle = '#ffffff';
     context.fillRect(0, 0, canvas.width, canvas.height);
-    const ratio = canvas.width / this.#layout.width;
+    const ratio = canvas.width / (page.width ?? this.#layout.width);
     context.scale(ratio, ratio);
 
     for (const item of page.items) {
@@ -1738,11 +1723,14 @@ class DocEditor extends JGApp {
 
     for (let index = 0; index < this.#layout.pages.length; index += 1) {
       const card = host.children[index];
+      const page = this.#layout.pages[index];
       card.dataset.page = String(index);
       card.dataset.drawn = '';
       const canvas = card.querySelector('canvas');
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
+      const wide = page.width >= page.height;
+      const thumbWidth = wide ? 150 : Math.round(width * (page.width / this.#layout.width));
+      canvas.style.width = `${thumbWidth}px`;
+      canvas.style.height = `${Math.round((page.height / page.width) * thumbWidth)}px`;
       card.querySelector('span').textContent = String(index + 1);
     }
 
@@ -1763,10 +1751,13 @@ class DocEditor extends JGApp {
     if (!page || card.dataset.drawn === String(this.#stamp)) return;
     const canvas = card.querySelector('canvas');
     const ratio = window.devicePixelRatio || 1;
-    const width = 132;
-    const height = Math.round((this.#layout.height / this.#layout.width) * width);
+    const wide = page.width >= page.height;
+    const width = wide ? 150 : Math.round(132 * (page.width / this.#layout.width));
+    const height = Math.round((page.height / page.width) * width);
     canvas.width = width * ratio;
     canvas.height = height * ratio;
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
     this.#paint(canvas, page, ratio);
     card.dataset.drawn = String(this.#stamp);
   }
