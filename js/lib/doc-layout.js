@@ -17,11 +17,31 @@ export const BLOCK_STYLE = {
   table: { size: 10, before: 8, after: 10 },
 };
 
+const PDF_BASE = {
+  helvetica: 'helvetica', 'helvetica neue': 'helvetica', arial: 'helvetica', verdana: 'helvetica',
+  tahoma: 'helvetica', geneva: 'helvetica', 'trebuchet ms': 'helvetica', calibri: 'helvetica',
+  candara: 'helvetica', 'segoe ui': 'helvetica', 'sans-serif': 'helvetica',
+  times: 'times', 'times new roman': 'times', georgia: 'times', garamond: 'times',
+  baskerville: 'times', palatino: 'times', 'palatino linotype': 'times', 'book antiqua': 'times',
+  cambria: 'times', serif: 'times',
+  courier: 'courier', 'courier new': 'courier', menlo: 'courier', consolas: 'courier',
+  monaco: 'courier', monospace: 'courier',
+};
+
+export const baseFor = (family, fallback = 'helvetica') => {
+  if (!family) return fallback;
+  for (const part of String(family).split(',')) {
+    const name = part.trim().replace(/["']/g, '').toLowerCase();
+    if (PDF_BASE[name]) return PDF_BASE[name];
+  }
+  return fallback;
+};
+
 const familyOf = (run, base, style) => {
   const bold = run.bold || style.bold;
   const italic = run.italic || style.italic;
   const mono = run.mono || style.mono;
-  const family = mono ? 'courier' : base;
+  const family = mono ? 'courier' : baseFor(run.font, base);
   if (bold && italic) return `${family}BoldItalic`;
   if (bold) return `${family}Bold`;
   if (italic) return `${family}Italic`;

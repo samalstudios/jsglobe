@@ -19,6 +19,23 @@ const supports = (type) => {
   return canvas.toDataURL(type).startsWith(`data:${type}`);
 };
 
+const encode = (canvas, type, quality) =>
+  new Promise((resolve) => canvas.toBlob(resolve, type, quality));
+
+const paint = (bitmap, width, height, flatten) => {
+  const canvas = document.createElement('canvas');
+  canvas.width = Math.max(1, Math.round(width));
+  canvas.height = Math.max(1, Math.round(height));
+  const context = canvas.getContext('2d');
+  context.imageSmoothingQuality = 'high';
+  if (flatten) {
+    context.fillStyle = '#ffffff';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+  }
+  context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+  return canvas;
+};
+
 class ImageConverter extends JGApp {
   static appId = 'image-converter';
   static styles = [...JGApp.styles, sheet];
@@ -49,6 +66,9 @@ class ImageConverter extends JGApp {
         </jg-field>
         <jg-field label="${t('image-converter.maxHeight', 'Max height')}" hint="${t('image-converter.0KeepsTheOriginal', '0 keeps the original')}">
           <jg-input id="height" type="number" min="0" max="10000" value="0" suffix="${t('image-converter.px', 'px')}"></jg-input>
+        </jg-field>
+        <jg-field label="${t('image-converter.targetSize', 'Target file size')}" hint="${t('image-converter.0LeavesQualityAlone', '0 leaves the quality slider in charge')}">
+          <jg-input id="target" type="number" min="0" step="10" value="0" grouped suffix="${t('image-converter.kb', 'KB')}"></jg-input>
         </jg-field>
       </div>
 
@@ -152,6 +172,43 @@ class ImageConverter extends JGApp {
     });
   }
 
+  async #squeeze(bitmap, type, limit, width, height, flatten) {
+    const gradual = type === 'image/jpeg' || type === 'image/webp';
+    let scale = 1;
+    let last = null;
+
+    for (let attempt = 0; attempt < 7; attempt += 1) {
+      const canvas = paint(bitmap, width * scale, height * scale, flatten);
+
+      if (!gradual) {
+        const flat = await encode(canvas, type);
+        last = flat ?? last;
+        if (flat && flat.size <= limit) return flat;
+        scale *= 0.75;
+        continue;
+      }
+
+      let low = 0.05;
+      let high = 0.97;
+      let best = null;
+      for (let step = 0; step < 8; step += 1) {
+        const quality = (low + high) / 2;
+        const blob = await encode(canvas, type, quality);
+        if (!blob) break;
+        last = blob;
+        if (blob.size <= limit) {
+          best = blob;
+          low = quality;
+        } else {
+          high = quality;
+        }
+      }
+      if (best) return best;
+      scale *= 0.75;
+    }
+    return last;
+  }
+
   async #convertAll() {
     if (!this.#items.length) return this.#pick();
 
@@ -162,9 +219,11 @@ class ImageConverter extends JGApp {
     const keepRatio = this.$('#keepRatio').checked;
     const flatten = this.$('#background').checked || type === 'image/jpeg';
     const extension = FORMATS.find((format) => format.value === type)?.extension ?? 'png';
+    const target = Math.max(0, Number(this.$('#target').value) || 0) * 1024;
 
     for (const item of this.#items) {
       const bitmap = await createImageBitmap(item.file);
+      const bitmap2 = await createImageBitmap(item.file);
       let { width, height } = bitmap;
 
       if (maxWidth || maxHeight) {
@@ -192,12 +251,15 @@ class ImageConverter extends JGApp {
       context.drawImage(bitmap, 0, 0, width, height);
       bitmap.close?.();
 
-      const blob = await new Promise((resolve) => canvas.toBlob(resolve, type, quality));
+      const blob = target
+        ? await this.#squeeze(bitmap2, type, target, width, height, flatten)
+        : await encode(canvas, type, quality);
       if (!blob) {
         toast(`Could not encode ${item.file.name}`, 'error');
         continue;
       }
 
+      bitmap2.close?.();
       if (item.result?.url) URL.revokeObjectURL(item.result.url);
       item.result = {
         blob,

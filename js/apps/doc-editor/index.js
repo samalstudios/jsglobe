@@ -21,9 +21,19 @@ const STYLES = [
 ];
 
 const FAMILIES = [
-  { value: 'Helvetica Neue, Arial, sans-serif', label: 'Helvetica' },
-  { value: 'Georgia, Times New Roman, serif', label: 'Times' },
-  { value: 'Menlo, Consolas, monospace', label: 'Courier' },
+  { value: 'Helvetica Neue, Helvetica, Arial, sans-serif', label: 'Helvetica' },
+  { value: 'Arial, Helvetica, sans-serif', label: 'Arial' },
+  { value: 'Verdana, Geneva, sans-serif', label: 'Verdana' },
+  { value: 'Tahoma, Geneva, sans-serif', label: 'Tahoma' },
+  { value: 'Trebuchet MS, Helvetica, sans-serif', label: 'Trebuchet' },
+  { value: 'Calibri, Candara, Segoe UI, sans-serif', label: 'Calibri' },
+  { value: 'Times New Roman, Times, serif', label: 'Times New Roman' },
+  { value: 'Georgia, Times New Roman, serif', label: 'Georgia' },
+  { value: 'Garamond, Baskerville, serif', label: 'Garamond' },
+  { value: 'Palatino, Palatino Linotype, Book Antiqua, serif', label: 'Palatino' },
+  { value: 'Cambria, Georgia, serif', label: 'Cambria' },
+  { value: 'Courier New, Courier, monospace', label: 'Courier New' },
+  { value: 'Menlo, Consolas, monospace', label: 'Consolas' },
 ];
 
 const SIZES = [9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48];
@@ -36,6 +46,8 @@ const CSS_FAMILY = {
   times: 'Georgia, Times New Roman, serif',
   courier: 'Menlo, Consolas, monospace',
 };
+
+const EXPORT_NOTE = () => t('doc-editor.fontNote', 'Word keeps the font you pick. PDF uses the nearest of Helvetica, Times or Courier, which is what a PDF carries without embedding.');
 
 const familyFor = (font) => {
   const base = String(font).replace(/(Bold|Italic|BoldItalic)$/, '');
@@ -80,7 +92,7 @@ class DocEditor extends JGApp {
         </div>
         <div class="cluster">
           <jg-select id="style" size="sm" value="p">${STYLES.map((entry) => html`<option value="${entry.value}">${entry.label()}</option>`)}</jg-select>
-          <jg-select id="family" size="sm" value="Helvetica Neue, Arial, sans-serif">${FAMILIES.map((entry) => html`<option value="${entry.value}">${entry.label}</option>`)}</jg-select>
+          <jg-select id="family" size="sm" value="Helvetica Neue, Helvetica, Arial, sans-serif" title="${EXPORT_NOTE()}">${FAMILIES.map((entry) => html`<option value="${entry.value}">${entry.label}</option>`)}</jg-select>
           <jg-select id="size" size="sm" value="11">${SIZES.map((value) => html`<option value="${value}">${value}</option>`)}</jg-select>
         </div>
         <div class="cluster">
@@ -628,7 +640,7 @@ class DocEditor extends JGApp {
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
       <div class="stack tight">
-        <div class="label">${t('doc-editor.documents', 'Documents')}</div>
+        <div class="label">${t('doc-editor.documentsStudio', 'Documents Studio')}</div>
         <div class="hint">${t('doc-editor.widgetBlurb', 'Write and export documents as PDF or Word.')}</div>
       </div>
     </div>`);
