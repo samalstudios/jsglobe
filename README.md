@@ -16,17 +16,17 @@ node scripts/serve.mjs .
 The dev server serves static files and falls back to `index.html` for unknown paths, which is what the
 history-based router needs.
 
-## Deploying with Caddy
+## Deploying
 
-`Caddyfile` in the repo root covers the whole setup: HTTPS, compression, cache headers, a content
-security policy and the SPA fallback.
+Everything is static, so copying the tree onto any web server is the whole job.
 
 ```bash
  cp -r . /srv/jsglobe
- caddy run --config /srv/jsglobe/Caddyfile
 ```
 
-`_redirects` and `vercel.json` are included for Netlify, Cloudflare Pages and Vercel.
+The server needs two things: unknown paths fall back to `index.html`, which the history based router
+depends on, and the language prefixes `/de`, `/es` and `/zh` fall back to their own directories.
+`vercel.json` is included for Vercel.
 
 If you deploy under a subdirectory, change `<base href="/">` in `index.html` to that path. The router
 reads it and prefixes every link.
@@ -240,7 +240,7 @@ The router reads the prefix, strips it from the route and puts it back on every 
 navigation stays inside the language. The picker in the title bar switches without a reload.
 
 - `js/core/languages.js` lists the languages. Adding one means a line here, a dictionary in `js/i18n`,
-  a `handle` block in the `Caddyfile`, and a rerun of `build-seo.mjs`.
+  a fallback rule on the server for the new prefix, and a rerun of `build-seo.mjs`.
 - `js/i18n/<lang>.js` translates the shell, the categories and the prerendered page copy.
 - `js/apps/<id>/i18n.js` translates that tool, loaded with the tool rather than up front.
 - `js/apps/<id>/meta.js` carries the translated name and tagline, which is what the home screen,
@@ -275,8 +275,8 @@ turn it on.
   OGG, Opus and FLAC, plus trimming, scaling and audio extraction.
 
 The FFmpeg module and core URLs are set in Settings > Media engine. For a deployment with a strict CSP,
-copy `ffmpeg-core.js` and `ffmpeg-core.wasm` into `assets/ffmpeg/` and point both fields there; the
-supplied `Caddyfile` already allows same-origin WebAssembly, blob workers and the default CDNs.
+copy `ffmpeg-core.js` and `ffmpeg-core.wasm` into `assets/ffmpeg/` and point both fields there, and
+allow same-origin WebAssembly and blob workers in the policy the server sends.
 
 ## Keyboard
 

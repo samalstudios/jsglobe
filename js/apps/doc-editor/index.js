@@ -74,7 +74,7 @@ const MENUS = [
       { act: 'image', label: () => t('doc-editor.insertPicture', 'Insert picture') },
       { act: 'table', label: () => t('doc-editor.insertTable', 'Insert table') },
       { act: 'rule', label: () => t('doc-editor.insertRule', 'Insert a line') },
-      { act: 'pageBreak', label: () => t('doc-editor.pageBreak', 'Page break'), keys: 'Ctrl Enter' },
+      { act: 'pageBreak', label: () => t('doc-editor.pageBreak', 'Page break'), keys: 'Alt Enter' },
       { act: 'today', label: () => t('doc-editor.insertDate', 'Insert today') },
       { rule: true },
       { act: 'contents', label: () => t('doc-editor.tableOfContents', 'Table of contents') },
@@ -225,7 +225,7 @@ class DocEditor extends JGApp {
             <button class="tool" data-act="image" title="${t('doc-editor.insertPicture', 'Insert picture')}">${icon('image', 16)}</button>
             <button class="tool" data-act="table" title="${t('doc-editor.insertTable', 'Insert table')}">${icon('table', 16)}</button>
             <button class="tool" data-act="rule" title="${t('doc-editor.insertRule', 'Insert a line')}">${icon('minus', 16)}</button>
-            <button class="tool" data-act="pageBreak" title="${t('doc-editor.pageBreak', 'Page break')} (Ctrl Enter)">${icon('pageBreak', 16)}</button>
+            <button class="tool" data-act="pageBreak" title="${t('doc-editor.pageBreak', 'Page break')} (Alt Enter)">${icon('pageBreak', 16)}</button>
             <button class="tool" data-act="today" title="${t('doc-editor.insertDate', 'Insert today')}">${icon('calendar', 16)}</button>
             <button class="tool" data-act="contents" title="${t('doc-editor.tableOfContents', 'Table of contents')}">${icon('list', 16)}</button>
             <button class="tool" data-act="chart" title="${t('doc-editor.chart', 'Chart')}">${icon('barChart', 16)}</button>
@@ -813,6 +813,11 @@ class DocEditor extends JGApp {
     this.hotkeys((event) => {
       const meta = event.metaKey || event.ctrlKey;
       if (!meta) {
+        if (event.key === 'Enter' && event.altKey) {
+          event.preventDefault();
+          this.#act('pageBreak');
+          return;
+        }
         if (event.key === 'Tab' && this.#inList()) {
           event.preventDefault();
           this.#act(event.shiftKey ? 'outdent' : 'indent');
@@ -1421,7 +1426,7 @@ class DocEditor extends JGApp {
     }
     parts.push(entry('table', t('doc-editor.insertTable', 'Insert table')));
     parts.push(entry('image', t('doc-editor.insertPicture', 'Insert picture')));
-    parts.push(entry('pageBreak', t('doc-editor.pageBreak', 'Page break'), 'Ctrl Enter'));
+    parts.push(entry('pageBreak', t('doc-editor.pageBreak', 'Page break'), 'Alt Enter'));
     parts.push(entry('footnote', t('doc-editor.footnote', 'Footnote')));
 
     menu.innerHTML = parts.join('');
@@ -1592,6 +1597,7 @@ class DocEditor extends JGApp {
     editor.style.setProperty('--sheet-width', `${Math.round(sheet.width * scale)}px`);
     editor.style.minHeight = `${Math.round(sheet.height * scale)}px`;
     editor.style.padding = `${Math.round(paper.margin * scale)}px`;
+    editor.style.setProperty('--sheet-pad', `${Math.round(paper.margin * scale)}px`);
     const holder = this.$('#paper');
     if (holder) holder.style.setProperty('--sheet-width', `${Math.round(sheet.width * scale)}px`);
   }
@@ -1602,6 +1608,7 @@ class DocEditor extends JGApp {
     this.#blocks = htmlToBlocks(this.$('#editor'));
     this.#layout = layoutDocument(this.#blocks, this.#paper());
     this.#drawThumbs();
+    this.#sizeBreaks();
     this.#drawGuides();
     this.#drawOutline();
     const counts = countWords(this.#blocks);
@@ -1652,6 +1659,38 @@ class DocEditor extends JGApp {
     }
     void style;
     void scale;
+  }
+
+  #sizeBreaks() {
+    const editor = this.$('#editor');
+    if (!editor || !this.#layout) return;
+
+    const scale = 96 / 72;
+    const margin = this.#layout.margin * scale;
+    const usable = this.#layout.height * scale - margin * 2;
+    if (usable <= 0) return;
+
+    const breaks = [...editor.querySelectorAll('hr[data-break="page"]')];
+    for (const rule of breaks) rule.style.height = '0px';
+
+    for (const rule of breaks) {
+      const origin = () => editor.getBoundingClientRect().top + margin;
+      const top = rule.getBoundingClientRect().top - origin();
+      const into = ((top % usable) + usable) % usable;
+      let height = Math.max(0, Math.round(usable - into));
+      rule.style.height = `${height}px`;
+
+      const next = rule.nextElementSibling;
+      if (!next) continue;
+      for (let pass = 0; pass < 3; pass += 1) {
+        const lands = next.getBoundingClientRect().top - origin();
+        const slip = ((lands % usable) + usable) % usable;
+        if (slip < 2 || Math.abs(slip - usable) < 2) break;
+        height += slip > usable / 2 ? Math.round(usable - slip) : -Math.round(slip);
+        height = Math.max(0, height);
+        rule.style.height = `${height}px`;
+      }
+    }
   }
 
   #drawGuides() {

@@ -451,10 +451,13 @@
 
 .page hr[data-break="page"] {
   border: 0;
-  border-top: 2px dashed #b9c2cc;
-  margin: 26px 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  break-after: page;
   position: relative;
 }
+.page[data-columns] hr[data-break="page"] { break-after: column; }
 .page ul.checklist { list-style: none; padding-left: 4px; }
 .page ul.checklist li::before {
   content: '☐';
