@@ -148,6 +148,8 @@ class DocEditor extends JGApp {
   #hits = [];
   #hit = -1;
   #fade = null;
+  #eye = null;
+  #stamp = 0;
   #range = null;
   #header = '';
   #footer = '';
@@ -1503,6 +1505,7 @@ Italy, 27400</jg-textarea>
 
   #sync() {
     this.#keep();
+    this.#stamp += 1;
     this.#blocks = htmlToBlocks(this.$('#editor'));
     this.#layout = layoutDocument(this.#blocks, this.#paper());
     this.#drawThumbs();
@@ -1601,18 +1604,49 @@ Italy, 27400</jg-textarea>
       host.append(card);
     }
 
-    this.#layout.pages.forEach((page, index) => {
+    for (let index = 0; index < this.#layout.pages.length; index += 1) {
       const card = host.children[index];
       card.dataset.page = String(index);
+      card.dataset.drawn = '';
       const canvas = card.querySelector('canvas');
-      const ratio = window.devicePixelRatio || 1;
-      canvas.width = width * ratio;
-      canvas.height = height * ratio;
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
-      this.#paint(canvas, page, ratio);
       card.querySelector('span').textContent = String(index + 1);
-    });
+    }
+
+    this.#watch();
+    this.#paintVisible();
+  }
+
+  #watch() {
+    const host = this.$('#thumbs');
+    if (!host || this.#eye) return;
+    this.#eye = true;
+    this.on(host, 'scroll', () => this.#paintVisible(), { passive: true });
+  }
+
+  #paintThumb(card) {
+    const index = Number(card.dataset.page);
+    const page = this.#layout?.pages[index];
+    if (!page || card.dataset.drawn === String(this.#stamp)) return;
+    const canvas = card.querySelector('canvas');
+    const ratio = window.devicePixelRatio || 1;
+    const width = 132;
+    const height = Math.round((this.#layout.height / this.#layout.width) * width);
+    canvas.width = width * ratio;
+    canvas.height = height * ratio;
+    this.#paint(canvas, page, ratio);
+    card.dataset.drawn = String(this.#stamp);
+  }
+
+  #paintVisible() {
+    const host = this.$('#thumbs');
+    if (!host) return;
+    const box = host.getBoundingClientRect();
+    for (const card of host.children) {
+      const spot = card.getBoundingClientRect();
+      if (spot.bottom > box.top - 260 && spot.top < box.bottom + 260) this.#paintThumb(card);
+    }
   }
 
   #drawOutline() {
