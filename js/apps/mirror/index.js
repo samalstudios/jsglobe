@@ -1,5 +1,6 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
+import { icon } from '../../ui/icons.js';
 import strings from './i18n.js';
 import { download } from '../../core/util.js';
 
@@ -7,86 +8,139 @@ const t = appText(strings);
 
 const sheet = await styleSheet(import.meta.url);
 
+const PRESETS = [
+  { id: 'daylight', label: () => t('mirror.daylight', 'Daylight'), glow: 85, warmth: 5 },
+  { id: 'warm', label: () => t('mirror.warm', 'Warm'), glow: 70, warmth: 55 },
+  { id: 'soft', label: () => t('mirror.soft', 'Soft'), glow: 45, warmth: 30 },
+  { id: 'studio', label: () => t('mirror.studio', 'Studio'), glow: 100, warmth: 15 },
+];
+
+const SLIDERS = [
+  { key: 'glow', tab: 'light', label: () => t('mirror.ringLight', 'Ring light'), min: 0, max: 100, fallback: 70 },
+  { key: 'warmth', tab: 'light', label: () => t('mirror.warmth', 'Warmth'), min: 0, max: 100, fallback: 20 },
+  { key: 'zoom', tab: 'image', label: () => t('mirror.zoom', 'Zoom'), min: 100, max: 250, fallback: 100 },
+  { key: 'brightness', tab: 'image', label: () => t('mirror.brightness', 'Brightness'), min: 50, max: 180, fallback: 100 },
+  { key: 'contrast', tab: 'image', label: () => t('mirror.contrast', 'Contrast'), min: 50, max: 180, fallback: 100 },
+  { key: 'border', tab: 'frame', label: () => t('mirror.borderSize', 'Border size'), min: 0, max: 18, fallback: 6 },
+  { key: 'preview', tab: 'frame', label: () => t('mirror.previewSize', 'Preview size'), min: 15, max: 70, fallback: 34 },
+];
+
+const TOGGLES = [
+  { key: 'flip', tab: 'frame', label: () => t('mirror.mirrorTheImage', 'Mirror the image'), fallback: true },
+  { key: 'guides', tab: 'frame', label: () => t('mirror.compositionGuides', 'Composition guides'), fallback: false },
+  { key: 'flood', tab: 'light', label: () => t('mirror.floodLight', 'Flood light'), fallback: false },
+  { key: 'mono', tab: 'image', label: () => t('mirror.blackAndWhite', 'Black and white'), fallback: false },
+];
+
+const TABS = [
+  { id: 'light', label: () => t('mirror.light', 'Light') },
+  { id: 'image', label: () => t('mirror.image', 'Image') },
+  { id: 'frame', label: () => t('mirror.frame', 'Frame') },
+];
+
 class Mirror extends JGApp {
   static appId = 'mirror';
   static settings = [
-    { key: 'glow', label: t('mirror.ringLightLevel', 'Ring light level'), type: 'number', default: 70, min: 0, max: 100 },
-    { key: 'warmth', label: t('mirror.warmth', 'Warmth'), type: 'number', default: 20, min: 0, max: 100 },
+    { key: 'auto', label: t('mirror.startAutomatically', 'Start the camera automatically'), type: 'switch', default: true },
   ];
   static styles = [...JGApp.styles, sheet];
 
   #stream = null;
   #devices = [];
   #frozen = false;
+  #tab = 'light';
+  #countdown = 0;
+  #timer = null;
 
   disconnectedCallback() {
     super.disconnectedCallback();
     this.#stop();
+    clearInterval(this.#timer);
   }
 
   renderApp() {
     const config = this.config;
+    const value = (key, fallback) => config.get(key, fallback);
+    const on = (key, fallback) => String(config.get(key, fallback)) === 'true' || config.get(key, fallback) === true;
 
-    this.paint(html`<div class="app">
-      <div class="bar">
-        <jg-button id="start">${t('mirror.turnOnCamera', 'Turn on camera')}</jg-button>
-        <jg-button id="stop" variant="outline" hidden>${t('mirror.turnOff', 'Turn off')}</jg-button>
-        <jg-button id="freeze" variant="outline" hidden>${t('mirror.freeze', 'Freeze')}</jg-button>
-        <jg-button id="shot" variant="outline" hidden>${t('mirror.savePhoto', 'Save photo')}</jg-button>
-        <span class="grow"></span>
-        <jg-select id="device" style="width:200px" hidden></jg-select>
-        <jg-button size="icon" variant="outline" id="full" title="${t('mirror.fullScreen', 'Full screen')}">⤢</jg-button>
-      </div>
+    const sliderFor = (entry) => html`<jg-field label="${entry.label()}" id="field-${entry.key}">
+      <jg-slider id="${entry.key}" min="${entry.min}" max="${entry.max}" value="${value(entry.key, entry.fallback)}"></jg-slider>
+    </jg-field>`;
 
+    const toggleFor = (entry) => html`<button class="toggle" type="button" data-toggle="${entry.key}"
+      role="switch" aria-checked="${String(on(entry.key, entry.fallback))}">
+      <span class="track"><span class="knob"></span></span>
+      <span class="name">${entry.label()}</span>
+    </button>`;
+
+    this.paint(html`<div class="app" id="app">
       <div class="stage" id="stage" data-guides="false">
         <div class="frame" id="frame">
-          <video id="video" playsinline autoplay muted></video>
-          <span class="guides">
+          <video id="video" playsinline autoplay muted aria-label="${t('mirror.cameraView', 'Camera view')}"></video>
+          <span class="guides" aria-hidden="true">
             <span class="v" style="left:33.33%"></span>
             <span class="v" style="left:66.66%"></span>
             <span class="h" style="top:33.33%"></span>
             <span class="h" style="top:66.66%"></span>
           </span>
+          <span class="badge" id="badge" hidden>${t('mirror.frozen', 'Frozen')}</span>
+          <span class="count" id="count" hidden></span>
         </div>
+
         <div class="idle" id="idle">
-          <div>
+          <div class="card">
+            <span class="mark">${icon('camera', 26)}</span>
             <div class="strong">${t('mirror.cameraIsOff', 'Camera is off')}</div>
-            <div class="hint">${t('mirror.staysHere', 'The picture stays on this device. Nothing is recorded or uploaded.')}</div>
+            <p class="hint">${t('mirror.staysHere', 'The picture stays on this device. Nothing is recorded or uploaded.')}</p>
+            <jg-button id="start">${t('mirror.turnOnCamera', 'Turn on camera')}</jg-button>
+            <p class="error" id="error" role="status" aria-live="polite"></p>
           </div>
         </div>
-      </div>
 
-      <div class="controls">
-        <jg-field label="${t('mirror.ringLight', 'Ring light')}">
-          <jg-slider id="glow" min="0" max="100" value="${config.get('glow', 70)}"></jg-slider>
-        </jg-field>
-        <jg-field label="${t('mirror.warmth', 'Warmth')}">
-          <jg-slider id="warmth" min="0" max="100" value="${config.get('warmth', 20)}"></jg-slider>
-        </jg-field>
-        <jg-field label="${t('mirror.borderSize', 'Border size')}" id="border-field">
-          <jg-slider id="border" min="0" max="18" value="${config.get('border', 6)}"></jg-slider>
-        </jg-field>
-        <jg-field label="${t('mirror.previewSize', 'Preview size')}" id="preview-field" hidden>
-          <jg-slider id="preview" min="15" max="70" value="${config.get('preview', 34)}"></jg-slider>
-        </jg-field>
-        <jg-field label="${t('mirror.zoom', 'Zoom')}">
-          <jg-slider id="zoom" min="100" max="250" value="100"></jg-slider>
-        </jg-field>
-        <jg-field label="${t('mirror.brightness', 'Brightness')}">
-          <jg-slider id="brightness" min="50" max="180" value="100"></jg-slider>
-        </jg-field>
-        <jg-field label="${t('mirror.contrast', 'Contrast')}">
-          <jg-slider id="contrast" min="50" max="180" value="100"></jg-slider>
-        </jg-field>
-      </div>
+        <div class="hud" id="hud" hidden>
+          <button class="key" type="button" id="stop" title="${t('mirror.turnOff', 'Turn off')}" aria-label="${t('mirror.turnOff', 'Turn off')}">${icon('close', 16)}</button>
+          <button class="key" type="button" id="freeze" title="${t('mirror.freeze', 'Freeze')}" aria-label="${t('mirror.freeze', 'Freeze')}">${icon('pause', 16)}</button>
+          <button class="shutter" type="button" id="shot" title="${t('mirror.savePhoto', 'Save photo')}" aria-label="${t('mirror.savePhoto', 'Save photo')}"><span></span></button>
+          <button class="key" type="button" id="delay" title="${t('mirror.selfTimer', 'Self timer')}" aria-label="${t('mirror.selfTimer', 'Self timer')}">${icon('timer', 16)}</button>
+          <button class="key" type="button" id="tune" title="${t('mirror.adjust', 'Adjust')}" aria-label="${t('mirror.adjust', 'Adjust')}">${icon('flashlight', 17)}</button>
+          <button class="key" type="button" id="full" title="${t('mirror.fullScreen', 'Full screen')}" aria-label="${t('mirror.fullScreen', 'Full screen')}">${icon('maximize', 15)}</button>
+        </div>
 
-      <div class="bar">
-        <jg-switch id="flood" ${config.get('flood', false) ? 'checked' : ''}></jg-switch><span class="hint">${t('mirror.floodLight', 'Flood light')}</span>
-        <jg-switch id="flip" checked></jg-switch><span class="hint">${t('mirror.mirrorTheImage', 'Mirror the image')}</span>
-        <jg-switch id="guides"></jg-switch><span class="hint">${t('mirror.compositionGuides', 'Composition guides')}</span>
-        <jg-switch id="mono"></jg-switch><span class="hint">${t('mirror.blackAndWhite', 'Black and white')}</span>
-        <span class="grow"></span>
-        <span class="error" id="error"></span>
+        <div class="panel" id="panel" hidden>
+          <div class="grip"></div>
+          <div class="tabs" role="tablist">
+            ${TABS.map((tab) => html`<button class="tab" type="button" role="tab" data-tab="${tab.id}"
+              aria-selected="${String(tab.id === this.#tab)}">${tab.label()}</button>`)}
+            <span class="grow"></span>
+            <jg-select id="device" hidden></jg-select>
+            <button class="key small" type="button" id="reset" title="${t('mirror.reset', 'Reset')}" aria-label="${t('mirror.reset', 'Reset')}">${icon('undo', 14)}</button>
+            <button class="key small" type="button" id="shut" title="${t('mirror.close', 'Close')}" aria-label="${t('mirror.close', 'Close')}">${icon('chevronDown', 14)}</button>
+          </div>
+
+          <div class="pane" data-pane="light">
+            <div class="presets">
+              ${PRESETS.map((preset) => html`<button class="preset" type="button" data-preset="${preset.id}">${preset.label()}</button>`)}
+            </div>
+            <div class="grid">
+              ${SLIDERS.filter((entry) => entry.tab === 'light').map(sliderFor)}
+              ${TOGGLES.filter((entry) => entry.tab === 'light').map(toggleFor)}
+            </div>
+          </div>
+
+          <div class="pane" data-pane="image" hidden>
+            <div class="grid">
+              ${SLIDERS.filter((entry) => entry.tab === 'image').map(sliderFor)}
+              ${TOGGLES.filter((entry) => entry.tab === 'image').map(toggleFor)}
+            </div>
+          </div>
+
+          <div class="pane" data-pane="frame" hidden>
+            <div class="grid">
+              ${SLIDERS.filter((entry) => entry.tab === 'frame').map(sliderFor)}
+              ${TOGGLES.filter((entry) => entry.tab === 'frame').map(toggleFor)}
+            </div>
+          </div>
+        </div>
       </div>
     </div>`);
 
@@ -94,51 +148,156 @@ class Mirror extends JGApp {
     this.on(this.$('#stop'), 'click', () => this.#stop());
     this.on(this.$('#freeze'), 'click', () => this.#toggleFreeze());
     this.on(this.$('#shot'), 'click', () => this.#snapshot());
+    this.on(this.$('#delay'), 'click', () => this.#delayed());
     this.on(this.$('#full'), 'click', () => this.#fullscreen());
+    this.on(this.$('#tune'), 'click', () => this.#showPanel(this.$('#panel').hidden));
+    this.on(this.$('#shut'), 'click', () => this.#showPanel(false));
+    this.on(this.$('#reset'), 'click', () => this.#reset());
     this.on(this.$('#device'), 'change', () => this.#start(this.$('#device').value));
 
-    ['#glow', '#warmth', '#border', '#preview', '#zoom', '#brightness', '#contrast'].forEach((selector) =>
-      this.on(this.$(selector), 'input', () => this.#apply()),
-    );
-    ['#glow', '#warmth', '#border', '#preview'].forEach((selector) =>
-      this.on(this.$(selector), 'change', () => {
-        this.config.set(selector.slice(1), Number(this.$(selector).value));
-      }),
-    );
-    ['#flip', '#guides', '#mono'].forEach((selector) => this.on(this.$(selector), 'change', () => this.#apply()));
-    this.on(this.$('#flood'), 'change', (event) => {
-      this.config.set('flood', event.detail.checked);
-      this.#apply();
+    this.on(this.$('.tabs'), 'click', (event) => {
+      const tab = event.target.closest('[data-tab]');
+      if (tab) this.#showTab(tab.dataset.tab);
     });
 
+    for (const entry of SLIDERS) {
+      const slider = this.$(`#${entry.key}`);
+      this.on(slider, 'input', () => this.#apply());
+      this.on(slider, 'change', () => this.config.set(entry.key, Number(slider.value)));
+    }
+
+    this.on(this.$('#panel'), 'click', (event) => {
+      const button = event.target.closest('[data-toggle]');
+      if (button) return this.#flip(button.dataset.toggle);
+      const preset = event.target.closest('[data-preset]');
+      if (preset) this.#usePreset(preset.dataset.preset);
+    });
+
+    this.on(this.$('#stage'), 'dblclick', (event) => {
+      if (event.target.closest('.hud, .panel, .idle')) return;
+      this.#fullscreen();
+    });
+
+    this.listen(document, 'fullscreenchange', () => this.#markFullscreen());
+    this.on(this, 'keydown', (event) => this.#keys(event));
+
     this.#apply();
+    this.#resume();
+  }
+
+  async #resume() {
+    if (this.config.get('auto', true) === false) return;
+    try {
+      const state = await navigator.permissions?.query({ name: 'camera' });
+      if (state?.state === 'granted') this.#start();
+    } catch {
+      /* permissions query is not everywhere, the button is always there */
+    }
+  }
+
+  #keys(event) {
+    if (event.metaKey || event.ctrlKey || event.altKey) return;
+    const key = event.key.toLowerCase();
+
+    if (key === 'escape') {
+      if (!this.$('#panel').hidden) return this.#showPanel(false);
+      if (document.fullscreenElement) document.exitFullscreen();
+      return;
+    }
+    if (!this.#stream && key !== 'c') return;
+
+    if (key === ' ') {
+      event.preventDefault();
+      return this.#toggleFreeze();
+    }
+    if (key === 's') return this.#snapshot();
+    if (key === 'f') return this.#fullscreen();
+    if (key === 't') return this.#delayed();
+    if (key === 'g') return this.#flip('guides');
+    if (key === 'm') return this.#flip('flip');
+    if (key === 'c') return this.#stream ? this.#stop() : this.#start();
+  }
+
+  #flip(key) {
+    const entry = TOGGLES.find((item) => item.key === key);
+    if (!entry) return;
+    const button = this.$(`[data-toggle="${key}"]`);
+    const next = button.getAttribute('aria-checked') !== 'true';
+    button.setAttribute('aria-checked', String(next));
+    this.config.set(key, next);
+    this.#apply();
+  }
+
+  #checked(key) {
+    return this.$(`[data-toggle="${key}"]`)?.getAttribute('aria-checked') === 'true';
+  }
+
+  #usePreset(id) {
+    const preset = PRESETS.find((item) => item.id === id);
+    if (!preset) return;
+    for (const key of ['glow', 'warmth']) {
+      this.$(`#${key}`).value = String(preset[key]);
+      this.config.set(key, preset[key]);
+    }
+    this.#apply();
+  }
+
+  #reset() {
+    for (const entry of SLIDERS) {
+      this.$(`#${entry.key}`).value = String(entry.fallback);
+      this.config.set(entry.key, entry.fallback);
+    }
+    for (const entry of TOGGLES) {
+      this.$(`[data-toggle="${entry.key}"]`).setAttribute('aria-checked', String(entry.fallback));
+      this.config.set(entry.key, entry.fallback);
+    }
+    this.#apply();
+  }
+
+  #showTab(id) {
+    this.#tab = id;
+    for (const tab of this.$$('[data-tab]')) tab.setAttribute('aria-selected', String(tab.dataset.tab === id));
+    for (const pane of this.$$('[data-pane]')) pane.hidden = pane.dataset.pane !== id;
+  }
+
+  #showPanel(open) {
+    this.$('#panel').hidden = !open;
+    this.$('#tune').setAttribute('aria-expanded', String(Boolean(open)));
+  }
+
+  #markFullscreen() {
+    const full = Boolean(document.fullscreenElement);
+    this.$('#app')?.toggleAttribute('data-full', full);
+    const button = this.$('#full');
+    if (button) button.innerHTML = icon(full ? 'minimize' : 'maximize', 15);
   }
 
   #apply() {
     const stage = this.$('#stage');
     if (!stage) return;
 
-    const glow = Number(this.$('#glow').value) / 100;
-    const warmth = Number(this.$('#warmth').value) / 100;
-    const red = 255;
+    const number = (key) => Number(this.$(`#${key}`).value);
+    const glow = number('glow') / 100;
+    const warmth = number('warmth') / 100;
+    const level = 0.35 + glow * 0.65;
     const green = Math.round(255 - warmth * 24);
     const blue = Math.round(255 - warmth * 66);
-    const level = 0.35 + glow * 0.65;
 
-    const flood = this.$('#flood').checked;
+    const flood = this.#checked('flood');
 
-    stage.style.setProperty('--light', `rgb(${Math.round(red * level)} ${Math.round(green * level)} ${Math.round(blue * level)})`);
-    stage.style.setProperty('--ring-size', `${this.$('#border').value}%`);
-    stage.style.setProperty('--preview', `${this.$('#preview').value}%`);
+    stage.style.setProperty('--light', `rgb(${Math.round(255 * level)} ${Math.round(green * level)} ${Math.round(blue * level)})`);
+    stage.style.setProperty('--ring-size', `${number('border')}%`);
+    stage.style.setProperty('--preview', `${number('preview')}%`);
+    stage.style.setProperty('--zoom', String(number('zoom') / 100));
+    stage.style.setProperty('--brightness', String(number('brightness') / 100));
+    stage.style.setProperty('--contrast', String(number('contrast') / 100));
+    stage.style.setProperty('--flip', this.#checked('flip') ? '-1' : '1');
+    stage.style.setProperty('--saturate', this.#checked('mono') ? '0' : '1');
     stage.dataset.flood = String(flood);
-    this.$('#border-field').hidden = flood;
-    this.$('#preview-field').hidden = !flood;
-    stage.style.setProperty('--zoom', String(Number(this.$('#zoom').value) / 100));
-    stage.style.setProperty('--flip', this.$('#flip').checked ? '-1' : '1');
-    stage.style.setProperty('--brightness', String(Number(this.$('#brightness').value) / 100));
-    stage.style.setProperty('--contrast', String(Number(this.$('#contrast').value) / 100));
-    stage.style.setProperty('--saturate', this.$('#mono').checked ? '0' : '1');
-    stage.dataset.guides = String(this.$('#guides').checked);
+    stage.dataset.guides = String(this.#checked('guides'));
+
+    this.$('#field-border').hidden = flood;
+    this.$('#field-preview').hidden = !flood;
   }
 
   async #start(deviceId) {
@@ -146,7 +305,7 @@ class Mirror extends JGApp {
     error.textContent = '';
 
     if (!navigator.mediaDevices?.getUserMedia) {
-      error.textContent = 'This browser cannot open a camera here. A secure origin is required.';
+      error.textContent = t('mirror.noCameraHere', 'This browser cannot open a camera here. A secure origin is required.');
       return;
     }
 
@@ -160,8 +319,8 @@ class Mirror extends JGApp {
     } catch (issue) {
       error.textContent =
         issue.name === 'NotAllowedError'
-          ? 'Camera permission was declined. Allow it in the browser address bar and try again.'
-          : `Could not open the camera: ${issue.message}`;
+          ? t('mirror.permissionDeclined', 'Camera permission was declined. Allow it in the browser address bar and try again.')
+          : t('mirror.couldNotOpen', 'Could not open the camera: {reason}', { reason: issue.message });
       return;
     }
 
@@ -170,17 +329,14 @@ class Mirror extends JGApp {
     await video.play().catch(() => {});
 
     this.$('#idle').hidden = true;
-    this.$('#start').hidden = true;
-    ['#stop', '#freeze', '#shot'].forEach((selector) => {
-      this.$(selector).hidden = false;
-    });
+    this.$('#hud').hidden = false;
 
     this.#devices = (await navigator.mediaDevices.enumerateDevices()).filter((device) => device.kind === 'videoinput');
     const picker = this.$('#device');
     if (this.#devices.length > 1) {
       picker.options = this.#devices.map((device, index) => ({
         value: device.deviceId,
-        label: device.label || `Camera ${index + 1}`,
+        label: device.label || t('mirror.cameraNumber', 'Camera {number}', { number: index + 1 }),
       }));
       picker.hidden = false;
       const active = this.#stream.getVideoTracks()[0]?.getSettings().deviceId;
@@ -195,15 +351,15 @@ class Mirror extends JGApp {
     if (video) video.srcObject = null;
     if (keepUi) return;
 
+    clearInterval(this.#timer);
+    this.#countdown = 0;
+    const count = this.$('#count');
+    if (count) count.hidden = true;
+
     this.#clearFreeze();
-    const idle = this.$('#idle');
-    if (idle) idle.hidden = false;
-    const start = this.$('#start');
-    if (start) start.hidden = false;
-    ['#stop', '#freeze', '#shot'].forEach((selector) => {
-      const node = this.$(selector);
-      if (node) node.hidden = true;
-    });
+    if (this.$('#idle')) this.$('#idle').hidden = false;
+    if (this.$('#hud')) this.$('#hud').hidden = true;
+    this.#showPanel(false);
     const picker = this.$('#device');
     if (picker) picker.hidden = true;
   }
@@ -214,11 +370,12 @@ class Mirror extends JGApp {
     canvas.width = video.videoWidth || 1280;
     canvas.height = video.videoHeight || 720;
     const context = canvas.getContext('2d');
-    if (this.$('#flip').checked) {
+    if (this.#checked('flip')) {
       context.translate(canvas.width, 0);
       context.scale(-1, 1);
     }
-    context.filter = `brightness(${Number(this.$('#brightness').value) / 100}) contrast(${Number(this.$('#contrast').value) / 100}) saturate(${this.$('#mono').checked ? 0 : 1})`;
+    const number = (key) => Number(this.$(`#${key}`).value) / 100;
+    context.filter = `brightness(${number('brightness')}) contrast(${number('contrast')}) saturate(${this.#checked('mono') ? 0 : 1})`;
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     return canvas;
   }
@@ -226,8 +383,13 @@ class Mirror extends JGApp {
   #clearFreeze() {
     this.$('.freeze')?.remove();
     this.#frozen = false;
+    const badge = this.$('#badge');
+    if (badge) badge.hidden = true;
     const freeze = this.$('#freeze');
-    if (freeze) freeze.textContent = 'Freeze';
+    if (freeze) {
+      freeze.innerHTML = icon('pause', 16);
+      freeze.title = t('mirror.freeze', 'Freeze');
+    }
   }
 
   #toggleFreeze() {
@@ -239,18 +401,42 @@ class Mirror extends JGApp {
     canvas.style.filter = 'none';
     this.$('#frame').append(canvas);
     this.#frozen = true;
-    this.$('#freeze').textContent = 'Unfreeze';
+    this.$('#badge').hidden = false;
+    const freeze = this.$('#freeze');
+    freeze.innerHTML = icon('play', 16);
+    freeze.title = t('mirror.unfreeze', 'Unfreeze');
+  }
+
+  #delayed() {
+    if (!this.#stream) return;
+    clearInterval(this.#timer);
+    this.#countdown = 3;
+    const count = this.$('#count');
+    count.hidden = false;
+    count.textContent = String(this.#countdown);
+    this.#timer = setInterval(() => {
+      this.#countdown -= 1;
+      if (this.#countdown > 0) {
+        count.textContent = String(this.#countdown);
+        return;
+      }
+      clearInterval(this.#timer);
+      count.hidden = true;
+      this.#snapshot();
+    }, 1000);
   }
 
   #snapshot() {
     if (!this.#stream) return;
     this.#capture().toBlob((blob) => download(`mirror-${Date.now()}.png`, blob, 'image/png'), 'image/png');
+    const frame = this.$('#frame');
+    frame.dataset.flash = 'true';
+    setTimeout(() => delete frame.dataset.flash, 220);
   }
 
   #fullscreen() {
-    const stage = this.$('#stage');
     if (document.fullscreenElement) document.exitFullscreen();
-    else stage.requestFullscreen?.().catch(() => {});
+    else this.$('#app').requestFullscreen?.().catch(() => {});
   }
 }
 
