@@ -5325,6 +5325,50 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/doc-editor"/>
   </url>
   <url>
+    <loc>https://jsglobe.com/apps/gitignore-generator</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/gitignore-generator"/>
+  </url>
+  <url>
+    <loc>https://jsglobe.com/de/apps/gitignore-generator</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/gitignore-generator"/>
+  </url>
+  <url>
+    <loc>https://jsglobe.com/es/apps/gitignore-generator</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/gitignore-generator"/>
+  </url>
+  <url>
+    <loc>https://jsglobe.com/zh/apps/gitignore-generator</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jsglobe.com/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jsglobe.com/de/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jsglobe.com/es/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jsglobe.com/zh/apps/gitignore-generator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jsglobe.com/apps/gitignore-generator"/>
+  </url>
+  <url>
     <loc>https://jsglobe.com/apps/optics-lab</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>

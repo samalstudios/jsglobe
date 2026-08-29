@@ -120,6 +120,7 @@ import logic_lab from './logic-lab/meta.js';
 import pdf_studio from './pdf-studio/meta.js';
 import settings from './settings/meta.js';
 import doc_editor from './doc-editor/meta.js';
+import gitignore_generator from './gitignore-generator/meta.js';
 import optics_lab from './optics-lab/meta.js';
 import scanner from './scanner/meta.js';
 import tax_calculator from './tax-calculator/meta.js';
@@ -250,6 +251,7 @@ export const catalog = [
   pdf_studio,
   settings,
   doc_editor,
+  gitignore_generator,
   optics_lab,
   scanner,
   tax_calculator,
