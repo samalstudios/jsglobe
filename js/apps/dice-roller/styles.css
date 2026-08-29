@@ -1,0 +1,125 @@
+.app { gap: 14px; }
+
+.picker { display: flex; flex-wrap: wrap; gap: 8px; }
+.kind {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  color: var(--foreground);
+  padding: 9px 12px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.kind:hover { border-color: var(--ring); }
+.kind[aria-pressed="true"] { border-color: var(--ring); background: color-mix(in srgb, var(--ring) 12%, var(--card)); }
+.kind .shape {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  font: 600 11px/1 var(--font-mono);
+  color: var(--muted-foreground);
+  border: 1.5px solid currentColor;
+}
+.kind[aria-pressed="true"] .shape { color: var(--ring); }
+.kind .shape[data-faces="4"] { clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.kind .shape[data-faces="6"] { border-radius: 6px; }
+.kind .shape[data-faces="8"] { clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.kind .shape[data-faces="10"] { clip-path: polygon(50% 0, 100% 38%, 78% 100%, 22% 100%, 0 38%); }
+.kind .shape[data-faces="12"], .kind .shape[data-faces="20"], .kind .shape[data-faces="100"] {
+  clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+}
+.kind .tag { font: 600 11px/1 var(--font-sans); }
+
+.row { display: flex; align-items: flex-end; gap: 16px; }
+.row.wrap { flex-wrap: wrap; }
+.row .grow { flex: 1; }
+.row jg-field { width: 190px; }
+
+.table {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  min-height: 92px;
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--foreground) 5%, var(--background));
+}
+.die {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  font: 600 22px/1 var(--font-sans);
+  color: var(--foreground);
+}
+.die[data-faces="4"] { border-radius: 8px; }
+.die[data-rolling] { animation: tumble 0.33s linear infinite; }
+@keyframes tumble {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(9deg) scale(1.06); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+.die .value { font-variant-numeric: tabular-nums; }
+.die .pips {
+  display: grid;
+  grid-template-columns: repeat(3, 9px);
+  grid-template-rows: repeat(3, 9px);
+  gap: 4px;
+}
+.die .pips i { border-radius: 999px; }
+.die .pips i[data-on] { background: var(--foreground); }
+
+.result { display: flex; align-items: baseline; gap: 12px; min-height: 44px; }
+.result .total { font: 700 36px/1 var(--font-sans); font-variant-numeric: tabular-nums; }
+.result .sum { font: 500 12.5px/1.4 var(--font-mono); color: var(--muted-foreground); }
+
+.foot { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; flex: 1; min-height: 0; }
+@media (max-width: 760px) { .foot { grid-template-columns: 1fr; } }
+.panel { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+.head { display: flex; align-items: center; gap: 6px; }
+.head .grow { flex: 1; }
+.label { font: 600 11.5px/1 var(--font-sans); color: var(--muted-foreground); }
+.hint { font: 400 11.5px/1.5 var(--font-sans); color: var(--muted-foreground); margin: 0; }
+.tool {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--muted-foreground);
+  cursor: pointer;
+}
+.tool:hover { background: var(--accent); color: var(--foreground); }
+
+.bars { flex: 1; display: flex; align-items: flex-end; gap: 2px; min-height: 96px; }
+.bar { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%; }
+.bar .fill {
+  width: 100%;
+  min-height: 2px;
+  border-radius: 3px 3px 0 0;
+  background: color-mix(in srgb, var(--ring) 65%, transparent);
+  transition: height 0.25s ease;
+}
+.bar b { font: 500 9px/1 var(--font-mono); color: var(--muted-foreground); }
+
+.log { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 2px; scrollbar-gutter: stable; }
+.log .line {
+  font: 500 11.5px/1.6 var(--font-mono);
+  color: var(--foreground);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+.log .line:nth-child(odd) { background: color-mix(in srgb, var(--foreground) 4%, transparent); }
