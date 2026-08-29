@@ -312,14 +312,16 @@ class DocEditor extends JGApp {
           <div class="outline" id="outline" hidden></div>
         </aside>
 
-        <div class="stage" id="stage">
+        <div class="deck">
+          <div class="ruler" id="ruler" aria-hidden="true" hidden><div class="track" id="track"></div></div>
+          <div class="stage" id="stage">
           <div class="sheetwrap" id="sheetwrap">
-            <div class="ruler" id="ruler" aria-hidden="true" hidden></div>
             <div class="papercage" id="papercage">
               <div class="paper" id="paper">
                 <div class="pages" id="editor" contenteditable="true" spellcheck="true" role="textbox" aria-multiline="true"></div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -457,6 +459,7 @@ class DocEditor extends JGApp {
     </div>`);
 
     this.#write(STARTER);
+    document.execCommand('defaultParagraphSeparator', false, 'p');
 
     this.#wire();
     this.#restore();
@@ -466,6 +469,7 @@ class DocEditor extends JGApp {
     this.#sync();
 
     const stage = this.$('#stage');
+    if (stage) this.on(stage, 'scroll', () => this.#drawRuler());
     if (stage && 'ResizeObserver' in window) {
       const watcher = new ResizeObserver(() => this.#fitPaper());
       watcher.observe(stage);
@@ -1607,6 +1611,7 @@ class DocEditor extends JGApp {
   #sync() {
     this.#keep();
     this.#stamp += 1;
+    this.#tidy();
     this.#blocks = htmlToBlocks(this.#flow());
     this.#layout = layoutDocument(this.#blocks, this.#paper());
     this.#spread();
@@ -1684,7 +1689,10 @@ class DocEditor extends JGApp {
     const unit = imperial ? 72 : 28.3465;
     const parts = imperial ? 4 : 2;
 
-    host.style.width = `${Math.round(page.width * scale)}px`;
+    const track = this.$('#track');
+    track.style.width = `${Math.round(page.width * scale)}px`;
+    const paper = this.$('#paper')?.getBoundingClientRect();
+    if (paper) track.style.left = `${Math.round(paper.left - host.getBoundingClientRect().left)}px`;
 
     const marks = [
       `<span class="edge" style="left:0;width:${Math.round(page.margin * scale)}px"></span>`,
@@ -1705,7 +1713,7 @@ class DocEditor extends JGApp {
       if (from) marks.push(`<span class="num" style="left:${Math.round(at * scale)}px">${from / parts}</span>`);
     }
 
-    host.innerHTML = marks.join('');
+    track.innerHTML = marks.join('');
   }
 
   #live() {
@@ -1714,6 +1722,20 @@ class DocEditor extends JGApp {
     const here = anchor && (anchor.nodeType === 1 ? anchor : anchor.parentElement)?.closest?.('.leaf');
     const focused = this.shadowRoot.activeElement === this.$('#editor');
     for (const leaf of this.#leaves()) leaf.classList.toggle('live', focused && leaf === here);
+  }
+
+  #tidy() {
+    for (const leaf of this.#leaves()) {
+      for (const node of [...leaf.children]) {
+        if (node.tagName !== 'DIV' || node.querySelector('img')) continue;
+        const mark = this.#mark();
+        const swap = document.createElement('p');
+        swap.innerHTML = node.innerHTML;
+        for (const { name, value } of node.attributes) swap.setAttribute(name, value);
+        node.replaceWith(swap);
+        this.#place(mark);
+      }
+    }
   }
 
   #leaves() {

@@ -201,24 +201,22 @@
 .stage { flex: 1; min-width: 0; overflow: auto; background: #6f7680; padding: 30px 20px 70px; }
 :host-context([data-theme="dark"]) .stage, .stage { background: color-mix(in srgb, var(--foreground) 32%, var(--background)); }
 .sheetwrap, .preview { display: flex; flex-direction: column; align-items: center; gap: 26px; }
+.deck { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .ruler {
-  position: sticky;
-  top: 0;
-  z-index: 3;
+  position: relative;
   flex: none;
-  height: 20px;
-  box-sizing: border-box;
-  background: var(--background);
-  border: 1px solid var(--border);
-  border-radius: 3px;
+  height: 22px;
   overflow: hidden;
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
 }
 .ruler[hidden] { display: none; }
-.ruler .edge { position: absolute; top: 0; bottom: 0; background: color-mix(in srgb, var(--foreground) 14%, transparent); }
+.ruler .track { position: absolute; top: 0; bottom: 0; }
+.ruler .edge { position: absolute; top: 0; bottom: 0; background: color-mix(in srgb, var(--foreground) 12%, transparent); }
 .ruler .tick { position: absolute; top: 0; width: 1px; background: var(--muted-foreground); opacity: 0.55; }
 .ruler .num {
   position: absolute;
-  top: 8px;
+  top: 9px;
   font: 500 8.5px/1 var(--font-mono);
   color: var(--muted-foreground);
   transform: translateX(-50%);
@@ -272,7 +270,7 @@
 .pages h4 { font-size: var(--size-h4, 17px); line-height: var(--lead, 1.45); margin: var(--before-h4, 13px) 0 var(--after-h4, 7px); }
 .pages h5 { font-size: var(--size-h5, 16px); line-height: var(--lead, 1.45); margin: var(--before-h5, 12px) 0 var(--after-h5, 5px); }
 .pages h6 { font-size: var(--size-h6, 15px); line-height: var(--lead, 1.45); margin: var(--before-h6, 11px) 0 var(--after-h6, 5px); }
-.pages p { margin: var(--before-p, 0) 0 var(--after-p, 11px); }
+.pages p, .leaf > div { margin: var(--before-p, 0) 0 var(--after-p, 11px); }
 .pages ul, .pages ol { margin: 0 0 var(--after-bullet, 5px); padding-left: 24px; }
 .pages li { margin: 0 0 var(--after-bullet, 5px); }
 .pages blockquote {
