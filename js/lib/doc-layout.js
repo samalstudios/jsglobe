@@ -348,19 +348,41 @@ export function layoutToPdf(layout, meta = {}) {
       }
     }
 
-    if (meta.header) {
-      doc.text(meta.header, { x: page.margin, y: page.margin / 2 + 4, font: 'helvetica', size: 8.5, color: '#7a828a' });
-    }
-    if (meta.numbers || meta.footer) {
-      const foot = page.height - page.margin / 2;
-      if (meta.footer) {
-        doc.text(meta.footer, { x: page.margin, y: foot, font: 'helvetica', size: 8.5, color: '#7a828a' });
+    // a runner is either one string for every page, or a call that is handed the
+    // page it is being written on
+    const runner = (what, y) => {
+      const value = typeof what === 'function' ? what(index, layout.pages.length) : what;
+      if (!value) return;
+      const parts = typeof value === 'string' ? [{ text: value, align: 'left' }] : [].concat(value);
+      for (const part of parts) {
+        if (!part?.text) continue;
+        const size = part.size ?? 8.5;
+        const font = part.font ?? 'helvetica';
+        const wide = widthOf(part.text, font, size);
+        const room = page.width - page.margin * 2;
+        const shift = part.align === 'right' ? room - wide : part.align === 'center' ? (room - wide) / 2 : 0;
+        doc.text(part.text, {
+          x: page.margin + Math.max(0, shift),
+          y,
+          font,
+          size,
+          color: part.color ?? '#7a828a',
+        });
       }
-      if (meta.numbers) {
-        const label = `${index + 1} / ${layout.pages.length}`;
-        const wide = widthOf(label, 'helvetica', 8.5);
-        doc.text(label, { x: page.width - page.margin - wide, y: foot, font: 'helvetica', size: 8.5, color: '#7a828a' });
-      }
+    };
+
+    runner(meta.header, page.margin / 2 + 4);
+    runner(meta.footer, page.height - page.margin / 2);
+    if (meta.numbers) {
+      const label = `${index + 1} / ${layout.pages.length}`;
+      const wide = widthOf(label, 'helvetica', 8.5);
+      doc.text(label, {
+        x: page.width - page.margin - wide,
+        y: page.height - page.margin / 2,
+        font: 'helvetica',
+        size: 8.5,
+        color: '#7a828a',
+      });
     }
   });
   return doc.save(meta);

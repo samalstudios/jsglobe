@@ -30,6 +30,26 @@ const SIZES = [9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48];
 
 const GAP = 26;
 
+const BLOCKS = [
+  { value: 'contents', label: () => t('doc-editor.tableOfContents', 'Table of contents'), hint: () => t('doc-editor.builtFromHeadings', 'From the headings') },
+  { value: 'indexBlock', label: () => t('doc-editor.indexPage', 'Index'), hint: () => t('doc-editor.builtFromMarks', 'From marked words') },
+  { value: 'references', label: () => t('doc-editor.references', 'References'), hint: () => t('doc-editor.builtFromCitations', 'From the citations') },
+  { value: 'codeBlock', label: () => t('doc-editor.insertCodeBlock', 'Code block') },
+  { value: 'chart', label: () => t('doc-editor.chart', 'Chart') },
+  { value: 'formula', label: () => t('doc-editor.formula', 'Formula') },
+  { value: 'footnote', label: () => t('doc-editor.footnote', 'Footnote') },
+  { value: 'cite', label: () => t('doc-editor.addACitation', 'Citation') },
+  { value: 'markIndex', label: () => t('doc-editor.markForIndex', 'Mark for the index') },
+  { value: 'checklist', label: () => t('doc-editor.checklist', 'Checklist') },
+];
+
+const MARKS = [
+  { id: 'page', label: () => t('doc-editor.pageNumber', 'Page number') },
+  { id: 'pages', label: () => t('doc-editor.pageCountMark', 'Page count') },
+  { id: 'title', label: () => t('doc-editor.documentName', 'Document name') },
+  { id: 'date', label: () => t('doc-editor.today', 'Today') },
+];
+
 const CSS_FAMILY = {
   helvetica: 'Helvetica Neue, Arial, sans-serif',
   times: 'Georgia, Times New Roman, serif',
@@ -153,6 +173,7 @@ class DocEditor extends JGApp {
   #header = '';
   #footer = '';
   #numbers = false;
+  #editingRunner = null;
   #spacing = 1.6;
   #columns = 1;
 
@@ -241,10 +262,8 @@ class DocEditor extends JGApp {
             <button class="tool" data-act="rule" title="${t('doc-editor.insertRule', 'Insert a line')}">${icon('minus', 16)}</button>
             <button class="tool" data-act="pageBreak" title="${t('doc-editor.pageBreak', 'Page break')} (Alt Enter)">${icon('pageBreak', 16)}</button>
             <button class="tool" data-act="today" title="${t('doc-editor.insertDate', 'Insert today')}">${icon('calendar', 16)}</button>
-            <button class="tool" data-act="contents" title="${t('doc-editor.tableOfContents', 'Table of contents')}">${icon('list', 16)}</button>
-            <button class="tool" data-act="chart" title="${t('doc-editor.chart', 'Chart')}">${icon('pieChart', 16)}</button>
-            <button class="tool" data-act="formula" title="${t('doc-editor.formula', 'Formula')}">${icon('sigma', 16)}</button>
-            <button class="tool" data-act="footnote" title="${t('doc-editor.footnote', 'Footnote')}">${icon('quote', 16)}</button>
+            <jg-lookup id="blocks" style="width:132px" placeholder="${t('doc-editor.addBlock', 'Add a block')}"
+              hunt="${t('doc-editor.findABlock', 'Find a block')}"></jg-lookup>
           </div>
           <div class="cluster">
             <button class="tool" data-act="runningHead" title="${t('doc-editor.headerAndFooter', 'Header and footer')}">${icon('heading', 16)}</button>
@@ -442,6 +461,18 @@ class DocEditor extends JGApp {
 
       <div class="context" id="context" hidden></div>
 
+      <div class="runbar" id="runbar" hidden>
+        <span class="what" id="runwhat"></span>
+        ${MARKS.map((mark) => html`<button class="pill" type="button" data-mark="${mark.id}">${mark.label()}</button>`)}
+        <span class="split"></span>
+        <button class="tool" type="button" data-run="left" title="${t('doc-editor.alignLeft', 'Align left')}">${icon('alignLeft', 14)}</button>
+        <button class="tool" type="button" data-run="center" title="${t('doc-editor.alignCenter', 'Centre')}">${icon('alignCenter', 14)}</button>
+        <button class="tool" type="button" data-run="right" title="${t('doc-editor.alignRight', 'Align right')}">${icon('alignRight', 14)}</button>
+        <span class="split"></span>
+        <button class="tool" type="button" data-run="clear" title="${t('doc-editor.clear', 'Clear')}">${icon('eraser', 14)}</button>
+        <jg-button size="sm" id="rundone">${t('doc-editor.done', 'Done')}</jg-button>
+      </div>
+
       <jg-dialog id="head-box" title-text="${t('doc-editor.headerAndFooter', 'Header and footer')}" sub="${t('doc-editor.shownOnEveryPage', 'Shown on every page of the PDF and the page view.')}">
         <jg-field label="${t('doc-editor.headerText', 'Header')}"><jg-input id="head-text" placeholder="${t('doc-editor.optional', 'Optional')}"></jg-input></jg-field>
         <jg-field label="${t('doc-editor.footerText', 'Footer text, optional')}"><jg-input id="foot-text" placeholder="${t('doc-editor.optional', 'Optional')}"></jg-input></jg-field>
@@ -495,6 +526,8 @@ class DocEditor extends JGApp {
       this.#header = open.header ?? '';
       this.#footer = open.footer ?? '';
       this.#numbers = Boolean(open.numbers);
+      this.#header = this.#asRunner(this.#header);
+      this.#footer = this.#asRunner(this.#footer, this.#numbers);
       this.#spacing = Number(open.spacing) || 1.6;
       this.#columns = Number(open.columns) || 1;
       this.$('#spacing').value = String(this.#spacing);
@@ -615,7 +648,31 @@ class DocEditor extends JGApp {
       const button = event.target.closest('[data-picture]');
       if (button) this.#pictureAct(button.dataset.picture);
     });
+    this.on(this.$('#editor'), 'dblclick', (event) => {
+      const runner = event.target.closest('[data-runner]');
+      if (runner) {
+        event.preventDefault();
+        this.#editRunner(runner);
+      }
+    });
+    const blocks = this.$('#blocks');
+    blocks.items = BLOCKS.map((entry) => ({ value: entry.value, label: entry.label(), hint: entry.hint?.() }));
+    this.on(blocks, 'change', (event) => {
+      const pick = event.detail.value;
+      blocks.removeAttribute('value');
+      if (pick) this.#act(pick);
+    });
+
+    this.on(this.$('#runbar'), 'mousedown', (event) => event.preventDefault());
+    this.on(this.$('#runbar'), 'click', (event) => {
+      const mark = event.target.closest('[data-mark]');
+      if (mark) return this.#addMark(mark.dataset.mark);
+      const tool = event.target.closest('[data-run]');
+      if (tool) return this.#runnerAct(tool.dataset.run);
+      if (event.target.closest('#rundone')) this.#closeRunner();
+    });
     this.on(this.$('#editor'), 'click', (event) => {
+      if (this.#editingRunner && !event.target.closest('[data-runner]')) this.#closeRunner();
       const figure = event.target.closest('figure');
       this.$$('#editor figure').forEach((node) => node.classList.toggle('picked', node === figure));
       this.#reflect();
@@ -1088,11 +1145,14 @@ class DocEditor extends JGApp {
     }
     if (action === 'openFile') return this.#openFile();
     if (action === 'exportFile') return this.#openExport();
-    if (action === 'printNow') return this.#savePdf(true, this.#numbers, this.#footer);
+    if (action === 'printNow') return this.#savePdf(true);
     if (action === 'runningHead') {
-      this.$('#head-text').value = this.#header;
-      this.$('#foot-text').value = this.#footer;
-      this.$('#head-numbers').checked = this.#numbers;
+      const first = this.#leaves()[0]?.querySelector('[data-runner="header"]');
+      if (first) {
+        first.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        this.#editRunner(first);
+        return;
+      }
       return this.$('#head-box').open();
     }
     if (action === 'newDoc') return this.#newDocument();
@@ -1393,9 +1453,13 @@ class DocEditor extends JGApp {
     const note = this.$('#running');
     if (note) {
       const bits = [];
-      if (this.#header) bits.push(t('doc-editor.headerIs', 'header “{text}”', { text: this.#header }));
-      if (this.#footer) bits.push(t('doc-editor.footerIs', 'footer “{text}”', { text: this.#footer }));
-      if (this.#numbers) bits.push(t('doc-editor.numbersOn', 'page numbers'));
+      const plain = (markup) => {
+        const holder = document.createElement('div');
+        holder.innerHTML = markup ?? '';
+        return holder.textContent.replace(/\s+/g, ' ').trim();
+      };
+      if (this.#header) bits.push(t('doc-editor.headerIs', 'header “{text}”', { text: plain(this.#header) }));
+      if (this.#footer) bits.push(t('doc-editor.footerIs', 'footer “{text}”', { text: plain(this.#footer) }));
       note.textContent = bits.length
         ? t('doc-editor.runningNote', 'Every page carries {bits}.', { bits: bits.join(', ') })
         : t('doc-editor.runningNone', 'No header, footer or page numbers. Set them under Format.');
@@ -1835,6 +1899,7 @@ class DocEditor extends JGApp {
     this.#blocks = htmlToBlocks(this.#flow());
     this.#layout = layoutDocument(this.#blocks, this.#paper());
     this.#spread();
+    this.#drawRunners();
     this.#fillBlocks();
     this.#colourCode();
     this.#live();
@@ -1949,7 +2014,7 @@ class DocEditor extends JGApp {
   #tidy() {
     for (const leaf of this.#leaves()) {
       for (const node of [...leaf.children]) {
-        if (node.tagName !== 'DIV' || node.querySelector('img')) continue;
+        if (node.tagName !== 'DIV' || node.dataset.runner || node.querySelector('img')) continue;
         const mark = this.#mark();
         const swap = document.createElement('p');
         swap.innerHTML = node.innerHTML;
@@ -1968,8 +2033,8 @@ class DocEditor extends JGApp {
     const editor = this.$('#editor');
     const children = [];
     for (const node of editor?.children ?? []) {
-      if (node.classList?.contains('leaf')) children.push(...node.children);
-      else children.push(node);
+      if (node.classList?.contains('leaf')) children.push(...[...node.children].filter((kid) => !kid.dataset?.runner));
+      else if (!node.dataset?.runner) children.push(node);
     }
     return { children };
   }
@@ -1979,7 +2044,9 @@ class DocEditor extends JGApp {
   }
 
   #read() {
-    return this.#leaves().map((leaf) => leaf.innerHTML).join('');
+    return this.#leaves()
+      .map((leaf) => [...leaf.children].filter((kid) => !kid.dataset?.runner).map((kid) => kid.outerHTML).join(''))
+      .join('');
   }
 
   #write(markup) {
@@ -2148,6 +2215,169 @@ class DocEditor extends JGApp {
     leaf?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
+  // documents written before the runners were editable held plain text and a
+  // switch for page numbers
+  #asRunner(value, numbers = false) {
+    let markup = value ?? '';
+    if (markup && !/[<>]/.test(markup)) markup = this.#safe(markup);
+    if (numbers) {
+      const tail = '<span data-mark="page"></span> / <span data-mark="pages"></span>';
+      markup = markup ? `${markup} · ${tail}` : `<span style="text-align:right">${tail}</span>`;
+    }
+    return markup;
+  }
+
+  #runnerHtml(where) {
+    return where === 'header' ? this.#header : this.#footer;
+  }
+
+  #setRunner(where, markup) {
+    if (where === 'header') this.#header = markup;
+    else this.#footer = markup;
+  }
+
+  #markValue(id, index, total) {
+    if (id === 'page') return String(index + 1);
+    if (id === 'pages') return String(total);
+    if (id === 'title') return this.#name;
+    if (id === 'date') return new Intl.DateTimeFormat(undefined, { dateStyle: 'long' }).format(new Date());
+    return '';
+  }
+
+  // the stored runner keeps its placeholders, each page gets them filled in
+  #fillRunner(markup, index, total) {
+    const holder = document.createElement('div');
+    holder.innerHTML = markup ?? '';
+    for (const mark of holder.querySelectorAll('[data-mark]')) {
+      mark.textContent = this.#markValue(mark.dataset.mark, index, total);
+    }
+    return holder.innerHTML;
+  }
+
+  #drawRunners() {
+    const leaves = this.#leaves();
+    const total = leaves.length;
+
+    leaves.forEach((leaf, index) => {
+      const inset = Math.round((parseFloat(getComputedStyle(leaf).paddingTop) || 96) / 2);
+      for (const where of ['header', 'footer']) {
+        let runner = leaf.querySelector(`[data-runner="${where}"]`);
+        if (!runner) {
+          runner = document.createElement('div');
+          runner.className = 'runner';
+          runner.dataset.runner = where;
+          runner.contentEditable = 'false';
+          leaf.append(runner);
+        }
+        if (where === 'header') runner.style.top = `${inset - 7}px`;
+        else runner.style.bottom = `${inset - 7}px`;
+        runner.dataset.hint = where === 'header'
+          ? t('doc-editor.doubleClickHeader', 'Double click to write a header')
+          : t('doc-editor.doubleClickFooter', 'Double click to write a footer');
+        if (runner === this.#editingRunner) continue;
+        runner.innerHTML = this.#fillRunner(this.#runnerHtml(where), index, total);
+        runner.dataset.empty = String(!runner.textContent.trim());
+      }
+    });
+  }
+
+  #editRunner(runner) {
+    if (!runner || this.#editingRunner === runner) return;
+    this.#closeRunner();
+
+    const where = runner.dataset.runner;
+    this.#editingRunner = runner;
+    runner.contentEditable = 'true';
+    runner.dataset.editing = 'true';
+    runner.innerHTML = this.#runnerHtml(where) || '';
+    if (!runner.querySelector('[data-line]')) {
+      const line = document.createElement('div');
+      line.dataset.line = '';
+      while (runner.firstChild) line.append(runner.firstChild);
+      runner.append(line);
+    }
+    runner.dataset.empty = 'false';
+
+    const bar = this.$('#runbar');
+    bar.hidden = false;
+    this.$('#runwhat').textContent =
+      where === 'header' ? t('doc-editor.headerText', 'Header') : t('doc-editor.footerText', 'Footer');
+
+    const range = document.createRange();
+    range.selectNodeContents(runner.querySelector('[data-line]'));
+    range.collapse(false);
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+    runner.focus();
+  }
+
+  #closeRunner() {
+    const runner = this.#editingRunner;
+    if (!runner) return;
+    const holds = runner.textContent.trim() || runner.querySelector('[data-mark]');
+    this.#setRunner(runner.dataset.runner, holds ? runner.innerHTML.trim() : '');
+    runner.contentEditable = 'false';
+    delete runner.dataset.editing;
+    this.#editingRunner = null;
+    this.$('#runbar').hidden = true;
+    this.#keep();
+    this.#drawRunners();
+  }
+
+  #runnerAct(what) {
+    const runner = this.#editingRunner;
+    const line = runner?.querySelector('[data-line]');
+    if (!line) return;
+    if (what === 'clear') line.innerHTML = '';
+    else line.style.textAlign = what;
+    this.#setRunner(runner.dataset.runner, runner.innerHTML.trim());
+    runner.focus();
+  }
+
+  #addMark(id) {
+    const runner = this.#editingRunner;
+    const mark = MARKS.find((entry) => entry.id === id);
+    if (!runner || !mark) return;
+
+    const chip = document.createElement('span');
+    chip.dataset.mark = id;
+    chip.textContent = mark.label();
+
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    const range = selection?.rangeCount ? selection.getRangeAt(0) : null;
+    if (range && runner.contains(range.commonAncestorContainer)) {
+      range.deleteContents();
+      range.insertNode(chip);
+      const after = document.createRange();
+      after.setStartAfter(chip);
+      after.collapse(true);
+      selection.removeAllRanges();
+      selection.addRange(after);
+    } else {
+      (runner.querySelector('[data-line]') ?? runner).append(chip);
+    }
+    this.#setRunner(runner.dataset.runner, runner.innerHTML.trim());
+    runner.focus();
+  }
+
+  // what PDF and Word need: one line of plain text with its alignment
+  #runnerFor(where) {
+    const markup = this.#runnerHtml(where);
+    if (!markup) return null;
+    const holder = document.createElement('div');
+    holder.innerHTML = markup;
+    const align = /text-align:\s*(center|right)/.exec(markup)?.[1] ?? 'left';
+    return (index, total) => {
+      const copy = holder.cloneNode(true);
+      for (const mark of copy.querySelectorAll('[data-mark]')) {
+        mark.textContent = this.#markValue(mark.dataset.mark, index, total);
+      }
+      const text = copy.textContent.replace(/\s+/g, ' ').trim();
+      return text ? [{ text, align }] : null;
+    };
+  }
+
   #drawThumbs() {
     const host = this.$('#thumbs');
     if (!host || !this.#layout) return;
@@ -2238,7 +2468,7 @@ class DocEditor extends JGApp {
   async #exportAs(kind) {
     this.$('#export-box')?.close();
     if (kind === 'doc') return this.#saveStudio();
-    if (kind === 'pdf' || kind === 'print') return this.#savePdf(kind === 'print', this.#numbers, this.#footer);
+    if (kind === 'pdf' || kind === 'print') return this.#savePdf(kind === 'print');
     if (kind === 'docx') return this.#saveDocx();
     if (kind === 'html') {
       const body = blocksToHtml(this.#blocks);
@@ -2300,7 +2530,7 @@ class DocEditor extends JGApp {
     return file.name;
   }
 
-  async #savePdf(toPrinter = false, numbers = false, footer = '') {
+  async #savePdf(toPrinter = false) {
     const paper = this.#paper();
     const blocks = await this.#withPictures();
     const layout = layoutDocument(blocks, paper);
@@ -2308,9 +2538,8 @@ class DocEditor extends JGApp {
       ...paper,
       title: this.#name,
       creator: 'Toolbox',
-      numbers,
-      footer,
-      header: this.#header,
+      header: this.#runnerFor('header'),
+      footer: this.#runnerFor('footer'),
     });
     if (toPrinter) {
       const url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));

@@ -615,3 +615,71 @@ jg-formula-input { display: block; margin-top: 12px; }
   color: #8a929a;
 }
 .pages pre[data-code] code { font-family: inherit; background: none; padding: 0; }
+
+.runner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 0 var(--sheet-pad, 96px);
+  font: 400 9.5pt/1.4 Arial, Helvetica Neue, Helvetica, sans-serif;
+  color: #7a828a;
+  min-height: 15px;
+  outline: 0;
+  cursor: text;
+}
+.runner[data-empty="true"]::after {
+  content: attr(data-hint);
+  color: #c3c9d0;
+  font-style: italic;
+}
+.runner[data-editing] {
+  background: color-mix(in srgb, var(--ring) 10%, transparent);
+  box-shadow: 0 0 0 1px var(--ring);
+  border-radius: 3px;
+  color: #333b43;
+}
+.runner [data-mark] {
+  background: color-mix(in srgb, var(--ring) 16%, transparent);
+  border-radius: 3px;
+  padding: 0 4px;
+  color: #2b4d7e;
+  white-space: nowrap;
+}
+.runner:not([data-editing]) [data-mark] { background: none; padding: 0; color: inherit; }
+
+.runbar {
+  position: absolute;
+  left: 50%;
+  bottom: 74px;
+  transform: translateX(-50%);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 9px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  box-shadow: var(--shadow-md, 0 12px 30px rgba(0, 0, 0, 0.2));
+}
+.runbar[hidden] { display: none; }
+.runbar .what {
+  font: 600 11px/1 var(--font-sans);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-right: 4px;
+}
+.runbar .pill {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--foreground);
+  padding: 5px 10px;
+  font: 500 11.5px/1 var(--font-sans);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.runbar .pill:hover { border-color: var(--ring); background: var(--accent); }
+.runbar .split { width: 1px; height: 18px; background: var(--border); }
+.runner [data-line] { min-height: 1em; }
