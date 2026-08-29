@@ -84,6 +84,7 @@ export const PATHS = {
   message: '<path d="M20.6 14.4a2.4 2.4 0 0 1-2.4 2.4H8.6l-4.2 3.4V5.6a2.4 2.4 0 0 1 2.4-2.4h11.4a2.4 2.4 0 0 1 2.4 2.4Z"/>',
   pin: '<path d="M12 21.4s6.6-5.8 6.6-10.4a6.6 6.6 0 1 0-13.2 0c0 4.6 6.6 10.4 6.6 10.4Z"/><circle cx="12" cy="10.6" r="2.6"/>',
   barChart: '<path d="M4.4 20.4V10.6M9.6 20.4V4.6M14.8 20.4v-7M20 20.4V8"/>',
+  pieChart: '<path d="M12 3.2a8.8 8.8 0 1 0 8.8 8.8H12Z"/><path d="M15.2 2.6a8.8 8.8 0 0 1 6.2 6.2h-6.2Z"/>',
   printer: '<path d="M7 9V4.2h10V9"/><path d="M7 17.4H5.4a2 2 0 0 1-2-2v-4.4a2 2 0 0 1 2-2h13.2a2 2 0 0 1 2 2v4.4a2 2 0 0 1-2 2H17"/><path d="M7 14h10v5.8H7z"/><circle cx="17.4" cy="11.8" r=".9"/>',
   chevronLeft: '<path d="m14.4 6-6 6 6 6"/>',
   chevronRight: '<path d="m9.6 6 6 6-6 6"/>',

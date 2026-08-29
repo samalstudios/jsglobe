@@ -228,6 +228,33 @@ const settle = (rings, sources) => {
   });
 };
 
+// a hole cannot be told apart from an outline in a single ring, so the two are
+// joined by a narrow slit: one ring that walks the outside, crosses to the hole,
+// walks it the other way round, and comes back
+const keyhole = (outer, inner) => {
+  let near = { from: 0, to: 0, gap: Infinity };
+  outer.forEach((one, from) => {
+    inner.forEach((other, to) => {
+      const gap = (one.x - other.x) ** 2 + (one.y - other.y) ** 2;
+      if (gap < near.gap) near = { from, to, gap };
+    });
+  });
+
+  const start = outer[near.from];
+  const land = inner[near.to];
+  const span = Math.hypot(land.x - start.x, land.y - start.y) || 1;
+  const slit = Math.min(0.02, span * 0.02);
+  const side = { x: (-(land.y - start.y) / span) * slit, y: ((land.x - start.x) / span) * slit };
+
+  const ring = [];
+  for (let step = 0; step <= outer.length; step += 1) ring.push(outer[(near.from + step) % outer.length]);
+  for (let step = 0; step <= inner.length; step += 1) {
+    const point = inner[(near.to + step) % inner.length];
+    ring.push({ x: point.x + side.x, y: point.y + side.y });
+  }
+  return ring;
+};
+
 export const clipPolygons = (a, b, mode) => {
   const subject = forward(a);
   const clip = forward(b).map((point) => ({ x: point.x + JITTER.x, y: point.y + JITTER.y }));
@@ -245,6 +272,7 @@ export const clipPolygons = (a, b, mode) => {
     }
     if (mode === 'subtract') {
       if (insideClip) return [];
+      if (insideSubject) return [keyhole(subject, [...clip].reverse())];
       return settle([subject], sources);
     }
     if (insideSubject) return settle([clip], sources);

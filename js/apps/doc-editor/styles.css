@@ -271,8 +271,15 @@
 .pages h5 { font-size: var(--size-h5, 16px); line-height: var(--lead, 1.45); margin: var(--before-h5, 12px) 0 var(--after-h5, 5px); }
 .pages h6 { font-size: var(--size-h6, 15px); line-height: var(--lead, 1.45); margin: var(--before-h6, 11px) 0 var(--after-h6, 5px); }
 .pages p, .leaf > div { margin: var(--before-p, 0) 0 var(--after-p, 11px); }
-.pages ul, .pages ol { margin: 0 0 var(--after-bullet, 5px); padding-left: 24px; }
+.pages ul, .pages ol { margin: 0 0 var(--after-bullet, 5px); padding-left: 26px; }
+.pages ul { list-style: disc outside; }
+.pages ol { list-style: decimal outside; }
+.pages ul ul { list-style: circle outside; }
+.pages ul ul ul { list-style: square outside; }
+.pages ol ol { list-style: lower-alpha outside; }
+.pages ol ol ol { list-style: lower-roman outside; }
 .pages li { margin: 0 0 var(--after-bullet, 5px); }
+.pages li::marker { color: #111111; }
 .pages blockquote {
   font-size: var(--size-quote, 14.67px);
   margin: var(--before-quote, 8px) 0 var(--after-quote, 11px);

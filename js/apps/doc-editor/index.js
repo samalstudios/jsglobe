@@ -235,7 +235,7 @@ class DocEditor extends JGApp {
             <button class="tool" data-act="pageBreak" title="${t('doc-editor.pageBreak', 'Page break')} (Alt Enter)">${icon('pageBreak', 16)}</button>
             <button class="tool" data-act="today" title="${t('doc-editor.insertDate', 'Insert today')}">${icon('calendar', 16)}</button>
             <button class="tool" data-act="contents" title="${t('doc-editor.tableOfContents', 'Table of contents')}">${icon('list', 16)}</button>
-            <button class="tool" data-act="chart" title="${t('doc-editor.chart', 'Chart')}">${icon('barChart', 16)}</button>
+            <button class="tool" data-act="chart" title="${t('doc-editor.chart', 'Chart')}">${icon('pieChart', 16)}</button>
             <button class="tool" data-act="formula" title="${t('doc-editor.formula', 'Formula')}">${icon('sigma', 16)}</button>
             <button class="tool" data-act="footnote" title="${t('doc-editor.footnote', 'Footnote')}">${icon('quote', 16)}</button>
           </div>
@@ -1822,13 +1822,22 @@ class DocEditor extends JGApp {
     selection?.addRange(range);
   }
 
+  #holder(node) {
+    let top = node;
+    for (let up = node.parentElement; up && !up.classList?.contains('leaf'); up = up.parentElement) {
+      if (up.tagName === 'UL' || up.tagName === 'OL') top = up;
+    }
+    return top;
+  }
+
   #carve(nodes, homes) {
     for (let at = 1; at < nodes.length; at += 1) {
       if (homes[at] === homes[at - 1]) continue;
       const node = nodes[at];
       if (node.tagName !== 'LI') continue;
       const list = node.parentElement;
-      if (!list || !list.contains(nodes[at - 1])) continue;
+      if (!list || !list.parentElement?.classList?.contains('leaf')) continue;
+      if (!list.contains(nodes[at - 1])) continue;
 
       const rest = list.cloneNode(false);
       if (list.tagName === 'OL') {
@@ -1865,7 +1874,7 @@ class DocEditor extends JGApp {
 
     const want = pages.map(() => []);
     nodes.forEach((node, at) => {
-      const holder = node.tagName === 'LI' ? node.closest('ul, ol') : node;
+      const holder = this.#holder(node);
       const list = want[homes[at]];
       if (list[list.length - 1] !== holder) list.push(holder);
     });
