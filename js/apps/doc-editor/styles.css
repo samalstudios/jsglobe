@@ -182,6 +182,26 @@
 .thumb span { font: 500 10.5px/1 var(--font-mono); color: var(--muted-foreground); }
 
 .outline { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 8px 10px; display: flex; flex-direction: column; gap: 1px; scrollbar-gutter: stable; }
+
+.addpage {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0 14px 12px;
+  padding: 8px 10px;
+  border: 1px dashed var(--border-strong, var(--border));
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--muted-foreground);
+  font: 500 11.5px/1 var(--font-sans);
+  cursor: pointer;
+}
+.addpage:hover { border-color: var(--ring); color: var(--foreground); border-style: solid; }
+.addpage:focus-visible { outline: none; box-shadow: var(--shadow-ring); }
+.addpage[hidden] { display: none; }
+
 .outline .line {
   border: 0;
   background: transparent;

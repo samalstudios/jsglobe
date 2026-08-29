@@ -309,6 +309,7 @@ class DocEditor extends JGApp {
             <button class="tab" data-side="outline" aria-pressed="false">${t('doc-editor.outline', 'Outline')}</button>
           </div>
           <div class="thumbs" id="thumbs"></div>
+          <button class="addpage" id="addpage" type="button">${icon('plus', 13)}${t('doc-editor.addPage', 'Add a page')}</button>
           <div class="outline" id="outline" hidden></div>
         </aside>
 
@@ -620,7 +621,7 @@ class DocEditor extends JGApp {
       this.$('#setup-box').close();
 
       if (this.$('#setup-scope').value === 'here') {
-        this.#insertNode(
+        this.#insertBlock(
           `<hr data-section="1" data-size="${size}" data-orient="${orientation}" data-margin="${margin}"><p><br></p>`,
         );
         toast(t('doc-editor.sectionAdded', 'A new section starts here'));
@@ -722,6 +723,7 @@ class DocEditor extends JGApp {
       this.#side = tab.dataset.side;
       this.$$('.tab').forEach((node) => node.setAttribute('aria-pressed', String(node.dataset.side === this.#side)));
       this.$('#thumbs').hidden = this.#side !== 'pages';
+      this.$('#addpage').hidden = this.#side !== 'pages';
       this.$('#outline').hidden = this.#side !== 'outline';
     });
 
@@ -732,6 +734,7 @@ class DocEditor extends JGApp {
       node?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
+    this.on(this.$('#addpage'), 'click', () => this.#addPage());
     this.on(this.$('#thumbs'), 'click', (event) => {
       const card = event.target.closest('[data-page]');
       if (!card) return;
@@ -750,7 +753,7 @@ class DocEditor extends JGApp {
         reader.onload = () => done(reader.result);
         reader.readAsDataURL(file);
       });
-      this.#insertNode(`<figure data-align="center" data-size="medium"><img src="${data}" alt=""></figure><p><br></p>`);
+      this.#insertBlock(`<figure data-align="center" data-size="medium"><img src="${data}" alt=""></figure><p><br></p>`);
     });
 
     this.on(this.$('#tablebar'), 'click', (event) => {
@@ -924,6 +927,36 @@ class DocEditor extends JGApp {
     return editor;
   }
 
+  // blocks belong between the paragraphs, never inside the one holding the caret
+  #insertBlock(markup, at) {
+    this.#focus();
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    const anchor = selection?.anchorNode;
+    const from = anchor?.nodeType === 1 ? anchor : anchor?.parentElement;
+    const leaf = at ?? from?.closest?.('.leaf') ?? this.#edge(true);
+
+    let block = from && leaf.contains(from) ? from : null;
+    while (block && block.parentElement !== leaf) block = block.parentElement;
+
+    const holder = document.createElement('div');
+    holder.innerHTML = markup;
+    const made = [...holder.children];
+    if (!made.length) return;
+
+    if (block) block.after(...made);
+    else leaf.append(...made);
+
+    const last = made[made.length - 1];
+    const range = document.createRange();
+    range.selectNodeContents(last);
+    range.collapse(true);
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+
+    this.#sync();
+    this.#reflect();
+  }
+
   #insertNode(markup) {
     this.#focus();
     const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
@@ -1004,11 +1037,11 @@ class DocEditor extends JGApp {
       return;
     }
     if (action === 'image') return this.$('#picture').click();
-    if (action === 'rule') return this.#insertNode('<hr><p><br></p>');
+    if (action === 'rule') return this.#insertBlock('<hr><p><br></p>');
     if (action === 'table') {
       const head = `<tr><th>${t('doc-editor.column', 'Column')} 1</th><th>${t('doc-editor.column', 'Column')} 2</th><th>${t('doc-editor.column', 'Column')} 3</th></tr>`;
       const row = '<tr><td><br></td><td><br></td><td><br></td></tr>';
-      return this.#insertNode(`<table>${head}${row}${row}</table><p><br></p>`);
+      return this.#insertBlock(`<table>${head}${row}${row}</table><p><br></p>`);
     }
     if (action === 'find') return this.#toggleFind(true);
     if (action === 'case') return this.#changeCase();
@@ -1042,7 +1075,7 @@ class DocEditor extends JGApp {
       this.#paintFiles();
       return toast(t('doc-editor.copySaved', 'Saved a copy of {name}', { name: this.#name }));
     }
-    if (action === 'pageBreak') return this.#insertNode('<hr data-break="page"><p><br></p>');
+    if (action === 'pageBreak') return this.#insertBlock('<hr data-break="page"><p><br></p>');
     if (action === 'today') {
       return this.#run('insertText', new Intl.DateTimeFormat(undefined, { dateStyle: 'long' }).format(new Date()));
     }
@@ -1159,7 +1192,7 @@ class DocEditor extends JGApp {
     canvas.height = 700;
     drawChart(canvas, { ...spec, font: 'Helvetica Neue, Arial, sans-serif' });
     this.$('#chart-box').close();
-    this.#insertNode(`<figure data-align="center" data-size="full"><img src="${canvas.toDataURL('image/png')}" alt=""></figure><p><br></p>`);
+    this.#insertBlock(`<figure data-align="center" data-size="full"><img src="${canvas.toDataURL('image/png')}" alt=""></figure><p><br></p>`);
   }
 
   #insertFormula() {
@@ -1912,6 +1945,19 @@ class DocEditor extends JGApp {
     });
 
     this.#setWidth(wide);
+  }
+
+  #addPage() {
+    const last = this.#edge(true);
+    this.#insertBlock('<hr data-break="page"><p><br></p>', last);
+    const pages = this.#layout?.pages.length ?? 1;
+    this.#goToPage(pages - 1);
+    toast(t('doc-editor.pageAdded', 'Page {number} added', { number: pages }));
+  }
+
+  #goToPage(index) {
+    const leaf = this.#leaves()[index];
+    leaf?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
   #drawThumbs() {

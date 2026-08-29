@@ -186,12 +186,15 @@ export function layoutDocument(blocks, options = {}) {
       continue;
     }
     const style = BLOCK_STYLE[block.type] ?? BLOCK_STYLE.p;
-    const put = (item) => {
+    const claim = () => {
       if (claimed !== blockIndex) {
         page.starts.push(blockIndex);
         claimed = blockIndex;
       }
       page.last = blockIndex;
+    };
+    const put = (item) => {
+      claim();
       page.items.push(item);
     };
     const indent = (style.indent ?? 0) * ((block.depth ?? 0) + (style.indent ? 1 : 0)) + (block.indent ?? 0) * 36;
@@ -260,8 +263,16 @@ export function layoutDocument(blocks, options = {}) {
       if (tall > roomLeft && tall <= roomFull) room(tall);
     }
 
+    // an empty paragraph still fills a line on the page, and still belongs to one
+    if (!lines.length) {
+      room(step);
+      claim();
+      y += step;
+    }
+
     lines.forEach((line, index) => {
       room(step);
+      claim();
       const total = lineWidth(line);
       let cursor = left;
       if (block.align === 'center') cursor = left + (span - total) / 2;
