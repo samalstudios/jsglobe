@@ -54,9 +54,11 @@ canvas.freeze { position: absolute; inset: 0; }
   place-items: center;
   gap: 10px;
   text-align: center;
-  color: #1a1a1f;
+  color: rgba(255, 255, 255, 0.92);
   padding: 20px;
 }
+.idle .hint { color: rgba(255, 255, 255, 0.62); }
+.stage[data-flood="true"] .idle .hint { color: #55555f; }
 .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
 .bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .error { color: var(--destructive); font-size: 13px; }

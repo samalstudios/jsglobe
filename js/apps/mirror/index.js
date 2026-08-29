@@ -51,9 +51,7 @@ class Mirror extends JGApp {
         <div class="idle" id="idle">
           <div>
             <div class="strong">${t('mirror.cameraIsOff', 'Camera is off')}</div>
-            <div class="hint" style="color:#55555f">
-              The picture stays on this device. Nothing is recorded or uploaded.
-            </div>
+            <div class="hint">${t('mirror.staysHere', 'The picture stays on this device. Nothing is recorded or uploaded.')}</div>
           </div>
         </div>
       </div>

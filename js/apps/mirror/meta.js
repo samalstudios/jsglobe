@@ -8,7 +8,7 @@ export default {
   tint: "#f43f5e",
   keywords: ["mirror","camera","webcam","ring light","selfie","makeup"],
   tag: "jg-app-mirror",
-  window: {"width":760,"height":860},
+  window: { width: 980, height: 860, maximized: true },
   i18n: {
     de: { name: 'Spiegel', tagline: 'Kameraspiegel mit einstellbarem Ringlicht' },
     es: { name: 'Espejo', tagline: 'Espejo de cámara con un aro de luz ajustable' },
