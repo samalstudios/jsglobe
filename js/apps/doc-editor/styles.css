@@ -571,3 +571,48 @@
 .key:hover { border-color: var(--ring); background: var(--accent); }
 
 jg-formula-input { display: block; margin-top: 12px; }
+
+.pages section[data-block] { margin: 0 0 var(--after-p, 11px); }
+.pages section[data-block] [data-head] { margin-top: 0; }
+.pages section[data-block] [data-list] { display: flex; flex-direction: column; }
+.pages section[data-block] [data-row] {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0 0 3px;
+}
+.pages section[data-block] [data-dots] {
+  flex: 1;
+  border-bottom: 1px dotted #b8bec6;
+  transform: translateY(-3px);
+}
+.pages section[data-block] [data-page] { font-variant-numeric: tabular-nums; color: #55606c; }
+.pages section[data-block] [data-empty] { color: #8a929a; font-style: italic; margin: 0; }
+.pages section[data-block="references"] ol { padding-left: 26px; }
+.pages section[data-block="references"] li[data-number]::marker { content: '[' attr(data-number) '] '; }
+
+.pages sup[data-cite] {
+  color: #1a5fb4;
+  font-weight: 600;
+  cursor: default;
+}
+.pages [data-index] { border-bottom: 1px dotted #9aa4ae; }
+
+.pages pre[data-code] {
+  position: relative;
+  background: #f6f8fa;
+  border: 1px solid #e2e6ea;
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+.pages pre[data-code]::before {
+  content: attr(data-code);
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  font: 500 9px/1 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8a929a;
+}
+.pages pre[data-code] code { font-family: inherit; background: none; padding: 0; }

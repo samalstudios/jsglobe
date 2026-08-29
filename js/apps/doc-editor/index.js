@@ -6,6 +6,7 @@ import { toast, download, debounce, pickFile } from '../../core/util.js';
 import { createDesigns } from '../../lib/designs.js';
 import { toJpeg } from '../../lib/raster.js';
 import { drawChart } from '../../lib/chart.js';
+import { highlight, LANGUAGES, TOKEN_COLOURS } from '../../lib/syntax.js';
 import { SAMPLES as FORMULAS } from '../../lib/formula.js';
 import { readZip } from '../../core/zip.js';
 import { htmlToBlocks, blockNodes, blocksToHtml, blocksToText, blocksToMarkdown, markdownToHtml, outlineOf, countWords } from '../../lib/richtext.js';
@@ -80,6 +81,12 @@ const MENUS = [
       { act: 'today', label: () => t('doc-editor.insertDate', 'Insert today') },
       { rule: true },
       { act: 'contents', label: () => t('doc-editor.tableOfContents', 'Table of contents') },
+      { act: 'indexBlock', label: () => t('doc-editor.indexPage', 'Index') },
+      { act: 'references', label: () => t('doc-editor.references', 'References') },
+      { act: 'cite', label: () => t('doc-editor.addACitation', 'Add a citation') },
+      { act: 'markIndex', label: () => t('doc-editor.markForIndex', 'Mark for the index') },
+      { rule: true },
+      { act: 'codeBlock', label: () => t('doc-editor.insertCodeBlock', 'Code block') },
       { act: 'chart', label: () => t('doc-editor.chart', 'Chart') },
       { act: 'formula', label: () => t('doc-editor.formula', 'Formula') },
       { act: 'footnote', label: () => t('doc-editor.footnote', 'Footnote') },
@@ -993,6 +1000,36 @@ class DocEditor extends JGApp {
     this.#reflect();
   }
 
+  #wrapNode(tag, attributes) {
+    const editor = this.#focus();
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    if (!selection) return false;
+
+    const kept = this.#lastRange;
+    const live = selection.rangeCount ? selection.getRangeAt(0) : null;
+    if ((!live || live.collapsed) && kept && !kept.collapsed && editor.contains(kept.commonAncestorContainer)) {
+      selection.removeAllRanges();
+      selection.addRange(kept);
+    }
+    if (!selection.rangeCount || selection.getRangeAt(0).collapsed) return false;
+
+    const range = selection.getRangeAt(0);
+    const node = document.createElement(tag);
+    for (const [name, value] of Object.entries(attributes ?? {})) node.setAttribute(name, value);
+    try {
+      node.appendChild(range.extractContents());
+      range.insertNode(node);
+      selection.removeAllRanges();
+      const next = document.createRange();
+      next.selectNodeContents(node);
+      selection.addRange(next);
+      this.#lastRange = next.cloneRange();
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
   #wrapStyle(property, value) {
     const editor = this.#focus();
     const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
@@ -1080,7 +1117,12 @@ class DocEditor extends JGApp {
       return this.#run('insertText', new Intl.DateTimeFormat(undefined, { dateStyle: 'long' }).format(new Date()));
     }
     if (action === 'checklist') return this.#checklist();
-    if (action === 'contents') return this.#insertContents();
+    if (action === 'contents') return this.#insertLive('contents');
+    if (action === 'indexBlock') return this.#insertLive('index');
+    if (action === 'references') return this.#insertLive('references');
+    if (action === 'markIndex') return this.#markIndex();
+    if (action === 'cite') return this.#addCitation();
+    if (action === 'codeBlock') return this.#insertCode();
     if (action === 'chart') {
       if (!this.$('#chart-grid')?.columns.length) {
         this.#chartRows([
@@ -1107,29 +1149,173 @@ class DocEditor extends JGApp {
     this.#run(action);
   }
 
-  #insertContents() {
-    const entries = outlineOf(this.#blocks);
-    if (!entries.length) {
-      toast(t('doc-editor.addHeadingsFirst', 'Add some headings first'), 'danger');
+  #insertCode() {
+    const language = this.config.get('codeLanguage', 'javascript');
+    this.#insertBlock(`<pre data-code="${language}"><code>const total = 0;</code></pre><p><br></p>`);
+    toast(t('doc-editor.codeAdded', 'Code block added'));
+  }
+
+  #colourCode() {
+    const editor = this.$('#editor');
+    if (!editor) return;
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    const anchor = selection?.anchorNode;
+
+    for (const block of editor.querySelectorAll('pre[data-code]')) {
+      // leave the one being typed in alone, colouring it would move the caret
+      if (anchor && block.contains(anchor)) continue;
+      const code = block.querySelector('code') ?? block;
+      const text = code.textContent;
+      const painted = highlight(text, block.dataset.code || 'plain').replace(
+        /<span class="tok-([a-z]+)">/g,
+        (whole, token) => `<span style="color:${TOKEN_COLOURS[token] ?? '#111111'}">`,
+      );
+      if (code.innerHTML !== painted) code.innerHTML = painted;
+    }
+  }
+
+  #setCodeLanguage(language) {
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    const anchor = selection?.anchorNode;
+    const from = anchor?.nodeType === 1 ? anchor : anchor?.parentElement;
+    const block = from?.closest?.('pre[data-code]');
+    if (!block) return;
+    block.dataset.code = language;
+    this.config.set('codeLanguage', language);
+    this.#sync();
+  }
+
+  #blockTitle(kind) {
+    if (kind === 'contents') return t('doc-editor.contents', 'Contents');
+    if (kind === 'index') return t('doc-editor.indexPage', 'Index');
+    return t('doc-editor.references', 'References');
+  }
+
+  #insertLive(kind) {
+    if (this.$(`[data-block="${kind}"]`)) {
+      toast(t('doc-editor.blockAlreadyThere', 'That block is already in the document'), 'danger');
       return;
     }
-    const pageFor = (index) => {
-      const at = this.#layout.pages.findIndex((page) => (page.starts ?? []).includes(index));
-      return at === -1 ? 1 : at + 1;
-    };
-    const rows = entries
-      .map((entry) => {
-        const pad = 'margin-left:' + (entry.level - 1) * 18 + 'px';
-        return `<p style="${pad}">${entry.text.replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]))} <span style="color:#7a828a">· ${pageFor(entry.index)}</span></p>`;
+    const title = this.#blockTitle(kind);
+    const body = kind === 'references'
+      ? `<ol data-list></ol>`
+      : `<div data-list contenteditable="false"></div>`;
+    this.#insertBlock(
+      `<section data-block="${kind}"><h2 data-head>${title}</h2>${body}</section><p><br></p>`,
+    );
+    toast(t('doc-editor.blockAdded', '{title} added', { title }));
+  }
+
+  #addCitation() {
+    let block = this.$('[data-block="references"]');
+    if (!block) {
+      this.#insertLive('references');
+      block = this.$('[data-block="references"]');
+      if (!block) return;
+    }
+    const list = block.querySelector('[data-list]');
+    const id = `r${Date.now().toString(36)}`;
+
+    const item = document.createElement('li');
+    item.dataset.ref = id;
+    item.textContent = t('doc-editor.sourceHere', 'Author, title, where it was published, year.');
+    list.append(item);
+
+    this.#insertNode(`<sup data-cite="${id}">1</sup>`);
+    toast(t('doc-editor.citationAdded', 'Citation added, fill the entry in the references'));
+  }
+
+  #pageOf(index) {
+    const at = this.#layout?.pages.findIndex((page) => (page.starts ?? []).includes(index)) ?? -1;
+    return at === -1 ? 1 : at + 1;
+  }
+
+  #safe(text) {
+    return String(text).replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]));
+  }
+
+  #markIndex() {
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    const term = selection?.toString().trim();
+    if (!term) {
+      toast(t('doc-editor.selectSomeText', 'Select some text first'), 'danger');
+      return;
+    }
+    if (!this.#wrapNode('span', { 'data-index': term.toLowerCase() })) return;
+    this.#sync();
+    toast(t('doc-editor.markedForIndex', '“{term}” goes in the index', { term }));
+  }
+
+  // the generated blocks are rebuilt from the document on every pass, so they
+  // stay right as the writing moves between pages
+  #fillBlocks() {
+    for (const block of this.$$('[data-block]')) {
+      const kind = block.dataset.block;
+      const list = block.querySelector('[data-list]');
+      if (!list) continue;
+      if (kind === 'references') continue;
+      list.innerHTML = kind === 'contents' ? this.#contentsRows() : this.#indexRows();
+    }
+    this.#numberCites();
+  }
+
+  // read from the page rather than the block model, so the headings the
+  // generated blocks carry never list themselves
+  #contentsRows() {
+    const rows = [];
+    this.#nodes().forEach((node, at) => {
+      if (!/^H[1-6]$/.test(node.tagName) || node.closest('[data-block]')) return;
+      const text = node.textContent.trim();
+      if (!text) return;
+      const pad = `margin-left:${(Number(node.tagName[1]) - 1) * 18}px`;
+      rows.push(`<p style="${pad}" data-row>${this.#safe(text)}<span data-dots></span><span data-page>${this.#pageOf(at)}</span></p>`);
+    });
+    if (!rows.length) return `<p data-empty>${t('doc-editor.addHeadingsFirst', 'Add some headings first')}</p>`;
+    return rows.join('');
+  }
+
+  #indexRows() {
+    const nodes = [...this.$('#editor').querySelectorAll('[data-index]')].filter((node) => !node.closest('[data-block]'));
+    if (!nodes.length) {
+      return `<p data-empty>${t('doc-editor.markWordsForIndex', 'Select a word and mark it for the index')}</p>`;
+    }
+    const blocks = this.#nodes();
+    const terms = new Map();
+    for (const node of nodes) {
+      const term = node.dataset.index || node.textContent.trim().toLowerCase();
+      if (!term) continue;
+      let owner = node;
+      while (owner && !blocks.includes(owner)) owner = owner.parentElement;
+      const page = this.#pageOf(blocks.indexOf(owner));
+      const seen = terms.get(term) ?? new Set();
+      seen.add(page);
+      terms.set(term, seen);
+    }
+    return [...terms.entries()]
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map(([term, pages]) => {
+        const list = [...pages].sort((a, b) => a - b).join(', ');
+        return `<p data-row>${this.#safe(term)}<span data-dots></span><span data-page>${list}</span></p>`;
       })
       .join('');
-    this.#edge(false).insertAdjacentHTML(
-      'afterbegin',
-      `<h2>${t('doc-editor.contents', 'Contents')}</h2>${rows}<hr data-break="page">`,
-    );
-    this.#sync();
-    toast(t('doc-editor.contentsAdded', 'Contents added at the top'));
   }
+
+  #numberCites() {
+    const marks = [...this.$('#editor').querySelectorAll('sup[data-cite]')];
+    const order = new Map();
+    for (const mark of marks) {
+      const id = mark.dataset.cite;
+      if (!order.has(id)) order.set(id, order.size + 1);
+      mark.textContent = String(order.get(id));
+    }
+    const list = this.$('[data-block="references"] [data-list]');
+    if (!list) return;
+    for (const item of list.children) {
+      const number = order.get(item.dataset.ref ?? '');
+      item.dataset.number = number ? String(number) : '';
+    }
+  }
+
 
   #footnote() {
     const editor = this.$('#editor');
@@ -1649,6 +1835,8 @@ class DocEditor extends JGApp {
     this.#blocks = htmlToBlocks(this.#flow());
     this.#layout = layoutDocument(this.#blocks, this.#paper());
     this.#spread();
+    this.#fillBlocks();
+    this.#colourCode();
     this.#live();
     this.#drawRuler();
     this.#drawThumbs();
@@ -1858,7 +2046,7 @@ class DocEditor extends JGApp {
   #holder(node) {
     let top = node;
     for (let up = node.parentElement; up && !up.classList?.contains('leaf'); up = up.parentElement) {
-      if (up.tagName === 'UL' || up.tagName === 'OL') top = up;
+      if (up.tagName === 'UL' || up.tagName === 'OL' || up.dataset?.block) top = up;
     }
     return top;
   }

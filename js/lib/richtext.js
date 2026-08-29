@@ -88,9 +88,20 @@ const listBlocks = (node, ordered, depth, out) => {
   }
 };
 
+// a generated block wraps its rows in a section, which is a container rather
+// than a block of its own
+const inside = (root) => {
+  const out = [];
+  for (const node of root.children) {
+    if (node.tagName === 'SECTION') out.push(...node.children);
+    else out.push(node);
+  }
+  return out;
+};
+
 export function blockNodes(root) {
   const nodes = [];
-  for (const node of root.children) {
+  for (const node of inside(root)) {
     const tag = node.tagName;
     if (tag === 'UL' || tag === 'OL') {
       const walk = (list) => {
@@ -112,7 +123,7 @@ export function blockNodes(root) {
 
 export function htmlToBlocks(root) {
   const blocks = [];
-  for (const node of root.children) {
+  for (const node of inside(root)) {
     const tag = node.tagName;
     if (tag === 'UL' || tag === 'OL') {
       listBlocks(node, tag === 'OL', 0, blocks);
