@@ -9,7 +9,7 @@ import { drawChart, parseSeries } from '../../lib/chart.js';
 import { SAMPLES as FORMULAS } from '../../lib/formula.js';
 import { readZip } from '../../core/zip.js';
 import { htmlToBlocks, blockNodes, blocksToHtml, blocksToText, blocksToMarkdown, markdownToHtml, outlineOf, countWords } from '../../lib/richtext.js';
-import { layoutDocument, layoutToPdf } from '../../lib/doc-layout.js';
+import { layoutDocument, layoutToPdf, BLOCK_STYLE } from '../../lib/doc-layout.js';
 import { writeDocx, docxToHtml } from '../../lib/docx.js';
 
 const t = appText(strings);
@@ -26,6 +26,8 @@ const STYLES = [
 ];
 
 const SIZES = [9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48];
+
+const BAND = 32;
 
 const CSS_FAMILY = {
   helvetica: 'Helvetica Neue, Arial, sans-serif',
@@ -125,6 +127,8 @@ class DocEditor extends JGApp {
 
   #blocks = [];
   #layout = null;
+
+  #scale = 1;
   #side = 'pages';
   #name = 'Untitled document';
   #zoom = 1;
@@ -307,9 +311,11 @@ class DocEditor extends JGApp {
 
         <div class="stage" id="stage">
           <div class="sheetwrap" id="sheetwrap">
-            <div class="paper" id="paper">
-              <div class="guides" id="guides" aria-hidden="true"></div>
-              <div class="page" id="editor" contenteditable="true" spellcheck="true" role="textbox" aria-multiline="true"></div>
+            <div class="papercage" id="papercage">
+              <div class="paper" id="paper">
+                <div class="guides" id="guides" aria-hidden="true"></div>
+                <div class="page" id="editor" contenteditable="true" spellcheck="true" role="textbox" aria-multiline="true"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -457,6 +463,13 @@ class DocEditor extends JGApp {
     this.#applyPaper();
     this.#showName();
     this.#sync();
+
+    const stage = this.$('#stage');
+    if (stage && 'ResizeObserver' in window) {
+      const watcher = new ResizeObserver(() => this.#fitPaper());
+      watcher.observe(stage);
+      this.track(() => watcher.disconnect());
+    }
   }
 
   #restore() {
@@ -1243,8 +1256,7 @@ class DocEditor extends JGApp {
     this.#zoom = Math.max(0.5, Math.min(2, Math.round(next * 20) / 20));
     const label = this.$('#zoomat');
     if (label) label.textContent = `${Math.round(this.#zoom * 100)}%`;
-    const paper = this.$('#paper');
-    if (paper) paper.style.zoom = this.#zoom === 1 ? '' : String(this.#zoom);
+    this.#fitPaper();
   }
 
   #changeCase() {
@@ -1579,12 +1591,37 @@ class DocEditor extends JGApp {
     const editor = this.$('#editor');
     if (!editor) return;
     const scale = 96 / 72;
+
+    const pt = (points) => `${(points * scale).toFixed(2)}px`;
+    for (const [kind, style] of Object.entries(BLOCK_STYLE)) {
+      editor.style.setProperty(`--size-${kind}`, pt(style.size));
+      editor.style.setProperty(`--before-${kind}`, pt(style.before ?? 0));
+      editor.style.setProperty(`--after-${kind}`, pt(style.after ?? 0));
+    }
+    editor.style.setProperty('--lead', String(paper.spacing ?? 1.45));
     editor.style.setProperty('--sheet-width', `${Math.round(sheet.width * scale)}px`);
     editor.style.minHeight = `${Math.round(sheet.height * scale)}px`;
     editor.style.padding = `${Math.round(paper.margin * scale)}px`;
     editor.style.setProperty('--sheet-pad', `${Math.round(paper.margin * scale)}px`);
     const holder = this.$('#paper');
     if (holder) holder.style.setProperty('--sheet-width', `${Math.round(sheet.width * scale)}px`);
+    const cage = this.$('#papercage');
+    if (cage) cage.style.setProperty('--sheet-width', `${Math.round(sheet.width * scale)}px`);
+    this.#fitPaper();
+  }
+
+  #fitPaper() {
+    const stage = this.$('#stage');
+    const cage = this.$('#papercage');
+    const paper = this.$('#paper');
+    if (!stage || !cage || !paper) return;
+    const sheet = parseFloat(getComputedStyle(cage).getPropertyValue('--sheet-width')) || 794;
+    const room = stage.clientWidth - 44;
+    const fit = Math.min(1, Math.max(0.35, room / sheet));
+    this.#scale = fit * this.#zoom;
+    cage.style.setProperty('--zoom', String(this.#scale));
+    paper.style.setProperty('--zoom', String(this.#scale));
+    cage.style.height = `${Math.ceil(paper.offsetHeight * this.#scale)}px`;
   }
 
   #sync() {
@@ -1593,7 +1630,9 @@ class DocEditor extends JGApp {
     this.#blocks = htmlToBlocks(this.$('#editor'));
     this.#layout = layoutDocument(this.#blocks, this.#paper());
     this.#drawThumbs();
-    this.#sizeBreaks();
+    this.#fitPaper();
+    this.#alignPages();
+    this.#fitPaper();
     this.#drawGuides();
     this.#drawOutline();
     const counts = countWords(this.#blocks);
@@ -1646,36 +1685,40 @@ class DocEditor extends JGApp {
     void scale;
   }
 
-  #sizeBreaks() {
+  #alignPages() {
     const editor = this.$('#editor');
     if (!editor || !this.#layout) return;
 
     const scale = 96 / 72;
-    const margin = this.#layout.margin * scale;
-    const usable = this.#layout.height * scale - margin * 2;
-    if (usable <= 0) return;
+    const nodes = blockNodes(editor);
+    for (const node of nodes) node.style.marginTop = '';
+    for (const rule of editor.querySelectorAll('hr[data-break="page"], hr[data-section]')) rule.style.height = '0px';
 
-    const breaks = [...editor.querySelectorAll('hr[data-break="page"]')];
-    for (const rule of breaks) rule.style.height = '0px';
+    const origin = () => editor.getBoundingClientRect().top + this.#layout.margin * scale;
+    let target = 0;
 
-    for (const rule of breaks) {
-      const origin = () => editor.getBoundingClientRect().top + margin;
-      const top = rule.getBoundingClientRect().top - origin();
-      const into = ((top % usable) + usable) % usable;
-      let height = Math.max(0, Math.round(usable - into));
-      rule.style.height = `${height}px`;
+    this.#layout.pages.forEach((page, index) => {
+      if (!index) return;
+      const above = this.#layout.pages[index - 1];
+      target += (above.height - above.margin * 2) * scale;
 
-      const next = rule.nextElementSibling;
-      if (!next) continue;
-      for (let pass = 0; pass < 3; pass += 1) {
-        const lands = next.getBoundingClientRect().top - origin();
-        const slip = ((lands % usable) + usable) % usable;
-        if (slip < 2 || Math.abs(slip - usable) < 2) break;
-        height += slip > usable / 2 ? Math.round(usable - slip) : -Math.round(slip);
-        height = Math.max(0, height);
-        rule.style.height = `${height}px`;
+      const first = page.starts?.[0];
+      const node = first === undefined ? null : nodes[first];
+      if (!node) return;
+
+      const natural = parseFloat(getComputedStyle(node).marginTop) || 0;
+      const least = natural + BAND;
+
+      for (let pass = 0; pass < 4; pass += 1) {
+        const top = (node.getBoundingClientRect().top - origin()) / this.#scale;
+        const drift = target - top;
+        if (Math.abs(drift) < 2) break;
+        const now = parseFloat(getComputedStyle(node).marginTop) || 0;
+        const next = Math.max(least, Math.round(now + drift));
+        if (next === now) break;
+        node.style.marginTop = `${next}px`;
       }
-    }
+    });
   }
 
   #drawGuides() {
@@ -1691,14 +1734,14 @@ class DocEditor extends JGApp {
       const first = page.starts?.[0];
       const opener = first === undefined ? null : nodes[first];
       if (opener) {
-        const at = opener.getBoundingClientRect().top - top;
+        const at = (opener.getBoundingClientRect().top - top) / this.#scale;
         if (at > 8) marks.push({ at, page: index + 1 });
         return;
       }
       const closer = nodes[this.#layout.pages[index - 1]?.last ?? -1];
       if (!closer) return;
       const box = closer.getBoundingClientRect();
-      const at = box.bottom - top;
+      const at = (box.bottom - top) / this.#scale + BAND;
       if (at > 8) marks.push({ at, page: index + 1 });
     });
 

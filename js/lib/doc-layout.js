@@ -165,13 +165,18 @@ export function layoutDocument(blocks, options = {}) {
   for (const block of blocks) {
     blockIndex += 1;
     if (block.type === 'break') {
-      if (page.items.length) openPage();
+      if (page.items.length) {
+        openPage();
+        page.forced = true;
+      }
       continue;
     }
     if (block.type === 'section') {
       usePaper(block.setup ?? {});
-      if (page.items.length) openPage();
-      else {
+      if (page.items.length) {
+        openPage();
+        page.forced = true;
+      } else {
         page.width = width;
         page.height = height;
         page.margin = margin;
@@ -241,6 +246,13 @@ export function layoutDocument(blocks, options = {}) {
     const lines = breakLines(pieces, span);
     const step = style.size * spacing;
 
+    if (options.keepBlocks !== false) {
+      const tall = lines.length * step;
+      const roomLeft = bottom - y;
+      const roomFull = bottom - margin;
+      if (tall > roomLeft && tall <= roomFull) room(tall);
+    }
+
     lines.forEach((line, index) => {
       room(step);
       const total = lineWidth(line);
@@ -271,6 +283,8 @@ export function layoutDocument(blocks, options = {}) {
 
     y += style.after;
   }
+
+  while (pages.length > 1 && !pages[pages.length - 1].items.length && !pages[pages.length - 1].forced) pages.pop();
 
   return { pages, width: first.width, height: first.height, margin: first.margin, columns };
 }

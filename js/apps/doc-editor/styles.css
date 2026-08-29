@@ -201,14 +201,20 @@
 .stage { flex: 1; min-width: 0; overflow: auto; background: #6f7680; padding: 30px 20px 70px; }
 :host-context([data-theme="dark"]) .stage, .stage { background: color-mix(in srgb, var(--foreground) 32%, var(--background)); }
 .sheetwrap, .preview { display: flex; flex-direction: column; align-items: center; gap: 26px; }
-.paper { position: relative; width: min(var(--sheet-width, 794px), 100%); }
+.papercage { width: calc(var(--sheet-width, 794px) * var(--zoom, 1)); }
+.paper {
+  position: relative;
+  width: var(--sheet-width, 794px);
+  transform: scale(var(--zoom, 1));
+  transform-origin: top left;
+}
 .guides { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
 .guide {
   position: absolute;
   left: -20px;
   right: -20px;
   height: 26px;
-  transform: translateY(-13px);
+  transform: translateY(-100%);
   background: color-mix(in srgb, var(--foreground) 32%, var(--background));
   border-top: 1px solid rgba(0, 0, 0, 0.16);
   border-bottom: 1px solid rgba(0, 0, 0, 0.16);
@@ -226,6 +232,7 @@
 .page {
   width: 100%;
   max-width: 100%;
+  box-sizing: border-box;
   min-height: 1123px;
   padding: 72px;
   background: #ffffff;
@@ -234,19 +241,39 @@
   border-radius: 2px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   outline: 0;
-  font: 400 15px/1.6 Helvetica Neue, Arial, sans-serif;
+  font-family: Helvetica Neue, Arial, sans-serif;
+  font-size: var(--size-p, 14.67px);
+  line-height: var(--lead, 1.45);
 }
 .page:focus-visible { border-color: var(--ring); }
-.page h1 { font-size: 30px; margin: 20px 0 10px; }
-.page h2 { font-size: 24px; margin: 18px 0 9px; }
-.page h3 { font-size: 19px; margin: 16px 0 8px; }
-.page h4 { font-size: 17px; margin: 14px 0 7px; }
-.page p { margin: 0 0 11px; }
-.page ul, .page ol { margin: 0 0 11px; padding-left: 26px; }
-.page li { margin: 0 0 4px; }
-.page blockquote { margin: 0 0 11px; padding-left: 16px; border-left: 3px solid #d5dae0; color: #555; font-style: italic; }
-.page pre { margin: 0 0 11px; padding: 10px 12px; background: #f5f6f8; border-radius: 6px; font: 400 13px/1.5 Menlo, Consolas, monospace; white-space: pre-wrap; }
-.page hr { border: 0; border-top: 1px solid #d5dae0; margin: 14px 0; }
+.page h1 { font-size: var(--size-h1, 32px); line-height: var(--lead, 1.45); margin: var(--before-h1, 21px) 0 var(--after-h1, 11px); }
+.page h2 { font-size: var(--size-h2, 25px); line-height: var(--lead, 1.45); margin: var(--before-h2, 19px) 0 var(--after-h2, 9px); }
+.page h3 { font-size: var(--size-h3, 20px); line-height: var(--lead, 1.45); margin: var(--before-h3, 16px) 0 var(--after-h3, 8px); }
+.page h4 { font-size: var(--size-h4, 17px); line-height: var(--lead, 1.45); margin: var(--before-h4, 13px) 0 var(--after-h4, 7px); }
+.page h5 { font-size: var(--size-h5, 16px); line-height: var(--lead, 1.45); margin: var(--before-h5, 12px) 0 var(--after-h5, 5px); }
+.page h6 { font-size: var(--size-h6, 15px); line-height: var(--lead, 1.45); margin: var(--before-h6, 11px) 0 var(--after-h6, 5px); }
+.page p { margin: var(--before-p, 0) 0 var(--after-p, 11px); }
+.page ul, .page ol { margin: 0 0 var(--after-bullet, 5px); padding-left: 24px; }
+.page li { margin: 0 0 var(--after-bullet, 5px); }
+.page blockquote {
+  font-size: var(--size-quote, 14.67px);
+  margin: var(--before-quote, 8px) 0 var(--after-quote, 11px);
+  padding-left: 16px;
+  border-left: 3px solid #d5dae0;
+  color: #555;
+  font-style: italic;
+}
+.page pre {
+  font-size: var(--size-code, 13.3px);
+  line-height: var(--lead, 1.45);
+  margin: var(--before-code, 8px) 0 var(--after-code, 11px);
+  padding: 0 12px;
+  background: #f5f6f8;
+  border-radius: 6px;
+  font-family: Menlo, Consolas, monospace;
+  white-space: pre-wrap;
+}
+.page hr { border: 0; border-top: 1px solid #d5dae0; margin: var(--before-rule, 11px) 0 var(--after-rule, 16px); }
 .page a { color: #1a5fb4; }
 .page img { max-width: 100%; height: auto; }
 .page table { border-collapse: collapse; width: 100%; margin: 0 0 12px; }
@@ -339,7 +366,6 @@
 
 @container (max-width: 900px) {
   .panel { display: none; }
-  .page { padding: 44px; }
 }
 
 .saved {
