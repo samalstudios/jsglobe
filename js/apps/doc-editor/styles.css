@@ -708,3 +708,11 @@ jg-formula-input { display: block; margin-top: 12px; }
   background: var(--ring);
   transform: translateY(-50%);
 }
+
+.pages section[data-block].inside,
+.pages pre[data-code].inside {
+  outline: 1px solid color-mix(in srgb, var(--ring) 55%, transparent);
+  outline-offset: 5px;
+  border-radius: 4px;
+}
+.pages section[data-block].inside { outline-offset: 8px; }

@@ -7,6 +7,7 @@ import { createDesigns } from '../../lib/designs.js';
 import { toJpeg } from '../../lib/raster.js';
 import { drawChart } from '../../lib/chart.js';
 import { highlight, LANGUAGES, TOKEN_COLOURS } from '../../lib/syntax.js';
+import { FONT_STACKS } from '../../ui/jg-font-selector.js';
 import { SAMPLES as FORMULAS } from '../../lib/formula.js';
 import { readZip } from '../../core/zip.js';
 import { htmlToBlocks, blockNodes, blocksToHtml, blocksToText, blocksToMarkdown, markdownToHtml, outlineOf, countWords } from '../../lib/richtext.js';
@@ -37,12 +38,6 @@ const BLOCKS = [
   { value: 'indexBlock', label: () => t('doc-editor.indexPage', 'Index'), hint: () => t('doc-editor.builtFromMarks', 'From marked words') },
   { value: 'references', label: () => t('doc-editor.references', 'References'), hint: () => t('doc-editor.builtFromCitations', 'From the citations') },
   { value: 'codeBlock', label: () => t('doc-editor.insertCodeBlock', 'Code block') },
-  { value: 'chart', label: () => t('doc-editor.chart', 'Chart') },
-  { value: 'formula', label: () => t('doc-editor.formula', 'Formula') },
-  { value: 'footnote', label: () => t('doc-editor.footnote', 'Footnote') },
-  { value: 'cite', label: () => t('doc-editor.addACitation', 'Citation') },
-  { value: 'markIndex', label: () => t('doc-editor.markForIndex', 'Mark for the index') },
-  { value: 'checklist', label: () => t('doc-editor.checklist', 'Checklist') },
 ];
 
 const MARKS = [
@@ -266,6 +261,11 @@ class DocEditor extends JGApp {
             <button class="tool" data-act="rule" title="${t('doc-editor.insertRule', 'Insert a line')}">${icon('minus', 16)}</button>
             <button class="tool" data-act="pageBreak" title="${t('doc-editor.pageBreak', 'Page break')} (Alt Enter)">${icon('pageBreak', 16)}</button>
             <button class="tool" data-act="today" title="${t('doc-editor.insertDate', 'Insert today')}">${icon('calendar', 16)}</button>
+            <button class="tool" data-act="chart" title="${t('doc-editor.chart', 'Chart')}">${icon('pieChart', 16)}</button>
+            <button class="tool" data-act="formula" title="${t('doc-editor.formula', 'Formula')}">${icon('sigma', 16)}</button>
+            <button class="tool" data-act="footnote" title="${t('doc-editor.footnote', 'Footnote')}">${icon('quote', 16)}</button>
+            <button class="tool" data-act="cite" title="${t('doc-editor.addACitation', 'Add a citation')}">${icon('badge', 16)}</button>
+            <button class="tool" data-act="markIndex" title="${t('doc-editor.markForIndex', 'Mark for the index')}">${icon('bookmark', 16)}</button>
             <jg-lookup id="blocks" style="width:132px" placeholder="${t('doc-editor.addBlock', 'Add a block')}"
               hunt="${t('doc-editor.findABlock', 'Find a block')}"></jg-lookup>
           </div>
@@ -296,6 +296,21 @@ class DocEditor extends JGApp {
         <div class="cluster">
           <button class="tool danger" data-picture="drop" title="${t('doc-editor.removePicture', 'Remove the picture')}">${icon('eraser', 15)}</button>
         </div>
+      </div>
+
+      <div class="tablebar" id="blockbar" hidden>
+        <span class="what">${icon('blocks', 14)}<b id="blockwhat"></b></span>
+        <span class="where" id="blockwhere"></span>
+        <div class="cluster">
+          <button class="tool" data-block-act="refresh" title="${t('doc-editor.rebuildNow', 'Rebuild now')}">${icon('repeat', 15)}</button>
+          <button class="tool" data-block-act="entry" id="blockentry" title="${t('doc-editor.addAnEntry', 'Add an entry')}">${icon('plus', 15)}</button>
+          <button class="tool danger" data-block-act="remove" title="${t('doc-editor.removeBlock', 'Remove the block')}">${icon('eraser', 15)}</button>
+        </div>
+      </div>
+
+      <div class="tablebar" id="codebar" hidden>
+        <span class="what">${icon('braces', 14)}${t('doc-editor.insertCodeBlock', 'Code block')}</span>
+        <jg-selector id="codelang" style="width:132px"></jg-selector>
       </div>
 
       <div class="tablebar" id="tablebar" hidden>
@@ -578,6 +593,7 @@ class DocEditor extends JGApp {
     this.listen(document, 'selectionchange', () => {
       this.#remember();
       this.#live();
+      this.#followCaret();
     });
     this.on(editor, 'paste', (event) => {
       const text = event.clipboardData?.getData('text/plain');
@@ -672,6 +688,19 @@ class DocEditor extends JGApp {
       blocks.removeAttribute('value');
       if (pick) this.#act(pick);
     });
+
+    this.on(this.$('#blockbar'), 'mousedown', (event) => event.preventDefault());
+    this.on(this.$('#blockbar'), 'click', (event) => {
+      const button = event.target.closest('[data-block-act]');
+      if (button) this.#blockAct(button.dataset.blockAct);
+    });
+
+    const codelang = this.$('#codelang');
+    codelang.items = LANGUAGES.map((entry) => ({ value: entry.id, label: entry.label }));
+    this.on(this.$('#codebar'), 'mousedown', (event) => {
+      if (!event.target.closest('jg-selector')) event.preventDefault();
+    });
+    this.on(codelang, 'change', (event) => this.#setCodeLanguage(event.detail.value));
 
     this.on(this.$('#runbar'), 'mousedown', (event) => event.preventDefault());
     this.on(this.$('#runbar'), 'click', (event) => {
@@ -1069,6 +1098,39 @@ class DocEditor extends JGApp {
     this.#reflect();
   }
 
+  // nothing picked out means the word the caret is in, or the whole block when
+  // it is not in a word
+  #reach(selection) {
+    const range = selection.getRangeAt(0);
+    const node = range.startContainer;
+
+    if (node.nodeType === Node.TEXT_NODE) {
+      const text = node.nodeValue ?? '';
+      let from = range.startOffset;
+      let to = range.startOffset;
+      while (from > 0 && /\S/.test(text[from - 1])) from -= 1;
+      while (to < text.length && /\S/.test(text[to])) to += 1;
+      if (to > from) {
+        const word = document.createRange();
+        word.setStart(node, from);
+        word.setEnd(node, to);
+        selection.removeAllRanges();
+        selection.addRange(word);
+        this.#lastRange = word.cloneRange();
+        return true;
+      }
+    }
+
+    const here = this.#caretBlock();
+    if (!here?.block || !here.block.textContent.trim()) return false;
+    const whole = document.createRange();
+    whole.selectNodeContents(here.block);
+    selection.removeAllRanges();
+    selection.addRange(whole);
+    this.#lastRange = whole.cloneRange();
+    return true;
+  }
+
   #wrapNode(tag, attributes) {
     const editor = this.#focus();
     const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
@@ -1111,7 +1173,11 @@ class DocEditor extends JGApp {
       selection.removeAllRanges();
       selection.addRange(kept);
     }
-    if (!selection.rangeCount || selection.getRangeAt(0).collapsed) {
+    if (!selection.rangeCount) {
+      toast(t('doc-editor.selectSomeText', 'Select some text first'), 'danger');
+      return;
+    }
+    if (selection.getRangeAt(0).collapsed && !this.#reach(selection)) {
       toast(t('doc-editor.selectSomeText', 'Select some text first'), 'danger');
       return;
     }
@@ -1236,13 +1302,7 @@ class DocEditor extends JGApp {
     for (const block of editor.querySelectorAll('pre[data-code]')) {
       // leave the one being typed in alone, colouring it would move the caret
       if (anchor && block.contains(anchor)) continue;
-      const code = block.querySelector('code') ?? block;
-      const text = code.textContent;
-      const painted = highlight(text, block.dataset.code || 'plain').replace(
-        /<span class="tok-([a-z]+)">/g,
-        (whole, token) => `<span style="color:${TOKEN_COLOURS[token] ?? '#111111'}">`,
-      );
-      if (code.innerHTML !== painted) code.innerHTML = painted;
+      this.#paintCode(block);
     }
   }
 
@@ -1254,7 +1314,20 @@ class DocEditor extends JGApp {
     if (!block) return;
     block.dataset.code = language;
     this.config.set('codeLanguage', language);
+    // repaint the block the caret is in as well, the language just changed
+    const mark = this.#mark();
+    this.#paintCode(block);
+    this.#place(mark);
     this.#sync();
+  }
+
+  #paintCode(block) {
+    const code = block.querySelector('code') ?? block;
+    const painted = highlight(code.textContent, block.dataset.code || 'plain').replace(
+      /<span class="tok-([a-z]+)">/g,
+      (whole, token) => `<span style="color:${TOKEN_COLOURS[token] ?? '#111111'}">`,
+    );
+    if (code.innerHTML !== painted) code.innerHTML = painted;
   }
 
   #blockTitle(kind) {
@@ -1736,6 +1809,103 @@ class DocEditor extends JGApp {
     else this.#run('createLink', url);
   }
 
+  #caretBlock() {
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    const anchor = selection?.anchorNode;
+    const from = anchor?.nodeType === Node.ELEMENT_NODE ? anchor : anchor?.parentElement;
+    if (!from || !this.$('#editor')?.contains(from) || from.closest('[data-runner]')) return null;
+    const nodes = this.#nodes();
+    let block = from;
+    while (block && !nodes.includes(block)) block = block.parentElement;
+    return { from, block };
+  }
+
+  // the toolbar should say what the caret is sitting in
+  #followCaret() {
+    const here = this.#caretBlock();
+    if (!here) return;
+    const { from, block } = here;
+
+    const holder = from.closest('[data-block], pre[data-code]');
+    for (const node of this.$$('[data-block], pre[data-code]')) {
+      node.classList.toggle('inside', node === holder);
+    }
+
+    const blockbar = this.$('#blockbar');
+    const made = from.closest('section[data-block]');
+    if (blockbar) {
+      blockbar.hidden = !made;
+      if (made) {
+        this.$('#blockwhat').textContent = this.#blockTitle(made.dataset.block);
+        const rows = made.querySelectorAll('[data-row], li').length;
+        this.$('#blockwhere').textContent = t('doc-editor.rowCount', '{count} rows', { count: rows });
+        this.$('#blockentry').hidden = made.dataset.block !== 'references';
+      }
+    }
+
+    const codebar = this.$('#codebar');
+    const code = from.closest('pre[data-code]');
+    if (codebar) {
+      codebar.hidden = !code;
+      if (code) this.$('#codelang').value = code.dataset.code || 'plain';
+    }
+
+    const style = this.$('#style');
+    if (style && block) {
+      const tag = block.tagName.toLowerCase();
+      const known = STYLES.find((entry) => entry.tag === tag);
+      if (known && String(style.value) !== known.value) style.value = known.value;
+    }
+
+    const look = getComputedStyle(from);
+    const family = this.$('#family');
+    if (family) {
+      const now = this.#matchFamily(look.fontFamily);
+      if (now && family.value !== now) family.value = now;
+    }
+
+    const size = this.$('#size');
+    if (size) {
+      const points = Math.round((parseFloat(look.fontSize) || 0) * (72 / 96));
+      if (points && String(size.value) !== String(points)) size.value = String(points);
+    }
+  }
+
+  #blockAct(what) {
+    const here = this.#caretBlock();
+    const block = here?.from.closest('section[data-block]');
+    if (!block) return;
+
+    if (what === 'remove') {
+      block.remove();
+      this.$('#blockbar').hidden = true;
+      this.#sync();
+      toast(t('doc-editor.blockRemoved', 'Block removed'));
+      return;
+    }
+    if (what === 'entry') {
+      const list = block.querySelector('[data-list]');
+      if (!list) return;
+      const item = document.createElement('li');
+      item.dataset.ref = `r${Date.now().toString(36)}`;
+      item.textContent = t('doc-editor.sourceHere', 'Author, title, where it was published, year.');
+      list.append(item);
+      this.#sync();
+      return;
+    }
+    this.#sync();
+    toast(t('doc-editor.blockRebuilt', 'Rebuilt from the document'));
+  }
+
+  #matchFamily(computed) {
+    const tidy = (value) => String(value).toLowerCase().replace(/["']/g, '').replace(/\s+/g, '');
+    const want = tidy(computed);
+    const first = want.split(',')[0];
+    const hit = FONT_STACKS.find((entry) => tidy(entry.value) === want)
+      ?? FONT_STACKS.find((entry) => tidy(entry.value).split(',')[0] === first);
+    return hit?.value ?? null;
+  }
+
   #reflect() {
     const picture = this.#pictureNow();
     const pictureBar = this.$('#imagebar');
@@ -1752,6 +1922,8 @@ class DocEditor extends JGApp {
         });
       }
     }
+
+    this.#followCaret();
 
     const state = (command) => {
       try {
