@@ -59,12 +59,14 @@ class Mirror extends JGApp {
   #loupeAt = null;
   #loupeMag = 2.6;
   #frameId = 0;
+  #tipTimer = null;
 
   disconnectedCallback() {
     super.disconnectedCallback();
     this.#stop();
     clearInterval(this.#timer);
     clearTimeout(this.#holding);
+    clearTimeout(this.#tipTimer);
     cancelAnimationFrame(this.#frameId);
     for (const shot of this.#shots) URL.revokeObjectURL(shot.url);
     this.#shots = [];
@@ -98,6 +100,10 @@ class Mirror extends JGApp {
           <span class="badge" id="badge" hidden>${t('mirror.frozen', 'Frozen')}</span>
           <span class="count" id="count" hidden></span>
           <canvas class="loupe" id="loupe" width="200" height="200" hidden></canvas>
+          <div class="tip" id="tip" hidden aria-live="polite">
+            <span class="wheel" aria-hidden="true"><i></i></span>
+            ${t('mirror.wheelZooms', 'Roll the wheel to zoom the magnifier')}
+          </div>
           <div class="hold" id="hold" hidden></div>
           <div class="tray" id="tray" hidden></div>
         </div>
@@ -215,6 +221,8 @@ class Mirror extends JGApp {
       if (!this.#loupe) return;
       event.preventDefault();
       this.#loupeMag = Math.max(1.4, Math.min(8, this.#loupeMag * (event.deltaY < 0 ? 1.12 : 0.89)));
+      this.config.set('wheelTip', true);
+      this.#hideTip();
     }, { passive: false });
 
     this.on(this.$('#older'), 'click', () => this.#view(this.#viewing + 1));
@@ -520,7 +528,32 @@ class Mirror extends JGApp {
     const loupe = this.$('#loupe');
     loupe.hidden = !this.#loupe || !this.#loupeAt;
     cancelAnimationFrame(this.#frameId);
-    if (this.#loupe) this.#drawLoupe();
+    if (this.#loupe) {
+      this.#drawLoupe();
+      this.#showTip();
+    } else {
+      this.#hideTip();
+    }
+  }
+
+  #showTip() {
+    if (this.config.get('wheelTip', false) === true) return;
+    const tip = this.$('#tip');
+    if (!tip) return;
+    tip.hidden = false;
+    requestAnimationFrame(() => tip.setAttribute('data-here', ''));
+    clearTimeout(this.#tipTimer);
+    this.#tipTimer = setTimeout(() => this.#hideTip(), 5200);
+  }
+
+  #hideTip() {
+    const tip = this.$('#tip');
+    if (!tip || tip.hidden) return;
+    clearTimeout(this.#tipTimer);
+    tip.removeAttribute('data-here');
+    this.#tipTimer = setTimeout(() => {
+      tip.hidden = true;
+    }, 320);
   }
 
   #trackLoupe(event) {

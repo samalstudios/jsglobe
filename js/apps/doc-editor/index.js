@@ -447,6 +447,7 @@ class DocEditor extends JGApp {
 
       <jg-dialog id="export-box" title-text="${t('doc-editor.export', 'Export')}" sub="${t('doc-editor.chooseAFormat', 'Choose a format. The file is built on this device.')}">
         <div class="formats">
+          <button class="format" data-kind="doc"><b>${t('doc-editor.studioFile', 'Studio document')}</b><span>${t('doc-editor.studioHint', 'Keeps the page setup so you can carry on later')}</span></button>
           <button class="format" data-kind="pdf"><b>PDF</b><span>${t('doc-editor.pdfHint', 'Laid out exactly as the page view shows')}</span></button>
           <button class="format" data-kind="docx"><b>Word</b><span>${t('doc-editor.docxHint', 'A .docx that Word and Pages both open')}</span></button>
           <button class="format" data-kind="html"><b>HTML</b><span>${t('doc-editor.htmlHint', 'A single page with the formatting kept')}</span></button>
@@ -1993,6 +1994,7 @@ class DocEditor extends JGApp {
 
   async #exportAs(kind) {
     this.$('#export-box')?.close();
+    if (kind === 'doc') return this.#saveStudio();
     if (kind === 'pdf' || kind === 'print') return this.#savePdf(kind === 'print', this.#numbers, this.#footer);
     if (kind === 'docx') return this.#saveDocx();
     if (kind === 'html') {
@@ -2014,6 +2016,45 @@ class DocEditor extends JGApp {
       download(`${this.#name}.txt`, blocksToText(this.#blocks), 'text/plain');
       toast(t('doc-editor.savedText', 'Saved as text'));
     }
+  }
+
+  #saveStudio() {
+    const file = {
+      kind: 'jsglobe.document',
+      version: 1,
+      name: this.#name,
+      saved: new Date().toISOString(),
+      size: this.config.get('size', 'a4'),
+      orientation: this.config.get('orientation', 'portrait'),
+      margin: Number(this.config.get('margin', '72')),
+      font: this.config.get('bodyFont', 'helvetica'),
+      ...this.#snapshot(),
+    };
+    download(`${this.#name}.jgdoc`, JSON.stringify(file, null, 2), 'application/json');
+    toast(t('doc-editor.savedStudio', 'Saved as a Studio document'));
+  }
+
+  #loadStudio(text) {
+    const file = JSON.parse(text);
+    if (file?.kind !== 'jsglobe.document' || typeof file.html !== 'string') throw new Error('not a studio document');
+
+    if (file.size) this.config.set('size', file.size);
+    if (file.orientation) this.config.set('orientation', file.orientation);
+    if (Number.isFinite(file.margin)) this.config.set('margin', String(file.margin));
+    if (file.font) this.config.set('bodyFont', file.font);
+
+    this.#header = file.header ?? '';
+    this.#footer = file.footer ?? '';
+    this.#numbers = Boolean(file.numbers);
+    this.#spacing = Number(file.spacing) || 1.6;
+    this.#columns = Number(file.columns) || 1;
+    this.$('#spacing').value = String(this.#spacing);
+    this.$('#columns').value = String(this.#columns);
+    this.$('#editor').style.lineHeight = String(this.#spacing);
+
+    this.#write(file.html);
+    this.#applyPaper();
+    return file.name;
   }
 
   async #savePdf(toPrinter = false, numbers = false, footer = '') {
@@ -2062,11 +2103,14 @@ class DocEditor extends JGApp {
   }
 
   async #openFile() {
-    const picked = await pickFile('.txt,.md,.markdown,.html,.htm,.docx', false);
+    const picked = await pickFile('.jgdoc,.txt,.md,.markdown,.html,.htm,.docx', false);
     if (!picked) return;
-    const name = picked.name.replace(/\.[^.]+$/, '');
+    let name = picked.name.replace(/\.[^.]+$/, '');
     try {
-      if (/\.docx$/i.test(picked.name)) {
+      if (/\.jgdoc$/i.test(picked.name)) {
+        const text = typeof picked.data === 'string' ? picked.data : new TextDecoder().decode(picked.data);
+        name = this.#loadStudio(text) || name;
+      } else if (/\.docx$/i.test(picked.name)) {
         const zip = await readZip(picked.data);
         const xml = await zip.text('word/document.xml');
         if (!xml) throw new Error('empty');
