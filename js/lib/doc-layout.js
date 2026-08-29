@@ -162,6 +162,7 @@ export function layoutDocument(blocks, options = {}) {
   let counter = [];
 
   let blockIndex = -1;
+  let claimed = -1;
   for (const block of blocks) {
     blockIndex += 1;
     if (block.type === 'break') {
@@ -185,8 +186,14 @@ export function layoutDocument(blocks, options = {}) {
       continue;
     }
     const style = BLOCK_STYLE[block.type] ?? BLOCK_STYLE.p;
-    page.starts.push(blockIndex);
-    page.last = blockIndex;
+    const put = (item) => {
+      if (claimed !== blockIndex) {
+        page.starts.push(blockIndex);
+        claimed = blockIndex;
+      }
+      page.last = blockIndex;
+      page.items.push(item);
+    };
     const indent = (style.indent ?? 0) * ((block.depth ?? 0) + (style.indent ? 1 : 0)) + (block.indent ?? 0) * 36;
     const left = columnLeft() + indent;
     const span = limit - indent;
@@ -194,7 +201,7 @@ export function layoutDocument(blocks, options = {}) {
 
     if (block.type === 'rule') {
       room(6);
-      page.items.push({ type: 'rule', x: columnLeft(), y, width: limit });
+      put({ type: 'rule', x: columnLeft(), y, width: limit });
       y += style.after;
       continue;
     }
@@ -205,7 +212,7 @@ export function layoutDocument(blocks, options = {}) {
       const drawHeight = drawWidth * ratio;
       room(drawHeight);
       const shift = block.align === 'center' ? (span - drawWidth) / 2 : block.align === 'right' ? span - drawWidth : 0;
-      page.items.push({ type: 'image', x: left + shift, y, width: drawWidth, height: drawHeight, src: block.src, jpeg: block.jpeg });
+      put({ type: 'image', x: left + shift, y, width: drawWidth, height: drawHeight, src: block.src, jpeg: block.jpeg });
       y += drawHeight + style.after;
       continue;
     }
@@ -218,12 +225,12 @@ export function layoutDocument(blocks, options = {}) {
         void cells;
         const tall = Math.max(...cells.map((lines) => lines.length)) * style.size * spacing + 6;
         room(tall);
-        page.items.push({ type: 'row', x: columnLeft() + indent, y, width: span, height: tall, columns: cells.length });
+        put({ type: 'row', x: columnLeft() + indent, y, width: span, height: tall, columns: cells.length });
         cells.forEach((lines, column) => {
           lines.forEach((line, index) => {
             let cursor = left + column * cellWidth + 5;
             for (const piece of line) {
-              page.items.push({ ...piece, type: 'text', x: cursor, y: y + 4 + (index + 1) * style.size * spacing - style.size * 0.25 });
+              put({ ...piece, type: 'text', x: cursor, y: y + 4 + (index + 1) * style.size * spacing - style.size * 0.25 });
               cursor += widthOf(piece.text, piece.font, piece.size);
             }
           });
@@ -265,7 +272,7 @@ export function layoutDocument(blocks, options = {}) {
 
       if (index === 0 && (block.type === 'bullet' || block.type === 'ordered')) {
         const marker = block.type === 'bullet' ? '•' : `${counter[block.depth ?? 0] ?? 1}.`;
-        page.items.push({
+        put({
           type: 'text', text: marker, x: left - 14, y: y + style.size,
           font: base, size: style.size, color: '#111111',
         });
@@ -274,7 +281,7 @@ export function layoutDocument(blocks, options = {}) {
       for (const piece of line) {
         const size = widthOf(piece.text, piece.font, piece.size);
         if (!piece.space) {
-          page.items.push({ ...piece, type: 'text', x: cursor, y: y + style.size });
+          put({ ...piece, type: 'text', x: cursor, y: y + style.size });
         }
         cursor += size + (piece.space ? stretch : 0);
       }

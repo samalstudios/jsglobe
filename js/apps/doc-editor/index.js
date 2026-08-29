@@ -27,7 +27,7 @@ const STYLES = [
 
 const SIZES = [9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48];
 
-const BAND = 32;
+const GAP = 26;
 
 const CSS_FAMILY = {
   helvetica: 'Helvetica Neue, Arial, sans-serif',
@@ -106,6 +106,7 @@ const MENUS = [
       { act: 'zoomIn', label: () => t('doc-editor.zoomIn', 'Zoom in') },
       { act: 'zoomOut', label: () => t('doc-editor.zoomOut', 'Zoom out') },
       { act: 'side', label: () => t('doc-editor.togglePanel', 'Show or hide the panel') },
+      { act: 'ruler', label: () => t('doc-editor.toggleRuler', 'Show or hide the ruler') },
     ],
   },
 ];
@@ -129,6 +130,8 @@ class DocEditor extends JGApp {
   #layout = null;
 
   #scale = 1;
+
+  #ruler = false;
   #side = 'pages';
   #name = 'Untitled document';
   #zoom = 1;
@@ -311,10 +314,10 @@ class DocEditor extends JGApp {
 
         <div class="stage" id="stage">
           <div class="sheetwrap" id="sheetwrap">
+            <div class="ruler" id="ruler" aria-hidden="true" hidden></div>
             <div class="papercage" id="papercage">
               <div class="paper" id="paper">
-                <div class="guides" id="guides" aria-hidden="true"></div>
-                <div class="page" id="editor" contenteditable="true" spellcheck="true" role="textbox" aria-multiline="true"></div>
+                <div class="pages" id="editor" contenteditable="true" spellcheck="true" role="textbox" aria-multiline="true"></div>
               </div>
             </div>
           </div>
@@ -455,11 +458,11 @@ class DocEditor extends JGApp {
       </jg-dialog>
     </div>`);
 
-    const editor = this.$('#editor');
-    editor.innerHTML = STARTER;
+    this.#write(STARTER);
 
     this.#wire();
     this.#restore();
+    this.#ruler = this.config.get('ruler', 'off') === 'on';
     this.#applyPaper();
     this.#showName();
     this.#sync();
@@ -476,7 +479,7 @@ class DocEditor extends JGApp {
     const saved = this.store.read();
     const open = saved?.current;
     if (open?.html) {
-      this.$('#editor').innerHTML = open.html;
+      this.#write(open.html);
       this.#name = open.name ?? this.#name;
       this.#header = open.header ?? '';
       this.#footer = open.footer ?? '';
@@ -486,7 +489,6 @@ class DocEditor extends JGApp {
       this.$('#spacing').value = String(this.#spacing);
       this.$('#columns').value = String(this.#columns);
       this.$('#editor').style.lineHeight = String(this.#spacing);
-      if (this.#columns > 1) this.$('#editor').dataset.columns = String(this.#columns);
     }
   }
 
@@ -514,8 +516,15 @@ class DocEditor extends JGApp {
       this.#remember();
       this.#reflect();
     });
-    this.on(editor, 'blur', () => this.#remember());
-    this.listen(document, 'selectionchange', () => this.#remember());
+    this.on(editor, 'blur', () => {
+      this.#remember();
+      this.#live();
+    });
+    this.on(editor, 'focus', () => this.#live());
+    this.listen(document, 'selectionchange', () => {
+      this.#remember();
+      this.#live();
+    });
     this.on(editor, 'paste', (event) => {
       const text = event.clipboardData?.getData('text/plain');
       if (event.clipboardData?.types?.includes('text/html')) return;
@@ -585,9 +594,6 @@ class DocEditor extends JGApp {
     });
     this.on(this.$('#columns'), 'change', (event) => {
       this.#columns = Number(event.detail.value) || 1;
-      const page = this.$('#editor');
-      if (this.#columns > 1) page.dataset.columns = String(this.#columns);
-      else delete page.dataset.columns;
       this.#sync();
     });
 
@@ -652,7 +658,7 @@ class DocEditor extends JGApp {
       if (open) {
         const design = this.#files.get(open.dataset.open);
         if (!design) return;
-        this.$('#editor').innerHTML = design.html ?? '';
+        this.#write(design.html ?? '');
         this.#header = design.header ?? '';
         this.#footer = design.footer ?? '';
         this.#numbers = Boolean(design.numbers);
@@ -739,7 +745,7 @@ class DocEditor extends JGApp {
     this.on(this.$('#outline'), 'click', (event) => {
       const entry = event.target.closest('[data-index]');
       if (!entry) return;
-      const node = this.$('#editor').children[Number(entry.dataset.index)];
+      const node = this.#nodes()[Number(entry.dataset.index)];
       node?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
@@ -1077,6 +1083,7 @@ class DocEditor extends JGApp {
     if (action.startsWith('picture')) return this.#pictureAct(action.slice(7).toLowerCase());
     if (action === 'bigger' || action === 'smaller') return this.#stepSize(action === 'bigger' ? 1 : -1);
     if (action === 'zoomIn' || action === 'zoomOut') return this.#setZoom(this.#zoom + (action === 'zoomIn' ? 0.1 : -0.1));
+    if (action === 'ruler') return this.#showRuler(!this.#ruler);
     if (action === 'side') {
       this.$('#panel').classList.toggle('away');
       return;
@@ -1100,8 +1107,7 @@ class DocEditor extends JGApp {
         return `<p style="${pad}">${entry.text.replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]))} <span style="color:#7a828a">· ${pageFor(entry.index)}</span></p>`;
       })
       .join('');
-    const editor = this.$('#editor');
-    editor.insertAdjacentHTML(
+    this.#edge(false).insertAdjacentHTML(
       'afterbegin',
       `<h2>${t('doc-editor.contents', 'Contents')}</h2>${rows}<hr data-break="page">`,
     );
@@ -1116,7 +1122,7 @@ class DocEditor extends JGApp {
     this.#insertNode(`<sup data-note="${number}">${number}</sup>`);
     let notes = editor.querySelector('[data-notes]');
     if (!notes) {
-      editor.insertAdjacentHTML(
+      this.#edge(true).insertAdjacentHTML(
         'beforeend',
         `<hr><h3 data-notes-head>${t('doc-editor.notes', 'Notes')}</h3><ol data-notes></ol>`,
       );
@@ -1203,7 +1209,7 @@ class DocEditor extends JGApp {
 
   #snapshot() {
     return {
-      html: this.$('#editor').innerHTML,
+      html: this.#read(),
       header: this.#header,
       footer: this.#footer,
       numbers: this.#numbers,
@@ -1213,7 +1219,7 @@ class DocEditor extends JGApp {
   }
 
   #newDocument() {
-    this.$('#editor').innerHTML = '<h1><br></h1><p><br></p>';
+    this.#write('<h1><br></h1><p><br></p>');
     this.#name = t('doc-editor.untitled', 'Untitled document');
     this.#showName();
     this.#header = '';
@@ -1599,14 +1605,15 @@ class DocEditor extends JGApp {
       editor.style.setProperty(`--after-${kind}`, pt(style.after ?? 0));
     }
     editor.style.setProperty('--lead', String(paper.spacing ?? 1.45));
-    editor.style.setProperty('--sheet-width', `${Math.round(sheet.width * scale)}px`);
-    editor.style.minHeight = `${Math.round(sheet.height * scale)}px`;
-    editor.style.padding = `${Math.round(paper.margin * scale)}px`;
     editor.style.setProperty('--sheet-pad', `${Math.round(paper.margin * scale)}px`);
-    const holder = this.$('#paper');
-    if (holder) holder.style.setProperty('--sheet-width', `${Math.round(sheet.width * scale)}px`);
-    const cage = this.$('#papercage');
-    if (cage) cage.style.setProperty('--sheet-width', `${Math.round(sheet.width * scale)}px`);
+    this.#setWidth(sheet.width * scale);
+  }
+
+  #setWidth(pixels) {
+    const value = `${Math.round(pixels)}px`;
+    for (const id of ['#editor', '#paper', '#papercage']) {
+      this.$(id)?.style.setProperty('--sheet-width', value);
+    }
     this.#fitPaper();
   }
 
@@ -1622,18 +1629,18 @@ class DocEditor extends JGApp {
     cage.style.setProperty('--zoom', String(this.#scale));
     paper.style.setProperty('--zoom', String(this.#scale));
     cage.style.height = `${Math.ceil(paper.offsetHeight * this.#scale)}px`;
+    this.#drawRuler();
   }
 
   #sync() {
     this.#keep();
     this.#stamp += 1;
-    this.#blocks = htmlToBlocks(this.$('#editor'));
+    this.#blocks = htmlToBlocks(this.#flow());
     this.#layout = layoutDocument(this.#blocks, this.#paper());
+    this.#spread();
+    this.#live();
+    this.#drawRuler();
     this.#drawThumbs();
-    this.#fitPaper();
-    this.#alignPages();
-    this.#fitPaper();
-    this.#drawGuides();
     this.#drawOutline();
     const counts = countWords(this.#blocks);
     this.$('#counts').textContent = t('doc-editor.counts', '{words} words · {characters} characters', counts);
@@ -1685,69 +1692,222 @@ class DocEditor extends JGApp {
     void scale;
   }
 
-  #alignPages() {
+  #showRuler(on) {
+    this.#ruler = Boolean(on);
+    this.config.set('ruler', this.#ruler ? 'on' : 'off');
+    this.#drawRuler();
+  }
+
+  #drawRuler() {
+    const host = this.$('#ruler');
+    if (!host) return;
+    host.hidden = !this.#ruler;
+    if (!this.#ruler || !this.#layout) return;
+
+    const leaves = this.#leaves();
+    const live = leaves.findIndex((leaf) => leaf.classList.contains('live'));
+    const page = this.#layout.pages[live < 0 ? 0 : live] ?? this.#layout.pages[0];
+    const scale = (96 / 72) * this.#scale;
+    const imperial = /letter|legal|tabloid/.test(this.config.get('size', 'a4'));
+    const unit = imperial ? 72 : 28.3465;
+    const parts = imperial ? 4 : 2;
+
+    host.style.width = `${Math.round(page.width * scale)}px`;
+
+    const marks = [
+      `<span class="edge" style="left:0;width:${Math.round(page.margin * scale)}px"></span>`,
+      `<span class="edge" style="right:0;width:${Math.round(page.margin * scale)}px"></span>`,
+    ];
+
+    const step = unit / parts;
+    for (let at = page.margin; at <= page.width - page.margin + 0.01; at += step) {
+      const from = Math.round(((at - page.margin) / unit) * parts);
+      const whole = from % parts === 0;
+      marks.push(`<span class="tick" style="left:${Math.round(at * scale)}px;height:${whole ? 8 : 4}px"></span>`);
+      if (whole && from) marks.push(`<span class="num" style="left:${Math.round(at * scale)}px">${from / parts}</span>`);
+    }
+    for (let at = page.margin - step; at >= 0; at -= step) {
+      const from = Math.round(((page.margin - at) / unit) * parts);
+      if (from % parts) continue;
+      marks.push(`<span class="tick" style="left:${Math.round(at * scale)}px;height:8px"></span>`);
+      if (from) marks.push(`<span class="num" style="left:${Math.round(at * scale)}px">${from / parts}</span>`);
+    }
+
+    host.innerHTML = marks.join('');
+  }
+
+  #live() {
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    const anchor = selection?.anchorNode;
+    const here = anchor && (anchor.nodeType === 1 ? anchor : anchor.parentElement)?.closest?.('.leaf');
+    const focused = this.shadowRoot.activeElement === this.$('#editor');
+    for (const leaf of this.#leaves()) leaf.classList.toggle('live', focused && leaf === here);
+  }
+
+  #leaves() {
+    return [...(this.$('#editor')?.children ?? [])].filter((node) => node.classList?.contains('leaf'));
+  }
+
+  #flow() {
+    const editor = this.$('#editor');
+    const children = [];
+    for (const node of editor?.children ?? []) {
+      if (node.classList?.contains('leaf')) children.push(...node.children);
+      else children.push(node);
+    }
+    return { children };
+  }
+
+  #nodes() {
+    return blockNodes(this.#flow());
+  }
+
+  #read() {
+    return this.#leaves().map((leaf) => leaf.innerHTML).join('');
+  }
+
+  #write(markup) {
+    const editor = this.$('#editor');
+    if (!editor) return;
+    editor.innerHTML = '';
+    const leaf = document.createElement('div');
+    leaf.className = 'leaf';
+    leaf.innerHTML = markup ?? '';
+    editor.append(leaf);
+  }
+
+  #edge(last) {
+    const leaves = this.#leaves();
+    if (leaves.length) return last ? leaves[leaves.length - 1] : leaves[0];
+    this.#write('');
+    return this.#leaves()[0];
+  }
+
+  #mark() {
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    const anchor = selection?.anchorNode;
+    if (!anchor) return null;
+    const nodes = this.#nodes();
+    const at = nodes.findIndex((node) => node === anchor || node.contains(anchor));
+    if (at < 0) return null;
+    const range = document.createRange();
+    range.selectNodeContents(nodes[at]);
+    try {
+      range.setEnd(anchor, selection.anchorOffset);
+    } catch {
+      return { at, offset: 0 };
+    }
+    return { at, offset: range.toString().length };
+  }
+
+  #place(mark) {
+    if (!mark) return;
+    const node = this.#nodes()[mark.at];
+    if (!node) return;
+    const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+    let seen = 0;
+    let target = null;
+    let offset = 0;
+    while (walker.nextNode()) {
+      const text = walker.currentNode;
+      const length = text.textContent.length;
+      if (seen + length >= mark.offset) {
+        target = text;
+        offset = mark.offset - seen;
+        break;
+      }
+      seen += length;
+    }
+    const range = document.createRange();
+    if (target) range.setStart(target, Math.min(offset, target.textContent.length));
+    else range.selectNodeContents(node);
+    range.collapse(true);
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+  }
+
+  #carve(nodes, homes) {
+    for (let at = 1; at < nodes.length; at += 1) {
+      if (homes[at] === homes[at - 1]) continue;
+      const node = nodes[at];
+      if (node.tagName !== 'LI') continue;
+      const list = node.parentElement;
+      if (!list || !list.contains(nodes[at - 1])) continue;
+
+      const rest = list.cloneNode(false);
+      if (list.tagName === 'OL') {
+        const from = Number(list.getAttribute('start')) || 1;
+        rest.setAttribute('start', String(from + [...list.children].indexOf(node)));
+      }
+      const tail = [];
+      for (let item = node; item; item = item.nextElementSibling) tail.push(item);
+      rest.append(...tail);
+      list.after(rest);
+    }
+  }
+
+  #spread() {
     const editor = this.$('#editor');
     if (!editor || !this.#layout) return;
 
     const scale = 96 / 72;
-    const nodes = blockNodes(editor);
-    for (const node of nodes) node.style.marginTop = '';
-    for (const rule of editor.querySelectorAll('hr[data-break="page"], hr[data-section]')) rule.style.height = '0px';
-
-    const origin = () => editor.getBoundingClientRect().top + this.#layout.margin * scale;
-    let target = 0;
-
-    this.#layout.pages.forEach((page, index) => {
-      if (!index) return;
-      const above = this.#layout.pages[index - 1];
-      target += (above.height - above.margin * 2) * scale;
-
-      const first = page.starts?.[0];
-      const node = first === undefined ? null : nodes[first];
-      if (!node) return;
-
-      const natural = parseFloat(getComputedStyle(node).marginTop) || 0;
-      const least = natural + BAND;
-
-      for (let pass = 0; pass < 4; pass += 1) {
-        const top = (node.getBoundingClientRect().top - origin()) / this.#scale;
-        const drift = target - top;
-        if (Math.abs(drift) < 2) break;
-        const now = parseFloat(getComputedStyle(node).marginTop) || 0;
-        const next = Math.max(least, Math.round(now + drift));
-        if (next === now) break;
-        node.style.marginTop = `${next}px`;
-      }
-    });
-  }
-
-  #drawGuides() {
-    const host = this.$('#guides');
-    const editor = this.$('#editor');
-    if (!host || !editor || !this.#layout) return;
-    const nodes = blockNodes(editor);
-    const top = editor.getBoundingClientRect().top;
-    const marks = [];
-
-    this.#layout.pages.forEach((page, index) => {
-      if (!index) return;
-      const first = page.starts?.[0];
-      const opener = first === undefined ? null : nodes[first];
-      if (opener) {
-        const at = (opener.getBoundingClientRect().top - top) / this.#scale;
-        if (at > 8) marks.push({ at, page: index + 1 });
-        return;
-      }
-      const closer = nodes[this.#layout.pages[index - 1]?.last ?? -1];
-      if (!closer) return;
-      const box = closer.getBoundingClientRect();
-      const at = (box.bottom - top) / this.#scale + BAND;
-      if (at > 8) marks.push({ at, page: index + 1 });
+    const pages = this.#layout.pages;
+    const nodes = this.#nodes();
+    const owner = new Map();
+    pages.forEach((page, index) => {
+      for (const at of page.starts ?? []) owner.set(at, index);
     });
 
-    host.innerHTML = marks
-      .map((mark) => `<span class="guide" style="top:${Math.round(mark.at)}px"><b>${mark.page}</b></span>`)
-      .join('');
+    const homes = [];
+    let on = 0;
+    nodes.forEach((node, at) => {
+      if (owner.has(at)) on = owner.get(at);
+      homes[at] = on;
+    });
+
+    this.#carve(nodes, homes);
+
+    const want = pages.map(() => []);
+    nodes.forEach((node, at) => {
+      const holder = node.tagName === 'LI' ? node.closest('ul, ol') : node;
+      const list = want[homes[at]];
+      if (list[list.length - 1] !== holder) list.push(holder);
+    });
+
+    const leaves = this.#leaves();
+    while (leaves.length < pages.length) {
+      const leaf = document.createElement('div');
+      leaf.className = 'leaf';
+      editor.append(leaf);
+      leaves.push(leaf);
+    }
+    while (leaves.length > pages.length) leaves.pop().remove();
+
+    const settled = leaves.every((leaf, index) => {
+      const held = [...leaf.children];
+      return held.length === want[index].length && held.every((node, at) => node === want[index][at]);
+    });
+
+    if (!settled) {
+      const mark = this.#mark();
+      leaves.forEach((leaf, index) => leaf.append(...want[index]));
+      this.#place(mark);
+    }
+
+    let wide = 0;
+    pages.forEach((page, index) => {
+      const leaf = leaves[index];
+      leaf.dataset.page = String(index + 1);
+      leaf.style.width = `${Math.round(page.width * scale)}px`;
+      leaf.style.minHeight = `${Math.round(page.height * scale)}px`;
+      leaf.style.padding = `${Math.round(page.margin * scale)}px`;
+      if (page.columns > 1) leaf.dataset.columns = String(page.columns);
+      else delete leaf.dataset.columns;
+      wide = Math.max(wide, page.width * scale);
+    });
+
+    this.#setWidth(wide);
   }
 
   #drawThumbs() {
@@ -1916,19 +2076,19 @@ class DocEditor extends JGApp {
         const zip = await readZip(picked.data);
         const xml = await zip.text('word/document.xml');
         if (!xml) throw new Error('empty');
-        this.$('#editor').innerHTML = docxToHtml(xml);
+        this.#write(docxToHtml(xml));
       } else {
         const text = typeof picked.data === 'string' ? picked.data : new TextDecoder().decode(picked.data);
         if (/\.html?$/i.test(picked.name)) {
           const body = /<body[^>]*>([\s\S]*?)<\/body>/i.exec(text);
-          this.$('#editor').innerHTML = (body ? body[1] : text).replace(/<script[\s\S]*?<\/script>/gi, '');
+          this.#write((body ? body[1] : text).replace(/<script[\s\S]*?<\/script>/gi, ''));
         } else if (/\.(md|markdown)$/i.test(picked.name)) {
-          this.$('#editor').innerHTML = markdownToHtml(text);
+          this.#write(markdownToHtml(text));
         } else {
-          this.$('#editor').innerHTML = text
+          this.#write(text
             .split(/\n{2,}/)
             .map((piece) => `<p>${piece.replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c])).replace(/\n/g, '<br>')}</p>`)
-            .join('');
+            .join(''));
         }
       }
       this.#name = name || this.#name;
