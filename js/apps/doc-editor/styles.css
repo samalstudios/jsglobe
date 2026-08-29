@@ -716,3 +716,46 @@ jg-formula-input { display: block; margin-top: 12px; }
   border-radius: 4px;
 }
 .pages section[data-block].inside { outline-offset: 8px; }
+
+.ruler { display: flex; align-items: stretch; }
+.ruler .track { cursor: copy; }
+.tabkind {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 20px;
+  height: 100%;
+  border: 0;
+  border-right: 1px solid var(--border);
+  background: var(--background);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.tabkind[hidden] { display: none; }
+.tabkind::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 7px solid var(--foreground);
+}
+.tabkind[data-kind="center"]::after { border-bottom-color: var(--ring); transform: rotate(180deg); }
+.tabkind[data-kind="right"]::after { border-bottom-color: #b8860b; transform: rotate(90deg); }
+
+.ruler .stop {
+  position: absolute;
+  bottom: 1px;
+  width: 0;
+  height: 0;
+  margin-left: -4px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 7px solid var(--foreground);
+  cursor: grab;
+}
+.ruler .stop[data-kind="center"] { border-bottom-color: var(--ring); transform: rotate(180deg); }
+.ruler .stop[data-kind="right"] { border-bottom-color: #b8860b; transform: rotate(90deg); }
+.pages [data-tab] { display: inline-block; }

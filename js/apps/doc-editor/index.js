@@ -11,7 +11,7 @@ import { FONT_STACKS } from '../../ui/jg-font-selector.js';
 import { SAMPLES as FORMULAS } from '../../lib/formula.js';
 import { readZip } from '../../core/zip.js';
 import { htmlToBlocks, blockNodes, blocksToHtml, blocksToText, blocksToMarkdown, markdownToHtml, outlineOf, countWords } from '../../lib/richtext.js';
-import { layoutDocument, layoutToPdf, BLOCK_STYLE } from '../../lib/doc-layout.js';
+import { layoutDocument, layoutToPdf, BLOCK_STYLE, DEFAULT_TAB } from '../../lib/doc-layout.js';
 import { writeDocx, docxToHtml } from '../../lib/docx.js';
 
 const t = appText(strings);
@@ -172,6 +172,7 @@ class DocEditor extends JGApp {
   #numbers = false;
   #editingRunner = null;
   #ownRunners = new Map();
+  #tabKind = 'left';
   #scope = 'all';
   #spacing = 1.6;
   #columns = 1;
@@ -359,7 +360,10 @@ class DocEditor extends JGApp {
         </aside>
 
         <div class="deck">
-          <div class="ruler" id="ruler" aria-hidden="true" hidden><div class="track" id="track"></div></div>
+          <div class="ruler" id="ruler" hidden>
+            <button class="tabkind" id="tabkind" type="button" title="${t('doc-editor.tabKind', 'Kind of tab stop')}"></button>
+            <div class="track" id="track"></div>
+          </div>
           <div class="stage" id="stage">
           <div class="sheetwrap" id="sheetwrap">
             <div class="papercage" id="papercage">
@@ -534,6 +538,17 @@ class DocEditor extends JGApp {
 
     const stage = this.$('#stage');
     if (stage) this.on(stage, 'scroll', () => this.#drawRuler());
+
+    this.on(this.$('#tabkind'), 'click', () => {
+      const order = ['left', 'center', 'right'];
+      this.#tabKind = order[(order.indexOf(this.#tabKind) + 1) % order.length];
+      this.#drawRuler();
+    });
+    this.on(this.$('#track'), 'mousedown', (event) => this.#rulerPress(event));
+    this.on(this.$('#track'), 'dblclick', (event) => {
+      const stop = event.target.closest('[data-stop]');
+      if (stop) this.#dropStop(Number(stop.dataset.stop));
+    });
     if (stage && 'ResizeObserver' in window) {
       const watcher = new ResizeObserver(() => this.#fitPaper());
       watcher.observe(stage);
@@ -923,6 +938,11 @@ class DocEditor extends JGApp {
         if (event.key === 'Tab' && this.#inList()) {
           event.preventDefault();
           this.#act(event.shiftKey ? 'outdent' : 'indent');
+          return;
+        }
+        if (event.key === 'Tab' && !event.shiftKey && this.#caretBlock()) {
+          event.preventDefault();
+          this.#insertNode('<span data-tab contenteditable="false"></span>');
         }
         return;
       }
@@ -1012,9 +1032,13 @@ class DocEditor extends JGApp {
 
   #focus() {
     const editor = this.$('#editor');
-    if (this.shadowRoot.activeElement !== editor) editor.focus();
+    // a toolbar that took the focus also took the caret with it, and giving the
+    // focus back drops the caret at the top rather than where the writer left it
+    const had = this.shadowRoot.activeElement === editor;
+    if (!had) editor.focus();
     const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
-    const inside = selection?.rangeCount && editor.contains(selection.getRangeAt(0).commonAncestorContainer);
+    const live = selection?.rangeCount && editor.contains(selection.getRangeAt(0).commonAncestorContainer);
+    const inside = live && had;
 
     if (!inside && this.#lastRange && editor.contains(this.#lastRange.commonAncestorContainer)) {
       selection.removeAllRanges();
@@ -1079,15 +1103,26 @@ class DocEditor extends JGApp {
     }
     range.insertNode(fragment);
 
-    if (last) {
-      const after = document.createRange();
-      after.setStartAfter(last);
-      after.collapse(true);
-      selection.removeAllRanges();
-      selection.addRange(after);
-    }
+    // settle the document first, it moves the caret about as it repaginates
     this.#sync();
+    if (last?.isConnected) this.#caretAfter(last);
     this.#reflect();
+  }
+
+  // a caret asked to sit after an empty element slides back into the text
+  // before it, so give it a node of its own to land in
+  #caretAfter(node) {
+    let rest = node.nextSibling;
+    if (!rest || rest.nodeType !== Node.TEXT_NODE) {
+      rest = document.createTextNode(' ');
+      node.after(rest);
+    }
+    const range = document.createRange();
+    range.setStart(rest, 0);
+    range.collapse(true);
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
+    selection?.removeAllRanges();
+    selection?.addRange(range);
   }
 
   #run(command, value) {
@@ -2086,6 +2121,7 @@ class DocEditor extends JGApp {
     this.#layout = layoutDocument(this.#blocks, this.#paper());
     this.#spread();
     this.#drawRunners();
+    this.#sizeTabs();
     this.#fillBlocks();
     this.#colourCode();
     this.#live();
@@ -2148,6 +2184,97 @@ class DocEditor extends JGApp {
     this.#drawRuler();
   }
 
+  #tabBlock() {
+    const here = this.#caretBlock();
+    return here?.block ?? null;
+  }
+
+  #stopsOf(block) {
+    return (block?.dataset.tabs ?? '')
+      .split(',')
+      .map((stop) => ({ at: Number.parseFloat(stop), kind: /c$/.test(stop) ? 'center' : /r$/.test(stop) ? 'right' : 'left' }))
+      .filter((stop) => Number.isFinite(stop.at))
+      .sort((a, b) => a.at - b.at);
+  }
+
+  #saveStops(block, stops) {
+    if (!block) return;
+    const value = stops
+      .slice()
+      .sort((a, b) => a.at - b.at)
+      .map((stop) => `${Math.round(stop.at)}${stop.kind === 'center' ? 'c' : stop.kind === 'right' ? 'r' : ''}`)
+      .join(',');
+    if (value) block.dataset.tabs = value;
+    else delete block.dataset.tabs;
+    this.#sync();
+  }
+
+  #rulerPress(event) {
+    const block = this.#tabBlock();
+    if (!block) return;
+    const page = this.#layout?.pages[0];
+    if (!page) return;
+
+    const scale = (96 / 72) * this.#scale;
+    const track = this.$('#track').getBoundingClientRect();
+    const stops = this.#stopsOf(block);
+    const held = event.target.closest('[data-stop]');
+    const index = held ? Number(held.dataset.stop) : -1;
+
+    const place = (clientX) => {
+      const at = (clientX - track.left) / scale - page.margin;
+      const room = page.width - page.margin * 2;
+      return Math.max(0, Math.min(room, Math.round(at)));
+    };
+
+    if (index < 0) {
+      stops.push({ at: place(event.clientX), kind: this.#tabKind });
+      this.#saveStops(block, stops);
+      return;
+    }
+
+    event.preventDefault();
+    const move = (moved) => {
+      stops[index] = { ...stops[index], at: place(moved.clientX) };
+      this.#saveStops(block, stops);
+    };
+    const drop = () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', drop);
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', drop);
+  }
+
+  #dropStop(index) {
+    const block = this.#tabBlock();
+    if (!block) return;
+    const stops = this.#stopsOf(block);
+    stops.splice(index, 1);
+    this.#saveStops(block, stops);
+  }
+
+  // a tab is a jump, so its width is whatever reaches the next stop
+  #sizeTabs() {
+    // rects come back through the sheet's own scaling, the width put back does
+    // not, so the two are not measured the same way
+    const seen = (96 / 72) * this.#scale;
+    const set = 96 / 72;
+    for (const block of this.#nodes()) {
+      const tabs = block.querySelectorAll?.('[data-tab]');
+      if (!tabs?.length) continue;
+      const stops = this.#stopsOf(block).map((stop) => stop.at);
+      const pad = parseFloat(getComputedStyle(block).paddingLeft) || 0;
+      for (const tab of tabs) {
+        tab.style.width = '0px';
+        const left = block.getBoundingClientRect().left + pad * this.#scale;
+        const at = (tab.getBoundingClientRect().left - left) / seen;
+        const next = stops.find((stop) => stop > at + 0.5) ?? Math.ceil((at + 0.5) / DEFAULT_TAB) * DEFAULT_TAB;
+        tab.style.width = `${Math.max(2, Math.round((next - at) * set))}px`;
+      }
+    }
+  }
+
   #drawRuler() {
     const host = this.$('#ruler');
     if (!host) return;
@@ -2186,7 +2313,19 @@ class DocEditor extends JGApp {
       if (from) marks.push(`<span class="num" style="left:${Math.round(at * scale)}px">${from / parts}</span>`);
     }
 
+    const block = this.#tabBlock();
+    this.#stopsOf(block).forEach((stop, index) => {
+      marks.push(
+        `<span class="stop" data-stop="${index}" data-kind="${stop.kind}" style="left:${Math.round((page.margin + stop.at) * scale)}px"></span>`,
+      );
+    });
+
     track.innerHTML = marks.join('');
+    const kind = this.$('#tabkind');
+    if (kind) {
+      kind.dataset.kind = this.#tabKind;
+      kind.hidden = !block;
+    }
   }
 
   #live() {

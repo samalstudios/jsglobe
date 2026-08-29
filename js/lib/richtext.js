@@ -38,6 +38,10 @@ const collectRuns = (node, inherited = {}, runs = []) => {
       runs.push({ text: '\n', ...inherited });
       continue;
     }
+    if (child.dataset?.tab !== undefined) {
+      runs.push({ tab: true, ...inherited });
+      continue;
+    }
     const marks = { ...inherited, ...styleOf(child) };
     if (MARKS[child.tagName]) marks[MARKS[child.tagName]] = true;
     if (child.tagName === 'SUP') marks.sup = true;
@@ -51,10 +55,15 @@ const collectRuns = (node, inherited = {}, runs = []) => {
 const tidy = (runs) => {
   const out = [];
   for (const run of runs) {
+    if (run.tab) {
+      out.push(run);
+      continue;
+    }
     if (!run.text) continue;
     const last = out[out.length - 1];
     const same =
       last &&
+      !last.tab &&
       last.bold === run.bold && last.italic === run.italic && last.underline === run.underline &&
       last.strike === run.strike && last.mono === run.mono && last.link === run.link &&
       last.color === run.color && last.highlight === run.highlight && last.font === run.font &&
@@ -171,6 +180,10 @@ export function htmlToBlocks(root) {
       type: kind,
       align: alignOf(node),
       indent: Number(node.dataset?.indent ?? 0) || 0,
+      tabs: (node.dataset?.tabs ?? '')
+        .split(',')
+        .map((stop) => Number.parseFloat(stop))
+        .filter((stop) => Number.isFinite(stop)),
       runs: tidy(collectRuns(node)),
     });
   }

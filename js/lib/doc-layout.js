@@ -50,12 +50,15 @@ const familyOf = (run, base, style) => {
 
 const splitRuns = (runs, base, style) =>
   (runs ?? []).flatMap((run) =>
-    String(run.text ?? '')
+    run.tab === true
+      ? [{ text: '', tab: true, font: familyOf(run, base, style), size: style.size }]
+      : String(run.text ?? '')
       .split(/(\s+)/)
       .filter((piece) => piece !== '')
       .map((piece) => ({
         text: piece,
         space: /^\s+$/.test(piece),
+        tab: run.tab === true,
         font: familyOf(run, base, style),
         size: run.size ? run.size * 0.75 : style.size,
         color: run.color ?? '#111111',
@@ -77,7 +80,7 @@ const breakLines = (pieces, limit) => {
       width = 0;
       continue;
     }
-    const size = widthOf(piece.text, piece.font, piece.size);
+    const size = piece.tab ? 0 : widthOf(piece.text, piece.font, piece.size);
     if (width + size > limit && line.length && !piece.space) {
       lines.push(line);
       line = [piece];
@@ -95,7 +98,15 @@ const breakLines = (pieces, limit) => {
   });
 };
 
-const lineWidth = (line) => line.reduce((sum, piece) => sum + widthOf(piece.text, piece.font, piece.size), 0);
+export const DEFAULT_TAB = 36;
+
+const nextStop = (at, stops) => {
+  for (const stop of stops) if (stop > at + 0.01) return stop;
+  return Math.ceil((at + 0.01) / DEFAULT_TAB) * DEFAULT_TAB;
+};
+
+const lineWidth = (line) =>
+  line.reduce((sum, piece) => sum + (piece.tab ? 0 : widthOf(piece.text, piece.font, piece.size)), 0);
 
 export const paperOf = (setup = {}) => {
   const [w, h] = PAGE_SIZES[setup.size ?? 'a4'] ?? PAGE_SIZES.a4;
@@ -252,6 +263,7 @@ export function layoutDocument(blocks, options = {}) {
       counter = [];
     }
 
+    const stops = (block.tabs ?? []).slice().sort((a, b) => a - b);
     const pieces = splitRuns(block.runs, base, style);
     const lines = breakLines(pieces, span);
     const step = style.size * spacing;
@@ -290,6 +302,10 @@ export function layoutDocument(blocks, options = {}) {
       }
 
       for (const piece of line) {
+        if (piece.tab) {
+          cursor = left + nextStop(cursor - left, stops);
+          continue;
+        }
         const size = widthOf(piece.text, piece.font, piece.size);
         if (!piece.space) {
           put({ ...piece, type: 'text', x: cursor, y: y + style.size });
