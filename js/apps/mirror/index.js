@@ -51,11 +51,23 @@ class Mirror extends JGApp {
   #tab = 'light';
   #countdown = 0;
   #timer = null;
+  #shots = [];
+  #seq = 0;
+  #holding = null;
+  #viewing = -1;
+  #loupe = false;
+  #loupeAt = null;
+  #loupeMag = 2.6;
+  #frameId = 0;
 
   disconnectedCallback() {
     super.disconnectedCallback();
     this.#stop();
     clearInterval(this.#timer);
+    clearTimeout(this.#holding);
+    cancelAnimationFrame(this.#frameId);
+    for (const shot of this.#shots) URL.revokeObjectURL(shot.url);
+    this.#shots = [];
   }
 
   renderApp() {
@@ -85,6 +97,9 @@ class Mirror extends JGApp {
           </span>
           <span class="badge" id="badge" hidden>${t('mirror.frozen', 'Frozen')}</span>
           <span class="count" id="count" hidden></span>
+          <canvas class="loupe" id="loupe" width="200" height="200" hidden></canvas>
+          <div class="hold" id="hold" hidden></div>
+          <div class="tray" id="tray" hidden></div>
         </div>
 
         <div class="idle" id="idle">
@@ -102,8 +117,21 @@ class Mirror extends JGApp {
           <button class="key" type="button" id="freeze" title="${t('mirror.freeze', 'Freeze')}" aria-label="${t('mirror.freeze', 'Freeze')}">${icon('pause', 16)}</button>
           <button class="shutter" type="button" id="shot" title="${t('mirror.savePhoto', 'Save photo')}" aria-label="${t('mirror.savePhoto', 'Save photo')}"><span></span></button>
           <button class="key" type="button" id="delay" title="${t('mirror.selfTimer', 'Self timer')}" aria-label="${t('mirror.selfTimer', 'Self timer')}">${icon('timer', 16)}</button>
+          <button class="key" type="button" id="glass" title="${t('mirror.magnifier', 'Magnifier')}" aria-label="${t('mirror.magnifier', 'Magnifier')}" aria-pressed="false">${icon('search', 16)}</button>
           <button class="key" type="button" id="tune" title="${t('mirror.adjust', 'Adjust')}" aria-label="${t('mirror.adjust', 'Adjust')}">${icon('flashlight', 17)}</button>
           <button class="key" type="button" id="full" title="${t('mirror.fullScreen', 'Full screen')}" aria-label="${t('mirror.fullScreen', 'Full screen')}">${icon('maximize', 15)}</button>
+        </div>
+
+        <div class="viewer" id="viewer" hidden>
+          <img id="viewed" alt="${t('mirror.photo', 'Photo')}">
+          <div class="viewbar">
+            <button class="key" type="button" id="older" title="${t('mirror.older', 'Older')}" aria-label="${t('mirror.older', 'Older')}">${icon('chevronLeft', 16)}</button>
+            <button class="key" type="button" id="newer" title="${t('mirror.newer', 'Newer')}" aria-label="${t('mirror.newer', 'Newer')}">${icon('chevronRight', 16)}</button>
+            <span class="grow"></span>
+            <jg-button size="sm" id="save">${t('mirror.savePhoto', 'Save photo')}</jg-button>
+            <button class="key" type="button" id="drop" title="${t('mirror.discard', 'Discard')}" aria-label="${t('mirror.discard', 'Discard')}">${icon('eraser', 16)}</button>
+            <button class="key" type="button" id="shutview" title="${t('mirror.close', 'Close')}" aria-label="${t('mirror.close', 'Close')}">${icon('close', 16)}</button>
+          </div>
         </div>
 
         <div class="panel" id="panel" hidden>
@@ -173,8 +201,30 @@ class Mirror extends JGApp {
       if (preset) this.#usePreset(preset.dataset.preset);
     });
 
+    this.on(this.$('#tray'), 'click', (event) => {
+      const thumb = event.target.closest('[data-shot]');
+      if (thumb) this.#view(this.#shots.findIndex((shot) => String(shot.id) === thumb.dataset.shot));
+    });
+    this.on(this.$('#glass'), 'click', () => this.#showLoupe(!this.#loupe));
+    this.on(this.$('#frame'), 'pointermove', (event) => this.#trackLoupe(event));
+    this.on(this.$('#frame'), 'pointerleave', () => {
+      this.#loupeAt = null;
+      if (this.#loupe) this.$('#loupe').hidden = true;
+    });
+    this.on(this.$('#frame'), 'wheel', (event) => {
+      if (!this.#loupe) return;
+      event.preventDefault();
+      this.#loupeMag = Math.max(1.4, Math.min(8, this.#loupeMag * (event.deltaY < 0 ? 1.12 : 0.89)));
+    }, { passive: false });
+
+    this.on(this.$('#older'), 'click', () => this.#view(this.#viewing + 1));
+    this.on(this.$('#newer'), 'click', () => this.#view(this.#viewing - 1));
+    this.on(this.$('#save'), 'click', () => this.#save());
+    this.on(this.$('#drop'), 'click', () => this.#discard());
+    this.on(this.$('#shutview'), 'click', () => this.#closeViewer());
+
     this.on(this.$('#stage'), 'dblclick', (event) => {
-      if (event.target.closest('.hud, .panel, .idle')) return;
+      if (event.target.closest('.hud, .panel, .idle, .viewer, .tray')) return;
       this.#fullscreen();
     });
 
@@ -183,6 +233,12 @@ class Mirror extends JGApp {
 
     this.#apply();
     this.#resume();
+
+    if ('ResizeObserver' in window) {
+      const watcher = new ResizeObserver(() => this.#makeRoom());
+      watcher.observe(this.$('#stage'));
+      this.track(() => watcher.disconnect());
+    }
   }
 
   async #resume() {
@@ -200,6 +256,7 @@ class Mirror extends JGApp {
     const key = event.key.toLowerCase();
 
     if (key === 'escape') {
+      if (!this.$('#viewer').hidden) return this.#closeViewer();
       if (!this.$('#panel').hidden) return this.#showPanel(false);
       if (document.fullscreenElement) document.exitFullscreen();
       return;
@@ -213,6 +270,7 @@ class Mirror extends JGApp {
     if (key === 's') return this.#snapshot();
     if (key === 'f') return this.#fullscreen();
     if (key === 't') return this.#delayed();
+    if (key === 'l') return this.#showLoupe(!this.#loupe);
     if (key === 'g') return this.#flip('guides');
     if (key === 'm') return this.#flip('flip');
     if (key === 'c') return this.#stream ? this.#stop() : this.#start();
@@ -261,8 +319,19 @@ class Mirror extends JGApp {
   }
 
   #showPanel(open) {
-    this.$('#panel').hidden = !open;
+    const panel = this.$('#panel');
+    panel.hidden = !open;
     this.$('#tune').setAttribute('aria-expanded', String(Boolean(open)));
+    this.#makeRoom();
+  }
+
+  #makeRoom() {
+    const stage = this.$('#stage');
+    const panel = this.$('#panel');
+    if (!stage || !panel) return;
+    const open = !panel.hidden;
+    stage.dataset.panel = String(open);
+    stage.style.setProperty('--room', open ? `${Math.round(panel.getBoundingClientRect().height) + 14}px` : '0px');
   }
 
   #markFullscreen() {
@@ -352,6 +421,8 @@ class Mirror extends JGApp {
     if (keepUi) return;
 
     clearInterval(this.#timer);
+    cancelAnimationFrame(this.#frameId);
+    this.#showLoupe(false);
     this.#countdown = 0;
     const count = this.$('#count');
     if (count) count.hidden = true;
@@ -428,10 +499,129 @@ class Mirror extends JGApp {
 
   #snapshot() {
     if (!this.#stream) return;
-    this.#capture().toBlob((blob) => download(`mirror-${Date.now()}.png`, blob, 'image/png'), 'image/png');
+    const canvas = this.#capture();
     const frame = this.$('#frame');
     frame.dataset.flash = 'true';
-    setTimeout(() => delete frame.dataset.flash, 220);
+    setTimeout(() => delete frame.dataset.flash, 240);
+
+    canvas.toBlob((blob) => {
+      if (!blob) return;
+      const shot = { id: this.#seq += 1, blob, url: URL.createObjectURL(blob) };
+      this.#shots.unshift(shot);
+      while (this.#shots.length > 12) URL.revokeObjectURL(this.#shots.pop().url);
+      this.#hold(shot);
+      this.#drawTray();
+    }, 'image/png');
+  }
+
+  #showLoupe(on) {
+    this.#loupe = Boolean(on) && Boolean(this.#stream);
+    this.$('#glass').setAttribute('aria-pressed', String(this.#loupe));
+    const loupe = this.$('#loupe');
+    loupe.hidden = !this.#loupe || !this.#loupeAt;
+    cancelAnimationFrame(this.#frameId);
+    if (this.#loupe) this.#drawLoupe();
+  }
+
+  #trackLoupe(event) {
+    if (!this.#loupe) return;
+    const box = this.$('#frame').getBoundingClientRect();
+    this.#loupeAt = { x: event.clientX - box.left, y: event.clientY - box.top };
+    const loupe = this.$('#loupe');
+    loupe.hidden = false;
+    loupe.style.left = `${this.#loupeAt.x}px`;
+    loupe.style.top = `${this.#loupeAt.y}px`;
+  }
+
+  #drawLoupe() {
+    if (!this.#loupe) return;
+    this.#frameId = requestAnimationFrame(() => this.#drawLoupe());
+
+    const canvas = this.$('#loupe');
+    const video = this.$('#video');
+    const spot = this.#loupeAt;
+    if (!canvas || !video || !spot || !video.videoWidth) return;
+
+    const box = this.$('#frame').getBoundingClientRect();
+    const number = (key) => Number(this.$(`#${key}`).value) / 100;
+    const cover = Math.max(box.width / video.videoWidth, box.height / video.videoHeight) * number('zoom');
+    const flipped = this.#checked('flip');
+
+    const offX = (flipped ? -1 : 1) * (spot.x - box.width / 2);
+    const offY = spot.y - box.height / 2;
+    const midX = video.videoWidth / 2 + offX / cover;
+    const midY = video.videoHeight / 2 + offY / cover;
+    const span = canvas.width / this.#loupeMag / cover;
+
+    const context = canvas.getContext('2d');
+    context.setTransform(1, 0, 0, 1, 0, 0);
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.filter = `brightness(${number('brightness')}) contrast(${number('contrast')}) saturate(${this.#checked('mono') ? 0 : 1})`;
+    if (flipped) {
+      context.translate(canvas.width, 0);
+      context.scale(-1, 1);
+    }
+    context.drawImage(video, midX - span / 2, midY - span / 2, span, span, 0, 0, canvas.width, canvas.height);
+  }
+
+  #hold(shot) {
+    const hold = this.$('#hold');
+    if (!hold) return;
+    clearTimeout(this.#holding);
+    hold.style.backgroundImage = `url(${shot.url})`;
+    hold.hidden = false;
+    hold.removeAttribute('data-away');
+    this.#holding = setTimeout(() => {
+      hold.setAttribute('data-away', '');
+      this.#holding = setTimeout(() => {
+        hold.hidden = true;
+        hold.style.backgroundImage = '';
+      }, 380);
+    }, 1200);
+  }
+
+  #drawTray() {
+    const tray = this.$('#tray');
+    if (!tray) return;
+    tray.hidden = !this.#shots.length;
+    tray.innerHTML = this.#shots
+      .map(
+        (shot) =>
+          `<button class="thumb" type="button" data-shot="${shot.id}" style="background-image:url(${shot.url})" ` +
+          `title="${t('mirror.openPhoto', 'Open the photo')}" aria-label="${t('mirror.openPhoto', 'Open the photo')}"></button>`,
+      )
+      .join('');
+  }
+
+  #view(at) {
+    if (!this.#shots.length) return this.#closeViewer();
+    this.#viewing = Math.max(0, Math.min(this.#shots.length - 1, at));
+    const shot = this.#shots[this.#viewing];
+    this.$('#viewed').src = shot.url;
+    this.$('#viewer').hidden = false;
+    this.$('#older').disabled = this.#viewing >= this.#shots.length - 1;
+    this.$('#newer').disabled = this.#viewing <= 0;
+  }
+
+  #closeViewer() {
+    this.$('#viewer').hidden = true;
+    this.#viewing = -1;
+  }
+
+  #save() {
+    const shot = this.#shots[this.#viewing];
+    if (!shot) return;
+    download(`mirror-${Date.now()}.png`, shot.blob, 'image/png');
+  }
+
+  #discard() {
+    const shot = this.#shots[this.#viewing];
+    if (!shot) return;
+    URL.revokeObjectURL(shot.url);
+    this.#shots.splice(this.#viewing, 1);
+    this.#drawTray();
+    if (!this.#shots.length) return this.#closeViewer();
+    this.#view(Math.min(this.#viewing, this.#shots.length - 1));
   }
 
   #fullscreen() {
