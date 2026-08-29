@@ -30,6 +30,8 @@ const SIZES = [9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48];
 
 const GAP = 26;
 
+const BLANK = '\u200b';
+
 const BLOCKS = [
   { value: 'contents', label: () => t('doc-editor.tableOfContents', 'Table of contents'), hint: () => t('doc-editor.builtFromHeadings', 'From the headings') },
   { value: 'indexBlock', label: () => t('doc-editor.indexPage', 'Index'), hint: () => t('doc-editor.builtFromMarks', 'From marked words') },
@@ -174,6 +176,8 @@ class DocEditor extends JGApp {
   #footer = '';
   #numbers = false;
   #editingRunner = null;
+  #ownRunners = new Map();
+  #scope = 'all';
   #spacing = 1.6;
   #columns = 1;
 
@@ -463,6 +467,11 @@ class DocEditor extends JGApp {
 
       <div class="runbar" id="runbar" hidden>
         <span class="what" id="runwhat"></span>
+        <span class="scope" id="runscope">
+          <button class="pick" type="button" data-scope="all">${t('doc-editor.everyPage', 'Every page')}</button>
+          <button class="pick" type="button" data-scope="page">${t('doc-editor.thisPage', 'This page')}</button>
+        </span>
+        <span class="split"></span>
         ${MARKS.map((mark) => html`<button class="pill" type="button" data-mark="${mark.id}">${mark.label()}</button>`)}
         <span class="split"></span>
         <button class="tool" type="button" data-run="left" title="${t('doc-editor.alignLeft', 'Align left')}">${icon('alignLeft', 14)}</button>
@@ -528,6 +537,7 @@ class DocEditor extends JGApp {
       this.#numbers = Boolean(open.numbers);
       this.#header = this.#asRunner(this.#header);
       this.#footer = this.#asRunner(this.#footer, this.#numbers);
+      this.#ownRunners = new Map(Object.entries(open.runners ?? {}));
       this.#spacing = Number(open.spacing) || 1.6;
       this.#columns = Number(open.columns) || 1;
       this.$('#spacing').value = String(this.#spacing);
@@ -667,6 +677,8 @@ class DocEditor extends JGApp {
     this.on(this.$('#runbar'), 'click', (event) => {
       const mark = event.target.closest('[data-mark]');
       if (mark) return this.#addMark(mark.dataset.mark);
+      const scope = event.target.closest('[data-scope]');
+      if (scope) return this.#setScope(scope.dataset.scope);
       const tool = event.target.closest('[data-run]');
       if (tool) return this.#runnerAct(tool.dataset.run);
       if (event.target.closest('#rundone')) this.#closeRunner();
@@ -1470,6 +1482,7 @@ class DocEditor extends JGApp {
   #snapshot() {
     return {
       html: this.#read(),
+      runners: Object.fromEntries(this.#ownRunners),
       header: this.#header,
       footer: this.#footer,
       numbers: this.#numbers,
@@ -1485,6 +1498,7 @@ class DocEditor extends JGApp {
     this.#header = '';
     this.#footer = '';
     this.#numbers = false;
+    this.#ownRunners.clear();
     this.$('#library-box')?.close();
     this.#sync();
   }
@@ -2227,13 +2241,31 @@ class DocEditor extends JGApp {
     return markup;
   }
 
-  #runnerHtml(where) {
+  #runnerKey(index, where) {
+    return `${index}:${where}`;
+  }
+
+  #runnerHtml(where, index) {
+    if (index !== undefined) {
+      const own = this.#ownRunners.get(this.#runnerKey(index, where));
+      if (own !== undefined) return own;
+    }
     return where === 'header' ? this.#header : this.#footer;
   }
 
-  #setRunner(where, markup) {
+  #setRunner(where, markup, index) {
+    if (this.#scope === 'page' && index !== undefined) {
+      const key = this.#runnerKey(index, where);
+      if (markup) this.#ownRunners.set(key, markup);
+      else this.#ownRunners.set(key, '');
+      return;
+    }
     if (where === 'header') this.#header = markup;
     else this.#footer = markup;
+  }
+
+  #dropOwn(where, index) {
+    this.#ownRunners.delete(this.#runnerKey(index, where));
   }
 
   #markValue(id, index, total) {
@@ -2251,7 +2283,7 @@ class DocEditor extends JGApp {
     for (const mark of holder.querySelectorAll('[data-mark]')) {
       mark.textContent = this.#markValue(mark.dataset.mark, index, total);
     }
-    return holder.innerHTML;
+    return holder.innerHTML.split(BLANK).join('');
   }
 
   #drawRunners() {
@@ -2274,8 +2306,10 @@ class DocEditor extends JGApp {
         runner.dataset.hint = where === 'header'
           ? t('doc-editor.doubleClickHeader', 'Double click to write a header')
           : t('doc-editor.doubleClickFooter', 'Double click to write a footer');
+        runner.dataset.page = String(index);
+        runner.dataset.own = String(this.#ownRunners.has(this.#runnerKey(index, where)));
         if (runner === this.#editingRunner) continue;
-        runner.innerHTML = this.#fillRunner(this.#runnerHtml(where), index, total);
+        runner.innerHTML = this.#fillRunner(this.#runnerHtml(where, index), index, total);
         runner.dataset.empty = String(!runner.textContent.trim());
       }
     });
@@ -2286,22 +2320,26 @@ class DocEditor extends JGApp {
     this.#closeRunner();
 
     const where = runner.dataset.runner;
+    const index = Number(runner.dataset.page) || 0;
+    this.#scope = this.#ownRunners.has(this.#runnerKey(index, where)) ? 'page' : 'all';
     this.#editingRunner = runner;
     runner.contentEditable = 'true';
     runner.dataset.editing = 'true';
-    runner.innerHTML = this.#runnerHtml(where) || '';
+    runner.innerHTML = this.#runnerHtml(where, index) || '';
     if (!runner.querySelector('[data-line]')) {
       const line = document.createElement('div');
       line.dataset.line = '';
       while (runner.firstChild) line.append(runner.firstChild);
       runner.append(line);
     }
+    for (const chip of runner.querySelectorAll('[data-mark]')) chip.setAttribute('contenteditable', 'false');
     runner.dataset.empty = 'false';
 
     const bar = this.$('#runbar');
     bar.hidden = false;
     this.$('#runwhat').textContent =
       where === 'header' ? t('doc-editor.headerText', 'Header') : t('doc-editor.footerText', 'Footer');
+    this.#showScope();
 
     const range = document.createRange();
     range.selectNodeContents(runner.querySelector('[data-line]'));
@@ -2315,8 +2353,9 @@ class DocEditor extends JGApp {
   #closeRunner() {
     const runner = this.#editingRunner;
     if (!runner) return;
-    const holds = runner.textContent.trim() || runner.querySelector('[data-mark]');
-    this.#setRunner(runner.dataset.runner, holds ? runner.innerHTML.trim() : '');
+    const holds = runner.textContent.split(BLANK).join('').trim() || runner.querySelector('[data-mark]');
+    const markup = holds ? runner.innerHTML.split(BLANK).join('').trim() : '';
+    this.#setRunner(runner.dataset.runner, markup, Number(runner.dataset.page) || 0);
     runner.contentEditable = 'false';
     delete runner.dataset.editing;
     this.#editingRunner = null;
@@ -2331,7 +2370,7 @@ class DocEditor extends JGApp {
     if (!line) return;
     if (what === 'clear') line.innerHTML = '';
     else line.style.textAlign = what;
-    this.#setRunner(runner.dataset.runner, runner.innerHTML.trim());
+    this.#setRunner(runner.dataset.runner, runner.innerHTML.trim(), Number(runner.dataset.page) || 0);
     runner.focus();
   }
 
@@ -2342,38 +2381,85 @@ class DocEditor extends JGApp {
 
     const chip = document.createElement('span');
     chip.dataset.mark = id;
+    chip.setAttribute('contenteditable', 'false');
     chip.textContent = mark.label();
 
     const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
-    const range = selection?.rangeCount ? selection.getRangeAt(0) : null;
-    if (range && runner.contains(range.commonAncestorContainer)) {
+    const line = runner.querySelector('[data-line]') ?? runner;
+    let range = selection?.rangeCount ? selection.getRangeAt(0) : null;
+    if (range && !runner.contains(range.commonAncestorContainer)) range = null;
+
+    // never drop a placeholder inside another one
+    const held = range && this.#chipAt(range.startContainer);
+    if (held) {
+      range = document.createRange();
+      range.setStartAfter(held);
+      range.collapse(true);
+    }
+
+    if (range) {
       range.deleteContents();
       range.insertNode(chip);
-      const after = document.createRange();
-      after.setStartAfter(chip);
-      after.collapse(true);
-      selection.removeAllRanges();
-      selection.addRange(after);
     } else {
-      (runner.querySelector('[data-line]') ?? runner).append(chip);
+      line.append(chip);
     }
-    this.#setRunner(runner.dataset.runner, runner.innerHTML.trim());
+
+    // an empty text node is swept away, a blank one gives the caret a home
+    const rest = document.createTextNode(BLANK);
+    chip.after(rest);
+    const next = document.createRange();
+    next.setStart(rest, rest.length);
+    next.collapse(true);
+    selection?.removeAllRanges();
+    selection?.addRange(next);
+
+    this.#setRunner(runner.dataset.runner, runner.innerHTML.trim(), Number(runner.dataset.page) || 0);
     runner.focus();
+  }
+
+  #showScope() {
+    for (const pick of this.$$('#runscope [data-scope]')) {
+      pick.setAttribute('aria-pressed', String(pick.dataset.scope === this.#scope));
+    }
+  }
+
+  #setScope(scope) {
+    const runner = this.#editingRunner;
+    if (!runner || scope === this.#scope) return;
+    const where = runner.dataset.runner;
+    const index = Number(runner.dataset.page) || 0;
+    const markup = runner.innerHTML.split(BLANK).join('').trim();
+
+    this.#scope = scope;
+    if (scope === 'all') {
+      // hand what is on screen back to every page, and let this one follow again
+      this.#dropOwn(where, index);
+      this.#setRunner(where, markup);
+    } else {
+      this.#setRunner(where, markup, index);
+    }
+    this.#showScope();
+    runner.dataset.own = String(scope === 'page');
+    runner.focus();
+  }
+
+  #chipAt(node) {
+    const from = node?.nodeType === Node.ELEMENT_NODE ? node : node?.parentElement;
+    return from?.closest?.('[data-mark]') ?? null;
   }
 
   // what PDF and Word need: one line of plain text with its alignment
   #runnerFor(where) {
-    const markup = this.#runnerHtml(where);
-    if (!markup) return null;
-    const holder = document.createElement('div');
-    holder.innerHTML = markup;
-    const align = /text-align:\s*(center|right)/.exec(markup)?.[1] ?? 'left';
     return (index, total) => {
-      const copy = holder.cloneNode(true);
-      for (const mark of copy.querySelectorAll('[data-mark]')) {
+      const markup = this.#runnerHtml(where, index);
+      if (!markup) return null;
+      const holder = document.createElement('div');
+      holder.innerHTML = markup;
+      for (const mark of holder.querySelectorAll('[data-mark]')) {
         mark.textContent = this.#markValue(mark.dataset.mark, index, total);
       }
-      const text = copy.textContent.replace(/\s+/g, ' ').trim();
+      const align = /text-align:\s*(center|right)/.exec(markup)?.[1] ?? 'left';
+      const text = holder.textContent.split(BLANK).join('').replace(/\s+/g, ' ').trim();
       return text ? [{ text, align }] : null;
     };
   }
@@ -2519,6 +2605,7 @@ class DocEditor extends JGApp {
     this.#header = file.header ?? '';
     this.#footer = file.footer ?? '';
     this.#numbers = Boolean(file.numbers);
+    this.#ownRunners = new Map(Object.entries(file.runners ?? {}));
     this.#spacing = Number(file.spacing) || 1.6;
     this.#columns = Number(file.columns) || 1;
     this.$('#spacing').value = String(this.#spacing);

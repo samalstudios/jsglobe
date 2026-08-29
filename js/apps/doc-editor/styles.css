@@ -644,6 +644,7 @@ jg-formula-input { display: block; margin-top: 12px; }
   padding: 0 4px;
   color: #2b4d7e;
   white-space: nowrap;
+  user-select: all;
 }
 .runner:not([data-editing]) [data-mark] { background: none; padding: 0; color: inherit; }
 
@@ -683,3 +684,27 @@ jg-formula-input { display: block; margin-top: 12px; }
 .runbar .pill:hover { border-color: var(--ring); background: var(--accent); }
 .runbar .split { width: 1px; height: 18px; background: var(--border); }
 .runner [data-line] { min-height: 1em; }
+
+.runbar .scope { display: inline-flex; gap: 2px; padding: 2px; background: var(--muted); border-radius: 999px; }
+.runbar .pick {
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted-foreground);
+  padding: 4px 10px;
+  font: 500 11.5px/1 var(--font-sans);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.runbar .pick[aria-pressed="true"] { background: var(--card); color: var(--foreground); box-shadow: var(--shadow-sm); }
+.runner[data-own="true"][data-empty="false"]::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--sheet-pad, 96px) - 10px);
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--ring);
+  transform: translateY(-50%);
+}
