@@ -5,7 +5,7 @@ import { icon } from '../../ui/icons.js';
 import { toast, download, debounce, pickFile } from '../../core/util.js';
 import { createDesigns } from '../../lib/designs.js';
 import { toJpeg } from '../../lib/raster.js';
-import { drawChart, parseSeries } from '../../lib/chart.js';
+import { drawChart } from '../../lib/chart.js';
 import { SAMPLES as FORMULAS } from '../../lib/formula.js';
 import { readZip } from '../../core/zip.js';
 import { htmlToBlocks, blockNodes, blocksToHtml, blocksToText, blocksToMarkdown, markdownToHtml, outlineOf, countWords } from '../../lib/richtext.js';
@@ -397,7 +397,7 @@ class DocEditor extends JGApp {
         </div>
       </jg-dialog>
 
-      <jg-dialog id="chart-box" title-text="${t('doc-editor.chart', 'Chart')}" sub="${t('doc-editor.chartHint', 'One row per point: a label, a comma, then the number.')}">
+      <jg-dialog id="chart-box" title-text="${t('doc-editor.chart', 'Chart')}" sub="${t('doc-editor.chartHint', 'One row per point. The preview updates as you type.')}">
         <div class="row wrap">
           <jg-select id="chart-kind" size="sm" value="bar">
             <option value="bar">${t('doc-editor.bars', 'Bars')}</option>
@@ -408,14 +408,12 @@ class DocEditor extends JGApp {
           <jg-input id="chart-title" size="sm" placeholder="${t('doc-editor.chartTitle', 'Title, optional')}"></jg-input>
         </div>
         <div class="label">${t('doc-editor.data', 'Data')}</div>
-        <table class="datagrid" id="chart-grid">
-          <thead><tr><th>${t('doc-editor.label', 'Label')}</th><th>${t('doc-editor.value', 'Value')}</th><th></th></tr></thead>
-          <tbody id="chart-rows"></tbody>
-        </table>
-        <div class="row tight">
-          <jg-button size="sm" variant="outline" id="chart-add">${t('doc-editor.addRow', 'Add a row')}</jg-button>
-          <jg-button size="sm" variant="ghost" id="chart-paste">${t('doc-editor.pasteRows', 'Paste rows')}</jg-button>
-        </div>
+        <jg-table
+          id="chart-grid"
+          least="1"
+          add-label="${t('doc-editor.addRow', 'Add a row')}"
+          remove-label="${t('doc-editor.removeRow', 'Remove')}"
+          hint="${t('doc-editor.gridHint', 'Paste rows from a spreadsheet, drag to reorder.')}"></jg-table>
         <canvas id="chart-preview" class="preview-chart"></canvas>
         <div class="row end">
           <jg-button size="sm" variant="outline" id="chart-cancel">${t('doc-editor.cancel', 'Cancel')}</jg-button>
@@ -683,27 +681,7 @@ class DocEditor extends JGApp {
       this.on(this.$(id), 'input', () => this.#drawChartPreview());
       this.on(this.$(id), 'change', () => this.#drawChartPreview());
     }
-    this.on(this.$('#chart-grid'), 'input', () => this.#drawChartPreview());
-    this.on(this.$('#chart-grid'), 'click', (event) => {
-      if (!event.target.closest('.g-drop')) return;
-      event.target.closest('tr').remove();
-      this.#drawChartPreview();
-    });
-    this.on(this.$('#chart-add'), 'click', () => {
-      this.#chartRows([...this.#chartSpec().points, { label: '', value: 0 }]);
-      this.#drawChartPreview();
-    });
-    this.on(this.$('#chart-paste'), 'click', async () => {
-      try {
-        const text = await navigator.clipboard.readText();
-        const points = parseSeries(text);
-        if (!points.length) return toast(t('doc-editor.nothingToPaste', 'Nothing in the clipboard looked like rows'), 'danger');
-        this.#chartRows(points);
-        this.#drawChartPreview();
-      } catch {
-        toast(t('doc-editor.clipboardBlocked', 'The clipboard could not be read'), 'danger');
-      }
-    });
+    this.on(this.$('#chart-grid'), 'change', () => this.#drawChartPreview());
     this.on(this.$('#chart-cancel'), 'click', () => this.$('#chart-box').close());
     this.on(this.$('#chart-apply'), 'click', () => this.#insertChart());
 
@@ -1066,7 +1044,7 @@ class DocEditor extends JGApp {
     if (action === 'checklist') return this.#checklist();
     if (action === 'contents') return this.#insertContents();
     if (action === 'chart') {
-      if (!this.shadowRoot.querySelectorAll('#chart-rows tr').length) {
+      if (!this.$('#chart-grid')?.columns.length) {
         this.#chartRows([
           { label: 'Germany', value: 31149 },
           { label: 'France', value: 32458 },
@@ -1136,11 +1114,8 @@ class DocEditor extends JGApp {
   }
 
   #chartSpec() {
-    const points = [...this.shadowRoot.querySelectorAll('#chart-rows tr')]
-      .map((row) => ({
-        label: row.querySelector('.g-label')?.value ?? '',
-        value: Number(row.querySelector('.g-value')?.value),
-      }))
+    const points = (this.$('#chart-grid')?.rows ?? [])
+      .map((row) => ({ label: row.label ?? '', value: Number(row.value) }))
       .filter((point) => Number.isFinite(point.value));
     return {
       kind: this.$('#chart-kind')?.value ?? 'bar',
@@ -1150,16 +1125,13 @@ class DocEditor extends JGApp {
   }
 
   #chartRows(points) {
-    const body = this.$('#chart-rows');
-    if (!body) return;
-    body.innerHTML = points
-      .map(
-        (point) =>
-          `<tr><td><input class="g-label" value="${String(point.label ?? '').replace(/"/g, '&quot;')}"></td>` +
-          `<td><input class="g-value" type="number" step="any" value="${point.value ?? ''}"></td>` +
-          `<td><button class="g-drop" title="${t('doc-editor.removeRow', 'Remove')}">✕</button></td></tr>`,
-      )
-      .join('');
+    const grid = this.$('#chart-grid');
+    if (!grid) return;
+    grid.columns = [
+      { key: 'label', label: t('doc-editor.label', 'Label') },
+      { key: 'value', label: t('doc-editor.value', 'Value'), type: 'number', align: 'right' },
+    ];
+    grid.rows = points.map((point) => ({ label: point.label ?? '', value: point.value ?? 0 }));
   }
 
   #drawChartPreview() {

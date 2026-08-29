@@ -529,40 +529,6 @@
 .cols jg-field { display: block; }
 .maths { font-family: Georgia, Times New Roman, serif; }
 
-.datagrid { width: 100%; border-collapse: collapse; margin-top: 8px; }
-.datagrid th {
-  text-align: left;
-  font: 600 10px/1 var(--font-sans);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted-foreground);
-  padding: 0 6px 6px;
-}
-.datagrid td { padding: 2px 3px; }
-.datagrid input {
-  width: 100%;
-  height: 30px;
-  padding: 0 9px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--card);
-  color: var(--foreground);
-  font: 500 12.5px/1 var(--font-sans);
-  outline: 0;
-}
-.datagrid input:focus { border-color: var(--ring); }
-.datagrid .g-value { font-family: var(--font-mono); text-align: right; }
-.datagrid td:last-child { width: 32px; }
-.datagrid .g-drop {
-  width: 26px;
-  height: 26px;
-  border: 0;
-  background: transparent;
-  color: var(--muted-foreground);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-}
-.datagrid .g-drop:hover { background: var(--accent); color: var(--foreground); }
 .label { font: 600 10px/1 var(--font-sans); letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted-foreground); margin-top: 14px; }
 
 .keys { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }

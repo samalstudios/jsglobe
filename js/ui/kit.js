@@ -12,6 +12,7 @@ import './jg-selector.js';
 import './jg-lookup.js';
 import './jg-font-selector.js';
 import './jg-size-selector.js';
+import './jg-table.js';
 import './jg-formula-input.js';
 import './jg-stat.js';
 import './jg-progress.js';
