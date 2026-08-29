@@ -43,6 +43,7 @@ export * as richtext from './lib/richtext.js';
 export * as docLayout from './lib/doc-layout.js';
 export * as syntax from './lib/syntax.js';
 export * as gitignore from './lib/gitignore.js';
+export * as caret from './lib/caret.js';
 export * as qr from './lib/qr.js';
 export * as qrDecode from './lib/qr-decode.js';
 export * as barcode from './lib/barcode.js';
@@ -93,6 +94,7 @@ export const SURFACE = {
   docLayout: 'Lay a block document onto pages, for drawing on screen or writing to PDF.',
   syntax: 'Colour code in a dozen languages, as tokens or as ready made HTML.',
   gitignore: 'Ignore file templates, and the pattern rules that decide what git leaves out.',
+  caret: 'Move the caret about inside anything people can type in: mark it, put it back, reach a word, wrap a selection.',
   qr: 'QR codes as matrices, ready to draw.',
   qrDecode: 'Read a QR code from a picture, repairing damage as a scanner does.',
   barcode: 'Draw and read the common bar codes: EAN, UPC, Code 128, Code 39 and ITF.',

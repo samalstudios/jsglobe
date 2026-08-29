@@ -141,6 +141,14 @@ export const highlight = (code, language = 'plain') => {
 };
 
 
+// the same colours as inline styles, for anywhere the classes cannot follow:
+// a PDF, a Word file, an email
+export const highlightInline = (code, language = 'plain') =>
+  highlight(code, language).replace(
+    /<span class="tok-([a-z]+)">/g,
+    (whole, token) => `<span style="color:${TOKEN_COLOURS[token] ?? '#111111'}">`,
+  );
+
 export const LANGUAGES = [
   { id: 'plain', label: 'Plain text' },
   { id: 'javascript', label: 'JavaScript' },

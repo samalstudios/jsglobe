@@ -6,8 +6,11 @@ import { toast, download, debounce, pickFile } from '../../core/util.js';
 import { createDesigns } from '../../lib/designs.js';
 import { toJpeg } from '../../lib/raster.js';
 import { drawChart } from '../../lib/chart.js';
-import { highlight, LANGUAGES, TOKEN_COLOURS } from '../../lib/syntax.js';
+import { highlightInline, LANGUAGES } from '../../lib/syntax.js';
 import { FONT_STACKS } from '../../ui/jg-font-selector.js';
+import {
+  markCaret, placeCaret, caretAfter, reachWord, wrapSelection, insertAt, insertBeside, blockOf, elementAt,
+} from '../../lib/caret.js';
 import { SAMPLES as FORMULAS } from '../../lib/formula.js';
 import { readZip } from '../../core/zip.js';
 import { htmlToBlocks, blockNodes, blocksToHtml, blocksToText, blocksToMarkdown, markdownToHtml, outlineOf, countWords } from '../../lib/richtext.js';
@@ -1059,26 +1062,17 @@ class DocEditor extends JGApp {
   // blocks belong between the paragraphs, never inside the one holding the caret
   #insertBlock(markup, at) {
     this.#focus();
-    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
-    const anchor = selection?.anchorNode;
-    const from = anchor?.nodeType === 1 ? anchor : anchor?.parentElement;
-    const leaf = at ?? from?.closest?.('.leaf') ?? this.#edge(true);
-
-    let block = from && leaf.contains(from) ? from : null;
-    while (block && block.parentElement !== leaf) block = block.parentElement;
-
-    const holder = document.createElement('div');
-    holder.innerHTML = markup;
-    const made = [...holder.children];
+    const editor = this.$('#editor');
+    const anchor = (this.shadowRoot.getSelection?.() ?? window.getSelection())?.anchorNode;
+    const leaf = at ?? elementAt(anchor)?.closest?.('.leaf') ?? this.#edge(true);
+    const made = insertBeside(editor, leaf, markup, [...leaf.children]);
     if (!made.length) return;
-
-    if (block) block.after(...made);
-    else leaf.append(...made);
 
     const last = made[made.length - 1];
     const range = document.createRange();
     range.selectNodeContents(last);
     range.collapse(true);
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
     selection?.removeAllRanges();
     selection?.addRange(range);
 
@@ -1087,44 +1081,17 @@ class DocEditor extends JGApp {
   }
 
   #insertNode(markup) {
-    this.#focus();
-    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
-    if (!selection?.rangeCount) return;
-    const range = selection.getRangeAt(0);
-    range.deleteContents();
-
-    const holder = document.createElement('div');
-    holder.innerHTML = markup;
-    const fragment = document.createDocumentFragment();
-    let last = null;
-    while (holder.firstChild) {
-      last = holder.firstChild;
-      fragment.append(last);
-    }
-    range.insertNode(fragment);
+    const editor = this.#focus();
+    const last = insertAt(editor, markup);
 
     // settle the document first, it moves the caret about as it repaginates
     this.#sync();
-    if (last?.isConnected) this.#caretAfter(last);
+    if (last?.isConnected) caretAfter(this.$('#editor'), last);
     this.#reflect();
   }
 
   // a caret asked to sit after an empty element slides back into the text
   // before it, so give it a node of its own to land in
-  #caretAfter(node) {
-    let rest = node.nextSibling;
-    if (!rest || rest.nodeType !== Node.TEXT_NODE) {
-      rest = document.createTextNode(' ');
-      node.after(rest);
-    }
-    const range = document.createRange();
-    range.setStart(rest, 0);
-    range.collapse(true);
-    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
-    selection?.removeAllRanges();
-    selection?.addRange(range);
-  }
-
   #run(command, value) {
     this.#focus();
     document.execCommand('styleWithCSS', false, command === 'foreColor' || command === 'hiliteColor');
@@ -1133,67 +1100,32 @@ class DocEditor extends JGApp {
     this.#reflect();
   }
 
-  // nothing picked out means the word the caret is in, or the whole block when
-  // it is not in a word
-  #reach(selection) {
-    const range = selection.getRangeAt(0);
-    const node = range.startContainer;
-
-    if (node.nodeType === Node.TEXT_NODE) {
-      const text = node.nodeValue ?? '';
-      let from = range.startOffset;
-      let to = range.startOffset;
-      while (from > 0 && /\S/.test(text[from - 1])) from -= 1;
-      while (to < text.length && /\S/.test(text[to])) to += 1;
-      if (to > from) {
-        const word = document.createRange();
-        word.setStart(node, from);
-        word.setEnd(node, to);
-        selection.removeAllRanges();
-        selection.addRange(word);
-        this.#lastRange = word.cloneRange();
-        return true;
-      }
-    }
-
-    const here = this.#caretBlock();
-    if (!here?.block || !here.block.textContent.trim()) return false;
-    const whole = document.createRange();
-    whole.selectNodeContents(here.block);
-    selection.removeAllRanges();
-    selection.addRange(whole);
-    this.#lastRange = whole.cloneRange();
-    return true;
+  #reach() {
+    const range = reachWord(this.$('#editor'), this.#nodes());
+    if (range) this.#lastRange = range.cloneRange();
+    return Boolean(range);
   }
 
   #wrapNode(tag, attributes) {
     const editor = this.#focus();
-    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
-    if (!selection) return false;
+    this.#restoreRange(editor);
+    const node = wrapSelection(editor, tag, attributes);
+    if (node) this.#lastRange = document.createRange();
+    if (node) this.#lastRange.selectNodeContents(node);
+    return Boolean(node);
+  }
 
+  // a toolbar that took the focus leaves a collapsed caret behind, so put the
+  // last real selection back before acting on it
+  #restoreRange(editor) {
+    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
     const kept = this.#lastRange;
-    const live = selection.rangeCount ? selection.getRangeAt(0) : null;
+    const live = selection?.rangeCount ? selection.getRangeAt(0) : null;
     if ((!live || live.collapsed) && kept && !kept.collapsed && editor.contains(kept.commonAncestorContainer)) {
       selection.removeAllRanges();
       selection.addRange(kept);
     }
-    if (!selection.rangeCount || selection.getRangeAt(0).collapsed) return false;
-
-    const range = selection.getRangeAt(0);
-    const node = document.createElement(tag);
-    for (const [name, value] of Object.entries(attributes ?? {})) node.setAttribute(name, value);
-    try {
-      node.appendChild(range.extractContents());
-      range.insertNode(node);
-      selection.removeAllRanges();
-      const next = document.createRange();
-      next.selectNodeContents(node);
-      selection.addRange(next);
-      this.#lastRange = next.cloneRange();
-      return true;
-    } catch {
-      return false;
-    }
+    return selection;
   }
 
   #wrapStyle(property, value) {
@@ -1212,7 +1144,7 @@ class DocEditor extends JGApp {
       toast(t('doc-editor.selectSomeText', 'Select some text first'), 'danger');
       return;
     }
-    if (selection.getRangeAt(0).collapsed && !this.#reach(selection)) {
+    if (selection.getRangeAt(0).collapsed && !this.#reach()) {
       toast(t('doc-editor.selectSomeText', 'Select some text first'), 'danger');
       return;
     }
@@ -1358,10 +1290,7 @@ class DocEditor extends JGApp {
 
   #paintCode(block) {
     const code = block.querySelector('code') ?? block;
-    const painted = highlight(code.textContent, block.dataset.code || 'plain').replace(
-      /<span class="tok-([a-z]+)">/g,
-      (whole, token) => `<span style="color:${TOKEN_COLOURS[token] ?? '#111111'}">`,
-    );
+    const painted = highlightInline(code.textContent, block.dataset.code || 'plain');
     if (code.innerHTML !== painted) code.innerHTML = painted;
   }
 
@@ -1846,13 +1775,9 @@ class DocEditor extends JGApp {
 
   #caretBlock() {
     const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
-    const anchor = selection?.anchorNode;
-    const from = anchor?.nodeType === Node.ELEMENT_NODE ? anchor : anchor?.parentElement;
+    const from = elementAt(selection?.anchorNode);
     if (!from || !this.$('#editor')?.contains(from) || from.closest('[data-runner]')) return null;
-    const nodes = this.#nodes();
-    let block = from;
-    while (block && !nodes.includes(block)) block = block.parentElement;
-    return { from, block };
+    return { from, block: blockOf(this.#nodes(), from) };
   }
 
   // the toolbar should say what the caret is sitting in
@@ -2392,47 +2317,11 @@ class DocEditor extends JGApp {
   }
 
   #mark() {
-    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
-    const anchor = selection?.anchorNode;
-    if (!anchor) return null;
-    const nodes = this.#nodes();
-    const at = nodes.findIndex((node) => node === anchor || node.contains(anchor));
-    if (at < 0) return null;
-    const range = document.createRange();
-    range.selectNodeContents(nodes[at]);
-    try {
-      range.setEnd(anchor, selection.anchorOffset);
-    } catch {
-      return { at, offset: 0 };
-    }
-    return { at, offset: range.toString().length };
+    return markCaret(this.$('#editor'), this.#nodes());
   }
 
   #place(mark) {
-    if (!mark) return;
-    const node = this.#nodes()[mark.at];
-    if (!node) return;
-    const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
-    let seen = 0;
-    let target = null;
-    let offset = 0;
-    while (walker.nextNode()) {
-      const text = walker.currentNode;
-      const length = text.textContent.length;
-      if (seen + length >= mark.offset) {
-        target = text;
-        offset = mark.offset - seen;
-        break;
-      }
-      seen += length;
-    }
-    const range = document.createRange();
-    if (target) range.setStart(target, Math.min(offset, target.textContent.length));
-    else range.selectNodeContents(node);
-    range.collapse(true);
-    const selection = this.shadowRoot.getSelection?.() ?? window.getSelection();
-    selection?.removeAllRanges();
-    selection?.addRange(range);
+    placeCaret(this.$('#editor'), this.#nodes(), mark);
   }
 
   #holder(node) {
