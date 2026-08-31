@@ -71,7 +71,9 @@ class DnsLookup extends JGApp {
       </jg-field>
 
       <div class="types" id="types">
-        ${TYPES.map((type) => html`<button class="type" data-type="${type}" aria-pressed="${String(this.#selected.has(type))}">${type}</button>`)}
+        ${TYPES.map((type) => html`<button class="type" data-type="${type}"
+          title="${t('dns-lookup.altPicksOnlyThis', 'Hold Alt to look up only this type')}"
+          aria-pressed="${String(this.#selected.has(type))}">${type}</button>`)}
       </div>
 
       <div class="row">
@@ -99,6 +101,16 @@ class DnsLookup extends JGApp {
 
     this.bind('[data-type]', 'click', (event) => {
       const type = event.currentTarget.dataset.type;
+
+      // holding alt narrows the lookup to this one type, unless it is already
+      // the only one, which puts the rest back
+      if (event.altKey) {
+        const alone = this.#selected.size === 1 && this.#selected.has(type);
+        this.#selected = alone ? new Set(DEFAULT_TYPES) : new Set([type]);
+        this.#paintTypes();
+        return;
+      }
+
       if (this.#selected.has(type)) this.#selected.delete(type);
       else this.#selected.add(type);
       event.currentTarget.setAttribute('aria-pressed', String(this.#selected.has(type)));
