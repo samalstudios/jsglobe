@@ -15,6 +15,7 @@ const SCRIPT_NAME = {
   greek: () => t('letters.greek', 'Greek'),
   cyrillic: () => t('letters.cyrillic', 'Cyrillic'),
   japanese: () => t('letters.japanese', 'Japanese'),
+  korean: () => t('letters.korean', 'Korean'),
   chinese: () => t('letters.chinese', 'Chinese'),
 };
 
@@ -92,10 +93,11 @@ class Letters extends JGApp {
       </div>
 
       <div class="detail" id="detail" hidden>
+        <button class="shut wide" id="wide" title="${t('letters.fillTheApp', 'Fill the app')}">${icon('maximize', 13)}</button>
         <button class="shut" id="shut" title="${t('letters.close', 'Close')}">${icon('close', 14)}</button>
         <div class="crown">
           <span class="big" id="big"></span>
-          <button class="say" id="say" title="${t('letters.hearIt', 'Hear it')}">${icon('mic', 15)}</button>
+          <button class="say" id="say" title="${t('letters.hearIt', 'Hear it')}">${icon('speaker', 15)}</button>
         </div>
         <div class="facts" id="facts"></div>
       </div>
@@ -140,6 +142,17 @@ class Letters extends JGApp {
 
     this.on(this.$('#shut'), 'click', () => {
       this.$('#detail').hidden = true;
+    });
+
+    this.on(this.$('#wide'), 'click', () => this.#widen());
+
+    this.listen(window, 'keydown', (event) => {
+      if (event.key !== 'Escape' || this.offsetParent === null) return;
+      const detail = this.$('#detail');
+      if (detail.hidden) return;
+      event.preventDefault();
+      if (detail.hasAttribute('data-full')) this.#widen(false);
+      else detail.hidden = true;
     });
 
     this.on(this.$('#forget'), 'click', () => this.#forget());
@@ -247,7 +260,7 @@ class Letters extends JGApp {
             `<span class="name">${letter.name}</span>` +
             `<span class="latin">${letter.latin || '—'}</span>` +
             (letter.example && this.#canSpeak()
-              ? `<span class="hear" data-say="${letter.example.word}" role="button" tabindex="0" title="${letter.example.word}">${icon('mic', 11)}</span>`
+              ? `<span class="hear" data-say="${letter.example.word}" role="button" tabindex="0" title="${letter.example.word}">${icon('speaker', 11)}</span>`
               : '') +
             '<span class="meter"></span>' +
             '</button>'
@@ -312,6 +325,15 @@ class Letters extends JGApp {
       .map(([label, value]) => `<div class="fact"><span>${label}</span><b>${value}</b></div>`)
       .join('');
     this.$('#detail').hidden = false;
+  }
+
+  #widen(on) {
+    const detail = this.$('#detail');
+    const full = on ?? !detail.hasAttribute('data-full');
+    detail.toggleAttribute('data-full', full);
+    const button = this.$('#wide');
+    button.innerHTML = icon(full ? 'minimize' : 'maximize', 13);
+    button.title = full ? t('letters.shrinkBack', 'Back to the corner') : t('letters.fillTheApp', 'Fill the app');
   }
 
   #drawRun() {

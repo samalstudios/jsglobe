@@ -195,6 +195,7 @@ export const PATHS = {
   circuit: '<path d="M2.6 12h3.2M18.2 12h3.2M9 8.4v7.2M12 6.6v10.8M15 8.4v7.2"/><path d="M5.8 12h3.2M15 12h3.2"/>',
   sun: '<circle cx="12" cy="12" r="4.4"/><path d="M12 2.6v2.4M12 19v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.6 12H5M19 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>',
   moon: '<path d="M20.4 14.6A8.8 8.8 0 0 1 9.4 3.6a8.8 8.8 0 1 0 11 11Z"/>',
+  speaker: '<path d="M4 9.4h3.2L12 5.2v13.6L7.2 14.6H4Z"/><path d="M15.6 9.6a3.4 3.4 0 0 1 0 4.8M18.2 7a7 7 0 0 1 0 10"/>',
   alphabet: '<text x="12" y="18.4" fill="currentColor" stroke="none" font-family="ui-sans-serif, system-ui, sans-serif" font-size="19" font-weight="500" text-anchor="middle">\u03a9</text>',
   bookmark: '<path d="M6.6 3.4h10.8v17.2L12 16.6l-5.4 4V3.4Z"/>',
   flashlight: '<path d="M7.4 5.6h9.2l-1.5 4.2H8.9Z"/><rect x="9.2" y="9.8" width="5.6" height="11" rx="1.6"/><path d="M9.2 13.8h5.6"/><path d="M12 1.4v2M6.7 2.7l1 1.8M17.3 2.7l-1 1.8"/>',

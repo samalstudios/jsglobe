@@ -174,6 +174,7 @@
   position: absolute;
   right: 8px;
   top: 8px;
+  z-index: 1;
   width: 24px;
   height: 24px;
   display: grid;
@@ -248,3 +249,28 @@
 }
 .say:hover { border-color: var(--ring); color: var(--foreground); }
 .say[hidden] { display: none; }
+
+.detail .shut.wide { right: 36px; }
+
+.detail[data-full] {
+  inset: 0;
+  width: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  container-type: inline-size;
+}
+.detail[data-full] .crown { flex-direction: column; gap: 16px; }
+.detail[data-full] .big { font-size: clamp(90px, 34cqw, 260px); }
+.detail[data-full] .say { width: 40px; height: 40px; }
+.detail[data-full] .facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px 26px;
+  width: min(680px, 100%);
+}
+.detail[data-full] .fact b { font-size: 15px; }

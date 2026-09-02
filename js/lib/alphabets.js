@@ -590,6 +590,52 @@ const chineseNumbers = [
   { glyph: '万', name: 'wàn', latin: '10000', sound: 'ten thousand' },
 ];
 
+const hangulConsonants = [
+  { glyph: 'ㄱ', name: 'giyeok', latin: 'g', sound: 'g in go, k at the end of a syllable', example: { word: '가방', say: 'gabang', means: 'bag' } },
+  { glyph: 'ㄲ', name: 'ssang giyeok', latin: 'kk', sound: 'a tighter, tenser g', example: { word: '꼬리', say: 'kkori', means: 'tail' } },
+  { glyph: 'ㄴ', name: 'nieun', latin: 'n', sound: 'n in nest', example: { word: '나무', say: 'namu', means: 'tree' } },
+  { glyph: 'ㄷ', name: 'digeut', latin: 'd', sound: 'd in dog, t at the end of a syllable', example: { word: '다리', say: 'dari', means: 'leg' } },
+  { glyph: 'ㄸ', name: 'ssang digeut', latin: 'tt', sound: 'a tighter, tenser d', example: { word: '딸기', say: 'ttalgi', means: 'strawberry' } },
+  { glyph: 'ㄹ', name: 'rieul', latin: 'r', sound: 'between r and l', example: { word: '라디오', say: 'radio', means: 'radio' } },
+  { glyph: 'ㅁ', name: 'mieum', latin: 'm', sound: 'm in moon', example: { word: '물', say: 'mul', means: 'water' } },
+  { glyph: 'ㅂ', name: 'bieup', latin: 'b', sound: 'b in bed, p at the end of a syllable', example: { word: '바다', say: 'bada', means: 'sea' } },
+  { glyph: 'ㅃ', name: 'ssang bieup', latin: 'pp', sound: 'a tighter, tenser b', example: { word: '빵', say: 'ppang', means: 'bread' } },
+  { glyph: 'ㅅ', name: 'siot', latin: 's', sound: 's in sun, sh before i', example: { word: '사람', say: 'saram', means: 'person' } },
+  { glyph: 'ㅆ', name: 'ssang siot', latin: 'ss', sound: 'a tighter, tenser s', example: { word: '쌀', say: 'ssal', means: 'uncooked rice' } },
+  { glyph: 'ㅇ', name: 'ieung', latin: 'ng', sound: 'silent at the start, ng at the end', example: { word: '아기', say: 'agi', means: 'baby' } },
+  { glyph: 'ㅈ', name: 'jieut', latin: 'j', sound: 'j in jeep', example: { word: '집', say: 'jip', means: 'house' } },
+  { glyph: 'ㅉ', name: 'ssang jieut', latin: 'jj', sound: 'a tighter, tenser j', example: { word: '짜다', say: 'jjada', means: 'salty' } },
+  { glyph: 'ㅊ', name: 'chieut', latin: 'ch', sound: 'ch in chair, breathier', example: { word: '차', say: 'cha', means: 'tea' } },
+  { glyph: 'ㅋ', name: 'kieuk', latin: 'k', sound: 'k in kite, breathier', example: { word: '코', say: 'ko', means: 'nose' } },
+  { glyph: 'ㅌ', name: 'tieut', latin: 't', sound: 't in top, breathier', example: { word: '토마토', say: 'tomato', means: 'tomato' } },
+  { glyph: 'ㅍ', name: 'pieup', latin: 'p', sound: 'p in pan, breathier', example: { word: '팔', say: 'pal', means: 'arm' } },
+  { glyph: 'ㅎ', name: 'hieut', latin: 'h', sound: 'h in hat', example: { word: '하늘', say: 'haneul', means: 'sky' } },
+];
+
+const hangulVowels = [
+  { glyph: 'ㅏ', name: 'a', latin: 'a', sound: 'a in father', example: { word: '아이', say: 'ai', means: 'child' } },
+  { glyph: 'ㅐ', name: 'ae', latin: 'ae', sound: 'e in bed', example: { word: '개', say: 'gae', means: 'dog' } },
+  { glyph: 'ㅑ', name: 'ya', latin: 'ya', sound: 'ya in yard', example: { word: '양', say: 'yang', means: 'sheep' } },
+  { glyph: 'ㅒ', name: 'yae', latin: 'yae', sound: 'ye in yes', example: { word: '얘기', say: 'yaegi', means: 'story' } },
+  { glyph: 'ㅓ', name: 'eo', latin: 'eo', sound: 'u in bud', example: { word: '어머니', say: 'eomeoni', means: 'mother' } },
+  { glyph: 'ㅔ', name: 'e', latin: 'e', sound: 'e in bed', example: { word: '네', say: 'ne', means: 'yes' } },
+  { glyph: 'ㅕ', name: 'yeo', latin: 'yeo', sound: 'yu in yummy', example: { word: '여름', say: 'yeoreum', means: 'summer' } },
+  { glyph: 'ㅖ', name: 'ye', latin: 'ye', sound: 'ye in yes', example: { word: '예의', say: 'yeui', means: 'manners' } },
+  { glyph: 'ㅗ', name: 'o', latin: 'o', sound: 'o in more', example: { word: '오늘', say: 'oneul', means: 'today' } },
+  { glyph: 'ㅘ', name: 'wa', latin: 'wa', sound: 'wa in water', example: { word: '과일', say: 'gwail', means: 'fruit' } },
+  { glyph: 'ㅙ', name: 'wae', latin: 'wae', sound: 'we in wet', example: { word: '왜', say: 'wae', means: 'why' } },
+  { glyph: 'ㅚ', name: 'oe', latin: 'oe', sound: 'we in wet', example: { word: '외국', say: 'oeguk', means: 'foreign country' } },
+  { glyph: 'ㅛ', name: 'yo', latin: 'yo', sound: 'yo in yoga', example: { word: '교실', say: 'gyosil', means: 'classroom' } },
+  { glyph: 'ㅜ', name: 'u', latin: 'u', sound: 'oo in boot', example: { word: '우유', say: 'uyu', means: 'milk' } },
+  { glyph: 'ㅝ', name: 'wo', latin: 'wo', sound: 'wo in wonder', example: { word: '원', say: 'won', means: 'won' } },
+  { glyph: 'ㅞ', name: 'we', latin: 'we', sound: 'we in wet', example: { word: '웨딩', say: 'weding', means: 'wedding' } },
+  { glyph: 'ㅟ', name: 'wi', latin: 'wi', sound: 'wee in week', example: { word: '위', say: 'wi', means: 'above' } },
+  { glyph: 'ㅠ', name: 'yu', latin: 'yu', sound: 'you', example: { word: '유리', say: 'yuri', means: 'glass' } },
+  { glyph: 'ㅡ', name: 'eu', latin: 'eu', sound: 'oo said with the lips unrounded', example: { word: '그림', say: 'geurim', means: 'picture' } },
+  { glyph: 'ㅢ', name: 'ui', latin: 'ui', sound: 'eu then ee, run together', example: { word: '의사', say: 'uisa', means: 'doctor' } },
+  { glyph: 'ㅣ', name: 'i', latin: 'i', sound: 'ee in see', example: { word: '이름', say: 'ireum', means: 'name' } },
+];
+
 // a word that shows the letter at work
 const EXAMPLES = {
   'Α': { word: 'άνθρωπος', say: 'anthropos', means: 'person' },
@@ -820,6 +866,16 @@ export const SCRIPTS = [
     sets: [
       { id: 'hiragana', name: 'Hiragana', letters: withExamples(hiragana) },
       { id: 'katakana', name: 'Katakana', letters: withExamples(katakana) },
+    ],
+  },
+  {
+    id: 'korean',
+    name: 'Korean',
+    speech: 'ko-KR',
+    note: 'Hangul was designed to be learned quickly. Letters are stacked into blocks, one block to a syllable.',
+    sets: [
+      { id: 'consonants', name: 'Consonants', letters: hangulConsonants },
+      { id: 'vowels', name: 'Vowels', letters: hangulVowels },
     ],
   },
   {
