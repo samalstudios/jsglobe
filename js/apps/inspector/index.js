@@ -8,7 +8,10 @@ import { toast, pickFiles, copyText } from '../../core/util.js';
 import { readZip } from '../../core/zip.js';
 import { docxToHtml } from '../../lib/docx.js';
 import { markdownToHtml } from '../../lib/richtext.js';
-import { chunkText, buildIndex, searchIndex, buildPrompt, citedIn, bestLine, tokenise, cosine, blend } from '../../lib/rag.js';
+import {
+  chunkText, buildIndex, searchIndex, buildPrompt, citedIn, bestLine, tokenise, cosine, fuse,
+  withNeighbours, ASK_FOR_LEADS, readLeads,
+} from '../../lib/rag.js';
 
 const t = appText(strings);
 
@@ -28,6 +31,7 @@ class Inspector extends JGApp {
   static settings = [
     { key: 'passages', label: t('inspector.passagesToRead', 'Passages to read for each answer'), type: 'number', default: 5, min: 2, max: 10 },
     { key: 'chunk', label: t('inspector.passageSize', 'Passage size in characters'), type: 'number', default: 900, min: 300, max: 2400 },
+    { key: 'expand', label: t('inspector.workOutWhatToLookFor', 'Work out what an answer would look like before searching'), type: 'switch', default: true },
     { key: 'pdfJs', label: t('inspector.pdfReader', 'PDF reader module'), type: 'text', default: 'https://esm.run/pdfjs-dist@4.0.379/build/pdf.min.mjs' },
   ];
   static styles = [...JGApp.styles, sheet];
@@ -37,7 +41,7 @@ class Inspector extends JGApp {
   #busy = false;
   #stop = null;
   #pdfjs = null;
-  #vectors = null;
+  #vecs = new Map();
   #building = false;
   #buildMessage = null;
 
@@ -77,6 +81,12 @@ class Inspector extends JGApp {
 
         <div class="main">
           <div class="thread" id="thread"></div>
+
+          <div class="notice" id="notice" hidden>
+            <span class="mark">${icon('clock', 13)}</span>
+            <span class="grow" id="noticetext"></span>
+            <jg-button size="sm" variant="outline" id="noticeread">${t('inspector.readThemNow', 'Read them now')}</jg-button>
+          </div>
 
           <div class="asker">
             <jg-input id="question" placeholder="${t('inspector.askAboutTheDocuments', 'Ask about the documents')}"></jg-input>
@@ -174,7 +184,7 @@ class Inspector extends JGApp {
     embed.value = settings.get('ai.embedModel');
     this.on(embed, 'change', (event) => {
       settings.set('ai.embedModel', event.detail.value);
-      this.#vectors = null;
+      this.#vecs.clear();
       this.#drawModels();
     });
     ai.embedModels().then((models) => {
@@ -184,11 +194,33 @@ class Inspector extends JGApp {
     });
 
     this.on(this.$('#build'), 'click', () => this.#buildVectors());
+    this.on(this.$('#noticeread'), 'click', () => this.#buildVectors());
     this.#drawModels();
   }
 
   #usesVectors() {
     return this.config.get('finder', 'words') === 'both';
+  }
+
+  // a passage is the same passage as long as its document, its place in that
+  // document and its wording are unchanged
+  #keyOf(passage) {
+    return `${passage.docId}:${passage.at}:${passage.text.length}:${passage.text.slice(0, 24)}`;
+  }
+
+  #unread() {
+    if (!this.#usesVectors()) return [];
+    return (this.#index?.passages ?? []).filter((passage) => !this.#vecs.has(this.#keyOf(passage)));
+  }
+
+  // read, part read, or not read at all, for the mark against each document
+  #readState(docId) {
+    if (!this.#usesVectors()) return 'plain';
+    const mine = (this.#index?.passages ?? []).filter((passage) => passage.docId === docId);
+    if (!mine.length) return 'plain';
+    const read = mine.filter((passage) => this.#vecs.has(this.#keyOf(passage))).length;
+    if (read === mine.length) return 'read';
+    return read ? 'part' : 'unread';
   }
 
   #drawModels() {
@@ -198,24 +230,39 @@ class Inspector extends JGApp {
     if (!on) return;
 
     const passages = this.#index?.passages.length ?? 0;
-    const ready = this.#vectors?.length === passages && passages > 0;
+    const ready = passages > 0 && !this.#unread().length;
     this.$('#vecstate').textContent = this.#building
       ? this.#buildMessage ?? t('inspector.reading', 'Reading')
       : ready
         ? t('inspector.passagesRead', '{count} passages read', { count: passages })
         : t('inspector.notReadYet', 'Not read yet');
     this.$('#build').hidden = ready || this.#building;
+    this.#drawNotice();
+  }
+
+  // the answers only reach into what has been read, so say so where the question
+  // is asked rather than leaving it to be noticed
+  #drawNotice() {
+    const notice = this.$('#notice');
+    if (!notice) return;
+    const waiting = this.#unread().length;
+    notice.hidden = !waiting || this.#building;
+    if (!waiting) return;
+    this.$('#noticetext').textContent = t('inspector.someNotReadYet', '{count} passages are not read yet, so answers will not draw on them.', {
+      count: waiting,
+    });
   }
 
   async #buildVectors() {
-    if (this.#building || !this.#index?.passages.length) return;
+    const waiting = this.#unread();
+    if (this.#building || !waiting.length) return;
     this.#building = true;
     this.#buildMessage = t('inspector.loadingTheModel', 'Loading the model');
     this.#drawModels();
 
     try {
       const vectors = await ai.embed(
-        this.#index.passages.map((passage) => `${passage.title}\n${passage.text}`),
+        waiting.map((passage) => `${passage.title}\n${passage.text}`),
         {
           onProgress: (report) => {
             this.#buildMessage = report.done
@@ -225,7 +272,7 @@ class Inspector extends JGApp {
           },
         },
       );
-      this.#vectors = vectors;
+      vectors.forEach((vector, at) => this.#vecs.set(this.#keyOf(waiting[at]), vector));
       toast(t('inspector.documentsRead', 'The documents are read'));
     } catch (error) {
       toast(t('inspector.couldNotRead', 'Could not read {name}', { name: error.message }), 'danger');
@@ -233,35 +280,69 @@ class Inspector extends JGApp {
       this.#building = false;
       this.#buildMessage = null;
       this.#drawModels();
+      this.#drawDocs();
     }
   }
 
-  // words alone unless the passages have been read into vectors, in which case
-  // the two rankings are mixed
-  async #find(question, limit) {
-    const words = searchIndex(this.#index, question, { limit: limit * 2 });
-    if (!this.#usesVectors() || this.#vectors?.length !== this.#index.passages.length) {
-      return words.slice(0, limit);
+  // a question is not written in the words its answer uses, so the model is
+  // asked what an answer would look like and that is searched for as well
+  async #leads(question) {
+    if (this.config.get('expand', true) === false || !ai.isEnabled()) return [];
+    try {
+      const reply = await ai.complete(ASK_FOR_LEADS, question);
+      return readLeads(reply, question);
+    } catch {
+      return [];
     }
+  }
+
+  #byWords(text, limit) {
+    return searchIndex(this.#index, text, { limit });
+  }
+
+  async #byMeaning(texts, limit) {
+    if (!this.#usesVectors()) return [];
+    const read = this.#index.passages
+      .map((passage, at) => ({ at, passage, vector: this.#vecs.get(this.#keyOf(passage)) }))
+      .filter((entry) => entry.vector);
+    if (!read.length) return [];
+
+    const terms = tokenise(texts.join(' '));
+    const asked = await ai.embed(texts);
+    return asked.map((vector) =>
+      read
+        .map((entry) => ({ at: entry.at, passage: entry.passage, score: cosine(vector, entry.vector), matched: terms }))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, limit),
+    );
+  }
+
+  async #find(question, limit, say) {
+    say?.(t('inspector.workingOutWhatToLookFor', 'Working out what to look for'));
+    const leads = await this.#leads(question);
+    const asks = [question, ...leads];
+
+    say?.(t('inspector.searching', 'Searching the documents'));
+    // the leads together count for less than the question, so a poor guess at
+    // what an answer looks like can reorder near ties but never overrule what
+    // was actually asked
+    const share = (at) => (at === 0 ? 1 : 0.6 / leads.length);
+    const rankings = asks.map((ask) => this.#byWords(ask, limit * 2));
+    const weights = asks.map((ask, at) => share(at));
 
     try {
-      const [asked] = await ai.embed([question]);
-      if (!asked) return words.slice(0, limit);
-      const asWords = new Map(words.map((hit) => [hit.at, hit.matched]));
-      const terms = tokenise(question);
-      const near = this.#vectors
-        .map((vector, at) => ({
-          at,
-          passage: this.#index.passages[at],
-          score: cosine(asked, vector),
-          matched: asWords.get(at) ?? terms,
-        }))
-        .sort((a, b) => b.score - a.score)
-        .slice(0, limit * 2);
-      return blend(words, near, { limit, weight: 0.5 });
+      const meaning = await this.#byMeaning(asks, limit * 2);
+      meaning.forEach((list, at) => {
+        rankings.push(list);
+        weights.push(share(at));
+      });
     } catch {
-      return words.slice(0, limit);
+      /* the words alone still answer */
     }
+
+    const found = fuse(rankings, { limit, weights });
+    if (!found.length) return [];
+    return withNeighbours(found, this.#index.passages, { each: 1, limit: Math.max(limit, found.length + 2) });
   }
 
   #keep() {
@@ -281,7 +362,8 @@ class Inspector extends JGApp {
 
   #reindex() {
     this.#index = buildIndex(this.#passages());
-    this.#vectors = null;
+    const alive = new Set(this.#index.passages.map((passage) => this.#keyOf(passage)));
+    for (const key of [...this.#vecs.keys()]) if (!alive.has(key)) this.#vecs.delete(key);
     this.#drawModels?.();
   }
 
@@ -397,10 +479,17 @@ class Inspector extends JGApp {
       ? this.#docs
           .map((doc) => {
             const count = this.#index.passages.filter((passage) => passage.docId === doc.id).length;
+            const state = this.#readState(doc.id);
+            const mark = { read: 'checkSquare', part: 'clock', unread: 'clock' }[state] ?? 'fileText';
+            const note = {
+              read: t('inspector.readAndSearchable', 'Read, and searched by meaning'),
+              part: t('inspector.partlyRead', 'Only partly read'),
+              unread: t('inspector.notReadYet', 'Not read yet'),
+            }[state];
             return (
-              `<div class="doc" data-doc="${doc.id}">` +
-              `<span class="mark">${icon('fileText', 14)}</span>` +
-              `<span class="what"><b>${doc.name}</b><i>${t('inspector.passageCount', '{count} passages', { count })}</i></span>` +
+              `<div class="doc" data-doc="${doc.id}" data-state="${state}">` +
+              `<span class="mark"${note ? ` title="${note}"` : ''}>${icon(mark, 14)}</span>` +
+              `<span class="what"><b>${doc.name}</b><i>${t('inspector.passageCount', '{count} passages', { count })}${note ? ` · ${note}` : ''}</i></span>` +
               `<button class="drop" data-drop="${doc.id}" title="${t('inspector.remove', 'Remove')}">${icon('eraser', 13)}</button>` +
               '</div>'
             );
@@ -433,22 +522,36 @@ class Inspector extends JGApp {
     }
 
     const limit = Math.max(2, Math.min(10, Number(this.config.get('passages', 5)) || 5));
-    const hits = await this.#find(question, limit);
-
-    if (!hits.length) {
-      this.#addTurn(question, t('inspector.nothingMatched', 'Nothing in these documents mentions that.'), []);
-      this.$('#question').value = '';
-      return;
-    }
 
     this.#busy = true;
     this.$('#halt').hidden = false;
     this.$('#ask').disabled = true;
     this.$('#question').value = '';
 
-    const turn = this.#addTurn(question, '', hits, { pending: true });
+    const turn = this.#addTurn(question, '', [], { pending: true });
     const body = turn.querySelector('.answer');
+    // an answer drawn from a half read shelf should say as much next to itself
+    const waiting = this.#unread().length;
+    if (waiting) {
+      turn.dataset.warn = t('inspector.answeredWithoutReading', 'Answered without {count} unread passages. Read the documents for the rest.', {
+        count: waiting,
+      });
+    }
     this.#stop = new AbortController();
+
+    const hits = await this.#find(question, limit, (message) => {
+      turn.dataset.doing = message;
+    });
+    delete turn.dataset.doing;
+
+    if (!hits.length) {
+      this.#settle(turn, t('inspector.nothingMatched', 'Nothing in these documents mentions that.'), []);
+      this.#busy = false;
+      this.#stop = null;
+      this.$('#halt').hidden = true;
+      this.$('#ask').disabled = false;
+      return;
+    }
 
     try {
       const answer = await ai.chat(buildPrompt(question, hits), {

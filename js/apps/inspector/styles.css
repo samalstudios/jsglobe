@@ -148,3 +148,50 @@
 .vecline { display: flex; align-items: center; gap: 8px; }
 .vecline[hidden] { display: none; }
 .vecline .hint { flex: 1; }
+
+.turn[data-doing]::after {
+  content: attr(data-doing);
+  display: block;
+  font: 400 12px/1.5 var(--font-sans);
+  color: var(--muted-foreground);
+}
+
+
+.doc[data-state='unread'] .mark,
+.doc[data-state='part'] .mark {
+  color: var(--warning, #d08700);
+}
+
+.doc[data-state='read'] .mark {
+  color: var(--success, #3f9142);
+}
+
+.notice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--muted);
+  font: 400 12px/1.4 var(--font-sans);
+  color: var(--muted-foreground);
+}
+
+.notice .mark {
+  display: inline-flex;
+  color: var(--warning, #d08700);
+}
+
+.notice .grow {
+  flex: 1;
+}
+
+.turn[data-warn]::after {
+  content: attr(data-warn);
+  display: block;
+  margin-top: 6px;
+  font: 400 11px/1.5 var(--font-sans);
+  color: var(--warning, #d08700);
+}

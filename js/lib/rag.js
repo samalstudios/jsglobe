@@ -129,24 +129,79 @@ export const cosine = (a, b) => {
   return size ? dot / size : 0;
 };
 
-// where vectors exist, mix the two rankings by where each passage placed rather
-// than by raw scores, which are on different scales
-export const blend = (lexical, vector, { limit = 6, weight = 0.5 } = {}) => {
+// several rankings become one by where each passage placed in each, rather than
+// by raw scores, which are on scales that cannot be compared
+export const fuse = (lists, { limit = 6, weights = [] } = {}) => {
   const places = new Map();
   const seen = new Map();
-  const add = (list, share) => {
-    list.forEach((hit, place) => {
+
+  lists.forEach((list, which) => {
+    const share = weights[which] ?? 1;
+    (list ?? []).forEach((hit, place) => {
       places.set(hit.at, (places.get(hit.at) ?? 0) + share / (place + 60));
-      seen.set(hit.at, { ...(seen.get(hit.at) ?? {}), ...hit });
+      const held = seen.get(hit.at) ?? {};
+      seen.set(hit.at, {
+        ...held,
+        ...hit,
+        matched: [...new Set([...(held.matched ?? []), ...(hit.matched ?? [])])],
+      });
     });
-  };
-  add(lexical, 1 - weight);
-  add(vector, weight);
+  });
 
   return [...places.entries()]
     .sort((a, b) => b[1] - a[1])
     .slice(0, limit)
     .map(([at, score]) => ({ ...seen.get(at), at, score }));
+};
+
+export const blend = (lexical, vector, { limit = 6, weight = 0.5 } = {}) =>
+  fuse([lexical, vector], { limit, weights: [1 - weight, weight] });
+
+// an answer that falls across a boundary is only half in the passage that was
+// found, so the passages either side of a hit come along with it
+export const withNeighbours = (hits, passages, { each = 1, limit = 12 } = {}) => {
+  const out = [];
+  const taken = new Set();
+
+  const take = (at, hit) => {
+    if (at < 0 || at >= passages.length || taken.has(at)) return;
+    taken.add(at);
+    out.push(hit ?? { at, passage: passages[at], score: 0, matched: [], neighbour: true });
+  };
+
+  for (const hit of hits) {
+    take(hit.at, hit);
+    for (let step = 1; step <= each; step += 1) {
+      for (const at of [hit.at - step, hit.at + step]) {
+        if (passages[at]?.docId === hit.passage.docId) take(at);
+      }
+    }
+  }
+
+  return out.slice(0, limit);
+};
+
+// what to search for besides the question itself: a question asks in different
+// words from the ones an answer is written in
+export const ASK_FOR_LEADS = [
+  'You are helping search a document.',
+  'Given a question, write one short sentence that a document would use to answer it, then three or four keywords that would appear near the answer.',
+  'Do not answer the question yourself and do not explain. Reply as: sentence | keyword, keyword, keyword',
+].join(' ');
+
+export const readLeads = (reply, question) => {
+  const text = String(reply ?? '').replace(/^[^:]*:\s*/, '').trim();
+  if (!text) return [];
+  const [sentence, words] = text.split('|');
+  const leads = [];
+  const guess = (sentence ?? '').replace(/^["'\s]+|["'\s]+$/g, '');
+  if (guess && guess.toLowerCase() !== String(question).toLowerCase()) leads.push(guess.slice(0, 300));
+  const keywords = (words ?? '')
+    .split(/[,;]/)
+    .map((word) => word.trim())
+    .filter((word) => word && word.length < 40);
+  if (keywords.length) leads.push(keywords.join(' '));
+  return leads;
 };
 
 export const SYSTEM = [
