@@ -41,6 +41,7 @@ const sheet = css`
   }
   :host([open]) .sheet { display: block; }
   :host([align="right"]) .sheet { left: auto; right: 0; }
+  :host([drop="up"]) .sheet { top: auto; bottom: 34px; }
 
   .entry {
     display: flex;
@@ -142,9 +143,20 @@ class JGSelector extends JGElement {
     this.listen(document, 'click', () => this.#toggle(false));
   }
 
+  // a list that would run off the bottom of the window opens upwards instead
+  #aim() {
+    const box = this.getBoundingClientRect();
+    const sheet = this.$('.sheet');
+    const tall = Math.min(sheet?.scrollHeight || 0, 288) + 40;
+    const below = window.innerHeight - box.bottom;
+    if (below < tall && box.top > below) this.setAttribute('drop', 'up');
+    else this.removeAttribute('drop');
+  }
+
   #toggle(open) {
     if (open) {
       this.setAttribute('open', '');
+      this.#aim();
       this.#here = this.#items.findIndex((item) => String(item.value) === String(this.value));
       this.#mark();
       this.$('.entry[aria-selected="true"]')?.scrollIntoView({ block: 'nearest' });

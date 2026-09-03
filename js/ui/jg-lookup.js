@@ -39,6 +39,7 @@ const sheet = css`
     box-shadow: var(--shadow-md, 0 12px 30px rgba(0, 0, 0, 0.18));
   }
   :host([open]) .sheet { display: block; }
+  :host([drop="up"]) .sheet { top: auto; bottom: 34px; }
 
   .hunt {
     width: 100%;
@@ -183,9 +184,19 @@ class JGLookup extends JGElement {
       : `<div class="none">${t('search.nothing', 'Nothing matches')}</div>`;
   }
 
+  // a list that would run off the bottom of the window opens upwards instead
+  #aim() {
+    const box = this.getBoundingClientRect();
+    const tall = Math.min(this.$('.sheet')?.scrollHeight || 0, 300) + 44;
+    const below = window.innerHeight - box.bottom;
+    if (below < tall && box.top > below) this.setAttribute('drop', 'up');
+    else this.removeAttribute('drop');
+  }
+
   #toggle(open) {
     if (open) {
       this.setAttribute('open', '');
+      this.#aim();
       this.#shown = this.#items;
       this.#here = this.#items.findIndex((item) => String(item.value) === String(this.value));
       this.#paintList();

@@ -2,12 +2,13 @@ import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { icon } from '../../ui/icons.js';
-import { ai } from '../../core/ai.js';
+import { ai, MODELS } from '../../core/ai.js';
+import { settings } from '../../core/settings.js';
 import { toast, pickFiles, copyText } from '../../core/util.js';
 import { readZip } from '../../core/zip.js';
 import { docxToHtml } from '../../lib/docx.js';
 import { markdownToHtml } from '../../lib/richtext.js';
-import { chunkText, buildIndex, searchIndex, buildPrompt, citedIn, bestLine, tokenise } from '../../lib/rag.js';
+import { chunkText, buildIndex, searchIndex, buildPrompt, citedIn, bestLine, tokenise, cosine, blend } from '../../lib/rag.js';
 
 const t = appText(strings);
 
@@ -36,6 +37,9 @@ class Inspector extends JGApp {
   #busy = false;
   #stop = null;
   #pdfjs = null;
+  #vectors = null;
+  #building = false;
+  #buildMessage = null;
 
   renderApp() {
     this.#docs = this.store.read()?.docs ?? [];
@@ -52,6 +56,22 @@ class Inspector extends JGApp {
           <div class="shelffoot">
             <jg-button size="sm" variant="outline" id="add">${icon('upload', 13)}${t('inspector.addFiles', 'Add files')}</jg-button>
             <jg-button size="sm" variant="ghost" id="paste">${t('inspector.pasteText', 'Paste text')}</jg-button>
+          </div>
+
+          <div class="models">
+            <jg-field label="${t('inspector.answersWrittenBy', 'Answers written by')}">
+              <jg-selector id="chatmodel" style="width:100%"></jg-selector>
+            </jg-field>
+            <jg-field label="${t('inspector.passagesFoundBy', 'Passages found by')}">
+              <jg-selector id="finder" style="width:100%"></jg-selector>
+            </jg-field>
+            <jg-field label="${t('inspector.embeddingModel', 'Embedding model')}" id="embedfield" hidden>
+              <jg-selector id="embedmodel" style="width:100%"></jg-selector>
+            </jg-field>
+            <div class="vecline" id="vecline" hidden>
+              <span class="hint" id="vecstate"></span>
+              <jg-button size="sm" variant="outline" id="build">${t('inspector.readTheDocuments', 'Read the documents')}</jg-button>
+            </div>
           </div>
         </aside>
 
@@ -126,9 +146,122 @@ class Inspector extends JGApp {
       this.#takeFiles([...(event.dataTransfer?.files ?? [])]);
     });
 
+    this.#wireModels();
     this.#reindex();
     this.#drawDocs();
     this.#drawThread();
+  }
+
+  #wireModels() {
+    const chat = this.$('#chatmodel');
+    chat.items = MODELS.map((model) => ({ value: model.id, label: model.label, hint: model.size }));
+    chat.value = settings.get('ai.model');
+    this.on(chat, 'change', (event) => settings.set('ai.model', event.detail.value));
+
+    const finder = this.$('#finder');
+    finder.items = [
+      { value: 'words', label: t('inspector.matchingWords', 'Matching words'), hint: t('inspector.noDownload', 'no download') },
+      { value: 'both', label: t('inspector.wordsAndMeaning', 'Words and meaning'), hint: t('inspector.needsAModel', 'needs a model') },
+    ];
+    finder.value = this.config.get('finder', 'words');
+    this.on(finder, 'change', (event) => {
+      this.config.set('finder', event.detail.value);
+      this.#drawModels();
+    });
+
+    const embed = this.$('#embedmodel');
+    embed.items = [{ value: settings.get('ai.embedModel'), label: settings.get('ai.embedModel').replace(/-MLC.*$/, '') }];
+    embed.value = settings.get('ai.embedModel');
+    this.on(embed, 'change', (event) => {
+      settings.set('ai.embedModel', event.detail.value);
+      this.#vectors = null;
+      this.#drawModels();
+    });
+    ai.embedModels().then((models) => {
+      if (!models.length) return;
+      embed.items = models.map((model) => ({ value: model.id, label: model.label, hint: model.size }));
+      embed.value = settings.get('ai.embedModel');
+    });
+
+    this.on(this.$('#build'), 'click', () => this.#buildVectors());
+    this.#drawModels();
+  }
+
+  #usesVectors() {
+    return this.config.get('finder', 'words') === 'both';
+  }
+
+  #drawModels() {
+    const on = this.#usesVectors();
+    this.$('#embedfield').hidden = !on;
+    this.$('#vecline').hidden = !on;
+    if (!on) return;
+
+    const passages = this.#index?.passages.length ?? 0;
+    const ready = this.#vectors?.length === passages && passages > 0;
+    this.$('#vecstate').textContent = this.#building
+      ? this.#buildMessage ?? t('inspector.reading', 'Reading')
+      : ready
+        ? t('inspector.passagesRead', '{count} passages read', { count: passages })
+        : t('inspector.notReadYet', 'Not read yet');
+    this.$('#build').hidden = ready || this.#building;
+  }
+
+  async #buildVectors() {
+    if (this.#building || !this.#index?.passages.length) return;
+    this.#building = true;
+    this.#buildMessage = t('inspector.loadingTheModel', 'Loading the model');
+    this.#drawModels();
+
+    try {
+      const vectors = await ai.embed(
+        this.#index.passages.map((passage) => `${passage.title}\n${passage.text}`),
+        {
+          onProgress: (report) => {
+            this.#buildMessage = report.done
+              ? t('inspector.readSoFar', 'Read {done} of {total}', { done: report.done, total: report.total })
+              : `${report.message ?? ''} ${report.progress ?? 0}%`.trim();
+            this.#drawModels();
+          },
+        },
+      );
+      this.#vectors = vectors;
+      toast(t('inspector.documentsRead', 'The documents are read'));
+    } catch (error) {
+      toast(t('inspector.couldNotRead', 'Could not read {name}', { name: error.message }), 'danger');
+    } finally {
+      this.#building = false;
+      this.#buildMessage = null;
+      this.#drawModels();
+    }
+  }
+
+  // words alone unless the passages have been read into vectors, in which case
+  // the two rankings are mixed
+  async #find(question, limit) {
+    const words = searchIndex(this.#index, question, { limit: limit * 2 });
+    if (!this.#usesVectors() || this.#vectors?.length !== this.#index.passages.length) {
+      return words.slice(0, limit);
+    }
+
+    try {
+      const [asked] = await ai.embed([question]);
+      if (!asked) return words.slice(0, limit);
+      const asWords = new Map(words.map((hit) => [hit.at, hit.matched]));
+      const terms = tokenise(question);
+      const near = this.#vectors
+        .map((vector, at) => ({
+          at,
+          passage: this.#index.passages[at],
+          score: cosine(asked, vector),
+          matched: asWords.get(at) ?? terms,
+        }))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, limit * 2);
+      return blend(words, near, { limit, weight: 0.5 });
+    } catch {
+      return words.slice(0, limit);
+    }
   }
 
   #keep() {
@@ -148,6 +281,8 @@ class Inspector extends JGApp {
 
   #reindex() {
     this.#index = buildIndex(this.#passages());
+    this.#vectors = null;
+    this.#drawModels?.();
   }
 
   async #addFiles() {
@@ -298,7 +433,7 @@ class Inspector extends JGApp {
     }
 
     const limit = Math.max(2, Math.min(10, Number(this.config.get('passages', 5)) || 5));
-    const hits = searchIndex(this.#index, question, { limit });
+    const hits = await this.#find(question, limit);
 
     if (!hits.length) {
       this.#addTurn(question, t('inspector.nothingMatched', 'Nothing in these documents mentions that.'), []);

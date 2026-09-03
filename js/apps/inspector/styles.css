@@ -142,3 +142,9 @@
 .sourcetext p { margin: 0 0 8px; font: 400 12.5px/1.65 var(--font-sans); }
 .sourcetext p:last-child { margin: 0; }
 .sourcetext mark { background: color-mix(in srgb, var(--warning) 40%, transparent); color: inherit; border-radius: 3px; }
+
+.models { display: flex; flex-direction: column; gap: 9px; flex: none; padding-top: 10px; border-top: 1px solid var(--border); }
+.models jg-field { --muted-foreground: var(--muted-foreground); }
+.vecline { display: flex; align-items: center; gap: 8px; }
+.vecline[hidden] { display: none; }
+.vecline .hint { flex: 1; }

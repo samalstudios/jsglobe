@@ -10,6 +10,13 @@ export const MODELS = [
   { id: 'gemma-2-2b-it-q4f16_1-MLC', label: 'Gemma 2 2B', size: '~1.6 GB', note: 'Well rounded assistant' },
 ];
 
+// the models that turn text into vectors, kept apart from the chat models
+// because they load into an engine of their own
+export const EMBED_MODELS = [
+  { id: 'snowflake-arctic-embed-s-q0f32-MLC-b4', label: 'Arctic Embed S', size: '~130 MB', note: 'Small and quick' },
+  { id: 'snowflake-arctic-embed-m-q0f32-MLC-b4', label: 'Arctic Embed M', size: '~440 MB', note: 'Better at long passages' },
+];
+
 const state = {
   status: 'idle',
   progress: 0,
@@ -17,6 +24,9 @@ const state = {
   model: null,
   engine: null,
   loading: null,
+  embedder: null,
+  embedModel: null,
+  embedLoading: null,
 };
 
 const setStatus = (status, patch = {}) => {
@@ -115,6 +125,79 @@ export const ai = {
     setStatus('idle', { progress: 0, message: '', model: null });
   },
 
+  resetEmbedder() {
+    state.embedder = null;
+    state.embedModel = null;
+    state.embedLoading = null;
+  },
+
+  get embedModel() {
+    return settings.get('ai.embedModel');
+  },
+
+  // whichever embedding models the runtime actually carries, falling back to
+  // the ones known here when it will not say
+  async embedModels() {
+    try {
+      const module = await import(/* @vite-ignore */ settings.get('ai.moduleUrl'));
+      const list = module.prebuiltAppConfig?.model_list ?? [];
+      const found = list
+        .filter((entry) => entry.model_type === 2 || /embed/i.test(entry.model_id))
+        .map((entry) => ({ id: entry.model_id, label: entry.model_id.replace(/-MLC.*$/, '').replace(/-q\d.*$/, '') }));
+      return found.length ? found : EMBED_MODELS;
+    } catch {
+      return EMBED_MODELS;
+    }
+  },
+
+  async embedder(onProgress) {
+    const model = ai.embedModel;
+    if (state.embedder && state.embedModel === model) return state.embedder;
+    if (state.embedLoading) return state.embedLoading;
+
+    if (!ai.supportsWebGpu()) throw new Error('This browser has no WebGPU support');
+
+    state.embedLoading = (async () => {
+      const module = await import(/* @vite-ignore */ settings.get('ai.moduleUrl'));
+      const create = module.CreateMLCEngine ?? module.default?.CreateMLCEngine;
+      if (!create) throw new Error('The module at that URL is not WebLLM');
+      const engine = await create(model, {
+        initProgressCallback: (report) => onProgress?.({
+          progress: Math.round((report.progress ?? 0) * 100),
+          message: report.text ?? 'Loading the embedding model',
+        }),
+      });
+      state.embedder = engine;
+      state.embedModel = model;
+      state.embedLoading = null;
+      return engine;
+    })();
+
+    try {
+      return await state.embedLoading;
+    } catch (error) {
+      state.embedLoading = null;
+      throw error;
+    }
+  },
+
+  // vectors for a batch of texts, in the order they were given
+  async embed(texts, { onProgress, signal, batch = 16 } = {}) {
+    const list = [].concat(texts).map((text) => String(text ?? '').slice(0, 2000));
+    if (!list.length) return [];
+    const engine = await ai.embedder(onProgress);
+
+    const out = [];
+    for (let at = 0; at < list.length; at += batch) {
+      if (signal?.aborted) break;
+      const slice = list.slice(at, at + batch);
+      const answer = await engine.embeddings.create({ input: slice });
+      for (const row of answer.data ?? []) out.push(row.embedding);
+      onProgress?.({ done: Math.min(at + batch, list.length), total: list.length, message: 'Reading the documents' });
+    }
+    return out;
+  },
+
   async engine() {
     if (state.engine && state.model === ai.model) return state.engine;
     if (state.loading) return state.loading;
@@ -203,4 +286,5 @@ export const ai = {
 
 bus.on('settings:change', (detail) => {
   if (detail.changed === 'ai.model' || detail.changed === 'ai.provider' || detail.changed === '*') ai.reset();
+  if (detail.changed === 'ai.embedModel' || detail.changed === '*') ai.resetEmbedder();
 });

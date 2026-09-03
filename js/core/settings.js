@@ -30,6 +30,7 @@ export const defaults = {
   'behavior.spotlightHotkey': true,
   'ai.provider': 'webllm',
   'ai.model': 'Llama-3.2-1B-Instruct-q4f32_1-MLC',
+  'ai.embedModel': 'snowflake-arctic-embed-s-q0f32-MLC-b4',
   'ai.moduleUrl': 'https://esm.run/@mlc-ai/web-llm',
   'ai.endpoint': 'http://localhost:11434/v1',
   'ai.apiKey': '',
