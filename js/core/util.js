@@ -62,6 +62,19 @@ export function pickFile(accept = '*/*', asText = true) {
   });
 }
 
+// the files themselves, as many as the person picks, left unread so the caller
+// can decide what each one is
+export function pickFiles(accept = '*/*') {
+  return new Promise((resolve) => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = accept;
+    input.multiple = true;
+    input.onchange = () => resolve([...(input.files ?? [])]);
+    input.click();
+  });
+}
+
 export function debounce(fn, wait = 160) {
   let timer;
   const wrapped = (...args) => {

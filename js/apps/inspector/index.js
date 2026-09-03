@@ -3,7 +3,7 @@ import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { icon } from '../../ui/icons.js';
 import { ai } from '../../core/ai.js';
-import { toast, pickFile, copyText } from '../../core/util.js';
+import { toast, pickFiles, copyText } from '../../core/util.js';
 import { readZip } from '../../core/zip.js';
 import { docxToHtml } from '../../lib/docx.js';
 import { markdownToHtml } from '../../lib/richtext.js';
@@ -13,7 +13,7 @@ const t = appText(strings);
 
 const sheet = await styleSheet(import.meta.url);
 
-const ACCEPTS = '.txt,.md,.markdown,.html,.htm,.json,.csv,.log,.docx';
+const ACCEPTS = '.txt,.md,.markdown,.html,.htm,.json,.csv,.log,.docx,.pdf';
 
 const plainFrom = (markup) => {
   const holder = document.createElement('div');
@@ -27,6 +27,7 @@ class Inspector extends JGApp {
   static settings = [
     { key: 'passages', label: t('inspector.passagesToRead', 'Passages to read for each answer'), type: 'number', default: 5, min: 2, max: 10 },
     { key: 'chunk', label: t('inspector.passageSize', 'Passage size in characters'), type: 'number', default: 900, min: 300, max: 2400 },
+    { key: 'pdfJs', label: t('inspector.pdfReader', 'PDF reader module'), type: 'text', default: 'https://esm.run/pdfjs-dist@4.0.379/build/pdf.min.mjs' },
   ];
   static styles = [...JGApp.styles, sheet];
 
@@ -34,6 +35,7 @@ class Inspector extends JGApp {
   #index = null;
   #busy = false;
   #stop = null;
+  #pdfjs = null;
 
   renderApp() {
     this.#docs = this.store.read()?.docs ?? [];
@@ -61,7 +63,8 @@ class Inspector extends JGApp {
             <jg-button id="ask">${t('inspector.ask', 'Ask')}</jg-button>
             <jg-button id="halt" variant="outline" hidden>${t('inspector.stop', 'Stop')}</jg-button>
           </div>
-          <p class="privacy">${t('inspector.staysHere', 'The documents and the model both stay on this device. Nothing is uploaded.')}</p>
+          <p class="privacy">${t('inspector.staysHere', 'The documents and the model both stay on this device. Nothing is uploaded.')}
+            ${t('inspector.pdfNote', 'A PDF fetches a reader from a CDN the first time, then the reading happens here too.')}</p>
         </div>
       </div>
 
@@ -148,9 +151,7 @@ class Inspector extends JGApp {
   }
 
   async #addFiles() {
-    const picked = await pickFile(ACCEPTS, true);
-    if (!picked) return;
-    await this.#takeFiles(Array.isArray(picked) ? picked : [picked]);
+    await this.#takeFiles(await pickFiles(ACCEPTS));
   }
 
   async #takeFiles(files) {
@@ -174,10 +175,37 @@ class Inspector extends JGApp {
     toast(t('inspector.added', 'Added {count} documents', { count: added }));
   }
 
+  // pdf.js is only fetched when a PDF actually turns up, and only to read the
+  // text layer out of it
+  async #pdf() {
+    if (this.#pdfjs) return this.#pdfjs;
+    const module = await import(/* @vite-ignore */ this.config.get('pdfJs', 'https://esm.run/pdfjs-dist@4.0.379/build/pdf.min.mjs'));
+    const workerUrl = this.config.get('pdfWorker', 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.worker.min.mjs');
+    const source = await fetch(workerUrl).then((response) => response.text());
+    module.GlobalWorkerOptions.workerSrc = URL.createObjectURL(new Blob([source], { type: 'text/javascript' }));
+    this.#pdfjs = module;
+    return module;
+  }
+
+  async #readPdf(data) {
+    const js = await this.#pdf();
+    const bytes = data instanceof Blob ? new Uint8Array(await data.arrayBuffer()) : new Uint8Array(data);
+    const file = await js.getDocument({ data: bytes.slice() }).promise;
+    const pages = [];
+    for (let at = 1; at <= file.numPages; at += 1) {
+      const page = await file.getPage(at);
+      const content = await page.getTextContent();
+      const text = content.items.map((item) => item.str).join(' ').replace(/[ \t]+/g, ' ').trim();
+      if (text) pages.push(text);
+    }
+    return pages.join('\n\n');
+  }
+
   async #readFile(file) {
     const name = (file.name ?? '').toLowerCase();
     const data = file.data ?? file;
 
+    if (name.endsWith('.pdf')) return this.#readPdf(data);
     if (name.endsWith('.docx')) {
       const zip = await readZip(data);
       const xml = await zip.text('word/document.xml');
@@ -250,7 +278,7 @@ class Inspector extends JGApp {
     const host = this.$('#thread');
     if (host.children.length) return;
     host.innerHTML = `<div class="welcome">
-      <span class="mark">${icon('search', 22)}</span>
+      <span class="mark">${icon('inspect', 22)}</span>
       <p>${t('inspector.welcome', 'Add a few documents, then ask a question. The answer cites the passages it came from, and each one opens.')}</p>
     </div>`;
   }
@@ -389,7 +417,7 @@ class Inspector extends JGApp {
   renderWidget() {
     this.paint(html`<div class="app" style="padding:12px">
       <div class="stack tight">
-        <div class="label">${t('inspector.inspector', 'Inspector')}</div>
+        <div class="label">${t('inspector.inspector', 'Inspector AI')}</div>
         <div class="hint">${t('inspector.widgetBlurb', 'Ask questions of your own documents.')}</div>
       </div>
     </div>`);
