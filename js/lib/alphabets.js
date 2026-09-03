@@ -946,6 +946,138 @@ export const nextLetter = (letters, progress, avoid) => {
   return pool[pool.length - 1];
 };
 
+// letters that are easy to mix up, worth studying side by side
+export const LOOK_ALIKES = {
+  greek: [
+    { label: 'Looks like a Latin letter but is not', glyphs: ['Ρ', 'Χ', 'Ν', 'Υ', 'Η', 'Β', 'Ω'] },
+    { label: 'Round with something through it', glyphs: ['Θ', 'Φ', 'Ο', 'Q'] },
+    { label: 'Pointed', glyphs: ['Λ', 'Δ', 'Α'] },
+    { label: 'Zigzag', glyphs: ['Ζ', 'Ξ', 'Σ'] },
+    { label: 'Tails below the line', glyphs: ['γ', 'η', 'μ', 'ρ', 'φ', 'χ', 'ψ'] },
+    { label: 'All said ee', glyphs: ['Η', 'Ι', 'Υ'] },
+  ],
+  russian: [
+    { label: 'Looks like a Latin letter but is not', glyphs: ['В', 'Н', 'Р', 'С', 'У', 'Х'] },
+    { label: 'Combs', glyphs: ['Ш', 'Щ', 'Ц'] },
+    { label: 'The two i letters', glyphs: ['И', 'Й'] },
+    { label: 'The signs and the hard vowel', glyphs: ['Ъ', 'Ь', 'Ы'] },
+    { label: 'Rounded backs', glyphs: ['Э', 'З', 'С', 'О'] },
+    { label: 'Legs and hooks', glyphs: ['Л', 'П', 'Д', 'Г', 'Т'] },
+    { label: 'Hissing sounds', glyphs: ['Ж', 'Ш', 'Щ', 'Ч'] },
+  ],
+  hiragana: [
+    { label: 'a and o', glyphs: ['あ', 'お'] },
+    { label: 'One stroke leaning', glyphs: ['い', 'り', 'こ'] },
+    { label: 'Crossed strokes', glyphs: ['き', 'さ', 'ち'] },
+    { label: 'Vertical with a curl', glyphs: ['し', 'つ', 'そ'] },
+    { label: 'Loops on the right', glyphs: ['ぬ', 'め', 'ね', 'れ', 'わ'] },
+    { label: 'Long stems', glyphs: ['け', 'は', 'ほ', 'ま', 'も'] },
+    { label: 'Curled tails', glyphs: ['る', 'ろ', 'す', 'む'] },
+    { label: 'Similar sweeps', glyphs: ['う', 'つ', 'ら'] },
+  ],
+  katakana: [
+    { label: 'The famous four', glyphs: ['ソ', 'ン', 'シ', 'ツ'] },
+    { label: 'Hooked corners', glyphs: ['ク', 'ワ', 'ケ'] },
+    { label: 'Boxes', glyphs: ['ロ', 'ヨ', 'コ'] },
+    { label: 'Crossbars', glyphs: ['チ', 'テ', 'ナ'] },
+    { label: 'Diagonals', glyphs: ['ノ', 'メ', 'ヌ', 'ス'] },
+    { label: 'Three legs', glyphs: ['マ', 'ム', 'ア'] },
+    { label: 'Uprights', glyphs: ['オ', 'ホ', 'ネ'] },
+    { label: 'Short and slanted', glyphs: ['レ', 'リ'] },
+  ],
+  consonants: [
+    { label: 'Plain, tense and breathy: g', glyphs: ['ㄱ', 'ㄲ', 'ㅋ'] },
+    { label: 'Plain, tense and breathy: d', glyphs: ['ㄷ', 'ㄸ', 'ㅌ'] },
+    { label: 'Plain, tense and breathy: b', glyphs: ['ㅂ', 'ㅃ', 'ㅍ'] },
+    { label: 'Plain and tense: s', glyphs: ['ㅅ', 'ㅆ'] },
+    { label: 'Plain, tense and breathy: j', glyphs: ['ㅈ', 'ㅉ', 'ㅊ'] },
+    { label: 'Easy to mix up', glyphs: ['ㅇ', 'ㅎ'] },
+    { label: 'Easy to mix up', glyphs: ['ㄴ', 'ㄹ', 'ㅁ'] },
+  ],
+  vowels: [
+    { label: 'Add a stroke for the y sound', glyphs: ['ㅏ', 'ㅑ'] },
+    { label: 'Add a stroke for the y sound', glyphs: ['ㅓ', 'ㅕ'] },
+    { label: 'Add a stroke for the y sound', glyphs: ['ㅗ', 'ㅛ'] },
+    { label: 'Add a stroke for the y sound', glyphs: ['ㅜ', 'ㅠ'] },
+    { label: 'The e sounds', glyphs: ['ㅐ', 'ㅔ', 'ㅒ', 'ㅖ'] },
+    { label: 'Built with w', glyphs: ['ㅘ', 'ㅙ', 'ㅚ', 'ㅝ', 'ㅞ', 'ㅟ'] },
+    { label: 'The two flat ones', glyphs: ['ㅡ', 'ㅢ', 'ㅣ'] },
+  ],
+  bopomofo: [
+    { label: 'Lips', glyphs: ['ㄅ', 'ㄆ', 'ㄇ', 'ㄈ'] },
+    { label: 'Tongue tip', glyphs: ['ㄉ', 'ㄊ', 'ㄋ', 'ㄌ'] },
+    { label: 'Back of the mouth', glyphs: ['ㄍ', 'ㄎ', 'ㄏ'] },
+    { label: 'Said forward', glyphs: ['ㄐ', 'ㄑ', 'ㄒ'] },
+    { label: 'Tongue curled back', glyphs: ['ㄓ', 'ㄔ', 'ㄕ', 'ㄖ'] },
+    { label: 'Whistled', glyphs: ['ㄗ', 'ㄘ', 'ㄙ'] },
+    { label: 'Easy to mix up', glyphs: ['ㄈ', 'ㄏ', 'ㄋ', 'ㄣ'] },
+    { label: 'Endings with n and ng', glyphs: ['ㄢ', 'ㄣ', 'ㄤ', 'ㄥ'] },
+  ],
+  radicals: [
+    { label: 'Sun, say and eye', glyphs: ['日', '曰', '目'] },
+    { label: 'Earth and scholar', glyphs: ['土', '士'] },
+    { label: 'Person, enter and eight', glyphs: ['人', '入', '八'] },
+    { label: 'Big and dog', glyphs: ['大', '犬'] },
+    { label: 'Tree and rice', glyphs: ['木', '米'] },
+    { label: 'Field and armour', glyphs: ['田', '由'] },
+    { label: 'White and self', glyphs: ['白', '自'] },
+    { label: 'Knife and power', glyphs: ['刀', '力'] },
+    { label: 'King and jade', glyphs: ['王', '玉'] },
+    { label: 'Water and ice', glyphs: ['水', '冫'] },
+    { label: 'Hand and hairpin', glyphs: ['手', '毛'] },
+    { label: 'Grass and bamboo', glyphs: ['艸', '竹'] },
+    { label: 'Heart and door', glyphs: ['心', '戶'] },
+    { label: 'Foot and run', glyphs: ['足', '走'] },
+  ],
+  common: [
+    { label: 'Sun, say and moon', glyphs: ['日', '曰', '月'] },
+    { label: 'Big, sky and too', glyphs: ['大', '天', '太'] },
+    { label: 'Tree, root and not yet', glyphs: ['木', '本', '未'] },
+    { label: 'Earth and scholar', glyphs: ['土', '士'] },
+    { label: 'Person, enter and eight', glyphs: ['人', '入', '八'] },
+    { label: 'Thousand and dry', glyphs: ['千', '干'] },
+    { label: 'Above and below', glyphs: ['上', '下'] },
+    { label: 'Middle and to produce', glyphs: ['中', '生'] },
+    { label: 'Left and right hands', glyphs: ['手', '又'] },
+    { label: 'The look alike pronouns', glyphs: ['他', '地', '也'] },
+    { label: 'Water and eternal', glyphs: ['水', '永'] },
+    { label: 'Mouth and enclosure', glyphs: ['口', '田'] },
+  ],
+};
+
+// letters said alike belong together: the vowels in one band, everything else
+// under the consonant it starts with
+export const soundBands = (letters) => {
+  const bands = new Map();
+  for (const letter of letters) {
+    const key = (letter.latin || letter.name || '').replace(/[^a-zA-Z]/g, '').toLowerCase();
+    const head = !key ? '—' : /^[aeiou]+$/.test(key) ? 'vowels' : key.replace(/[aeiou].*$/, '') || key;
+    const band = bands.get(head) ?? [];
+    band.push(letter);
+    bands.set(head, band);
+  }
+  return [...bands.entries()]
+    .sort((a, b) => (a[0] === 'vowels' ? -1 : b[0] === 'vowels' ? 1 : a[0].localeCompare(b[0])))
+    .map(([label, band]) => ({ label, letters: band }));
+};
+
+export const lookBands = (setId, letters) => {
+  const bands = LOOK_ALIKES[setId] ?? [];
+  const taken = new Set();
+  const out = [];
+
+  for (const band of bands) {
+    const found = band.glyphs.map((glyph) => letters.find((letter) => letter.glyph === glyph)).filter(Boolean);
+    if (found.length < 2) continue;
+    for (const letter of found) taken.add(letter.glyph);
+    out.push({ label: band.label, letters: found });
+  }
+
+  const rest = letters.filter((letter) => !taken.has(letter.glyph));
+  if (rest.length) out.push({ label: '', letters: rest, rest: true });
+  return out;
+};
+
 export const scoreOf = (letters, progress) => {
   let learned = 0;
   let started = 0;

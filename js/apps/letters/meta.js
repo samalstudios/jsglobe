@@ -8,7 +8,7 @@ export default {
   tint: "#0ea5e9",
   keywords: ["alphabet","letters","greek","cyrillic","russian","japanese","hiragana","katakana","korean","hangul","chinese","bopomofo","learn","flashcards"],
   tag: "jg-app-letters",
-  window: { width: 1040, height: 840 },
+  window: { width: 1040, height: 840, maximized: true },
   i18n: {
     de: { name: 'Buchstaben', tagline: 'Griechische, kyrillische, japanische, koreanische und chinesische Zeichen lernen' },
     es: { name: 'Letras', tagline: 'Aprende las letras griegas, cirílicas, japonesas, coreanas y chinas' },

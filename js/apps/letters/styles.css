@@ -274,3 +274,27 @@
   width: min(680px, 100%);
 }
 .detail[data-full] .fact b { font-size: 15px; }
+
+.groups { display: flex; gap: 2px; }
+.groups .set[aria-pressed="true"] { background: var(--muted); color: var(--foreground); }
+
+.band { display: flex; align-items: center; gap: 10px; margin: 16px 0 8px; }
+.band:first-of-type { margin-top: 4px; }
+.bandname {
+  font: 600 10px/1 var(--font-sans);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+.bandline { flex: 1; height: 1px; background: var(--border); }
+
+.voice {
+  margin: 0;
+  padding: 7px 11px;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, #f59e0b 14%, transparent);
+  color: #92400e;
+  font: 500 11.5px/1.4 var(--font-sans);
+}
+.voice[hidden] { display: none; }

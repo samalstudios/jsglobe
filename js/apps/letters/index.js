@@ -5,6 +5,7 @@ import { icon } from '../../ui/icons.js';
 import { toast } from '../../core/util.js';
 import {
   SCRIPTS, scriptById, setById, letterKey, choicesFor, nextLetter, scoreOf, strengthOf, LEARNED_AT,
+  lookBands, soundBands,
 } from '../../lib/alphabets.js';
 
 const t = appText(strings);
@@ -39,6 +40,7 @@ class Letters extends JGApp {
   #answered = false;
   #run = { right: 0, wrong: 0, streak: 0, best: 0 };
   #size = 34;
+  #group = 'order';
 
   renderApp() {
     const saved = this.store.read();
@@ -46,6 +48,7 @@ class Letters extends JGApp {
     this.#set = saved?.set ?? scriptById(this.#script).sets[0].id;
     this.#progress = saved?.progress ?? {};
     this.#size = Number(saved?.size) || 34;
+    this.#group = saved?.group ?? 'order';
 
     this.paint(html`<div class="app">
       <div class="bar">
@@ -65,6 +68,12 @@ class Letters extends JGApp {
       <div class="bar thin">
         <div class="sets" id="sets"></div>
         <span class="grow"></span>
+        <div class="groups" id="groups">
+          <button class="set" data-group="order">${t('letters.inOrder', 'In order')}</button>
+          <button class="set" data-group="look">${t('letters.lookAlike', 'Look alike')}</button>
+          <button class="set" data-group="sound">${t('letters.soundAlike', 'Sound alike')}</button>
+          <button class="set" data-group="progress">${t('letters.byProgress', 'By progress')}</button>
+        </div>
         <label class="sizer" title="${t('letters.letterSize', 'Letter size')}">
           ${icon('type', 13)}
           <input type="range" id="size" min="22" max="90" value="${this.#size}">
@@ -72,6 +81,8 @@ class Letters extends JGApp {
         <span class="tally" id="tally"></span>
         <button class="tool" id="forget" title="${t('letters.forgetThisSet', 'Forget what this set has learned')}">${icon('eraser', 14)}</button>
       </div>
+
+      <p class="voice" id="voice" hidden></p>
 
       <div class="chart" id="chart"></div>
 
@@ -112,6 +123,7 @@ class Letters extends JGApp {
       this.#drawScripts();
       this.#drawSets();
       this.#drawChart();
+      this.#drawVoiceNote();
       if (this.#view === 'practice') this.#askOne();
     });
 
@@ -132,7 +144,9 @@ class Letters extends JGApp {
 
     this.on(this.$('#chart'), 'click', (event) => {
       const cell = event.target.closest('[data-glyph]');
-      if (cell) this.#showDetail(cell.dataset.glyph);
+      if (!cell) return;
+      this.#showDetail(cell.dataset.glyph);
+      this.#sayLetter(cell.dataset.glyph);
     });
 
     this.on(this.$('#choices'), 'click', (event) => {
@@ -156,6 +170,14 @@ class Letters extends JGApp {
     });
 
     this.on(this.$('#forget'), 'click', () => this.#forget());
+
+    this.on(this.$('#groups'), 'click', (event) => {
+      const button = event.target.closest('[data-group]');
+      if (!button) return;
+      this.#group = button.dataset.group;
+      this.#keep();
+      this.#drawChart();
+    });
 
     this.on(this.$('#size'), 'input', () => {
       this.#size = Number(this.$('#size').value);
@@ -192,6 +214,8 @@ class Letters extends JGApp {
     this.#drawScripts();
     this.#drawSets();
     this.#drawChart();
+    this.#watchVoices();
+    this.#drawVoiceNote();
   }
 
   #letters() {
@@ -199,21 +223,79 @@ class Letters extends JGApp {
   }
 
   #keep() {
-    this.store.write({ script: this.#script, set: this.#set, progress: this.#progress, size: this.#size });
+    this.store.write({
+      script: this.#script,
+      set: this.#set,
+      progress: this.#progress,
+      size: this.#size,
+      group: this.#group,
+    });
   }
 
-  // the voices come with the device, so nothing is asked of the network
+  // the voices come with the device, so nothing is asked of the network. Asking
+  // for a language the device has no voice for reads it in English instead,
+  // which teaches the wrong sound, so nothing is said unless a voice matches
+  #voiceFor(tag) {
+    const voices = window.speechSynthesis?.getVoices?.() ?? [];
+    if (!voices.length || !tag) return null;
+    const want = tag.toLowerCase();
+    const base = want.split('-')[0];
+    const same = (voice) => voice.lang.toLowerCase().replace('_', '-');
+    return (
+      voices.find((voice) => same(voice) === want && voice.localService) ??
+      voices.find((voice) => same(voice) === want) ??
+      voices.find((voice) => same(voice).split('-')[0] === base && voice.localService) ??
+      voices.find((voice) => same(voice).split('-')[0] === base) ??
+      null
+    );
+  }
+
   #speak(text) {
-    if (!text || !window.speechSynthesis) return;
+    const tag = scriptById(this.#script).speech;
+    const voice = this.#voiceFor(tag);
+    if (!text || !voice) return;
     const said = new SpeechSynthesisUtterance(text);
-    said.lang = scriptById(this.#script).speech ?? 'en-GB';
-    said.rate = 0.85;
+    said.voice = voice;
+    said.lang = voice.lang;
+    said.rate = 0.8;
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(said);
   }
 
   #canSpeak() {
-    return Boolean(window.speechSynthesis);
+    return Boolean(this.#voiceFor(scriptById(this.#script).speech));
+  }
+
+  #watchVoices() {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.getVoices();
+    this.listen(window.speechSynthesis, 'voiceschanged', () => {
+      this.#drawChart();
+      this.#drawVoiceNote();
+    });
+  }
+
+  #drawVoiceNote() {
+    const note = this.$('#voice');
+    if (!note) return;
+    const script = scriptById(this.#script);
+    const voice = this.#voiceFor(script.speech);
+    note.hidden = Boolean(voice);
+    note.textContent = voice
+      ? ''
+      : t('letters.noVoiceHere', 'This device has no {language} voice, so nothing is read aloud', {
+          language: SCRIPT_NAME[script.id]?.() ?? script.name,
+        });
+  }
+
+  // a letter on its own often has no sound a voice can say, so fall back to the
+  // word that shows it at work
+  #sayLetter(glyph) {
+    const letter = this.#letters().find((entry) => entry.glyph === glyph);
+    if (!letter) return;
+    const set = setById(this.#script, this.#set);
+    const alone = set.cased || this.#script === 'japanese' || this.#script === 'korean';
+    this.#speak(alone ? letter.glyph : letter.example?.word ?? letter.glyph);
   }
 
   #drawScripts() {
@@ -243,18 +325,40 @@ class Letters extends JGApp {
     });
   }
 
+  #bands() {
+    const set = setById(this.#script, this.#set);
+    const letters = set.letters;
+
+    if (this.#group === 'look') return lookBands(this.#set, letters);
+    if (this.#group === 'sound') return soundBands(letters);
+    if (this.#group === 'progress') {
+      const bands = [
+        { label: t('letters.learned', 'Learned'), letters: [] },
+        { label: t('letters.gettingThere', 'Getting there'), letters: [] },
+        { label: t('letters.notStarted', 'Not started'), letters: [] },
+      ];
+      for (const letter of letters) {
+        const record = this.#progress[letterKey(letter)];
+        const at = !record?.seen ? 2 : (record.streak ?? 0) >= LEARNED_AT ? 0 : 1;
+        bands[at].letters.push(letter);
+      }
+      return bands.filter((band) => band.letters.length);
+    }
+    return [{ label: '', letters, rest: true }];
+  }
+
   #drawChart() {
     const host = this.$('#chart');
     const script = scriptById(this.#script);
     const set = setById(this.#script, this.#set);
 
-    host.innerHTML =
-      `<p class="note">${script.note}</p>` +
-      '<div class="grid">' +
-      set.letters
-        .map((letter) => {
-          const strength = strengthOf(this.#progress[letterKey(letter)]);
-          return (
+    for (const button of this.$$('[data-group]')) {
+      button.setAttribute('aria-pressed', String(button.dataset.group === this.#group));
+    }
+
+    const cellFor = (letter) => {
+      const strength = strengthOf(this.#progress[letterKey(letter)]);
+      return (
             `<button class="cell" data-glyph="${letter.glyph}" style="--strength:${strength}">` +
             `<span class="glyph">${letter.glyph}${set.cased && letter.pair ? `<i>${letter.pair}</i>` : ''}</span>` +
             `<span class="name">${letter.name}</span>` +
@@ -265,9 +369,18 @@ class Letters extends JGApp {
             '<span class="meter"></span>' +
             '</button>'
           );
+        };
+
+    host.innerHTML =
+      `<p class="note">${script.note}</p>` +
+      this.#bands()
+        .map((band) => {
+          const head = band.label
+            ? `<div class="band"><span class="bandname">${band.label}</span><span class="bandline"></span></div>`
+            : '';
+          return `${head}<div class="grid">${band.letters.map(cellFor).join('')}</div>`;
         })
-        .join('') +
-      '</div>';
+        .join('');
     this.#drawTally();
   }
 
