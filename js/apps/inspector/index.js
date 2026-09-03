@@ -173,7 +173,7 @@ class Inspector extends JGApp {
       { value: 'words', label: t('inspector.matchingWords', 'Matching words'), hint: t('inspector.noDownload', 'no download') },
       { value: 'both', label: t('inspector.wordsAndMeaning', 'Words and meaning'), hint: t('inspector.needsAModel', 'needs a model') },
     ];
-    finder.value = this.config.get('finder', 'words');
+    finder.value = this.config.get('finder', 'both');
     this.on(finder, 'change', (event) => {
       this.config.set('finder', event.detail.value);
       this.#drawModels();
@@ -199,7 +199,7 @@ class Inspector extends JGApp {
   }
 
   #usesVectors() {
-    return this.config.get('finder', 'words') === 'both';
+    return this.config.get('finder', 'both') === 'both';
   }
 
   // a passage is the same passage as long as its document, its place in that
