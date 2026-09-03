@@ -123,6 +123,7 @@ import coin_flipper from './coin-flipper/meta.js';
 import dice_roller from './dice-roller/meta.js';
 import doc_editor from './doc-editor/meta.js';
 import gitignore_generator from './gitignore-generator/meta.js';
+import inspector from './inspector/meta.js';
 import letters from './letters/meta.js';
 import optics_lab from './optics-lab/meta.js';
 import scanner from './scanner/meta.js';
@@ -257,6 +258,7 @@ export const catalog = [
   dice_roller,
   doc_editor,
   gitignore_generator,
+  inspector,
   letters,
   optics_lab,
   scanner,

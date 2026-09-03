@@ -46,6 +46,7 @@ export * as gitignore from './lib/gitignore.js';
 export * as caret from './lib/caret.js';
 export * as alphabets from './lib/alphabets.js';
 export * as httpStatus from './lib/http-status.js';
+export * as rag from './lib/rag.js';
 export * as qr from './lib/qr.js';
 export * as qrDecode from './lib/qr-decode.js';
 export * as barcode from './lib/barcode.js';
@@ -99,6 +100,7 @@ export const SURFACE = {
   caret: 'Move the caret about inside anything people can type in: mark it, put it back, reach a word, wrap a selection.',
   alphabets: 'The Greek, Cyrillic, Japanese and Chinese letters, with the sounds they stand for and a way to pick what to practise next.',
   httpStatus: 'Every HTTP status with what it means, when to reach for it and the ones it gets confused with.',
+  rag: 'Break documents into passages, find the ones that answer a question, and build the prompt that cites them.',
   qr: 'QR codes as matrices, ready to draw.',
   qrDecode: 'Read a QR code from a picture, repairing damage as a scanner does.',
   barcode: 'Draw and read the common bar codes: EAN, UPC, Code 128, Code 39 and ITF.',
