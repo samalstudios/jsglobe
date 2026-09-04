@@ -21,19 +21,27 @@ export default {
     'chmod-calculator.presets': '预设',
   },
   fr: {
+    'chmod-calculator.permissions': 'Permissions',
     'chmod-calculator.command': 'Commande',
     'chmod-calculator.fromOctal': 'Depuis l\'octal',
+    'chmod-calculator.presets': 'Préréglages',
   },
   pt: {
+    'chmod-calculator.permissions': 'Permissões',
     'chmod-calculator.command': 'Comando',
     'chmod-calculator.fromOctal': 'A partir do octal',
+    'chmod-calculator.presets': 'Predefinições',
   },
   ja: {
+    'chmod-calculator.permissions': '権限',
     'chmod-calculator.command': 'コマンド',
     'chmod-calculator.fromOctal': '8 進から',
+    'chmod-calculator.presets': 'プリセット',
   },
   ko: {
+    'chmod-calculator.permissions': '권한',
     'chmod-calculator.command': '명령',
     'chmod-calculator.fromOctal': '8진에서',
+    'chmod-calculator.presets': '프리셋',
   },
 };

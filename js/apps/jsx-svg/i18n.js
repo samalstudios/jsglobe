@@ -33,24 +33,28 @@ export default {
     'jsx-svg.componentName': 'Nom du composant',
     'jsx-svg.copyResult': 'Copier le résultat',
     'jsx-svg.jsxComponent': 'Composant JSX',
+    'jsx-svg.pasteAReactSvgComponent': 'Collez un composant SVG React',
     'jsx-svg.jsxToSvg': 'JSX vers SVG',
   },
   pt: {
     'jsx-svg.componentName': 'Nome do componente',
     'jsx-svg.copyResult': 'Copiar o resultado',
     'jsx-svg.jsxComponent': 'Componente JSX',
+    'jsx-svg.pasteAReactSvgComponent': 'Cole um componente SVG React',
     'jsx-svg.jsxToSvg': 'JSX para SVG',
   },
   ja: {
     'jsx-svg.componentName': 'コンポーネント名',
     'jsx-svg.copyResult': '結果をコピー',
     'jsx-svg.jsxComponent': 'JSX コンポーネント',
+    'jsx-svg.pasteAReactSvgComponent': 'React の SVG コンポーネントを貼り付け',
     'jsx-svg.jsxToSvg': 'JSX から SVG へ',
   },
   ko: {
     'jsx-svg.componentName': '컴포넌트 이름',
     'jsx-svg.copyResult': '결과 복사',
     'jsx-svg.jsxComponent': 'JSX 컴포넌트',
+    'jsx-svg.pasteAReactSvgComponent': 'React SVG 컴포넌트를 붙여넣으세요',
     'jsx-svg.jsxToSvg': 'JSX에서 SVG로',
   },
 };

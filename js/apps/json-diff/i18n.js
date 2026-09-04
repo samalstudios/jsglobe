@@ -26,21 +26,33 @@ export default {
   fr: {
     'json-diff.original': 'Original',
     'json-diff.changed': 'Modifié',
+    'json-diff.loadSample': 'Charger un exemple',
     'json-diff.ignoreArrayOrder': 'Ignorer l\'ordre des tableaux',
+    'json-diff.pasteJsonOnBothSides': 'Collez du JSON des deux côtés.',
+    'json-diff.noDifferencesFound': 'Aucune différence trouvée.',
   },
   pt: {
     'json-diff.original': 'Original',
     'json-diff.changed': 'Alterado',
+    'json-diff.loadSample': 'Carregar exemplo',
     'json-diff.ignoreArrayOrder': 'Ignorar a ordem dos arrays',
+    'json-diff.pasteJsonOnBothSides': 'Cole JSON dos dois lados.',
+    'json-diff.noDifferencesFound': 'Nenhuma diferença encontrada.',
   },
   ja: {
     'json-diff.original': 'Original',
     'json-diff.changed': '変更',
+    'json-diff.loadSample': 'サンプルを読み込む',
     'json-diff.ignoreArrayOrder': '配列の順序を無視',
+    'json-diff.pasteJsonOnBothSides': '両側に JSON を貼り付けてください。',
+    'json-diff.noDifferencesFound': '違いは見つかりませんでした。',
   },
   ko: {
     'json-diff.original': 'Original',
     'json-diff.changed': '바뀜',
+    'json-diff.loadSample': '예시 불러오기',
     'json-diff.ignoreArrayOrder': '배열 순서 무시',
+    'json-diff.pasteJsonOnBothSides': '양쪽에 JSON을 붙여넣으세요.',
+    'json-diff.noDifferencesFound': '다른 곳을 찾지 못했습니다.',
   },
 };

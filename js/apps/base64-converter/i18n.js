@@ -46,6 +46,7 @@ export default {
   },
   fr: {
     'base64.fileToBase64': 'Fichier → Base64',
+    'base64.plainText': 'Texte brut',
     'base64.base64ToDecode': 'Base64 à décoder',
     'base64.chooseFile': 'Choisir un fichier...',
     'base64.filesStay': 'Les fichiers ne quittent jamais votre navigateur.',
@@ -55,6 +56,7 @@ export default {
   },
   pt: {
     'base64.fileToBase64': 'Arquivo → Base64',
+    'base64.plainText': 'Texto simples',
     'base64.base64ToDecode': 'Base64 a decodificar',
     'base64.chooseFile': 'Escolher um arquivo...',
     'base64.filesStay': 'Os arquivos nunca saem do seu navegador.',
@@ -64,6 +66,7 @@ export default {
   },
   ja: {
     'base64.fileToBase64': 'ファイル → Base64',
+    'base64.plainText': 'プレーンテキスト',
     'base64.base64ToDecode': '復号する Base64',
     'base64.chooseFile': 'ファイルを選ぶ...',
     'base64.filesStay': 'ファイルがブラウザを出ることはありません。',
@@ -73,6 +76,7 @@ export default {
   },
   ko: {
     'base64.fileToBase64': '파일 → Base64',
+    'base64.plainText': '일반 텍스트',
     'base64.base64ToDecode': '디코딩할 Base64',
     'base64.chooseFile': '파일 고르기...',
     'base64.filesStay': '파일은 브라우저를 벗어나지 않습니다.',

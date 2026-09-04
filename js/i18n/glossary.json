@@ -7162,87 +7162,155 @@
  "Load a backdrop first.": {
   "de": "Zuerst ein Hintergrundbild laden.",
   "es": "Carga primero un fondo.",
-  "zh": "请先加载背景图。"
+  "zh": "请先加载背景图。",
+  "fr": "Chargez d'abord un arrière-plan.",
+  "pt": "Carregue um fundo primeiro.",
+  "ja": "先に背景を読み込んでください。",
+  "ko": "먼저 배경을 불러오세요."
  },
  "Load a sample": {
   "de": "Ein Beispiel laden",
   "es": "Cargar un ejemplo",
-  "zh": "加载示例"
+  "zh": "加载示例",
+  "fr": "Charger un exemple",
+  "pt": "Carregar um exemplo",
+  "ja": "サンプルを読み込む",
+  "ko": "예시 불러오기"
  },
  "Load beat": {
   "de": "Beat laden",
   "es": "Cargar ritmo",
-  "zh": "加载节奏"
+  "zh": "加载节奏",
+  "fr": "Charger un rythme",
+  "pt": "Carregar batida",
+  "ja": "ビートを読み込む",
+  "ko": "비트 불러오기"
  },
  "Load sample": {
   "de": "Beispiel laden",
   "es": "Cargar ejemplo",
-  "zh": "加载示例"
+  "zh": "加载示例",
+  "fr": "Charger un exemple",
+  "pt": "Carregar exemplo",
+  "ja": "サンプルを読み込む",
+  "ko": "예시 불러오기"
  },
  "Loading rates": {
   "de": "Kurse werden geladen",
   "es": "Cargando los tipos de cambio",
-  "zh": "正在加载汇率"
+  "zh": "正在加载汇率",
+  "fr": "Chargement des taux",
+  "pt": "Carregando as taxas",
+  "ja": "レートを読み込み中",
+  "ko": "환율을 불러오는 중"
  },
  "Local": {
   "de": "Lokal",
   "es": "Local",
-  "zh": "本地"
+  "zh": "本地",
+  "fr": "Local",
+  "pt": "Local",
+  "ja": "ローカル",
+  "ko": "로컬"
  },
  "Local AI": {
   "de": "Lokale KI",
   "es": "IA local",
-  "zh": "本地 AI"
+  "zh": "本地 AI",
+  "fr": "IA locale",
+  "pt": "IA local",
+  "ja": "ローカル AI",
+  "ko": "로컬 AI"
  },
  "Local only - nothing is uploaded": {
   "de": "Nur lokal - nichts wird hochgeladen",
   "es": "Solo local: no se sube nada",
-  "zh": "仅本地，不上传任何内容"
+  "zh": "仅本地，不上传任何内容",
+  "fr": "Local uniquement - rien n'est envoyé",
+  "pt": "Somente local - nada é enviado",
+  "ja": "ローカルのみ - 何も送信しません",
+  "ko": "기기 안에서만 - 아무것도 보내지 않습니다"
  },
  "Local server (OpenAI API)": {
   "de": "Lokaler Server (OpenAI-API)",
   "es": "Servidor local (API de OpenAI)",
-  "zh": "本地服务器（OpenAI API）"
+  "zh": "本地服务器（OpenAI API）",
+  "fr": "Serveur local (API OpenAI)",
+  "pt": "Servidor local (API OpenAI)",
+  "ja": "ローカルサーバー (OpenAI API)",
+  "ko": "로컬 서버 (OpenAI API)"
  },
  "Local storage": {
   "de": "Lokaler Speicher",
   "es": "Almacenamiento local",
-  "zh": "本地存储"
+  "zh": "本地存储",
+  "fr": "Stockage local",
+  "pt": "Armazenamento local",
+  "ja": "ローカルストレージ",
+  "ko": "로컬 저장소"
  },
  "Locale": {
   "de": "Gebietsschema",
   "es": "Configuración regional",
-  "zh": "区域设置"
+  "zh": "区域设置",
+  "fr": "Paramètres régionaux",
+  "pt": "Localidade",
+  "ja": "ロケール",
+  "ko": "로캘"
  },
  "Location": {
   "de": "Ort",
   "es": "Ubicación",
-  "zh": "位置"
+  "zh": "位置",
+  "fr": "Lieu",
+  "pt": "Local",
+  "ja": "場所",
+  "ko": "장소"
  },
  "Locks and pending operations reported by the registry": {
   "de": "Sperren und offene Vorgänge laut Registry",
   "es": "Bloqueos y operaciones pendientes informados por el registro",
-  "zh": "注册局报告的锁定与待处理操作"
+  "zh": "注册局报告的锁定与待处理操作",
+  "fr": "Verrous et opérations en attente signalés par le registre",
+  "pt": "Bloqueios e operações pendentes informados pelo registro",
+  "ja": "レジストリが報告するロックと保留中の操作",
+  "ko": "레지스트리가 알린 잠금과 대기 중인 작업"
  },
  "Logic 0": {
   "de": "Logisch 0",
   "es": "Lógico 0",
-  "zh": "逻辑 0"
+  "zh": "逻辑 0",
+  "fr": "Niveau logique 0",
+  "pt": "Lógico 0",
+  "ja": "論理 0",
+  "ko": "논리 0"
  },
  "Logic 1": {
   "de": "Logisch 1",
   "es": "Lógico 1",
-  "zh": "逻辑 1"
+  "zh": "逻辑 1",
+  "fr": "Niveau logique 1",
+  "pt": "Lógico 1",
+  "ja": "論理 1",
+  "ko": "논리 1"
  },
  "Logic Lab": {
   "de": "Logiklabor",
   "es": "Laboratorio de lógica",
-  "zh": "逻辑实验室"
+  "zh": "逻辑实验室",
+  "fr": "Labo logique",
+  "pt": "Laboratório de lógica",
+  "ja": "ロジックラボ",
+  "ko": "논리 실험실"
  },
  "Long": {
   "de": "Lang",
   "es": "Largo",
-  "zh": "长"
+  "zh": "长",
+  "fr": "Long",
+  "pt": "Longo",
+  "ja": "長い",
+  "ko": "길게"
  },
  "Longest": {
   "de": "Längste",
@@ -7252,32 +7320,56 @@
  "Longest word": {
   "de": "Längstes Wort",
   "es": "Palabra más larga",
-  "zh": "最长的词"
+  "zh": "最长的词",
+  "fr": "Mot le plus long",
+  "pt": "Palavra mais longa",
+  "ja": "最も長い語",
+  "ko": "가장 긴 낱말"
  },
  "Longitude": {
   "de": "Längengrad",
   "es": "Longitud",
-  "zh": "经度"
+  "zh": "经度",
+  "fr": "Longitude",
+  "pt": "Longitude",
+  "ja": "経度",
+  "ko": "경도"
  },
  "Look up": {
   "de": "Abfragen",
   "es": "Consultar",
-  "zh": "查询"
+  "zh": "查询",
+  "fr": "Rechercher",
+  "pt": "Consultar",
+  "ja": "照会",
+  "ko": "조회"
  },
  "Lower is better quality": {
   "de": "Niedriger heißt bessere Qualität",
   "es": "Cuanto más bajo, mejor calidad",
-  "zh": "数值越低质量越好"
+  "zh": "数值越低质量越好",
+  "fr": "Plus bas signifie meilleure qualité",
+  "pt": "Menor significa melhor qualidade",
+  "ja": "小さいほど高品質",
+  "ko": "낮을수록 품질이 좋습니다"
  },
  "Lowercase": {
   "de": "Kleinbuchstaben",
   "es": "Minúsculas",
-  "zh": "小写"
+  "zh": "小写",
+  "fr": "Minuscules",
+  "pt": "Minúsculas",
+  "ja": "小文字",
+  "ko": "소문자"
  },
  "MIDI input": {
   "de": "MIDI-Eingang",
   "es": "Entrada MIDI",
-  "zh": "MIDI 输入"
+  "zh": "MIDI 输入",
+  "fr": "Entrée MIDI",
+  "pt": "Entrada MIDI",
+  "ja": "MIDI 入力",
+  "ko": "MIDI 입력"
  },
  "MP4 (H.264)": {
   "de": "MP4 (H.264)",
@@ -7291,27 +7383,47 @@
  "Make responsive": {
   "de": "Responsiv machen",
   "es": "Hacerlo adaptable",
-  "zh": "设为自适应"
+  "zh": "设为自适应",
+  "fr": "Rendre adaptatif",
+  "pt": "Tornar responsivo",
+  "ja": "レスポンシブにする",
+  "ko": "반응형으로 만들기"
  },
  "Make responsive drops width and height so the SVG scales with its container.": {
   "de": "Responsiv entfernt width und height, damit das SVG mit seinem Container skaliert.",
   "es": "Hacerlo adaptable elimina width y height para que el SVG escale con su contenedor.",
-  "zh": "设为自适应会移除 width 和 height，使 SVG 随容器缩放。"
+  "zh": "设为自适应会移除 width 和 height，使 SVG 随容器缩放。",
+  "fr": "Rendre adaptatif retire width et height pour que le SVG suive son conteneur.",
+  "pt": "Tornar responsivo remove width e height para que o SVG acompanhe seu contêiner.",
+  "ja": "レスポンシブにすると width と height を外し、SVG が親要素に合わせて伸縮します。",
+  "ko": "반응형으로 만들면 width와 height를 빼서 SVG가 담긴 요소에 맞춰 늘어납니다."
  },
  "Make this the reference": {
   "de": "Als Bezug festlegen",
   "es": "Usar esta como referencia",
-  "zh": "以此为基准"
+  "zh": "以此为基准",
+  "fr": "En faire la référence",
+  "pt": "Tornar esta a referência",
+  "ja": "これを基準にする",
+  "ko": "이것을 기준으로 삼기"
  },
  "Manual prices": {
   "de": "Manuelle Kurse",
   "es": "Precios manuales",
-  "zh": "手动输入价格"
+  "zh": "手动输入价格",
+  "fr": "Cours saisis à la main",
+  "pt": "Preços informados manualmente",
+  "ja": "手入力の価格",
+  "ko": "직접 넣은 가격"
  },
  "Mark properties required": {
   "de": "Eigenschaften als erforderlich markieren",
   "es": "Marcar las propiedades como obligatorias",
-  "zh": "将属性标记为必填"
+  "zh": "将属性标记为必填",
+  "fr": "Marquer les propriétés comme requises",
+  "pt": "Marcar as propriedades como obrigatórias",
+  "ja": "プロパティを必須にする",
+  "ko": "속성을 필수로 표시"
  },
  "Markdown": {
   "de": "Markdown",
@@ -7325,212 +7437,380 @@
  "Marker": {
   "de": "Textmarker",
   "es": "Rotulador",
-  "zh": "记号笔"
+  "zh": "记号笔",
+  "fr": "Marqueur",
+  "pt": "Marcador",
+  "ja": "マーカー",
+  "ko": "마커"
  },
  "Market value": {
   "de": "Marktwert",
   "es": "Valor de mercado",
-  "zh": "市值"
+  "zh": "市值",
+  "fr": "Valeur de marché",
+  "pt": "Valor de mercado",
+  "ja": "時価",
+  "ko": "시장 가치"
  },
  "Markup": {
   "de": "Markup",
   "es": "Marcado",
-  "zh": "标记"
+  "zh": "标记",
+  "fr": "Balisage",
+  "pt": "Marcação",
+  "ja": "マークアップ",
+  "ko": "마크업"
  },
  "Matches": {
   "de": "Treffer",
   "es": "Coincidencias",
-  "zh": "匹配项"
+  "zh": "匹配项",
+  "fr": "Correspondances",
+  "pt": "Correspondências",
+  "ja": "一致",
+  "ko": "일치"
  },
  "Math operators": {
   "de": "Mathematische Operatoren",
   "es": "Operadores matemáticos",
-  "zh": "数学运算符"
+  "zh": "数学运算符",
+  "fr": "Opérateurs mathématiques",
+  "pt": "Operadores matemáticos",
+  "ja": "数学記号",
+  "ko": "수학 연산자"
  },
  "Max height": {
   "de": "Maximale Höhe",
   "es": "Alto máximo",
-  "zh": "最大高度"
+  "zh": "最大高度",
+  "fr": "Hauteur max",
+  "pt": "Altura máx",
+  "ja": "最大の高さ",
+  "ko": "최대 높이"
  },
  "Max torque": {
   "de": "Maximales Drehmoment",
   "es": "Par máximo",
-  "zh": "最大扭矩"
+  "zh": "最大扭矩",
+  "fr": "Couple max",
+  "pt": "Torque máx",
+  "ja": "最大トルク",
+  "ko": "최대 토크"
  },
  "Max touch points": {
   "de": "Maximale Berührungspunkte",
   "es": "Puntos táctiles máximos",
-  "zh": "最大触点数"
+  "zh": "最大触点数",
+  "fr": "Points de contact max",
+  "pt": "Pontos de toque máx",
+  "ja": "最大タッチ点数",
+  "ko": "최대 터치 점수"
  },
  "Max width": {
   "de": "Maximale Breite",
   "es": "Ancho máximo",
-  "zh": "最大宽度"
+  "zh": "最大宽度",
+  "fr": "Largeur max",
+  "pt": "Largura máx",
+  "ja": "最大の幅",
+  "ko": "최대 너비"
  },
  "Mbps": {
   "de": "Mbit/s",
   "es": "Mbps",
-  "zh": "Mbps"
+  "zh": "Mbps",
+  "fr": "Mbit/s",
+  "pt": "Mbps",
+  "ja": "Mbps",
+  "ko": "Mbps"
  },
  "Meaning": {
   "de": "Bedeutung",
   "es": "Significado",
-  "zh": "含义"
+  "zh": "含义",
+  "fr": "Signification",
+  "pt": "Significado",
+  "ja": "意味",
+  "ko": "뜻"
  },
  "Media engine": {
   "de": "Medien-Engine",
   "es": "Motor multimedia",
-  "zh": "媒体引擎"
+  "zh": "媒体引擎",
+  "fr": "Moteur média",
+  "pt": "Motor de mídia",
+  "ja": "メディアエンジン",
+  "ko": "미디어 엔진"
  },
  "Medium": {
   "de": "Mittel",
   "es": "Medio",
-  "zh": "中"
+  "zh": "中",
+  "fr": "Moyen",
+  "pt": "Médio",
+  "ja": "中",
+  "ko": "보통"
  },
  "Meeting room 2": {
   "de": "Besprechungsraum 2",
   "es": "Sala de reuniones 2",
-  "zh": "2 号会议室"
+  "zh": "2 号会议室",
+  "fr": "Salle de réunion 2",
+  "pt": "Sala de reunião 2",
+  "ja": "会議室 2",
+  "ko": "회의실 2"
  },
  "Memory": {
   "de": "Speicher",
   "es": "Memoria",
-  "zh": "存储"
+  "zh": "存储",
+  "fr": "Mémoire",
+  "pt": "Memória",
+  "ja": "メモリ",
+  "ko": "메모리"
  },
  "Memory limit": {
   "de": "Speichergrenze",
   "es": "Límite de memoria",
-  "zh": "内存上限"
+  "zh": "内存上限",
+  "fr": "Limite de mémoire",
+  "pt": "Limite de memória",
+  "ja": "メモリ上限",
+  "ko": "메모리 상한"
  },
  "Memory request": {
   "de": "Speicheranforderung",
   "es": "Solicitud de memoria",
-  "zh": "内存请求量"
+  "zh": "内存请求量",
+  "fr": "Demande de mémoire",
+  "pt": "Requisição de memória",
+  "ja": "メモリ要求",
+  "ko": "메모리 요청"
  },
  "Merge": {
   "de": "Vereinen",
   "es": "Unir",
-  "zh": "合并"
+  "zh": "合并",
+  "fr": "Fusionner",
+  "pt": "Mesclar",
+  "ja": "結合",
+  "ko": "합치기"
  },
  "Merge the two selected shapes": {
   "de": "Die beiden gewählten Formen vereinen",
   "es": "Unir las dos formas seleccionadas",
-  "zh": "合并所选的两个形状"
+  "zh": "合并所选的两个形状",
+  "fr": "Fusionner les deux formes sélectionnées",
+  "pt": "Mesclar as duas formas selecionadas",
+  "ja": "選択した 2 つの図形を結合",
+  "ko": "고른 두 도형 합치기"
  },
  "Merge, split, rotate, and convert to or from images.": {
   "de": "Zusammenführen, teilen, drehen und von oder zu Bildern umwandeln.",
   "es": "Une, divide, rota y convierte a o desde imágenes.",
-  "zh": "合并、拆分、旋转，并与图片互相转换。"
+  "zh": "合并、拆分、旋转，并与图片互相转换。",
+  "fr": "Fusionner, découper, pivoter et convertir depuis ou vers des images.",
+  "pt": "Junte, divida, gire e converta de ou para imagens.",
+  "ja": "結合、分割、回転、画像との相互変換。",
+  "ko": "합치기, 나누기, 돌리기, 이미지와 서로 변환."
  },
  "Mesh gears": {
   "de": "Zahnräder koppeln",
   "es": "Engranar ruedas",
-  "zh": "啮合齿轮"
+  "zh": "啮合齿轮",
+  "fr": "Engrener",
+  "pt": "Engrenar",
+  "ja": "歯車をかみ合わせる",
+  "ko": "톱니 물리기"
  },
  "Meshed wheels turn in the ratio of their teeth.": {
   "de": "Ineinandergreifende Räder drehen sich im Verhältnis ihrer Zähnezahl.",
   "es": "Las ruedas engranadas giran en la proporción de sus dientes.",
-  "zh": "啮合的齿轮按齿数之比转动。"
+  "zh": "啮合的齿轮按齿数之比转动。",
+  "fr": "Les roues engrenées tournent selon le rapport de leurs dents.",
+  "pt": "Rodas engrenadas giram na razão de seus dentes.",
+  "ja": "かみ合った歯車は歯数の比で回ります。",
+  "ko": "물린 톱니바퀴는 이의 수 비율로 돕니다."
  },
  "Message": {
   "de": "Nachricht",
   "es": "Mensaje",
-  "zh": "消息"
+  "zh": "消息",
+  "fr": "Message",
+  "pt": "Mensagem",
+  "ja": "メッセージ",
+  "ko": "메시지"
  },
  "Message to sign": {
   "de": "Zu signierende Nachricht",
   "es": "Mensaje para firmar",
-  "zh": "要签名的消息"
+  "zh": "要签名的消息",
+  "fr": "Message à signer",
+  "pt": "Mensagem a assinar",
+  "ja": "署名するメッセージ",
+  "ko": "서명할 메시지"
  },
  "Metadata": {
   "de": "Metadaten",
   "es": "Metadatos",
-  "zh": "元数据"
+  "zh": "元数据",
+  "fr": "Métadonnées",
+  "pt": "Metadados",
+  "ja": "メタデータ",
+  "ko": "메타데이터"
  },
  "Metadata copied": {
   "de": "Metadaten kopiert",
   "es": "Metadatos copiados",
-  "zh": "已复制元数据"
+  "zh": "已复制元数据",
+  "fr": "Métadonnées copiées",
+  "pt": "Metadados copiados",
+  "ja": "メタデータをコピーしました",
+  "ko": "메타데이터를 복사했습니다"
  },
  "Microphone is off": {
   "de": "Mikrofon ist aus",
   "es": "El micrófono está apagado",
-  "zh": "麦克风已关闭"
+  "zh": "麦克风已关闭",
+  "fr": "Le micro est éteint",
+  "pt": "O microfone está desligado",
+  "ja": "マイクは切れています",
+  "ko": "마이크가 꺼져 있습니다"
  },
  "Minify": {
   "de": "Minimieren",
   "es": "Minificar",
-  "zh": "压缩"
+  "zh": "压缩",
+  "fr": "Minifier",
+  "pt": "Minificar",
+  "ja": "圧縮",
+  "ko": "줄이기"
  },
  "Minimal": {
   "de": "Minimal",
   "es": "Mínimo",
-  "zh": "最少"
+  "zh": "最少",
+  "fr": "Minimal",
+  "pt": "Mínimo",
+  "ja": "最小限",
+  "ko": "최소"
  },
  "Mirror left to right (F)": {
   "de": "Links nach rechts spiegeln (F)",
   "es": "Reflejar de izquierda a derecha (F)",
-  "zh": "左右镜像 (F)"
+  "zh": "左右镜像 (F)",
+  "fr": "Miroir gauche-droite (F)",
+  "pt": "Espelhar da esquerda para a direita (F)",
+  "ja": "左右に反転 (F)",
+  "ko": "좌우로 뒤집기 (F)"
  },
  "Mirror the image": {
   "de": "Bild spiegeln",
   "es": "Reflejar la imagen",
-  "zh": "镜像画面"
+  "zh": "镜像画面",
+  "fr": "Inverser l'image",
+  "pt": "Espelhar a imagem",
+  "ja": "画像を反転",
+  "ko": "이미지 뒤집기"
  },
  "Mirror the part (F)": {
   "de": "Das Bauteil spiegeln (F)",
   "es": "Reflejar el componente (F)",
-  "zh": "镜像该元件 (F)"
+  "zh": "镜像该元件 (F)",
+  "fr": "Inverser le composant (F)",
+  "pt": "Espelhar a peça (F)",
+  "ja": "部品を反転 (F)",
+  "ko": "부품 뒤집기 (F)"
  },
  "Mistakes": {
   "de": "Fehler",
   "es": "Errores",
-  "zh": "错误"
+  "zh": "错误",
+  "fr": "Erreurs",
+  "pt": "Erros",
+  "ja": "ミス",
+  "ko": "실수"
  },
  "Mode": {
   "de": "Modus",
   "es": "Moda",
-  "zh": "众数"
+  "zh": "众数",
+  "fr": "Mode",
+  "pt": "Modo",
+  "ja": "モード",
+  "ko": "방식"
  },
  "Model": {
   "de": "Modell",
   "es": "Modelo",
-  "zh": "模型"
+  "zh": "模型",
+  "fr": "Modèle",
+  "pt": "Modelo",
+  "ja": "モデル",
+  "ko": "모델"
  },
  "Model name": {
   "de": "Modellname",
   "es": "Nombre del modelo",
-  "zh": "模型名称"
+  "zh": "模型名称",
+  "fr": "Nom du modèle",
+  "pt": "Nome do modelo",
+  "ja": "モデル名",
+  "ko": "모델 이름"
  },
  "Modifiers": {
   "de": "Modifikatortasten",
   "es": "Modificadores",
-  "zh": "修饰键"
+  "zh": "修饰键",
+  "fr": "Modificateurs",
+  "pt": "Modificadores",
+  "ja": "修飾キー",
+  "ko": "조합 키"
  },
  "Module size": {
   "de": "Modulgröße",
   "es": "Tamaño del módulo",
-  "zh": "模块大小"
+  "zh": "模块大小",
+  "fr": "Taille des modules",
+  "pt": "Tamanho do módulo",
+  "ja": "モジュールの大きさ",
+  "ko": "모듈 크기"
  },
  "Molecule of the day": {
   "de": "Molekül des Tages",
   "es": "Molécula del día",
-  "zh": "今日分子"
+  "zh": "今日分子",
+  "fr": "Molécule du jour",
+  "pt": "Molécula do dia",
+  "ja": "今日の分子",
+  "ko": "오늘의 분자"
  },
  "Monday": {
   "de": "Montag",
   "es": "Lunes",
-  "zh": "星期一"
+  "zh": "星期一",
+  "fr": "Lundi",
+  "pt": "Segunda-feira",
+  "ja": "月曜日",
+  "ko": "월요일"
  },
  "Mono": {
   "de": "Dicktengleich",
   "es": "Mono",
-  "zh": "等宽"
+  "zh": "等宽",
+  "fr": "Mono",
+  "pt": "Mono",
+  "ja": "モノラル",
+  "ko": "모노"
  },
  "Month": {
   "de": "Monat",
   "es": "Mes",
-  "zh": "月"
+  "zh": "月",
+  "fr": "Mois",
+  "pt": "Mês",
+  "ja": "月",
+  "ko": "월"
  },
  "Morse": {
   "de": "Morse",
@@ -7544,12 +7824,20 @@
  "Morse code": {
   "de": "Morsecode",
   "es": "Código morse",
-  "zh": "摩尔斯电码"
+  "zh": "摩尔斯电码",
+  "fr": "Code morse",
+  "pt": "Código morse",
+  "ja": "モールス符号",
+  "ko": "모스 부호"
  },
  "Most frequent words": {
   "de": "Häufigste Wörter",
   "es": "Palabras más frecuentes",
-  "zh": "高频词"
+  "zh": "高频词",
+  "fr": "Mots les plus fréquents",
+  "pt": "Palavras mais frequentes",
+  "ja": "よく出る語",
+  "ko": "자주 나오는 낱말"
  },
  "Motor": {
   "de": "Motor",
@@ -7563,57 +7851,101 @@
  "Move": {
   "de": "Verschieben",
   "es": "Mover",
-  "zh": "移动"
+  "zh": "移动",
+  "fr": "Déplacer",
+  "pt": "Mover",
+  "ja": "移動",
+  "ko": "옮기기"
  },
  "Move X": {
   "de": "Verschieben X",
   "es": "Mover X",
-  "zh": "平移 X"
+  "zh": "平移 X",
+  "fr": "Déplacer en X",
+  "pt": "Mover em X",
+  "ja": "X 方向に移動",
+  "ko": "X로 옮기기"
  },
  "Move Y": {
   "de": "Verschieben Y",
   "es": "Mover Y",
-  "zh": "平移 Y"
+  "zh": "平移 Y",
+  "fr": "Déplacer en Y",
+  "pt": "Mover em Y",
+  "ja": "Y 方向に移動",
+  "ko": "Y로 옮기기"
  },
  "Move down": {
   "de": "Nach unten",
   "es": "Bajar",
-  "zh": "下移"
+  "zh": "下移",
+  "fr": "Descendre",
+  "pt": "Mover para baixo",
+  "ja": "下へ",
+  "ko": "아래로"
  },
  "Move up": {
   "de": "Nach oben",
   "es": "Subir",
-  "zh": "上移"
+  "zh": "上移",
+  "fr": "Monter",
+  "pt": "Mover para cima",
+  "ja": "上へ",
+  "ko": "위로"
  },
  "Move with the mouse or arrow keys. Space serves.": {
   "de": "Mit der Maus oder den Pfeiltasten bewegen. Leertaste spielt an.",
   "es": "Muévete con el ratón o las flechas. Espacio saca.",
-  "zh": "用鼠标或方向键移动，空格发球。"
+  "zh": "用鼠标或方向键移动，空格发球。",
+  "fr": "Déplacez avec la souris ou les flèches. Espace pour servir.",
+  "pt": "Mova com o mouse ou as setas. Espaço saca.",
+  "ja": "マウスか方向キーで動かします。スペースでサーブ。",
+  "ko": "마우스나 방향키로 움직입니다. 스페이스로 서브합니다."
  },
  "Move with the mouse or the up and down arrows.": {
   "de": "Mit der Maus oder den Pfeiltasten hoch und runter bewegen.",
   "es": "Muévete con el ratón o con las flechas arriba y abajo.",
-  "zh": "用鼠标或上下方向键移动。"
+  "zh": "用鼠标或上下方向键移动。",
+  "fr": "Déplacez avec la souris ou les flèches haut et bas.",
+  "pt": "Mova com o mouse ou as setas para cima e para baixo.",
+  "ja": "マウスか上下の方向キーで動かします。",
+  "ko": "마우스나 위아래 방향키로 움직입니다."
  },
  "Moves": {
   "de": "Züge",
   "es": "Movimientos",
-  "zh": "步数"
+  "zh": "步数",
+  "fr": "Coups",
+  "pt": "Lances",
+  "ja": "手数",
+  "ko": "수"
  },
  "Muted": {
   "de": "Gedämpft",
   "es": "Apagado",
-  "zh": "淡色"
+  "zh": "淡色",
+  "fr": "Muet",
+  "pt": "Sem som",
+  "ja": "消音",
+  "ko": "음소거"
  },
  "Mutual gravity": {
   "de": "Gegenseitige Anziehung",
   "es": "Gravedad mutua",
-  "zh": "相互引力"
+  "zh": "相互引力",
+  "fr": "Gravité mutuelle",
+  "pt": "Gravidade mútua",
+  "ja": "相互重力",
+  "ko": "서로 끌어당기는 중력"
  },
  "N-MOSFET": {
   "de": "N-MOSFET",
   "es": "MOSFET de canal N",
-  "zh": "N 沟道 MOSFET"
+  "zh": "N 沟道 MOSFET",
+  "fr": "MOSFET canal N",
+  "pt": "MOSFET de canal N",
+  "ja": "N チャネル MOSFET",
+  "ko": "N채널 MOSFET"
  },
  "NAND": {
   "de": "NAND",
@@ -7627,7 +7959,11 @@
  "NATO alphabet": {
   "de": "NATO-Alphabet",
   "es": "Alfabeto OTAN",
-  "zh": "北约字母表"
+  "zh": "北约字母表",
+  "fr": "Alphabet OTAN",
+  "pt": "Alfabeto da OTAN",
+  "ja": "NATO フォネティックコード",
+  "ko": "NATO 음성 문자"
  },
  "NOR": {
   "de": "NOR",
@@ -7659,277 +7995,497 @@
  "Name": {
   "de": "Name",
   "es": "Nombre",
-  "zh": "名称"
+  "zh": "名称",
+  "fr": "Nom",
+  "pt": "Nome",
+  "ja": "名前",
+  "ko": "이름"
  },
  "Name the workspace first": {
   "de": "Zuerst den Arbeitsbereich benennen",
   "es": "Ponle nombre al espacio de trabajo primero",
-  "zh": "请先为工作区命名"
+  "zh": "请先为工作区命名",
+  "fr": "Nommez d'abord l'espace de travail",
+  "pt": "Dê um nome à área de trabalho primeiro",
+  "ja": "先にワークスペースに名前をつけてください",
+  "ko": "먼저 작업 공간에 이름을 붙이세요"
  },
  "Name this circuit": {
   "de": "Diese Schaltung benennen",
   "es": "Nombra este circuito",
-  "zh": "为这个电路命名"
+  "zh": "为这个电路命名",
+  "fr": "Nommer ce circuit",
+  "pt": "Nomear este circuito",
+  "ja": "この回路に名前をつける",
+  "ko": "이 회로에 이름 붙이기"
  },
  "Name this poster": {
   "de": "Dieses Poster benennen",
   "es": "Nombra este cartel",
-  "zh": "为这张海报命名"
+  "zh": "为这张海报命名",
+  "fr": "Nommer cette affiche",
+  "pt": "Nomear este cartaz",
+  "ja": "このポスターに名前をつける",
+  "ko": "이 포스터에 이름 붙이기"
  },
  "Name this scene": {
   "de": "Diese Szene benennen",
   "es": "Nombra esta escena",
-  "zh": "为这个场景命名"
+  "zh": "为这个场景命名",
+  "fr": "Nommer cette scène",
+  "pt": "Nomear esta cena",
+  "ja": "このシーンに名前をつける",
+  "ko": "이 장면에 이름 붙이기"
  },
  "Named": {
   "de": "Benannt",
   "es": "Con nombre",
-  "zh": "命名实体"
+  "zh": "命名实体",
+  "fr": "Nommé",
+  "pt": "Nomeado",
+  "ja": "名前つき",
+  "ko": "이름 있음"
  },
  "Nameservers": {
   "de": "Nameserver",
   "es": "Servidores de nombres",
-  "zh": "域名服务器"
+  "zh": "域名服务器",
+  "fr": "Serveurs de noms",
+  "pt": "Servidores de nomes",
+  "ja": "ネームサーバー",
+  "ko": "네임 서버"
  },
  "Namespace": {
   "de": "Namensraum",
   "es": "Espacio de nombres",
-  "zh": "命名空间"
+  "zh": "命名空间",
+  "fr": "Espace de noms",
+  "pt": "Namespace",
+  "ja": "名前空間",
+  "ko": "네임스페이스"
  },
  "Native picker": {
   "de": "Systemauswahl",
   "es": "Selector del sistema",
-  "zh": "系统取色器"
+  "zh": "系统取色器",
+  "fr": "Sélecteur natif",
+  "pt": "Seletor nativo",
+  "ja": "標準のピッカー",
+  "ko": "기본 선택기"
  },
  "Nature": {
   "de": "Natur",
   "es": "Naturaleza",
-  "zh": "自然"
+  "zh": "自然",
+  "fr": "Nature",
+  "pt": "Natureza",
+  "ja": "自然",
+  "ko": "자연"
  },
  "Network": {
   "de": "Netz",
   "es": "Red",
-  "zh": "网络"
+  "zh": "网络",
+  "fr": "Réseau",
+  "pt": "Rede",
+  "ja": "ネットワーク",
+  "ko": "네트워크"
  },
  "Network address": {
   "de": "Netzadresse",
   "es": "Dirección de red",
-  "zh": "网络地址"
+  "zh": "网络地址",
+  "fr": "Adresse réseau",
+  "pt": "Endereço de rede",
+  "ja": "ネットワークアドレス",
+  "ko": "네트워크 주소"
  },
  "Network bits in accent, host bits muted": {
   "de": "Netzbits in Akzentfarbe, Hostbits gedämpft",
   "es": "Los bits de red en color de acento, los de host apagados",
-  "zh": "网络位用强调色，主机位用淡色"
+  "zh": "网络位用强调色，主机位用淡色",
+  "fr": "Bits de réseau en accent, bits d'hôte estompés",
+  "pt": "Bits de rede em destaque, bits de host apagados",
+  "ja": "ネットワーク部を強調、ホスト部を淡く",
+  "ko": "네트워크 비트는 강조, 호스트 비트는 흐리게"
  },
  "Network name (SSID)": {
   "de": "Netzwerkname (SSID)",
   "es": "Nombre de red (SSID)",
-  "zh": "网络名称（SSID）"
+  "zh": "网络名称（SSID）",
+  "fr": "Nom du réseau (SSID)",
+  "pt": "Nome da rede (SSID)",
+  "ja": "ネットワーク名 (SSID)",
+  "ko": "네트워크 이름 (SSID)"
  },
  "Neutral": {
   "de": "Neutral",
   "es": "Neutro",
-  "zh": "中性"
+  "zh": "中性",
+  "fr": "Neutre",
+  "pt": "Neutro",
+  "ja": "中立",
+  "ko": "중립"
  },
  "Neutral tone": {
   "de": "Neutraler Ton",
   "es": "Tono neutro",
-  "zh": "中性语气"
+  "zh": "中性语气",
+  "fr": "Ton neutre",
+  "pt": "Tom neutro",
+  "ja": "中立的な調子",
+  "ko": "중립적인 말투"
  },
  "New": {
   "de": "Neu",
   "es": "Nuevo",
-  "zh": "新建"
+  "zh": "新建",
+  "fr": "Nouveau",
+  "pt": "Novo",
+  "ja": "新規",
+  "ko": "새로"
  },
  "New calendar": {
   "de": "Neuer Kalender",
   "es": "Calendario nuevo",
-  "zh": "新建日历"
+  "zh": "新建日历",
+  "fr": "Nouveau calendrier",
+  "pt": "Novo calendário",
+  "ja": "新しいカレンダー",
+  "ko": "새 달력"
  },
  "New canvas": {
   "de": "Neue Leinwand",
   "es": "Lienzo nuevo",
-  "zh": "新建画布"
+  "zh": "新建画布",
+  "fr": "Nouvelle toile",
+  "pt": "Nova tela",
+  "ja": "新しいキャンバス",
+  "ko": "새 캔버스"
  },
  "New event": {
   "de": "Neuer Termin",
   "es": "Evento nuevo",
-  "zh": "新建活动"
+  "zh": "新建活动",
+  "fr": "Nouvel événement",
+  "pt": "Novo evento",
+  "ja": "新しい予定",
+  "ko": "새 일정"
  },
  "New game": {
   "de": "Neues Spiel",
   "es": "Partida nueva",
-  "zh": "新游戏"
+  "zh": "新游戏",
+  "fr": "Nouvelle partie",
+  "pt": "Novo jogo",
+  "ja": "新しいゲーム",
+  "ko": "새 게임"
  },
  "New line": {
   "de": "Zeilenumbruch",
   "es": "Salto de línea",
-  "zh": "换行"
+  "zh": "换行",
+  "fr": "Nouvelle ligne",
+  "pt": "Nova linha",
+  "ja": "改行",
+  "ko": "새 줄"
  },
  "New lines": {
   "de": "Zeilenumbrüche",
   "es": "Saltos de línea",
-  "zh": "换行符"
+  "zh": "换行符",
+  "fr": "Sauts de ligne",
+  "pt": "Quebras de linha",
+  "ja": "改行",
+  "ko": "줄 바꿈"
  },
  "New note": {
   "de": "Neue Notiz",
   "es": "Nota nueva",
-  "zh": "新建笔记"
+  "zh": "新建笔记",
+  "fr": "Nouvelle note",
+  "pt": "Nova nota",
+  "ja": "新しいメモ",
+  "ko": "새 메모"
  },
  "New seed": {
   "de": "Neuer Startwert",
   "es": "Semilla nueva",
-  "zh": "新的随机种子"
+  "zh": "新的随机种子",
+  "fr": "Nouvelle graine",
+  "pt": "Nova semente",
+  "ja": "新しいシード",
+  "ko": "새 시드"
  },
  "New word": {
   "de": "Neues Wort",
   "es": "Palabra nueva",
-  "zh": "新单词"
+  "zh": "新单词",
+  "fr": "Nouveau mot",
+  "pt": "Nova palavra",
+  "ja": "新しい単語",
+  "ko": "새 단어"
  },
  "New workspace": {
   "de": "Neuer Arbeitsbereich",
   "es": "Espacio de trabajo nuevo",
-  "zh": "新建工作区"
+  "zh": "新建工作区",
+  "fr": "Nouvel espace de travail",
+  "pt": "Nova área de trabalho",
+  "ja": "新しいワークスペース",
+  "ko": "새 작업 공간"
  },
  "Next": {
   "de": "Weiter",
   "es": "Siguiente",
-  "zh": "下一个"
+  "zh": "下一个",
+  "fr": "Suivant",
+  "pt": "Próximo",
+  "ja": "次へ",
+  "ko": "다음"
  },
  "Next run": {
   "de": "Nächster Lauf",
   "es": "Próxima ejecución",
-  "zh": "下次运行"
+  "zh": "下次运行",
+  "fr": "Prochaine exécution",
+  "pt": "Próxima execução",
+  "ja": "次の実行",
+  "ko": "다음 실행"
  },
  "Next runs": {
   "de": "Nächste Läufe",
   "es": "Próximas ejecuciones",
-  "zh": "接下来的运行"
+  "zh": "接下来的运行",
+  "fr": "Prochaines exécutions",
+  "pt": "Próximas execuções",
+  "ja": "次の実行予定",
+  "ko": "다음 실행들"
  },
  "Next window": {
   "de": "Nächstes Zeitfenster",
   "es": "Ventana siguiente",
-  "zh": "下一个时段"
+  "zh": "下一个时段",
+  "fr": "Fenêtre suivante",
+  "pt": "Próxima janela",
+  "ja": "次のウィンドウ",
+  "ko": "다음 창"
  },
  "No Exif tags found in this file.": {
   "de": "In dieser Datei wurden keine Exif-Tags gefunden.",
   "es": "No se han encontrado etiquetas Exif en este archivo.",
-  "zh": "在此文件中未找到 Exif 标签。"
+  "zh": "在此文件中未找到 Exif 标签。",
+  "fr": "Aucune balise Exif trouvée dans ce fichier.",
+  "pt": "Nenhuma tag Exif encontrada neste arquivo.",
+  "ja": "このファイルに Exif タグは見つかりませんでした。",
+  "ko": "이 파일에서 Exif 태그를 찾지 못했습니다."
  },
  "No artwork": {
   "de": "Kein Cover",
   "es": "Sin carátula",
-  "zh": "无封面"
+  "zh": "无封面",
+  "fr": "Pas de pochette",
+  "pt": "Sem capa",
+  "ja": "アートワークなし",
+  "ko": "표지 없음"
  },
  "No controller yet": {
   "de": "Noch kein Controller",
   "es": "Todavía no hay mando",
-  "zh": "尚未检测到手柄"
+  "zh": "尚未检测到手柄",
+  "fr": "Pas encore de manette",
+  "pt": "Nenhum controle ainda",
+  "ja": "コントローラがまだありません",
+  "ko": "아직 컨트롤러가 없습니다"
  },
  "No differences found.": {
   "de": "Keine Unterschiede gefunden.",
   "es": "No se han encontrado diferencias.",
-  "zh": "未发现差异。"
+  "zh": "未发现差异。",
+  "fr": "Aucune différence trouvée.",
+  "pt": "Nenhuma diferença encontrada.",
+  "ja": "違いは見つかりませんでした。",
+  "ko": "다른 곳을 찾지 못했습니다."
  },
  "No extra properties": {
   "de": "Keine zusätzlichen Eigenschaften",
   "es": "Sin propiedades adicionales",
-  "zh": "不允许额外属性"
+  "zh": "不允许额外属性",
+  "fr": "Pas de propriétés supplémentaires",
+  "pt": "Sem propriedades extras",
+  "ja": "追加のプロパティなし",
+  "ko": "추가 속성 없음"
  },
  "No file open": {
   "de": "Keine Datei geöffnet",
   "es": "No hay ningún archivo abierto",
-  "zh": "未打开文件"
+  "zh": "未打开文件",
+  "fr": "Aucun fichier ouvert",
+  "pt": "Nenhum arquivo aberto",
+  "ja": "開いているファイルはありません",
+  "ko": "열린 파일이 없습니다"
  },
  "No hour works for everyone. Widen the working hours or drop a city.": {
   "de": "Keine Stunde passt allen. Die Arbeitszeiten erweitern oder eine Stadt entfernen.",
   "es": "No hay ninguna hora que valga para todos. Amplía el horario laboral o quita una ciudad.",
-  "zh": "没有对所有人都合适的时段。请放宽工作时间，或移除一个城市。"
+  "zh": "没有对所有人都合适的时段。请放宽工作时间，或移除一个城市。",
+  "fr": "Aucune heure ne convient à tous. Élargissez les horaires ou retirez une ville.",
+  "pt": "Nenhuma hora serve para todos. Amplie o horário de trabalho ou tire uma cidade.",
+  "ja": "全員に合う時間帯がありません。勤務時間を広げるか都市を減らしてください。",
+  "ko": "모두에게 맞는 시간이 없습니다. 근무 시간을 넓히거나 도시를 빼세요."
  },
  "No images yet": {
   "de": "Noch keine Bilder",
   "es": "Todavía no hay imágenes",
-  "zh": "暂无图片"
+  "zh": "暂无图片",
+  "fr": "Pas encore d'images",
+  "pt": "Nenhuma imagem ainda",
+  "ja": "画像はまだありません",
+  "ko": "아직 이미지가 없습니다"
  },
  "No laps recorded": {
   "de": "Keine Runden aufgezeichnet",
   "es": "No hay vueltas registradas",
-  "zh": "未记录任何计次"
+  "zh": "未记录任何计次",
+  "fr": "Aucun tour enregistré",
+  "pt": "Nenhuma volta registrada",
+  "ja": "ラップの記録はありません",
+  "ko": "기록된 랩이 없습니다"
  },
  "No literal colours found. The artwork may inherit currentColor or use gradients.": {
   "de": "Keine festen Farben gefunden. Die Grafik erbt vielleicht currentColor oder nutzt Verläufe.",
   "es": "No se han encontrado colores literales. El dibujo puede heredar currentColor o usar degradados.",
-  "zh": "未找到字面颜色值。该图形可能继承 currentColor 或使用了渐变。"
+  "zh": "未找到字面颜色值。该图形可能继承 currentColor 或使用了渐变。",
+  "fr": "Aucune couleur littérale trouvée. Le dessin hérite peut-être de currentColor ou utilise des dégradés.",
+  "pt": "Nenhuma cor literal encontrada. O desenho pode herdar currentColor ou usar gradientes.",
+  "ja": "直接指定された色は見つかりませんでした。currentColor を継承しているか、グラデーションを使っている可能性があります。",
+  "ko": "직접 지정한 색을 찾지 못했습니다. currentColor를 물려받거나 그레이디언트를 쓰는 것일 수 있습니다."
  },
  "No lookup yet": {
   "de": "Noch keine Abfrage",
   "es": "Todavía no hay consultas",
-  "zh": "尚未查询"
+  "zh": "尚未查询",
+  "fr": "Aucune recherche pour l'instant",
+  "pt": "Nenhuma consulta ainda",
+  "ja": "まだ照会していません",
+  "ko": "아직 조회하지 않았습니다"
  },
  "No match within the next year": {
   "de": "Kein Treffer im nächsten Jahr",
   "es": "Sin coincidencias en el próximo año",
-  "zh": "未来一年内没有匹配"
+  "zh": "未来一年内没有匹配",
+  "fr": "Aucune correspondance dans l'année à venir",
+  "pt": "Nenhuma correspondência no próximo ano",
+  "ja": "今後 1 年以内に該当はありません",
+  "ko": "앞으로 1년 안에는 해당이 없습니다"
  },
  "No matches": {
   "de": "Keine Treffer",
   "es": "Sin coincidencias",
-  "zh": "无匹配项"
+  "zh": "无匹配项",
+  "fr": "Aucune correspondance",
+  "pt": "Sem correspondências",
+  "ja": "一致なし",
+  "ko": "일치하는 것이 없습니다"
  },
  "No mistakes recorded yet.": {
   "de": "Noch keine Fehler aufgezeichnet.",
   "es": "Todavía no se han registrado errores.",
-  "zh": "尚未记录任何错误。"
+  "zh": "尚未记录任何错误。",
+  "fr": "Aucune erreur enregistrée pour l'instant.",
+  "pt": "Nenhum erro registrado ainda.",
+  "ja": "まだミスの記録はありません。",
+  "ko": "아직 기록된 실수가 없습니다."
  },
  "No notes yet": {
   "de": "Noch keine Notizen",
   "es": "Todavía no hay notas",
-  "zh": "暂无笔记"
+  "zh": "暂无笔记",
+  "fr": "Pas encore de notes",
+  "pt": "Nenhuma nota ainda",
+  "ja": "メモはまだありません",
+  "ko": "아직 메모가 없습니다"
  },
  "No operations found.": {
   "de": "Keine Operationen gefunden.",
   "es": "No se han encontrado operaciones.",
-  "zh": "未找到任何操作。"
+  "zh": "未找到任何操作。",
+  "fr": "Aucune opération trouvée.",
+  "pt": "Nenhuma operação encontrada.",
+  "ja": "操作は見つかりませんでした。",
+  "ko": "작업을 찾지 못했습니다."
  },
  "No parity": {
   "de": "Keine Parität",
   "es": "Sin paridad",
-  "zh": "无校验"
+  "zh": "无校验",
+  "fr": "Sans parité",
+  "pt": "Sem paridade",
+  "ja": "パリティなし",
+  "ko": "패리티 없음"
  },
  "No positions yet.": {
   "de": "Noch keine Positionen.",
   "es": "Todavía no hay posiciones.",
-  "zh": "暂无持仓。"
+  "zh": "暂无持仓。",
+  "fr": "Aucune position pour l'instant.",
+  "pt": "Nenhuma posição ainda.",
+  "ja": "まだ建玉はありません。",
+  "ko": "아직 보유 종목이 없습니다."
  },
  "No record types selected": {
   "de": "Keine Eintragstypen gewählt",
   "es": "No hay tipos de registro seleccionados",
-  "zh": "未选择记录类型"
+  "zh": "未选择记录类型",
+  "fr": "Aucun type d'enregistrement sélectionné",
+  "pt": "Nenhum tipo de registro selecionado",
+  "ja": "レコードの種類が選ばれていません",
+  "ko": "고른 레코드 종류가 없습니다"
  },
  "No recordings yet": {
   "de": "Noch keine Aufnahmen",
   "es": "Todavía no hay grabaciones",
-  "zh": "暂无录音"
+  "zh": "暂无录音",
+  "fr": "Pas encore d'enregistrements",
+  "pt": "Nenhuma gravação ainda",
+  "ja": "録音はまだありません",
+  "ko": "아직 녹음이 없습니다"
  },
  "No sign changes in the visible range.": {
   "de": "Kein Vorzeichenwechsel im sichtbaren Bereich.",
   "es": "No hay cambios de signo en el rango visible.",
-  "zh": "可见范围内没有符号变化。"
+  "zh": "可见范围内没有符号变化。",
+  "fr": "Aucun changement de signe dans la plage visible.",
+  "pt": "Nenhuma mudança de sinal na faixa visível.",
+  "ja": "表示範囲に符号の変化はありません。",
+  "ko": "보이는 범위에 부호가 바뀌는 곳이 없습니다."
  },
  "Node voltage": {
   "de": "Knotenspannung",
   "es": "Tensión de nodo",
-  "zh": "节点电压"
+  "zh": "节点电压",
+  "fr": "Tension au nœud",
+  "pt": "Tensão no nó",
+  "ja": "節点電圧",
+  "ko": "절점 전압"
  },
  "None": {
   "de": "Keine",
   "es": "Ninguno",
-  "zh": "无"
+  "zh": "无",
+  "fr": "Aucun",
+  "pt": "Nenhum",
+  "ja": "なし",
+  "ko": "없음"
  },
  "None - 001b4411": {
   "de": "Ohne - 001b4411",
   "es": "Sin separador - 001b4411",
-  "zh": "无分隔 - 001b4411"
+  "zh": "无分隔 - 001b4411",
+  "fr": "Aucun - 001b4411",
+  "pt": "Nenhum - 001b4411",
+  "ja": "なし - 001b4411",
+  "ko": "없음 - 001b4411"
  },
  "Normal": {
   "de": "Normal",
@@ -7943,147 +8499,263 @@
  "Normalised": {
   "de": "Normalisiert",
   "es": "Normalizada",
-  "zh": "规范化"
+  "zh": "规范化",
+  "fr": "Normalisé",
+  "pt": "Normalizado",
+  "ja": "正規化済み",
+  "ko": "정규화됨"
  },
  "Not after": {
   "de": "Nicht nach",
   "es": "No después de",
-  "zh": "失效时间"
+  "zh": "失效时间",
+  "fr": "Pas après",
+  "pt": "Não depois de",
+  "ja": "有効期限",
+  "ko": "만료 시점"
  },
  "Not before": {
   "de": "Nicht vor",
   "es": "No antes de",
-  "zh": "生效时间"
+  "zh": "生效时间",
+  "fr": "Pas avant",
+  "pt": "Não antes de",
+  "ja": "有効開始",
+  "ko": "시작 시점"
  },
  "Not connected": {
   "de": "Nicht verbunden",
   "es": "Sin conexión",
-  "zh": "未连接"
+  "zh": "未连接",
+  "fr": "Non connecté",
+  "pt": "Não conectado",
+  "ja": "未接続",
+  "ko": "연결되지 않음"
  },
  "Not enough text yet.": {
   "de": "Noch nicht genug Text.",
   "es": "Todavía no hay texto suficiente.",
-  "zh": "文本还不够。"
+  "zh": "文本还不够。",
+  "fr": "Pas encore assez de texte.",
+  "pt": "Ainda não há texto suficiente.",
+  "ja": "まだ文章が足りません。",
+  "ko": "아직 글이 모자랍니다."
  },
  "Notes": {
   "de": "Notizen",
   "es": "Notas",
-  "zh": "备忘"
+  "zh": "备忘",
+  "fr": "Notes",
+  "pt": "Notas",
+  "ja": "メモ",
+  "ko": "메모"
  },
  "Notes off": {
   "de": "Notizen aus",
   "es": "Notas desactivadas",
-  "zh": "关闭笔记"
+  "zh": "关闭笔记",
+  "fr": "Notes coupées",
+  "pt": "Notas desligadas",
+  "ja": "すべての音を止める",
+  "ko": "모든 음 끄기"
  },
  "Nothing in this view.": {
   "de": "Nichts in dieser Ansicht.",
   "es": "No hay nada en esta vista.",
-  "zh": "此视图中没有内容。"
+  "zh": "此视图中没有内容。",
+  "fr": "Rien dans cette vue.",
+  "pt": "Nada nesta visão.",
+  "ja": "この表示範囲には何もありません。",
+  "ko": "이 화면에는 아무것도 없습니다."
  },
  "Nothing loaded": {
   "de": "Nichts geladen",
   "es": "No hay nada cargado",
-  "zh": "未加载任何内容"
+  "zh": "未加载任何内容",
+  "fr": "Rien de chargé",
+  "pt": "Nada carregado",
+  "ja": "読み込まれていません",
+  "ko": "불러온 것이 없습니다"
  },
  "Nothing matches that.": {
   "de": "Dazu passt nichts.",
   "es": "No hay nada que coincida.",
-  "zh": "没有匹配的结果。"
+  "zh": "没有匹配的结果。",
+  "fr": "Rien ne correspond.",
+  "pt": "Nada corresponde a isso.",
+  "ja": "一致するものはありません。",
+  "ko": "거기에 맞는 것이 없습니다."
  },
  "Nothing on the list.": {
   "de": "Nichts auf der Liste.",
   "es": "No hay nada en la lista.",
-  "zh": "列表是空的。"
+  "zh": "列表是空的。",
+  "fr": "Rien sur la liste.",
+  "pt": "Nada na lista.",
+  "ja": "一覧は空です。",
+  "ko": "목록이 비어 있습니다."
  },
  "Nothing paired": {
   "de": "Nichts gekoppelt",
   "es": "Nada emparejado",
-  "zh": "未配对任何设备"
+  "zh": "未配对任何设备",
+  "fr": "Rien d'appairé",
+  "pt": "Nada pareado",
+  "ja": "ペアリングなし",
+  "ko": "연결된 것 없음"
  },
  "Nothing planned": {
   "de": "Nichts geplant",
   "es": "Nada planeado",
-  "zh": "没有计划"
+  "zh": "没有计划",
+  "fr": "Rien de prévu",
+  "pt": "Nada planejado",
+  "ja": "予定はありません",
+  "ko": "잡힌 일정이 없습니다"
  },
  "Nothing saved yet.": {
   "de": "Noch nichts gespeichert.",
   "es": "Todavía no hay nada guardado.",
-  "zh": "尚未保存任何内容。"
+  "zh": "尚未保存任何内容。",
+  "fr": "Rien d'enregistré pour l'instant.",
+  "pt": "Nada salvo ainda.",
+  "ja": "まだ保存されていません。",
+  "ko": "아직 저장한 것이 없습니다."
  },
  "Nothing saved yet. Name a circuit above and save it.": {
   "de": "Noch nichts gespeichert. Oben eine Schaltung benennen und speichern.",
   "es": "Todavía no hay nada guardado. Ponle nombre a un circuito arriba y guárdalo.",
-  "zh": "尚未保存任何内容。请在上方为电路命名并保存。"
+  "zh": "尚未保存任何内容。请在上方为电路命名并保存。",
+  "fr": "Rien d'enregistré. Nommez un circuit ci-dessus et enregistrez-le.",
+  "pt": "Nada salvo ainda. Nomeie um circuito acima e salve-o.",
+  "ja": "まだ保存されていません。上で回路に名前をつけて保存してください。",
+  "ko": "아직 저장한 것이 없습니다. 위에서 회로에 이름을 붙이고 저장하세요."
  },
  "Nothing saved yet. Name a scene above and save it.": {
   "de": "Noch nichts gespeichert. Oben eine Szene benennen und speichern.",
   "es": "Todavía no hay nada guardado. Ponle nombre a una escena arriba y guárdala.",
-  "zh": "尚未保存任何内容。请在上方为场景命名并保存。"
+  "zh": "尚未保存任何内容。请在上方为场景命名并保存。",
+  "fr": "Rien d'enregistré. Nommez une scène ci-dessus et enregistrez-la.",
+  "pt": "Nada salvo ainda. Nomeie uma cena acima e salve-a.",
+  "ja": "まだ保存されていません。上でシーンに名前をつけて保存してください。",
+  "ko": "아직 저장한 것이 없습니다. 위에서 장면에 이름을 붙이고 저장하세요."
  },
  "Nothing scheduled": {
   "de": "Nichts geplant",
   "es": "Nada programado",
-  "zh": "没有安排"
+  "zh": "没有安排",
+  "fr": "Rien de planifié",
+  "pt": "Nada agendado",
+  "ja": "予定はありません",
+  "ko": "예정된 것이 없습니다"
  },
  "Nothing selected": {
   "de": "Nichts ausgewählt",
   "es": "No hay nada seleccionado",
-  "zh": "未选中任何内容"
+  "zh": "未选中任何内容",
+  "fr": "Rien de sélectionné",
+  "pt": "Nada selecionado",
+  "ja": "選択されていません",
+  "ko": "고른 것이 없습니다"
  },
  "Nothing to show for that search.": {
   "de": "Für diese Suche gibt es nichts.",
   "es": "No hay nada que mostrar para esa búsqueda.",
-  "zh": "该搜索没有结果。"
+  "zh": "该搜索没有结果。",
+  "fr": "Rien à afficher pour cette recherche.",
+  "pt": "Nada a mostrar para essa busca.",
+  "ja": "その検索で表示できるものはありません。",
+  "ko": "그 검색으로 보여 줄 것이 없습니다."
  },
  "Nothing yet": {
   "de": "Noch nichts",
   "es": "Todavía nada",
-  "zh": "暂无内容"
+  "zh": "暂无内容",
+  "fr": "Rien pour l'instant",
+  "pt": "Nada ainda",
+  "ja": "まだ何もありません",
+  "ko": "아직 없습니다"
  },
  "Now": {
   "de": "Jetzt",
   "es": "Ahora",
-  "zh": "现在"
+  "zh": "现在",
+  "fr": "Maintenant",
+  "pt": "Agora",
+  "ja": "現在",
+  "ko": "지금"
  },
  "Number": {
   "de": "Nummer",
   "es": "Número",
-  "zh": "号码"
+  "zh": "号码",
+  "fr": "Nombre",
+  "pt": "Número",
+  "ja": "数",
+  "ko": "숫자"
  },
  "Number the items": {
   "de": "Einträge nummerieren",
   "es": "Numerar los elementos",
-  "zh": "为各项编号"
+  "zh": "为各项编号",
+  "fr": "Numéroter les éléments",
+  "pt": "Numerar os itens",
+  "ja": "項目に番号をつける",
+  "ko": "항목에 번호 매기기"
  },
  "Number the ticked files in list order": {
   "de": "Die angehakten Dateien in Listenreihenfolge nummerieren",
   "es": "Numerar los archivos marcados en el orden de la lista",
-  "zh": "按列表顺序为勾选的文件编号"
+  "zh": "按列表顺序为勾选的文件编号",
+  "fr": "Numéroter les fichiers cochés dans l'ordre de la liste",
+  "pt": "Numerar os arquivos marcados na ordem da lista",
+  "ja": "チェックしたファイルに一覧の順で番号をつける",
+  "ko": "체크한 파일에 목록 순서대로 번호 매기기"
  },
  "Number tracks": {
   "de": "Titel nummerieren",
   "es": "Numerar las pistas",
-  "zh": "为音轨编号"
+  "zh": "为音轨编号",
+  "fr": "Numéroter les pistes",
+  "pt": "Numerar as faixas",
+  "ja": "トラック番号をつける",
+  "ko": "트랙 번호 매기기"
  },
  "Number → Roman": {
   "de": "Zahl → Römisch",
   "es": "Número → Romano",
-  "zh": "数字 → 罗马数字"
+  "zh": "数字 → 罗马数字",
+  "fr": "Nombre → romain",
+  "pt": "Número → romano",
+  "ja": "数 → ローマ数字",
+  "ko": "숫자 → 로마 숫자"
  },
  "Numbers": {
   "de": "Zahlen",
   "es": "Números",
-  "zh": "数字"
+  "zh": "数字",
+  "fr": "Nombres",
+  "pt": "Números",
+  "ja": "数字",
+  "ko": "숫자"
  },
  "Numeric entities": {
   "de": "Numerische Entities",
   "es": "Entidades numéricas",
-  "zh": "数字实体"
+  "zh": "数字实体",
+  "fr": "Entités numériques",
+  "pt": "Entidades numéricas",
+  "ja": "数値参照",
+  "ko": "숫자 엔티티"
  },
  "Numeronym": {
   "de": "Numeronym",
   "es": "Numerónimo",
-  "zh": "数字缩写"
+  "zh": "数字缩写",
+  "fr": "Numéronyme",
+  "pt": "Numerônimo",
+  "ja": "数字略語",
+  "ko": "숫자 약어"
  },
  "OGG (Vorbis)": {
   "de": "OGG (Vorbis)",
@@ -8115,152 +8787,272 @@
  "Objects": {
   "de": "Objekte",
   "es": "Objetos",
-  "zh": "物品"
+  "zh": "物品",
+  "fr": "Objets",
+  "pt": "Objetos",
+  "ja": "オブジェクト",
+  "ko": "객체"
  },
  "Octal": {
   "de": "Oktal",
   "es": "Octal",
-  "zh": "八进制"
+  "zh": "八进制",
+  "fr": "Octal",
+  "pt": "Octal",
+  "ja": "8 進",
+  "ko": "8진"
  },
  "Octal (base 8)": {
   "de": "Oktal (Basis 8)",
   "es": "Octal (base 8)",
-  "zh": "八进制（基数 8）"
+  "zh": "八进制（基数 8）",
+  "fr": "Octal (base 8)",
+  "pt": "Octal (base 8)",
+  "ja": "8 進 (基数 8)",
+  "ko": "8진 (기수 8)"
  },
  "Octave +": {
   "de": "Oktave +",
   "es": "Octava +",
-  "zh": "八度 +"
+  "zh": "八度 +",
+  "fr": "Octave +",
+  "pt": "Oitava +",
+  "ja": "オクターブ +",
+  "ko": "옥타브 +"
  },
  "Octave −": {
   "de": "Oktave −",
   "es": "Octava −",
-  "zh": "八度 −"
+  "zh": "八度 −",
+  "fr": "Octave −",
+  "pt": "Oitava −",
+  "ja": "オクターブ −",
+  "ko": "옥타브 −"
  },
  "Octets": {
   "de": "Oktette",
   "es": "Octetos",
-  "zh": "字节段"
+  "zh": "字节段",
+  "fr": "Octets",
+  "pt": "Octetos",
+  "ja": "オクテット",
+  "ko": "옥텟"
  },
  "Odd": {
   "de": "Ungerade",
   "es": "Impar",
-  "zh": "奇校验"
+  "zh": "奇校验",
+  "fr": "Impair",
+  "pt": "Ímpar",
+  "ja": "奇数",
+  "ko": "홀수"
  },
  "Off": {
   "de": "Aus",
   "es": "Desactivado",
-  "zh": "关闭"
+  "zh": "关闭",
+  "fr": "Désactivé",
+  "pt": "Desligado",
+  "ja": "オフ",
+  "ko": "끔"
  },
  "Ollama uses http://localhost:11434/v1 and LM Studio uses http://localhost:1234/v1.": {
   "de": "Ollama nutzt http://localhost:11434/v1 und LM Studio nutzt http://localhost:1234/v1.",
   "es": "Ollama usa http://localhost:11434/v1 y LM Studio usa http://localhost:1234/v1.",
-  "zh": "Ollama 使用 http://localhost:11434/v1，LM Studio 使用 http://localhost:1234/v1。"
+  "zh": "Ollama 使用 http://localhost:11434/v1，LM Studio 使用 http://localhost:1234/v1。",
+  "fr": "Ollama utilise http://localhost:11434/v1 et LM Studio http://localhost:1234/v1.",
+  "pt": "O Ollama usa http://localhost:11434/v1 e o LM Studio usa http://localhost:1234/v1.",
+  "ja": "Ollama は http://localhost:11434/v1 を、LM Studio は http://localhost:1234/v1 を使います。",
+  "ko": "Ollama는 http://localhost:11434/v1 을, LM Studio는 http://localhost:1234/v1 을 씁니다."
  },
  "Once": {
   "de": "Einmal",
   "es": "Una vez",
-  "zh": "一次"
+  "zh": "一次",
+  "fr": "Une fois",
+  "pt": "Uma vez",
+  "ja": "1 回",
+  "ko": "한 번"
  },
  "One item per line": {
   "de": "Ein Eintrag pro Zeile",
   "es": "Un elemento por línea",
-  "zh": "每行一项"
+  "zh": "每行一项",
+  "fr": "Un élément par ligne",
+  "pt": "Um item por linha",
+  "ja": "1 行に 1 項目",
+  "ko": "한 줄에 한 항목"
  },
  "Online": {
   "de": "Online",
   "es": "En línea",
-  "zh": "在线"
+  "zh": "在线",
+  "fr": "En ligne",
+  "pt": "Online",
+  "ja": "オンライン",
+  "ko": "온라인"
  },
  "Only JPEG files carry Exif metadata": {
   "de": "Nur JPEG-Dateien tragen Exif-Metadaten",
   "es": "Solo los archivos JPEG llevan metadatos Exif",
-  "zh": "只有 JPEG 文件带有 Exif 元数据"
+  "zh": "只有 JPEG 文件带有 Exif 元数据",
+  "fr": "Seuls les fichiers JPEG portent des métadonnées Exif",
+  "pt": "Apenas arquivos JPEG carregam metadados Exif",
+  "ja": "Exif メタデータを持つのは JPEG だけです",
+  "ko": "Exif 메타데이터는 JPEG 파일만 지닙니다"
  },
  "Opacity": {
   "de": "Deckkraft",
   "es": "Opacidad",
-  "zh": "不透明度"
+  "zh": "不透明度",
+  "fr": "Opacité",
+  "pt": "Opacidade",
+  "ja": "不透明度",
+  "ko": "불투명도"
  },
  "Open": {
   "de": "Öffnen",
   "es": "Abrir",
-  "zh": "打开"
+  "zh": "打开",
+  "fr": "Ouvrir",
+  "pt": "Abrir",
+  "ja": "開く",
+  "ko": "열기"
  },
  "Open a .pem or .crt file": {
   "de": "Eine .pem- oder .crt-Datei öffnen",
   "es": "Abre un archivo .pem o .crt",
-  "zh": "打开 .pem 或 .crt 文件"
+  "zh": "打开 .pem 或 .crt 文件",
+  "fr": "Ouvrir un fichier .pem ou .crt",
+  "pt": "Abrir um arquivo .pem ou .crt",
+  "ja": ".pem か .crt のファイルを開く",
+  "ko": ".pem이나 .crt 파일 열기"
  },
  "Open a PDF to merge, split, rotate or convert it.": {
   "de": "Ein PDF öffnen, um es zusammenzuführen, zu teilen, zu drehen oder umzuwandeln.",
   "es": "Abre un PDF para unirlo, dividirlo, rotarlo o convertirlo.",
-  "zh": "打开一个 PDF 以进行合并、拆分、旋转或转换。"
+  "zh": "打开一个 PDF 以进行合并、拆分、旋转或转换。",
+  "fr": "Ouvrez un PDF pour le fusionner, le découper, le pivoter ou le convertir.",
+  "pt": "Abra um PDF para juntar, dividir, girar ou converter.",
+  "ja": "PDF を開いて結合、分割、回転、変換できます。",
+  "ko": "PDF를 열어 합치거나 나누거나 돌리거나 변환하세요."
  },
  "Open a circuit from a file": {
   "de": "Eine Schaltung aus einer Datei öffnen",
   "es": "Abrir un circuito desde un archivo",
-  "zh": "从文件打开电路"
+  "zh": "从文件打开电路",
+  "fr": "Ouvrir un circuit depuis un fichier",
+  "pt": "Abrir um circuito de um arquivo",
+  "ja": "ファイルから回路を開く",
+  "ko": "파일에서 회로 열기"
  },
  "Open a scene from a file": {
   "de": "Eine Szene aus einer Datei öffnen",
   "es": "Abrir una escena desde un archivo",
-  "zh": "从文件打开场景"
+  "zh": "从文件打开场景",
+  "fr": "Ouvrir une scène depuis un fichier",
+  "pt": "Abrir uma cena de um arquivo",
+  "ja": "ファイルからシーンを開く",
+  "ko": "파일에서 장면 열기"
  },
  "Open an image": {
   "de": "Ein Bild öffnen",
   "es": "Abrir una imagen",
-  "zh": "打开图片"
+  "zh": "打开图片",
+  "fr": "Ouvrir une image",
+  "pt": "Abrir uma imagem",
+  "ja": "画像を開く",
+  "ko": "이미지 열기"
  },
  "Open chat": {
   "de": "Chat öffnen",
   "es": "Abrir chat",
-  "zh": "打开聊天"
+  "zh": "打开聊天",
+  "fr": "Ouvrir le chat",
+  "pt": "Abrir o chat",
+  "ja": "チャットを開く",
+  "ko": "채팅 열기"
  },
  "Open file": {
   "de": "Datei öffnen",
   "es": "Abrir archivo",
-  "zh": "打开文件"
+  "zh": "打开文件",
+  "fr": "Ouvrir un fichier",
+  "pt": "Abrir arquivo",
+  "ja": "ファイルを開く",
+  "ko": "파일 열기"
  },
  "Open hat": {
   "de": "Offene Hi-Hat",
   "es": "Charles abierto",
-  "zh": "开放踩镲"
+  "zh": "开放踩镲",
+  "fr": "Charleston ouvert",
+  "pt": "Chimbal aberto",
+  "ja": "オープンハイハット",
+  "ko": "연 하이햇"
  },
  "Open image": {
   "de": "Bild öffnen",
   "es": "Abrir imagen",
-  "zh": "打开图片"
+  "zh": "打开图片",
+  "fr": "Ouvrir l'image",
+  "pt": "Abrir imagem",
+  "ja": "画像を開く",
+  "ko": "이미지 열기"
  },
  "Open the app library": {
   "de": "App-Bibliothek öffnen",
   "es": "Abrir la biblioteca de apps",
-  "zh": "打开应用库"
+  "zh": "打开应用库",
+  "fr": "Ouvrir la bibliothèque d'apps",
+  "pt": "Abrir a biblioteca de apps",
+  "ja": "アプリライブラリを開く",
+  "ko": "앱 라이브러리 열기"
  },
  "Operating system": {
   "de": "Betriebssystem",
   "es": "Sistema operativo",
-  "zh": "操作系统"
+  "zh": "操作系统",
+  "fr": "Système d'exploitation",
+  "pt": "Sistema operacional",
+  "ja": "オペレーティングシステム",
+  "ko": "운영 체제"
  },
  "Opponent skill": {
   "de": "Stärke des Gegners",
   "es": "Nivel del rival",
-  "zh": "对手强度"
+  "zh": "对手强度",
+  "fr": "Niveau de l'adversaire",
+  "pt": "Nível do adversário",
+  "ja": "相手の強さ",
+  "ko": "상대 실력"
  },
  "Optimise": {
   "de": "Optimieren",
   "es": "Optimizar",
-  "zh": "优化"
+  "zh": "优化",
+  "fr": "Optimiser",
+  "pt": "Otimizar",
+  "ja": "最適化",
+  "ko": "최적화"
  },
  "Optional OUI prefix, e.g. 00:1B:44": {
   "de": "Optionales OUI-Präfix, z. B. 00:1B:44",
   "es": "Prefijo OUI opcional, p. ej. 00:1B:44",
-  "zh": "可选的 OUI 前缀，例如 00:1B:44"
+  "zh": "可选的 OUI 前缀，例如 00:1B:44",
+  "fr": "Préfixe OUI facultatif, par exemple 00:1B:44",
+  "pt": "Prefixo OUI opcional, por exemplo 00:1B:44",
+  "ja": "OUI 接頭辞 (任意)、例: 00:1B:44",
+  "ko": "OUI 접두사 (선택), 예: 00:1B:44"
  },
  "Options": {
   "de": "Optionen",
   "es": "Opciones",
-  "zh": "选项"
+  "zh": "选项",
+  "fr": "Options",
+  "pt": "Opções",
+  "ja": "オプション",
+  "ko": "선택 사항"
  },
  "Opus": {
   "de": "Opus",
@@ -8274,12 +9066,20 @@
  "Organisation": {
   "de": "Organisation",
   "es": "Organización",
-  "zh": "组织"
+  "zh": "组织",
+  "fr": "Organisation",
+  "pt": "Organização",
+  "ja": "組織",
+  "ko": "조직"
  },
  "Orientation": {
   "de": "Ausrichtung",
   "es": "Orientación",
-  "zh": "方向"
+  "zh": "方向",
+  "fr": "Orientation",
+  "pt": "Orientação",
+  "ja": "向き",
+  "ko": "방향"
  },
  "Original": {
   "de": "Original",
@@ -8293,52 +9093,92 @@
  "Outliers": {
   "de": "Ausreißer",
   "es": "Valores atípicos",
-  "zh": "离群值"
+  "zh": "离群值",
+  "fr": "Valeurs aberrantes",
+  "pt": "Valores atípicos",
+  "ja": "外れ値",
+  "ko": "이상값"
  },
  "Outline": {
   "de": "Umriss",
   "es": "Contorno",
-  "zh": "轮廓"
+  "zh": "轮廓",
+  "fr": "Contour",
+  "pt": "Contorno",
+  "ja": "輪郭",
+  "ko": "윤곽"
  },
  "Output": {
   "de": "Ausgabe",
   "es": "Salida",
-  "zh": "输出"
+  "zh": "输出",
+  "fr": "Sortie",
+  "pt": "Saída",
+  "ja": "出力",
+  "ko": "출력"
  },
  "Overlap": {
   "de": "Schnittmenge",
   "es": "Intersección",
-  "zh": "相交"
+  "zh": "相交",
+  "fr": "Chevauchement",
+  "pt": "Sobreposição",
+  "ja": "重なり",
+  "ko": "겹침"
  },
  "Overlapping hours": {
   "de": "Gemeinsame Stunden",
   "es": "Horas coincidentes",
-  "zh": "重叠时段"
+  "zh": "重叠时段",
+  "fr": "Heures qui se recoupent",
+  "pt": "Horas em comum",
+  "ja": "重なる時間帯",
+  "ko": "겹치는 시간"
  },
  "Overview": {
   "de": "Überblick",
   "es": "Resumen",
-  "zh": "概览"
+  "zh": "概览",
+  "fr": "Vue d'ensemble",
+  "pt": "Visão geral",
+  "ja": "概要",
+  "ko": "개요"
  },
  "P-MOSFET": {
   "de": "P-MOSFET",
   "es": "MOSFET de canal P",
-  "zh": "P 沟道 MOSFET"
+  "zh": "P 沟道 MOSFET",
+  "fr": "MOSFET canal P",
+  "pt": "MOSFET de canal P",
+  "ja": "P チャネル MOSFET",
+  "ko": "P채널 MOSFET"
  },
  "PDF Studio": {
   "de": "PDF-Studio",
   "es": "PDF Studio",
-  "zh": "PDF 工作台"
+  "zh": "PDF 工作台",
+  "fr": "Studio PDF",
+  "pt": "Estúdio PDF",
+  "ja": "PDF スタジオ",
+  "ko": "PDF 스튜디오"
  },
  "PEM or base64": {
   "de": "PEM oder Base64",
   "es": "PEM o base64",
-  "zh": "PEM 或 base64"
+  "zh": "PEM 或 base64",
+  "fr": "PEM ou base64",
+  "pt": "PEM ou base64",
+  "ja": "PEM または base64",
+  "ko": "PEM 또는 base64"
  },
  "PKCS#8, PEM encoded": {
   "de": "PKCS#8, PEM-kodiert",
   "es": "PKCS#8, codificado en PEM",
-  "zh": "PKCS#8，PEM 编码"
+  "zh": "PKCS#8，PEM 编码",
+  "fr": "PKCS#8, encodé en PEM",
+  "pt": "PKCS#8, codificado em PEM",
+  "ja": "PKCS#8、PEM 形式",
+  "ko": "PKCS#8, PEM 인코딩"
  },
  "PNG 1x": {
   "de": "PNG 1x",
@@ -8379,57 +9219,101 @@
  "Padding": {
   "de": "Innenabstand",
   "es": "Relleno",
-  "zh": "内边距"
+  "zh": "内边距",
+  "fr": "Marge intérieure",
+  "pt": "Espaçamento interno",
+  "ja": "余白",
+  "ko": "안쪽 여백"
  },
  "Pages": {
   "de": "Seiten",
   "es": "Páginas",
-  "zh": "页面"
+  "zh": "页面",
+  "fr": "Pages",
+  "pt": "Páginas",
+  "ja": "ページ",
+  "ko": "페이지"
  },
  "Pages, dock and widget arrangement.": {
   "de": "Anordnung von Seiten, Dock und Widgets.",
   "es": "Disposición de páginas, dock y widgets.",
-  "zh": "页面、Dock 与小组件的排列。"
+  "zh": "页面、Dock 与小组件的排列。",
+  "fr": "Disposition des pages, du dock et des widgets.",
+  "pt": "Organização de páginas, dock e widgets.",
+  "ja": "ページ、Dock、ウィジェットの配置。",
+  "ko": "페이지, Dock, 위젯 배치."
  },
  "Paint": {
   "de": "Malen",
   "es": "Pintura",
-  "zh": "画板"
+  "zh": "画板",
+  "fr": "Dessin",
+  "pt": "Pintura",
+  "ja": "ペイント",
+  "ko": "그림판"
  },
  "Pairs": {
   "de": "Paare",
   "es": "Parejas",
-  "zh": "配对"
+  "zh": "配对",
+  "fr": "Paires",
+  "pt": "Pares",
+  "ja": "ペア",
+  "ko": "짝"
  },
  "Palette": {
   "de": "Palette",
   "es": "Paleta",
-  "zh": "调色板"
+  "zh": "调色板",
+  "fr": "Palette",
+  "pt": "Paleta",
+  "ja": "パレット",
+  "ko": "팔레트"
  },
  "Paper": {
   "de": "Papierfarbe",
   "es": "Papel",
-  "zh": "纸张色"
+  "zh": "纸张色",
+  "fr": "Papier",
+  "pt": "Papel",
+  "ja": "用紙",
+  "ko": "용지"
  },
  "Paragraph": {
   "de": "Absatz",
   "es": "Párrafo",
-  "zh": "段落"
+  "zh": "段落",
+  "fr": "Paragraphe",
+  "pt": "Parágrafo",
+  "ja": "段落",
+  "ko": "문단"
  },
  "Paragraphs": {
   "de": "Absätze",
   "es": "Párrafos",
-  "zh": "段落"
+  "zh": "段落",
+  "fr": "Paragraphes",
+  "pt": "Parágrafos",
+  "ja": "段落",
+  "ko": "문단"
  },
  "Part current": {
   "de": "Bauteilstrom",
   "es": "Corriente del componente",
-  "zh": "元件电流"
+  "zh": "元件电流",
+  "fr": "Courant dans le composant",
+  "pt": "Corrente na peça",
+  "ja": "部品を流れる電流",
+  "ko": "부품에 흐르는 전류"
  },
  "Parts": {
   "de": "Bauteile",
   "es": "Componentes",
-  "zh": "元件"
+  "zh": "元件",
+  "fr": "Composants",
+  "pt": "Peças",
+  "ja": "部品",
+  "ko": "부품"
  },
  "PascalCase": {
   "de": "PascalCase",
@@ -8443,142 +9327,254 @@
  "Passphrase": {
   "de": "Passphrase",
   "es": "Frase de contraseña",
-  "zh": "口令"
+  "zh": "口令",
+  "fr": "Phrase secrète",
+  "pt": "Frase secreta",
+  "ja": "パスフレーズ",
+  "ko": "암호 문구"
  },
  "Password": {
   "de": "Passwort",
   "es": "Contraseña",
-  "zh": "密码"
+  "zh": "密码",
+  "fr": "Mot de passe",
+  "pt": "Senha",
+  "ja": "パスワード",
+  "ko": "비밀번호"
  },
  "Paste": {
   "de": "Einfügen",
   "es": "Pegar",
-  "zh": "粘贴"
+  "zh": "粘贴",
+  "fr": "Coller",
+  "pt": "Colar",
+  "ja": "貼り付け",
+  "ko": "붙여넣기"
  },
  "Paste JSON on both sides.": {
   "de": "Auf beiden Seiten JSON einfügen.",
   "es": "Pega JSON en ambos lados.",
-  "zh": "请在两侧都粘贴 JSON。"
+  "zh": "请在两侧都粘贴 JSON。",
+  "fr": "Collez du JSON des deux côtés.",
+  "pt": "Cole JSON dos dois lados.",
+  "ja": "両側に JSON を貼り付けてください。",
+  "ko": "양쪽에 JSON을 붙여넣으세요."
  },
  "Paste SVG markup here": {
   "de": "SVG-Markup hier einfügen",
   "es": "Pega aquí el marcado SVG",
-  "zh": "在此粘贴 SVG 标记"
+  "zh": "在此粘贴 SVG 标记",
+  "fr": "Collez du balisage SVG ici",
+  "pt": "Cole a marcação SVG aqui",
+  "ja": "ここに SVG のマークアップを貼り付け",
+  "ko": "여기에 SVG 마크업을 붙여넣으세요"
  },
  "Paste a React SVG component": {
   "de": "Eine React-SVG-Komponente einfügen",
   "es": "Pega un componente SVG de React",
-  "zh": "粘贴一个 React SVG 组件"
+  "zh": "粘贴一个 React SVG 组件",
+  "fr": "Collez un composant SVG React",
+  "pt": "Cole um componente SVG React",
+  "ja": "React の SVG コンポーネントを貼り付け",
+  "ko": "React SVG 컴포넌트를 붙여넣으세요"
  },
  "Paste a compose file": {
   "de": "Eine Compose-Datei einfügen",
   "es": "Pega un archivo compose",
-  "zh": "粘贴一个 compose 文件"
+  "zh": "粘贴一个 compose 文件",
+  "fr": "Collez un fichier compose",
+  "pt": "Cole um arquivo compose",
+  "ja": "compose ファイルを貼り付け",
+  "ko": "compose 파일을 붙여넣으세요"
  },
  "Paste a copy": {
   "de": "Eine Kopie einfügen",
   "es": "Pegar una copia",
-  "zh": "粘贴一份副本"
+  "zh": "粘贴一份副本",
+  "fr": "Coller une copie",
+  "pt": "Colar uma cópia",
+  "ja": "複製を貼り付け",
+  "ko": "사본 붙여넣기"
  },
  "Paste a signature to compare in constant view": {
   "de": "Eine Signatur zum Vergleich in konstanter Zeit einfügen",
   "es": "Pega una firma para compararla en tiempo constante",
-  "zh": "粘贴一个签名以进行恒定时间比较"
+  "zh": "粘贴一个签名以进行恒定时间比较",
+  "fr": "Collez une signature à comparer en temps constant",
+  "pt": "Cole uma assinatura para comparar em tempo constante",
+  "ja": "一定時間で比較する署名を貼り付け",
+  "ko": "일정 시간에 비교할 서명을 붙여넣으세요"
  },
  "Paste an OpenAPI document": {
   "de": "Ein OpenAPI-Dokument einfügen",
   "es": "Pega un documento OpenAPI",
-  "zh": "粘贴一份 OpenAPI 文档"
+  "zh": "粘贴一份 OpenAPI 文档",
+  "fr": "Collez un document OpenAPI",
+  "pt": "Cole um documento OpenAPI",
+  "ja": "OpenAPI 文書を貼り付け",
+  "ko": "OpenAPI 문서를 붙여넣으세요"
  },
  "Paste an authorized_keys or known_hosts entry": {
   "de": "Einen Eintrag aus authorized_keys oder known_hosts einfügen",
   "es": "Pega una entrada de authorized_keys o known_hosts",
-  "zh": "粘贴一条 authorized_keys 或 known_hosts 记录"
+  "zh": "粘贴一条 authorized_keys 或 known_hosts 记录",
+  "fr": "Collez une entrée authorized_keys ou known_hosts",
+  "pt": "Cole uma entrada authorized_keys ou known_hosts",
+  "ja": "authorized_keys か known_hosts の行を貼り付け",
+  "ko": "authorized_keys나 known_hosts 항목을 붙여넣으세요"
  },
  "Paste an existing header or base64 pair": {
   "de": "Einen vorhandenen Header oder ein Base64-Paar einfügen",
   "es": "Pega una cabecera existente o un par en base64",
-  "zh": "粘贴已有的请求头或 base64 凭据对"
+  "zh": "粘贴已有的请求头或 base64 凭据对",
+  "fr": "Collez un en-tête existant ou une paire base64",
+  "pt": "Cole um cabeçalho existente ou um par base64",
+  "ja": "既存のヘッダか base64 の組を貼り付け",
+  "ko": "기존 헤더나 base64 쌍을 붙여넣으세요"
  },
  "Paste ciphertext": {
   "de": "Geheimtext einfügen",
   "es": "Pega el texto cifrado",
-  "zh": "粘贴密文"
+  "zh": "粘贴密文",
+  "fr": "Collez le texte chiffré",
+  "pt": "Cole o texto cifrado",
+  "ja": "暗号文を貼り付け",
+  "ko": "암호문을 붙여넣으세요"
  },
  "Paste code here": {
   "de": "Code hier einfügen",
   "es": "Pega el código aquí",
-  "zh": "在此粘贴代码"
+  "zh": "在此粘贴代码",
+  "fr": "Collez du code ici",
+  "pt": "Cole código aqui",
+  "ja": "ここにコードを貼り付け",
+  "ko": "여기에 코드를 붙여넣으세요"
  },
  "Paste encoded text to decode": {
   "de": "Kodierten Text zum Dekodieren einfügen",
   "es": "Pega el texto codificado para decodificarlo",
-  "zh": "粘贴要解码的编码文本"
+  "zh": "粘贴要解码的编码文本",
+  "fr": "Collez du texte encodé à décoder",
+  "pt": "Cole o texto codificado para decodificar",
+  "ja": "復号したい符号化テキストを貼り付け",
+  "ko": "디코딩할 인코딩된 글을 붙여넣으세요"
  },
  "Paste into an authenticator app": {
   "de": "In eine Authenticator-App einfügen",
   "es": "Pégalo en una app de autenticación",
-  "zh": "粘贴到身份验证器应用中"
+  "zh": "粘贴到身份验证器应用中",
+  "fr": "Collez dans une application d'authentification",
+  "pt": "Cole em um aplicativo autenticador",
+  "ja": "認証アプリに貼り付けてください",
+  "ko": "인증 앱에 붙여넣으세요"
  },
  "Paste numbers separated by spaces, commas or new lines": {
   "de": "Zahlen durch Leerzeichen, Kommas oder Zeilenumbrüche getrennt einfügen",
   "es": "Pega números separados por espacios, comas o saltos de línea",
-  "zh": "粘贴以空格、逗号或换行分隔的数字"
+  "zh": "粘贴以空格、逗号或换行分隔的数字",
+  "fr": "Collez des nombres séparés par des espaces, des virgules ou des sauts de ligne",
+  "pt": "Cole números separados por espaços, vírgulas ou quebras de linha",
+  "ja": "空白、カンマ、改行で区切った数を貼り付け",
+  "ko": "공백, 쉼표, 줄 바꿈으로 나눈 숫자를 붙여넣으세요"
  },
  "Paste one or more JSON documents": {
   "de": "Ein oder mehrere JSON-Dokumente einfügen",
   "es": "Pega uno o varios documentos JSON",
-  "zh": "粘贴一个或多个 JSON 文档"
+  "zh": "粘贴一个或多个 JSON 文档",
+  "fr": "Collez un ou plusieurs documents JSON",
+  "pt": "Cole um ou mais documentos JSON",
+  "ja": "1 つ以上の JSON 文書を貼り付け",
+  "ko": "JSON 문서를 하나 이상 붙여넣으세요"
  },
  "Paste or export": {
   "de": "Einfügen oder exportieren",
   "es": "Pegar o exportar",
-  "zh": "粘贴或导出"
+  "zh": "粘贴或导出",
+  "fr": "Coller ou exporter",
+  "pt": "Colar ou exportar",
+  "ja": "貼り付けまたは書き出し",
+  "ko": "붙여넣기 또는 내보내기"
  },
  "Paste or write text to analyse": {
   "de": "Text zum Auswerten einfügen oder schreiben",
   "es": "Pega o escribe el texto que quieras analizar",
-  "zh": "粘贴或输入要分析的文本"
+  "zh": "粘贴或输入要分析的文本",
+  "fr": "Collez ou écrivez le texte à analyser",
+  "pt": "Cole ou escreva o texto a analisar",
+  "ja": "分析したい文章を貼り付けるか入力",
+  "ko": "분석할 글을 붙여넣거나 쓰세요"
  },
  "Paste response headers": {
   "de": "Antwort-Header einfügen",
   "es": "Pega las cabeceras de respuesta",
-  "zh": "粘贴响应头"
+  "zh": "粘贴响应头",
+  "fr": "Collez les en-têtes de réponse",
+  "pt": "Cole os cabeçalhos de resposta",
+  "ja": "レスポンスヘッダを貼り付け",
+  "ko": "응답 헤더를 붙여넣으세요"
  },
  "Paste sample text to see live matches": {
   "de": "Beispieltext einfügen, um Treffer live zu sehen",
   "es": "Pega texto de ejemplo para ver las coincidencias en vivo",
-  "zh": "粘贴示例文本以实时查看匹配"
+  "zh": "粘贴示例文本以实时查看匹配",
+  "fr": "Collez un texte d'exemple pour voir les correspondances en direct",
+  "pt": "Cole um texto de exemplo para ver as correspondências ao vivo",
+  "ja": "サンプル文を貼り付けると一致がその場で見えます",
+  "ko": "예시 글을 붙여넣으면 일치가 바로 보입니다"
  },
  "Paste some numbers to see the summary.": {
   "de": "Ein paar Zahlen einfügen, um die Kennzahlen zu sehen.",
   "es": "Pega algunos números para ver el resumen.",
-  "zh": "粘贴一些数字以查看统计摘要。"
+  "zh": "粘贴一些数字以查看统计摘要。",
+  "fr": "Collez des nombres pour voir le résumé.",
+  "pt": "Cole alguns números para ver o resumo.",
+  "ja": "数を貼り付けると要約が出ます。",
+  "ko": "숫자를 붙여넣으면 요약이 나옵니다."
  },
  "Paste text, notes or a diff": {
   "de": "Text, Notizen oder ein Diff einfügen",
   "es": "Pega texto, notas o un diff",
-  "zh": "粘贴文本、笔记或 diff"
+  "zh": "粘贴文本、笔记或 diff",
+  "fr": "Collez du texte, des notes ou un diff",
+  "pt": "Cole texto, notas ou um diff",
+  "ja": "文章、メモ、差分を貼り付け",
+  "ko": "글, 메모, 차이를 붙여넣으세요"
  },
  "Paths": {
   "de": "Pfade",
   "es": "Trazados",
-  "zh": "路径"
+  "zh": "路径",
+  "fr": "Chemins",
+  "pt": "Caminhos",
+  "ja": "パス",
+  "ko": "경로"
  },
  "Pattern": {
   "de": "Muster",
   "es": "Patrón",
-  "zh": "模式"
+  "zh": "模式",
+  "fr": "Motif",
+  "pt": "Padrão",
+  "ja": "パターン",
+  "ko": "패턴"
  },
  "Pause": {
   "de": "Pause",
   "es": "Pausar",
-  "zh": "暂停"
+  "zh": "暂停",
+  "fr": "Pause",
+  "pt": "Pausar",
+  "ja": "一時停止",
+  "ko": "멈춤"
  },
  "Paused": {
   "de": "Pausiert",
   "es": "En pausa",
-  "zh": "已暂停"
+  "zh": "已暂停",
+  "fr": "En pause",
+  "pt": "Pausado",
+  "ja": "一時停止中",
+  "ko": "멈춤"
  },
  "Payload": {
   "de": "Payload",
@@ -8592,167 +9588,299 @@
  "Pen": {
   "de": "Stift",
   "es": "Pluma",
-  "zh": "钢笔"
+  "zh": "钢笔",
+  "fr": "Stylo",
+  "pt": "Caneta",
+  "ja": "ペン",
+  "ko": "펜"
  },
  "Pencil": {
   "de": "Stift",
   "es": "Lápiz",
-  "zh": "铅笔"
+  "zh": "铅笔",
+  "fr": "Crayon",
+  "pt": "Lápis",
+  "ja": "鉛筆",
+  "ko": "연필"
  },
  "Pencil, shapes, fill and spray on a plain canvas.": {
   "de": "Stift, Formen, Füllen und Sprühdose auf einer leeren Leinwand.",
   "es": "Lápiz, formas, relleno y spray sobre un lienzo en blanco.",
-  "zh": "在空白画布上使用铅笔、形状、填充与喷枪。"
+  "zh": "在空白画布上使用铅笔、形状、填充与喷枪。",
+  "fr": "Crayon, formes, remplissage et aérographe sur une toile vierge.",
+  "pt": "Lápis, formas, preenchimento e spray em uma tela simples.",
+  "ja": "素のキャンバスに鉛筆、図形、塗りつぶし、スプレー。",
+  "ko": "빈 캔버스에 연필, 도형, 채우기, 스프레이."
  },
  "People": {
   "de": "Menschen",
   "es": "Personas",
-  "zh": "人物"
+  "zh": "人物",
+  "fr": "Personnes",
+  "pt": "Pessoas",
+  "ja": "人物",
+  "ko": "사람"
  },
  "Permissions": {
   "de": "Berechtigungen",
   "es": "Permisos",
-  "zh": "权限"
+  "zh": "权限",
+  "fr": "Permissions",
+  "pt": "Permissões",
+  "ja": "権限",
+  "ko": "권한"
  },
  "Personal": {
   "de": "Persönlich",
   "es": "Personal",
-  "zh": "个人"
+  "zh": "个人",
+  "fr": "Personnel",
+  "pt": "Pessoal",
+  "ja": "個人",
+  "ko": "개인"
  },
  "Personal bests": {
   "de": "Persönliche Bestwerte",
   "es": "Récords personales",
-  "zh": "个人最佳"
+  "zh": "个人最佳",
+  "fr": "Records personnels",
+  "pt": "Recordes pessoais",
+  "ja": "自己ベスト",
+  "ko": "개인 최고 기록"
  },
  "Phone": {
   "de": "Telefon",
   "es": "Teléfono",
-  "zh": "电话"
+  "zh": "电话",
+  "fr": "Téléphone",
+  "pt": "Telefone",
+  "ja": "電話",
+  "ko": "전화"
  },
  "Physics Lab": {
   "de": "Physiklabor",
   "es": "Laboratorio de física",
-  "zh": "物理实验室"
+  "zh": "物理实验室",
+  "fr": "Labo physique",
+  "pt": "Laboratório de física",
+  "ja": "物理ラボ",
+  "ko": "물리 실험실"
  },
  "Pick a body or a link to change it, or drop a new one from the palette.": {
   "de": "Einen Körper oder eine Verbindung wählen, um sie zu ändern, oder etwas Neues aus der Palette ziehen.",
   "es": "Elige un cuerpo o un enlace para modificarlo, o arrastra uno nuevo desde la paleta.",
-  "zh": "选中一个物体或连接进行修改，或从面板中拖入新的。"
+  "zh": "选中一个物体或连接进行修改，或从面板中拖入新的。",
+  "fr": "Choisissez un corps ou une liaison pour le modifier, ou déposez-en un nouveau depuis la palette.",
+  "pt": "Escolha um corpo ou uma ligação para alterá-lo, ou solte um novo da paleta.",
+  "ja": "物体かリンクを選んで変更するか、パレットから新しいものを置いてください。",
+  "ko": "물체나 링크를 골라 바꾸거나, 팔레트에서 새것을 놓으세요."
  },
  "Pick a colour": {
   "de": "Eine Farbe aufnehmen",
   "es": "Elegir un color",
-  "zh": "拾取颜色"
+  "zh": "拾取颜色",
+  "fr": "Choisir une couleur",
+  "pt": "Escolher uma cor",
+  "ja": "色を選ぶ",
+  "ko": "색 고르기"
  },
  "Pick a design to start from. It replaces what is on the page.": {
   "de": "Einen Entwurf als Ausgangspunkt wählen. Er ersetzt, was auf der Seite ist.",
   "es": "Elige un diseño de partida. Sustituye lo que hay en la página.",
-  "zh": "选择一个起始设计。它会替换页面上的现有内容。"
+  "zh": "选择一个起始设计。它会替换页面上的现有内容。",
+  "fr": "Choisissez un modèle de départ. Il remplace ce qui est sur la page.",
+  "pt": "Escolha um modelo para começar. Ele substitui o que está na página.",
+  "ja": "出発点にするデザインを選んでください。ページの内容は置き換わります。",
+  "ko": "시작할 디자인을 고르세요. 페이지에 있던 것을 대신합니다."
  },
  "Pick a part to change it, or drop a new one from the palette.": {
   "de": "Ein Bauteil wählen, um es zu ändern, oder ein neues aus der Palette ziehen.",
   "es": "Elige un componente para modificarlo, o arrastra uno nuevo desde la paleta.",
-  "zh": "选中一个元件进行修改，或从元件面板拖入一个新元件。"
+  "zh": "选中一个元件进行修改，或从元件面板拖入一个新元件。",
+  "fr": "Choisissez un composant pour le modifier, ou déposez-en un nouveau depuis la palette.",
+  "pt": "Escolha uma peça para alterá-la, ou solte uma nova da paleta.",
+  "ja": "部品を選んで変更するか、パレットから新しいものを置いてください。",
+  "ko": "부품을 골라 바꾸거나, 팔레트에서 새것을 놓으세요."
  },
  "Pick a port to begin. The browser asks you to choose the device.": {
   "de": "Einen Port wählen, um zu beginnen. Der Browser fragt nach dem Gerät.",
   "es": "Elige un puerto para empezar. El navegador te pedirá que selecciones el dispositivo.",
-  "zh": "选择一个串口开始。浏览器会让你选择设备。"
+  "zh": "选择一个串口开始。浏览器会让你选择设备。",
+  "fr": "Choisissez un port pour commencer. Le navigateur vous demande de sélectionner l'appareil.",
+  "pt": "Escolha uma porta para começar. O navegador pede que você selecione o dispositivo.",
+  "ja": "ポートを選んで始めます。ブラウザが機器の選択を求めます。",
+  "ko": "포트를 골라 시작하세요. 브라우저가 기기를 고르라고 묻습니다."
  },
  "Pick a time above or click a slot in the week view.": {
   "de": "Oben eine Zeit wählen oder in der Wochenansicht auf einen Slot klicken.",
   "es": "Elige una hora arriba o haz clic en un hueco de la vista semanal.",
-  "zh": "在上方选择时间，或在周视图中点击一个时段。"
+  "zh": "在上方选择时间，或在周视图中点击一个时段。",
+  "fr": "Choisissez une heure ci-dessus ou cliquez un créneau dans la vue semaine.",
+  "pt": "Escolha um horário acima ou clique em um espaço na visão semanal.",
+  "ja": "上で時刻を選ぶか、週表示の枠をクリックしてください。",
+  "ko": "위에서 시간을 고르거나 주간 보기에서 칸을 누르세요."
  },
  "Pick at least one type above.": {
   "de": "Oben mindestens einen Typ wählen.",
   "es": "Elige al menos un tipo arriba.",
-  "zh": "请在上方至少选择一种类型。"
+  "zh": "请在上方至少选择一种类型。",
+  "fr": "Choisissez au moins un type ci-dessus.",
+  "pt": "Escolha ao menos um tipo acima.",
+  "ja": "上で少なくとも 1 つ種類を選んでください。",
+  "ko": "위에서 종류를 하나 이상 고르세요."
  },
  "Pick one shape, then shift click a second one.": {
   "de": "Eine Form wählen, dann mit Umschalt auf eine zweite klicken.",
   "es": "Elige una forma y luego haz clic con Mayús en una segunda.",
-  "zh": "先选中一个形状，再按住 Shift 点击第二个。"
+  "zh": "先选中一个形状，再按住 Shift 点击第二个。",
+  "fr": "Choisissez une forme, puis maj-cliquez sur une seconde.",
+  "pt": "Escolha uma forma, depois clique com shift em uma segunda.",
+  "ja": "図形を 1 つ選び、Shift を押しながら 2 つ目をクリックします。",
+  "ko": "도형을 하나 고른 뒤 Shift를 누른 채 둘째를 누르세요."
  },
  "Pick something on the poster to change it, or add a piece from the left.": {
   "de": "Etwas auf dem Poster wählen, um es zu ändern, oder links ein Element hinzufügen.",
   "es": "Elige algo del cartel para modificarlo, o añade un elemento desde la izquierda.",
-  "zh": "选中海报上的元素进行修改，或从左侧添加元素。"
+  "zh": "选中海报上的元素进行修改，或从左侧添加元素。",
+  "fr": "Choisissez un élément de l'affiche pour le modifier, ou ajoutez-en un depuis la gauche.",
+  "pt": "Escolha algo no cartaz para alterá-lo, ou adicione um elemento pela esquerda.",
+  "ja": "ポスター上の要素を選んで変更するか、左から追加してください。",
+  "ko": "포스터에서 무언가를 골라 바꾸거나, 왼쪽에서 요소를 넣으세요."
  },
  "Picked emoji land here.": {
   "de": "Gewählte Emoji landen hier.",
   "es": "Los emoji que elijas aparecen aquí.",
-  "zh": "选过的 emoji 会出现在这里。"
+  "zh": "选过的 emoji 会出现在这里。",
+  "fr": "Les emoji choisis atterrissent ici.",
+  "pt": "Os emoji escolhidos aparecem aqui.",
+  "ja": "選んだ絵文字がここに入ります。",
+  "ko": "고른 이모지가 여기에 모입니다."
  },
  "Picture": {
   "de": "Bild",
   "es": "Imagen",
-  "zh": "图片"
+  "zh": "图片",
+  "fr": "Image",
+  "pt": "Figura",
+  "ja": "図",
+  "ko": "그림"
  },
  "Pin": {
   "de": "Gelenk",
   "es": "Pasador",
-  "zh": "铰接"
+  "zh": "铰接",
+  "fr": "Épingler",
+  "pt": "Fixar",
+  "ja": "ピン留め",
+  "ko": "고정"
  },
  "Pins on": {
   "de": "Anschlüsse an",
   "es": "Pines en",
-  "zh": "引脚位于"
+  "zh": "引脚位于",
+  "fr": "Broches actives",
+  "pt": "Pinos ativos",
+  "ja": "有効なピン",
+  "ko": "켜진 핀"
  },
  "Pipe": {
   "de": "Senkrechter Strich",
   "es": "Barra vertical",
-  "zh": "竖线"
+  "zh": "竖线",
+  "fr": "Barre verticale",
+  "pt": "Barra vertical",
+  "ja": "縦棒",
+  "ko": "세로 막대"
  },
  "Pixelate": {
   "de": "Verpixeln",
   "es": "Pixelar",
-  "zh": "像素化"
+  "zh": "像素化",
+  "fr": "Pixelliser",
+  "pt": "Pixelar",
+  "ja": "モザイク",
+  "ko": "모자이크"
  },
  "Place": {
   "de": "Ort",
   "es": "Lugar",
-  "zh": "地点"
+  "zh": "地点",
+  "fr": "Placer",
+  "pt": "Colocar",
+  "ja": "配置",
+  "ko": "놓기"
  },
  "Plain": {
   "de": "Einfach",
   "es": "Simple",
-  "zh": "纯文本"
+  "zh": "纯文本",
+  "fr": "Simple",
+  "pt": "Simples",
+  "ja": "標準",
+  "ko": "보통"
  },
  "Plain language, for example: an ISO date followed by a comma": {
   "de": "In einfachen Worten, zum Beispiel: ein ISO-Datum gefolgt von einem Komma",
   "es": "En lenguaje corriente, por ejemplo: una fecha ISO seguida de una coma",
-  "zh": "用日常语言描述，例如：一个 ISO 日期后面跟一个逗号"
+  "zh": "用日常语言描述，例如：一个 ISO 日期后面跟一个逗号",
+  "fr": "En langage courant, par exemple : une date ISO suivie d'une virgule",
+  "pt": "Em linguagem comum, por exemplo: uma data ISO seguida de vírgula",
+  "ja": "普通の言葉で。例: ISO 形式の日付のあとにカンマ",
+  "ko": "평범한 말로. 예: ISO 형식 날짜 뒤에 쉼표"
  },
  "Plain text": {
   "de": "Klartext",
   "es": "Texto plano",
-  "zh": "纯文本"
+  "zh": "纯文本",
+  "fr": "Texte brut",
+  "pt": "Texto simples",
+  "ja": "プレーンテキスト",
+  "ko": "일반 텍스트"
  },
  "Platform": {
   "de": "Plattform",
   "es": "Plataforma",
-  "zh": "平台"
+  "zh": "平台",
+  "fr": "Plateforme",
+  "pt": "Plataforma",
+  "ja": "プラットフォーム",
+  "ko": "플랫폼"
  },
  "Play": {
   "de": "Start",
   "es": "Iniciar",
-  "zh": "开始"
+  "zh": "开始",
+  "fr": "Lecture",
+  "pt": "Reproduzir",
+  "ja": "再生",
+  "ko": "재생"
  },
  "Play a string": {
   "de": "Eine Saite anspielen",
   "es": "Toca una cuerda",
-  "zh": "弹一根弦"
+  "zh": "弹一根弦",
+  "fr": "Jouer une corde",
+  "pt": "Tocar uma corda",
+  "ja": "弦を鳴らす",
+  "ko": "줄 울리기"
  },
  "Play tone": {
   "de": "Ton abspielen",
   "es": "Reproducir el tono",
-  "zh": "播放音调"
+  "zh": "播放音调",
+  "fr": "Jouer une note",
+  "pt": "Tocar um tom",
+  "ja": "音を鳴らす",
+  "ko": "소리 내기"
  },
  "Plug in a gamepad and press any button. Browsers only reveal a pad after it sends input.": {
   "de": "Ein Gamepad anschließen und eine beliebige Taste drücken. Browser zeigen ein Pad erst, wenn es Eingaben sendet.",
   "es": "Conecta un mando y pulsa cualquier botón. Los navegadores solo detectan el mando cuando envía datos.",
-  "zh": "接上手柄并按任意键。浏览器只有在手柄发送输入后才会显示它。"
+  "zh": "接上手柄并按任意键。浏览器只有在手柄发送输入后才会显示它。",
+  "fr": "Branchez une manette et appuyez sur un bouton. Les navigateurs ne révèlent une manette qu'après une première entrée.",
+  "pt": "Conecte um controle e aperte qualquer botão. Os navegadores só revelam o controle depois que ele envia uma entrada.",
+  "ja": "ゲームパッドをつないでどれかのボタンを押してください。ブラウザは入力があるまでパッドを見せません。",
+  "ko": "게임패드를 연결하고 아무 버튼이나 누르세요. 브라우저는 입력이 있어야 패드를 알려 줍니다."
  },
  "PodDisruptionBudget": {
   "de": "PodDisruptionBudget",
@@ -8766,12 +9894,20 @@
  "Point this at a self-hosted copy of WebLLM if you would rather not use a CDN.": {
   "de": "Auf eine selbst gehostete Kopie von WebLLM zeigen lassen, wenn kein CDN genutzt werden soll.",
   "es": "Apunta esto a una copia autoalojada de WebLLM si prefieres no usar una CDN.",
-  "zh": "若不想使用 CDN，可将其指向自托管的 WebLLM 副本。"
+  "zh": "若不想使用 CDN，可将其指向自托管的 WebLLM 副本。",
+  "fr": "Pointez ceci vers une copie auto-hébergée de WebLLM si vous préférez éviter un CDN.",
+  "pt": "Aponte isto para uma cópia própria do WebLLM se preferir não usar um CDN.",
+  "ja": "CDN を使いたくない場合は、自分で用意した WebLLM をここに指定してください。",
+  "ko": "CDN을 쓰고 싶지 않다면 직접 올린 WebLLM을 여기에 가리키세요."
  },
  "Pointer": {
   "de": "Zeigegerät",
   "es": "Puntero",
-  "zh": "指针设备"
+  "zh": "指针设备",
+  "fr": "Pointeur",
+  "pt": "Ponteiro",
+  "ja": "ポインタ",
+  "ko": "포인터"
  },
  "Pong": {
   "de": "Pong",
@@ -8785,167 +9921,299 @@
  "Pop": {
   "de": "Aufploppen",
   "es": "Aparición",
-  "zh": "弹出"
+  "zh": "弹出",
+  "fr": "Pop",
+  "pt": "Pop",
+  "ja": "ポップ",
+  "ko": "팝"
  },
  "Population sd": {
   "de": "Standardabweichung (Grundgesamtheit)",
   "es": "Desviación típica poblacional",
-  "zh": "总体标准差"
+  "zh": "总体标准差",
+  "fr": "Écart type de population",
+  "pt": "Desvio padrão populacional",
+  "ja": "母標準偏差",
+  "ko": "모표준편차"
  },
  "Portfolio": {
   "de": "Portfolio",
   "es": "Cartera",
-  "zh": "投资组合"
+  "zh": "投资组合",
+  "fr": "Portefeuille",
+  "pt": "Carteira",
+  "ja": "ポートフォリオ",
+  "ko": "포트폴리오"
  },
  "Position": {
   "de": "Position",
   "es": "Posición",
-  "zh": "位置"
+  "zh": "位置",
+  "fr": "Position",
+  "pt": "Posição",
+  "ja": "位置",
+  "ko": "위치"
  },
  "Positions": {
   "de": "Positionen",
   "es": "Posiciones",
-  "zh": "持仓"
+  "zh": "持仓",
+  "fr": "Positions",
+  "pt": "Posições",
+  "ja": "建玉",
+  "ko": "보유 종목"
  },
  "Post code": {
   "de": "Postleitzahl",
   "es": "Código postal",
-  "zh": "邮政编码"
+  "zh": "邮政编码",
+  "fr": "Code postal",
+  "pt": "Código postal",
+  "ja": "郵便番号",
+  "ko": "우편번호"
  },
  "Poster Studio": {
   "de": "Poster-Studio",
   "es": "Estudio de carteles",
-  "zh": "海报工作室"
+  "zh": "海报工作室",
+  "fr": "Studio d'affiches",
+  "pt": "Estúdio de cartazes",
+  "ja": "ポスタースタジオ",
+  "ko": "포스터 스튜디오"
  },
  "Posters and social variants from a set of templates.": {
   "de": "Poster und Social-Varianten aus einer Reihe von Vorlagen.",
   "es": "Carteles y variantes para redes a partir de un conjunto de plantillas.",
-  "zh": "基于一组模板生成海报与社交媒体版本。"
+  "zh": "基于一组模板生成海报与社交媒体版本。",
+  "fr": "Affiches et déclinaisons sociales à partir d'un jeu de modèles.",
+  "pt": "Cartazes e versões para redes a partir de um conjunto de modelos.",
+  "ja": "テンプレート集からポスターと SNS 用の派生を作ります。",
+  "ko": "서식 모음에서 포스터와 소셜용 변형을 만듭니다."
  },
  "Power": {
   "de": "Leistung",
   "es": "Potencia",
-  "zh": "功率"
+  "zh": "功率",
+  "fr": "Puissance",
+  "pt": "Potência",
+  "ja": "電力",
+  "ko": "전력"
  },
  "Precision": {
   "de": "Genauigkeit",
   "es": "Precisión",
-  "zh": "精度"
+  "zh": "精度",
+  "fr": "Précision",
+  "pt": "Precisão",
+  "ja": "精度",
+  "ko": "자릿수"
  },
  "Preferences": {
   "de": "Einstellungen",
   "es": "Preferencias",
-  "zh": "偏好设置"
+  "zh": "偏好设置",
+  "fr": "Préférences",
+  "pt": "Preferências",
+  "ja": "環境設定",
+  "ko": "환경 설정"
  },
  "Prefix": {
   "de": "Präfix",
   "es": "Prefijo",
-  "zh": "前缀"
+  "zh": "前缀",
+  "fr": "Préfixe",
+  "pt": "Prefixo",
+  "ja": "接頭辞",
+  "ko": "접두사"
  },
  "Preserved case": {
   "de": "Schreibweise erhalten",
   "es": "Mayúsculas conservadas",
-  "zh": "保留大小写"
+  "zh": "保留大小写",
+  "fr": "Casse conservée",
+  "pt": "Caixa preservada",
+  "ja": "大文字小文字を保持",
+  "ko": "대소문자 유지"
  },
  "Presets": {
   "de": "Vorlagen",
   "es": "Preajustes",
-  "zh": "预设"
+  "zh": "预设",
+  "fr": "Préréglages",
+  "pt": "Predefinições",
+  "ja": "プリセット",
+  "ko": "프리셋"
  },
  "Press a button on a controller": {
   "de": "Eine Taste am Controller drücken",
   "es": "Pulsa un botón del mando",
-  "zh": "按下手柄上的任意键"
+  "zh": "按下手柄上的任意键",
+  "fr": "Appuyez sur un bouton de la manette",
+  "pt": "Aperte um botão no controle",
+  "ja": "コントローラのボタンを押してください",
+  "ko": "컨트롤러의 버튼을 누르세요"
  },
  "Press a key to build a matcher": {
   "de": "Eine Taste drücken, um einen Vergleich zu bauen",
   "es": "Pulsa una tecla para crear un comparador",
-  "zh": "按下一个键来生成匹配代码"
+  "zh": "按下一个键来生成匹配代码",
+  "fr": "Appuyez sur une touche pour construire un test",
+  "pt": "Aperte uma tecla para montar um verificador",
+  "ja": "キーを押すと判定コードが作られます",
+  "ko": "키를 누르면 판별식이 만들어집니다"
  },
  "Press any key": {
   "de": "Eine beliebige Taste drücken",
   "es": "Pulsa cualquier tecla",
-  "zh": "按任意键"
+  "zh": "按任意键",
+  "fr": "Appuyez sur une touche",
+  "pt": "Aperte qualquer tecla",
+  "ja": "何かキーを押してください",
+  "ko": "아무 키나 누르세요"
  },
  "Press play": {
   "de": "Start drücken",
   "es": "Pulsa iniciar",
-  "zh": "按开始"
+  "zh": "按开始",
+  "fr": "Appuyez sur lecture",
+  "pt": "Aperte reproduzir",
+  "ja": "再生を押してください",
+  "ko": "재생을 누르세요"
  },
  "Preview": {
   "de": "Vorschau",
   "es": "Vista previa",
-  "zh": "预览"
+  "zh": "预览",
+  "fr": "Aperçu",
+  "pt": "Prévia",
+  "ja": "プレビュー",
+  "ko": "미리 보기"
  },
  "Preview size": {
   "de": "Vorschaugröße",
   "es": "Tamaño de la vista previa",
-  "zh": "预览大小"
+  "zh": "预览大小",
+  "fr": "Taille de l'aperçu",
+  "pt": "Tamanho da prévia",
+  "ja": "プレビューの大きさ",
+  "ko": "미리 보기 크기"
  },
  "Previous": {
   "de": "Zurück",
   "es": "Anterior",
-  "zh": "上一个"
+  "zh": "上一个",
+  "fr": "Précédent",
+  "pt": "Anterior",
+  "ja": "前へ",
+  "ko": "이전"
  },
  "Previous window": {
   "de": "Vorheriges Zeitfenster",
   "es": "Ventana anterior",
-  "zh": "上一个时段"
+  "zh": "上一个时段",
+  "fr": "Fenêtre précédente",
+  "pt": "Janela anterior",
+  "ja": "前のウィンドウ",
+  "ko": "이전 창"
  },
  "Price": {
   "de": "Preis",
   "es": "Precio",
-  "zh": "价格"
+  "zh": "价格",
+  "fr": "Prix",
+  "pt": "Preço",
+  "ja": "価格",
+  "ko": "가격"
  },
  "Price provider": {
   "de": "Kursanbieter",
   "es": "Proveedor de precios",
-  "zh": "行情来源"
+  "zh": "行情来源",
+  "fr": "Fournisseur de cours",
+  "pt": "Fonte de preços",
+  "ja": "価格の提供元",
+  "ko": "가격 제공처"
  },
  "Print the value under the bars": {
   "de": "Wert unter den Strichen ausgeben",
   "es": "Imprimir el valor bajo las barras",
-  "zh": "在条形下方打印数值"
+  "zh": "在条形下方打印数值",
+  "fr": "Afficher la valeur sous les barres",
+  "pt": "Mostrar o valor sob as barras",
+  "ja": "バーの下に値を表示",
+  "ko": "막대 아래에 값 표시"
  },
  "Privacy": {
   "de": "Datenschutz",
   "es": "Privacidad",
-  "zh": "隐私"
+  "zh": "隐私",
+  "fr": "Confidentialité",
+  "pt": "Privacidade",
+  "ja": "プライバシー",
+  "ko": "개인정보"
  },
  "Privacy policy": {
   "de": "Datenschutzerklärung",
   "es": "Política de privacidad",
-  "zh": "隐私政策"
+  "zh": "隐私政策",
+  "fr": "Politique de confidentialité",
+  "pt": "Política de privacidade",
+  "ja": "プライバシーポリシー",
+  "ko": "개인정보 처리방침"
  },
  "Private key": {
   "de": "Privater Schlüssel",
   "es": "Clave privada",
-  "zh": "私钥"
+  "zh": "私钥",
+  "fr": "Clé privée",
+  "pt": "Chave privada",
+  "ja": "秘密鍵",
+  "ko": "개인 키"
  },
  "Probe": {
   "de": "Messspitze",
   "es": "Sonda",
-  "zh": "探针"
+  "zh": "探针",
+  "fr": "Sonde",
+  "pt": "Sonda",
+  "ja": "プローブ",
+  "ko": "프로브"
  },
  "Product": {
   "de": "Produkt",
   "es": "Producto",
-  "zh": "产品"
+  "zh": "产品",
+  "fr": "Produit",
+  "pt": "Produto",
+  "ja": "製品",
+  "ko": "제품"
  },
  "Profit and loss": {
   "de": "Gewinn und Verlust",
   "es": "Pérdidas y ganancias",
-  "zh": "盈亏"
+  "zh": "盈亏",
+  "fr": "Résultat",
+  "pt": "Lucro e prejuízo",
+  "ja": "損益",
+  "ko": "손익"
  },
  "Profit and loss per position appears here.": {
   "de": "Gewinn und Verlust je Position erscheinen hier.",
   "es": "Aquí aparecen las pérdidas y ganancias por posición.",
-  "zh": "每笔持仓的盈亏会显示在这里。"
+  "zh": "每笔持仓的盈亏会显示在这里。",
+  "fr": "Le résultat par position apparaît ici.",
+  "pt": "O lucro e o prejuízo por posição aparecem aqui.",
+  "ja": "建玉ごとの損益がここに表示されます。",
+  "ko": "보유 종목별 손익이 여기에 나옵니다."
  },
  "Proofread": {
   "de": "Korrekturlesen",
   "es": "Corregir",
-  "zh": "校对"
+  "zh": "校对",
+  "fr": "Relire",
+  "pt": "Revisar",
+  "ja": "校正",
+  "ko": "교정"
  },
  "Public key": {
   "de": "Öffentlicher Schlüssel",
@@ -14802,5 +16070,983 @@
   "pt": "Endereço do link",
   "ja": "リンク先",
   "ko": "링크 주소"
+ },
+ "Loading the model": {
+  "fr": "Chargement du modèle",
+  "pt": "Carregando o modelo",
+  "ja": "モデルを読み込み中",
+  "ko": "모델을 불러오는 중"
+ },
+ "Log copied": {
+  "fr": "Journal copié",
+  "pt": "Registro copiado",
+  "ja": "ログをコピーしました",
+  "ko": "로그를 복사했습니다"
+ },
+ "Longest mm": {
+  "fr": "Plus grand côté mm",
+  "pt": "Maior lado mm",
+  "ja": "長辺 mm",
+  "ko": "긴 쪽 mm"
+ },
+ "Longest run of the same side: {count}": {
+  "fr": "Plus longue série du même côté : {count}",
+  "pt": "Maior sequência do mesmo lado: {count}",
+  "ja": "同じ面が続いた最長回数: {count}",
+  "ko": "같은 면이 이어진 최장 횟수: {count}"
+ },
+ "Look alike": {
+  "fr": "Ressemblance",
+  "pt": "Parecidas",
+  "ja": "形が似ている",
+  "ko": "모양이 비슷함"
+ },
+ "Loose. There was more in the position.": {
+  "fr": "Imprécis. La position offrait mieux.",
+  "pt": "Frouxo. A posição oferecia mais.",
+  "ja": "甘い手。局面にはもっと良い手がありました。",
+  "ko": "느슨한 수. 국면에 더 나은 수가 있었습니다."
+ },
+ "Lower": {
+  "fr": "Minuscules",
+  "pt": "Minúsculas",
+  "ja": "小文字",
+  "ko": "소문자"
+ },
+ "Lower Saxony": {
+  "fr": "Basse-Saxe",
+  "pt": "Baixa Saxônia",
+  "ja": "ニーダーザクセン州",
+  "ko": "니더작센주"
+ },
+ "M": {
+  "fr": "M",
+  "pt": "M",
+  "ja": "M",
+  "ko": "M"
+ },
+ "Machines": {
+  "fr": "Machines",
+  "pt": "Máquinas",
+  "ja": "機械",
+  "ko": "기계"
+ },
+ "Madeira and the Azores use lower rates that are not shown here.": {
+  "fr": "Madère et les Açores appliquent des taux plus bas qui ne figurent pas ici.",
+  "pt": "A Madeira e os Açores usam taxas mais baixas que não aparecem aqui.",
+  "ja": "マデイラとアゾレスはここに示していない低い税率を使います。",
+  "ko": "마데이라와 아조레스는 여기에 없는 더 낮은 세율을 씁니다."
+ },
+ "Magnifier": {
+  "fr": "Loupe",
+  "pt": "Lupa",
+  "ja": "拡大鏡",
+  "ko": "돋보기"
+ },
+ "Mainland rates on employment income, with the standard deduction.": {
+  "fr": "Taux du continent sur les revenus d'emploi, avec la déduction standard.",
+  "pt": "Taxas do continente sobre a renda do trabalho, com a dedução padrão.",
+  "ja": "本土の税率を給与所得に適用、標準控除つき。",
+  "ko": "본토 세율을 근로 소득에 적용, 기본 공제 포함."
+ },
+ "Make it": {
+  "fr": "Créer",
+  "pt": "Criar",
+  "ja": "作る",
+  "ko": "만들기"
+ },
+ "Manitoba": {
+  "fr": "Manitoba",
+  "pt": "Manitoba",
+  "ja": "マニトバ州",
+  "ko": "매니토바주"
+ },
+ "Manitoba tax": {
+  "fr": "Impôt du Manitoba",
+  "pt": "Imposto de Manitoba",
+  "ja": "マニトバ州税",
+  "ko": "매니토바주 세금"
+ },
+ "Marble funnel": {
+  "fr": "Entonnoir à billes",
+  "pt": "Funil de bolinhas",
+  "ja": "ビー玉の漏斗",
+  "ko": "구슬 깔때기"
+ },
+ "Margin in points": {
+  "fr": "Marge en points",
+  "pt": "Margem em pontos",
+  "ja": "余白 (ポイント)",
+  "ko": "여백 (포인트)"
+ },
+ "Mark for the index": {
+  "fr": "Marquer pour l'index",
+  "pt": "Marcar para o índice",
+  "ja": "索引に登録する",
+  "ko": "색인에 표시하기"
+ },
+ "Married": {
+  "fr": "Marié",
+  "pt": "Casado",
+  "ja": "既婚",
+  "ko": "기혼"
+ },
+ "Married filing jointly": {
+  "fr": "Marié, déclaration commune",
+  "pt": "Casado, declaração conjunta",
+  "ja": "既婚、夫婦合算申告",
+  "ko": "기혼, 합산 신고"
+ },
+ "Married or cohabiting": {
+  "fr": "Marié ou en concubinage",
+  "pt": "Casado ou em união estável",
+  "ja": "既婚または同居",
+  "ko": "기혼 또는 동거"
+ },
+ "Married or in a civil union": {
+  "fr": "Marié ou en union civile",
+  "pt": "Casado ou em união civil",
+  "ja": "既婚または市民結合",
+  "ko": "기혼 또는 시민 결합"
+ },
+ "Married, one income": {
+  "fr": "Marié, un seul revenu",
+  "pt": "Casado, uma renda",
+  "ja": "既婚、収入は一人分",
+  "ko": "기혼, 외벌이"
+ },
+ "Massachusetts": {
+  "fr": "Massachusetts",
+  "pt": "Massachusetts",
+  "ja": "マサチューセッツ州",
+  "ko": "매사추세츠주"
+ },
+ "Matching words": {
+  "fr": "Mots correspondants",
+  "pt": "Palavras que coincidem",
+  "ja": "語の一致",
+  "ko": "낱말 일치"
+ },
+ "Mechanical": {
+  "fr": "Mécanique",
+  "pt": "Mecânico",
+  "ja": "機械",
+  "ko": "기계"
+ },
+ "Mecklenburg-Vorpommern": {
+  "fr": "Mecklembourg-Poméranie",
+  "pt": "Meclemburgo-Pomerânia",
+  "ja": "メクレンブルク＝フォアポンメルン州",
+  "ko": "메클렌부르크포어포메른주"
+ },
+ "Medicare": {
+  "fr": "Medicare",
+  "pt": "Medicare",
+  "ja": "メディケア",
+  "ko": "메디케어"
+ },
+ "Michigan": {
+  "fr": "Michigan",
+  "pt": "Michigan",
+  "ja": "ミシガン州",
+  "ko": "미시간주"
+ },
+ "Minified": {
+  "fr": "Minifié",
+  "pt": "Minificado",
+  "ja": "圧縮結果",
+  "ko": "줄인 결과"
+ },
+ "Mirror the camera": {
+  "fr": "Inverser la caméra",
+  "pt": "Espelhar a câmera",
+  "ja": "カメラを反転",
+  "ko": "카메라 뒤집기"
+ },
+ "Mirrors": {
+  "fr": "Miroirs",
+  "pt": "Espelhos",
+  "ja": "鏡",
+  "ko": "거울"
+ },
+ "Mix the two": {
+  "fr": "Mélanger les deux",
+  "pt": "Misturar os dois",
+  "ja": "2 つを混ぜる",
+  "ko": "둘을 섞기"
+ },
+ "Move the layer down": {
+  "fr": "Descendre le calque",
+  "pt": "Mover a camada para baixo",
+  "ja": "レイヤーを下へ",
+  "ko": "레이어를 아래로"
+ },
+ "Move the layer up": {
+  "fr": "Monter le calque",
+  "pt": "Mover a camada para cima",
+  "ja": "レイヤーを上へ",
+  "ko": "레이어를 위로"
+ },
+ "Municipal surcharge": {
+  "fr": "Surtaxe municipale",
+  "pt": "Sobretaxa municipal",
+  "ja": "市町村付加税",
+  "ko": "시 부가세"
+ },
+ "Municipal surcharge is taken at seven percent, the usual level.": {
+  "fr": "La surtaxe municipale est prise à sept pour cent, le niveau habituel.",
+  "pt": "A sobretaxa municipal é de sete por cento, o nível usual.",
+  "ja": "市町村付加税は通常の水準である 7 パーセントで計算します。",
+  "ko": "시 부가세는 통상 수준인 7퍼센트로 계산합니다."
+ },
+ "Municipal tax": {
+  "fr": "Impôt communal",
+  "pt": "Imposto municipal",
+  "ja": "市町村税",
+  "ko": "시 세금"
+ },
+ "Municipal tax at the average rate, plus national tax above the threshold.": {
+  "fr": "Impôt communal au taux moyen, plus l'impôt national au-delà du seuil.",
+  "pt": "Imposto municipal na taxa média, mais o imposto nacional acima do limiar.",
+  "ja": "平均税率の市町村税と、基準額を超える分への国税。",
+  "ko": "평균 세율의 시 세금과, 기준을 넘는 부분의 국세."
+ },
+ "Municipal tax is at the average rate.": {
+  "fr": "L'impôt communal est au taux moyen.",
+  "pt": "O imposto municipal está na taxa média.",
+  "ja": "市町村税は平均税率です。",
+  "ko": "시 세금은 평균 세율입니다."
+ },
+ "Name this setup": {
+  "fr": "Nommer cette configuration",
+  "pt": "Nomear esta configuração",
+  "ja": "この設定に名前をつける",
+  "ko": "이 설정에 이름 붙이기"
+ },
+ "National Insurance": {
+  "fr": "National Insurance",
+  "pt": "National Insurance",
+  "ja": "国民保険",
+  "ko": "국민 보험"
+ },
+ "National Insurance is class 1 at the employee rate.": {
+  "fr": "La National Insurance est de classe 1 au taux salarié.",
+  "pt": "O National Insurance é classe 1 na alíquota do empregado.",
+  "ja": "国民保険は被用者料率のクラス 1 です。",
+  "ko": "국민 보험은 근로자 요율의 1종입니다."
+ },
+ "National insurance": {
+  "fr": "Assurance nationale",
+  "pt": "Seguro nacional",
+  "ja": "国民保険",
+  "ko": "국민 보험"
+ },
+ "National insurance is at the employee rate.": {
+  "fr": "L'assurance nationale est au taux salarié.",
+  "pt": "O seguro nacional está na alíquota do empregado.",
+  "ja": "国民保険は被用者料率です。",
+  "ko": "국민 보험은 근로자 요율입니다."
+ },
+ "National tax": {
+  "fr": "Impôt national",
+  "pt": "Imposto nacional",
+  "ja": "国税",
+  "ko": "국세"
+ },
+ "National tax at the three rates, with the employment credit.": {
+  "fr": "Impôt national aux trois taux, avec le crédit d'activité.",
+  "pt": "Imposto nacional nas três alíquotas, com o crédito de trabalho.",
+  "ja": "3 段階の税率による国税と、就労控除。",
+  "ko": "세 단계 세율의 국세와 근로 공제."
+ },
+ "Needs Chrome or Edge": {
+  "fr": "Nécessite Chrome ou Edge",
+  "pt": "Precisa de Chrome ou Edge",
+  "ja": "Chrome か Edge が必要です",
+  "ko": "Chrome이나 Edge가 필요합니다"
+ },
+ "Neither side has enough to mate. Drawn.": {
+  "fr": "Aucun camp n'a de quoi mater. Partie nulle.",
+  "pt": "Nenhum lado tem material para dar mate. Empate.",
+  "ja": "どちらもメイトに足る駒がありません。引き分けです。",
+  "ko": "어느 쪽도 메이트할 기물이 없습니다. 무승부입니다."
+ },
+ "Net pay": {
+  "fr": "Salaire net",
+  "pt": "Salário líquido",
+  "ja": "手取り",
+  "ko": "실수령액"
+ },
+ "Net pay after tax in 23 countries, worked out on your device.": {
+  "fr": "Salaire net après impôt dans 23 pays, calculé sur votre appareil.",
+  "pt": "Salário líquido após impostos em 23 países, calculado no seu dispositivo.",
+  "ja": "23 か国の税引後手取りを、あなたの端末で計算します。",
+  "ko": "23개국의 세후 실수령액을 당신의 기기에서 계산합니다."
+ },
+ "Network {name}, {security}": {
+  "fr": "Réseau {name}, {security}",
+  "pt": "Rede {name}, {security}",
+  "ja": "ネットワーク {name}、{security}",
+  "ko": "네트워크 {name}, {security}"
+ },
+ "New Brunswick": {
+  "fr": "Nouveau-Brunswick",
+  "pt": "Nova Brunswick",
+  "ja": "ニューブランズウィック州",
+  "ko": "뉴브런즈윅주"
+ },
+ "New Brunswick tax": {
+  "fr": "Impôt du Nouveau-Brunswick",
+  "pt": "Imposto de Nova Brunswick",
+  "ja": "ニューブランズウィック州税",
+  "ko": "뉴브런즈윅주 세금"
+ },
+ "New document": {
+  "fr": "Nouveau document",
+  "pt": "Novo documento",
+  "ja": "新しい文書",
+  "ko": "새 문서"
+ },
+ "Newer": {
+  "fr": "Plus récent",
+  "pt": "Mais recente",
+  "ja": "新しい方",
+  "ko": "더 새로운 것"
+ },
+ "Nil": {
+  "fr": "Néant",
+  "pt": "Nulo",
+  "ja": "なし",
+  "ko": "없음"
+ },
+ "No": {
+  "fr": "Non",
+  "pt": "Não",
+  "ja": "いいえ",
+  "ko": "아니요"
+ },
+ "No code found in that picture. Try a sharper or closer shot.": {
+  "fr": "Aucun code trouvé dans cette image. Essayez une photo plus nette ou plus rapprochée.",
+  "pt": "Nenhum código encontrado nessa imagem. Tente uma foto mais nítida ou mais próxima.",
+  "ja": "その画像からコードは見つかりませんでした。もっと鮮明か近い写真でお試しください。",
+  "ko": "그 사진에서 코드를 찾지 못했습니다. 더 선명하거나 가까운 사진으로 해 보세요."
+ },
+ "No file selected": {
+  "fr": "Aucun fichier sélectionné",
+  "pt": "Nenhum arquivo selecionado",
+  "ja": "ファイルが選ばれていません",
+  "ko": "고른 파일이 없습니다"
+ },
+ "No header, footer or page numbers. Set them under Format.": {
+  "fr": "Ni en-tête, ni pied de page, ni numéros. Réglez-les dans Format.",
+  "pt": "Sem cabeçalho, rodapé ou números de página. Defina-os em Formato.",
+  "ja": "ヘッダー、フッター、ページ番号はありません。書式から設定できます。",
+  "ko": "머리글, 바닥글, 쪽 번호가 없습니다. 서식에서 설정하세요."
+ },
+ "No moves yet. White starts.": {
+  "fr": "Aucun coup joué. Les blancs commencent.",
+  "pt": "Nenhum lance ainda. As brancas começam.",
+  "ja": "まだ指されていません。白から始めます。",
+  "ko": "아직 둔 수가 없습니다. 백이 먼저 둡니다."
+ },
+ "No state income tax": {
+  "fr": "Pas d'impôt sur le revenu de l'État",
+  "pt": "Sem imposto de renda estadual",
+  "ja": "州所得税なし",
+  "ko": "주 소득세 없음"
+ },
+ "North Carolina": {
+  "fr": "Caroline du Nord",
+  "pt": "Carolina do Norte",
+  "ja": "ノースカロライナ州",
+  "ko": "노스캐롤라이나주"
+ },
+ "North Rhine-Westphalia": {
+  "fr": "Rhénanie-du-Nord-Westphalie",
+  "pt": "Renânia do Norte-Vestfália",
+  "ja": "ノルトライン＝ヴェストファーレン州",
+  "ko": "노르트라인베스트팔렌주"
+ },
+ "Not a uuid: {value}": {
+  "fr": "Pas un uuid : {value}",
+  "pt": "Não é um uuid: {value}",
+  "ja": "uuid ではありません: {value}",
+  "ko": "uuid가 아닙니다: {value}"
+ },
+ "Not a valid absolute URL.": {
+  "fr": "Ce n'est pas une URL absolue valide.",
+  "pt": "Não é uma URL absoluta válida.",
+  "ja": "有効な絶対 URL ではありません。",
+  "ko": "올바른 절대 URL이 아닙니다."
+ },
+ "Not read yet": {
+  "fr": "Pas encore lu",
+  "pt": "Ainda não lido",
+  "ja": "まだ読み込んでいません",
+  "ko": "아직 읽지 않음"
+ },
+ "Not started": {
+  "fr": "Non commencé",
+  "pt": "Não iniciado",
+  "ja": "未開始",
+  "ko": "시작 안 함"
+ },
+ "Not yet valid": {
+  "fr": "Pas encore valide",
+  "pt": "Ainda não válido",
+  "ja": "まだ有効ではありません",
+  "ko": "아직 유효하지 않음"
+ },
+ "Note {number} added at the end": {
+  "fr": "Note {number} ajoutée à la fin",
+  "pt": "Nota {number} adicionada ao final",
+  "ja": "末尾に注 {number} を追加しました",
+  "ko": "끝에 주석 {number}을(를) 넣었습니다"
+ },
+ "Nothing found": {
+  "fr": "Rien trouvé",
+  "pt": "Nada encontrado",
+  "ja": "見つかりませんでした",
+  "ko": "찾지 못했습니다"
+ },
+ "Nothing in these documents mentions that.": {
+  "fr": "Rien dans ces documents n'en parle.",
+  "pt": "Nada nestes documentos menciona isso.",
+  "ja": "これらの文書にその記述はありません。",
+  "ko": "이 문서들에는 그런 언급이 없습니다."
+ },
+ "Nothing matched that search": {
+  "fr": "Aucun résultat pour cette recherche",
+  "pt": "Nada correspondeu a essa busca",
+  "ja": "その検索に一致するものはありません",
+  "ko": "그 검색에 맞는 것이 없습니다"
+ },
+ "Nothing saved yet. Name a setup above and save it.": {
+  "fr": "Rien d'enregistré. Nommez une configuration ci-dessus et enregistrez-la.",
+  "pt": "Nada salvo ainda. Nomeie uma configuração acima e salve-a.",
+  "ja": "まだ保存されていません。上で設定に名前をつけて保存してください。",
+  "ko": "아직 저장한 것이 없습니다. 위에서 설정에 이름을 붙이고 저장하세요."
+ },
+ "Nothing thrown yet": {
+  "fr": "Aucun lancer pour l'instant",
+  "pt": "Nada lançado ainda",
+  "ja": "まだ振っていません",
+  "ko": "아직 던지지 않았습니다"
+ },
+ "Nothing to send": {
+  "fr": "Rien à envoyer",
+  "pt": "Nada a enviar",
+  "ja": "送るものがありません",
+  "ko": "보낼 것이 없습니다"
+ },
+ "Nothing yet. Pick a part on the left, or describe an icon below.": {
+  "fr": "Rien pour l'instant. Choisissez une pièce à gauche, ou décrivez une icône ci-dessous.",
+  "pt": "Nada ainda. Escolha uma peça à esquerda, ou descreva um ícone abaixo.",
+  "ja": "まだ何もありません。左から部品を選ぶか、下でアイコンを説明してください。",
+  "ko": "아직 없습니다. 왼쪽에서 부품을 고르거나 아래에서 아이콘을 설명하세요."
+ },
+ "Notifications": {
+  "fr": "Notifications",
+  "pt": "Notificações",
+  "ja": "通知",
+  "ko": "알림"
+ },
+ "Nova Scotia": {
+  "fr": "Nouvelle-Écosse",
+  "pt": "Nova Escócia",
+  "ja": "ノバスコシア州",
+  "ko": "노바스코샤주"
+ },
+ "Nova Scotia tax": {
+  "fr": "Impôt de la Nouvelle-Écosse",
+  "pt": "Imposto da Nova Escócia",
+  "ja": "ノバスコシア州税",
+  "ko": "노바스코샤주 세금"
+ },
+ "Number the pages": {
+  "fr": "Numéroter les pages",
+  "pt": "Numerar as páginas",
+  "ja": "ページ番号をつける",
+  "ko": "쪽 번호 매기기"
+ },
+ "Numbered list": {
+  "fr": "Liste numérotée",
+  "pt": "Lista numerada",
+  "ja": "番号付きリスト",
+  "ko": "번호 매긴 목록"
+ },
+ "Occupational pension": {
+  "fr": "Prévoyance professionnelle",
+  "pt": "Previdência ocupacional",
+  "ja": "企業年金",
+  "ko": "직역 연금"
+ },
+ "Ocean": {
+  "fr": "Océan",
+  "pt": "Oceano",
+  "ja": "オーシャン",
+  "ko": "바다"
+ },
+ "Old age and unemployment": {
+  "fr": "Vieillesse et chômage",
+  "pt": "Velhice e desemprego",
+  "ja": "老齢と失業",
+  "ko": "노령과 실업"
+ },
+ "Older": {
+  "fr": "Plus ancien",
+  "pt": "Mais antigo",
+  "ja": "古い方",
+  "ko": "더 오래된 것"
+ },
+ "On the next unit": {
+  "fr": "Sur l'unité suivante",
+  "pt": "Na próxima unidade",
+  "ja": "次の単位で",
+  "ko": "다음 단위에서"
+ },
+ "On your own": {
+  "fr": "Célibataire",
+  "pt": "Sozinho",
+  "ja": "単身",
+  "ko": "단독"
+ },
+ "One per line, comments start with #": {
+  "fr": "Un par ligne, les commentaires commencent par #",
+  "pt": "Um por linha, comentários começam com #",
+  "ja": "1 行に 1 つ、コメントは # で始めます",
+  "ko": "한 줄에 하나, 주석은 #로 시작합니다"
+ },
+ "One row per point. The preview updates as you type.": {
+  "fr": "Une ligne par point. L'aperçu se met à jour au fil de la saisie.",
+  "pt": "Uma linha por ponto. A prévia se atualiza enquanto você digita.",
+  "ja": "1 点につき 1 行。入力に合わせてプレビューが更新されます。",
+  "ko": "점 하나에 한 행. 입력할 때마다 미리 보기가 바뀝니다."
+ },
+ "Only partly read": {
+  "fr": "Lu en partie seulement",
+  "pt": "Lido apenas em parte",
+  "ja": "一部だけ読み込み済み",
+  "ko": "일부만 읽음"
+ },
+ "Ontario": {
+  "fr": "Ontario",
+  "pt": "Ontário",
+  "ja": "オンタリオ州",
+  "ko": "온타리오주"
+ },
+ "Ontario tax": {
+  "fr": "Impôt de l'Ontario",
+  "pt": "Imposto de Ontário",
+  "ja": "オンタリオ州税",
+  "ko": "온타리오주 세금"
+ },
+ "Open games": {
+  "fr": "Parties ouvertes",
+  "pt": "Jogos abertos",
+  "ja": "オープンゲーム",
+  "ko": "오픈 게임"
+ },
+ "Open the camera": {
+  "fr": "Ouvrir la caméra",
+  "pt": "Abrir a câmera",
+  "ja": "カメラを開く",
+  "ko": "카메라 열기"
+ },
+ "Open the photo": {
+  "fr": "Ouvrir la photo",
+  "pt": "Abrir a foto",
+  "ja": "写真を開く",
+  "ko": "사진 열기"
+ },
+ "Opened {name}": {
+  "fr": "{name} ouvert",
+  "pt": "{name} aberto",
+  "ja": "{name} を開きました",
+  "ko": "{name}을(를) 열었습니다"
+ },
+ "Openings": {
+  "fr": "Ouvertures",
+  "pt": "Aberturas",
+  "ja": "定跡",
+  "ko": "오프닝"
+ },
+ "Optics Lab": {
+  "fr": "Labo optique",
+  "pt": "Laboratório de óptica",
+  "ja": "光学ラボ",
+  "ko": "광학 실험실"
+ },
+ "Optional": {
+  "fr": "Facultatif",
+  "pt": "Opcional",
+  "ja": "任意",
+  "ko": "선택"
+ },
+ "Orange": {
+  "fr": "Orange",
+  "pt": "Laranja",
+  "ja": "オレンジ",
+  "ko": "주황"
+ },
+ "Origin": {
+  "fr": "Origine",
+  "pt": "Origem",
+  "ja": "原点",
+  "ko": "원점"
+ },
+ "Other": {
+  "fr": "Autre",
+  "pt": "Outro",
+  "ja": "その他",
+  "ko": "기타"
+ },
+ "Output case": {
+  "fr": "Casse de sortie",
+  "pt": "Caixa da saída",
+  "ja": "出力の大文字小文字",
+  "ko": "출력 대소문자"
+ },
+ "PDF reader module": {
+  "fr": "Module de lecture PDF",
+  "pt": "Módulo leitor de PDF",
+  "ja": "PDF 読み取りモジュール",
+  "ko": "PDF 읽기 모듈"
+ },
+ "PRSI": {
+  "fr": "PRSI",
+  "pt": "PRSI",
+  "ja": "PRSI",
+  "ko": "PRSI"
+ },
+ "Page break": {
+  "fr": "Saut de page",
+  "pt": "Quebra de página",
+  "ja": "改ページ",
+  "ko": "쪽 나눔"
+ },
+ "Page count": {
+  "fr": "Nombre de pages",
+  "pt": "Número de páginas",
+  "ja": "ページ数",
+  "ko": "쪽 수"
+ },
+ "Page number": {
+  "fr": "Numéro de page",
+  "pt": "Número da página",
+  "ja": "ページ番号",
+  "ko": "쪽 번호"
+ },
+ "Page setup": {
+  "fr": "Mise en page",
+  "pt": "Configuração da página",
+  "ja": "ページ設定",
+  "ko": "페이지 설정"
+ },
+ "Page {number} added": {
+  "fr": "Page {number} ajoutée",
+  "pt": "Página {number} adicionada",
+  "ja": "{number} ページ目を追加しました",
+  "ko": "{number}쪽을 넣었습니다"
+ },
+ "Paper size": {
+  "fr": "Format du papier",
+  "pt": "Tamanho do papel",
+  "ja": "用紙サイズ",
+  "ko": "용지 크기"
+ },
+ "Parallel light comes to a focus at half the radius, {focus} away.": {
+  "fr": "La lumière parallèle converge à la moitié du rayon, à {focus}.",
+  "pt": "A luz paralela foca na metade do raio, a {focus} de distância.",
+  "ja": "平行光は半径の半分、{focus} の位置に集まります。",
+  "ko": "평행한 빛은 반지름의 절반인 {focus} 자리에 모입니다."
+ },
+ "Parental insurance": {
+  "fr": "Assurance parentale",
+  "pt": "Seguro parental",
+  "ja": "育児保険",
+  "ko": "육아 보험"
+ },
+ "Passage size in characters": {
+  "fr": "Taille des passages en caractères",
+  "pt": "Tamanho do trecho em caracteres",
+  "ja": "1 箇所あたりの文字数",
+  "ko": "구절 길이 (문자 수)"
+ },
+ "Passages found by": {
+  "fr": "Passages trouvés par",
+  "pt": "Trechos encontrados por",
+  "ja": "箇所の探し方",
+  "ko": "구절을 찾는 방식"
+ },
+ "Passages to read for each answer": {
+  "fr": "Passages à lire pour chaque réponse",
+  "pt": "Trechos a ler para cada resposta",
+  "ja": "1 回の回答で読む箇所の数",
+  "ko": "답 하나에 읽을 구절 수"
+ },
+ "Paste JSON here": {
+  "fr": "Collez du JSON ici",
+  "pt": "Cole JSON aqui",
+  "ja": "ここに JSON を貼り付け",
+  "ko": "여기에 JSON을 붙여넣으세요"
+ },
+ "Paste anything you want to ask questions about.": {
+  "fr": "Collez ce sur quoi vous voulez poser des questions.",
+  "pt": "Cole aquilo sobre o que você quer perguntar.",
+  "ja": "質問したい内容を貼り付けてください。",
+  "ko": "질문하고 싶은 내용을 붙여넣으세요."
+ },
+ "Paste rows from a spreadsheet, drag to reorder.": {
+  "fr": "Collez des lignes depuis un tableur, glissez pour réordonner.",
+  "pt": "Cole linhas de uma planilha, arraste para reordenar.",
+  "ja": "表計算ソフトから行を貼り付け、ドラッグで並べ替えます。",
+  "ko": "스프레드시트에서 행을 붙여넣고 끌어서 순서를 바꾸세요."
+ },
+ "Paste text": {
+  "fr": "Coller du texte",
+  "pt": "Colar texto",
+  "ja": "テキストを貼り付け",
+  "ko": "글 붙여넣기"
+ },
+ "Paste the changed text": {
+  "fr": "Collez le texte modifié",
+  "pt": "Cole o texto alterado",
+  "ja": "変更後の文章を貼り付け",
+  "ko": "바뀐 글을 붙여넣으세요"
+ },
+ "Paste the original text": {
+  "fr": "Collez le texte d'origine",
+  "pt": "Cole o texto original",
+  "ja": "元の文章を貼り付け",
+  "ko": "원래 글을 붙여넣으세요"
+ },
+ "Path": {
+  "fr": "Chemin",
+  "pt": "Caminho",
+  "ja": "パス",
+  "ko": "경로"
+ },
+ "Patterns": {
+  "fr": "Motifs",
+  "pt": "Padrões",
+  "ja": "パターン",
+  "ko": "패턴"
+ },
+ "Pendulum": {
+  "fr": "Pendule",
+  "pt": "Pêndulo",
+  "ja": "振り子",
+  "ko": "진자"
+ },
+ "Pennsylvania": {
+  "fr": "Pennsylvanie",
+  "pt": "Pensilvânia",
+  "ja": "ペンシルベニア州",
+  "ko": "펜실베이니아주"
+ },
+ "Pension contribution": {
+  "fr": "Cotisation retraite",
+  "pt": "Contribuição previdenciária",
+  "ja": "年金保険料",
+  "ko": "연금 보험료"
+ },
+ "Pension insurance": {
+  "fr": "Assurance retraite",
+  "pt": "Seguro de aposentadoria",
+  "ja": "年金保険",
+  "ko": "연금 보험"
+ },
+ "Percent of gross, taken before tax": {
+  "fr": "Pourcentage du brut, prélevé avant impôt",
+  "pt": "Percentual do bruto, retirado antes do imposto",
+  "ja": "総額に対する割合、課税前に控除",
+  "ko": "총액 대비 비율, 과세 전에 공제"
+ },
+ "Percent of pay, before federal tax": {
+  "fr": "Pourcentage du salaire, avant impôt fédéral",
+  "pt": "Percentual do salário, antes do imposto federal",
+  "ja": "給与に対する割合、連邦税の前",
+  "ko": "급여 대비 비율, 연방세 전"
+ },
+ "Percent of pay, deducted before tax": {
+  "fr": "Pourcentage du salaire, déduit avant impôt",
+  "pt": "Percentual do salário, deduzido antes do imposto",
+  "ja": "給与に対する割合、課税前に控除",
+  "ko": "급여 대비 비율, 과세 전에 공제"
+ },
+ "Periscope": {
+  "fr": "Périscope",
+  "pt": "Periscópio",
+  "ja": "潜望鏡",
+  "ko": "잠망경"
+ },
+ "Photo": {
+  "fr": "Photo",
+  "pt": "Foto",
+  "ja": "写真",
+  "ko": "사진"
+ },
+ "Physics": {
+  "fr": "Physique",
+  "pt": "Física",
+  "ja": "物理",
+  "ko": "물리"
+ },
+ "Pick a layer to change it.": {
+  "fr": "Choisissez un calque pour le modifier.",
+  "pt": "Escolha uma camada para alterá-la.",
+  "ja": "レイヤーを選ぶと変更できます。",
+  "ko": "레이어를 고르면 바꿀 수 있습니다."
+ },
+ "Pick a line to play it out on the board, one move at a time.": {
+  "fr": "Choisissez une ligne pour la jouer sur l'échiquier, coup par coup.",
+  "pt": "Escolha uma linha para jogá-la no tabuleiro, lance a lance.",
+  "ja": "手順を選ぶと、盤上で 1 手ずつ再現します。",
+  "ko": "수순을 고르면 판 위에서 한 수씩 재현합니다."
+ },
+ "Pick a piece to change it, or drop a new one from the left.": {
+  "fr": "Choisissez un élément pour le modifier, ou déposez-en un nouveau depuis la gauche.",
+  "pt": "Escolha um elemento para alterá-lo, ou solte um novo pela esquerda.",
+  "ja": "要素を選んで変更するか、左から新しいものを置いてください。",
+  "ko": "요소를 골라 바꾸거나, 왼쪽에서 새것을 놓으세요."
+ },
+ "Pick a scene to start from. It replaces what is on the board.": {
+  "fr": "Choisissez une scène de départ. Elle remplace ce qui est sur le plateau.",
+  "pt": "Escolha uma cena para começar. Ela substitui o que está no quadro.",
+  "ja": "出発点にするシーンを選んでください。盤上の内容は置き換わります。",
+  "ko": "시작할 장면을 고르세요. 판에 있던 것을 대신합니다."
+ },
+ "Pick a setup to start from. It replaces what is on the bench.": {
+  "fr": "Choisissez une configuration de départ. Elle remplace ce qui est sur le plan de travail.",
+  "pt": "Escolha uma configuração para começar. Ela substitui o que está na bancada.",
+  "ja": "出発点にする設定を選んでください。作業台の内容は置き換わります。",
+  "ko": "시작할 설정을 고르세요. 작업대에 있던 것을 대신합니다."
+ },
+ "Pick two or more shapes to line up.": {
+  "fr": "Choisissez au moins deux formes à aligner.",
+  "pt": "Escolha duas ou mais formas para alinhar.",
+  "ja": "揃える図形を 2 つ以上選んでください。",
+  "ko": "맞출 도형을 둘 이상 고르세요."
+ },
+ "Pick what this project uses": {
+  "fr": "Choisissez ce qu'utilise ce projet",
+  "pt": "Escolha o que este projeto usa",
+  "ja": "このプロジェクトで使うものを選んでください",
+  "ko": "이 프로젝트가 쓰는 것을 고르세요"
+ },
+ "Pie": {
+  "fr": "Camembert",
+  "pt": "Pizza",
+  "ja": "円グラフ",
+  "ko": "원 그래프"
+ },
+ "Pinhole camera": {
+  "fr": "Sténopé",
+  "pt": "Câmera pinhole",
+  "ja": "ピンホールカメラ",
+  "ko": "바늘구멍 사진기"
+ },
+ "Plan 1": {
+  "fr": "Plan 1",
+  "pt": "Plano 1",
+  "ja": "プラン 1",
+  "ko": "플랜 1"
+ },
+ "Plan 2": {
+  "fr": "Plan 2",
+  "pt": "Plano 2",
+  "ja": "プラン 2",
+  "ko": "플랜 2"
+ },
+ "Plan 4 (Scotland)": {
+  "fr": "Plan 4 (Écosse)",
+  "pt": "Plano 4 (Escócia)",
+  "ja": "プラン 4 (スコットランド)",
+  "ko": "플랜 4 (스코틀랜드)"
+ },
+ "Plan 5": {
+  "fr": "Plan 5",
+  "pt": "Plano 5",
+  "ja": "プラン 5",
+  "ko": "플랜 5"
+ },
+ "Playable.": {
+  "fr": "Jouable.",
+  "pt": "Jogável.",
+  "ja": "指せる手。",
+  "ko": "둘 만한 수."
+ },
+ "Point a code at the camera, drop a picture here, or paste one.": {
+  "fr": "Présentez un code à la caméra, déposez une image ici, ou collez-en une.",
+  "pt": "Aponte um código para a câmera, solte uma imagem aqui, ou cole uma.",
+  "ja": "コードをカメラに向けるか、画像をここにドロップ、または貼り付けてください。",
+  "ko": "코드를 카메라에 비추거나, 사진을 여기에 놓거나, 붙여넣으세요."
+ },
+ "Point source": {
+  "fr": "Source ponctuelle",
+  "pt": "Fonte pontual",
+  "ja": "点光源",
+  "ko": "점 광원"
+ },
+ "Port": {
+  "fr": "Port",
+  "pt": "Porta",
+  "ja": "ポート",
+  "ko": "포트"
+ },
+ "Portrait": {
+  "fr": "Portrait",
+  "pt": "Retrato",
+  "ja": "縦向き",
+  "ko": "세로 방향"
+ },
+ "Postgraduate": {
+  "fr": "Postgraduate",
+  "pt": "Pós-graduação",
+  "ja": "大学院ローン",
+  "ko": "대학원 학자금"
+ },
+ "Practise": {
+  "fr": "S'entraîner",
+  "pt": "Praticar",
+  "ja": "練習",
+  "ko": "연습"
+ },
+ "Print": {
+  "fr": "Imprimer",
+  "pt": "Imprimir",
+  "ja": "印刷",
+  "ko": "인쇄"
+ },
+ "Prism": {
+  "fr": "Prisme",
+  "pt": "Prisma",
+  "ja": "プリズム",
+  "ko": "프리즘"
+ },
+ "Private": {
+  "fr": "Privé",
+  "pt": "Privado",
+  "ja": "非公開",
+  "ko": "비공개"
+ },
+ "Private health cover": {
+  "fr": "Couverture santé privée",
+  "pt": "Plano de saúde privado",
+  "ja": "民間医療保険",
+  "ko": "민간 의료 보험"
+ },
+ "Private premium a month": {
+  "fr": "Prime privée mensuelle",
+  "pt": "Prêmio privado por mês",
+  "ja": "民間保険の月額保険料",
+  "ko": "민간 보험 월 보험료"
+ },
+ "Protocol": {
+  "fr": "Protocole",
+  "pt": "Protocolo",
+  "ja": "プロトコル",
+  "ko": "프로토콜"
  }
 }

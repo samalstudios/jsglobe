@@ -52,6 +52,7 @@ export default {
   },
   fr: {
     'base-converter.binaryBase2': 'Binaire (base 2)',
+    'base-converter.octalBase8': 'Octal (base 8)',
     'base-converter.decimalBase10': 'Décimal (base 10)',
     'base-converter.hexadecimalBase16': 'Hexadécimal (base 16)',
     'base-converter.base32': 'Base 32',
@@ -66,6 +67,7 @@ export default {
   },
   pt: {
     'base-converter.binaryBase2': 'Binário (base 2)',
+    'base-converter.octalBase8': 'Octal (base 8)',
     'base-converter.decimalBase10': 'Decimal (base 10)',
     'base-converter.hexadecimalBase16': 'Hexadecimal (base 16)',
     'base-converter.base32': 'Base 32',
@@ -80,6 +82,7 @@ export default {
   },
   ja: {
     'base-converter.binaryBase2': '2 進 (基数 2)',
+    'base-converter.octalBase8': '8 進 (基数 8)',
     'base-converter.decimalBase10': '10 進 (基数 10)',
     'base-converter.hexadecimalBase16': '16 進 (基数 16)',
     'base-converter.base32': '32 進',
@@ -94,6 +97,7 @@ export default {
   },
   ko: {
     'base-converter.binaryBase2': '2진 (기수 2)',
+    'base-converter.octalBase8': '8진 (기수 8)',
     'base-converter.decimalBase10': '10진 (기수 10)',
     'base-converter.hexadecimalBase16': '16진 (기수 16)',
     'base-converter.base32': '32진',

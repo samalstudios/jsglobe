@@ -70,7 +70,10 @@ export default {
     'otp-generator.sha512': 'SHA-512',
     'otp-generator.currentCode': 'Code actuel',
     'otp-generator.copy': 'Copier',
+    'otp-generator.pasteIntoAnAuthenticatorApp': 'Collez dans une application d\'authentification',
     'otp-generator.adjacentCodes': 'Codes voisins',
+    'otp-generator.previousWindow': 'Fenêtre précédente',
+    'otp-generator.nextWindow': 'Fenêtre suivante',
   },
   pt: {
     'otp-generator.base32Secret': 'Segredo Base32',
@@ -83,7 +86,10 @@ export default {
     'otp-generator.sha512': 'SHA-512',
     'otp-generator.currentCode': 'Código atual',
     'otp-generator.copy': 'Copiar',
+    'otp-generator.pasteIntoAnAuthenticatorApp': 'Cole em um aplicativo autenticador',
     'otp-generator.adjacentCodes': 'Códigos vizinhos',
+    'otp-generator.previousWindow': 'Janela anterior',
+    'otp-generator.nextWindow': 'Próxima janela',
   },
   ja: {
     'otp-generator.base32Secret': 'Base32 の秘密鍵',
@@ -96,7 +102,10 @@ export default {
     'otp-generator.sha512': 'SHA-512',
     'otp-generator.currentCode': '現在のコード',
     'otp-generator.copy': 'コピー',
+    'otp-generator.pasteIntoAnAuthenticatorApp': '認証アプリに貼り付けてください',
     'otp-generator.adjacentCodes': '近いコード',
+    'otp-generator.previousWindow': '前のウィンドウ',
+    'otp-generator.nextWindow': '次のウィンドウ',
   },
   ko: {
     'otp-generator.base32Secret': 'Base32 비밀 키',
@@ -109,6 +118,9 @@ export default {
     'otp-generator.sha512': 'SHA-512',
     'otp-generator.currentCode': '현재 코드',
     'otp-generator.copy': '복사',
+    'otp-generator.pasteIntoAnAuthenticatorApp': '인증 앱에 붙여넣으세요',
     'otp-generator.adjacentCodes': '인접한 코드',
+    'otp-generator.previousWindow': '이전 창',
+    'otp-generator.nextWindow': '다음 창',
   },
 };

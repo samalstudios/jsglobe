@@ -64,8 +64,10 @@ export default {
   },
   fr: {
     'date-converter.170000000020240131t0900': '1700000000, 2024-01-31T09:00:00Z, ou ',
+    'date-converter.now': 'Maintenant',
     'date-converter.iso8601': 'ISO 8601',
     'date-converter.utc': 'UTC',
+    'date-converter.local': 'Local',
     'date-converter.rfc2822': 'RFC 2822',
     'date-converter.details': 'Détails',
     'date-converter.couldNotReadThatDate': 'Impossible de lire cette date.',
@@ -76,8 +78,10 @@ export default {
   },
   pt: {
     'date-converter.170000000020240131t0900': '1700000000, 2024-01-31T09:00:00Z, ou ',
+    'date-converter.now': 'Agora',
     'date-converter.iso8601': 'ISO 8601',
     'date-converter.utc': 'UTC',
+    'date-converter.local': 'Local',
     'date-converter.rfc2822': 'RFC 2822',
     'date-converter.details': 'Detalhes',
     'date-converter.couldNotReadThatDate': 'Não foi possível ler essa data.',
@@ -88,8 +92,10 @@ export default {
   },
   ja: {
     'date-converter.170000000020240131t0900': '1700000000、2024-01-31T09:00:00Z、または ',
+    'date-converter.now': '現在',
     'date-converter.iso8601': 'ISO 8601',
     'date-converter.utc': 'UTC',
+    'date-converter.local': 'ローカル',
     'date-converter.rfc2822': 'RFC 2822',
     'date-converter.details': '詳細',
     'date-converter.couldNotReadThatDate': 'その日付を読み取れませんでした。',
@@ -100,8 +106,10 @@ export default {
   },
   ko: {
     'date-converter.170000000020240131t0900': '1700000000, 2024-01-31T09:00:00Z 또는 ',
+    'date-converter.now': '지금',
     'date-converter.iso8601': 'ISO 8601',
     'date-converter.utc': 'UTC',
+    'date-converter.local': '로컬',
     'date-converter.rfc2822': 'RFC 2822',
     'date-converter.details': '자세한 내용',
     'date-converter.couldNotReadThatDate': '그 날짜를 읽을 수 없습니다.',

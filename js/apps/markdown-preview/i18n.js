@@ -28,23 +28,27 @@ export default {
     'markdown-preview.download': 'Télécharger',
     'markdown-preview.markdown': 'Markdown',
     'markdown-preview.title': '# Titre',
+    'markdown-preview.preview': 'Aperçu',
   },
   pt: {
     'markdown-preview.copyHtml': 'Copiar o HTML',
     'markdown-preview.download': 'Baixar',
     'markdown-preview.markdown': 'Markdown',
     'markdown-preview.title': '# Título',
+    'markdown-preview.preview': 'Prévia',
   },
   ja: {
     'markdown-preview.copyHtml': 'HTML をコピー',
     'markdown-preview.download': 'ダウンロード',
     'markdown-preview.markdown': 'Markdown',
     'markdown-preview.title': '# タイトル',
+    'markdown-preview.preview': 'プレビュー',
   },
   ko: {
     'markdown-preview.copyHtml': 'HTML 복사',
     'markdown-preview.download': '내려받기',
     'markdown-preview.markdown': 'Markdown',
     'markdown-preview.title': '# 제목',
+    'markdown-preview.preview': '미리 보기',
   },
 };

@@ -49,6 +49,7 @@ export default {
     'ai-code.document': 'Document',
     'ai-code.convert': 'Convertir',
     'ai-code.code': 'Code',
+    'ai-code.pasteCodeHere': 'Collez du code ici',
     'ai-code.copy': 'Copier',
   },
   pt: {
@@ -56,6 +57,7 @@ export default {
     'ai-code.document': 'Documento',
     'ai-code.convert': 'Converter',
     'ai-code.code': 'Código',
+    'ai-code.pasteCodeHere': 'Cole código aqui',
     'ai-code.copy': 'Copiar',
   },
   ja: {
@@ -63,6 +65,7 @@ export default {
     'ai-code.document': '文書',
     'ai-code.convert': '変換',
     'ai-code.code': 'コード',
+    'ai-code.pasteCodeHere': 'ここにコードを貼り付け',
     'ai-code.copy': 'コピー',
   },
   ko: {
@@ -70,6 +73,7 @@ export default {
     'ai-code.document': '문서',
     'ai-code.convert': '변환',
     'ai-code.code': '코드',
+    'ai-code.pasteCodeHere': '여기에 코드를 붙여넣으세요',
     'ai-code.copy': '복사',
   },
 };

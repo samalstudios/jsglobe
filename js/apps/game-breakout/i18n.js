@@ -38,6 +38,8 @@ export default {
     'game-breakout.lives': 'Vies',
     'game-breakout.level': 'Niveau',
     'game-breakout.breakEveryBrick': 'Casser toutes les briques',
+    'game-breakout.moveWithTheMouseOr': 'Déplacez avec la souris ou les flèches. Espace pour servir.',
+    'game-breakout.play': 'Lecture',
   },
   pt: {
     'game-breakout.breakout': 'Breakout',
@@ -45,6 +47,8 @@ export default {
     'game-breakout.lives': 'Vidas',
     'game-breakout.level': 'Nível',
     'game-breakout.breakEveryBrick': 'Quebre todos os tijolos',
+    'game-breakout.moveWithTheMouseOr': 'Mova com o mouse ou as setas. Espaço saca.',
+    'game-breakout.play': 'Reproduzir',
   },
   ja: {
     'game-breakout.breakout': 'Breakout',
@@ -52,6 +56,8 @@ export default {
     'game-breakout.lives': '残機',
     'game-breakout.level': 'レベル',
     'game-breakout.breakEveryBrick': 'ブロックをすべて壊す',
+    'game-breakout.moveWithTheMouseOr': 'マウスか方向キーで動かします。スペースでサーブ。',
+    'game-breakout.play': '再生',
   },
   ko: {
     'game-breakout.breakout': 'Breakout',
@@ -59,5 +65,7 @@ export default {
     'game-breakout.lives': '목숨',
     'game-breakout.level': '단계',
     'game-breakout.breakEveryBrick': '벽돌을 모두 깨기',
+    'game-breakout.moveWithTheMouseOr': '마우스나 방향키로 움직입니다. 스페이스로 서브합니다.',
+    'game-breakout.play': '재생',
   },
 };

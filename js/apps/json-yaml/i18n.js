@@ -15,15 +15,15 @@ export default {
     'json-yaml.theYamlParserCoversThe': '该 YAML 解析器覆盖常见的配置子集：嵌套映射、列表和标量。',
   },
   fr: {
-
+    'json-yaml.loadSample': 'Charger un exemple',
   },
   pt: {
-
+    'json-yaml.loadSample': 'Carregar exemplo',
   },
   ja: {
-
+    'json-yaml.loadSample': 'サンプルを読み込む',
   },
   ko: {
-
+    'json-yaml.loadSample': '예시 불러오기',
   },
 };

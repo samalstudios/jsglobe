@@ -31,21 +31,25 @@ export default {
   },
   fr: {
     'morse-code.morse': 'Morse',
+    'morse-code.playTone': 'Jouer une note',
     'morse-code.copyMorse': 'Copier le morse',
     'morse-code.internationalMorseCode': 'Code morse international',
   },
   pt: {
     'morse-code.morse': 'Morse',
+    'morse-code.playTone': 'Tocar um tom',
     'morse-code.copyMorse': 'Copiar o morse',
     'morse-code.internationalMorseCode': 'Código morse internacional',
   },
   ja: {
     'morse-code.morse': 'Morse',
+    'morse-code.playTone': '音を鳴らす',
     'morse-code.copyMorse': 'モールスをコピー',
     'morse-code.internationalMorseCode': '欧文モールス符号',
   },
   ko: {
     'morse-code.morse': 'Morse',
+    'morse-code.playTone': '소리 내기',
     'morse-code.copyMorse': '모스 복사',
     'morse-code.internationalMorseCode': '국제 모스 부호',
   },

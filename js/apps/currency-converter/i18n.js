@@ -31,21 +31,25 @@ export default {
   },
   fr: {
     'currency-converter.from': 'De',
+    'currency-converter.loadingRates': 'Chargement des taux',
     'currency-converter.copy': 'Copier',
     'currency-converter.atAGlance': 'En un coup d\'œil',
   },
   pt: {
     'currency-converter.from': 'De',
+    'currency-converter.loadingRates': 'Carregando as taxas',
     'currency-converter.copy': 'Copiar',
     'currency-converter.atAGlance': 'Num relance',
   },
   ja: {
     'currency-converter.from': '変換元',
+    'currency-converter.loadingRates': 'レートを読み込み中',
     'currency-converter.copy': 'コピー',
     'currency-converter.atAGlance': 'ひと目で',
   },
   ko: {
     'currency-converter.from': '원본',
+    'currency-converter.loadingRates': '환율을 불러오는 중',
     'currency-converter.copy': '복사',
     'currency-converter.atAGlance': '한눈에',
   },

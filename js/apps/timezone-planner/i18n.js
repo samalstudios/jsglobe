@@ -41,21 +41,33 @@ export default {
   fr: {
     'timezone-planner.addACity': 'Ajouter une ville',
     'timezone-planner.copyPlan': 'Copier le plan',
+    'timezone-planner.overlappingHours': 'Heures qui se recoupent',
+    'timezone-planner.makeThisTheReference': 'En faire la référence',
     'timezone-planner.keepAtLeastOneCity': 'Gardez au moins une ville',
+    'timezone-planner.noHourWorksForEveryone': 'Aucune heure ne convient à tous. Élargissez les horaires ou retirez une ville.',
   },
   pt: {
     'timezone-planner.addACity': 'Adicionar uma cidade',
     'timezone-planner.copyPlan': 'Copiar o plano',
+    'timezone-planner.overlappingHours': 'Horas em comum',
+    'timezone-planner.makeThisTheReference': 'Tornar esta a referência',
     'timezone-planner.keepAtLeastOneCity': 'Mantenha ao menos uma cidade',
+    'timezone-planner.noHourWorksForEveryone': 'Nenhuma hora serve para todos. Amplie o horário de trabalho ou tire uma cidade.',
   },
   ja: {
     'timezone-planner.addACity': '都市を追加',
     'timezone-planner.copyPlan': '計画をコピー',
+    'timezone-planner.overlappingHours': '重なる時間帯',
+    'timezone-planner.makeThisTheReference': 'これを基準にする',
     'timezone-planner.keepAtLeastOneCity': '都市は少なくとも 1 つ残してください',
+    'timezone-planner.noHourWorksForEveryone': '全員に合う時間帯がありません。勤務時間を広げるか都市を減らしてください。',
   },
   ko: {
     'timezone-planner.addACity': '도시 추가',
     'timezone-planner.copyPlan': '계획 복사',
+    'timezone-planner.overlappingHours': '겹치는 시간',
+    'timezone-planner.makeThisTheReference': '이것을 기준으로 삼기',
     'timezone-planner.keepAtLeastOneCity': '도시를 적어도 하나는 남기세요',
+    'timezone-planner.noHourWorksForEveryone': '모두에게 맞는 시간이 없습니다. 근무 시간을 넓히거나 도시를 빼세요.',
   },
 };

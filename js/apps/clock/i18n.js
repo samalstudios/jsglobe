@@ -42,20 +42,24 @@ export default {
     'clock.12HourTime': 'Format 12 heures',
     'clock.add': 'Ajouter',
     'clock.lap': 'Tour',
+    'clock.noLapsRecorded': 'Aucun tour enregistré',
   },
   pt: {
     'clock.12HourTime': 'Formato de 12 horas',
     'clock.add': 'Adicionar',
     'clock.lap': 'Volta',
+    'clock.noLapsRecorded': 'Nenhuma volta registrada',
   },
   ja: {
     'clock.12HourTime': '12 時間表記',
     'clock.add': '追加',
     'clock.lap': 'ラップ',
+    'clock.noLapsRecorded': 'ラップの記録はありません',
   },
   ko: {
     'clock.12HourTime': '12시간 표기',
     'clock.add': '추가',
     'clock.lap': '랩',
+    'clock.noLapsRecorded': '기록된 랩이 없습니다',
   },
 };

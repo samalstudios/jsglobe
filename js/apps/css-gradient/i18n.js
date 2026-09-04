@@ -78,6 +78,7 @@ export default {
     'css-gradient.angle': 'Angle',
     'css-gradient.circle': 'Cercle',
     'css-gradient.ellipse': 'Ellipse',
+    'css-gradient.position': 'Position',
     'css-gradient.center': 'Centrer',
     'css-gradient.bottomLeft': 'En bas à gauche',
     'css-gradient.bottomRight': 'En bas à droite',
@@ -85,6 +86,7 @@ export default {
     'css-gradient.addColour': 'Ajouter de la couleur',
     'css-gradient.copyCss': 'Copier le CSS',
     'css-gradient.copyTailwind': 'Copier pour Tailwind',
+    'css-gradient.presets': 'Préréglages',
   },
   pt: {
     'css-gradient.linear': 'Linear',
@@ -93,6 +95,7 @@ export default {
     'css-gradient.angle': 'Ângulo',
     'css-gradient.circle': 'Círculo',
     'css-gradient.ellipse': 'Elipse',
+    'css-gradient.position': 'Posição',
     'css-gradient.center': 'Centralizar',
     'css-gradient.bottomLeft': 'Inferior esquerdo',
     'css-gradient.bottomRight': 'Inferior direito',
@@ -100,6 +103,7 @@ export default {
     'css-gradient.addColour': 'Adicionar cor',
     'css-gradient.copyCss': 'Copiar o CSS',
     'css-gradient.copyTailwind': 'Copiar para Tailwind',
+    'css-gradient.presets': 'Predefinições',
   },
   ja: {
     'css-gradient.linear': '線形',
@@ -108,6 +112,7 @@ export default {
     'css-gradient.angle': '角度',
     'css-gradient.circle': '円',
     'css-gradient.ellipse': '楕円',
+    'css-gradient.position': '位置',
     'css-gradient.center': '中央',
     'css-gradient.bottomLeft': '左下',
     'css-gradient.bottomRight': '右下',
@@ -115,6 +120,7 @@ export default {
     'css-gradient.addColour': '色を付ける',
     'css-gradient.copyCss': 'CSS をコピー',
     'css-gradient.copyTailwind': 'Tailwind 用にコピー',
+    'css-gradient.presets': 'プリセット',
   },
   ko: {
     'css-gradient.linear': '선형',
@@ -123,6 +129,7 @@ export default {
     'css-gradient.angle': '각도',
     'css-gradient.circle': '원',
     'css-gradient.ellipse': '타원',
+    'css-gradient.position': '위치',
     'css-gradient.center': '가운데',
     'css-gradient.bottomLeft': '왼쪽 아래',
     'css-gradient.bottomRight': '오른쪽 아래',
@@ -130,5 +137,6 @@ export default {
     'css-gradient.addColour': '색 넣기',
     'css-gradient.copyCss': 'CSS 복사',
     'css-gradient.copyTailwind': 'Tailwind용으로 복사',
+    'css-gradient.presets': '프리셋',
   },
 };

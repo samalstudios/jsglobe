@@ -79,6 +79,7 @@ export default {
   },
   fr: {
     'ascii-art.toolbox': 'TOOLBOX',
+    'ascii-art.outline': 'Contour',
     'ascii-art.3dExtrude': 'Extrusion 3D',
     'ascii-art.depth': 'Profondeur',
     'ascii-art.character': 'Caractère',
@@ -96,6 +97,7 @@ export default {
   },
   pt: {
     'ascii-art.toolbox': 'TOOLBOX',
+    'ascii-art.outline': 'Contorno',
     'ascii-art.3dExtrude': 'Extrusão 3D',
     'ascii-art.depth': 'Profundidade',
     'ascii-art.character': 'Caractere',
@@ -113,6 +115,7 @@ export default {
   },
   ja: {
     'ascii-art.toolbox': 'TOOLBOX',
+    'ascii-art.outline': '輪郭',
     'ascii-art.3dExtrude': '3D 押し出し',
     'ascii-art.depth': '深さ',
     'ascii-art.character': '文字',
@@ -130,6 +133,7 @@ export default {
   },
   ko: {
     'ascii-art.toolbox': 'TOOLBOX',
+    'ascii-art.outline': '윤곽',
     'ascii-art.3dExtrude': '3D 돌출',
     'ascii-art.depth': '깊이',
     'ascii-art.character': '문자',

@@ -38,6 +38,7 @@ export default {
     'game-invaders.lives': 'Vies',
     'game-invaders.holdTheLine': 'Tenir la ligne',
     'game-invaders.arrowsMoveSpaceFires': 'Les flèches déplacent, espace tire.',
+    'game-invaders.play': 'Lecture',
   },
   pt: {
     'game-invaders.invaders': 'Invaders',
@@ -45,6 +46,7 @@ export default {
     'game-invaders.lives': 'Vidas',
     'game-invaders.holdTheLine': 'Segure a linha',
     'game-invaders.arrowsMoveSpaceFires': 'As setas movem, espaço atira.',
+    'game-invaders.play': 'Reproduzir',
   },
   ja: {
     'game-invaders.invaders': 'Invaders',
@@ -52,6 +54,7 @@ export default {
     'game-invaders.lives': '残機',
     'game-invaders.holdTheLine': '防衛線を守る',
     'game-invaders.arrowsMoveSpaceFires': '矢印で移動、スペースで発射。',
+    'game-invaders.play': '再生',
   },
   ko: {
     'game-invaders.invaders': 'Invaders',
@@ -59,5 +62,6 @@ export default {
     'game-invaders.lives': '목숨',
     'game-invaders.holdTheLine': '방어선을 지키기',
     'game-invaders.arrowsMoveSpaceFires': '화살표로 움직이고 스페이스로 쏩니다.',
+    'game-invaders.play': '재생',
   },
 };

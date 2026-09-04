@@ -37,22 +37,30 @@ export default {
   },
   fr: {
     'lorem-ipsum.generate': 'Générer',
+    'lorem-ipsum.output': 'Sortie',
     'lorem-ipsum.copy': 'Copier',
+    'lorem-ipsum.paragraphs': 'Paragraphes',
     'lorem-ipsum.listItems': 'Éléments de liste',
   },
   pt: {
     'lorem-ipsum.generate': 'Gerar',
+    'lorem-ipsum.output': 'Saída',
     'lorem-ipsum.copy': 'Copiar',
+    'lorem-ipsum.paragraphs': 'Parágrafos',
     'lorem-ipsum.listItems': 'Itens da lista',
   },
   ja: {
     'lorem-ipsum.generate': '生成',
+    'lorem-ipsum.output': '出力',
     'lorem-ipsum.copy': 'コピー',
+    'lorem-ipsum.paragraphs': '段落',
     'lorem-ipsum.listItems': 'リスト項目',
   },
   ko: {
     'lorem-ipsum.generate': '만들기',
+    'lorem-ipsum.output': '출력',
     'lorem-ipsum.copy': '복사',
+    'lorem-ipsum.paragraphs': '문단',
     'lorem-ipsum.listItems': '목록 항목',
   },
 };

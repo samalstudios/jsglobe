@@ -33,15 +33,23 @@ export default {
     'typing-test.finishARunToRecord': '完成一轮以记录最佳成绩。',
   },
   fr: {
+    'typing-test.personalBests': 'Records personnels',
+    'typing-test.noMistakesRecordedYet': 'Aucune erreur enregistrée pour l\'instant.',
     'typing-test.finishARunToRecord': 'Terminez une partie pour enregistrer un record.',
   },
   pt: {
+    'typing-test.personalBests': 'Recordes pessoais',
+    'typing-test.noMistakesRecordedYet': 'Nenhum erro registrado ainda.',
     'typing-test.finishARunToRecord': 'Termine uma partida para registrar um recorde.',
   },
   ja: {
+    'typing-test.personalBests': '自己ベスト',
+    'typing-test.noMistakesRecordedYet': 'まだミスの記録はありません。',
     'typing-test.finishARunToRecord': '1 回やり切ると記録が残ります。',
   },
   ko: {
+    'typing-test.personalBests': '개인 최고 기록',
+    'typing-test.noMistakesRecordedYet': '아직 기록된 실수가 없습니다.',
     'typing-test.finishARunToRecord': '한 판을 마치면 기록이 남습니다.',
   },
 };

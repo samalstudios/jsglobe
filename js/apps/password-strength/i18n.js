@@ -57,6 +57,7 @@ export default {
     'password-strength.atLeast16Characters': '至少 16 个字符',
   },
   fr: {
+    'password-strength.password': 'Mot de passe',
     'password-strength.checkedEntirelyOnThisDevice': 'Vérifié entièrement sur cet appareil, rien n\'est envoyé nulle part',
     'password-strength.0Bits': '0 bit',
     'password-strength.composition': 'Composition',
@@ -65,6 +66,7 @@ export default {
     'password-strength.atLeast16Characters': 'Au moins 16 caractères',
   },
   pt: {
+    'password-strength.password': 'Senha',
     'password-strength.checkedEntirelyOnThisDevice': 'Verificado inteiramente neste dispositivo, nada é enviado a lugar nenhum',
     'password-strength.0Bits': '0 bits',
     'password-strength.composition': 'Composição',
@@ -73,6 +75,7 @@ export default {
     'password-strength.atLeast16Characters': 'Pelo menos 16 caracteres',
   },
   ja: {
+    'password-strength.password': 'パスワード',
     'password-strength.checkedEntirelyOnThisDevice': 'すべてこの端末で検査され、どこにも送信されません',
     'password-strength.0Bits': '0 ビット',
     'password-strength.composition': '構図',
@@ -81,6 +84,7 @@ export default {
     'password-strength.atLeast16Characters': '16 文字以上',
   },
   ko: {
+    'password-strength.password': '비밀번호',
     'password-strength.checkedEntirelyOnThisDevice': '전부 이 기기에서 확인하며, 어디로도 보내지 않습니다',
     'password-strength.0Bits': '0비트',
     'password-strength.composition': '구성',

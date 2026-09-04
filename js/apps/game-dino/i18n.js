@@ -41,17 +41,21 @@ export default {
   fr: {
     'game-dino.best': 'Meilleur',
     'game-dino.jumpTheCacti': 'Sautez les cactus',
+    'game-dino.play': 'Lecture',
   },
   pt: {
     'game-dino.best': 'Melhor',
     'game-dino.jumpTheCacti': 'Pule os cactos',
+    'game-dino.play': 'Reproduzir',
   },
   ja: {
     'game-dino.best': '最高',
     'game-dino.jumpTheCacti': 'サボテンを跳び越える',
+    'game-dino.play': '再生',
   },
   ko: {
     'game-dino.best': '최고',
     'game-dino.jumpTheCacti': '선인장 뛰어넘기',
+    'game-dino.play': '재생',
   },
 };

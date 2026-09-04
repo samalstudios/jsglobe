@@ -55,6 +55,7 @@ export default {
   },
   fr: {
     'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.mbps': 'Mbit/s',
     'speed-test.downloadMbps': 'Téléchargement Mbit/s',
     'speed-test.latencyMs': 'Latence ms',
     'speed-test.jitterMs': 'Jitter ms',
@@ -63,6 +64,7 @@ export default {
   },
   pt: {
     'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.mbps': 'Mbps',
     'speed-test.downloadMbps': 'Download Mbps',
     'speed-test.latencyMs': 'Latência ms',
     'speed-test.jitterMs': 'Jitter ms',
@@ -71,6 +73,7 @@ export default {
   },
   ja: {
     'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.mbps': 'Mbps',
     'speed-test.downloadMbps': '下り Mbps',
     'speed-test.latencyMs': '遅延 ms',
     'speed-test.jitterMs': 'Jitter ms',
@@ -79,6 +82,7 @@ export default {
   },
   ko: {
     'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.mbps': 'Mbps',
     'speed-test.downloadMbps': '내려받기 Mbps',
     'speed-test.latencyMs': '지연 ms',
     'speed-test.jitterMs': 'Jitter ms',

@@ -51,6 +51,8 @@ export default {
     'tuner.guitarOpenG': 'Guitare open G',
     'tuner.bass4String': 'Basse 4 cordes',
     'tuner.hzA4': 'Hz La3',
+    'tuner.playAString': 'Jouer une corde',
+    'tuner.microphoneIsOff': 'Le micro est éteint',
     'tuner.50Cents': '+50 cents',
   },
   pt: {
@@ -60,6 +62,8 @@ export default {
     'tuner.guitarOpenG': 'Violão em sol aberto',
     'tuner.bass4String': 'Baixo de 4 cordas',
     'tuner.hzA4': 'Hz Lá4',
+    'tuner.playAString': 'Tocar uma corda',
+    'tuner.microphoneIsOff': 'O microfone está desligado',
     'tuner.50Cents': '+50 cents',
   },
   ja: {
@@ -69,6 +73,8 @@ export default {
     'tuner.guitarOpenG': 'ギター オープン G',
     'tuner.bass4String': 'ベース 4 弦',
     'tuner.hzA4': 'Hz (A4)',
+    'tuner.playAString': '弦を鳴らす',
+    'tuner.microphoneIsOff': 'マイクは切れています',
     'tuner.50Cents': '+50 セント',
   },
   ko: {
@@ -78,6 +84,8 @@ export default {
     'tuner.guitarOpenG': '기타 오픈 G',
     'tuner.bass4String': '베이스 4현',
     'tuner.hzA4': 'Hz (A4)',
+    'tuner.playAString': '줄 울리기',
+    'tuner.microphoneIsOff': '마이크가 꺼져 있습니다',
     'tuner.50Cents': '+50센트',
   },
 };

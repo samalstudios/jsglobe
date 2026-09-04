@@ -18,15 +18,15 @@ export default {
     'roman-numerals.validRangeIs1To': '有效范围是 1 到 3999',
   },
   fr: {
-
+    'roman-numerals.numberRoman': 'Nombre → romain',
   },
   pt: {
-
+    'roman-numerals.numberRoman': 'Número → romano',
   },
   ja: {
-
+    'roman-numerals.numberRoman': '数 → ローマ数字',
   },
   ko: {
-
+    'roman-numerals.numberRoman': '숫자 → 로마 숫자',
   },
 };

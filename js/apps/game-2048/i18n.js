@@ -16,14 +16,18 @@ export default {
   },
   fr: {
     'game-2048.best': 'Meilleur',
+    'game-2048.newGame': 'Nouvelle partie',
   },
   pt: {
     'game-2048.best': 'Melhor',
+    'game-2048.newGame': 'Novo jogo',
   },
   ja: {
     'game-2048.best': '最高',
+    'game-2048.newGame': '新しいゲーム',
   },
   ko: {
     'game-2048.best': '최고',
+    'game-2048.newGame': '새 게임',
   },
 };

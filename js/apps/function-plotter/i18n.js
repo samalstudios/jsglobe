@@ -56,6 +56,7 @@ export default {
     'function-plotter.2dCurve': 'Courbe 2D',
     'function-plotter.3dSurface': 'Surface 3D',
     'function-plotter.sinX': 'sin(x)',
+    'function-plotter.noSignChangesInThe': 'Aucun changement de signe dans la plage visible.',
   },
   pt: {
     'function-plotter.addFunction': 'Adicionar função',
@@ -66,6 +67,7 @@ export default {
     'function-plotter.2dCurve': 'Curva 2D',
     'function-plotter.3dSurface': 'Superfície 3D',
     'function-plotter.sinX': 'sin(x)',
+    'function-plotter.noSignChangesInThe': 'Nenhuma mudança de sinal na faixa visível.',
   },
   ja: {
     'function-plotter.addFunction': '関数を追加',
@@ -76,6 +78,7 @@ export default {
     'function-plotter.2dCurve': '2D 曲線',
     'function-plotter.3dSurface': '3D 曲面',
     'function-plotter.sinX': 'sin(x)',
+    'function-plotter.noSignChangesInThe': '表示範囲に符号の変化はありません。',
   },
   ko: {
     'function-plotter.addFunction': '함수 추가',
@@ -86,5 +89,6 @@ export default {
     'function-plotter.2dCurve': '2D 곡선',
     'function-plotter.3dSurface': '3D 곡면',
     'function-plotter.sinX': 'sin(x)',
+    'function-plotter.noSignChangesInThe': '보이는 범위에 부호가 바뀌는 곳이 없습니다.',
   },
 };

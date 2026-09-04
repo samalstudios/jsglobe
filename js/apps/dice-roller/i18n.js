@@ -54,6 +54,7 @@ export default {
     'dice-roller.copyTheLog': 'Copier le journal',
     'dice-roller.clearTheLog': 'Effacer le journal',
     'dice-roller.copiedTheLog': 'Journal copié',
+    'dice-roller.nothingThrownYet': 'Aucun lancer pour l\'instant',
     'dice-roller.diceRoller': 'Lanceur de dés',
   },
   pt: {
@@ -63,6 +64,7 @@ export default {
     'dice-roller.copyTheLog': 'Copiar o registro',
     'dice-roller.clearTheLog': 'Limpar o registro',
     'dice-roller.copiedTheLog': 'Registro copiado',
+    'dice-roller.nothingThrownYet': 'Nada lançado ainda',
     'dice-roller.diceRoller': 'Rolador de dados',
   },
   ja: {
@@ -72,6 +74,7 @@ export default {
     'dice-roller.copyTheLog': 'ログをコピー',
     'dice-roller.clearTheLog': 'ログを消す',
     'dice-roller.copiedTheLog': 'ログをコピーしました',
+    'dice-roller.nothingThrownYet': 'まだ振っていません',
     'dice-roller.diceRoller': 'サイコロ',
   },
   ko: {
@@ -81,6 +84,7 @@ export default {
     'dice-roller.copyTheLog': '로그 복사',
     'dice-roller.clearTheLog': '로그 지우기',
     'dice-roller.copiedTheLog': '로그를 복사했습니다',
+    'dice-roller.nothingThrownYet': '아직 던지지 않았습니다',
     'dice-roller.diceRoller': '주사위',
   },
 };

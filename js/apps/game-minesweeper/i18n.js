@@ -19,18 +19,26 @@ export default {
   },
   fr: {
     'game-minesweeper.easy': 'Facile',
+    'game-minesweeper.medium': 'Moyen',
     'game-minesweeper.hard': 'Difficile',
+    'game-minesweeper.newGame': 'Nouvelle partie',
   },
   pt: {
     'game-minesweeper.easy': 'Fácil',
+    'game-minesweeper.medium': 'Médio',
     'game-minesweeper.hard': 'Difícil',
+    'game-minesweeper.newGame': 'Novo jogo',
   },
   ja: {
     'game-minesweeper.easy': 'やさしい',
+    'game-minesweeper.medium': '中',
     'game-minesweeper.hard': 'むずかしい',
+    'game-minesweeper.newGame': '新しいゲーム',
   },
   ko: {
     'game-minesweeper.easy': '쉬움',
+    'game-minesweeper.medium': '보통',
     'game-minesweeper.hard': '어려움',
+    'game-minesweeper.newGame': '새 게임',
   },
 };
