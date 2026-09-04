@@ -58,6 +58,7 @@ export default {
     'slugify.kebab': 'Kebab',
     'slugify.snake': 'Snake',
     'slugify.dot2': 'Point',
+    'slugify.length': 'Longueur',
   },
   pt: {
     'slugify.10WaysToBuildA': '10 maneiras de montar um cardápio de café - edição 2024',
@@ -67,6 +68,7 @@ export default {
     'slugify.kebab': 'Kebab',
     'slugify.snake': 'Snake',
     'slugify.dot2': 'Ponto',
+    'slugify.length': 'Comprimento',
   },
   ja: {
     'slugify.10WaysToBuildA': 'カフェのメニューを組み立てる 10 の方法 - 2024 年版',
@@ -76,6 +78,7 @@ export default {
     'slugify.kebab': 'Kebab',
     'slugify.snake': 'Snake',
     'slugify.dot2': '点',
+    'slugify.length': '長さ',
   },
   ko: {
     'slugify.10WaysToBuildA': '카페 메뉴를 짜는 10가지 방법 - 2024년판',
@@ -85,5 +88,6 @@ export default {
     'slugify.kebab': 'Kebab',
     'slugify.snake': 'Snake',
     'slugify.dot2': '점',
+    'slugify.length': '길이',
   },
 };

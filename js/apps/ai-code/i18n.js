@@ -45,24 +45,28 @@ export default {
     'ai-code.copy': '复制',
   },
   fr: {
+    'ai-code.explain': 'Expliquer',
     'ai-code.document': 'Document',
     'ai-code.convert': 'Convertir',
     'ai-code.code': 'Code',
     'ai-code.copy': 'Copier',
   },
   pt: {
+    'ai-code.explain': 'Explicar',
     'ai-code.document': 'Documento',
     'ai-code.convert': 'Converter',
     'ai-code.code': 'Código',
     'ai-code.copy': 'Copiar',
   },
   ja: {
+    'ai-code.explain': '説明する',
     'ai-code.document': '文書',
     'ai-code.convert': '変換',
     'ai-code.code': 'コード',
     'ai-code.copy': 'コピー',
   },
   ko: {
+    'ai-code.explain': '설명하기',
     'ai-code.document': '문서',
     'ai-code.convert': '변환',
     'ai-code.code': '코드',

@@ -82,6 +82,7 @@ export default {
     'screenshot.clearMarks': 'Effacer les repères',
     'screenshot.beforeAndAfter': 'Avant et après',
     'screenshot.copy': 'Copier',
+    'screenshot.imageCopied': 'Image copiée',
   },
   pt: {
     'screenshot.arrow': 'Seta',
@@ -94,6 +95,7 @@ export default {
     'screenshot.clearMarks': 'Limpar as marcas',
     'screenshot.beforeAndAfter': 'Antes e depois',
     'screenshot.copy': 'Copiar',
+    'screenshot.imageCopied': 'Imagem copiada',
   },
   ja: {
     'screenshot.arrow': '矢印',
@@ -106,6 +108,7 @@ export default {
     'screenshot.clearMarks': '印を消す',
     'screenshot.beforeAndAfter': '前と後',
     'screenshot.copy': 'コピー',
+    'screenshot.imageCopied': '画像をコピーしました',
   },
   ko: {
     'screenshot.arrow': '화살표',
@@ -118,5 +121,6 @@ export default {
     'screenshot.clearMarks': '표시 지우기',
     'screenshot.beforeAndAfter': '전과 후',
     'screenshot.copy': '복사',
+    'screenshot.imageCopied': '이미지를 복사했습니다',
   },
 };

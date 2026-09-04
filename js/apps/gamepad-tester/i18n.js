@@ -30,18 +30,22 @@ export default {
     'gamepad-tester.axes': '摇杆轴',
   },
   fr: {
+    'gamepad-tester.gamepad': 'Manette',
     'gamepad-tester.buttons': 'Boutons',
     'gamepad-tester.axes': 'Axes',
   },
   pt: {
+    'gamepad-tester.gamepad': 'Controle',
     'gamepad-tester.buttons': 'Botões',
     'gamepad-tester.axes': 'Eixos',
   },
   ja: {
+    'gamepad-tester.gamepad': 'ゲームパッド',
     'gamepad-tester.buttons': 'ボタン',
     'gamepad-tester.axes': '座標軸',
   },
   ko: {
+    'gamepad-tester.gamepad': '게임패드',
     'gamepad-tester.buttons': '버튼',
     'gamepad-tester.axes': '축',
   },

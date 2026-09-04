@@ -48,15 +48,23 @@ export default {
     'exif-editor.thatFileIsNotA': '该文件不是 JPEG',
   },
   fr: {
+    'exif-editor.dropAJpegHereOr': 'Déposez un JPEG ici, ou cliquez pour en choisir un',
+    'exif-editor.keepTheColourProfile': 'Conserver le profil colorimétrique',
     'exif-editor.copyMetadataAsJson': 'Copier les métadonnées en JSON',
   },
   pt: {
+    'exif-editor.dropAJpegHereOr': 'Solte um JPEG aqui, ou clique para escolher',
+    'exif-editor.keepTheColourProfile': 'Manter o perfil de cor',
     'exif-editor.copyMetadataAsJson': 'Copiar os metadados como JSON',
   },
   ja: {
+    'exif-editor.dropAJpegHereOr': 'JPEG をここにドロップ、またはクリックして選択',
+    'exif-editor.keepTheColourProfile': 'カラープロファイルを残す',
     'exif-editor.copyMetadataAsJson': 'メタデータを JSON でコピー',
   },
   ko: {
+    'exif-editor.dropAJpegHereOr': 'JPEG를 여기에 놓거나 눌러서 고르세요',
+    'exif-editor.keepTheColourProfile': '색 프로파일 유지',
     'exif-editor.copyMetadataAsJson': '메타데이터를 JSON으로 복사',
   },
 };

@@ -18,15 +18,19 @@ export default {
     'game-minesweeper.newGame': '新游戏',
   },
   fr: {
-
+    'game-minesweeper.easy': 'Facile',
+    'game-minesweeper.hard': 'Difficile',
   },
   pt: {
-
+    'game-minesweeper.easy': 'Fácil',
+    'game-minesweeper.hard': 'Difícil',
   },
   ja: {
-
+    'game-minesweeper.easy': 'やさしい',
+    'game-minesweeper.hard': 'むずかしい',
   },
   ko: {
-
+    'game-minesweeper.easy': '쉬움',
+    'game-minesweeper.hard': '어려움',
   },
 };

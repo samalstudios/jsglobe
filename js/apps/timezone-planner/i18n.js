@@ -41,17 +41,21 @@ export default {
   fr: {
     'timezone-planner.addACity': 'Ajouter une ville',
     'timezone-planner.copyPlan': 'Copier le plan',
+    'timezone-planner.keepAtLeastOneCity': 'Gardez au moins une ville',
   },
   pt: {
     'timezone-planner.addACity': 'Adicionar uma cidade',
     'timezone-planner.copyPlan': 'Copiar o plano',
+    'timezone-planner.keepAtLeastOneCity': 'Mantenha ao menos uma cidade',
   },
   ja: {
     'timezone-planner.addACity': '都市を追加',
     'timezone-planner.copyPlan': '計画をコピー',
+    'timezone-planner.keepAtLeastOneCity': '都市は少なくとも 1 つ残してください',
   },
   ko: {
     'timezone-planner.addACity': '도시 추가',
     'timezone-planner.copyPlan': '계획 복사',
+    'timezone-planner.keepAtLeastOneCity': '도시를 적어도 하나는 남기세요',
   },
 };

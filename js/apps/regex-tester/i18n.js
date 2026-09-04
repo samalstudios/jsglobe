@@ -28,18 +28,22 @@ export default {
   },
   fr: {
     'regex-tester.contactAdaExampleComOr': 'Contactez ada@example.com ou grace@jsglobe.dev pour un accès. Invalide : nobody@localhost',
+    'regex-tester.highlighted': 'Surligné',
     'regex-tester.cheatSheet': 'Aide-mémoire',
   },
   pt: {
     'regex-tester.contactAdaExampleComOr': 'Contate ada@example.com ou grace@jsglobe.dev para ter acesso. Inválido: nobody@localhost',
+    'regex-tester.highlighted': 'Realçado',
     'regex-tester.cheatSheet': 'Guia rápido',
   },
   ja: {
     'regex-tester.contactAdaExampleComOr': 'アクセスは ada@example.com か grace@jsglobe.dev までご連絡ください。無効: nobody@localhost',
+    'regex-tester.highlighted': '強調あり',
     'regex-tester.cheatSheet': '早見表',
   },
   ko: {
     'regex-tester.contactAdaExampleComOr': '접근은 ada@example.com 이나 grace@jsglobe.dev 로 연락하세요. 잘못된 예: nobody@localhost',
+    'regex-tester.highlighted': '강조됨',
     'regex-tester.cheatSheet': '요약표',
   },
 };

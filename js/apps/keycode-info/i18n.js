@@ -52,6 +52,7 @@ export default {
   },
   fr: {
     'keycode-info.clickHereFirstThenPress': 'Cliquez ici d\'abord, puis appuyez sur une touche. Les combinaisons avec modificateurs sont aussi capturées.',
+    'keycode-info.eventProperties': 'Propriétés de l\'événement',
     'keycode-info.eventKey': 'event.key',
     'keycode-info.eventCode': 'event.code',
     'keycode-info.eventKeycode': 'event.keyCode',
@@ -60,6 +61,7 @@ export default {
   },
   pt: {
     'keycode-info.clickHereFirstThenPress': 'Clique aqui primeiro e depois pressione uma tecla. Combinações com modificadores também são capturadas.',
+    'keycode-info.eventProperties': 'Propriedades do evento',
     'keycode-info.eventKey': 'event.key',
     'keycode-info.eventCode': 'event.code',
     'keycode-info.eventKeycode': 'event.keyCode',
@@ -68,6 +70,7 @@ export default {
   },
   ja: {
     'keycode-info.clickHereFirstThenPress': '先にここをクリックしてからキーを押してください。修飾キーの組み合わせも取得します。',
+    'keycode-info.eventProperties': 'イベントのプロパティ',
     'keycode-info.eventKey': 'event.key',
     'keycode-info.eventCode': 'event.code',
     'keycode-info.eventKeycode': 'event.keyCode',
@@ -76,6 +79,7 @@ export default {
   },
   ko: {
     'keycode-info.clickHereFirstThenPress': '먼저 여기를 누른 뒤 키를 누르세요. 조합 키도 함께 잡힙니다.',
+    'keycode-info.eventProperties': '이벤트 속성',
     'keycode-info.eventKey': 'event.key',
     'keycode-info.eventCode': 'event.code',
     'keycode-info.eventKeycode': 'event.keyCode',

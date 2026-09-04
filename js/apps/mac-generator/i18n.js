@@ -67,7 +67,9 @@ export default {
   },
   fr: {
     'mac-generator.colon001b44': 'Deux-points - 00:1b:44',
+    'mac-generator.hyphen001b44': 'Tiret - 00-1b-44',
     'mac-generator.cisco001b4411': 'Cisco - 001b.4411',
+    'mac-generator.generate': 'Générer',
     'mac-generator.addresses': 'Adresses',
     'mac-generator.copyAll': 'Tout copier',
     'mac-generator.analyseAnAddress': 'Analyser une adresse',
@@ -79,7 +81,9 @@ export default {
   },
   pt: {
     'mac-generator.colon001b44': 'Dois-pontos - 00:1b:44',
+    'mac-generator.hyphen001b44': 'Hífen - 00-1b-44',
     'mac-generator.cisco001b4411': 'Cisco - 001b.4411',
+    'mac-generator.generate': 'Gerar',
     'mac-generator.addresses': 'Endereços',
     'mac-generator.copyAll': 'Copiar tudo',
     'mac-generator.analyseAnAddress': 'Analisar um endereço',
@@ -91,7 +95,9 @@ export default {
   },
   ja: {
     'mac-generator.colon001b44': 'コロン - 00:1b:44',
+    'mac-generator.hyphen001b44': 'ハイフン - 00-1b-44',
     'mac-generator.cisco001b4411': 'Cisco - 001b.4411',
+    'mac-generator.generate': '生成',
     'mac-generator.addresses': 'アドレス',
     'mac-generator.copyAll': 'すべてコピー',
     'mac-generator.analyseAnAddress': 'アドレスを調べる',
@@ -103,7 +109,9 @@ export default {
   },
   ko: {
     'mac-generator.colon001b44': '쌍점 - 00:1b:44',
+    'mac-generator.hyphen001b44': '하이픈 - 00-1b-44',
     'mac-generator.cisco001b4411': 'Cisco - 001b.4411',
+    'mac-generator.generate': '만들기',
     'mac-generator.addresses': '주소',
     'mac-generator.copyAll': '모두 복사',
     'mac-generator.analyseAnAddress': '주소 분석',

@@ -31,22 +31,30 @@ export default {
   },
   fr: {
     'math-evaluator.22Pi': '2 + 2 * pi',
+    'math-evaluator.expression': 'Expression',
     'math-evaluator.copy': 'Copier',
+    'math-evaluator.history': 'Historique',
     'math-evaluator.clickAnEntryToLoad': 'Cliquez sur une entrée pour la charger',
   },
   pt: {
     'math-evaluator.22Pi': '2 + 2 * pi',
+    'math-evaluator.expression': 'Expressão',
     'math-evaluator.copy': 'Copiar',
+    'math-evaluator.history': 'Histórico',
     'math-evaluator.clickAnEntryToLoad': 'Clique em uma entrada para carregá-la',
   },
   ja: {
     'math-evaluator.22Pi': '2 + 2 * pi',
+    'math-evaluator.expression': '式',
     'math-evaluator.copy': 'コピー',
+    'math-evaluator.history': '履歴',
     'math-evaluator.clickAnEntryToLoad': '項目をクリックすると読み込みます',
   },
   ko: {
     'math-evaluator.22Pi': '2 + 2 * pi',
+    'math-evaluator.expression': '식',
     'math-evaluator.copy': '복사',
+    'math-evaluator.history': '기록',
     'math-evaluator.clickAnEntryToLoad': '항목을 누르면 불러옵니다',
   },
 };

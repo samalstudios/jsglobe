@@ -26,17 +26,21 @@ export default {
   fr: {
     'json-diff.original': 'Original',
     'json-diff.changed': 'Modifié',
+    'json-diff.ignoreArrayOrder': 'Ignorer l\'ordre des tableaux',
   },
   pt: {
     'json-diff.original': 'Original',
     'json-diff.changed': 'Alterado',
+    'json-diff.ignoreArrayOrder': 'Ignorar a ordem dos arrays',
   },
   ja: {
     'json-diff.original': 'Original',
     'json-diff.changed': '変更',
+    'json-diff.ignoreArrayOrder': '配列の順序を無視',
   },
   ko: {
     'json-diff.original': 'Original',
     'json-diff.changed': '바뀜',
+    'json-diff.ignoreArrayOrder': '배열 순서 무시',
   },
 };

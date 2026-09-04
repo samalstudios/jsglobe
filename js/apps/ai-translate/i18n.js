@@ -55,6 +55,7 @@ export default {
     'ai-translate.detectLanguage': 'Détecter la langue',
     'ai-translate.0Characters': '0 caractère',
     'ai-translate.copy': 'Copier',
+    'ai-translate.formalTone': 'Ton formel',
     'ai-translate.casualTone': 'Ton familier',
   },
   pt: {
@@ -62,6 +63,7 @@ export default {
     'ai-translate.detectLanguage': 'Detectar o idioma',
     'ai-translate.0Characters': '0 caracteres',
     'ai-translate.copy': 'Copiar',
+    'ai-translate.formalTone': 'Tom formal',
     'ai-translate.casualTone': 'Tom informal',
   },
   ja: {
@@ -69,6 +71,7 @@ export default {
     'ai-translate.detectLanguage': '言語を判定',
     'ai-translate.0Characters': '0 文字',
     'ai-translate.copy': 'コピー',
+    'ai-translate.formalTone': 'かたい調子',
     'ai-translate.casualTone': 'くだけた調子',
   },
   ko: {
@@ -76,6 +79,7 @@ export default {
     'ai-translate.detectLanguage': '언어 감지',
     'ai-translate.0Characters': '0자',
     'ai-translate.copy': '복사',
+    'ai-translate.formalTone': '격식 있는 말투',
     'ai-translate.casualTone': '편안한 말투',
   },
 };

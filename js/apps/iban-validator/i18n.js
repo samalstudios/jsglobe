@@ -50,6 +50,8 @@ export default {
     'iban-validator.checkDigits': 'Chiffres de contrôle',
     'iban-validator.bankIdentifier': 'Identifiant de banque',
     'iban-validator.accountPart': 'Partie compte',
+    'iban-validator.length': 'Longueur',
+    'iban-validator.electronicFormat': 'Format électronique',
   },
   pt: {
     'iban-validator.iban': 'IBAN',
@@ -60,6 +62,8 @@ export default {
     'iban-validator.checkDigits': 'Dígitos verificadores',
     'iban-validator.bankIdentifier': 'Identificador do banco',
     'iban-validator.accountPart': 'Parte da conta',
+    'iban-validator.length': 'Comprimento',
+    'iban-validator.electronicFormat': 'Formato eletrônico',
   },
   ja: {
     'iban-validator.iban': 'IBAN',
@@ -70,6 +74,8 @@ export default {
     'iban-validator.checkDigits': '検査数字',
     'iban-validator.bankIdentifier': '銀行識別子',
     'iban-validator.accountPart': 'アカウント部分',
+    'iban-validator.length': '長さ',
+    'iban-validator.electronicFormat': '電子形式',
   },
   ko: {
     'iban-validator.iban': 'IBAN',
@@ -80,5 +86,7 @@ export default {
     'iban-validator.checkDigits': '검사 숫자',
     'iban-validator.bankIdentifier': '은행 식별자',
     'iban-validator.accountPart': '계정 부분',
+    'iban-validator.length': '길이',
+    'iban-validator.electronicFormat': '전자 형식',
   },
 };

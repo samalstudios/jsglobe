@@ -35,21 +35,29 @@ export default {
   fr: {
     'game-breakout.breakout': 'Breakout',
     'game-breakout.best': 'Meilleur',
+    'game-breakout.lives': 'Vies',
+    'game-breakout.level': 'Niveau',
     'game-breakout.breakEveryBrick': 'Casser toutes les briques',
   },
   pt: {
     'game-breakout.breakout': 'Breakout',
     'game-breakout.best': 'Melhor',
+    'game-breakout.lives': 'Vidas',
+    'game-breakout.level': 'Nível',
     'game-breakout.breakEveryBrick': 'Quebre todos os tijolos',
   },
   ja: {
     'game-breakout.breakout': 'Breakout',
     'game-breakout.best': '最高',
+    'game-breakout.lives': '残機',
+    'game-breakout.level': 'レベル',
     'game-breakout.breakEveryBrick': 'ブロックをすべて壊す',
   },
   ko: {
     'game-breakout.breakout': 'Breakout',
     'game-breakout.best': '최고',
+    'game-breakout.lives': '목숨',
+    'game-breakout.level': '단계',
     'game-breakout.breakEveryBrick': '벽돌을 모두 깨기',
   },
 };

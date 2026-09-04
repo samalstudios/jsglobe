@@ -35,21 +35,29 @@ export default {
   fr: {
     'game-invaders.invaders': 'Invaders',
     'game-invaders.best': 'Meilleur',
+    'game-invaders.lives': 'Vies',
+    'game-invaders.holdTheLine': 'Tenir la ligne',
     'game-invaders.arrowsMoveSpaceFires': 'Les flèches déplacent, espace tire.',
   },
   pt: {
     'game-invaders.invaders': 'Invaders',
     'game-invaders.best': 'Melhor',
+    'game-invaders.lives': 'Vidas',
+    'game-invaders.holdTheLine': 'Segure a linha',
     'game-invaders.arrowsMoveSpaceFires': 'As setas movem, espaço atira.',
   },
   ja: {
     'game-invaders.invaders': 'Invaders',
     'game-invaders.best': '最高',
+    'game-invaders.lives': '残機',
+    'game-invaders.holdTheLine': '防衛線を守る',
     'game-invaders.arrowsMoveSpaceFires': '矢印で移動、スペースで発射。',
   },
   ko: {
     'game-invaders.invaders': 'Invaders',
     'game-invaders.best': '최고',
+    'game-invaders.lives': '목숨',
+    'game-invaders.holdTheLine': '방어선을 지키기',
     'game-invaders.arrowsMoveSpaceFires': '화살표로 움직이고 스페이스로 쏩니다.',
   },
 };

@@ -59,6 +59,7 @@ export default {
     'case-converter.trainCase': 'Train-Case',
     'case-converter.dotCase': 'dot.case',
     'case-converter.pathCase': 'path/case',
+    'case-converter.input': 'Entrée',
     'case-converter.anySeparatorWorksSpacesDashes': 'N\'importe quel séparateur convient - espaces, tirets, tirets bas ou majuscules internes',
   },
   pt: {
@@ -70,6 +71,7 @@ export default {
     'case-converter.trainCase': 'Train-Case',
     'case-converter.dotCase': 'dot.case',
     'case-converter.pathCase': 'path/case',
+    'case-converter.input': 'Entrada',
     'case-converter.anySeparatorWorksSpacesDashes': 'Qualquer separador serve - espaços, hifens, sublinhados ou maiúsculas internas',
   },
   ja: {
@@ -81,6 +83,7 @@ export default {
     'case-converter.trainCase': 'Train-Case',
     'case-converter.dotCase': 'dot.case',
     'case-converter.pathCase': 'path/case',
+    'case-converter.input': '入力',
     'case-converter.anySeparatorWorksSpacesDashes': '区切りは何でも構いません - 空白、ハイフン、アンダースコア、大文字の切れ目',
   },
   ko: {
@@ -92,6 +95,7 @@ export default {
     'case-converter.trainCase': 'Train-Case',
     'case-converter.dotCase': 'dot.case',
     'case-converter.pathCase': 'path/case',
+    'case-converter.input': '입력',
     'case-converter.anySeparatorWorksSpacesDashes': '구분자는 무엇이든 됩니다 - 공백, 하이픈, 밑줄, 대문자 구분',
   },
 };

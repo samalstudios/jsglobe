@@ -33,15 +33,15 @@ export default {
     'typing-test.finishARunToRecord': '完成一轮以记录最佳成绩。',
   },
   fr: {
-
+    'typing-test.finishARunToRecord': 'Terminez une partie pour enregistrer un record.',
   },
   pt: {
-
+    'typing-test.finishARunToRecord': 'Termine uma partida para registrar um recorde.',
   },
   ja: {
-
+    'typing-test.finishARunToRecord': '1 回やり切ると記録が残ります。',
   },
   ko: {
-
+    'typing-test.finishARunToRecord': '한 판을 마치면 기록이 남습니다.',
   },
 };

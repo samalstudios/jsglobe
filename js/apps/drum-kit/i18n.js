@@ -48,6 +48,7 @@ export default {
     'drum-kit.tempo': '速度',
   },
   fr: {
+    'drum-kit.kick': 'Grosse caisse',
     'drum-kit.clap': 'Clap',
     'drum-kit.closedHat': 'Charleston fermé',
     'drum-kit.tom': 'Tom',
@@ -57,6 +58,7 @@ export default {
     'drum-kit.tempo': 'Tempo',
   },
   pt: {
+    'drum-kit.kick': 'Bumbo',
     'drum-kit.clap': 'Palma',
     'drum-kit.closedHat': 'Chimbal fechado',
     'drum-kit.tom': 'Tom',
@@ -66,6 +68,7 @@ export default {
     'drum-kit.tempo': 'Tempo',
   },
   ja: {
+    'drum-kit.kick': 'キック',
     'drum-kit.clap': 'クラップ',
     'drum-kit.closedHat': 'クローズドハイハット',
     'drum-kit.tom': 'Tom',
@@ -75,6 +78,7 @@ export default {
     'drum-kit.tempo': 'Tempo',
   },
   ko: {
+    'drum-kit.kick': '킥',
     'drum-kit.clap': '박수',
     'drum-kit.closedHat': '닫은 하이햇',
     'drum-kit.tom': 'Tom',

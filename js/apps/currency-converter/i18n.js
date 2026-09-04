@@ -30,18 +30,22 @@ export default {
     'currency-converter.theSameAmountInOther': '相同金额换算成其他货币',
   },
   fr: {
+    'currency-converter.from': 'De',
     'currency-converter.copy': 'Copier',
     'currency-converter.atAGlance': 'En un coup d\'œil',
   },
   pt: {
+    'currency-converter.from': 'De',
     'currency-converter.copy': 'Copiar',
     'currency-converter.atAGlance': 'Num relance',
   },
   ja: {
+    'currency-converter.from': '変換元',
     'currency-converter.copy': 'コピー',
     'currency-converter.atAGlance': 'ひと目で',
   },
   ko: {
+    'currency-converter.from': '원본',
     'currency-converter.copy': '복사',
     'currency-converter.atAGlance': '한눈에',
   },

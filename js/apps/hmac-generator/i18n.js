@@ -40,14 +40,22 @@ export default {
   },
   fr: {
     'hmac-generator.hex': 'Hex',
+    'hmac-generator.hexadecimal': 'Hexadécimal',
+    'hmac-generator.expectedSignature': 'Signature attendue',
   },
   pt: {
     'hmac-generator.hex': 'Hex',
+    'hmac-generator.hexadecimal': 'Hexadecimal',
+    'hmac-generator.expectedSignature': 'Assinatura esperada',
   },
   ja: {
     'hmac-generator.hex': 'Hex',
+    'hmac-generator.hexadecimal': '16 進',
+    'hmac-generator.expectedSignature': '期待される署名',
   },
   ko: {
     'hmac-generator.hex': 'Hex',
+    'hmac-generator.hexadecimal': '16진',
+    'hmac-generator.expectedSignature': '기대한 서명',
   },
 };

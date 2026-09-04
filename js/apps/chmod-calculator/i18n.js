@@ -22,14 +22,18 @@ export default {
   },
   fr: {
     'chmod-calculator.command': 'Commande',
+    'chmod-calculator.fromOctal': 'Depuis l\'octal',
   },
   pt: {
     'chmod-calculator.command': 'Comando',
+    'chmod-calculator.fromOctal': 'A partir do octal',
   },
   ja: {
     'chmod-calculator.command': 'コマンド',
+    'chmod-calculator.fromOctal': '8 進から',
   },
   ko: {
     'chmod-calculator.command': '명령',
+    'chmod-calculator.fromOctal': '8진에서',
   },
 };

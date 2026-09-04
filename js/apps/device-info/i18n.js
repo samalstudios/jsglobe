@@ -94,6 +94,7 @@ export default {
   },
   fr: {
     'device-info.browser': 'Navigateur',
+    'device-info.languages': 'Langues',
     'device-info.cookiesEnabled': 'Cookies activés',
     'device-info.doNotTrack': 'Ne pas suivre',
     'device-info.hardware': 'Hardware',
@@ -108,6 +109,7 @@ export default {
   },
   pt: {
     'device-info.browser': 'Navegador',
+    'device-info.languages': 'Idiomas',
     'device-info.cookiesEnabled': 'Cookies ativados',
     'device-info.doNotTrack': 'Não rastrear',
     'device-info.hardware': 'Hardware',
@@ -122,6 +124,7 @@ export default {
   },
   ja: {
     'device-info.browser': 'ブラウザ',
+    'device-info.languages': '言語',
     'device-info.cookiesEnabled': 'Cookie 有効',
     'device-info.doNotTrack': '追跡しない',
     'device-info.hardware': 'Hardware',
@@ -136,6 +139,7 @@ export default {
   },
   ko: {
     'device-info.browser': '브라우저',
+    'device-info.languages': '언어',
     'device-info.cookiesEnabled': '쿠키 사용',
     'device-info.doNotTrack': '추적 안 함',
     'device-info.hardware': 'Hardware',

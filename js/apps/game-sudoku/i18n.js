@@ -30,15 +30,27 @@ export default {
     'game-sudoku.check': '检查',
   },
   fr: {
+    'game-sudoku.empty': 'Vide',
+    'game-sudoku.erase': 'Effacer',
+    'game-sudoku.hint': 'Indice',
     'game-sudoku.check': 'Vérifier',
   },
   pt: {
+    'game-sudoku.empty': 'Vazio',
+    'game-sudoku.erase': 'Apagar',
+    'game-sudoku.hint': 'Dica',
     'game-sudoku.check': 'Verificar',
   },
   ja: {
+    'game-sudoku.empty': '空',
+    'game-sudoku.erase': '消去',
+    'game-sudoku.hint': 'ヒント',
     'game-sudoku.check': '確認',
   },
   ko: {
+    'game-sudoku.empty': '비어 있음',
+    'game-sudoku.erase': '지우기',
+    'game-sudoku.hint': '힌트',
     'game-sudoku.check': '확인',
   },
 };

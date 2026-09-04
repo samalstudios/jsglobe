@@ -29,17 +29,29 @@ export default {
   fr: {
     'text-diff.original': 'Original',
     'text-diff.changed': 'Modifié',
+    'text-diff.ignoreWhitespace': 'Ignorer les espaces en fin de ligne',
+    'text-diff.ignoreCase': 'Ignorer la casse',
+    'text-diff.highlightWords': 'Surligner les changements de mots',
   },
   pt: {
     'text-diff.original': 'Original',
     'text-diff.changed': 'Alterado',
+    'text-diff.ignoreWhitespace': 'Ignorar espaços no fim da linha',
+    'text-diff.ignoreCase': 'Ignorar maiúsculas e minúsculas',
+    'text-diff.highlightWords': 'Realçar as mudanças de palavra',
   },
   ja: {
     'text-diff.original': 'Original',
     'text-diff.changed': '変更',
+    'text-diff.ignoreWhitespace': '行末の空白を無視',
+    'text-diff.ignoreCase': '大文字小文字を無視',
+    'text-diff.highlightWords': '語の変化を強調する',
   },
   ko: {
     'text-diff.original': 'Original',
     'text-diff.changed': '바뀜',
+    'text-diff.ignoreWhitespace': '줄 끝 공백 무시',
+    'text-diff.ignoreCase': '대소문자 무시',
+    'text-diff.highlightWords': '낱말이 바뀐 곳 강조',
   },
 };

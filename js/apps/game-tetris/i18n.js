@@ -39,15 +39,27 @@ export default {
     'game-tetris.orHitSpace': '或按空格',
   },
   fr: {
+    'game-tetris.lines': 'Lignes',
+    'game-tetris.level': 'Niveau',
     'game-tetris.best': 'Meilleur',
+    'game-tetris.gameOver': 'Partie terminée',
   },
   pt: {
+    'game-tetris.lines': 'Linhas',
+    'game-tetris.level': 'Nível',
     'game-tetris.best': 'Melhor',
+    'game-tetris.gameOver': 'Fim de jogo',
   },
   ja: {
+    'game-tetris.lines': '行',
+    'game-tetris.level': 'レベル',
     'game-tetris.best': '最高',
+    'game-tetris.gameOver': 'ゲームオーバー',
   },
   ko: {
+    'game-tetris.lines': '줄',
+    'game-tetris.level': '단계',
     'game-tetris.best': '최고',
+    'game-tetris.gameOver': '게임 끝',
   },
 };

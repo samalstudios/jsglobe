@@ -49,14 +49,22 @@ export default {
   },
   fr: {
     'url-parser.components': 'Composants',
+    'url-parser.hostname': 'Nom d\'hôte',
+    'url-parser.fragment': 'Fragment',
   },
   pt: {
     'url-parser.components': 'Componentes',
+    'url-parser.hostname': 'Nome do host',
+    'url-parser.fragment': 'Fragmento',
   },
   ja: {
     'url-parser.components': 'コンポーネント',
+    'url-parser.hostname': 'ホスト名',
+    'url-parser.fragment': 'フラグメント',
   },
   ko: {
     'url-parser.components': '컴포넌트',
+    'url-parser.hostname': '호스트 이름',
+    'url-parser.fragment': '프래그먼트',
   },
 };

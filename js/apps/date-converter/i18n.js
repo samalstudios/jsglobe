@@ -71,6 +71,8 @@ export default {
     'date-converter.couldNotReadThatDate': 'Impossible de lire cette date.',
     'date-converter.dayOfWeek': 'Jour de la semaine',
     'date-converter.dayOfYear': 'Jour de l\'année',
+    'date-converter.isoWeek': 'Semaine ISO',
+    'date-converter.leapYear': 'Année bissextile',
   },
   pt: {
     'date-converter.170000000020240131t0900': '1700000000, 2024-01-31T09:00:00Z, ou ',
@@ -81,6 +83,8 @@ export default {
     'date-converter.couldNotReadThatDate': 'Não foi possível ler essa data.',
     'date-converter.dayOfWeek': 'Dia da semana',
     'date-converter.dayOfYear': 'Dia do ano',
+    'date-converter.isoWeek': 'Semana ISO',
+    'date-converter.leapYear': 'Ano bissexto',
   },
   ja: {
     'date-converter.170000000020240131t0900': '1700000000、2024-01-31T09:00:00Z、または ',
@@ -91,6 +95,8 @@ export default {
     'date-converter.couldNotReadThatDate': 'その日付を読み取れませんでした。',
     'date-converter.dayOfWeek': '曜日',
     'date-converter.dayOfYear': '年内通日',
+    'date-converter.isoWeek': 'ISO 週番号',
+    'date-converter.leapYear': 'うるう年',
   },
   ko: {
     'date-converter.170000000020240131t0900': '1700000000, 2024-01-31T09:00:00Z 또는 ',
@@ -101,5 +107,7 @@ export default {
     'date-converter.couldNotReadThatDate': '그 날짜를 읽을 수 없습니다.',
     'date-converter.dayOfWeek': '요일',
     'date-converter.dayOfYear': '연중 날짜',
+    'date-converter.isoWeek': 'ISO 주차',
+    'date-converter.leapYear': '윤년',
   },
 };

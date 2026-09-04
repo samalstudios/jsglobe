@@ -34,6 +34,7 @@ export default {
     'game-snake.best': 'Meilleur',
     'game-snake.calm': 'Calme',
     'game-snake.normal': 'Normal',
+    'game-snake.fast': 'Rapide',
     'game-snake.arrowKeysOrWasdTo': 'Flèches ou WASD pour diriger, espace pour mettre en pause. Balayez sur écran tactile.',
   },
   pt: {
@@ -41,6 +42,7 @@ export default {
     'game-snake.best': 'Melhor',
     'game-snake.calm': 'Calmo',
     'game-snake.normal': 'Normal',
+    'game-snake.fast': 'Rápido',
     'game-snake.arrowKeysOrWasdTo': 'Setas ou WASD para dirigir, espaço para pausar. Deslize em telas de toque.',
   },
   ja: {
@@ -48,6 +50,7 @@ export default {
     'game-snake.best': '最高',
     'game-snake.calm': '落ち着いた',
     'game-snake.normal': 'Normal',
+    'game-snake.fast': '速い',
     'game-snake.arrowKeysOrWasdTo': '方向キーか WASD で操作、スペースで一時停止。タッチ画面ではスワイプ。',
   },
   ko: {
@@ -55,6 +58,7 @@ export default {
     'game-snake.best': '최고',
     'game-snake.calm': '차분함',
     'game-snake.normal': 'Normal',
+    'game-snake.fast': '빠름',
     'game-snake.arrowKeysOrWasdTo': '방향키나 WASD로 조작하고 스페이스로 멈춥니다. 터치 화면에서는 쓸어 넘기세요.',
   },
 };

@@ -42,23 +42,31 @@ export default {
     'ai-chat.ai': 'AI',
   },
   fr: {
+    'ai-chat.export': 'Exporter',
     'ai-chat.clear': 'Effacer',
     'ai-chat.askAnythingShiftEnterFor': 'Demandez ce que vous voulez. Maj+Entrée pour une nouvelle ligne.',
+    'ai-chat.everythingYouTypeStaysOn': 'Tout ce que vous tapez reste sur cet appareil.',
     'ai-chat.ai': 'IA',
   },
   pt: {
+    'ai-chat.export': 'Exportar',
     'ai-chat.clear': 'Limpar',
     'ai-chat.askAnythingShiftEnterFor': 'Pergunte o que quiser. Shift+Enter para uma nova linha.',
+    'ai-chat.everythingYouTypeStaysOn': 'Tudo o que você digita fica neste dispositivo.',
     'ai-chat.ai': 'IA',
   },
   ja: {
+    'ai-chat.export': '書き出し',
     'ai-chat.clear': 'クリア',
     'ai-chat.askAnythingShiftEnterFor': '何でも聞いてください。Shift+Enter で改行。',
+    'ai-chat.everythingYouTypeStaysOn': '入力した内容はすべてこの端末に留まります。',
     'ai-chat.ai': 'AI',
   },
   ko: {
+    'ai-chat.export': '내보내기',
     'ai-chat.clear': '지우기',
     'ai-chat.askAnythingShiftEnterFor': '무엇이든 물어보세요. Shift+Enter로 줄을 바꿉니다.',
+    'ai-chat.everythingYouTypeStaysOn': '입력한 것은 모두 이 기기에 남습니다.',
     'ai-chat.ai': 'AI',
   },
 };

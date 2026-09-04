@@ -58,7 +58,9 @@ export default {
     'websocket-tester.connect': 'Connecter',
     'websocket-tester.closed': 'Fermé',
     'websocket-tester.clearLog': 'Effacer le journal',
+    'websocket-tester.exportLog': 'Exporter le journal',
     'websocket-tester.clickToLoadOne': 'Cliquez pour en charger un',
+    'websocket-tester.framesAppearHereOnceYou': 'Les trames apparaissent ici une fois connecté.',
     'websocket-tester.connectFirst': 'Connectez-vous d\'abord',
   },
   pt: {
@@ -66,7 +68,9 @@ export default {
     'websocket-tester.connect': 'Conectar',
     'websocket-tester.closed': 'Fechado',
     'websocket-tester.clearLog': 'Limpar o registro',
+    'websocket-tester.exportLog': 'Exportar o registro',
     'websocket-tester.clickToLoadOne': 'Clique para carregar um',
+    'websocket-tester.framesAppearHereOnceYou': 'Os quadros aparecem aqui assim que você conectar.',
     'websocket-tester.connectFirst': 'Conecte primeiro',
   },
   ja: {
@@ -74,7 +78,9 @@ export default {
     'websocket-tester.connect': '接続',
     'websocket-tester.closed': '閉じている',
     'websocket-tester.clearLog': 'ログを消す',
+    'websocket-tester.exportLog': 'ログを書き出す',
     'websocket-tester.clickToLoadOne': 'クリックで読み込み',
+    'websocket-tester.framesAppearHereOnceYou': '接続するとフレームがここに表示されます。',
     'websocket-tester.connectFirst': '先に接続してください',
   },
   ko: {
@@ -82,7 +88,9 @@ export default {
     'websocket-tester.connect': '연결',
     'websocket-tester.closed': '닫힘',
     'websocket-tester.clearLog': '로그 지우기',
+    'websocket-tester.exportLog': '로그 내보내기',
     'websocket-tester.clickToLoadOne': '눌러서 불러오기',
+    'websocket-tester.framesAppearHereOnceYou': '연결하면 프레임이 여기에 나옵니다.',
     'websocket-tester.connectFirst': '먼저 연결하세요',
   },
 };

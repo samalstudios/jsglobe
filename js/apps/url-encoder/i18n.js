@@ -25,22 +25,30 @@ export default {
   },
   fr: {
     'url-encoder.decoded': 'Décodé',
+    'url-encoder.encoded': 'Encodé',
     'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
     'url-encoder.component': 'Composant',
+    'url-encoder.fullUri': 'URI complète',
   },
   pt: {
     'url-encoder.decoded': 'Decodificado',
+    'url-encoder.encoded': 'Codificado',
     'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
     'url-encoder.component': 'Componente',
+    'url-encoder.fullUri': 'URI completa',
   },
   ja: {
     'url-encoder.decoded': '復号結果',
+    'url-encoder.encoded': '符号化結果',
     'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
     'url-encoder.component': 'コンポーネント',
+    'url-encoder.fullUri': '完全な URI',
   },
   ko: {
     'url-encoder.decoded': '디코딩 결과',
+    'url-encoder.encoded': '인코딩 결과',
     'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
     'url-encoder.component': '컴포넌트',
+    'url-encoder.fullUri': '전체 URI',
   },
 };

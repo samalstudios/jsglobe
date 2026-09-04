@@ -75,6 +75,8 @@ export default {
     'favicon-generator.faviconIcoSavedWith16': '已保存包含 16、32 和 48 像素的 favicon.ico',
   },
   fr: {
+    'favicon-generator.dropAPngJpegOr': 'Déposez un PNG, JPEG ou SVG ici, ou cliquez pour en choisir un',
+    'favicon-generator.generatedSizes': 'Tailles générées',
     'favicon-generator.browserTabPreview': 'Aperçu dans l\'onglet',
     'favicon-generator.circle': 'Cercle',
     'favicon-generator.background': 'Fond',
@@ -86,6 +88,8 @@ export default {
     'favicon-generator.chooseAPngJpegWebp': 'Choisissez une image PNG, JPEG, WebP ou SVG',
   },
   pt: {
+    'favicon-generator.dropAPngJpegOr': 'Solte um PNG, JPEG ou SVG aqui, ou clique para escolher',
+    'favicon-generator.generatedSizes': 'Tamanhos gerados',
     'favicon-generator.browserTabPreview': 'Prévia na aba do navegador',
     'favicon-generator.circle': 'Círculo',
     'favicon-generator.background': 'Plano de fundo',
@@ -97,6 +101,8 @@ export default {
     'favicon-generator.chooseAPngJpegWebp': 'Escolha uma imagem PNG, JPEG, WebP ou SVG',
   },
   ja: {
+    'favicon-generator.dropAPngJpegOr': 'PNG、JPEG、SVG をここにドロップ、またはクリックして選択',
+    'favicon-generator.generatedSizes': '生成されたサイズ',
     'favicon-generator.browserTabPreview': 'ブラウザタブでの見え方',
     'favicon-generator.circle': '円',
     'favicon-generator.background': '背景',
@@ -108,6 +114,8 @@ export default {
     'favicon-generator.chooseAPngJpegWebp': 'PNG、JPEG、WebP、SVG の画像を選んでください',
   },
   ko: {
+    'favicon-generator.dropAPngJpegOr': 'PNG, JPEG, SVG를 여기에 놓거나 눌러서 고르세요',
+    'favicon-generator.generatedSizes': '만들어진 크기',
     'favicon-generator.browserTabPreview': '브라우저 탭 미리 보기',
     'favicon-generator.circle': '원',
     'favicon-generator.background': '배경',

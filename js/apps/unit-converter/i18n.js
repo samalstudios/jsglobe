@@ -15,15 +15,19 @@ export default {
     'unit-converter.allUnits': '所有单位',
   },
   fr: {
+    'unit-converter.from': 'De',
     'unit-converter.allUnits': 'Toutes les unités',
   },
   pt: {
+    'unit-converter.from': 'De',
     'unit-converter.allUnits': 'Todas as unidades',
   },
   ja: {
+    'unit-converter.from': '変換元',
     'unit-converter.allUnits': 'すべての単位',
   },
   ko: {
+    'unit-converter.from': '원본',
     'unit-converter.allUnits': '모든 단위',
   },
 };

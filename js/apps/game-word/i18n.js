@@ -21,15 +21,19 @@ export default {
     'game-word.delete': '删除',
   },
   fr: {
-
+    'game-word.guessTheWord': 'Devinez le mot',
+    'game-word.fiveLettersAreNeeded': 'Il faut cinq lettres',
   },
   pt: {
-
+    'game-word.guessTheWord': 'Adivinhe a palavra',
+    'game-word.fiveLettersAreNeeded': 'São necessárias cinco letras',
   },
   ja: {
-
+    'game-word.guessTheWord': '単語を当てる',
+    'game-word.fiveLettersAreNeeded': '5 文字が必要です',
   },
   ko: {
-
+    'game-word.guessTheWord': '단어 맞히기',
+    'game-word.fiveLettersAreNeeded': '다섯 글자가 필요합니다',
   },
 };

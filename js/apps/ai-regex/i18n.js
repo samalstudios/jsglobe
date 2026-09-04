@@ -41,21 +41,33 @@ export default {
   fr: {
     'ai-regex.describeWhatToMatch': 'Décrivez ce qu\'il faut trouver',
     'ai-regex.aUkPostcodeCaseInsensitive': 'Un code postal britannique, sans distinction de casse',
+    'ai-regex.generate': 'Générer',
     'ai-regex.copy': 'Copier',
+    'ai-regex.explainThisPattern': 'Expliquer ce motif',
+    'ai-regex.explanation': 'Explication',
   },
   pt: {
     'ai-regex.describeWhatToMatch': 'Descreva o que deve corresponder',
     'ai-regex.aUkPostcodeCaseInsensitive': 'Um código postal do Reino Unido, sem diferenciar maiúsculas',
+    'ai-regex.generate': 'Gerar',
     'ai-regex.copy': 'Copiar',
+    'ai-regex.explainThisPattern': 'Explicar este padrão',
+    'ai-regex.explanation': 'Explicação',
   },
   ja: {
     'ai-regex.describeWhatToMatch': '何に一致させたいかを説明',
     'ai-regex.aUkPostcodeCaseInsensitive': '英国の郵便番号、大文字小文字は区別しません',
+    'ai-regex.generate': '生成',
     'ai-regex.copy': 'コピー',
+    'ai-regex.explainThisPattern': 'このパターンを説明',
+    'ai-regex.explanation': '説明',
   },
   ko: {
     'ai-regex.describeWhatToMatch': '무엇을 찾을지 설명하기',
     'ai-regex.aUkPostcodeCaseInsensitive': '영국 우편번호, 대소문자 구분 없음',
+    'ai-regex.generate': '만들기',
     'ai-regex.copy': '복사',
+    'ai-regex.explainThisPattern': '이 패턴 설명하기',
+    'ai-regex.explanation': '설명',
   },
 };

@@ -45,6 +45,10 @@ export default {
     'csv-studio.download': '下载',
   },
   fr: {
+    'csv-studio.dropACsvOrTsv': 'Déposez un fichier CSV ou TSV ici, ou cliquez pour en choisir un',
+    'csv-studio.filterRows': 'Filtrer les lignes',
+    'csv-studio.firstRowIsAHeader': 'La première ligne est un en-tête',
+    'csv-studio.jsonLines': 'JSON par lignes',
     'csv-studio.markdown': 'Markdown',
     'csv-studio.addRow': 'Ajouter une ligne',
     'csv-studio.addColumn': 'Ajouter une colonne',
@@ -52,6 +56,10 @@ export default {
     'csv-studio.download': 'Télécharger',
   },
   pt: {
+    'csv-studio.dropACsvOrTsv': 'Solte um arquivo CSV ou TSV aqui, ou clique para escolher',
+    'csv-studio.filterRows': 'Filtrar linhas',
+    'csv-studio.firstRowIsAHeader': 'A primeira linha é cabeçalho',
+    'csv-studio.jsonLines': 'JSON por linhas',
     'csv-studio.markdown': 'Markdown',
     'csv-studio.addRow': 'Adicionar linha',
     'csv-studio.addColumn': 'Adicionar coluna',
@@ -59,6 +67,10 @@ export default {
     'csv-studio.download': 'Baixar',
   },
   ja: {
+    'csv-studio.dropACsvOrTsv': 'CSV か TSV をここにドロップ、またはクリックして選択',
+    'csv-studio.filterRows': '行を絞り込む',
+    'csv-studio.firstRowIsAHeader': '1 行目は見出し',
+    'csv-studio.jsonLines': 'JSON Lines',
     'csv-studio.markdown': 'Markdown',
     'csv-studio.addRow': '行を追加',
     'csv-studio.addColumn': '列を追加',
@@ -66,6 +78,10 @@ export default {
     'csv-studio.download': 'ダウンロード',
   },
   ko: {
+    'csv-studio.dropACsvOrTsv': 'CSV나 TSV 파일을 여기에 놓거나 눌러서 고르세요',
+    'csv-studio.filterRows': '행 거르기',
+    'csv-studio.firstRowIsAHeader': '첫 행은 머리글',
+    'csv-studio.jsonLines': 'JSON 라인',
     'csv-studio.markdown': 'Markdown',
     'csv-studio.addRow': '행 추가',
     'csv-studio.addColumn': '열 추가',

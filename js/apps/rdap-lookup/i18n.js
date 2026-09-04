@@ -46,18 +46,22 @@ export default {
   },
   fr: {
     'rdap-lookup.copyJson': 'Copier le JSON',
+    'rdap-lookup.exactlyWhatTheRegistryReturned': 'Exactement ce qu\'a renvoyé le registre',
     'rdap-lookup.contacts': 'Contacts',
   },
   pt: {
     'rdap-lookup.copyJson': 'Copiar o JSON',
+    'rdap-lookup.exactlyWhatTheRegistryReturned': 'Exatamente o que o registro devolveu',
     'rdap-lookup.contacts': 'Contatos',
   },
   ja: {
     'rdap-lookup.copyJson': 'JSON をコピー',
+    'rdap-lookup.exactlyWhatTheRegistryReturned': 'レジストリが返したそのまま',
     'rdap-lookup.contacts': '連絡先',
   },
   ko: {
     'rdap-lookup.copyJson': 'JSON 복사',
+    'rdap-lookup.exactlyWhatTheRegistryReturned': '레지스트리가 돌려준 그대로',
     'rdap-lookup.contacts': '연락처',
   },
 };

@@ -37,18 +37,26 @@ export default {
   },
   fr: {
     'game-solitaire.cardsPerDeal': 'Cartes par pioche',
+    'game-solitaire.drawOne': 'Tirer une carte',
+    'game-solitaire.drawThree': 'Tirer trois cartes',
     'game-solitaire.best': 'Meilleur',
   },
   pt: {
     'game-solitaire.cardsPerDeal': 'Cartas por compra',
+    'game-solitaire.drawOne': 'Comprar uma',
+    'game-solitaire.drawThree': 'Comprar três',
     'game-solitaire.best': 'Melhor',
   },
   ja: {
     'game-solitaire.cardsPerDeal': '1 回にめくる枚数',
+    'game-solitaire.drawOne': '1 枚めくり',
+    'game-solitaire.drawThree': '3 枚めくり',
     'game-solitaire.best': '最高',
   },
   ko: {
     'game-solitaire.cardsPerDeal': '한 번에 뽑는 장 수',
+    'game-solitaire.drawOne': '한 장 뽑기',
+    'game-solitaire.drawThree': '세 장 뽑기',
     'game-solitaire.best': '최고',
   },
 };

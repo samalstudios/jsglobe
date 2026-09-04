@@ -52,22 +52,30 @@ export default {
   },
   fr: {
     'text-encoder.binary': 'Binaire',
+    'text-encoder.hexadecimal': 'Hexadécimal',
     'text-encoder.decimalBytes': 'Octets décimaux',
     'text-encoder.rot13': 'ROT13',
+    'text-encoder.encoded': 'Encodé',
   },
   pt: {
     'text-encoder.binary': 'Binário',
+    'text-encoder.hexadecimal': 'Hexadecimal',
     'text-encoder.decimalBytes': 'Bytes decimais',
     'text-encoder.rot13': 'ROT13',
+    'text-encoder.encoded': 'Codificado',
   },
   ja: {
     'text-encoder.binary': '2 進',
+    'text-encoder.hexadecimal': '16 進',
     'text-encoder.decimalBytes': '10 進のバイト',
     'text-encoder.rot13': 'ROT13',
+    'text-encoder.encoded': '符号化結果',
   },
   ko: {
     'text-encoder.binary': '2진',
+    'text-encoder.hexadecimal': '16진',
     'text-encoder.decimalBytes': '10진 바이트',
     'text-encoder.rot13': 'ROT13',
+    'text-encoder.encoded': '인코딩 결과',
   },
 };
