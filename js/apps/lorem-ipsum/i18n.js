@@ -36,15 +36,15 @@ export default {
     'lorem-ipsum.listItems': '列表项',
   },
   fr: {
-
+    'lorem-ipsum.copy': 'Copier',
   },
   pt: {
-
+    'lorem-ipsum.copy': 'Copiar',
   },
   ja: {
-
+    'lorem-ipsum.copy': 'コピー',
   },
   ko: {
-
+    'lorem-ipsum.copy': '복사',
   },
 };

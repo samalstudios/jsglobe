@@ -75,15 +75,43 @@ export default {
     'voice-recorder.recordingSaved': '录音已保存',
   },
   fr: {
-
+    'voice-recorder.detect': 'Détecter',
+    'voice-recorder.arabic': 'Arabe',
+    'voice-recorder.detectLanguage': 'Détecter la langue',
+    'voice-recorder.clearAll': 'Tout effacer',
+    'voice-recorder.details': 'Détails',
+    'voice-recorder.download': 'Télécharger',
+    'voice-recorder.delete': 'Supprimer',
+    'voice-recorder.copy': 'Copier',
   },
   pt: {
-
+    'voice-recorder.detect': 'Detectar',
+    'voice-recorder.arabic': 'Árabe',
+    'voice-recorder.detectLanguage': 'Detectar o idioma',
+    'voice-recorder.clearAll': 'Limpar tudo',
+    'voice-recorder.details': 'Detalhes',
+    'voice-recorder.download': 'Baixar',
+    'voice-recorder.delete': 'Excluir',
+    'voice-recorder.copy': 'Copiar',
   },
   ja: {
-
+    'voice-recorder.detect': '判定',
+    'voice-recorder.arabic': 'アラビア文字',
+    'voice-recorder.detectLanguage': '言語を判定',
+    'voice-recorder.clearAll': 'すべてクリア',
+    'voice-recorder.details': '詳細',
+    'voice-recorder.download': 'ダウンロード',
+    'voice-recorder.delete': '削除',
+    'voice-recorder.copy': 'コピー',
   },
   ko: {
-
+    'voice-recorder.detect': '감지',
+    'voice-recorder.arabic': '아랍 문자',
+    'voice-recorder.detectLanguage': '언어 감지',
+    'voice-recorder.clearAll': '모두 지우기',
+    'voice-recorder.details': '자세한 내용',
+    'voice-recorder.download': '내려받기',
+    'voice-recorder.delete': '지우기',
+    'voice-recorder.copy': '복사',
   },
 };

@@ -39,15 +39,15 @@ export default {
     'game-tetris.orHitSpace': '或按空格',
   },
   fr: {
-
+    'game-tetris.best': 'Meilleur',
   },
   pt: {
-
+    'game-tetris.best': 'Melhor',
   },
   ja: {
-
+    'game-tetris.best': '最高',
   },
   ko: {
-
+    'game-tetris.best': '최고',
   },
 };

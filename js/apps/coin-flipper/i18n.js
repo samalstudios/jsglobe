@@ -54,15 +54,23 @@ export default {
     'coin-flipper.widgetBlurb': '抛出硬币，看概率如何趋于均衡。',
   },
   fr: {
-
+    'coin-flipper.copyTheRun': 'Copier la commande run',
+    'coin-flipper.copiedTheRun': 'Commande run copiée',
+    'coin-flipper.coinFlipper': 'Pile ou face',
   },
   pt: {
-
+    'coin-flipper.copyTheRun': 'Copiar o comando run',
+    'coin-flipper.copiedTheRun': 'Comando run copiado',
+    'coin-flipper.coinFlipper': 'Cara ou coroa',
   },
   ja: {
-
+    'coin-flipper.copyTheRun': 'run コマンドをコピー',
+    'coin-flipper.copiedTheRun': 'run コマンドをコピーしました',
+    'coin-flipper.coinFlipper': 'コイン投げ',
   },
   ko: {
-
+    'coin-flipper.copyTheRun': 'run 명령 복사',
+    'coin-flipper.copiedTheRun': 'run 명령을 복사했습니다',
+    'coin-flipper.coinFlipper': '동전 던지기',
   },
 };

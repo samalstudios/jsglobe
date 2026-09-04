@@ -27,15 +27,19 @@ export default {
     'regex-tester.noMatches': '无匹配项',
   },
   fr: {
-
+    'regex-tester.contactAdaExampleComOr': 'Contactez ada@example.com ou grace@jsglobe.dev pour un accès. Invalide : nobody@localhost',
+    'regex-tester.cheatSheet': 'Aide-mémoire',
   },
   pt: {
-
+    'regex-tester.contactAdaExampleComOr': 'Contate ada@example.com ou grace@jsglobe.dev para ter acesso. Inválido: nobody@localhost',
+    'regex-tester.cheatSheet': 'Guia rápido',
   },
   ja: {
-
+    'regex-tester.contactAdaExampleComOr': 'アクセスは ada@example.com か grace@jsglobe.dev までご連絡ください。無効: nobody@localhost',
+    'regex-tester.cheatSheet': '早見表',
   },
   ko: {
-
+    'regex-tester.contactAdaExampleComOr': '접근은 ada@example.com 이나 grace@jsglobe.dev 로 연락하세요. 잘못된 예: nobody@localhost',
+    'regex-tester.cheatSheet': '요약표',
   },
 };

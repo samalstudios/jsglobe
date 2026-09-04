@@ -72,15 +72,31 @@ export default {
     'statistics.outliers': '离群值',
   },
   fr: {
+    'statistics.copySummary': 'Copier le résumé',
+    'statistics.bins': 'Classes',
+    'statistics.distribution': 'Distribution',
+    'statistics.boxPlotWithQuartilesWhiskers': 'Boîte à moustaches avec quartiles, moustaches et valeurs aberrantes',
     'statistics.allValues': 'Toutes les valeurs',
   },
   pt: {
+    'statistics.copySummary': 'Copiar o resumo',
+    'statistics.bins': 'Faixas',
+    'statistics.distribution': 'Distribuição',
+    'statistics.boxPlotWithQuartilesWhiskers': 'Box plot com quartis, hastes e valores atípicos',
     'statistics.allValues': 'Todos os valores',
   },
   ja: {
+    'statistics.copySummary': '要約をコピー',
+    'statistics.bins': '階級',
+    'statistics.distribution': '分布',
+    'statistics.boxPlotWithQuartilesWhiskers': '四分位、ひげ、外れ値つきの箱ひげ図',
     'statistics.allValues': 'すべての値',
   },
   ko: {
+    'statistics.copySummary': '요약 복사',
+    'statistics.bins': '구간',
+    'statistics.distribution': '분포',
+    'statistics.boxPlotWithQuartilesWhiskers': '사분위, 수염, 이상값이 있는 상자 그림',
     'statistics.allValues': '모든 값',
   },
 };

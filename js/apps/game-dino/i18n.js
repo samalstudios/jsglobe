@@ -39,15 +39,15 @@ export default {
     'game-dino.play': '开始',
   },
   fr: {
-
+    'game-dino.best': 'Meilleur',
   },
   pt: {
-
+    'game-dino.best': 'Melhor',
   },
   ja: {
-
+    'game-dino.best': '最高',
   },
   ko: {
-
+    'game-dino.best': '최고',
   },
 };

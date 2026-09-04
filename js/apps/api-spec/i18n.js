@@ -39,15 +39,27 @@ export default {
     'api-spec.everythingTheLinterChecksLooks': 'linter 检查的所有项目都没有问题。',
   },
   fr: {
-
+    'api-spec.clickOneToJumpTo': 'Cliquez sur l\'un pour y aller',
+    'api-spec.checks': 'Vérifications',
+    'api-spec.copy': 'Copier',
+    'api-spec.download': 'Télécharger',
   },
   pt: {
-
+    'api-spec.clickOneToJumpTo': 'Clique em um para ir até ele',
+    'api-spec.checks': 'Verificações',
+    'api-spec.copy': 'Copiar',
+    'api-spec.download': 'Baixar',
   },
   ja: {
-
+    'api-spec.clickOneToJumpTo': 'クリックするとそこへ移動します',
+    'api-spec.checks': '検査項目',
+    'api-spec.copy': 'コピー',
+    'api-spec.download': 'ダウンロード',
   },
   ko: {
-
+    'api-spec.clickOneToJumpTo': '누르면 그곳으로 갑니다',
+    'api-spec.checks': '검사',
+    'api-spec.copy': '복사',
+    'api-spec.download': '내려받기',
   },
 };

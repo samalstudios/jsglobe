@@ -54,15 +54,27 @@ export default {
     'molecule-viewer.gMol': 'g/mol',
   },
   fr: {
+    'molecule-viewer.ballAndStick': 'Boules et bâtonnets',
+    'molecule-viewer.defaultStyle': 'Style par défaut',
+    'molecule-viewer.copyXyz': 'Copier XYZ',
     'molecule-viewer.gMol': 'g/mol',
   },
   pt: {
+    'molecule-viewer.ballAndStick': 'Bolas e varetas',
+    'molecule-viewer.defaultStyle': 'Estilo padrão',
+    'molecule-viewer.copyXyz': 'Copiar XYZ',
     'molecule-viewer.gMol': 'g/mol',
   },
   ja: {
+    'molecule-viewer.ballAndStick': '球棒モデル',
+    'molecule-viewer.defaultStyle': '既定のスタイル',
+    'molecule-viewer.copyXyz': 'XYZ をコピー',
     'molecule-viewer.gMol': 'g/mol',
   },
   ko: {
+    'molecule-viewer.ballAndStick': '공막대 모형',
+    'molecule-viewer.defaultStyle': '기본 스타일',
+    'molecule-viewer.copyXyz': 'XYZ 복사',
     'molecule-viewer.gMol': 'g/mol',
   },
 };

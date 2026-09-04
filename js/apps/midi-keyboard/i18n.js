@@ -36,15 +36,23 @@ export default {
     'midi-keyboard.notConnected': '未连接',
   },
   fr: {
-
+    'midi-keyboard.attack': 'Attaque',
+    'midi-keyboard.connectAControllerToPlay': 'Branchez une manette pour jouer directement',
+    'midi-keyboard.connectMidiDevice': 'Connecter un appareil MIDI',
   },
   pt: {
-
+    'midi-keyboard.attack': 'Ataque',
+    'midi-keyboard.connectAControllerToPlay': 'Conecte um controle para jogar diretamente',
+    'midi-keyboard.connectMidiDevice': 'Conectar dispositivo MIDI',
   },
   ja: {
-
+    'midi-keyboard.attack': 'アタック',
+    'midi-keyboard.connectAControllerToPlay': 'コントローラをつなぐと直接操作できます',
+    'midi-keyboard.connectMidiDevice': 'MIDI 機器を接続',
   },
   ko: {
-
+    'midi-keyboard.attack': '어택',
+    'midi-keyboard.connectAControllerToPlay': '컨트롤러를 연결하면 바로 조작할 수 있습니다',
+    'midi-keyboard.connectMidiDevice': 'MIDI 기기 연결',
   },
 };

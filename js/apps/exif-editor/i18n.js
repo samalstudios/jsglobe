@@ -48,15 +48,15 @@ export default {
     'exif-editor.thatFileIsNotA': '该文件不是 JPEG',
   },
   fr: {
-
+    'exif-editor.copyMetadataAsJson': 'Copier les métadonnées en JSON',
   },
   pt: {
-
+    'exif-editor.copyMetadataAsJson': 'Copiar os metadados como JSON',
   },
   ja: {
-
+    'exif-editor.copyMetadataAsJson': 'メタデータを JSON でコピー',
   },
   ko: {
-
+    'exif-editor.copyMetadataAsJson': '메타데이터를 JSON으로 복사',
   },
 };

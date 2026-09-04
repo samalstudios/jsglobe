@@ -49,14 +49,30 @@ export default {
   },
   fr: {
     'dice-roller.addToTheTotal': 'Ajouter au total',
+    'dice-roller.copyTheLog': 'Copier le journal',
+    'dice-roller.clearTheLog': 'Effacer le journal',
+    'dice-roller.copiedTheLog': 'Journal copié',
+    'dice-roller.diceRoller': 'Lanceur de dés',
   },
   pt: {
     'dice-roller.addToTheTotal': 'Somar ao total',
+    'dice-roller.copyTheLog': 'Copiar o registro',
+    'dice-roller.clearTheLog': 'Limpar o registro',
+    'dice-roller.copiedTheLog': 'Registro copiado',
+    'dice-roller.diceRoller': 'Rolador de dados',
   },
   ja: {
     'dice-roller.addToTheTotal': '合計に加える',
+    'dice-roller.copyTheLog': 'ログをコピー',
+    'dice-roller.clearTheLog': 'ログを消す',
+    'dice-roller.copiedTheLog': 'ログをコピーしました',
+    'dice-roller.diceRoller': 'サイコロ',
   },
   ko: {
     'dice-roller.addToTheTotal': '합계에 더하기',
+    'dice-roller.copyTheLog': '로그 복사',
+    'dice-roller.clearTheLog': '로그 지우기',
+    'dice-roller.copiedTheLog': '로그를 복사했습니다',
+    'dice-roller.diceRoller': '주사위',
   },
 };

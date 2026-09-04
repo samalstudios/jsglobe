@@ -81,15 +81,23 @@ export default {
     'list-converter.output': '输出',
   },
   fr: {
-
+    'list-converter.commaAndSpace': 'Virgule et espace',
+    'list-converter.comma': 'Virgule',
+    'list-converter.commas': 'Virgules',
   },
   pt: {
-
+    'list-converter.commaAndSpace': 'Vírgula e espaço',
+    'list-converter.comma': 'Vírgula',
+    'list-converter.commas': 'Vírgulas',
   },
   ja: {
-
+    'list-converter.commaAndSpace': 'カンマと空白',
+    'list-converter.comma': 'カンマ',
+    'list-converter.commas': 'カンマ',
   },
   ko: {
-
+    'list-converter.commaAndSpace': '쉼표와 공백',
+    'list-converter.comma': '쉼표',
+    'list-converter.commas': '쉼표',
   },
 };

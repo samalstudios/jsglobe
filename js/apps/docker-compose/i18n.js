@@ -38,17 +38,33 @@ export default {
   fr: {
     'docker-compose.dockerRunP8080': 'docker run -p 80:80 nginx',
     'docker-compose.composeYaml': 'compose.yaml',
+    'docker-compose.composeV2SyntaxNoVersion': 'Syntaxe Compose v2, sans clé version',
+    'docker-compose.composeToRun': 'Compose vers Run',
+    'docker-compose.copyResult': 'Copier le résultat',
+    'docker-compose.download': 'Télécharger',
   },
   pt: {
     'docker-compose.dockerRunP8080': 'docker run -p 80:80 nginx',
     'docker-compose.composeYaml': 'compose.yaml',
+    'docker-compose.composeV2SyntaxNoVersion': 'Sintaxe Compose v2, sem a chave version',
+    'docker-compose.composeToRun': 'Compose para Run',
+    'docker-compose.copyResult': 'Copiar o resultado',
+    'docker-compose.download': 'Baixar',
   },
   ja: {
     'docker-compose.dockerRunP8080': 'docker run -p 80:80 nginx',
     'docker-compose.composeYaml': 'compose.yaml',
+    'docker-compose.composeV2SyntaxNoVersion': 'Compose v2 の記法、version キーなし',
+    'docker-compose.composeToRun': 'Compose から Run へ',
+    'docker-compose.copyResult': '結果をコピー',
+    'docker-compose.download': 'ダウンロード',
   },
   ko: {
     'docker-compose.dockerRunP8080': 'docker run -p 80:80 nginx',
     'docker-compose.composeYaml': 'compose.yaml',
+    'docker-compose.composeV2SyntaxNoVersion': 'Compose v2 문법, version 키 없음',
+    'docker-compose.composeToRun': 'Compose에서 Run으로',
+    'docker-compose.copyResult': '결과 복사',
+    'docker-compose.download': '내려받기',
   },
 };

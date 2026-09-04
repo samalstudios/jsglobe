@@ -48,20 +48,28 @@ export default {
     'csv-studio.markdown': 'Markdown',
     'csv-studio.addRow': 'Ajouter une ligne',
     'csv-studio.addColumn': 'Ajouter une colonne',
+    'csv-studio.copy': 'Copier',
+    'csv-studio.download': 'Télécharger',
   },
   pt: {
     'csv-studio.markdown': 'Markdown',
     'csv-studio.addRow': 'Adicionar linha',
     'csv-studio.addColumn': 'Adicionar coluna',
+    'csv-studio.copy': 'Copiar',
+    'csv-studio.download': 'Baixar',
   },
   ja: {
     'csv-studio.markdown': 'Markdown',
     'csv-studio.addRow': '行を追加',
     'csv-studio.addColumn': '列を追加',
+    'csv-studio.copy': 'コピー',
+    'csv-studio.download': 'ダウンロード',
   },
   ko: {
     'csv-studio.markdown': 'Markdown',
     'csv-studio.addRow': '행 추가',
     'csv-studio.addColumn': '열 추가',
+    'csv-studio.copy': '복사',
+    'csv-studio.download': '내려받기',
   },
 };

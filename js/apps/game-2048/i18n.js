@@ -15,15 +15,15 @@ export default {
     'game-2048.newGame': '新游戏',
   },
   fr: {
-
+    'game-2048.best': 'Meilleur',
   },
   pt: {
-
+    'game-2048.best': 'Melhor',
   },
   ja: {
-
+    'game-2048.best': '最高',
   },
   ko: {
-
+    'game-2048.best': '최고',
   },
 };

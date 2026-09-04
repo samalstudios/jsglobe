@@ -36,15 +36,19 @@ export default {
     'game-solitaire.youClearedTheTable': '你清空了牌桌',
   },
   fr: {
-
+    'game-solitaire.cardsPerDeal': 'Cartes par pioche',
+    'game-solitaire.best': 'Meilleur',
   },
   pt: {
-
+    'game-solitaire.cardsPerDeal': 'Cartas por compra',
+    'game-solitaire.best': 'Melhor',
   },
   ja: {
-
+    'game-solitaire.cardsPerDeal': '1 回にめくる枚数',
+    'game-solitaire.best': '最高',
   },
   ko: {
-
+    'game-solitaire.cardsPerDeal': '한 번에 뽑는 장 수',
+    'game-solitaire.best': '최고',
   },
 };

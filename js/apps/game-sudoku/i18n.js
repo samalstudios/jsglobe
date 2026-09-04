@@ -30,15 +30,15 @@ export default {
     'game-sudoku.check': '检查',
   },
   fr: {
-
+    'game-sudoku.check': 'Vérifier',
   },
   pt: {
-
+    'game-sudoku.check': 'Verificar',
   },
   ja: {
-
+    'game-sudoku.check': '確認',
   },
   ko: {
-
+    'game-sudoku.check': '확인',
   },
 };

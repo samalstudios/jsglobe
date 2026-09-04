@@ -32,21 +32,25 @@ export default {
   fr: {
     'sql-formatter.2Spaces': '2 espaces',
     'sql-formatter.4Spaces': '4 espaces',
+    'sql-formatter.copy': 'Copier',
     'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
   },
   pt: {
     'sql-formatter.2Spaces': '2 espaços',
     'sql-formatter.4Spaces': '4 espaços',
+    'sql-formatter.copy': 'Copiar',
     'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
   },
   ja: {
     'sql-formatter.2Spaces': 'スペース 2 つ',
     'sql-formatter.4Spaces': 'スペース 4 つ',
+    'sql-formatter.copy': 'コピー',
     'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
   },
   ko: {
     'sql-formatter.2Spaces': '공백 2칸',
     'sql-formatter.4Spaces': '공백 4칸',
+    'sql-formatter.copy': '복사',
     'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
   },
 };

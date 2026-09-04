@@ -40,14 +40,18 @@ export default {
   },
   fr: {
     'timezone-planner.addACity': 'Ajouter une ville',
+    'timezone-planner.copyPlan': 'Copier le plan',
   },
   pt: {
     'timezone-planner.addACity': 'Adicionar uma cidade',
+    'timezone-planner.copyPlan': 'Copiar o plano',
   },
   ja: {
     'timezone-planner.addACity': '都市を追加',
+    'timezone-planner.copyPlan': '計画をコピー',
   },
   ko: {
     'timezone-planner.addACity': '도시 추가',
+    'timezone-planner.copyPlan': '계획 복사',
   },
 };

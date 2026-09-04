@@ -96,6 +96,7 @@ export default {
     'media-converter.oggVorbis': 'OGG (Vorbis)',
     'media-converter.opus': 'Opus',
     'media-converter.flac': 'FLAC',
+    'media-converter.audioBitrate': 'Débit audio',
     'media-converter.96Kbps': '96 kbit/s',
     'media-converter.128Kbps': '128 kbit/s',
     'media-converter.192Kbps': '192 kbit/s',
@@ -103,6 +104,7 @@ export default {
     'media-converter.0KeepsTheOriginal': '0 garde l\'original',
     'media-converter.px': 'px',
     'media-converter.fps': 'fps',
+    'media-converter.convert': 'Convertir',
   },
   pt: {
     'media-converter.mp4H264': 'MP4 (H.264)',
@@ -111,6 +113,7 @@ export default {
     'media-converter.oggVorbis': 'OGG (Vorbis)',
     'media-converter.opus': 'Opus',
     'media-converter.flac': 'FLAC',
+    'media-converter.audioBitrate': 'Taxa de bits do áudio',
     'media-converter.96Kbps': '96 kbps',
     'media-converter.128Kbps': '128 kbps',
     'media-converter.192Kbps': '192 kbps',
@@ -118,6 +121,7 @@ export default {
     'media-converter.0KeepsTheOriginal': '0 mantém o original',
     'media-converter.px': 'px',
     'media-converter.fps': 'fps',
+    'media-converter.convert': 'Converter',
   },
   ja: {
     'media-converter.mp4H264': 'MP4 (H.264)',
@@ -126,6 +130,7 @@ export default {
     'media-converter.oggVorbis': 'OGG (Vorbis)',
     'media-converter.opus': 'Opus',
     'media-converter.flac': 'FLAC',
+    'media-converter.audioBitrate': '音声ビットレート',
     'media-converter.96Kbps': '96 kbps',
     'media-converter.128Kbps': '128 kbps',
     'media-converter.192Kbps': '192 kbps',
@@ -133,6 +138,7 @@ export default {
     'media-converter.0KeepsTheOriginal': '0 なら元のまま',
     'media-converter.px': 'px',
     'media-converter.fps': 'fps',
+    'media-converter.convert': '変換',
   },
   ko: {
     'media-converter.mp4H264': 'MP4 (H.264)',
@@ -141,6 +147,7 @@ export default {
     'media-converter.oggVorbis': 'OGG (Vorbis)',
     'media-converter.opus': 'Opus',
     'media-converter.flac': 'FLAC',
+    'media-converter.audioBitrate': '오디오 비트레이트',
     'media-converter.96Kbps': '96 kbps',
     'media-converter.128Kbps': '128 kbps',
     'media-converter.192Kbps': '192 kbps',
@@ -148,5 +155,6 @@ export default {
     'media-converter.0KeepsTheOriginal': '0이면 원본 유지',
     'media-converter.px': 'px',
     'media-converter.fps': 'fps',
+    'media-converter.convert': '변환',
   },
 };

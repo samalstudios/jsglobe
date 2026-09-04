@@ -21,15 +21,15 @@ export default {
     'game-memory.bestMoves': '最少步数',
   },
   fr: {
-
+    'game-memory.bestMoves': 'Meilleurs coups',
   },
   pt: {
-
+    'game-memory.bestMoves': 'Melhores lances',
   },
   ja: {
-
+    'game-memory.bestMoves': '最善手',
   },
   ko: {
-
+    'game-memory.bestMoves': '최선의 수',
   },
 };

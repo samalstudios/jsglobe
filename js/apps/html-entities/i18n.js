@@ -34,18 +34,26 @@ export default {
   },
   fr: {
     'html-entities.ltDivGt': '&lt;div&gt;',
+    'html-entities.commonEntities': 'Entités courantes',
+    'html-entities.clickToInsert': 'Cliquer pour insérer',
     'html-entities.allNonAscii': 'Tout ce qui n\'est pas ASCII',
   },
   pt: {
     'html-entities.ltDivGt': '&lt;div&gt;',
+    'html-entities.commonEntities': 'Entidades comuns',
+    'html-entities.clickToInsert': 'Clique para inserir',
     'html-entities.allNonAscii': 'Tudo que não for ASCII',
   },
   ja: {
     'html-entities.ltDivGt': '&lt;div&gt;',
+    'html-entities.commonEntities': 'よく使うエンティティ',
+    'html-entities.clickToInsert': 'クリックで挿入',
     'html-entities.allNonAscii': 'ASCII 以外すべて',
   },
   ko: {
     'html-entities.ltDivGt': '&lt;div&gt;',
+    'html-entities.commonEntities': '흔한 엔티티',
+    'html-entities.clickToInsert': '눌러서 넣기',
     'html-entities.allNonAscii': 'ASCII가 아닌 전부',
   },
 };

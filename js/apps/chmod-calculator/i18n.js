@@ -21,15 +21,15 @@ export default {
     'chmod-calculator.presets': '预设',
   },
   fr: {
-
+    'chmod-calculator.command': 'Commande',
   },
   pt: {
-
+    'chmod-calculator.command': 'Comando',
   },
   ja: {
-
+    'chmod-calculator.command': 'コマンド',
   },
   ko: {
-
+    'chmod-calculator.command': '명령',
   },
 };

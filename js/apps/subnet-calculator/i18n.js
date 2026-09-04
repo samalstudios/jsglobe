@@ -51,15 +51,19 @@ export default {
     'subnet-calculator.range': '范围',
   },
   fr: {
-
+    'subnet-calculator.binary': 'Binaire',
+    'subnet-calculator.broadcast': 'Diffusion',
   },
   pt: {
-
+    'subnet-calculator.binary': 'Binário',
+    'subnet-calculator.broadcast': 'Difusão',
   },
   ja: {
-
+    'subnet-calculator.binary': '2 進',
+    'subnet-calculator.broadcast': 'ブロードキャスト',
   },
   ko: {
-
+    'subnet-calculator.binary': '2진',
+    'subnet-calculator.broadcast': '브로드캐스트',
   },
 };

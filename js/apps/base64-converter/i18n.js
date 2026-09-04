@@ -45,15 +45,31 @@ export default {
     'base64.copyNoPrefix': '复制时不带 data URI 前缀',
   },
   fr: {
-
+    'base64.base64ToDecode': 'Base64 à décoder',
+    'base64.chooseFile': 'Choisir un fichier...',
+    'base64-converter.dataUri': 'URI de données',
+    'base64.outputHere': 'La sortie Base64 apparaît ici',
+    'base64.copyNoPrefix': 'Copier sans le préfixe d\'URI de données',
   },
   pt: {
-
+    'base64.base64ToDecode': 'Base64 a decodificar',
+    'base64.chooseFile': 'Escolher um arquivo...',
+    'base64-converter.dataUri': 'Data URI',
+    'base64.outputHere': 'A saída Base64 aparece aqui',
+    'base64.copyNoPrefix': 'Copiar sem o prefixo do data URI',
   },
   ja: {
-
+    'base64.base64ToDecode': '復号する Base64',
+    'base64.chooseFile': 'ファイルを選ぶ...',
+    'base64-converter.dataUri': 'データ URI',
+    'base64.outputHere': 'Base64 の出力がここに表示されます',
+    'base64.copyNoPrefix': 'データ URI の接頭辞なしでコピー',
   },
   ko: {
-
+    'base64.base64ToDecode': '디코딩할 Base64',
+    'base64.chooseFile': '파일 고르기...',
+    'base64-converter.dataUri': '데이터 URI',
+    'base64.outputHere': 'Base64 결과가 여기에 나옵니다',
+    'base64.copyNoPrefix': '데이터 URI 접두사 없이 복사',
   },
 };

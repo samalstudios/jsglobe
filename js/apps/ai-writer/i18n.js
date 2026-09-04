@@ -48,15 +48,23 @@ export default {
     'ai-writer.copy': '复制',
   },
   fr: {
-
+    'ai-writer.changeTone': 'Changer le ton',
+    'ai-writer.commitMessage': 'Message de commit',
+    'ai-writer.copy': 'Copier',
   },
   pt: {
-
+    'ai-writer.changeTone': 'Mudar o tom',
+    'ai-writer.commitMessage': 'Mensagem de commit',
+    'ai-writer.copy': 'Copiar',
   },
   ja: {
-
+    'ai-writer.changeTone': '調子を変える',
+    'ai-writer.commitMessage': 'コミットメッセージ',
+    'ai-writer.copy': 'コピー',
   },
   ko: {
-
+    'ai-writer.changeTone': '말투 바꾸기',
+    'ai-writer.commitMessage': '커밋 메시지',
+    'ai-writer.copy': '복사',
   },
 };

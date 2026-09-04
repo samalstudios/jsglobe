@@ -57,15 +57,39 @@ export default {
     'svg-placeholder.download': '下载',
   },
   fr: {
-
+    'svg-placeholder.cornerRadius': 'Rayon des coins',
+    'svg-placeholder.diagonals': 'Diagonales',
+    'svg-placeholder.background': 'Fond',
+    'svg-placeholder.copySvg': 'Copier le SVG',
+    'svg-placeholder.copyDataUri': 'Copier l\'URI de données',
+    'svg-placeholder.copyImgTag': 'Copier la balise img',
+    'svg-placeholder.download': 'Télécharger',
   },
   pt: {
-
+    'svg-placeholder.cornerRadius': 'Raio dos cantos',
+    'svg-placeholder.diagonals': 'Diagonais',
+    'svg-placeholder.background': 'Plano de fundo',
+    'svg-placeholder.copySvg': 'Copiar o SVG',
+    'svg-placeholder.copyDataUri': 'Copiar o data URI',
+    'svg-placeholder.copyImgTag': 'Copiar a tag img',
+    'svg-placeholder.download': 'Baixar',
   },
   ja: {
-
+    'svg-placeholder.cornerRadius': '角の丸み',
+    'svg-placeholder.diagonals': '対角線',
+    'svg-placeholder.background': '背景',
+    'svg-placeholder.copySvg': 'SVG をコピー',
+    'svg-placeholder.copyDataUri': 'データ URI をコピー',
+    'svg-placeholder.copyImgTag': 'img タグをコピー',
+    'svg-placeholder.download': 'ダウンロード',
   },
   ko: {
-
+    'svg-placeholder.cornerRadius': '모서리 둥글기',
+    'svg-placeholder.diagonals': '대각선',
+    'svg-placeholder.background': '배경',
+    'svg-placeholder.copySvg': 'SVG 복사',
+    'svg-placeholder.copyDataUri': '데이터 URI 복사',
+    'svg-placeholder.copyImgTag': 'img 태그 복사',
+    'svg-placeholder.download': '내려받기',
   },
 };

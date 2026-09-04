@@ -27,15 +27,19 @@ export default {
     'notes.createANoteToGet': '创建一条笔记开始使用。',
   },
   fr: {
-
+    'notes.delete': 'Supprimer',
+    'notes.createANoteToGet': 'Créez une note pour commencer.',
   },
   pt: {
-
+    'notes.delete': 'Excluir',
+    'notes.createANoteToGet': 'Crie uma nota para começar.',
   },
   ja: {
-
+    'notes.delete': '削除',
+    'notes.createANoteToGet': 'メモを作って始めましょう。',
   },
   ko: {
-
+    'notes.delete': '지우기',
+    'notes.createANoteToGet': '메모를 만들어 시작하세요.',
   },
 };

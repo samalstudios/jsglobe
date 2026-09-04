@@ -34,14 +34,22 @@ export default {
   },
   fr: {
     'game-invaders.invaders': 'Invaders',
+    'game-invaders.best': 'Meilleur',
+    'game-invaders.arrowsMoveSpaceFires': 'Les flèches déplacent, espace tire.',
   },
   pt: {
     'game-invaders.invaders': 'Invaders',
+    'game-invaders.best': 'Melhor',
+    'game-invaders.arrowsMoveSpaceFires': 'As setas movem, espaço atira.',
   },
   ja: {
     'game-invaders.invaders': 'Invaders',
+    'game-invaders.best': '最高',
+    'game-invaders.arrowsMoveSpaceFires': '矢印で移動、スペースで発射。',
   },
   ko: {
     'game-invaders.invaders': 'Invaders',
+    'game-invaders.best': '최고',
+    'game-invaders.arrowsMoveSpaceFires': '화살표로 움직이고 스페이스로 쏩니다.',
   },
 };

@@ -54,15 +54,23 @@ export default {
     'json-schema.everyDocumentMatchesTheSchema': '所有文档都符合该 schema。',
   },
   fr: {
-
+    'json-schema.detectFormats': 'Détecter les formats',
+    'json-schema.copy': 'Copier',
+    'json-schema.download': 'Télécharger',
   },
   pt: {
-
+    'json-schema.detectFormats': 'Detectar formatos',
+    'json-schema.copy': 'Copiar',
+    'json-schema.download': 'Baixar',
   },
   ja: {
-
+    'json-schema.detectFormats': '形式を判定',
+    'json-schema.copy': 'コピー',
+    'json-schema.download': 'ダウンロード',
   },
   ko: {
-
+    'json-schema.detectFormats': '형식 감지',
+    'json-schema.copy': '복사',
+    'json-schema.download': '내려받기',
   },
 };

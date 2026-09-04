@@ -45,15 +45,19 @@ export default {
     'tuner.50Cents': '+50 音分',
   },
   fr: {
+    'tuner.bass4String': 'Basse 4 cordes',
     'tuner.50Cents': '+50 cents',
   },
   pt: {
+    'tuner.bass4String': 'Baixo de 4 cordas',
     'tuner.50Cents': '+50 cents',
   },
   ja: {
+    'tuner.bass4String': 'ベース 4 弦',
     'tuner.50Cents': '+50 セント',
   },
   ko: {
+    'tuner.bass4String': '베이스 4현',
     'tuner.50Cents': '+50센트',
   },
 };

@@ -24,15 +24,23 @@ export default {
     'url-encoder.fullUri': '完整 URI',
   },
   fr: {
+    'url-encoder.decoded': 'Décodé',
     'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
+    'url-encoder.component': 'Composant',
   },
   pt: {
+    'url-encoder.decoded': 'Decodificado',
     'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
+    'url-encoder.component': 'Componente',
   },
   ja: {
+    'url-encoder.decoded': '復号結果',
     'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
+    'url-encoder.component': 'コンポーネント',
   },
   ko: {
+    'url-encoder.decoded': '디코딩 결과',
     'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
+    'url-encoder.component': '컴포넌트',
   },
 };

@@ -25,14 +25,18 @@ export default {
   },
   fr: {
     'json-diff.original': 'Original',
+    'json-diff.changed': 'Modifié',
   },
   pt: {
     'json-diff.original': 'Original',
+    'json-diff.changed': 'Alterado',
   },
   ja: {
     'json-diff.original': 'Original',
+    'json-diff.changed': '変更',
   },
   ko: {
     'json-diff.original': 'Original',
+    'json-diff.changed': '바뀜',
   },
 };

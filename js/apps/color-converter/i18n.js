@@ -31,18 +31,30 @@ export default {
   },
   fr: {
     'color-converter.6f7cffRgb111124255': '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple',
+    'color-converter.cssVariable': 'Variable CSS',
     'color-converter.swiftAndroid': 'Swift / Android',
+    'color-converter.clickAnyStepToLoad': 'Cliquez sur une étape pour la charger',
+    'color-converter.contrast': 'Contraste',
   },
   pt: {
     'color-converter.6f7cffRgb111124255': '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple',
+    'color-converter.cssVariable': 'Variável CSS',
     'color-converter.swiftAndroid': 'Swift / Android',
+    'color-converter.clickAnyStepToLoad': 'Clique em qualquer passo para carregá-lo',
+    'color-converter.contrast': 'Contraste',
   },
   ja: {
     'color-converter.6f7cffRgb111124255': '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple',
+    'color-converter.cssVariable': 'CSS 変数',
     'color-converter.swiftAndroid': 'Swift / Android',
+    'color-converter.clickAnyStepToLoad': 'どの手順もクリックで読み込めます',
+    'color-converter.contrast': 'コントラスト',
   },
   ko: {
     'color-converter.6f7cffRgb111124255': '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple',
+    'color-converter.cssVariable': 'CSS 변수',
     'color-converter.swiftAndroid': 'Swift / Android',
+    'color-converter.clickAnyStepToLoad': '어느 단계든 눌러 불러올 수 있습니다',
+    'color-converter.contrast': '대비',
   },
 };

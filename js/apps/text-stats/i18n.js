@@ -36,15 +36,15 @@ export default {
     'text-stats.notEnoughTextYet': '文本还不够。',
   },
   fr: {
-
+    'text-stats.averageWordLength': 'Longueur moyenne des mots',
   },
   pt: {
-
+    'text-stats.averageWordLength': 'Comprimento médio das palavras',
   },
   ja: {
-
+    'text-stats.averageWordLength': '平均語長',
   },
   ko: {
-
+    'text-stats.averageWordLength': '평균 단어 길이',
   },
 };

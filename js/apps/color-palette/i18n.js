@@ -51,19 +51,27 @@ export default {
     'color-palette.nativePicker': '系统取色器',
   },
   fr: {
+    'color-palette.cssVariables': 'Variables CSS',
     'color-palette.scss': 'SCSS',
+    'color-palette.clickASwatchToSelect': 'Cliquez sur un échantillon pour le sélectionner, sur un nom pour copier toute l\'échelle.',
     'color-palette.hex': 'Hex',
   },
   pt: {
+    'color-palette.cssVariables': 'Variáveis CSS',
     'color-palette.scss': 'SCSS',
+    'color-palette.clickASwatchToSelect': 'Clique em uma amostra para selecioná-la, clique em um nome para copiar a escala inteira.',
     'color-palette.hex': 'Hex',
   },
   ja: {
+    'color-palette.cssVariables': 'CSS 変数',
     'color-palette.scss': 'SCSS',
+    'color-palette.clickASwatchToSelect': '見本をクリックすると選択、名前をクリックすると階調全体をコピーします。',
     'color-palette.hex': 'Hex',
   },
   ko: {
+    'color-palette.cssVariables': 'CSS 변수',
     'color-palette.scss': 'SCSS',
+    'color-palette.clickASwatchToSelect': '견본을 누르면 고르고, 이름을 누르면 단계 전체를 복사합니다.',
     'color-palette.hex': 'Hex',
   },
 };

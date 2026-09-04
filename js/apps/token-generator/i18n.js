@@ -66,15 +66,31 @@ export default {
     'token-generator.copyBatch': '复制批量结果',
   },
   fr: {
-
+    'token-generator.defaultLength': 'Longueur par défaut',
+    'token-generator.copy': 'Copier',
+    'token-generator.createdWithCryptoGetrandomvaluesIn': 'Créé avec crypto.getRandomValues dans cet onglet',
+    'token-generator.batch': 'Lot',
+    'token-generator.copyBatch': 'Copier le lot',
   },
   pt: {
-
+    'token-generator.defaultLength': 'Comprimento padrão',
+    'token-generator.copy': 'Copiar',
+    'token-generator.createdWithCryptoGetrandomvaluesIn': 'Criado com crypto.getRandomValues nesta aba',
+    'token-generator.batch': 'Lote',
+    'token-generator.copyBatch': 'Copiar o lote',
   },
   ja: {
-
+    'token-generator.defaultLength': '既定の長さ',
+    'token-generator.copy': 'コピー',
+    'token-generator.createdWithCryptoGetrandomvaluesIn': 'このタブの crypto.getRandomValues で生成',
+    'token-generator.batch': '一括',
+    'token-generator.copyBatch': '一括分をコピー',
   },
   ko: {
-
+    'token-generator.defaultLength': '기본 길이',
+    'token-generator.copy': '복사',
+    'token-generator.createdWithCryptoGetrandomvaluesIn': '이 탭의 crypto.getRandomValues로 만듦',
+    'token-generator.batch': '묶음',
+    'token-generator.copyBatch': '묶음 복사',
   },
 };

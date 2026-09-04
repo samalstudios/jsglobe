@@ -30,15 +30,23 @@ export default {
     'crontab-generator.noMatchWithinTheNext': '未来一年内没有匹配',
   },
   fr: {
+    'crontab-generator.cronExpression': 'Expression cron',
+    'crontab-generator.basedOnThisMachineS': 'D\'après l\'horloge et le fuseau de cette machine',
     'crontab-generator.aCronExpressionNeedsFive': 'Une expression cron demande cinq champs.',
   },
   pt: {
+    'crontab-generator.cronExpression': 'Expressão cron',
+    'crontab-generator.basedOnThisMachineS': 'Com base no relógio e no fuso deste computador',
     'crontab-generator.aCronExpressionNeedsFive': 'Uma expressão cron precisa de cinco campos.',
   },
   ja: {
+    'crontab-generator.cronExpression': 'cron 式',
+    'crontab-generator.basedOnThisMachineS': 'この端末の時計とタイムゾーンに基づく',
     'crontab-generator.aCronExpressionNeedsFive': 'cron 式には 5 つのフィールドが必要です。',
   },
   ko: {
+    'crontab-generator.cronExpression': 'cron 식',
+    'crontab-generator.basedOnThisMachineS': '이 기기의 시계와 시간대를 따름',
     'crontab-generator.aCronExpressionNeedsFive': 'cron 식에는 다섯 개의 필드가 필요합니다.',
   },
 };

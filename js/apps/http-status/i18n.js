@@ -57,15 +57,31 @@ export default {
     'http-status.widgetBlurb': '每个状态码的含义和使用场景。',
   },
   fr: {
+    'http-status.clientError': 'Erreur du client',
+    'http-status.close': 'Fermer',
+    'http-status.copy': 'Copier',
     'http-status.all': 'Tout',
+    'http-status.copied': '{code} copié',
   },
   pt: {
+    'http-status.clientError': 'Erro do cliente',
+    'http-status.close': 'Fechar',
+    'http-status.copy': 'Copiar',
     'http-status.all': 'Tudo',
+    'http-status.copied': '{code} copiado',
   },
   ja: {
+    'http-status.clientError': 'クライアントエラー',
+    'http-status.close': '閉じる',
+    'http-status.copy': 'コピー',
     'http-status.all': 'すべて',
+    'http-status.copied': '{code} をコピーしました',
   },
   ko: {
+    'http-status.clientError': '클라이언트 오류',
+    'http-status.close': '닫기',
+    'http-status.copy': '복사',
     'http-status.all': '전체',
+    'http-status.copied': '{code}를 복사했습니다',
   },
 };

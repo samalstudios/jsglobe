@@ -46,14 +46,18 @@ export default {
   },
   fr: {
     'hash-text.sha256': 'SHA-256',
+    'hash-text.chooseFile': 'Choisir un fichier...',
   },
   pt: {
     'hash-text.sha256': 'SHA-256',
+    'hash-text.chooseFile': 'Escolher arquivo...',
   },
   ja: {
     'hash-text.sha256': 'SHA-256',
+    'hash-text.chooseFile': 'ファイルを選ぶ...',
   },
   ko: {
     'hash-text.sha256': 'SHA-256',
+    'hash-text.chooseFile': '파일 고르기...',
   },
 };

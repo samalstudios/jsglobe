@@ -59,6 +59,7 @@ export default {
     'rsa-keygen.ecdsaP256': 'ECDSA P-256',
     'rsa-keygen.ecdsaP384': 'ECDSA P-384',
     'rsa-keygen.ecdhP256': 'ECDH P-256',
+    'rsa-keygen.copy': 'Copier',
     'rsa-keygen.jsonWebKey': 'JSON Web Key',
   },
   pt: {
@@ -67,6 +68,7 @@ export default {
     'rsa-keygen.ecdsaP256': 'ECDSA P-256',
     'rsa-keygen.ecdsaP384': 'ECDSA P-384',
     'rsa-keygen.ecdhP256': 'ECDH P-256',
+    'rsa-keygen.copy': 'Copiar',
     'rsa-keygen.jsonWebKey': 'JSON Web Key',
   },
   ja: {
@@ -75,6 +77,7 @@ export default {
     'rsa-keygen.ecdsaP256': 'ECDSA P-256',
     'rsa-keygen.ecdsaP384': 'ECDSA P-384',
     'rsa-keygen.ecdhP256': 'ECDH P-256',
+    'rsa-keygen.copy': 'コピー',
     'rsa-keygen.jsonWebKey': 'JSON Web Key',
   },
   ko: {
@@ -83,6 +86,7 @@ export default {
     'rsa-keygen.ecdsaP256': 'ECDSA P-256',
     'rsa-keygen.ecdsaP384': 'ECDSA P-384',
     'rsa-keygen.ecdhP256': 'ECDH P-256',
+    'rsa-keygen.copy': '복사',
     'rsa-keygen.jsonWebKey': 'JSON Web Key',
   },
 };

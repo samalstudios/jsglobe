@@ -65,17 +65,25 @@ export default {
   fr: {
     'json-formatter.spaces2': '2 espaces',
     'json-formatter.spaces4': '4 espaces',
+    'action.copy': 'Copier',
+    'action.download': 'Télécharger',
   },
   pt: {
     'json-formatter.spaces2': '2 espaços',
     'json-formatter.spaces4': '4 espaços',
+    'action.copy': 'Copiar',
+    'action.download': 'Baixar',
   },
   ja: {
     'json-formatter.spaces2': 'スペース 2 つ',
     'json-formatter.spaces4': 'スペース 4 つ',
+    'action.copy': 'コピー',
+    'action.download': 'ダウンロード',
   },
   ko: {
     'json-formatter.spaces2': '공백 2칸',
     'json-formatter.spaces4': '공백 4칸',
+    'action.copy': '복사',
+    'action.download': '내려받기',
   },
 };

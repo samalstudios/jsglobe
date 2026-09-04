@@ -45,15 +45,19 @@ export default {
     'rdap-lookup.registriesRedactMostPersonalDetails': '注册局会隐去大部分个人信息',
   },
   fr: {
-
+    'rdap-lookup.copyJson': 'Copier le JSON',
+    'rdap-lookup.contacts': 'Contacts',
   },
   pt: {
-
+    'rdap-lookup.copyJson': 'Copiar o JSON',
+    'rdap-lookup.contacts': 'Contatos',
   },
   ja: {
-
+    'rdap-lookup.copyJson': 'JSON をコピー',
+    'rdap-lookup.contacts': '連絡先',
   },
   ko: {
-
+    'rdap-lookup.copyJson': 'JSON 복사',
+    'rdap-lookup.contacts': '연락처',
   },
 };

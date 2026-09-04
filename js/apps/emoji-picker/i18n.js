@@ -48,15 +48,27 @@ export default {
     'emoji-picker.pickedEmojiLandHere': '选过的 emoji 会出现在这里。',
   },
   fr: {
-
+    'emoji-picker.clearRecent': 'Effacer les récents',
+    'emoji-picker.copyEmoji': 'Copier l\'emoji',
+    'emoji-picker.copyCodePoint': 'Copier le point de code',
+    'emoji-picker.copyHtmlEntity': 'Copier l\'entité HTML',
   },
   pt: {
-
+    'emoji-picker.clearRecent': 'Limpar os recentes',
+    'emoji-picker.copyEmoji': 'Copiar o emoji',
+    'emoji-picker.copyCodePoint': 'Copiar o code point',
+    'emoji-picker.copyHtmlEntity': 'Copiar a entidade HTML',
   },
   ja: {
-
+    'emoji-picker.clearRecent': '最近の項目を消す',
+    'emoji-picker.copyEmoji': '絵文字をコピー',
+    'emoji-picker.copyCodePoint': 'コードポイントをコピー',
+    'emoji-picker.copyHtmlEntity': 'HTML エンティティをコピー',
   },
   ko: {
-
+    'emoji-picker.clearRecent': '최근 항목 지우기',
+    'emoji-picker.copyEmoji': '이모지 복사',
+    'emoji-picker.copyCodePoint': '코드 포인트 복사',
+    'emoji-picker.copyHtmlEntity': 'HTML 엔티티 복사',
   },
 };

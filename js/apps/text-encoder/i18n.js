@@ -51,15 +51,23 @@ export default {
     'text-encoder.pasteEncodedTextToDecode': '粘贴要解码的编码文本',
   },
   fr: {
+    'text-encoder.binary': 'Binaire',
+    'text-encoder.decimalBytes': 'Octets décimaux',
     'text-encoder.rot13': 'ROT13',
   },
   pt: {
+    'text-encoder.binary': 'Binário',
+    'text-encoder.decimalBytes': 'Bytes decimais',
     'text-encoder.rot13': 'ROT13',
   },
   ja: {
+    'text-encoder.binary': '2 進',
+    'text-encoder.decimalBytes': '10 進のバイト',
     'text-encoder.rot13': 'ROT13',
   },
   ko: {
+    'text-encoder.binary': '2진',
+    'text-encoder.decimalBytes': '10진 바이트',
     'text-encoder.rot13': 'ROT13',
   },
 };

@@ -48,15 +48,15 @@ export default {
     'url-parser.segments': '路径段',
   },
   fr: {
-
+    'url-parser.components': 'Composants',
   },
   pt: {
-
+    'url-parser.components': 'Componentes',
   },
   ja: {
-
+    'url-parser.components': 'コンポーネント',
   },
   ko: {
-
+    'url-parser.components': '컴포넌트',
   },
 };

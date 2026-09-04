@@ -55,18 +55,30 @@ export default {
   },
   fr: {
     'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.downloadMbps': 'Téléchargement Mbit/s',
     'speed-test.jitterMs': 'Jitter ms',
+    'speed-test.connection': 'Connexion',
+    'speed-test.dataSaver': 'Économiseur de données',
   },
   pt: {
     'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.downloadMbps': 'Download Mbps',
     'speed-test.jitterMs': 'Jitter ms',
+    'speed-test.connection': 'Conexão',
+    'speed-test.dataSaver': 'Economia de dados',
   },
   ja: {
     'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.downloadMbps': '下り Mbps',
     'speed-test.jitterMs': 'Jitter ms',
+    'speed-test.connection': '接続',
+    'speed-test.dataSaver': 'データセーバー',
   },
   ko: {
     'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.downloadMbps': '내려받기 Mbps',
     'speed-test.jitterMs': 'Jitter ms',
+    'speed-test.connection': '연결',
+    'speed-test.dataSaver': '데이터 절약',
   },
 };

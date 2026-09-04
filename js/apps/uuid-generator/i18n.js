@@ -45,18 +45,26 @@ export default {
     'uuid.nil': '空 UUID',
   },
   fr: {
+    'action.copy': 'Copier',
+    'uuid.copyAll': 'Tout copier',
     'uuid-generator.uuidV4': 'UUID v4',
     'uuid-generator.uuidV7': 'UUID v7',
   },
   pt: {
+    'action.copy': 'Copiar',
+    'uuid.copyAll': 'Copiar tudo',
     'uuid-generator.uuidV4': 'UUID v4',
     'uuid-generator.uuidV7': 'UUID v7',
   },
   ja: {
+    'action.copy': 'コピー',
+    'uuid.copyAll': 'すべてコピー',
     'uuid-generator.uuidV4': 'UUID v4',
     'uuid-generator.uuidV7': 'UUID v7',
   },
   ko: {
+    'action.copy': '복사',
+    'uuid.copyAll': '모두 복사',
     'uuid-generator.uuidV4': 'UUID v4',
     'uuid-generator.uuidV7': 'UUID v7',
   },

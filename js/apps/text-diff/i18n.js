@@ -28,14 +28,18 @@ export default {
   },
   fr: {
     'text-diff.original': 'Original',
+    'text-diff.changed': 'Modifié',
   },
   pt: {
     'text-diff.original': 'Original',
+    'text-diff.changed': 'Alterado',
   },
   ja: {
     'text-diff.original': 'Original',
+    'text-diff.changed': '変更',
   },
   ko: {
     'text-diff.original': 'Original',
+    'text-diff.changed': '바뀜',
   },
 };

@@ -30,15 +30,19 @@ export default {
     'jsx-svg.svgToJsx': 'SVG 转 JSX',
   },
   fr: {
-
+    'jsx-svg.componentName': 'Nom du composant',
+    'jsx-svg.copyResult': 'Copier le résultat',
   },
   pt: {
-
+    'jsx-svg.componentName': 'Nome do componente',
+    'jsx-svg.copyResult': 'Copiar o resultado',
   },
   ja: {
-
+    'jsx-svg.componentName': 'コンポーネント名',
+    'jsx-svg.copyResult': '結果をコピー',
   },
   ko: {
-
+    'jsx-svg.componentName': '컴포넌트 이름',
+    'jsx-svg.copyResult': '결과 복사',
   },
 };

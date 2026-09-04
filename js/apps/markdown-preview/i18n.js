@@ -24,18 +24,26 @@ export default {
     'markdown-preview.preview': '预览',
   },
   fr: {
+    'markdown-preview.copyHtml': 'Copier le HTML',
+    'markdown-preview.download': 'Télécharger',
     'markdown-preview.markdown': 'Markdown',
     'markdown-preview.title': '# Titre',
   },
   pt: {
+    'markdown-preview.copyHtml': 'Copiar o HTML',
+    'markdown-preview.download': 'Baixar',
     'markdown-preview.markdown': 'Markdown',
     'markdown-preview.title': '# Título',
   },
   ja: {
+    'markdown-preview.copyHtml': 'HTML をコピー',
+    'markdown-preview.download': 'ダウンロード',
     'markdown-preview.markdown': 'Markdown',
     'markdown-preview.title': '# タイトル',
   },
   ko: {
+    'markdown-preview.copyHtml': 'HTML 복사',
+    'markdown-preview.download': '내려받기',
     'markdown-preview.markdown': 'Markdown',
     'markdown-preview.title': '# 제목',
   },

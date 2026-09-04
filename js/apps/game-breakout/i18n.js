@@ -34,14 +34,22 @@ export default {
   },
   fr: {
     'game-breakout.breakout': 'Breakout',
+    'game-breakout.best': 'Meilleur',
+    'game-breakout.breakEveryBrick': 'Casser toutes les briques',
   },
   pt: {
     'game-breakout.breakout': 'Breakout',
+    'game-breakout.best': 'Melhor',
+    'game-breakout.breakEveryBrick': 'Quebre todos os tijolos',
   },
   ja: {
     'game-breakout.breakout': 'Breakout',
+    'game-breakout.best': '最高',
+    'game-breakout.breakEveryBrick': 'ブロックをすべて壊す',
   },
   ko: {
     'game-breakout.breakout': 'Breakout',
+    'game-breakout.best': '최고',
+    'game-breakout.breakEveryBrick': '벽돌을 모두 깨기',
   },
 };

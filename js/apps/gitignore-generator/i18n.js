@@ -75,15 +75,27 @@ export default {
     'gitignore-generator.widgetBlurb': '根据所用工具生成 .gitignore。',
   },
   fr: {
-
+    'gitignore-generator.copy': 'Copier',
+    'gitignore-generator.download': 'Télécharger',
+    'gitignore-generator.copied': '.gitignore copié',
+    'gitignore-generator.widgetBlurb': 'Composer un .gitignore à partir des outils que vous utilisez.',
   },
   pt: {
-
+    'gitignore-generator.copy': 'Copiar',
+    'gitignore-generator.download': 'Baixar',
+    'gitignore-generator.copied': '.gitignore copiado',
+    'gitignore-generator.widgetBlurb': 'Monte um .gitignore a partir das ferramentas que você usa.',
   },
   ja: {
-
+    'gitignore-generator.copy': 'コピー',
+    'gitignore-generator.download': 'ダウンロード',
+    'gitignore-generator.copied': '.gitignore をコピーしました',
+    'gitignore-generator.widgetBlurb': '使っているツールから .gitignore を組み立てます。',
   },
   ko: {
-
+    'gitignore-generator.copy': '복사',
+    'gitignore-generator.download': '내려받기',
+    'gitignore-generator.copied': '.gitignore를 복사했습니다',
+    'gitignore-generator.widgetBlurb': '쓰는 도구에서 .gitignore를 만듭니다.',
   },
 };

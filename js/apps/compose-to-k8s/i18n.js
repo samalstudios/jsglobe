@@ -51,15 +51,31 @@ export default {
     'compose-to-k8s.emptyTheInput': '清空输入',
   },
   fr: {
+    'compose-to-k8s.defaultVolumeSize': 'Taille de volume par défaut',
     'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+    'compose-to-k8s.copy': 'Copier',
+    'compose-to-k8s.download': 'Télécharger',
+    'compose-to-k8s.clear': 'Effacer',
   },
   pt: {
+    'compose-to-k8s.defaultVolumeSize': 'Tamanho de volume padrão',
     'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+    'compose-to-k8s.copy': 'Copiar',
+    'compose-to-k8s.download': 'Baixar',
+    'compose-to-k8s.clear': 'Limpar',
   },
   ja: {
+    'compose-to-k8s.defaultVolumeSize': '既定のボリューム容量',
     'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+    'compose-to-k8s.copy': 'コピー',
+    'compose-to-k8s.download': 'ダウンロード',
+    'compose-to-k8s.clear': 'クリア',
   },
   ko: {
+    'compose-to-k8s.defaultVolumeSize': '기본 볼륨 크기',
     'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+    'compose-to-k8s.copy': '복사',
+    'compose-to-k8s.download': '내려받기',
+    'compose-to-k8s.clear': '지우기',
   },
 };

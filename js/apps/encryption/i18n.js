@@ -31,14 +31,26 @@ export default {
   },
   fr: {
     'encryption.aes256GcmWithPbkdf2': 'AES-256-GCM avec dérivation de clé PBKDF2 (250k itérations)',
+    'encryption.ciphertextAppearsHere': 'Le texte chiffré apparaît ici',
+    'encryption.decrypt': 'Déchiffrer',
+    'encryption.decryptedTextAppearsHere': 'Le texte déchiffré apparaît ici',
   },
   pt: {
     'encryption.aes256GcmWithPbkdf2': 'AES-256-GCM com derivação de chave PBKDF2 (250 mil iterações)',
+    'encryption.ciphertextAppearsHere': 'O texto cifrado aparece aqui',
+    'encryption.decrypt': 'Descriptografar',
+    'encryption.decryptedTextAppearsHere': 'O texto descriptografado aparece aqui',
   },
   ja: {
     'encryption.aes256GcmWithPbkdf2': 'PBKDF2 鍵導出 (25 万回) を用いた AES-256-GCM',
+    'encryption.ciphertextAppearsHere': '暗号文がここに表示されます',
+    'encryption.decrypt': '復号',
+    'encryption.decryptedTextAppearsHere': '復号したテキストがここに表示されます',
   },
   ko: {
     'encryption.aes256GcmWithPbkdf2': 'PBKDF2 키 유도(25만 회)를 사용한 AES-256-GCM',
+    'encryption.ciphertextAppearsHere': '암호문이 여기에 나옵니다',
+    'encryption.decrypt': '복호화',
+    'encryption.decryptedTextAppearsHere': '복호화한 글이 여기에 나옵니다',
   },
 };

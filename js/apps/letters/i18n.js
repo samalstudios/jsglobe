@@ -135,15 +135,35 @@ export default {
     'letters.widgetBlurb': '学习希腊、西里尔、日语和汉语的字符。',
   },
   fr: {
-
+    'letters.cyrillic': 'Cyrillique',
+    'letters.chinese': 'Chinois',
+    'letters.chart': 'Graphique',
+    'letters.byProgress': 'Par avancement',
+    'letters.close': 'Fermer',
+    'letters.shrinkBack': 'Retour dans le coin',
   },
   pt: {
-
+    'letters.cyrillic': 'Cirílico',
+    'letters.chinese': 'Chinês',
+    'letters.chart': 'Gráfico',
+    'letters.byProgress': 'Por progresso',
+    'letters.close': 'Fechar',
+    'letters.shrinkBack': 'De volta ao canto',
   },
   ja: {
-
+    'letters.cyrillic': 'キリル文字',
+    'letters.chinese': '中国語',
+    'letters.chart': 'グラフ',
+    'letters.byProgress': '進み具合ごと',
+    'letters.close': '閉じる',
+    'letters.shrinkBack': '隅に戻す',
   },
   ko: {
-
+    'letters.cyrillic': '키릴 문자',
+    'letters.chinese': '중국어',
+    'letters.chart': '차트',
+    'letters.byProgress': '진행별',
+    'letters.close': '닫기',
+    'letters.shrinkBack': '모서리로 되돌리기',
   },
 };

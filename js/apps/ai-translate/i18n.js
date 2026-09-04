@@ -51,15 +51,31 @@ export default {
     'ai-translate.casualTone': '随意语气',
   },
   fr: {
+    'ai-translate.defaultTargetLanguage': 'Langue cible par défaut',
+    'ai-translate.detectLanguage': 'Détecter la langue',
     'ai-translate.0Characters': '0 caractère',
+    'ai-translate.copy': 'Copier',
+    'ai-translate.casualTone': 'Ton familier',
   },
   pt: {
+    'ai-translate.defaultTargetLanguage': 'Idioma de destino padrão',
+    'ai-translate.detectLanguage': 'Detectar o idioma',
     'ai-translate.0Characters': '0 caracteres',
+    'ai-translate.copy': 'Copiar',
+    'ai-translate.casualTone': 'Tom informal',
   },
   ja: {
+    'ai-translate.defaultTargetLanguage': '既定の翻訳先言語',
+    'ai-translate.detectLanguage': '言語を判定',
     'ai-translate.0Characters': '0 文字',
+    'ai-translate.copy': 'コピー',
+    'ai-translate.casualTone': 'くだけた調子',
   },
   ko: {
+    'ai-translate.defaultTargetLanguage': '기본 대상 언어',
+    'ai-translate.detectLanguage': '언어 감지',
     'ai-translate.0Characters': '0자',
+    'ai-translate.copy': '복사',
+    'ai-translate.casualTone': '편안한 말투',
   },
 };

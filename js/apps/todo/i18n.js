@@ -35,21 +35,29 @@ export default {
   fr: {
     'todo.add': 'Ajouter',
     'todo.allClear': 'Tout est bon',
+    'todo.clearCompleted': 'Effacer les tâches finies',
     'todo.all': 'Tout',
+    'todo.done': 'Terminé',
   },
   pt: {
     'todo.add': 'Adicionar',
     'todo.allClear': 'Tudo certo',
+    'todo.clearCompleted': 'Limpar as concluídas',
     'todo.all': 'Tudo',
+    'todo.done': 'Concluído',
   },
   ja: {
     'todo.add': '追加',
     'todo.allClear': '問題なし',
+    'todo.clearCompleted': '完了したものを消す',
     'todo.all': 'すべて',
+    'todo.done': '完了',
   },
   ko: {
     'todo.add': '추가',
     'todo.allClear': '모두 이상 없음',
+    'todo.clearCompleted': '끝난 것 지우기',
     'todo.all': '전체',
+    'todo.done': '완료',
   },
 };

@@ -38,17 +38,21 @@ export default {
   fr: {
     'game-pong.normal': 'Normal',
     'game-pong.pong': 'Pong',
+    'game-pong.cpu': 'CPU',
   },
   pt: {
     'game-pong.normal': 'Normal',
     'game-pong.pong': 'Pong',
+    'game-pong.cpu': 'CPU',
   },
   ja: {
     'game-pong.normal': 'Normal',
     'game-pong.pong': 'Pong',
+    'game-pong.cpu': 'CPU',
   },
   ko: {
     'game-pong.normal': 'Normal',
     'game-pong.pong': 'Pong',
+    'game-pong.cpu': 'CPU',
   },
 };

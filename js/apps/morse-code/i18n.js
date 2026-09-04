@@ -31,14 +31,18 @@ export default {
   },
   fr: {
     'morse-code.morse': 'Morse',
+    'morse-code.copyMorse': 'Copier le morse',
   },
   pt: {
     'morse-code.morse': 'Morse',
+    'morse-code.copyMorse': 'Copiar o morse',
   },
   ja: {
     'morse-code.morse': 'Morse',
+    'morse-code.copyMorse': 'モールスをコピー',
   },
   ko: {
     'morse-code.morse': 'Morse',
+    'morse-code.copyMorse': '모스 복사',
   },
 };

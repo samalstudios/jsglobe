@@ -27,18 +27,26 @@ export default {
     'http-headers.waitingForHeaders': '等待响应头',
   },
   fr: {
+    'http-headers.clear': 'Effacer',
+    'http-headers.copyReport': 'Copier le rapport',
     'http-headers.curlIHttpsExampleCom': 'curl -I https://example.com',
     'http-headers.curlI': 'curl -I',
   },
   pt: {
+    'http-headers.clear': 'Limpar',
+    'http-headers.copyReport': 'Copiar o relatório',
     'http-headers.curlIHttpsExampleCom': 'curl -I https://example.com',
     'http-headers.curlI': 'curl -I',
   },
   ja: {
+    'http-headers.clear': 'クリア',
+    'http-headers.copyReport': 'レポートをコピー',
     'http-headers.curlIHttpsExampleCom': 'curl -I https://example.com',
     'http-headers.curlI': 'curl -I',
   },
   ko: {
+    'http-headers.clear': '지우기',
+    'http-headers.copyReport': '보고서 복사',
     'http-headers.curlIHttpsExampleCom': 'curl -I https://example.com',
     'http-headers.curlI': 'curl -I',
   },

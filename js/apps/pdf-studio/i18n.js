@@ -81,15 +81,27 @@ export default {
     'pdf-studio.savePdf': '保存 PDF',
   },
   fr: {
-
+    'pdf-studio.chooseFiles': 'Choisir des fichiers',
+    'pdf-studio.document': 'Document',
+    'pdf-studio.clear': 'Effacer',
+    'pdf-studio.copyText': 'Copier le texte',
   },
   pt: {
-
+    'pdf-studio.chooseFiles': 'Escolher arquivos',
+    'pdf-studio.document': 'Documento',
+    'pdf-studio.clear': 'Limpar',
+    'pdf-studio.copyText': 'Copiar o texto',
   },
   ja: {
-
+    'pdf-studio.chooseFiles': 'ファイルを選ぶ',
+    'pdf-studio.document': '文書',
+    'pdf-studio.clear': 'クリア',
+    'pdf-studio.copyText': 'テキストをコピー',
   },
   ko: {
-
+    'pdf-studio.chooseFiles': '파일 고르기',
+    'pdf-studio.document': '문서',
+    'pdf-studio.clear': '지우기',
+    'pdf-studio.copyText': '글 복사',
   },
 };
