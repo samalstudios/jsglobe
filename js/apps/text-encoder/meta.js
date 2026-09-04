@@ -12,6 +12,10 @@ export default {
     de: { name: 'Text-Encoder', tagline: 'Binär, Hex, Unicode, NATO, Morse und ROT13' },
     es: { name: 'Codificador de texto', tagline: 'Binario, hex, unicode, NATO, morse y ROT13' },
     zh: { name: '文本编码', tagline: '二进制、十六进制、Unicode、北约字母、摩尔斯与 ROT13' },
+    fr: { name: 'Encodeur de texte', tagline: 'Binaire, hexadécimal, unicode, OTAN, morse et ROT13' },
+    pt: { name: 'Codificador de texto', tagline: 'Binário, hexadecimal, unicode, OTAN, morse e ROT13' },
+    ja: { name: 'テキスト符号化', tagline: '2 進、16 進、Unicode、NATO、モールス、ROT13' },
+    ko: { name: '텍스트 인코더', tagline: '2진, 16진, 유니코드, NATO, 모스, ROT13' },
   },
   load: () => import('./index.js'),
 };

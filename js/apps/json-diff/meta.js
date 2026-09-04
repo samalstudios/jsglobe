@@ -12,6 +12,10 @@ export default {
     de: { name: 'JSON-Vergleich', tagline: 'Zwei JSON-Dokumente Schlüssel für Schlüssel vergleichen' },
     es: { name: 'Comparador JSON', tagline: 'Comparar dos documentos JSON clave por clave' },
     zh: { name: 'JSON 比较', tagline: '逐键比较两份 JSON 文档' },
+    fr: { name: 'Diff JSON', tagline: 'Comparer deux documents JSON clé par clé' },
+    pt: { name: 'Diff de JSON', tagline: 'Compare dois documentos JSON chave a chave' },
+    ja: { name: 'JSON 差分', tagline: '2 つの JSON 文書をキーごとに比較' },
+    ko: { name: 'JSON 차이', tagline: '두 JSON 문서를 키 단위로 비교하기' },
   },
   load: () => import('./index.js'),
 };

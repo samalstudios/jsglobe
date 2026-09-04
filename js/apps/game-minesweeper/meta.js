@@ -13,6 +13,10 @@ export default {
     de: { name: 'Minesweeper', tagline: 'Das Feld räumen, ohne eine Mine zu treffen' },
     es: { name: 'Buscaminas', tagline: 'Despejar la cuadrícula sin tocar una mina' },
     zh: { name: '扫雷', tagline: '清空雷区且不踩到地雷' },
+    fr: { name: 'Démineur', tagline: 'Nettoyer la grille sans toucher de mine' },
+    pt: { name: 'Campo minado', tagline: 'Limpe o campo sem pisar em uma mina' },
+    ja: { name: 'マインスイーパ', tagline: '地雷を踏まずに盤面を開ける' },
+    ko: { name: '지뢰 찾기', tagline: '지뢰를 밟지 않고 판을 비우기' },
   },
   load: () => import('./index.js'),
 };

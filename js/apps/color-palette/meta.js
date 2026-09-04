@@ -13,6 +13,10 @@ export default {
     de: { name: 'Farbpalette', tagline: 'Tailwind-Skalen, ein Farbkreis und Harmonien' },
     es: { name: 'Paleta de colores', tagline: 'Escalas estilo Tailwind, rueda de color y armonías' },
     zh: { name: '调色板', tagline: 'Tailwind 风格色阶、色轮与配色方案' },
+    fr: { name: 'Palette de couleurs', tagline: 'Échelles à la Tailwind, roue chromatique et harmonies' },
+    pt: { name: 'Paleta de cores', tagline: 'Escalas ao estilo Tailwind, roda de cores e harmonias' },
+    ja: { name: 'カラーパレット', tagline: 'Tailwind 風の階調、色相環、配色' },
+    ko: { name: '색 팔레트', tagline: 'Tailwind 식 단계, 색상환, 배색' },
   },
   load: () => import('./index.js'),
 };

@@ -13,6 +13,10 @@ export default {
     de: { name: 'Spiegel', tagline: 'Kameraspiegel mit einstellbarem Ringlicht' },
     es: { name: 'Espejo', tagline: 'Espejo de cámara con un aro de luz ajustable' },
     zh: { name: '镜子', tagline: '带可调环形补光的摄像头镜子' },
+    fr: { name: 'Miroir', tagline: 'Miroir caméra avec anneau lumineux réglable' },
+    pt: { name: 'Espelho', tagline: 'Espelho de câmera com luz de anel ajustável' },
+    ja: { name: 'ミラー', tagline: '明るさを調整できるリングライト付きカメラミラー' },
+    ko: { name: '거울', tagline: '밝기를 조절하는 링라이트가 있는 카메라 거울' },
   },
   load: () => import('./index.js'),
 };

@@ -13,6 +13,10 @@ export default {
     de: { name: 'Aufgaben', tagline: 'Eine leichte Checkliste pro Arbeitsbereich' },
     es: { name: 'Tareas', tagline: 'Una lista de comprobación ligera por espacio de trabajo' },
     zh: { name: '任务', tagline: '每个工作区一份轻量清单' },
+    fr: { name: 'Tâches', tagline: 'Une liste légère par espace de travail' },
+    pt: { name: 'Tarefas', tagline: 'Uma lista simples por área de trabalho' },
+    ja: { name: 'タスク', tagline: 'ワークスペースごとの軽いチェックリスト' },
+    ko: { name: '할 일', tagline: '작업 공간마다 두는 가벼운 체크리스트' },
   },
   load: () => import('./index.js'),
 };

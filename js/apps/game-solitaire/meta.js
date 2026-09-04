@@ -13,6 +13,10 @@ export default {
     de: { name: 'Solitär', tagline: 'Klondike-Patience mit einer oder drei Karten' },
     es: { name: 'Solitario', tagline: 'Klondike con robo de una o tres cartas' },
     zh: { name: '纸牌', tagline: '每次翻一张或三张的克朗代克纸牌' },
+    fr: { name: 'Solitaire', tagline: 'Patience Klondike, tirage à une ou trois cartes' },
+    pt: { name: 'Paciência', tagline: 'Klondike com compra de uma ou três cartas' },
+    ja: { name: 'ソリティア', tagline: 'クロンダイク、1 枚めくりと 3 枚めくり' },
+    ko: { name: '솔리테어', tagline: '클론다이크, 한 장 뽑기와 세 장 뽑기' },
   },
   load: () => import('./index.js'),
 };

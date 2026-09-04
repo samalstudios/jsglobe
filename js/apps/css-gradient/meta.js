@@ -12,6 +12,10 @@ export default {
     de: { name: 'Verlauf-Maker', tagline: 'CSS-Verläufe mit ziehbaren Farbstopps bauen' },
     es: { name: 'Creador de degradados', tagline: 'Crear degradados CSS con paradas de color arrastrables' },
     zh: { name: '渐变生成', tagline: '用可拖动的色标构建 CSS 渐变' },
+    fr: { name: 'Créateur de dégradés', tagline: 'Construire des dégradés CSS avec des arrêts déplaçables' },
+    pt: { name: 'Criador de gradientes', tagline: 'Monte gradientes CSS com paradas arrastáveis' },
+    ja: { name: 'グラデーション作成', tagline: 'ドラッグできるカラーストップで CSS グラデーションを作る' },
+    ko: { name: '그레이디언트 만들기', tagline: '끌 수 있는 색 정지점으로 CSS 그레이디언트 만들기' },
   },
   load: () => import('./index.js'),
 };

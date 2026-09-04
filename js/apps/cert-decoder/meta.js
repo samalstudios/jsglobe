@@ -12,6 +12,10 @@ export default {
     de: { name: 'Zertifikat-Decoder', tagline: 'X.509-Zertifikate und Signieranfragen lesen' },
     es: { name: 'Decodificador de certificados', tagline: 'Leer un certificado X.509 o una solicitud de firma' },
     zh: { name: '证书解码', tagline: '读取 X.509 证书或签名请求' },
+    fr: { name: 'Décodeur de certificat', tagline: 'Lire un certificat X.509 ou une demande de signature' },
+    pt: { name: 'Decodificador de certificado', tagline: 'Leia um certificado X.509 ou uma requisição de assinatura' },
+    ja: { name: '証明書デコーダ', tagline: 'X.509 証明書や署名要求を読む' },
+    ko: { name: '인증서 디코더', tagline: 'X.509 인증서나 서명 요청 읽기' },
   },
   load: () => import('./index.js'),
 };

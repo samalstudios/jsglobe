@@ -12,6 +12,10 @@ export default {
     de: { name: 'HMAC', tagline: 'Schlüsselbasierte Nachrichtenauthentifizierung' },
     es: { name: 'HMAC', tagline: 'Códigos de autenticación de mensajes con clave' },
     zh: { name: 'HMAC', tagline: '基于密钥的消息认证码' },
+    fr: { name: 'HMAC', tagline: 'Codes d\'authentification de message à clé' },
+    pt: { name: 'HMAC', tagline: 'Códigos de autenticação de mensagem com chave' },
+    ja: { name: 'HMAC', tagline: '鍵付きハッシュのメッセージ認証コード' },
+    ko: { name: 'HMAC', tagline: '키를 쓰는 메시지 인증 코드' },
   },
   load: () => import('./index.js'),
 };

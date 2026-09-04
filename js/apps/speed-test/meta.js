@@ -12,6 +12,10 @@ export default {
     de: { name: 'Speedtest', tagline: 'Download, Upload, Latenz und Jitter messen' },
     es: { name: 'Test de velocidad', tagline: 'Medir descarga, subida, latencia y jitter' },
     zh: { name: '网速测试', tagline: '测量下载、上传、延迟与抖动' },
+    fr: { name: 'Test de débit', tagline: 'Mesurer téléchargement, envoi, latence et gigue' },
+    pt: { name: 'Teste de velocidade', tagline: 'Meça download, upload, latência e jitter' },
+    ja: { name: '速度測定', tagline: '下り、上り、遅延、ジッタを測る' },
+    ko: { name: '속도 측정', tagline: '내려받기, 올리기, 지연, 지터 재기' },
   },
   load: () => import('./index.js'),
 };

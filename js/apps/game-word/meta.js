@@ -12,6 +12,10 @@ export default {
     de: { name: 'Worträtsel', tagline: 'Sechs Versuche für das Wort aus fünf Buchstaben' },
     es: { name: 'Adivina la palabra', tagline: 'Seis intentos para hallar la palabra de cinco letras' },
     zh: { name: '猜词', tagline: '六次机会猜出五个字母的单词' },
+    fr: { name: 'Mot mystère', tagline: 'Six essais pour trouver le mot de cinq lettres' },
+    pt: { name: 'Advinhe a palavra', tagline: 'Seis tentativas para achar a palavra de cinco letras' },
+    ja: { name: 'ワード当て', tagline: '5 文字の単語を 6 回以内に当てる' },
+    ko: { name: '단어 맞히기', tagline: '여섯 번 안에 다섯 글자 단어 찾기' },
   },
   load: () => import('./index.js'),
 };

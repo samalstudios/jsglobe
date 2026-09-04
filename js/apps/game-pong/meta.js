@@ -13,6 +13,10 @@ export default {
     de: { name: 'Pong', tagline: 'Das originale Schlägerduell gegen die Maschine' },
     es: { name: 'Pong', tagline: 'El duelo de palas original contra la máquina' },
     zh: { name: 'Pong', tagline: '与机器对决的经典球拍游戏' },
+    fr: { name: 'Pong', tagline: 'Le duel de raquettes original contre la machine' },
+    pt: { name: 'Pong', tagline: 'O duelo de raquetes original contra a máquina' },
+    ja: { name: 'ポン', tagline: '機械と戦う元祖ラケット対決' },
+    ko: { name: '퐁', tagline: '기계와 겨루는 원조 라켓 대결' },
   },
   load: () => import('./index.js'),
 };

@@ -12,6 +12,10 @@ export default {
     de: { name: 'Video & Audio', tagline: 'Video und Audio mit WebAssembly umwandeln' },
     es: { name: 'Vídeo y audio', tagline: 'Transcodificar vídeo y audio con WebAssembly' },
     zh: { name: '视频与音频', tagline: '用 WebAssembly 转码视频和音频' },
+    fr: { name: 'Vidéo et audio', tagline: 'Transcoder vidéo et audio avec WebAssembly' },
+    pt: { name: 'Vídeo e áudio', tagline: 'Transcodifique vídeo e áudio com WebAssembly' },
+    ja: { name: '動画と音声', tagline: 'WebAssembly で動画と音声を変換' },
+    ko: { name: '영상과 소리', tagline: 'WebAssembly로 영상과 소리를 변환하기' },
   },
   load: () => import('./index.js'),
 };

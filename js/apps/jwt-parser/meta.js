@@ -12,6 +12,10 @@ export default {
     de: { name: 'JWT-Parser', tagline: 'JSON Web Tokens dekodieren und untersuchen' },
     es: { name: 'Analizador JWT', tagline: 'Decodificar e inspeccionar JSON Web Tokens' },
     zh: { name: 'JWT 解析', tagline: '解码并查看 JSON Web Token' },
+    fr: { name: 'Analyseur JWT', tagline: 'Décoder et inspecter des jetons JSON Web' },
+    pt: { name: 'Analisador de JWT', tagline: 'Decodifique e inspecione JSON Web Tokens' },
+    ja: { name: 'JWT パーサ', tagline: 'JSON Web Token の復号と検査' },
+    ko: { name: 'JWT 파서', tagline: 'JSON 웹 토큰을 풀고 살펴보기' },
   },
   load: () => import('./index.js'),
 };

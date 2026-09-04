@@ -12,6 +12,10 @@ export default {
     de: { name: 'URL-Parser', tagline: 'Eine URL in ihre Teile und Query-Parameter zerlegen' },
     es: { name: 'Analizador de URL', tagline: 'Dividir una URL en sus partes y parámetros' },
     zh: { name: 'URL 解析', tagline: '把 URL 拆成各个部分与查询参数' },
+    fr: { name: 'Analyseur d\'URL', tagline: 'Découper une URL en parties et paramètres' },
+    pt: { name: 'Analisador de URL', tagline: 'Divida uma URL em suas partes e parâmetros' },
+    ja: { name: 'URL パーサ', tagline: 'URL を各部とクエリ引数に分解' },
+    ko: { name: 'URL 파서', tagline: 'URL을 구성 요소와 질의 매개변수로 나누기' },
   },
   load: () => import('./index.js'),
 };

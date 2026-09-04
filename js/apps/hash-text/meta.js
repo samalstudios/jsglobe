@@ -13,6 +13,10 @@ export default {
     de: { name: 'Text-Hash', tagline: 'MD5-, SHA-1-, SHA-256- und SHA-512-Prüfsummen' },
     es: { name: 'Hash de texto', tagline: 'Resúmenes MD5, SHA-1, SHA-256 y SHA-512' },
     zh: { name: '文本哈希', tagline: 'MD5、SHA-1、SHA-256、SHA-512 摘要' },
+    fr: { name: 'Hachage de texte', tagline: 'Empreintes MD5, SHA-1, SHA-256, SHA-512' },
+    pt: { name: 'Hash de texto', tagline: 'Resumos MD5, SHA-1, SHA-256, SHA-512' },
+    ja: { name: 'テキストのハッシュ', tagline: 'MD5、SHA-1、SHA-256、SHA-512 のダイジェスト' },
+    ko: { name: '텍스트 해시', tagline: 'MD5, SHA-1, SHA-256, SHA-512 다이제스트' },
   },
   load: () => import('./index.js'),
 };

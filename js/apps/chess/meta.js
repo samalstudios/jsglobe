@@ -13,6 +13,10 @@ export default {
     de: { name: 'Schach', tagline: 'Gegen den Computer spielen, Eröffnungen lernen und Taktik üben' },
     es: { name: 'Ajedrez', tagline: 'Juega contra el ordenador, aprende aperturas y entrena táctica' },
     zh: { name: '国际象棋', tagline: '与电脑对弈、学习开局并训练战术' },
+    fr: { name: 'Échecs', tagline: 'Jouer contre l\'ordinateur, apprendre les ouvertures et travailler les tactiques' },
+    pt: { name: 'Xadrez', tagline: 'Jogue contra o computador, aprenda aberturas e treine táticas' },
+    ja: { name: 'チェス', tagline: 'コンピュータと対戦し、定跡を学び、戦術を鍛える' },
+    ko: { name: '체스', tagline: '컴퓨터와 두고, 오프닝을 익히고, 전술을 훈련하기' },
   },
   load: () => import('./index.js'),
 };

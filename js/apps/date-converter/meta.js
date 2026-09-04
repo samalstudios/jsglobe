@@ -13,6 +13,10 @@ export default {
     de: { name: 'Datum & Zeit', tagline: 'Unix-Zeitstempel, ISO 8601 und relative Zeit' },
     es: { name: 'Fecha y hora', tagline: 'Marcas de tiempo Unix, ISO 8601 y tiempo relativo' },
     zh: { name: '日期与时间', tagline: 'Unix 时间戳、ISO 8601 与相对时间' },
+    fr: { name: 'Date et heure', tagline: 'Horodatages Unix, ISO 8601 et temps relatif' },
+    pt: { name: 'Data e hora', tagline: 'Timestamps Unix, ISO 8601 e tempo relativo' },
+    ja: { name: '日付と時刻', tagline: 'Unix タイムスタンプ、ISO 8601、相対時間' },
+    ko: { name: '날짜와 시간', tagline: '유닉스 타임스탬프, ISO 8601, 상대 시간' },
   },
   load: () => import('./index.js'),
 };

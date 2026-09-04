@@ -14,6 +14,10 @@ export default {
     de: { name: 'Gamepad-Tester', tagline: 'Jeden Stick, Trigger und Knopf prüfen' },
     es: { name: 'Probador de mando', tagline: 'Comprobar cada stick, gatillo y botón' },
     zh: { name: '手柄测试', tagline: '检查每个摇杆、扳机与按键' },
+    fr: { name: 'Test de manette', tagline: 'Vérifier chaque stick, gâchette et bouton' },
+    pt: { name: 'Teste de controle', tagline: 'Verifique cada analógico, gatilho e botão' },
+    ja: { name: 'ゲームパッド診断', tagline: 'スティック、トリガー、ボタンをすべて確認' },
+    ko: { name: '게임패드 점검', tagline: '스틱, 트리거, 버튼을 전부 확인하기' },
   },
   load: () => import('./index.js'),
 };

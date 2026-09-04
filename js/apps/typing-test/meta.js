@@ -12,6 +12,10 @@ export default {
     de: { name: 'Tipptest', tagline: 'Wörter pro Minute, Genauigkeit und Problemtasten' },
     es: { name: 'Test de mecanografía', tagline: 'Palabras por minuto, precisión y teclas problemáticas' },
     zh: { name: '打字测试', tagline: '每分钟词数、准确率与易错键' },
+    fr: { name: 'Test de frappe', tagline: 'Mots par minute, précision et touches problématiques' },
+    pt: { name: 'Teste de digitação', tagline: 'Palavras por minuto, precisão e teclas problemáticas' },
+    ja: { name: 'タイピング測定', tagline: '毎分単語数、正確さ、苦手なキー' },
+    ko: { name: '타자 검사', tagline: '분당 단어 수, 정확도, 어려운 키' },
   },
   load: () => import('./index.js'),
 };

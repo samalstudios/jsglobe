@@ -13,6 +13,10 @@ export default {
     de: { name: 'SSH-Schlüssel', tagline: 'OpenSSH-Schlüssel offline erzeugen und prüfen' },
     es: { name: 'Claves SSH', tagline: 'Generar e inspeccionar claves OpenSSH sin conexión' },
     zh: { name: 'SSH 密钥', tagline: '离线生成并查看 OpenSSH 密钥' },
+    fr: { name: 'Clés SSH', tagline: 'Générer et inspecter des clés OpenSSH hors ligne' },
+    pt: { name: 'Chaves SSH', tagline: 'Gere e inspecione chaves OpenSSH offline' },
+    ja: { name: 'SSH 鍵', tagline: 'OpenSSH 鍵をオフラインで生成、検査' },
+    ko: { name: 'SSH 키', tagline: 'OpenSSH 키를 오프라인에서 만들고 살펴보기' },
   },
   load: () => import('./index.js'),
 };

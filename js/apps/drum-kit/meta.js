@@ -12,6 +12,10 @@ export default {
     de: { name: 'Drumkit', tagline: 'Pads spielen und einen 16-Schritt-Beat bauen' },
     es: { name: 'Batería', tagline: 'Tocar pads y construir un ritmo de 16 pasos' },
     zh: { name: '架子鼓', tagline: '敲击鼓垫并编排 16 步节奏' },
+    fr: { name: 'Batterie', tagline: 'Jouer des pads et composer un rythme sur 16 pas' },
+    pt: { name: 'Bateria', tagline: 'Toque os pads e monte uma batida de 16 passos' },
+    ja: { name: 'ドラムキット', tagline: 'パッドを叩き、16 ステップのビートを組む' },
+    ko: { name: '드럼 키트', tagline: '패드를 치고 16스텝 비트 만들기' },
   },
   load: () => import('./index.js'),
 };

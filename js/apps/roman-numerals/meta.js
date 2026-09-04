@@ -12,6 +12,10 @@ export default {
     de: { name: 'Römische Zahlen', tagline: 'Zahlen in römische Ziffern und zurück' },
     es: { name: 'Números romanos', tagline: 'Convertir números a numeración romana y al revés' },
     zh: { name: '罗马数字', tagline: '在数字与罗马数字之间转换' },
+    fr: { name: 'Chiffres romains', tagline: 'Convertir des nombres depuis et vers les chiffres romains' },
+    pt: { name: 'Números romanos', tagline: 'Converta números de e para algarismos romanos' },
+    ja: { name: 'ローマ数字', tagline: '数とローマ数字を相互変換' },
+    ko: { name: '로마 숫자', tagline: '숫자와 로마 숫자를 서로 바꾸기' },
   },
   load: () => import('./index.js'),
 };

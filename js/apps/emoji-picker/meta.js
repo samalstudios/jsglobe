@@ -12,6 +12,10 @@ export default {
     de: { name: 'Emoji-Auswahl', tagline: 'Emoji mit Codepunkten durchsuchen und kopieren' },
     es: { name: 'Selector de emoji', tagline: 'Explorar, buscar y copiar emoji con sus puntos de código' },
     zh: { name: 'Emoji 选择器', tagline: '浏览、搜索并复制 emoji 及其码位' },
+    fr: { name: 'Sélecteur d\'emoji', tagline: 'Parcourir, chercher et copier des emoji avec leurs points de code' },
+    pt: { name: 'Seletor de emoji', tagline: 'Navegue, busque e copie emoji com seus code points' },
+    ja: { name: '絵文字ピッカー', tagline: '絵文字をコードポイント付きで閲覧、検索、コピー' },
+    ko: { name: '이모지 고르기', tagline: '이모지를 코드 포인트와 함께 훑고 찾고 복사하기' },
   },
   load: () => import('./index.js'),
 };

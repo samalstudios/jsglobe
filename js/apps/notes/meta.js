@@ -13,6 +13,10 @@ export default {
     de: { name: 'Notizen', tagline: 'Schnelle Notizen in diesem Arbeitsbereich' },
     es: { name: 'Notas', tagline: 'Notas rápidas guardadas en este espacio de trabajo' },
     zh: { name: '备忘', tagline: '保存在此工作区的速记' },
+    fr: { name: 'Notes', tagline: 'Notes rapides enregistrées dans cet espace de travail' },
+    pt: { name: 'Notas', tagline: 'Anotações rápidas salvas nesta área de trabalho' },
+    ja: { name: 'メモ', tagline: 'このワークスペースに保存される走り書き' },
+    ko: { name: '메모', tagline: '이 작업 공간에 저장되는 짧은 메모' },
   },
   load: () => import('./index.js'),
 };

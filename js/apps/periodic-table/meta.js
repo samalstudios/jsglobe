@@ -14,6 +14,10 @@ export default {
     de: { name: 'Periodensystem', tagline: 'Alle 118 Elemente mit allen Eigenschaften' },
     es: { name: 'Tabla periódica', tagline: 'Los 118 elementos con todas sus propiedades' },
     zh: { name: '元素周期表', tagline: '全部 118 种元素及完整属性' },
+    fr: { name: 'Tableau périodique', tagline: 'Les 118 éléments avec toutes leurs propriétés' },
+    pt: { name: 'Tabela periódica', tagline: 'Todos os 118 elementos com suas propriedades' },
+    ja: { name: '周期表', tagline: '118 元素すべてを全項目つきで' },
+    ko: { name: '주기율표', tagline: '118개 원소 전부와 그 성질' },
   },
   load: () => import('./index.js'),
 };

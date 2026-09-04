@@ -13,6 +13,10 @@ export default {
     de: { name: 'MIDI-Keyboard', tagline: 'Spielbarer Synthesizer mit Computertastatur und MIDI-Eingang' },
     es: { name: 'Teclado MIDI', tagline: 'Sintetizador con el teclado del ordenador y entrada MIDI' },
     zh: { name: 'MIDI 键盘', tagline: '可用电脑键盘与 MIDI 输入演奏的合成器' },
+    fr: { name: 'Clavier MIDI', tagline: 'Synthé jouable au clavier d\'ordinateur et en MIDI' },
+    pt: { name: 'Teclado MIDI', tagline: 'Sintetizador tocável pelo teclado do computador e por MIDI' },
+    ja: { name: 'MIDI キーボード', tagline: 'PC キーボードと MIDI 入力で弾けるシンセ' },
+    ko: { name: 'MIDI 건반', tagline: '컴퓨터 자판과 MIDI 입력으로 연주하는 신스' },
   },
   load: () => import('./index.js'),
 };

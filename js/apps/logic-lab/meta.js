@@ -13,6 +13,10 @@ export default {
     de: { name: 'Logiklabor', tagline: 'Gatter, Flipflops, Zähler, Decoder und LED-Anzeigen' },
     es: { name: 'Laboratorio de lógica', tagline: 'Puertas, biestables, contadores, decodificadores y pantallas LED' },
     zh: { name: '逻辑实验室', tagline: '逻辑门、触发器、计数器、译码器与 LED 显示' },
+    fr: { name: 'Labo logique', tagline: 'Portes, bascules, compteurs, décodeurs et afficheurs LED' },
+    pt: { name: 'Laboratório de lógica', tagline: 'Portas, flip-flops, contadores, decodificadores e displays de LED' },
+    ja: { name: 'ロジックラボ', tagline: 'ゲート、フリップフロップ、カウンタ、デコーダ、LED 表示' },
+    ko: { name: '논리 실험실', tagline: '게이트, 플립플롭, 카운터, 디코더, LED 표시' },
   },
   load: () => import('./index.js'),
 };

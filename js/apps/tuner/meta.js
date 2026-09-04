@@ -13,6 +13,10 @@ export default {
     de: { name: 'Stimmgerät', tagline: 'Gitarre, Bass oder Ukulele nach Gehör oder Mikrofon stimmen' },
     es: { name: 'Afinador', tagline: 'Afinar guitarra, bajo o ukelele de oído o por micrófono' },
     zh: { name: '调音器', tagline: '用耳朵或麦克风为吉他、贝斯或尤克里里调音' },
+    fr: { name: 'Accordeur', tagline: 'Accorder guitare, basse ou ukulélé à l\'oreille ou au micro' },
+    pt: { name: 'Afinador', tagline: 'Afine violão, baixo ou ukulele de ouvido ou pelo microfone' },
+    ja: { name: 'チューナー', tagline: 'ギター、ベース、ウクレレを耳かマイクで合わせる' },
+    ko: { name: '튜너', tagline: '기타, 베이스, 우쿨렐레를 귀나 마이크로 맞추기' },
   },
   load: () => import('./index.js'),
 };

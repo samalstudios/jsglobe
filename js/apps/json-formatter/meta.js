@@ -12,6 +12,10 @@ export default {
     de: { name: 'JSON-Formatierer', tagline: 'JSON formatieren, prüfen, minimieren und erkunden' },
     es: { name: 'Formateador JSON', tagline: 'Formatear, validar, minificar y explorar JSON' },
     zh: { name: 'JSON 格式化', tagline: '格式化、校验、压缩并浏览 JSON' },
+    fr: { name: 'Formateur JSON', tagline: 'Formater, valider, minifier et explorer du JSON' },
+    pt: { name: 'Formatador JSON', tagline: 'Formate, valide, minifique e explore JSON' },
+    ja: { name: 'JSON 整形', tagline: 'JSON の整形、検証、圧縮、閲覧' },
+    ko: { name: 'JSON 정리', tagline: 'JSON을 정리하고 검사하고 줄이고 살펴보기' },
   },
   load: () => import('./index.js'),
 };

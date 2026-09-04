@@ -13,6 +13,10 @@ export default {
     de: { name: 'Compose zu K8s', tagline: 'Eine Compose-Datei in Kubernetes-Manifeste umwandeln' },
     es: { name: 'Compose a K8s', tagline: 'Convertir un archivo compose en manifiestos de Kubernetes' },
     zh: { name: 'Compose 转 K8s', tagline: '把 compose 文件转成 Kubernetes 清单' },
+    fr: { name: 'Compose vers K8s', tagline: 'Transformer un fichier compose en manifestes Kubernetes' },
+    pt: { name: 'Compose para K8s', tagline: 'Transforme um arquivo compose em manifestos Kubernetes' },
+    ja: { name: 'Compose から K8s へ', tagline: 'compose ファイルを Kubernetes マニフェストに変換' },
+    ko: { name: 'Compose에서 K8s로', tagline: 'compose 파일을 쿠버네티스 매니페스트로 바꾸기' },
   },
   load: () => import('./index.js'),
 };

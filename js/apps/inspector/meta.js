@@ -13,6 +13,10 @@ export default {
     de: { name: 'Inspector AI', tagline: 'Fragen an eigene Dokumente stellen, beantwortet mit Belegen' },
     es: { name: 'Inspector AI', tagline: 'Haz preguntas a tus documentos y recibe respuestas con referencias' },
     zh: { name: 'Inspector AI', tagline: '向自己的文档提问，答案附带出处' },
+    fr: { name: 'Inspector AI', tagline: 'Poser des questions à ses propres documents, avec les références' },
+    pt: { name: 'Inspector AI', tagline: 'Faça perguntas aos seus documentos, com referências' },
+    ja: { name: 'Inspector AI', tagline: '自分の文書に質問し、根拠つきで答えを得る' },
+    ko: { name: 'Inspector AI', tagline: '자기 문서에 질문하고 근거와 함께 답 받기' },
   },
   load: () => import('./index.js'),
 };

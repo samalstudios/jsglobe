@@ -12,6 +12,10 @@ export default {
     de: { name: 'API-Spec-Editor', tagline: 'OpenAPI-Dokumente bearbeiten und prüfen' },
     es: { name: 'Editor de API', tagline: 'Editar y comprobar documentos OpenAPI' },
     zh: { name: 'API 规范编辑器', tagline: '编辑并校验 OpenAPI 文档' },
+    fr: { name: 'Éditeur de spec API', tagline: 'Modifier et vérifier des documents OpenAPI' },
+    pt: { name: 'Editor de spec de API', tagline: 'Edite e verifique documentos OpenAPI' },
+    ja: { name: 'API 仕様エディタ', tagline: 'OpenAPI 文書の編集と検査' },
+    ko: { name: 'API 명세 편집기', tagline: 'OpenAPI 문서를 편집하고 검사하기' },
   },
   load: () => import('./index.js'),
 };

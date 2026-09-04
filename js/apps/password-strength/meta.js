@@ -12,6 +12,10 @@ export default {
     de: { name: 'Passwortstärke', tagline: 'Entropie, Schwachstellen und Knackdauer' },
     es: { name: 'Fuerza de contraseña', tagline: 'Entropía, debilidades y tiempo para descifrarla' },
     zh: { name: '密码强度', tagline: '熵值、弱点与破解所需时间' },
+    fr: { name: 'Force du mot de passe', tagline: 'Entropie, faiblesses et temps de cassage' },
+    pt: { name: 'Força da senha', tagline: 'Entropia, fraquezas e tempo até ser quebrada' },
+    ja: { name: 'パスワード強度', tagline: 'エントロピー、弱点、解読までの時間' },
+    ko: { name: '비밀번호 강도', tagline: '엔트로피, 약점, 깨지기까지 걸리는 시간' },
   },
   load: () => import('./index.js'),
 };

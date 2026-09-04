@@ -13,6 +13,10 @@ export default {
     de: { name: 'Kalender', tagline: 'Monatsansicht mit Terminen pro Arbeitsbereich' },
     es: { name: 'Calendario', tagline: 'Vista mensual con eventos guardados por espacio' },
     zh: { name: '日历', tagline: '按工作区保存日程的月视图' },
+    fr: { name: 'Calendrier', tagline: 'Vue mensuelle avec événements par espace de travail' },
+    pt: { name: 'Calendário', tagline: 'Visão mensal com eventos por área de trabalho' },
+    ja: { name: 'カレンダー', tagline: 'ワークスペースごとに予定を保存する月表示' },
+    ko: { name: '달력', tagline: '작업 공간마다 일정을 저장하는 월간 보기' },
   },
   load: () => import('./index.js'),
 };

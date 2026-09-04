@@ -12,6 +12,10 @@ export default {
     de: { name: 'ASCII-Art', tagline: 'Textbanner und Bild-zu-ASCII-Umwandlung' },
     es: { name: 'Arte ASCII', tagline: 'Banners de texto y conversión de imagen a ASCII' },
     zh: { name: 'ASCII 艺术', tagline: '文字横幅与图片转 ASCII' },
+    fr: { name: 'Art ASCII', tagline: 'Bannières de texte et conversion d\'images en ASCII' },
+    pt: { name: 'Arte ASCII', tagline: 'Banners de texto e conversão de imagem em ASCII' },
+    ja: { name: 'アスキーアート', tagline: '文字バナーと画像のアスキー変換' },
+    ko: { name: '아스키 아트', tagline: '글자 배너와 이미지의 아스키 변환' },
   },
   load: () => import('./index.js'),
 };

@@ -12,6 +12,10 @@ export default {
     de: { name: 'Einheiten', tagline: 'Länge, Masse, Daten, Temperatur und Zeit' },
     es: { name: 'Unidades', tagline: 'Longitud, masa, datos, temperatura y tiempo' },
     zh: { name: '单位换算', tagline: '长度、质量、数据、温度与时间' },
+    fr: { name: 'Convertisseur d\'unités', tagline: 'Longueur, masse, données, température et temps' },
+    pt: { name: 'Conversor de unidades', tagline: 'Comprimento, massa, dados, temperatura e tempo' },
+    ja: { name: '単位変換', tagline: '長さ、質量、データ量、温度、時間' },
+    ko: { name: '단위 변환', tagline: '길이, 질량, 데이터, 온도, 시간' },
   },
   load: () => import('./index.js'),
 };

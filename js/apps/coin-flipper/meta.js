@@ -13,6 +13,10 @@ export default {
     de: { name: 'Münzwurf', tagline: 'Eine Münze werfen und zusehen, wie sich die Quote einpendelt' },
     es: { name: 'Lanzador de monedas', tagline: 'Lanza una moneda y observa cómo se equilibra la probabilidad' },
     zh: { name: '抛硬币', tagline: '抛出硬币，看概率如何趋于均衡' },
+    fr: { name: 'Pile ou face', tagline: 'Lancer une pièce et voir les probabilités s\'équilibrer' },
+    pt: { name: 'Cara ou coroa', tagline: 'Jogue uma moeda e veja as probabilidades se equilibrarem' },
+    ja: { name: 'コイン投げ', tagline: 'コインを投げて確率がならされる様子を見る' },
+    ko: { name: '동전 던지기', tagline: '동전을 던져 확률이 고르게 되는 것을 보기' },
   },
   load: () => import('./index.js'),
 };

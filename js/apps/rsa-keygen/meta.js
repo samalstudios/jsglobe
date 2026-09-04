@@ -12,6 +12,10 @@ export default {
     de: { name: 'Schlüsselpaar', tagline: 'RSA- und Elliptische-Kurven-Schlüssel als PEM erzeugen' },
     es: { name: 'Par de claves', tagline: 'Generar claves RSA y de curva elíptica en PEM' },
     zh: { name: '密钥对', tagline: '生成 PEM 格式的 RSA 与椭圆曲线密钥' },
+    fr: { name: 'Paire de clés', tagline: 'Générer des clés RSA et à courbe elliptique en PEM' },
+    pt: { name: 'Par de chaves', tagline: 'Gere chaves RSA e de curva elíptica em PEM' },
+    ja: { name: '鍵ペア', tagline: 'RSA と楕円曲線の鍵を PEM で生成' },
+    ko: { name: '키 쌍', tagline: 'RSA와 타원 곡선 키를 PEM으로 만들기' },
   },
   load: () => import('./index.js'),
 };

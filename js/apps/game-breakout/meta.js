@@ -13,6 +13,10 @@ export default {
     de: { name: 'Breakout', tagline: 'Den Ball zurückspielen und alle Steine räumen' },
     es: { name: 'Breakout', tagline: 'Devolver la bola y romper todos los ladrillos' },
     zh: { name: '打砖块', tagline: '接住小球并击碎每一块砖' },
+    fr: { name: 'Casse-briques', tagline: 'Faire rebondir la balle et casser toutes les briques' },
+    pt: { name: 'Breakout', tagline: 'Rebata a bola e limpe todos os tijolos' },
+    ja: { name: 'ブロック崩し', tagline: 'ボールを弾ませてブロックをすべて壊す' },
+    ko: { name: '벽돌 깨기', tagline: '공을 튕겨 벽돌을 모두 없애기' },
   },
   load: () => import('./index.js'),
 };

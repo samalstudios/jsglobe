@@ -12,6 +12,10 @@ export default {
     de: { name: 'Markdown', tagline: 'Markdown schreiben und das HTML ansehen' },
     es: { name: 'Markdown', tagline: 'Escribir markdown y ver el HTML' },
     zh: { name: 'Markdown', tagline: '编写 Markdown 并预览 HTML' },
+    fr: { name: 'Markdown', tagline: 'Écrire du markdown et prévisualiser le HTML' },
+    pt: { name: 'Markdown', tagline: 'Escreva markdown e veja o HTML' },
+    ja: { name: 'Markdown', tagline: 'markdown を書いて HTML を確認' },
+    ko: { name: '마크다운', tagline: '마크다운을 쓰고 HTML 미리 보기' },
   },
   load: () => import('./index.js'),
 };

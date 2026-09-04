@@ -12,6 +12,10 @@ export default {
     de: { name: 'Keycode-Info', tagline: 'Tastaturereignisse Taste für Taste untersuchen' },
     es: { name: 'Códigos de tecla', tagline: 'Inspeccionar eventos de teclado tecla a tecla' },
     zh: { name: '键码信息', tagline: '逐键查看键盘事件' },
+    fr: { name: 'Infos touches', tagline: 'Inspecter les événements clavier touche par touche' },
+    pt: { name: 'Informações de tecla', tagline: 'Inspecione eventos de teclado tecla a tecla' },
+    ja: { name: 'キーコード情報', tagline: 'キーボードイベントを 1 キーずつ調べる' },
+    ko: { name: '키코드 정보', tagline: '키보드 이벤트를 키마다 살펴보기' },
   },
   load: () => import('./index.js'),
 };

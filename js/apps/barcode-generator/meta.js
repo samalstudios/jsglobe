@@ -12,6 +12,10 @@ export default {
     de: { name: 'Barcode', tagline: 'Code 128, EAN und Code 39 als SVG' },
     es: { name: 'Código de barras', tagline: 'Códigos Code 128, EAN y Code 39 en SVG' },
     zh: { name: '条形码', tagline: '输出 SVG 格式的 Code 128、EAN 与 Code 39' },
+    fr: { name: 'Code-barres', tagline: 'Codes 128, EAN et Code 39 en SVG' },
+    pt: { name: 'Código de barras', tagline: 'Códigos 128, EAN e Code 39 em SVG' },
+    ja: { name: 'バーコード', tagline: 'Code 128、EAN、Code 39 を SVG で' },
+    ko: { name: '바코드', tagline: 'Code 128, EAN, Code 39을 SVG로' },
   },
   load: () => import('./index.js'),
 };

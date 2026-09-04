@@ -13,6 +13,10 @@ export default {
     de: { name: 'Physiklabor', tagline: 'Kugeln, Blöcke, Federn, Stangen, Zylinder und Motoren' },
     es: { name: 'Laboratorio de física', tagline: 'Bolas, bloques, muelles, barras, cilindros y motores' },
     zh: { name: '物理实验室', tagline: '小球、方块、弹簧、连杆、液压缸与马达' },
+    fr: { name: 'Labo physique', tagline: 'Balles, blocs, ressorts, tiges, vérins et moteurs' },
+    pt: { name: 'Laboratório de física', tagline: 'Bolas, blocos, molas, hastes, macacos e motores' },
+    ja: { name: '物理ラボ', tagline: '球、箱、ばね、棒、ジャッキ、モーター' },
+    ko: { name: '물리 실험실', tagline: '공, 블록, 용수철, 막대, 잭, 모터' },
   },
   load: () => import('./index.js'),
 };

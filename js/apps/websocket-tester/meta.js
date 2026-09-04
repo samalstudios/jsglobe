@@ -12,6 +12,10 @@ export default {
     de: { name: 'WebSocket-Tester', tagline: 'Mit einem Socket verbinden und die Frames beobachten' },
     es: { name: 'Probador WebSocket', tagline: 'Conectar a un socket y observar los frames' },
     zh: { name: 'WebSocket 测试', tagline: '连接 socket 并观察数据帧' },
+    fr: { name: 'Testeur WebSocket', tagline: 'Se connecter à un socket et observer les trames' },
+    pt: { name: 'Testador de WebSocket', tagline: 'Conecte a um socket e acompanhe os quadros' },
+    ja: { name: 'WebSocket テスタ', tagline: 'ソケットに接続してフレームを観察' },
+    ko: { name: 'WebSocket 시험기', tagline: '소켓에 붙어 프레임 지켜보기' },
   },
   load: () => import('./index.js'),
 };

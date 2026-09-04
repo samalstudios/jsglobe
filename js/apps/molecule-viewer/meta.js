@@ -14,6 +14,10 @@ export default {
     de: { name: 'Molekülbetrachter', tagline: 'Vitamine, Wirkstoffe und berühmte Moleküle in 3D' },
     es: { name: 'Visor de moléculas', tagline: 'Vitaminas, fármacos y moléculas famosas en 3D' },
     zh: { name: '分子查看器', tagline: '以 3D 呈现维生素、药物与著名分子' },
+    fr: { name: 'Visionneuse de molécules', tagline: 'Vitamines, médicaments et molécules célèbres en 3D' },
+    pt: { name: 'Visualizador de moléculas', tagline: 'Vitaminas, medicamentos e moléculas famosas em 3D' },
+    ja: { name: '分子ビューア', tagline: 'ビタミン、薬、有名な分子を 3D で' },
+    ko: { name: '분자 보기', tagline: '비타민, 약, 유명한 분자를 3D로' },
   },
   load: () => import('./index.js'),
 };

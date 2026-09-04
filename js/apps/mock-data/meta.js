@@ -12,6 +12,10 @@ export default {
     de: { name: 'Testdaten', tagline: 'Realistische Testdaten aus einer Feldliste erzeugen' },
     es: { name: 'Datos de prueba', tagline: 'Generar datos de prueba realistas desde una lista de campos' },
     zh: { name: '测试数据', tagline: '按字段列表生成逼真的测试数据' },
+    fr: { name: 'Données de test', tagline: 'Générer des données réalistes à partir d\'une liste de champs' },
+    pt: { name: 'Dados de teste', tagline: 'Gere dados realistas a partir de uma lista de campos' },
+    ja: { name: 'ダミーデータ', tagline: '項目一覧から現実的なテストデータを生成' },
+    ko: { name: '가짜 데이터', tagline: '필드 목록에서 그럴듯한 시험 데이터 만들기' },
   },
   load: () => import('./index.js'),
 };

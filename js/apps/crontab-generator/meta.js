@@ -12,6 +12,10 @@ export default {
     de: { name: 'Crontab', tagline: 'Cron-Ausdrücke erklären und nächste Läufe anzeigen' },
     es: { name: 'Crontab', tagline: 'Explicar expresiones cron y ver las próximas ejecuciones' },
     zh: { name: 'Crontab', tagline: '解释 cron 表达式并预览下次运行' },
+    fr: { name: 'Crontab', tagline: 'Expliquer les expressions cron et prévoir les prochaines exécutions' },
+    pt: { name: 'Crontab', tagline: 'Explique expressões cron e veja as próximas execuções' },
+    ja: { name: 'crontab', tagline: 'cron 式を解説し、次の実行を予測' },
+    ko: { name: 'crontab', tagline: 'cron 식을 설명하고 다음 실행을 미리 보기' },
   },
   load: () => import('./index.js'),
 };

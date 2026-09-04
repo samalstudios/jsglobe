@@ -12,6 +12,10 @@ export default {
     de: { name: 'IBAN-Prüfung', tagline: 'Bankkontonummern prüfen und ihre Teile lesen' },
     es: { name: 'Validador de IBAN', tagline: 'Comprobar números de cuenta y leer sus partes' },
     zh: { name: 'IBAN 校验', tagline: '校验银行账号并解读其组成' },
+    fr: { name: 'Validateur IBAN', tagline: 'Vérifier des numéros de compte et lire leurs parties' },
+    pt: { name: 'Validador de IBAN', tagline: 'Verifique números de conta e leia suas partes' },
+    ja: { name: 'IBAN 検証', tagline: '口座番号を検査し、各部分を読む' },
+    ko: { name: 'IBAN 검사', tagline: '계좌 번호를 확인하고 구성을 읽기' },
   },
   load: () => import('./index.js'),
 };

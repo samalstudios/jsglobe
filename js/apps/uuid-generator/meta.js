@@ -13,6 +13,10 @@ export default {
     de: { name: 'UUID', tagline: 'v4- und v7-Kennungen in großer Zahl erzeugen' },
     es: { name: 'UUID', tagline: 'Generar identificadores v4 y v7 en lote' },
     zh: { name: 'UUID', tagline: '批量生成 v4 与 v7 标识符' },
+    fr: { name: 'UUID', tagline: 'Générer des identifiants v4 et v7 en série' },
+    pt: { name: 'UUID', tagline: 'Gere identificadores v4 e v7 em lote' },
+    ja: { name: 'UUID', tagline: 'v4 と v7 の識別子をまとめて生成' },
+    ko: { name: 'UUID', tagline: 'v4와 v7 식별자를 한꺼번에 만들기' },
   },
   load: () => import('./index.js'),
 };

@@ -13,6 +13,10 @@ export default {
     de: { name: 'KI-Chat', tagline: 'Mit einem Modell auf diesem Gerät chatten' },
     es: { name: 'Chat con IA', tagline: 'Chatear con un modelo que corre en este dispositivo' },
     zh: { name: 'AI 聊天', tagline: '与在本机运行的模型对话' },
+    fr: { name: 'Chat IA', tagline: 'Discuter avec un modèle qui tourne sur cet appareil' },
+    pt: { name: 'Chat de IA', tagline: 'Converse com um modelo rodando neste dispositivo' },
+    ja: { name: 'AI チャット', tagline: 'この端末で動くモデルと話す' },
+    ko: { name: 'AI 채팅', tagline: '이 기기에서 도는 모델과 대화하기' },
   },
   load: () => import('./index.js'),
 };

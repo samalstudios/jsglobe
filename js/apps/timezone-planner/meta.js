@@ -12,6 +12,10 @@ export default {
     de: { name: 'Zeitzonen', tagline: 'Städte vergleichen und gemeinsame Stunden finden' },
     es: { name: 'Zonas horarias', tagline: 'Alinear ciudades y encontrar las horas comunes' },
     zh: { name: '时区', tagline: '对齐各城市并找出重叠的时段' },
+    fr: { name: 'Fuseaux horaires', tagline: 'Aligner des villes et trouver les heures communes' },
+    pt: { name: 'Fusos horários', tagline: 'Alinhe cidades e ache as horas em comum' },
+    ja: { name: 'タイムゾーン', tagline: '都市を並べて重なる時間帯を探す' },
+    ko: { name: '시간대', tagline: '도시를 나란히 놓고 겹치는 시간 찾기' },
   },
   load: () => import('./index.js'),
 };

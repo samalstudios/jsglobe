@@ -12,6 +12,10 @@ export default {
     de: { name: 'Kubernetes', tagline: 'Deployment-, Service- und Ingress-Manifeste erzeugen' },
     es: { name: 'Kubernetes', tagline: 'Generar manifiestos de deployment, service e ingress' },
     zh: { name: 'Kubernetes', tagline: '生成 deployment、service 与 ingress 清单' },
+    fr: { name: 'Kubernetes', tagline: 'Générer des manifestes deployment, service et ingress' },
+    pt: { name: 'Kubernetes', tagline: 'Gere manifestos de deployment, service e ingress' },
+    ja: { name: 'Kubernetes', tagline: 'deployment、service、ingress のマニフェストを生成' },
+    ko: { name: '쿠버네티스', tagline: 'deployment, service, ingress 매니페스트 만들기' },
   },
   load: () => import('./index.js'),
 };

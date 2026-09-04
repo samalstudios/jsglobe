@@ -13,6 +13,10 @@ export default {
     de: { name: 'Dokumentenstudio', tagline: 'Dokumente schreiben, formatieren und als PDF oder Word exportieren, ganz im Browser' },
     es: { name: 'Estudio de documentos', tagline: 'Escribe, da formato y exporta documentos como PDF o Word, todo en el navegador' },
     zh: { name: '文档工作室', tagline: '在浏览器中撰写、排版并导出 PDF 或 Word 文档' },
+    fr: { name: 'Studio Documents', tagline: 'Rédiger, mettre en forme et exporter en PDF ou Word, entièrement dans le navigateur' },
+    pt: { name: 'Estúdio de Documentos', tagline: 'Escreva, formate e exporte documentos em PDF ou Word, inteiramente no navegador' },
+    ja: { name: 'ドキュメントスタジオ', tagline: '文書の作成、書式設定、PDF や Word への書き出しをすべてブラウザで' },
+    ko: { name: '문서 스튜디오', tagline: '문서를 쓰고 서식을 넣고 PDF나 Word로 내보내기, 전부 브라우저에서' },
   },
   load: () => import('./index.js'),
 };

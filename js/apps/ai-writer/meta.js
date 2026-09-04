@@ -12,6 +12,10 @@ export default {
     de: { name: 'KI-Autor', tagline: 'Zusammenfassen, umschreiben, übersetzen und korrigieren' },
     es: { name: 'Escritor IA', tagline: 'Resumir, reescribir, traducir y corregir' },
     zh: { name: 'AI 写作', tagline: '摘要、改写、翻译与校对' },
+    fr: { name: 'Rédacteur IA', tagline: 'Résumer, réécrire, traduire et relire' },
+    pt: { name: 'Escritor com IA', tagline: 'Resuma, reescreva, traduza e revise' },
+    ja: { name: 'AI ライター', tagline: '要約、書き換え、翻訳、校正' },
+    ko: { name: 'AI 글쓰기', tagline: '요약, 다시 쓰기, 번역, 교정' },
   },
   load: () => import('./index.js'),
 };

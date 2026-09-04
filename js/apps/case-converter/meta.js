@@ -12,6 +12,10 @@ export default {
     de: { name: 'Schreibweise', tagline: 'camelCase, snake_case, kebab-case und mehr' },
     es: { name: 'Conversor de mayúsculas', tagline: 'camelCase, snake_case, kebab-case y más' },
     zh: { name: '大小写转换', tagline: 'camelCase、snake_case、kebab-case 等' },
+    fr: { name: 'Convertisseur de casse', tagline: 'camelCase, snake_case, kebab-case et plus' },
+    pt: { name: 'Conversor de caixa', tagline: 'camelCase, snake_case, kebab-case e mais' },
+    ja: { name: 'ケース変換', tagline: 'camelCase、snake_case、kebab-case ほか' },
+    ko: { name: '표기법 변환', tagline: 'camelCase, snake_case, kebab-case 등' },
   },
   load: () => import('./index.js'),
 };

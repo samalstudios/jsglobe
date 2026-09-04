@@ -12,6 +12,10 @@ export default {
     de: { name: 'HTTP-Status', tagline: 'Durchsuchbare Referenz der HTTP-Statuscodes' },
     es: { name: 'Estados HTTP', tagline: 'Referencia de códigos de estado HTTP con búsqueda' },
     zh: { name: 'HTTP 状态码', tagline: '可搜索的 HTTP 状态码参考' },
+    fr: { name: 'Statuts HTTP', tagline: 'Référence consultable des codes de statut HTTP' },
+    pt: { name: 'Status HTTP', tagline: 'Referência pesquisável dos códigos de status HTTP' },
+    ja: { name: 'HTTP ステータス', tagline: 'HTTP ステータスコードを検索できる一覧' },
+    ko: { name: 'HTTP 상태', tagline: '검색할 수 있는 HTTP 상태 코드 참고서' },
   },
   load: () => import('./index.js'),
 };

@@ -13,6 +13,10 @@ export default {
     de: { name: 'Code-Scanner', tagline: 'QR-Codes und Barcodes aus Kamera, Bild oder Bildschirm lesen' },
     es: { name: 'Escáner de códigos', tagline: 'Lee códigos QR y de barras desde la cámara, una imagen o la pantalla' },
     zh: { name: '扫码器', tagline: '从摄像头、图片或屏幕读取二维码与条形码' },
+    fr: { name: 'Lecteur de codes', tagline: 'Lire des QR et codes-barres depuis la caméra, une image ou l\'écran' },
+    pt: { name: 'Leitor de códigos', tagline: 'Leia QR e códigos de barras pela câmera, por uma imagem ou pela tela' },
+    ja: { name: 'コードスキャナ', tagline: 'カメラ、画像、画面から QR とバーコードを読む' },
+    ko: { name: '코드 스캐너', tagline: '카메라, 사진, 화면에서 QR과 바코드 읽기' },
   },
   load: () => import('./index.js'),
 };

@@ -12,6 +12,10 @@ export default {
     de: { name: 'XML-Formatierer', tagline: 'XML- oder HTML-Markup einrücken und minimieren' },
     es: { name: 'Formateador XML', tagline: 'Indentar y minificar marcado XML o HTML' },
     zh: { name: 'XML 格式化', tagline: '缩进并压缩 XML 或 HTML 标记' },
+    fr: { name: 'Formateur XML', tagline: 'Indenter et minifier du balisage XML ou HTML' },
+    pt: { name: 'Formatador XML', tagline: 'Indente e minifique marcação XML ou HTML' },
+    ja: { name: 'XML 整形', tagline: 'XML や HTML の字下げと圧縮' },
+    ko: { name: 'XML 정리', tagline: 'XML이나 HTML 마크업을 들여쓰고 줄이기' },
   },
   load: () => import('./index.js'),
 };

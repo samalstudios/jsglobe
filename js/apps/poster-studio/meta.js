@@ -13,6 +13,10 @@ export default {
     de: { name: 'Poster-Studio', tagline: 'Poster und Social-Varianten mit Event-QR gestalten' },
     es: { name: 'Estudio de carteles', tagline: 'Diseñar carteles y variantes sociales con un QR de evento' },
     zh: { name: '海报工作室', tagline: '设计海报与社交版本，附带活动二维码' },
+    fr: { name: 'Studio d\'affiches', tagline: 'Créer des affiches et déclinaisons sociales avec un QR d\'événement' },
+    pt: { name: 'Estúdio de cartazes', tagline: 'Crie cartazes e versões para redes com um QR do evento' },
+    ja: { name: 'ポスタースタジオ', tagline: 'イベント QR 付きのポスターと SNS 用の派生を作る' },
+    ko: { name: '포스터 스튜디오', tagline: '행사 QR을 넣은 포스터와 소셜용 변형 만들기' },
   },
   load: () => import('./index.js'),
 };

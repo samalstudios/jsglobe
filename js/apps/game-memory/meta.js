@@ -12,6 +12,10 @@ export default {
     de: { name: 'Memory', tagline: 'Karten umdrehen und die passenden Paare finden' },
     es: { name: 'Memoria', tagline: 'Voltear cartas y encontrar las parejas' },
     zh: { name: '记忆翻牌', tagline: '翻开卡片并找出配对' },
+    fr: { name: 'Memory', tagline: 'Retourner les cartes et trouver les paires' },
+    pt: { name: 'Memória', tagline: 'Vire as cartas e encontre os pares' },
+    ja: { name: '神経衰弱', tagline: 'カードをめくって同じ絵柄を探す' },
+    ko: { name: '짝 맞추기', tagline: '카드를 뒤집어 같은 짝 찾기' },
   },
   load: () => import('./index.js'),
 };

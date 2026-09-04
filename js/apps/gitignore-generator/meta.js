@@ -13,6 +13,10 @@ export default {
     de: { name: 'GitIgnore-Generator', tagline: '.gitignore aus den verwendeten Werkzeugen bauen' },
     es: { name: 'Generador de GitIgnore', tagline: 'Crear un .gitignore a partir de tus herramientas' },
     zh: { name: 'GitIgnore 生成器', tagline: '根据所用工具生成 .gitignore' },
+    fr: { name: 'Générateur GitIgnore', tagline: 'Composer un .gitignore à partir de vos outils' },
+    pt: { name: 'Gerador de GitIgnore', tagline: 'Monte um .gitignore a partir das ferramentas que você usa' },
+    ja: { name: 'GitIgnore 生成', tagline: '使っているツールから .gitignore を組み立てる' },
+    ko: { name: 'GitIgnore 생성기', tagline: '쓰는 도구에서 .gitignore 만들기' },
   },
   load: () => import('./index.js'),
 };

@@ -13,6 +13,10 @@ export default {
     de: { name: 'Rechner', tagline: 'Ausdrücke mit Funktionen und Konstanten auswerten' },
     es: { name: 'Calculadora', tagline: 'Evaluar expresiones con funciones y constantes' },
     zh: { name: '计算器', tagline: '求值带函数与常量的表达式' },
+    fr: { name: 'Évaluateur mathématique', tagline: 'Évaluer des expressions avec fonctions et constantes' },
+    pt: { name: 'Avaliador matemático', tagline: 'Avalie expressões com funções e constantes' },
+    ja: { name: '数式評価', tagline: '関数と定数を含む式を計算' },
+    ko: { name: '수식 계산', tagline: '함수와 상수를 쓰는 식 계산하기' },
   },
   load: () => import('./index.js'),
 };

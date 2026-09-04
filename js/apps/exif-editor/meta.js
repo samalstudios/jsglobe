@@ -12,6 +12,10 @@ export default {
     de: { name: 'Exif-Metadaten', tagline: 'Metadaten aus JPEG-Fotos lesen und entfernen' },
     es: { name: 'Metadatos Exif', tagline: 'Leer y borrar metadatos de fotos JPEG' },
     zh: { name: 'Exif 元数据', tagline: '读取并清除 JPEG 照片的元数据' },
+    fr: { name: 'Métadonnées Exif', tagline: 'Lire et retirer les métadonnées des photos JPEG' },
+    pt: { name: 'Metadados Exif', tagline: 'Leia e remova metadados de fotos JPEG' },
+    ja: { name: 'Exif メタデータ', tagline: 'JPEG 写真のメタデータの読み取りと削除' },
+    ko: { name: 'Exif 메타데이터', tagline: 'JPEG 사진의 메타데이터를 읽고 지우기' },
   },
   load: () => import('./index.js'),
 };

@@ -13,6 +13,10 @@ export default {
     de: { name: 'Uhr', tagline: 'Weltzeituhren, Stoppuhr und Countdown' },
     es: { name: 'Reloj', tagline: 'Relojes mundiales, cronómetro y cuenta atrás' },
     zh: { name: '时钟', tagline: '世界时钟、秒表与倒计时' },
+    fr: { name: 'Horloge', tagline: 'Horloges mondiales, chronomètre et minuteur' },
+    pt: { name: 'Relógio', tagline: 'Relógios mundiais, cronômetro e temporizador' },
+    ja: { name: '時計', tagline: '世界時計、ストップウォッチ、カウントダウン' },
+    ko: { name: '시계', tagline: '세계 시계, 스톱워치, 카운트다운' },
   },
   load: () => import('./index.js'),
 };

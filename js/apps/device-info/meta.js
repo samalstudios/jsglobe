@@ -12,6 +12,10 @@ export default {
     de: { name: 'Geräteinfo', tagline: 'Alles, was der Browser über dieses Gerät weiß' },
     es: { name: 'Info del dispositivo', tagline: 'Todo lo que el navegador sabe de este dispositivo' },
     zh: { name: '设备信息', tagline: '浏览器所知的本机全部信息' },
+    fr: { name: 'Infos appareil', tagline: 'Tout ce que le navigateur sait de cet appareil' },
+    pt: { name: 'Informações do dispositivo', tagline: 'Tudo o que o navegador sabe sobre este dispositivo' },
+    ja: { name: 'デバイス情報', tagline: 'ブラウザがこの端末について知っていること' },
+    ko: { name: '기기 정보', tagline: '브라우저가 이 기기에 대해 아는 모든 것' },
   },
   load: () => import('./index.js'),
 };

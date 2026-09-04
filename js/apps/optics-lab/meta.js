@@ -13,6 +13,10 @@ export default {
     de: { name: 'Optiklabor', tagline: 'Linsen, Spiegel und Prismen mit echter Strahlverfolgung' },
     es: { name: 'Laboratorio de óptica', tagline: 'Lentes, espejos y prismas con trazado de rayos real' },
     zh: { name: '光学实验室', tagline: '透镜、反射镜与棱镜，真实光线追踪' },
+    fr: { name: 'Labo optique', tagline: 'Lentilles, miroirs et prismes avec vrai tracé de rayons' },
+    pt: { name: 'Laboratório de óptica', tagline: 'Lentes, espelhos e prismas com traçado de raios de verdade' },
+    ja: { name: '光学ラボ', tagline: 'レンズ、鏡、プリズムを本物の光線追跡で' },
+    ko: { name: '광학 실험실', tagline: '렌즈, 거울, 프리즘을 실제 광선 추적으로' },
   },
   load: () => import('./index.js'),
 };

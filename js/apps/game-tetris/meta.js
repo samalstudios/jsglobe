@@ -12,6 +12,10 @@ export default {
     de: { name: 'Blöcke', tagline: 'Fallende Steine stapeln und Reihen räumen' },
     es: { name: 'Bloques', tagline: 'Apilar piezas que caen y limpiar líneas' },
     zh: { name: '方块', tagline: '堆叠下落的方块并消除整行' },
+    fr: { name: 'Blocs', tagline: 'Empiler les pièces qui tombent et compléter des lignes' },
+    pt: { name: 'Blocos', tagline: 'Empilhe as peças que caem e complete linhas' },
+    ja: { name: 'ブロック', tagline: '落ちてくるピースを積んで列を消す' },
+    ko: { name: '블록', tagline: '떨어지는 조각을 쌓아 줄을 없애기' },
   },
   load: () => import('./index.js'),
 };

@@ -13,6 +13,10 @@ export default {
     de: { name: 'Würfelwurf', tagline: 'Beliebige Würfel werfen und sehen, wie sie fallen' },
     es: { name: 'Lanzador de dados', tagline: 'Tira cualquier dado y observa cómo caen los números' },
     zh: { name: '掷骰器', tagline: '投掷任意骰子并观察点数分布' },
+    fr: { name: 'Lanceur de dés', tagline: 'Lancer n\'importe quel dé et voir la distribution' },
+    pt: { name: 'Rolador de dados', tagline: 'Role qualquer dado e veja como os números caem' },
+    ja: { name: 'サイコロ', tagline: 'どんなサイコロも振って出目の分布を見る' },
+    ko: { name: '주사위', tagline: '어떤 주사위든 굴리고 숫자 분포 보기' },
   },
   load: () => import('./index.js'),
 };

@@ -13,6 +13,10 @@ export default {
     de: { name: 'Steuerrechner', tagline: 'Nettogehalt nach Steuern in 23 Ländern, vollständig auf deinem Gerät' },
     es: { name: 'Calculadora de impuestos', tagline: 'Calcula el sueldo neto tras impuestos en 23 países, todo en tu dispositivo' },
     zh: { name: '税费计算器', tagline: '计算 23 个国家的税后净收入，全部在本机完成' },
+    fr: { name: 'Calculateur d\'impôt', tagline: 'Calculer le net après impôt dans 23 pays, entièrement sur votre appareil' },
+    pt: { name: 'Calculadora de imposto', tagline: 'Calcule o líquido após impostos em 23 países, inteiramente no seu dispositivo' },
+    ja: { name: '税計算', tagline: '23 か国の手取りを、すべて端末上で計算' },
+    ko: { name: '세금 계산기', tagline: '23개국의 세후 실수령액을 전부 기기에서 계산' },
   },
   load: () => import('./index.js'),
 };
