@@ -18,6 +18,9 @@ import { decodeQrMatrix, scanQrImage, correctBlock } from '../js/lib/qr-decode.j
 import {
   encodeCode128, encodeEan13, encodeEan8, encodeCode39, decodeBarcodeRuns, eanCheckDigit,
 } from '../js/lib/barcode.js';
+import {
+  fullUuid, shortUuid, isAssigned, assignedNumber, nameFor, decodeValue, parsePayload, toHex, isUuid,
+} from '../js/lib/gatt.js';
 
 let pass = 0;
 const failures = [];
@@ -797,10 +800,56 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
   ok('a footer lands on the page', layoutToPdf(layoutDocument([{ type: 'p', runs: [{ text: 'one' }] }], { size: 'a4' }), { footer: 'Draft' }).length > plainPdf.length);
 }
 
+// ---- bluetooth gatt: identifiers and readings from the specification ---
+{
+  const bytes = (...values) => new DataView(Uint8Array.from(values).buffer);
+
+  ok('16 bit shorthand expands to the base uuid', fullUuid('180f') === '0000180f-0000-1000-8000-00805f9b34fb');
+  ok('a 0x prefix is shorthand too', fullUuid('0x2A19') === '00002a19-0000-1000-8000-00805f9b34fb');
+  ok('a full uuid passes through unchanged', fullUuid('6E400001-B5A3-F393-E0A9-E50E24DCCA9E') === '6e400001-b5a3-f393-e0a9-e50e24dcca9e');
+  ok('nonsense is not a uuid', fullUuid('zzz') === null && !isUuid('1234'));
+
+  ok('a base uuid is assigned', isAssigned('0000180d-0000-1000-8000-00805f9b34fb'));
+  ok('a vendor uuid is not assigned', !isAssigned('6e400001-b5a3-f393-e0a9-e50e24dcca9e'));
+  ok('a uuid outside the first block is not assigned', !isAssigned('1234180d-0000-1000-8000-00805f9b34fb'));
+  ok('the assigned number is the second half of the first block', assignedNumber('0000180f-0000-1000-8000-00805f9b34fb') === '180f');
+
+  ok('an assigned uuid is shown as four digits', shortUuid('0000180f-0000-1000-8000-00805f9b34fb') === '0x180F');
+  ok('a vendor uuid is shown whole', shortUuid('6e400001-b5a3-f393-e0a9-e50e24dcca9e') === '6e400001-b5a3-f393-e0a9-e50e24dcca9e');
+
+  ok('an assigned service is named', nameFor(fullUuid('180d')) === 'Heart rate');
+  ok('an assigned characteristic is named', nameFor(fullUuid('2a19'), 'characteristic') === 'Battery level');
+  ok('a descriptor is named', nameFor(fullUuid('2901'), 'descriptor') === 'Description');
+  ok('nordic uart keeps its real uuid', nameFor('6e400001-b5a3-f393-e0a9-e50e24dcca9e') === 'Nordic UART');
+  ok('an unknown uuid has no name', nameFor('9f2a1b30-4c7e-4d21-93b8-1f0e5a6c7d80') === null);
+
+  ok('battery level reads as a percentage', decodeValue(fullUuid('2a19'), bytes(84)).text === '84 %');
+  ok('temperature is hundredths of a degree', decodeValue(fullUuid('2a6e'), bytes(0x39, 0x08)).text === '21.05 °C');
+  ok('temperature can be below zero', decodeValue(fullUuid('2a6e'), bytes(0xc7, 0xf7)).text === '-21.05 °C');
+  ok('humidity is hundredths of a percent', decodeValue(fullUuid('2a6f'), bytes(0x10, 0x17)).text === '59.04 % RH');
+  ok('pressure is tenths of a pascal', decodeValue(fullUuid('2a6d'), bytes(0x40, 0x0d, 0x03, 0x00)).text === '20000 Pa');
+
+  // the heart rate flags byte: bit 0 clear means the rate is a single byte
+  ok('a narrow heart rate is one byte', decodeValue(fullUuid('2a37'), bytes(0x00, 72)).text === '72 bpm');
+  ok('a wide heart rate is two bytes', decodeValue(fullUuid('2a37'), bytes(0x01, 0x2c, 0x01)).text === '300 bpm');
+  ok('a heart rate needs more than its flags', decodeValue(fullUuid('2a37'), bytes(0x00)) === null);
+
+  ok('a body sensor location is named', decodeValue(fullUuid('2a38'), bytes(2)).text === 'Wrist');
+  ok('a text characteristic reads as text', decodeValue(fullUuid('2a29'), bytes(65, 99, 109, 101)).text === 'Acme');
+  ok('a trailing zero is dropped from text', decodeValue(fullUuid('2a24'), bytes(65, 66, 0, 0)).text === 'AB');
+  ok('bytes that say nothing decode to nothing', decodeValue('9f2a1b30-4c7e-4d21-93b8-1f0e5a6c7d80', bytes(0x01, 0xff, 0x00)) === null);
+  ok('an empty value decodes to nothing', decodeValue(fullUuid('2a19'), bytes()) === null);
+
+  ok('bytes are written as hex pairs', toHex(bytes(0x01, 0xff, 0x00, 0x2c)) === '01 ff 00 2c');
+  ok('hex is parsed however it is spaced', [...parsePayload('01 FF-00:2c', 'hex')].join(',') === '1,255,0,44');
+  ok('text is parsed as its bytes', [...parsePayload('Hi', 'text')].join(',') === '72,105');
+  ok('an empty payload is empty', parsePayload('  ', 'hex').length === 0);
+}
+
 if (failures.length) {
   console.error(`library check failed with ${failures.length} problem${failures.length === 1 ? '' : 's'}:`);
   failures.forEach((problem) => console.error(`  - ${problem}`));
   process.exit(1);
 }
 
-console.log(`libraries ok: ${pass} checks across chess move generation, optics, polygon clipping, writing and reading codes, tax, and documents`);
+console.log(`libraries ok: ${pass} checks across chess move generation, optics, polygon clipping, writing and reading codes, tax, documents, and bluetooth`);

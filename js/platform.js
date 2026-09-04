@@ -44,6 +44,7 @@ export * as docLayout from './lib/doc-layout.js';
 export * as syntax from './lib/syntax.js';
 export * as gitignore from './lib/gitignore.js';
 export * as caret from './lib/caret.js';
+export * as gatt from './lib/gatt.js';
 export * as alphabets from './lib/alphabets.js';
 export * as httpStatus from './lib/http-status.js';
 export * as rag from './lib/rag.js';
@@ -98,6 +99,7 @@ export const SURFACE = {
   syntax: 'Colour code in a dozen languages, as tokens or as ready made HTML.',
   gitignore: 'Ignore file templates, and the pattern rules that decide what git leaves out.',
   caret: 'Move the caret about inside anything people can type in: mark it, put it back, reach a word, wrap a selection.',
+  gatt: 'The Bluetooth GATT vocabulary: the names behind the numbers, and the readings behind the bytes.',
   alphabets: 'The Greek, Cyrillic, Japanese and Chinese letters, with the sounds they stand for and a way to pick what to practise next.',
   httpStatus: 'Every HTTP status with what it means, when to reach for it and the ones it gets confused with.',
   rag: 'Break documents into passages, find the ones that answer a question, and build the prompt that cites them.',
