@@ -60,6 +60,39 @@ class JsonFormatter extends JGApp {
 
   #parsed = null;
 
+  tools() {
+    return [
+      {
+        name: 'format_json',
+        description: 'Format a JSON document with indentation, or report where it is malformed',
+        params: {
+          text: { type: 'string', description: 'The JSON document to format', required: true },
+          indent: { type: 'integer', description: 'Spaces per level, 0 for minified' },
+        },
+        run: ({ text, indent = 2 }) => {
+          try {
+            return JSON.stringify(JSON.parse(text), null, Number(indent) || 0);
+          } catch (failure) {
+            return `Not valid JSON: ${failure.message}`;
+          }
+        },
+      },
+      {
+        name: 'check_json',
+        description: 'Say whether a JSON document parses, and where it fails if it does not',
+        params: { text: { type: 'string', description: 'The JSON document to check', required: true } },
+        run: ({ text }) => {
+          try {
+            JSON.parse(text);
+            return 'Valid JSON.';
+          } catch (failure) {
+            return `Not valid JSON: ${failure.message}`;
+          }
+        },
+      },
+    ];
+  }
+
   renderApp() {
     const indent = this.config.get('indent', '2');
     this.paint(html`<div class="app">

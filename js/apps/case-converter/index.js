@@ -29,6 +29,24 @@ class CaseConverter extends JGApp {
   static appId = 'case-converter';
   static styles = [...JGApp.styles, sheet];
 
+  tools() {
+    return [
+      {
+        name: 'convert_case',
+        description: `Rewrite text in another case: ${CASES.map((entry) => entry.id).join(', ')}`,
+        params: {
+          text: { type: 'string', description: 'The text to rewrite', required: true },
+          style: { type: 'string', description: 'Which case to use, such as camel, snake, kebab or title', required: true },
+        },
+        run: ({ text, style }) => {
+          const wanted = CASES.find((entry) => entry.id === String(style).toLowerCase());
+          if (!wanted) return `Unknown case. Try one of: ${CASES.map((entry) => entry.id).join(', ')}`;
+          return wanted.fn(words(text));
+        },
+      },
+    ];
+  }
+
   renderApp() {
     this.paint(html`<div class="app">
       <jg-field label="${t('case-converter.input', 'Input')}" hint="${t('case-converter.anySeparatorWorksSpacesDashes', 'Any separator works - spaces, dashes, underscores or camel humps')}">

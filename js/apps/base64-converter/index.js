@@ -13,6 +13,38 @@ class Base64Converter extends JGApp {
 
   #tab = 'text';
 
+  tools() {
+    return [
+      {
+        name: 'encode_base64',
+        description: 'Encode text as base64',
+        params: {
+          text: { type: 'string', description: 'The text to encode', required: true },
+          urlsafe: { type: 'boolean', description: 'Use the URL safe alphabet' },
+        },
+        run: ({ text, urlsafe = false }) => {
+          const encoded = toBase64(encodeBytes(text));
+          return urlsafe ? base64Url(encoded) : encoded;
+        },
+      },
+      {
+        name: 'decode_base64',
+        description: 'Decode base64 back into text',
+        params: {
+          text: { type: 'string', description: 'The base64 to decode', required: true },
+          urlsafe: { type: 'boolean', description: 'The input uses the URL safe alphabet' },
+        },
+        run: ({ text, urlsafe = false }) => {
+          try {
+            return decodeBytes(urlsafe ? fromBase64Url(text) : fromBase64(text));
+          } catch (failure) {
+            return `Could not decode that: ${failure.message}`;
+          }
+        },
+      },
+    ];
+  }
+
   renderApp() {
     this.paint(html`<div class="app">
       <jg-tabs id="tab"></jg-tabs>

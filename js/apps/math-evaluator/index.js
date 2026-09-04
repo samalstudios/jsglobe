@@ -31,6 +31,23 @@ class MathEvaluator extends JGApp {
     }, 120));
   }
 
+  tools() {
+    return [
+      {
+        name: 'evaluate_expression',
+        description: 'Work out a mathematical expression, with functions and constants',
+        params: { expression: { type: 'string', description: 'The expression, such as sqrt(2) * pi', required: true } },
+        run: ({ expression }) => {
+          try {
+            return String(evaluate(expression));
+          } catch (failure) {
+            return `Could not work that out: ${failure.message}`;
+          }
+        },
+      },
+    ];
+  }
+
   renderApp() {
     this.paint(html`<div class="app">
       <jg-field label="${t('math-evaluator.expression', 'Expression')}" hint="${t('math-evaluator.supportsFunctionsAndConstants', 'Supports + − × ÷ ^ % !, functions and constants')}">

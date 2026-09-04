@@ -3,6 +3,7 @@ import { appSheets } from '../ui/styles.js';
 import { appConfig, appState } from './config.js';
 import { keys } from './keys.js';
 import { appSettings } from './app-settings.js';
+import { provide } from '../lib/webmcp.js';
 import '../ui/kit.js';
 
 export class JGApp extends JGElement {
@@ -13,6 +14,7 @@ export class JGApp extends JGElement {
 
   #config = null;
   #state = null;
+  #withdraw = null;
 
   get mode() {
     return this.getAttribute('mode') ?? 'window';
@@ -35,6 +37,28 @@ export class JGApp extends JGElement {
   render() {
     if (this.isWidget && this.renderWidget) this.renderWidget();
     else this.renderApp();
+    this.#offerTools();
+  }
+
+  // What this app can do, told to an assistant browsing the page. A widget is
+  // a preview rather than the app, so it offers nothing.
+  tools() {
+    return [];
+  }
+
+  #offerTools() {
+    this.#withdraw?.();
+    this.#withdraw = null;
+    if (this.isWidget) return;
+    const tools = this.tools();
+    if (!tools.length) return;
+    this.#withdraw = provide(tools, {
+      onFault: (name, faults) => console.warn(`${this.constructor.appId}: tool ${name} was not offered`, faults),
+    });
+    this.keep(() => {
+      this.#withdraw?.();
+      this.#withdraw = null;
+    });
   }
 
   renderApp() {}

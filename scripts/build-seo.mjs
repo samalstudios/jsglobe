@@ -577,5 +577,36 @@ Sitemap: ${SITE}/sitemap.xml
 );
 written.push('robots.txt');
 
+// llms.txt: the whole catalogue as one plain page, for an assistant that wants
+// to know what is here without crawling 1,000 rendered pages. Every tool is a
+// line, grouped the way the site groups them, in the site's own words.
+const llms = [
+  `# ${NAME}`,
+  '',
+  `> ${TAGLINE}. ${apps.length} of them, free, with no account and nothing to install.`,
+  '',
+  'Every tool has its own address and keeps working offline once the page has loaded. Nothing typed, pasted or opened is sent anywhere: the work happens in the tab, on the reader\'s own device. The site is static and open source.',
+  '',
+  `Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant browsing a tool can call it directly rather than driving the interface.`,
+  '',
+  `Languages: ${LANGUAGES.map((entry) => `${entry.native} (${SITE}${entry.path ? `/${entry.path}` : ''}/)`).join(', ')}`,
+  '',
+];
+
+for (const group of groups) {
+  const members = apps.filter((app) => app.category === group.id);
+  if (!members.length) continue;
+  llms.push(`## ${group.name}`, '');
+  for (const app of members) {
+    llms.push(`- [${app.name}](${SITE}/apps/${app.id}): ${app.tagline}`);
+  }
+  llms.push('');
+}
+
+llms.push('## About', '', `- [All tools](${SITE}/apps): every tool in one list`, `- [Privacy](${SITE}/privacy): what happens to your data, which is nothing`, `- [Disclaimer](${SITE}/disclaimer): what these tools can be relied on for`, '');
+
+await writeFile('llms.txt', `${llms.join('\n')}`);
+written.push('llms.txt');
+
 console.log(`generated ${written.length} files for ${apps.length} tools in ${LANGUAGES.length} languages`);
 console.log(`sitemap: ${sitemapUrls.length} urls (${routes.length} routes x ${LANGUAGES.length} languages)`);

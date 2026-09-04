@@ -21,6 +21,7 @@ import {
 import {
   fullUuid, shortUuid, isAssigned, assignedNumber, nameFor, decodeValue, parsePayload, toHex, isUuid,
 } from '../js/lib/gatt.js';
+import { faultsIn, isValid, schemaFor, actionFor, provide } from '../js/lib/webmcp.js';
 
 let pass = 0;
 const failures = [];
@@ -846,10 +847,53 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
   ok('an empty payload is empty', parsePayload('  ', 'hex').length === 0);
 }
 
+// ---- webmcp: the shape of a tool a page offers -------------------------
+{
+  const good = {
+    name: 'format_json',
+    description: 'Format a JSON document and report any syntax error',
+    params: {
+      text: { type: 'string', description: 'The JSON to format', required: true },
+      indent: { type: 'integer', description: 'Spaces per level' },
+    },
+    run: async () => 'ok',
+  };
+
+  ok('a well formed tool passes', isValid(good), faultsIn(good).join('; '));
+  ok('a tool needs a run function', !isValid({ ...good, run: undefined }));
+  ok('a name must be lower case', !isValid({ ...good, name: 'Format_JSON' }));
+  ok('a name must start with a letter', !isValid({ ...good, name: '9lives' }));
+  ok('a name of one character is too short', !isValid({ ...good, name: 'x' }));
+  ok('a description must say something', !isValid({ ...good, description: 'short' }));
+  ok('a parameter needs a known type', !isValid({ ...good, params: { text: { type: 'object', description: 'a thing' } } }));
+  ok('a parameter needs a description', !isValid({ ...good, params: { text: { type: 'string' } } }));
+  ok('a tool with no parameters is fine', isValid({ ...good, params: undefined }));
+  ok('nonsense is not a tool', !isValid(null) && !isValid('format_json'));
+
+  const schema = schemaFor(good);
+  ok('the schema is an object schema', schema.type === 'object');
+  ok('every parameter reaches the schema', Object.keys(schema.properties).join(',') === 'text,indent');
+  ok('only the required parameter is required', schema.required.join(',') === 'text');
+  ok('the required flag does not leak into the schema', !('required' in schema.properties.text));
+  ok('a tool with no parameters has no required list', !('required' in schemaFor({ ...good, params: {} })));
+
+  const action = actionFor(good, 'https://jsglobe.com/apps/json-formatter');
+  ok('the action carries the name and description', action.name === 'format_json' && action.description === good.description);
+  ok('the action points at the page', action.target.urlTemplate === 'https://jsglobe.com/apps/json-formatter');
+  ok('an action without a url has no target', !('target' in actionFor(good)));
+
+  // without a browser there is nothing to offer, and nothing should break
+  const faults = [];
+  const withdraw = provide([good, { name: 'bad' }], { onFault: (name, why) => faults.push(`${name}: ${why.length}`) });
+  ok('a badly described tool is reported, not offered', faults.length === 1 && faults[0].startsWith('bad'));
+  ok('providing returns something callable even with no browser', typeof withdraw === 'function');
+  withdraw();
+}
+
 if (failures.length) {
   console.error(`library check failed with ${failures.length} problem${failures.length === 1 ? '' : 's'}:`);
   failures.forEach((problem) => console.error(`  - ${problem}`));
   process.exit(1);
 }
 
-console.log(`libraries ok: ${pass} checks across chess move generation, optics, polygon clipping, writing and reading codes, tax, documents, and bluetooth`);
+console.log(`libraries ok: ${pass} checks across chess move generation, optics, polygon clipping, writing and reading codes, tax, documents, bluetooth, and page tools`);

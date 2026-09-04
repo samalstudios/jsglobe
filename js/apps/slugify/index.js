@@ -26,6 +26,21 @@ class Slugify extends JGApp {
   static appId = 'slugify';
   static styles = JGApp.styles;
 
+  tools() {
+    return [
+      {
+        name: 'slugify_text',
+        description: 'Turn a line of text into a clean URL slug',
+        params: {
+          text: { type: 'string', description: 'The text to turn into a slug', required: true },
+          separator: { type: 'string', description: 'What goes between words: - or _ or .' },
+          lower: { type: 'boolean', description: 'Fold the slug to lower case' },
+        },
+        run: ({ text, separator = '-', lower = true }) => slugify(text, { separator, lower, strict: true }),
+      },
+    ];
+  }
+
   renderApp() {
     this.paint(html`<div class="app">
       <jg-field label="${t('slugify.text', 'Text')}">

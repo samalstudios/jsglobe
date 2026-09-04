@@ -129,6 +129,17 @@ const robots = await readFile('robots.txt', 'utf8');
 if (!robots.includes(`Sitemap: ${SITE}/sitemap.xml`)) fail('robots.txt does not point at the sitemap');
 if (!existsSync('assets/og.png')) fail('assets/og.png is missing');
 
+// llms.txt is what an assistant reads instead of crawling every page, so it has
+// to name every tool the catalogue does
+{
+  const llms = await readFile('llms.txt', 'utf8');
+  const missing = apps.filter((app) => !llms.includes(`${SITE}/apps/${app.id})`));
+  if (missing.length) fail(`llms.txt is missing ${missing.length} tools: ${missing.slice(0, 5).map((app) => app.id).join(', ')}`);
+  for (const entry of LANGUAGES) {
+    if (!llms.includes(entry.native)) fail(`llms.txt does not mention ${entry.native}`);
+  }
+}
+
 if (problems.length) {
   console.error(`SEO check failed with ${problems.length} problem${problems.length === 1 ? '' : 's'}:`);
   problems.slice(0, 40).forEach((problem) => console.error(`  - ${problem}`));
