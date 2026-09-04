@@ -32,4 +32,24 @@ export default {
     'todo.open': '打开',
     'todo.done': '已完成',
   },
+  fr: {
+    'todo.add': 'Ajouter',
+    'todo.allClear': 'Tout est bon',
+    'todo.all': 'Tout',
+  },
+  pt: {
+    'todo.add': 'Adicionar',
+    'todo.allClear': 'Tudo certo',
+    'todo.all': 'Tudo',
+  },
+  ja: {
+    'todo.add': '追加',
+    'todo.allClear': '問題なし',
+    'todo.all': 'すべて',
+  },
+  ko: {
+    'todo.add': '추가',
+    'todo.allClear': '모두 이상 없음',
+    'todo.all': '전체',
+  },
 };

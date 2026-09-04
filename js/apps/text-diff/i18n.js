@@ -26,4 +26,16 @@ export default {
     'text-diff.ignoreCase': '忽略大小写',
     'text-diff.highlightWords': '高亮词级改动',
   },
+  fr: {
+    'text-diff.original': 'Original',
+  },
+  pt: {
+    'text-diff.original': 'Original',
+  },
+  ja: {
+    'text-diff.original': 'Original',
+  },
+  ko: {
+    'text-diff.original': 'Original',
+  },
 };

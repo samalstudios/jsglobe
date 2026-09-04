@@ -62,4 +62,20 @@ export default {
     'json-formatter.valid': '有效',
     'json-formatter.stats': '{nodes} 个节点 · 深度 {depth} · {chars} 个字符',
   },
+  fr: {
+    'json-formatter.spaces2': '2 espaces',
+    'json-formatter.spaces4': '4 espaces',
+  },
+  pt: {
+    'json-formatter.spaces2': '2 espaços',
+    'json-formatter.spaces4': '4 espaços',
+  },
+  ja: {
+    'json-formatter.spaces2': 'スペース 2 つ',
+    'json-formatter.spaces4': 'スペース 4 つ',
+  },
+  ko: {
+    'json-formatter.spaces2': '공백 2칸',
+    'json-formatter.spaces4': '공백 4칸',
+  },
 };

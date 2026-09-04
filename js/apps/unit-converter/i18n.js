@@ -14,4 +14,16 @@ export default {
     'unit-converter.to': '收件人',
     'unit-converter.allUnits': '所有单位',
   },
+  fr: {
+    'unit-converter.allUnits': 'Toutes les unités',
+  },
+  pt: {
+    'unit-converter.allUnits': 'Todas as unidades',
+  },
+  ja: {
+    'unit-converter.allUnits': 'すべての単位',
+  },
+  ko: {
+    'unit-converter.allUnits': '모든 단위',
+  },
 };

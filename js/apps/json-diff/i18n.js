@@ -23,4 +23,16 @@ export default {
     'json-diff.pasteJsonOnBothSides': '请在两侧都粘贴 JSON。',
     'json-diff.noDifferencesFound': '未发现差异。',
   },
+  fr: {
+    'json-diff.original': 'Original',
+  },
+  pt: {
+    'json-diff.original': 'Original',
+  },
+  ja: {
+    'json-diff.original': 'Original',
+  },
+  ko: {
+    'json-diff.original': 'Original',
+  },
 };

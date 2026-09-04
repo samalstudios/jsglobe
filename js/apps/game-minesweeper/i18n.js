@@ -17,4 +17,16 @@ export default {
     'game-minesweeper.hard': '困难',
     'game-minesweeper.newGame': '新游戏',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

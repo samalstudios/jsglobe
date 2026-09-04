@@ -26,4 +26,20 @@ export default {
     'http-headers.curlI': 'curl -I',
     'http-headers.waitingForHeaders': '等待响应头',
   },
+  fr: {
+    'http-headers.curlIHttpsExampleCom': 'curl -I https://example.com',
+    'http-headers.curlI': 'curl -I',
+  },
+  pt: {
+    'http-headers.curlIHttpsExampleCom': 'curl -I https://example.com',
+    'http-headers.curlI': 'curl -I',
+  },
+  ja: {
+    'http-headers.curlIHttpsExampleCom': 'curl -I https://example.com',
+    'http-headers.curlI': 'curl -I',
+  },
+  ko: {
+    'http-headers.curlIHttpsExampleCom': 'curl -I https://example.com',
+    'http-headers.curlI': 'curl -I',
+  },
 };

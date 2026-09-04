@@ -140,4 +140,32 @@ export default {
     'qr-generator.fillInTheFields': '填写字段以生成二维码。',
     'qr-generator.codeSummary': '版本 {version} · {size}×{size} 模块 · 掩码 {mask} · 已用 {used}/{capacity} 字节',
   },
+  fr: {
+    'qr-generator.sms': 'SMS',
+    'qr-generator.wpaWpa2': 'WPA/WPA2',
+    'qr-generator.wep': 'WEP',
+    'qr-generator.adaLovelace': 'Ada Lovelace',
+    'qr-generator.allDay': 'Toute la journée',
+  },
+  pt: {
+    'qr-generator.sms': 'SMS',
+    'qr-generator.wpaWpa2': 'WPA/WPA2',
+    'qr-generator.wep': 'WEP',
+    'qr-generator.adaLovelace': 'Ada Lovelace',
+    'qr-generator.allDay': 'Dia inteiro',
+  },
+  ja: {
+    'qr-generator.sms': 'SMS',
+    'qr-generator.wpaWpa2': 'WPA/WPA2',
+    'qr-generator.wep': 'WEP',
+    'qr-generator.adaLovelace': 'Ada Lovelace',
+    'qr-generator.allDay': '終日',
+  },
+  ko: {
+    'qr-generator.sms': 'SMS',
+    'qr-generator.wpaWpa2': 'WPA/WPA2',
+    'qr-generator.wep': 'WEP',
+    'qr-generator.adaLovelace': 'Ada Lovelace',
+    'qr-generator.allDay': '종일',
+  },
 };

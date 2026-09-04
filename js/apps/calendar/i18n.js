@@ -92,4 +92,24 @@ export default {
     'calendar.nothingPlanned': '没有计划',
     'calendar.pickATimeAboveOr': '在上方选择时间，或在周视图中点击一个时段。',
   },
+  fr: {
+    'calendar.addEvent': 'Ajouter un événement',
+    'calendar.addAnEvent': 'Ajouter un événement',
+    'calendar.add': 'Ajouter',
+  },
+  pt: {
+    'calendar.addEvent': 'Adicionar evento',
+    'calendar.addAnEvent': 'Adicionar um evento',
+    'calendar.add': 'Adicionar',
+  },
+  ja: {
+    'calendar.addEvent': '予定を追加',
+    'calendar.addAnEvent': '予定を追加',
+    'calendar.add': '追加',
+  },
+  ko: {
+    'calendar.addEvent': '일정 추가',
+    'calendar.addAnEvent': '일정 추가',
+    'calendar.add': '추가',
+  },
 };

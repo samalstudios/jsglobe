@@ -47,4 +47,16 @@ export default {
     'ai-writer.result': '结果',
     'ai-writer.copy': '复制',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

@@ -41,4 +41,16 @@ export default {
     'ai-chat.everythingYouTypeStaysOn': '你输入的一切都留在本机。',
     'ai-chat.ai': 'AI',
   },
+  fr: {
+    'ai-chat.ai': 'IA',
+  },
+  pt: {
+    'ai-chat.ai': 'IA',
+  },
+  ja: {
+    'ai-chat.ai': 'AI',
+  },
+  ko: {
+    'ai-chat.ai': 'AI',
+  },
 };

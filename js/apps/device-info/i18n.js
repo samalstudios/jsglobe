@@ -92,4 +92,16 @@ export default {
     'device-info.colourDepth': '色深',
     'device-info.orientation': '方向',
   },
+  fr: {
+    'device-info.hardware': 'Hardware',
+  },
+  pt: {
+    'device-info.hardware': 'Hardware',
+  },
+  ja: {
+    'device-info.hardware': 'Hardware',
+  },
+  ko: {
+    'device-info.hardware': 'Hardware',
+  },
 };

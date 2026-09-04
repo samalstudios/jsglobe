@@ -41,4 +41,24 @@ export default {
     'iban-validator.length': '长度',
     'iban-validator.electronicFormat': '电子格式',
   },
+  fr: {
+    'iban-validator.iban': 'IBAN',
+    'iban-validator.de893704004405320130': 'DE89 3704 0044 0532 0130 00',
+    'iban-validator.accountPart': 'Partie compte',
+  },
+  pt: {
+    'iban-validator.iban': 'IBAN',
+    'iban-validator.de893704004405320130': 'DE89 3704 0044 0532 0130 00',
+    'iban-validator.accountPart': 'Parte da conta',
+  },
+  ja: {
+    'iban-validator.iban': 'IBAN',
+    'iban-validator.de893704004405320130': 'DE89 3704 0044 0532 0130 00',
+    'iban-validator.accountPart': 'アカウント部分',
+  },
+  ko: {
+    'iban-validator.iban': 'IBAN',
+    'iban-validator.de893704004405320130': 'DE89 3704 0044 0532 0130 00',
+    'iban-validator.accountPart': '계정 부분',
+  },
 };

@@ -62,4 +62,32 @@ export default {
     'dns-lookup.ttl': 'TTL',
     'dns-lookup.value': '值',
   },
+  fr: {
+    'dns-lookup.cloudflare': 'Cloudflare',
+    'dns-lookup.google': 'Google',
+    'dns-lookup.anIpAddressIsLooked': 'Une adresse IP est recherchée comme enregistrement PTR inverse',
+    'dns-lookup.allTypes': 'Tous les types',
+    'dns-lookup.ttl': 'TTL',
+  },
+  pt: {
+    'dns-lookup.cloudflare': 'Cloudflare',
+    'dns-lookup.google': 'Google',
+    'dns-lookup.anIpAddressIsLooked': 'Um endereço IP é consultado como registro PTR reverso',
+    'dns-lookup.allTypes': 'Todos os tipos',
+    'dns-lookup.ttl': 'TTL',
+  },
+  ja: {
+    'dns-lookup.cloudflare': 'Cloudflare',
+    'dns-lookup.google': 'Google',
+    'dns-lookup.anIpAddressIsLooked': 'IP アドレスは逆引きの PTR レコードとして照会されます',
+    'dns-lookup.allTypes': 'すべての種類',
+    'dns-lookup.ttl': 'TTL',
+  },
+  ko: {
+    'dns-lookup.cloudflare': 'Cloudflare',
+    'dns-lookup.google': 'Google',
+    'dns-lookup.anIpAddressIsLooked': 'IP 주소는 역방향 PTR 레코드로 조회됩니다',
+    'dns-lookup.allTypes': '모든 종류',
+    'dns-lookup.ttl': 'TTL',
+  },
 };

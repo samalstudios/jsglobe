@@ -44,4 +44,20 @@ export default {
     'uuid.shortId': '短 ID',
     'uuid.nil': '空 UUID',
   },
+  fr: {
+    'uuid-generator.uuidV4': 'UUID v4',
+    'uuid-generator.uuidV7': 'UUID v7',
+  },
+  pt: {
+    'uuid-generator.uuidV4': 'UUID v4',
+    'uuid-generator.uuidV7': 'UUID v7',
+  },
+  ja: {
+    'uuid-generator.uuidV4': 'UUID v4',
+    'uuid-generator.uuidV7': 'UUID v7',
+  },
+  ko: {
+    'uuid-generator.uuidV4': 'UUID v4',
+    'uuid-generator.uuidV7': 'UUID v7',
+  },
 };

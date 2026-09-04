@@ -23,4 +23,20 @@ export default {
     'markdown-preview.title': '# 标题',
     'markdown-preview.preview': '预览',
   },
+  fr: {
+    'markdown-preview.markdown': 'Markdown',
+    'markdown-preview.title': '# Titre',
+  },
+  pt: {
+    'markdown-preview.markdown': 'Markdown',
+    'markdown-preview.title': '# Título',
+  },
+  ja: {
+    'markdown-preview.markdown': 'Markdown',
+    'markdown-preview.title': '# タイトル',
+  },
+  ko: {
+    'markdown-preview.markdown': 'Markdown',
+    'markdown-preview.title': '# 제목',
+  },
 };

@@ -47,4 +47,16 @@ export default {
     'dice-roller.diceRoller': '掷骰器',
     'dice-roller.widgetBlurb': '投掷任意骰子并观察分布。',
   },
+  fr: {
+    'dice-roller.addToTheTotal': 'Ajouter au total',
+  },
+  pt: {
+    'dice-roller.addToTheTotal': 'Somar ao total',
+  },
+  ja: {
+    'dice-roller.addToTheTotal': '合計に加える',
+  },
+  ko: {
+    'dice-roller.addToTheTotal': '합계에 더하기',
+  },
 };

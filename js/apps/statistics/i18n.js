@@ -71,4 +71,16 @@ export default {
     'statistics.skewness': '偏度',
     'statistics.outliers': '离群值',
   },
+  fr: {
+    'statistics.allValues': 'Toutes les valeurs',
+  },
+  pt: {
+    'statistics.allValues': 'Todos os valores',
+  },
+  ja: {
+    'statistics.allValues': 'すべての値',
+  },
+  ko: {
+    'statistics.allValues': '모든 값',
+  },
 };

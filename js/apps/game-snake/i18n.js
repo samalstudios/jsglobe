@@ -29,4 +29,20 @@ export default {
     'game-snake.restart': '重新开始',
     'game-snake.arrowKeysOrWasdTo': '用方向键或 WASD 控制方向，空格暂停。触摸屏可滑动。',
   },
+  fr: {
+    'game-snake.snake': 'Snake',
+    'game-snake.normal': 'Normal',
+  },
+  pt: {
+    'game-snake.snake': 'Snake',
+    'game-snake.normal': 'Normal',
+  },
+  ja: {
+    'game-snake.snake': 'Snake',
+    'game-snake.normal': 'Normal',
+  },
+  ko: {
+    'game-snake.snake': 'Snake',
+    'game-snake.normal': 'Normal',
+  },
 };

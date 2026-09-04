@@ -38,4 +38,32 @@ export default {
     'basic-auth.pasteAnExistingHeaderOr': '粘贴已有的请求头或 base64 凭据对',
     'basic-auth.basicYwrtaw46ahvudgvymg': 'Basic YWRtaW46aHVudGVyMg==',
   },
+  fr: {
+    'basic-auth.admin': 'admin',
+    'basic-auth.hunter2': 'hunter2',
+    'basic-auth.curl': 'curl',
+    'basic-auth.fetch': 'fetch',
+    'basic-auth.basicYwrtaw46ahvudgvymg': 'Basic YWRtaW46aHVudGVyMg==',
+  },
+  pt: {
+    'basic-auth.admin': 'admin',
+    'basic-auth.hunter2': 'hunter2',
+    'basic-auth.curl': 'curl',
+    'basic-auth.fetch': 'fetch',
+    'basic-auth.basicYwrtaw46ahvudgvymg': 'Basic YWRtaW46aHVudGVyMg==',
+  },
+  ja: {
+    'basic-auth.admin': 'admin',
+    'basic-auth.hunter2': 'hunter2',
+    'basic-auth.curl': 'curl',
+    'basic-auth.fetch': 'fetch',
+    'basic-auth.basicYwrtaw46ahvudgvymg': 'Basic YWRtaW46aHVudGVyMg==',
+  },
+  ko: {
+    'basic-auth.admin': 'admin',
+    'basic-auth.hunter2': 'hunter2',
+    'basic-auth.curl': 'curl',
+    'basic-auth.fetch': 'fetch',
+    'basic-auth.basicYwrtaw46ahvudgvymg': 'Basic YWRtaW46aHVudGVyMg==',
+  },
 };

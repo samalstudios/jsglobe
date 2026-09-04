@@ -44,4 +44,16 @@ export default {
     'base64.outputHere': 'Base64 输出会显示在这里',
     'base64.copyNoPrefix': '复制时不带 data URI 前缀',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

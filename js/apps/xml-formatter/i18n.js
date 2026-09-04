@@ -32,4 +32,20 @@ export default {
     'xml-formatter.format': '格式',
     'xml-formatter.minify': '压缩',
   },
+  fr: {
+    'xml-formatter.2Spaces': '2 espaces',
+    'xml-formatter.4Spaces': '4 espaces',
+  },
+  pt: {
+    'xml-formatter.2Spaces': '2 espaços',
+    'xml-formatter.4Spaces': '4 espaços',
+  },
+  ja: {
+    'xml-formatter.2Spaces': 'スペース 2 つ',
+    'xml-formatter.4Spaces': 'スペース 4 つ',
+  },
+  ko: {
+    'xml-formatter.2Spaces': '공백 2칸',
+    'xml-formatter.4Spaces': '공백 4칸',
+  },
 };

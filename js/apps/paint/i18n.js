@@ -167,4 +167,28 @@ export default {
     'paint.swap': '交换',
     'paint.swapTheTwoColours': '交换两种颜色',
   },
+  fr: {
+    'paint.adjustImage': 'Ajuster l\'image',
+    'paint.apply': 'Appliquer',
+    'paint.adjustmentsPreviewLiveAndOnly': 'Les réglages s\'affichent en direct et ne modifient le canevas qu\'une fois appliqués.',
+    'paint.adjust': 'Ajuster',
+  },
+  pt: {
+    'paint.adjustImage': 'Ajustar imagem',
+    'paint.apply': 'Aplicar',
+    'paint.adjustmentsPreviewLiveAndOnly': 'Os ajustes aparecem ao vivo e só alteram a tela quando você os aplica.',
+    'paint.adjust': 'Ajustar',
+  },
+  ja: {
+    'paint.adjustImage': '画像を調整',
+    'paint.apply': '適用',
+    'paint.adjustmentsPreviewLiveAndOnly': '調整はその場で確認でき、適用するまでキャンバスには反映されません。',
+    'paint.adjust': '調整',
+  },
+  ko: {
+    'paint.adjustImage': '이미지 조정',
+    'paint.apply': '적용',
+    'paint.adjustmentsPreviewLiveAndOnly': '조정은 즉시 미리 보이며, 적용하기 전까지는 캔버스를 건드리지 않습니다.',
+    'paint.adjust': '조정',
+  },
 };

@@ -77,4 +77,20 @@ export default {
     'ascii-art.textBanner': '文字横幅',
     'ascii-art.imageToAscii': '图片转 ASCII',
   },
+  fr: {
+    'ascii-art.toolbox': 'TOOLBOX',
+    'ascii-art.3dExtrude': 'Extrusion 3D',
+  },
+  pt: {
+    'ascii-art.toolbox': 'TOOLBOX',
+    'ascii-art.3dExtrude': 'Extrusão 3D',
+  },
+  ja: {
+    'ascii-art.toolbox': 'TOOLBOX',
+    'ascii-art.3dExtrude': '3D 押し出し',
+  },
+  ko: {
+    'ascii-art.toolbox': 'TOOLBOX',
+    'ascii-art.3dExtrude': '3D 돌출',
+  },
 };

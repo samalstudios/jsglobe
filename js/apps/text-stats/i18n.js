@@ -35,4 +35,16 @@ export default {
     'text-stats.longestWord': '最长的词',
     'text-stats.notEnoughTextYet': '文本还不够。',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

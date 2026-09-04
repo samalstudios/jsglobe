@@ -80,4 +80,16 @@ export default {
     'list-converter.oneItemPerLine': '每行一项',
     'list-converter.output': '输出',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

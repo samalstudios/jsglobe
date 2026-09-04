@@ -50,4 +50,28 @@ export default {
     'slugify.preservedCase': '保留大小写',
     'slugify.length': '长度',
   },
+  fr: {
+    'slugify.10WaysToBuildA': '10 façons de composer une carte de café - édition 2024',
+    'slugify.slug': 'Slug',
+    'slugify.kebab': 'Kebab',
+    'slugify.snake': 'Snake',
+  },
+  pt: {
+    'slugify.10WaysToBuildA': '10 maneiras de montar um cardápio de café - edição 2024',
+    'slugify.slug': 'Slug',
+    'slugify.kebab': 'Kebab',
+    'slugify.snake': 'Snake',
+  },
+  ja: {
+    'slugify.10WaysToBuildA': 'カフェのメニューを組み立てる 10 の方法 - 2024 年版',
+    'slugify.slug': 'Slug',
+    'slugify.kebab': 'Kebab',
+    'slugify.snake': 'Snake',
+  },
+  ko: {
+    'slugify.10WaysToBuildA': '카페 메뉴를 짜는 10가지 방법 - 2024년판',
+    'slugify.slug': 'Slug',
+    'slugify.kebab': 'Kebab',
+    'slugify.snake': 'Snake',
+  },
 };

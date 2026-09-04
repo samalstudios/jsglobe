@@ -29,4 +29,24 @@ export default {
     'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
     'sql-formatter.formatted': '已格式化',
   },
+  fr: {
+    'sql-formatter.2Spaces': '2 espaces',
+    'sql-formatter.4Spaces': '4 espaces',
+    'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
+  },
+  pt: {
+    'sql-formatter.2Spaces': '2 espaços',
+    'sql-formatter.4Spaces': '4 espaços',
+    'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
+  },
+  ja: {
+    'sql-formatter.2Spaces': 'スペース 2 つ',
+    'sql-formatter.4Spaces': 'スペース 4 つ',
+    'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
+  },
+  ko: {
+    'sql-formatter.2Spaces': '공백 2칸',
+    'sql-formatter.4Spaces': '공백 4칸',
+    'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
+  },
 };

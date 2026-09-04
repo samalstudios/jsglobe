@@ -53,4 +53,16 @@ export default {
     'websocket-tester.theAddressMustStartWith': '地址必须以 ws:// 或 wss:// 开头',
     'websocket-tester.connectFirst': '请先连接',
   },
+  fr: {
+    'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
+  },
+  pt: {
+    'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
+  },
+  ja: {
+    'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
+  },
+  ko: {
+    'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
+  },
 };

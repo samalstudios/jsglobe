@@ -38,4 +38,16 @@ export default {
     'hmac-generator.pasteASignatureToCompare': '粘贴一个签名以进行恒定时间比较',
     'hmac-generator.expectedSignature': '期望的签名',
   },
+  fr: {
+    'hmac-generator.hex': 'Hex',
+  },
+  pt: {
+    'hmac-generator.hex': 'Hex',
+  },
+  ja: {
+    'hmac-generator.hex': 'Hex',
+  },
+  ko: {
+    'hmac-generator.hex': 'Hex',
+  },
 };

@@ -29,4 +29,16 @@ export default {
     'math-evaluator.clickAnEntryToLoad': '点击某条记录以加载它',
     'math-evaluator.reference': '参考',
   },
+  fr: {
+    'math-evaluator.22Pi': '2 + 2 * pi',
+  },
+  pt: {
+    'math-evaluator.22Pi': '2 + 2 * pi',
+  },
+  ja: {
+    'math-evaluator.22Pi': '2 + 2 * pi',
+  },
+  ko: {
+    'math-evaluator.22Pi': '2 + 2 * pi',
+  },
 };

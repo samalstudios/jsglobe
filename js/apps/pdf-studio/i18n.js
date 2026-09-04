@@ -80,4 +80,16 @@ export default {
     'pdf-studio.selectNone': '取消全选',
     'pdf-studio.savePdf': '保存 PDF',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

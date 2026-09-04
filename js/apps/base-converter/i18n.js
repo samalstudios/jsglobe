@@ -50,4 +50,20 @@ export default {
     'base-converter.fitsIn': '可容纳于',
     'base-converter.scientific': '科学计数法',
   },
+  fr: {
+    'base-converter.32BitRepresentationGroupedIn': 'Représentation 32 bits groupée par quartets',
+    'base-converter.bytes': 'Bytes',
+  },
+  pt: {
+    'base-converter.32BitRepresentationGroupedIn': 'Representação de 32 bits agrupada em nibbles',
+    'base-converter.bytes': 'Bytes',
+  },
+  ja: {
+    'base-converter.32BitRepresentationGroupedIn': 'ニブル単位でまとめた 32 ビット表現',
+    'base-converter.bytes': 'Bytes',
+  },
+  ko: {
+    'base-converter.32BitRepresentationGroupedIn': '니블 단위로 묶은 32비트 표현',
+    'base-converter.bytes': 'Bytes',
+  },
 };

@@ -29,4 +29,16 @@ export default {
     'jsx-svg.jsxToSvg': 'JSX 转 SVG',
     'jsx-svg.svgToJsx': 'SVG 转 JSX',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

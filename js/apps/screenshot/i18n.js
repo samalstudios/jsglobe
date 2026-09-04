@@ -71,4 +71,16 @@ export default {
     'screenshot.imageCopied': '已复制图片',
     'screenshot.thisBrowserBlockedTheClipboard': '此浏览器阻止了写入剪贴板',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

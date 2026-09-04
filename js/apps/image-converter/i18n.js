@@ -65,4 +65,32 @@ export default {
     'image-converter.addPngJpegWebpGif': '添加 PNG、JPEG、WebP、GIF、AVIF 或 SVG 文件。',
     'image-converter.save': '保存',
   },
+  fr: {
+    'image-converter.webp': 'WebP',
+    'image-converter.0KeepsTheOriginal': '0 garde l\'original',
+    'image-converter.px': 'px',
+    'image-converter.0LeavesQualityAlone': '0 laisse le curseur de qualité décider',
+    'image-converter.addPngJpegWebpGif': 'Ajoutez des fichiers PNG, JPEG, WebP, GIF, AVIF ou SVG.',
+  },
+  pt: {
+    'image-converter.webp': 'WebP',
+    'image-converter.0KeepsTheOriginal': '0 mantém o original',
+    'image-converter.px': 'px',
+    'image-converter.0LeavesQualityAlone': '0 deixa o controle de qualidade decidir',
+    'image-converter.addPngJpegWebpGif': 'Adicione arquivos PNG, JPEG, WebP, GIF, AVIF ou SVG.',
+  },
+  ja: {
+    'image-converter.webp': 'WebP',
+    'image-converter.0KeepsTheOriginal': '0 なら元のまま',
+    'image-converter.px': 'px',
+    'image-converter.0LeavesQualityAlone': '0 にすると品質スライダーに任せます',
+    'image-converter.addPngJpegWebpGif': 'PNG、JPEG、WebP、GIF、AVIF、SVG のファイルを追加してください。',
+  },
+  ko: {
+    'image-converter.webp': 'WebP',
+    'image-converter.0KeepsTheOriginal': '0이면 원본 유지',
+    'image-converter.px': 'px',
+    'image-converter.0LeavesQualityAlone': '0으로 두면 품질 슬라이더가 결정합니다',
+    'image-converter.addPngJpegWebpGif': 'PNG, JPEG, WebP, GIF, AVIF, SVG 파일을 추가하세요.',
+  },
 };

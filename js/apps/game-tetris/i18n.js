@@ -38,4 +38,16 @@ export default {
     'game-tetris.pressPlay': '按开始',
     'game-tetris.orHitSpace': '或按空格',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

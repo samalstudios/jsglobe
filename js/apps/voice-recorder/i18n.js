@@ -74,4 +74,16 @@ export default {
     'voice-recorder.saveText': '保存文本',
     'voice-recorder.recordingSaved': '录音已保存',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

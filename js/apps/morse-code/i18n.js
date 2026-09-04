@@ -29,4 +29,16 @@ export default {
     'morse-code.reference': '参考',
     'morse-code.internationalMorseCode': '国际摩尔斯电码',
   },
+  fr: {
+    'morse-code.morse': 'Morse',
+  },
+  pt: {
+    'morse-code.morse': 'Morse',
+  },
+  ja: {
+    'morse-code.morse': 'Morse',
+  },
+  ko: {
+    'morse-code.morse': 'Morse',
+  },
 };

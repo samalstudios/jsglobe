@@ -35,4 +35,16 @@ export default {
     'lorem-ipsum.words': '词数',
     'lorem-ipsum.listItems': '列表项',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

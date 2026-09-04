@@ -38,4 +38,16 @@ export default {
     'api-spec.noOperationsFound': '未找到任何操作。',
     'api-spec.everythingTheLinterChecksLooks': 'linter 检查的所有项目都没有问题。',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

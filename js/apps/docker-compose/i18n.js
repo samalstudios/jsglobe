@@ -35,4 +35,20 @@ export default {
     'docker-compose.copyResult': '复制结果',
     'docker-compose.download': '下载',
   },
+  fr: {
+    'docker-compose.dockerRunP8080': 'docker run -p 80:80 nginx',
+    'docker-compose.composeYaml': 'compose.yaml',
+  },
+  pt: {
+    'docker-compose.dockerRunP8080': 'docker run -p 80:80 nginx',
+    'docker-compose.composeYaml': 'compose.yaml',
+  },
+  ja: {
+    'docker-compose.dockerRunP8080': 'docker run -p 80:80 nginx',
+    'docker-compose.composeYaml': 'compose.yaml',
+  },
+  ko: {
+    'docker-compose.dockerRunP8080': 'docker run -p 80:80 nginx',
+    'docker-compose.composeYaml': 'compose.yaml',
+  },
 };

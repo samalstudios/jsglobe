@@ -20,4 +20,16 @@ export default {
     'game-word.enter': '回车',
     'game-word.delete': '删除',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

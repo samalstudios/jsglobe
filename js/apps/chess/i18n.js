@@ -191,4 +191,20 @@ export default {
     'chess.notQuite': '{san} 不是这里的要点，再试一次。',
     'chess.tryThisPiece': '试试 {square} 上的棋子。',
   },
+  fr: {
+    'chess.verdictGood': 'Un bon coup.',
+    'chess.verdictBlunder': 'Une gaffe. Quelque chose était en prise.',
+  },
+  pt: {
+    'chess.verdictGood': 'Um bom lance.',
+    'chess.verdictBlunder': 'Um erro grave. Alguma peça estava pendurada.',
+  },
+  ja: {
+    'chess.verdictGood': 'good な手。',
+    'chess.verdictBlunder': '大悪手。ただで取れる駒がありました。',
+  },
+  ko: {
+    'chess.verdictGood': '좋은 수.',
+    'chess.verdictBlunder': '큰 실수. 그냥 잡히는 기물이 있었습니다.',
+  },
 };

@@ -83,4 +83,28 @@ export default {
     'unicode-tables.javascript': 'JavaScript',
     'unicode-tables.urlEncoded': 'URL 编码',
   },
+  fr: {
+    'unicode-tables.latin1': 'Latin-1',
+    'unicode-tables.dingbats': 'Dingbats',
+    'unicode-tables.braille': 'Braille',
+    'unicode-tables.javascript': 'JavaScript',
+  },
+  pt: {
+    'unicode-tables.latin1': 'Latin-1',
+    'unicode-tables.dingbats': 'Dingbats',
+    'unicode-tables.braille': 'Braille',
+    'unicode-tables.javascript': 'JavaScript',
+  },
+  ja: {
+    'unicode-tables.latin1': 'Latin-1',
+    'unicode-tables.dingbats': 'Dingbats',
+    'unicode-tables.braille': 'Braille',
+    'unicode-tables.javascript': 'JavaScript',
+  },
+  ko: {
+    'unicode-tables.latin1': 'Latin-1',
+    'unicode-tables.dingbats': 'Dingbats',
+    'unicode-tables.braille': 'Braille',
+    'unicode-tables.javascript': 'JavaScript',
+  },
 };

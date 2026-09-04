@@ -29,4 +29,16 @@ export default {
     'gamepad-tester.buttons': '按键',
     'gamepad-tester.axes': '摇杆轴',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

@@ -23,4 +23,16 @@ export default {
     'url-encoder.component': '组件',
     'url-encoder.fullUri': '完整 URI',
   },
+  fr: {
+    'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
+  },
+  pt: {
+    'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
+  },
+  ja: {
+    'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
+  },
+  ko: {
+    'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
+  },
 };

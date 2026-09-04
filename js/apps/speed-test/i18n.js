@@ -53,4 +53,20 @@ export default {
     'speed-test.roundTripEstimate': '往返时延估算',
     'speed-test.dataSaver': '流量节省',
   },
+  fr: {
+    'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.jitterMs': 'Jitter ms',
+  },
+  pt: {
+    'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.jitterMs': 'Jitter ms',
+  },
+  ja: {
+    'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.jitterMs': 'Jitter ms',
+  },
+  ko: {
+    'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.jitterMs': 'Jitter ms',
+  },
 };

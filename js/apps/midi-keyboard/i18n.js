@@ -35,4 +35,16 @@ export default {
     'midi-keyboard.connectMidiDevice': '连接 MIDI 设备',
     'midi-keyboard.notConnected': '未连接',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

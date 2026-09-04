@@ -29,4 +29,20 @@ export default {
     'color-converter.contrast': '对比度',
     'color-converter.wcag21RatioAgainst': '相对黑色与白色的 WCAG 2.1 对比度',
   },
+  fr: {
+    'color-converter.6f7cffRgb111124255': '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple',
+    'color-converter.swiftAndroid': 'Swift / Android',
+  },
+  pt: {
+    'color-converter.6f7cffRgb111124255': '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple',
+    'color-converter.swiftAndroid': 'Swift / Android',
+  },
+  ja: {
+    'color-converter.6f7cffRgb111124255': '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple',
+    'color-converter.swiftAndroid': 'Swift / Android',
+  },
+  ko: {
+    'color-converter.6f7cffRgb111124255': '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple',
+    'color-converter.swiftAndroid': 'Swift / Android',
+  },
 };

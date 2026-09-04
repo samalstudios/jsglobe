@@ -56,4 +56,16 @@ export default {
     'http-status.httpStatus': 'HTTP 状态码',
     'http-status.widgetBlurb': '每个状态码的含义和使用场景。',
   },
+  fr: {
+    'http-status.all': 'Tout',
+  },
+  pt: {
+    'http-status.all': 'Tudo',
+  },
+  ja: {
+    'http-status.all': 'すべて',
+  },
+  ko: {
+    'http-status.all': '전체',
+  },
 };

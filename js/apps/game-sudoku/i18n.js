@@ -29,4 +29,16 @@ export default {
     'game-sudoku.hint': '提示',
     'game-sudoku.check': '检查',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

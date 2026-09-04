@@ -3,6 +3,10 @@ export const LANGUAGES = [
   { code: 'de', path: 'de', label: 'German', native: 'Deutsch', locale: 'de', dir: 'ltr' },
   { code: 'es', path: 'es', label: 'Spanish', native: 'Español', locale: 'es', dir: 'ltr' },
   { code: 'zh', path: 'zh', label: 'Chinese', native: '中文', locale: 'zh-Hans', dir: 'ltr' },
+  { code: 'fr', path: 'fr', label: 'French', native: 'Français', locale: 'fr', dir: 'ltr' },
+  { code: 'pt', path: 'pt', label: 'Portuguese', native: 'Português', locale: 'pt-BR', dir: 'ltr' },
+  { code: 'ja', path: 'ja', label: 'Japanese', native: '日本語', locale: 'ja', dir: 'ltr' },
+  { code: 'ko', path: 'ko', label: 'Korean', native: '한국어', locale: 'ko', dir: 'ltr' },
 ];
 
 export const DEFAULT_LANGUAGE = 'en';

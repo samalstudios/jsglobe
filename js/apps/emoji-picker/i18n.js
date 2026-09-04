@@ -47,4 +47,16 @@ export default {
     'emoji-picker.copyHtmlEntity': '复制 HTML 实体',
     'emoji-picker.pickedEmojiLandHere': '选过的 emoji 会出现在这里。',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

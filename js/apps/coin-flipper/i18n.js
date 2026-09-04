@@ -53,4 +53,16 @@ export default {
     'coin-flipper.coinFlipper': '抛硬币',
     'coin-flipper.widgetBlurb': '抛出硬币，看概率如何趋于均衡。',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

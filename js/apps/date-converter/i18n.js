@@ -62,4 +62,28 @@ export default {
     'date-converter.leapYear': '闰年',
     'date-converter.timezone': '时区',
   },
+  fr: {
+    'date-converter.170000000020240131t0900': '1700000000, 2024-01-31T09:00:00Z, ou ',
+    'date-converter.iso8601': 'ISO 8601',
+    'date-converter.utc': 'UTC',
+    'date-converter.rfc2822': 'RFC 2822',
+  },
+  pt: {
+    'date-converter.170000000020240131t0900': '1700000000, 2024-01-31T09:00:00Z, ou ',
+    'date-converter.iso8601': 'ISO 8601',
+    'date-converter.utc': 'UTC',
+    'date-converter.rfc2822': 'RFC 2822',
+  },
+  ja: {
+    'date-converter.170000000020240131t0900': '1700000000、2024-01-31T09:00:00Z、または ',
+    'date-converter.iso8601': 'ISO 8601',
+    'date-converter.utc': 'UTC',
+    'date-converter.rfc2822': 'RFC 2822',
+  },
+  ko: {
+    'date-converter.170000000020240131t0900': '1700000000, 2024-01-31T09:00:00Z 또는 ',
+    'date-converter.iso8601': 'ISO 8601',
+    'date-converter.utc': 'UTC',
+    'date-converter.rfc2822': 'RFC 2822',
+  },
 };

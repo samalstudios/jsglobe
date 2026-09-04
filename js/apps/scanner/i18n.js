@@ -140,4 +140,16 @@ export default {
     'scanner.codeScanner': '扫码器',
     'scanner.widgetBlurb': '使用摄像头或图片读取二维码与条形码。',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

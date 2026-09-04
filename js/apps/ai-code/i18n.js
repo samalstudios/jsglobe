@@ -44,4 +44,16 @@ export default {
     'ai-code.result': '结果',
     'ai-code.copy': '复制',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

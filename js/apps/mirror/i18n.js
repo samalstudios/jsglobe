@@ -137,4 +137,20 @@ export default {
     'mirror.unfreeze': '继续',
     'mirror.openPhoto': '打开照片',
   },
+  fr: {
+    'mirror.zoom': 'Zoom',
+    'mirror.adjust': 'Ajuster',
+  },
+  pt: {
+    'mirror.zoom': 'Zoom',
+    'mirror.adjust': 'Ajustar',
+  },
+  ja: {
+    'mirror.zoom': 'Zoom',
+    'mirror.adjust': '調整',
+  },
+  ko: {
+    'mirror.zoom': 'Zoom',
+    'mirror.adjust': '조정',
+  },
 };

@@ -134,4 +134,16 @@ export default {
     'letters.letters': '字母',
     'letters.widgetBlurb': '学习希腊、西里尔、日语和汉语的字符。',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

@@ -56,4 +56,16 @@ export default {
     'svg-placeholder.copyImgTag': '复制 img 标签',
     'svg-placeholder.download': '下载',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

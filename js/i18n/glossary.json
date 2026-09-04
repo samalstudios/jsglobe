@@ -2,607 +2,1091 @@
  "# Title": {
   "de": "# Titel",
   "es": "# Título",
-  "zh": "# 标题"
+  "zh": "# 标题",
+  "fr": "# Titre",
+  "pt": "# Título",
+  "ja": "# タイトル",
+  "ko": "# 제목"
  },
  "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple": {
   "de": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
   "es": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
-  "zh": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple"
+  "zh": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
+  "fr": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
+  "pt": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
+  "ja": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
+  "ko": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple"
  },
  "&lt;div&gt;": {
   "de": "&lt;div&gt;",
   "es": "&lt;div&gt;",
-  "zh": "&lt;div&gt;"
+  "zh": "&lt;div&gt;",
+  "fr": "&lt;div&gt;",
+  "pt": "&lt;div&gt;",
+  "ja": "&lt;div&gt;",
+  "ko": "&lt;div&gt;"
  },
  "+50 cents": {
   "de": "+50 Cent",
   "es": "+50 centésimas",
-  "zh": "+50 音分"
+  "zh": "+50 音分",
+  "fr": "+50 cents",
+  "pt": "+50 cents",
+  "ja": "+50 セント",
+  "ko": "+50센트"
  },
  "-----BEGIN CERTIFICATE-----": {
   "de": "-----BEGIN CERTIFICATE-----",
   "es": "-----BEGIN CERTIFICATE-----",
-  "zh": "-----BEGIN CERTIFICATE-----"
+  "zh": "-----BEGIN CERTIFICATE-----",
+  "fr": "-----BEGIN CERTIFICATE-----",
+  "pt": "-----BEGIN CERTIFICATE-----",
+  "ja": "-----BEGIN CERTIFICATE-----",
+  "ko": "-----BEGIN CERTIFICATE-----"
  },
  "/usr/bin/backup": {
   "de": "/usr/bin/backup",
   "es": "/usr/bin/backup",
-  "zh": "/usr/bin/backup"
+  "zh": "/usr/bin/backup",
+  "fr": "/usr/bin/backup",
+  "pt": "/usr/bin/backup",
+  "ja": "/usr/bin/backup",
+  "ko": "/usr/bin/backup"
  },
  "0 bits": {
   "de": "0 Bit",
   "es": "0 bits",
-  "zh": "0 位"
+  "zh": "0 位",
+  "fr": "0 bit",
+  "pt": "0 bits",
+  "ja": "0 ビット",
+  "ko": "0비트"
  },
  "0 characters": {
   "de": "0 Zeichen",
   "es": "0 caracteres",
-  "zh": "0 个字符"
+  "zh": "0 个字符",
+  "fr": "0 caractère",
+  "pt": "0 caracteres",
+  "ja": "0 文字",
+  "ko": "0자"
  },
  "0 in · 0 out": {
   "de": "0 empfangen · 0 gesendet",
   "es": "0 entrada · 0 salida",
-  "zh": "接收 0 · 发送 0"
+  "zh": "接收 0 · 发送 0",
+  "fr": "0 entrée · 0 sortie",
+  "pt": "0 entrada · 0 saída",
+  "ja": "入力 0 · 出力 0",
+  "ko": "입력 0 · 출력 0"
  },
  "0 keeps the original": {
   "de": "0 behält das Original",
   "es": "0 mantiene el original",
-  "zh": "0 表示保持原样"
+  "zh": "0 表示保持原样",
+  "fr": "0 garde l'original",
+  "pt": "0 mantém o original",
+  "ja": "0 なら元のまま",
+  "ko": "0이면 원본 유지"
  },
  "1 stop": {
   "de": "1 Stoppbit",
   "es": "1 de parada",
-  "zh": "1 停止位"
+  "zh": "1 停止位",
+  "fr": "1 stop",
+  "pt": "1 stop",
+  "ja": "1 段",
+  "ko": "1스톱"
  },
  "1 to 4 demux": {
   "de": "1-zu-4-Demultiplexer",
   "es": "Demultiplexor 1 a 4",
-  "zh": "1 分 4 解复用器"
+  "zh": "1 分 4 解复用器",
+  "fr": "Démultiplexeur 1 vers 4",
+  "pt": "Demultiplexador 1 para 4",
+  "ja": "1対4 デマルチプレクサ",
+  "ko": "1대4 디먹스"
  },
  "1/10 speed": {
   "de": "1/10 Geschwindigkeit",
   "es": "Velocidad 1/10",
-  "zh": "1/10 速度"
+  "zh": "1/10 速度",
+  "fr": "Vitesse 1/10",
+  "pt": "Velocidade 1/10",
+  "ja": "1/10 の速度",
+  "ko": "1/10 속도"
  },
  "1/200 speed": {
   "de": "1/200 Geschwindigkeit",
   "es": "Velocidad 1/200",
-  "zh": "1/200 速度"
+  "zh": "1/200 速度",
+  "fr": "Vitesse 1/200",
+  "pt": "Velocidade 1/200",
+  "ja": "1/200 の速度",
+  "ko": "1/200 속도"
  },
  "1/4 speed": {
   "de": "1/4 Geschwindigkeit",
   "es": "Velocidad 1/4",
-  "zh": "1/4 速度"
+  "zh": "1/4 速度",
+  "fr": "Vitesse 1/4",
+  "pt": "Velocidade 1/4",
+  "ja": "1/4 の速度",
+  "ko": "1/4 속도"
  },
  "1/50 speed": {
   "de": "1/50 Geschwindigkeit",
   "es": "Velocidad 1/50",
-  "zh": "1/50 速度"
+  "zh": "1/50 速度",
+  "fr": "Vitesse 1/50",
+  "pt": "Velocidade 1/50",
+  "ja": "1/50 の速度",
+  "ko": "1/50 속도"
  },
  "10 Ways to Build a Café Menu - 2024 Edition": {
   "de": "10 Wege zu einer Café-Karte - Ausgabe 2024",
   "es": "10 formas de crear una carta de cafetería - Edición 2024",
-  "zh": "打造咖啡馆菜单的 10 种方法 - 2024 版"
+  "zh": "打造咖啡馆菜单的 10 种方法 - 2024 版",
+  "fr": "10 façons de composer une carte de café - édition 2024",
+  "pt": "10 maneiras de montar um cardápio de café - edição 2024",
+  "ja": "カフェのメニューを組み立てる 10 の方法 - 2024 年版",
+  "ko": "카페 메뉴를 짜는 10가지 방법 - 2024년판"
  },
  "100 µs/div": {
   "de": "100 µs/Div",
   "es": "100 µs/div",
-  "zh": "100 µs/格"
+  "zh": "100 µs/格",
+  "fr": "100 µs/div",
+  "pt": "100 µs/div",
+  "ja": "100 µs/div",
+  "ko": "100 µs/div"
  },
  "12-hour time": {
   "de": "12-Stunden-Format",
   "es": "Formato de 12 horas",
-  "zh": "12 小时制"
+  "zh": "12 小时制",
+  "fr": "Format 12 heures",
+  "pt": "Formato de 12 horas",
+  "ja": "12 時間表記",
+  "ko": "12시간 표기"
  },
  "128 kbps": {
   "de": "128 kbit/s",
   "es": "128 kbps",
-  "zh": "128 kbps"
+  "zh": "128 kbps",
+  "fr": "128 kbit/s",
+  "pt": "128 kbps",
+  "ja": "128 kbps",
+  "ko": "128 kbps"
  },
  "16 steps, click to toggle": {
   "de": "16 Schritte, zum Umschalten klicken",
   "es": "16 pasos, haz clic para activarlos",
-  "zh": "16 个步位，点击可切换"
+  "zh": "16 个步位，点击可切换",
+  "fr": "16 pas, cliquez pour activer",
+  "pt": "16 passos, clique para alternar",
+  "ja": "16 ステップ、クリックで切り替え",
+  "ko": "16스텝, 클릭하여 전환"
  },
  "1700000000, 2024-01-31T09:00:00Z, or ": {
   "de": "1700000000, 2024-01-31T09:00:00Z, oder ",
   "es": "1700000000, 2024-01-31T09:00:00Z, o ",
-  "zh": "1700000000、2024-01-31T09:00:00Z 或 "
+  "zh": "1700000000、2024-01-31T09:00:00Z 或 ",
+  "fr": "1700000000, 2024-01-31T09:00:00Z, ou ",
+  "pt": "1700000000, 2024-01-31T09:00:00Z, ou ",
+  "ja": "1700000000、2024-01-31T09:00:00Z、または ",
+  "ko": "1700000000, 2024-01-31T09:00:00Z 또는 "
  },
  "192 kbps": {
   "de": "192 kbit/s",
   "es": "192 kbps",
-  "zh": "192 kbps"
+  "zh": "192 kbps",
+  "fr": "192 kbit/s",
+  "pt": "192 kbps",
+  "ja": "192 kbps",
+  "ko": "192 kbps"
  },
  "2 + 2 * pi": {
   "de": "2 + 2 * pi",
   "es": "2 + 2 * pi",
-  "zh": "2 + 2 * pi"
+  "zh": "2 + 2 * pi",
+  "fr": "2 + 2 * pi",
+  "pt": "2 + 2 * pi",
+  "ja": "2 + 2 * pi",
+  "ko": "2 + 2 * pi"
  },
  "2 ms/div": {
   "de": "2 ms/Div",
   "es": "2 ms/div",
-  "zh": "2 ms/格"
+  "zh": "2 ms/格",
+  "fr": "2 ms/div",
+  "pt": "2 ms/div",
+  "ja": "2 ms/div",
+  "ko": "2 ms/div"
  },
  "2 spaces": {
   "de": "2 Leerzeichen",
   "es": "2 espacios",
-  "zh": "2 个空格"
+  "zh": "2 个空格",
+  "fr": "2 espaces",
+  "pt": "2 espaços",
+  "ja": "スペース 2 つ",
+  "ko": "공백 2칸"
  },
  "2 stop": {
   "de": "2 Stoppbits",
   "es": "2 de parada",
-  "zh": "2 停止位"
+  "zh": "2 停止位",
+  "fr": "2 stops",
+  "pt": "2 stops",
+  "ja": "2 段",
+  "ko": "2스톱"
  },
  "2 to 4 decoder": {
   "de": "2-zu-4-Decoder",
   "es": "Decodificador 2 a 4",
-  "zh": "2-4 译码器"
+  "zh": "2-4 译码器",
+  "fr": "Décodeur 2 vers 4",
+  "pt": "Decodificador 2 para 4",
+  "ja": "2対4 デコーダ",
+  "ko": "2대4 디코더"
  },
  "20 ms/div": {
   "de": "20 ms/Div",
   "es": "20 ms/div",
-  "zh": "20 ms/格"
+  "zh": "20 ms/格",
+  "fr": "20 ms/div",
+  "pt": "20 ms/div",
+  "ja": "20 ms/div",
+  "ko": "20 ms/div"
  },
  "20 µs/div": {
   "de": "20 µs/Div",
   "es": "20 µs/div",
-  "zh": "20 µs/格"
+  "zh": "20 µs/格",
+  "fr": "20 µs/div",
+  "pt": "20 µs/div",
+  "ja": "20 µs/div",
+  "ko": "20 µs/div"
  },
  "2D curve": {
   "de": "2D-Kurve",
   "es": "Curva 2D",
-  "zh": "二维曲线"
+  "zh": "二维曲线",
+  "fr": "Courbe 2D",
+  "pt": "Curva 2D",
+  "ja": "2D 曲線",
+  "ko": "2D 곡선"
  },
  "3 times": {
   "de": "Dreimal",
   "es": "3 veces",
-  "zh": "三次"
+  "zh": "三次",
+  "fr": "3 fois",
+  "pt": "3 vezes",
+  "ja": "3 回",
+  "ko": "3회"
  },
  "30 seconds": {
   "de": "30 Sekunden",
   "es": "30 segundos",
-  "zh": "30 秒"
+  "zh": "30 秒",
+  "fr": "30 secondes",
+  "pt": "30 segundos",
+  "ja": "30 秒",
+  "ko": "30초"
  },
  "32-bit representation grouped in nibbles": {
   "de": "32-Bit-Darstellung in Nibbles gruppiert",
   "es": "Representación de 32 bits agrupada en nibbles",
-  "zh": "按半字节分组的 32 位表示"
+  "zh": "按半字节分组的 32 位表示",
+  "fr": "Représentation 32 bits groupée par quartets",
+  "pt": "Representação de 32 bits agrupada em nibbles",
+  "ja": "ニブル単位でまとめた 32 ビット表現",
+  "ko": "니블 단위로 묶은 32비트 표현"
  },
  "320 kbps": {
   "de": "320 kbit/s",
   "es": "320 kbps",
-  "zh": "320 kbps"
+  "zh": "320 kbps",
+  "fr": "320 kbit/s",
+  "pt": "320 kbps",
+  "ja": "320 kbps",
+  "ko": "320 kbps"
  },
  "3D extrude": {
   "de": "3D-Extrusion",
   "es": "Extrusión 3D",
-  "zh": "3D 立体"
+  "zh": "3D 立体",
+  "fr": "Extrusion 3D",
+  "pt": "Extrusão 3D",
+  "ja": "3D 押し出し",
+  "ko": "3D 돌출"
  },
  "3D surface": {
   "de": "3D-Fläche",
   "es": "Superficie 3D",
-  "zh": "三维曲面"
+  "zh": "三维曲面",
+  "fr": "Surface 3D",
+  "pt": "Superfície 3D",
+  "ja": "3D 曲面",
+  "ko": "3D 곡면"
  },
  "4 bit counter": {
   "de": "4-Bit-Zähler",
   "es": "Contador de 4 bits",
-  "zh": "4 位计数器"
+  "zh": "4 位计数器",
+  "fr": "Compteur 4 bits",
+  "pt": "Contador de 4 bits",
+  "ja": "4 ビットカウンタ",
+  "ko": "4비트 카운터"
  },
  "4 spaces": {
   "de": "4 Leerzeichen",
   "es": "4 espacios",
-  "zh": "4 个空格"
+  "zh": "4 个空格",
+  "fr": "4 espaces",
+  "pt": "4 espaços",
+  "ja": "スペース 4 つ",
+  "ko": "공백 4칸"
  },
  "4 to 1 mux": {
   "de": "4-zu-1-Multiplexer",
   "es": "Multiplexor 4 a 1",
-  "zh": "4 选 1 多路器"
+  "zh": "4 选 1 多路器",
+  "fr": "Multiplexeur 4 vers 1",
+  "pt": "Multiplexador 4 para 1",
+  "ja": "4対1 マルチプレクサ",
+  "ko": "4대1 먹스"
  },
  "4 to 2 encoder": {
   "de": "4-zu-2-Encoder",
   "es": "Codificador 4 a 2",
-  "zh": "4-2 编码器"
+  "zh": "4-2 编码器",
+  "fr": "Encodeur 4 vers 2",
+  "pt": "Codificador 4 para 2",
+  "ja": "4対2 エンコーダ",
+  "ko": "4대2 인코더"
  },
  "5 ms/div": {
   "de": "5 ms/Div",
   "es": "5 ms/div",
-  "zh": "5 ms/格"
+  "zh": "5 ms/格",
+  "fr": "5 ms/div",
+  "pt": "5 ms/div",
+  "ja": "5 ms/div",
+  "ko": "5 ms/div"
  },
  "50 ms/div": {
   "de": "50 ms/Div",
   "es": "50 ms/div",
-  "zh": "50 ms/格"
+  "zh": "50 ms/格",
+  "fr": "50 ms/div",
+  "pt": "50 ms/div",
+  "ja": "50 ms/div",
+  "ko": "50 ms/div"
  },
  "500 µs/div": {
   "de": "500 µs/Div",
   "es": "500 µs/div",
-  "zh": "500 µs/格"
+  "zh": "500 µs/格",
+  "fr": "500 µs/div",
+  "pt": "500 µs/div",
+  "ja": "500 µs/div",
+  "ko": "500 µs/div"
  },
  "6 digits": {
   "de": "6 Stellen",
   "es": "6 dígitos",
-  "zh": "6 位"
+  "zh": "6 位",
+  "fr": "6 chiffres",
+  "pt": "6 dígitos",
+  "ja": "6 桁",
+  "ko": "6자리"
  },
  "60 seconds": {
   "de": "60 Sekunden",
   "es": "60 segundos",
-  "zh": "60 秒"
+  "zh": "60 秒",
+  "fr": "60 secondes",
+  "pt": "60 segundos",
+  "ja": "60 秒",
+  "ko": "60초"
  },
  "7 data": {
   "de": "7 Datenbits",
   "es": "7 de datos",
-  "zh": "7 数据位"
+  "zh": "7 数据位",
+  "fr": "7 données",
+  "pt": "7 dados",
+  "ja": "データ 7 ビット",
+  "ko": "데이터 7비트"
  },
  "7 segment": {
   "de": "7-Segment",
   "es": "7 segmentos",
-  "zh": "七段数码管"
+  "zh": "七段数码管",
+  "fr": "7 segments",
+  "pt": "7 segmentos",
+  "ja": "7 セグメント",
+  "ko": "7세그먼트"
  },
  "8 data": {
   "de": "8 Datenbits",
   "es": "8 de datos",
-  "zh": "8 数据位"
+  "zh": "8 数据位",
+  "fr": "8 données",
+  "pt": "8 dados",
+  "ja": "データ 8 ビット",
+  "ko": "데이터 8비트"
  },
  "8 digits": {
   "de": "8 Stellen",
   "es": "8 dígitos",
-  "zh": "8 位"
+  "zh": "8 位",
+  "fr": "8 chiffres",
+  "pt": "8 dígitos",
+  "ja": "8 桁",
+  "ko": "8자리"
  },
  "8x8 matrix": {
   "de": "8x8-Matrix",
   "es": "Matriz 8x8",
-  "zh": "8x8 点阵"
+  "zh": "8x8 点阵",
+  "fr": "Matrice 8x8",
+  "pt": "Matriz 8x8",
+  "ja": "8x8 マトリクス",
+  "ko": "8x8 매트릭스"
  },
  "96 kbps": {
   "de": "96 kbit/s",
   "es": "96 kbps",
-  "zh": "96 kbps"
+  "zh": "96 kbps",
+  "fr": "96 kbit/s",
+  "pt": "96 kbps",
+  "ja": "96 kbps",
+  "ko": "96 kbps"
  },
  "A UK postcode, case insensitive": {
   "de": "Eine britische Postleitzahl, Groß- und Kleinschreibung egal",
   "es": "Un código postal británico, sin distinguir mayúsculas",
-  "zh": "英国邮编，不区分大小写"
+  "zh": "英国邮编，不区分大小写",
+  "fr": "Un code postal britannique, sans distinction de casse",
+  "pt": "Um código postal do Reino Unido, sem diferenciar maiúsculas",
+  "ja": "英国の郵便番号、大文字小文字は区別しません",
+  "ko": "영국 우편번호, 대소문자 구분 없음"
  },
  "A cron expression needs five fields.": {
   "de": "Ein Cron-Ausdruck braucht fünf Felder.",
   "es": "Una expresión cron necesita cinco campos.",
-  "zh": "cron 表达式需要五个字段。"
+  "zh": "cron 表达式需要五个字段。",
+  "fr": "Une expression cron demande cinq champs.",
+  "pt": "Uma expressão cron precisa de cinco campos.",
+  "ja": "cron 式には 5 つのフィールドが必要です。",
+  "ko": "cron 식에는 다섯 개의 필드가 필요합니다."
  },
  "A snapshot is kept each day you update prices": {
   "de": "An jedem Tag, an dem du Kurse aktualisierst, wird eine Momentaufnahme gespeichert",
   "es": "Se guarda una instantánea cada día que actualizas los precios",
-  "zh": "每次更新价格的当天都会保存一份快照"
+  "zh": "每次更新价格的当天都会保存一份快照",
+  "fr": "Un instantané est gardé chaque jour où vous mettez les cours à jour",
+  "pt": "Um instantâneo é guardado a cada dia em que você atualiza os preços",
+  "ja": "価格を更新した日ごとにスナップショットが残ります",
+  "ko": "가격을 갱신한 날마다 스냅숏이 남습니다"
  },
  "A symbol and quantity are required": {
   "de": "Symbol und Stückzahl sind erforderlich",
   "es": "Hacen falta un símbolo y una cantidad",
-  "zh": "需要填写代码和数量"
+  "zh": "需要填写代码和数量",
+  "fr": "Un symbole et une quantité sont requis",
+  "pt": "É preciso informar um símbolo e uma quantidade",
+  "ja": "銘柄と数量が必要です",
+  "ko": "종목과 수량이 필요합니다"
  },
  "AAPL": {
   "de": "AAPL",
   "es": "AAPL",
-  "zh": "AAPL"
+  "zh": "AAPL",
+  "fr": "AAPL",
+  "pt": "AAPL",
+  "ja": "AAPL",
+  "ko": "AAPL"
  },
  "AC source": {
   "de": "Wechselspannungsquelle",
   "es": "Fuente de CA",
-  "zh": "交流电源"
+  "zh": "交流电源",
+  "fr": "Source alternative",
+  "pt": "Fonte de corrente alternada",
+  "ja": "交流電源",
+  "ko": "교류 전원"
  },
  "AED": {
   "de": "AED",
   "es": "AED",
-  "zh": "迪拉姆"
+  "zh": "迪拉姆",
+  "fr": "AED",
+  "pt": "AED",
+  "ja": "AED",
+  "ko": "AED"
  },
  "AES-256-GCM with PBKDF2 key derivation (250k iterations)": {
   "de": "AES-256-GCM mit PBKDF2-Schlüsselableitung (250k Iterationen)",
   "es": "AES-256-GCM con derivación de clave PBKDF2 (250k iteraciones)",
-  "zh": "AES-256-GCM，使用 PBKDF2 派生密钥（25 万次迭代）"
+  "zh": "AES-256-GCM，使用 PBKDF2 派生密钥（25 万次迭代）",
+  "fr": "AES-256-GCM avec dérivation de clé PBKDF2 (250k itérations)",
+  "pt": "AES-256-GCM com derivação de chave PBKDF2 (250 mil iterações)",
+  "ja": "PBKDF2 鍵導出 (25 万回) を用いた AES-256-GCM",
+  "ko": "PBKDF2 키 유도(25만 회)를 사용한 AES-256-GCM"
  },
  "AI": {
   "de": "KI",
   "es": "IA",
-  "zh": "AI"
+  "zh": "AI",
+  "fr": "IA",
+  "pt": "IA",
+  "ja": "AI",
+  "ko": "AI"
  },
  "AND": {
   "de": "AND",
   "es": "AND",
-  "zh": "AND"
+  "zh": "AND",
+  "fr": "AND",
+  "pt": "AND",
+  "ja": "AND",
+  "ko": "AND"
  },
  "API key (optional)": {
   "de": "API-Schlüssel (optional)",
   "es": "Clave de API (opcional)",
-  "zh": "API 密钥（可选）"
+  "zh": "API 密钥（可选）",
+  "fr": "Clé API (facultative)",
+  "pt": "Chave de API (opcional)",
+  "ja": "API キー (任意)",
+  "ko": "API 키 (선택)"
  },
  "AUD": {
   "de": "AUD",
   "es": "AUD",
-  "zh": "澳元"
+  "zh": "澳元",
+  "fr": "AUD",
+  "pt": "AUD",
+  "ja": "AUD",
+  "ko": "AUD"
  },
  "About": {
   "de": "Über",
   "es": "Acerca de",
-  "zh": "关于"
+  "zh": "关于",
+  "fr": "À propos",
+  "pt": "Sobre",
+  "ja": "このアプリについて",
+  "ko": "정보"
  },
  "Accent": {
   "de": "Akzentfarbe",
   "es": "Color de acento",
-  "zh": "强调色"
+  "zh": "强调色",
+  "fr": "Accent",
+  "pt": "Destaque",
+  "ja": "アクセント",
+  "ko": "강조색"
  },
  "Accent only": {
   "de": "Nur Akzentfarbe",
   "es": "Solo el color de acento",
-  "zh": "仅强调色"
+  "zh": "仅强调色",
+  "fr": "Accent seulement",
+  "pt": "Somente destaque",
+  "ja": "アクセントのみ",
+  "ko": "강조색만"
  },
  "Accepts dotted quad, decimal, 0x hex or binary": {
   "de": "Akzeptiert Punktnotation, Dezimal, 0x-Hex oder Binär",
   "es": "Admite notación con puntos, decimal, hex 0x o binario",
-  "zh": "支持点分十进制、十进制、0x 十六进制或二进制"
+  "zh": "支持点分十进制、十进制、0x 十六进制或二进制",
+  "fr": "Accepte la notation pointée, décimale, hexadécimale 0x ou binaire",
+  "pt": "Aceita notação pontuada, decimal, hexadecimal 0x ou binária",
+  "ja": "ドット区切り、10 進数、0x 16 進数、2 進数を受け付けます",
+  "ko": "점으로 구분된 표기, 10진수, 0x 16진수, 2진수를 받습니다"
  },
  "Account part": {
   "de": "Kontoteil",
   "es": "Parte de la cuenta",
-  "zh": "账号部分"
+  "zh": "账号部分",
+  "fr": "Partie compte",
+  "pt": "Parte da conta",
+  "ja": "アカウント部分",
+  "ko": "계정 부분"
  },
  "Active": {
   "de": "Aktiv",
   "es": "Activo",
-  "zh": "当前"
+  "zh": "当前",
+  "fr": "Actif",
+  "pt": "Ativo",
+  "ja": "有効",
+  "ko": "활성"
  },
  "Ada Lovelace": {
   "de": "Ada Lovelace",
   "es": "Ada Lovelace",
-  "zh": "Ada Lovelace"
+  "zh": "Ada Lovelace",
+  "fr": "Ada Lovelace",
+  "pt": "Ada Lovelace",
+  "ja": "Ada Lovelace",
+  "ko": "Ada Lovelace"
  },
  "Add": {
   "de": "Hinzufügen",
   "es": "Añadir",
-  "zh": "添加"
+  "zh": "添加",
+  "fr": "Ajouter",
+  "pt": "Adicionar",
+  "ja": "追加",
+  "ko": "추가"
  },
  "Add PNG, JPEG, WebP, GIF, AVIF or SVG files.": {
   "de": "PNG-, JPEG-, WebP-, GIF-, AVIF- oder SVG-Dateien hinzufügen.",
   "es": "Añade archivos PNG, JPEG, WebP, GIF, AVIF o SVG.",
-  "zh": "添加 PNG、JPEG、WebP、GIF、AVIF 或 SVG 文件。"
+  "zh": "添加 PNG、JPEG、WebP、GIF、AVIF 或 SVG 文件。",
+  "fr": "Ajoutez des fichiers PNG, JPEG, WebP, GIF, AVIF ou SVG.",
+  "pt": "Adicione arquivos PNG, JPEG, WebP, GIF, AVIF ou SVG.",
+  "ja": "PNG、JPEG、WebP、GIF、AVIF、SVG のファイルを追加してください。",
+  "ko": "PNG, JPEG, WebP, GIF, AVIF, SVG 파일을 추가하세요."
  },
  "Add a city": {
   "de": "Eine Stadt hinzufügen",
   "es": "Añadir una ciudad",
-  "zh": "添加城市"
+  "zh": "添加城市",
+  "fr": "Ajouter une ville",
+  "pt": "Adicionar uma cidade",
+  "ja": "都市を追加",
+  "ko": "도시 추가"
  },
  "Add a jack or a motor first, then this button can drive it.": {
   "de": "Zuerst einen Zylinder oder Motor hinzufügen, dann kann dieser Knopf ihn antreiben.",
   "es": "Añade primero un cilindro o un motor, y entonces este botón podrá accionarlo.",
-  "zh": "请先添加液压缸或马达，然后这个按钮才能驱动它。"
+  "zh": "请先添加液压缸或马达，然后这个按钮才能驱动它。",
+  "fr": "Ajoutez d'abord une prise ou un moteur, ce bouton pourra alors le piloter.",
+  "pt": "Adicione primeiro uma saída ou um motor, e então este botão poderá acioná-lo.",
+  "ja": "先にジャックかモーターを追加すると、このボタンで動かせます。",
+  "ko": "먼저 잭이나 모터를 추가하면 이 버튼으로 구동할 수 있습니다."
  },
  "Add a position first": {
   "de": "Zuerst eine Position hinzufügen",
   "es": "Añade primero una posición",
-  "zh": "请先添加一笔持仓"
+  "zh": "请先添加一笔持仓",
+  "fr": "Ajoutez d'abord une position",
+  "pt": "Adicione uma posição primeiro",
+  "ja": "先に建玉を追加してください",
+  "ko": "먼저 보유 종목을 추가하세요"
  },
  "Add a position to see the split.": {
   "de": "Eine Position hinzufügen, um die Aufteilung zu sehen.",
   "es": "Añade una posición para ver el reparto.",
-  "zh": "添加一笔持仓即可看到分布。"
+  "zh": "添加一笔持仓即可看到分布。",
+  "fr": "Ajoutez une position pour voir la répartition.",
+  "pt": "Adicione uma posição para ver a divisão.",
+  "ja": "内訳を見るには建玉を追加してください。",
+  "ko": "구성을 보려면 보유 종목을 추가하세요."
  },
  "Add an event": {
   "de": "Einen Termin hinzufügen",
   "es": "Añadir un evento",
-  "zh": "添加一个活动"
+  "zh": "添加一个活动",
+  "fr": "Ajouter un événement",
+  "pt": "Adicionar um evento",
+  "ja": "予定を追加",
+  "ko": "일정 추가"
  },
  "Add colour": {
   "de": "Farbe hinzufügen",
   "es": "Añadir color",
-  "zh": "添加颜色"
+  "zh": "添加颜色",
+  "fr": "Ajouter de la couleur",
+  "pt": "Adicionar cor",
+  "ja": "色を付ける",
+  "ko": "색 넣기"
  },
  "Add column": {
   "de": "Spalte hinzufügen",
   "es": "Añadir columna",
-  "zh": "添加列"
+  "zh": "添加列",
+  "fr": "Ajouter une colonne",
+  "pt": "Adicionar coluna",
+  "ja": "列を追加",
+  "ko": "열 추가"
  },
  "Add event": {
   "de": "Termin hinzufügen",
   "es": "Añadir evento",
-  "zh": "添加活动"
+  "zh": "添加活动",
+  "fr": "Ajouter un événement",
+  "pt": "Adicionar evento",
+  "ja": "予定を追加",
+  "ko": "일정 추가"
  },
  "Add field": {
   "de": "Feld hinzufügen",
   "es": "Añadir campo",
-  "zh": "添加字段"
+  "zh": "添加字段",
+  "fr": "Ajouter un champ",
+  "pt": "Adicionar campo",
+  "ja": "フィールドを追加",
+  "ko": "필드 추가"
  },
  "Add files": {
   "de": "Dateien hinzufügen",
   "es": "Añadir archivos",
-  "zh": "添加文件"
+  "zh": "添加文件",
+  "fr": "Ajouter des fichiers",
+  "pt": "Adicionar arquivos",
+  "ja": "ファイルを追加",
+  "ko": "파일 추가"
  },
  "Add function": {
   "de": "Funktion hinzufügen",
   "es": "Añadir función",
-  "zh": "添加函数"
+  "zh": "添加函数",
+  "fr": "Ajouter une fonction",
+  "pt": "Adicionar função",
+  "ja": "関数を追加",
+  "ko": "함수 추가"
  },
  "Add padding": {
   "de": "Innenabstand hinzufügen",
   "es": "Añadir relleno",
-  "zh": "添加内边距"
+  "zh": "添加内边距",
+  "fr": "Ajouter une marge",
+  "pt": "Adicionar espaçamento",
+  "ja": "余白を足す",
+  "ko": "여백 추가"
  },
  "Add readiness and liveness probes": {
   "de": "Readiness- und Liveness-Probes hinzufügen",
   "es": "Añadir sondas de readiness y liveness",
-  "zh": "添加就绪和存活探针"
+  "zh": "添加就绪和存活探针",
+  "fr": "Ajouter des sondes de disponibilité et de vivacité",
+  "pt": "Adicionar sondas de prontidão e de atividade",
+  "ja": "readiness と liveness のプローブを追加",
+  "ko": "readiness와 liveness 프로브 추가"
  },
  "Add row": {
   "de": "Zeile hinzufügen",
   "es": "Añadir fila",
-  "zh": "添加行"
+  "zh": "添加行",
+  "fr": "Ajouter une ligne",
+  "pt": "Adicionar linha",
+  "ja": "行を追加",
+  "ko": "행 추가"
  },
  "Add stop": {
   "de": "Farbstopp hinzufügen",
   "es": "Añadir parada",
-  "zh": "添加色标"
+  "zh": "添加色标",
+  "fr": "Ajouter une étape",
+  "pt": "Adicionar parada",
+  "ja": "ストップを追加",
+  "ko": "정지점 추가"
  },
  "Add variable": {
   "de": "Variable hinzufügen",
   "es": "Añadir variable",
-  "zh": "添加变量"
+  "zh": "添加变量",
+  "fr": "Ajouter une variable",
+  "pt": "Adicionar variável",
+  "ja": "変数を追加",
+  "ko": "변수 추가"
  },
  "Addresses": {
   "de": "Adressen",
   "es": "Direcciones",
-  "zh": "地址"
+  "zh": "地址",
+  "fr": "Adresses",
+  "pt": "Endereços",
+  "ja": "アドレス",
+  "ko": "주소"
  },
  "Adjacent codes": {
   "de": "Benachbarte Codes",
   "es": "Códigos adyacentes",
-  "zh": "相邻时段的验证码"
+  "zh": "相邻时段的验证码",
+  "fr": "Codes voisins",
+  "pt": "Códigos vizinhos",
+  "ja": "近いコード",
+  "ko": "인접한 코드"
  },
  "Adjust": {
   "de": "Anpassen",
   "es": "Ajustar",
-  "zh": "调整"
+  "zh": "调整",
+  "fr": "Ajuster",
+  "pt": "Ajustar",
+  "ja": "調整",
+  "ko": "조정"
  },
  "Adjust image": {
   "de": "Bild anpassen",
   "es": "Ajustar la imagen",
-  "zh": "调整图片"
+  "zh": "调整图片",
+  "fr": "Ajuster l'image",
+  "pt": "Ajustar imagem",
+  "ja": "画像を調整",
+  "ko": "이미지 조정"
  },
  "Adjustments preview live and only touch the canvas when you apply them.": {
   "de": "Anpassungen werden live angezeigt und ändern die Leinwand erst beim Anwenden.",
   "es": "Los ajustes se previsualizan en vivo y solo modifican el lienzo cuando los aplicas.",
-  "zh": "调整会实时预览，只有在应用后才会改动画布。"
+  "zh": "调整会实时预览，只有在应用后才会改动画布。",
+  "fr": "Les réglages s'affichent en direct et ne modifient le canevas qu'une fois appliqués.",
+  "pt": "Os ajustes aparecem ao vivo e só alteram a tela quando você os aplica.",
+  "ja": "調整はその場で確認でき、適用するまでキャンバスには反映されません。",
+  "ko": "조정은 즉시 미리 보이며, 적용하기 전까지는 캔버스를 건드리지 않습니다."
  },
  "Administration": {
   "de": "Vergabe",
   "es": "Administración",
-  "zh": "管理方式"
+  "zh": "管理方式",
+  "fr": "Administration",
+  "pt": "Administração",
+  "ja": "管理",
+  "ko": "관리"
  },
  "Advance one frame": {
   "de": "Ein Bild weiter",
   "es": "Avanzar un fotograma",
-  "zh": "前进一帧"
+  "zh": "前进一帧",
+  "fr": "Avancer d'une image",
+  "pt": "Avançar um quadro",
+  "ja": "1 コマ進める",
+  "ko": "한 프레임 앞으로"
  },
  "Album": {
   "de": "Album",
   "es": "Álbum",
-  "zh": "专辑"
+  "zh": "专辑",
+  "fr": "Album",
+  "pt": "Álbum",
+  "ja": "アルバム",
+  "ko": "앨범"
  },
  "Album artist": {
   "de": "Album-Interpret",
   "es": "Artista del álbum",
-  "zh": "专辑艺术家"
+  "zh": "专辑艺术家",
+  "fr": "Artiste de l'album",
+  "pt": "Artista do álbum",
+  "ja": "アルバムアーティスト",
+  "ko": "앨범 아티스트"
  },
  "Align": {
   "de": "Ausrichtung",
   "es": "Alineación",
-  "zh": "对齐"
+  "zh": "对齐",
+  "fr": "Aligner",
+  "pt": "Alinhar",
+  "ja": "揃える",
+  "ko": "정렬"
  },
  "All": {
   "de": "Alle",
   "es": "Todo",
-  "zh": "全部"
+  "zh": "全部",
+  "fr": "Tout",
+  "pt": "Tudo",
+  "ja": "すべて",
+  "ko": "전체"
  },
  "All clear": {
   "de": "Alles erledigt",
   "es": "Todo hecho",
-  "zh": "全部完成"
+  "zh": "全部完成",
+  "fr": "Tout est bon",
+  "pt": "Tudo certo",
+  "ja": "問題なし",
+  "ko": "모두 이상 없음"
  },
  "All day": {
   "de": "Ganztägig",
   "es": "Todo el día",
-  "zh": "全天"
+  "zh": "全天",
+  "fr": "Toute la journée",
+  "pt": "Dia inteiro",
+  "ja": "終日",
+  "ko": "종일"
  },
  "All non-ASCII": {
   "de": "Alles außer ASCII",
   "es": "Todo lo no ASCII",
-  "zh": "所有非 ASCII"
+  "zh": "所有非 ASCII",
+  "fr": "Tout ce qui n'est pas ASCII",
+  "pt": "Tudo que não for ASCII",
+  "ja": "ASCII 以外すべて",
+  "ko": "ASCII가 아닌 전부"
  },
  "All types": {
   "de": "Alle Typen",
   "es": "Todos los tipos",
-  "zh": "所有类型"
+  "zh": "所有类型",
+  "fr": "Tous les types",
+  "pt": "Todos os tipos",
+  "ja": "すべての種類",
+  "ko": "모든 종류"
  },
  "All units": {
   "de": "Alle Einheiten",
   "es": "Todas las unidades",
-  "zh": "所有单位"
+  "zh": "所有单位",
+  "fr": "Toutes les unités",
+  "pt": "Todas as unidades",
+  "ja": "すべての単位",
+  "ko": "모든 단위"
  },
  "All values": {
   "de": "Alle Werte",
   "es": "Todos los valores",
-  "zh": "全部数值"
+  "zh": "全部数值",
+  "fr": "Toutes les valeurs",
+  "pt": "Todos os valores",
+  "ja": "すべての値",
+  "ko": "모든 값"
  },
  "Allocation and result": {
   "de": "Aufteilung und Ergebnis",
   "es": "Reparto y resultado",
-  "zh": "配置与收益"
+  "zh": "配置与收益",
+  "fr": "Répartition et résultat",
+  "pt": "Alocação e resultado",
+  "ja": "配分と結果",
+  "ko": "배분과 결과"
  },
  "An IP address is looked up as a reverse PTR record": {
   "de": "Eine IP-Adresse wird als Reverse-PTR-Eintrag abgefragt",
   "es": "Una dirección IP se consulta como registro PTR inverso",
-  "zh": "IP 地址会作为反向 PTR 记录查询"
+  "zh": "IP 地址会作为反向 PTR 记录查询",
+  "fr": "Une adresse IP est recherchée comme enregistrement PTR inverse",
+  "pt": "Um endereço IP é consultado como registro PTR reverso",
+  "ja": "IP アドレスは逆引きの PTR レコードとして照会されます",
+  "ko": "IP 주소는 역방향 PTR 레코드로 조회됩니다"
  },
  "An empty page. Start from one of the designs in the gallery, or add a piece from the left.": {
   "de": "Eine leere Seite. Mit einem Entwurf aus der Galerie beginnen oder links ein Element hinzufügen.",
   "es": "Una página en blanco. Empieza con uno de los diseños de la galería, o añade un elemento desde la izquierda.",
-  "zh": "一张空白页。可以从图库中的设计开始，或从左侧添加元素。"
+  "zh": "一张空白页。可以从图库中的设计开始，或从左侧添加元素。",
+  "fr": "Une page vide. Partez d'un des modèles de la galerie, ou ajoutez un élément depuis la gauche.",
+  "pt": "Uma página em branco. Comece por um dos modelos da galeria, ou adicione um elemento pela esquerda.",
+  "ja": "空のページです。ギャラリーのデザインから始めるか、左から部品を追加してください。",
+  "ko": "빈 페이지입니다. 갤러리의 디자인에서 시작하거나 왼쪽에서 요소를 추가하세요."
  },
  "Analyse an address": {
   "de": "Eine Adresse analysieren",
   "es": "Analizar una dirección",
-  "zh": "分析一个地址"
+  "zh": "分析一个地址",
+  "fr": "Analyser une adresse",
+  "pt": "Analisar um endereço",
+  "ja": "アドレスを調べる",
+  "ko": "주소 분석"
  },
  "Angle": {
   "de": "Winkel",
   "es": "Ángulo",
-  "zh": "角度"
+  "zh": "角度",
+  "fr": "Angle",
+  "pt": "Ângulo",
+  "ja": "角度",
+  "ko": "각도"
  },
  "Angle degrees": {
   "de": "Winkel Grad",
   "es": "Ángulo en grados",
-  "zh": "角度（度）"
+  "zh": "角度（度）",
+  "fr": "Angle en degrés",
+  "pt": "Ângulo em graus",
+  "ja": "角度 (度)",
+  "ko": "각도 (도)"
  },
  "Animated GIF": {
   "de": "Animiertes GIF",
   "es": "GIF animado",
-  "zh": "动态 GIF"
+  "zh": "动态 GIF",
+  "fr": "GIF animé",
+  "pt": "GIF animado",
+  "ja": "アニメーション GIF",
+  "ko": "움직이는 GIF"
  },
  "Any device": {
   "de": "Beliebiges Gerät",
   "es": "Cualquier dispositivo",
-  "zh": "任意设备"
+  "zh": "任意设备",
+  "fr": "N'importe quel appareil",
+  "pt": "Qualquer dispositivo",
+  "ja": "すべてのデバイス",
+  "ko": "모든 기기"
  },
  "Any separator works - spaces, dashes, underscores or camel humps": {
   "de": "Jedes Trennzeichen geht - Leerzeichen, Bindestriche, Unterstriche oder Binnenmajuskel",
   "es": "Vale cualquier separador: espacios, guiones, guiones bajos o mayúsculas internas",
-  "zh": "任何分隔符都可以：空格、连字符、下划线或驼峰"
+  "zh": "任何分隔符都可以：空格、连字符、下划线或驼峰",
+  "fr": "N'importe quel séparateur convient - espaces, tirets, tirets bas ou majuscules internes",
+  "pt": "Qualquer separador serve - espaços, hifens, sublinhados ou maiúsculas internas",
+  "ja": "区切りは何でも構いません - 空白、ハイフン、アンダースコア、大文字の切れ目",
+  "ko": "구분자는 무엇이든 됩니다 - 공백, 하이픈, 밑줄, 대문자 구분"
  },
  "Appearance": {
   "de": "Darstellung",
   "es": "Apariencia",
-  "zh": "外观"
+  "zh": "外观",
+  "fr": "Apparence",
+  "pt": "Aparência",
+  "ja": "外観",
+  "ko": "모양"
  },
  "Append this to ~/.ssh/authorized_keys on the server": {
   "de": "Dies an ~/.ssh/authorized_keys auf dem Server anhängen",
   "es": "Añade esto a ~/.ssh/authorized_keys en el servidor",
-  "zh": "把这行追加到服务器的 ~/.ssh/authorized_keys 中"
+  "zh": "把这行追加到服务器的 ~/.ssh/authorized_keys 中",
+  "fr": "Ajoutez ceci à ~/.ssh/authorized_keys sur le serveur",
+  "pt": "Acrescente isto a ~/.ssh/authorized_keys no servidor",
+  "ja": "サーバーの ~/.ssh/authorized_keys にこれを追記してください",
+  "ko": "서버의 ~/.ssh/authorized_keys에 이것을 덧붙이세요"
  },
  "Apple": {
   "de": "Apple",
   "es": "Apple",
-  "zh": "苹果"
+  "zh": "苹果",
+  "fr": "Apple",
+  "pt": "Apple",
+  "ja": "Apple",
+  "ko": "Apple"
  },
  "Apply": {
   "de": "Anwenden",
   "es": "Aplicar",
-  "zh": "应用"
+  "zh": "应用",
+  "fr": "Appliquer",
+  "pt": "Aplicar",
+  "ja": "適用",
+  "ko": "적용"
  },
  "Apply shared fields": {
   "de": "Gemeinsame Felder anwenden",
   "es": "Aplicar los campos comunes",
-  "zh": "应用共用字段"
+  "zh": "应用共用字段",
+  "fr": "Appliquer les champs communs",
+  "pt": "Aplicar os campos comuns",
+  "ja": "共通フィールドを適用",
+  "ko": "공통 필드 적용"
  },
  "Apps": {
   "de": "Apps",
   "es": "Apps",
-  "zh": "应用"
+  "zh": "应用",
+  "fr": "Apps",
+  "pt": "Apps",
+  "ja": "Apps",
+  "ko": "Apps"
  },
  "Arabic": {
   "de": "Arabisch",
@@ -677,7 +1161,11 @@
  "Audio": {
   "de": "Audio",
   "es": "Audio",
-  "zh": "音频"
+  "zh": "音频",
+  "fr": "Audio",
+  "pt": "Audio",
+  "ja": "Audio",
+  "ko": "Audio"
  },
  "Audio bitrate": {
   "de": "Audio-Bitrate",
@@ -697,7 +1185,11 @@
  "Autoscaler": {
   "de": "Autoscaler",
   "es": "Autoscaler",
-  "zh": "Autoscaler"
+  "zh": "Autoscaler",
+  "fr": "Autoscaler",
+  "pt": "Autoscaler",
+  "ja": "Autoscaler",
+  "ko": "Autoscaler"
  },
  "Available": {
   "de": "Verfügbar",
@@ -722,7 +1214,11 @@
  "BPM": {
   "de": "BPM",
   "es": "BPM",
-  "zh": "BPM"
+  "zh": "BPM",
+  "fr": "BPM",
+  "pt": "BPM",
+  "ja": "BPM",
+  "ko": "BPM"
  },
  "Back to the home screen": {
   "de": "Zurück zum Startbildschirm",
@@ -802,7 +1298,11 @@
  "Basic YWRtaW46aHVudGVyMg==": {
   "de": "Basic YWRtaW46aHVudGVyMg==",
   "es": "Basic YWRtaW46aHVudGVyMg==",
-  "zh": "Basic YWRtaW46aHVudGVyMg=="
+  "zh": "Basic YWRtaW46aHVudGVyMg==",
+  "fr": "Basic YWRtaW46aHVudGVyMg==",
+  "pt": "Basic YWRtaW46aHVudGVyMg==",
+  "ja": "Basic YWRtaW46aHVudGVyMg==",
+  "ko": "Basic YWRtaW46aHVudGVyMg=="
  },
  "Bass 4 string": {
   "de": "Bass viersaitig",
@@ -897,7 +1397,11 @@
  "Bluetooth": {
   "de": "Bluetooth",
   "es": "Bluetooth",
-  "zh": "蓝牙"
+  "zh": "蓝牙",
+  "fr": "Bluetooth",
+  "pt": "Bluetooth",
+  "ja": "Bluetooth",
+  "ko": "Bluetooth"
  },
  "Blur": {
   "de": "Weichzeichnen",
@@ -972,7 +1476,11 @@
  "Braille": {
   "de": "Braille",
   "es": "Braille",
-  "zh": "盲文"
+  "zh": "盲文",
+  "fr": "Braille",
+  "pt": "Braille",
+  "ja": "Braille",
+  "ko": "Braille"
  },
  "Break every brick": {
   "de": "Jeden Stein zerschlagen",
@@ -987,7 +1495,11 @@
  "Breakout": {
   "de": "Breakout",
   "es": "Breakout",
-  "zh": "打砖块"
+  "zh": "打砖块",
+  "fr": "Breakout",
+  "pt": "Breakout",
+  "ja": "Breakout",
+  "ko": "Breakout"
  },
  "Brightness": {
   "de": "Helligkeit",
@@ -1072,22 +1584,38 @@
  "Bytes": {
   "de": "Bytes",
   "es": "Bytes",
-  "zh": "字节"
+  "zh": "字节",
+  "fr": "Bytes",
+  "pt": "Bytes",
+  "ja": "Bytes",
+  "ko": "Bytes"
  },
  "CAD": {
   "de": "CAD",
   "es": "CAD",
-  "zh": "加元"
+  "zh": "加元",
+  "fr": "CAD",
+  "pt": "CAD",
+  "ja": "CAD",
+  "ko": "CAD"
  },
  "CHF": {
   "de": "CHF",
   "es": "CHF",
-  "zh": "瑞士法郎"
+  "zh": "瑞士法郎",
+  "fr": "CHF",
+  "pt": "CHF",
+  "ja": "CHF",
+  "ko": "CHF"
  },
  "CONSTANT_CASE": {
   "de": "CONSTANT_CASE",
   "es": "CONSTANT_CASE",
-  "zh": "CONSTANT_CASE"
+  "zh": "CONSTANT_CASE",
+  "fr": "CONSTANT_CASE",
+  "pt": "CONSTANT_CASE",
+  "ja": "CONSTANT_CASE",
+  "ko": "CONSTANT_CASE"
  },
  "CPU": {
   "de": "Computer",
@@ -1112,12 +1640,20 @@
  "CR": {
   "de": "CR",
   "es": "CR",
-  "zh": "CR"
+  "zh": "CR",
+  "fr": "CR",
+  "pt": "CR",
+  "ja": "CR",
+  "ko": "CR"
  },
  "CRLF": {
   "de": "CRLF",
   "es": "CRLF",
-  "zh": "CRLF"
+  "zh": "CRLF",
+  "fr": "CRLF",
+  "pt": "CRLF",
+  "ja": "CRLF",
+  "ko": "CRLF"
  },
  "CSS variable": {
   "de": "CSS-Variable",
@@ -1227,7 +1763,11 @@
  "Celsius": {
   "de": "Celsius",
   "es": "Celsius",
-  "zh": "摄氏度"
+  "zh": "摄氏度",
+  "fr": "Celsius",
+  "pt": "Celsius",
+  "ja": "Celsius",
+  "ko": "Celsius"
  },
  "Center": {
   "de": "Mitte",
@@ -1337,7 +1877,11 @@
  "Cisco - 001b.4411": {
   "de": "Cisco - 001b.4411",
   "es": "Cisco - 001b.4411",
-  "zh": "Cisco - 001b.4411"
+  "zh": "Cisco - 001b.4411",
+  "fr": "Cisco - 001b.4411",
+  "pt": "Cisco - 001b.4411",
+  "ja": "Cisco - 001b.4411",
+  "ko": "Cisco - 001b.4411"
  },
  "City": {
   "de": "Stadt",
@@ -1347,7 +1891,11 @@
  "Claims": {
   "de": "Claims",
   "es": "Claims",
-  "zh": "声明"
+  "zh": "声明",
+  "fr": "Claims",
+  "pt": "Claims",
+  "ja": "Claims",
+  "ko": "Claims"
  },
  "Clap": {
   "de": "Clap",
@@ -1457,7 +2005,11 @@
  "Cloudflare": {
   "de": "Cloudflare",
   "es": "Cloudflare",
-  "zh": "Cloudflare"
+  "zh": "Cloudflare",
+  "fr": "Cloudflare",
+  "pt": "Cloudflare",
+  "ja": "Cloudflare",
+  "ko": "Cloudflare"
  },
  "Code": {
   "de": "Code",
@@ -1467,12 +2019,20 @@
  "Code 128": {
   "de": "Code 128",
   "es": "Code 128",
-  "zh": "Code 128"
+  "zh": "Code 128",
+  "fr": "Code 128",
+  "pt": "Code 128",
+  "ja": "Code 128",
+  "ko": "Code 128"
  },
  "Code 39": {
   "de": "Code 39",
   "es": "Code 39",
-  "zh": "Code 39"
+  "zh": "Code 39",
+  "fr": "Code 39",
+  "pt": "Code 39",
+  "ja": "Code 39",
+  "ko": "Code 39"
  },
  "Code point": {
   "de": "Codepunkt",
@@ -1482,7 +2042,11 @@
  "CoinGecko": {
   "de": "CoinGecko",
   "es": "CoinGecko",
-  "zh": "CoinGecko"
+  "zh": "CoinGecko",
+  "fr": "CoinGecko",
+  "pt": "CoinGecko",
+  "ja": "CoinGecko",
+  "ko": "CoinGecko"
  },
  "Colon - 00:1b:44": {
   "de": "Doppelpunkt - 00:1b:44",
@@ -1607,7 +2171,11 @@
  "ConfigMap": {
   "de": "ConfigMap",
   "es": "ConfigMap",
-  "zh": "ConfigMap"
+  "zh": "ConfigMap",
+  "fr": "ConfigMap",
+  "pt": "ConfigMap",
+  "ja": "ConfigMap",
+  "ko": "ConfigMap"
  },
  "Conic": {
   "de": "Konisch",
@@ -2017,7 +2585,11 @@
  "DE89 3704 0044 0532 0130 00": {
   "de": "DE89 3704 0044 0532 0130 00",
   "es": "DE89 3704 0044 0532 0130 00",
-  "zh": "DE89 3704 0044 0532 0130 00"
+  "zh": "DE89 3704 0044 0532 0130 00",
+  "fr": "DE89 3704 0044 0532 0130 00",
+  "pt": "DE89 3704 0044 0532 0130 00",
+  "ja": "DE89 3704 0044 0532 0130 00",
+  "ko": "DE89 3704 0044 0532 0130 00"
  },
  "DNSSEC verified": {
   "de": "DNSSEC geprüft",
@@ -2182,7 +2754,11 @@
  "Deployment": {
   "de": "Deployment",
   "es": "Deployment",
-  "zh": "Deployment"
+  "zh": "Deployment",
+  "fr": "Deployment",
+  "pt": "Deployment",
+  "ja": "Deployment",
+  "ko": "Deployment"
  },
  "Depth": {
   "de": "Tiefe",
@@ -2252,7 +2828,11 @@
  "Dingbats": {
   "de": "Dingbats",
   "es": "Dingbats",
-  "zh": "装饰符号"
+  "zh": "装饰符号",
+  "fr": "Dingbats",
+  "pt": "Dingbats",
+  "ja": "Dingbats",
+  "ko": "Dingbats"
  },
  "Diode": {
   "de": "Diode",
@@ -2467,52 +3047,92 @@
  "EAN-13": {
   "de": "EAN-13",
   "es": "EAN-13",
-  "zh": "EAN-13"
+  "zh": "EAN-13",
+  "fr": "EAN-13",
+  "pt": "EAN-13",
+  "ja": "EAN-13",
+  "ko": "EAN-13"
  },
  "EAN-8": {
   "de": "EAN-8",
   "es": "EAN-8",
-  "zh": "EAN-8"
+  "zh": "EAN-8",
+  "fr": "EAN-8",
+  "pt": "EAN-8",
+  "ja": "EAN-8",
+  "ko": "EAN-8"
  },
  "ECDH P-256": {
   "de": "ECDH P-256",
   "es": "ECDH P-256",
-  "zh": "ECDH P-256"
+  "zh": "ECDH P-256",
+  "fr": "ECDH P-256",
+  "pt": "ECDH P-256",
+  "ja": "ECDH P-256",
+  "ko": "ECDH P-256"
  },
  "ECDSA P-256": {
   "de": "ECDSA P-256",
   "es": "ECDSA P-256",
-  "zh": "ECDSA P-256"
+  "zh": "ECDSA P-256",
+  "fr": "ECDSA P-256",
+  "pt": "ECDSA P-256",
+  "ja": "ECDSA P-256",
+  "ko": "ECDSA P-256"
  },
  "ECDSA P-384": {
   "de": "ECDSA P-384",
   "es": "ECDSA P-384",
-  "zh": "ECDSA P-384"
+  "zh": "ECDSA P-384",
+  "fr": "ECDSA P-384",
+  "pt": "ECDSA P-384",
+  "ja": "ECDSA P-384",
+  "ko": "ECDSA P-384"
  },
  "ECDSA nistp256": {
   "de": "ECDSA nistp256",
   "es": "ECDSA nistp256",
-  "zh": "ECDSA nistp256"
+  "zh": "ECDSA nistp256",
+  "fr": "ECDSA nistp256",
+  "pt": "ECDSA nistp256",
+  "ja": "ECDSA nistp256",
+  "ko": "ECDSA nistp256"
  },
  "ECDSA nistp384": {
   "de": "ECDSA nistp384",
   "es": "ECDSA nistp384",
-  "zh": "ECDSA nistp384"
+  "zh": "ECDSA nistp384",
+  "fr": "ECDSA nistp384",
+  "pt": "ECDSA nistp384",
+  "ja": "ECDSA nistp384",
+  "ko": "ECDSA nistp384"
  },
  "ECDSA nistp521": {
   "de": "ECDSA nistp521",
   "es": "ECDSA nistp521",
-  "zh": "ECDSA nistp521"
+  "zh": "ECDSA nistp521",
+  "fr": "ECDSA nistp521",
+  "pt": "ECDSA nistp521",
+  "ja": "ECDSA nistp521",
+  "ko": "ECDSA nistp521"
  },
  "EUI-64": {
   "de": "EUI-64",
   "es": "EUI-64",
-  "zh": "EUI-64"
+  "zh": "EUI-64",
+  "fr": "EUI-64",
+  "pt": "EUI-64",
+  "ja": "EUI-64",
+  "ko": "EUI-64"
  },
  "EUR": {
   "de": "EUR",
   "es": "EUR",
-  "zh": "欧元"
+  "zh": "欧元",
+  "fr": "EUR",
+  "pt": "EUR",
+  "ja": "EUR",
+  "ko": "EUR"
  },
  "Easing": {
   "de": "Beschleunigung",
@@ -2652,7 +3272,11 @@
  "Esc": {
   "de": "Esc",
   "es": "Esc",
-  "zh": "Esc"
+  "zh": "Esc",
+  "fr": "Esc",
+  "pt": "Esc",
+  "ja": "Esc",
+  "ko": "Esc"
  },
  "Escaped": {
   "de": "Maskiert",
@@ -2792,7 +3416,11 @@
  "FLAC": {
   "de": "FLAC",
   "es": "FLAC",
-  "zh": "FLAC"
+  "zh": "FLAC",
+  "fr": "FLAC",
+  "pt": "FLAC",
+  "ja": "FLAC",
+  "ko": "FLAC"
  },
  "Fade": {
   "de": "Überblenden",
@@ -2807,7 +3435,11 @@
  "Fahrenheit": {
   "de": "Fahrenheit",
   "es": "Fahrenheit",
-  "zh": "华氏度"
+  "zh": "华氏度",
+  "fr": "Fahrenheit",
+  "pt": "Fahrenheit",
+  "ja": "Fahrenheit",
+  "ko": "Fahrenheit"
  },
  "Fair": {
   "de": "Mäßig",
@@ -2872,7 +3504,11 @@
  "Finnhub": {
   "de": "Finnhub",
   "es": "Finnhub",
-  "zh": "Finnhub"
+  "zh": "Finnhub",
+  "fr": "Finnhub",
+  "pt": "Finnhub",
+  "ja": "Finnhub",
+  "ko": "Finnhub"
  },
  "First frame (PNG)": {
   "de": "Erstes Bild (PNG)",
@@ -3117,7 +3753,11 @@
  "GBP": {
   "de": "GBP",
   "es": "GBP",
-  "zh": "英镑"
+  "zh": "英镑",
+  "fr": "GBP",
+  "pt": "GBP",
+  "ja": "GBP",
+  "ko": "GBP"
  },
  "GIF frame rate": {
   "de": "GIF-Bildrate",
@@ -3222,7 +3862,11 @@
  "Google": {
   "de": "Google",
   "es": "Google",
-  "zh": "Google"
+  "zh": "Google",
+  "fr": "Google",
+  "pt": "Google",
+  "ja": "Google",
+  "ko": "Google"
  },
  "Gravity": {
   "de": "Schwerkraft",
@@ -3282,7 +3926,11 @@
  "Hardware": {
   "de": "Hardware",
   "es": "Hardware",
-  "zh": "硬件"
+  "zh": "硬件",
+  "fr": "Hardware",
+  "pt": "Hardware",
+  "ja": "Hardware",
+  "ko": "Hardware"
  },
  "Harmony": {
   "de": "Harmonie",
@@ -3332,7 +3980,11 @@
  "Hex": {
   "de": "Hex",
   "es": "Hex",
-  "zh": "十六进制"
+  "zh": "十六进制",
+  "fr": "Hex",
+  "pt": "Hex",
+  "ja": "Hex",
+  "ko": "Hex"
  },
  "Hex colour": {
   "de": "Hex-Farbe",
@@ -3437,7 +4089,11 @@
  "IBAN": {
   "de": "IBAN",
   "es": "IBAN",
-  "zh": "IBAN"
+  "zh": "IBAN",
+  "fr": "IBAN",
+  "pt": "IBAN",
+  "ja": "IBAN",
+  "ko": "IBAN"
  },
  "IPv4 address or numeric form": {
   "de": "IPv4-Adresse oder numerische Form",
@@ -3457,7 +4113,11 @@
  "ISO 8601": {
   "de": "ISO 8601",
   "es": "ISO 8601",
-  "zh": "ISO 8601"
+  "zh": "ISO 8601",
+  "fr": "ISO 8601",
+  "pt": "ISO 8601",
+  "ja": "ISO 8601",
+  "ko": "ISO 8601"
  },
  "ISO week": {
   "de": "ISO-Woche",
@@ -3537,7 +4197,11 @@
  "Ingress": {
   "de": "Ingress",
   "es": "Ingress",
-  "zh": "Ingress"
+  "zh": "Ingress",
+  "fr": "Ingress",
+  "pt": "Ingress",
+  "ja": "Ingress",
+  "ko": "Ingress"
  },
  "Ingress class": {
   "de": "Ingress-Klasse",
@@ -3607,7 +4271,11 @@
  "Invaders": {
   "de": "Invaders",
   "es": "Invaders",
-  "zh": "太空入侵者"
+  "zh": "太空入侵者",
+  "fr": "Invaders",
+  "pt": "Invaders",
+  "ja": "Invaders",
+  "ko": "Invaders"
  },
  "Invert": {
   "de": "Invertieren",
@@ -3637,7 +4305,11 @@
  "JPY": {
   "de": "JPY",
   "es": "JPY",
-  "zh": "日元"
+  "zh": "日元",
+  "fr": "JPY",
+  "pt": "JPY",
+  "ja": "JPY",
+  "ko": "JPY"
  },
  "JSON Schema": {
   "de": "JSON-Schema",
@@ -3647,7 +4319,11 @@
  "JSON Web Key": {
   "de": "JSON Web Key",
   "es": "JSON Web Key",
-  "zh": "JSON Web Key"
+  "zh": "JSON Web Key",
+  "fr": "JSON Web Key",
+  "pt": "JSON Web Key",
+  "ja": "JSON Web Key",
+  "ko": "JSON Web Key"
  },
  "JSON lines": {
   "de": "JSON Lines",
@@ -3657,7 +4333,11 @@
  "JSX": {
   "de": "JSX",
   "es": "JSX",
-  "zh": "JSX"
+  "zh": "JSX",
+  "fr": "JSX",
+  "pt": "JSX",
+  "ja": "JSX",
+  "ko": "JSX"
  },
  "JSX component": {
   "de": "JSX-Komponente",
@@ -3682,12 +4362,20 @@
  "JavaScript": {
   "de": "JavaScript",
   "es": "JavaScript",
-  "zh": "JavaScript"
+  "zh": "JavaScript",
+  "fr": "JavaScript",
+  "pt": "JavaScript",
+  "ja": "JavaScript",
+  "ko": "JavaScript"
  },
  "Jitter ms": {
   "de": "Jitter ms",
   "es": "Jitter ms",
-  "zh": "抖动 ms"
+  "zh": "抖动 ms",
+  "fr": "Jitter ms",
+  "pt": "Jitter ms",
+  "ja": "Jitter ms",
+  "ko": "Jitter ms"
  },
  "Job title": {
   "de": "Position",
@@ -3707,7 +4395,11 @@
  "Kebab": {
   "de": "Kebab",
   "es": "Kebab",
-  "zh": "kebab"
+  "zh": "kebab",
+  "fr": "Kebab",
+  "pt": "Kebab",
+  "ja": "Kebab",
+  "ko": "Kebab"
  },
  "Keep aspect ratio": {
   "de": "Seitenverhältnis beibehalten",
@@ -3742,7 +4434,11 @@
  "Kelvin": {
   "de": "Kelvin",
   "es": "Kelvin",
-  "zh": "开尔文"
+  "zh": "开尔文",
+  "fr": "Kelvin",
+  "pt": "Kelvin",
+  "ja": "Kelvin",
+  "ko": "Kelvin"
  },
  "Key": {
   "de": "Schlüssel",
@@ -3787,12 +4483,20 @@
  "LED": {
   "de": "LED",
   "es": "LED",
-  "zh": "LED"
+  "zh": "LED",
+  "fr": "LED",
+  "pt": "LED",
+  "ja": "LED",
+  "ko": "LED"
  },
  "LF": {
   "de": "LF",
   "es": "LF",
-  "zh": "LF"
+  "zh": "LF",
+  "fr": "LF",
+  "pt": "LF",
+  "ja": "LF",
+  "ko": "LF"
  },
  "Label": {
   "de": "Beschriftung",
@@ -3852,7 +4556,11 @@
  "Latin-1": {
   "de": "Latin-1",
   "es": "Latin-1",
-  "zh": "Latin-1"
+  "zh": "Latin-1",
+  "fr": "Latin-1",
+  "pt": "Latin-1",
+  "ja": "Latin-1",
+  "ko": "Latin-1"
  },
  "Latitude": {
   "de": "Breitengrad",
@@ -4102,7 +4810,11 @@
  "MP4 (H.264)": {
   "de": "MP4 (H.264)",
   "es": "MP4 (H.264)",
-  "zh": "MP4 (H.264)"
+  "zh": "MP4 (H.264)",
+  "fr": "MP4 (H.264)",
+  "pt": "MP4 (H.264)",
+  "ja": "MP4 (H.264)",
+  "ko": "MP4 (H.264)"
  },
  "Make responsive": {
   "de": "Responsiv machen",
@@ -4132,7 +4844,11 @@
  "Markdown": {
   "de": "Markdown",
   "es": "Markdown",
-  "zh": "Markdown"
+  "zh": "Markdown",
+  "fr": "Markdown",
+  "pt": "Markdown",
+  "ja": "Markdown",
+  "ko": "Markdown"
  },
  "Marker": {
   "de": "Textmarker",
@@ -4347,7 +5063,11 @@
  "Morse": {
   "de": "Morse",
   "es": "Morse",
-  "zh": "摩尔斯码"
+  "zh": "摩尔斯码",
+  "fr": "Morse",
+  "pt": "Morse",
+  "ja": "Morse",
+  "ko": "Morse"
  },
  "Morse code": {
   "de": "Morsecode",
@@ -4362,7 +5082,11 @@
  "Motor": {
   "de": "Motor",
   "es": "Motor",
-  "zh": "马达"
+  "zh": "马达",
+  "fr": "Motor",
+  "pt": "Motor",
+  "ja": "Motor",
+  "ko": "Motor"
  },
  "Move": {
   "de": "Verschieben",
@@ -4422,7 +5146,11 @@
  "NAND": {
   "de": "NAND",
   "es": "NAND",
-  "zh": "NAND"
+  "zh": "NAND",
+  "fr": "NAND",
+  "pt": "NAND",
+  "ja": "NAND",
+  "ko": "NAND"
  },
  "NATO alphabet": {
   "de": "NATO-Alphabet",
@@ -4432,17 +5160,29 @@
  "NOR": {
   "de": "NOR",
   "es": "NOR",
-  "zh": "NOR"
+  "zh": "NOR",
+  "fr": "NOR",
+  "pt": "NOR",
+  "ja": "NOR",
+  "ko": "NOR"
  },
  "NOT": {
   "de": "NOT",
   "es": "NOT",
-  "zh": "NOT"
+  "zh": "NOT",
+  "fr": "NOT",
+  "pt": "NOT",
+  "ja": "NOT",
+  "ko": "NOT"
  },
  "NPN": {
   "de": "NPN",
   "es": "NPN",
-  "zh": "NPN"
+  "zh": "NPN",
+  "fr": "NPN",
+  "pt": "NPN",
+  "ja": "NPN",
+  "ko": "NPN"
  },
  "Name": {
   "de": "Name",
@@ -4722,7 +5462,11 @@
  "Normal": {
   "de": "Normal",
   "es": "Normal",
-  "zh": "普通"
+  "zh": "普通",
+  "fr": "Normal",
+  "pt": "Normal",
+  "ja": "Normal",
+  "ko": "Normal"
  },
  "Normalised": {
   "de": "Normalisiert",
@@ -4872,17 +5616,29 @@
  "OGG (Vorbis)": {
   "de": "OGG (Vorbis)",
   "es": "OGG (Vorbis)",
-  "zh": "OGG (Vorbis)"
+  "zh": "OGG (Vorbis)",
+  "fr": "OGG (Vorbis)",
+  "pt": "OGG (Vorbis)",
+  "ja": "OGG (Vorbis)",
+  "ko": "OGG (Vorbis)"
  },
  "OR": {
   "de": "OR",
   "es": "OR",
-  "zh": "OR"
+  "zh": "OR",
+  "fr": "OR",
+  "pt": "OR",
+  "ja": "OR",
+  "ko": "OR"
  },
  "OUI": {
   "de": "OUI",
   "es": "OUI",
-  "zh": "OUI"
+  "zh": "OUI",
+  "fr": "OUI",
+  "pt": "OUI",
+  "ja": "OUI",
+  "ko": "OUI"
  },
  "Objects": {
   "de": "Objekte",
@@ -5037,7 +5793,11 @@
  "Opus": {
   "de": "Opus",
   "es": "Opus",
-  "zh": "Opus"
+  "zh": "Opus",
+  "fr": "Opus",
+  "pt": "Opus",
+  "ja": "Opus",
+  "ko": "Opus"
  },
  "Organisation": {
   "de": "Organisation",
@@ -5052,7 +5812,11 @@
  "Original": {
   "de": "Original",
   "es": "Original",
-  "zh": "原文"
+  "zh": "原文",
+  "fr": "Original",
+  "pt": "Original",
+  "ja": "Original",
+  "ko": "Original"
  },
  "Outliers": {
   "de": "Ausreißer",
@@ -5107,22 +5871,38 @@
  "PNG 1x": {
   "de": "PNG 1x",
   "es": "PNG 1x",
-  "zh": "PNG 1x"
+  "zh": "PNG 1x",
+  "fr": "PNG 1x",
+  "pt": "PNG 1x",
+  "ja": "PNG 1x",
+  "ko": "PNG 1x"
  },
  "PNG 2x": {
   "de": "PNG 2x",
   "es": "PNG 2x",
-  "zh": "PNG 2x"
+  "zh": "PNG 2x",
+  "fr": "PNG 2x",
+  "pt": "PNG 2x",
+  "ja": "PNG 2x",
+  "ko": "PNG 2x"
  },
  "PNG 4x": {
   "de": "PNG 4x",
   "es": "PNG 4x",
-  "zh": "PNG 4x"
+  "zh": "PNG 4x",
+  "fr": "PNG 4x",
+  "pt": "PNG 4x",
+  "ja": "PNG 4x",
+  "ko": "PNG 4x"
  },
  "PNP": {
   "de": "PNP",
   "es": "PNP",
-  "zh": "PNP"
+  "zh": "PNP",
+  "fr": "PNP",
+  "pt": "PNP",
+  "ja": "PNP",
+  "ko": "PNP"
  },
  "Padding": {
   "de": "Innenabstand",
@@ -5182,7 +5962,11 @@
  "PascalCase": {
   "de": "PascalCase",
   "es": "PascalCase",
-  "zh": "PascalCase"
+  "zh": "PascalCase",
+  "fr": "PascalCase",
+  "pt": "PascalCase",
+  "ja": "PascalCase",
+  "ko": "PascalCase"
  },
  "Passphrase": {
   "de": "Passphrase",
@@ -5327,7 +6111,11 @@
  "Payload": {
   "de": "Payload",
   "es": "Payload",
-  "zh": "载荷"
+  "zh": "载荷",
+  "fr": "Payload",
+  "pt": "Payload",
+  "ja": "Payload",
+  "ko": "Payload"
  },
  "Pen": {
   "de": "Stift",
@@ -5497,7 +6285,11 @@
  "PodDisruptionBudget": {
   "de": "PodDisruptionBudget",
   "es": "PodDisruptionBudget",
-  "zh": "PodDisruptionBudget"
+  "zh": "PodDisruptionBudget",
+  "fr": "PodDisruptionBudget",
+  "pt": "PodDisruptionBudget",
+  "ja": "PodDisruptionBudget",
+  "ko": "PodDisruptionBudget"
  },
  "Point this at a self-hosted copy of WebLLM if you would rather not use a CDN.": {
   "de": "Auf eine selbst gehostete Kopie von WebLLM zeigen lassen, wenn kein CDN genutzt werden soll.",
@@ -5512,7 +6304,11 @@
  "Pong": {
   "de": "Pong",
   "es": "Pong",
-  "zh": "Pong"
+  "zh": "Pong",
+  "fr": "Pong",
+  "pt": "Pong",
+  "ja": "Pong",
+  "ko": "Pong"
  },
  "Pop": {
   "de": "Aufploppen",
@@ -5747,17 +6543,29 @@
  "RFC 2822": {
   "de": "RFC 2822",
   "es": "RFC 2822",
-  "zh": "RFC 2822"
+  "zh": "RFC 2822",
+  "fr": "RFC 2822",
+  "pt": "RFC 2822",
+  "ja": "RFC 2822",
+  "ko": "RFC 2822"
  },
  "ROT13": {
   "de": "ROT13",
   "es": "ROT13",
-  "zh": "ROT13"
+  "zh": "ROT13",
+  "fr": "ROT13",
+  "pt": "ROT13",
+  "ja": "ROT13",
+  "ko": "ROT13"
  },
  "RSA 2048": {
   "de": "RSA 2048",
   "es": "RSA 2048",
-  "zh": "RSA 2048"
+  "zh": "RSA 2048",
+  "fr": "RSA 2048",
+  "pt": "RSA 2048",
+  "ja": "RSA 2048",
+  "ko": "RSA 2048"
  },
  "RSA 2048 (encryption)": {
   "de": "RSA 2048 (Verschlüsselung)",
@@ -5767,17 +6575,29 @@
  "RSA 3072": {
   "de": "RSA 3072",
   "es": "RSA 3072",
-  "zh": "RSA 3072"
+  "zh": "RSA 3072",
+  "fr": "RSA 3072",
+  "pt": "RSA 3072",
+  "ja": "RSA 3072",
+  "ko": "RSA 3072"
  },
  "RSA 4096": {
   "de": "RSA 4096",
   "es": "RSA 4096",
-  "zh": "RSA 4096"
+  "zh": "RSA 4096",
+  "fr": "RSA 4096",
+  "pt": "RSA 4096",
+  "ja": "RSA 4096",
+  "ko": "RSA 4096"
  },
  "Radial": {
   "de": "Radial",
   "es": "Radial",
-  "zh": "径向"
+  "zh": "径向",
+  "fr": "Radial",
+  "pt": "Radial",
+  "ja": "Radial",
+  "ko": "Radial"
  },
  "Radius m": {
   "de": "Radius m",
@@ -6272,32 +7092,56 @@
  "SCSS": {
   "de": "SCSS",
   "es": "SCSS",
-  "zh": "SCSS"
+  "zh": "SCSS",
+  "fr": "SCSS",
+  "pt": "SCSS",
+  "ja": "SCSS",
+  "ko": "SCSS"
  },
  "SHA-1": {
   "de": "SHA-1",
   "es": "SHA-1",
-  "zh": "SHA-1"
+  "zh": "SHA-1",
+  "fr": "SHA-1",
+  "pt": "SHA-1",
+  "ja": "SHA-1",
+  "ko": "SHA-1"
  },
  "SHA-256": {
   "de": "SHA-256",
   "es": "SHA-256",
-  "zh": "SHA-256"
+  "zh": "SHA-256",
+  "fr": "SHA-256",
+  "pt": "SHA-256",
+  "ja": "SHA-256",
+  "ko": "SHA-256"
  },
  "SHA-512": {
   "de": "SHA-512",
   "es": "SHA-512",
-  "zh": "SHA-512"
+  "zh": "SHA-512",
+  "fr": "SHA-512",
+  "pt": "SHA-512",
+  "ja": "SHA-512",
+  "ko": "SHA-512"
  },
  "SHA256": {
   "de": "SHA256",
   "es": "SHA256",
-  "zh": "SHA256"
+  "zh": "SHA256",
+  "fr": "SHA256",
+  "pt": "SHA256",
+  "ja": "SHA256",
+  "ko": "SHA256"
  },
  "SMS": {
   "de": "SMS",
   "es": "SMS",
-  "zh": "短信"
+  "zh": "短信",
+  "fr": "SMS",
+  "pt": "SMS",
+  "ja": "SMS",
+  "ko": "SMS"
  },
  "SPKI, PEM encoded": {
   "de": "SPKI, PEM-kodiert",
@@ -6667,7 +7511,11 @@
  "Service": {
   "de": "Service",
   "es": "Service",
-  "zh": "Service"
+  "zh": "Service",
+  "fr": "Service",
+  "pt": "Service",
+  "ja": "Service",
+  "ko": "Service"
  },
  "Service port": {
   "de": "Service-Port",
@@ -6842,7 +7690,11 @@
  "Slug": {
   "de": "Slug",
   "es": "Slug",
-  "zh": "Slug"
+  "zh": "Slug",
+  "fr": "Slug",
+  "pt": "Slug",
+  "ja": "Slug",
+  "ko": "Slug"
  },
  "Small": {
   "de": "Klein",
@@ -6862,7 +7714,11 @@
  "Snake": {
   "de": "Snake",
   "es": "Snake",
-  "zh": "贪吃蛇"
+  "zh": "贪吃蛇",
+  "fr": "Snake",
+  "pt": "Snake",
+  "ja": "Snake",
+  "ko": "Snake"
  },
  "Snap links to centres and corners": {
   "de": "Verbindungen an Mittelpunkten und Ecken einrasten",
@@ -7252,7 +8108,11 @@
  "Swift / Android": {
   "de": "Swift / Android",
   "es": "Swift / Android",
-  "zh": "Swift / Android"
+  "zh": "Swift / Android",
+  "fr": "Swift / Android",
+  "pt": "Swift / Android",
+  "ja": "Swift / Android",
+  "ko": "Swift / Android"
  },
  "Swing": {
   "de": "Schwingen",
@@ -7302,12 +8162,20 @@
  "TOOLBOX": {
   "de": "TOOLBOX",
   "es": "TOOLBOX",
-  "zh": "TOOLBOX"
+  "zh": "TOOLBOX",
+  "fr": "TOOLBOX",
+  "pt": "TOOLBOX",
+  "ja": "TOOLBOX",
+  "ko": "TOOLBOX"
  },
  "TTL": {
   "de": "TTL",
   "es": "TTL",
-  "zh": "TTL"
+  "zh": "TTL",
+  "fr": "TTL",
+  "pt": "TTL",
+  "ja": "TTL",
+  "ko": "TTL"
  },
  "Tab": {
   "de": "Tabulator",
@@ -7362,7 +8230,11 @@
  "Tempo": {
   "de": "Tempo",
   "es": "Tempo",
-  "zh": "速度"
+  "zh": "速度",
+  "fr": "Tempo",
+  "pt": "Tempo",
+  "ja": "Tempo",
+  "ko": "Tempo"
  },
  "Test against": {
   "de": "Testen mit",
@@ -7607,12 +8479,20 @@
  "Token": {
   "de": "Token",
   "es": "Token",
-  "zh": "令牌"
+  "zh": "令牌",
+  "fr": "Token",
+  "pt": "Token",
+  "ja": "Token",
+  "ko": "Token"
  },
  "Tom": {
   "de": "Tom",
   "es": "Tom",
-  "zh": "嗵鼓"
+  "zh": "嗵鼓",
+  "fr": "Tom",
+  "pt": "Tom",
+  "ja": "Tom",
+  "ko": "Tom"
  },
  "Tools installed": {
   "de": "Installierte Werkzeuge",
@@ -7657,7 +8537,11 @@
  "Train-Case": {
   "de": "Train-Case",
   "es": "Train-Case",
-  "zh": "Train-Case"
+  "zh": "Train-Case",
+  "fr": "Train-Case",
+  "pt": "Train-Case",
+  "ja": "Train-Case",
+  "ko": "Train-Case"
  },
  "Transcoding runs locally through WebAssembly. Large files take a while.": {
   "de": "Die Umwandlung läuft lokal über WebAssembly. Große Dateien dauern eine Weile.",
@@ -7752,7 +8636,11 @@
  "Twelve Data": {
   "de": "Twelve Data",
   "es": "Twelve Data",
-  "zh": "Twelve Data"
+  "zh": "Twelve Data",
+  "fr": "Twelve Data",
+  "pt": "Twelve Data",
+  "ja": "Twelve Data",
+  "ko": "Twelve Data"
  },
  "Twice": {
   "de": "Zweimal",
@@ -7802,22 +8690,38 @@
  "USD": {
   "de": "USD",
   "es": "USD",
-  "zh": "美元"
+  "zh": "美元",
+  "fr": "USD",
+  "pt": "USD",
+  "ja": "USD",
+  "ko": "USD"
  },
  "UTC": {
   "de": "UTC",
   "es": "UTC",
-  "zh": "UTC"
+  "zh": "UTC",
+  "fr": "UTC",
+  "pt": "UTC",
+  "ja": "UTC",
+  "ko": "UTC"
  },
  "UUID v4": {
   "de": "UUID v4",
   "es": "UUID v4",
-  "zh": "UUID v4"
+  "zh": "UUID v4",
+  "fr": "UUID v4",
+  "pt": "UUID v4",
+  "ja": "UUID v4",
+  "ko": "UUID v4"
  },
  "UUID v7": {
   "de": "UUID v7",
   "es": "UUID v7",
-  "zh": "UUID v7"
+  "zh": "UUID v7",
+  "fr": "UUID v7",
+  "pt": "UUID v7",
+  "ja": "UUID v7",
+  "ko": "UUID v7"
  },
  "Ukulele": {
   "de": "Ukulele",
@@ -7842,7 +8746,11 @@
  "Unicode": {
   "de": "Unicode",
   "es": "Unicode",
-  "zh": "Unicode"
+  "zh": "Unicode",
+  "fr": "Unicode",
+  "pt": "Unicode",
+  "ja": "Unicode",
+  "ko": "Unicode"
  },
  "Unicode escapes": {
   "de": "Unicode-Escapes",
@@ -8012,12 +8920,20 @@
  "WEP": {
   "de": "WEP",
   "es": "WEP",
-  "zh": "WEP"
+  "zh": "WEP",
+  "fr": "WEP",
+  "pt": "WEP",
+  "ja": "WEP",
+  "ko": "WEP"
  },
  "WPA/WPA2": {
   "de": "WPA/WPA2",
   "es": "WPA/WPA2",
-  "zh": "WPA/WPA2"
+  "zh": "WPA/WPA2",
+  "fr": "WPA/WPA2",
+  "pt": "WPA/WPA2",
+  "ja": "WPA/WPA2",
+  "ko": "WPA/WPA2"
  },
  "Waiting": {
   "de": "Warten",
@@ -8087,12 +9003,20 @@
  "WebM (VP9)": {
   "de": "WebM (VP9)",
   "es": "WebM (VP9)",
-  "zh": "WebM (VP9)"
+  "zh": "WebM (VP9)",
+  "fr": "WebM (VP9)",
+  "pt": "WebM (VP9)",
+  "ja": "WebM (VP9)",
+  "ko": "WebM (VP9)"
  },
  "WebP": {
   "de": "WebP",
   "es": "WebP",
-  "zh": "WebP"
+  "zh": "WebP",
+  "fr": "WebP",
+  "pt": "WebP",
+  "ja": "WebP",
+  "ko": "WebP"
  },
  "Website": {
   "de": "Website",
@@ -8267,12 +9191,20 @@
  "XNOR": {
   "de": "XNOR",
   "es": "XNOR",
-  "zh": "XNOR"
+  "zh": "XNOR",
+  "fr": "XNOR",
+  "pt": "XNOR",
+  "ja": "XNOR",
+  "ko": "XNOR"
  },
  "XOR": {
   "de": "XOR",
   "es": "XOR",
-  "zh": "XOR"
+  "zh": "XOR",
+  "fr": "XOR",
+  "pt": "XOR",
+  "ja": "XOR",
+  "ko": "XOR"
  },
  "Year": {
   "de": "Jahr",
@@ -8297,7 +9229,11 @@
  "Zoom": {
   "de": "Zoom",
   "es": "Zoom",
-  "zh": "缩放"
+  "zh": "缩放",
+  "fr": "Zoom",
+  "pt": "Zoom",
+  "ja": "Zoom",
+  "ko": "Zoom"
  },
  "Zoom in": {
   "de": "Vergrößern",
@@ -8312,7 +9248,11 @@
  "admin": {
   "de": "admin",
   "es": "admin",
-  "zh": "admin"
+  "zh": "admin",
+  "fr": "admin",
+  "pt": "admin",
+  "ja": "admin",
+  "ko": "admin"
  },
  "all day": {
   "de": "ganztägig",
@@ -8322,12 +9262,20 @@
  "alternate": {
   "de": "alternate",
   "es": "alternate",
-  "zh": "alternate"
+  "zh": "alternate",
+  "fr": "alternate",
+  "pt": "alternate",
+  "ja": "alternate",
+  "ko": "alternate"
  },
  "alternate-reverse": {
   "de": "alternate-reverse",
   "es": "alternate-reverse",
-  "zh": "alternate-reverse"
+  "zh": "alternate-reverse",
+  "fr": "alternate-reverse",
+  "pt": "alternate-reverse",
+  "ja": "alternate-reverse",
+  "ko": "alternate-reverse"
  },
  "atoms": {
   "de": "Atome",
@@ -8357,7 +9305,11 @@
  "backwards": {
   "de": "backwards",
   "es": "backwards",
-  "zh": "backwards"
+  "zh": "backwards",
+  "fr": "backwards",
+  "pt": "backwards",
+  "ja": "backwards",
+  "ko": "backwards"
  },
  "base": {
   "de": "Basis",
@@ -8367,7 +9319,11 @@
  "bevel": {
   "de": "bevel",
   "es": "bevel",
-  "zh": "bevel"
+  "zh": "bevel",
+  "fr": "bevel",
+  "pt": "bevel",
+  "ja": "bevel",
+  "ko": "bevel"
  },
  "bonds": {
   "de": "Bindungen",
@@ -8377,12 +9333,20 @@
  "both": {
   "de": "both",
   "es": "both",
-  "zh": "both"
+  "zh": "both",
+  "fr": "both",
+  "pt": "both",
+  "ja": "both",
+  "ko": "both"
  },
  "butt": {
   "de": "butt",
   "es": "butt",
-  "zh": "butt"
+  "zh": "butt",
+  "fr": "butt",
+  "pt": "butt",
+  "ja": "butt",
+  "ko": "butt"
  },
  "café & crème": {
   "de": "Café & Crème",
@@ -8392,7 +9356,11 @@
  "camelCase": {
   "de": "camelCase",
   "es": "camelCase",
-  "zh": "camelCase"
+  "zh": "camelCase",
+  "fr": "camelCase",
+  "pt": "camelCase",
+  "ja": "camelCase",
+  "ko": "camelCase"
  },
  "checking...": {
   "de": "wird geprüft...",
@@ -8402,27 +9370,47 @@
  "command=": {
   "de": "command=",
   "es": "command=",
-  "zh": "command="
+  "zh": "command=",
+  "fr": "command=",
+  "pt": "command=",
+  "ja": "command=",
+  "ko": "command="
  },
  "compose.yaml": {
   "de": "compose.yaml",
   "es": "compose.yaml",
-  "zh": "compose.yaml"
+  "zh": "compose.yaml",
+  "fr": "compose.yaml",
+  "pt": "compose.yaml",
+  "ja": "compose.yaml",
+  "ko": "compose.yaml"
  },
  "curl": {
   "de": "curl",
   "es": "curl",
-  "zh": "curl"
+  "zh": "curl",
+  "fr": "curl",
+  "pt": "curl",
+  "ja": "curl",
+  "ko": "curl"
  },
  "curl -I": {
   "de": "curl -I",
   "es": "curl -I",
-  "zh": "curl -I"
+  "zh": "curl -I",
+  "fr": "curl -I",
+  "pt": "curl -I",
+  "ja": "curl -I",
+  "ko": "curl -I"
  },
  "curl -I https://example.com": {
   "de": "curl -I https://example.com",
   "es": "curl -I https://example.com",
-  "zh": "curl -I https://example.com"
+  "zh": "curl -I https://example.com",
+  "fr": "curl -I https://example.com",
+  "pt": "curl -I https://example.com",
+  "ja": "curl -I https://example.com",
+  "ko": "curl -I https://example.com"
  },
  "custom": {
   "de": "benutzerdefiniert",
@@ -8442,7 +9430,11 @@
  "docker run -p 80:80 nginx": {
   "de": "docker run -p 80:80 nginx",
   "es": "docker run -p 80:80 nginx",
-  "zh": "docker run -p 80:80 nginx"
+  "zh": "docker run -p 80:80 nginx",
+  "fr": "docker run -p 80:80 nginx",
+  "pt": "docker run -p 80:80 nginx",
+  "ja": "docker run -p 80:80 nginx",
+  "ko": "docker run -p 80:80 nginx"
  },
  "docker run command": {
   "de": "docker-run-Befehl",
@@ -8452,12 +9444,20 @@
  "docker-compose.yml": {
   "de": "docker-compose.yml",
   "es": "docker-compose.yml",
-  "zh": "docker-compose.yml"
+  "zh": "docker-compose.yml",
+  "fr": "docker-compose.yml",
+  "pt": "docker-compose.yml",
+  "ja": "docker-compose.yml",
+  "ko": "docker-compose.yml"
  },
  "dot.case": {
   "de": "dot.case",
   "es": "dot.case",
-  "zh": "dot.case"
+  "zh": "dot.case",
+  "fr": "dot.case",
+  "pt": "dot.case",
+  "ja": "dot.case",
+  "ko": "dot.case"
  },
  "duck": {
   "de": "ducken",
@@ -8472,22 +9472,38 @@
  "event.code": {
   "de": "event.code",
   "es": "event.code",
-  "zh": "event.code"
+  "zh": "event.code",
+  "fr": "event.code",
+  "pt": "event.code",
+  "ja": "event.code",
+  "ko": "event.code"
  },
  "event.key": {
   "de": "event.key",
   "es": "event.key",
-  "zh": "event.key"
+  "zh": "event.key",
+  "fr": "event.key",
+  "pt": "event.key",
+  "ja": "event.key",
+  "ko": "event.key"
  },
  "event.keyCode": {
   "de": "event.keyCode",
   "es": "event.keyCode",
-  "zh": "event.keyCode"
+  "zh": "event.keyCode",
+  "fr": "event.keyCode",
+  "pt": "event.keyCode",
+  "ja": "event.keyCode",
+  "ko": "event.keyCode"
  },
  "event.which": {
   "de": "event.which",
   "es": "event.which",
-  "zh": "event.which"
+  "zh": "event.which",
+  "fr": "event.which",
+  "pt": "event.which",
+  "ja": "event.which",
+  "ko": "event.which"
  },
  "example.com, 8.8.8.8 or AS15169": {
   "de": "example.com, 8.8.8.8 oder AS15169",
@@ -8497,7 +9513,11 @@
  "eyJhbGciOi...": {
   "de": "eyJhbGciOi...",
   "es": "eyJhbGciOi...",
-  "zh": "eyJhbGciOi..."
+  "zh": "eyJhbGciOi...",
+  "fr": "eyJhbGciOi...",
+  "pt": "eyJhbGciOi...",
+  "ja": "eyJhbGciOi...",
+  "ko": "eyJhbGciOi..."
  },
  "favicon.ico saved with 16, 32 and 48 pixel frames": {
   "de": "favicon.ico mit 16-, 32- und 48-Pixel-Rahmen gespeichert",
@@ -8507,17 +9527,29 @@
  "fetch": {
   "de": "fetch",
   "es": "fetch",
-  "zh": "fetch"
+  "zh": "fetch",
+  "fr": "fetch",
+  "pt": "fetch",
+  "ja": "fetch",
+  "ko": "fetch"
  },
  "forwards": {
   "de": "forwards",
   "es": "forwards",
-  "zh": "forwards"
+  "zh": "forwards",
+  "fr": "forwards",
+  "pt": "forwards",
+  "ja": "forwards",
+  "ko": "forwards"
  },
  "fps": {
   "de": "fps",
   "es": "fps",
-  "zh": "fps"
+  "zh": "fps",
+  "fr": "fps",
+  "pt": "fps",
+  "ja": "fps",
+  "ko": "fps"
  },
  "freq": {
   "de": "Frequenz",
@@ -8527,12 +9559,20 @@
  "from=": {
   "de": "from=",
   "es": "from=",
-  "zh": "from="
+  "zh": "from=",
+  "fr": "from=",
+  "pt": "from=",
+  "ja": "from=",
+  "ko": "from="
  },
  "g/mol": {
   "de": "g/mol",
   "es": "g/mol",
-  "zh": "g/mol"
+  "zh": "g/mol",
+  "fr": "g/mol",
+  "pt": "g/mol",
+  "ja": "g/mol",
+  "ko": "g/mol"
  },
  "hello world": {
   "de": "hallo welt",
@@ -8547,7 +9587,11 @@
  "hex": {
   "de": "hex",
   "es": "hex",
-  "zh": "十六进制"
+  "zh": "十六进制",
+  "fr": "hex",
+  "pt": "hex",
+  "ja": "hex",
+  "ko": "hex"
  },
  "hex or text": {
   "de": "Hex oder Text",
@@ -8557,12 +9601,20 @@
  "https%3A%2F%2Fexample.com": {
   "de": "https%3A%2F%2Fexample.com",
   "es": "https%3A%2F%2Fexample.com",
-  "zh": "https%3A%2F%2Fexample.com"
+  "zh": "https%3A%2F%2Fexample.com",
+  "fr": "https%3A%2F%2Fexample.com",
+  "pt": "https%3A%2F%2Fexample.com",
+  "ja": "https%3A%2F%2Fexample.com",
+  "ko": "https%3A%2F%2Fexample.com"
  },
  "hunter2": {
   "de": "hunter2",
   "es": "hunter2",
-  "zh": "hunter2"
+  "zh": "hunter2",
+  "fr": "hunter2",
+  "pt": "hunter2",
+  "ja": "hunter2",
+  "ko": "hunter2"
  },
  "jsglobe.com/apps/&lt;app-id&gt;": {
   "de": "jsglobe.com/de/apps/&lt;app-id&gt;",
@@ -8577,7 +9629,11 @@
  "kebab-case": {
   "de": "kebab-case",
   "es": "kebab-case",
-  "zh": "kebab-case"
+  "zh": "kebab-case",
+  "fr": "kebab-case",
+  "pt": "kebab-case",
+  "ja": "kebab-case",
+  "ko": "kebab-case"
  },
  "key: value": {
   "de": "schlüssel: wert",
@@ -8592,7 +9648,11 @@
  "manifest.webmanifest": {
   "de": "manifest.webmanifest",
   "es": "manifest.webmanifest",
-  "zh": "manifest.webmanifest"
+  "zh": "manifest.webmanifest",
+  "fr": "manifest.webmanifest",
+  "pt": "manifest.webmanifest",
+  "ja": "manifest.webmanifest",
+  "ko": "manifest.webmanifest"
  },
  "max": {
   "de": "max",
@@ -8607,7 +9667,11 @@
  "miter": {
   "de": "miter",
   "es": "miter",
-  "zh": "miter"
+  "zh": "miter",
+  "fr": "miter",
+  "pt": "miter",
+  "ja": "miter",
+  "ko": "miter"
  },
  "name,role,city": {
   "de": "name,rolle,stadt",
@@ -8622,7 +9686,11 @@
  "navigator.serial": {
   "de": "navigator.serial",
   "es": "navigator.serial",
-  "zh": "navigator.serial"
+  "zh": "navigator.serial",
+  "fr": "navigator.serial",
+  "pt": "navigator.serial",
+  "ja": "navigator.serial",
+  "ko": "navigator.serial"
  },
  "no probe": {
   "de": "keine Messspitze",
@@ -8632,22 +9700,38 @@
  "no-X11-forwarding": {
   "de": "no-X11-forwarding",
   "es": "no-X11-forwarding",
-  "zh": "no-X11-forwarding"
+  "zh": "no-X11-forwarding",
+  "fr": "no-X11-forwarding",
+  "pt": "no-X11-forwarding",
+  "ja": "no-X11-forwarding",
+  "ko": "no-X11-forwarding"
  },
  "no-agent-forwarding": {
   "de": "no-agent-forwarding",
   "es": "no-agent-forwarding",
-  "zh": "no-agent-forwarding"
+  "zh": "no-agent-forwarding",
+  "fr": "no-agent-forwarding",
+  "pt": "no-agent-forwarding",
+  "ja": "no-agent-forwarding",
+  "ko": "no-agent-forwarding"
  },
  "no-port-forwarding": {
   "de": "no-port-forwarding",
   "es": "no-port-forwarding",
-  "zh": "no-port-forwarding"
+  "zh": "no-port-forwarding",
+  "fr": "no-port-forwarding",
+  "pt": "no-port-forwarding",
+  "ja": "no-port-forwarding",
+  "ko": "no-port-forwarding"
  },
  "no-pty": {
   "de": "no-pty",
   "es": "no-pty",
-  "zh": "no-pty"
+  "zh": "no-pty",
+  "fr": "no-pty",
+  "pt": "no-pty",
+  "ja": "no-pty",
+  "ko": "no-pty"
  },
  "none": {
   "de": "keine",
@@ -8657,7 +9741,11 @@
  "normal": {
   "de": "normal",
   "es": "normal",
-  "zh": "normal"
+  "zh": "normal",
+  "fr": "normal",
+  "pt": "normal",
+  "ja": "normal",
+  "ko": "normal"
  },
  "now": {
   "de": "jetzt",
@@ -8677,7 +9765,11 @@
  "path/case": {
   "de": "path/case",
   "es": "path/case",
-  "zh": "path/case"
+  "zh": "path/case",
+  "fr": "path/case",
+  "pt": "path/case",
+  "ja": "path/case",
+  "ko": "path/case"
  },
  "pdf-lib module": {
   "de": "pdf-lib-Modul",
@@ -8697,12 +9789,20 @@
  "preserveAspectRatio": {
   "de": "preserveAspectRatio",
   "es": "preserveAspectRatio",
-  "zh": "preserveAspectRatio"
+  "zh": "preserveAspectRatio",
+  "fr": "preserveAspectRatio",
+  "pt": "preserveAspectRatio",
+  "ja": "preserveAspectRatio",
+  "ko": "preserveAspectRatio"
  },
  "px": {
   "de": "px",
   "es": "px",
-  "zh": "px"
+  "zh": "px",
+  "fr": "px",
+  "pt": "px",
+  "ja": "px",
+  "ko": "px"
  },
  "qty": {
   "de": "Stück",
@@ -8712,12 +9812,20 @@
  "restrict": {
   "de": "restrict",
   "es": "restrict",
-  "zh": "restrict"
+  "zh": "restrict",
+  "fr": "restrict",
+  "pt": "restrict",
+  "ja": "restrict",
+  "ko": "restrict"
  },
  "reverse": {
   "de": "reverse",
   "es": "reverse",
-  "zh": "reverse"
+  "zh": "reverse",
+  "fr": "reverse",
+  "pt": "reverse",
+  "ja": "reverse",
+  "ko": "reverse"
  },
  "rms": {
   "de": "Effektiv",
@@ -8727,12 +9835,20 @@
  "round": {
   "de": "round",
   "es": "round",
-  "zh": "round"
+  "zh": "round",
+  "fr": "round",
+  "pt": "round",
+  "ja": "round",
+  "ko": "round"
  },
  "select * from users where id = 1": {
   "de": "select * from users where id = 1",
   "es": "select * from users where id = 1",
-  "zh": "select * from users where id = 1"
+  "zh": "select * from users where id = 1",
+  "fr": "select * from users where id = 1",
+  "pt": "select * from users where id = 1",
+  "ja": "select * from users where id = 1",
+  "ko": "select * from users where id = 1"
  },
  "shared secret": {
   "de": "gemeinsames Geheimnis",
@@ -8742,12 +9858,20 @@
  "sin(x)": {
   "de": "sin(x)",
   "es": "sin(x)",
-  "zh": "sin(x)"
+  "zh": "sin(x)",
+  "fr": "sin(x)",
+  "pt": "sin(x)",
+  "ja": "sin(x)",
+  "ko": "sin(x)"
  },
  "snake_case": {
   "de": "snake_case",
   "es": "snake_case",
-  "zh": "snake_case"
+  "zh": "snake_case",
+  "fr": "snake_case",
+  "pt": "snake_case",
+  "ja": "snake_case",
+  "ko": "snake_case"
  },
  "space": {
   "de": "Leertaste",
@@ -8757,7 +9881,11 @@
  "square": {
   "de": "square",
   "es": "square",
-  "zh": "square"
+  "zh": "square",
+  "fr": "square",
+  "pt": "square",
+  "ja": "square",
+  "ko": "square"
  },
  "ssh-ed25519 AAAAC3Nza... you@machine": {
   "de": "ssh-ed25519 AAAAC3Nza... du@rechner",
@@ -8797,22 +9925,38 @@
  "viewBox": {
   "de": "viewBox",
   "es": "viewBox",
-  "zh": "viewBox"
+  "zh": "viewBox",
+  "fr": "viewBox",
+  "pt": "viewBox",
+  "ja": "viewBox",
+  "ko": "viewBox"
  },
  "wss://example.com/socket": {
   "de": "wss://example.com/socket",
   "es": "wss://example.com/socket",
-  "zh": "wss://example.com/socket"
+  "zh": "wss://example.com/socket",
+  "fr": "wss://example.com/socket",
+  "pt": "wss://example.com/socket",
+  "ja": "wss://example.com/socket",
+  "ko": "wss://example.com/socket"
  },
  "xMidYMid meet": {
   "de": "xMidYMid meet",
   "es": "xMidYMid meet",
-  "zh": "xMidYMid meet"
+  "zh": "xMidYMid meet",
+  "fr": "xMidYMid meet",
+  "pt": "xMidYMid meet",
+  "ja": "xMidYMid meet",
+  "ko": "xMidYMid meet"
  },
  "xMidYMid slice": {
   "de": "xMidYMid slice",
   "es": "xMidYMid slice",
-  "zh": "xMidYMid slice"
+  "zh": "xMidYMid slice",
+  "fr": "xMidYMid slice",
+  "pt": "xMidYMid slice",
+  "ja": "xMidYMid slice",
+  "ko": "xMidYMid slice"
  },
  "you@machine": {
   "de": "du@rechner",
@@ -8828,5 +9972,311 @@
   "de": "⌘K / Strg+K",
   "es": "⌘K / Ctrl+K",
   "zh": "⌘K / Ctrl+K"
+ },
+ "0 leaves the quality slider in charge": {
+  "fr": "0 laisse le curseur de qualité décider",
+  "pt": "0 deixa o controle de qualidade decidir",
+  "ja": "0 にすると品質スライダーに任せます",
+  "ko": "0으로 두면 품질 슬라이더가 결정합니다"
+ },
+ "1 column": {
+  "fr": "1 colonne",
+  "pt": "1 coluna",
+  "ja": "1 段",
+  "ko": "1단"
+ },
+ "2 columns": {
+  "fr": "2 colonnes",
+  "pt": "2 colunas",
+  "ja": "2 段",
+  "ko": "2단"
+ },
+ "3 columns": {
+  "fr": "3 colonnes",
+  "pt": "3 colunas",
+  "ja": "3 段",
+  "ko": "3단"
+ },
+ "401(k) contribution": {
+  "fr": "Cotisation 401(k)",
+  "pt": "Contribuição 401(k)",
+  "ja": "401(k) 拠出",
+  "ko": "401(k) 납입"
+ },
+ "72 points is an inch": {
+  "fr": "72 points font un pouce",
+  "pt": "72 pontos equivalem a uma polegada",
+  "ja": "72 ポイントが 1 インチ",
+  "ko": "72포인트가 1인치"
+ },
+ "A .docx that Word and Pages both open": {
+  "fr": "Un .docx que Word et Pages ouvrent tous les deux",
+  "pt": "Um .docx que tanto o Word quanto o Pages abrem",
+  "ja": "Word でも Pages でも開ける .docx",
+  "ko": "Word와 Pages 모두에서 열리는 .docx"
+ },
+ "A JWT needs three dot-separated parts": {
+  "fr": "Un JWT demande trois parties séparées par des points",
+  "pt": "Um JWT precisa de três partes separadas por pontos",
+  "ja": "JWT はドットで区切られた 3 つの部分が必要です",
+  "ko": "JWT는 점으로 구분된 세 부분이 필요합니다"
+ },
+ "A PDF fetches a reader from a CDN the first time, then the reading happens here too.": {
+  "fr": "Un PDF récupère un lecteur depuis un CDN la première fois, ensuite la lecture se fait ici aussi.",
+  "pt": "Um PDF busca um leitor em um CDN na primeira vez; depois a leitura também acontece aqui.",
+  "ja": "PDF は初回だけ CDN から読み取りモジュールを取得し、読み取り自体はここで行われます。",
+  "ko": "PDF는 처음 한 번만 CDN에서 읽기 모듈을 가져오고, 읽는 작업은 여기에서 이루어집니다."
+ },
+ "A blunder. Something was hanging.": {
+  "fr": "Une gaffe. Quelque chose était en prise.",
+  "pt": "Um erro grave. Alguma peça estava pendurada.",
+  "ja": "大悪手。ただで取れる駒がありました。",
+  "ko": "큰 실수. 그냥 잡히는 기물이 있었습니다."
+ },
+ "A browser only hands over services that were asked for by name. Add the uuids your device uses, one per line, before choosing it.": {
+  "fr": "Un navigateur ne remet que les services demandés par leur nom. Ajoutez les uuid de votre appareil, un par ligne, avant de le choisir.",
+  "pt": "Um navegador só entrega os serviços que foram pedidos pelo nome. Adicione os uuid que seu dispositivo usa, um por linha, antes de escolhê-lo.",
+  "ja": "ブラウザは名前で要求されたサービスしか渡しません。デバイスを選ぶ前に、そのデバイスが使う uuid を 1 行に 1 つずつ追加してください。",
+  "ko": "브라우저는 이름으로 요청한 서비스만 넘겨줍니다. 기기를 고르기 전에 그 기기가 쓰는 uuid를 한 줄에 하나씩 추가하세요."
+ },
+ "A curved mirror focuses": {
+  "fr": "Un miroir courbe fait converger",
+  "pt": "Um espelho curvo focaliza",
+  "ja": "曲面鏡は光を集める",
+  "ko": "곡면 거울은 빛을 모읍니다"
+ },
+ "A diverging lens": {
+  "fr": "Une lentille divergente",
+  "pt": "Uma lente divergente",
+  "ja": "凹レンズ",
+  "ko": "오목 렌즈"
+ },
+ "A flat fifteen percent on employment income.": {
+  "fr": "Quinze pour cent forfaitaires sur les revenus du travail.",
+  "pt": "Quinze por cento fixos sobre a renda do trabalho.",
+  "ja": "給与所得に一律 15 パーセント。",
+  "ko": "근로 소득에 일률 15퍼센트."
+ },
+ "A flat ten percent, charged after the pension and health contributions.": {
+  "fr": "Dix pour cent forfaitaires, prélevés après les cotisations retraite et santé.",
+  "pt": "Dez por cento fixos, cobrados após as contribuições de previdência e saúde.",
+  "ja": "年金と健康保険の拠出後に一律 10 パーセント。",
+  "ko": "연금과 건강보험 납입 후 일률 10퍼센트."
+ },
+ "A good move.": {
+  "fr": "Un bon coup.",
+  "pt": "Um bom lance.",
+  "ja": "good な手。",
+  "ko": "좋은 수."
+ },
+ "A month": {
+  "fr": "Un mois",
+  "pt": "Um mês",
+  "ja": "1 か月",
+  "ko": "한 달"
+ },
+ "A new section starts here": {
+  "fr": "Une nouvelle section commence ici",
+  "pt": "Uma nova seção começa aqui",
+  "ja": "ここから新しいセクションが始まります",
+  "ko": "여기서 새 섹션이 시작됩니다"
+ },
+ "A prism splits white light": {
+  "fr": "Un prisme décompose la lumière blanche",
+  "pt": "Um prisma decompõe a luz branca",
+  "ja": "プリズムは白色光を分ける",
+  "ko": "프리즘은 백색광을 나눕니다"
+ },
+ "A real glass lens": {
+  "fr": "Une vraie lentille en verre",
+  "pt": "Uma lente de vidro real",
+  "ja": "実際のガラスレンズ",
+  "ko": "실제 유리 렌즈"
+ },
+ "A single page with the formatting kept": {
+  "fr": "Une seule page avec la mise en forme conservée",
+  "pt": "Uma única página com a formatação preservada",
+  "ja": "書式を残した 1 ページ",
+  "ko": "서식을 유지한 한 페이지"
+ },
+ "A slab shifts a ray sideways": {
+  "fr": "Une lame décale un rayon latéralement",
+  "pt": "Uma lâmina desloca um raio lateralmente",
+  "ja": "平行平板は光線を横にずらす",
+  "ko": "평행 평판은 광선을 옆으로 옮깁니다"
+ },
+ "A week": {
+  "fr": "Une semaine",
+  "pt": "Uma semana",
+  "ja": "1 週間",
+  "ko": "일주일"
+ },
+ "A year": {
+  "fr": "Un an",
+  "pt": "Um ano",
+  "ja": "1 年",
+  "ko": "1년"
+ },
+ "Ackermann steering": {
+  "fr": "Direction Ackermann",
+  "pt": "Direção Ackermann",
+  "ja": "アッカーマン・ステアリング",
+  "ko": "애커먼 조향"
+ },
+ "Across": {
+  "fr": "Horizontal",
+  "pt": "Horizontal",
+  "ja": "ヨコ",
+  "ko": "가로"
+ },
+ "Add a block": {
+  "fr": "Ajouter un bloc",
+  "pt": "Adicionar um bloco",
+  "ja": "ブロックを追加",
+  "ko": "블록 추가"
+ },
+ "Add a citation": {
+  "fr": "Ajouter une référence",
+  "pt": "Adicionar uma citação",
+  "ja": "出典を追加",
+  "ko": "인용 추가"
+ },
+ "Add a document first": {
+  "fr": "Ajoutez d'abord un document",
+  "pt": "Adicione um documento primeiro",
+  "ja": "先に文書を追加してください",
+  "ko": "먼저 문서를 추가하세요"
+ },
+ "Add a few documents, then ask a question. The answer cites the passages it came from, and each one opens.": {
+  "fr": "Ajoutez quelques documents, puis posez une question. La réponse cite les passages dont elle vient, et chacun s'ouvre.",
+  "pt": "Adicione alguns documentos e faça uma pergunta. A resposta cita os trechos de onde veio, e cada um pode ser aberto.",
+  "ja": "文書をいくつか追加してから質問してください。答えは根拠にした箇所を示し、それぞれ開けます。",
+  "ko": "문서를 몇 개 추가한 뒤 질문하세요. 답변은 근거가 된 구절을 표시하며, 각각 열어 볼 수 있습니다."
+ },
+ "Add a page": {
+  "fr": "Ajouter une page",
+  "pt": "Adicionar uma página",
+  "ja": "ページを追加",
+  "ko": "페이지 추가"
+ },
+ "Add a row": {
+  "fr": "Ajouter une ligne",
+  "pt": "Adicionar uma linha",
+  "ja": "行を追加",
+  "ko": "행 추가"
+ },
+ "Add an entry": {
+  "fr": "Ajouter une entrée",
+  "pt": "Adicionar uma entrada",
+  "ja": "項目を追加",
+  "ko": "항목 추가"
+ },
+ "Add at least one row with a number": {
+  "fr": "Ajoutez au moins une ligne avec un nombre",
+  "pt": "Adicione ao menos uma linha com um número",
+  "ja": "数値の入った行を少なくとも 1 つ追加してください",
+  "ko": "숫자가 있는 행을 하나 이상 추가하세요"
+ },
+ "Add it": {
+  "fr": "Ajouter",
+  "pt": "Adicionar",
+  "ja": "追加する",
+  "ko": "추가하기"
+ },
+ "Add some headings first": {
+  "fr": "Ajoutez d'abord des titres",
+  "pt": "Adicione alguns títulos primeiro",
+  "ja": "先に見出しを追加してください",
+  "ko": "먼저 제목을 추가하세요"
+ },
+ "Add to the total": {
+  "fr": "Ajouter au total",
+  "pt": "Somar ao total",
+  "ja": "合計に加える",
+  "ko": "합계에 더하기"
+ },
+ "Added {count} documents": {
+  "fr": "{count} documents ajoutés",
+  "pt": "{count} documentos adicionados",
+  "ja": "{count} 件の文書を追加しました",
+  "ko": "문서 {count}개를 추가했습니다"
+ },
+ "Alberta": {
+  "fr": "Alberta",
+  "pt": "Alberta",
+  "ja": "アルバータ州",
+  "ko": "앨버타주"
+ },
+ "Alberta tax": {
+  "fr": "Impôt de l'Alberta",
+  "pt": "Imposto de Alberta",
+  "ja": "アルバータ州税",
+  "ko": "앨버타주 세금"
+ },
+ "Align bottom": {
+  "fr": "Aligner en bas",
+  "pt": "Alinhar embaixo",
+  "ja": "下揃え",
+  "ko": "아래 정렬"
+ },
+ "Align left": {
+  "fr": "Aligner à gauche",
+  "pt": "Alinhar à esquerda",
+  "ja": "左揃え",
+  "ko": "왼쪽 정렬"
+ },
+ "Align right": {
+  "fr": "Aligner à droite",
+  "pt": "Alinhar à direita",
+  "ja": "右揃え",
+  "ko": "오른쪽 정렬"
+ },
+ "Align top": {
+  "fr": "Aligner en haut",
+  "pt": "Alinhar em cima",
+  "ja": "上揃え",
+  "ko": "위 정렬"
+ },
+ "Always show the raw bytes": {
+  "fr": "Toujours afficher les octets bruts",
+  "pt": "Sempre mostrar os bytes brutos",
+  "ja": "生のバイトを常に表示",
+  "ko": "원시 바이트를 항상 표시"
+ },
+ "An object 200 away images at {distance}, {size} times the size.": {
+  "fr": "Un objet à 200 forme une image à {distance}, {size} fois la taille.",
+  "pt": "Um objeto a 200 forma imagem a {distance}, {size} vezes o tamanho.",
+  "ja": "200 離れた物体は {distance} に、{size} 倍の大きさで結像します。",
+  "ko": "200 떨어진 물체는 {distance}에 {size}배 크기로 상이 맺힙니다."
+ },
+ "Answered without {count} unread passages. Read the documents for the rest.": {
+  "fr": "Répondu sans {count} passages non lus. Lisez les documents pour le reste.",
+  "pt": "Respondido sem {count} trechos não lidos. Leia os documentos para o restante.",
+  "ja": "未読の {count} 箇所を除いて回答しました。残りは文書を読み込んでください。",
+  "ko": "읽지 않은 {count}개 구절을 빼고 답했습니다. 나머지는 문서를 읽어 주세요."
+ },
+ "Answers written by": {
+  "fr": "Réponses rédigées par",
+  "pt": "Respostas escritas por",
+  "ja": "回答を書くモデル",
+  "ko": "답변을 쓰는 모델"
+ },
+ "Applies": {
+  "fr": "S'applique",
+  "pt": "Aplica-se",
+  "ja": "適用される",
+  "ko": "적용됨"
+ },
+ "Applies to": {
+  "fr": "S'applique à",
+  "pt": "Aplica-se a",
+  "ja": "適用先",
+  "ko": "적용 대상"
+ },
+ "Applies to the whole document, on screen and in the export.": {
+  "fr": "S'applique à tout le document, à l'écran comme à l'export.",
+  "pt": "Vale para o documento inteiro, na tela e na exportação.",
+  "ja": "画面上でも書き出しでも、文書全体に適用されます。",
+  "ko": "화면에서도 내보내기에서도 문서 전체에 적용됩니다."
  }
 }

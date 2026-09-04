@@ -35,4 +35,32 @@ export default {
     'jwt.notYetValid': '尚未生效',
     'jwt.notVerified': '签名未验证',
   },
+  fr: {
+    'jwt-parser.token': 'Token',
+    'jwt-parser.eyjhbgcioi': 'eyJhbGciOi...',
+    'jwt-parser.payload': 'Payload',
+    'jwt-parser.claims': 'Claims',
+    'jwt.threeParts': 'Un JWT demande trois parties séparées par des points',
+  },
+  pt: {
+    'jwt-parser.token': 'Token',
+    'jwt-parser.eyjhbgcioi': 'eyJhbGciOi...',
+    'jwt-parser.payload': 'Payload',
+    'jwt-parser.claims': 'Claims',
+    'jwt.threeParts': 'Um JWT precisa de três partes separadas por pontos',
+  },
+  ja: {
+    'jwt-parser.token': 'Token',
+    'jwt-parser.eyjhbgcioi': 'eyJhbGciOi...',
+    'jwt-parser.payload': 'Payload',
+    'jwt-parser.claims': 'Claims',
+    'jwt.threeParts': 'JWT はドットで区切られた 3 つの部分が必要です',
+  },
+  ko: {
+    'jwt-parser.token': 'Token',
+    'jwt-parser.eyjhbgcioi': 'eyJhbGciOi...',
+    'jwt-parser.payload': 'Payload',
+    'jwt-parser.claims': 'Claims',
+    'jwt.threeParts': 'JWT는 점으로 구분된 세 부분이 필요합니다',
+  },
 };

@@ -50,4 +50,16 @@ export default {
     'text-encoder.encoded': '已编码',
     'text-encoder.pasteEncodedTextToDecode': '粘贴要解码的编码文本',
   },
+  fr: {
+    'text-encoder.rot13': 'ROT13',
+  },
+  pt: {
+    'text-encoder.rot13': 'ROT13',
+  },
+  ja: {
+    'text-encoder.rot13': 'ROT13',
+  },
+  ko: {
+    'text-encoder.rot13': 'ROT13',
+  },
 };

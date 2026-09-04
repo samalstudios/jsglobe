@@ -38,4 +38,16 @@ export default {
     'game-dino.duck': '下蹲',
     'game-dino.play': '开始',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

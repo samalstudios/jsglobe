@@ -44,4 +44,16 @@ export default {
     'tuner.microphoneIsOff': '麦克风已关闭',
     'tuner.50Cents': '+50 音分',
   },
+  fr: {
+    'tuner.50Cents': '+50 cents',
+  },
+  pt: {
+    'tuner.50Cents': '+50 cents',
+  },
+  ja: {
+    'tuner.50Cents': '+50 セント',
+  },
+  ko: {
+    'tuner.50Cents': '+50센트',
+  },
 };

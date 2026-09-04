@@ -35,4 +35,20 @@ export default {
     'game-pong.moveWithTheMouseOr': '用鼠标或上下方向键移动。',
     'game-pong.play': '开始',
   },
+  fr: {
+    'game-pong.normal': 'Normal',
+    'game-pong.pong': 'Pong',
+  },
+  pt: {
+    'game-pong.normal': 'Normal',
+    'game-pong.pong': 'Pong',
+  },
+  ja: {
+    'game-pong.normal': 'Normal',
+    'game-pong.pong': 'Pong',
+  },
+  ko: {
+    'game-pong.normal': 'Normal',
+    'game-pong.pong': 'Pong',
+  },
 };

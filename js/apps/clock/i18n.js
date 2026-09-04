@@ -38,4 +38,20 @@ export default {
     'clock.min': '最小',
     'clock.theTimerKeepsRunningWhile': '打开其他应用时计时器会继续运行。',
   },
+  fr: {
+    'clock.12HourTime': 'Format 12 heures',
+    'clock.add': 'Ajouter',
+  },
+  pt: {
+    'clock.12HourTime': 'Formato de 12 horas',
+    'clock.add': 'Adicionar',
+  },
+  ja: {
+    'clock.12HourTime': '12 時間表記',
+    'clock.add': '追加',
+  },
+  ko: {
+    'clock.12HourTime': '12시간 표기',
+    'clock.add': '추가',
+  },
 };

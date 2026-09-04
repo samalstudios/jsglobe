@@ -74,4 +74,16 @@ export default {
     'gitignore-generator.gitignore': 'GitIgnore',
     'gitignore-generator.widgetBlurb': '根据所用工具生成 .gitignore。',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

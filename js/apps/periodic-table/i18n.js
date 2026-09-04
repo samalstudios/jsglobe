@@ -65,4 +65,24 @@ export default {
     'periodic-table.copyFacts': '复制数据',
     'periodic-table.temperature': '温度',
   },
+  fr: {
+    'periodic-table.kelvin': 'Kelvin',
+    'periodic-table.celsius': 'Celsius',
+    'periodic-table.fahrenheit': 'Fahrenheit',
+  },
+  pt: {
+    'periodic-table.kelvin': 'Kelvin',
+    'periodic-table.celsius': 'Celsius',
+    'periodic-table.fahrenheit': 'Fahrenheit',
+  },
+  ja: {
+    'periodic-table.kelvin': 'Kelvin',
+    'periodic-table.celsius': 'Celsius',
+    'periodic-table.fahrenheit': 'Fahrenheit',
+  },
+  ko: {
+    'periodic-table.kelvin': 'Kelvin',
+    'periodic-table.celsius': 'Celsius',
+    'periodic-table.fahrenheit': 'Fahrenheit',
+  },
 };

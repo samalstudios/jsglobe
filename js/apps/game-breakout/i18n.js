@@ -32,4 +32,16 @@ export default {
     'game-breakout.moveWithTheMouseOr': '用鼠标或方向键移动，空格发球。',
     'game-breakout.play': '开始',
   },
+  fr: {
+    'game-breakout.breakout': 'Breakout',
+  },
+  pt: {
+    'game-breakout.breakout': 'Breakout',
+  },
+  ja: {
+    'game-breakout.breakout': 'Breakout',
+  },
+  ko: {
+    'game-breakout.breakout': 'Breakout',
+  },
 };

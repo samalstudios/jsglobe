@@ -20,4 +20,16 @@ export default {
     'game-memory.time': '时间',
     'game-memory.bestMoves': '最少步数',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

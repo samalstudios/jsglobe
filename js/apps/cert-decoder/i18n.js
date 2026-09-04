@@ -71,4 +71,24 @@ export default {
     'cert-decoder.size': '大小',
     'cert-decoder.copySha256': '复制 SHA-256',
   },
+  fr: {
+    'cert-decoder.beginCertificate': '-----BEGIN CERTIFICATE-----',
+    'cert-decoder.sha256': 'SHA-256',
+    'cert-decoder.sha1': 'SHA-1',
+  },
+  pt: {
+    'cert-decoder.beginCertificate': '-----BEGIN CERTIFICATE-----',
+    'cert-decoder.sha256': 'SHA-256',
+    'cert-decoder.sha1': 'SHA-1',
+  },
+  ja: {
+    'cert-decoder.beginCertificate': '-----BEGIN CERTIFICATE-----',
+    'cert-decoder.sha256': 'SHA-256',
+    'cert-decoder.sha1': 'SHA-1',
+  },
+  ko: {
+    'cert-decoder.beginCertificate': '-----BEGIN CERTIFICATE-----',
+    'cert-decoder.sha256': 'SHA-256',
+    'cert-decoder.sha1': 'SHA-1',
+  },
 };

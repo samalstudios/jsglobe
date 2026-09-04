@@ -44,4 +44,28 @@ export default {
     'barcode-generator.downloadSvg': '下载 SVG',
     'barcode-generator.downloadPng': '下载 PNG',
   },
+  fr: {
+    'barcode-generator.code128': 'Code 128',
+    'barcode-generator.ean13': 'EAN-13',
+    'barcode-generator.ean8': 'EAN-8',
+    'barcode-generator.code39': 'Code 39',
+  },
+  pt: {
+    'barcode-generator.code128': 'Code 128',
+    'barcode-generator.ean13': 'EAN-13',
+    'barcode-generator.ean8': 'EAN-8',
+    'barcode-generator.code39': 'Code 39',
+  },
+  ja: {
+    'barcode-generator.code128': 'Code 128',
+    'barcode-generator.ean13': 'EAN-13',
+    'barcode-generator.ean8': 'EAN-8',
+    'barcode-generator.code39': 'Code 39',
+  },
+  ko: {
+    'barcode-generator.code128': 'Code 128',
+    'barcode-generator.ean13': 'EAN-13',
+    'barcode-generator.ean8': 'EAN-8',
+    'barcode-generator.code39': 'Code 39',
+  },
 };

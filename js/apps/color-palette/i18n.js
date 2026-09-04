@@ -50,4 +50,20 @@ export default {
     'color-palette.hex': '十六进制',
     'color-palette.nativePicker': '系统取色器',
   },
+  fr: {
+    'color-palette.scss': 'SCSS',
+    'color-palette.hex': 'Hex',
+  },
+  pt: {
+    'color-palette.scss': 'SCSS',
+    'color-palette.hex': 'Hex',
+  },
+  ja: {
+    'color-palette.scss': 'SCSS',
+    'color-palette.hex': 'Hex',
+  },
+  ko: {
+    'color-palette.scss': 'SCSS',
+    'color-palette.hex': 'Hex',
+  },
 };

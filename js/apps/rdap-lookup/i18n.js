@@ -44,4 +44,16 @@ export default {
     'rdap-lookup.contacts': '联系人',
     'rdap-lookup.registriesRedactMostPersonalDetails': '注册局会隐去大部分个人信息',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

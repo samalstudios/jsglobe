@@ -74,4 +74,16 @@ export default {
     'favicon-generator.thatImageCouldNotBe': '无法读取该图片',
     'favicon-generator.faviconIcoSavedWith16': '已保存包含 16、32 和 48 像素的 favicon.ico',
   },
+  fr: {
+    'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+  },
+  pt: {
+    'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+  },
+  ja: {
+    'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+  },
+  ko: {
+    'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+  },
 };

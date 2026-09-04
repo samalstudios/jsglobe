@@ -140,4 +140,20 @@ export default {
     'icon-studio.iconStudio': '图标工作室',
     'icon-studio.widgetBlurb': '用数千个部件拼出图标。',
   },
+  fr: {
+    'icon-studio.all': 'Tout',
+    'icon-studio.across': 'Horizontal',
+  },
+  pt: {
+    'icon-studio.all': 'Tudo',
+    'icon-studio.across': 'Horizontal',
+  },
+  ja: {
+    'icon-studio.all': 'すべて',
+    'icon-studio.across': 'ヨコ',
+  },
+  ko: {
+    'icon-studio.all': '전체',
+    'icon-studio.across': '가로',
+  },
 };

@@ -50,4 +50,16 @@ export default {
     'compose-to-k8s.clear': '清空',
     'compose-to-k8s.emptyTheInput': '清空输入',
   },
+  fr: {
+    'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+  },
+  pt: {
+    'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+  },
+  ja: {
+    'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+  },
+  ko: {
+    'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+  },
 };

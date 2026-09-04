@@ -56,4 +56,16 @@ export default {
     'password-strength.atLeast12Characters': '至少 12 个字符',
     'password-strength.atLeast16Characters': '至少 16 个字符',
   },
+  fr: {
+    'password-strength.0Bits': '0 bit',
+  },
+  pt: {
+    'password-strength.0Bits': '0 bits',
+  },
+  ja: {
+    'password-strength.0Bits': '0 ビット',
+  },
+  ko: {
+    'password-strength.0Bits': '0비트',
+  },
 };

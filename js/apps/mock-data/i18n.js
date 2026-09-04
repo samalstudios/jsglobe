@@ -116,4 +116,20 @@ export default {
     'mock-data.download': '下载',
     'mock-data.newSeed': '新的随机种子',
   },
+  fr: {
+    'mock-data.uuidV4': 'UUID v4',
+    'mock-data.addField': 'Ajouter un champ',
+  },
+  pt: {
+    'mock-data.uuidV4': 'UUID v4',
+    'mock-data.addField': 'Adicionar campo',
+  },
+  ja: {
+    'mock-data.uuidV4': 'UUID v4',
+    'mock-data.addField': 'フィールドを追加',
+  },
+  ko: {
+    'mock-data.uuidV4': 'UUID v4',
+    'mock-data.addField': '필드 추가',
+  },
 };

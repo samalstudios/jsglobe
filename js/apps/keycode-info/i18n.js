@@ -50,4 +50,32 @@ export default {
     'keycode-info.repeat': '重复',
     'keycode-info.unicode': 'Unicode',
   },
+  fr: {
+    'keycode-info.eventKey': 'event.key',
+    'keycode-info.eventCode': 'event.code',
+    'keycode-info.eventKeycode': 'event.keyCode',
+    'keycode-info.eventWhich': 'event.which',
+    'keycode-info.unicode': 'Unicode',
+  },
+  pt: {
+    'keycode-info.eventKey': 'event.key',
+    'keycode-info.eventCode': 'event.code',
+    'keycode-info.eventKeycode': 'event.keyCode',
+    'keycode-info.eventWhich': 'event.which',
+    'keycode-info.unicode': 'Unicode',
+  },
+  ja: {
+    'keycode-info.eventKey': 'event.key',
+    'keycode-info.eventCode': 'event.code',
+    'keycode-info.eventKeycode': 'event.keyCode',
+    'keycode-info.eventWhich': 'event.which',
+    'keycode-info.unicode': 'Unicode',
+  },
+  ko: {
+    'keycode-info.eventKey': 'event.key',
+    'keycode-info.eventCode': 'event.code',
+    'keycode-info.eventKeycode': 'event.keyCode',
+    'keycode-info.eventWhich': 'event.which',
+    'keycode-info.unicode': 'Unicode',
+  },
 };

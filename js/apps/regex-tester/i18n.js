@@ -26,4 +26,16 @@ export default {
     'regex-tester.cheatSheet': '速查表',
     'regex-tester.noMatches': '无匹配项',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

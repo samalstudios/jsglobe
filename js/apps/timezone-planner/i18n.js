@@ -38,4 +38,16 @@ export default {
     'timezone-planner.keepAtLeastOneCity': '请至少保留一个城市',
     'timezone-planner.noHourWorksForEveryone': '没有对所有人都合适的时段。请放宽工作时间，或移除一个城市。',
   },
+  fr: {
+    'timezone-planner.addACity': 'Ajouter une ville',
+  },
+  pt: {
+    'timezone-planner.addACity': 'Adicionar uma cidade',
+  },
+  ja: {
+    'timezone-planner.addACity': '都市を追加',
+  },
+  ko: {
+    'timezone-planner.addACity': '도시 추가',
+  },
 };

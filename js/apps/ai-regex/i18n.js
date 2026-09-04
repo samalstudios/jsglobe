@@ -38,4 +38,16 @@ export default {
     'ai-regex.pasteSampleTextToSee': '粘贴示例文本以实时查看匹配',
     'ai-regex.explanation': '说明',
   },
+  fr: {
+    'ai-regex.aUkPostcodeCaseInsensitive': 'Un code postal britannique, sans distinction de casse',
+  },
+  pt: {
+    'ai-regex.aUkPostcodeCaseInsensitive': 'Um código postal do Reino Unido, sem diferenciar maiúsculas',
+  },
+  ja: {
+    'ai-regex.aUkPostcodeCaseInsensitive': '英国の郵便番号、大文字小文字は区別しません',
+  },
+  ko: {
+    'ai-regex.aUkPostcodeCaseInsensitive': '영국 우편번호, 대소문자 구분 없음',
+  },
 };

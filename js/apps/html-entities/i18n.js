@@ -32,4 +32,20 @@ export default {
     'html-entities.named': '命名实体',
     'html-entities.allNonAscii': '所有非 ASCII',
   },
+  fr: {
+    'html-entities.ltDivGt': '&lt;div&gt;',
+    'html-entities.allNonAscii': 'Tout ce qui n\'est pas ASCII',
+  },
+  pt: {
+    'html-entities.ltDivGt': '&lt;div&gt;',
+    'html-entities.allNonAscii': 'Tudo que não for ASCII',
+  },
+  ja: {
+    'html-entities.ltDivGt': '&lt;div&gt;',
+    'html-entities.allNonAscii': 'ASCII 以外すべて',
+  },
+  ko: {
+    'html-entities.ltDivGt': '&lt;div&gt;',
+    'html-entities.allNonAscii': 'ASCII가 아닌 전부',
+  },
 };

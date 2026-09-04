@@ -47,4 +47,24 @@ export default {
     'drum-kit.loadBeat': '加载节奏',
     'drum-kit.tempo': '速度',
   },
+  fr: {
+    'drum-kit.tom': 'Tom',
+    'drum-kit.16StepsClickToToggle': '16 pas, cliquez pour activer',
+    'drum-kit.tempo': 'Tempo',
+  },
+  pt: {
+    'drum-kit.tom': 'Tom',
+    'drum-kit.16StepsClickToToggle': '16 passos, clique para alternar',
+    'drum-kit.tempo': 'Tempo',
+  },
+  ja: {
+    'drum-kit.tom': 'Tom',
+    'drum-kit.16StepsClickToToggle': '16 ステップ、クリックで切り替え',
+    'drum-kit.tempo': 'Tempo',
+  },
+  ko: {
+    'drum-kit.tom': 'Tom',
+    'drum-kit.16StepsClickToToggle': '16스텝, 클릭하여 전환',
+    'drum-kit.tempo': 'Tempo',
+  },
 };

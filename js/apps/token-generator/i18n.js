@@ -65,4 +65,16 @@ export default {
     'token-generator.generateBatch': '批量生成',
     'token-generator.copyBatch': '复制批量结果',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

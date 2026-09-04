@@ -44,4 +44,24 @@ export default {
     'csv-studio.copy': '复制',
     'csv-studio.download': '下载',
   },
+  fr: {
+    'csv-studio.markdown': 'Markdown',
+    'csv-studio.addRow': 'Ajouter une ligne',
+    'csv-studio.addColumn': 'Ajouter une colonne',
+  },
+  pt: {
+    'csv-studio.markdown': 'Markdown',
+    'csv-studio.addRow': 'Adicionar linha',
+    'csv-studio.addColumn': 'Adicionar coluna',
+  },
+  ja: {
+    'csv-studio.markdown': 'Markdown',
+    'csv-studio.addRow': '行を追加',
+    'csv-studio.addColumn': '列を追加',
+  },
+  ko: {
+    'csv-studio.markdown': 'Markdown',
+    'csv-studio.addRow': '행 추가',
+    'csv-studio.addColumn': '열 추가',
+  },
 };

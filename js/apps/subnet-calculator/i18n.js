@@ -50,4 +50,16 @@ export default {
     'subnet-calculator.usableHosts': '可用主机数',
     'subnet-calculator.range': '范围',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

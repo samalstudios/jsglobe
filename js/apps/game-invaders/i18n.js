@@ -32,4 +32,16 @@ export default {
     'game-invaders.arrowsMoveSpaceFires': '方向键移动，空格射击。',
     'game-invaders.play': '开始',
   },
+  fr: {
+    'game-invaders.invaders': 'Invaders',
+  },
+  pt: {
+    'game-invaders.invaders': 'Invaders',
+  },
+  ja: {
+    'game-invaders.invaders': 'Invaders',
+  },
+  ko: {
+    'game-invaders.invaders': 'Invaders',
+  },
 };

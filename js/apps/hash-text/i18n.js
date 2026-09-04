@@ -44,4 +44,16 @@ export default {
     'common.text': '文本',
     'common.file': '文件',
   },
+  fr: {
+    'hash-text.sha256': 'SHA-256',
+  },
+  pt: {
+    'hash-text.sha256': 'SHA-256',
+  },
+  ja: {
+    'hash-text.sha256': 'SHA-256',
+  },
+  ko: {
+    'hash-text.sha256': 'SHA-256',
+  },
 };

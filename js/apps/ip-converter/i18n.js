@@ -50,4 +50,16 @@ export default {
     'ip-converter.reverseDns': '反向 DNS',
     'ip-converter.integerRange': '整数范围',
   },
+  fr: {
+    'ip-converter.acceptsDottedQuadDecimal0x': 'Accepte la notation pointée, décimale, hexadécimale 0x ou binaire',
+  },
+  pt: {
+    'ip-converter.acceptsDottedQuadDecimal0x': 'Aceita notação pontuada, decimal, hexadecimal 0x ou binária',
+  },
+  ja: {
+    'ip-converter.acceptsDottedQuadDecimal0x': 'ドット区切り、10 進数、0x 16 進数、2 進数を受け付けます',
+  },
+  ko: {
+    'ip-converter.acceptsDottedQuadDecimal0x': '점으로 구분된 표기, 10진수, 0x 16진수, 2진수를 받습니다',
+  },
 };

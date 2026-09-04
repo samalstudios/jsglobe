@@ -53,4 +53,16 @@ export default {
     'json-schema.generatedSchema': '生成的 schema',
     'json-schema.everyDocumentMatchesTheSchema': '所有文档都符合该 schema。',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

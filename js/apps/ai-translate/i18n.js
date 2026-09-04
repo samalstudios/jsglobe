@@ -50,4 +50,16 @@ export default {
     'ai-translate.formalTone': '正式语气',
     'ai-translate.casualTone': '随意语气',
   },
+  fr: {
+    'ai-translate.0Characters': '0 caractère',
+  },
+  pt: {
+    'ai-translate.0Characters': '0 caracteres',
+  },
+  ja: {
+    'ai-translate.0Characters': '0 文字',
+  },
+  ko: {
+    'ai-translate.0Characters': '0자',
+  },
 };

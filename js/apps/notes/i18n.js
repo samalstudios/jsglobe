@@ -26,4 +26,16 @@ export default {
     'notes.nothingSelected': '未选中任何内容',
     'notes.createANoteToGet': '创建一条笔记开始使用。',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

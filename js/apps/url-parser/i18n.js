@@ -47,4 +47,16 @@ export default {
     'url-parser.fragment': '片段',
     'url-parser.segments': '路径段',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

@@ -47,4 +47,16 @@ export default {
     'exif-editor.noExifTagsFoundIn': '在此文件中未找到 Exif 标签。',
     'exif-editor.thatFileIsNotA': '该文件不是 JPEG',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

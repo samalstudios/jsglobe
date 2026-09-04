@@ -32,4 +32,16 @@ export default {
     'typing-test.noMistakesRecordedYet': '尚未记录任何错误。',
     'typing-test.finishARunToRecord': '完成一轮以记录最佳成绩。',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

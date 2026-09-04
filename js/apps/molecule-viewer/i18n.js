@@ -53,4 +53,16 @@ export default {
     'molecule-viewer.bonds': '个化学键',
     'molecule-viewer.gMol': 'g/mol',
   },
+  fr: {
+    'molecule-viewer.gMol': 'g/mol',
+  },
+  pt: {
+    'molecule-viewer.gMol': 'g/mol',
+  },
+  ja: {
+    'molecule-viewer.gMol': 'g/mol',
+  },
+  ko: {
+    'molecule-viewer.gMol': 'g/mol',
+  },
 };

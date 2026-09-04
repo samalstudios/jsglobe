@@ -20,4 +20,16 @@ export default {
     'chmod-calculator.fromOctal': '由八进制',
     'chmod-calculator.presets': '预设',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

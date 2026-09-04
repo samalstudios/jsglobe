@@ -29,4 +29,16 @@ export default {
     'crontab-generator.nextRun': '下次运行',
     'crontab-generator.noMatchWithinTheNext': '未来一年内没有匹配',
   },
+  fr: {
+    'crontab-generator.aCronExpressionNeedsFive': 'Une expression cron demande cinq champs.',
+  },
+  pt: {
+    'crontab-generator.aCronExpressionNeedsFive': 'Uma expressão cron precisa de cinco campos.',
+  },
+  ja: {
+    'crontab-generator.aCronExpressionNeedsFive': 'cron 式には 5 つのフィールドが必要です。',
+  },
+  ko: {
+    'crontab-generator.aCronExpressionNeedsFive': 'cron 식에는 다섯 개의 필드가 필요합니다.',
+  },
 };

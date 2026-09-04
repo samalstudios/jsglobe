@@ -17,4 +17,16 @@ export default {
     'roman-numerals.reference': '参考',
     'roman-numerals.validRangeIs1To': '有效范围是 1 到 3999',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

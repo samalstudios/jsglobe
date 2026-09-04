@@ -29,4 +29,16 @@ export default {
     'currency-converter.atAGlance': '概览',
     'currency-converter.theSameAmountInOther': '相同金额换算成其他货币',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

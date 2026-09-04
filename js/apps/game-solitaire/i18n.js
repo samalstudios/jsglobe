@@ -35,4 +35,16 @@ export default {
     'game-solitaire.newGame': '新游戏',
     'game-solitaire.youClearedTheTable': '你清空了牌桌',
   },
+  fr: {
+
+  },
+  pt: {
+
+  },
+  ja: {
+
+  },
+  ko: {
+
+  },
 };

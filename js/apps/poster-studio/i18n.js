@@ -218,4 +218,28 @@ export default {
     'poster-studio.cornerRadius': '圆角半径',
     'poster-studio.nothingSavedYet': '尚未保存任何内容。',
   },
+  fr: {
+    'poster-studio.anEmptyPageStartFrom': 'Une page vide. Partez d\'un des modèles de la galerie, ou ajoutez un élément depuis la gauche.',
+    'poster-studio.add': 'Ajouter',
+    'poster-studio.align': 'Aligner',
+    'poster-studio.accent': 'Accent',
+  },
+  pt: {
+    'poster-studio.anEmptyPageStartFrom': 'Uma página em branco. Comece por um dos modelos da galeria, ou adicione um elemento pela esquerda.',
+    'poster-studio.add': 'Adicionar',
+    'poster-studio.align': 'Alinhar',
+    'poster-studio.accent': 'Destaque',
+  },
+  ja: {
+    'poster-studio.anEmptyPageStartFrom': '空のページです。ギャラリーのデザインから始めるか、左から部品を追加してください。',
+    'poster-studio.add': '追加',
+    'poster-studio.align': '揃える',
+    'poster-studio.accent': 'アクセント',
+  },
+  ko: {
+    'poster-studio.anEmptyPageStartFrom': '빈 페이지입니다. 갤러리의 디자인에서 시작하거나 왼쪽에서 요소를 추가하세요.',
+    'poster-studio.add': '추가',
+    'poster-studio.align': '정렬',
+    'poster-studio.accent': '강조색',
+  },
 };

@@ -29,4 +29,16 @@ export default {
     'encryption.pasteCiphertext': '粘贴密文',
     'encryption.decryptedTextAppearsHere': '解密后的文本会显示在这里',
   },
+  fr: {
+    'encryption.aes256GcmWithPbkdf2': 'AES-256-GCM avec dérivation de clé PBKDF2 (250k itérations)',
+  },
+  pt: {
+    'encryption.aes256GcmWithPbkdf2': 'AES-256-GCM com derivação de chave PBKDF2 (250 mil iterações)',
+  },
+  ja: {
+    'encryption.aes256GcmWithPbkdf2': 'PBKDF2 鍵導出 (25 万回) を用いた AES-256-GCM',
+  },
+  ko: {
+    'encryption.aes256GcmWithPbkdf2': 'PBKDF2 키 유도(25만 회)를 사용한 AES-256-GCM',
+  },
 };

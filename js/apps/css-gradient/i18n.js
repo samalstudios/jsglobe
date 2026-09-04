@@ -71,4 +71,28 @@ export default {
     'css-gradient.reverse': '反向',
     'css-gradient.presets': '预设',
   },
+  fr: {
+    'css-gradient.radial': 'Radial',
+    'css-gradient.angle': 'Angle',
+    'css-gradient.addStop': 'Ajouter une étape',
+    'css-gradient.addColour': 'Ajouter de la couleur',
+  },
+  pt: {
+    'css-gradient.radial': 'Radial',
+    'css-gradient.angle': 'Ângulo',
+    'css-gradient.addStop': 'Adicionar parada',
+    'css-gradient.addColour': 'Adicionar cor',
+  },
+  ja: {
+    'css-gradient.radial': 'Radial',
+    'css-gradient.angle': '角度',
+    'css-gradient.addStop': 'ストップを追加',
+    'css-gradient.addColour': '色を付ける',
+  },
+  ko: {
+    'css-gradient.radial': 'Radial',
+    'css-gradient.angle': '각도',
+    'css-gradient.addStop': '정지점 추가',
+    'css-gradient.addColour': '색 넣기',
+  },
 };
