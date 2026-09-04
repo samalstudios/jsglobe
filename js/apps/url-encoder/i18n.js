@@ -24,6 +24,7 @@ export default {
     'url-encoder.fullUri': '完整 URI',
   },
   fr: {
+    'url-encoder.swap': 'Échanger ⇅',
     'url-encoder.decoded': 'Décodé',
     'url-encoder.encoded': 'Encodé',
     'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
@@ -31,6 +32,7 @@ export default {
     'url-encoder.fullUri': 'URI complète',
   },
   pt: {
+    'url-encoder.swap': 'Trocar ⇅',
     'url-encoder.decoded': 'Decodificado',
     'url-encoder.encoded': 'Codificado',
     'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
@@ -38,6 +40,7 @@ export default {
     'url-encoder.fullUri': 'URI completa',
   },
   ja: {
+    'url-encoder.swap': '入れ替え ⇅',
     'url-encoder.decoded': '復号結果',
     'url-encoder.encoded': '符号化結果',
     'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
@@ -45,6 +48,7 @@ export default {
     'url-encoder.fullUri': '完全な URI',
   },
   ko: {
+    'url-encoder.swap': '바꾸기 ⇅',
     'url-encoder.decoded': '디코딩 결과',
     'url-encoder.encoded': '인코딩 결과',
     'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',

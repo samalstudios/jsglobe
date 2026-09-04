@@ -8,6 +8,10 @@ const loaders = {
   de: () => import('../i18n/de.js'),
   es: () => import('../i18n/es.js'),
   zh: () => import('../i18n/zh.js'),
+  fr: () => import('../i18n/fr.js'),
+  pt: () => import('../i18n/pt.js'),
+  ja: () => import('../i18n/ja.js'),
+  ko: () => import('../i18n/ko.js'),
 };
 
 export const language = () => active;

@@ -16,18 +16,22 @@ export default {
   },
   fr: {
     'unit-converter.from': 'De',
+    'unit-converter.to': 'Vers',
     'unit-converter.allUnits': 'Toutes les unités',
   },
   pt: {
     'unit-converter.from': 'De',
+    'unit-converter.to': 'Para',
     'unit-converter.allUnits': 'Todas as unidades',
   },
   ja: {
     'unit-converter.from': '変換元',
+    'unit-converter.to': '変換先',
     'unit-converter.allUnits': 'すべての単位',
   },
   ko: {
     'unit-converter.from': '원본',
+    'unit-converter.to': '대상',
     'unit-converter.allUnits': '모든 단위',
   },
 };

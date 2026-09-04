@@ -38,7 +38,10 @@ export default {
   fr: {
     'midi-keyboard.octave': 'Octave −',
     'midi-keyboard.octave2': 'Octave +',
+    'midi-keyboard.waveform': 'Forme d\'onde',
+    'midi-keyboard.volume': 'Volume',
     'midi-keyboard.attack': 'Attaque',
+    'midi-keyboard.release': 'Relâchement',
     'midi-keyboard.midiInput': 'Entrée MIDI',
     'midi-keyboard.connectAControllerToPlay': 'Branchez une manette pour jouer directement',
     'midi-keyboard.connectMidiDevice': 'Connecter un appareil MIDI',
@@ -47,7 +50,10 @@ export default {
   pt: {
     'midi-keyboard.octave': 'Oitava −',
     'midi-keyboard.octave2': 'Oitava +',
+    'midi-keyboard.waveform': 'Forma de onda',
+    'midi-keyboard.volume': 'Volume',
     'midi-keyboard.attack': 'Ataque',
+    'midi-keyboard.release': 'Liberação',
     'midi-keyboard.midiInput': 'Entrada MIDI',
     'midi-keyboard.connectAControllerToPlay': 'Conecte um controle para jogar diretamente',
     'midi-keyboard.connectMidiDevice': 'Conectar dispositivo MIDI',
@@ -56,7 +62,10 @@ export default {
   ja: {
     'midi-keyboard.octave': 'オクターブ −',
     'midi-keyboard.octave2': 'オクターブ +',
+    'midi-keyboard.waveform': '波形',
+    'midi-keyboard.volume': '音量',
     'midi-keyboard.attack': 'アタック',
+    'midi-keyboard.release': 'リリース',
     'midi-keyboard.midiInput': 'MIDI 入力',
     'midi-keyboard.connectAControllerToPlay': 'コントローラをつなぐと直接操作できます',
     'midi-keyboard.connectMidiDevice': 'MIDI 機器を接続',
@@ -65,7 +74,10 @@ export default {
   ko: {
     'midi-keyboard.octave': '옥타브 −',
     'midi-keyboard.octave2': '옥타브 +',
+    'midi-keyboard.waveform': '파형',
+    'midi-keyboard.volume': '음량',
     'midi-keyboard.attack': '어택',
+    'midi-keyboard.release': '릴리스',
     'midi-keyboard.midiInput': 'MIDI 입력',
     'midi-keyboard.connectAControllerToPlay': '컨트롤러를 연결하면 바로 조작할 수 있습니다',
     'midi-keyboard.connectMidiDevice': 'MIDI 기기 연결',

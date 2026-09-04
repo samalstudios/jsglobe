@@ -24,6 +24,7 @@ export default {
     'markdown-preview.preview': '预览',
   },
   fr: {
+    'markdown-preview.sample': 'Échantillon',
     'markdown-preview.copyHtml': 'Copier le HTML',
     'markdown-preview.download': 'Télécharger',
     'markdown-preview.markdown': 'Markdown',
@@ -31,6 +32,7 @@ export default {
     'markdown-preview.preview': 'Aperçu',
   },
   pt: {
+    'markdown-preview.sample': 'Amostra',
     'markdown-preview.copyHtml': 'Copiar o HTML',
     'markdown-preview.download': 'Baixar',
     'markdown-preview.markdown': 'Markdown',
@@ -38,6 +40,7 @@ export default {
     'markdown-preview.preview': 'Prévia',
   },
   ja: {
+    'markdown-preview.sample': 'サンプル',
     'markdown-preview.copyHtml': 'HTML をコピー',
     'markdown-preview.download': 'ダウンロード',
     'markdown-preview.markdown': 'Markdown',
@@ -45,6 +48,7 @@ export default {
     'markdown-preview.preview': 'プレビュー',
   },
   ko: {
+    'markdown-preview.sample': '표본',
     'markdown-preview.copyHtml': 'HTML 복사',
     'markdown-preview.download': '내려받기',
     'markdown-preview.markdown': 'Markdown',

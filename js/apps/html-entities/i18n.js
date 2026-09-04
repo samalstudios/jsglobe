@@ -34,6 +34,7 @@ export default {
   },
   fr: {
     'html-entities.plain': 'Simple',
+    'html-entities.cafCrMe': 'café & crème',
     'html-entities.escaped': 'Échappé',
     'html-entities.ltDivGt': '&lt;div&gt;',
     'html-entities.commonEntities': 'Entités courantes',
@@ -44,6 +45,7 @@ export default {
   },
   pt: {
     'html-entities.plain': 'Simples',
+    'html-entities.cafCrMe': 'café & crème',
     'html-entities.escaped': 'Escapado',
     'html-entities.ltDivGt': '&lt;div&gt;',
     'html-entities.commonEntities': 'Entidades comuns',
@@ -54,6 +56,7 @@ export default {
   },
   ja: {
     'html-entities.plain': '標準',
+    'html-entities.cafCrMe': 'café & crème',
     'html-entities.escaped': 'エスケープ結果',
     'html-entities.ltDivGt': '&lt;div&gt;',
     'html-entities.commonEntities': 'よく使うエンティティ',
@@ -64,6 +67,7 @@ export default {
   },
   ko: {
     'html-entities.plain': '보통',
+    'html-entities.cafCrMe': 'café & crème',
     'html-entities.escaped': '이스케이프 결과',
     'html-entities.ltDivGt': '&lt;div&gt;',
     'html-entities.commonEntities': '흔한 엔티티',

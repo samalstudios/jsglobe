@@ -40,6 +40,7 @@ export default {
   },
   fr: {
     'game-tetris.next': 'Suivant',
+    'game-tetris.score': 'Score',
     'game-tetris.lines': 'Lignes',
     'game-tetris.level': 'Niveau',
     'game-tetris.best': 'Meilleur',
@@ -48,9 +49,11 @@ export default {
     'game-tetris.gameOver': 'Partie terminée',
     'game-tetris.paused': 'En pause',
     'game-tetris.pressPlay': 'Appuyez sur lecture',
+    'game-tetris.orHitSpace': 'ou appuyez sur espace',
   },
   pt: {
     'game-tetris.next': 'Próximo',
+    'game-tetris.score': 'Pontuação',
     'game-tetris.lines': 'Linhas',
     'game-tetris.level': 'Nível',
     'game-tetris.best': 'Melhor',
@@ -59,9 +62,11 @@ export default {
     'game-tetris.gameOver': 'Fim de jogo',
     'game-tetris.paused': 'Pausado',
     'game-tetris.pressPlay': 'Aperte reproduzir',
+    'game-tetris.orHitSpace': 'ou aperte espaço',
   },
   ja: {
     'game-tetris.next': '次へ',
+    'game-tetris.score': 'スコア',
     'game-tetris.lines': '行',
     'game-tetris.level': 'レベル',
     'game-tetris.best': '最高',
@@ -70,9 +75,11 @@ export default {
     'game-tetris.gameOver': 'ゲームオーバー',
     'game-tetris.paused': '一時停止中',
     'game-tetris.pressPlay': '再生を押してください',
+    'game-tetris.orHitSpace': 'またはスペースキー',
   },
   ko: {
     'game-tetris.next': '다음',
+    'game-tetris.score': '점수',
     'game-tetris.lines': '줄',
     'game-tetris.level': '단계',
     'game-tetris.best': '최고',
@@ -81,5 +88,6 @@ export default {
     'game-tetris.gameOver': '게임 끝',
     'game-tetris.paused': '멈춤',
     'game-tetris.pressPlay': '재생을 누르세요',
+    'game-tetris.orHitSpace': '또는 스페이스바',
   },
 };

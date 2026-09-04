@@ -35,6 +35,8 @@ export default {
   fr: {
     'xml-formatter.2Spaces': '2 espaces',
     'xml-formatter.4Spaces': '4 espaces',
+    'xml-formatter.tab': 'Tabulation',
+    'xml-formatter.sample': 'Échantillon',
     'xml-formatter.copy': 'Copier',
     'xml-formatter.input': 'Entrée',
     'xml-formatter.output': 'Sortie',
@@ -44,6 +46,8 @@ export default {
   pt: {
     'xml-formatter.2Spaces': '2 espaços',
     'xml-formatter.4Spaces': '4 espaços',
+    'xml-formatter.tab': 'Tabulação',
+    'xml-formatter.sample': 'Amostra',
     'xml-formatter.copy': 'Copiar',
     'xml-formatter.input': 'Entrada',
     'xml-formatter.output': 'Saída',
@@ -53,6 +57,8 @@ export default {
   ja: {
     'xml-formatter.2Spaces': 'スペース 2 つ',
     'xml-formatter.4Spaces': 'スペース 4 つ',
+    'xml-formatter.tab': 'タブ',
+    'xml-formatter.sample': 'サンプル',
     'xml-formatter.copy': 'コピー',
     'xml-formatter.input': '入力',
     'xml-formatter.output': '出力',
@@ -62,6 +68,8 @@ export default {
   ko: {
     'xml-formatter.2Spaces': '공백 2칸',
     'xml-formatter.4Spaces': '공백 4칸',
+    'xml-formatter.tab': '탭',
+    'xml-formatter.sample': '표본',
     'xml-formatter.copy': '복사',
     'xml-formatter.input': '입력',
     'xml-formatter.output': '출력',

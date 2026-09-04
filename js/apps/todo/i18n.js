@@ -34,6 +34,7 @@ export default {
   },
   fr: {
     'todo.nothingOnTheList': 'Rien sur la liste.',
+    'todo.whatNeedsDoing': 'Qu\'y a-t-il à faire ?',
     'todo.add': 'Ajouter',
     'todo.allClear': 'Tout est bon',
     'todo.nothingInThisView': 'Rien dans cette vue.',
@@ -44,6 +45,7 @@ export default {
   },
   pt: {
     'todo.nothingOnTheList': 'Nada na lista.',
+    'todo.whatNeedsDoing': 'O que precisa ser feito?',
     'todo.add': 'Adicionar',
     'todo.allClear': 'Tudo certo',
     'todo.nothingInThisView': 'Nada nesta visão.',
@@ -54,6 +56,7 @@ export default {
   },
   ja: {
     'todo.nothingOnTheList': '一覧は空です。',
+    'todo.whatNeedsDoing': 'やることは何ですか。',
     'todo.add': '追加',
     'todo.allClear': '問題なし',
     'todo.nothingInThisView': 'この表示範囲には何もありません。',
@@ -64,6 +67,7 @@ export default {
   },
   ko: {
     'todo.nothingOnTheList': '목록이 비어 있습니다.',
+    'todo.whatNeedsDoing': '무엇을 해야 하나요?',
     'todo.add': '추가',
     'todo.allClear': '모두 이상 없음',
     'todo.nothingInThisView': '이 화면에는 아무것도 없습니다.',

@@ -28,6 +28,7 @@ export default {
   },
   fr: {
     'regex-tester.pattern': 'Motif',
+    'regex-tester.testString': 'Chaîne de test',
     'regex-tester.contactAdaExampleComOr': 'Contactez ada@example.com ou grace@jsglobe.dev pour un accès. Invalide : nobody@localhost',
     'regex-tester.highlighted': 'Surligné',
     'regex-tester.matches': 'Correspondances',
@@ -36,6 +37,7 @@ export default {
   },
   pt: {
     'regex-tester.pattern': 'Padrão',
+    'regex-tester.testString': 'Texto de teste',
     'regex-tester.contactAdaExampleComOr': 'Contate ada@example.com ou grace@jsglobe.dev para ter acesso. Inválido: nobody@localhost',
     'regex-tester.highlighted': 'Realçado',
     'regex-tester.matches': 'Correspondências',
@@ -44,6 +46,7 @@ export default {
   },
   ja: {
     'regex-tester.pattern': 'パターン',
+    'regex-tester.testString': 'テスト文字列',
     'regex-tester.contactAdaExampleComOr': 'アクセスは ada@example.com か grace@jsglobe.dev までご連絡ください。無効: nobody@localhost',
     'regex-tester.highlighted': '強調あり',
     'regex-tester.matches': '一致',
@@ -52,6 +55,7 @@ export default {
   },
   ko: {
     'regex-tester.pattern': '패턴',
+    'regex-tester.testString': '시험 문자열',
     'regex-tester.contactAdaExampleComOr': '접근은 ada@example.com 이나 grace@jsglobe.dev 로 연락하세요. 잘못된 예: nobody@localhost',
     'regex-tester.highlighted': '강조됨',
     'regex-tester.matches': '일치',

@@ -24,24 +24,28 @@ export default {
     'game-memory.newGame': 'Nouvelle partie',
     'game-memory.moves': 'Coups',
     'game-memory.pairs': 'Paires',
+    'game-memory.time': 'Heure',
     'game-memory.bestMoves': 'Meilleurs coups',
   },
   pt: {
     'game-memory.newGame': 'Novo jogo',
     'game-memory.moves': 'Lances',
     'game-memory.pairs': 'Pares',
+    'game-memory.time': 'Hora',
     'game-memory.bestMoves': 'Melhores lances',
   },
   ja: {
     'game-memory.newGame': '新しいゲーム',
     'game-memory.moves': '手数',
     'game-memory.pairs': 'ペア',
+    'game-memory.time': '時刻',
     'game-memory.bestMoves': '最善手',
   },
   ko: {
     'game-memory.newGame': '새 게임',
     'game-memory.moves': '수',
     'game-memory.pairs': '짝',
+    'game-memory.time': '시간',
     'game-memory.bestMoves': '최선의 수',
   },
 };

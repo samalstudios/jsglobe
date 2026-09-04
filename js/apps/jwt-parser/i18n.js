@@ -37,6 +37,7 @@ export default {
   },
   fr: {
     'jwt-parser.token': 'Token',
+    'action.sample': 'Échantillon',
     'jwt-parser.eyjhbgcioi': 'eyJhbGciOi...',
     'jwt-parser.header': 'En-tête',
     'jwt-parser.payload': 'Payload',
@@ -44,9 +45,11 @@ export default {
     'jwt.threeParts': 'Un JWT demande trois parties séparées par des points',
     'jwt.badEncoding': 'L\'en-tête ou la charge utile n\'est pas du JSON base64url valide',
     'jwt.notYetValid': 'Pas encore valide',
+    'jwt.notVerified': 'Signature non vérifiée',
   },
   pt: {
     'jwt-parser.token': 'Token',
+    'action.sample': 'Amostra',
     'jwt-parser.eyjhbgcioi': 'eyJhbGciOi...',
     'jwt-parser.header': 'Cabeçalho',
     'jwt-parser.payload': 'Payload',
@@ -54,9 +57,11 @@ export default {
     'jwt.threeParts': 'Um JWT precisa de três partes separadas por pontos',
     'jwt.badEncoding': 'O cabeçalho ou o payload não é JSON base64url válido',
     'jwt.notYetValid': 'Ainda não válido',
+    'jwt.notVerified': 'Assinatura não verificada',
   },
   ja: {
     'jwt-parser.token': 'Token',
+    'action.sample': 'サンプル',
     'jwt-parser.eyjhbgcioi': 'eyJhbGciOi...',
     'jwt-parser.header': 'ヘッダー',
     'jwt-parser.payload': 'Payload',
@@ -64,9 +69,11 @@ export default {
     'jwt.threeParts': 'JWT はドットで区切られた 3 つの部分が必要です',
     'jwt.badEncoding': 'ヘッダーかペイロードが正しい base64url の JSON ではありません',
     'jwt.notYetValid': 'まだ有効ではありません',
+    'jwt.notVerified': '署名は検証されていません',
   },
   ko: {
     'jwt-parser.token': 'Token',
+    'action.sample': '표본',
     'jwt-parser.eyjhbgcioi': 'eyJhbGciOi...',
     'jwt-parser.header': '머리글',
     'jwt-parser.payload': 'Payload',
@@ -74,5 +81,6 @@ export default {
     'jwt.threeParts': 'JWT는 점으로 구분된 세 부분이 필요합니다',
     'jwt.badEncoding': '헤더나 페이로드가 올바른 base64url JSON이 아닙니다',
     'jwt.notYetValid': '아직 유효하지 않음',
+    'jwt.notVerified': '서명을 확인하지 않았습니다',
   },
 };

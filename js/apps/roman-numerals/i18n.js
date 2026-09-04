@@ -19,14 +19,26 @@ export default {
   },
   fr: {
     'roman-numerals.numberRoman': 'Nombre → romain',
+    'roman-numerals.romanNumber': 'Romain → nombre',
+    'roman-numerals.reference': 'Référence',
+    'roman-numerals.validRangeIs1To': 'La plage valide va de 1 à 3999',
   },
   pt: {
     'roman-numerals.numberRoman': 'Número → romano',
+    'roman-numerals.romanNumber': 'Romano → número',
+    'roman-numerals.reference': 'Referência',
+    'roman-numerals.validRangeIs1To': 'A faixa válida vai de 1 a 3999',
   },
   ja: {
     'roman-numerals.numberRoman': '数 → ローマ数字',
+    'roman-numerals.romanNumber': 'ローマ数字 → 数',
+    'roman-numerals.reference': '基準',
+    'roman-numerals.validRangeIs1To': '有効な範囲は 1 から 3999 です',
   },
   ko: {
     'roman-numerals.numberRoman': '숫자 → 로마 숫자',
+    'roman-numerals.romanNumber': '로마 숫자 → 숫자',
+    'roman-numerals.reference': '기준',
+    'roman-numerals.validRangeIs1To': '쓸 수 있는 범위는 1부터 3999까지입니다',
   },
 };

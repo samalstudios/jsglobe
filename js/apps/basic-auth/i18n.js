@@ -39,6 +39,7 @@ export default {
     'basic-auth.basicYwrtaw46ahvudgvymg': 'Basic YWRtaW46aHVudGVyMg==',
   },
   fr: {
+    'basic-auth.username': 'Nom d\'utilisateur',
     'basic-auth.admin': 'admin',
     'basic-auth.password': 'Mot de passe',
     'basic-auth.hunter2': 'hunter2',
@@ -51,6 +52,7 @@ export default {
     'basic-auth.basicYwrtaw46ahvudgvymg': 'Basic YWRtaW46aHVudGVyMg==',
   },
   pt: {
+    'basic-auth.username': 'Nome de usuário',
     'basic-auth.admin': 'admin',
     'basic-auth.password': 'Senha',
     'basic-auth.hunter2': 'hunter2',
@@ -63,6 +65,7 @@ export default {
     'basic-auth.basicYwrtaw46ahvudgvymg': 'Basic YWRtaW46aHVudGVyMg==',
   },
   ja: {
+    'basic-auth.username': 'ユーザー名',
     'basic-auth.admin': 'admin',
     'basic-auth.password': 'パスワード',
     'basic-auth.hunter2': 'hunter2',
@@ -75,6 +78,7 @@ export default {
     'basic-auth.basicYwrtaw46ahvudgvymg': 'Basic YWRtaW46aHVudGVyMg==',
   },
   ko: {
+    'basic-auth.username': '사용자 이름',
     'basic-auth.admin': 'admin',
     'basic-auth.password': '비밀번호',
     'basic-auth.hunter2': 'hunter2',

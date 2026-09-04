@@ -62,7 +62,9 @@ export default {
     'ip-converter.classification': 'Classification',
     'ip-converter.couldNotReadThatAddress': 'Impossible de lire cette adresse.',
     'ip-converter.class': 'Classe',
+    'ip-converter.scope': 'Portée',
     'ip-converter.octets': 'Octets',
+    'ip-converter.reverseDns': 'DNS inverse',
     'ip-converter.integerRange': 'Plage d\'entiers',
   },
   pt: {
@@ -77,7 +79,9 @@ export default {
     'ip-converter.classification': 'Classificação',
     'ip-converter.couldNotReadThatAddress': 'Não foi possível ler esse endereço.',
     'ip-converter.class': 'Classe',
+    'ip-converter.scope': 'Escopo',
     'ip-converter.octets': 'Octetos',
+    'ip-converter.reverseDns': 'DNS reverso',
     'ip-converter.integerRange': 'Faixa de inteiros',
   },
   ja: {
@@ -92,7 +96,9 @@ export default {
     'ip-converter.classification': '分類',
     'ip-converter.couldNotReadThatAddress': 'そのアドレスを読み取れませんでした。',
     'ip-converter.class': 'クラス',
+    'ip-converter.scope': '範囲',
     'ip-converter.octets': 'オクテット',
+    'ip-converter.reverseDns': '逆引き DNS',
     'ip-converter.integerRange': '整数の範囲',
   },
   ko: {
@@ -107,7 +113,9 @@ export default {
     'ip-converter.classification': '분류',
     'ip-converter.couldNotReadThatAddress': '그 주소를 읽을 수 없습니다.',
     'ip-converter.class': '등급',
+    'ip-converter.scope': '범위',
     'ip-converter.octets': '옥텟',
+    'ip-converter.reverseDns': '역방향 DNS',
     'ip-converter.integerRange': '정수 범위',
   },
 };

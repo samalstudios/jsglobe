@@ -10218,67 +10218,119 @@
  "Public key": {
   "de": "Öffentlicher Schlüssel",
   "es": "Clave pública",
-  "zh": "公钥"
+  "zh": "公钥",
+  "fr": "Clé publique",
+  "pt": "Chave pública",
+  "ja": "公開鍵",
+  "ko": "공개 키"
  },
  "Public key line": {
   "de": "Zeile mit öffentlichem Schlüssel",
   "es": "Línea de clave pública",
-  "zh": "公钥行"
+  "zh": "公钥行",
+  "fr": "Ligne de clé publique",
+  "pt": "Linha da chave pública",
+  "ja": "公開鍵の行",
+  "ko": "공개 키 줄"
  },
  "Publisher": {
   "de": "Verlag",
   "es": "Editor",
-  "zh": "发行方"
+  "zh": "发行方",
+  "fr": "Éditeur",
+  "pt": "Editora",
+  "ja": "発行元",
+  "ko": "발행처"
  },
  "Pulse": {
   "de": "Pulsieren",
   "es": "Pulso",
-  "zh": "脉动"
+  "zh": "脉动",
+  "fr": "Impulsion",
+  "pt": "Pulso",
+  "ja": "パルス",
+  "ko": "펄스"
  },
  "Punctuation": {
   "de": "Satzzeichen",
   "es": "Puntuación",
-  "zh": "标点符号"
+  "zh": "标点符号",
+  "fr": "Ponctuation",
+  "pt": "Pontuação",
+  "ja": "約物",
+  "ko": "문장 부호"
  },
  "Push button, on only while held": {
   "de": "Taster, nur solange gedrückt an",
   "es": "Pulsador, activo solo mientras se mantiene",
-  "zh": "点动按钮，仅在按住时导通"
+  "zh": "点动按钮，仅在按住时导通",
+  "fr": "Bouton poussoir, actif seulement tant qu'il est maintenu",
+  "pt": "Botão de pressão, ligado apenas enquanto pressionado",
+  "ja": "押しボタン、押している間だけオン",
+  "ko": "누름 단추, 누르는 동안만 켜짐"
  },
  "Qty": {
   "de": "Stück",
   "es": "Cant.",
-  "zh": "数量"
+  "zh": "数量",
+  "fr": "Qté",
+  "pt": "Qtd",
+  "ja": "数量",
+  "ko": "수량"
  },
  "Quality": {
   "de": "Qualität",
   "es": "Calidad",
-  "zh": "质量"
+  "zh": "质量",
+  "fr": "Qualité",
+  "pt": "Qualidade",
+  "ja": "品質",
+  "ko": "품질"
  },
  "Quality (CRF)": {
   "de": "Qualität (CRF)",
   "es": "Calidad (CRF)",
-  "zh": "质量（CRF）"
+  "zh": "质量（CRF）",
+  "fr": "Qualité (CRF)",
+  "pt": "Qualidade (CRF)",
+  "ja": "品質 (CRF)",
+  "ko": "품질 (CRF)"
  },
  "Quantity": {
   "de": "Stückzahl",
   "es": "Cantidad",
-  "zh": "数量"
+  "zh": "数量",
+  "fr": "Quantité",
+  "pt": "Quantidade",
+  "ja": "数量",
+  "ko": "수량"
  },
  "Quarter": {
   "de": "Quartal",
   "es": "Trimestre",
-  "zh": "季度"
+  "zh": "季度",
+  "fr": "Trimestre",
+  "pt": "Trimestre",
+  "ja": "四半期",
+  "ko": "분기"
  },
  "Quiet zone": {
   "de": "Ruhezone",
   "es": "Zona de silencio",
-  "zh": "静区"
+  "zh": "静区",
+  "fr": "Zone de silence",
+  "pt": "Zona silenciosa",
+  "ja": "クワイエットゾーン",
+  "ko": "여백 구역"
  },
  "Quote": {
   "de": "Textvorlage",
   "es": "Cita",
-  "zh": "文段"
+  "zh": "文段",
+  "fr": "Citation",
+  "pt": "Citação",
+  "ja": "引用",
+  "ko": "인용"
  },
  "RFC 2822": {
   "de": "RFC 2822",
@@ -10310,7 +10362,11 @@
  "RSA 2048 (encryption)": {
   "de": "RSA 2048 (Verschlüsselung)",
   "es": "RSA 2048 (cifrado)",
-  "zh": "RSA 2048（加密）"
+  "zh": "RSA 2048（加密）",
+  "fr": "RSA 2048 (chiffrement)",
+  "pt": "RSA 2048 (criptografia)",
+  "ja": "RSA 2048 (暗号化)",
+  "ko": "RSA 2048 (암호화)"
  },
  "RSA 3072": {
   "de": "RSA 3072",
@@ -10347,322 +10403,578 @@
  "Ramp": {
   "de": "Zeichenverlauf",
   "es": "Rampa",
-  "zh": "字符梯度"
+  "zh": "字符梯度",
+  "fr": "Rampe",
+  "pt": "Rampa",
+  "ja": "斜面",
+  "ko": "경사면"
  },
  "Random": {
   "de": "Zufällig",
   "es": "Aleatorio",
-  "zh": "随机"
+  "zh": "随机",
+  "fr": "Aléatoire",
+  "pt": "Aleatório",
+  "ja": "ランダム",
+  "ko": "무작위"
  },
  "Randomise": {
   "de": "Zufällig",
   "es": "Aleatorizar",
-  "zh": "随机化"
+  "zh": "随机化",
+  "fr": "Mélanger",
+  "pt": "Sortear",
+  "ja": "ランダムに",
+  "ko": "무작위로"
  },
  "Range": {
   "de": "Bereich",
   "es": "Rango",
-  "zh": "范围"
+  "zh": "范围",
+  "fr": "Étendue",
+  "pt": "Amplitude",
+  "ja": "範囲",
+  "ko": "범위"
  },
  "Rate": {
   "de": "Takt",
   "es": "Frecuencia",
-  "zh": "频率"
+  "zh": "频率",
+  "fr": "Taux",
+  "pt": "Taxa",
+  "ja": "率",
+  "ko": "비율"
  },
  "Raw response": {
   "de": "Rohantwort",
   "es": "Respuesta en bruto",
-  "zh": "原始响应"
+  "zh": "原始响应",
+  "fr": "Réponse brute",
+  "pt": "Resposta bruta",
+  "ja": "生のレスポンス",
+  "ko": "원본 응답"
  },
  "Read": {
   "de": "Lesen",
   "es": "Leer",
-  "zh": "读取"
+  "zh": "读取",
+  "fr": "Lire",
+  "pt": "Ler",
+  "ja": "読み取り",
+  "ko": "읽기"
  },
  "Read policy": {
   "de": "Richtlinie lesen",
   "es": "Leer la política",
-  "zh": "阅读政策"
+  "zh": "阅读政策",
+  "fr": "Lire la politique",
+  "pt": "Ler a política",
+  "ja": "ポリシーを読む",
+  "ko": "방침 읽기"
  },
  "Read the title and track number from each filename": {
   "de": "Titel und Titelnummer aus jedem Dateinamen lesen",
   "es": "Leer el título y el número de pista de cada nombre de archivo",
-  "zh": "从每个文件名中读取标题和音轨号"
+  "zh": "从每个文件名中读取标题和音轨号",
+  "fr": "Lire le titre et le numéro de piste depuis chaque nom de fichier",
+  "pt": "Ler o título e o número da faixa a partir de cada nome de arquivo",
+  "ja": "各ファイル名から曲名とトラック番号を読み取る",
+  "ko": "각 파일 이름에서 제목과 트랙 번호 읽기"
  },
  "Readability": {
   "de": "Lesbarkeit",
   "es": "Legibilidad",
-  "zh": "可读性"
+  "zh": "可读性",
+  "fr": "Lisibilité",
+  "pt": "Legibilidade",
+  "ja": "読みやすさ",
+  "ko": "읽기 쉬움"
  },
  "Reading app preferences": {
   "de": "App-Einstellungen werden gelesen",
   "es": "Leyendo las preferencias de la app",
-  "zh": "正在读取应用偏好设置"
+  "zh": "正在读取应用偏好设置",
+  "fr": "Lecture des préférences de l'app",
+  "pt": "Lendo as preferências do app",
+  "ja": "アプリの設定を読み込み中",
+  "ko": "앱 환경 설정을 읽는 중"
  },
  "Reading time": {
   "de": "Lesezeit",
   "es": "Tiempo de lectura",
-  "zh": "阅读时间"
+  "zh": "阅读时间",
+  "fr": "Temps de lecture",
+  "pt": "Tempo de leitura",
+  "ja": "読了時間",
+  "ko": "읽는 시간"
  },
  "Ready": {
   "de": "Bereit",
   "es": "Listo",
-  "zh": "就绪"
+  "zh": "就绪",
+  "fr": "Prêt",
+  "pt": "Pronto",
+  "ja": "準備完了",
+  "ko": "준비됨"
  },
  "Ready to measure your connection.": {
   "de": "Bereit, deine Verbindung zu messen.",
   "es": "Listo para medir tu conexión.",
-  "zh": "已准备好测量你的连接。"
+  "zh": "已准备好测量你的连接。",
+  "fr": "Prêt à mesurer votre connexion.",
+  "pt": "Pronto para medir sua conexão.",
+  "ja": "回線を測る準備ができました。",
+  "ko": "연결을 잴 준비가 되었습니다."
  },
  "Real time": {
   "de": "Echtzeit",
   "es": "Tiempo real",
-  "zh": "实时"
+  "zh": "实时",
+  "fr": "Temps réel",
+  "pt": "Tempo real",
+  "ja": "実時間",
+  "ko": "실시간"
  },
  "Reasonable": {
   "de": "Brauchbar",
   "es": "Aceptable",
-  "zh": "尚可"
+  "zh": "尚可",
+  "fr": "Raisonnable",
+  "pt": "Razoável",
+  "ja": "妥当",
+  "ko": "무난함"
  },
  "Recent keys": {
   "de": "Zuletzt gedrückte Tasten",
   "es": "Teclas recientes",
-  "zh": "最近按下的键"
+  "zh": "最近按下的键",
+  "fr": "Touches récentes",
+  "pt": "Teclas recentes",
+  "ja": "最近のキー",
+  "ko": "최근 키"
  },
  "Record": {
   "de": "Aufnehmen",
   "es": "Grabar",
-  "zh": "录制"
+  "zh": "录制",
+  "fr": "Enregistrer",
+  "pt": "Gravar",
+  "ja": "録音",
+  "ko": "녹음"
  },
  "Recording saved": {
   "de": "Aufnahme gespeichert",
   "es": "Grabación guardada",
-  "zh": "录音已保存"
+  "zh": "录音已保存",
+  "fr": "Enregistrement sauvegardé",
+  "pt": "Gravação salva",
+  "ja": "録音を保存しました",
+  "ko": "녹음을 저장했습니다"
  },
  "Recordings": {
   "de": "Aufnahmen",
   "es": "Grabaciones",
-  "zh": "录音"
+  "zh": "录音",
+  "fr": "Enregistrements",
+  "pt": "Gravações",
+  "ja": "録音",
+  "ko": "녹음"
  },
  "Rectangle": {
   "de": "Rechteck",
   "es": "Rectángulo",
-  "zh": "矩形"
+  "zh": "矩形",
+  "fr": "Rectangle",
+  "pt": "Retângulo",
+  "ja": "長方形",
+  "ko": "직사각형"
  },
  "Redo": {
   "de": "Wiederholen",
   "es": "Rehacer",
-  "zh": "重做"
+  "zh": "重做",
+  "fr": "Rétablir",
+  "pt": "Refazer",
+  "ja": "やり直す",
+  "ko": "다시 실행"
  },
  "Reduced motion": {
   "de": "Reduzierte Bewegung",
   "es": "Movimiento reducido",
-  "zh": "减少动态效果"
+  "zh": "减少动态效果",
+  "fr": "Animations réduites",
+  "pt": "Movimento reduzido",
+  "ja": "動きを控えめに",
+  "ko": "움직임 줄이기"
  },
  "Reference": {
   "de": "Referenz",
   "es": "Referencia",
-  "zh": "参考"
+  "zh": "参考",
+  "fr": "Référence",
+  "pt": "Referência",
+  "ja": "基準",
+  "ko": "기준"
  },
  "Reference pitch (A4)": {
   "de": "Kammerton (A4)",
   "es": "Tono de referencia (La4)",
-  "zh": "基准音高（A4）"
+  "zh": "基准音高（A4）",
+  "fr": "Diapason de référence (La3)",
+  "pt": "Afinação de referência (Lá4)",
+  "ja": "基準ピッチ (A4)",
+  "ko": "기준 음높이 (A4)"
  },
  "Refresh": {
   "de": "Aktualisieren",
   "es": "Actualizar",
-  "zh": "刷新"
+  "zh": "刷新",
+  "fr": "Actualiser",
+  "pt": "Atualizar",
+  "ja": "更新",
+  "ko": "새로 고침"
  },
  "Refresh prices": {
   "de": "Kurse aktualisieren",
   "es": "Actualizar los precios",
-  "zh": "刷新价格"
+  "zh": "刷新价格",
+  "fr": "Actualiser les cours",
+  "pt": "Atualizar os preços",
+  "ja": "価格を更新",
+  "ko": "가격 새로 고침"
  },
  "Regenerate": {
   "de": "Neu erzeugen",
   "es": "Volver a generar",
-  "zh": "重新生成"
+  "zh": "重新生成",
+  "fr": "Régénérer",
+  "pt": "Gerar de novo",
+  "ja": "作り直す",
+  "ko": "다시 만들기"
  },
  "Registries redact most personal details": {
   "de": "Registries schwärzen die meisten persönlichen Angaben",
   "es": "Los registros ocultan la mayoría de los datos personales",
-  "zh": "注册局会隐去大部分个人信息"
+  "zh": "注册局会隐去大部分个人信息",
+  "fr": "Les registres masquent la plupart des données personnelles",
+  "pt": "Os registros ocultam a maior parte dos dados pessoais",
+  "ja": "レジストリは個人情報の多くを伏せます",
+  "ko": "레지스트리는 개인 정보 대부분을 가립니다"
  },
  "Regular": {
   "de": "Normal",
   "es": "Normal",
-  "zh": "常规"
+  "zh": "常规",
+  "fr": "Normal",
+  "pt": "Normal",
+  "ja": "標準",
+  "ko": "보통"
  },
  "Relative": {
   "de": "Relativ",
   "es": "Relativo",
-  "zh": "相对时间"
+  "zh": "相对时间",
+  "fr": "Relatif",
+  "pt": "Relativo",
+  "ja": "相対",
+  "ko": "상대"
  },
  "Release": {
   "de": "Ausklang",
   "es": "Liberación",
-  "zh": "释音"
+  "zh": "释音",
+  "fr": "Relâchement",
+  "pt": "Liberação",
+  "ja": "リリース",
+  "ko": "릴리스"
  },
  "Remaining": {
   "de": "Verbleibend",
   "es": "Restante",
-  "zh": "剩余"
+  "zh": "剩余",
+  "fr": "Restant",
+  "pt": "Restante",
+  "ja": "残り",
+  "ko": "남음"
  },
  "Remove": {
   "de": "Entfernen",
   "es": "Quitar",
-  "zh": "移除"
+  "zh": "移除",
+  "fr": "Retirer",
+  "pt": "Remover",
+  "ja": "削除",
+  "ko": "제거"
  },
  "Remove artwork": {
   "de": "Cover entfernen",
   "es": "Quitar la carátula",
-  "zh": "移除封面"
+  "zh": "移除封面",
+  "fr": "Retirer la pochette",
+  "pt": "Remover a capa",
+  "ja": "アートワークを削除",
+  "ko": "표지 제거"
  },
  "Remove audio": {
   "de": "Ton entfernen",
   "es": "Quitar el audio",
-  "zh": "移除音频"
+  "zh": "移除音频",
+  "fr": "Retirer l'audio",
+  "pt": "Remover o áudio",
+  "ja": "音声を削除",
+  "ko": "소리 제거"
  },
  "Remove backdrop": {
   "de": "Hintergrundbild entfernen",
   "es": "Quitar el fondo",
-  "zh": "移除背景图"
+  "zh": "移除背景图",
+  "fr": "Retirer l'arrière-plan",
+  "pt": "Remover o fundo",
+  "ja": "背景を削除",
+  "ko": "배경 제거"
  },
  "Remove body": {
   "de": "Körper entfernen",
   "es": "Quitar el cuerpo",
-  "zh": "移除物体"
+  "zh": "移除物体",
+  "fr": "Retirer le corps",
+  "pt": "Remover o corpo",
+  "ja": "物体を削除",
+  "ko": "물체 제거"
  },
  "Remove duplicates": {
   "de": "Duplikate entfernen",
   "es": "Quitar duplicados",
-  "zh": "去除重复项"
+  "zh": "去除重复项",
+  "fr": "Supprimer les doublons",
+  "pt": "Remover duplicatas",
+  "ja": "重複を除く",
+  "ko": "중복 제거"
  },
  "Remove link": {
   "de": "Verbindung entfernen",
   "es": "Quitar el enlace",
-  "zh": "移除连接"
+  "zh": "移除连接",
+  "fr": "Retirer le lien",
+  "pt": "Remover o link",
+  "ja": "リンクを外す",
+  "ko": "링크 없애기"
  },
  "Remove part": {
   "de": "Bauteil entfernen",
   "es": "Quitar componente",
-  "zh": "移除元件"
+  "zh": "移除元件",
+  "fr": "Retirer le composant",
+  "pt": "Remover a peça",
+  "ja": "部品を削除",
+  "ko": "부품 제거"
  },
  "Remove wire": {
   "de": "Leitung entfernen",
   "es": "Quitar el cable",
-  "zh": "移除导线"
+  "zh": "移除导线",
+  "fr": "Retirer le fil",
+  "pt": "Remover o fio",
+  "ja": "配線を削除",
+  "ko": "배선 제거"
  },
  "Rename": {
   "de": "Umbenennen",
   "es": "Renombrar",
-  "zh": "重命名"
+  "zh": "重命名",
+  "fr": "Renommer",
+  "pt": "Renomear",
+  "ja": "名前を変更",
+  "ko": "이름 바꾸기"
  },
  "Rendered from your image on this device": {
   "de": "Auf diesem Gerät aus deinem Bild erzeugt",
   "es": "Generado a partir de tu imagen en este dispositivo",
-  "zh": "在本机根据你的图片生成"
+  "zh": "在本机根据你的图片生成",
+  "fr": "Rendu à partir de votre image sur cet appareil",
+  "pt": "Renderizado a partir da sua imagem neste dispositivo",
+  "ja": "あなたの画像からこの端末で生成しました",
+  "ko": "당신의 이미지로 이 기기에서 만들었습니다"
  },
  "Repeat": {
   "de": "Wiederholen",
   "es": "Repetir",
-  "zh": "重复"
+  "zh": "重复",
+  "fr": "Répéter",
+  "pt": "Repetir",
+  "ja": "繰り返し",
+  "ko": "반복"
  },
  "Repeating linear": {
   "de": "Wiederholt linear",
   "es": "Lineal repetido",
-  "zh": "重复线性"
+  "zh": "重复线性",
+  "fr": "Linéaire répété",
+  "pt": "Linear repetido",
+  "ja": "繰り返し線形",
+  "ko": "반복 선형"
  },
  "Replace artwork": {
   "de": "Cover ersetzen",
   "es": "Sustituir la carátula",
-  "zh": "替换封面"
+  "zh": "替换封面",
+  "fr": "Remplacer la pochette",
+  "pt": "Substituir a capa",
+  "ja": "アートワークを差し替え",
+  "ko": "표지 바꾸기"
  },
  "Replace picture": {
   "de": "Bild ersetzen",
   "es": "Sustituir la imagen",
-  "zh": "替换图片"
+  "zh": "替换图片",
+  "fr": "Remplacer l'image",
+  "pt": "Substituir a figura",
+  "ja": "図を差し替え",
+  "ko": "그림 바꾸기"
  },
  "Replay": {
   "de": "Erneut abspielen",
   "es": "Reproducir de nuevo",
-  "zh": "重播"
+  "zh": "重播",
+  "fr": "Rejouer",
+  "pt": "Repetir",
+  "ja": "再生",
+  "ko": "다시 보기"
  },
  "Replicas": {
   "de": "Replikate",
   "es": "Réplicas",
-  "zh": "副本数"
+  "zh": "副本数",
+  "fr": "Réplicas",
+  "pt": "Réplicas",
+  "ja": "レプリカ数",
+  "ko": "복제본 수"
  },
  "Replicas when compose does not say": {
   "de": "Replikate, wenn Compose nichts angibt",
   "es": "Réplicas cuando compose no lo indica",
-  "zh": "compose 未指定时的副本数"
+  "zh": "compose 未指定时的副本数",
+  "fr": "Réplicas quand compose ne le précise pas",
+  "pt": "Réplicas quando o compose não diz",
+  "ja": "compose に指定がない場合のレプリカ数",
+  "ko": "compose에 없을 때의 복제본 수"
  },
  "Reported downlink": {
   "de": "Gemeldete Downlink-Rate",
   "es": "Enlace de bajada informado",
-  "zh": "报告的下行速率"
+  "zh": "报告的下行速率",
+  "fr": "Débit descendant annoncé",
+  "pt": "Downlink informado",
+  "ja": "報告された下り速度",
+  "ko": "보고된 다운링크"
  },
  "Reported type": {
   "de": "Gemeldeter Typ",
   "es": "Tipo informado",
-  "zh": "报告的类型"
+  "zh": "报告的类型",
+  "fr": "Type annoncé",
+  "pt": "Tipo informado",
+  "ja": "報告された種別",
+  "ko": "보고된 종류"
  },
  "Request TLS": {
   "de": "TLS anfordern",
   "es": "Solicitar TLS",
-  "zh": "启用 TLS"
+  "zh": "启用 TLS",
+  "fr": "Demander TLS",
+  "pt": "Solicitar TLS",
+  "ja": "TLS を要求",
+  "ko": "TLS 요청"
  },
  "Request TLS on the ingress": {
   "de": "TLS am Ingress anfordern",
   "es": "Solicitar TLS en el ingress",
-  "zh": "在 ingress 上启用 TLS"
+  "zh": "在 ingress 上启用 TLS",
+  "fr": "Demander TLS sur l'ingress",
+  "pt": "Solicitar TLS no ingress",
+  "ja": "ingress で TLS を要求",
+  "ko": "ingress에서 TLS 요청"
  },
  "Reset": {
   "de": "Zurücksetzen",
   "es": "Restablecer",
-  "zh": "重置"
+  "zh": "重置",
+  "fr": "Réinitialiser",
+  "pt": "Redefinir",
+  "ja": "リセット",
+  "ko": "초기화"
  },
  "Reset layout": {
   "de": "Anordnung zurücksetzen",
   "es": "Restablecer la disposición",
-  "zh": "重置布局"
+  "zh": "重置布局",
+  "fr": "Réinitialiser la disposition",
+  "pt": "Redefinir o layout",
+  "ja": "配置をリセット",
+  "ko": "배치 초기화"
  },
  "Reset settings": {
   "de": "Einstellungen zurücksetzen",
   "es": "Restablecer los ajustes",
-  "zh": "重置设置"
+  "zh": "重置设置",
+  "fr": "Réinitialiser les réglages",
+  "pt": "Redefinir as configurações",
+  "ja": "設定をリセット",
+  "ko": "설정 초기화"
  },
  "Reset view": {
   "de": "Ansicht zurücksetzen",
   "es": "Restablecer la vista",
-  "zh": "重置视图"
+  "zh": "重置视图",
+  "fr": "Réinitialiser la vue",
+  "pt": "Redefinir a visão",
+  "ja": "表示をリセット",
+  "ko": "보기 초기화"
  },
  "Resistor": {
   "de": "Widerstand",
   "es": "Resistencia",
-  "zh": "电阻"
+  "zh": "电阻",
+  "fr": "Résistance",
+  "pt": "Resistor",
+  "ja": "抵抗",
+  "ko": "저항"
  },
  "Resize": {
   "de": "Größe ändern",
   "es": "Cambiar el tamaño",
-  "zh": "调整大小"
+  "zh": "调整大小",
+  "fr": "Redimensionner",
+  "pt": "Redimensionar",
+  "ja": "大きさを変える",
+  "ko": "크기 바꾸기"
  },
  "Resize canvas": {
   "de": "Leinwandgröße ändern",
   "es": "Cambiar el tamaño del lienzo",
-  "zh": "调整画布大小"
+  "zh": "调整画布大小",
+  "fr": "Redimensionner la toile",
+  "pt": "Redimensionar a tela",
+  "ja": "キャンバスの大きさを変える",
+  "ko": "캔버스 크기 바꾸기"
  },
  "Resize the canvas": {
   "de": "Die Leinwandgröße ändern",
   "es": "Cambiar el tamaño del lienzo",
-  "zh": "调整画布大小"
+  "zh": "调整画布大小",
+  "fr": "Redimensionner la toile",
+  "pt": "Redimensionar a tela",
+  "ja": "キャンバスの大きさを変える",
+  "ko": "캔버스 크기 바꾸기"
  },
  "Resolver": {
   "de": "Resolver",
   "es": "Resolutor",
-  "zh": "解析器"
+  "zh": "解析器",
+  "fr": "Résolveur",
+  "pt": "Resolvedor",
+  "ja": "リゾルバ",
+  "ko": "리졸버"
  },
  "Rest length": {
   "de": "Ruhelänge",
@@ -10672,57 +10984,101 @@
  "Restart": {
   "de": "Neu starten",
   "es": "Reiniciar",
-  "zh": "重新开始"
+  "zh": "重新开始",
+  "fr": "Recommencer",
+  "pt": "Reiniciar",
+  "ja": "やり直す",
+  "ko": "다시 시작"
  },
  "Result": {
   "de": "Ergebnis",
   "es": "Resultado",
-  "zh": "结果"
+  "zh": "结果",
+  "fr": "Résultat",
+  "pt": "Resultado",
+  "ja": "結果",
+  "ko": "결과"
  },
  "Return": {
   "de": "Rendite",
   "es": "Rentabilidad",
-  "zh": "收益率"
+  "zh": "收益率",
+  "fr": "Retour",
+  "pt": "Retorno",
+  "ja": "戻り値",
+  "ko": "반환"
  },
  "Reverse": {
   "de": "Umkehren",
   "es": "Invertir",
-  "zh": "反向"
+  "zh": "反向",
+  "fr": "Inverser",
+  "pt": "Inverter",
+  "ja": "逆順",
+  "ko": "거꾸로"
  },
  "Reverse DNS": {
   "de": "Reverse DNS",
   "es": "DNS inverso",
-  "zh": "反向 DNS"
+  "zh": "反向 DNS",
+  "fr": "DNS inverse",
+  "pt": "DNS reverso",
+  "ja": "逆引き DNS",
+  "ko": "역방향 DNS"
  },
  "Reversed": {
   "de": "Umgekehrt",
   "es": "Invertido",
-  "zh": "倒序"
+  "zh": "倒序",
+  "fr": "Inversé",
+  "pt": "Invertido",
+  "ja": "逆順",
+  "ko": "거꾸로 됨"
  },
  "Review": {
   "de": "Prüfen",
   "es": "Revisar",
-  "zh": "审查"
+  "zh": "审查",
+  "fr": "Relecture",
+  "pt": "Revisão",
+  "ja": "レビュー",
+  "ko": "검토"
  },
  "Rewrite": {
   "de": "Umschreiben",
   "es": "Reescribir",
-  "zh": "改写"
+  "zh": "改写",
+  "fr": "Réécrire",
+  "pt": "Reescrever",
+  "ja": "書き換え",
+  "ko": "다시 쓰기"
  },
  "Right": {
   "de": "Rechts",
   "es": "Derecha",
-  "zh": "右"
+  "zh": "右",
+  "fr": "Droite",
+  "pt": "Direita",
+  "ja": "右",
+  "ko": "오른쪽"
  },
  "Rim": {
   "de": "Rimshot",
   "es": "Aro",
-  "zh": "边击"
+  "zh": "边击",
+  "fr": "Rim",
+  "pt": "Aro",
+  "ja": "リムショット",
+  "ko": "림"
  },
  "Ring light": {
   "de": "Ringlicht",
   "es": "Aro de luz",
-  "zh": "环形补光"
+  "zh": "环形补光",
+  "fr": "Anneau lumineux",
+  "pt": "Luz de anel",
+  "ja": "リングライト",
+  "ko": "링라이트"
  },
  "Ring light level": {
   "de": "Ringlicht-Stärke",
@@ -10732,102 +11088,182 @@
  "Rod": {
   "de": "Stange",
   "es": "Barra",
-  "zh": "连杆"
+  "zh": "连杆",
+  "fr": "Tige",
+  "pt": "Haste",
+  "ja": "棒",
+  "ko": "막대"
  },
  "Roman → Number": {
   "de": "Römisch → Zahl",
   "es": "Romano → Número",
-  "zh": "罗马数字 → 数字"
+  "zh": "罗马数字 → 数字",
+  "fr": "Romain → nombre",
+  "pt": "Romano → número",
+  "ja": "ローマ数字 → 数",
+  "ko": "로마 숫자 → 숫자"
  },
  "Roomy": {
   "de": "Geräumig",
   "es": "Amplio",
-  "zh": "宽松"
+  "zh": "宽松",
+  "fr": "Spacieux",
+  "pt": "Espaçoso",
+  "ja": "ゆったり",
+  "ko": "넉넉하게"
  },
  "Roots and extrema": {
   "de": "Nullstellen und Extrema",
   "es": "Raíces y extremos",
-  "zh": "零点与极值"
+  "zh": "零点与极值",
+  "fr": "Racines et extrema",
+  "pt": "Raízes e extremos",
+  "ja": "零点と極値",
+  "ko": "근과 극값"
  },
  "Rope": {
   "de": "Seil",
   "es": "Cuerda",
-  "zh": "绳索"
+  "zh": "绳索",
+  "fr": "Corde",
+  "pt": "Corda",
+  "ja": "ロープ",
+  "ko": "밧줄"
  },
  "Rotate": {
   "de": "Drehen",
   "es": "Rotar",
-  "zh": "旋转"
+  "zh": "旋转",
+  "fr": "Pivoter",
+  "pt": "Girar",
+  "ja": "回転",
+  "ko": "돌리기"
  },
  "Rotate +90°": {
   "de": "+90° drehen",
   "es": "Rotar +90°",
-  "zh": "旋转 +90°"
+  "zh": "旋转 +90°",
+  "fr": "Pivoter de +90°",
+  "pt": "Girar +90°",
+  "ja": "+90° 回転",
+  "ko": "+90° 돌리기"
  },
  "Rotate 90 degrees (R)": {
   "de": "Um 90 Grad drehen (R)",
   "es": "Rotar 90 grados (R)",
-  "zh": "旋转 90 度 (R)"
+  "zh": "旋转 90 度 (R)",
+  "fr": "Pivoter de 90 degrés (R)",
+  "pt": "Girar 90 graus (R)",
+  "ja": "90 度回転 (R)",
+  "ko": "90도 돌리기 (R)"
  },
  "Rotate by": {
   "de": "Drehen um",
   "es": "Rotar",
-  "zh": "旋转角度"
+  "zh": "旋转角度",
+  "fr": "Pivoter de",
+  "pt": "Girar em",
+  "ja": "回転量",
+  "ko": "돌릴 각도"
  },
  "Rotate right": {
   "de": "Nach rechts drehen",
   "es": "Rotar a la derecha",
-  "zh": "向右旋转"
+  "zh": "向右旋转",
+  "fr": "Pivoter à droite",
+  "pt": "Girar à direita",
+  "ja": "右に回転",
+  "ko": "오른쪽으로 돌리기"
  },
  "Rotate −90°": {
   "de": "−90° drehen",
   "es": "Rotar −90°",
-  "zh": "旋转 −90°"
+  "zh": "旋转 −90°",
+  "fr": "Pivoter de −90°",
+  "pt": "Girar −90°",
+  "ja": "−90° 回転",
+  "ko": "−90° 돌리기"
  },
  "Round trip estimate": {
   "de": "Geschätzte Umlaufzeit",
   "es": "Estimación de ida y vuelta",
-  "zh": "往返时延估算"
+  "zh": "往返时延估算",
+  "fr": "Estimation aller-retour",
+  "pt": "Estimativa de ida e volta",
+  "ja": "往復時間の目安",
+  "ko": "왕복 시간 추정"
  },
  "Rounded square": {
   "de": "Abgerundetes Quadrat",
   "es": "Cuadrado redondeado",
-  "zh": "圆角方形"
+  "zh": "圆角方形",
+  "fr": "Carré arrondi",
+  "pt": "Quadrado arredondado",
+  "ja": "角丸の四角",
+  "ko": "둥근 네모"
  },
  "Row number": {
   "de": "Zeilennummer",
   "es": "Número de fila",
-  "zh": "行号"
+  "zh": "行号",
+  "fr": "Numéro de ligne",
+  "pt": "Número da linha",
+  "ja": "行番号",
+  "ko": "행 번호"
  },
  "Rows": {
   "de": "Zeilen",
   "es": "Filas",
-  "zh": "行数"
+  "zh": "行数",
+  "fr": "Lignes",
+  "pt": "Linhas",
+  "ja": "行",
+  "ko": "행"
  },
  "Rule": {
   "de": "Linie",
   "es": "Línea",
-  "zh": "分隔线"
+  "zh": "分隔线",
+  "fr": "Règle",
+  "pt": "Regra",
+  "ja": "ルール",
+  "ko": "규칙"
  },
  "Run": {
   "de": "Ausführen",
   "es": "Ejecutar",
-  "zh": "运行"
+  "zh": "运行",
+  "fr": "Exécuter",
+  "pt": "Executar",
+  "ja": "実行",
+  "ko": "실행"
  },
  "Run to Compose": {
   "de": "Run zu Compose",
   "es": "De run a Compose",
-  "zh": "run 转 Compose"
+  "zh": "run 转 Compose",
+  "fr": "Run vers Compose",
+  "pt": "Run para Compose",
+  "ja": "Run から Compose へ",
+  "ko": "Run에서 Compose로"
  },
  "Runtime": {
   "de": "Laufzeit",
   "es": "Entorno de ejecución",
-  "zh": "运行时"
+  "zh": "运行时",
+  "fr": "Environnement d'exécution",
+  "pt": "Runtime",
+  "ja": "ランタイム",
+  "ko": "런타임"
  },
  "Runtime module": {
   "de": "Laufzeitmodul",
   "es": "Módulo de ejecución",
-  "zh": "运行时模块"
+  "zh": "运行时模块",
+  "fr": "Module d'exécution",
+  "pt": "Módulo de runtime",
+  "ja": "ランタイムモジュール",
+  "ko": "런타임 모듈"
  },
  "SCSS": {
   "de": "SCSS",
@@ -10886,197 +11322,353 @@
  "SPKI, PEM encoded": {
   "de": "SPKI, PEM-kodiert",
   "es": "SPKI, codificado en PEM",
-  "zh": "SPKI，PEM 编码"
+  "zh": "SPKI，PEM 编码",
+  "fr": "SPKI, encodé en PEM",
+  "pt": "SPKI, codificado em PEM",
+  "ja": "SPKI、PEM 形式",
+  "ko": "SPKI, PEM 인코딩"
  },
  "SQL datetime": {
   "de": "SQL-Datum/Zeit",
   "es": "Fecha y hora SQL",
-  "zh": "SQL 日期时间"
+  "zh": "SQL 日期时间",
+  "fr": "Date-heure SQL",
+  "pt": "Data e hora SQL",
+  "ja": "SQL の日時",
+  "ko": "SQL 날짜시간"
  },
  "SSH Keys": {
   "de": "SSH-Schlüssel",
   "es": "Claves SSH",
-  "zh": "SSH 密钥"
+  "zh": "SSH 密钥",
+  "fr": "Clés SSH",
+  "pt": "Chaves SSH",
+  "ja": "SSH 鍵",
+  "ko": "SSH 키"
  },
  "SVG markup": {
   "de": "SVG-Markup",
   "es": "Marcado SVG",
-  "zh": "SVG 标记"
+  "zh": "SVG 标记",
+  "fr": "Balisage SVG",
+  "pt": "Marcação SVG",
+  "ja": "SVG のマークアップ",
+  "ko": "SVG 마크업"
  },
  "SVG to JSX": {
   "de": "SVG zu JSX",
   "es": "SVG a JSX",
-  "zh": "SVG 转 JSX"
+  "zh": "SVG 转 JSX",
+  "fr": "SVG vers JSX",
+  "pt": "SVG para JSX",
+  "ja": "SVG から JSX へ",
+  "ko": "SVG에서 JSX로"
  },
  "Same format authenticator apps use": {
   "de": "Dasselbe Format, das Authenticator-Apps verwenden",
   "es": "El mismo formato que usan las apps de autenticación",
-  "zh": "与身份验证器应用使用的格式相同"
+  "zh": "与身份验证器应用使用的格式相同",
+  "fr": "Le même format que les applications d'authentification",
+  "pt": "O mesmo formato que os aplicativos autenticadores usam",
+  "ja": "認証アプリと同じ形式です",
+  "ko": "인증 앱이 쓰는 것과 같은 형식"
  },
  "Sample": {
   "de": "Beispiel",
   "es": "Ejemplo",
-  "zh": "示例"
+  "zh": "示例",
+  "fr": "Échantillon",
+  "pt": "Amostra",
+  "ja": "サンプル",
+  "ko": "표본"
  },
  "Sample JSON": {
   "de": "Beispiel-JSON",
   "es": "JSON de ejemplo",
-  "zh": "示例 JSON"
+  "zh": "示例 JSON",
+  "fr": "JSON d'exemple",
+  "pt": "JSON de exemplo",
+  "ja": "サンプルの JSON",
+  "ko": "예시 JSON"
  },
  "Sample response": {
   "de": "Beispielantwort",
   "es": "Respuesta de ejemplo",
-  "zh": "示例响应"
+  "zh": "示例响应",
+  "fr": "Réponse d'exemple",
+  "pt": "Resposta de exemplo",
+  "ja": "サンプルのレスポンス",
+  "ko": "예시 응답"
  },
  "Sample sd": {
   "de": "Standardabweichung (Stichprobe)",
   "es": "Desviación típica muestral",
-  "zh": "样本标准差"
+  "zh": "样本标准差",
+  "fr": "Écart type d'échantillon",
+  "pt": "Desvio padrão amostral",
+  "ja": "標本標準偏差",
+  "ko": "표본 표준편차"
  },
  "Sans": {
   "de": "Serifenlos",
   "es": "Sans",
-  "zh": "无衬线"
+  "zh": "无衬线",
+  "fr": "Sans empattement",
+  "pt": "Sem serifa",
+  "ja": "サンセリフ",
+  "ko": "산세리프"
  },
  "Saturation": {
   "de": "Sättigung",
   "es": "Saturación",
-  "zh": "饱和度"
+  "zh": "饱和度",
+  "fr": "Saturation",
+  "pt": "Saturação",
+  "ja": "彩度",
+  "ko": "채도"
  },
  "Save": {
   "de": "Speichern",
   "es": "Guardar",
-  "zh": "保存"
+  "zh": "保存",
+  "fr": "Enregistrer",
+  "pt": "Salvar",
+  "ja": "保存",
+  "ko": "저장"
  },
  "Save .pub": {
   "de": ".pub speichern",
   "es": "Guardar .pub",
-  "zh": "保存 .pub"
+  "zh": "保存 .pub",
+  "fr": "Enregistrer le .pub",
+  "pt": "Salvar o .pub",
+  "ja": ".pub を保存",
+  "ko": ".pub 저장"
  },
  "Save .txt": {
   "de": ".txt speichern",
   "es": "Guardar .txt",
-  "zh": "保存 .txt"
+  "zh": "保存 .txt",
+  "fr": "Enregistrer le .txt",
+  "pt": "Salvar o .txt",
+  "ja": ".txt を保存",
+  "ko": ".txt 저장"
  },
  "Save PDF": {
   "de": "PDF speichern",
   "es": "Guardar PDF",
-  "zh": "保存 PDF"
+  "zh": "保存 PDF",
+  "fr": "Enregistrer en PDF",
+  "pt": "Salvar PDF",
+  "ja": "PDF を保存",
+  "ko": "PDF 저장"
  },
  "Save PNG": {
   "de": "PNG speichern",
   "es": "Guardar PNG",
-  "zh": "保存 PNG"
+  "zh": "保存 PNG",
+  "fr": "Enregistrer en PNG",
+  "pt": "Salvar PNG",
+  "ja": "PNG を保存",
+  "ko": "PNG 저장"
  },
  "Save SVG": {
   "de": "SVG speichern",
   "es": "Guardar SVG",
-  "zh": "保存 SVG"
+  "zh": "保存 SVG",
+  "fr": "Enregistrer en SVG",
+  "pt": "Salvar SVG",
+  "ja": "SVG を保存",
+  "ko": "SVG 저장"
  },
  "Save as PNG": {
   "de": "Als PNG speichern",
   "es": "Guardar como PNG",
-  "zh": "保存为 PNG"
+  "zh": "保存为 PNG",
+  "fr": "Enregistrer en PNG",
+  "pt": "Salvar como PNG",
+  "ja": "PNG として保存",
+  "ko": "PNG로 저장"
  },
  "Save cleaned copy": {
   "de": "Bereinigte Kopie speichern",
   "es": "Guardar una copia limpia",
-  "zh": "保存清理后的副本"
+  "zh": "保存清理后的副本",
+  "fr": "Enregistrer une copie nettoyée",
+  "pt": "Salvar uma cópia limpa",
+  "ja": "整理した控えを保存",
+  "ko": "정리한 사본 저장"
  },
  "Save colour": {
   "de": "Farbe speichern",
   "es": "Guardar color",
-  "zh": "保存颜色"
+  "zh": "保存颜色",
+  "fr": "Enregistrer la couleur",
+  "pt": "Salvar a cor",
+  "ja": "色を保存",
+  "ko": "색 저장"
  },
  "Save file": {
   "de": "Datei speichern",
   "es": "Guardar archivo",
-  "zh": "保存文件"
+  "zh": "保存文件",
+  "fr": "Enregistrer le fichier",
+  "pt": "Salvar arquivo",
+  "ja": "ファイルを保存",
+  "ko": "파일 저장"
  },
  "Save key": {
   "de": "Schlüssel speichern",
   "es": "Guardar la clave",
-  "zh": "保存密钥"
+  "zh": "保存密钥",
+  "fr": "Enregistrer la clé",
+  "pt": "Salvar a chave",
+  "ja": "鍵を保存",
+  "ko": "키 저장"
  },
  "Save log": {
   "de": "Protokoll speichern",
   "es": "Guardar el registro",
-  "zh": "保存日志"
+  "zh": "保存日志",
+  "fr": "Enregistrer le journal",
+  "pt": "Salvar o registro",
+  "ja": "ログを保存",
+  "ko": "로그 저장"
  },
  "Save manifest": {
   "de": "Manifest speichern",
   "es": "Guardar el manifiesto",
-  "zh": "保存 manifest"
+  "zh": "保存 manifest",
+  "fr": "Enregistrer le manifeste",
+  "pt": "Salvar o manifest",
+  "ja": "マニフェストを保存",
+  "ko": "매니페스트 저장"
  },
  "Save message": {
   "de": "Nachricht speichern",
   "es": "Guardar el mensaje",
-  "zh": "保存消息"
+  "zh": "保存消息",
+  "fr": "Enregistrer le message",
+  "pt": "Salvar a mensagem",
+  "ja": "メッセージを保存",
+  "ko": "메시지 저장"
  },
  "Save photo": {
   "de": "Foto speichern",
   "es": "Guardar la foto",
-  "zh": "保存照片"
+  "zh": "保存照片",
+  "fr": "Enregistrer la photo",
+  "pt": "Salvar a foto",
+  "ja": "写真を保存",
+  "ko": "사진 저장"
  },
  "Save result": {
   "de": "Ergebnis speichern",
   "es": "Guardar el resultado",
-  "zh": "保存结果"
+  "zh": "保存结果",
+  "fr": "Enregistrer le résultat",
+  "pt": "Salvar o resultado",
+  "ja": "結果を保存",
+  "ko": "결과 저장"
  },
  "Save selected": {
   "de": "Auswahl speichern",
   "es": "Guardar la selección",
-  "zh": "保存所选"
+  "zh": "保存所选",
+  "fr": "Enregistrer la sélection",
+  "pt": "Salvar os selecionados",
+  "ja": "選択したものを保存",
+  "ko": "고른 것 저장"
  },
  "Save text": {
   "de": "Text speichern",
   "es": "Guardar el texto",
-  "zh": "保存文本"
+  "zh": "保存文本",
+  "fr": "Enregistrer le texte",
+  "pt": "Salvar o texto",
+  "ja": "テキストを保存",
+  "ko": "글 저장"
  },
  "Save the square, story and wide versions": {
   "de": "Die quadratische, die Story- und die breite Fassung speichern",
   "es": "Guardar las versiones cuadrada, de historia y ancha",
-  "zh": "保存方形、竖屏故事和宽屏版本"
+  "zh": "保存方形、竖屏故事和宽屏版本",
+  "fr": "Enregistrer les versions carrée, story et large",
+  "pt": "Salvar as versões quadrada, story e larga",
+  "ja": "正方形、ストーリー、横長の各版を保存",
+  "ko": "정사각형, 스토리, 와이드 판 저장"
  },
  "Save this circuit to a file": {
   "de": "Diese Schaltung in eine Datei speichern",
   "es": "Guardar este circuito en un archivo",
-  "zh": "把这个电路保存到文件"
+  "zh": "把这个电路保存到文件",
+  "fr": "Enregistrer ce circuit dans un fichier",
+  "pt": "Salvar este circuito em um arquivo",
+  "ja": "この回路をファイルに保存",
+  "ko": "이 회로를 파일로 저장"
  },
  "Save this scene to a file": {
   "de": "Diese Szene in eine Datei speichern",
   "es": "Guardar esta escena en un archivo",
-  "zh": "把这个场景保存到文件"
+  "zh": "把这个场景保存到文件",
+  "fr": "Enregistrer cette scène dans un fichier",
+  "pt": "Salvar esta cena em um arquivo",
+  "ja": "このシーンをファイルに保存",
+  "ko": "이 장면을 파일로 저장"
  },
  "Saved": {
   "de": "Gespeichert",
   "es": "Guardado",
-  "zh": "已保存"
+  "zh": "已保存",
+  "fr": "Enregistré",
+  "pt": "Salvo",
+  "ja": "保存しました",
+  "ko": "저장했습니다"
  },
  "Saved in this workspace": {
   "de": "In diesem Arbeitsbereich gespeichert",
   "es": "Guardado en este espacio de trabajo",
-  "zh": "保存在此工作区中"
+  "zh": "保存在此工作区中",
+  "fr": "Enregistré dans cet espace de travail",
+  "pt": "Salvo nesta área de trabalho",
+  "ja": "このワークスペースに保存されます",
+  "ko": "이 작업 공간에 저장됩니다"
  },
  "Saved messages": {
   "de": "Gespeicherte Nachrichten",
   "es": "Mensajes guardados",
-  "zh": "已保存的消息"
+  "zh": "已保存的消息",
+  "fr": "Messages enregistrés",
+  "pt": "Mensagens salvas",
+  "ja": "保存したメッセージ",
+  "ko": "저장한 메시지"
  },
  "Saved messages appear here.": {
   "de": "Gespeicherte Nachrichten erscheinen hier.",
   "es": "Aquí aparecen los mensajes guardados.",
-  "zh": "已保存的消息会显示在这里。"
+  "zh": "已保存的消息会显示在这里。",
+  "fr": "Les messages enregistrés apparaissent ici.",
+  "pt": "As mensagens salvas aparecem aqui.",
+  "ja": "保存したメッセージがここに表示されます。",
+  "ko": "저장한 메시지가 여기에 나옵니다."
  },
  "Scale": {
   "de": "Skalierung",
   "es": "Escala",
-  "zh": "缩放"
+  "zh": "缩放",
+  "fr": "Échelle",
+  "pt": "Escala",
+  "ja": "倍率",
+  "ko": "배율"
  },
  "Scene": {
   "de": "Szene",
   "es": "Escena",
-  "zh": "场景"
+  "zh": "场景",
+  "fr": "Scène",
+  "pt": "Cena",
+  "ja": "シーン",
+  "ko": "장면"
  },
  "Scenes": {
   "de": "Szenen",
@@ -11086,167 +11678,299 @@
  "Scientific": {
   "de": "Wissenschaftlich",
   "es": "Científica",
-  "zh": "科学计数法"
+  "zh": "科学计数法",
+  "fr": "Scientifique",
+  "pt": "Científica",
+  "ja": "指数表記",
+  "ko": "과학 표기"
  },
  "Scope": {
   "de": "Geltungsbereich",
   "es": "Ámbito",
-  "zh": "范围"
+  "zh": "范围",
+  "fr": "Portée",
+  "pt": "Escopo",
+  "ja": "範囲",
+  "ko": "범위"
  },
  "Score": {
   "de": "Punkte",
   "es": "Puntuación",
-  "zh": "得分"
+  "zh": "得分",
+  "fr": "Score",
+  "pt": "Pontuação",
+  "ja": "スコア",
+  "ko": "점수"
  },
  "Screen": {
   "de": "Bildschirm",
   "es": "Pantalla",
-  "zh": "屏幕"
+  "zh": "屏幕",
+  "fr": "Écran",
+  "pt": "Tela",
+  "ja": "画面",
+  "ko": "화면"
  },
  "Screen and window": {
   "de": "Bildschirm und Fenster",
   "es": "Pantalla y ventana",
-  "zh": "屏幕与窗口"
+  "zh": "屏幕与窗口",
+  "fr": "Écran et fenêtre",
+  "pt": "Tela e janela",
+  "ja": "画面とウィンドウ",
+  "ko": "화면과 창"
  },
  "Screen capture is not available in this browser": {
   "de": "Bildschirmaufnahme ist in diesem Browser nicht verfügbar",
   "es": "La captura de pantalla no está disponible en este navegador",
-  "zh": "此浏览器不支持屏幕捕获"
+  "zh": "此浏览器不支持屏幕捕获",
+  "fr": "La capture d'écran n'est pas disponible dans ce navigateur",
+  "pt": "A captura de tela não está disponível neste navegador",
+  "ja": "このブラウザでは画面の取り込みを利用できません",
+  "ko": "이 브라우저에서는 화면 캡처를 쓸 수 없습니다"
  },
  "Search a character, U+00E9 or 233": {
   "de": "Ein Zeichen, U+00E9 oder 233 suchen",
   "es": "Busca un carácter, U+00E9 o 233",
-  "zh": "搜索字符、U+00E9 或 233"
+  "zh": "搜索字符、U+00E9 或 233",
+  "fr": "Cherchez un caractère, U+00E9 ou 233",
+  "pt": "Busque um caractere, U+00E9 ou 233",
+  "ja": "文字、U+00E9、233 などで検索",
+  "ko": "문자, U+00E9, 233 등으로 검색"
  },
  "Search by code or meaning - 404, timeout, redirect": {
   "de": "Nach Code oder Bedeutung suchen - 404, Timeout, Weiterleitung",
   "es": "Busca por código o significado: 404, timeout, redirección",
-  "zh": "按状态码或含义搜索：404、超时、重定向"
+  "zh": "按状态码或含义搜索：404、超时、重定向",
+  "fr": "Cherchez par code ou par sens - 404, timeout, redirection",
+  "pt": "Busque por código ou significado - 404, timeout, redirecionamento",
+  "ja": "コードか意味で検索 - 404、タイムアウト、リダイレクト",
+  "ko": "코드나 뜻으로 검색 - 404, 시간 초과, 리다이렉트"
  },
  "Search by name or paste an emoji": {
   "de": "Nach Namen suchen oder ein Emoji einfügen",
   "es": "Busca por nombre o pega un emoji",
-  "zh": "按名称搜索或粘贴一个 emoji"
+  "zh": "按名称搜索或粘贴一个 emoji",
+  "fr": "Cherchez par nom ou collez un emoji",
+  "pt": "Busque pelo nome ou cole um emoji",
+  "ja": "名前で検索するか、絵文字を貼り付け",
+  "ko": "이름으로 찾거나 이모지를 붙여넣으세요"
  },
  "Search every tool": {
   "de": "Alle Werkzeuge durchsuchen",
   "es": "Buscar en todas las herramientas",
-  "zh": "搜索所有工具"
+  "zh": "搜索所有工具",
+  "fr": "Chercher dans tous les outils",
+  "pt": "Buscar em todas as ferramentas",
+  "ja": "すべてのツールを検索",
+  "ko": "모든 도구에서 찾기"
  },
  "Search page only": {
   "de": "Nur auf der Suchseite",
   "es": "Solo en la página de búsqueda",
-  "zh": "仅搜索页"
+  "zh": "仅搜索页",
+  "fr": "Chercher dans cette page seulement",
+  "pt": "Buscar apenas nesta página",
+  "ja": "このページだけを検索",
+  "ko": "이 페이지에서만 찾기"
  },
  "Search settings": {
   "de": "Einstellungen durchsuchen",
   "es": "Buscar en los ajustes",
-  "zh": "搜索设置"
+  "zh": "搜索设置",
+  "fr": "Chercher dans les réglages",
+  "pt": "Buscar nas configurações",
+  "ja": "設定を検索",
+  "ko": "설정 찾기"
  },
  "Search the gallery": {
   "de": "Galerie durchsuchen",
   "es": "Buscar en la galería",
-  "zh": "搜索图库"
+  "zh": "搜索图库",
+  "fr": "Chercher dans la galerie",
+  "pt": "Buscar na galeria",
+  "ja": "ギャラリーを検索",
+  "ko": "갤러리에서 찾기"
  },
  "Secret key": {
   "de": "Geheimer Schlüssel",
   "es": "Clave secreta",
-  "zh": "密钥"
+  "zh": "密钥",
+  "fr": "Clé secrète",
+  "pt": "Chave secreta",
+  "ja": "秘密鍵",
+  "ko": "비밀 키"
  },
  "Security": {
   "de": "Sicherheit",
   "es": "Seguridad",
-  "zh": "加密方式"
+  "zh": "加密方式",
+  "fr": "Sécurité",
+  "pt": "Segurança",
+  "ja": "セキュリティ",
+  "ko": "보안"
  },
  "Seed": {
   "de": "Startwert",
   "es": "Semilla",
-  "zh": "随机种子"
+  "zh": "随机种子",
+  "fr": "Graine",
+  "pt": "Semente",
+  "ja": "シード",
+  "ko": "시드"
  },
  "Select": {
   "de": "Auswählen",
   "es": "Seleccionar",
-  "zh": "选择"
+  "zh": "选择",
+  "fr": "Sélectionner",
+  "pt": "Selecionar",
+  "ja": "選択",
+  "ko": "고르기"
  },
  "Select a gate to see its table.": {
   "de": "Ein Gatter auswählen, um seine Tabelle zu sehen.",
   "es": "Selecciona una puerta para ver su tabla.",
-  "zh": "选择一个逻辑门以查看它的真值表。"
+  "zh": "选择一个逻辑门以查看它的真值表。",
+  "fr": "Choisissez une porte pour voir sa table.",
+  "pt": "Selecione uma porta para ver sua tabela.",
+  "ja": "ゲートを選ぶと真理値表が見られます。",
+  "ko": "게이트를 고르면 진리표를 볼 수 있습니다."
  },
  "Select all": {
   "de": "Alle auswählen",
   "es": "Seleccionar todo",
-  "zh": "全选"
+  "zh": "全选",
+  "fr": "Tout sélectionner",
+  "pt": "Selecionar tudo",
+  "ja": "すべて選択",
+  "ko": "모두 고르기"
  },
  "Select an area": {
   "de": "Einen Bereich auswählen",
   "es": "Seleccionar un área",
-  "zh": "选择区域"
+  "zh": "选择区域",
+  "fr": "Sélectionner une zone",
+  "pt": "Selecionar uma área",
+  "ja": "範囲を選択",
+  "ko": "영역 고르기"
  },
  "Select none": {
   "de": "Auswahl aufheben",
   "es": "No seleccionar nada",
-  "zh": "取消全选"
+  "zh": "取消全选",
+  "fr": "Ne rien sélectionner",
+  "pt": "Não selecionar nada",
+  "ja": "選択を解除",
+  "ko": "고르기 해제"
  },
  "Semicolon": {
   "de": "Semikolon",
   "es": "Punto y coma",
-  "zh": "分号"
+  "zh": "分号",
+  "fr": "Point-virgule",
+  "pt": "Ponto e vírgula",
+  "ja": "セミコロン",
+  "ko": "쌍반점"
  },
  "Semicolons": {
   "de": "Semikola",
   "es": "Puntos y coma",
-  "zh": "分号"
+  "zh": "分号",
+  "fr": "Points-virgules",
+  "pt": "Pontos e vírgulas",
+  "ja": "セミコロン",
+  "ko": "쌍반점"
  },
  "Send": {
   "de": "Senden",
   "es": "Enviar",
-  "zh": "发送"
+  "zh": "发送",
+  "fr": "Envoyer",
+  "pt": "Enviar",
+  "ja": "送信",
+  "ko": "보내기"
  },
  "Send the selected body to the back": {
   "de": "Den gewählten Körper in den Hintergrund schicken",
   "es": "Enviar al fondo el cuerpo seleccionado",
-  "zh": "把所选物体移到最后"
+  "zh": "把所选物体移到最后",
+  "fr": "Mettre le corps sélectionné à l'arrière-plan",
+  "pt": "Enviar o corpo selecionado para trás",
+  "ja": "選択した物体を背面へ",
+  "ko": "고른 물체를 맨 뒤로"
  },
  "Send to back": {
   "de": "In den Hintergrund",
   "es": "Enviar al fondo",
-  "zh": "移到最后"
+  "zh": "移到最后",
+  "fr": "Mettre à l'arrière-plan",
+  "pt": "Enviar para trás",
+  "ja": "背面へ",
+  "ko": "맨 뒤로"
  },
  "Sentence": {
   "de": "Satz",
   "es": "Frase",
-  "zh": "句子"
+  "zh": "句子",
+  "fr": "Phrase",
+  "pt": "Frase",
+  "ja": "文",
+  "ko": "문장"
  },
  "Sentence case": {
   "de": "Satz schreibweise",
   "es": "Tipo oración",
-  "zh": "句首大写"
+  "zh": "句首大写",
+  "fr": "Casse de phrase",
+  "pt": "Como frase",
+  "ja": "文頭だけ大文字",
+  "ko": "문장 첫 글자만 대문자"
  },
  "Sentences": {
   "de": "Sätze",
   "es": "Frases",
-  "zh": "句子"
+  "zh": "句子",
+  "fr": "Phrases",
+  "pt": "Frases",
+  "ja": "文",
+  "ko": "문장"
  },
  "Separator": {
   "de": "Trennzeichen",
   "es": "Separador",
-  "zh": "分隔符"
+  "zh": "分隔符",
+  "fr": "Séparateur",
+  "pt": "Separador",
+  "ja": "区切り",
+  "ko": "구분자"
  },
  "Serial": {
   "de": "Seriennummer",
   "es": "Número de serie",
-  "zh": "序列号"
+  "zh": "序列号",
+  "fr": "Série",
+  "pt": "Serial",
+  "ja": "シリアル",
+  "ko": "시리얼"
  },
  "Serif": {
   "de": "Serifen",
   "es": "Serif",
-  "zh": "衬线"
+  "zh": "衬线",
+  "fr": "À empattement",
+  "pt": "Com serifa",
+  "ja": "セリフ",
+  "ko": "세리프"
  },
  "Server": {
   "de": "Server",
   "es": "Servidor",
-  "zh": "服务器"
+  "zh": "服务器",
+  "fr": "Serveur",
+  "pt": "Servidor",
+  "ja": "サーバー",
+  "ko": "서버"
  },
  "Service": {
   "de": "Service",
@@ -11260,67 +11984,119 @@
  "Service port": {
   "de": "Service-Port",
   "es": "Puerto del servicio",
-  "zh": "服务端口"
+  "zh": "服务端口",
+  "fr": "Port du service",
+  "pt": "Porta do serviço",
+  "ja": "サービスのポート",
+  "ko": "서비스 포트"
  },
  "Service type": {
   "de": "Service-Typ",
   "es": "Tipo de servicio",
-  "zh": "服务类型"
+  "zh": "服务类型",
+  "fr": "Type de service",
+  "pt": "Tipo de serviço",
+  "ja": "サービスの種類",
+  "ko": "서비스 종류"
  },
  "Set caps and joins": {
   "de": "Enden und Verbindungen setzen",
   "es": "Aplicar extremos y uniones",
-  "zh": "设置线端与拐角"
+  "zh": "设置线端与拐角",
+  "fr": "Définir extrémités et jonctions",
+  "pt": "Definir pontas e junções",
+  "ja": "線端と接合を設定",
+  "ko": "선 끝과 이음 설정"
  },
  "Set fill": {
   "de": "Füllung setzen",
   "es": "Aplicar el relleno",
-  "zh": "设置填充"
+  "zh": "设置填充",
+  "fr": "Définir le remplissage",
+  "pt": "Definir o preenchimento",
+  "ja": "塗りを設定",
+  "ko": "채우기 설정"
  },
  "Set opacity": {
   "de": "Deckkraft setzen",
   "es": "Aplicar la opacidad",
-  "zh": "设置不透明度"
+  "zh": "设置不透明度",
+  "fr": "Définir l'opacité",
+  "pt": "Definir a opacidade",
+  "ja": "不透明度を設定",
+  "ko": "불투명도 설정"
  },
  "Set stroke": {
   "de": "Kontur setzen",
   "es": "Aplicar el trazo",
-  "zh": "设置描边"
+  "zh": "设置描边",
+  "fr": "Définir le contour",
+  "pt": "Definir o traço",
+  "ja": "線を設定",
+  "ko": "선 설정"
  },
  "Set stroke width": {
   "de": "Konturstärke setzen",
   "es": "Aplicar el grosor del trazo",
-  "zh": "设置描边宽度"
+  "zh": "设置描边宽度",
+  "fr": "Définir l'épaisseur du contour",
+  "pt": "Definir a espessura do traço",
+  "ja": "線の太さを設定",
+  "ko": "선 두께 설정"
  },
  "Sets the behaviour for the whole conversation": {
   "de": "Legt das Verhalten für das ganze Gespräch fest",
   "es": "Define el comportamiento de toda la conversación",
-  "zh": "设定整段对话的行为"
+  "zh": "设定整段对话的行为",
+  "fr": "Définit le comportement pour toute la conversation",
+  "pt": "Define o comportamento para toda a conversa",
+  "ja": "会話全体のふるまいを決めます",
+  "ko": "대화 전체의 성격을 정합니다"
  },
  "Settings reset": {
   "de": "Einstellungen zurückgesetzt",
   "es": "Ajustes restablecidos",
-  "zh": "设置已重置"
+  "zh": "设置已重置",
+  "fr": "Réglages réinitialisés",
+  "pt": "Configurações redefinidas",
+  "ja": "設定をリセットしました",
+  "ko": "설정을 초기화했습니다"
  },
  "Shade": {
   "de": "Schattierung",
   "es": "Sombreado",
-  "zh": "阴影块"
+  "zh": "阴影块",
+  "fr": "Nuance",
+  "pt": "Tonalidade",
+  "ja": "濃淡",
+  "ko": "명암"
  },
  "Shadow": {
   "de": "Schatten",
   "es": "Sombra",
-  "zh": "阴影"
+  "zh": "阴影",
+  "fr": "Ombre",
+  "pt": "Sombra",
+  "ja": "影",
+  "ko": "그림자"
  },
  "Shake": {
   "de": "Wackeln",
   "es": "Sacudida",
-  "zh": "抖动"
+  "zh": "抖动",
+  "fr": "Secouer",
+  "pt": "Sacudir",
+  "ja": "振る",
+  "ko": "흔들기"
  },
  "Shape": {
   "de": "Form",
   "es": "Forma",
-  "zh": "形状"
+  "zh": "形状",
+  "fr": "Forme",
+  "pt": "Forma",
+  "ja": "図形",
+  "ko": "도형"
  },
  "Shortest": {
   "de": "Kürzeste",
@@ -11330,102 +12106,182 @@
  "Show": {
   "de": "Anzeigen",
   "es": "Mostrar",
-  "zh": "显示"
+  "zh": "显示",
+  "fr": "Afficher",
+  "pt": "Mostrar",
+  "ja": "表示",
+  "ko": "보이기"
  },
  "Show bytes as hex": {
   "de": "Bytes als Hex anzeigen",
   "es": "Mostrar los bytes en hex",
-  "zh": "以十六进制显示字节"
+  "zh": "以十六进制显示字节",
+  "fr": "Afficher les octets en hexadécimal",
+  "pt": "Mostrar os bytes em hexadecimal",
+  "ja": "バイトを 16 進で表示",
+  "ko": "바이트를 16진으로 표시"
  },
  "Show derivative": {
   "de": "Ableitung anzeigen",
   "es": "Mostrar la derivada",
-  "zh": "显示导数"
+  "zh": "显示导数",
+  "fr": "Afficher la dérivée",
+  "pt": "Mostrar a derivada",
+  "ja": "導関数を表示",
+  "ko": "도함수 표시"
  },
  "Show hydrogens": {
   "de": "Wasserstoff anzeigen",
   "es": "Mostrar los hidrógenos",
-  "zh": "显示氢原子"
+  "zh": "显示氢原子",
+  "fr": "Afficher les hydrogènes",
+  "pt": "Mostrar os hidrogênios",
+  "ja": "水素原子を表示",
+  "ko": "수소 원자 표시"
  },
  "Show node voltages": {
   "de": "Knotenspannungen anzeigen",
   "es": "Mostrar tensiones de nodo",
-  "zh": "显示节点电压"
+  "zh": "显示节点电压",
+  "fr": "Afficher les tensions aux nœuds",
+  "pt": "Mostrar as tensões nos nós",
+  "ja": "節点電圧を表示",
+  "ko": "절점 전압 표시"
  },
  "Show or hide": {
   "de": "Ein- oder ausblenden",
   "es": "Mostrar u ocultar",
-  "zh": "显示或隐藏"
+  "zh": "显示或隐藏",
+  "fr": "Afficher ou masquer",
+  "pt": "Mostrar ou ocultar",
+  "ja": "表示と非表示",
+  "ko": "보이기 또는 숨기기"
  },
  "Show seconds": {
   "de": "Sekunden anzeigen",
   "es": "Mostrar segundos",
-  "zh": "显示秒"
+  "zh": "显示秒",
+  "fr": "Afficher les secondes",
+  "pt": "Mostrar os segundos",
+  "ja": "秒を表示",
+  "ko": "초 표시"
  },
  "Show the centre of each body": {
   "de": "Mittelpunkt jedes Körpers anzeigen",
   "es": "Mostrar el centro de cada cuerpo",
-  "zh": "显示每个物体的中心"
+  "zh": "显示每个物体的中心",
+  "fr": "Afficher le centre de chaque corps",
+  "pt": "Mostrar o centro de cada corpo",
+  "ja": "各物体の中心を表示",
+  "ko": "각 물체의 중심 표시"
  },
  "Show velocity arrows": {
   "de": "Geschwindigkeitspfeile anzeigen",
   "es": "Mostrar las flechas de velocidad",
-  "zh": "显示速度箭头"
+  "zh": "显示速度箭头",
+  "fr": "Afficher les vecteurs vitesse",
+  "pt": "Mostrar as setas de velocidade",
+  "ja": "速度の矢印を表示",
+  "ko": "속도 화살표 표시"
  },
  "Signal": {
   "de": "Signal",
   "es": "Señal",
-  "zh": "信号"
+  "zh": "信号",
+  "fr": "Signal",
+  "pt": "Sinal",
+  "ja": "信号",
+  "ko": "신호"
  },
  "Signature": {
   "de": "Signatur",
   "es": "Firma",
-  "zh": "签名"
+  "zh": "签名",
+  "fr": "Signature",
+  "pt": "Assinatura",
+  "ja": "署名",
+  "ko": "서명"
  },
  "Simplify": {
   "de": "Vereinfachen",
   "es": "Simplificar",
-  "zh": "简化"
+  "zh": "简化",
+  "fr": "Simplifier",
+  "pt": "Simplificar",
+  "ja": "簡潔にする",
+  "ko": "간단하게"
  },
  "Site name": {
   "de": "Name der Website",
   "es": "Nombre del sitio",
-  "zh": "站点名称"
+  "zh": "站点名称",
+  "fr": "Nom du site",
+  "pt": "Nome do site",
+  "ja": "サイト名",
+  "ko": "사이트 이름"
  },
  "Size": {
   "de": "Größe",
   "es": "Tamaño",
-  "zh": "大小"
+  "zh": "大小",
+  "fr": "Taille",
+  "pt": "Tamanho",
+  "ja": "サイズ",
+  "ko": "크기"
  },
  "Skeuomorphic": {
   "de": "Skeuomorph",
   "es": "Skeuomórfico",
-  "zh": "拟物"
+  "zh": "拟物",
+  "fr": "Skeuomorphe",
+  "pt": "Esqueumórfico",
+  "ja": "スキューモーフィック",
+  "ko": "스큐어모픽"
  },
  "Skewness": {
   "de": "Schiefe",
   "es": "Asimetría",
-  "zh": "偏度"
+  "zh": "偏度",
+  "fr": "Asymétrie",
+  "pt": "Assimetria",
+  "ja": "歪度",
+  "ko": "왜도"
  },
  "Slash separates words": {
   "de": "Schrägstrich trennt Wörter",
   "es": "La barra separa palabras",
-  "zh": "斜杠用于分隔单词"
+  "zh": "斜杠用于分隔单词",
+  "fr": "La barre oblique sépare les mots",
+  "pt": "A barra separa as palavras",
+  "ja": "スラッシュで語を区切ります",
+  "ko": "빗금으로 낱말을 나눕니다"
  },
  "Slide up": {
   "de": "Hochschieben",
   "es": "Deslizar hacia arriba",
-  "zh": "上滑"
+  "zh": "上滑",
+  "fr": "Glisser vers le haut",
+  "pt": "Deslizar para cima",
+  "ja": "上へスライド",
+  "ko": "위로 밀기"
  },
  "Slider": {
   "de": "Schieberegler",
   "es": "Deslizador",
-  "zh": "滑块"
+  "zh": "滑块",
+  "fr": "Curseur",
+  "pt": "Controle deslizante",
+  "ja": "スライダー",
+  "ko": "슬라이더"
  },
  "Slots that fall inside working hours everywhere": {
   "de": "Zeitfenster, die überall in die Arbeitszeit fallen",
   "es": "Huecos que caen dentro del horario laboral en todas partes",
-  "zh": "在各地都处于工作时间内的时段"
+  "zh": "在各地都处于工作时间内的时段",
+  "fr": "Créneaux qui tombent dans les horaires de travail partout",
+  "pt": "Horários que caem dentro do expediente em todos os lugares",
+  "ja": "すべての地点で勤務時間内に入る枠",
+  "ko": "모든 곳에서 근무 시간 안에 드는 시간대"
  },
  "Slug": {
   "de": "Slug",
@@ -11439,17 +12295,29 @@
  "Small": {
   "de": "Klein",
   "es": "Pequeño",
-  "zh": "小"
+  "zh": "小",
+  "fr": "Petit",
+  "pt": "Pequeno",
+  "ja": "小",
+  "ko": "작게"
  },
  "Smaller": {
   "de": "Kleiner",
   "es": "Más pequeño",
-  "zh": "更小"
+  "zh": "更小",
+  "fr": "Plus petit",
+  "pt": "Menor",
+  "ja": "小さく",
+  "ko": "더 작게"
  },
  "Smileys": {
   "de": "Smileys",
   "es": "Caritas",
-  "zh": "表情"
+  "zh": "表情",
+  "fr": "Émoticônes",
+  "pt": "Carinhas",
+  "ja": "顔文字",
+  "ko": "표정"
  },
  "Snake": {
   "de": "Snake",
@@ -11463,387 +12331,695 @@
  "Snap links to centres and corners": {
   "de": "Verbindungen an Mittelpunkten und Ecken einrasten",
   "es": "Ajustar los enlaces a centros y esquinas",
-  "zh": "将连接吸附到中心与角点"
+  "zh": "将连接吸附到中心与角点",
+  "fr": "Aimanter les liaisons aux centres et aux coins",
+  "pt": "Encaixar as ligações em centros e cantos",
+  "ja": "リンクを中心と角にスナップ",
+  "ko": "링크를 중심과 모서리에 맞추기"
  },
  "Snapshots appear once you update prices on more than one day.": {
   "de": "Momentaufnahmen erscheinen, sobald du an mehr als einem Tag Kurse aktualisierst.",
   "es": "Las instantáneas aparecen cuando actualizas los precios en más de un día.",
-  "zh": "在超过一天更新价格后，快照就会出现。"
+  "zh": "在超过一天更新价格后，快照就会出现。",
+  "fr": "Les instantanés apparaissent une fois les cours mis à jour sur plus d'un jour.",
+  "pt": "Os instantâneos aparecem depois que você atualiza os preços em mais de um dia.",
+  "ja": "2 日以上価格を更新すると、スナップショットが表示されます。",
+  "ko": "이틀 이상 가격을 갱신하면 스냅숏이 나타납니다."
  },
  "Snare": {
   "de": "Snare",
   "es": "Caja",
-  "zh": "军鼓"
+  "zh": "军鼓",
+  "fr": "Caisse claire",
+  "pt": "Caixa",
+  "ja": "スネア",
+  "ko": "스네어"
  },
  "Snippet": {
   "de": "Codeschnipsel",
   "es": "Fragmento",
-  "zh": "代码片段"
+  "zh": "代码片段",
+  "fr": "Extrait",
+  "pt": "Trecho",
+  "ja": "スニペット",
+  "ko": "조각"
  },
  "Social sizes": {
   "de": "Social-Formate",
   "es": "Tamaños para redes",
-  "zh": "社交媒体尺寸"
+  "zh": "社交媒体尺寸",
+  "fr": "Formats réseaux sociaux",
+  "pt": "Tamanhos para redes sociais",
+  "ja": "SNS 用のサイズ",
+  "ko": "소셜용 크기"
  },
  "Solid": {
   "de": "Gefüllt",
   "es": "Sólido",
-  "zh": "实心"
+  "zh": "实心",
+  "fr": "Uni",
+  "pt": "Sólido",
+  "ja": "べた塗り",
+  "ko": "단색"
  },
  "Solitaire": {
   "de": "Solitär",
   "es": "Solitario",
-  "zh": "纸牌"
+  "zh": "纸牌",
+  "fr": "Solitaire",
+  "pt": "Paciência",
+  "ja": "ソリティア",
+  "ko": "솔리테어"
  },
  "Solver passes per frame": {
   "de": "Löserdurchläufe pro Bild",
   "es": "Pasadas del solucionador por fotograma",
-  "zh": "每帧求解迭代次数"
+  "zh": "每帧求解迭代次数",
+  "fr": "Passes du solveur par image",
+  "pt": "Passagens do solucionador por quadro",
+  "ja": "1 コマあたりのソルバ反復回数",
+  "ko": "프레임당 풀이 반복 횟수"
  },
  "Sort": {
   "de": "Sortieren",
   "es": "Ordenar",
-  "zh": "排序"
+  "zh": "排序",
+  "fr": "Trier",
+  "pt": "Ordenar",
+  "ja": "並べ替え",
+  "ko": "정렬"
  },
  "Sound effects": {
   "de": "Soundeffekte",
   "es": "Efectos de sonido",
-  "zh": "音效"
+  "zh": "音效",
+  "fr": "Effets sonores",
+  "pt": "Efeitos sonoros",
+  "ja": "効果音",
+  "ko": "효과음"
  },
  "Source": {
   "de": "Quelle",
   "es": "Origen",
-  "zh": "源"
+  "zh": "源",
+  "fr": "Source",
+  "pt": "Fonte",
+  "ja": "出典",
+  "ko": "출처"
  },
  "Space": {
   "de": "Leerzeichen",
   "es": "Espacio",
-  "zh": "空格"
+  "zh": "空格",
+  "fr": "Espace",
+  "pt": "Espaço",
+  "ja": "空白",
+  "ko": "공백"
  },
  "Space filling": {
   "de": "Kalottenmodell",
   "es": "Modelo compacto",
-  "zh": "空间填充模型"
+  "zh": "空间填充模型",
+  "fr": "Compact",
+  "pt": "Preenchimento espacial",
+  "ja": "空間充填モデル",
+  "ko": "공간 채움 모형"
  },
  "Spanish": {
   "de": "Spanisch",
   "es": "Español",
-  "zh": "西班牙语"
+  "zh": "西班牙语",
+  "fr": "Espagnol",
+  "pt": "Espanhol",
+  "ja": "スペイン語",
+  "ko": "스페인어"
  },
  "Speaking time": {
   "de": "Sprechzeit",
   "es": "Tiempo de lectura en voz alta",
-  "zh": "朗读时间"
+  "zh": "朗读时间",
+  "fr": "Temps de parole",
+  "pt": "Tempo de fala",
+  "ja": "読み上げ時間",
+  "ko": "말하는 시간"
  },
  "Speech runtime": {
   "de": "Sprach-Laufzeit",
   "es": "Motor de voz",
-  "zh": "语音运行时"
+  "zh": "语音运行时",
+  "fr": "Moteur de synthèse vocale",
+  "pt": "Motor de fala",
+  "ja": "音声処理のランタイム",
+  "ko": "음성 처리 런타임"
  },
  "Speech to text": {
   "de": "Sprache zu Text",
   "es": "Voz a texto",
-  "zh": "语音转文字"
+  "zh": "语音转文字",
+  "fr": "Parole vers texte",
+  "pt": "Fala para texto",
+  "ja": "音声を文字に",
+  "ko": "말을 글로"
  },
  "Speed": {
   "de": "Geschwindigkeit",
   "es": "Velocidad",
-  "zh": "速度"
+  "zh": "速度",
+  "fr": "Vitesse",
+  "pt": "Velocidade",
+  "ja": "速度",
+  "ko": "속도"
  },
  "Speed rad/s": {
   "de": "Drehzahl rad/s",
   "es": "Velocidad rad/s",
-  "zh": "角速度 rad/s"
+  "zh": "角速度 rad/s",
+  "fr": "Vitesse rad/s",
+  "pt": "Velocidade rad/s",
+  "ja": "角速度 rad/s",
+  "ko": "속도 rad/s"
  },
  "Spin": {
   "de": "Drehung",
   "es": "Giro",
-  "zh": "旋转"
+  "zh": "旋转",
+  "fr": "Rotation",
+  "pt": "Giro",
+  "ja": "回転",
+  "ko": "회전"
  },
  "Spin automatically": {
   "de": "Automatisch drehen",
   "es": "Girar automáticamente",
-  "zh": "自动旋转"
+  "zh": "自动旋转",
+  "fr": "Tourner automatiquement",
+  "pt": "Girar automaticamente",
+  "ja": "自動で回す",
+  "ko": "저절로 돌리기"
  },
  "Split input on": {
   "de": "Eingabe trennen bei",
   "es": "Dividir la entrada por",
-  "zh": "按此拆分输入"
+  "zh": "按此拆分输入",
+  "fr": "Découper l'entrée sur",
+  "pt": "Dividir a entrada em",
+  "ja": "入力を区切る文字",
+  "ko": "입력을 나눌 기준"
  },
  "Split into subnets": {
   "de": "In Subnetze aufteilen",
   "es": "Dividir en subredes",
-  "zh": "划分子网"
+  "zh": "划分子网",
+  "fr": "Découper en sous-réseaux",
+  "pt": "Dividir em sub-redes",
+  "ja": "サブネットに分割",
+  "ko": "서브넷으로 나누기"
  },
  "Splitter": {
   "de": "Aufteiler",
   "es": "Divisor",
-  "zh": "分线器"
+  "zh": "分线器",
+  "fr": "Séparateur",
+  "pt": "Divisor",
+  "ja": "分岐",
+  "ko": "분배기"
  },
  "Spray can": {
   "de": "Sprühdose",
   "es": "Espray",
-  "zh": "喷枪"
+  "zh": "喷枪",
+  "fr": "Bombe aérosol",
+  "pt": "Spray",
+  "ja": "スプレー",
+  "ko": "스프레이"
  },
  "Spread": {
   "de": "Streuung",
   "es": "Dispersión",
-  "zh": "离散度"
+  "zh": "离散度",
+  "fr": "Dispersion",
+  "pt": "Dispersão",
+  "ja": "ばらつき",
+  "ko": "흩어짐"
  },
  "Spring": {
   "de": "Feder",
   "es": "Muelle",
-  "zh": "弹簧"
+  "zh": "弹簧",
+  "fr": "Ressort",
+  "pt": "Mola",
+  "ja": "ばね",
+  "ko": "용수철"
  },
  "Square": {
   "de": "Quadrat",
   "es": "Cuadrado",
-  "zh": "方形"
+  "zh": "方形",
+  "fr": "Carré",
+  "pt": "Quadrado",
+  "ja": "正方形",
+  "ko": "정사각형"
  },
  "Square it": {
   "de": "Quadratisch machen",
   "es": "Hacerlo cuadrado",
-  "zh": "改为正方形"
+  "zh": "改为正方形",
+  "fr": "Rendre carré",
+  "pt": "Deixar quadrado",
+  "ja": "正方形にする",
+  "ko": "정사각형으로"
  },
  "Stand up": {
   "de": "Stand-up",
   "es": "Stand-up",
-  "zh": "站会"
+  "zh": "站会",
+  "fr": "Redresser",
+  "pt": "Levantar",
+  "ja": "起こす",
+  "ko": "세우기"
  },
  "Star": {
   "de": "Stern",
   "es": "Estrella",
-  "zh": "星号"
+  "zh": "星号",
+  "fr": "Étoile",
+  "pt": "Estrela",
+  "ja": "星",
+  "ko": "별"
  },
  "Start an empty board": {
   "de": "Eine leere Platine beginnen",
   "es": "Empezar con un tablero vacío",
-  "zh": "新建一个空白电路板"
+  "zh": "新建一个空白电路板",
+  "fr": "Commencer avec un plateau vide",
+  "pt": "Começar com um quadro vazio",
+  "ja": "空の盤から始める",
+  "ko": "빈 판으로 시작하기"
  },
  "Start an empty scene": {
   "de": "Eine leere Szene beginnen",
   "es": "Empezar con una escena vacía",
-  "zh": "新建一个空白场景"
+  "zh": "新建一个空白场景",
+  "fr": "Commencer avec une scène vide",
+  "pt": "Começar com uma cena vazia",
+  "ja": "空のシーンから始める",
+  "ko": "빈 장면으로 시작하기"
  },
  "Start and duration in seconds": {
   "de": "Start und Dauer in Sekunden",
   "es": "Inicio y duración en segundos",
-  "zh": "起点与时长（秒）"
+  "zh": "起点与时长（秒）",
+  "fr": "Début et durée en secondes",
+  "pt": "Início e duração em segundos",
+  "ja": "開始位置と長さ (秒)",
+  "ko": "시작과 길이 (초)"
  },
  "Start listening": {
   "de": "Zuhören starten",
   "es": "Empezar a escuchar",
-  "zh": "开始聆听"
+  "zh": "开始聆听",
+  "fr": "Commencer à écouter",
+  "pt": "Começar a ouvir",
+  "ja": "聞き取りを開始",
+  "ko": "듣기 시작"
  },
  "Start test": {
   "de": "Test starten",
   "es": "Iniciar la prueba",
-  "zh": "开始测试"
+  "zh": "开始测试",
+  "fr": "Lancer le test",
+  "pt": "Iniciar o teste",
+  "ja": "測定を開始",
+  "ko": "검사 시작"
  },
  "Start typing...": {
   "de": "Losschreiben...",
   "es": "Empieza a escribir...",
-  "zh": "开始输入..."
+  "zh": "开始输入...",
+  "fr": "Commencez à taper...",
+  "pt": "Comece a digitar...",
+  "ja": "入力を始めてください...",
+  "ko": "입력을 시작하세요..."
  },
  "Start with \"Lorem ipsum dolor sit amet\"": {
   "de": "Mit \"Lorem ipsum dolor sit amet\" beginnen",
   "es": "Empezar con \"Lorem ipsum dolor sit amet\"",
-  "zh": "以 \"Lorem ipsum dolor sit amet\" 开头"
+  "zh": "以 \"Lorem ipsum dolor sit amet\" 开头",
+  "fr": "Commencer par « Lorem ipsum dolor sit amet »",
+  "pt": "Começar com \"Lorem ipsum dolor sit amet\"",
+  "ja": "「Lorem ipsum dolor sit amet」で始める",
+  "ko": "\"Lorem ipsum dolor sit amet\"로 시작하기"
  },
  "Starts": {
   "de": "Beginn",
   "es": "Empieza",
-  "zh": "开始"
+  "zh": "开始",
+  "fr": "Début",
+  "pt": "Começa",
+  "ja": "開始",
+  "ko": "시작"
  },
  "State": {
   "de": "Aggregatzustand",
   "es": "Estado",
-  "zh": "状态"
+  "zh": "状态",
+  "fr": "État",
+  "pt": "Estado",
+  "ja": "州",
+  "ko": "주"
  },
  "Status": {
   "de": "Status",
   "es": "Estado",
-  "zh": "状态"
+  "zh": "状态",
+  "fr": "Statut",
+  "pt": "Status",
+  "ja": "状態",
+  "ko": "상태"
  },
  "Step": {
   "de": "Einzelschritt",
   "es": "Paso",
-  "zh": "单步"
+  "zh": "单步",
+  "fr": "Pas",
+  "pt": "Passo",
+  "ja": "ステップ",
+  "ko": "단계"
  },
  "Step sequencer": {
   "de": "Step-Sequencer",
   "es": "Secuenciador de pasos",
-  "zh": "步进音序器"
+  "zh": "步进音序器",
+  "fr": "Séquenceur à pas",
+  "pt": "Sequenciador de passos",
+  "ja": "ステップシーケンサ",
+  "ko": "스텝 시퀀서"
  },
  "Stick dead zone": {
   "de": "Totzone des Sticks",
   "es": "Zona muerta del stick",
-  "zh": "摇杆死区"
+  "zh": "摇杆死区",
+  "fr": "Zone morte du stick",
+  "pt": "Zona morta do analógico",
+  "ja": "スティックのデッドゾーン",
+  "ko": "스틱 무반응 구간"
  },
  "Sticks": {
   "de": "Stabmodell",
   "es": "Varillas",
-  "zh": "棍状模型"
+  "zh": "棍状模型",
+  "fr": "Sticks",
+  "pt": "Analógicos",
+  "ja": "スティック",
+  "ko": "스틱"
  },
  "Stiffness": {
   "de": "Steifigkeit",
   "es": "Rigidez",
-  "zh": "刚度"
+  "zh": "刚度",
+  "fr": "Raideur",
+  "pt": "Rigidez",
+  "ja": "ばね定数",
+  "ko": "강성"
  },
  "Stop": {
   "de": "Stopp",
   "es": "Detener",
-  "zh": "停止"
+  "zh": "停止",
+  "fr": "Arrêter",
+  "pt": "Parar",
+  "ja": "停止",
+  "ko": "멈추기"
  },
  "Stopwatch": {
   "de": "Stoppuhr",
   "es": "Cronómetro",
-  "zh": "秒表"
+  "zh": "秒表",
+  "fr": "Chronomètre",
+  "pt": "Cronômetro",
+  "ja": "ストップウォッチ",
+  "ko": "스톱워치"
  },
  "Storage": {
   "de": "Speicher",
   "es": "Almacenamiento",
-  "zh": "存储"
+  "zh": "存储",
+  "fr": "Stockage",
+  "pt": "Armazenamento",
+  "ja": "ストレージ",
+  "ko": "저장 공간"
  },
  "Storage estimate": {
   "de": "Speicherschätzung",
   "es": "Estimación de almacenamiento",
-  "zh": "存储估算"
+  "zh": "存储估算",
+  "fr": "Estimation du stockage",
+  "pt": "Estimativa de armazenamento",
+  "ja": "ストレージの見積もり",
+  "ko": "저장 공간 추정"
  },
  "Straighten": {
   "de": "Begradigen",
   "es": "Enderezar",
-  "zh": "拉直"
+  "zh": "拉直",
+  "fr": "Redresser",
+  "pt": "Endireitar",
+  "ja": "まっすぐにする",
+  "ko": "곧게 펴기"
  },
  "Street address": {
   "de": "Straße und Hausnummer",
   "es": "Dirección",
-  "zh": "街道地址"
+  "zh": "街道地址",
+  "fr": "Adresse",
+  "pt": "Endereço",
+  "ja": "番地",
+  "ko": "주소"
  },
  "Strength": {
   "de": "Stärke",
   "es": "Fuerza",
-  "zh": "强度"
+  "zh": "强度",
+  "fr": "Force",
+  "pt": "Força",
+  "ja": "強さ",
+  "ko": "세기"
  },
  "Strip all styling": {
   "de": "Alle Stile entfernen",
   "es": "Quitar todos los estilos",
-  "zh": "清除全部样式"
+  "zh": "清除全部样式",
+  "fr": "Retirer toute la mise en forme",
+  "pt": "Remover toda a estilização",
+  "ja": "すべてのスタイルを取り除く",
+  "ko": "모든 꾸밈 없애기"
  },
  "Strip everything": {
   "de": "Alles entfernen",
   "es": "Quitar todo",
-  "zh": "清除全部"
+  "zh": "清除全部",
+  "fr": "Tout retirer",
+  "pt": "Remover tudo",
+  "ja": "すべて取り除く",
+  "ko": "모두 없애기"
  },
  "Strip symbols": {
   "de": "Sonderzeichen entfernen",
   "es": "Quitar los símbolos",
-  "zh": "去除符号"
+  "zh": "去除符号",
+  "fr": "Retirer les symboles",
+  "pt": "Remover os símbolos",
+  "ja": "記号を取り除く",
+  "ko": "기호 없애기"
  },
  "Stroke": {
   "de": "Kontur",
   "es": "Trazo",
-  "zh": "描边"
+  "zh": "描边",
+  "fr": "Contour",
+  "pt": "Traço",
+  "ja": "線",
+  "ko": "선"
  },
  "Stroke none": {
   "de": "Keine Kontur",
   "es": "Sin trazo",
-  "zh": "无描边"
+  "zh": "无描边",
+  "fr": "Sans contour",
+  "pt": "Sem traço",
+  "ja": "線なし",
+  "ko": "선 없음"
  },
  "Stroke width": {
   "de": "Konturstärke",
   "es": "Grosor del trazo",
-  "zh": "描边宽度"
+  "zh": "描边宽度",
+  "fr": "Épaisseur du contour",
+  "pt": "Espessura do traço",
+  "ja": "線の太さ",
+  "ko": "선 두께"
  },
  "Strong": {
   "de": "Stark",
   "es": "Fuerte",
-  "zh": "强"
+  "zh": "强",
+  "fr": "Fort",
+  "pt": "Forte",
+  "ja": "強い",
+  "ko": "강함"
  },
  "Style": {
   "de": "Stil",
   "es": "Estilo",
-  "zh": "样式"
+  "zh": "样式",
+  "fr": "Style",
+  "pt": "Estilo",
+  "ja": "スタイル",
+  "ko": "스타일"
  },
  "Subject": {
   "de": "Betreff",
   "es": "Asunto",
-  "zh": "主题"
+  "zh": "主题",
+  "fr": "Sujet",
+  "pt": "Assunto",
+  "ja": "サブジェクト",
+  "ko": "주체"
  },
  "Subnet mask": {
   "de": "Subnetzmaske",
   "es": "Máscara de subred",
-  "zh": "子网掩码"
+  "zh": "子网掩码",
+  "fr": "Masque de sous-réseau",
+  "pt": "Máscara de sub-rede",
+  "ja": "サブネットマスク",
+  "ko": "서브넷 마스크"
  },
  "Subprotocol": {
   "de": "Subprotokoll",
   "es": "Subprotocolo",
-  "zh": "子协议"
+  "zh": "子协议",
+  "fr": "Sous-protocole",
+  "pt": "Subprotocolo",
+  "ja": "サブプロトコル",
+  "ko": "하위 프로토콜"
  },
  "Subscribe": {
   "de": "Abonnieren",
   "es": "Suscribirse",
-  "zh": "订阅"
+  "zh": "订阅",
+  "fr": "S'abonner",
+  "pt": "Assinar",
+  "ja": "購読",
+  "ko": "구독"
  },
  "Subscribe automatically": {
   "de": "Automatisch abonnieren",
   "es": "Suscribirse automáticamente",
-  "zh": "自动订阅"
+  "zh": "自动订阅",
+  "fr": "S'abonner automatiquement",
+  "pt": "Assinar automaticamente",
+  "ja": "自動で購読する",
+  "ko": "저절로 구독하기"
  },
  "Subscriptions": {
   "de": "Abonnements",
   "es": "Suscripciones",
-  "zh": "订阅"
+  "zh": "订阅",
+  "fr": "Abonnements",
+  "pt": "Assinaturas",
+  "ja": "購読",
+  "ko": "구독"
  },
  "Subtract": {
   "de": "Abziehen",
   "es": "Restar",
-  "zh": "相减"
+  "zh": "相减",
+  "fr": "Soustraire",
+  "pt": "Subtrair",
+  "ja": "引く",
+  "ko": "빼기"
  },
  "Suffix": {
   "de": "Suffix",
   "es": "Sufijo",
-  "zh": "后缀"
+  "zh": "后缀",
+  "fr": "Suffixe",
+  "pt": "Sufixo",
+  "ja": "接尾辞",
+  "ko": "접미사"
  },
  "Sum": {
   "de": "Summe",
   "es": "Suma",
-  "zh": "总和"
+  "zh": "总和",
+  "fr": "Somme",
+  "pt": "Soma",
+  "ja": "合計",
+  "ko": "합"
  },
  "Summarise": {
   "de": "Zusammenfassen",
   "es": "Resumir",
-  "zh": "摘要"
+  "zh": "摘要",
+  "fr": "Résumer",
+  "pt": "Resumir",
+  "ja": "要約",
+  "ko": "요약"
  },
  "Sunday": {
   "de": "Sonntag",
   "es": "Domingo",
-  "zh": "星期日"
+  "zh": "星期日",
+  "fr": "Dimanche",
+  "pt": "Domingo",
+  "ja": "日曜日",
+  "ko": "일요일"
  },
  "Supports + − × ÷ ^ % !, functions and constants": {
   "de": "Unterstützt + − × ÷ ^ % !, Funktionen und Konstanten",
   "es": "Admite + − × ÷ ^ % !, funciones y constantes",
-  "zh": "支持 + − × ÷ ^ % !、函数与常量"
+  "zh": "支持 + − × ÷ ^ % !、函数与常量",
+  "fr": "Prend en charge + − × ÷ ^ % !, les fonctions et les constantes",
+  "pt": "Aceita + − × ÷ ^ % !, funções e constantes",
+  "ja": "+ − × ÷ ^ % !、関数、定数に対応",
+  "ko": "+ − × ÷ ^ % !, 함수와 상수를 지원합니다"
  },
  "Swap": {
   "de": "Tauschen",
   "es": "Intercambiar",
-  "zh": "交换"
+  "zh": "交换",
+  "fr": "Échanger",
+  "pt": "Trocar",
+  "ja": "入れ替え",
+  "ko": "바꾸기"
  },
  "Swap languages": {
   "de": "Sprachen tauschen",
   "es": "Intercambiar idiomas",
-  "zh": "交换语言"
+  "zh": "交换语言",
+  "fr": "Échanger les langues",
+  "pt": "Trocar os idiomas",
+  "ja": "言語を入れ替え",
+  "ko": "언어 바꾸기"
  },
  "Swap the two colours": {
   "de": "Die beiden Farben tauschen",
   "es": "Intercambiar los dos colores",
-  "zh": "交换两种颜色"
+  "zh": "交换两种颜色",
+  "fr": "Échanger les deux couleurs",
+  "pt": "Trocar as duas cores",
+  "ja": "2 色を入れ替え",
+  "ko": "두 색 바꾸기"
  },
  "Swap ⇅": {
   "de": "Tauschen ⇅",
   "es": "Intercambiar ⇅",
-  "zh": "交换 ⇅"
+  "zh": "交换 ⇅",
+  "fr": "Échanger ⇅",
+  "pt": "Trocar ⇅",
+  "ja": "入れ替え ⇅",
+  "ko": "바꾸기 ⇅"
  },
  "Swift / Android": {
   "de": "Swift / Android",
@@ -11857,47 +13033,83 @@
  "Swing": {
   "de": "Schwingen",
   "es": "Balanceo",
-  "zh": "摆动"
+  "zh": "摆动",
+  "fr": "Swing",
+  "pt": "Swing",
+  "ja": "スウィング",
+  "ko": "스윙"
  },
  "Switch": {
   "de": "Schalter",
   "es": "Interruptor",
-  "zh": "开关"
+  "zh": "开关",
+  "fr": "Interrupteur",
+  "pt": "Interruptor",
+  "ja": "スイッチ",
+  "ko": "스위치"
  },
  "Symbol": {
   "de": "Symbol",
   "es": "Símbolo",
-  "zh": "代码"
+  "zh": "代码",
+  "fr": "Symbole",
+  "pt": "Símbolo",
+  "ja": "記号",
+  "ko": "기호"
  },
  "Symbols": {
   "de": "Symbole",
   "es": "Símbolos",
-  "zh": "符号"
+  "zh": "符号",
+  "fr": "Symboles",
+  "pt": "Símbolos",
+  "ja": "記号",
+  "ko": "기호"
  },
  "System": {
   "de": "System",
   "es": "Sistema",
-  "zh": "系统"
+  "zh": "系统",
+  "fr": "Système",
+  "pt": "Sistema",
+  "ja": "システム",
+  "ko": "시스템"
  },
  "System prompt": {
   "de": "System-Prompt",
   "es": "Prompt del sistema",
-  "zh": "系统提示词"
+  "zh": "系统提示词",
+  "fr": "Consigne système",
+  "pt": "Prompt de sistema",
+  "ja": "システムプロンプト",
+  "ko": "시스템 프롬프트"
  },
  "T flip-flop": {
   "de": "T-Flipflop",
   "es": "Biestable T",
-  "zh": "T 触发器"
+  "zh": "T 触发器",
+  "fr": "Bascule T",
+  "pt": "Flip-flop T",
+  "ja": "T フリップフロップ",
+  "ko": "T 플립플롭"
  },
  "T-Rex Run": {
   "de": "T-Rex-Lauf",
   "es": "Carrera del T-Rex",
-  "zh": "恐龙快跑"
+  "zh": "恐龙快跑",
+  "fr": "Course du T-Rex",
+  "pt": "Corrida do T-Rex",
+  "ja": "恐竜ラン",
+  "ko": "티렉스 달리기"
  },
  "T-Rex runner": {
   "de": "T-Rex-Runner",
   "es": "Corredor T-Rex",
-  "zh": "恐龙跑酷"
+  "zh": "恐龙跑酷",
+  "fr": "Coureur T-Rex",
+  "pt": "Corredor T-Rex",
+  "ja": "恐竜ランナー",
+  "ko": "티렉스 러너"
  },
  "TOOLBOX": {
   "de": "TOOLBOX",
@@ -11920,52 +13132,92 @@
  "Tab": {
   "de": "Tabulator",
   "es": "Tabulación",
-  "zh": "制表符"
+  "zh": "制表符",
+  "fr": "Tabulation",
+  "pt": "Tabulação",
+  "ja": "タブ",
+  "ko": "탭"
  },
  "Tag": {
   "de": "Tag",
   "es": "Etiqueta",
-  "zh": "标签"
+  "zh": "标签",
+  "fr": "Balise",
+  "pt": "Tag",
+  "ja": "タグ",
+  "ko": "태그"
  },
  "Tailwind config": {
   "de": "Tailwind-Konfiguration",
   "es": "Configuración de Tailwind",
-  "zh": "Tailwind 配置"
+  "zh": "Tailwind 配置",
+  "fr": "Configuration Tailwind",
+  "pt": "Configuração do Tailwind",
+  "ja": "Tailwind の設定",
+  "ko": "Tailwind 설정"
  },
  "Target language": {
   "de": "Zielsprache",
   "es": "Idioma de destino",
-  "zh": "目标语言"
+  "zh": "目标语言",
+  "fr": "Langue cible",
+  "pt": "Idioma de destino",
+  "ja": "翻訳先の言語",
+  "ko": "대상 언어"
  },
  "Team": {
   "de": "Team",
   "es": "Equipo",
-  "zh": "团队"
+  "zh": "团队",
+  "fr": "Équipe",
+  "pt": "Equipe",
+  "ja": "チーム",
+  "ko": "팀"
  },
  "Team standup": {
   "de": "Team-Standup",
   "es": "Reunión del equipo",
-  "zh": "团队站会"
+  "zh": "团队站会",
+  "fr": "Point d'équipe",
+  "pt": "Reunião rápida da equipe",
+  "ja": "チームの朝会",
+  "ko": "팀 스탠드업"
  },
  "Technical": {
   "de": "Technisch",
   "es": "Técnicos",
-  "zh": "技术符号"
+  "zh": "技术符号",
+  "fr": "Technique",
+  "pt": "Técnico",
+  "ja": "技術的",
+  "ko": "기술적"
  },
  "Teeth": {
   "de": "Zähne",
   "es": "Dientes",
-  "zh": "齿数"
+  "zh": "齿数",
+  "fr": "Dents",
+  "pt": "Dentes",
+  "ja": "歯数",
+  "ko": "이 수"
  },
  "Temperature": {
   "de": "Temperatur",
   "es": "Temperatura",
-  "zh": "温度"
+  "zh": "温度",
+  "fr": "Température",
+  "pt": "Temperatura",
+  "ja": "温度",
+  "ko": "온도"
  },
  "Temperature unit": {
   "de": "Temperatureinheit",
   "es": "Unidad de temperatura",
-  "zh": "温度单位"
+  "zh": "温度单位",
+  "fr": "Unité de température",
+  "pt": "Unidade de temperatura",
+  "ja": "温度の単位",
+  "ko": "온도 단위"
  },
  "Tempo": {
   "de": "Tempo",
@@ -11979,132 +13231,236 @@
  "Test against": {
   "de": "Testen mit",
   "es": "Probar con",
-  "zh": "用于测试"
+  "zh": "用于测试",
+  "fr": "Tester contre",
+  "pt": "Testar contra",
+  "ja": "照合する対象",
+  "ko": "시험할 대상"
  },
  "Test rumble": {
   "de": "Vibration testen",
   "es": "Probar la vibración",
-  "zh": "测试震动"
+  "zh": "测试震动",
+  "fr": "Tester la vibration",
+  "pt": "Testar a vibração",
+  "ja": "振動を試す",
+  "ko": "진동 시험"
  },
  "Test server": {
   "de": "Testserver",
   "es": "Servidor de prueba",
-  "zh": "测试服务器"
+  "zh": "测试服务器",
+  "fr": "Serveur de test",
+  "pt": "Servidor de teste",
+  "ja": "テストサーバー",
+  "ko": "시험 서버"
  },
  "Test string": {
   "de": "Testtext",
   "es": "Cadena de prueba",
-  "zh": "测试字符串"
+  "zh": "测试字符串",
+  "fr": "Chaîne de test",
+  "pt": "Texto de teste",
+  "ja": "テスト文字列",
+  "ko": "시험 문자열"
  },
  "Text": {
   "de": "Text",
   "es": "Texto",
-  "zh": "文本"
+  "zh": "文本",
+  "fr": "Texte",
+  "pt": "Texto",
+  "ja": "テキスト",
+  "ko": "텍스트"
  },
  "Text banner": {
   "de": "Textbanner",
   "es": "Banner de texto",
-  "zh": "文字横幅"
+  "zh": "文字横幅",
+  "fr": "Bannière de texte",
+  "pt": "Banner de texto",
+  "ja": "文字バナー",
+  "ko": "글자 배너"
  },
  "Text is pulled from the PDF's own text layer. Scanned pages hold pictures, not letters, so they come out empty.": {
   "de": "Der Text stammt aus der Textebene des PDFs. Gescannte Seiten enthalten Bilder statt Buchstaben und bleiben deshalb leer.",
   "es": "El texto se extrae de la propia capa de texto del PDF. Las páginas escaneadas contienen imágenes, no letras, así que salen vacías.",
-  "zh": "文本取自 PDF 自带的文本层。扫描页里是图像而不是文字，因此会是空的。"
+  "zh": "文本取自 PDF 自带的文本层。扫描页里是图像而不是文字，因此会是空的。",
+  "fr": "Le texte est tiré de la couche texte du PDF. Les pages scannées contiennent des images, pas des lettres, elles ressortent donc vides.",
+  "pt": "O texto é extraído da própria camada de texto do PDF. Páginas digitalizadas guardam imagens, não letras, então saem vazias.",
+  "ja": "テキストは PDF 自身のテキストレイヤーから取り出します。スキャンされたページは文字ではなく画像なので、何も取り出せません。",
+  "ko": "글은 PDF 자체의 텍스트 층에서 가져옵니다. 스캔한 쪽은 글자가 아니라 그림이라 비어 나옵니다."
  },
  "Text or URL": {
   "de": "Text oder URL",
   "es": "Texto o URL",
-  "zh": "文本或网址"
+  "zh": "文本或网址",
+  "fr": "Texte ou URL",
+  "pt": "Texto ou URL",
+  "ja": "テキストまたは URL",
+  "ko": "글 또는 URL"
  },
  "Text to encrypt": {
   "de": "Zu verschlüsselnder Text",
   "es": "Texto para cifrar",
-  "zh": "要加密的文本"
+  "zh": "要加密的文本",
+  "fr": "Texte à chiffrer",
+  "pt": "Texto a criptografar",
+  "ja": "暗号化するテキスト",
+  "ko": "암호화할 글"
  },
  "That file is not a JPEG": {
   "de": "Diese Datei ist kein JPEG",
   "es": "Ese archivo no es un JPEG",
-  "zh": "该文件不是 JPEG"
+  "zh": "该文件不是 JPEG",
+  "fr": "Ce fichier n'est pas un JPEG",
+  "pt": "Esse arquivo não é um JPEG",
+  "ja": "そのファイルは JPEG ではありません",
+  "ko": "그 파일은 JPEG가 아닙니다"
  },
  "That image could not be read": {
   "de": "Dieses Bild konnte nicht gelesen werden",
   "es": "No se ha podido leer esa imagen",
-  "zh": "无法读取该图片"
+  "zh": "无法读取该图片",
+  "fr": "Cette image n'a pas pu être lue",
+  "pt": "Não foi possível ler essa imagem",
+  "ja": "その画像は読み取れませんでした",
+  "ko": "그 이미지를 읽을 수 없었습니다"
  },
  "That is not valid SVG markup.": {
   "de": "Das ist kein gültiges SVG-Markup.",
   "es": "Eso no es marcado SVG válido.",
-  "zh": "这不是有效的 SVG 标记。"
+  "zh": "这不是有效的 SVG 标记。",
+  "fr": "Ce n'est pas du balisage SVG valide.",
+  "pt": "Isso não é uma marcação SVG válida.",
+  "ja": "正しい SVG のマークアップではありません。",
+  "ko": "올바른 SVG 마크업이 아닙니다."
  },
  "That leaves nothing behind.": {
   "de": "Dabei bleibt nichts übrig.",
   "es": "Así no queda nada.",
-  "zh": "这样什么都不会剩下。"
+  "zh": "这样什么都不会剩下。",
+  "fr": "Il ne reste rien.",
+  "pt": "Não sobra nada.",
+  "ja": "何も残りません。",
+  "ko": "아무것도 남지 않습니다."
  },
  "The YAML parser covers the common configuration subset: nested maps, lists and scalars.": {
   "de": "Der YAML-Parser deckt die übliche Konfigurationsuntermenge ab: verschachtelte Maps, Listen und Skalare.",
   "es": "El analizador YAML cubre el subconjunto habitual de configuración: mapas anidados, listas y escalares.",
-  "zh": "该 YAML 解析器覆盖常见的配置子集：嵌套映射、列表和标量。"
+  "zh": "该 YAML 解析器覆盖常见的配置子集：嵌套映射、列表和标量。",
+  "fr": "L'analyseur YAML couvre le sous-ensemble courant de configuration : cartes imbriquées, listes et scalaires.",
+  "pt": "O leitor de YAML cobre o subconjunto comum de configuração: mapas aninhados, listas e escalares.",
+  "ja": "YAML の解析は設定でよく使う範囲に対応します。入れ子のマップ、リスト、スカラーです。",
+  "ko": "YAML 해석기는 설정에서 흔히 쓰는 범위를 다룹니다. 중첩된 맵, 목록, 스칼라입니다."
  },
  "The address must start with ws:// or wss://": {
   "de": "Die Adresse muss mit ws:// oder wss:// beginnen",
   "es": "La dirección debe empezar por ws:// o wss://",
-  "zh": "地址必须以 ws:// 或 wss:// 开头"
+  "zh": "地址必须以 ws:// 或 wss:// 开头",
+  "fr": "L'adresse doit commencer par ws:// ou wss://",
+  "pt": "O endereço deve começar com ws:// ou wss://",
+  "ja": "アドレスは ws:// か wss:// で始める必要があります",
+  "ko": "주소는 ws:// 또는 wss:// 로 시작해야 합니다"
  },
  "The event QR carries these so a phone can add it to a calendar.": {
   "de": "Der Termin-QR trägt diese Angaben, damit ein Telefon ihn in einen Kalender eintragen kann.",
   "es": "El QR del evento lleva estos datos para que un móvil pueda añadirlo al calendario.",
-  "zh": "活动二维码携带这些信息，方便手机把它加入日历。"
+  "zh": "活动二维码携带这些信息，方便手机把它加入日历。",
+  "fr": "Le QR de l'événement les contient pour qu'un téléphone puisse l'ajouter à un calendrier.",
+  "pt": "O QR do evento leva estes dados para que um celular possa adicioná-lo a um calendário.",
+  "ja": "イベントの QR にこれらが入り、スマートフォンでカレンダーに追加できます。",
+  "ko": "행사 QR이 이 정보를 담아, 휴대폰이 달력에 넣을 수 있게 합니다."
  },
  "The last workspace cannot be deleted": {
   "de": "Der letzte Arbeitsbereich kann nicht gelöscht werden",
   "es": "No se puede eliminar el último espacio de trabajo",
-  "zh": "最后一个工作区无法删除"
+  "zh": "最后一个工作区无法删除",
+  "fr": "Le dernier espace de travail ne peut pas être supprimé",
+  "pt": "A última área de trabalho não pode ser excluída",
+  "ja": "最後のワークスペースは削除できません",
+  "ko": "마지막 작업 공간은 지울 수 없습니다"
  },
  "The same amount in other currencies": {
   "de": "Derselbe Betrag in anderen Währungen",
   "es": "La misma cantidad en otras monedas",
-  "zh": "相同金额换算成其他货币"
+  "zh": "相同金额换算成其他货币",
+  "fr": "Le même montant dans d'autres devises",
+  "pt": "O mesmo valor em outras moedas",
+  "ja": "同じ金額を他の通貨で",
+  "ko": "같은 금액을 다른 통화로"
  },
  "The solver could not settle. Check for shorted sources.": {
   "de": "Der Löser konnte sich nicht einpendeln. Auf kurzgeschlossene Quellen prüfen.",
   "es": "El solucionador no pudo estabilizarse. Comprueba si hay fuentes en cortocircuito.",
-  "zh": "求解器无法收敛。请检查是否有电源短路。"
+  "zh": "求解器无法收敛。请检查是否有电源短路。",
+  "fr": "Le solveur n'a pas convergé. Vérifiez les sources en court-circuit.",
+  "pt": "O solucionador não convergiu. Verifique se há fontes em curto.",
+  "ja": "ソルバが収束しませんでした。電源の短絡を確認してください。",
+  "ko": "풀이가 수렴하지 않았습니다. 전원이 단락되었는지 확인하세요."
  },
  "The timer keeps running while other apps are open.": {
   "de": "Der Timer läuft weiter, während andere Apps geöffnet sind.",
   "es": "El temporizador sigue corriendo mientras hay otras apps abiertas.",
-  "zh": "打开其他应用时计时器会继续运行。"
+  "zh": "打开其他应用时计时器会继续运行。",
+  "fr": "Le minuteur continue de tourner quand d'autres apps sont ouvertes.",
+  "pt": "O temporizador continua correndo enquanto outros apps estão abertos.",
+  "ja": "他のアプリを開いていてもタイマーは動き続けます。",
+  "ko": "다른 앱을 열어 두어도 타이머는 계속 갑니다."
  },
  "The translation appears here.": {
   "de": "Die Übersetzung erscheint hier.",
   "es": "La traducción aparece aquí.",
-  "zh": "译文会显示在这里。"
+  "zh": "译文会显示在这里。",
+  "fr": "La traduction apparaît ici.",
+  "pt": "A tradução aparece aqui.",
+  "ja": "訳文がここに表示されます。",
+  "ko": "번역이 여기에 나옵니다."
  },
  "Theme": {
   "de": "Farbthema",
   "es": "Tema",
-  "zh": "主题"
+  "zh": "主题",
+  "fr": "Thème",
+  "pt": "Tema",
+  "ja": "テーマ",
+  "ko": "테마"
  },
  "Theme colour": {
   "de": "Themenfarbe",
   "es": "Color del tema",
-  "zh": "主题色"
+  "zh": "主题色",
+  "fr": "Couleur du thème",
+  "pt": "Cor do tema",
+  "ja": "テーマカラー",
+  "ko": "테마 색"
  },
  "This browser blocked the clipboard write": {
   "de": "Dieser Browser hat das Schreiben in die Zwischenablage blockiert",
   "es": "Este navegador ha bloqueado la escritura en el portapapeles",
-  "zh": "此浏览器阻止了写入剪贴板"
+  "zh": "此浏览器阻止了写入剪贴板",
+  "fr": "Ce navigateur a bloqué l'écriture dans le presse-papiers",
+  "pt": "Este navegador bloqueou a escrita na área de transferência",
+  "ja": "このブラウザはクリップボードへの書き込みを拒みました",
+  "ko": "이 브라우저가 클립보드 쓰기를 막았습니다"
  },
  "This document has no top level shapes.": {
   "de": "Dieses Dokument hat keine Formen auf oberster Ebene.",
   "es": "Este documento no tiene formas de primer nivel.",
-  "zh": "此文档没有顶层图形。"
+  "zh": "此文档没有顶层图形。",
+  "fr": "Ce document n'a pas de formes de premier niveau.",
+  "pt": "Este documento não tem formas de nível superior.",
+  "ja": "この文書には最上位の図形がありません。",
+  "ko": "이 문서에는 최상위 도형이 없습니다."
  },
  "This server": {
   "de": "Dieser Server",
   "es": "Este servidor",
-  "zh": "本服务器"
+  "zh": "本服务器",
+  "fr": "Ce serveur",
+  "pt": "Este servidor",
+  "ja": "このサーバー",
+  "ko": "이 서버"
  },
  "Those shapes do not touch, so there is nothing to merge.": {
   "de": "Diese Formen berühren sich nicht, es gibt also nichts zu vereinen.",
@@ -12114,107 +13470,191 @@
  "Tick at least one file first": {
   "de": "Zuerst mindestens eine Datei anhaken",
   "es": "Marca al menos un archivo primero",
-  "zh": "请先勾选至少一个文件"
+  "zh": "请先勾选至少一个文件",
+  "fr": "Cochez d'abord au moins un fichier",
+  "pt": "Marque ao menos um arquivo primeiro",
+  "ja": "先にファイルを 1 つ以上チェックしてください",
+  "ko": "먼저 파일을 하나 이상 체크하세요"
  },
  "Tick the limits you want in front of the key": {
   "de": "Die gewünschten Einschränkungen vor dem Schlüssel ankreuzen",
   "es": "Marca las restricciones que quieras poner delante de la clave",
-  "zh": "勾选你想加在密钥前面的限制项"
+  "zh": "勾选你想加在密钥前面的限制项",
+  "fr": "Cochez les restrictions à placer devant la clé",
+  "pt": "Marque os limites que você quer antes da chave",
+  "ja": "鍵の前に置きたい制限にチェックを入れてください",
+  "ko": "키 앞에 둘 제한을 체크하세요"
  },
  "Ticks per second": {
   "de": "Takte pro Sekunde",
   "es": "Pulsos por segundo",
-  "zh": "每秒节拍数"
+  "zh": "每秒节拍数",
+  "fr": "Pas par seconde",
+  "pt": "Passos por segundo",
+  "ja": "1 秒あたりのステップ数",
+  "ko": "초당 틱 수"
  },
  "Tidy": {
   "de": "Aufräumen",
   "es": "Ordenar",
-  "zh": "整理"
+  "zh": "整理",
+  "fr": "Ranger",
+  "pt": "Arrumar",
+  "ja": "整える",
+  "ko": "정돈"
  },
  "Time": {
   "de": "Zeit",
   "es": "Hora",
-  "zh": "时间"
+  "zh": "时间",
+  "fr": "Heure",
+  "pt": "Hora",
+  "ja": "時刻",
+  "ko": "시간"
  },
  "Time base": {
   "de": "Zeitbasis",
   "es": "Base de tiempo",
-  "zh": "时基"
+  "zh": "时基",
+  "fr": "Base de temps",
+  "pt": "Base de tempo",
+  "ja": "時間軸",
+  "ko": "시간축"
  },
  "Time step (µs)": {
   "de": "Zeitschritt (µs)",
   "es": "Paso de tiempo (µs)",
-  "zh": "时间步长（µs）"
+  "zh": "时间步长（µs）",
+  "fr": "Pas de temps (µs)",
+  "pt": "Passo de tempo (µs)",
+  "ja": "時間刻み (µs)",
+  "ko": "시간 간격 (µs)"
  },
  "Time to crack": {
   "de": "Zeit zum Knacken",
   "es": "Tiempo para descifrarla",
-  "zh": "破解所需时间"
+  "zh": "破解所需时间",
+  "fr": "Temps pour la casser",
+  "pt": "Tempo para quebrar",
+  "ja": "解読までの時間",
+  "ko": "깨는 데 걸리는 시간"
  },
  "Timeline": {
   "de": "Zeitverlauf",
   "es": "Cronología",
-  "zh": "时间线"
+  "zh": "时间线",
+  "fr": "Chronologie",
+  "pt": "Linha do tempo",
+  "ja": "タイムライン",
+  "ko": "타임라인"
  },
  "Timer": {
   "de": "Timer",
   "es": "Temporizador",
-  "zh": "计时器"
+  "zh": "计时器",
+  "fr": "Minuteur",
+  "pt": "Temporizador",
+  "ja": "タイマー",
+  "ko": "타이머"
  },
  "Timezone": {
   "de": "Zeitzone",
   "es": "Zona horaria",
-  "zh": "时区"
+  "zh": "时区",
+  "fr": "Fuseau horaire",
+  "pt": "Fuso horário",
+  "ja": "タイムゾーン",
+  "ko": "시간대"
  },
  "Timing curve": {
   "de": "Zeitkurve",
   "es": "Curva de tiempo",
-  "zh": "时间曲线"
+  "zh": "时间曲线",
+  "fr": "Courbe de temporisation",
+  "pt": "Curva de tempo",
+  "ja": "タイミング曲線",
+  "ko": "타이밍 곡선"
  },
  "Tints and shades": {
   "de": "Aufhellungen und Abdunklungen",
   "es": "Tintes y sombras",
-  "zh": "明暗色阶"
+  "zh": "明暗色阶",
+  "fr": "Teintes et nuances",
+  "pt": "Tons claros e escuros",
+  "ja": "明色と暗色",
+  "ko": "밝은 색과 어두운 색"
  },
  "Title": {
   "de": "Titel",
   "es": "Título",
-  "zh": "标题"
+  "zh": "标题",
+  "fr": "Titre",
+  "pt": "Título",
+  "ja": "タイトル",
+  "ko": "제목"
  },
  "Title Case": {
   "de": "Titel Schreibweise",
   "es": "Tipo Título",
-  "zh": "标题大写"
+  "zh": "标题大写",
+  "fr": "Casse de titre",
+  "pt": "Iniciais Maiúsculas",
+  "ja": "各語頭を大文字",
+  "ko": "단어마다 첫 글자 대문자"
  },
  "Titles from filenames": {
   "de": "Titel aus Dateinamen",
   "es": "Títulos a partir de los nombres de archivo",
-  "zh": "用文件名作为标题"
+  "zh": "用文件名作为标题",
+  "fr": "Titres depuis les noms de fichiers",
+  "pt": "Títulos a partir dos nomes dos arquivos",
+  "ja": "ファイル名から曲名を取る",
+  "ko": "파일 이름에서 제목 가져오기"
  },
  "To": {
   "de": "An",
   "es": "Para",
-  "zh": "收件人"
+  "zh": "收件人",
+  "fr": "Vers",
+  "pt": "Para",
+  "ja": "変換先",
+  "ko": "대상"
  },
  "To bullets": {
   "de": "In Stichpunkte",
   "es": "A viñetas",
-  "zh": "转为要点"
+  "zh": "转为要点",
+  "fr": "En puces",
+  "pt": "Para marcadores",
+  "ja": "箇条書きに",
+  "ko": "글머리 기호로"
  },
  "To images": {
   "de": "Zu Bildern",
   "es": "A imágenes",
-  "zh": "转为图片"
+  "zh": "转为图片",
+  "fr": "En images",
+  "pt": "Para imagens",
+  "ja": "画像に",
+  "ko": "이미지로"
  },
  "To text": {
   "de": "Zu Text",
   "es": "A texto",
-  "zh": "转为文本"
+  "zh": "转为文本",
+  "fr": "En texte",
+  "pt": "Para texto",
+  "ja": "テキストに",
+  "ko": "글로"
  },
  "Today": {
   "de": "Heute",
   "es": "Hoy",
-  "zh": "今天"
+  "zh": "今天",
+  "fr": "Aujourd'hui",
+  "pt": "Hoje",
+  "ja": "今日",
+  "ko": "오늘"
  },
  "Token": {
   "de": "Token",
@@ -12237,42 +13677,74 @@
  "Tools installed": {
   "de": "Installierte Werkzeuge",
   "es": "Herramientas instaladas",
-  "zh": "已安装的工具"
+  "zh": "已安装的工具",
+  "fr": "Outils installés",
+  "pt": "Ferramentas instaladas",
+  "ja": "導入済みのツール",
+  "ko": "설치한 도구"
  },
  "Top": {
   "de": "Oben",
   "es": "Arriba",
-  "zh": "顶部"
+  "zh": "顶部",
+  "fr": "Haut",
+  "pt": "Topo",
+  "ja": "上",
+  "ko": "위"
  },
  "Top left": {
   "de": "Oben links",
   "es": "Arriba a la izquierda",
-  "zh": "左上"
+  "zh": "左上",
+  "fr": "En haut à gauche",
+  "pt": "Superior esquerdo",
+  "ja": "左上",
+  "ko": "왼쪽 위"
  },
  "Top right": {
   "de": "Oben rechts",
   "es": "Arriba a la derecha",
-  "zh": "右上"
+  "zh": "右上",
+  "fr": "En haut à droite",
+  "pt": "Superior direito",
+  "ja": "右上",
+  "ko": "오른쪽 위"
  },
  "Total addresses": {
   "de": "Adressen gesamt",
   "es": "Direcciones totales",
-  "zh": "地址总数"
+  "zh": "地址总数",
+  "fr": "Adresses au total",
+  "pt": "Total de endereços",
+  "ja": "アドレス総数",
+  "ko": "전체 주소 수"
  },
  "Total return": {
   "de": "Gesamtrendite",
   "es": "Rentabilidad total",
-  "zh": "总收益率"
+  "zh": "总收益率",
+  "fr": "Rendement total",
+  "pt": "Retorno total",
+  "ja": "トータルリターン",
+  "ko": "총수익"
  },
  "Trace the selected body": {
   "de": "Spur des gewählten Körpers zeichnen",
   "es": "Trazar el cuerpo seleccionado",
-  "zh": "绘制所选物体的轨迹"
+  "zh": "绘制所选物体的轨迹",
+  "fr": "Tracer le corps sélectionné",
+  "pt": "Traçar o corpo selecionado",
+  "ja": "選択した物体の軌跡を描く",
+  "ko": "고른 물체의 자취 그리기"
  },
  "Track": {
   "de": "Titel",
   "es": "Pista",
-  "zh": "音轨"
+  "zh": "音轨",
+  "fr": "Piste",
+  "pt": "Faixa",
+  "ja": "トラック",
+  "ko": "트랙"
  },
  "Train-Case": {
   "de": "Train-Case",
@@ -12286,92 +13758,164 @@
  "Transcoding runs locally through WebAssembly. Large files take a while.": {
   "de": "Die Umwandlung läuft lokal über WebAssembly. Große Dateien dauern eine Weile.",
   "es": "La transcodificación se hace en local con WebAssembly. Los archivos grandes tardan un rato.",
-  "zh": "转码通过 WebAssembly 在本地进行，大文件需要一些时间。"
+  "zh": "转码通过 WebAssembly 在本地进行，大文件需要一些时间。",
+  "fr": "Le transcodage se fait localement via WebAssembly. Les gros fichiers prennent du temps.",
+  "pt": "A transcodificação roda localmente via WebAssembly. Arquivos grandes demoram.",
+  "ja": "変換は WebAssembly でローカルに行われます。大きなファイルは時間がかかります。",
+  "ko": "변환은 WebAssembly로 기기에서 이루어집니다. 큰 파일은 시간이 걸립니다."
  },
  "Transcription language": {
   "de": "Sprache der Transkription",
   "es": "Idioma de la transcripción",
-  "zh": "转写语言"
+  "zh": "转写语言",
+  "fr": "Langue de transcription",
+  "pt": "Idioma da transcrição",
+  "ja": "文字起こしの言語",
+  "ko": "받아쓰기 언어"
  },
  "Transform": {
   "de": "Transformieren",
   "es": "Transformar",
-  "zh": "变换"
+  "zh": "变换",
+  "fr": "Transformer",
+  "pt": "Transformar",
+  "ja": "変形",
+  "ko": "변형"
  },
  "Translate": {
   "de": "Übersetzen",
   "es": "Traducir",
-  "zh": "翻译"
+  "zh": "翻译",
+  "fr": "Traduire",
+  "pt": "Traduzir",
+  "ja": "翻訳",
+  "ko": "번역"
  },
  "Translate as I type": {
   "de": "Beim Tippen übersetzen",
   "es": "Traducir mientras escribo",
-  "zh": "边输入边翻译"
+  "zh": "边输入边翻译",
+  "fr": "Traduire au fil de la frappe",
+  "pt": "Traduzir enquanto digito",
+  "ja": "入力しながら翻訳する",
+  "ko": "입력하는 대로 번역하기"
  },
  "Translation": {
   "de": "Übersetzung",
   "es": "Traducción",
-  "zh": "翻译"
+  "zh": "翻译",
+  "fr": "Traduction",
+  "pt": "Tradução",
+  "ja": "訳文",
+  "ko": "번역"
  },
  "Transparent": {
   "de": "Transparent",
   "es": "Transparente",
-  "zh": "透明"
+  "zh": "透明",
+  "fr": "Transparent",
+  "pt": "Transparente",
+  "ja": "透明",
+  "ko": "투명"
  },
  "Travel": {
   "de": "Reisen",
   "es": "Viajes",
-  "zh": "旅行"
+  "zh": "旅行",
+  "fr": "Course",
+  "pt": "Curso",
+  "ja": "可動範囲",
+  "ko": "이동 범위"
  },
  "Trim": {
   "de": "Zuschneiden",
   "es": "Recortar",
-  "zh": "修剪"
+  "zh": "修剪",
+  "fr": "Rogner",
+  "pt": "Aparar",
+  "ja": "切り取る",
+  "ko": "잘라내기"
  },
  "Trim spaces, drop empty rows and duplicates": {
   "de": "Leerzeichen kürzen, leere Zeilen und Duplikate entfernen",
   "es": "Recortar espacios y quitar filas vacías y duplicadas",
-  "zh": "去除空格，删除空行与重复行"
+  "zh": "去除空格，删除空行与重复行",
+  "fr": "Supprimer les espaces, les lignes vides et les doublons",
+  "pt": "Remover espaços, linhas vazias e duplicatas",
+  "ja": "空白を詰め、空行と重複を取り除く",
+  "ko": "공백을 없애고 빈 행과 중복을 버리기"
  },
  "Trouble keys": {
   "de": "Problemtasten",
   "es": "Teclas problemáticas",
-  "zh": "易错键"
+  "zh": "易错键",
+  "fr": "Touches problématiques",
+  "pt": "Teclas problemáticas",
+  "ja": "苦手なキー",
+  "ko": "어려운 키"
  },
  "Truth table": {
   "de": "Wahrheitstabelle",
   "es": "Tabla de verdad",
-  "zh": "真值表"
+  "zh": "真值表",
+  "fr": "Table de vérité",
+  "pt": "Tabela verdade",
+  "ja": "真理値表",
+  "ko": "진리표"
  },
  "Try a code like 404 or a word like \"timeout\".": {
   "de": "Einen Code wie 404 oder ein Wort wie \"Timeout\" probieren.",
   "es": "Prueba con un código como 404 o una palabra como \"timeout\".",
-  "zh": "试试像 404 这样的状态码，或者像 timeout 这样的词。"
+  "zh": "试试像 404 这样的状态码，或者像 timeout 这样的词。",
+  "fr": "Essayez un code comme 404 ou un mot comme « timeout ».",
+  "pt": "Tente um código como 404 ou uma palavra como \"timeout\".",
+  "ja": "404 のようなコードや「timeout」のような語でお試しください。",
+  "ko": "404 같은 코드나 \"timeout\" 같은 낱말로 해 보세요."
  },
  "Try a sample": {
   "de": "Ein Beispiel probieren",
   "es": "Probar un ejemplo",
-  "zh": "试试示例"
+  "zh": "试试示例",
+  "fr": "Essayer un exemple",
+  "pt": "Experimentar um exemplo",
+  "ja": "サンプルを試す",
+  "ko": "예시 써 보기"
  },
  "Turn": {
   "de": "Drehen",
   "es": "Girar",
-  "zh": "转动"
+  "zh": "转动",
+  "fr": "Tourner",
+  "pt": "Girar",
+  "ja": "回す",
+  "ko": "돌리기"
  },
  "Turn off": {
   "de": "Ausschalten",
   "es": "Apagar",
-  "zh": "关闭"
+  "zh": "关闭",
+  "fr": "Éteindre",
+  "pt": "Desligar",
+  "ja": "切る",
+  "ko": "끄기"
  },
  "Turn on camera": {
   "de": "Kamera einschalten",
   "es": "Encender la cámara",
-  "zh": "打开摄像头"
+  "zh": "打开摄像头",
+  "fr": "Allumer la caméra",
+  "pt": "Ligar a câmera",
+  "ja": "カメラを入れる",
+  "ko": "카메라 켜기"
  },
  "Turn the selected body (R, shift R the other way)": {
   "de": "Den gewählten Körper drehen (R, Umschalt R andersherum)",
   "es": "Girar el cuerpo seleccionado (R, Mayús R al revés)",
-  "zh": "转动所选物体（R，Shift+R 反向）"
+  "zh": "转动所选物体（R，Shift+R 反向）",
+  "fr": "Faire tourner le corps sélectionné (R, maj R dans l'autre sens)",
+  "pt": "Girar o corpo selecionado (R, shift R no outro sentido)",
+  "ja": "選択した物体を回す (R、Shift+R で逆回り)",
+  "ko": "고른 물체를 돌리기 (R, Shift+R은 반대 방향)"
  },
  "Twelve Data": {
   "de": "Twelve Data",
@@ -12385,47 +13929,83 @@
  "Twice": {
   "de": "Zweimal",
   "es": "Dos veces",
-  "zh": "两次"
+  "zh": "两次",
+  "fr": "Deux fois",
+  "pt": "Duas vezes",
+  "ja": "2 回",
+  "ko": "두 번"
  },
  "Type": {
   "de": "Typ",
   "es": "Tipo",
-  "zh": "类型"
+  "zh": "类型",
+  "fr": "Type",
+  "pt": "Tipo",
+  "ja": "種類",
+  "ko": "종류"
  },
  "Type a command and press enter": {
   "de": "Einen Befehl eingeben und Eingabe drücken",
   "es": "Escribe un comando y pulsa intro",
-  "zh": "输入命令并按回车"
+  "zh": "输入命令并按回车",
+  "fr": "Tapez une commande et appuyez sur entrée",
+  "pt": "Digite um comando e aperte enter",
+  "ja": "コマンドを入力して Enter を押してください",
+  "ko": "명령을 치고 엔터를 누르세요"
  },
  "Type or paste a password": {
   "de": "Ein Passwort eingeben oder einfügen",
   "es": "Escribe o pega una contraseña",
-  "zh": "输入或粘贴一个密码"
+  "zh": "输入或粘贴一个密码",
+  "fr": "Tapez ou collez un mot de passe",
+  "pt": "Digite ou cole uma senha",
+  "ja": "パスワードを入力するか貼り付け",
+  "ko": "비밀번호를 치거나 붙여넣으세요"
  },
  "Type or paste text to translate": {
   "de": "Text zum Übersetzen eingeben oder einfügen",
   "es": "Escribe o pega el texto que quieras traducir",
-  "zh": "输入或粘贴要翻译的文本"
+  "zh": "输入或粘贴要翻译的文本",
+  "fr": "Tapez ou collez le texte à traduire",
+  "pt": "Digite ou cole o texto a traduzir",
+  "ja": "翻訳するテキストを入力するか貼り付け",
+  "ko": "번역할 글을 치거나 붙여넣으세요"
  },
  "Type text to encode": {
   "de": "Text zum Kodieren eingeben",
   "es": "Escribe el texto que quieras codificar",
-  "zh": "输入要编码的文本"
+  "zh": "输入要编码的文本",
+  "fr": "Tapez le texte à encoder",
+  "pt": "Digite o texto a codificar",
+  "ja": "符号化するテキストを入力",
+  "ko": "인코딩할 글을 치세요"
  },
  "Typeface": {
   "de": "Schriftart",
   "es": "Tipografía",
-  "zh": "字体"
+  "zh": "字体",
+  "fr": "Police",
+  "pt": "Tipografia",
+  "ja": "書体",
+  "ko": "서체"
  },
  "UPPER CASE": {
   "de": "GROSSSCHREIBUNG",
   "es": "MAYÚSCULAS",
-  "zh": "全部大写"
+  "zh": "全部大写",
+  "fr": "MAJUSCULES",
+  "pt": "CAIXA ALTA",
+  "ja": "大文字",
+  "ko": "대문자"
  },
  "URL encoded": {
   "de": "URL-kodiert",
   "es": "Codificado para URL",
-  "zh": "URL 编码"
+  "zh": "URL 编码",
+  "fr": "Encodé pour URL",
+  "pt": "Codificado para URL",
+  "ja": "URL 符号化",
+  "ko": "URL 인코딩"
  },
  "USD": {
   "de": "USD",
@@ -12466,22 +14046,38 @@
  "Ukulele": {
   "de": "Ukulele",
   "es": "Ukelele",
-  "zh": "尤克里里"
+  "zh": "尤克里里",
+  "fr": "Ukulélé",
+  "pt": "Ukulele",
+  "ja": "ウクレレ",
+  "ko": "우쿨렐레"
  },
  "Underscore (_)": {
   "de": "Unterstrich (_)",
   "es": "Guion bajo (_)",
-  "zh": "下划线 (_)"
+  "zh": "下划线 (_)",
+  "fr": "Tiret bas (_)",
+  "pt": "Sublinhado (_)",
+  "ja": "アンダースコア (_)",
+  "ko": "밑줄 (_)"
  },
  "Undo": {
   "de": "Rückgängig",
   "es": "Deshacer",
-  "zh": "撤销"
+  "zh": "撤销",
+  "fr": "Annuler",
+  "pt": "Desfazer",
+  "ja": "元に戻す",
+  "ko": "실행 취소"
  },
  "Unicast": {
   "de": "Unicast",
   "es": "Unidifusión",
-  "zh": "单播"
+  "zh": "单播",
+  "fr": "Monodiffusion",
+  "pt": "Unicast",
+  "ja": "ユニキャスト",
+  "ko": "유니캐스트"
  },
  "Unicode": {
   "de": "Unicode",
@@ -12495,167 +14091,299 @@
  "Unicode escapes": {
   "de": "Unicode-Escapes",
   "es": "Escapes Unicode",
-  "zh": "Unicode 转义"
+  "zh": "Unicode 转义",
+  "fr": "Échappements Unicode",
+  "pt": "Escapes Unicode",
+  "ja": "Unicode エスケープ",
+  "ko": "유니코드 이스케이프"
  },
  "Universally administered": {
   "de": "Universell vergeben",
   "es": "Administrada universalmente",
-  "zh": "全球管理"
+  "zh": "全球管理",
+  "fr": "Administré universellement",
+  "pt": "Administrado universalmente",
+  "ja": "グローバル管理",
+  "ko": "전역 관리"
  },
  "Unix milliseconds": {
   "de": "Unix-Millisekunden",
   "es": "Milisegundos Unix",
-  "zh": "Unix 毫秒"
+  "zh": "Unix 毫秒",
+  "fr": "Millisecondes Unix",
+  "pt": "Milissegundos Unix",
+  "ja": "Unix ミリ秒",
+  "ko": "유닉스 밀리초"
  },
  "Unix seconds": {
   "de": "Unix-Sekunden",
   "es": "Segundos Unix",
-  "zh": "Unix 秒"
+  "zh": "Unix 秒",
+  "fr": "Secondes Unix",
+  "pt": "Segundos Unix",
+  "ja": "Unix 秒",
+  "ko": "유닉스 초"
  },
  "Unix time": {
   "de": "Unix-Zeit",
   "es": "Tiempo Unix",
-  "zh": "Unix 时间"
+  "zh": "Unix 时间",
+  "fr": "Temps Unix",
+  "pt": "Tempo Unix",
+  "ja": "Unix 時刻",
+  "ko": "유닉스 시간"
  },
  "Untick a tag to drop it from the saved copy": {
   "de": "Ein Tag abwählen, um es aus der gespeicherten Kopie zu entfernen",
   "es": "Desmarca una etiqueta para quitarla de la copia guardada",
-  "zh": "取消勾选某个标签即可从保存的副本中移除它"
+  "zh": "取消勾选某个标签即可从保存的副本中移除它",
+  "fr": "Décochez une balise pour l'ôter de la copie enregistrée",
+  "pt": "Desmarque uma tag para tirá-la da cópia salva",
+  "ja": "チェックを外したタグは保存する控えから除かれます",
+  "ko": "체크를 풀면 그 태그는 저장할 사본에서 빠집니다"
  },
  "Upload Mbps": {
   "de": "Upload Mbit/s",
   "es": "Subida Mbps",
-  "zh": "上传 Mbps"
+  "zh": "上传 Mbps",
+  "fr": "Envoi Mbit/s",
+  "pt": "Upload Mbps",
+  "ja": "上り Mbps",
+  "ko": "올리기 Mbps"
  },
  "Uppercase": {
   "de": "Großbuchstaben",
   "es": "Mayúsculas",
-  "zh": "大写"
+  "zh": "大写",
+  "fr": "Majuscules",
+  "pt": "Maiúsculas",
+  "ja": "大文字",
+  "ko": "대문자"
  },
  "Uppercase keywords": {
   "de": "Schlüsselwörter in Großbuchstaben",
   "es": "Palabras clave en mayúsculas",
-  "zh": "关键字大写"
+  "zh": "关键字大写",
+  "fr": "Mots-clés en majuscules",
+  "pt": "Palavras-chave em maiúsculas",
+  "ja": "キーワードを大文字に",
+  "ko": "키워드를 대문자로"
  },
  "Usable hosts": {
   "de": "Nutzbare Hosts",
   "es": "Hosts utilizables",
-  "zh": "可用主机数"
+  "zh": "可用主机数",
+  "fr": "Hôtes utilisables",
+  "pt": "Hosts utilizáveis",
+  "ja": "利用できるホスト数",
+  "ko": "쓸 수 있는 호스트 수"
  },
  "Usage history cleared": {
   "de": "Nutzungsverlauf gelöscht",
   "es": "Historial de uso borrado",
-  "zh": "已清除使用记录"
+  "zh": "已清除使用记录",
+  "fr": "Historique d'utilisation effacé",
+  "pt": "Histórico de uso limpo",
+  "ja": "利用履歴を消しました",
+  "ko": "사용 기록을 지웠습니다"
  },
  "Use": {
   "de": "Verwenden",
   "es": "Usar",
-  "zh": "使用"
+  "zh": "使用",
+  "fr": "Utiliser",
+  "pt": "Usar",
+  "ja": "使う",
+  "ko": "쓰기"
  },
  "Use currentColor": {
   "de": "currentColor verwenden",
   "es": "Usar currentColor",
-  "zh": "使用 currentColor"
+  "zh": "使用 currentColor",
+  "fr": "Utiliser currentColor",
+  "pt": "Usar currentColor",
+  "ja": "currentColor を使う",
+  "ko": "currentColor 쓰기"
  },
  "Useful when a server allows drift": {
   "de": "Nützlich, wenn ein Server eine Abweichung zulässt",
   "es": "Útil cuando un servidor admite cierto desfase",
-  "zh": "当服务器允许时间偏移时很有用"
+  "zh": "当服务器允许时间偏移时很有用",
+  "fr": "Utile quand un serveur tolère un décalage",
+  "pt": "Útil quando um servidor permite desvio",
+  "ja": "サーバーが時刻のずれを許す場合に役立ちます",
+  "ko": "서버가 시간 어긋남을 허용할 때 쓸모 있습니다"
  },
  "User agent": {
   "de": "User-Agent",
   "es": "User agent",
-  "zh": "User Agent"
+  "zh": "User Agent",
+  "fr": "Agent utilisateur",
+  "pt": "User agent",
+  "ja": "ユーザーエージェント",
+  "ko": "사용자 에이전트"
  },
  "Username": {
   "de": "Benutzername",
   "es": "Usuario",
-  "zh": "用户名"
+  "zh": "用户名",
+  "fr": "Nom d'utilisateur",
+  "pt": "Nome de usuário",
+  "ja": "ユーザー名",
+  "ko": "사용자 이름"
  },
  "Valid range is 1 to 3999": {
   "de": "Der gültige Bereich ist 1 bis 3999",
   "es": "El rango válido es de 1 a 3999",
-  "zh": "有效范围是 1 到 3999"
+  "zh": "有效范围是 1 到 3999",
+  "fr": "La plage valide va de 1 à 3999",
+  "pt": "A faixa válida vai de 1 a 3999",
+  "ja": "有効な範囲は 1 から 3999 です",
+  "ko": "쓸 수 있는 범위는 1부터 3999까지입니다"
  },
  "Validate against schema": {
   "de": "Gegen Schema prüfen",
   "es": "Validar contra el esquema",
-  "zh": "按 schema 校验"
+  "zh": "按 schema 校验",
+  "fr": "Valider contre le schéma",
+  "pt": "Validar contra o esquema",
+  "ja": "スキーマで検証",
+  "ko": "스키마로 검사"
  },
  "Validity": {
   "de": "Gültigkeit",
   "es": "Validez",
-  "zh": "有效期"
+  "zh": "有效期",
+  "fr": "Validité",
+  "pt": "Validade",
+  "ja": "有効期間",
+  "ko": "유효 기간"
  },
  "Value": {
   "de": "Wert",
   "es": "Valor",
-  "zh": "值"
+  "zh": "值",
+  "fr": "Valeur",
+  "pt": "Valor",
+  "ja": "値",
+  "ko": "값"
  },
  "Value over time": {
   "de": "Wert im Zeitverlauf",
   "es": "Valor a lo largo del tiempo",
-  "zh": "价值走势"
+  "zh": "价值走势",
+  "fr": "Valeur au fil du temps",
+  "pt": "Valor ao longo do tempo",
+  "ja": "時間による値の推移",
+  "ko": "시간에 따른 값"
  },
  "Values outside 0 to 1 on the vertical axis overshoot, which is what gives a spring feel.": {
   "de": "Werte außerhalb von 0 bis 1 auf der senkrechten Achse schießen über das Ziel hinaus, was den Federeffekt erzeugt.",
   "es": "Los valores fuera de 0 a 1 en el eje vertical se pasan de largo, y eso es lo que da la sensación de muelle.",
-  "zh": "纵轴上超出 0 到 1 的值会过冲，这正是弹簧感的来源。"
+  "zh": "纵轴上超出 0 到 1 的值会过冲，这正是弹簧感的来源。",
+  "fr": "Les valeurs hors de 0 à 1 sur l'axe vertical dépassent, ce qui donne l'effet ressort.",
+  "pt": "Valores fora de 0 a 1 no eixo vertical ultrapassam, e é isso que dá a sensação de mola.",
+  "ja": "縦軸で 0 から 1 の外に出る値は行き過ぎとなり、これがばねのような感じを生みます。",
+  "ko": "세로축에서 0에서 1을 벗어난 값은 지나쳐 가며, 그것이 용수철 같은 느낌을 냅니다."
  },
  "Variance": {
   "de": "Varianz",
   "es": "Varianza",
-  "zh": "方差"
+  "zh": "方差",
+  "fr": "Variance",
+  "pt": "Variância",
+  "ja": "分散",
+  "ko": "분산"
  },
  "Variations": {
   "de": "Varianten",
   "es": "Variantes",
-  "zh": "变体"
+  "zh": "变体",
+  "fr": "Variantes",
+  "pt": "Variações",
+  "ja": "変化形",
+  "ko": "변형"
  },
  "Verify": {
   "de": "Prüfen",
   "es": "Verificar",
-  "zh": "验证"
+  "zh": "验证",
+  "fr": "Vérifier",
+  "pt": "Verificar",
+  "ja": "検証",
+  "ko": "확인"
  },
  "Version": {
   "de": "Version",
   "es": "Versión",
-  "zh": "版本"
+  "zh": "版本",
+  "fr": "Version",
+  "pt": "Versão",
+  "ja": "バージョン",
+  "ko": "버전"
  },
  "Very strong": {
   "de": "Sehr stark",
   "es": "Muy fuerte",
-  "zh": "非常强"
+  "zh": "非常强",
+  "fr": "Très fort",
+  "pt": "Muito forte",
+  "ja": "非常に強い",
+  "ko": "매우 강함"
  },
  "Very weak": {
   "de": "Sehr schwach",
   "es": "Muy débil",
-  "zh": "非常弱"
+  "zh": "非常弱",
+  "fr": "Très faible",
+  "pt": "Muito fraco",
+  "ja": "非常に弱い",
+  "ko": "매우 약함"
  },
  "Voltage": {
   "de": "Spannung",
   "es": "Tensión",
-  "zh": "电压"
+  "zh": "电压",
+  "fr": "Tension",
+  "pt": "Tensão",
+  "ja": "電圧",
+  "ko": "전압"
  },
  "Volts/div": {
   "de": "Volt/Div",
   "es": "Voltios/div",
-  "zh": "伏/格"
+  "zh": "伏/格",
+  "fr": "Volts/div",
+  "pt": "Volts/div",
+  "ja": "V/div",
+  "ko": "V/div"
  },
  "Volume": {
   "de": "Lautstärke",
   "es": "Volumen",
-  "zh": "音量"
+  "zh": "音量",
+  "fr": "Volume",
+  "pt": "Volume",
+  "ja": "音量",
+  "ko": "음량"
  },
  "Vpp": {
   "de": "Vss",
   "es": "Vpp",
-  "zh": "峰峰值"
+  "zh": "峰峰值",
+  "fr": "Vcc",
+  "pt": "Vpp",
+  "ja": "Vpp",
+  "ko": "Vpp"
  },
  "WCAG 2.1 ratio against black and white": {
   "de": "WCAG-2.1-Verhältnis gegen Schwarz und Weiß",
   "es": "Ratio WCAG 2.1 frente a blanco y negro",
-  "zh": "相对黑色与白色的 WCAG 2.1 对比度"
+  "zh": "相对黑色与白色的 WCAG 2.1 对比度",
+  "fr": "Rapport WCAG 2.1 face au noir et au blanc",
+  "pt": "Razão WCAG 2.1 contra preto e branco",
+  "ja": "黒と白に対する WCAG 2.1 のコントラスト比",
+  "ko": "검정과 흰색에 대한 WCAG 2.1 대비율"
  },
  "WEP": {
   "de": "WEP",
@@ -12678,67 +14406,119 @@
  "Waiting": {
   "de": "Warten",
   "es": "Esperando",
-  "zh": "等待中"
+  "zh": "等待中",
+  "fr": "En attente",
+  "pt": "Aguardando",
+  "ja": "待機中",
+  "ko": "기다리는 중"
  },
  "Waiting for a device.": {
   "de": "Warte auf ein Gerät.",
   "es": "Esperando un dispositivo.",
-  "zh": "正在等待设备。"
+  "zh": "正在等待设备。",
+  "fr": "En attente d'un appareil.",
+  "pt": "Aguardando um dispositivo.",
+  "ja": "機器を待っています。",
+  "ko": "기기를 기다리는 중입니다."
  },
  "Waiting for headers": {
   "de": "Warte auf Header",
   "es": "Esperando cabeceras",
-  "zh": "等待响应头"
+  "zh": "等待响应头",
+  "fr": "En attente des en-têtes",
+  "pt": "Aguardando os cabeçalhos",
+  "ja": "ヘッダを待っています",
+  "ko": "헤더를 기다리는 중"
  },
  "Wall": {
   "de": "Wand",
   "es": "Muro",
-  "zh": "墙体"
+  "zh": "墙体",
+  "fr": "Mur",
+  "pt": "Parede",
+  "ja": "壁",
+  "ko": "벽"
  },
  "Wallpaper": {
   "de": "Hintergrundbild",
   "es": "Fondo de pantalla",
-  "zh": "壁纸"
+  "zh": "壁纸",
+  "fr": "Fond d'écran",
+  "pt": "Papel de parede",
+  "ja": "壁紙",
+  "ko": "배경화면"
  },
  "Warmth": {
   "de": "Farbtemperatur",
   "es": "Calidez",
-  "zh": "色温"
+  "zh": "色温",
+  "fr": "Chaleur",
+  "pt": "Calidez",
+  "ja": "色温度",
+  "ko": "따뜻한 정도"
  },
  "Wave": {
   "de": "Welle",
   "es": "Oleada",
-  "zh": "波次"
+  "zh": "波次",
+  "fr": "Onde",
+  "pt": "Onda",
+  "ja": "波形",
+  "ko": "파형"
  },
  "Waveform": {
   "de": "Wellenform",
   "es": "Forma de onda",
-  "zh": "波形"
+  "zh": "波形",
+  "fr": "Forme d'onde",
+  "pt": "Forma de onda",
+  "ja": "波形",
+  "ko": "파형"
  },
  "Weak": {
   "de": "Schwach",
   "es": "Débil",
-  "zh": "弱"
+  "zh": "弱",
+  "fr": "Faible",
+  "pt": "Fraco",
+  "ja": "弱い",
+  "ko": "약함"
  },
  "Weaknesses": {
   "de": "Schwachstellen",
   "es": "Puntos débiles",
-  "zh": "弱点"
+  "zh": "弱点",
+  "fr": "Faiblesses",
+  "pt": "Fraquezas",
+  "ja": "弱点",
+  "ko": "약점"
  },
  "Web Bluetooth is not available here": {
   "de": "Web Bluetooth ist hier nicht verfügbar",
   "es": "Web Bluetooth no está disponible aquí",
-  "zh": "此处无法使用 Web Bluetooth"
+  "zh": "此处无法使用 Web Bluetooth",
+  "fr": "Web Bluetooth n'est pas disponible ici",
+  "pt": "O Web Bluetooth não está disponível aqui",
+  "ja": "ここでは Web Bluetooth を利用できません",
+  "ko": "여기서는 Web Bluetooth를 쓸 수 없습니다"
  },
  "Web Serial is not available here": {
   "de": "Web Serial ist hier nicht verfügbar",
   "es": "Web Serial no está disponible aquí",
-  "zh": "此处无法使用 Web Serial"
+  "zh": "此处无法使用 Web Serial",
+  "fr": "Web Serial n'est pas disponible ici",
+  "pt": "O Web Serial não está disponível aqui",
+  "ja": "ここでは Web Serial を利用できません",
+  "ko": "여기서는 Web Serial을 쓸 수 없습니다"
  },
  "WebLLM in browser": {
   "de": "WebLLM im Browser",
   "es": "WebLLM en el navegador",
-  "zh": "浏览器内 WebLLM"
+  "zh": "浏览器内 WebLLM",
+  "fr": "WebLLM dans le navigateur",
+  "pt": "WebLLM no navegador",
+  "ja": "ブラウザ内の WebLLM",
+  "ko": "브라우저 안의 WebLLM"
  },
  "WebM (VP9)": {
   "de": "WebM (VP9)",
@@ -12761,67 +14541,119 @@
  "Website": {
   "de": "Website",
   "es": "Sitio web",
-  "zh": "网站"
+  "zh": "网站",
+  "fr": "Site web",
+  "pt": "Site",
+  "ja": "ウェブサイト",
+  "ko": "웹사이트"
  },
  "Week": {
   "de": "Woche",
   "es": "Semana",
-  "zh": "周"
+  "zh": "周",
+  "fr": "Semaine",
+  "pt": "Semana",
+  "ja": "週",
+  "ko": "주"
  },
  "Week starts on": {
   "de": "Woche beginnt am",
   "es": "La semana empieza el",
-  "zh": "每周开始于"
+  "zh": "每周开始于",
+  "fr": "La semaine commence le",
+  "pt": "A semana começa em",
+  "ja": "週の始まり",
+  "ko": "주 시작 요일"
  },
  "Weight": {
   "de": "Schriftstärke",
   "es": "Grosor",
-  "zh": "字重"
+  "zh": "字重",
+  "fr": "Graisse",
+  "pt": "Peso",
+  "ja": "太さ",
+  "ko": "굵기"
  },
  "Weld": {
   "de": "Feste Verbindung",
   "es": "Soldadura",
-  "zh": "焊接"
+  "zh": "焊接",
+  "fr": "Souder",
+  "pt": "Soldar",
+  "ja": "溶接",
+  "ko": "용접"
  },
  "What needs doing?": {
   "de": "Was ist zu tun?",
   "es": "¿Qué hay que hacer?",
-  "zh": "有什么要做的？"
+  "zh": "有什么要做的？",
+  "fr": "Qu'y a-t-il à faire ?",
+  "pt": "O que precisa ser feito?",
+  "ja": "やることは何ですか。",
+  "ko": "무엇을 해야 하나요?"
  },
  "Wheel": {
   "de": "Farbkreis",
   "es": "Rueda",
-  "zh": "色轮"
+  "zh": "色轮",
+  "fr": "Roue",
+  "pt": "Roda",
+  "ja": "車輪",
+  "ko": "바퀴"
  },
  "Where the mistakes landed": {
   "de": "Wo die Fehler passiert sind",
   "es": "Dónde se han producido los errores",
-  "zh": "错误出现在哪里"
+  "zh": "错误出现在哪里",
+  "fr": "Où sont tombées les erreurs",
+  "pt": "Onde os erros caíram",
+  "ja": "ミスが出た場所",
+  "ko": "실수가 난 곳"
  },
  "While held": {
   "de": "Solange gedrückt",
   "es": "Mientras se mantiene",
-  "zh": "按住期间"
+  "zh": "按住期间",
+  "fr": "Tant que maintenu",
+  "pt": "Enquanto pressionado",
+  "ja": "押している間",
+  "ko": "누르는 동안"
  },
  "Whitespace": {
   "de": "Leerraum",
   "es": "Espacios en blanco",
-  "zh": "空白字符"
+  "zh": "空白字符",
+  "fr": "Espaces",
+  "pt": "Espaços em branco",
+  "ja": "空白文字",
+  "ko": "공백 문자"
  },
  "Wi-Fi": {
   "de": "WLAN",
   "es": "Wi-Fi",
-  "zh": "Wi-Fi"
+  "zh": "Wi-Fi",
+  "fr": "Wi-Fi",
+  "pt": "Wi-Fi",
+  "ja": "Wi-Fi",
+  "ko": "와이파이"
  },
  "Widen or narrow the parts list": {
   "de": "Bauteilliste breiter oder schmaler machen",
   "es": "Ensancha o estrecha la lista de componentes",
-  "zh": "加宽或收窄元件列表"
+  "zh": "加宽或收窄元件列表",
+  "fr": "Élargir ou réduire la liste des pièces",
+  "pt": "Alargar ou estreitar a lista de peças",
+  "ja": "部品一覧の幅を広げたり狭めたり",
+  "ko": "부품 목록을 넓히거나 좁히기"
  },
  "Width": {
   "de": "Breite",
   "es": "Ancho",
-  "zh": "宽度"
+  "zh": "宽度",
+  "fr": "Largeur",
+  "pt": "Largura",
+  "ja": "幅",
+  "ko": "너비"
  },
  "Width m": {
   "de": "Breite m",
@@ -12831,102 +14663,182 @@
  "Wildcard mask": {
   "de": "Wildcard-Maske",
   "es": "Máscara comodín",
-  "zh": "通配符掩码"
+  "zh": "通配符掩码",
+  "fr": "Masque générique",
+  "pt": "Máscara curinga",
+  "ja": "ワイルドカードマスク",
+  "ko": "와일드카드 마스크"
  },
  "Window": {
   "de": "Fenster",
   "es": "Ventana",
-  "zh": "窗口"
+  "zh": "窗口",
+  "fr": "Fenêtre",
+  "pt": "Janela",
+  "ja": "ウィンドウ",
+  "ko": "창"
  },
  "Windows": {
   "de": "Fenster",
   "es": "Ventanas",
-  "zh": "窗口"
+  "zh": "窗口",
+  "fr": "Fenêtres",
+  "pt": "Janelas",
+  "ja": "ウィンドウ",
+  "ko": "창"
  },
  "Wire": {
   "de": "Leitung",
   "es": "Cable",
-  "zh": "导线"
+  "zh": "导线",
+  "fr": "Fil",
+  "pt": "Fio",
+  "ja": "配線",
+  "ko": "배선"
  },
  "Wiring": {
   "de": "Verdrahtung",
   "es": "Cableado",
-  "zh": "连线"
+  "zh": "连线",
+  "fr": "Câblage",
+  "pt": "Fiação",
+  "ja": "配線",
+  "ko": "배선"
  },
  "Words": {
   "de": "Wörter",
   "es": "Palabras",
-  "zh": "词数"
+  "zh": "词数",
+  "fr": "Mots",
+  "pt": "Palavras",
+  "ja": "語",
+  "ko": "낱말"
  },
  "Working hours": {
   "de": "Arbeitszeiten",
   "es": "Horario laboral",
-  "zh": "工作时间"
+  "zh": "工作时间",
+  "fr": "Horaires de travail",
+  "pt": "Horário de trabalho",
+  "ja": "勤務時間",
+  "ko": "근무 시간"
  },
  "Workspace": {
   "de": "Arbeitsbereich",
   "es": "Espacio de trabajo",
-  "zh": "工作区"
+  "zh": "工作区",
+  "fr": "Espace de travail",
+  "pt": "Área de trabalho",
+  "ja": "ワークスペース",
+  "ko": "작업 공간"
  },
  "Workspace created": {
   "de": "Arbeitsbereich angelegt",
   "es": "Espacio de trabajo creado",
-  "zh": "已创建工作区"
+  "zh": "已创建工作区",
+  "fr": "Espace de travail créé",
+  "pt": "Área de trabalho criada",
+  "ja": "ワークスペースを作りました",
+  "ko": "작업 공간을 만들었습니다"
  },
  "Workspace duplicated": {
   "de": "Arbeitsbereich dupliziert",
   "es": "Espacio de trabajo duplicado",
-  "zh": "已复制工作区"
+  "zh": "已复制工作区",
+  "fr": "Espace de travail dupliqué",
+  "pt": "Área de trabalho duplicada",
+  "ja": "ワークスペースを複製しました",
+  "ko": "작업 공간을 복제했습니다"
  },
  "Workspace imported": {
   "de": "Arbeitsbereich importiert",
   "es": "Espacio de trabajo importado",
-  "zh": "已导入工作区"
+  "zh": "已导入工作区",
+  "fr": "Espace de travail importé",
+  "pt": "Área de trabalho importada",
+  "ja": "ワークスペースを読み込みました",
+  "ko": "작업 공간을 가져왔습니다"
  },
  "Workspaces": {
   "de": "Arbeitsbereiche",
   "es": "Espacios de trabajo",
-  "zh": "工作区"
+  "zh": "工作区",
+  "fr": "Espaces de travail",
+  "pt": "Áreas de trabalho",
+  "ja": "ワークスペース",
+  "ko": "작업 공간"
  },
  "Workspaces keep their own home layout, widgets and per-app settings. Export one to share it with a teammate.": {
   "de": "Arbeitsbereiche haben eine eigene Startanordnung, eigene Widgets und eigene App-Einstellungen. Einen exportieren, um ihn mit einem Teammitglied zu teilen.",
   "es": "Cada espacio de trabajo tiene su propia disposición de inicio, sus widgets y sus ajustes por app. Exporta uno para compartirlo con un compañero.",
-  "zh": "每个工作区都有自己的主屏布局、小组件和各应用的设置。导出后可以分享给同事。"
+  "zh": "每个工作区都有自己的主屏布局、小组件和各应用的设置。导出后可以分享给同事。",
+  "fr": "Chaque espace de travail garde sa disposition d'accueil, ses widgets et ses réglages par app. Exportez-en un pour le partager avec un collègue.",
+  "pt": "Cada área de trabalho guarda seu próprio layout inicial, widgets e configurações por app. Exporte uma para compartilhar com um colega.",
+  "ja": "ワークスペースごとにホームの配置、ウィジェット、アプリごとの設定を持ちます。書き出せば同僚と共有できます。",
+  "ko": "작업 공간마다 홈 배치, 위젯, 앱별 설정을 따로 지닙니다. 내보내면 동료와 나눌 수 있습니다."
  },
  "World Clock": {
   "de": "Weltzeituhr",
   "es": "Reloj mundial",
-  "zh": "世界时钟"
+  "zh": "世界时钟",
+  "fr": "Horloge mondiale",
+  "pt": "Relógio mundial",
+  "ja": "世界時計",
+  "ko": "세계 시계"
  },
  "Wrap JSON in an array": {
   "de": "JSON in ein Array packen",
   "es": "Envolver el JSON en un array",
-  "zh": "用数组包裹 JSON"
+  "zh": "用数组包裹 JSON",
+  "fr": "Envelopper le JSON dans un tableau",
+  "pt": "Envolver o JSON em um array",
+  "ja": "JSON を配列で包む",
+  "ko": "JSON을 배열로 감싸기"
  },
  "Wrap each item": {
   "de": "Jeden Eintrag umschließen",
   "es": "Envolver cada elemento",
-  "zh": "包裹每一项"
+  "zh": "包裹每一项",
+  "fr": "Envelopper chaque élément",
+  "pt": "Envolver cada item",
+  "ja": "各項目を囲む",
+  "ko": "각 항목 감싸기"
  },
  "Wrap in HTML tags": {
   "de": "In HTML-Tags einschließen",
   "es": "Envolver en etiquetas HTML",
-  "zh": "用 HTML 标签包裹"
+  "zh": "用 HTML 标签包裹",
+  "fr": "Envelopper dans des balises HTML",
+  "pt": "Envolver em tags HTML",
+  "ja": "HTML タグで囲む",
+  "ko": "HTML 태그로 감싸기"
  },
  "Write": {
   "de": "Schreiben",
   "es": "Escribir",
-  "zh": "写入"
+  "zh": "写入",
+  "fr": "Écrire",
+  "pt": "Escrever",
+  "ja": "書き込み",
+  "ko": "쓰기"
  },
  "Write tests": {
   "de": "Tests schreiben",
   "es": "Escribir pruebas",
-  "zh": "编写测试"
+  "zh": "编写测试",
+  "fr": "Écrire des tests",
+  "pt": "Escrever testes",
+  "ja": "テストを書く",
+  "ko": "테스트 쓰기"
  },
  "Written into a ConfigMap and referenced by the pod": {
   "de": "Wird in eine ConfigMap geschrieben und vom Pod referenziert",
   "es": "Se escribe en un ConfigMap y el pod lo referencia",
-  "zh": "写入 ConfigMap 并由 Pod 引用"
+  "zh": "写入 ConfigMap 并由 Pod 引用",
+  "fr": "Écrit dans un ConfigMap et référencé par le pod",
+  "pt": "Escrito em um ConfigMap e referenciado pelo pod",
+  "ja": "ConfigMap に書かれ、Pod から参照されます",
+  "ko": "ConfigMap에 쓰이고 파드가 참조합니다"
  },
  "XNOR": {
   "de": "XNOR",
@@ -12949,22 +14861,38 @@
  "Year": {
   "de": "Jahr",
   "es": "Año",
-  "zh": "年"
+  "zh": "年",
+  "fr": "Année",
+  "pt": "Ano",
+  "ja": "年",
+  "ko": "연도"
  },
  "You": {
   "de": "Du",
   "es": "Tú",
-  "zh": "你"
+  "zh": "你",
+  "fr": "Vous",
+  "pt": "Você",
+  "ja": "あなた",
+  "ko": "당신"
  },
  "You cleared the table": {
   "de": "Du hast den Tisch abgeräumt",
   "es": "Has despejado la mesa",
-  "zh": "你清空了牌桌"
+  "zh": "你清空了牌桌",
+  "fr": "Vous avez vidé le tableau",
+  "pt": "Você limpou a mesa",
+  "ja": "場をすべて片づけました",
+  "ko": "판을 다 치웠습니다"
  },
  "Your site": {
   "de": "Deine Website",
   "es": "Tu sitio",
-  "zh": "你的网站"
+  "zh": "你的网站",
+  "fr": "Votre site",
+  "pt": "Seu site",
+  "ja": "あなたのサイト",
+  "ko": "당신의 사이트"
  },
  "Zoom": {
   "de": "Zoom",
@@ -12978,12 +14906,20 @@
  "Zoom in": {
   "de": "Vergrößern",
   "es": "Acercar",
-  "zh": "放大"
+  "zh": "放大",
+  "fr": "Zoom avant",
+  "pt": "Aproximar",
+  "ja": "拡大",
+  "ko": "확대"
  },
  "Zoom out": {
   "de": "Verkleinern",
   "es": "Alejar",
-  "zh": "缩小"
+  "zh": "缩小",
+  "fr": "Zoom arrière",
+  "pt": "Afastar",
+  "ja": "縮小",
+  "ko": "축소"
  },
  "admin": {
   "de": "admin",
@@ -12997,7 +14933,11 @@
  "all day": {
   "de": "ganztägig",
   "es": "todo el día",
-  "zh": "全天"
+  "zh": "全天",
+  "fr": "toute la journée",
+  "pt": "dia inteiro",
+  "ja": "終日",
+  "ko": "종일"
  },
  "alternate": {
   "de": "alternate",
@@ -13020,27 +14960,47 @@
  "atoms": {
   "de": "Atome",
   "es": "átomos",
-  "zh": "个原子"
+  "zh": "个原子",
+  "fr": "atomes",
+  "pt": "átomos",
+  "ja": "原子",
+  "ko": "원자"
  },
  "authorized_keys line": {
   "de": "authorized_keys-Zeile",
   "es": "Línea de authorized_keys",
-  "zh": "authorized_keys 行"
+  "zh": "authorized_keys 行",
+  "fr": "ligne authorized_keys",
+  "pt": "linha do authorized_keys",
+  "ja": "authorized_keys の行",
+  "ko": "authorized_keys 줄"
  },
  "auto": {
   "de": "automatisch",
   "es": "automático",
-  "zh": "自动"
+  "zh": "自动",
+  "fr": "auto",
+  "pt": "automático",
+  "ja": "自動",
+  "ko": "자동"
  },
  "avg": {
   "de": "Mittel",
   "es": "med",
-  "zh": "平均"
+  "zh": "平均",
+  "fr": "moy",
+  "pt": "méd",
+  "ja": "平均",
+  "ko": "평균"
  },
  "avoid look-alikes": {
   "de": "Verwechselbare meiden",
   "es": "evitar caracteres parecidos",
-  "zh": "避免易混字符"
+  "zh": "避免易混字符",
+  "fr": "éviter les caractères ambigus",
+  "pt": "evitar caracteres parecidos",
+  "ja": "紛らわしい文字を避ける",
+  "ko": "헷갈리는 문자 피하기"
  },
  "backwards": {
   "de": "backwards",
@@ -13054,7 +15014,11 @@
  "base": {
   "de": "Basis",
   "es": "base",
-  "zh": "进制"
+  "zh": "进制",
+  "fr": "base",
+  "pt": "base",
+  "ja": "基数",
+  "ko": "기수"
  },
  "bevel": {
   "de": "bevel",
@@ -13068,7 +15032,11 @@
  "bonds": {
   "de": "Bindungen",
   "es": "enlaces",
-  "zh": "个化学键"
+  "zh": "个化学键",
+  "fr": "liaisons",
+  "pt": "ligações",
+  "ja": "結合",
+  "ko": "결합"
  },
  "both": {
   "de": "both",
@@ -13091,7 +15059,11 @@
  "café & crème": {
   "de": "Café & Crème",
   "es": "café y crema",
-  "zh": "café & crème"
+  "zh": "café & crème",
+  "fr": "café & crème",
+  "pt": "café & crème",
+  "ja": "café & crème",
+  "ko": "café & crème"
  },
  "camelCase": {
   "de": "camelCase",
@@ -13105,7 +15077,11 @@
  "checking...": {
   "de": "wird geprüft...",
   "es": "comprobando...",
-  "zh": "正在检查..."
+  "zh": "正在检查...",
+  "fr": "vérification...",
+  "pt": "verificando...",
+  "ja": "確認中...",
+  "ko": "확인 중..."
  },
  "command=": {
   "de": "command=",
@@ -13155,17 +15131,29 @@
  "custom": {
   "de": "benutzerdefiniert",
   "es": "personalizado",
-  "zh": "自定义"
+  "zh": "自定义",
+  "fr": "personnalisé",
+  "pt": "personalizado",
+  "ja": "カスタム",
+  "ko": "사용자 지정"
  },
  "deg": {
   "de": "Grad",
   "es": "grados",
-  "zh": "度"
+  "zh": "度",
+  "fr": "deg",
+  "pt": "graus",
+  "ja": "度",
+  "ko": "도"
  },
  "delete": {
   "de": "Löschen",
   "es": "borrar",
-  "zh": "删除"
+  "zh": "删除",
+  "fr": "supprimer",
+  "pt": "excluir",
+  "ja": "削除",
+  "ko": "지우기"
  },
  "docker run -p 80:80 nginx": {
   "de": "docker run -p 80:80 nginx",
@@ -13179,7 +15167,11 @@
  "docker run command": {
   "de": "docker-run-Befehl",
   "es": "Comando docker run",
-  "zh": "docker run 命令"
+  "zh": "docker run 命令",
+  "fr": "commande docker run",
+  "pt": "comando docker run",
+  "ja": "docker run コマンド",
+  "ko": "docker run 명령"
  },
  "docker-compose.yml": {
   "de": "docker-compose.yml",
@@ -13202,12 +15194,20 @@
  "duck": {
   "de": "ducken",
   "es": "agacharse",
-  "zh": "下蹲"
+  "zh": "下蹲",
+  "fr": "canard",
+  "pt": "pato",
+  "ja": "アヒル",
+  "ko": "오리"
  },
  "enter": {
   "de": "Eingabe",
   "es": "intro",
-  "zh": "回车"
+  "zh": "回车",
+  "fr": "entrée",
+  "pt": "enter",
+  "ja": "Enter",
+  "ko": "엔터"
  },
  "event.code": {
   "de": "event.code",
@@ -13248,7 +15248,11 @@
  "example.com, 8.8.8.8 or AS15169": {
   "de": "example.com, 8.8.8.8 oder AS15169",
   "es": "example.com, 8.8.8.8 o AS15169",
-  "zh": "example.com、8.8.8.8 或 AS15169"
+  "zh": "example.com、8.8.8.8 或 AS15169",
+  "fr": "example.com, 8.8.8.8 ou AS15169",
+  "pt": "example.com, 8.8.8.8 ou AS15169",
+  "ja": "example.com、8.8.8.8、AS15169 など",
+  "ko": "example.com, 8.8.8.8 또는 AS15169"
  },
  "eyJhbGciOi...": {
   "de": "eyJhbGciOi...",
@@ -13262,7 +15266,11 @@
  "favicon.ico saved with 16, 32 and 48 pixel frames": {
   "de": "favicon.ico mit 16-, 32- und 48-Pixel-Rahmen gespeichert",
   "es": "favicon.ico guardado con marcos de 16, 32 y 48 píxeles",
-  "zh": "已保存包含 16、32 和 48 像素的 favicon.ico"
+  "zh": "已保存包含 16、32 和 48 像素的 favicon.ico",
+  "fr": "favicon.ico enregistré avec des images de 16, 32 et 48 pixels",
+  "pt": "favicon.ico salvo com quadros de 16, 32 e 48 pixels",
+  "ja": "16、32、48 ピクセルの画像を収めた favicon.ico を保存しました",
+  "ko": "16, 32, 48 픽셀 이미지를 담은 favicon.ico를 저장했습니다"
  },
  "fetch": {
   "de": "fetch",
@@ -13294,7 +15302,11 @@
  "freq": {
   "de": "Frequenz",
   "es": "frec",
-  "zh": "频率"
+  "zh": "频率",
+  "fr": "fréq",
+  "pt": "freq",
+  "ja": "周波数",
+  "ko": "주파수"
  },
  "from=": {
   "de": "from=",
@@ -13317,12 +15329,20 @@
  "hello world": {
   "de": "hallo welt",
   "es": "hola mundo",
-  "zh": "hello world"
+  "zh": "hello world",
+  "fr": "bonjour le monde",
+  "pt": "olá mundo",
+  "ja": "hello world",
+  "ko": "hello world"
  },
  "hello world example": {
   "de": "hallo welt beispiel",
   "es": "hola mundo ejemplo",
-  "zh": "hello world example"
+  "zh": "hello world example",
+  "fr": "exemple bonjour le monde",
+  "pt": "exemplo olá mundo",
+  "ja": "hello world の例",
+  "ko": "hello world 예시"
  },
  "hex": {
   "de": "hex",
@@ -13336,7 +15356,11 @@
  "hex or text": {
   "de": "Hex oder Text",
   "es": "hex o texto",
-  "zh": "十六进制或文本"
+  "zh": "十六进制或文本",
+  "fr": "hex ou texte",
+  "pt": "hex ou texto",
+  "ja": "16 進またはテキスト",
+  "ko": "16진 또는 글"
  },
  "https%3A%2F%2Fexample.com": {
   "de": "https%3A%2F%2Fexample.com",
@@ -13359,12 +15383,20 @@
  "jsglobe.com/apps/&lt;app-id&gt;": {
   "de": "jsglobe.com/de/apps/&lt;app-id&gt;",
   "es": "jsglobe.com/es/apps/&lt;app-id&gt;",
-  "zh": "jsglobe.com/zh/apps/&lt;app-id&gt;"
+  "zh": "jsglobe.com/zh/apps/&lt;app-id&gt;",
+  "fr": "jsglobe.com/apps/&lt;app-id&gt;",
+  "pt": "jsglobe.com/apps/&lt;app-id&gt;",
+  "ja": "jsglobe.com/apps/&lt;app-id&gt;",
+  "ko": "jsglobe.com/apps/&lt;app-id&gt;"
  },
  "jump &nbsp;": {
   "de": "springen &nbsp;",
   "es": "saltar &nbsp;",
-  "zh": "跳跃 &nbsp;"
+  "zh": "跳跃 &nbsp;",
+  "fr": "sauter &nbsp;",
+  "pt": "pular &nbsp;",
+  "ja": "ジャンプ &nbsp;",
+  "ko": "점프 &nbsp;"
  },
  "kebab-case": {
   "de": "kebab-case",
@@ -13378,12 +15410,20 @@
  "key: value": {
   "de": "schlüssel: wert",
   "es": "clave: valor",
-  "zh": "key: value"
+  "zh": "key: value",
+  "fr": "clé : valeur",
+  "pt": "chave: valor",
+  "ja": "キー: 値",
+  "ko": "키: 값"
  },
  "lower case": {
   "de": "kleinschreibung",
   "es": "minúsculas",
-  "zh": "全部小写"
+  "zh": "全部小写",
+  "fr": "minuscules",
+  "pt": "caixa baixa",
+  "ja": "小文字",
+  "ko": "소문자"
  },
  "manifest.webmanifest": {
   "de": "manifest.webmanifest",
@@ -13397,12 +15437,20 @@
  "max": {
   "de": "max",
   "es": "máx",
-  "zh": "最大"
+  "zh": "最大",
+  "fr": "max",
+  "pt": "máx",
+  "ja": "最大",
+  "ko": "최대"
  },
  "min": {
   "de": "min",
   "es": "mín",
-  "zh": "最小"
+  "zh": "最小",
+  "fr": "min",
+  "pt": "mín",
+  "ja": "最小",
+  "ko": "최소"
  },
  "miter": {
   "de": "miter",
@@ -13416,7 +15464,11 @@
  "name,role,city": {
   "de": "name,rolle,stadt",
   "es": "nombre,rol,ciudad",
-  "zh": "name,role,city"
+  "zh": "name,role,city",
+  "fr": "nom,rôle,ville",
+  "pt": "nome,cargo,cidade",
+  "ja": "名前,役割,都市",
+  "ko": "이름,역할,도시"
  },
  "navigator.bluetooth": {
   "de": "navigator.bluetooth",
@@ -13435,7 +15487,11 @@
  "no probe": {
   "de": "keine Messspitze",
   "es": "sin sonda",
-  "zh": "无探针"
+  "zh": "无探针",
+  "fr": "pas de sonde",
+  "pt": "sem sonda",
+  "ja": "プローブなし",
+  "ko": "프로브 없음"
  },
  "no-X11-forwarding": {
   "de": "no-X11-forwarding",
@@ -13476,7 +15532,11 @@
  "none": {
   "de": "keine",
   "es": "ninguno",
-  "zh": "无"
+  "zh": "无",
+  "fr": "aucun",
+  "pt": "nenhum",
+  "ja": "なし",
+  "ko": "없음"
  },
  "normal": {
   "de": "normal",
@@ -13490,17 +15550,29 @@
  "now": {
   "de": "jetzt",
   "es": "ahora",
-  "zh": "现在"
+  "zh": "现在",
+  "fr": "maintenant",
+  "pt": "agora",
+  "ja": "現在",
+  "ko": "지금"
  },
  "or hit space": {
   "de": "oder Leertaste drücken",
   "es": "o pulsa espacio",
-  "zh": "或按空格"
+  "zh": "或按空格",
+  "fr": "ou appuyez sur espace",
+  "pt": "ou aperte espaço",
+  "ja": "またはスペースキー",
+  "ko": "또는 스페이스바"
  },
  "otpauth URI": {
   "de": "otpauth-URI",
   "es": "URI otpauth",
-  "zh": "otpauth URI"
+  "zh": "otpauth URI",
+  "fr": "URI otpauth",
+  "pt": "URI otpauth",
+  "ja": "otpauth URI",
+  "ko": "otpauth URI"
  },
  "path/case": {
   "de": "path/case",
@@ -13514,17 +15586,29 @@
  "pdf-lib module": {
   "de": "pdf-lib-Modul",
   "es": "Módulo pdf-lib",
-  "zh": "pdf-lib 模块"
+  "zh": "pdf-lib 模块",
+  "fr": "module pdf-lib",
+  "pt": "módulo pdf-lib",
+  "ja": "pdf-lib モジュール",
+  "ko": "pdf-lib 모듈"
  },
  "pdf.js module": {
   "de": "pdf.js-Modul",
   "es": "Módulo pdf.js",
-  "zh": "pdf.js 模块"
+  "zh": "pdf.js 模块",
+  "fr": "module pdf.js",
+  "pt": "módulo pdf.js",
+  "ja": "pdf.js モジュール",
+  "ko": "pdf.js 모듈"
  },
  "pdf.js worker": {
   "de": "pdf.js-Worker",
   "es": "Worker de pdf.js",
-  "zh": "pdf.js worker"
+  "zh": "pdf.js worker",
+  "fr": "worker pdf.js",
+  "pt": "worker do pdf.js",
+  "ja": "pdf.js のワーカー",
+  "ko": "pdf.js 워커"
  },
  "preserveAspectRatio": {
   "de": "preserveAspectRatio",
@@ -13547,7 +15631,11 @@
  "qty": {
   "de": "Stück",
   "es": "cant.",
-  "zh": "数量"
+  "zh": "数量",
+  "fr": "qté",
+  "pt": "qtd",
+  "ja": "数量",
+  "ko": "수량"
  },
  "restrict": {
   "de": "restrict",
@@ -13570,7 +15658,11 @@
  "rms": {
   "de": "Effektiv",
   "es": "eficaz",
-  "zh": "有效值"
+  "zh": "有效值",
+  "fr": "eff",
+  "pt": "rms",
+  "ja": "実効値",
+  "ko": "실효값"
  },
  "round": {
   "de": "round",
@@ -13593,7 +15685,11 @@
  "shared secret": {
   "de": "gemeinsames Geheimnis",
   "es": "secreto compartido",
-  "zh": "共享密钥"
+  "zh": "共享密钥",
+  "fr": "secret partagé",
+  "pt": "segredo compartilhado",
+  "ja": "共有秘密鍵",
+  "ko": "공유 비밀 키"
  },
  "sin(x)": {
   "de": "sin(x)",
@@ -13616,7 +15712,11 @@
  "space": {
   "de": "Leertaste",
   "es": "espacio",
-  "zh": "空格"
+  "zh": "空格",
+  "fr": "espace",
+  "pt": "espaço",
+  "ja": "スペース",
+  "ko": "스페이스"
  },
  "square": {
   "de": "square",
@@ -13630,37 +15730,65 @@
  "ssh-ed25519 AAAAC3Nza... you@machine": {
   "de": "ssh-ed25519 AAAAC3Nza... du@rechner",
   "es": "ssh-ed25519 AAAAC3Nza... tu@equipo",
-  "zh": "ssh-ed25519 AAAAC3Nza... you@machine"
+  "zh": "ssh-ed25519 AAAAC3Nza... you@machine",
+  "fr": "ssh-ed25519 AAAAC3Nza... vous@machine",
+  "pt": "ssh-ed25519 AAAAC3Nza... voce@maquina",
+  "ja": "ssh-ed25519 AAAAC3Nza... you@machine",
+  "ko": "ssh-ed25519 AAAAC3Nza... you@machine"
  },
  "ssh-keygen -p -f &lt;file&gt;": {
   "de": "ssh-keygen -p -f &lt;datei&gt;",
   "es": "ssh-keygen -p -f &lt;archivo&gt;",
-  "zh": "ssh-keygen -p -f &lt;文件&gt;"
+  "zh": "ssh-keygen -p -f &lt;文件&gt;",
+  "fr": "ssh-keygen -p -f &lt;fichier&gt;",
+  "pt": "ssh-keygen -p -f &lt;arquivo&gt;",
+  "ja": "ssh-keygen -p -f &lt;file&gt;",
+  "ko": "ssh-keygen -p -f &lt;file&gt;"
  },
  "symbols": {
   "de": "Sonderzeichen",
   "es": "símbolos",
-  "zh": "符号"
+  "zh": "符号",
+  "fr": "symboles",
+  "pt": "símbolos",
+  "ja": "記号",
+  "ko": "기호"
  },
  "text": {
   "de": "Text",
   "es": "texto",
-  "zh": "文本"
+  "zh": "文本",
+  "fr": "texte",
+  "pt": "texto",
+  "ja": "テキスト",
+  "ko": "텍스트"
  },
  "to": {
   "de": "bis",
   "es": "a",
-  "zh": "至"
+  "zh": "至",
+  "fr": "à",
+  "pt": "até",
+  "ja": "から",
+  "ko": "~"
  },
  "truncated": {
   "de": "gekürzt",
   "es": "truncado",
-  "zh": "已截断"
+  "zh": "已截断",
+  "fr": "tronqué",
+  "pt": "truncado",
+  "ja": "切り詰め",
+  "ko": "잘림"
  },
  "value": {
   "de": "Wert",
   "es": "valor",
-  "zh": "值"
+  "zh": "值",
+  "fr": "valeur",
+  "pt": "valor",
+  "ja": "値",
+  "ko": "값"
  },
  "viewBox": {
   "de": "viewBox",
@@ -13701,17 +15829,29 @@
  "you@machine": {
   "de": "du@rechner",
   "es": "tu@equipo",
-  "zh": "you@machine"
+  "zh": "you@machine",
+  "fr": "vous@machine",
+  "pt": "voce@maquina",
+  "ja": "you@machine",
+  "ko": "you@machine"
  },
  "⌘/ / Ctrl+/": {
   "de": "⌘/ / Strg+/",
   "es": "⌘/ / Ctrl+/",
-  "zh": "⌘/ / Ctrl+/"
+  "zh": "⌘/ / Ctrl+/",
+  "fr": "⌘/ / Ctrl+/",
+  "pt": "⌘/ / Ctrl+/",
+  "ja": "⌘/ / Ctrl+/",
+  "ko": "⌘/ / Ctrl+/"
  },
  "⌘K / Ctrl+K": {
   "de": "⌘K / Strg+K",
   "es": "⌘K / Ctrl+K",
-  "zh": "⌘K / Ctrl+K"
+  "zh": "⌘K / Ctrl+K",
+  "fr": "⌘K / Ctrl+K",
+  "pt": "⌘K / Ctrl+K",
+  "ja": "⌘K / Ctrl+K",
+  "ko": "⌘K / Ctrl+K"
  },
  "0 leaves the quality slider in charge": {
   "fr": "0 laisse le curseur de qualité décider",
@@ -17048,5 +19188,1937 @@
   "pt": "Protocolo",
   "ja": "プロトコル",
   "ko": "프로토콜"
+ },
+ "Province": {
+  "fr": "Province",
+  "pt": "Província",
+  "ja": "州",
+  "ko": "주"
+ },
+ "QPP": {
+  "fr": "RRQ",
+  "pt": "QPP",
+  "ja": "QPP",
+  "ko": "QPP"
+ },
+ "Quebec": {
+  "fr": "Québec",
+  "pt": "Quebec",
+  "ja": "ケベック州",
+  "ko": "퀘벡주"
+ },
+ "Quebec tax": {
+  "fr": "Impôt du Québec",
+  "pt": "Imposto de Quebec",
+  "ja": "ケベック州税",
+  "ko": "퀘벡주 세금"
+ },
+ "Query": {
+  "fr": "Requête",
+  "pt": "Consulta",
+  "ja": "クエリ",
+  "ko": "질의"
+ },
+ "Query parameters": {
+  "fr": "Paramètres de requête",
+  "pt": "Parâmetros da consulta",
+  "ja": "クエリ引数",
+  "ko": "질의 매개변수"
+ },
+ "RRSP contribution": {
+  "fr": "Cotisation REER",
+  "pt": "Contribuição ao RRSP",
+  "ja": "RRSP 拠出",
+  "ko": "RRSP 납입"
+ },
+ "RS latch": {
+  "fr": "Bascule RS",
+  "pt": "Latch RS",
+  "ja": "RS ラッチ",
+  "ko": "RS 래치"
+ },
+ "Radius": {
+  "fr": "Rayon",
+  "pt": "Raio",
+  "ja": "半径",
+  "ko": "반지름"
+ },
+ "Radius mm": {
+  "fr": "Rayon mm",
+  "pt": "Raio mm",
+  "ja": "半径 mm",
+  "ko": "반지름 mm"
+ },
+ "Raise": {
+  "fr": "Élever",
+  "pt": "Elevar",
+  "ja": "上げる",
+  "ko": "올리기"
+ },
+ "Rays": {
+  "fr": "Rayons",
+  "pt": "Raios",
+  "ja": "光線",
+  "ko": "광선"
+ },
+ "Reached it": {
+  "fr": "Atteint",
+  "pt": "Chegou lá",
+  "ja": "到達しました",
+  "ko": "도달했습니다"
+ },
+ "Read QR codes and bar codes with the camera or from a picture.": {
+  "fr": "Lire des QR et des codes-barres avec la caméra ou depuis une image.",
+  "pt": "Leia códigos QR e de barras pela câmera ou a partir de uma imagem.",
+  "ja": "カメラや画像から QR コードとバーコードを読み取ります。",
+  "ko": "카메라나 사진에서 QR 코드와 바코드를 읽습니다."
+ },
+ "Read every value on connecting": {
+  "fr": "Lire chaque valeur à la connexion",
+  "pt": "Ler todos os valores ao conectar",
+  "ja": "接続時にすべての値を読み取る",
+  "ko": "연결할 때 모든 값 읽기"
+ },
+ "Read failed on {name}: {reason}": {
+  "fr": "Échec de lecture sur {name} : {reason}",
+  "pt": "Falha ao ler {name}: {reason}",
+  "ja": "{name} の読み取りに失敗しました: {reason}",
+  "ko": "{name} 읽기에 실패했습니다: {reason}"
+ },
+ "Read from {name}": {
+  "fr": "Lu depuis {name}",
+  "pt": "Lido de {name}",
+  "ja": "{name} から読み取りました",
+  "ko": "{name}에서 읽었습니다"
+ },
+ "Read the documents": {
+  "fr": "Lire les documents",
+  "pt": "Ler os documentos",
+  "ja": "文書を読み込む",
+  "ko": "문서 읽기"
+ },
+ "Read them now": {
+  "fr": "Les lire maintenant",
+  "pt": "Lê-los agora",
+  "ja": "今すぐ読み込む",
+  "ko": "지금 읽기"
+ },
+ "Read {done} of {total}": {
+  "fr": "{done} sur {total} lus",
+  "pt": "Lidos {done} de {total}",
+  "ja": "{total} 件中 {done} 件を読み込みました",
+  "ko": "{total}개 중 {done}개를 읽었습니다"
+ },
+ "Read, and searched by meaning": {
+  "fr": "Lu, et recherché par le sens",
+  "pt": "Lido, e pesquisado por significado",
+  "ja": "読み込み済み、意味でも検索されます",
+  "ko": "읽었고, 뜻으로도 검색됩니다"
+ },
+ "Reading": {
+  "fr": "Lecture",
+  "pt": "Leitura",
+  "ja": "読み込み中",
+  "ko": "읽는 중"
+ },
+ "Reads": {
+  "fr": "Lectures",
+  "pt": "Leituras",
+  "ja": "読み取り",
+  "ko": "읽기"
+ },
+ "Real tax depends on reliefs, credits, local rates and your own circumstances, and rules change every year. Use this to get a feel for the shape of it, not to file anything. Nothing you type is sent anywhere or saved, not even on this device.": {
+  "fr": "L'impôt réel dépend des allègements, des crédits, des taux locaux et de votre situation, et les règles changent chaque année. Servez-vous-en pour saisir l'ordre de grandeur, pas pour déclarer quoi que ce soit. Rien de ce que vous saisissez n'est envoyé ni enregistré, pas même sur cet appareil.",
+  "pt": "O imposto real depende de alívios, créditos, alíquotas locais e da sua situação, e as regras mudam todo ano. Use isto para ter uma noção do formato, não para declarar nada. Nada do que você digita é enviado nem salvo, nem mesmo neste dispositivo.",
+  "ja": "実際の税額は各種軽減、控除、地方の税率、そしてあなたの事情によって変わり、規則は毎年変わります。おおよその形をつかむために使い、申告には使わないでください。入力した内容はどこにも送られず、この端末にも保存されません。",
+  "ko": "실제 세금은 감면, 공제, 지방 세율, 그리고 개인 사정에 따라 달라지며 규칙은 해마다 바뀝니다. 대략의 모습을 가늠하는 데 쓰고, 신고에는 쓰지 마세요. 입력한 것은 어디로도 보내지 않고 이 기기에도 저장하지 않습니다."
+ },
+ "Reasonable.": {
+  "fr": "Raisonnable.",
+  "pt": "Razoável.",
+  "ja": "妥当な手。",
+  "ko": "무난한 수."
+ },
+ "Rebuild now": {
+  "fr": "Reconstruire maintenant",
+  "pt": "Reconstruir agora",
+  "ja": "今すぐ作り直す",
+  "ko": "지금 다시 만들기"
+ },
+ "Rebuilt from the document": {
+  "fr": "Reconstruit à partir du document",
+  "pt": "Reconstruído a partir do documento",
+  "ja": "文書から作り直しました",
+  "ko": "문서에서 다시 만들었습니다"
+ },
+ "Recent rolls": {
+  "fr": "Lancers récents",
+  "pt": "Rolagens recentes",
+  "ja": "最近の出目",
+  "ko": "최근 굴림"
+ },
+ "Reconnect": {
+  "fr": "Reconnecter",
+  "pt": "Reconectar",
+  "ja": "再接続",
+  "ko": "다시 연결"
+ },
+ "Red": {
+  "fr": "Rouge",
+  "pt": "Vermelho",
+  "ja": "赤",
+  "ko": "빨강"
+ },
+ "Redirection": {
+  "fr": "Redirection",
+  "pt": "Redirecionamento",
+  "ja": "リダイレクト",
+  "ko": "리다이렉션"
+ },
+ "References": {
+  "fr": "Bibliographie",
+  "pt": "Referências",
+  "ja": "参考文献",
+  "ko": "참고 문헌"
+ },
+ "Refractive index": {
+  "fr": "Indice de réfraction",
+  "pt": "Índice de refração",
+  "ja": "屈折率",
+  "ko": "굴절률"
+ },
+ "Regional and municipal surcharges are taken at typical levels.": {
+  "fr": "Les surtaxes régionales et communales sont prises à des niveaux typiques.",
+  "pt": "As sobretaxas regional e municipal são aplicadas em níveis típicos.",
+  "ja": "州と市町村の付加税は代表的な水準で計算します。",
+  "ko": "지역과 시의 부가세는 통상 수준으로 계산합니다."
+ },
+ "Regional surcharge": {
+  "fr": "Surtaxe régionale",
+  "pt": "Sobretaxa regional",
+  "ja": "州付加税",
+  "ko": "지역 부가세"
+ },
+ "Regions set their own half of the scale, so your bill may differ.": {
+  "fr": "Les régions fixent leur moitié du barème, votre imposition peut donc différer.",
+  "pt": "As regiões definem a sua metade da tabela, então a sua conta pode variar.",
+  "ja": "州が税率表の半分を独自に定めるため、実際の税額は異なることがあります。",
+  "ko": "지역이 세율표의 절반을 스스로 정하므로 실제 세액은 다를 수 있습니다."
+ },
+ "Remove piece": {
+  "fr": "Retirer l'élément",
+  "pt": "Remover o elemento",
+  "ja": "要素を削除",
+  "ko": "요소 제거"
+ },
+ "Remove the block": {
+  "fr": "Retirer le bloc",
+  "pt": "Remover o bloco",
+  "ja": "ブロックを削除",
+  "ko": "블록 제거"
+ },
+ "Remove the layer": {
+  "fr": "Retirer le calque",
+  "pt": "Remover a camada",
+  "ja": "レイヤーを削除",
+  "ko": "레이어 제거"
+ },
+ "Remove the picture": {
+  "fr": "Retirer l'image",
+  "pt": "Remover a figura",
+  "ja": "図を削除",
+  "ko": "그림 제거"
+ },
+ "Replace": {
+  "fr": "Remplacer",
+  "pt": "Substituir",
+  "ja": "置換",
+  "ko": "바꾸기"
+ },
+ "Replace all": {
+  "fr": "Tout remplacer",
+  "pt": "Substituir tudo",
+  "ja": "すべて置換",
+  "ko": "모두 바꾸기"
+ },
+ "Replace with": {
+  "fr": "Remplacer par",
+  "pt": "Substituir por",
+  "ja": "置換後",
+  "ko": "바꿀 내용"
+ },
+ "Replaced {count}": {
+  "fr": "{count} remplacés",
+  "pt": "{count} substituídos",
+  "ja": "{count} 件置換しました",
+  "ko": "{count}개를 바꿨습니다"
+ },
+ "Rest length mm": {
+  "fr": "Longueur au repos mm",
+  "pt": "Comprimento em repouso mm",
+  "ja": "自然長 mm",
+  "ko": "자연 길이 mm"
+ },
+ "Resume": {
+  "fr": "Reprendre",
+  "pt": "Retomar",
+  "ja": "再開",
+  "ko": "이어 하기"
+ },
+ "Rhineland-Palatinate": {
+  "fr": "Rhénanie-Palatinat",
+  "pt": "Renânia-Palatinado",
+  "ja": "ラインラント＝プファルツ州",
+  "ko": "라인란트팔츠주"
+ },
+ "Roll": {
+  "fr": "Lancer",
+  "pt": "Rolar",
+  "ja": "振る",
+  "ko": "굴리기"
+ },
+ "Roll any dice and watch the spread.": {
+  "fr": "Lancez n'importe quel dé et observez la répartition.",
+  "pt": "Role qualquer dado e observe a distribuição.",
+  "ja": "どんなサイコロも振って、ばらつきを見てみましょう。",
+  "ko": "어떤 주사위든 굴려 흩어짐을 살펴보세요."
+ },
+ "Roll the wheel to zoom the magnifier": {
+  "fr": "Utilisez la molette pour zoomer la loupe",
+  "pt": "Role a roda para ampliar a lupa",
+  "ja": "ホイールで拡大鏡の倍率を変えます",
+  "ko": "휠을 굴려 돋보기 배율을 바꿉니다"
+ },
+ "Roll to see the spread build up": {
+  "fr": "Lancez pour voir la répartition se former",
+  "pt": "Role para ver a distribuição se formar",
+  "ja": "振ると分布が積み上がっていきます",
+  "ko": "굴리면 분포가 쌓여 갑니다"
+ },
+ "Roll with a sound": {
+  "fr": "Lancer avec un son",
+  "pt": "Rolar com som",
+  "ja": "音を鳴らして振る",
+  "ko": "소리를 내며 굴리기"
+ },
+ "Rope bridge": {
+  "fr": "Pont de corde",
+  "pt": "Ponte de corda",
+  "ja": "つり橋",
+  "ko": "밧줄 다리"
+ },
+ "Rose": {
+  "fr": "Rose",
+  "pt": "Rosa",
+  "ja": "ローズ",
+  "ko": "장미"
+ },
+ "Row above": {
+  "fr": "Ligne au-dessus",
+  "pt": "Linha acima",
+  "ja": "上に行を追加",
+  "ko": "위에 행"
+ },
+ "Row below": {
+  "fr": "Ligne en dessous",
+  "pt": "Linha abaixo",
+  "ja": "下に行を追加",
+  "ko": "아래에 행"
+ },
+ "Rules of your own": {
+  "fr": "Vos propres règles",
+  "pt": "Regras próprias",
+  "ja": "独自のルール",
+  "ko": "직접 만든 규칙"
+ },
+ "S": {
+  "fr": "S",
+  "pt": "S",
+  "ja": "S",
+  "ko": "S"
+ },
+ "SVG copied": {
+  "fr": "SVG copié",
+  "pt": "SVG copiado",
+  "ja": "SVG をコピーしました",
+  "ko": "SVG를 복사했습니다"
+ },
+ "Saarland": {
+  "fr": "Sarre",
+  "pt": "Sarre",
+  "ja": "ザールラント州",
+  "ko": "자를란트주"
+ },
+ "Saskatchewan": {
+  "fr": "Saskatchewan",
+  "pt": "Saskatchewan",
+  "ja": "サスカチュワン州",
+  "ko": "서스캐처원주"
+ },
+ "Saskatchewan tax": {
+  "fr": "Impôt de la Saskatchewan",
+  "pt": "Imposto de Saskatchewan",
+  "ja": "サスカチュワン州税",
+  "ko": "서스캐처원주 세금"
+ },
+ "Save a copy": {
+  "fr": "Enregistrer une copie",
+  "pt": "Salvar uma cópia",
+  "ja": "控えを保存",
+  "ko": "사본 저장"
+ },
+ "Save as SVG": {
+  "fr": "Enregistrer en SVG",
+  "pt": "Salvar como SVG",
+  "ja": "SVG として保存",
+  "ko": "SVG로 저장"
+ },
+ "Save game": {
+  "fr": "Enregistrer la partie",
+  "pt": "Salvar o jogo",
+  "ja": "ゲームを保存",
+  "ko": "게임 저장"
+ },
+ "Save table": {
+  "fr": "Enregistrer le tableau",
+  "pt": "Salvar a tabela",
+  "ja": "表を保存",
+  "ko": "표 저장"
+ },
+ "Save the bench as a picture": {
+  "fr": "Enregistrer le plan de travail en image",
+  "pt": "Salvar a bancada como imagem",
+  "ja": "作業台を画像として保存",
+  "ko": "작업대를 그림으로 저장"
+ },
+ "Save the game as a file": {
+  "fr": "Enregistrer la partie dans un fichier",
+  "pt": "Salvar o jogo como arquivo",
+  "ja": "ゲームをファイルに保存",
+  "ko": "게임을 파일로 저장"
+ },
+ "Saved a copy of {name}": {
+  "fr": "Copie de {name} enregistrée",
+  "pt": "Cópia de {name} salva",
+  "ja": "{name} の控えを保存しました",
+  "ko": "{name}의 사본을 저장했습니다"
+ },
+ "Saved as HTML": {
+  "fr": "Enregistré en HTML",
+  "pt": "Salvo como HTML",
+  "ja": "HTML として保存しました",
+  "ko": "HTML로 저장했습니다"
+ },
+ "Saved as Markdown": {
+  "fr": "Enregistré en Markdown",
+  "pt": "Salvo como Markdown",
+  "ja": "Markdown として保存しました",
+  "ko": "마크다운으로 저장했습니다"
+ },
+ "Saved as PDF": {
+  "fr": "Enregistré en PDF",
+  "pt": "Salvo como PDF",
+  "ja": "PDF として保存しました",
+  "ko": "PDF로 저장했습니다"
+ },
+ "Saved as Word": {
+  "fr": "Enregistré en Word",
+  "pt": "Salvo como Word",
+  "ja": "Word として保存しました",
+  "ko": "Word로 저장했습니다"
+ },
+ "Saved as a Studio document": {
+  "fr": "Enregistré comme document Studio",
+  "pt": "Salvo como documento do Estúdio",
+  "ja": "スタジオ文書として保存しました",
+  "ko": "스튜디오 문서로 저장했습니다"
+ },
+ "Saved as text": {
+  "fr": "Enregistré en texte",
+  "pt": "Salvo como texto",
+  "ja": "テキストとして保存しました",
+  "ko": "텍스트로 저장했습니다"
+ },
+ "Saxony": {
+  "fr": "Saxe",
+  "pt": "Saxônia",
+  "ja": "ザクセン州",
+  "ko": "작센주"
+ },
+ "Saxony charges the employee half a point more for care insurance.": {
+  "fr": "La Saxe prélève un demi-point de plus au salarié pour l'assurance dépendance.",
+  "pt": "A Saxônia cobra do empregado meio ponto a mais para o seguro de cuidados.",
+  "ja": "ザクセン州は介護保険で被用者に 0.5 ポイント多く課します。",
+  "ko": "작센주는 요양 보험에서 근로자에게 0.5포인트를 더 매깁니다."
+ },
+ "Saxony-Anhalt": {
+  "fr": "Saxe-Anhalt",
+  "pt": "Saxônia-Anhalt",
+  "ja": "ザクセン＝アンハルト州",
+  "ko": "작센안할트주"
+ },
+ "Schleswig-Holstein": {
+  "fr": "Schleswig-Holstein",
+  "pt": "Schleswig-Holstein",
+  "ja": "シュレースヴィヒ＝ホルシュタイン州",
+  "ko": "슐레스비히홀슈타인주"
+ },
+ "Scissor lift": {
+  "fr": "Nacelle à ciseaux",
+  "pt": "Plataforma tesoura",
+  "ja": "シザーリフト",
+  "ko": "시저 리프트"
+ },
+ "Scotland": {
+  "fr": "Écosse",
+  "pt": "Escócia",
+  "ja": "スコットランド",
+  "ko": "스코틀랜드"
+ },
+ "Search parts": {
+  "fr": "Chercher des pièces",
+  "pt": "Buscar peças",
+  "ja": "部品を検索",
+  "ko": "부품 찾기"
+ },
+ "Searching the documents": {
+  "fr": "Recherche dans les documents",
+  "pt": "Buscando nos documentos",
+  "ja": "文書を検索しています",
+  "ko": "문서를 찾는 중"
+ },
+ "Segments": {
+  "fr": "Segments",
+  "pt": "Segmentos",
+  "ja": "セグメント",
+  "ko": "세그먼트"
+ },
+ "Select a word and mark it for the index": {
+  "fr": "Sélectionnez un mot et marquez-le pour l'index",
+  "pt": "Selecione uma palavra e marque-a para o índice",
+  "ja": "語を選んで索引に登録します",
+  "ko": "낱말을 고르고 색인에 표시하세요"
+ },
+ "Select some text first": {
+  "fr": "Sélectionnez d'abord du texte",
+  "pt": "Selecione algum texto primeiro",
+  "ja": "先に文章を選択してください",
+  "ko": "먼저 글을 고르세요"
+ },
+ "Selected {name}": {
+  "fr": "{name} sélectionné",
+  "pt": "{name} selecionado",
+  "ja": "{name} を選びました",
+  "ko": "{name}을(를) 골랐습니다"
+ },
+ "Self timer": {
+  "fr": "Retardateur",
+  "pt": "Temporizador",
+  "ja": "セルフタイマー",
+  "ko": "셀프 타이머"
+ },
+ "Semi-open games": {
+  "fr": "Parties semi-ouvertes",
+  "pt": "Jogos semiabertos",
+  "ja": "セミオープンゲーム",
+  "ko": "세미오픈 게임"
+ },
+ "Send the pages to a printer": {
+  "fr": "Envoyer les pages à une imprimante",
+  "pt": "Enviar as páginas para uma impressora",
+  "ja": "ページをプリンタに送る",
+  "ko": "쪽을 프린터로 보내기"
+ },
+ "Server error": {
+  "fr": "Erreur du serveur",
+  "pt": "Erro do servidor",
+  "ja": "サーバーエラー",
+  "ko": "서버 오류"
+ },
+ "Setup saved": {
+  "fr": "Configuration enregistrée",
+  "pt": "Configuração salva",
+  "ja": "設定を保存しました",
+  "ko": "설정을 저장했습니다"
+ },
+ "Shapes": {
+  "fr": "Formes",
+  "pt": "Formas",
+  "ja": "図形",
+  "ko": "도형"
+ },
+ "Sharp": {
+  "fr": "Net",
+  "pt": "Nítido",
+  "ja": "シャープ",
+  "ko": "선명함"
+ },
+ "Short ID": {
+  "fr": "Identifiant court",
+  "pt": "ID curto",
+  "ja": "短い ID",
+  "ko": "짧은 ID"
+ },
+ "Shortest mm": {
+  "fr": "Plus petit côté mm",
+  "pt": "Menor lado mm",
+  "ja": "短辺 mm",
+  "ko": "짧은 쪽 mm"
+ },
+ "Show me": {
+  "fr": "Montrer",
+  "pt": "Mostrar",
+  "ja": "見せる",
+  "ko": "보여 주기"
+ },
+ "Show or hide the panel": {
+  "fr": "Afficher ou masquer le panneau",
+  "pt": "Mostrar ou ocultar o painel",
+  "ja": "パネルの表示を切り替え",
+  "ko": "패널 보이기 전환"
+ },
+ "Show or hide the ruler": {
+  "fr": "Afficher ou masquer la règle",
+  "pt": "Mostrar ou ocultar a régua",
+  "ja": "ルーラーの表示を切り替え",
+  "ko": "눈금자 보이기 전환"
+ },
+ "Show the grid": {
+  "fr": "Afficher la grille",
+  "pt": "Mostrar a grade",
+  "ja": "格子を表示",
+  "ko": "격자 표시"
+ },
+ "Show the guides": {
+  "fr": "Afficher les repères",
+  "pt": "Mostrar as guias",
+  "ja": "ガイドを表示",
+  "ko": "안내선 표시"
+ },
+ "Show the letter, pick the sound": {
+  "fr": "Montrer la lettre, choisir le son",
+  "pt": "Mostrar a letra, escolher o som",
+  "ja": "文字を見て音を選ぶ",
+  "ko": "글자를 보고 소리 고르기"
+ },
+ "Show the sound, pick the letter": {
+  "fr": "Faire entendre le son, choisir la lettre",
+  "pt": "Tocar o som, escolher a letra",
+  "ja": "音を聞いて文字を選ぶ",
+  "ko": "소리를 듣고 글자 고르기"
+ },
+ "Show where a piece can go": {
+  "fr": "Montrer où une pièce peut aller",
+  "pt": "Mostrar para onde uma peça pode ir",
+  "ja": "駒の動ける場所を示す",
+  "ko": "기물이 갈 수 있는 곳 보이기"
+ },
+ "Showing {shown} of {total} parts": {
+  "fr": "{shown} pièces affichées sur {total}",
+  "pt": "Mostrando {shown} de {total} peças",
+  "ja": "{total} 個中 {shown} 個の部品を表示",
+  "ko": "부품 {total}개 중 {shown}개 표시"
+ },
+ "Shown on every page of the PDF and the page view.": {
+  "fr": "Affiché sur chaque page du PDF et de la vue page.",
+  "pt": "Mostrado em cada página do PDF e da visualização de página.",
+  "ja": "PDF とページ表示のすべてのページに表示されます。",
+  "ko": "PDF와 페이지 보기의 모든 쪽에 나옵니다."
+ },
+ "Signature not verified": {
+  "fr": "Signature non vérifiée",
+  "pt": "Assinatura não verificada",
+  "ja": "署名は検証されていません",
+  "ko": "서명을 확인하지 않았습니다"
+ },
+ "Single": {
+  "fr": "Célibataire",
+  "pt": "Solteiro",
+  "ja": "独身",
+  "ko": "미혼"
+ },
+ "Slate": {
+  "fr": "Ardoise",
+  "pt": "Ardósia",
+  "ja": "スレート",
+  "ko": "슬레이트"
+ },
+ "Slit": {
+  "fr": "Fente",
+  "pt": "Fenda",
+  "ja": "スリット",
+  "ko": "슬릿"
+ },
+ "Snap": {
+  "fr": "Aimanter",
+  "pt": "Encaixar",
+  "ja": "スナップ",
+  "ko": "맞춤"
+ },
+ "Social Security": {
+  "fr": "Sécurité sociale",
+  "pt": "Previdência Social",
+  "ja": "社会保障",
+  "ko": "사회 보장"
+ },
+ "Social and health contributions are at the employee rates.": {
+  "fr": "Les cotisations sociales et de santé sont aux taux salariés.",
+  "pt": "As contribuições sociais e de saúde estão nas alíquotas do empregado.",
+  "ja": "社会保険料と健康保険料は被用者料率です。",
+  "ko": "사회 보험료와 건강 보험료는 근로자 요율입니다."
+ },
+ "Social contribution is at the employee rate of eighteen and a half percent.": {
+  "fr": "La cotisation sociale est au taux salarié de dix-huit et demi pour cent.",
+  "pt": "A contribuição social está na alíquota do empregado de dezoito e meio por cento.",
+  "ja": "社会保険料は被用者料率の 18.5 パーセントです。",
+  "ko": "사회 보험료는 근로자 요율 18.5퍼센트입니다."
+ },
+ "Social contributions": {
+  "fr": "Cotisations sociales",
+  "pt": "Contribuições sociais",
+  "ja": "社会保険料",
+  "ko": "사회 보험료"
+ },
+ "Social contributions cover pension, health and long term care.": {
+  "fr": "Les cotisations sociales couvrent la retraite, la santé et la dépendance.",
+  "pt": "As contribuições sociais cobrem aposentadoria, saúde e cuidados de longa duração.",
+  "ja": "社会保険料は年金、健康、長期介護をまかないます。",
+  "ko": "사회 보험료는 연금, 건강, 장기 요양을 아우릅니다."
+ },
+ "Social insurance": {
+  "fr": "Assurance sociale",
+  "pt": "Seguro social",
+  "ja": "社会保険",
+  "ko": "사회 보험"
+ },
+ "Social security": {
+  "fr": "Sécurité sociale",
+  "pt": "Previdência social",
+  "ja": "社会保障",
+  "ko": "사회 보장"
+ },
+ "Social security is at the employee rate of eleven percent.": {
+  "fr": "La sécurité sociale est au taux salarié de onze pour cent.",
+  "pt": "A previdência social está na alíquota do empregado de onze por cento.",
+  "ja": "社会保障は被用者料率の 11 パーセントです。",
+  "ko": "사회 보장은 근로자 요율 11퍼센트입니다."
+ },
+ "Social security is at the employee rate up to the ceiling.": {
+  "fr": "La sécurité sociale est au taux salarié jusqu'au plafond.",
+  "pt": "A previdência social está na alíquota do empregado até o teto.",
+  "ja": "社会保障は上限まで被用者料率です。",
+  "ko": "사회 보장은 상한까지 근로자 요율입니다."
+ },
+ "Social security is at the employee rate up to the monthly ceiling.": {
+  "fr": "La sécurité sociale est au taux salarié jusqu'au plafond mensuel.",
+  "pt": "A previdência social está na alíquota do empregado até o teto mensal.",
+  "ja": "社会保障は月額上限まで被用者料率です。",
+  "ko": "사회 보장은 월 상한까지 근로자 요율입니다."
+ },
+ "Social security is at the usual employee rate.": {
+  "fr": "La sécurité sociale est au taux salarié habituel.",
+  "pt": "A previdência social está na alíquota usual do empregado.",
+  "ja": "社会保障は通常の被用者料率です。",
+  "ko": "사회 보장은 통상 근로자 요율입니다."
+ },
+ "Soft": {
+  "fr": "Doux",
+  "pt": "Suave",
+  "ja": "やわらかい",
+  "ko": "부드러움"
+ },
+ "Sort keys": {
+  "fr": "Trier les clés",
+  "pt": "Ordenar as chaves",
+  "ja": "キーを並べ替え",
+  "ko": "키 정렬"
+ },
+ "Sound alike": {
+  "fr": "Son proche",
+  "pt": "Som parecido",
+  "ja": "音が似ている",
+  "ko": "소리가 비슷함"
+ },
+ "Sound on a hit": {
+  "fr": "Son à la lecture",
+  "pt": "Som ao ler",
+  "ja": "読み取り時に音を鳴らす",
+  "ko": "읽으면 소리 내기"
+ },
+ "Sounds like": {
+  "fr": "Se prononce",
+  "pt": "Soa como",
+  "ja": "読み方",
+  "ko": "소리"
+ },
+ "Sources": {
+  "fr": "Sources",
+  "pt": "Fontes",
+  "ja": "出典",
+  "ko": "출처"
+ },
+ "Space the selection evenly across": {
+  "fr": "Répartir la sélection horizontalement",
+  "pt": "Distribuir a seleção na horizontal",
+  "ja": "選択範囲を横方向に等間隔で配置",
+  "ko": "고른 것을 가로로 고르게 벌리기"
+ },
+ "Space the selection evenly down": {
+  "fr": "Répartir la sélection verticalement",
+  "pt": "Distribuir a seleção na vertical",
+  "ja": "選択範囲を縦方向に等間隔で配置",
+  "ko": "고른 것을 세로로 고르게 벌리기"
+ },
+ "Span degrees": {
+  "fr": "Ouverture en degrés",
+  "pt": "Abertura em graus",
+  "ja": "広がり (度)",
+  "ko": "벌어진 각도"
+ },
+ "Spread across": {
+  "fr": "Répartir horizontalement",
+  "pt": "Distribuir na horizontal",
+  "ja": "横に均等配置",
+  "ko": "가로로 고르게"
+ },
+ "Spread degrees": {
+  "fr": "Dispersion en degrés",
+  "pt": "Dispersão em graus",
+  "ja": "広がり (度)",
+  "ko": "퍼짐 각도"
+ },
+ "Spread down": {
+  "fr": "Répartir verticalement",
+  "pt": "Distribuir na vertical",
+  "ja": "縦に均等配置",
+  "ko": "세로로 고르게"
+ },
+ "Stack and ball": {
+  "fr": "Pile et balle",
+  "pt": "Pilha e bola",
+  "ja": "積み木とボール",
+  "ko": "쌓기와 공"
+ },
+ "Stalemate. The game is drawn.": {
+  "fr": "Pat. La partie est nulle.",
+  "pt": "Afogamento. O jogo está empatado.",
+  "ja": "ステイルメイト。引き分けです。",
+  "ko": "스테일메이트. 무승부입니다."
+ },
+ "Start over": {
+  "fr": "Recommencer",
+  "pt": "Começar de novo",
+  "ja": "やり直す",
+  "ko": "처음부터"
+ },
+ "Start the camera automatically": {
+  "fr": "Démarrer la caméra automatiquement",
+  "pt": "Iniciar a câmera automaticamente",
+  "ja": "カメラを自動で起動",
+  "ko": "카메라를 저절로 켜기"
+ },
+ "Start with an empty bench": {
+  "fr": "Commencer avec un plan de travail vide",
+  "pt": "Começar com uma bancada vazia",
+  "ja": "空の作業台から始める",
+  "ko": "빈 작업대로 시작하기"
+ },
+ "State and regional tax added together at the common rates.": {
+  "fr": "Impôt d'État et régional additionnés aux taux courants.",
+  "pt": "Imposto estadual e regional somados nas alíquotas comuns.",
+  "ja": "州税と地域税を通常の税率で合算します。",
+  "ko": "주세와 지역세를 통상 세율로 합칩니다."
+ },
+ "State income tax": {
+  "fr": "Impôt sur le revenu de l'État",
+  "pt": "Imposto de renda estadual",
+  "ja": "州所得税",
+  "ko": "주 소득세"
+ },
+ "State pension age": {
+  "fr": "Âge de la retraite légale",
+  "pt": "Idade da aposentadoria estatal",
+  "ja": "公的年金の受給年齢",
+  "ko": "공적 연금 수급 연령"
+ },
+ "State tax on the scale, plus municipal tax at the average rate.": {
+  "fr": "Impôt d'État au barème, plus impôt communal au taux moyen.",
+  "pt": "Imposto estadual pela tabela, mais imposto municipal na taxa média.",
+  "ja": "税率表による州税と、平均税率の市町村税。",
+  "ko": "세율표에 따른 주세와, 평균 세율의 시 세금."
+ },
+ "States shown are the ones with a single flat rate, or none at all.": {
+  "fr": "Les États présentés sont ceux avec un taux unique, ou sans impôt du tout.",
+  "pt": "Os estados mostrados são os de alíquota única, ou sem imposto algum.",
+  "ja": "表示している州は、税率が一律のものか、州税がないものです。",
+  "ko": "보이는 주는 세율이 하나이거나 주세가 아예 없는 곳입니다."
+ },
+ "Statutory": {
+  "fr": "Régime légal",
+  "pt": "Legal",
+  "ja": "公的保険",
+  "ko": "법정"
+ },
+ "Steady": {
+  "fr": "Régulier",
+  "pt": "Constante",
+  "ja": "一定",
+  "ko": "일정함"
+ },
+ "Step {n} of {total}": {
+  "fr": "Étape {n} sur {total}",
+  "pt": "Passo {n} de {total}",
+  "ja": "{total} 手中 {n} 手目",
+  "ko": "{total}단계 중 {n}단계"
+ },
+ "Stop scanning": {
+  "fr": "Arrêter le balayage",
+  "pt": "Parar de escanear",
+  "ja": "走査を止める",
+  "ko": "훑기 멈추기"
+ },
+ "Stopped listening to {name}": {
+  "fr": "Arrêt de l'écoute de {name}",
+  "pt": "Parou de ouvir {name}",
+  "ja": "{name} の購読を止めました",
+  "ko": "{name} 듣기를 멈췄습니다"
+ },
+ "Stopped. This was built from the words.": {
+  "fr": "Arrêté. Ceci a été construit à partir des mots.",
+  "pt": "Parado. Isto foi montado a partir das palavras.",
+  "ja": "停止しました。これは語だけから作られています。",
+  "ko": "멈췄습니다. 이것은 낱말만으로 만들었습니다."
+ },
+ "Streak": {
+  "fr": "Série",
+  "pt": "Sequência",
+  "ja": "連続",
+  "ko": "연속"
+ },
+ "Strikethrough": {
+  "fr": "Barré",
+  "pt": "Tachado",
+  "ja": "取り消し線",
+  "ko": "취소선"
+ },
+ "Structures": {
+  "fr": "Structures",
+  "pt": "Estruturas",
+  "ja": "構造物",
+  "ko": "구조물"
+ },
+ "Student loan": {
+  "fr": "Prêt étudiant",
+  "pt": "Empréstimo estudantil",
+  "ja": "学生ローン",
+  "ko": "학자금 대출"
+ },
+ "Studio": {
+  "fr": "Studio",
+  "pt": "Estúdio",
+  "ja": "スタジオ",
+  "ko": "스튜디오"
+ },
+ "Studio document": {
+  "fr": "Document Studio",
+  "pt": "Documento do Estúdio",
+  "ja": "スタジオ文書",
+  "ko": "스튜디오 문서"
+ },
+ "Subscribe failed on {name}: {reason}": {
+  "fr": "Échec de l'abonnement sur {name} : {reason}",
+  "pt": "Falha ao assinar {name}: {reason}",
+  "ja": "{name} の購読に失敗しました: {reason}",
+  "ko": "{name} 구독에 실패했습니다: {reason}"
+ },
+ "Subscribed to {name}": {
+  "fr": "Abonné à {name}",
+  "pt": "Assinado {name}",
+  "ja": "{name} を購読しました",
+  "ko": "{name}을(를) 구독했습니다"
+ },
+ "Subscript": {
+  "fr": "Indice",
+  "pt": "Subscrito",
+  "ja": "下付き",
+  "ko": "아래 첨자"
+ },
+ "Success": {
+  "fr": "Succès",
+  "pt": "Sucesso",
+  "ja": "成功",
+  "ko": "성공"
+ },
+ "Superscript": {
+  "fr": "Exposant",
+  "pt": "Sobrescrito",
+  "ja": "上付き",
+  "ko": "위 첨자"
+ },
+ "Surprise me": {
+  "fr": "Surprenez-moi",
+  "pt": "Surpreenda-me",
+  "ja": "おまかせ",
+  "ko": "아무거나"
+ },
+ "Systems": {
+  "fr": "Systèmes",
+  "pt": "Sistemas",
+  "ja": "系",
+  "ko": "계"
+ },
+ "Table": {
+  "fr": "Tableau",
+  "pt": "Tabela",
+  "ja": "表",
+  "ko": "표"
+ },
+ "Table of contents": {
+  "fr": "Table des matières",
+  "pt": "Sumário",
+  "ja": "目次",
+  "ko": "차례"
+ },
+ "Tails": {
+  "fr": "Face",
+  "pt": "Coroa",
+  "ja": "裏",
+  "ko": "뒷면"
+ },
+ "Take back your move": {
+  "fr": "Reprendre votre coup",
+  "pt": "Voltar o seu lance",
+  "ja": "手を戻す",
+  "ko": "수 무르기"
+ },
+ "Take the selected piece off": {
+  "fr": "Retirer la pièce sélectionnée",
+  "pt": "Tirar a peça selecionada",
+  "ja": "選択した駒を取り除く",
+  "ko": "고른 기물 치우기"
+ },
+ "Take-home": {
+  "fr": "Net à percevoir",
+  "pt": "Valor líquido",
+  "ja": "手取り",
+  "ko": "실수령액"
+ },
+ "Taken": {
+  "fr": "Prélevé",
+  "pt": "Retirado",
+  "ja": "控除額",
+  "ko": "공제액"
+ },
+ "Target file size": {
+  "fr": "Taille de fichier visée",
+  "pt": "Tamanho de arquivo desejado",
+  "ja": "目標ファイルサイズ",
+  "ko": "목표 파일 크기"
+ },
+ "Tax": {
+  "fr": "Impôt",
+  "pt": "Imposto",
+  "ja": "税",
+  "ko": "세금"
+ },
+ "Tax Calculator": {
+  "fr": "Calculateur d'impôt",
+  "pt": "Calculadora de imposto",
+  "ja": "税計算",
+  "ko": "세금 계산기"
+ },
+ "Tax class": {
+  "fr": "Classe d'imposition",
+  "pt": "Classe fiscal",
+  "ja": "税クラス",
+  "ko": "세금 등급"
+ },
+ "Tax is worked out on pay after contributions, as the barème requires.": {
+  "fr": "L'impôt est calculé sur le salaire après cotisations, comme l'exige le barème.",
+  "pt": "O imposto é calculado sobre o salário após as contribuições, como a tabela exige.",
+  "ja": "税は、税率表の定めどおり、保険料控除後の給与に対して計算します。",
+  "ko": "세금은 세율표가 요구하는 대로 보험료를 뺀 급여에 매깁니다."
+ },
+ "Telescope": {
+  "fr": "Télescope",
+  "pt": "Telescópio",
+  "ja": "望遠鏡",
+  "ko": "망원경"
+ },
+ "Text colour": {
+  "fr": "Couleur du texte",
+  "pt": "Cor do texto",
+  "ja": "文字色",
+  "ko": "글자 색"
+ },
+ "Text to encode": {
+  "fr": "Texte à encoder",
+  "pt": "Texto a codificar",
+  "ja": "符号化するテキスト",
+  "ko": "인코딩할 글"
+ },
+ "Text to hash": {
+  "fr": "Texte à hacher",
+  "pt": "Texto para o hash",
+  "ja": "ハッシュするテキスト",
+  "ko": "해시할 글"
+ },
+ "Text to show": {
+  "fr": "Texte à afficher",
+  "pt": "Texto a mostrar",
+  "ja": "表示する文字",
+  "ko": "보일 글"
+ },
+ "That block is already in the document": {
+  "fr": "Ce bloc est déjà dans le document",
+  "pt": "Esse bloco já está no documento",
+  "ja": "そのブロックはすでに文書にあります",
+  "ko": "그 블록은 이미 문서에 있습니다"
+ },
+ "That file could not be opened": {
+  "fr": "Ce fichier n'a pas pu être ouvert",
+  "pt": "Não foi possível abrir esse arquivo",
+  "ja": "そのファイルは開けませんでした",
+  "ko": "그 파일을 열 수 없었습니다"
+ },
+ "That file could not be opened as a picture.": {
+  "fr": "Ce fichier n'a pas pu être ouvert comme image.",
+  "pt": "Não foi possível abrir esse arquivo como imagem.",
+  "ja": "そのファイルは画像として開けませんでした。",
+  "ko": "그 파일을 그림으로 열 수 없었습니다."
+ },
+ "That icon could not be turned into a PNG": {
+  "fr": "Cette icône n'a pas pu être convertie en PNG",
+  "pt": "Não foi possível transformar esse ícone em PNG",
+  "ja": "そのアイコンは PNG にできませんでした",
+  "ko": "그 아이콘을 PNG로 바꿀 수 없었습니다"
+ },
+ "That is it. {san}": {
+  "fr": "C'est cela. {san}",
+  "pt": "É isso. {san}",
+  "ja": "そのとおりです。{san}",
+  "ko": "바로 그것입니다. {san}"
+ },
+ "The 30 percent ruling": {
+  "fr": "Le régime des 30 pour cent",
+  "pt": "A regra dos 30 por cento",
+  "ja": "30 パーセントルール",
+  "ko": "30퍼센트 특례"
+ },
+ "The barème on employment income after the ten percent allowance for work costs.": {
+  "fr": "Le barème sur les revenus d'emploi après l'abattement de dix pour cent pour frais professionnels.",
+  "pt": "A tabela sobre a renda do trabalho após a dedução de dez por cento para despesas profissionais.",
+  "ja": "必要経費 10 パーセントの控除後、給与所得に税率表を適用。",
+  "ko": "필요 경비 10퍼센트 공제 후 근로 소득에 세율표 적용."
+ },
+ "The basic deduction and the earned income credit are both applied.": {
+  "fr": "La déduction de base et le crédit sur les revenus du travail sont tous deux appliqués.",
+  "pt": "A dedução básica e o crédito sobre a renda do trabalho são ambos aplicados.",
+  "ja": "基礎控除と勤労所得控除の両方を適用します。",
+  "ko": "기본 공제와 근로 소득 공제를 모두 적용합니다."
+ },
+ "The browser handed over no services. A device that uses its own uuids needs them adding under Custom services.": {
+  "fr": "Le navigateur n'a remis aucun service. Un appareil qui utilise ses propres uuid demande de les ajouter sous Services personnalisés.",
+  "pt": "O navegador não entregou nenhum serviço. Um dispositivo que usa uuid próprios precisa que eles sejam adicionados em Serviços personalizados.",
+  "ja": "ブラウザはサービスを 1 つも渡しませんでした。独自の uuid を使う機器では、独自サービスに uuid を追加してください。",
+  "ko": "브라우저가 서비스를 하나도 넘겨주지 않았습니다. 자체 uuid를 쓰는 기기는 사용자 서비스에 그 uuid를 추가해야 합니다."
+ },
+ "The browser shows its own picker and hands over only the device you select. Reading, subscribing and writing all happen here in the tab.": {
+  "fr": "Le navigateur affiche son propre sélecteur et ne remet que l'appareil choisi. Lecture, abonnement et écriture se font tous ici, dans l'onglet.",
+  "pt": "O navegador mostra o próprio seletor e entrega apenas o dispositivo escolhido. Ler, assinar e escrever acontecem tudo aqui, nesta aba.",
+  "ja": "ブラウザが独自の選択画面を出し、選んだ機器だけを渡します。読み取り、購読、書き込みはすべてこのタブで行われます。",
+  "ko": "브라우저가 자체 선택 창을 띄우고 고른 기기만 넘겨줍니다. 읽기, 구독, 쓰기는 모두 이 탭에서 이루어집니다."
+ },
+ "The computer is thinking": {
+  "fr": "L'ordinateur réfléchit",
+  "pt": "O computador está pensando",
+  "ja": "コンピュータが考えています",
+  "ko": "컴퓨터가 생각하는 중"
+ },
+ "The documents and the model both stay on this device. Nothing is uploaded.": {
+  "fr": "Les documents et le modèle restent tous deux sur cet appareil. Rien n'est envoyé.",
+  "pt": "Os documentos e o modelo ficam ambos neste dispositivo. Nada é enviado.",
+  "ja": "文書もモデルもこの端末に留まります。何もアップロードされません。",
+  "ko": "문서와 모델 모두 이 기기에 남습니다. 아무것도 올라가지 않습니다."
+ },
+ "The documents are read": {
+  "fr": "Les documents sont lus",
+  "pt": "Os documentos estão lidos",
+  "ja": "文書を読み込みました",
+  "ko": "문서를 다 읽었습니다"
+ },
+ "The employment scale with the tax credit that falls as income rises.": {
+  "fr": "Le barème d'emploi avec le crédit d'impôt qui décroît quand le revenu monte.",
+  "pt": "A tabela de trabalho com o crédito fiscal que cai conforme a renda sobe.",
+  "ja": "所得が上がるほど減っていく税額控除つきの給与所得税率表。",
+  "ko": "소득이 오를수록 줄어드는 세액 공제가 있는 근로 소득 세율표."
+ },
+ "The family quotient counts a half part for each of the first two children.": {
+  "fr": "Le quotient familial compte une demi-part pour chacun des deux premiers enfants.",
+  "pt": "O quociente familiar conta meia parte para cada um dos dois primeiros filhos.",
+  "ja": "家族係数は最初の 2 人の子それぞれに 0.5 単位を数えます。",
+  "ko": "가족 계수는 첫 두 자녀 각각에 0.5몫을 셉니다."
+ },
+ "The model did not name parts that exist, so this was built from the words.": {
+  "fr": "Le modèle n'a pas nommé de pièces existantes, ceci a donc été construit à partir des mots.",
+  "pt": "O modelo não nomeou peças existentes, então isto foi montado a partir das palavras.",
+  "ja": "モデルが実在する部品を挙げなかったため、語から組み立てました。",
+  "ko": "모델이 실제 있는 부품을 대지 못해, 낱말로 만들었습니다."
+ },
+ "The model is choosing parts...": {
+  "fr": "Le modèle choisit les pièces...",
+  "pt": "O modelo está escolhendo as peças...",
+  "ja": "モデルが部品を選んでいます...",
+  "ko": "모델이 부품을 고르는 중입니다..."
+ },
+ "The official tarif for the year, with the tax class applied as payroll does it.": {
+  "fr": "Le barème officiel de l'année, avec la classe d'imposition appliquée comme en paie.",
+  "pt": "A tabela oficial do ano, com a classe fiscal aplicada como na folha de pagamento.",
+  "ja": "その年の公式税率表を、給与計算と同じように税クラスを適用して用います。",
+  "ko": "그해의 공식 세율표를, 급여 계산과 같은 방식으로 세금 등급을 적용해 씁니다."
+ },
+ "The picture stays on this device. Nothing is recorded or uploaded.": {
+  "fr": "L'image reste sur cet appareil. Rien n'est enregistré ni envoyé.",
+  "pt": "A imagem fica neste dispositivo. Nada é gravado nem enviado.",
+  "ja": "映像はこの端末に留まります。記録もアップロードもされません。",
+  "ko": "영상은 이 기기에 남습니다. 기록하지도 올리지도 않습니다."
+ },
+ "The run": {
+  "fr": "La commande run",
+  "pt": "O comando run",
+  "ja": "run コマンド",
+  "ko": "run 명령"
+ },
+ "The standard rate band widens for a married couple with one income.": {
+  "fr": "La tranche au taux normal s'élargit pour un couple marié à revenu unique.",
+  "pt": "A faixa de alíquota padrão se alarga para um casal com uma só renda.",
+  "ja": "片働きの夫婦では、標準税率の帯が広がります。",
+  "ko": "외벌이 부부는 기본 세율 구간이 넓어집니다."
+ },
+ "The taxpayer credit is applied in full.": {
+  "fr": "Le crédit du contribuable est appliqué en totalité.",
+  "pt": "O crédito do contribuinte é aplicado por inteiro.",
+  "ja": "納税者控除を全額適用します。",
+  "ko": "납세자 공제를 전액 적용합니다."
+ },
+ "The text": {
+  "fr": "Le texte",
+  "pt": "O texto",
+  "ja": "本文",
+  "ko": "본문"
+ },
+ "The thirteenth and fourteenth salaries are taxed more lightly and are not counted here.": {
+  "fr": "Les treizième et quatorzième salaires sont moins imposés et ne sont pas comptés ici.",
+  "pt": "O décimo terceiro e o décimo quarto salários são tributados mais levemente e não entram aqui.",
+  "ja": "13 か月目と 14 か月目の給与は軽く課税され、ここには含めていません。",
+  "ko": "열세 번째와 열네 번째 급여는 더 가볍게 과세되며 여기에는 넣지 않았습니다."
+ },
+ "The thirty percent ruling is applied to the taxable part of your pay.": {
+  "fr": "Le régime des trente pour cent s'applique à la part imposable de votre salaire.",
+  "pt": "A regra dos trinta por cento é aplicada à parte tributável do seu salário.",
+  "ja": "30 パーセントルールは給与の課税対象部分に適用されます。",
+  "ko": "30퍼센트 특례는 급여의 과세 대상 부분에 적용됩니다."
+ },
+ "The two rate scale with the tax reducing amount.": {
+  "fr": "Le barème à deux taux avec le montant réducteur d'impôt.",
+  "pt": "A tabela de duas alíquotas com o valor que reduz o imposto.",
+  "ja": "2 段階の税率表と、税額を減らす控除額。",
+  "ko": "두 단계 세율표와 세액을 줄이는 금액."
+ },
+ "The whole document": {
+  "fr": "Tout le document",
+  "pt": "O documento inteiro",
+  "ja": "文書全体",
+  "ko": "문서 전체"
+ },
+ "These are estimates, not a payslip.": {
+  "fr": "Ce sont des estimations, pas un bulletin de paie.",
+  "pt": "Estes são valores estimados, não um contracheque.",
+  "ja": "これは概算であり、給与明細ではありません。",
+  "ko": "이것은 어림값이지 급여 명세서가 아닙니다."
+ },
+ "This browser cannot capture the screen here.": {
+  "fr": "Ce navigateur ne peut pas capturer l'écran ici.",
+  "pt": "Este navegador não consegue capturar a tela aqui.",
+  "ja": "このブラウザではここで画面を取り込めません。",
+  "ko": "이 브라우저에서는 여기서 화면을 캡처할 수 없습니다."
+ },
+ "This browser cannot open a camera here. A secure origin is needed.": {
+  "fr": "Ce navigateur ne peut pas ouvrir de caméra ici. Une origine sécurisée est nécessaire.",
+  "pt": "Este navegador não consegue abrir a câmera aqui. É preciso uma origem segura.",
+  "ja": "このブラウザではここでカメラを開けません。安全なオリジンが必要です。",
+  "ko": "이 브라우저에서는 여기서 카메라를 열 수 없습니다. 보안 오리진이 필요합니다."
+ },
+ "This browser cannot open a camera here. A secure origin is required.": {
+  "fr": "Ce navigateur ne peut pas ouvrir de caméra ici. Une origine sécurisée est requise.",
+  "pt": "Este navegador não consegue abrir a câmera aqui. Uma origem segura é obrigatória.",
+  "ja": "このブラウザではここでカメラを開けません。安全なオリジンが必須です。",
+  "ko": "이 브라우저에서는 여기서 카메라를 열 수 없습니다. 보안 오리진이 있어야 합니다."
+ },
+ "This device has no {language} voice, so nothing is read aloud": {
+  "fr": "Cet appareil n'a pas de voix {language}, rien n'est donc lu à voix haute",
+  "pt": "Este dispositivo não tem voz em {language}, então nada é lido em voz alta",
+  "ja": "この端末には {language} の音声がないため、読み上げは行われません",
+  "ko": "이 기기에는 {language} 음성이 없어 소리 내어 읽지 않습니다"
+ },
+ "This gives ground away.": {
+  "fr": "Cela cède du terrain.",
+  "pt": "Isso cede terreno.",
+  "ja": "これは形勢を損ねます。",
+  "ko": "이것은 형세를 내주는 수입니다."
+ },
+ "This page": {
+  "fr": "Cette page",
+  "pt": "Esta página",
+  "ja": "このページ",
+  "ko": "이 페이지"
+ },
+ "This set starts from nothing again": {
+  "fr": "Cet ensemble repart de zéro",
+  "pt": "Este conjunto recomeça do zero",
+  "ja": "このセットは最初からやり直しになります",
+  "ko": "이 묶음이 처음부터 다시 시작합니다"
+ },
+ "Three bodies": {
+  "fr": "Trois corps",
+  "pt": "Três corpos",
+  "ja": "三体",
+  "ko": "세 물체"
+ },
+ "Thuringia": {
+  "fr": "Thuringe",
+  "pt": "Turíngia",
+  "ja": "テューリンゲン州",
+  "ko": "튀링겐주"
+ },
+ "Times a ray may bend": {
+  "fr": "Nombre de déviations possibles d'un rayon",
+  "pt": "Quantas vezes um raio pode se desviar",
+  "ja": "光線が曲がれる回数",
+  "ko": "광선이 꺾일 수 있는 횟수"
+ },
+ "Title, optional": {
+  "fr": "Titre, facultatif",
+  "pt": "Título, opcional",
+  "ja": "タイトル (任意)",
+  "ko": "제목 (선택)"
+ },
+ "Tools": {
+  "fr": "Outils",
+  "pt": "Ferramentas",
+  "ja": "ツール",
+  "ko": "도구"
+ },
+ "Train": {
+  "fr": "Entraîner",
+  "pt": "Treinar",
+  "ja": "訓練",
+  "ko": "훈련"
+ },
+ "Tree": {
+  "fr": "Arbre",
+  "pt": "Árvore",
+  "ja": "ツリー",
+  "ko": "트리"
+ },
+ "Try the piece on {square}.": {
+  "fr": "Essayez la pièce en {square}.",
+  "pt": "Tente a peça em {square}.",
+  "ja": "{square} の駒を試してみてください。",
+  "ko": "{square}의 기물을 시도해 보세요."
+ },
+ "Turn on local AI in Settings first": {
+  "fr": "Activez d'abord l'IA locale dans les réglages",
+  "pt": "Ative primeiro a IA local nas configurações",
+  "ja": "先に設定でローカル AI を有効にしてください",
+  "ko": "먼저 설정에서 로컬 AI를 켜세요"
+ },
+ "Turn the board around": {
+  "fr": "Retourner l'échiquier",
+  "pt": "Virar o tabuleiro",
+  "ja": "盤を反転する",
+  "ko": "판 돌리기"
+ },
+ "Turn the first row into a header": {
+  "fr": "Transformer la première ligne en en-tête",
+  "pt": "Transformar a primeira linha em cabeçalho",
+  "ja": "1 行目を見出しにする",
+  "ko": "첫 행을 머리글로 만들기"
+ },
+ "Turn the selected piece": {
+  "fr": "Faire tourner l'élément sélectionné",
+  "pt": "Girar o elemento selecionado",
+  "ja": "選択した要素を回す",
+  "ko": "고른 요소 돌리기"
+ },
+ "Type in either side.": {
+  "fr": "Tapez d'un côté ou de l'autre.",
+  "pt": "Digite de qualquer um dos lados.",
+  "ja": "どちら側にも入力できます。",
+  "ko": "어느 쪽에나 입력할 수 있습니다."
+ },
+ "Type or paste text to hash": {
+  "fr": "Tapez ou collez le texte à hacher",
+  "pt": "Digite ou cole o texto para o hash",
+  "ja": "ハッシュするテキストを入力するか貼り付け",
+  "ko": "해시할 글을 치거나 붙여넣으세요"
+ },
+ "UPPERCASE": {
+  "fr": "MAJUSCULES",
+  "pt": "MAIÚSCULAS",
+  "ja": "大文字",
+  "ko": "대문자"
+ },
+ "URL-safe alphabet": {
+  "fr": "Alphabet compatible URL",
+  "pt": "Alfabeto seguro para URL",
+  "ja": "URL セーフな文字集合",
+  "ko": "URL에 안전한 문자 집합"
+ },
+ "UUID copied": {
+  "fr": "UUID copié",
+  "pt": "UUID copiado",
+  "ja": "UUID をコピーしました",
+  "ko": "UUID를 복사했습니다"
+ },
+ "Under 23 and childless": {
+  "fr": "Moins de 23 ans et sans enfant",
+  "pt": "Menor de 23 anos e sem filhos",
+  "ja": "23 歳未満で子なし",
+  "ko": "23세 미만이며 자녀 없음"
+ },
+ "Under 23 you are spared the childless surcharge": {
+  "fr": "Avant 23 ans, la majoration sans enfant ne s'applique pas",
+  "pt": "Abaixo de 23 anos, você não paga a sobretaxa por não ter filhos",
+  "ja": "23 歳未満なら子なし加算は免除されます",
+  "ko": "23세 미만이면 자녀 없음 가산이 면제됩니다"
+ },
+ "Underline": {
+  "fr": "Souligné",
+  "pt": "Sublinhado",
+  "ja": "下線",
+  "ko": "밑줄"
+ },
+ "Unemployment contribution": {
+  "fr": "Cotisation chômage",
+  "pt": "Contribuição ao seguro-desemprego",
+  "ja": "失業保険料",
+  "ko": "실업 보험료"
+ },
+ "Unemployment insurance": {
+  "fr": "Assurance chômage",
+  "pt": "Seguro-desemprego",
+  "ja": "失業保険",
+  "ko": "실업 보험"
+ },
+ "Unfreeze": {
+  "fr": "Libérer",
+  "pt": "Descongelar",
+  "ja": "静止を解除",
+  "ko": "멈춤 풀기"
+ },
+ "Universal social charge": {
+  "fr": "Contribution sociale universelle",
+  "pt": "Encargo social universal",
+  "ja": "包括的社会保険料",
+  "ko": "보편 사회 부담금"
+ },
+ "Unnamed device": {
+  "fr": "Appareil sans nom",
+  "pt": "Dispositivo sem nome",
+  "ja": "名前のない機器",
+  "ko": "이름 없는 기기"
+ },
+ "Unsubscribe": {
+  "fr": "Se désabonner",
+  "pt": "Cancelar assinatura",
+  "ja": "購読を止める",
+  "ko": "구독 끊기"
+ },
+ "Untitled document": {
+  "fr": "Document sans titre",
+  "pt": "Documento sem título",
+  "ja": "無題の文書",
+  "ko": "제목 없는 문서"
+ },
+ "Used in": {
+  "fr": "Utilisé dans",
+  "pt": "Usado em",
+  "ja": "使われている場所",
+  "ko": "쓰이는 곳"
+ },
+ "Utah": {
+  "fr": "Utah",
+  "pt": "Utah",
+  "ja": "ユタ州",
+  "ko": "유타주"
+ },
+ "V, married, the lower earner": {
+  "fr": "V, marié, le revenu le plus bas",
+  "pt": "V, casado, quem ganha menos",
+  "ja": "V、既婚、収入の少ない方",
+  "ko": "V, 기혼, 소득이 적은 쪽"
+ },
+ "VI, a second job": {
+  "fr": "VI, un second emploi",
+  "pt": "VI, um segundo emprego",
+  "ja": "VI、副業",
+  "ko": "VI, 두 번째 일자리"
+ },
+ "Valid": {
+  "fr": "Valide",
+  "pt": "Válido",
+  "ja": "有効",
+  "ko": "유효함"
+ },
+ "Version {version} · {size}×{size} modules · mask {mask} · {used} of {capacity} bytes used": {
+  "fr": "Version {version} · {size}×{size} modules · masque {mask} · {used} octets sur {capacity} utilisés",
+  "pt": "Versão {version} · {size}×{size} módulos · máscara {mask} · {used} de {capacity} bytes usados",
+  "ja": "バージョン {version} · {size}×{size} モジュール · マスク {mask} · {capacity} バイト中 {used} バイト使用",
+  "ko": "버전 {version} · {size}×{size} 모듈 · 마스크 {mask} · {capacity}바이트 중 {used}바이트 사용"
+ },
+ "View": {
+  "fr": "Vue",
+  "pt": "Visualização",
+  "ja": "表示",
+  "ko": "보기"
+ },
+ "Violet": {
+  "fr": "Violet",
+  "pt": "Violeta",
+  "ja": "すみれ色",
+  "ko": "보라"
+ },
+ "Waiting for input": {
+  "fr": "En attente de saisie",
+  "pt": "Aguardando entrada",
+  "ja": "入力を待っています",
+  "ko": "입력을 기다리는 중"
+ },
+ "Warm": {
+  "fr": "Chaud",
+  "pt": "Quente",
+  "ja": "暖色",
+  "ko": "따뜻함"
+ },
+ "Watching the camera for codes": {
+  "fr": "Surveillance de la caméra pour des codes",
+  "pt": "Observando a câmera à procura de códigos",
+  "ja": "カメラからコードを探しています",
+  "ko": "카메라에서 코드를 살피는 중"
+ },
+ "Watching the screen for codes": {
+  "fr": "Surveillance de l'écran pour des codes",
+  "pt": "Observando a tela à procura de códigos",
+  "ja": "画面からコードを探しています",
+  "ko": "화면에서 코드를 살피는 중"
+ },
+ "Water drop": {
+  "fr": "Goutte d'eau",
+  "pt": "Gota d'água",
+  "ja": "水滴",
+  "ko": "물방울"
+ },
+ "What the game asks for": {
+  "fr": "Ce que la partie demande",
+  "pt": "O que o jogo pede",
+  "ja": "局面が求めているもの",
+  "ko": "판이 요구하는 것"
+ },
+ "What this covers": {
+  "fr": "Ce que cela couvre",
+  "pt": "O que isto cobre",
+  "ja": "対象となる範囲",
+  "ko": "이것이 다루는 범위"
+ },
+ "When to use it": {
+  "fr": "Quand l'employer",
+  "pt": "Quando usar",
+  "ja": "使いどころ",
+  "ko": "쓸 자리"
+ },
+ "Where you live": {
+  "fr": "Où vous habitez",
+  "pt": "Onde você mora",
+  "ja": "お住まいの地域",
+  "ko": "사는 곳"
+ },
+ "Which letter is this?": {
+  "fr": "Quelle est cette lettre ?",
+  "pt": "Que letra é esta?",
+  "ja": "これはどの文字ですか。",
+  "ko": "이것은 어떤 글자인가요?"
+ },
+ "Which sound is this?": {
+  "fr": "Quel est ce son ?",
+  "pt": "Que som é este?",
+  "ja": "これはどの音ですか。",
+  "ko": "이것은 어떤 소리인가요?"
+ },
+ "White light": {
+  "fr": "Lumière blanche",
+  "pt": "Luz branca",
+  "ja": "白色光",
+  "ko": "백색광"
+ },
+ "Wi-Fi network": {
+  "fr": "Réseau Wi-Fi",
+  "pt": "Rede Wi-Fi",
+  "ja": "Wi-Fi ネットワーク",
+  "ko": "와이파이 네트워크"
+ },
+ "Width mm": {
+  "fr": "Largeur mm",
+  "pt": "Largura mm",
+  "ja": "幅 mm",
+  "ko": "너비 mm"
+ },
+ "Windmill": {
+  "fr": "Moulin à vent",
+  "pt": "Moinho de vento",
+  "ja": "風車",
+  "ko": "풍차"
+ },
+ "Wood": {
+  "fr": "Bois",
+  "pt": "Madeira",
+  "ja": "木",
+  "ko": "나무"
+ },
+ "Word keeps the font you pick. PDF uses the nearest of Helvetica, Times or Courier, which is what a PDF carries without embedding.": {
+  "fr": "Word conserve la police choisie. Le PDF utilise la plus proche parmi Helvetica, Times ou Courier, celles qu'un PDF porte sans incorporation.",
+  "pt": "O Word mantém a fonte que você escolher. O PDF usa a mais próxima entre Helvetica, Times ou Courier, que é o que um PDF carrega sem incorporar.",
+  "ja": "Word は選んだフォントをそのまま保ちます。PDF は Helvetica、Times、Courier のうち最も近いものを使います。これらは埋め込みなしで PDF が持つ書体です。",
+  "ko": "Word는 고른 글꼴을 그대로 지킵니다. PDF는 Helvetica, Times, Courier 중 가장 가까운 것을 쓰며, 이것이 PDF가 내장 없이 지니는 글꼴입니다."
+ },
+ "Words and meaning": {
+  "fr": "Mots et sens",
+  "pt": "Palavras e significado",
+  "ja": "語と意味",
+  "ko": "낱말과 뜻"
+ },
+ "Work out what an answer would look like before searching": {
+  "fr": "Deviner à quoi ressemblerait une réponse avant de chercher",
+  "pt": "Descobrir como seria uma resposta antes de buscar",
+  "ja": "検索の前に、答えがどう書かれるかを推し量る",
+  "ko": "찾기 전에 답이 어떤 모습일지 헤아리기"
+ },
+ "Working out what to look for": {
+  "fr": "Détermination de ce qu'il faut chercher",
+  "pt": "Descobrindo o que procurar",
+  "ja": "何を探すか考えています",
+  "ko": "무엇을 찾을지 헤아리는 중"
+ },
+ "Worth knowing": {
+  "fr": "Bon à savoir",
+  "pt": "Vale saber",
+  "ja": "知っておくとよいこと",
+  "ko": "알아 두면 좋은 것"
+ },
+ "Would this be ignored?": {
+  "fr": "Serait-ce ignoré ?",
+  "pt": "Isto seria ignorado?",
+  "ja": "これは無視されますか。",
+  "ko": "이것은 무시되나요?"
+ },
+ "Wrap in braces": {
+  "fr": "Envelopper entre accolades",
+  "pt": "Envolver em chaves",
+  "ja": "波かっこで囲む",
+  "ko": "중괄호로 감싸기"
+ },
+ "Write a header line": {
+  "fr": "Écrire une ligne d'en-tête",
+  "pt": "Escrever uma linha de cabeçalho",
+  "ja": "見出し行を書く",
+  "ko": "머리글 줄 쓰기"
+ },
+ "Write and export documents as PDF or Word.": {
+  "fr": "Rédiger et exporter des documents en PDF ou Word.",
+  "pt": "Escreva e exporte documentos em PDF ou Word.",
+  "ja": "文書を書いて PDF や Word に書き出します。",
+  "ko": "문서를 쓰고 PDF나 Word로 내보냅니다."
+ },
+ "Write failed on {name}: {reason}": {
+  "fr": "Échec d'écriture sur {name} : {reason}",
+  "pt": "Falha ao escrever em {name}: {reason}",
+  "ja": "{name} への書き込みに失敗しました: {reason}",
+  "ko": "{name}에 쓰기가 실패했습니다: {reason}"
+ },
+ "Written": {
+  "fr": "Écrit",
+  "pt": "Escrito",
+  "ja": "書き込み済み",
+  "ko": "쓰였음"
+ },
+ "Wrote {count} bytes to {name}": {
+  "fr": "{count} octets écrits vers {name}",
+  "pt": "Escritos {count} bytes em {name}",
+  "ja": "{name} に {count} バイト書き込みました",
+  "ko": "{name}에 {count}바이트를 썼습니다"
+ },
+ "Yellow": {
+  "fr": "Jaune",
+  "pt": "Amarelo",
+  "ja": "黄",
+  "ko": "노랑"
+ },
+ "Yes": {
+  "fr": "Oui",
+  "pt": "Sim",
+  "ja": "はい",
+  "ko": "예"
+ },
+ "You keep": {
+  "fr": "Il vous reste",
+  "pt": "Você fica com",
+  "ja": "手元に残る額",
+  "ko": "손에 남는 금액"
+ },
+ "Your fund sets this, 2.5 on average": {
+  "fr": "Votre caisse le fixe, 2,5 en moyenne",
+  "pt": "Seu fundo define isso, 2,5 em média",
+  "ja": "加入する保険組合が決めます。平均は 2.5 です",
+  "ko": "가입한 보험 조합이 정하며, 평균은 2.5입니다"
+ },
+ "Your move": {
+  "fr": "À vous de jouer",
+  "pt": "Sua vez",
+  "ja": "あなたの手番",
+  "ko": "당신 차례"
+ },
+ "Your municipality sets its own rate, so the bill varies by where you live.": {
+  "fr": "Votre commune fixe son propre taux, l'imposition varie donc selon le lieu de résidence.",
+  "pt": "Seu município define a própria alíquota, então a conta varia conforme onde você mora.",
+  "ja": "税率は市町村が独自に定めるため、住む場所によって税額が変わります。",
+  "ko": "세율은 시군마다 스스로 정하므로 사는 곳에 따라 세액이 달라집니다."
+ },
+ "Your progress": {
+  "fr": "Votre progression",
+  "pt": "Seu progresso",
+  "ja": "進み具合",
+  "ko": "진행 상황"
+ },
+ "Your share of health and care cover": {
+  "fr": "Votre part de la couverture santé et dépendance",
+  "pt": "Sua parte da cobertura de saúde e cuidados",
+  "ja": "健康保険と介護保険のあなたの負担分",
+  "ko": "건강 보험과 요양 보험의 본인 부담분"
+ },
+ "default": {
+  "fr": "par défaut",
+  "pt": "padrão",
+  "ja": "既定",
+  "ko": "기본"
+ },
+ "footer “{text}”": {
+  "fr": "pied de page « {text} »",
+  "pt": "rodapé “{text}”",
+  "ja": "フッター「{text}」",
+  "ko": "바닥글 “{text}”"
+ },
+ "header “{text}”": {
+  "fr": "en-tête « {text} »",
+  "pt": "cabeçalho “{text}”",
+  "ja": "ヘッダー「{text}」",
+  "ko": "머리글 “{text}”"
+ },
+ "lowercase": {
+  "fr": "minuscules",
+  "pt": "minúsculas",
+  "ja": "小文字",
+  "ko": "소문자"
+ },
+ "needs a model": {
+  "fr": "nécessite un modèle",
+  "pt": "precisa de um modelo",
+  "ja": "モデルが必要",
+  "ko": "모델이 필요함"
+ },
+ "no download": {
+  "fr": "sans téléchargement",
+  "pt": "sem download",
+  "ja": "ダウンロード不要",
+  "ko": "내려받기 없음"
+ },
+ "no sound of its own": {
+  "fr": "pas de son propre",
+  "pt": "sem som próprio",
+  "ja": "それ自体の音はありません",
+  "ko": "자체 소리는 없습니다"
+ },
+ "not practised yet": {
+  "fr": "pas encore travaillé",
+  "pt": "ainda não praticado",
+  "ja": "まだ練習していません",
+  "ko": "아직 연습하지 않음"
+ },
+ "of {gross}": {
+  "fr": "sur {gross}",
+  "pt": "de {gross}",
+  "ja": "{gross} のうち",
+  "ko": "{gross} 가운데"
+ },
+ "open": {
+  "fr": "ouvrir",
+  "pt": "abrir",
+  "ja": "開く",
+  "ko": "열기"
+ },
+ "row {row}, column {column}": {
+  "fr": "ligne {row}, colonne {column}",
+  "pt": "linha {row}, coluna {column}",
+  "ja": "{row} 行 {column} 列",
+  "ko": "{row}행 {column}열"
+ },
+ "vendor": {
+  "fr": "fabricant",
+  "pt": "fabricante",
+  "ja": "ベンダー独自",
+  "ko": "제조사 지정"
+ },
+ "{at} of {count}": {
+  "fr": "{at} sur {count}",
+  "pt": "{at} de {count}",
+  "ja": "{count} 件中 {at} 件目",
+  "ko": "{count}개 중 {at}번째"
+ },
+ "{count} custom services kept": {
+  "fr": "{count} services personnalisés conservés",
+  "pt": "{count} serviços personalizados guardados",
+  "ja": "独自サービスを {count} 件保存しました",
+  "ko": "사용자 서비스 {count}개를 보관했습니다"
+ },
+ "{count} dice thrown": {
+  "fr": "{count} dés lancés",
+  "pt": "{count} dados lançados",
+  "ja": "サイコロを {count} 個振りました",
+  "ko": "주사위 {count}개를 던졌습니다"
+ },
+ "{count} pages": {
+  "fr": "{count} pages",
+  "pt": "{count} páginas",
+  "ja": "{count} ページ",
+  "ko": "{count}쪽"
+ },
+ "{count} passages": {
+  "fr": "{count} passages",
+  "pt": "{count} trechos",
+  "ja": "{count} 箇所",
+  "ko": "구절 {count}개"
+ },
+ "{count} passages are not read yet, so answers will not draw on them.": {
+  "fr": "{count} passages ne sont pas encore lus, les réponses ne s'y appuieront donc pas.",
+  "pt": "{count} trechos ainda não foram lidos, então as respostas não se apoiarão neles.",
+  "ja": "{count} 箇所がまだ読み込まれていないため、回答はそれらを使いません。",
+  "ko": "{count}개 구절을 아직 읽지 않아, 답변이 그것들을 쓰지 않습니다."
+ },
+ "{count} passages read": {
+  "fr": "{count} passages lus",
+  "pt": "{count} trechos lidos",
+  "ja": "{count} 箇所を読み込みました",
+  "ko": "구절 {count}개를 읽었습니다"
+ },
+ "{count} rows": {
+  "fr": "{count} lignes",
+  "pt": "{count} linhas",
+  "ja": "{count} 行",
+  "ko": "{count}행"
+ },
+ "{count} rules": {
+  "fr": "{count} règles",
+  "pt": "{count} regras",
+  "ja": "{count} 個のルール",
+  "ko": "규칙 {count}개"
+ },
+ "{count} rules appear twice": {
+  "fr": "{count} règles apparaissent deux fois",
+  "pt": "{count} regras aparecem duas vezes",
+  "ja": "{count} 個のルールが重複しています",
+  "ko": "규칙 {count}개가 두 번 나옵니다"
+ },
+ "{count} unignore rules have nothing above them to undo": {
+  "fr": "{count} règles de réinclusion n'ont rien à annuler au-dessus d'elles",
+  "pt": "{count} regras de reinclusão não têm nada acima para desfazer",
+  "ja": "{count} 個の除外解除ルールは、上に打ち消す対象がありません",
+  "ko": "무시 해제 규칙 {count}개는 위에 되돌릴 대상이 없습니다"
+ },
+ "{glyph} is {latin}": {
+  "fr": "{glyph} se lit {latin}",
+  "pt": "{glyph} é {latin}",
+  "ja": "{glyph} は {latin}",
+  "ko": "{glyph}은(는) {latin}"
+ },
+ "{glyph} is {latin} · learned": {
+  "fr": "{glyph} se lit {latin} · appris",
+  "pt": "{glyph} é {latin} · aprendido",
+  "ja": "{glyph} は {latin} · 習得済み",
+  "ko": "{glyph}은(는) {latin} · 익힘"
+ },
+ "{glyph} is {latin}, {sound}": {
+  "fr": "{glyph} se lit {latin}, {sound}",
+  "pt": "{glyph} é {latin}, {sound}",
+  "ja": "{glyph} は {latin}、{sound}",
+  "ko": "{glyph}은(는) {latin}, {sound}"
+ },
+ "{learned} of {total} learned": {
+  "fr": "{learned} appris sur {total}",
+  "pt": "{learned} de {total} aprendidos",
+  "ja": "{total} 字中 {learned} 字を習得",
+  "ko": "{total}자 중 {learned}자를 익힘"
+ },
+ "{move} was stronger.": {
+  "fr": "{move} était plus fort.",
+  "pt": "{move} era mais forte.",
+  "ja": "{move} の方が有力でした。",
+  "ko": "{move}이(가) 더 강했습니다."
+ },
+ "{name} is on the board. Play on from here.": {
+  "fr": "{name} est sur l'échiquier. Continuez à partir d'ici.",
+  "pt": "{name} está no tabuleiro. Continue a partir daqui.",
+  "ja": "{name} が盤に並びました。ここから指し進めてください。",
+  "ko": "{name}이(가) 판에 놓였습니다. 여기서부터 이어 두세요."
+ },
+ "{right} right of {seen}, {streak} in a row": {
+  "fr": "{right} justes sur {seen}, {streak} d'affilée",
+  "pt": "{right} certas de {seen}, {streak} seguidas",
+  "ja": "{seen} 問中 {right} 問正解、{streak} 連続",
+  "ko": "{seen}개 중 {right}개 정답, {streak}개 연속"
+ },
+ "{san} is not the point here. Try again.": {
+  "fr": "{san} n'est pas l'idée ici. Réessayez.",
+  "pt": "{san} não é a ideia aqui. Tente de novo.",
+  "ja": "ここでの狙いは {san} ではありません。もう一度どうぞ。",
+  "ko": "여기서 노릴 수는 {san}이(가) 아닙니다. 다시 해 보세요."
+ },
+ "{services} services, {characteristics} characteristics": {
+  "fr": "{services} services, {characteristics} caractéristiques",
+  "pt": "{services} serviços, {characteristics} características",
+  "ja": "サービス {services} 件、キャラクタリスティック {characteristics} 件",
+  "ko": "서비스 {services}개, 특성 {characteristics}개"
+ },
+ "{sources} sources · {pieces} pieces · {rays} rays": {
+  "fr": "{sources} sources · {pieces} pièces · {rays} rayons",
+  "pt": "{sources} fontes · {pieces} peças · {rays} raios",
+  "ja": "光源 {sources} · 部品 {pieces} · 光線 {rays}",
+  "ko": "광원 {sources} · 부품 {pieces} · 광선 {rays}"
+ },
+ "{title} added": {
+  "fr": "{title} ajouté",
+  "pt": "{title} adicionado",
+  "ja": "{title} を追加しました",
+  "ko": "{title}을(를) 넣었습니다"
+ },
+ "{words} words · {characters} characters": {
+  "fr": "{words} mots · {characters} caractères",
+  "pt": "{words} palavras · {characters} caracteres",
+  "ja": "{words} 語 · {characters} 文字",
+  "ko": "{words} 낱말 · {characters}자"
+ },
+ "“{term}” goes in the index": {
+  "fr": "« {term} » entre dans l'index",
+  "pt": "“{term}” entra no índice",
+  "ja": "「{term}」を索引に登録します",
+  "ko": "“{term}”을(를) 색인에 넣습니다"
  }
 }

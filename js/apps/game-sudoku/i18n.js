@@ -31,6 +31,7 @@ export default {
   },
   fr: {
     'game-sudoku.newGame': 'Nouvelle partie',
+    'game-sudoku.time': 'Heure',
     'game-sudoku.mistakes': 'Erreurs',
     'game-sudoku.empty': 'Vide',
     'game-sudoku.notesOff': 'Notes coupées',
@@ -40,6 +41,7 @@ export default {
   },
   pt: {
     'game-sudoku.newGame': 'Novo jogo',
+    'game-sudoku.time': 'Hora',
     'game-sudoku.mistakes': 'Erros',
     'game-sudoku.empty': 'Vazio',
     'game-sudoku.notesOff': 'Notas desligadas',
@@ -49,6 +51,7 @@ export default {
   },
   ja: {
     'game-sudoku.newGame': '新しいゲーム',
+    'game-sudoku.time': '時刻',
     'game-sudoku.mistakes': 'ミス',
     'game-sudoku.empty': '空',
     'game-sudoku.notesOff': 'すべての音を止める',
@@ -58,6 +61,7 @@ export default {
   },
   ko: {
     'game-sudoku.newGame': '새 게임',
+    'game-sudoku.time': '시간',
     'game-sudoku.mistakes': '실수',
     'game-sudoku.empty': '비어 있음',
     'game-sudoku.notesOff': '모든 음 끄기',
