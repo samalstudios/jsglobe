@@ -2,11 +2,22 @@ import { JGElement, define, css, html } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import { base } from './styles.js';
 
+// A neutral ramp, then ten hues down five shades. Read across for a hue at one
+// weight, down for the same hue darkening, which is how people look for a
+// colour once there are more than a handful.
 const SWATCHES = [
-  '#000000', '#3d444b', '#6b747d', '#9aa3ac', '#c9d0d8', '#ffffff',
-  '#c02a2a', '#e0553d', '#c2691b', '#e0a02a', '#7ea62b', '#1d7a45',
-  '#0d7b8a', '#3b6fd4', '#5b53c9', '#6c3fa8', '#a01f6f', '#d1477f',
+  '#ffffff', '#f4f4f5', '#e4e4e7', '#d4d4d8', '#a1a1aa', '#71717a', '#52525b', '#3f3f46', '#27272a', '#000000',
+  '#fca5a5', '#fdba74', '#fcd34d', '#86efac', '#5eead4', '#7dd3fc', '#93c5fd', '#a5b4fc', '#d8b4fe', '#f9a8d4',
+  '#ef4444', '#f97316', '#f59e0b', '#22c55e', '#14b8a6', '#0ea5e9', '#3b82f6', '#6366f1', '#a855f7', '#ec4899',
+  '#dc2626', '#ea580c', '#d97706', '#16a34a', '#0d9488', '#0284c7', '#2563eb', '#4f46e5', '#9333ea', '#db2777',
+  '#b91c1c', '#c2410c', '#b45309', '#15803d', '#0f766e', '#0369a1', '#1d4ed8', '#4338ca', '#7e22ce', '#be185d',
+  '#7f1d1d', '#7c2d12', '#78350f', '#14532d', '#134e4a', '#0c4a6e', '#1e3a8a', '#312e81', '#581c87', '#831843',
 ];
+
+// A page can only put something in the top layer where the browser has the
+// popover API. Without it the sheet stays where it was, which is still right
+// everywhere it is not boxed in.
+const CAN_POP = typeof HTMLElement !== 'undefined' && 'popover' in HTMLElement.prototype;
 
 const sheet = css`
   :host { display: inline-block; position: relative; }
@@ -39,7 +50,8 @@ const sheet = css`
     left: 0;
     z-index: 40;
     display: none;
-    width: 214px;
+    width: 272px;
+    box-sizing: border-box;
     padding: 10px;
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
@@ -47,7 +59,19 @@ const sheet = css`
     box-shadow: var(--shadow-md, 0 10px 28px rgba(0, 0, 0, 0.16));
   }
   :host([open]) .sheet { display: block; }
-  .grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px; }
+  :host([align="right"]) .sheet { left: auto; right: 0; }
+  :host([drop="up"]) .sheet { top: auto; bottom: 36px; }
+
+  /* in the top layer the sheet is placed against the trigger by hand, so the
+     browser's own centring has to be cleared */
+  .sheet[popover] {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    overflow: visible;
+  }
+  .sheet[popover]:popover-open { display: block; }
+  .grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; }
   .chip {
     aspect-ratio: 1;
     border-radius: 5px;
@@ -112,11 +136,12 @@ class JGColorPicker extends JGElement {
     this.on(this.$('.trigger'), 'mousedown', (event) => event.preventDefault());
     this.on(this.$('.sheet'), 'mousedown', (event) => event.preventDefault());
 
+    if (CAN_POP) this.$('.sheet').setAttribute('popover', 'manual');
+
     this.on(this.$('.trigger'), 'click', (event) => {
       event.stopPropagation();
-      const open = !this.hasAttribute('open');
-      if (open) this.setAttribute('open', '');
-      else this.removeAttribute('open');
+      if (this.hasAttribute('open')) this.#shut();
+      else this.#open();
     });
 
     this.on(this.$('.grid'), 'click', (event) => {
@@ -129,14 +154,74 @@ class JGColorPicker extends JGElement {
     const clear = this.$('.clear');
     if (clear) this.on(clear, 'click', () => this.#pick('transparent'));
 
-    this.listen(document, 'click', () => this.removeAttribute('open'));
+    this.listen(document, 'click', () => this.#shut());
+    // the sheet is placed against the trigger, so it has to follow it
+    this.listen(window, 'resize', () => this.hasAttribute('open') && this.#place());
+    this.listen(window, 'scroll', () => this.hasAttribute('open') && this.#place(), true);
+  }
+
+  #open() {
+    const sheet = this.$('.sheet');
+    if (CAN_POP) {
+      try {
+        sheet.showPopover();
+      } catch {
+        /* already showing */
+      }
+    }
+    this.setAttribute('open', '');
+    this.#place();
+  }
+
+  #shut() {
+    if (!this.hasAttribute('open')) return;
+    this.removeAttribute('open');
+    const sheet = this.$('.sheet');
+    if (!CAN_POP) return;
+    try {
+      sheet.hidePopover();
+    } catch {
+      /* already hidden */
+    }
+  }
+
+  // the sheet opens beside the trigger, which is only the right place when
+  // there is room for it there. In the top layer it carries no ancestor to be
+  // placed against, so it is given viewport coordinates outright.
+  #place() {
+    const room = { width: window.innerWidth, height: window.innerHeight };
+    // nothing to aim at while the page has no size, so leave the sheet be
+    if (!room.width || !room.height) return;
+
+    const here = this.getBoundingClientRect();
+    const sheet = this.$('.sheet');
+    if (!sheet) return;
+    const width = sheet.offsetWidth || 272;
+    const height = sheet.offsetHeight || 190;
+
+    if (!CAN_POP) {
+      if (here.left + width > room.width - 8) this.setAttribute('align', 'right');
+      else this.removeAttribute('align');
+      const below = room.height - here.bottom;
+      if (below < height + 8 && here.top > below) this.setAttribute('drop', 'up');
+      else this.removeAttribute('drop');
+      return;
+    }
+
+    const left = Math.max(8, Math.min(here.left, room.width - width - 8));
+    const below = room.height - here.bottom;
+    const above = here.top;
+    const top = below < height + 8 && above > below ? Math.max(8, here.top - height - 4) : here.bottom + 4;
+
+    sheet.style.left = `${Math.round(left)}px`;
+    sheet.style.top = `${Math.round(top)}px`;
   }
 
   #pick(colour) {
     this.value = colour;
     const bar = this.$('.bar');
     if (bar) bar.style.background = colour === 'transparent' ? 'var(--card)' : colour;
-    this.removeAttribute('open');
+    this.#shut();
     this.emit('change', { value: colour });
   }
 
