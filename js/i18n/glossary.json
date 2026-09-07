@@ -21120,5 +21120,14 @@
   "pt": "“{term}” entra no índice",
   "ja": "「{term}」を索引に登録します",
   "ko": "“{term}”을(를) 색인에 넣습니다"
+ },
+ "Rounded box": {
+  "de": "Abgerundetes Rechteck",
+  "es": "Caja redondeada",
+  "zh": "圆角方框",
+  "fr": "Cadre arrondi",
+  "pt": "Caixa arredondada",
+  "ja": "角丸の四角",
+  "ko": "둥근 네모"
  }
 }

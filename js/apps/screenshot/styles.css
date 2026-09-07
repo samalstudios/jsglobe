@@ -51,3 +51,6 @@ canvas.original { position: absolute; inset: 0; pointer-events: none; }
 }
 .stage[data-compare="true"] .handle { display: block; }
 .empty { display: grid; place-items: center; gap: 12px; text-align: center; padding: 40px 20px; }
+
+.swatches jg-color-picker { margin-left: 4px; }
+.swatches jg-color-picker::part(trigger) { height: 22px; }

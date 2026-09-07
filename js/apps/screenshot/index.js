@@ -2,6 +2,7 @@ import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { appText } from '../../core/i18n.js';
 import strings from './i18n.js';
 import { download, toast, formatBytes } from '../../core/util.js';
+import { icon } from '../../ui/icons.js';
 
 const t = appText(strings);
 
@@ -11,6 +12,7 @@ const TOOLS = [
   { id: 'pen', label: t('screenshot.pen', 'Pen') },
   { id: 'arrow', label: t('screenshot.arrow', 'Arrow') },
   { id: 'rect', label: t('screenshot.box', 'Box') },
+  { id: 'roundRect', label: t('screenshot.roundedBox', 'Rounded box') },
   { id: 'ellipse', label: t('screenshot.circle', 'Circle') },
   { id: 'highlight', label: t('screenshot.marker', 'Marker') },
   { id: 'text', label: t('screenshot.text', 'Text') },
@@ -22,6 +24,8 @@ const TOOLS = [
 
 const COLORS = ['#ef4444', '#f59e0b', '#22c55e', '#0ea5e9', '#8a1c3b', '#111827', '#ffffff'];
 
+const FILLABLE = new Set(['rect', 'roundRect', 'ellipse']);
+
 class Screenshot extends JGApp {
   static appId = 'screenshot';
   static styles = [...JGApp.styles, sheet];
@@ -32,6 +36,7 @@ class Screenshot extends JGApp {
   #tool = 'pen';
   #color = COLORS[0];
   #width = 4;
+  #fill = false;
   #draft = null;
 
   renderApp() {
@@ -52,7 +57,9 @@ class Screenshot extends JGApp {
         <span class="grow"></span>
         <div class="swatches" id="swatches">
           ${COLORS.map((color) => html`<button class="swatch" data-color="${color}" style="background:${color}" aria-pressed="${String(color === this.#color)}"></button>`)}
+          <jg-color-picker id="ink" value="${this.#color}" label="${t('screenshot.pickAColour', 'Pick a colour')}">${icon('palette', 15)}</jg-color-picker>
         </div>
+        <jg-switch id="fill"></jg-switch><span class="hint">${t('screenshot.fill', 'Fill')}</span>
         <jg-slider id="width" min="1" max="24" value="4" style="width:130px"></jg-slider>
       </div>
 
@@ -94,12 +101,13 @@ class Screenshot extends JGApp {
       this.#tool = event.currentTarget.dataset.tool;
       this.$$('[data-tool]').forEach((node) => node.setAttribute('aria-pressed', String(node.dataset.tool === this.#tool)));
     });
-    this.bind('[data-color]', 'click', (event) => {
-      this.#color = event.currentTarget.dataset.color;
-      this.$$('[data-color]').forEach((node) => node.setAttribute('aria-pressed', String(node.dataset.color === this.#color)));
-    });
+    this.bind('[data-color]', 'click', (event) => this.#pickColor(event.currentTarget.dataset.color));
+    this.on(this.$('#ink'), 'change', (event) => this.#pickColor(event.detail.value));
     this.on(this.$('#width'), 'input', () => {
       this.#width = Number(this.$('#width').value);
+    });
+    this.on(this.$('#fill'), 'change', (event) => {
+      this.#fill = event.detail.checked;
     });
     this.on(this.$('#compare'), 'change', (event) => {
       this.$('#stage').dataset.compare = String(event.detail.checked);
@@ -123,6 +131,12 @@ class Screenshot extends JGApp {
         else this.#undo();
       }
     });
+  }
+
+  #pickColor(color) {
+    this.#color = color;
+    this.$$('[data-color]').forEach((node) => node.setAttribute('aria-pressed', String(node.dataset.color === color)));
+    this.$('#ink').value = color;
   }
 
   async #capture() {
@@ -198,6 +212,7 @@ class Screenshot extends JGApp {
       tool: this.#tool,
       color: this.#color,
       size: this.#width,
+      fill: this.#fill && FILLABLE.has(this.#tool),
       from: point,
       to: point,
       points: [point],
@@ -282,11 +297,22 @@ class Screenshot extends JGApp {
       context.beginPath();
       shape.points.forEach((point, index) => (index ? context.lineTo(point.x, point.y) : context.moveTo(point.x, point.y)));
       context.stroke();
-    } else if (shape.tool === 'rect') {
-      context.strokeRect(left, top, width, height);
-    } else if (shape.tool === 'ellipse') {
+    } else if (shape.tool === 'rect' || shape.tool === 'roundRect' || shape.tool === 'ellipse') {
       context.beginPath();
-      context.ellipse(left + width / 2, top + height / 2, width / 2, height / 2, 0, 0, Math.PI * 2);
+      if (shape.tool === 'ellipse') {
+        context.ellipse(left + width / 2, top + height / 2, width / 2, height / 2, 0, 0, Math.PI * 2);
+      } else if (shape.tool === 'roundRect') {
+        // the corner can never round further than the shorter side allows
+        const radius = Math.min(Math.max(6, shape.size * 2.5), width / 2, height / 2);
+        context.roundRect(left, top, width, height, Math.max(0, radius));
+      } else {
+        context.rect(left, top, width, height);
+      }
+      if (shape.fill) {
+        context.globalAlpha = 0.28;
+        context.fill();
+        context.globalAlpha = 1;
+      }
       context.stroke();
     } else if (shape.tool === 'arrow') {
       const angle = Math.atan2(to.y - from.y, to.x - from.x);
