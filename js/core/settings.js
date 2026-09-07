@@ -98,6 +98,7 @@ export function applyTheme() {
   root.dataset.density = settings.get('appearance.density');
   root.dataset.motion = settings.get('appearance.motion') ? 'on' : 'off';
   root.style.setProperty('--ring', settings.get('appearance.ring'));
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', settings.get('appearance.ring'));
 }
 
 export function watchTheme() {
