@@ -125,4 +125,28 @@ export default {
     'speed-test.roundTripEstimate': '왕복 시간 추정',
     'speed-test.dataSaver': '데이터 절약',
   },
+  nl: {
+    'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.jitterMs': 'Jitter ms',
+  },
+  sv: {
+    'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.jitterMs': 'Jitter ms',
+  },
+  no: {
+    'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.jitterMs': 'Jitter ms',
+  },
+  da: {
+    'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.jitterMs': 'Jitter ms',
+  },
+  pl: {
+    'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.jitterMs': 'Jitter ms',
+  },
+  uk: {
+    'speed-test.cloudflare': 'Cloudflare',
+    'speed-test.jitterMs': 'Jitter ms',
+  },
 };

@@ -181,4 +181,22 @@ export default {
     'ascii-art.textBanner': '글자 배너',
     'ascii-art.imageToAscii': '이미지를 아스키로',
   },
+  nl: {
+    'ascii-art.toolbox': 'TOOLBOX',
+  },
+  sv: {
+    'ascii-art.toolbox': 'TOOLBOX',
+  },
+  no: {
+    'ascii-art.toolbox': 'TOOLBOX',
+  },
+  da: {
+    'ascii-art.toolbox': 'TOOLBOX',
+  },
+  pl: {
+    'ascii-art.toolbox': 'TOOLBOX',
+  },
+  uk: {
+    'ascii-art.toolbox': 'TOOLBOX',
+  },
 };

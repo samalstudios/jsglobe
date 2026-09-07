@@ -8,14 +8,5 @@ export default {
   tint: "#6d28d9",
   keywords: ["aes","encrypt","decrypt","cipher","password","gcm"],
   tag: "jg-app-encryption",
-  i18n: {
-    de: { name: 'Verschlüsseln / Entschlüsseln', tagline: 'AES-GCM-Textverschlüsselung mit Passphrase' },
-    es: { name: 'Cifrar / Descifrar', tagline: 'Cifrado de texto AES-GCM con contraseña' },
-    zh: { name: '加密 / 解密', tagline: '使用口令的 AES-GCM 文本加密' },
-    fr: { name: 'Chiffrer / Déchiffrer', tagline: 'Chiffrement de texte AES-GCM avec une phrase secrète' },
-    pt: { name: 'Criptografar / Descriptografar', tagline: 'Criptografia de texto AES-GCM com uma frase secreta' },
-    ja: { name: '暗号化 / 復号', tagline: 'パスフレーズによる AES-GCM のテキスト暗号化' },
-    ko: { name: '암호화 / 복호화', tagline: '암호 문구로 하는 AES-GCM 텍스트 암호화' },
-  },
   load: () => import('./index.js'),
 };

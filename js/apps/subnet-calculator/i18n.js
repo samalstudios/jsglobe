@@ -118,4 +118,22 @@ export default {
     'subnet-calculator.usableHosts': '쓸 수 있는 호스트 수',
     'subnet-calculator.range': '범위',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

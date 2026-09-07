@@ -111,4 +111,22 @@ export default {
     'ai-writer.result': '결과',
     'ai-writer.copy': '복사',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

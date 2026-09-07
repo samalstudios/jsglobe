@@ -132,4 +132,22 @@ export default {
     'svg-placeholder.copyImgTag': 'img 태그 복사',
     'svg-placeholder.download': '내려받기',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

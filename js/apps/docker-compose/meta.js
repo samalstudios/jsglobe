@@ -8,14 +8,5 @@ export default {
   keywords: ["docker","compose","container","run","yaml","devops"],
   tag: "jg-app-docker-compose",
   window: {"width":1100,"height":800},
-  i18n: {
-    de: { name: 'Docker Compose', tagline: 'docker-run-Befehle in Compose-Dateien umwandeln' },
-    es: { name: 'Docker Compose', tagline: 'Convertir comandos docker run en archivos compose' },
-    zh: { name: 'Docker Compose', tagline: '把 docker run 命令转成 compose 文件' },
-    fr: { name: 'Docker Compose', tagline: 'Convertir des commandes docker run en fichiers compose' },
-    pt: { name: 'Docker Compose', tagline: 'Converta comandos docker run em arquivos compose' },
-    ja: { name: 'Docker Compose', tagline: 'docker run コマンドを compose ファイルに変換' },
-    ko: { name: 'Docker Compose', tagline: 'docker run 명령을 compose 파일로 바꾸기' },
-  },
   load: () => import('./index.js'),
 };

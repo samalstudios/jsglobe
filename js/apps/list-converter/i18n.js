@@ -188,4 +188,22 @@ export default {
     'list-converter.oneItemPerLine': '한 줄에 한 항목',
     'list-converter.output': '출력',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

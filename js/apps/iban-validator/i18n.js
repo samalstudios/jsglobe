@@ -97,4 +97,28 @@ export default {
     'iban-validator.length': '길이',
     'iban-validator.electronicFormat': '전자 형식',
   },
+  nl: {
+    'iban-validator.iban': 'IBAN',
+    'iban-validator.de893704004405320130': 'DE89 3704 0044 0532 0130 00',
+  },
+  sv: {
+    'iban-validator.iban': 'IBAN',
+    'iban-validator.de893704004405320130': 'DE89 3704 0044 0532 0130 00',
+  },
+  no: {
+    'iban-validator.iban': 'IBAN',
+    'iban-validator.de893704004405320130': 'DE89 3704 0044 0532 0130 00',
+  },
+  da: {
+    'iban-validator.iban': 'IBAN',
+    'iban-validator.de893704004405320130': 'DE89 3704 0044 0532 0130 00',
+  },
+  pl: {
+    'iban-validator.iban': 'IBAN',
+    'iban-validator.de893704004405320130': 'DE89 3704 0044 0532 0130 00',
+  },
+  uk: {
+    'iban-validator.iban': 'IBAN',
+    'iban-validator.de893704004405320130': 'DE89 3704 0044 0532 0130 00',
+  },
 };

@@ -76,4 +76,22 @@ export default {
     'todo.open': '열기',
     'todo.done': '완료',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

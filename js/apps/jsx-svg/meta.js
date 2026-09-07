@@ -8,14 +8,5 @@ export default {
   keywords: ["jsx","react","svg","component","icon","convert","tsx"],
   tag: "jg-app-jsx-svg",
   window: {"width":980,"height":780},
-  i18n: {
-    de: { name: 'JSX zu SVG', tagline: 'React-Komponenten in SVG umwandeln und zurück' },
-    es: { name: 'JSX a SVG', tagline: 'Convertir componentes de React a SVG y al revés' },
-    zh: { name: 'JSX 转 SVG', tagline: '在 React 组件与 SVG 之间互转' },
-    fr: { name: 'JSX vers SVG', tagline: 'Convertir des composants React en SVG et inversement' },
-    pt: { name: 'JSX para SVG', tagline: 'Converta componentes React em SVG e de volta' },
-    ja: { name: 'JSX から SVG へ', tagline: 'React コンポーネントと SVG を相互変換' },
-    ko: { name: 'JSX에서 SVG로', tagline: 'React 컴포넌트와 SVG를 서로 바꾸기' },
-  },
   load: () => import('./index.js'),
 };

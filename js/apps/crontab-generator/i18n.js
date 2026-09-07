@@ -69,4 +69,22 @@ export default {
     'crontab-generator.nextRun': '다음 실행',
     'crontab-generator.noMatchWithinTheNext': '앞으로 1년 안에는 해당이 없습니다',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

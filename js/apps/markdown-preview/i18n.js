@@ -55,4 +55,22 @@ export default {
     'markdown-preview.title': '# 제목',
     'markdown-preview.preview': '미리 보기',
   },
+  nl: {
+    'markdown-preview.markdown': 'Markdown',
+  },
+  sv: {
+    'markdown-preview.markdown': 'Markdown',
+  },
+  no: {
+    'markdown-preview.markdown': 'Markdown',
+  },
+  da: {
+    'markdown-preview.markdown': 'Markdown',
+  },
+  pl: {
+    'markdown-preview.markdown': 'Markdown',
+  },
+  uk: {
+    'markdown-preview.markdown': 'Markdown',
+  },
 };

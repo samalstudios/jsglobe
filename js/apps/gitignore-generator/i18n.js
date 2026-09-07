@@ -174,4 +174,22 @@ export default {
     'gitignore-generator.gitignore': 'GitIgnore',
     'gitignore-generator.widgetBlurb': '쓰는 도구에서 .gitignore를 만듭니다.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

@@ -9,14 +9,5 @@ export default {
   keywords: ["pdf","merge","split","rotate","convert","image","png","extract","text","combine"],
   tag: "jg-app-pdf-studio",
   window: {"width":1080,"height":800,"maximized":true},
-  i18n: {
-    de: { name: 'PDF-Studio', tagline: 'PDFs zusammenführen, teilen, drehen und umwandeln' },
-    es: { name: 'PDF Studio', tagline: 'Unir, dividir, rotar y convertir PDF' },
-    zh: { name: 'PDF 工作台', tagline: '合并、拆分、旋转并转换 PDF' },
-    fr: { name: 'Studio PDF', tagline: 'Fusionner, découper, pivoter et convertir des PDF' },
-    pt: { name: 'Estúdio PDF', tagline: 'Junte, divida, gire e converta PDFs' },
-    ja: { name: 'PDF スタジオ', tagline: 'PDF の結合、分割、回転、変換' },
-    ko: { name: 'PDF 스튜디오', tagline: 'PDF를 합치고 나누고 돌리고 변환하기' },
-  },
   load: () => import('./index.js'),
 };

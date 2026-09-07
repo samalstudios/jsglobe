@@ -69,4 +69,22 @@ export default {
     'gamepad-tester.buttons': '버튼',
     'gamepad-tester.axes': '축',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

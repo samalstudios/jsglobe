@@ -9,14 +9,5 @@ export default {
   keywords: ["icon", "svg", "logo", "symbol", "design", "generator", "mark", "favicon"],
   tag: "jg-app-icon-studio",
   window: { width: 1120, height: 780 },
-  i18n: {
-    de: { name: 'Icon-Studio', tagline: 'Ein Icon aus tausenden Bauteilen bauen oder beschreiben' },
-    es: { name: 'Estudio de iconos', tagline: 'Crea un icono con miles de piezas, o descríbelo' },
-    zh: { name: '图标工作室', tagline: '用数千个部件拼出图标，或者直接描述它' },
-    fr: { name: 'Studio d\'icônes', tagline: 'Composer une icône à partir de milliers de pièces, ou la décrire' },
-    pt: { name: 'Estúdio de ícones', tagline: 'Monte um ícone com milhares de peças, ou descreva um' },
-    ja: { name: 'アイコンスタジオ', tagline: '数千の部品からアイコンを組む、または言葉で描く' },
-    ko: { name: '아이콘 스튜디오', tagline: '수천 개 부품으로 아이콘을 만들거나 말로 설명하기' },
-  },
   load: () => import('./index.js'),
 };

@@ -9,14 +9,5 @@ export default {
   keywords: ["settings","preferences","theme","workspace","config"],
   tag: "jg-app-settings",
   system: true,
-  i18n: {
-    de: { name: 'Einstellungen', tagline: 'Darstellung, Startbildschirm, Arbeitsbereiche und Daten' },
-    es: { name: 'Ajustes', tagline: 'Apariencia, pantalla de inicio, espacios de trabajo y datos' },
-    zh: { name: '设置', tagline: '外观、主屏幕、工作区与数据' },
-    fr: { name: 'Réglages', tagline: 'Apparence, écran d\'accueil, espaces de travail et données' },
-    pt: { name: 'Configurações', tagline: 'Aparência, tela inicial, áreas de trabalho e dados' },
-    ja: { name: '設定', tagline: '外観、ホーム画面、ワークスペース、データ' },
-    ko: { name: '설정', tagline: '모양, 홈 화면, 작업 공간, 데이터' },
-  },
   load: () => import('./index.js'),
 };

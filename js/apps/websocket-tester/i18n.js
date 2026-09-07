@@ -125,4 +125,22 @@ export default {
     'websocket-tester.theAddressMustStartWith': '주소는 ws:// 또는 wss:// 로 시작해야 합니다',
     'websocket-tester.connectFirst': '먼저 연결하세요',
   },
+  nl: {
+    'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
+  },
+  sv: {
+    'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
+  },
+  no: {
+    'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
+  },
+  da: {
+    'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
+  },
+  pl: {
+    'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
+  },
+  uk: {
+    'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
+  },
 };

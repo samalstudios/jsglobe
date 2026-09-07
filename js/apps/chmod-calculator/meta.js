@@ -8,14 +8,5 @@ export default {
   tint: "#65a30d",
   keywords: ["chmod","permission","unix","octal","file"],
   tag: "jg-app-chmod",
-  i18n: {
-    de: { name: 'Chmod', tagline: 'Unix-Rechte in oktaler und symbolischer Form' },
-    es: { name: 'Chmod', tagline: 'Permisos Unix en forma octal y simbólica' },
-    zh: { name: 'Chmod', tagline: '八进制与符号形式的 Unix 权限' },
-    fr: { name: 'Chmod', tagline: 'Permissions Unix en octal et en symbolique' },
-    pt: { name: 'Chmod', tagline: 'Permissões Unix em octal e em forma simbólica' },
-    ja: { name: 'chmod', tagline: 'Unix のパーミッションを 8 進と記号で' },
-    ko: { name: 'chmod', tagline: '유닉스 권한을 8진수와 기호로' },
-  },
   load: () => import('./index.js'),
 };

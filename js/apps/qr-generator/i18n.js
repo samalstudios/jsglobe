@@ -328,4 +328,40 @@ export default {
     'qr-generator.fillInTheFields': '항목을 채우면 코드가 만들어집니다.',
     'qr-generator.codeSummary': '버전 {version} · {size}×{size} 모듈 · 마스크 {mask} · {capacity}바이트 중 {used}바이트 사용',
   },
+  nl: {
+    'qr-generator.sms': 'SMS',
+    'qr-generator.wpaWpa2': 'WPA/WPA2',
+    'qr-generator.wep': 'WEP',
+    'qr-generator.adaLovelace': 'Ada Lovelace',
+  },
+  sv: {
+    'qr-generator.sms': 'SMS',
+    'qr-generator.wpaWpa2': 'WPA/WPA2',
+    'qr-generator.wep': 'WEP',
+    'qr-generator.adaLovelace': 'Ada Lovelace',
+  },
+  no: {
+    'qr-generator.sms': 'SMS',
+    'qr-generator.wpaWpa2': 'WPA/WPA2',
+    'qr-generator.wep': 'WEP',
+    'qr-generator.adaLovelace': 'Ada Lovelace',
+  },
+  da: {
+    'qr-generator.sms': 'SMS',
+    'qr-generator.wpaWpa2': 'WPA/WPA2',
+    'qr-generator.wep': 'WEP',
+    'qr-generator.adaLovelace': 'Ada Lovelace',
+  },
+  pl: {
+    'qr-generator.sms': 'SMS',
+    'qr-generator.wpaWpa2': 'WPA/WPA2',
+    'qr-generator.wep': 'WEP',
+    'qr-generator.adaLovelace': 'Ada Lovelace',
+  },
+  uk: {
+    'qr-generator.sms': 'SMS',
+    'qr-generator.wpaWpa2': 'WPA/WPA2',
+    'qr-generator.wep': 'WEP',
+    'qr-generator.adaLovelace': 'Ada Lovelace',
+  },
 };

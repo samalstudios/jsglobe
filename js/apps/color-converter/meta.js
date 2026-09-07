@@ -9,14 +9,5 @@ export default {
   keywords: ["color","hex","rgb","hsl","palette","contrast","wcag"],
   tag: "jg-app-color",
   widget: true,
-  i18n: {
-    de: { name: 'Farbkonverter', tagline: 'HEX, RGB, HSL, OKLCH und Kontrastprüfung' },
-    es: { name: 'Conversor de color', tagline: 'HEX, RGB, HSL, OKLCH y comprobación de contraste' },
-    zh: { name: '颜色转换', tagline: 'HEX、RGB、HSL、OKLCH 与对比度检查' },
-    fr: { name: 'Convertisseur de couleurs', tagline: 'HEX, RGB, HSL, OKLCH et contrôles de contraste' },
-    pt: { name: 'Conversor de cores', tagline: 'HEX, RGB, HSL, OKLCH e verificação de contraste' },
-    ja: { name: '色変換', tagline: 'HEX、RGB、HSL、OKLCH とコントラスト確認' },
-    ko: { name: '색 변환', tagline: 'HEX, RGB, HSL, OKLCH와 대비 검사' },
-  },
   load: () => import('./index.js'),
 };

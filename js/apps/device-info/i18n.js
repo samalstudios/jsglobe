@@ -216,4 +216,22 @@ export default {
     'device-info.colourDepth': '색 깊이',
     'device-info.orientation': '방향',
   },
+  nl: {
+    'device-info.hardware': 'Hardware',
+  },
+  sv: {
+    'device-info.hardware': 'Hardware',
+  },
+  no: {
+    'device-info.hardware': 'Hardware',
+  },
+  da: {
+    'device-info.hardware': 'Hardware',
+  },
+  pl: {
+    'device-info.hardware': 'Hardware',
+  },
+  uk: {
+    'device-info.hardware': 'Hardware',
+  },
 };

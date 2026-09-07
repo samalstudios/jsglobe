@@ -8,14 +8,5 @@ export default {
   tint: "#059669",
   keywords: ["regex","regexp","pattern","match","test"],
   tag: "jg-app-regex",
-  i18n: {
-    de: { name: 'Regex-Tester', tagline: 'Muster mit Live-Treffern und Gruppen testen' },
-    es: { name: 'Probador de regex', tagline: 'Probar patrones con coincidencias y grupos en vivo' },
-    zh: { name: '正则测试', tagline: '实时查看匹配结果与分组' },
-    fr: { name: 'Testeur de regex', tagline: 'Tester des motifs avec correspondances et groupes en direct' },
-    pt: { name: 'Testador de regex', tagline: 'Teste padrões com correspondências e grupos ao vivo' },
-    ja: { name: '正規表現テスタ', tagline: 'パターンを一致とグループつきで即座に試す' },
-    ko: { name: '정규식 시험기', tagline: '패턴을 실시간 일치와 그룹으로 시험하기' },
-  },
   load: () => import('./index.js'),
 };

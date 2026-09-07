@@ -83,4 +83,28 @@ export default {
     'game-pong.moveWithTheMouseOr': '마우스나 위아래 방향키로 움직입니다.',
     'game-pong.play': '재생',
   },
+  nl: {
+    'game-pong.normal': 'Normal',
+    'game-pong.pong': 'Pong',
+  },
+  sv: {
+    'game-pong.normal': 'Normal',
+    'game-pong.pong': 'Pong',
+  },
+  no: {
+    'game-pong.normal': 'Normal',
+    'game-pong.pong': 'Pong',
+  },
+  da: {
+    'game-pong.normal': 'Normal',
+    'game-pong.pong': 'Pong',
+  },
+  pl: {
+    'game-pong.normal': 'Normal',
+    'game-pong.pong': 'Pong',
+  },
+  uk: {
+    'game-pong.normal': 'Normal',
+    'game-pong.pong': 'Pong',
+  },
 };

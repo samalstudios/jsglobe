@@ -69,4 +69,28 @@ export default {
     'color-converter.contrast': '대비',
     'color-converter.wcag21RatioAgainst': '검정과 흰색에 대한 WCAG 2.1 대비율',
   },
+  nl: {
+    'color-converter.6f7cffRgb111124255': '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple',
+    'color-converter.swiftAndroid': 'Swift / Android',
+  },
+  sv: {
+    'color-converter.6f7cffRgb111124255': '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple',
+    'color-converter.swiftAndroid': 'Swift / Android',
+  },
+  no: {
+    'color-converter.6f7cffRgb111124255': '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple',
+    'color-converter.swiftAndroid': 'Swift / Android',
+  },
+  da: {
+    'color-converter.6f7cffRgb111124255': '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple',
+    'color-converter.swiftAndroid': 'Swift / Android',
+  },
+  pl: {
+    'color-converter.6f7cffRgb111124255': '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple',
+    'color-converter.swiftAndroid': 'Swift / Android',
+  },
+  uk: {
+    'color-converter.6f7cffRgb111124255': '#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple',
+    'color-converter.swiftAndroid': 'Swift / Android',
+  },
 };

@@ -9,14 +9,5 @@ export default {
   keywords: ["game","2048","puzzle","tiles","merge"],
   tag: "jg-app-game-2048",
   window: {"width":660,"height":880},
-  i18n: {
-    de: { name: '2048', tagline: 'Kacheln schieben und zusammenführen bis 2048' },
-    es: { name: '2048', tagline: 'Deslizar y fusionar fichas hasta llegar a 2048' },
-    zh: { name: '2048', tagline: '滑动并合并方块，直到凑出 2048' },
-    fr: { name: '2048', tagline: 'Glisser et fusionner les tuiles jusqu\'à 2048' },
-    pt: { name: '2048', tagline: 'Deslize e junte peças até chegar a 2048' },
-    ja: { name: '2048', tagline: 'タイルを滑らせて合体させ 2048 を目指す' },
-    ko: { name: '2048', tagline: '타일을 밀어 합쳐 2048 만들기' },
-  },
   load: () => import('./index.js'),
 };

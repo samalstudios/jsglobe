@@ -125,4 +125,22 @@ export default {
     'coin-flipper.coinFlipper': '동전 던지기',
     'coin-flipper.widgetBlurb': '동전을 던져 확률이 고르게 되는 것을 보세요.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

@@ -9,14 +9,5 @@ export default {
   keywords: ["circuit","electronics","simulator","resistor","capacitor","spice","ohm","science"],
   tag: "jg-app-circuit-lab",
   window: {"width":1080,"height":760,"maximized":true},
-  i18n: {
-    de: { name: 'Schaltungslabor', tagline: 'Einfache elektronische Schaltungen bauen und simulieren' },
-    es: { name: 'Laboratorio de circuitos', tagline: 'Construir y simular circuitos electrónicos básicos' },
-    zh: { name: '电路实验室', tagline: '搭建并模拟基础电子电路' },
-    fr: { name: 'Labo circuits', tagline: 'Construire et simuler des circuits électroniques simples' },
-    pt: { name: 'Laboratório de circuitos', tagline: 'Monte e simule circuitos eletrônicos básicos' },
-    ja: { name: '回路ラボ', tagline: '基本的な電子回路の組み立てとシミュレーション' },
-    ko: { name: '회로 실험실', tagline: '기본 전자 회로를 만들고 모의 실험하기' },
-  },
   load: () => import('./index.js'),
 };

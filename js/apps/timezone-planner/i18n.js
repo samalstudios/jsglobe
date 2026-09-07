@@ -90,4 +90,22 @@ export default {
     'timezone-planner.keepAtLeastOneCity': '도시를 적어도 하나는 남기세요',
     'timezone-planner.noHourWorksForEveryone': '모두에게 맞는 시간이 없습니다. 근무 시간을 넓히거나 도시를 빼세요.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

@@ -90,4 +90,22 @@ export default {
     'ai-regex.pasteSampleTextToSee': '예시 글을 붙여넣으면 일치가 바로 보입니다',
     'ai-regex.explanation': '설명',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

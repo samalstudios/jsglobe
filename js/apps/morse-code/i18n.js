@@ -69,4 +69,22 @@ export default {
     'morse-code.reference': '기준',
     'morse-code.internationalMorseCode': '국제 모스 부호',
   },
+  nl: {
+    'morse-code.morse': 'Morse',
+  },
+  sv: {
+    'morse-code.morse': 'Morse',
+  },
+  no: {
+    'morse-code.morse': 'Morse',
+  },
+  da: {
+    'morse-code.morse': 'Morse',
+  },
+  pl: {
+    'morse-code.morse': 'Morse',
+  },
+  uk: {
+    'morse-code.morse': 'Morse',
+  },
 };

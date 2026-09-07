@@ -9,14 +9,5 @@ export default {
   keywords: ["serial","uart","usb","tty","console","arduino","esp32","baud","rs232"],
   tag: "jg-app-serial-console",
   window: {"width":960,"height":720},
-  i18n: {
-    de: { name: 'Serielle Konsole', tagline: 'Mit einem seriellen Gerät über USB sprechen' },
-    es: { name: 'Consola serie', tagline: 'Hablar con un dispositivo serie por USB' },
-    zh: { name: '串口终端', tagline: '通过 USB 与串口设备通信' },
-    fr: { name: 'Console série', tagline: 'Dialoguer avec un appareil série via USB' },
-    pt: { name: 'Console serial', tagline: 'Converse com um dispositivo serial via USB' },
-    ja: { name: 'シリアルコンソール', tagline: 'USB 経由でシリアル機器と通信' },
-    ko: { name: '시리얼 콘솔', tagline: 'USB로 시리얼 장치와 주고받기' },
-  },
   load: () => import('./index.js'),
 };

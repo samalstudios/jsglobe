@@ -174,4 +174,22 @@ export default {
     'voice-recorder.saveText': '글 저장',
     'voice-recorder.recordingSaved': '녹음을 저장했습니다',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

@@ -8,14 +8,5 @@ export default {
   keywords: ["csv","tsv","spreadsheet","table","json","sql","markdown","convert","excel"],
   tag: "jg-app-csv-studio",
   window: {"width":1120,"height":880,"maximized":true},
-  i18n: {
-    de: { name: 'CSV-Studio', tagline: 'CSV-Daten in einer Tabelle öffnen, bearbeiten und umwandeln' },
-    es: { name: 'CSV Studio', tagline: 'Abrir, editar y convertir datos CSV en una tabla' },
-    zh: { name: 'CSV 工作台', tagline: '以表格打开、编辑并转换 CSV 数据' },
-    fr: { name: 'Studio CSV', tagline: 'Ouvrir, modifier et convertir des données CSV dans un tableau' },
-    pt: { name: 'Estúdio CSV', tagline: 'Abra, edite e converta dados CSV em uma tabela' },
-    ja: { name: 'CSV スタジオ', tagline: 'CSV データを表で開き、編集し、変換' },
-    ko: { name: 'CSV 스튜디오', tagline: 'CSV 데이터를 표에서 열고 편집하고 변환하기' },
-  },
   load: () => import('./index.js'),
 };

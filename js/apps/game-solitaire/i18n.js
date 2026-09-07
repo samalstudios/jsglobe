@@ -83,4 +83,22 @@ export default {
     'game-solitaire.newGame': '새 게임',
     'game-solitaire.youClearedTheTable': '판을 다 치웠습니다',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

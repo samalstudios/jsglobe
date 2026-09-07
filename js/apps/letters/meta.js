@@ -9,14 +9,5 @@ export default {
   keywords: ["alphabet","letters","greek","cyrillic","russian","japanese","hiragana","katakana","korean","hangul","chinese","bopomofo","learn","flashcards"],
   tag: "jg-app-letters",
   window: { width: 1040, height: 840, maximized: true },
-  i18n: {
-    de: { name: 'Buchstaben', tagline: 'Griechische, kyrillische, japanische, koreanische und chinesische Zeichen lernen' },
-    es: { name: 'Letras', tagline: 'Aprende las letras griegas, cirílicas, japonesas, coreanas y chinas' },
-    zh: { name: '字母', tagline: '学习希腊、西里尔、日语、韩语和汉语的字符' },
-    fr: { name: 'Lettres', tagline: 'Apprendre les alphabets grec, cyrillique, japonais, coréen et chinois' },
-    pt: { name: 'Letras', tagline: 'Aprenda os alfabetos grego, cirílico, japonês, coreano e chinês' },
-    ja: { name: '文字', tagline: 'ギリシャ、キリル、日本語、韓国語、中国語の文字を学ぶ' },
-    ko: { name: '글자', tagline: '그리스, 키릴, 일본, 한국, 중국 문자 익히기' },
-  },
   load: () => import('./index.js'),
 };

@@ -8,14 +8,5 @@ export default {
   tint: "#c026d3",
   keywords: ["ai","regex","pattern","generate","explain"],
   tag: "jg-app-ai-regex",
-  i18n: {
-    de: { name: 'KI-Regex', tagline: 'Ein Muster beschreiben und eine getestete Regex erhalten' },
-    es: { name: 'Regex con IA', tagline: 'Describir un patrón y obtener una regex probada' },
-    zh: { name: 'AI 正则', tagline: '描述一个模式并得到经过测试的正则' },
-    fr: { name: 'Regex IA', tagline: 'Décrivez un motif et obtenez une regex testée' },
-    pt: { name: 'Regex com IA', tagline: 'Descreva um padrão e receba uma regex testada' },
-    ja: { name: 'AI 正規表現', tagline: 'パターンを説明すると検証済みの正規表現が得られます' },
-    ko: { name: 'AI 정규식', tagline: '패턴을 설명하면 검증된 정규식을 얻습니다' },
-  },
   load: () => import('./index.js'),
 };

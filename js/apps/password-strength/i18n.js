@@ -132,4 +132,22 @@ export default {
     'password-strength.atLeast12Characters': '12자 이상',
     'password-strength.atLeast16Characters': '16자 이상',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

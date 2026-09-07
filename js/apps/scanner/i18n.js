@@ -328,4 +328,22 @@ export default {
     'scanner.codeScanner': '코드 스캐너',
     'scanner.widgetBlurb': '카메라나 사진에서 QR 코드와 바코드를 읽습니다.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

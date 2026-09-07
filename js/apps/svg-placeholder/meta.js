@@ -8,14 +8,5 @@ export default {
   keywords: ["placeholder","svg","image","mockup","dummy","data uri"],
   tag: "jg-app-svg-placeholder",
   window: {"width":860,"height":900},
-  i18n: {
-    de: { name: 'Platzhalter-SVG', tagline: 'Platzhalterbilder als Inline-SVG erzeugen' },
-    es: { name: 'SVG de relleno', tagline: 'Generar imágenes de relleno como SVG en línea' },
-    zh: { name: '占位 SVG', tagline: '生成内联 SVG 占位图' },
-    fr: { name: 'SVG de remplacement', tagline: 'Générer des images de remplacement en SVG inline' },
-    pt: { name: 'SVG de espaço reservado', tagline: 'Gere imagens de espaço reservado como SVG inline' },
-    ja: { name: 'プレースホルダ SVG', tagline: 'インライン SVG のプレースホルダ画像を生成' },
-    ko: { name: '자리표시 SVG', tagline: '인라인 SVG로 자리표시 이미지 만들기' },
-  },
   load: () => import('./index.js'),
 };

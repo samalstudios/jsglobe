@@ -1637,4 +1637,22 @@ export default {
     'tax-calculator.line.unemploymentInsurance': '실업 보험',
     'tax-calculator.line.universalSocialCharge': '보편 사회 부담금',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

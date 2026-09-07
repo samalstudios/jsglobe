@@ -8,14 +8,5 @@ export default {
   tint: "#16a34a",
   keywords: ["sql","format","query","pretty","database"],
   tag: "jg-app-sql-formatter",
-  i18n: {
-    de: { name: 'SQL-Formatierer', tagline: 'Lesbare Formatierung für SQL-Anweisungen' },
-    es: { name: 'Formateador SQL', tagline: 'Formato legible para sentencias SQL' },
-    zh: { name: 'SQL 格式化', tagline: '让 SQL 语句易读的排版' },
-    fr: { name: 'Formateur SQL', tagline: 'Mise en forme lisible des instructions SQL' },
-    pt: { name: 'Formatador SQL', tagline: 'Formatação legível para instruções SQL' },
-    ja: { name: 'SQL 整形', tagline: 'SQL 文を読みやすく整える' },
-    ko: { name: 'SQL 정리', tagline: 'SQL 문을 읽기 좋게 다듬기' },
-  },
   load: () => import('./index.js'),
 };

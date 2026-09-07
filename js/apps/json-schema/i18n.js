@@ -125,4 +125,22 @@ export default {
     'json-schema.generatedSchema': '만들어진 스키마',
     'json-schema.everyDocumentMatchesTheSchema': '모든 문서가 스키마에 맞습니다.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

@@ -76,4 +76,22 @@ export default {
     'game-invaders.arrowsMoveSpaceFires': '화살표로 움직이고 스페이스로 쏩니다.',
     'game-invaders.play': '재생',
   },
+  nl: {
+    'game-invaders.invaders': 'Invaders',
+  },
+  sv: {
+    'game-invaders.invaders': 'Invaders',
+  },
+  no: {
+    'game-invaders.invaders': 'Invaders',
+  },
+  da: {
+    'game-invaders.invaders': 'Invaders',
+  },
+  pl: {
+    'game-invaders.invaders': 'Invaders',
+  },
+  uk: {
+    'game-invaders.invaders': 'Invaders',
+  },
 };

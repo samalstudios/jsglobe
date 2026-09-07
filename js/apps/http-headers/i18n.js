@@ -62,4 +62,28 @@ export default {
     'http-headers.curlI': 'curl -I',
     'http-headers.waitingForHeaders': '헤더를 기다리는 중',
   },
+  nl: {
+    'http-headers.curlIHttpsExampleCom': 'curl -I https://example.com',
+    'http-headers.curlI': 'curl -I',
+  },
+  sv: {
+    'http-headers.curlIHttpsExampleCom': 'curl -I https://example.com',
+    'http-headers.curlI': 'curl -I',
+  },
+  no: {
+    'http-headers.curlIHttpsExampleCom': 'curl -I https://example.com',
+    'http-headers.curlI': 'curl -I',
+  },
+  da: {
+    'http-headers.curlIHttpsExampleCom': 'curl -I https://example.com',
+    'http-headers.curlI': 'curl -I',
+  },
+  pl: {
+    'http-headers.curlIHttpsExampleCom': 'curl -I https://example.com',
+    'http-headers.curlI': 'curl -I',
+  },
+  uk: {
+    'http-headers.curlIHttpsExampleCom': 'curl -I https://example.com',
+    'http-headers.curlI': 'curl -I',
+  },
 };

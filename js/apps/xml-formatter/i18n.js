@@ -76,4 +76,22 @@ export default {
     'xml-formatter.format': '형식',
     'xml-formatter.minify': '줄이기',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

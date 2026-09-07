@@ -83,4 +83,40 @@ export default {
     'jwt.notYetValid': '아직 유효하지 않음',
     'jwt.notVerified': '서명을 확인하지 않았습니다',
   },
+  nl: {
+    'jwt-parser.token': 'Token',
+    'jwt-parser.eyjhbgcioi': 'eyJhbGciOi...',
+    'jwt-parser.payload': 'Payload',
+    'jwt-parser.claims': 'Claims',
+  },
+  sv: {
+    'jwt-parser.token': 'Token',
+    'jwt-parser.eyjhbgcioi': 'eyJhbGciOi...',
+    'jwt-parser.payload': 'Payload',
+    'jwt-parser.claims': 'Claims',
+  },
+  no: {
+    'jwt-parser.token': 'Token',
+    'jwt-parser.eyjhbgcioi': 'eyJhbGciOi...',
+    'jwt-parser.payload': 'Payload',
+    'jwt-parser.claims': 'Claims',
+  },
+  da: {
+    'jwt-parser.token': 'Token',
+    'jwt-parser.eyjhbgcioi': 'eyJhbGciOi...',
+    'jwt-parser.payload': 'Payload',
+    'jwt-parser.claims': 'Claims',
+  },
+  pl: {
+    'jwt-parser.token': 'Token',
+    'jwt-parser.eyjhbgcioi': 'eyJhbGciOi...',
+    'jwt-parser.payload': 'Payload',
+    'jwt-parser.claims': 'Claims',
+  },
+  uk: {
+    'jwt-parser.token': 'Token',
+    'jwt-parser.eyjhbgcioi': 'eyJhbGciOi...',
+    'jwt-parser.payload': 'Payload',
+    'jwt-parser.claims': 'Claims',
+  },
 };

@@ -146,4 +146,34 @@ export default {
     'date-converter.leapYear': '윤년',
     'date-converter.timezone': '시간대',
   },
+  nl: {
+    'date-converter.iso8601': 'ISO 8601',
+    'date-converter.utc': 'UTC',
+    'date-converter.rfc2822': 'RFC 2822',
+  },
+  sv: {
+    'date-converter.iso8601': 'ISO 8601',
+    'date-converter.utc': 'UTC',
+    'date-converter.rfc2822': 'RFC 2822',
+  },
+  no: {
+    'date-converter.iso8601': 'ISO 8601',
+    'date-converter.utc': 'UTC',
+    'date-converter.rfc2822': 'RFC 2822',
+  },
+  da: {
+    'date-converter.iso8601': 'ISO 8601',
+    'date-converter.utc': 'UTC',
+    'date-converter.rfc2822': 'RFC 2822',
+  },
+  pl: {
+    'date-converter.iso8601': 'ISO 8601',
+    'date-converter.utc': 'UTC',
+    'date-converter.rfc2822': 'RFC 2822',
+  },
+  uk: {
+    'date-converter.iso8601': 'ISO 8601',
+    'date-converter.utc': 'UTC',
+    'date-converter.rfc2822': 'RFC 2822',
+  },
 };

@@ -9,14 +9,5 @@ export default {
   keywords: ["password","token","random","secret","entropy"],
   tag: "jg-app-token",
   widget: true,
-  i18n: {
-    de: { name: 'Token-Generator', tagline: 'Starke Zufallspasswörter und API-Tokens' },
-    es: { name: 'Generador de tokens', tagline: 'Contraseñas aleatorias y tokens de API seguros' },
-    zh: { name: '令牌生成器', tagline: '高强度随机密码与 API 令牌' },
-    fr: { name: 'Générateur de jetons', tagline: 'Mots de passe aléatoires solides et jetons d\'API' },
-    pt: { name: 'Gerador de tokens', tagline: 'Senhas aleatórias fortes e tokens de API' },
-    ja: { name: 'トークン生成', tagline: '強い乱数パスワードと API トークン' },
-    ko: { name: '토큰 생성기', tagline: '튼튼한 무작위 비밀번호와 API 토큰' },
-  },
   load: () => import('./index.js'),
 };

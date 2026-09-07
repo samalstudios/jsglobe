@@ -90,4 +90,22 @@ export default {
     'game-dino.duck': '오리',
     'game-dino.play': '재생',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

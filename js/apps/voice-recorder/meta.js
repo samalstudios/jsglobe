@@ -9,14 +9,5 @@ export default {
   keywords: ["voice","record","audio","memo","transcribe","whisper","speech","dictate","notes"],
   tag: "jg-app-voice-recorder",
   window: {"width":860,"height":880},
-  i18n: {
-    de: { name: 'Sprachaufnahme', tagline: 'Audio aufnehmen und auf diesem Gerät transkribieren' },
-    es: { name: 'Grabadora de voz', tagline: 'Grabar audio y transcribirlo en este dispositivo' },
-    zh: { name: '录音', tagline: '录制音频并在本机转写' },
-    fr: { name: 'Dictaphone', tagline: 'Enregistrer de l\'audio et le transcrire sur cet appareil' },
-    pt: { name: 'Gravador de voz', tagline: 'Grave áudio e transcreva neste dispositivo' },
-    ja: { name: 'ボイスレコーダー', tagline: '音声を録音し、この端末で文字起こし' },
-    ko: { name: '음성 녹음', tagline: '소리를 녹음하고 이 기기에서 받아쓰기' },
-  },
   load: () => import('./index.js'),
 };

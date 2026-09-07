@@ -8,14 +8,5 @@ export default {
   tint: "#f59e0b",
   keywords: ["base64","encode","decode","atob","btoa","data uri"],
   tag: "jg-app-base64",
-  i18n: {
-    de: { name: 'Base64', tagline: 'Text oder Dateien kodieren und dekodieren' },
-    es: { name: 'Base64', tagline: 'Codificar y decodificar texto o archivos' },
-    zh: { name: 'Base64', tagline: '编码和解码文本或文件' },
-    fr: { name: 'Base64', tagline: 'Encoder et décoder du texte ou des fichiers' },
-    pt: { name: 'Base64', tagline: 'Codifique e decodifique texto ou arquivos' },
-    ja: { name: 'Base64', tagline: 'テキストやファイルの符号化と復号' },
-    ko: { name: 'Base64', tagline: '텍스트나 파일을 인코딩하고 디코딩하기' },
-  },
   load: () => import('./index.js'),
 };

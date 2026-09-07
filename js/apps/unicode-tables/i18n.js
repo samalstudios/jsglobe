@@ -195,4 +195,40 @@ export default {
     'unicode-tables.javascript': 'JavaScript',
     'unicode-tables.urlEncoded': 'URL 인코딩',
   },
+  nl: {
+    'unicode-tables.latin1': 'Latin-1',
+    'unicode-tables.dingbats': 'Dingbats',
+    'unicode-tables.braille': 'Braille',
+    'unicode-tables.javascript': 'JavaScript',
+  },
+  sv: {
+    'unicode-tables.latin1': 'Latin-1',
+    'unicode-tables.dingbats': 'Dingbats',
+    'unicode-tables.braille': 'Braille',
+    'unicode-tables.javascript': 'JavaScript',
+  },
+  no: {
+    'unicode-tables.latin1': 'Latin-1',
+    'unicode-tables.dingbats': 'Dingbats',
+    'unicode-tables.braille': 'Braille',
+    'unicode-tables.javascript': 'JavaScript',
+  },
+  da: {
+    'unicode-tables.latin1': 'Latin-1',
+    'unicode-tables.dingbats': 'Dingbats',
+    'unicode-tables.braille': 'Braille',
+    'unicode-tables.javascript': 'JavaScript',
+  },
+  pl: {
+    'unicode-tables.latin1': 'Latin-1',
+    'unicode-tables.dingbats': 'Dingbats',
+    'unicode-tables.braille': 'Braille',
+    'unicode-tables.javascript': 'JavaScript',
+  },
+  uk: {
+    'unicode-tables.latin1': 'Latin-1',
+    'unicode-tables.dingbats': 'Dingbats',
+    'unicode-tables.braille': 'Braille',
+    'unicode-tables.javascript': 'JavaScript',
+  },
 };

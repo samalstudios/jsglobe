@@ -9,14 +9,5 @@ export default {
   keywords: ["dns","dig","nslookup","records","mx","txt","ns","ptr","domain"],
   tag: "jg-app-dns-lookup",
   window: {"width":820,"height":780},
-  i18n: {
-    de: { name: 'DNS-Abfrage', tagline: 'Dig-artige Abfragen über DNS-over-HTTPS' },
-    es: { name: 'Consulta DNS', tagline: 'Consultas tipo dig sobre DNS-over-HTTPS' },
-    zh: { name: 'DNS 查询', tagline: '通过 DNS-over-HTTPS 进行 dig 式记录查询' },
-    fr: { name: 'Recherche DNS', tagline: 'Requêtes d\'enregistrements façon dig via DNS-over-HTTPS' },
-    pt: { name: 'Consulta DNS', tagline: 'Consultas de registros ao estilo dig por DNS-over-HTTPS' },
-    ja: { name: 'DNS 検索', tagline: 'DNS-over-HTTPS で dig 風のレコード照会' },
-    ko: { name: 'DNS 조회', tagline: 'DNS-over-HTTPS로 dig 방식 레코드 조회' },
-  },
   load: () => import('./index.js'),
 };

@@ -104,4 +104,22 @@ export default {
     'base64.outputHere': 'Base64 결과가 여기에 나옵니다',
     'base64.copyNoPrefix': '데이터 URI 접두사 없이 복사',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

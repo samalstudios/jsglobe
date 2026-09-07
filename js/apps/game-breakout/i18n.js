@@ -76,4 +76,22 @@ export default {
     'game-breakout.moveWithTheMouseOr': '마우스나 방향키로 움직입니다. 스페이스로 서브합니다.',
     'game-breakout.play': '재생',
   },
+  nl: {
+    'game-breakout.breakout': 'Breakout',
+  },
+  sv: {
+    'game-breakout.breakout': 'Breakout',
+  },
+  no: {
+    'game-breakout.breakout': 'Breakout',
+  },
+  da: {
+    'game-breakout.breakout': 'Breakout',
+  },
+  pl: {
+    'game-breakout.breakout': 'Breakout',
+  },
+  uk: {
+    'game-breakout.breakout': 'Breakout',
+  },
 };

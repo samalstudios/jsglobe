@@ -15,7 +15,13 @@
   "fr": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
   "pt": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
   "ja": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
-  "ko": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple"
+  "ko": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
+  "nl": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
+  "sv": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
+  "no": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
+  "da": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
+  "pl": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
+  "uk": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple"
  },
  "&lt;div&gt;": {
   "de": "&lt;div&gt;",
@@ -24,7 +30,13 @@
   "fr": "&lt;div&gt;",
   "pt": "&lt;div&gt;",
   "ja": "&lt;div&gt;",
-  "ko": "&lt;div&gt;"
+  "ko": "&lt;div&gt;",
+  "nl": "&lt;div&gt;",
+  "sv": "&lt;div&gt;",
+  "no": "&lt;div&gt;",
+  "da": "&lt;div&gt;",
+  "pl": "&lt;div&gt;",
+  "uk": "&lt;div&gt;"
  },
  "+50 cents": {
   "de": "+50 Cent",
@@ -42,7 +54,13 @@
   "fr": "-----BEGIN CERTIFICATE-----",
   "pt": "-----BEGIN CERTIFICATE-----",
   "ja": "-----BEGIN CERTIFICATE-----",
-  "ko": "-----BEGIN CERTIFICATE-----"
+  "ko": "-----BEGIN CERTIFICATE-----",
+  "nl": "-----BEGIN CERTIFICATE-----",
+  "sv": "-----BEGIN CERTIFICATE-----",
+  "no": "-----BEGIN CERTIFICATE-----",
+  "da": "-----BEGIN CERTIFICATE-----",
+  "pl": "-----BEGIN CERTIFICATE-----",
+  "uk": "-----BEGIN CERTIFICATE-----"
  },
  "/usr/bin/backup": {
   "de": "/usr/bin/backup",
@@ -51,7 +69,13 @@
   "fr": "/usr/bin/backup",
   "pt": "/usr/bin/backup",
   "ja": "/usr/bin/backup",
-  "ko": "/usr/bin/backup"
+  "ko": "/usr/bin/backup",
+  "nl": "/usr/bin/backup",
+  "sv": "/usr/bin/backup",
+  "no": "/usr/bin/backup",
+  "da": "/usr/bin/backup",
+  "pl": "/usr/bin/backup",
+  "uk": "/usr/bin/backup"
  },
  "0 bits": {
   "de": "0 Bit",
@@ -213,7 +237,13 @@
   "fr": "2 + 2 * pi",
   "pt": "2 + 2 * pi",
   "ja": "2 + 2 * pi",
-  "ko": "2 + 2 * pi"
+  "ko": "2 + 2 * pi",
+  "nl": "2 + 2 * pi",
+  "sv": "2 + 2 * pi",
+  "no": "2 + 2 * pi",
+  "da": "2 + 2 * pi",
+  "pl": "2 + 2 * pi",
+  "uk": "2 + 2 * pi"
  },
  "2 ms/div": {
   "de": "2 ms/Div",
@@ -510,7 +540,13 @@
   "fr": "AAPL",
   "pt": "AAPL",
   "ja": "AAPL",
-  "ko": "AAPL"
+  "ko": "AAPL",
+  "nl": "AAPL",
+  "sv": "AAPL",
+  "no": "AAPL",
+  "da": "AAPL",
+  "pl": "AAPL",
+  "uk": "AAPL"
  },
  "AC source": {
   "de": "Wechselspannungsquelle",
@@ -528,7 +564,13 @@
   "fr": "AED",
   "pt": "AED",
   "ja": "AED",
-  "ko": "AED"
+  "ko": "AED",
+  "nl": "AED",
+  "sv": "AED",
+  "no": "AED",
+  "da": "AED",
+  "pl": "AED",
+  "uk": "AED"
  },
  "AES-256-GCM with PBKDF2 key derivation (250k iterations)": {
   "de": "AES-256-GCM mit PBKDF2-Schlüsselableitung (250k Iterationen)",
@@ -555,7 +597,13 @@
   "fr": "AND",
   "pt": "AND",
   "ja": "AND",
-  "ko": "AND"
+  "ko": "AND",
+  "nl": "AND",
+  "sv": "AND",
+  "no": "AND",
+  "da": "AND",
+  "pl": "AND",
+  "uk": "AND"
  },
  "API key (optional)": {
   "de": "API-Schlüssel (optional)",
@@ -573,7 +621,13 @@
   "fr": "AUD",
   "pt": "AUD",
   "ja": "AUD",
-  "ko": "AUD"
+  "ko": "AUD",
+  "nl": "AUD",
+  "sv": "AUD",
+  "no": "AUD",
+  "da": "AUD",
+  "pl": "AUD",
+  "uk": "AUD"
  },
  "About": {
   "de": "Über",
@@ -636,7 +690,13 @@
   "fr": "Ada Lovelace",
   "pt": "Ada Lovelace",
   "ja": "Ada Lovelace",
-  "ko": "Ada Lovelace"
+  "ko": "Ada Lovelace",
+  "nl": "Ada Lovelace",
+  "sv": "Ada Lovelace",
+  "no": "Ada Lovelace",
+  "da": "Ada Lovelace",
+  "pl": "Ada Lovelace",
+  "uk": "Ada Lovelace"
  },
  "Add": {
   "de": "Hinzufügen",
@@ -1059,7 +1119,13 @@
   "fr": "Apple",
   "pt": "Apple",
   "ja": "Apple",
-  "ko": "Apple"
+  "ko": "Apple",
+  "nl": "Apple",
+  "sv": "Apple",
+  "no": "Apple",
+  "da": "Apple",
+  "pl": "Apple",
+  "uk": "Apple"
  },
  "Apply": {
   "de": "Anwenden",
@@ -1086,7 +1152,13 @@
   "fr": "Apps",
   "pt": "Apps",
   "ja": "Apps",
-  "ko": "Apps"
+  "ko": "Apps",
+  "nl": "Apps",
+  "sv": "Apps",
+  "no": "Apps",
+  "da": "Apps",
+  "pl": "Apps",
+  "uk": "Apps"
  },
  "Arabic": {
   "de": "Arabisch",
@@ -1221,7 +1293,13 @@
   "fr": "Audio",
   "pt": "Audio",
   "ja": "Audio",
-  "ko": "Audio"
+  "ko": "Audio",
+  "nl": "Audio",
+  "sv": "Audio",
+  "no": "Audio",
+  "da": "Audio",
+  "pl": "Audio",
+  "uk": "Audio"
  },
  "Audio bitrate": {
   "de": "Audio-Bitrate",
@@ -1257,7 +1335,13 @@
   "fr": "Autoscaler",
   "pt": "Autoscaler",
   "ja": "Autoscaler",
-  "ko": "Autoscaler"
+  "ko": "Autoscaler",
+  "nl": "Autoscaler",
+  "sv": "Autoscaler",
+  "no": "Autoscaler",
+  "da": "Autoscaler",
+  "pl": "Autoscaler",
+  "uk": "Autoscaler"
  },
  "Available": {
   "de": "Verfügbar",
@@ -1302,7 +1386,13 @@
   "fr": "BPM",
   "pt": "BPM",
   "ja": "BPM",
-  "ko": "BPM"
+  "ko": "BPM",
+  "nl": "BPM",
+  "sv": "BPM",
+  "no": "BPM",
+  "da": "BPM",
+  "pl": "BPM",
+  "uk": "BPM"
  },
  "Back to the home screen": {
   "de": "Zurück zum Startbildschirm",
@@ -1446,7 +1536,13 @@
   "fr": "Basic YWRtaW46aHVudGVyMg==",
   "pt": "Basic YWRtaW46aHVudGVyMg==",
   "ja": "Basic YWRtaW46aHVudGVyMg==",
-  "ko": "Basic YWRtaW46aHVudGVyMg=="
+  "ko": "Basic YWRtaW46aHVudGVyMg==",
+  "nl": "Basic YWRtaW46aHVudGVyMg==",
+  "sv": "Basic YWRtaW46aHVudGVyMg==",
+  "no": "Basic YWRtaW46aHVudGVyMg==",
+  "da": "Basic YWRtaW46aHVudGVyMg==",
+  "pl": "Basic YWRtaW46aHVudGVyMg==",
+  "uk": "Basic YWRtaW46aHVudGVyMg=="
  },
  "Bass 4 string": {
   "de": "Bass viersaitig",
@@ -1617,7 +1713,13 @@
   "fr": "Bluetooth",
   "pt": "Bluetooth",
   "ja": "Bluetooth",
-  "ko": "Bluetooth"
+  "ko": "Bluetooth",
+  "nl": "Bluetooth",
+  "sv": "Bluetooth",
+  "no": "Bluetooth",
+  "da": "Bluetooth",
+  "pl": "Bluetooth",
+  "uk": "Bluetooth"
  },
  "Blur": {
   "de": "Weichzeichnen",
@@ -1752,7 +1854,13 @@
   "fr": "Braille",
   "pt": "Braille",
   "ja": "Braille",
-  "ko": "Braille"
+  "ko": "Braille",
+  "nl": "Braille",
+  "sv": "Braille",
+  "no": "Braille",
+  "da": "Braille",
+  "pl": "Braille",
+  "uk": "Braille"
  },
  "Break every brick": {
   "de": "Jeden Stein zerschlagen",
@@ -1779,7 +1887,13 @@
   "fr": "Breakout",
   "pt": "Breakout",
   "ja": "Breakout",
-  "ko": "Breakout"
+  "ko": "Breakout",
+  "nl": "Breakout",
+  "sv": "Breakout",
+  "no": "Breakout",
+  "da": "Breakout",
+  "pl": "Breakout",
+  "uk": "Breakout"
  },
  "Brightness": {
   "de": "Helligkeit",
@@ -1932,7 +2046,13 @@
   "fr": "Bytes",
   "pt": "Bytes",
   "ja": "Bytes",
-  "ko": "Bytes"
+  "ko": "Bytes",
+  "nl": "Bytes",
+  "sv": "Bytes",
+  "no": "Bytes",
+  "da": "Bytes",
+  "pl": "Bytes",
+  "uk": "Bytes"
  },
  "CAD": {
   "de": "CAD",
@@ -1941,7 +2061,13 @@
   "fr": "CAD",
   "pt": "CAD",
   "ja": "CAD",
-  "ko": "CAD"
+  "ko": "CAD",
+  "nl": "CAD",
+  "sv": "CAD",
+  "no": "CAD",
+  "da": "CAD",
+  "pl": "CAD",
+  "uk": "CAD"
  },
  "CHF": {
   "de": "CHF",
@@ -1950,7 +2076,13 @@
   "fr": "CHF",
   "pt": "CHF",
   "ja": "CHF",
-  "ko": "CHF"
+  "ko": "CHF",
+  "nl": "CHF",
+  "sv": "CHF",
+  "no": "CHF",
+  "da": "CHF",
+  "pl": "CHF",
+  "uk": "CHF"
  },
  "CONSTANT_CASE": {
   "de": "CONSTANT_CASE",
@@ -1959,7 +2091,13 @@
   "fr": "CONSTANT_CASE",
   "pt": "CONSTANT_CASE",
   "ja": "CONSTANT_CASE",
-  "ko": "CONSTANT_CASE"
+  "ko": "CONSTANT_CASE",
+  "nl": "CONSTANT_CASE",
+  "sv": "CONSTANT_CASE",
+  "no": "CONSTANT_CASE",
+  "da": "CONSTANT_CASE",
+  "pl": "CONSTANT_CASE",
+  "uk": "CONSTANT_CASE"
  },
  "CPU": {
   "de": "Computer",
@@ -2004,7 +2142,13 @@
   "fr": "CR",
   "pt": "CR",
   "ja": "CR",
-  "ko": "CR"
+  "ko": "CR",
+  "nl": "CR",
+  "sv": "CR",
+  "no": "CR",
+  "da": "CR",
+  "pl": "CR",
+  "uk": "CR"
  },
  "CRLF": {
   "de": "CRLF",
@@ -2013,7 +2157,13 @@
   "fr": "CRLF",
   "pt": "CRLF",
   "ja": "CRLF",
-  "ko": "CRLF"
+  "ko": "CRLF",
+  "nl": "CRLF",
+  "sv": "CRLF",
+  "no": "CRLF",
+  "da": "CRLF",
+  "pl": "CRLF",
+  "uk": "CRLF"
  },
  "CSS variable": {
   "de": "CSS-Variable",
@@ -2211,7 +2361,13 @@
   "fr": "Celsius",
   "pt": "Celsius",
   "ja": "Celsius",
-  "ko": "Celsius"
+  "ko": "Celsius",
+  "nl": "Celsius",
+  "sv": "Celsius",
+  "no": "Celsius",
+  "da": "Celsius",
+  "pl": "Celsius",
+  "uk": "Celsius"
  },
  "Center": {
   "de": "Mitte",
@@ -2409,7 +2565,13 @@
   "fr": "Cisco - 001b.4411",
   "pt": "Cisco - 001b.4411",
   "ja": "Cisco - 001b.4411",
-  "ko": "Cisco - 001b.4411"
+  "ko": "Cisco - 001b.4411",
+  "nl": "Cisco - 001b.4411",
+  "sv": "Cisco - 001b.4411",
+  "no": "Cisco - 001b.4411",
+  "da": "Cisco - 001b.4411",
+  "pl": "Cisco - 001b.4411",
+  "uk": "Cisco - 001b.4411"
  },
  "City": {
   "de": "Stadt",
@@ -2427,7 +2589,13 @@
   "fr": "Claims",
   "pt": "Claims",
   "ja": "Claims",
-  "ko": "Claims"
+  "ko": "Claims",
+  "nl": "Claims",
+  "sv": "Claims",
+  "no": "Claims",
+  "da": "Claims",
+  "pl": "Claims",
+  "uk": "Claims"
  },
  "Clap": {
   "de": "Clap",
@@ -2625,7 +2793,13 @@
   "fr": "Cloudflare",
   "pt": "Cloudflare",
   "ja": "Cloudflare",
-  "ko": "Cloudflare"
+  "ko": "Cloudflare",
+  "nl": "Cloudflare",
+  "sv": "Cloudflare",
+  "no": "Cloudflare",
+  "da": "Cloudflare",
+  "pl": "Cloudflare",
+  "uk": "Cloudflare"
  },
  "Code": {
   "de": "Code",
@@ -2643,7 +2817,13 @@
   "fr": "Code 128",
   "pt": "Code 128",
   "ja": "Code 128",
-  "ko": "Code 128"
+  "ko": "Code 128",
+  "nl": "Code 128",
+  "sv": "Code 128",
+  "no": "Code 128",
+  "da": "Code 128",
+  "pl": "Code 128",
+  "uk": "Code 128"
  },
  "Code 39": {
   "de": "Code 39",
@@ -2652,7 +2832,13 @@
   "fr": "Code 39",
   "pt": "Code 39",
   "ja": "Code 39",
-  "ko": "Code 39"
+  "ko": "Code 39",
+  "nl": "Code 39",
+  "sv": "Code 39",
+  "no": "Code 39",
+  "da": "Code 39",
+  "pl": "Code 39",
+  "uk": "Code 39"
  },
  "Code point": {
   "de": "Codepunkt",
@@ -2670,7 +2856,13 @@
   "fr": "CoinGecko",
   "pt": "CoinGecko",
   "ja": "CoinGecko",
-  "ko": "CoinGecko"
+  "ko": "CoinGecko",
+  "nl": "CoinGecko",
+  "sv": "CoinGecko",
+  "no": "CoinGecko",
+  "da": "CoinGecko",
+  "pl": "CoinGecko",
+  "uk": "CoinGecko"
  },
  "Colon - 00:1b:44": {
   "de": "Doppelpunkt - 00:1b:44",
@@ -2895,7 +3087,13 @@
   "fr": "ConfigMap",
   "pt": "ConfigMap",
   "ja": "ConfigMap",
-  "ko": "ConfigMap"
+  "ko": "ConfigMap",
+  "nl": "ConfigMap",
+  "sv": "ConfigMap",
+  "no": "ConfigMap",
+  "da": "ConfigMap",
+  "pl": "ConfigMap",
+  "uk": "ConfigMap"
  },
  "Conic": {
   "de": "Konisch",
@@ -3633,7 +3831,13 @@
   "fr": "DE89 3704 0044 0532 0130 00",
   "pt": "DE89 3704 0044 0532 0130 00",
   "ja": "DE89 3704 0044 0532 0130 00",
-  "ko": "DE89 3704 0044 0532 0130 00"
+  "ko": "DE89 3704 0044 0532 0130 00",
+  "nl": "DE89 3704 0044 0532 0130 00",
+  "sv": "DE89 3704 0044 0532 0130 00",
+  "no": "DE89 3704 0044 0532 0130 00",
+  "da": "DE89 3704 0044 0532 0130 00",
+  "pl": "DE89 3704 0044 0532 0130 00",
+  "uk": "DE89 3704 0044 0532 0130 00"
  },
  "DNSSEC verified": {
   "de": "DNSSEC geprüft",
@@ -3930,7 +4134,13 @@
   "fr": "Deployment",
   "pt": "Deployment",
   "ja": "Deployment",
-  "ko": "Deployment"
+  "ko": "Deployment",
+  "nl": "Deployment",
+  "sv": "Deployment",
+  "no": "Deployment",
+  "da": "Deployment",
+  "pl": "Deployment",
+  "uk": "Deployment"
  },
  "Depth": {
   "de": "Tiefe",
@@ -4056,7 +4266,13 @@
   "fr": "Dingbats",
   "pt": "Dingbats",
   "ja": "Dingbats",
-  "ko": "Dingbats"
+  "ko": "Dingbats",
+  "nl": "Dingbats",
+  "sv": "Dingbats",
+  "no": "Dingbats",
+  "da": "Dingbats",
+  "pl": "Dingbats",
+  "uk": "Dingbats"
  },
  "Diode": {
   "de": "Diode",
@@ -4443,7 +4659,13 @@
   "fr": "EAN-13",
   "pt": "EAN-13",
   "ja": "EAN-13",
-  "ko": "EAN-13"
+  "ko": "EAN-13",
+  "nl": "EAN-13",
+  "sv": "EAN-13",
+  "no": "EAN-13",
+  "da": "EAN-13",
+  "pl": "EAN-13",
+  "uk": "EAN-13"
  },
  "EAN-8": {
   "de": "EAN-8",
@@ -4452,7 +4674,13 @@
   "fr": "EAN-8",
   "pt": "EAN-8",
   "ja": "EAN-8",
-  "ko": "EAN-8"
+  "ko": "EAN-8",
+  "nl": "EAN-8",
+  "sv": "EAN-8",
+  "no": "EAN-8",
+  "da": "EAN-8",
+  "pl": "EAN-8",
+  "uk": "EAN-8"
  },
  "ECDH P-256": {
   "de": "ECDH P-256",
@@ -4461,7 +4689,13 @@
   "fr": "ECDH P-256",
   "pt": "ECDH P-256",
   "ja": "ECDH P-256",
-  "ko": "ECDH P-256"
+  "ko": "ECDH P-256",
+  "nl": "ECDH P-256",
+  "sv": "ECDH P-256",
+  "no": "ECDH P-256",
+  "da": "ECDH P-256",
+  "pl": "ECDH P-256",
+  "uk": "ECDH P-256"
  },
  "ECDSA P-256": {
   "de": "ECDSA P-256",
@@ -4470,7 +4704,13 @@
   "fr": "ECDSA P-256",
   "pt": "ECDSA P-256",
   "ja": "ECDSA P-256",
-  "ko": "ECDSA P-256"
+  "ko": "ECDSA P-256",
+  "nl": "ECDSA P-256",
+  "sv": "ECDSA P-256",
+  "no": "ECDSA P-256",
+  "da": "ECDSA P-256",
+  "pl": "ECDSA P-256",
+  "uk": "ECDSA P-256"
  },
  "ECDSA P-384": {
   "de": "ECDSA P-384",
@@ -4479,7 +4719,13 @@
   "fr": "ECDSA P-384",
   "pt": "ECDSA P-384",
   "ja": "ECDSA P-384",
-  "ko": "ECDSA P-384"
+  "ko": "ECDSA P-384",
+  "nl": "ECDSA P-384",
+  "sv": "ECDSA P-384",
+  "no": "ECDSA P-384",
+  "da": "ECDSA P-384",
+  "pl": "ECDSA P-384",
+  "uk": "ECDSA P-384"
  },
  "ECDSA nistp256": {
   "de": "ECDSA nistp256",
@@ -4488,7 +4734,13 @@
   "fr": "ECDSA nistp256",
   "pt": "ECDSA nistp256",
   "ja": "ECDSA nistp256",
-  "ko": "ECDSA nistp256"
+  "ko": "ECDSA nistp256",
+  "nl": "ECDSA nistp256",
+  "sv": "ECDSA nistp256",
+  "no": "ECDSA nistp256",
+  "da": "ECDSA nistp256",
+  "pl": "ECDSA nistp256",
+  "uk": "ECDSA nistp256"
  },
  "ECDSA nistp384": {
   "de": "ECDSA nistp384",
@@ -4497,7 +4749,13 @@
   "fr": "ECDSA nistp384",
   "pt": "ECDSA nistp384",
   "ja": "ECDSA nistp384",
-  "ko": "ECDSA nistp384"
+  "ko": "ECDSA nistp384",
+  "nl": "ECDSA nistp384",
+  "sv": "ECDSA nistp384",
+  "no": "ECDSA nistp384",
+  "da": "ECDSA nistp384",
+  "pl": "ECDSA nistp384",
+  "uk": "ECDSA nistp384"
  },
  "ECDSA nistp521": {
   "de": "ECDSA nistp521",
@@ -4506,7 +4764,13 @@
   "fr": "ECDSA nistp521",
   "pt": "ECDSA nistp521",
   "ja": "ECDSA nistp521",
-  "ko": "ECDSA nistp521"
+  "ko": "ECDSA nistp521",
+  "nl": "ECDSA nistp521",
+  "sv": "ECDSA nistp521",
+  "no": "ECDSA nistp521",
+  "da": "ECDSA nistp521",
+  "pl": "ECDSA nistp521",
+  "uk": "ECDSA nistp521"
  },
  "EUI-64": {
   "de": "EUI-64",
@@ -4515,7 +4779,13 @@
   "fr": "EUI-64",
   "pt": "EUI-64",
   "ja": "EUI-64",
-  "ko": "EUI-64"
+  "ko": "EUI-64",
+  "nl": "EUI-64",
+  "sv": "EUI-64",
+  "no": "EUI-64",
+  "da": "EUI-64",
+  "pl": "EUI-64",
+  "uk": "EUI-64"
  },
  "EUR": {
   "de": "EUR",
@@ -4524,7 +4794,13 @@
   "fr": "EUR",
   "pt": "EUR",
   "ja": "EUR",
-  "ko": "EUR"
+  "ko": "EUR",
+  "nl": "EUR",
+  "sv": "EUR",
+  "no": "EUR",
+  "da": "EUR",
+  "pl": "EUR",
+  "uk": "EUR"
  },
  "Easing": {
   "de": "Beschleunigung",
@@ -4776,7 +5052,13 @@
   "fr": "Esc",
   "pt": "Esc",
   "ja": "Esc",
-  "ko": "Esc"
+  "ko": "Esc",
+  "nl": "Esc",
+  "sv": "Esc",
+  "no": "Esc",
+  "da": "Esc",
+  "pl": "Esc",
+  "uk": "Esc"
  },
  "Escaped": {
   "de": "Maskiert",
@@ -5028,7 +5310,13 @@
   "fr": "FLAC",
   "pt": "FLAC",
   "ja": "FLAC",
-  "ko": "FLAC"
+  "ko": "FLAC",
+  "nl": "FLAC",
+  "sv": "FLAC",
+  "no": "FLAC",
+  "da": "FLAC",
+  "pl": "FLAC",
+  "uk": "FLAC"
  },
  "Fade": {
   "de": "Überblenden",
@@ -5055,7 +5343,13 @@
   "fr": "Fahrenheit",
   "pt": "Fahrenheit",
   "ja": "Fahrenheit",
-  "ko": "Fahrenheit"
+  "ko": "Fahrenheit",
+  "nl": "Fahrenheit",
+  "sv": "Fahrenheit",
+  "no": "Fahrenheit",
+  "da": "Fahrenheit",
+  "pl": "Fahrenheit",
+  "uk": "Fahrenheit"
  },
  "Fair": {
   "de": "Mäßig",
@@ -5172,7 +5466,13 @@
   "fr": "Finnhub",
   "pt": "Finnhub",
   "ja": "Finnhub",
-  "ko": "Finnhub"
+  "ko": "Finnhub",
+  "nl": "Finnhub",
+  "sv": "Finnhub",
+  "no": "Finnhub",
+  "da": "Finnhub",
+  "pl": "Finnhub",
+  "uk": "Finnhub"
  },
  "First frame (PNG)": {
   "de": "Erstes Bild (PNG)",
@@ -5613,7 +5913,13 @@
   "fr": "GBP",
   "pt": "GBP",
   "ja": "GBP",
-  "ko": "GBP"
+  "ko": "GBP",
+  "nl": "GBP",
+  "sv": "GBP",
+  "no": "GBP",
+  "da": "GBP",
+  "pl": "GBP",
+  "uk": "GBP"
  },
  "GIF frame rate": {
   "de": "GIF-Bildrate",
@@ -5802,7 +6108,13 @@
   "fr": "Google",
   "pt": "Google",
   "ja": "Google",
-  "ko": "Google"
+  "ko": "Google",
+  "nl": "Google",
+  "sv": "Google",
+  "no": "Google",
+  "da": "Google",
+  "pl": "Google",
+  "uk": "Google"
  },
  "Gravity": {
   "de": "Schwerkraft",
@@ -5910,7 +6222,13 @@
   "fr": "Hardware",
   "pt": "Hardware",
   "ja": "Hardware",
-  "ko": "Hardware"
+  "ko": "Hardware",
+  "nl": "Hardware",
+  "sv": "Hardware",
+  "no": "Hardware",
+  "da": "Hardware",
+  "pl": "Hardware",
+  "uk": "Hardware"
  },
  "Harmony": {
   "de": "Harmonie",
@@ -5996,7 +6314,13 @@
   "fr": "Hex",
   "pt": "Hex",
   "ja": "Hex",
-  "ko": "Hex"
+  "ko": "Hex",
+  "nl": "Hex",
+  "sv": "Hex",
+  "no": "Hex",
+  "da": "Hex",
+  "pl": "Hex",
+  "uk": "Hex"
  },
  "Hex colour": {
   "de": "Hex-Farbe",
@@ -6185,7 +6509,13 @@
   "fr": "IBAN",
   "pt": "IBAN",
   "ja": "IBAN",
-  "ko": "IBAN"
+  "ko": "IBAN",
+  "nl": "IBAN",
+  "sv": "IBAN",
+  "no": "IBAN",
+  "da": "IBAN",
+  "pl": "IBAN",
+  "uk": "IBAN"
  },
  "IPv4 address or numeric form": {
   "de": "IPv4-Adresse oder numerische Form",
@@ -6221,7 +6551,13 @@
   "fr": "ISO 8601",
   "pt": "ISO 8601",
   "ja": "ISO 8601",
-  "ko": "ISO 8601"
+  "ko": "ISO 8601",
+  "nl": "ISO 8601",
+  "sv": "ISO 8601",
+  "no": "ISO 8601",
+  "da": "ISO 8601",
+  "pl": "ISO 8601",
+  "uk": "ISO 8601"
  },
  "ISO week": {
   "de": "ISO-Woche",
@@ -6365,7 +6701,13 @@
   "fr": "Ingress",
   "pt": "Ingress",
   "ja": "Ingress",
-  "ko": "Ingress"
+  "ko": "Ingress",
+  "nl": "Ingress",
+  "sv": "Ingress",
+  "no": "Ingress",
+  "da": "Ingress",
+  "pl": "Ingress",
+  "uk": "Ingress"
  },
  "Ingress class": {
   "de": "Ingress-Klasse",
@@ -6491,7 +6833,13 @@
   "fr": "Invaders",
   "pt": "Invaders",
   "ja": "Invaders",
-  "ko": "Invaders"
+  "ko": "Invaders",
+  "nl": "Invaders",
+  "sv": "Invaders",
+  "no": "Invaders",
+  "da": "Invaders",
+  "pl": "Invaders",
+  "uk": "Invaders"
  },
  "Invert": {
   "de": "Invertieren",
@@ -6545,7 +6893,13 @@
   "fr": "JPY",
   "pt": "JPY",
   "ja": "JPY",
-  "ko": "JPY"
+  "ko": "JPY",
+  "nl": "JPY",
+  "sv": "JPY",
+  "no": "JPY",
+  "da": "JPY",
+  "pl": "JPY",
+  "uk": "JPY"
  },
  "JSON Schema": {
   "de": "JSON-Schema",
@@ -6563,7 +6917,13 @@
   "fr": "JSON Web Key",
   "pt": "JSON Web Key",
   "ja": "JSON Web Key",
-  "ko": "JSON Web Key"
+  "ko": "JSON Web Key",
+  "nl": "JSON Web Key",
+  "sv": "JSON Web Key",
+  "no": "JSON Web Key",
+  "da": "JSON Web Key",
+  "pl": "JSON Web Key",
+  "uk": "JSON Web Key"
  },
  "JSON lines": {
   "de": "JSON Lines",
@@ -6581,7 +6941,13 @@
   "fr": "JSX",
   "pt": "JSX",
   "ja": "JSX",
-  "ko": "JSX"
+  "ko": "JSX",
+  "nl": "JSX",
+  "sv": "JSX",
+  "no": "JSX",
+  "da": "JSX",
+  "pl": "JSX",
+  "uk": "JSX"
  },
  "JSX component": {
   "de": "JSX-Komponente",
@@ -6626,7 +6992,13 @@
   "fr": "JavaScript",
   "pt": "JavaScript",
   "ja": "JavaScript",
-  "ko": "JavaScript"
+  "ko": "JavaScript",
+  "nl": "JavaScript",
+  "sv": "JavaScript",
+  "no": "JavaScript",
+  "da": "JavaScript",
+  "pl": "JavaScript",
+  "uk": "JavaScript"
  },
  "Jitter ms": {
   "de": "Jitter ms",
@@ -6635,7 +7007,13 @@
   "fr": "Jitter ms",
   "pt": "Jitter ms",
   "ja": "Jitter ms",
-  "ko": "Jitter ms"
+  "ko": "Jitter ms",
+  "nl": "Jitter ms",
+  "sv": "Jitter ms",
+  "no": "Jitter ms",
+  "da": "Jitter ms",
+  "pl": "Jitter ms",
+  "uk": "Jitter ms"
  },
  "Job title": {
   "de": "Position",
@@ -6671,7 +7049,13 @@
   "fr": "Kebab",
   "pt": "Kebab",
   "ja": "Kebab",
-  "ko": "Kebab"
+  "ko": "Kebab",
+  "nl": "Kebab",
+  "sv": "Kebab",
+  "no": "Kebab",
+  "da": "Kebab",
+  "pl": "Kebab",
+  "uk": "Kebab"
  },
  "Keep aspect ratio": {
   "de": "Seitenverhältnis beibehalten",
@@ -6734,7 +7118,13 @@
   "fr": "Kelvin",
   "pt": "Kelvin",
   "ja": "Kelvin",
-  "ko": "Kelvin"
+  "ko": "Kelvin",
+  "nl": "Kelvin",
+  "sv": "Kelvin",
+  "no": "Kelvin",
+  "da": "Kelvin",
+  "pl": "Kelvin",
+  "uk": "Kelvin"
  },
  "Key": {
   "de": "Schlüssel",
@@ -6815,7 +7205,13 @@
   "fr": "LED",
   "pt": "LED",
   "ja": "LED",
-  "ko": "LED"
+  "ko": "LED",
+  "nl": "LED",
+  "sv": "LED",
+  "no": "LED",
+  "da": "LED",
+  "pl": "LED",
+  "uk": "LED"
  },
  "LF": {
   "de": "LF",
@@ -6824,7 +7220,13 @@
   "fr": "LF",
   "pt": "LF",
   "ja": "LF",
-  "ko": "LF"
+  "ko": "LF",
+  "nl": "LF",
+  "sv": "LF",
+  "no": "LF",
+  "da": "LF",
+  "pl": "LF",
+  "uk": "LF"
  },
  "Label": {
   "de": "Beschriftung",
@@ -6932,7 +7334,13 @@
   "fr": "Latin-1",
   "pt": "Latin-1",
   "ja": "Latin-1",
-  "ko": "Latin-1"
+  "ko": "Latin-1",
+  "nl": "Latin-1",
+  "sv": "Latin-1",
+  "no": "Latin-1",
+  "da": "Latin-1",
+  "pl": "Latin-1",
+  "uk": "Latin-1"
  },
  "Latitude": {
   "de": "Breitengrad",
@@ -7378,7 +7786,13 @@
   "fr": "MP4 (H.264)",
   "pt": "MP4 (H.264)",
   "ja": "MP4 (H.264)",
-  "ko": "MP4 (H.264)"
+  "ko": "MP4 (H.264)",
+  "nl": "MP4 (H.264)",
+  "sv": "MP4 (H.264)",
+  "no": "MP4 (H.264)",
+  "da": "MP4 (H.264)",
+  "pl": "MP4 (H.264)",
+  "uk": "MP4 (H.264)"
  },
  "Make responsive": {
   "de": "Responsiv machen",
@@ -7432,7 +7846,13 @@
   "fr": "Markdown",
   "pt": "Markdown",
   "ja": "Markdown",
-  "ko": "Markdown"
+  "ko": "Markdown",
+  "nl": "Markdown",
+  "sv": "Markdown",
+  "no": "Markdown",
+  "da": "Markdown",
+  "pl": "Markdown",
+  "uk": "Markdown"
  },
  "Marker": {
   "de": "Textmarker",
@@ -7819,7 +8239,13 @@
   "fr": "Morse",
   "pt": "Morse",
   "ja": "Morse",
-  "ko": "Morse"
+  "ko": "Morse",
+  "nl": "Morse",
+  "sv": "Morse",
+  "no": "Morse",
+  "da": "Morse",
+  "pl": "Morse",
+  "uk": "Morse"
  },
  "Morse code": {
   "de": "Morsecode",
@@ -7846,7 +8272,13 @@
   "fr": "Motor",
   "pt": "Motor",
   "ja": "Motor",
-  "ko": "Motor"
+  "ko": "Motor",
+  "nl": "Motor",
+  "sv": "Motor",
+  "no": "Motor",
+  "da": "Motor",
+  "pl": "Motor",
+  "uk": "Motor"
  },
  "Move": {
   "de": "Verschieben",
@@ -7954,7 +8386,13 @@
   "fr": "NAND",
   "pt": "NAND",
   "ja": "NAND",
-  "ko": "NAND"
+  "ko": "NAND",
+  "nl": "NAND",
+  "sv": "NAND",
+  "no": "NAND",
+  "da": "NAND",
+  "pl": "NAND",
+  "uk": "NAND"
  },
  "NATO alphabet": {
   "de": "NATO-Alphabet",
@@ -7972,7 +8410,13 @@
   "fr": "NOR",
   "pt": "NOR",
   "ja": "NOR",
-  "ko": "NOR"
+  "ko": "NOR",
+  "nl": "NOR",
+  "sv": "NOR",
+  "no": "NOR",
+  "da": "NOR",
+  "pl": "NOR",
+  "uk": "NOR"
  },
  "NOT": {
   "de": "NOT",
@@ -7981,7 +8425,13 @@
   "fr": "NOT",
   "pt": "NOT",
   "ja": "NOT",
-  "ko": "NOT"
+  "ko": "NOT",
+  "nl": "NOT",
+  "sv": "NOT",
+  "no": "NOT",
+  "da": "NOT",
+  "pl": "NOT",
+  "uk": "NOT"
  },
  "NPN": {
   "de": "NPN",
@@ -7990,7 +8440,13 @@
   "fr": "NPN",
   "pt": "NPN",
   "ja": "NPN",
-  "ko": "NPN"
+  "ko": "NPN",
+  "nl": "NPN",
+  "sv": "NPN",
+  "no": "NPN",
+  "da": "NPN",
+  "pl": "NPN",
+  "uk": "NPN"
  },
  "Name": {
   "de": "Name",
@@ -8494,7 +8950,13 @@
   "fr": "Normal",
   "pt": "Normal",
   "ja": "Normal",
-  "ko": "Normal"
+  "ko": "Normal",
+  "nl": "Normal",
+  "sv": "Normal",
+  "no": "Normal",
+  "da": "Normal",
+  "pl": "Normal",
+  "uk": "Normal"
  },
  "Normalised": {
   "de": "Normalisiert",
@@ -8764,7 +9226,13 @@
   "fr": "OGG (Vorbis)",
   "pt": "OGG (Vorbis)",
   "ja": "OGG (Vorbis)",
-  "ko": "OGG (Vorbis)"
+  "ko": "OGG (Vorbis)",
+  "nl": "OGG (Vorbis)",
+  "sv": "OGG (Vorbis)",
+  "no": "OGG (Vorbis)",
+  "da": "OGG (Vorbis)",
+  "pl": "OGG (Vorbis)",
+  "uk": "OGG (Vorbis)"
  },
  "OR": {
   "de": "OR",
@@ -8773,7 +9241,13 @@
   "fr": "OR",
   "pt": "OR",
   "ja": "OR",
-  "ko": "OR"
+  "ko": "OR",
+  "nl": "OR",
+  "sv": "OR",
+  "no": "OR",
+  "da": "OR",
+  "pl": "OR",
+  "uk": "OR"
  },
  "OUI": {
   "de": "OUI",
@@ -8782,7 +9256,13 @@
   "fr": "OUI",
   "pt": "OUI",
   "ja": "OUI",
-  "ko": "OUI"
+  "ko": "OUI",
+  "nl": "OUI",
+  "sv": "OUI",
+  "no": "OUI",
+  "da": "OUI",
+  "pl": "OUI",
+  "uk": "OUI"
  },
  "Objects": {
   "de": "Objekte",
@@ -9061,7 +9541,13 @@
   "fr": "Opus",
   "pt": "Opus",
   "ja": "Opus",
-  "ko": "Opus"
+  "ko": "Opus",
+  "nl": "Opus",
+  "sv": "Opus",
+  "no": "Opus",
+  "da": "Opus",
+  "pl": "Opus",
+  "uk": "Opus"
  },
  "Organisation": {
   "de": "Organisation",
@@ -9088,7 +9574,13 @@
   "fr": "Original",
   "pt": "Original",
   "ja": "Original",
-  "ko": "Original"
+  "ko": "Original",
+  "nl": "Original",
+  "sv": "Original",
+  "no": "Original",
+  "da": "Original",
+  "pl": "Original",
+  "uk": "Original"
  },
  "Outliers": {
   "de": "Ausreißer",
@@ -9187,7 +9679,13 @@
   "fr": "PNG 1x",
   "pt": "PNG 1x",
   "ja": "PNG 1x",
-  "ko": "PNG 1x"
+  "ko": "PNG 1x",
+  "nl": "PNG 1x",
+  "sv": "PNG 1x",
+  "no": "PNG 1x",
+  "da": "PNG 1x",
+  "pl": "PNG 1x",
+  "uk": "PNG 1x"
  },
  "PNG 2x": {
   "de": "PNG 2x",
@@ -9196,7 +9694,13 @@
   "fr": "PNG 2x",
   "pt": "PNG 2x",
   "ja": "PNG 2x",
-  "ko": "PNG 2x"
+  "ko": "PNG 2x",
+  "nl": "PNG 2x",
+  "sv": "PNG 2x",
+  "no": "PNG 2x",
+  "da": "PNG 2x",
+  "pl": "PNG 2x",
+  "uk": "PNG 2x"
  },
  "PNG 4x": {
   "de": "PNG 4x",
@@ -9205,7 +9709,13 @@
   "fr": "PNG 4x",
   "pt": "PNG 4x",
   "ja": "PNG 4x",
-  "ko": "PNG 4x"
+  "ko": "PNG 4x",
+  "nl": "PNG 4x",
+  "sv": "PNG 4x",
+  "no": "PNG 4x",
+  "da": "PNG 4x",
+  "pl": "PNG 4x",
+  "uk": "PNG 4x"
  },
  "PNP": {
   "de": "PNP",
@@ -9214,7 +9724,13 @@
   "fr": "PNP",
   "pt": "PNP",
   "ja": "PNP",
-  "ko": "PNP"
+  "ko": "PNP",
+  "nl": "PNP",
+  "sv": "PNP",
+  "no": "PNP",
+  "da": "PNP",
+  "pl": "PNP",
+  "uk": "PNP"
  },
  "Padding": {
   "de": "Innenabstand",
@@ -9322,7 +9838,13 @@
   "fr": "PascalCase",
   "pt": "PascalCase",
   "ja": "PascalCase",
-  "ko": "PascalCase"
+  "ko": "PascalCase",
+  "nl": "PascalCase",
+  "sv": "PascalCase",
+  "no": "PascalCase",
+  "da": "PascalCase",
+  "pl": "PascalCase",
+  "uk": "PascalCase"
  },
  "Passphrase": {
   "de": "Passphrase",
@@ -9583,7 +10105,13 @@
   "fr": "Payload",
   "pt": "Payload",
   "ja": "Payload",
-  "ko": "Payload"
+  "ko": "Payload",
+  "nl": "Payload",
+  "sv": "Payload",
+  "no": "Payload",
+  "da": "Payload",
+  "pl": "Payload",
+  "uk": "Payload"
  },
  "Pen": {
   "de": "Stift",
@@ -9889,7 +10417,13 @@
   "fr": "PodDisruptionBudget",
   "pt": "PodDisruptionBudget",
   "ja": "PodDisruptionBudget",
-  "ko": "PodDisruptionBudget"
+  "ko": "PodDisruptionBudget",
+  "nl": "PodDisruptionBudget",
+  "sv": "PodDisruptionBudget",
+  "no": "PodDisruptionBudget",
+  "da": "PodDisruptionBudget",
+  "pl": "PodDisruptionBudget",
+  "uk": "PodDisruptionBudget"
  },
  "Point this at a self-hosted copy of WebLLM if you would rather not use a CDN.": {
   "de": "Auf eine selbst gehostete Kopie von WebLLM zeigen lassen, wenn kein CDN genutzt werden soll.",
@@ -9916,7 +10450,13 @@
   "fr": "Pong",
   "pt": "Pong",
   "ja": "Pong",
-  "ko": "Pong"
+  "ko": "Pong",
+  "nl": "Pong",
+  "sv": "Pong",
+  "no": "Pong",
+  "da": "Pong",
+  "pl": "Pong",
+  "uk": "Pong"
  },
  "Pop": {
   "de": "Aufploppen",
@@ -10339,7 +10879,13 @@
   "fr": "RFC 2822",
   "pt": "RFC 2822",
   "ja": "RFC 2822",
-  "ko": "RFC 2822"
+  "ko": "RFC 2822",
+  "nl": "RFC 2822",
+  "sv": "RFC 2822",
+  "no": "RFC 2822",
+  "da": "RFC 2822",
+  "pl": "RFC 2822",
+  "uk": "RFC 2822"
  },
  "ROT13": {
   "de": "ROT13",
@@ -10348,7 +10894,13 @@
   "fr": "ROT13",
   "pt": "ROT13",
   "ja": "ROT13",
-  "ko": "ROT13"
+  "ko": "ROT13",
+  "nl": "ROT13",
+  "sv": "ROT13",
+  "no": "ROT13",
+  "da": "ROT13",
+  "pl": "ROT13",
+  "uk": "ROT13"
  },
  "RSA 2048": {
   "de": "RSA 2048",
@@ -10357,7 +10909,13 @@
   "fr": "RSA 2048",
   "pt": "RSA 2048",
   "ja": "RSA 2048",
-  "ko": "RSA 2048"
+  "ko": "RSA 2048",
+  "nl": "RSA 2048",
+  "sv": "RSA 2048",
+  "no": "RSA 2048",
+  "da": "RSA 2048",
+  "pl": "RSA 2048",
+  "uk": "RSA 2048"
  },
  "RSA 2048 (encryption)": {
   "de": "RSA 2048 (Verschlüsselung)",
@@ -10375,7 +10933,13 @@
   "fr": "RSA 3072",
   "pt": "RSA 3072",
   "ja": "RSA 3072",
-  "ko": "RSA 3072"
+  "ko": "RSA 3072",
+  "nl": "RSA 3072",
+  "sv": "RSA 3072",
+  "no": "RSA 3072",
+  "da": "RSA 3072",
+  "pl": "RSA 3072",
+  "uk": "RSA 3072"
  },
  "RSA 4096": {
   "de": "RSA 4096",
@@ -10384,7 +10948,13 @@
   "fr": "RSA 4096",
   "pt": "RSA 4096",
   "ja": "RSA 4096",
-  "ko": "RSA 4096"
+  "ko": "RSA 4096",
+  "nl": "RSA 4096",
+  "sv": "RSA 4096",
+  "no": "RSA 4096",
+  "da": "RSA 4096",
+  "pl": "RSA 4096",
+  "uk": "RSA 4096"
  },
  "Radial": {
   "de": "Radial",
@@ -10393,7 +10963,13 @@
   "fr": "Radial",
   "pt": "Radial",
   "ja": "Radial",
-  "ko": "Radial"
+  "ko": "Radial",
+  "nl": "Radial",
+  "sv": "Radial",
+  "no": "Radial",
+  "da": "Radial",
+  "pl": "Radial",
+  "uk": "Radial"
  },
  "Radius m": {
   "de": "Radius m",
@@ -11272,7 +11848,13 @@
   "fr": "SCSS",
   "pt": "SCSS",
   "ja": "SCSS",
-  "ko": "SCSS"
+  "ko": "SCSS",
+  "nl": "SCSS",
+  "sv": "SCSS",
+  "no": "SCSS",
+  "da": "SCSS",
+  "pl": "SCSS",
+  "uk": "SCSS"
  },
  "SHA-1": {
   "de": "SHA-1",
@@ -11281,7 +11863,13 @@
   "fr": "SHA-1",
   "pt": "SHA-1",
   "ja": "SHA-1",
-  "ko": "SHA-1"
+  "ko": "SHA-1",
+  "nl": "SHA-1",
+  "sv": "SHA-1",
+  "no": "SHA-1",
+  "da": "SHA-1",
+  "pl": "SHA-1",
+  "uk": "SHA-1"
  },
  "SHA-256": {
   "de": "SHA-256",
@@ -11290,7 +11878,13 @@
   "fr": "SHA-256",
   "pt": "SHA-256",
   "ja": "SHA-256",
-  "ko": "SHA-256"
+  "ko": "SHA-256",
+  "nl": "SHA-256",
+  "sv": "SHA-256",
+  "no": "SHA-256",
+  "da": "SHA-256",
+  "pl": "SHA-256",
+  "uk": "SHA-256"
  },
  "SHA-512": {
   "de": "SHA-512",
@@ -11299,7 +11893,13 @@
   "fr": "SHA-512",
   "pt": "SHA-512",
   "ja": "SHA-512",
-  "ko": "SHA-512"
+  "ko": "SHA-512",
+  "nl": "SHA-512",
+  "sv": "SHA-512",
+  "no": "SHA-512",
+  "da": "SHA-512",
+  "pl": "SHA-512",
+  "uk": "SHA-512"
  },
  "SHA256": {
   "de": "SHA256",
@@ -11308,7 +11908,13 @@
   "fr": "SHA256",
   "pt": "SHA256",
   "ja": "SHA256",
-  "ko": "SHA256"
+  "ko": "SHA256",
+  "nl": "SHA256",
+  "sv": "SHA256",
+  "no": "SHA256",
+  "da": "SHA256",
+  "pl": "SHA256",
+  "uk": "SHA256"
  },
  "SMS": {
   "de": "SMS",
@@ -11317,7 +11923,13 @@
   "fr": "SMS",
   "pt": "SMS",
   "ja": "SMS",
-  "ko": "SMS"
+  "ko": "SMS",
+  "nl": "SMS",
+  "sv": "SMS",
+  "no": "SMS",
+  "da": "SMS",
+  "pl": "SMS",
+  "uk": "SMS"
  },
  "SPKI, PEM encoded": {
   "de": "SPKI, PEM-kodiert",
@@ -11979,7 +12591,13 @@
   "fr": "Service",
   "pt": "Service",
   "ja": "Service",
-  "ko": "Service"
+  "ko": "Service",
+  "nl": "Service",
+  "sv": "Service",
+  "no": "Service",
+  "da": "Service",
+  "pl": "Service",
+  "uk": "Service"
  },
  "Service port": {
   "de": "Service-Port",
@@ -12290,7 +12908,13 @@
   "fr": "Slug",
   "pt": "Slug",
   "ja": "Slug",
-  "ko": "Slug"
+  "ko": "Slug",
+  "nl": "Slug",
+  "sv": "Slug",
+  "no": "Slug",
+  "da": "Slug",
+  "pl": "Slug",
+  "uk": "Slug"
  },
  "Small": {
   "de": "Klein",
@@ -12326,7 +12950,13 @@
   "fr": "Snake",
   "pt": "Snake",
   "ja": "Snake",
-  "ko": "Snake"
+  "ko": "Snake",
+  "nl": "Snake",
+  "sv": "Snake",
+  "no": "Snake",
+  "da": "Snake",
+  "pl": "Snake",
+  "uk": "Snake"
  },
  "Snap links to centres and corners": {
   "de": "Verbindungen an Mittelpunkten und Ecken einrasten",
@@ -13028,7 +13658,13 @@
   "fr": "Swift / Android",
   "pt": "Swift / Android",
   "ja": "Swift / Android",
-  "ko": "Swift / Android"
+  "ko": "Swift / Android",
+  "nl": "Swift / Android",
+  "sv": "Swift / Android",
+  "no": "Swift / Android",
+  "da": "Swift / Android",
+  "pl": "Swift / Android",
+  "uk": "Swift / Android"
  },
  "Swing": {
   "de": "Schwingen",
@@ -13118,7 +13754,13 @@
   "fr": "TOOLBOX",
   "pt": "TOOLBOX",
   "ja": "TOOLBOX",
-  "ko": "TOOLBOX"
+  "ko": "TOOLBOX",
+  "nl": "TOOLBOX",
+  "sv": "TOOLBOX",
+  "no": "TOOLBOX",
+  "da": "TOOLBOX",
+  "pl": "TOOLBOX",
+  "uk": "TOOLBOX"
  },
  "TTL": {
   "de": "TTL",
@@ -13127,7 +13769,13 @@
   "fr": "TTL",
   "pt": "TTL",
   "ja": "TTL",
-  "ko": "TTL"
+  "ko": "TTL",
+  "nl": "TTL",
+  "sv": "TTL",
+  "no": "TTL",
+  "da": "TTL",
+  "pl": "TTL",
+  "uk": "TTL"
  },
  "Tab": {
   "de": "Tabulator",
@@ -13226,7 +13874,13 @@
   "fr": "Tempo",
   "pt": "Tempo",
   "ja": "Tempo",
-  "ko": "Tempo"
+  "ko": "Tempo",
+  "nl": "Tempo",
+  "sv": "Tempo",
+  "no": "Tempo",
+  "da": "Tempo",
+  "pl": "Tempo",
+  "uk": "Tempo"
  },
  "Test against": {
   "de": "Testen mit",
@@ -13663,7 +14317,13 @@
   "fr": "Token",
   "pt": "Token",
   "ja": "Token",
-  "ko": "Token"
+  "ko": "Token",
+  "nl": "Token",
+  "sv": "Token",
+  "no": "Token",
+  "da": "Token",
+  "pl": "Token",
+  "uk": "Token"
  },
  "Tom": {
   "de": "Tom",
@@ -13672,7 +14332,13 @@
   "fr": "Tom",
   "pt": "Tom",
   "ja": "Tom",
-  "ko": "Tom"
+  "ko": "Tom",
+  "nl": "Tom",
+  "sv": "Tom",
+  "no": "Tom",
+  "da": "Tom",
+  "pl": "Tom",
+  "uk": "Tom"
  },
  "Tools installed": {
   "de": "Installierte Werkzeuge",
@@ -13753,7 +14419,13 @@
   "fr": "Train-Case",
   "pt": "Train-Case",
   "ja": "Train-Case",
-  "ko": "Train-Case"
+  "ko": "Train-Case",
+  "nl": "Train-Case",
+  "sv": "Train-Case",
+  "no": "Train-Case",
+  "da": "Train-Case",
+  "pl": "Train-Case",
+  "uk": "Train-Case"
  },
  "Transcoding runs locally through WebAssembly. Large files take a while.": {
   "de": "Die Umwandlung läuft lokal über WebAssembly. Große Dateien dauern eine Weile.",
@@ -13924,7 +14596,13 @@
   "fr": "Twelve Data",
   "pt": "Twelve Data",
   "ja": "Twelve Data",
-  "ko": "Twelve Data"
+  "ko": "Twelve Data",
+  "nl": "Twelve Data",
+  "sv": "Twelve Data",
+  "no": "Twelve Data",
+  "da": "Twelve Data",
+  "pl": "Twelve Data",
+  "uk": "Twelve Data"
  },
  "Twice": {
   "de": "Zweimal",
@@ -14014,7 +14692,13 @@
   "fr": "USD",
   "pt": "USD",
   "ja": "USD",
-  "ko": "USD"
+  "ko": "USD",
+  "nl": "USD",
+  "sv": "USD",
+  "no": "USD",
+  "da": "USD",
+  "pl": "USD",
+  "uk": "USD"
  },
  "UTC": {
   "de": "UTC",
@@ -14023,7 +14707,13 @@
   "fr": "UTC",
   "pt": "UTC",
   "ja": "UTC",
-  "ko": "UTC"
+  "ko": "UTC",
+  "nl": "UTC",
+  "sv": "UTC",
+  "no": "UTC",
+  "da": "UTC",
+  "pl": "UTC",
+  "uk": "UTC"
  },
  "UUID v4": {
   "de": "UUID v4",
@@ -14032,7 +14722,13 @@
   "fr": "UUID v4",
   "pt": "UUID v4",
   "ja": "UUID v4",
-  "ko": "UUID v4"
+  "ko": "UUID v4",
+  "nl": "UUID v4",
+  "sv": "UUID v4",
+  "no": "UUID v4",
+  "da": "UUID v4",
+  "pl": "UUID v4",
+  "uk": "UUID v4"
  },
  "UUID v7": {
   "de": "UUID v7",
@@ -14041,7 +14737,13 @@
   "fr": "UUID v7",
   "pt": "UUID v7",
   "ja": "UUID v7",
-  "ko": "UUID v7"
+  "ko": "UUID v7",
+  "nl": "UUID v7",
+  "sv": "UUID v7",
+  "no": "UUID v7",
+  "da": "UUID v7",
+  "pl": "UUID v7",
+  "uk": "UUID v7"
  },
  "Ukulele": {
   "de": "Ukulele",
@@ -14086,7 +14788,13 @@
   "fr": "Unicode",
   "pt": "Unicode",
   "ja": "Unicode",
-  "ko": "Unicode"
+  "ko": "Unicode",
+  "nl": "Unicode",
+  "sv": "Unicode",
+  "no": "Unicode",
+  "da": "Unicode",
+  "pl": "Unicode",
+  "uk": "Unicode"
  },
  "Unicode escapes": {
   "de": "Unicode-Escapes",
@@ -14392,7 +15100,13 @@
   "fr": "WEP",
   "pt": "WEP",
   "ja": "WEP",
-  "ko": "WEP"
+  "ko": "WEP",
+  "nl": "WEP",
+  "sv": "WEP",
+  "no": "WEP",
+  "da": "WEP",
+  "pl": "WEP",
+  "uk": "WEP"
  },
  "WPA/WPA2": {
   "de": "WPA/WPA2",
@@ -14401,7 +15115,13 @@
   "fr": "WPA/WPA2",
   "pt": "WPA/WPA2",
   "ja": "WPA/WPA2",
-  "ko": "WPA/WPA2"
+  "ko": "WPA/WPA2",
+  "nl": "WPA/WPA2",
+  "sv": "WPA/WPA2",
+  "no": "WPA/WPA2",
+  "da": "WPA/WPA2",
+  "pl": "WPA/WPA2",
+  "uk": "WPA/WPA2"
  },
  "Waiting": {
   "de": "Warten",
@@ -14527,7 +15247,13 @@
   "fr": "WebM (VP9)",
   "pt": "WebM (VP9)",
   "ja": "WebM (VP9)",
-  "ko": "WebM (VP9)"
+  "ko": "WebM (VP9)",
+  "nl": "WebM (VP9)",
+  "sv": "WebM (VP9)",
+  "no": "WebM (VP9)",
+  "da": "WebM (VP9)",
+  "pl": "WebM (VP9)",
+  "uk": "WebM (VP9)"
  },
  "WebP": {
   "de": "WebP",
@@ -14536,7 +15262,13 @@
   "fr": "WebP",
   "pt": "WebP",
   "ja": "WebP",
-  "ko": "WebP"
+  "ko": "WebP",
+  "nl": "WebP",
+  "sv": "WebP",
+  "no": "WebP",
+  "da": "WebP",
+  "pl": "WebP",
+  "uk": "WebP"
  },
  "Website": {
   "de": "Website",
@@ -14847,7 +15579,13 @@
   "fr": "XNOR",
   "pt": "XNOR",
   "ja": "XNOR",
-  "ko": "XNOR"
+  "ko": "XNOR",
+  "nl": "XNOR",
+  "sv": "XNOR",
+  "no": "XNOR",
+  "da": "XNOR",
+  "pl": "XNOR",
+  "uk": "XNOR"
  },
  "XOR": {
   "de": "XOR",
@@ -14856,7 +15594,13 @@
   "fr": "XOR",
   "pt": "XOR",
   "ja": "XOR",
-  "ko": "XOR"
+  "ko": "XOR",
+  "nl": "XOR",
+  "sv": "XOR",
+  "no": "XOR",
+  "da": "XOR",
+  "pl": "XOR",
+  "uk": "XOR"
  },
  "Year": {
   "de": "Jahr",
@@ -14901,7 +15645,13 @@
   "fr": "Zoom",
   "pt": "Zoom",
   "ja": "Zoom",
-  "ko": "Zoom"
+  "ko": "Zoom",
+  "nl": "Zoom",
+  "sv": "Zoom",
+  "no": "Zoom",
+  "da": "Zoom",
+  "pl": "Zoom",
+  "uk": "Zoom"
  },
  "Zoom in": {
   "de": "Vergrößern",
@@ -14928,7 +15678,13 @@
   "fr": "admin",
   "pt": "admin",
   "ja": "admin",
-  "ko": "admin"
+  "ko": "admin",
+  "nl": "admin",
+  "sv": "admin",
+  "no": "admin",
+  "da": "admin",
+  "pl": "admin",
+  "uk": "admin"
  },
  "all day": {
   "de": "ganztägig",
@@ -14946,7 +15702,13 @@
   "fr": "alternate",
   "pt": "alternate",
   "ja": "alternate",
-  "ko": "alternate"
+  "ko": "alternate",
+  "nl": "alternate",
+  "sv": "alternate",
+  "no": "alternate",
+  "da": "alternate",
+  "pl": "alternate",
+  "uk": "alternate"
  },
  "alternate-reverse": {
   "de": "alternate-reverse",
@@ -14955,7 +15717,13 @@
   "fr": "alternate-reverse",
   "pt": "alternate-reverse",
   "ja": "alternate-reverse",
-  "ko": "alternate-reverse"
+  "ko": "alternate-reverse",
+  "nl": "alternate-reverse",
+  "sv": "alternate-reverse",
+  "no": "alternate-reverse",
+  "da": "alternate-reverse",
+  "pl": "alternate-reverse",
+  "uk": "alternate-reverse"
  },
  "atoms": {
   "de": "Atome",
@@ -15009,7 +15777,13 @@
   "fr": "backwards",
   "pt": "backwards",
   "ja": "backwards",
-  "ko": "backwards"
+  "ko": "backwards",
+  "nl": "backwards",
+  "sv": "backwards",
+  "no": "backwards",
+  "da": "backwards",
+  "pl": "backwards",
+  "uk": "backwards"
  },
  "base": {
   "de": "Basis",
@@ -15027,7 +15801,13 @@
   "fr": "bevel",
   "pt": "bevel",
   "ja": "bevel",
-  "ko": "bevel"
+  "ko": "bevel",
+  "nl": "bevel",
+  "sv": "bevel",
+  "no": "bevel",
+  "da": "bevel",
+  "pl": "bevel",
+  "uk": "bevel"
  },
  "bonds": {
   "de": "Bindungen",
@@ -15045,7 +15825,13 @@
   "fr": "both",
   "pt": "both",
   "ja": "both",
-  "ko": "both"
+  "ko": "both",
+  "nl": "both",
+  "sv": "both",
+  "no": "both",
+  "da": "both",
+  "pl": "both",
+  "uk": "both"
  },
  "butt": {
   "de": "butt",
@@ -15054,7 +15840,13 @@
   "fr": "butt",
   "pt": "butt",
   "ja": "butt",
-  "ko": "butt"
+  "ko": "butt",
+  "nl": "butt",
+  "sv": "butt",
+  "no": "butt",
+  "da": "butt",
+  "pl": "butt",
+  "uk": "butt"
  },
  "café & crème": {
   "de": "Café & Crème",
@@ -15072,7 +15864,13 @@
   "fr": "camelCase",
   "pt": "camelCase",
   "ja": "camelCase",
-  "ko": "camelCase"
+  "ko": "camelCase",
+  "nl": "camelCase",
+  "sv": "camelCase",
+  "no": "camelCase",
+  "da": "camelCase",
+  "pl": "camelCase",
+  "uk": "camelCase"
  },
  "checking...": {
   "de": "wird geprüft...",
@@ -15090,7 +15888,13 @@
   "fr": "command=",
   "pt": "command=",
   "ja": "command=",
-  "ko": "command="
+  "ko": "command=",
+  "nl": "command=",
+  "sv": "command=",
+  "no": "command=",
+  "da": "command=",
+  "pl": "command=",
+  "uk": "command="
  },
  "compose.yaml": {
   "de": "compose.yaml",
@@ -15099,7 +15903,13 @@
   "fr": "compose.yaml",
   "pt": "compose.yaml",
   "ja": "compose.yaml",
-  "ko": "compose.yaml"
+  "ko": "compose.yaml",
+  "nl": "compose.yaml",
+  "sv": "compose.yaml",
+  "no": "compose.yaml",
+  "da": "compose.yaml",
+  "pl": "compose.yaml",
+  "uk": "compose.yaml"
  },
  "curl": {
   "de": "curl",
@@ -15108,7 +15918,13 @@
   "fr": "curl",
   "pt": "curl",
   "ja": "curl",
-  "ko": "curl"
+  "ko": "curl",
+  "nl": "curl",
+  "sv": "curl",
+  "no": "curl",
+  "da": "curl",
+  "pl": "curl",
+  "uk": "curl"
  },
  "curl -I": {
   "de": "curl -I",
@@ -15117,7 +15933,13 @@
   "fr": "curl -I",
   "pt": "curl -I",
   "ja": "curl -I",
-  "ko": "curl -I"
+  "ko": "curl -I",
+  "nl": "curl -I",
+  "sv": "curl -I",
+  "no": "curl -I",
+  "da": "curl -I",
+  "pl": "curl -I",
+  "uk": "curl -I"
  },
  "curl -I https://example.com": {
   "de": "curl -I https://example.com",
@@ -15126,7 +15948,13 @@
   "fr": "curl -I https://example.com",
   "pt": "curl -I https://example.com",
   "ja": "curl -I https://example.com",
-  "ko": "curl -I https://example.com"
+  "ko": "curl -I https://example.com",
+  "nl": "curl -I https://example.com",
+  "sv": "curl -I https://example.com",
+  "no": "curl -I https://example.com",
+  "da": "curl -I https://example.com",
+  "pl": "curl -I https://example.com",
+  "uk": "curl -I https://example.com"
  },
  "custom": {
   "de": "benutzerdefiniert",
@@ -15162,7 +15990,13 @@
   "fr": "docker run -p 80:80 nginx",
   "pt": "docker run -p 80:80 nginx",
   "ja": "docker run -p 80:80 nginx",
-  "ko": "docker run -p 80:80 nginx"
+  "ko": "docker run -p 80:80 nginx",
+  "nl": "docker run -p 80:80 nginx",
+  "sv": "docker run -p 80:80 nginx",
+  "no": "docker run -p 80:80 nginx",
+  "da": "docker run -p 80:80 nginx",
+  "pl": "docker run -p 80:80 nginx",
+  "uk": "docker run -p 80:80 nginx"
  },
  "docker run command": {
   "de": "docker-run-Befehl",
@@ -15180,7 +16014,13 @@
   "fr": "docker-compose.yml",
   "pt": "docker-compose.yml",
   "ja": "docker-compose.yml",
-  "ko": "docker-compose.yml"
+  "ko": "docker-compose.yml",
+  "nl": "docker-compose.yml",
+  "sv": "docker-compose.yml",
+  "no": "docker-compose.yml",
+  "da": "docker-compose.yml",
+  "pl": "docker-compose.yml",
+  "uk": "docker-compose.yml"
  },
  "dot.case": {
   "de": "dot.case",
@@ -15189,7 +16029,13 @@
   "fr": "dot.case",
   "pt": "dot.case",
   "ja": "dot.case",
-  "ko": "dot.case"
+  "ko": "dot.case",
+  "nl": "dot.case",
+  "sv": "dot.case",
+  "no": "dot.case",
+  "da": "dot.case",
+  "pl": "dot.case",
+  "uk": "dot.case"
  },
  "duck": {
   "de": "ducken",
@@ -15216,7 +16062,13 @@
   "fr": "event.code",
   "pt": "event.code",
   "ja": "event.code",
-  "ko": "event.code"
+  "ko": "event.code",
+  "nl": "event.code",
+  "sv": "event.code",
+  "no": "event.code",
+  "da": "event.code",
+  "pl": "event.code",
+  "uk": "event.code"
  },
  "event.key": {
   "de": "event.key",
@@ -15225,7 +16077,13 @@
   "fr": "event.key",
   "pt": "event.key",
   "ja": "event.key",
-  "ko": "event.key"
+  "ko": "event.key",
+  "nl": "event.key",
+  "sv": "event.key",
+  "no": "event.key",
+  "da": "event.key",
+  "pl": "event.key",
+  "uk": "event.key"
  },
  "event.keyCode": {
   "de": "event.keyCode",
@@ -15234,7 +16092,13 @@
   "fr": "event.keyCode",
   "pt": "event.keyCode",
   "ja": "event.keyCode",
-  "ko": "event.keyCode"
+  "ko": "event.keyCode",
+  "nl": "event.keyCode",
+  "sv": "event.keyCode",
+  "no": "event.keyCode",
+  "da": "event.keyCode",
+  "pl": "event.keyCode",
+  "uk": "event.keyCode"
  },
  "event.which": {
   "de": "event.which",
@@ -15243,7 +16107,13 @@
   "fr": "event.which",
   "pt": "event.which",
   "ja": "event.which",
-  "ko": "event.which"
+  "ko": "event.which",
+  "nl": "event.which",
+  "sv": "event.which",
+  "no": "event.which",
+  "da": "event.which",
+  "pl": "event.which",
+  "uk": "event.which"
  },
  "example.com, 8.8.8.8 or AS15169": {
   "de": "example.com, 8.8.8.8 oder AS15169",
@@ -15261,7 +16131,13 @@
   "fr": "eyJhbGciOi...",
   "pt": "eyJhbGciOi...",
   "ja": "eyJhbGciOi...",
-  "ko": "eyJhbGciOi..."
+  "ko": "eyJhbGciOi...",
+  "nl": "eyJhbGciOi...",
+  "sv": "eyJhbGciOi...",
+  "no": "eyJhbGciOi...",
+  "da": "eyJhbGciOi...",
+  "pl": "eyJhbGciOi...",
+  "uk": "eyJhbGciOi..."
  },
  "favicon.ico saved with 16, 32 and 48 pixel frames": {
   "de": "favicon.ico mit 16-, 32- und 48-Pixel-Rahmen gespeichert",
@@ -15279,7 +16155,13 @@
   "fr": "fetch",
   "pt": "fetch",
   "ja": "fetch",
-  "ko": "fetch"
+  "ko": "fetch",
+  "nl": "fetch",
+  "sv": "fetch",
+  "no": "fetch",
+  "da": "fetch",
+  "pl": "fetch",
+  "uk": "fetch"
  },
  "forwards": {
   "de": "forwards",
@@ -15288,7 +16170,13 @@
   "fr": "forwards",
   "pt": "forwards",
   "ja": "forwards",
-  "ko": "forwards"
+  "ko": "forwards",
+  "nl": "forwards",
+  "sv": "forwards",
+  "no": "forwards",
+  "da": "forwards",
+  "pl": "forwards",
+  "uk": "forwards"
  },
  "fps": {
   "de": "fps",
@@ -15297,7 +16185,13 @@
   "fr": "fps",
   "pt": "fps",
   "ja": "fps",
-  "ko": "fps"
+  "ko": "fps",
+  "nl": "fps",
+  "sv": "fps",
+  "no": "fps",
+  "da": "fps",
+  "pl": "fps",
+  "uk": "fps"
  },
  "freq": {
   "de": "Frequenz",
@@ -15315,7 +16209,13 @@
   "fr": "from=",
   "pt": "from=",
   "ja": "from=",
-  "ko": "from="
+  "ko": "from=",
+  "nl": "from=",
+  "sv": "from=",
+  "no": "from=",
+  "da": "from=",
+  "pl": "from=",
+  "uk": "from="
  },
  "g/mol": {
   "de": "g/mol",
@@ -15324,7 +16224,13 @@
   "fr": "g/mol",
   "pt": "g/mol",
   "ja": "g/mol",
-  "ko": "g/mol"
+  "ko": "g/mol",
+  "nl": "g/mol",
+  "sv": "g/mol",
+  "no": "g/mol",
+  "da": "g/mol",
+  "pl": "g/mol",
+  "uk": "g/mol"
  },
  "hello world": {
   "de": "hallo welt",
@@ -15351,7 +16257,13 @@
   "fr": "hex",
   "pt": "hex",
   "ja": "hex",
-  "ko": "hex"
+  "ko": "hex",
+  "nl": "hex",
+  "sv": "hex",
+  "no": "hex",
+  "da": "hex",
+  "pl": "hex",
+  "uk": "hex"
  },
  "hex or text": {
   "de": "Hex oder Text",
@@ -15369,7 +16281,13 @@
   "fr": "https%3A%2F%2Fexample.com",
   "pt": "https%3A%2F%2Fexample.com",
   "ja": "https%3A%2F%2Fexample.com",
-  "ko": "https%3A%2F%2Fexample.com"
+  "ko": "https%3A%2F%2Fexample.com",
+  "nl": "https%3A%2F%2Fexample.com",
+  "sv": "https%3A%2F%2Fexample.com",
+  "no": "https%3A%2F%2Fexample.com",
+  "da": "https%3A%2F%2Fexample.com",
+  "pl": "https%3A%2F%2Fexample.com",
+  "uk": "https%3A%2F%2Fexample.com"
  },
  "hunter2": {
   "de": "hunter2",
@@ -15378,7 +16296,13 @@
   "fr": "hunter2",
   "pt": "hunter2",
   "ja": "hunter2",
-  "ko": "hunter2"
+  "ko": "hunter2",
+  "nl": "hunter2",
+  "sv": "hunter2",
+  "no": "hunter2",
+  "da": "hunter2",
+  "pl": "hunter2",
+  "uk": "hunter2"
  },
  "jsglobe.com/apps/&lt;app-id&gt;": {
   "de": "jsglobe.com/de/apps/&lt;app-id&gt;",
@@ -15405,7 +16329,13 @@
   "fr": "kebab-case",
   "pt": "kebab-case",
   "ja": "kebab-case",
-  "ko": "kebab-case"
+  "ko": "kebab-case",
+  "nl": "kebab-case",
+  "sv": "kebab-case",
+  "no": "kebab-case",
+  "da": "kebab-case",
+  "pl": "kebab-case",
+  "uk": "kebab-case"
  },
  "key: value": {
   "de": "schlüssel: wert",
@@ -15432,7 +16362,13 @@
   "fr": "manifest.webmanifest",
   "pt": "manifest.webmanifest",
   "ja": "manifest.webmanifest",
-  "ko": "manifest.webmanifest"
+  "ko": "manifest.webmanifest",
+  "nl": "manifest.webmanifest",
+  "sv": "manifest.webmanifest",
+  "no": "manifest.webmanifest",
+  "da": "manifest.webmanifest",
+  "pl": "manifest.webmanifest",
+  "uk": "manifest.webmanifest"
  },
  "max": {
   "de": "max",
@@ -15459,7 +16395,13 @@
   "fr": "miter",
   "pt": "miter",
   "ja": "miter",
-  "ko": "miter"
+  "ko": "miter",
+  "nl": "miter",
+  "sv": "miter",
+  "no": "miter",
+  "da": "miter",
+  "pl": "miter",
+  "uk": "miter"
  },
  "name,role,city": {
   "de": "name,rolle,stadt",
@@ -15482,7 +16424,13 @@
   "fr": "navigator.serial",
   "pt": "navigator.serial",
   "ja": "navigator.serial",
-  "ko": "navigator.serial"
+  "ko": "navigator.serial",
+  "nl": "navigator.serial",
+  "sv": "navigator.serial",
+  "no": "navigator.serial",
+  "da": "navigator.serial",
+  "pl": "navigator.serial",
+  "uk": "navigator.serial"
  },
  "no probe": {
   "de": "keine Messspitze",
@@ -15500,7 +16448,13 @@
   "fr": "no-X11-forwarding",
   "pt": "no-X11-forwarding",
   "ja": "no-X11-forwarding",
-  "ko": "no-X11-forwarding"
+  "ko": "no-X11-forwarding",
+  "nl": "no-X11-forwarding",
+  "sv": "no-X11-forwarding",
+  "no": "no-X11-forwarding",
+  "da": "no-X11-forwarding",
+  "pl": "no-X11-forwarding",
+  "uk": "no-X11-forwarding"
  },
  "no-agent-forwarding": {
   "de": "no-agent-forwarding",
@@ -15509,7 +16463,13 @@
   "fr": "no-agent-forwarding",
   "pt": "no-agent-forwarding",
   "ja": "no-agent-forwarding",
-  "ko": "no-agent-forwarding"
+  "ko": "no-agent-forwarding",
+  "nl": "no-agent-forwarding",
+  "sv": "no-agent-forwarding",
+  "no": "no-agent-forwarding",
+  "da": "no-agent-forwarding",
+  "pl": "no-agent-forwarding",
+  "uk": "no-agent-forwarding"
  },
  "no-port-forwarding": {
   "de": "no-port-forwarding",
@@ -15518,7 +16478,13 @@
   "fr": "no-port-forwarding",
   "pt": "no-port-forwarding",
   "ja": "no-port-forwarding",
-  "ko": "no-port-forwarding"
+  "ko": "no-port-forwarding",
+  "nl": "no-port-forwarding",
+  "sv": "no-port-forwarding",
+  "no": "no-port-forwarding",
+  "da": "no-port-forwarding",
+  "pl": "no-port-forwarding",
+  "uk": "no-port-forwarding"
  },
  "no-pty": {
   "de": "no-pty",
@@ -15527,7 +16493,13 @@
   "fr": "no-pty",
   "pt": "no-pty",
   "ja": "no-pty",
-  "ko": "no-pty"
+  "ko": "no-pty",
+  "nl": "no-pty",
+  "sv": "no-pty",
+  "no": "no-pty",
+  "da": "no-pty",
+  "pl": "no-pty",
+  "uk": "no-pty"
  },
  "none": {
   "de": "keine",
@@ -15545,7 +16517,13 @@
   "fr": "normal",
   "pt": "normal",
   "ja": "normal",
-  "ko": "normal"
+  "ko": "normal",
+  "nl": "normal",
+  "sv": "normal",
+  "no": "normal",
+  "da": "normal",
+  "pl": "normal",
+  "uk": "normal"
  },
  "now": {
   "de": "jetzt",
@@ -15581,7 +16559,13 @@
   "fr": "path/case",
   "pt": "path/case",
   "ja": "path/case",
-  "ko": "path/case"
+  "ko": "path/case",
+  "nl": "path/case",
+  "sv": "path/case",
+  "no": "path/case",
+  "da": "path/case",
+  "pl": "path/case",
+  "uk": "path/case"
  },
  "pdf-lib module": {
   "de": "pdf-lib-Modul",
@@ -15617,7 +16601,13 @@
   "fr": "preserveAspectRatio",
   "pt": "preserveAspectRatio",
   "ja": "preserveAspectRatio",
-  "ko": "preserveAspectRatio"
+  "ko": "preserveAspectRatio",
+  "nl": "preserveAspectRatio",
+  "sv": "preserveAspectRatio",
+  "no": "preserveAspectRatio",
+  "da": "preserveAspectRatio",
+  "pl": "preserveAspectRatio",
+  "uk": "preserveAspectRatio"
  },
  "px": {
   "de": "px",
@@ -15626,7 +16616,13 @@
   "fr": "px",
   "pt": "px",
   "ja": "px",
-  "ko": "px"
+  "ko": "px",
+  "nl": "px",
+  "sv": "px",
+  "no": "px",
+  "da": "px",
+  "pl": "px",
+  "uk": "px"
  },
  "qty": {
   "de": "Stück",
@@ -15644,7 +16640,13 @@
   "fr": "restrict",
   "pt": "restrict",
   "ja": "restrict",
-  "ko": "restrict"
+  "ko": "restrict",
+  "nl": "restrict",
+  "sv": "restrict",
+  "no": "restrict",
+  "da": "restrict",
+  "pl": "restrict",
+  "uk": "restrict"
  },
  "reverse": {
   "de": "reverse",
@@ -15653,7 +16655,13 @@
   "fr": "reverse",
   "pt": "reverse",
   "ja": "reverse",
-  "ko": "reverse"
+  "ko": "reverse",
+  "nl": "reverse",
+  "sv": "reverse",
+  "no": "reverse",
+  "da": "reverse",
+  "pl": "reverse",
+  "uk": "reverse"
  },
  "rms": {
   "de": "Effektiv",
@@ -15671,7 +16679,13 @@
   "fr": "round",
   "pt": "round",
   "ja": "round",
-  "ko": "round"
+  "ko": "round",
+  "nl": "round",
+  "sv": "round",
+  "no": "round",
+  "da": "round",
+  "pl": "round",
+  "uk": "round"
  },
  "select * from users where id = 1": {
   "de": "select * from users where id = 1",
@@ -15680,7 +16694,13 @@
   "fr": "select * from users where id = 1",
   "pt": "select * from users where id = 1",
   "ja": "select * from users where id = 1",
-  "ko": "select * from users where id = 1"
+  "ko": "select * from users where id = 1",
+  "nl": "select * from users where id = 1",
+  "sv": "select * from users where id = 1",
+  "no": "select * from users where id = 1",
+  "da": "select * from users where id = 1",
+  "pl": "select * from users where id = 1",
+  "uk": "select * from users where id = 1"
  },
  "shared secret": {
   "de": "gemeinsames Geheimnis",
@@ -15698,7 +16718,13 @@
   "fr": "sin(x)",
   "pt": "sin(x)",
   "ja": "sin(x)",
-  "ko": "sin(x)"
+  "ko": "sin(x)",
+  "nl": "sin(x)",
+  "sv": "sin(x)",
+  "no": "sin(x)",
+  "da": "sin(x)",
+  "pl": "sin(x)",
+  "uk": "sin(x)"
  },
  "snake_case": {
   "de": "snake_case",
@@ -15707,7 +16733,13 @@
   "fr": "snake_case",
   "pt": "snake_case",
   "ja": "snake_case",
-  "ko": "snake_case"
+  "ko": "snake_case",
+  "nl": "snake_case",
+  "sv": "snake_case",
+  "no": "snake_case",
+  "da": "snake_case",
+  "pl": "snake_case",
+  "uk": "snake_case"
  },
  "space": {
   "de": "Leertaste",
@@ -15725,7 +16757,13 @@
   "fr": "square",
   "pt": "square",
   "ja": "square",
-  "ko": "square"
+  "ko": "square",
+  "nl": "square",
+  "sv": "square",
+  "no": "square",
+  "da": "square",
+  "pl": "square",
+  "uk": "square"
  },
  "ssh-ed25519 AAAAC3Nza... you@machine": {
   "de": "ssh-ed25519 AAAAC3Nza... du@rechner",
@@ -15797,7 +16835,13 @@
   "fr": "viewBox",
   "pt": "viewBox",
   "ja": "viewBox",
-  "ko": "viewBox"
+  "ko": "viewBox",
+  "nl": "viewBox",
+  "sv": "viewBox",
+  "no": "viewBox",
+  "da": "viewBox",
+  "pl": "viewBox",
+  "uk": "viewBox"
  },
  "wss://example.com/socket": {
   "de": "wss://example.com/socket",
@@ -15806,7 +16850,13 @@
   "fr": "wss://example.com/socket",
   "pt": "wss://example.com/socket",
   "ja": "wss://example.com/socket",
-  "ko": "wss://example.com/socket"
+  "ko": "wss://example.com/socket",
+  "nl": "wss://example.com/socket",
+  "sv": "wss://example.com/socket",
+  "no": "wss://example.com/socket",
+  "da": "wss://example.com/socket",
+  "pl": "wss://example.com/socket",
+  "uk": "wss://example.com/socket"
  },
  "xMidYMid meet": {
   "de": "xMidYMid meet",
@@ -15815,7 +16865,13 @@
   "fr": "xMidYMid meet",
   "pt": "xMidYMid meet",
   "ja": "xMidYMid meet",
-  "ko": "xMidYMid meet"
+  "ko": "xMidYMid meet",
+  "nl": "xMidYMid meet",
+  "sv": "xMidYMid meet",
+  "no": "xMidYMid meet",
+  "da": "xMidYMid meet",
+  "pl": "xMidYMid meet",
+  "uk": "xMidYMid meet"
  },
  "xMidYMid slice": {
   "de": "xMidYMid slice",
@@ -15824,7 +16880,13 @@
   "fr": "xMidYMid slice",
   "pt": "xMidYMid slice",
   "ja": "xMidYMid slice",
-  "ko": "xMidYMid slice"
+  "ko": "xMidYMid slice",
+  "nl": "xMidYMid slice",
+  "sv": "xMidYMid slice",
+  "no": "xMidYMid slice",
+  "da": "xMidYMid slice",
+  "pl": "xMidYMid slice",
+  "uk": "xMidYMid slice"
  },
  "you@machine": {
   "de": "du@rechner",

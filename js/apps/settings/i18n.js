@@ -769,4 +769,28 @@ export default {
     'settings.layoutReset': '배치를 초기화했습니다',
     'settings.settingsReset': '설정을 초기화했습니다',
   },
+  nl: {
+    'settings-app.apps': 'Apps',
+    'settings-app.esc': 'Esc',
+  },
+  sv: {
+    'settings-app.apps': 'Apps',
+    'settings-app.esc': 'Esc',
+  },
+  no: {
+    'settings-app.apps': 'Apps',
+    'settings-app.esc': 'Esc',
+  },
+  da: {
+    'settings-app.apps': 'Apps',
+    'settings-app.esc': 'Esc',
+  },
+  pl: {
+    'settings-app.apps': 'Apps',
+    'settings-app.esc': 'Esc',
+  },
+  uk: {
+    'settings-app.apps': 'Apps',
+    'settings-app.esc': 'Esc',
+  },
 };

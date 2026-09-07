@@ -69,4 +69,22 @@ export default {
     'encryption.pasteCiphertext': '암호문을 붙여넣으세요',
     'encryption.decryptedTextAppearsHere': '복호화한 글이 여기에 나옵니다',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

@@ -9,14 +9,5 @@ export default {
   keywords: ["bluetooth","ble","gatt","device","scanner","characteristic","service","notify","subscribe","rssi","heart rate","battery"],
   tag: "jg-app-bluetooth-scanner",
   window: {"width":900,"height":780},
-  i18n: {
-    de: { name: 'Bluetooth', tagline: 'GATT-Merkmale lesen, abonnieren und schreiben' },
-    es: { name: 'Bluetooth', tagline: 'Leer, suscribirse y escribir características GATT' },
-    zh: { name: '蓝牙', tagline: '读取、订阅并写入 GATT 特征' },
-    fr: { name: 'Bluetooth', tagline: 'Lire, s\'abonner et écrire des caractéristiques GATT' },
-    pt: { name: 'Bluetooth', tagline: 'Leia, assine e escreva características GATT' },
-    ja: { name: 'Bluetooth', tagline: 'GATT キャラクタリスティックの読み取り、購読、書き込み' },
-    ko: { name: '블루투스', tagline: 'GATT 특성을 읽고 구독하고 쓰기' },
-  },
   load: () => import('./index.js'),
 };

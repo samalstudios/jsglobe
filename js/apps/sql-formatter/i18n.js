@@ -69,4 +69,22 @@ export default {
     'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
     'sql-formatter.formatted': '정리한 결과',
   },
+  nl: {
+    'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
+  },
+  sv: {
+    'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
+  },
+  no: {
+    'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
+  },
+  da: {
+    'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
+  },
+  pl: {
+    'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
+  },
+  uk: {
+    'sql-formatter.selectFromUsersWhereId': 'select * from users where id = 1',
+  },
 };

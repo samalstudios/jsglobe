@@ -8,14 +8,5 @@ export default {
   tint: "#7e22ce",
   keywords: ["basic","auth","header","authorization","base64"],
   tag: "jg-app-basic-auth",
-  i18n: {
-    de: { name: 'Basic Auth', tagline: 'Authorization-Header aus Zugangsdaten erzeugen' },
-    es: { name: 'Basic Auth', tagline: 'Crear cabeceras Authorization a partir de credenciales' },
-    zh: { name: 'Basic Auth', tagline: '用凭据构建 Authorization 头' },
-    fr: { name: 'Auth basique', tagline: 'Construire des en-têtes Authorization à partir d\'identifiants' },
-    pt: { name: 'Auth básica', tagline: 'Monte cabeçalhos Authorization a partir de credenciais' },
-    ja: { name: 'Basic 認証', tagline: '資格情報から Authorization ヘッダを作る' },
-    ko: { name: '기본 인증', tagline: '자격 증명으로 Authorization 헤더 만들기' },
-  },
   load: () => import('./index.js'),
 };

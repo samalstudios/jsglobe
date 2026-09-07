@@ -118,4 +118,34 @@ export default {
     'slugify.preservedCase': '대소문자 유지',
     'slugify.length': '길이',
   },
+  nl: {
+    'slugify.slug': 'Slug',
+    'slugify.kebab': 'Kebab',
+    'slugify.snake': 'Snake',
+  },
+  sv: {
+    'slugify.slug': 'Slug',
+    'slugify.kebab': 'Kebab',
+    'slugify.snake': 'Snake',
+  },
+  no: {
+    'slugify.slug': 'Slug',
+    'slugify.kebab': 'Kebab',
+    'slugify.snake': 'Snake',
+  },
+  da: {
+    'slugify.slug': 'Slug',
+    'slugify.kebab': 'Kebab',
+    'slugify.snake': 'Snake',
+  },
+  pl: {
+    'slugify.slug': 'Slug',
+    'slugify.kebab': 'Kebab',
+    'slugify.snake': 'Snake',
+  },
+  uk: {
+    'slugify.slug': 'Slug',
+    'slugify.kebab': 'Kebab',
+    'slugify.snake': 'Snake',
+  },
 };

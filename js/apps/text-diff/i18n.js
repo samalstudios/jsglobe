@@ -62,4 +62,22 @@ export default {
     'text-diff.ignoreCase': '대소문자 무시',
     'text-diff.highlightWords': '낱말이 바뀐 곳 강조',
   },
+  nl: {
+    'text-diff.original': 'Original',
+  },
+  sv: {
+    'text-diff.original': 'Original',
+  },
+  no: {
+    'text-diff.original': 'Original',
+  },
+  da: {
+    'text-diff.original': 'Original',
+  },
+  pl: {
+    'text-diff.original': 'Original',
+  },
+  uk: {
+    'text-diff.original': 'Original',
+  },
 };

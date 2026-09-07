@@ -8,14 +8,5 @@ export default {
   keywords: ["whois","rdap","domain","registrar","expiry","ip","asn","nameserver"],
   tag: "jg-app-rdap-lookup",
   window: {"width":900,"height":860},
-  i18n: {
-    de: { name: 'Domain-Abfrage', tagline: 'RDAP-Daten zu einer Domain, IP oder einem Netz' },
-    es: { name: 'Consulta de dominio', tagline: 'Registros RDAP de un dominio, IP o red' },
-    zh: { name: '域名查询', tagline: '域名、IP 或网段的 RDAP 记录' },
-    fr: { name: 'Recherche de domaine', tagline: 'Enregistrements RDAP d\'un domaine, d\'une IP ou d\'un réseau' },
-    pt: { name: 'Consulta de domínio', tagline: 'Registros RDAP de um domínio, IP ou rede' },
-    ja: { name: 'ドメイン照会', tagline: 'ドメイン、IP、ネットワークの RDAP レコード' },
-    ko: { name: '도메인 조회', tagline: '도메인, IP, 네트워크의 RDAP 레코드' },
-  },
   load: () => import('./index.js'),
 };

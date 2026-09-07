@@ -167,4 +167,22 @@ export default {
     'statistics.skewness': '왜도',
     'statistics.outliers': '이상값',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

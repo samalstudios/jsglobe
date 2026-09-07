@@ -48,4 +48,22 @@ export default {
     'game-memory.time': '시간',
     'game-memory.bestMoves': '최선의 수',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

@@ -83,4 +83,22 @@ export default {
     'lorem-ipsum.words': '낱말',
     'lorem-ipsum.listItems': '목록 항목',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

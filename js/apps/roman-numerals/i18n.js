@@ -41,4 +41,22 @@ export default {
     'roman-numerals.reference': '기준',
     'roman-numerals.validRangeIs1To': '쓸 수 있는 범위는 1부터 3999까지입니다',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

@@ -153,4 +153,34 @@ export default {
     'periodic-table.copyFacts': '정보 복사',
     'periodic-table.temperature': '온도',
   },
+  nl: {
+    'periodic-table.kelvin': 'Kelvin',
+    'periodic-table.celsius': 'Celsius',
+    'periodic-table.fahrenheit': 'Fahrenheit',
+  },
+  sv: {
+    'periodic-table.kelvin': 'Kelvin',
+    'periodic-table.celsius': 'Celsius',
+    'periodic-table.fahrenheit': 'Fahrenheit',
+  },
+  no: {
+    'periodic-table.kelvin': 'Kelvin',
+    'periodic-table.celsius': 'Celsius',
+    'periodic-table.fahrenheit': 'Fahrenheit',
+  },
+  da: {
+    'periodic-table.kelvin': 'Kelvin',
+    'periodic-table.celsius': 'Celsius',
+    'periodic-table.fahrenheit': 'Fahrenheit',
+  },
+  pl: {
+    'periodic-table.kelvin': 'Kelvin',
+    'periodic-table.celsius': 'Celsius',
+    'periodic-table.fahrenheit': 'Fahrenheit',
+  },
+  uk: {
+    'periodic-table.kelvin': 'Kelvin',
+    'periodic-table.celsius': 'Celsius',
+    'periodic-table.fahrenheit': 'Fahrenheit',
+  },
 };

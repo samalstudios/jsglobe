@@ -34,4 +34,22 @@ export default {
     'game-2048.best': '최고',
     'game-2048.newGame': '새 게임',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

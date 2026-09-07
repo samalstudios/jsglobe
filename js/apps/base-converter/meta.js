@@ -8,14 +8,5 @@ export default {
   tint: "#b45309",
   keywords: ["binary","hex","octal","decimal","radix","base"],
   tag: "jg-app-base-converter",
-  i18n: {
-    de: { name: 'Zahlensystem', tagline: 'Binär, oktal, dezimal, hexadezimal und jede Basis' },
-    es: { name: 'Base numérica', tagline: 'Binario, octal, decimal, hexadecimal y cualquier base' },
-    zh: { name: '进制转换', tagline: '二进制、八进制、十进制、十六进制与任意进制' },
-    fr: { name: 'Base numérique', tagline: 'Binaire, octal, décimal, hexadécimal et toute base' },
-    pt: { name: 'Base numérica', tagline: 'Binário, octal, decimal, hexadecimal e qualquer base' },
-    ja: { name: '基数変換', tagline: '2 進、8 進、10 進、16 進、任意の基数' },
-    ko: { name: '진법 변환', tagline: '2진, 8진, 10진, 16진과 임의의 진법' },
-  },
   load: () => import('./index.js'),
 };

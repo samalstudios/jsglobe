@@ -216,4 +216,22 @@ export default {
     'calendar.nothingPlanned': '잡힌 일정이 없습니다',
     'calendar.pickATimeAboveOr': '위에서 시간을 고르거나 주간 보기에서 칸을 누르세요.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

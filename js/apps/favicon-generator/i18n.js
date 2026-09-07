@@ -174,4 +174,22 @@ export default {
     'favicon-generator.thatImageCouldNotBe': '그 이미지를 읽을 수 없었습니다',
     'favicon-generator.faviconIcoSavedWith16': '16, 32, 48 픽셀 이미지를 담은 favicon.ico를 저장했습니다',
   },
+  nl: {
+    'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+  },
+  sv: {
+    'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+  },
+  no: {
+    'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+  },
+  da: {
+    'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+  },
+  pl: {
+    'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+  },
+  uk: {
+    'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+  },
 };

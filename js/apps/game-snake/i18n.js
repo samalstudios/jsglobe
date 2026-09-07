@@ -69,4 +69,28 @@ export default {
     'game-snake.restart': '다시 시작',
     'game-snake.arrowKeysOrWasdTo': '방향키나 WASD로 조작하고 스페이스로 멈춥니다. 터치 화면에서는 쓸어 넘기세요.',
   },
+  nl: {
+    'game-snake.snake': 'Snake',
+    'game-snake.normal': 'Normal',
+  },
+  sv: {
+    'game-snake.snake': 'Snake',
+    'game-snake.normal': 'Normal',
+  },
+  no: {
+    'game-snake.snake': 'Snake',
+    'game-snake.normal': 'Normal',
+  },
+  da: {
+    'game-snake.snake': 'Snake',
+    'game-snake.normal': 'Normal',
+  },
+  pl: {
+    'game-snake.snake': 'Snake',
+    'game-snake.normal': 'Normal',
+  },
+  uk: {
+    'game-snake.snake': 'Snake',
+    'game-snake.normal': 'Normal',
+  },
 };

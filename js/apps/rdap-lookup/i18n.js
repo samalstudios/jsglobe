@@ -104,4 +104,22 @@ export default {
     'rdap-lookup.contacts': '연락처',
     'rdap-lookup.registriesRedactMostPersonalDetails': '레지스트리는 개인 정보 대부분을 가립니다',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

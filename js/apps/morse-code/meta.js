@@ -8,14 +8,5 @@ export default {
   keywords: ["morse","code","telegraph","signal","sos","decode"],
   tag: "jg-app-morse-code",
   window: {"width":760,"height":820},
-  i18n: {
-    de: { name: 'Morsecode', tagline: 'Text in Morse übersetzen und abspielen' },
-    es: { name: 'Código morse', tagline: 'Traducir texto a morse y reproducirlo' },
-    zh: { name: '摩尔斯电码', tagline: '把文本转成摩尔斯码并播放' },
-    fr: { name: 'Code morse', tagline: 'Traduire du texte en morse et l\'écouter' },
-    pt: { name: 'Código morse', tagline: 'Traduza texto para morse e ouça' },
-    ja: { name: 'モールス信号', tagline: '文字をモールスに変換して再生' },
-    ko: { name: '모스 부호', tagline: '글자를 모스로 바꾸고 소리로 듣기' },
-  },
   load: () => import('./index.js'),
 };

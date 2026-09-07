@@ -1098,4 +1098,22 @@ export default {
     'physics-lab.reverse': '거꾸로',
     'physics-lab.drive': '구동',
   },
+  nl: {
+    'physics-lab.motor': 'Motor',
+  },
+  sv: {
+    'physics-lab.motor': 'Motor',
+  },
+  no: {
+    'physics-lab.motor': 'Motor',
+  },
+  da: {
+    'physics-lab.motor': 'Motor',
+  },
+  pl: {
+    'physics-lab.motor': 'Motor',
+  },
+  uk: {
+    'physics-lab.motor': 'Motor',
+  },
 };

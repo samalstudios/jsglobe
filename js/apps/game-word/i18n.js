@@ -48,4 +48,22 @@ export default {
     'game-word.enter': '엔터',
     'game-word.delete': '지우기',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

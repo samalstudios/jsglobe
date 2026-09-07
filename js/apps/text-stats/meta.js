@@ -8,14 +8,5 @@ export default {
   tint: "#db2777",
   keywords: ["text","stats","count","words","characters","reading"],
   tag: "jg-app-text-stats",
-  i18n: {
-    de: { name: 'Textstatistik', tagline: 'Zählungen, Lesezeit und Zeichenanalyse' },
-    es: { name: 'Estadísticas de texto', tagline: 'Conteos, tiempo de lectura y análisis de caracteres' },
-    zh: { name: '文本统计', tagline: '计数、阅读时间与字符分析' },
-    fr: { name: 'Stats de texte', tagline: 'Comptages, temps de lecture et analyse des caractères' },
-    pt: { name: 'Estatísticas de texto', tagline: 'Contagens, tempo de leitura e análise de caracteres' },
-    ja: { name: 'テキスト統計', tagline: '文字数、読了時間、文字の分析' },
-    ko: { name: '텍스트 통계', tagline: '글자 수, 읽는 시간, 문자 분석' },
-  },
   load: () => import('./index.js'),
 };

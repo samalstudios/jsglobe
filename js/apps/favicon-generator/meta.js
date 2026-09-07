@@ -8,14 +8,5 @@ export default {
   keywords: ["favicon","icon","ico","apple touch","manifest","pwa","app icon"],
   tag: "jg-app-favicon-generator",
   window: {"width":1040,"height":860},
-  i18n: {
-    de: { name: 'Favicon-Maker', tagline: 'Alle Symbolgrößen, eine .ico und das Manifest' },
-    es: { name: 'Creador de favicon', tagline: 'Todos los tamaños de icono, un .ico y el manifiesto' },
-    zh: { name: '图标生成', tagline: '所有图标尺寸、一个 .ico 和 manifest' },
-    fr: { name: 'Créateur de favicon', tagline: 'Toutes les tailles d\'icône, un .ico et le manifeste' },
-    pt: { name: 'Criador de favicon', tagline: 'Todos os tamanhos de ícone, um .ico e o manifest' },
-    ja: { name: 'ファビコン作成', tagline: 'すべてのアイコンサイズ、.ico、マニフェスト' },
-    ko: { name: '파비콘 만들기', tagline: '모든 아이콘 크기와 .ico, 매니페스트' },
-  },
   load: () => import('./index.js'),
 };

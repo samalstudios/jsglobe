@@ -118,4 +118,22 @@ export default {
     'ip-converter.reverseDns': '역방향 DNS',
     'ip-converter.integerRange': '정수 범위',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

@@ -1441,4 +1441,22 @@ export default {
     'doc-editor.documentsStudio': '문서 스튜디오',
     'doc-editor.widgetBlurb': '문서를 쓰고 PDF나 Word로 내보냅니다.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

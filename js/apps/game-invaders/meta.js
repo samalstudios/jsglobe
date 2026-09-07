@@ -9,14 +9,5 @@ export default {
   keywords: ["game","invaders","space","arcade","retro","shooter"],
   tag: "jg-app-game-invaders",
   window: {"width":1020,"height":820},
-  i18n: {
-    de: { name: 'Invaders', tagline: 'Die Stellung gegen absteigende Wellen halten' },
-    es: { name: 'Invaders', tagline: 'Aguantar la línea ante las oleadas que descienden' },
-    zh: { name: '太空入侵者', tagline: '抵挡一波波下压的敌人' },
-    fr: { name: 'Envahisseurs', tagline: 'Tenir la ligne face aux vagues qui descendent' },
-    pt: { name: 'Invasores', tagline: 'Segure a linha contra as ondas que descem' },
-    ja: { name: 'インベーダー', tagline: '降りてくる波を食い止める' },
-    ko: { name: '인베이더', tagline: '내려오는 물결을 막아 내기' },
-  },
   load: () => import('./index.js'),
 };

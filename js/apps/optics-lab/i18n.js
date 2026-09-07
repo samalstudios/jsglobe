@@ -706,4 +706,22 @@ export default {
     'optics-lab.opticsLab': '광학 실험실',
     'optics-lab.widgetBlurb': '렌즈, 거울, 프리즘을 실제 광선 추적으로.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

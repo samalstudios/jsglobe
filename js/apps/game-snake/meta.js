@@ -9,14 +9,5 @@ export default {
   keywords: ["game","snake","arcade","classic"],
   tag: "jg-app-game-snake",
   window: {"width":820,"height":940},
-  i18n: {
-    de: { name: 'Snake', tagline: 'Fressen, wachsen und sich nicht selbst beißen' },
-    es: { name: 'Snake', tagline: 'Comer, crecer y no morderte a ti mismo' },
-    zh: { name: '贪吃蛇', tagline: '进食、变长，别咬到自己' },
-    fr: { name: 'Serpent', tagline: 'Manger, grandir et ne pas se mordre' },
-    pt: { name: 'Snake', tagline: 'Coma, cresça e não morda a si mesmo' },
-    ja: { name: 'スネーク', tagline: '食べて伸びて、自分を噛まない' },
-    ko: { name: '스네이크', tagline: '먹고 자라되 자기 몸을 물지 않기' },
-  },
   load: () => import('./index.js'),
 };

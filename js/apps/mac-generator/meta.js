@@ -8,14 +8,5 @@ export default {
   tint: "#0f766e",
   keywords: ["mac","address","ethernet","hardware","generate"],
   tag: "jg-app-mac",
-  i18n: {
-    de: { name: 'MAC-Adresse', tagline: 'MAC-Adressen erzeugen und umformatieren' },
-    es: { name: 'Dirección MAC', tagline: 'Generar y reformatear direcciones MAC' },
-    zh: { name: 'MAC 地址', tagline: '生成并重新格式化 MAC 地址' },
-    fr: { name: 'Adresse MAC', tagline: 'Générer et reformater des adresses MAC' },
-    pt: { name: 'Endereço MAC', tagline: 'Gere e reformate endereços MAC' },
-    ja: { name: 'MAC アドレス', tagline: 'MAC アドレスの生成と書式変換' },
-    ko: { name: 'MAC 주소', tagline: 'MAC 주소를 만들고 형식 바꾸기' },
-  },
   load: () => import('./index.js'),
 };

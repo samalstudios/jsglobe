@@ -510,4 +510,22 @@ export default {
     'poster-studio.cornerRadius': '모서리 둥글기',
     'poster-studio.nothingSavedYet': '아직 저장한 것이 없습니다.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

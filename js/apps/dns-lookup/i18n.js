@@ -146,4 +146,34 @@ export default {
     'dns-lookup.ttl': 'TTL',
     'dns-lookup.value': '값',
   },
+  nl: {
+    'dns-lookup.cloudflare': 'Cloudflare',
+    'dns-lookup.google': 'Google',
+    'dns-lookup.ttl': 'TTL',
+  },
+  sv: {
+    'dns-lookup.cloudflare': 'Cloudflare',
+    'dns-lookup.google': 'Google',
+    'dns-lookup.ttl': 'TTL',
+  },
+  no: {
+    'dns-lookup.cloudflare': 'Cloudflare',
+    'dns-lookup.google': 'Google',
+    'dns-lookup.ttl': 'TTL',
+  },
+  da: {
+    'dns-lookup.cloudflare': 'Cloudflare',
+    'dns-lookup.google': 'Google',
+    'dns-lookup.ttl': 'TTL',
+  },
+  pl: {
+    'dns-lookup.cloudflare': 'Cloudflare',
+    'dns-lookup.google': 'Google',
+    'dns-lookup.ttl': 'TTL',
+  },
+  uk: {
+    'dns-lookup.cloudflare': 'Cloudflare',
+    'dns-lookup.google': 'Google',
+    'dns-lookup.ttl': 'TTL',
+  },
 };

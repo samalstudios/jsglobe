@@ -83,4 +83,22 @@ export default {
     'text-stats.longestWord': '가장 긴 낱말',
     'text-stats.notEnoughTextYet': '아직 글이 모자랍니다.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

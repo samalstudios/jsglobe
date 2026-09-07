@@ -9,14 +9,5 @@ export default {
   keywords: ["otp","totp","2fa","mfa","authenticator"],
   tag: "jg-app-otp",
   widget: true,
-  i18n: {
-    de: { name: 'TOTP', tagline: 'Zeitbasierte Einmalpasswörter aus einem Secret' },
-    es: { name: 'TOTP', tagline: 'Contraseñas de un solo uso basadas en tiempo' },
-    zh: { name: 'TOTP', tagline: '由密钥生成基于时间的一次性密码' },
-    fr: { name: 'TOTP', tagline: 'Mots de passe à usage unique basés sur le temps' },
-    pt: { name: 'TOTP', tagline: 'Senhas de uso único baseadas em tempo, a partir de um segredo' },
-    ja: { name: 'TOTP', tagline: '秘密鍵から作る時刻ベースのワンタイムパスワード' },
-    ko: { name: 'TOTP', tagline: '비밀 키로 만드는 시간 기반 일회용 비밀번호' },
-  },
   load: () => import('./index.js'),
 };

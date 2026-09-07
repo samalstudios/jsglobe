@@ -8,14 +8,5 @@ export default {
   tint: "#9333ea",
   keywords: ["ai","code","explain","review","refactor","tests","llm"],
   tag: "jg-app-ai-code",
-  i18n: {
-    de: { name: 'KI-Code', tagline: 'Code erklären, prüfen, dokumentieren und umwandeln' },
-    es: { name: 'Código con IA', tagline: 'Explicar, revisar, documentar y convertir código' },
-    zh: { name: 'AI 代码', tagline: '解释、审查、注释并转换代码' },
-    fr: { name: 'Code IA', tagline: 'Expliquer, relire, documenter et convertir du code' },
-    pt: { name: 'Código com IA', tagline: 'Explique, revise, documente e converta código' },
-    ja: { name: 'AI コード', tagline: 'コードを説明、レビュー、文書化、変換' },
-    ko: { name: 'AI 코드', tagline: '코드를 설명하고 검토하고 문서화하고 변환하기' },
-  },
   load: () => import('./index.js'),
 };

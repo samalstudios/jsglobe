@@ -69,4 +69,22 @@ export default {
     'math-evaluator.clickAnEntryToLoad': '항목을 누르면 불러옵니다',
     'math-evaluator.reference': '기준',
   },
+  nl: {
+    'math-evaluator.22Pi': '2 + 2 * pi',
+  },
+  sv: {
+    'math-evaluator.22Pi': '2 + 2 * pi',
+  },
+  no: {
+    'math-evaluator.22Pi': '2 + 2 * pi',
+  },
+  da: {
+    'math-evaluator.22Pi': '2 + 2 * pi',
+  },
+  pl: {
+    'math-evaluator.22Pi': '2 + 2 * pi',
+  },
+  uk: {
+    'math-evaluator.22Pi': '2 + 2 * pi',
+  },
 };

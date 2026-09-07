@@ -8,14 +8,5 @@ export default {
   keywords: ["sudoku","puzzle","numbers","logic","game"],
   tag: "jg-app-game-sudoku",
   window: {"width":820,"height":820},
-  i18n: {
-    de: { name: 'Sudoku', tagline: 'Erzeugte Rätsel mit Notizen und Hinweisen' },
-    es: { name: 'Sudoku', tagline: 'Rompecabezas generados con notas y pistas' },
-    zh: { name: '数独', tagline: '自动生成的谜题，支持笔记与提示' },
-    fr: { name: 'Sudoku', tagline: 'Grilles générées avec notes et indices' },
-    pt: { name: 'Sudoku', tagline: 'Grades geradas com anotações e dicas' },
-    ja: { name: '数独', tagline: 'メモとヒント付きの自動生成問題' },
-    ko: { name: '스도쿠', tagline: '메모와 힌트가 있는 생성된 퍼즐' },
-  },
   load: () => import('./index.js'),
 };

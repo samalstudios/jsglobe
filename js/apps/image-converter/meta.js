@@ -8,14 +8,5 @@ export default {
   tint: "#e11d48",
   keywords: ["image","convert","resize","compress","png","jpeg","webp"],
   tag: "jg-app-image-converter",
-  i18n: {
-    de: { name: 'Bildkonverter', tagline: 'Bilder im Browser umwandeln, skalieren und komprimieren' },
-    es: { name: 'Conversor de imágenes', tagline: 'Convertir, redimensionar y comprimir imágenes en el navegador' },
-    zh: { name: '图片转换', tagline: '在浏览器中转换、缩放并压缩图片' },
-    fr: { name: 'Convertisseur d\'images', tagline: 'Convertir, redimensionner et compresser dans le navigateur' },
-    pt: { name: 'Conversor de imagens', tagline: 'Converta, redimensione e comprima imagens no navegador' },
-    ja: { name: '画像変換', tagline: 'ブラウザ内で画像を変換、リサイズ、圧縮' },
-    ko: { name: '이미지 변환', tagline: '브라우저에서 이미지를 변환하고 크기를 바꾸고 압축하기' },
-  },
   load: () => import('./index.js'),
 };

@@ -650,4 +650,34 @@ export default {
     'circuit-lab.removePart': '부품 제거',
     'circuit-lab.clickAWireJunctionTo': '배선 접점을 누르면 재고, 부품을 누르면 고칩니다.',
   },
+  nl: {
+    'circuit-lab.led': 'LED',
+    'circuit-lab.npn': 'NPN',
+    'circuit-lab.pnp': 'PNP',
+  },
+  sv: {
+    'circuit-lab.led': 'LED',
+    'circuit-lab.npn': 'NPN',
+    'circuit-lab.pnp': 'PNP',
+  },
+  no: {
+    'circuit-lab.led': 'LED',
+    'circuit-lab.npn': 'NPN',
+    'circuit-lab.pnp': 'PNP',
+  },
+  da: {
+    'circuit-lab.led': 'LED',
+    'circuit-lab.npn': 'NPN',
+    'circuit-lab.pnp': 'PNP',
+  },
+  pl: {
+    'circuit-lab.led': 'LED',
+    'circuit-lab.npn': 'NPN',
+    'circuit-lab.pnp': 'PNP',
+  },
+  uk: {
+    'circuit-lab.led': 'LED',
+    'circuit-lab.npn': 'NPN',
+    'circuit-lab.pnp': 'PNP',
+  },
 };

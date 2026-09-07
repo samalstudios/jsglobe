@@ -62,4 +62,22 @@ export default {
     'notes.nothingSelected': '고른 것이 없습니다',
     'notes.createANoteToGet': '메모를 만들어 시작하세요.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

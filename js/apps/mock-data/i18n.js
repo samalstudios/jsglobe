@@ -272,4 +272,22 @@ export default {
     'mock-data.download': '내려받기',
     'mock-data.newSeed': '새 시드',
   },
+  nl: {
+    'mock-data.uuidV4': 'UUID v4',
+  },
+  sv: {
+    'mock-data.uuidV4': 'UUID v4',
+  },
+  no: {
+    'mock-data.uuidV4': 'UUID v4',
+  },
+  da: {
+    'mock-data.uuidV4': 'UUID v4',
+  },
+  pl: {
+    'mock-data.uuidV4': 'UUID v4',
+  },
+  uk: {
+    'mock-data.uuidV4': 'UUID v4',
+  },
 };

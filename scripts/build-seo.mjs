@@ -9,9 +9,11 @@ const NAME = 'Toolbox';
 const TAGLINE = 'Fast, private developer tools that run entirely in your browser';
 
 const packs = { en: null };
+const named = { en: {} };
 for (const entry of LANGUAGES) {
   if (entry.code === DEFAULT_LANGUAGE) continue;
   packs[entry.code] = (await import(`../js/i18n/${entry.code}.js`)).default;
+  named[entry.code] = (await import(`../js/i18n/catalog/${entry.code}.js`)).default;
 }
 
 const fill = (text, vars) =>
@@ -20,8 +22,8 @@ const fill = (text, vars) =>
 const T = (lang, key, english, vars) => fill(packs[lang]?.seo?.[key] ?? english, vars);
 const U = (lang, key, english) => packs[lang]?.ui?.[key] ?? english;
 
-const appName = (lang, app) => app.i18n?.[lang]?.name ?? app.name;
-const appTagline = (lang, app) => app.i18n?.[lang]?.tagline ?? app.tagline;
+const appName = (lang, app) => named[lang]?.[app.id]?.name ?? app.name;
+const appTagline = (lang, app) => named[lang]?.[app.id]?.tagline ?? app.tagline;
 const groupName = (lang, group) => (group ? packs[lang]?.categories?.[group.id] ?? group.name : null);
 
 const prefix = (lang) => {

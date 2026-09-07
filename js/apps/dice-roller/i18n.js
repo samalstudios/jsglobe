@@ -111,4 +111,22 @@ export default {
     'dice-roller.diceRoller': '주사위',
     'dice-roller.widgetBlurb': '어떤 주사위든 굴려 흩어짐을 살펴보세요.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

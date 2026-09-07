@@ -111,4 +111,22 @@ export default {
     'exif-editor.noExifTagsFoundIn': '이 파일에서 Exif 태그를 찾지 못했습니다.',
     'exif-editor.thatFileIsNotA': '그 파일은 JPEG가 아닙니다',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

@@ -139,4 +139,34 @@ export default {
     'otp-generator.previousWindow': '이전 창',
     'otp-generator.nextWindow': '다음 창',
   },
+  nl: {
+    'otp-generator.sha1': 'SHA-1',
+    'otp-generator.sha256': 'SHA-256',
+    'otp-generator.sha512': 'SHA-512',
+  },
+  sv: {
+    'otp-generator.sha1': 'SHA-1',
+    'otp-generator.sha256': 'SHA-256',
+    'otp-generator.sha512': 'SHA-512',
+  },
+  no: {
+    'otp-generator.sha1': 'SHA-1',
+    'otp-generator.sha256': 'SHA-256',
+    'otp-generator.sha512': 'SHA-512',
+  },
+  da: {
+    'otp-generator.sha1': 'SHA-1',
+    'otp-generator.sha256': 'SHA-256',
+    'otp-generator.sha512': 'SHA-512',
+  },
+  pl: {
+    'otp-generator.sha1': 'SHA-1',
+    'otp-generator.sha256': 'SHA-256',
+    'otp-generator.sha512': 'SHA-512',
+  },
+  uk: {
+    'otp-generator.sha1': 'SHA-1',
+    'otp-generator.sha256': 'SHA-256',
+    'otp-generator.sha512': 'SHA-512',
+  },
 };

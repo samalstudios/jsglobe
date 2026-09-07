@@ -230,4 +230,28 @@ export default {
     'mp3-metadata.audio': 'Audio',
     'mp3-metadata.tickAtLeastOneFile': '먼저 파일을 하나 이상 체크하세요',
   },
+  nl: {
+    'mp3-metadata.bpm': 'BPM',
+    'mp3-metadata.audio': 'Audio',
+  },
+  sv: {
+    'mp3-metadata.bpm': 'BPM',
+    'mp3-metadata.audio': 'Audio',
+  },
+  no: {
+    'mp3-metadata.bpm': 'BPM',
+    'mp3-metadata.audio': 'Audio',
+  },
+  da: {
+    'mp3-metadata.bpm': 'BPM',
+    'mp3-metadata.audio': 'Audio',
+  },
+  pl: {
+    'mp3-metadata.bpm': 'BPM',
+    'mp3-metadata.audio': 'Audio',
+  },
+  uk: {
+    'mp3-metadata.bpm': 'BPM',
+    'mp3-metadata.audio': 'Audio',
+  },
 };

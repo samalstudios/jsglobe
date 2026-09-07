@@ -328,4 +328,22 @@ export default {
     'icon-studio.iconStudio': '아이콘 스튜디오',
     'icon-studio.widgetBlurb': '수천 개 부품으로 아이콘을 만듭니다.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

@@ -104,4 +104,22 @@ export default {
     'csv-studio.copy': '복사',
     'csv-studio.download': '내려받기',
   },
+  nl: {
+    'csv-studio.markdown': 'Markdown',
+  },
+  sv: {
+    'csv-studio.markdown': 'Markdown',
+  },
+  no: {
+    'csv-studio.markdown': 'Markdown',
+  },
+  da: {
+    'csv-studio.markdown': 'Markdown',
+  },
+  pl: {
+    'csv-studio.markdown': 'Markdown',
+  },
+  uk: {
+    'csv-studio.markdown': 'Markdown',
+  },
 };

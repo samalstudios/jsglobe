@@ -111,4 +111,22 @@ export default {
     'url-parser.fragment': '프래그먼트',
     'url-parser.segments': '세그먼트',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

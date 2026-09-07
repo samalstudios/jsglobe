@@ -8,14 +8,5 @@ export default {
   tint: "#be185d",
   keywords: ["diff","compare","changes","merge"],
   tag: "jg-app-text-diff",
-  i18n: {
-    de: { name: 'Textvergleich', tagline: 'Zwei Texte Zeile für Zeile vergleichen' },
-    es: { name: 'Comparador de texto', tagline: 'Comparar dos textos línea por línea' },
-    zh: { name: '文本比较', tagline: '逐行比较两段文本' },
-    fr: { name: 'Diff de texte', tagline: 'Comparer deux textes ligne par ligne' },
-    pt: { name: 'Diff de texto', tagline: 'Compare dois textos linha a linha' },
-    ja: { name: 'テキスト差分', tagline: '2 つのテキストを行ごとに比較' },
-    ko: { name: '텍스트 차이', tagline: '두 글을 줄 단위로 비교하기' },
-  },
   load: () => import('./index.js'),
 };

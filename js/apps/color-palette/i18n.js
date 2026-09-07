@@ -118,4 +118,28 @@ export default {
     'color-palette.hex': 'Hex',
     'color-palette.nativePicker': '기본 선택기',
   },
+  nl: {
+    'color-palette.scss': 'SCSS',
+    'color-palette.hex': 'Hex',
+  },
+  sv: {
+    'color-palette.scss': 'SCSS',
+    'color-palette.hex': 'Hex',
+  },
+  no: {
+    'color-palette.scss': 'SCSS',
+    'color-palette.hex': 'Hex',
+  },
+  da: {
+    'color-palette.scss': 'SCSS',
+    'color-palette.hex': 'Hex',
+  },
+  pl: {
+    'color-palette.scss': 'SCSS',
+    'color-palette.hex': 'Hex',
+  },
+  uk: {
+    'color-palette.scss': 'SCSS',
+    'color-palette.hex': 'Hex',
+  },
 };

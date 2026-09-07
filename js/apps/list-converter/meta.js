@@ -8,14 +8,5 @@ export default {
   tint: "#d97706",
   keywords: ["list","sort","dedupe","join","split","lines","csv"],
   tag: "jg-app-list-converter",
-  i18n: {
-    de: { name: 'Listen-Konverter', tagline: 'Listen sortieren, bereinigen, umbrechen und verbinden' },
-    es: { name: 'Conversor de listas', tagline: 'Ordenar, quitar duplicados, envolver y unir listas' },
-    zh: { name: '列表转换', tagline: '排序、去重、包装并重新拼接列表' },
-    fr: { name: 'Convertisseur de listes', tagline: 'Trier, dédupliquer, encadrer et rejoindre des listes' },
-    pt: { name: 'Conversor de listas', tagline: 'Ordene, remova duplicatas, envolva e junte listas' },
-    ja: { name: 'リスト変換', tagline: '並べ替え、重複除去、囲み、結合' },
-    ko: { name: '목록 변환', tagline: '정렬, 중복 제거, 감싸기, 다시 합치기' },
-  },
   load: () => import('./index.js'),
 };

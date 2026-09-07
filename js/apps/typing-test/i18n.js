@@ -76,4 +76,22 @@ export default {
     'typing-test.noMistakesRecordedYet': '아직 기록된 실수가 없습니다.',
     'typing-test.finishARunToRecord': '한 판을 마치면 기록이 남습니다.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

@@ -111,4 +111,22 @@ export default {
     'emoji-picker.copyHtmlEntity': 'HTML 엔티티 복사',
     'emoji-picker.pickedEmojiLandHere': '고른 이모지가 여기에 모입니다.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

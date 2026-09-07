@@ -90,4 +90,22 @@ export default {
     'clock.min': '최소',
     'clock.theTimerKeepsRunningWhile': '다른 앱을 열어 두어도 타이머는 계속 갑니다.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

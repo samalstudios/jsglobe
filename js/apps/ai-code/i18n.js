@@ -104,4 +104,22 @@ export default {
     'ai-code.result': '결과',
     'ai-code.copy': '복사',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

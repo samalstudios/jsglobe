@@ -90,4 +90,22 @@ export default {
     'hmac-generator.pasteASignatureToCompare': '일정 시간에 비교할 서명을 붙여넣으세요',
     'hmac-generator.expectedSignature': '기대한 서명',
   },
+  nl: {
+    'hmac-generator.hex': 'Hex',
+  },
+  sv: {
+    'hmac-generator.hex': 'Hex',
+  },
+  no: {
+    'hmac-generator.hex': 'Hex',
+  },
+  da: {
+    'hmac-generator.hex': 'Hex',
+  },
+  pl: {
+    'hmac-generator.hex': 'Hex',
+  },
+  uk: {
+    'hmac-generator.hex': 'Hex',
+  },
 };

@@ -48,4 +48,22 @@ export default {
     'chmod-calculator.fromOctal': '8진에서',
     'chmod-calculator.presets': '프리셋',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

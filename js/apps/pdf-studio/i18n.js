@@ -188,4 +188,22 @@ export default {
     'pdf-studio.selectNone': '고르기 해제',
     'pdf-studio.savePdf': 'PDF 저장',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

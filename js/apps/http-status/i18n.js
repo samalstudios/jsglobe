@@ -132,4 +132,22 @@ export default {
     'http-status.httpStatus': 'HTTP 상태',
     'http-status.widgetBlurb': '모든 상태 코드의 뜻과 쓸 자리.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

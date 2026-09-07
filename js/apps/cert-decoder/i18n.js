@@ -167,4 +167,34 @@ export default {
     'cert-decoder.size': '크기',
     'cert-decoder.copySha256': 'SHA-256 복사',
   },
+  nl: {
+    'cert-decoder.beginCertificate': '-----BEGIN CERTIFICATE-----',
+    'cert-decoder.sha256': 'SHA-256',
+    'cert-decoder.sha1': 'SHA-1',
+  },
+  sv: {
+    'cert-decoder.beginCertificate': '-----BEGIN CERTIFICATE-----',
+    'cert-decoder.sha256': 'SHA-256',
+    'cert-decoder.sha1': 'SHA-1',
+  },
+  no: {
+    'cert-decoder.beginCertificate': '-----BEGIN CERTIFICATE-----',
+    'cert-decoder.sha256': 'SHA-256',
+    'cert-decoder.sha1': 'SHA-1',
+  },
+  da: {
+    'cert-decoder.beginCertificate': '-----BEGIN CERTIFICATE-----',
+    'cert-decoder.sha256': 'SHA-256',
+    'cert-decoder.sha1': 'SHA-1',
+  },
+  pl: {
+    'cert-decoder.beginCertificate': '-----BEGIN CERTIFICATE-----',
+    'cert-decoder.sha256': 'SHA-256',
+    'cert-decoder.sha1': 'SHA-1',
+  },
+  uk: {
+    'cert-decoder.beginCertificate': '-----BEGIN CERTIFICATE-----',
+    'cert-decoder.sha256': 'SHA-256',
+    'cert-decoder.sha1': 'SHA-1',
+  },
 };

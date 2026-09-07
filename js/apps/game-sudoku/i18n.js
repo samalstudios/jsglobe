@@ -69,4 +69,22 @@ export default {
     'game-sudoku.hint': '힌트',
     'game-sudoku.check': '확인',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

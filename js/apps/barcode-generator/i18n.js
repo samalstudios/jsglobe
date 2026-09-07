@@ -104,4 +104,40 @@ export default {
     'barcode-generator.downloadSvg': 'SVG 내려받기',
     'barcode-generator.downloadPng': 'PNG 내려받기',
   },
+  nl: {
+    'barcode-generator.code128': 'Code 128',
+    'barcode-generator.ean13': 'EAN-13',
+    'barcode-generator.ean8': 'EAN-8',
+    'barcode-generator.code39': 'Code 39',
+  },
+  sv: {
+    'barcode-generator.code128': 'Code 128',
+    'barcode-generator.ean13': 'EAN-13',
+    'barcode-generator.ean8': 'EAN-8',
+    'barcode-generator.code39': 'Code 39',
+  },
+  no: {
+    'barcode-generator.code128': 'Code 128',
+    'barcode-generator.ean13': 'EAN-13',
+    'barcode-generator.ean8': 'EAN-8',
+    'barcode-generator.code39': 'Code 39',
+  },
+  da: {
+    'barcode-generator.code128': 'Code 128',
+    'barcode-generator.ean13': 'EAN-13',
+    'barcode-generator.ean8': 'EAN-8',
+    'barcode-generator.code39': 'Code 39',
+  },
+  pl: {
+    'barcode-generator.code128': 'Code 128',
+    'barcode-generator.ean13': 'EAN-13',
+    'barcode-generator.ean8': 'EAN-8',
+    'barcode-generator.code39': 'Code 39',
+  },
+  uk: {
+    'barcode-generator.code128': 'Code 128',
+    'barcode-generator.ean13': 'EAN-13',
+    'barcode-generator.ean8': 'EAN-8',
+    'barcode-generator.code39': 'Code 39',
+  },
 };

@@ -104,4 +104,28 @@ export default {
     'uuid.shortId': '짧은 ID',
     'uuid.nil': '없음',
   },
+  nl: {
+    'uuid-generator.uuidV4': 'UUID v4',
+    'uuid-generator.uuidV7': 'UUID v7',
+  },
+  sv: {
+    'uuid-generator.uuidV4': 'UUID v4',
+    'uuid-generator.uuidV7': 'UUID v7',
+  },
+  no: {
+    'uuid-generator.uuidV4': 'UUID v4',
+    'uuid-generator.uuidV7': 'UUID v7',
+  },
+  da: {
+    'uuid-generator.uuidV4': 'UUID v4',
+    'uuid-generator.uuidV7': 'UUID v7',
+  },
+  pl: {
+    'uuid-generator.uuidV4': 'UUID v4',
+    'uuid-generator.uuidV7': 'UUID v7',
+  },
+  uk: {
+    'uuid-generator.uuidV4': 'UUID v4',
+    'uuid-generator.uuidV7': 'UUID v7',
+  },
 };

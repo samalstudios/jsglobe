@@ -8,14 +8,5 @@ export default {
   tint: "#f59e0b",
   keywords: ["yaml","json","convert","config"],
   tag: "jg-app-json-yaml",
-  i18n: {
-    de: { name: 'JSON ⇄ YAML', tagline: 'Zwischen JSON- und YAML-Dokumenten umwandeln' },
-    es: { name: 'JSON ⇄ YAML', tagline: 'Convertir entre documentos JSON y YAML' },
-    zh: { name: 'JSON ⇄ YAML', tagline: '在 JSON 与 YAML 文档之间转换' },
-    fr: { name: 'JSON ⇄ YAML', tagline: 'Convertir entre documents JSON et YAML' },
-    pt: { name: 'JSON ⇄ YAML', tagline: 'Converta entre documentos JSON e YAML' },
-    ja: { name: 'JSON ⇄ YAML', tagline: 'JSON と YAML の文書を相互変換' },
-    ko: { name: 'JSON ⇄ YAML', tagline: 'JSON과 YAML 문서를 서로 바꾸기' },
-  },
   load: () => import('./index.js'),
 };

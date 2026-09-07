@@ -8,14 +8,5 @@ export default {
   keywords: ["unicode","character","code point","utf-8","entity","symbol","charmap"],
   tag: "jg-app-unicode-tables",
   window: {"width":920,"height":780},
-  i18n: {
-    de: { name: 'Unicode-Tabellen', tagline: 'Unicode-Blöcke durchsuchen und jedes Zeichen prüfen' },
-    es: { name: 'Tablas Unicode', tagline: 'Explorar bloques Unicode e inspeccionar cualquier carácter' },
-    zh: { name: 'Unicode 表', tagline: '浏览 Unicode 区块并查看任意字符' },
-    fr: { name: 'Tables Unicode', tagline: 'Parcourir les blocs Unicode et inspecter un caractère' },
-    pt: { name: 'Tabelas Unicode', tagline: 'Percorra blocos Unicode e inspecione qualquer caractere' },
-    ja: { name: 'Unicode 表', tagline: 'Unicode ブロックを見て文字を調べる' },
-    ko: { name: '유니코드 표', tagline: '유니코드 블록을 훑고 문자를 살펴보기' },
-  },
   load: () => import('./index.js'),
 };

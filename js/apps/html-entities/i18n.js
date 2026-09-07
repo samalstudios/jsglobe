@@ -76,4 +76,22 @@ export default {
     'html-entities.named': '이름 있음',
     'html-entities.allNonAscii': 'ASCII가 아닌 전부',
   },
+  nl: {
+    'html-entities.ltDivGt': '&lt;div&gt;',
+  },
+  sv: {
+    'html-entities.ltDivGt': '&lt;div&gt;',
+  },
+  no: {
+    'html-entities.ltDivGt': '&lt;div&gt;',
+  },
+  da: {
+    'html-entities.ltDivGt': '&lt;div&gt;',
+  },
+  pl: {
+    'html-entities.ltDivGt': '&lt;div&gt;',
+  },
+  uk: {
+    'html-entities.ltDivGt': '&lt;div&gt;',
+  },
 };

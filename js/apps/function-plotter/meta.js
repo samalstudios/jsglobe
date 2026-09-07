@@ -8,14 +8,5 @@ export default {
   keywords: ["plot","graph","function","chart","derivative","roots","calculator","math"],
   tag: "jg-app-function-plotter",
   window: {"width":1000,"height":820,"maximized":true},
-  i18n: {
-    de: { name: 'Funktionsplotter', tagline: 'Ausdrücke mit Zoom, Nullstellen und Ableitungen zeichnen' },
-    es: { name: 'Graficador de funciones', tagline: 'Graficar expresiones con zoom, raíces y derivadas' },
-    zh: { name: '函数绘图', tagline: '绘制表达式，支持缩放、求根与导数' },
-    fr: { name: 'Traceur de fonctions', tagline: 'Tracer des expressions avec zoom, racines et dérivées' },
-    pt: { name: 'Plotador de funções', tagline: 'Trace expressões com zoom, raízes e derivadas' },
-    ja: { name: '関数プロッタ', tagline: '式のグラフを拡大、零点、導関数付きで' },
-    ko: { name: '함수 그래프', tagline: '식을 확대, 근, 도함수와 함께 그리기' },
-  },
   load: () => import('./index.js'),
 };

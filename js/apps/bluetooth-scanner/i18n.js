@@ -454,4 +454,34 @@ export default {
     'bluetooth-scanner.subscribeFailed': '{name} 구독에 실패했습니다: {reason}',
     'bluetooth-scanner.expandAll': '모두 펼치기',
   },
+  nl: {
+    'bluetooth-scanner.bluetooth': 'Bluetooth',
+    'bluetooth-scanner.service': 'Service',
+    'bluetooth-scanner.hex': 'hex',
+  },
+  sv: {
+    'bluetooth-scanner.bluetooth': 'Bluetooth',
+    'bluetooth-scanner.service': 'Service',
+    'bluetooth-scanner.hex': 'hex',
+  },
+  no: {
+    'bluetooth-scanner.bluetooth': 'Bluetooth',
+    'bluetooth-scanner.service': 'Service',
+    'bluetooth-scanner.hex': 'hex',
+  },
+  da: {
+    'bluetooth-scanner.bluetooth': 'Bluetooth',
+    'bluetooth-scanner.service': 'Service',
+    'bluetooth-scanner.hex': 'hex',
+  },
+  pl: {
+    'bluetooth-scanner.bluetooth': 'Bluetooth',
+    'bluetooth-scanner.service': 'Service',
+    'bluetooth-scanner.hex': 'hex',
+  },
+  uk: {
+    'bluetooth-scanner.bluetooth': 'Bluetooth',
+    'bluetooth-scanner.service': 'Service',
+    'bluetooth-scanner.hex': 'hex',
+  },
 };

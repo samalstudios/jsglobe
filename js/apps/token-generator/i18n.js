@@ -153,4 +153,22 @@ export default {
     'token-generator.generateBatch': '묶음 생성',
     'token-generator.copyBatch': '묶음 복사',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

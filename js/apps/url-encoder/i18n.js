@@ -55,4 +55,22 @@ export default {
     'url-encoder.component': '컴포넌트',
     'url-encoder.fullUri': '전체 URI',
   },
+  nl: {
+    'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
+  },
+  sv: {
+    'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
+  },
+  no: {
+    'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
+  },
+  da: {
+    'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
+  },
+  pl: {
+    'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
+  },
+  uk: {
+    'url-encoder.https3a2f2fexampleCom': 'https%3A%2F%2Fexample.com',
+  },
 };

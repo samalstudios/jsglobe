@@ -41,4 +41,22 @@ export default {
     'game-minesweeper.hard': '어려움',
     'game-minesweeper.newGame': '새 게임',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

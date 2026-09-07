@@ -90,4 +90,22 @@ export default {
     'api-spec.noOperationsFound': '작업을 찾지 못했습니다.',
     'api-spec.everythingTheLinterChecksLooks': '린터가 살피는 범위에서는 문제가 없습니다.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

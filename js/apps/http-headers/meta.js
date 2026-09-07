@@ -8,14 +8,5 @@ export default {
   keywords: ["http","headers","security","csp","hsts","cookies","audit","response"],
   tag: "jg-app-http-headers",
   window: {"width":1120,"height":840},
-  i18n: {
-    de: { name: 'Header-Prüfung', tagline: 'Antwort-Header auf Sicherheit und Datenschutz bewerten' },
-    es: { name: 'Revisión de cabeceras', tagline: 'Evaluar cabeceras de respuesta en seguridad y privacidad' },
-    zh: { name: '响应头检查', tagline: '从安全与隐私角度给响应头评分' },
-    fr: { name: 'Revue d\'en-têtes', tagline: 'Noter les en-têtes de réponse pour la sécurité et la vie privée' },
-    pt: { name: 'Revisão de cabeçalhos', tagline: 'Avalie cabeçalhos de resposta quanto a segurança e privacidade' },
-    ja: { name: 'ヘッダ点検', tagline: 'レスポンスヘッダを安全性とプライバシーで採点' },
-    ko: { name: '헤더 검토', tagline: '응답 헤더를 보안과 개인정보 관점에서 채점하기' },
-  },
   load: () => import('./index.js'),
 };

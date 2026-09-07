@@ -8,14 +8,5 @@ export default {
   tint: "#ec4899",
   keywords: ["lorem","ipsum","placeholder","dummy","text"],
   tag: "jg-app-lorem",
-  i18n: {
-    de: { name: 'Lorem Ipsum', tagline: 'Blindtext als Wörter, Sätze oder Listen' },
-    es: { name: 'Lorem Ipsum', tagline: 'Texto de relleno en palabras, frases o listas' },
-    zh: { name: 'Lorem Ipsum', tagline: '按词、句或列表生成占位文本' },
-    fr: { name: 'Lorem Ipsum', tagline: 'Texte de remplissage en mots, phrases ou listes' },
-    pt: { name: 'Lorem Ipsum', tagline: 'Texto de preenchimento em palavras, frases ou listas' },
-    ja: { name: 'ロレム・イプサム', tagline: '単語、文、リストのダミーテキスト' },
-    ko: { name: '로렘 입숨', tagline: '단어, 문장, 목록 형태의 채움 글' },
-  },
   load: () => import('./index.js'),
 };

@@ -8,14 +8,5 @@ export default {
   tint: "#f43f5e",
   keywords: ["qr","code","barcode","scan","link"],
   tag: "jg-app-qr",
-  i18n: {
-    de: { name: 'QR-Code', tagline: 'Scanbare QR-Codes offline erzeugen' },
-    es: { name: 'Código QR', tagline: 'Generar códigos QR escaneables sin conexión' },
-    zh: { name: '二维码', tagline: '离线生成可扫描的二维码' },
-    fr: { name: 'Code QR', tagline: 'Générer des codes QR lisibles hors ligne' },
-    pt: { name: 'Código QR', tagline: 'Gere códigos QR escaneáveis offline' },
-    ja: { name: 'QR コード', tagline: 'オフラインで読み取れる QR コードを生成' },
-    ko: { name: 'QR 코드', tagline: '오프라인에서도 읽히는 QR 코드 만들기' },
-  },
   load: () => import('./index.js'),
 };

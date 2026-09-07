@@ -391,4 +391,22 @@ export default {
     'paint.swap': '바꾸기',
     'paint.swapTheTwoColours': '두 색 바꾸기',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

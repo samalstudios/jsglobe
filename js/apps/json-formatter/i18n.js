@@ -146,4 +146,22 @@ export default {
     'json-formatter.valid': '유효함',
     'json-formatter.stats': '노드 {nodes} · 깊이 {depth} · {chars}자',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

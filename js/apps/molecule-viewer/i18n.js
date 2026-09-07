@@ -125,4 +125,22 @@ export default {
     'molecule-viewer.bonds': '결합',
     'molecule-viewer.gMol': 'g/mol',
   },
+  nl: {
+    'molecule-viewer.gMol': 'g/mol',
+  },
+  sv: {
+    'molecule-viewer.gMol': 'g/mol',
+  },
+  no: {
+    'molecule-viewer.gMol': 'g/mol',
+  },
+  da: {
+    'molecule-viewer.gMol': 'g/mol',
+  },
+  pl: {
+    'molecule-viewer.gMol': 'g/mol',
+  },
+  uk: {
+    'molecule-viewer.gMol': 'g/mol',
+  },
 };

@@ -104,4 +104,22 @@ export default {
     'tuner.microphoneIsOff': '마이크가 꺼져 있습니다',
     'tuner.50Cents': '+50센트',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

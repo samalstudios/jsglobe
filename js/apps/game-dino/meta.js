@@ -9,14 +9,5 @@ export default {
   keywords: ["game","dino","trex","runner","chrome","offline","retro","jump"],
   tag: "jg-app-game-dino",
   window: {"width":1120,"height":560},
-  i18n: {
-    de: { name: 'T-Rex-Lauf', tagline: 'Im Offline-Runner über die Kakteen springen' },
-    es: { name: 'Carrera del T-Rex', tagline: 'Saltar los cactus en el corredor sin conexión' },
-    zh: { name: '恐龙快跑', tagline: '在离线小游戏里跃过仙人掌' },
-    fr: { name: 'Course du T-Rex', tagline: 'Sauter les cactus dans le jeu hors ligne' },
-    pt: { name: 'Corrida do T-Rex', tagline: 'Pule os cactos no joguinho offline' },
-    ja: { name: '恐竜ラン', tagline: 'オフラインゲームでサボテンを跳び越える' },
-    ko: { name: '티렉스 달리기', tagline: '오프라인 게임에서 선인장 뛰어넘기' },
-  },
   load: () => import('./index.js'),
 };

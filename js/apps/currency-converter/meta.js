@@ -9,14 +9,5 @@ export default {
   tag: "jg-app-currency-converter",
   widget: false,
   window: {"width":880,"height":800},
-  i18n: {
-    de: { name: 'Währung', tagline: 'Währungen mit Tageskursen umrechnen' },
-    es: { name: 'Divisas', tagline: 'Convertir entre monedas con tipos diarios' },
-    zh: { name: '汇率', tagline: '按每日汇率换算货币' },
-    fr: { name: 'Devises', tagline: 'Convertir entre devises avec des taux quotidiens' },
-    pt: { name: 'Moedas', tagline: 'Converta entre moedas com taxas diárias' },
-    ja: { name: '通貨', tagline: '日次レートで通貨を換算' },
-    ko: { name: '통화', tagline: '일별 환율로 통화 바꾸기' },
-  },
   load: () => import('./index.js'),
 };

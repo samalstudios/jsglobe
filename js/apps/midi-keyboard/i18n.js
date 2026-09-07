@@ -83,4 +83,22 @@ export default {
     'midi-keyboard.connectMidiDevice': 'MIDI 기기 연결',
     'midi-keyboard.notConnected': '연결되지 않음',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

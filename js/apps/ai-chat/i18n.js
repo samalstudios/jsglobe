@@ -97,4 +97,22 @@ export default {
     'ai-chat.everythingYouTypeStaysOn': '입력한 것은 모두 이 기기에 남습니다.',
     'ai-chat.ai': 'AI',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

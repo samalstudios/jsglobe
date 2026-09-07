@@ -314,4 +314,22 @@ export default {
     'letters.letters': '글자',
     'letters.widgetBlurb': '그리스, 키릴, 일본, 중국 문자를 익힙니다.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

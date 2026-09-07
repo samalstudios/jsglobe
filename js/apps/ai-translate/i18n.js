@@ -118,4 +118,22 @@ export default {
     'ai-translate.formalTone': '격식 있는 말투',
     'ai-translate.casualTone': '편안한 말투',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

@@ -167,4 +167,22 @@ export default {
     'css-gradient.reverse': '거꾸로',
     'css-gradient.presets': '프리셋',
   },
+  nl: {
+    'css-gradient.radial': 'Radial',
+  },
+  sv: {
+    'css-gradient.radial': 'Radial',
+  },
+  no: {
+    'css-gradient.radial': 'Radial',
+  },
+  da: {
+    'css-gradient.radial': 'Radial',
+  },
+  pl: {
+    'css-gradient.radial': 'Radial',
+  },
+  uk: {
+    'css-gradient.radial': 'Radial',
+  },
 };

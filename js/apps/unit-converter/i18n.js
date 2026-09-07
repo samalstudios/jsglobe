@@ -34,4 +34,22 @@ export default {
     'unit-converter.to': '대상',
     'unit-converter.allUnits': '모든 단위',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

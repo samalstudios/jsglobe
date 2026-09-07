@@ -9,14 +9,5 @@ export default {
   keywords: ["translate","language","ai","localise","localize","spanish","french","japanese"],
   tag: "jg-app-ai-translate",
   window: {"width":980,"height":760},
-  i18n: {
-    de: { name: 'Übersetzen', tagline: 'Text mit einem Modell auf diesem Gerät übersetzen' },
-    es: { name: 'Traducir', tagline: 'Traducir texto con un modelo en este dispositivo' },
-    zh: { name: '翻译', tagline: '用本机上的模型翻译文本' },
-    fr: { name: 'Traduire', tagline: 'Traduire du texte avec un modèle sur cet appareil' },
-    pt: { name: 'Traduzir', tagline: 'Traduza textos com um modelo neste dispositivo' },
-    ja: { name: '翻訳', tagline: 'この端末のモデルでテキストを翻訳' },
-    ko: { name: '번역', tagline: '이 기기의 모델로 텍스트를 번역하기' },
-  },
   load: () => import('./index.js'),
 };

@@ -188,4 +188,22 @@ export default {
     'screenshot.imageCopied': '이미지를 복사했습니다',
     'screenshot.thisBrowserBlockedTheClipboard': '이 브라우저가 클립보드 쓰기를 막았습니다',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

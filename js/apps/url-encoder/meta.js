@@ -8,14 +8,5 @@ export default {
   tint: "#0ea5e9",
   keywords: ["url","encode","decode","percent","uri"],
   tag: "jg-app-url-encoder",
-  i18n: {
-    de: { name: 'URL kodieren', tagline: 'URL-Bestandteile prozentkodieren und dekodieren' },
-    es: { name: 'Codificar URL', tagline: 'Codificar y decodificar componentes de una URL' },
-    zh: { name: 'URL 编码', tagline: '对 URL 片段进行百分号编码和解码' },
-    fr: { name: 'Encodage d\'URL', tagline: 'Encoder et décoder en pourcentage les composants d\'URL' },
-    pt: { name: 'Codificação de URL', tagline: 'Codifique e decodifique componentes de URL em porcentagem' },
-    ja: { name: 'URL エンコード', tagline: 'URL の各部をパーセント符号化、復号' },
-    ko: { name: 'URL 인코딩', tagline: 'URL 구성 요소를 퍼센트 인코딩하고 되돌리기' },
-  },
   load: () => import('./index.js'),
 };

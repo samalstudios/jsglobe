@@ -90,4 +90,22 @@ export default {
     'game-tetris.pressPlay': '재생을 누르세요',
     'game-tetris.orHitSpace': '또는 스페이스바',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

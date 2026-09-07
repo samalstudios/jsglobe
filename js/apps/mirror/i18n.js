@@ -321,4 +321,22 @@ export default {
     'mirror.unfreeze': '멈춤 풀기',
     'mirror.openPhoto': '사진 열기',
   },
+  nl: {
+    'mirror.zoom': 'Zoom',
+  },
+  sv: {
+    'mirror.zoom': 'Zoom',
+  },
+  no: {
+    'mirror.zoom': 'Zoom',
+  },
+  da: {
+    'mirror.zoom': 'Zoom',
+  },
+  pl: {
+    'mirror.zoom': 'Zoom',
+  },
+  uk: {
+    'mirror.zoom': 'Zoom',
+  },
 };

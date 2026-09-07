@@ -111,4 +111,28 @@ export default {
     'drum-kit.loadBeat': '비트 불러오기',
     'drum-kit.tempo': 'Tempo',
   },
+  nl: {
+    'drum-kit.tom': 'Tom',
+    'drum-kit.tempo': 'Tempo',
+  },
+  sv: {
+    'drum-kit.tom': 'Tom',
+    'drum-kit.tempo': 'Tempo',
+  },
+  no: {
+    'drum-kit.tom': 'Tom',
+    'drum-kit.tempo': 'Tempo',
+  },
+  da: {
+    'drum-kit.tom': 'Tom',
+    'drum-kit.tempo': 'Tempo',
+  },
+  pl: {
+    'drum-kit.tom': 'Tom',
+    'drum-kit.tempo': 'Tempo',
+  },
+  uk: {
+    'drum-kit.tom': 'Tom',
+    'drum-kit.tempo': 'Tempo',
+  },
 };

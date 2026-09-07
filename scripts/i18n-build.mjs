@@ -1,7 +1,7 @@
 import { readFile, writeFile, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
-const LANGS = ['de', 'es', 'zh', 'fr', 'pt', 'ja', 'ko'];
+const LANGS = ['de', 'es', 'zh', 'fr', 'pt', 'ja', 'ko', 'nl', 'sv', 'no', 'da', 'pl', 'uk'];
 const APPS = 'js/apps';
 const glossary = JSON.parse(await readFile('js/i18n/glossary.json', 'utf8'));
 

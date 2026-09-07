@@ -111,4 +111,22 @@ export default {
     'function-plotter.sinX': 'sin(x)',
     'function-plotter.noSignChangesInThe': '보이는 범위에 부호가 바뀌는 곳이 없습니다.',
   },
+  nl: {
+    'function-plotter.sinX': 'sin(x)',
+  },
+  sv: {
+    'function-plotter.sinX': 'sin(x)',
+  },
+  no: {
+    'function-plotter.sinX': 'sin(x)',
+  },
+  da: {
+    'function-plotter.sinX': 'sin(x)',
+  },
+  pl: {
+    'function-plotter.sinX': 'sin(x)',
+  },
+  uk: {
+    'function-plotter.sinX': 'sin(x)',
+  },
 };

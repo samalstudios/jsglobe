@@ -405,4 +405,22 @@ export default {
     'inspector.inspector': 'Inspector AI',
     'inspector.widgetBlurb': '자기 문서에 질문할 수 있습니다.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

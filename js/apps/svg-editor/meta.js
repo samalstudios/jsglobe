@@ -9,14 +9,5 @@ export default {
   keywords: ["svg","vector","viewer","editor","optimise","optimize","icon","minify","png"],
   tag: "jg-app-svg-editor",
   window: {"width":1080,"height":860,"maximized":true},
-  i18n: {
-    de: { name: 'SVG-Studio', tagline: 'SVG ansehen, säubern, umfärben und exportieren' },
-    es: { name: 'SVG Studio', tagline: 'Ver, limpiar, recolorear y exportar SVG' },
-    zh: { name: 'SVG 工作台', tagline: '查看、清理、改色并导出 SVG' },
-    fr: { name: 'Studio SVG', tagline: 'Voir, nettoyer, recolorer et exporter du SVG' },
-    pt: { name: 'Estúdio SVG', tagline: 'Veja, limpe, recolora e exporte SVG' },
-    ja: { name: 'SVG スタジオ', tagline: 'SVG の表示、整理、色替え、書き出し' },
-    ko: { name: 'SVG 스튜디오', tagline: 'SVG를 보고 정리하고 색을 바꾸고 내보내기' },
-  },
   load: () => import('./index.js'),
 };

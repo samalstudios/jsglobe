@@ -153,4 +153,34 @@ export default {
     'mac-generator.administration': '관리',
     'mac-generator.eui64': 'EUI-64',
   },
+  nl: {
+    'mac-generator.cisco001b4411': 'Cisco - 001b.4411',
+    'mac-generator.oui': 'OUI',
+    'mac-generator.eui64': 'EUI-64',
+  },
+  sv: {
+    'mac-generator.cisco001b4411': 'Cisco - 001b.4411',
+    'mac-generator.oui': 'OUI',
+    'mac-generator.eui64': 'EUI-64',
+  },
+  no: {
+    'mac-generator.cisco001b4411': 'Cisco - 001b.4411',
+    'mac-generator.oui': 'OUI',
+    'mac-generator.eui64': 'EUI-64',
+  },
+  da: {
+    'mac-generator.cisco001b4411': 'Cisco - 001b.4411',
+    'mac-generator.oui': 'OUI',
+    'mac-generator.eui64': 'EUI-64',
+  },
+  pl: {
+    'mac-generator.cisco001b4411': 'Cisco - 001b.4411',
+    'mac-generator.oui': 'OUI',
+    'mac-generator.eui64': 'EUI-64',
+  },
+  uk: {
+    'mac-generator.cisco001b4411': 'Cisco - 001b.4411',
+    'mac-generator.oui': 'OUI',
+    'mac-generator.eui64': 'EUI-64',
+  },
 };

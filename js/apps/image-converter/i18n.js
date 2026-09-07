@@ -153,4 +153,28 @@ export default {
     'image-converter.addPngJpegWebpGif': 'PNG, JPEG, WebP, GIF, AVIF, SVG 파일을 추가하세요.',
     'image-converter.save': '저장',
   },
+  nl: {
+    'image-converter.webp': 'WebP',
+    'image-converter.px': 'px',
+  },
+  sv: {
+    'image-converter.webp': 'WebP',
+    'image-converter.px': 'px',
+  },
+  no: {
+    'image-converter.webp': 'WebP',
+    'image-converter.px': 'px',
+  },
+  da: {
+    'image-converter.webp': 'WebP',
+    'image-converter.px': 'px',
+  },
+  pl: {
+    'image-converter.webp': 'WebP',
+    'image-converter.px': 'px',
+  },
+  uk: {
+    'image-converter.webp': 'WebP',
+    'image-converter.px': 'px',
+  },
 };

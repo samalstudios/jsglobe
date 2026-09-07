@@ -8,14 +8,5 @@ export default {
   keywords: ["statistics","mean","median","standard deviation","quartile","histogram","box plot"],
   tag: "jg-app-statistics",
   window: {"width":1060,"height":860},
-  i18n: {
-    de: { name: 'Statistik', tagline: 'Kennzahlen, Histogramm und Boxplot für Zahlenreihen' },
-    es: { name: 'Estadística', tagline: 'Resumen, histograma y diagrama de caja de un conjunto de números' },
-    zh: { name: '统计', tagline: '一组数字的概要、直方图与箱线图' },
-    fr: { name: 'Statistiques', tagline: 'Résumé, histogramme et boîte à moustaches d\'une série' },
-    pt: { name: 'Estatística', tagline: 'Resumo, histograma e box plot de um conjunto de números' },
-    ja: { name: '統計', tagline: '数の集まりの要約、ヒストグラム、箱ひげ図' },
-    ko: { name: '통계', tagline: '숫자 묶음의 요약, 히스토그램, 상자 그림' },
-  },
   load: () => import('./index.js'),
 };

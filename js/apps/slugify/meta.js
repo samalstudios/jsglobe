@@ -8,14 +8,5 @@ export default {
   tint: "#155e75",
   keywords: ["slug","url","seo","permalink"],
   tag: "jg-app-slugify",
-  i18n: {
-    de: { name: 'Slugify', tagline: 'Jeden Text in einen sauberen URL-Slug verwandeln' },
-    es: { name: 'Slugify', tagline: 'Convertir cualquier texto en un slug de URL limpio' },
-    zh: { name: 'Slugify', tagline: '把任意文本变成干净的 URL slug' },
-    fr: { name: 'Slugify', tagline: 'Transformer une chaîne en slug d\'URL propre' },
-    pt: { name: 'Slugify', tagline: 'Transforme qualquer texto em um slug de URL limpo' },
-    ja: { name: 'スラグ化', tagline: '任意の文字列を綺麗な URL スラグに' },
-    ko: { name: '슬러그 만들기', tagline: '어떤 문자열이든 깔끔한 URL 슬러그로' },
-  },
   load: () => import('./index.js'),
 };

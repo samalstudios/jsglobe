@@ -9,14 +9,5 @@ export default {
   keywords: ["paint","draw","canvas","pixel","sketch","bitmap","image"],
   tag: "jg-app-paint",
   window: {"width":1040,"height":760,"maximized":true},
-  i18n: {
-    de: { name: 'Malen', tagline: 'Stift, Formen, Füllen und Sprühdose auf einer Leinwand' },
-    es: { name: 'Pintura', tagline: 'Lápiz, formas, relleno y spray sobre un lienzo' },
-    zh: { name: '画板', tagline: '在画布上使用铅笔、形状、填充与喷枪' },
-    fr: { name: 'Dessin', tagline: 'Crayon, formes, remplissage et aérographe sur une toile' },
-    pt: { name: 'Pintura', tagline: 'Lápis, formas, preenchimento e spray em uma tela' },
-    ja: { name: 'ペイント', tagline: '鉛筆、図形、塗りつぶし、スプレー' },
-    ko: { name: '그림판', tagline: '연필, 도형, 채우기, 스프레이' },
-  },
   load: () => import('./index.js'),
 };

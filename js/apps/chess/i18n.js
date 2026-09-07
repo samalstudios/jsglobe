@@ -447,4 +447,22 @@ export default {
     'chess.notQuite': '여기서 노릴 수는 {san}이(가) 아닙니다. 다시 해 보세요.',
     'chess.tryThisPiece': '{square}의 기물을 시도해 보세요.',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

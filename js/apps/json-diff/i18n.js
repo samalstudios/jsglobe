@@ -55,4 +55,22 @@ export default {
     'json-diff.pasteJsonOnBothSides': '양쪽에 JSON을 붙여넣으세요.',
     'json-diff.noDifferencesFound': '다른 곳을 찾지 못했습니다.',
   },
+  nl: {
+    'json-diff.original': 'Original',
+  },
+  sv: {
+    'json-diff.original': 'Original',
+  },
+  no: {
+    'json-diff.original': 'Original',
+  },
+  da: {
+    'json-diff.original': 'Original',
+  },
+  pl: {
+    'json-diff.original': 'Original',
+  },
+  uk: {
+    'json-diff.original': 'Original',
+  },
 };

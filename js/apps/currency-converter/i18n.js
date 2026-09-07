@@ -69,4 +69,22 @@ export default {
     'currency-converter.atAGlance': '한눈에',
     'currency-converter.theSameAmountInOther': '같은 금액을 다른 통화로',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

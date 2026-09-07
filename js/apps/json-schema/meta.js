@@ -8,14 +8,5 @@ export default {
   keywords: ["json schema","validate","infer","draft","contract","api"],
   tag: "jg-app-json-schema",
   window: {"width":1100,"height":840},
-  i18n: {
-    de: { name: 'JSON-Schema', tagline: 'Schema aus Beispielen ableiten und Dokumente prüfen' },
-    es: { name: 'Esquema JSON', tagline: 'Inferir un esquema desde ejemplos y validar documentos' },
-    zh: { name: 'JSON Schema', tagline: '从样例推断 schema 并校验文档' },
-    fr: { name: 'Schéma JSON', tagline: 'Déduire un schéma d\'exemples et valider des documents' },
-    pt: { name: 'JSON Schema', tagline: 'Deduza um esquema a partir de amostras e valide documentos' },
-    ja: { name: 'JSON スキーマ', tagline: '例からスキーマを推定し、文書を検証' },
-    ko: { name: 'JSON 스키마', tagline: '예시에서 스키마를 뽑고 문서를 검사하기' },
-  },
   load: () => import('./index.js'),
 };

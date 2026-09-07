@@ -202,4 +202,40 @@ export default {
     'serial-console.saveLog': '로그 저장',
     'serial-console.clear': '지우기',
   },
+  nl: {
+    'serial-console.lf': 'LF',
+    'serial-console.crlf': 'CRLF',
+    'serial-console.cr': 'CR',
+    'serial-console.navigatorSerial': 'navigator.serial',
+  },
+  sv: {
+    'serial-console.lf': 'LF',
+    'serial-console.crlf': 'CRLF',
+    'serial-console.cr': 'CR',
+    'serial-console.navigatorSerial': 'navigator.serial',
+  },
+  no: {
+    'serial-console.lf': 'LF',
+    'serial-console.crlf': 'CRLF',
+    'serial-console.cr': 'CR',
+    'serial-console.navigatorSerial': 'navigator.serial',
+  },
+  da: {
+    'serial-console.lf': 'LF',
+    'serial-console.crlf': 'CRLF',
+    'serial-console.cr': 'CR',
+    'serial-console.navigatorSerial': 'navigator.serial',
+  },
+  pl: {
+    'serial-console.lf': 'LF',
+    'serial-console.crlf': 'CRLF',
+    'serial-console.cr': 'CR',
+    'serial-console.navigatorSerial': 'navigator.serial',
+  },
+  uk: {
+    'serial-console.lf': 'LF',
+    'serial-console.crlf': 'CRLF',
+    'serial-console.cr': 'CR',
+    'serial-console.navigatorSerial': 'navigator.serial',
+  },
 };

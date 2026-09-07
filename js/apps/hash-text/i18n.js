@@ -104,4 +104,22 @@ export default {
     'common.text': '텍스트',
     'common.file': '파일',
   },
+  nl: {
+    'hash-text.sha256': 'SHA-256',
+  },
+  sv: {
+    'hash-text.sha256': 'SHA-256',
+  },
+  no: {
+    'hash-text.sha256': 'SHA-256',
+  },
+  da: {
+    'hash-text.sha256': 'SHA-256',
+  },
+  pl: {
+    'hash-text.sha256': 'SHA-256',
+  },
+  uk: {
+    'hash-text.sha256': 'SHA-256',
+  },
 };

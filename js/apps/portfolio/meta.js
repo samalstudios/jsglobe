@@ -10,14 +10,5 @@ export default {
   tag: "jg-app-portfolio",
   widget: true,
   window: {"width":1040,"height":900},
-  i18n: {
-    de: { name: 'Portfolio', tagline: 'Bestände, Aufteilung und Gewinn oder Verlust verfolgen' },
-    es: { name: 'Cartera', tagline: 'Seguir posiciones, reparto y ganancias o pérdidas' },
-    zh: { name: '投资组合', tagline: '跟踪持仓、配置与盈亏' },
-    fr: { name: 'Portefeuille', tagline: 'Suivre les positions, la répartition et les gains ou pertes' },
-    pt: { name: 'Carteira', tagline: 'Acompanhe posições, alocação e lucro ou prejuízo' },
-    ja: { name: 'ポートフォリオ', tagline: '保有、配分、損益を追う' },
-    ko: { name: '포트폴리오', tagline: '보유, 배분, 손익을 따라가기' },
-  },
   load: () => import('./index.js'),
 };

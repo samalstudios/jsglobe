@@ -118,4 +118,22 @@ export default {
     'text-encoder.encoded': '인코딩 결과',
     'text-encoder.pasteEncodedTextToDecode': '디코딩할 인코딩된 글을 붙여넣으세요',
   },
+  nl: {
+    'text-encoder.rot13': 'ROT13',
+  },
+  sv: {
+    'text-encoder.rot13': 'ROT13',
+  },
+  no: {
+    'text-encoder.rot13': 'ROT13',
+  },
+  da: {
+    'text-encoder.rot13': 'ROT13',
+  },
+  pl: {
+    'text-encoder.rot13': 'ROT13',
+  },
+  uk: {
+    'text-encoder.rot13': 'ROT13',
+  },
 };

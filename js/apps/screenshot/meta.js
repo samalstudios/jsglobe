@@ -9,14 +9,5 @@ export default {
   keywords: ["screenshot","capture","annotate","blur","redact","crop","arrow","before after"],
   tag: "jg-app-screenshot",
   window: {"width":1080,"height":900},
-  i18n: {
-    de: { name: 'Screenshot-Studio', tagline: 'Screenshots aufnehmen, beschriften, unkenntlich machen und vergleichen' },
-    es: { name: 'Estudio de capturas', tagline: 'Capturar, anotar, difuminar y comparar capturas de pantalla' },
-    zh: { name: '截图工作台', tagline: '截取、标注、模糊并对比截图' },
-    fr: { name: 'Studio de captures', tagline: 'Capturer, annoter, flouter et comparer des captures' },
-    pt: { name: 'Estúdio de capturas', tagline: 'Capture, anote, desfoque e compare capturas de tela' },
-    ja: { name: 'スクリーンショットスタジオ', tagline: '撮影、注釈、ぼかし、比較' },
-    ko: { name: '스크린샷 스튜디오', tagline: '찍고 표시하고 흐리게 하고 비교하기' },
-  },
   load: () => import('./index.js'),
 };

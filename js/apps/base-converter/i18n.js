@@ -118,4 +118,22 @@ export default {
     'base-converter.fitsIn': '들어가는 범위',
     'base-converter.scientific': '과학 표기',
   },
+  nl: {
+    'base-converter.bytes': 'Bytes',
+  },
+  sv: {
+    'base-converter.bytes': 'Bytes',
+  },
+  no: {
+    'base-converter.bytes': 'Bytes',
+  },
+  da: {
+    'base-converter.bytes': 'Bytes',
+  },
+  pl: {
+    'base-converter.bytes': 'Bytes',
+  },
+  uk: {
+    'base-converter.bytes': 'Bytes',
+  },
 };

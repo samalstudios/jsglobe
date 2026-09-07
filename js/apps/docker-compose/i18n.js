@@ -83,4 +83,28 @@ export default {
     'docker-compose.copyResult': '결과 복사',
     'docker-compose.download': '내려받기',
   },
+  nl: {
+    'docker-compose.dockerRunP8080': 'docker run -p 80:80 nginx',
+    'docker-compose.composeYaml': 'compose.yaml',
+  },
+  sv: {
+    'docker-compose.dockerRunP8080': 'docker run -p 80:80 nginx',
+    'docker-compose.composeYaml': 'compose.yaml',
+  },
+  no: {
+    'docker-compose.dockerRunP8080': 'docker run -p 80:80 nginx',
+    'docker-compose.composeYaml': 'compose.yaml',
+  },
+  da: {
+    'docker-compose.dockerRunP8080': 'docker run -p 80:80 nginx',
+    'docker-compose.composeYaml': 'compose.yaml',
+  },
+  pl: {
+    'docker-compose.dockerRunP8080': 'docker run -p 80:80 nginx',
+    'docker-compose.composeYaml': 'compose.yaml',
+  },
+  uk: {
+    'docker-compose.dockerRunP8080': 'docker run -p 80:80 nginx',
+    'docker-compose.composeYaml': 'compose.yaml',
+  },
 };

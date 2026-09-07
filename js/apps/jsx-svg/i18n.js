@@ -69,4 +69,22 @@ export default {
     'jsx-svg.jsxToSvg': 'JSX에서 SVG로',
     'jsx-svg.svgToJsx': 'SVG에서 JSX로',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

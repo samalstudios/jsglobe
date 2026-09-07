@@ -118,4 +118,22 @@ export default {
     'compose-to-k8s.clear': '지우기',
     'compose-to-k8s.emptyTheInput': '입력 비우기',
   },
+  nl: {
+    'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+  },
+  sv: {
+    'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+  },
+  no: {
+    'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+  },
+  da: {
+    'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+  },
+  pl: {
+    'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+  },
+  uk: {
+    'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+  },
 };

@@ -8,14 +8,5 @@ export default {
   tint: "#0d9488",
   keywords: ["ip","ipv4","convert","decimal","binary"],
   tag: "jg-app-ip-converter",
-  i18n: {
-    de: { name: 'IP-Konverter', tagline: 'IPv4 dezimal, hexadezimal, binär und oktal' },
-    es: { name: 'Conversor de IP', tagline: 'IPv4 en decimal, hexadecimal, binario y octal' },
-    zh: { name: 'IP 转换', tagline: '十进制、十六进制、二进制与八进制的 IPv4' },
-    fr: { name: 'Convertisseur IP', tagline: 'IPv4 en décimal, hexadécimal, binaire et octal' },
-    pt: { name: 'Conversor de IP', tagline: 'IPv4 em decimal, hexadecimal, binário e octal' },
-    ja: { name: 'IP 変換', tagline: 'IPv4 を 10 進、16 進、2 進、8 進で' },
-    ko: { name: 'IP 변환', tagline: 'IPv4를 10진, 16진, 2진, 8진으로' },
-  },
   load: () => import('./index.js'),
 };

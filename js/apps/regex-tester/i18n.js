@@ -62,4 +62,22 @@ export default {
     'regex-tester.cheatSheet': '요약표',
     'regex-tester.noMatches': '일치하는 것이 없습니다',
   },
+  nl: {
+
+  },
+  sv: {
+
+  },
+  no: {
+
+  },
+  da: {
+
+  },
+  pl: {
+
+  },
+  uk: {
+
+  },
 };

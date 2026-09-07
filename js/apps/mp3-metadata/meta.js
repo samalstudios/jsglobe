@@ -8,14 +8,5 @@ export default {
   keywords: ["mp3","id3","tags","metadata","music","artwork","album"],
   tag: "jg-app-mp3-metadata",
   window: {"width":940,"height":820},
-  i18n: {
-    de: { name: 'MP3-Metadaten', tagline: 'ID3-Tags und Cover in MP3-Dateien bearbeiten' },
-    es: { name: 'Metadatos MP3', tagline: 'Editar etiquetas ID3 y carátulas en archivos MP3' },
-    zh: { name: 'MP3 元数据', tagline: '编辑 MP3 文件的 ID3 标签与封面' },
-    fr: { name: 'Métadonnées MP3', tagline: 'Modifier les tags ID3 et la pochette de fichiers MP3' },
-    pt: { name: 'Metadados MP3', tagline: 'Edite tags ID3 e capa em arquivos MP3' },
-    ja: { name: 'MP3 メタデータ', tagline: 'MP3 の ID3 タグとアートワークを編集' },
-    ko: { name: 'MP3 메타데이터', tagline: 'MP3의 ID3 태그와 표지 편집하기' },
-  },
   load: () => import('./index.js'),
 };
