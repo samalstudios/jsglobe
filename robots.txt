@@ -2,3 +2,20 @@ User-agent: *
 Allow: /
 
 Sitemap: https://jsglobe.com/sitemap.xml
+
+# A plain summary of every tool, per language, for assistants that would
+# rather read one page than crawl two thousand.
+# llms: https://jsglobe.com/llms.txt
+# llms: https://jsglobe.com/de/llms.txt
+# llms: https://jsglobe.com/es/llms.txt
+# llms: https://jsglobe.com/zh/llms.txt
+# llms: https://jsglobe.com/fr/llms.txt
+# llms: https://jsglobe.com/pt/llms.txt
+# llms: https://jsglobe.com/ja/llms.txt
+# llms: https://jsglobe.com/ko/llms.txt
+# llms: https://jsglobe.com/nl/llms.txt
+# llms: https://jsglobe.com/sv/llms.txt
+# llms: https://jsglobe.com/no/llms.txt
+# llms: https://jsglobe.com/da/llms.txt
+# llms: https://jsglobe.com/pl/llms.txt
+# llms: https://jsglobe.com/uk/llms.txt

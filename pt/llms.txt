@@ -1,0 +1,180 @@
+# Toolbox
+
+> Ferramentas de desenvolvimento rápidas e privadas, rodando inteiramente no navegador. 129 ferramentas, sem cadastro, sem envios.
+
+Tudo roda como JavaScript no seu próprio navegador, então o que você digita nunca chega a um servidor.
+
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 7 tools across 5 pages do this so far, marked below.
+
+Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
+
+## Criptografia e segurança
+
+- [Hash de texto](https://jsglobe.com/pt/apps/hash-text): Resumos MD5, SHA-1, SHA-256, SHA-512
+- [HMAC](https://jsglobe.com/pt/apps/hmac-generator): Códigos de autenticação de mensagem com chave
+- [Criptografar / Descriptografar](https://jsglobe.com/pt/apps/encryption): Criptografia de texto AES-GCM com uma frase secreta
+- [Gerador de tokens](https://jsglobe.com/pt/apps/token-generator): Senhas aleatórias fortes e tokens de API
+- [TOTP](https://jsglobe.com/pt/apps/otp-generator): Senhas de uso único baseadas em tempo, a partir de um segredo
+- [Auth básica](https://jsglobe.com/pt/apps/basic-auth): Monte cabeçalhos Authorization a partir de credenciais
+- [Par de chaves](https://jsglobe.com/pt/apps/rsa-keygen): Gere chaves RSA e de curva elíptica em PEM
+- [Força da senha](https://jsglobe.com/pt/apps/password-strength): Entropia, fraquezas e tempo até ser quebrada
+- [Decodificador de certificado](https://jsglobe.com/pt/apps/cert-decoder): Leia um certificado X.509 ou uma requisição de assinatura
+- [Chaves SSH](https://jsglobe.com/pt/apps/ssh-keys): Gere e inspecione chaves OpenSSH offline
+
+## Conversores
+
+- [Base64](https://jsglobe.com/pt/apps/base64-converter): Codifique e decodifique texto ou arquivos [tools: encode_base64, decode_base64]
+- [Conversor de cores](https://jsglobe.com/pt/apps/color-converter): HEX, RGB, HSL, OKLCH e verificação de contraste
+- [Paleta de cores](https://jsglobe.com/pt/apps/color-palette): Escalas ao estilo Tailwind, roda de cores e harmonias
+- [Conversor de caixa](https://jsglobe.com/pt/apps/case-converter): camelCase, snake_case, kebab-case e mais [tools: convert_case]
+- [Data e hora](https://jsglobe.com/pt/apps/date-converter): Timestamps Unix, ISO 8601 e tempo relativo
+- [Base numérica](https://jsglobe.com/pt/apps/base-converter): Binário, octal, decimal, hexadecimal e qualquer base
+- [JSON ⇄ YAML](https://jsglobe.com/pt/apps/json-yaml): Converta entre documentos JSON e YAML
+- [Codificador de texto](https://jsglobe.com/pt/apps/text-encoder): Binário, hexadecimal, unicode, OTAN, morse e ROT13
+- [Conversor de listas](https://jsglobe.com/pt/apps/list-converter): Ordene, remova duplicatas, envolva e junte listas
+- [Números romanos](https://jsglobe.com/pt/apps/roman-numerals): Converta números de e para algarismos romanos
+- [Moedas](https://jsglobe.com/pt/apps/currency-converter): Converta entre moedas com taxas diárias
+- [Código morse](https://jsglobe.com/pt/apps/morse-code): Traduza texto para morse e ouça
+- [Estúdio PDF](https://jsglobe.com/pt/apps/pdf-studio): Junte, divida, gire e converta PDFs
+
+## Web
+
+- [Codificação de URL](https://jsglobe.com/pt/apps/url-encoder): Codifique e decodifique componentes de URL em porcentagem
+- [Analisador de URL](https://jsglobe.com/pt/apps/url-parser): Divida uma URL em suas partes e parâmetros
+- [Entidades HTML](https://jsglobe.com/pt/apps/html-entities): Escape e reverta entidades HTML
+- [Analisador de JWT](https://jsglobe.com/pt/apps/jwt-parser): Decodifique e inspecione JSON Web Tokens
+- [Informações de tecla](https://jsglobe.com/pt/apps/keycode-info): Inspecione eventos de teclado tecla a tecla
+- [Slugify](https://jsglobe.com/pt/apps/slugify): Transforme qualquer texto em um slug de URL limpo [tools: slugify_text]
+- [Status HTTP](https://jsglobe.com/pt/apps/http-status): Referência pesquisável dos códigos de status HTTP
+- [Revisão de cabeçalhos](https://jsglobe.com/pt/apps/http-headers): Avalie cabeçalhos de resposta quanto a segurança e privacidade
+- [Criador de gradientes](https://jsglobe.com/pt/apps/css-gradient): Monte gradientes CSS com paradas arrastáveis
+- [Animação CSS](https://jsglobe.com/pt/apps/css-animation): Predefinições de keyframes com editor de cubic-bezier
+
+## Desenvolvimento
+
+- [Formatador JSON](https://jsglobe.com/pt/apps/json-formatter): Formate, valide, minifique e explore JSON [tools: format_json, check_json]
+- [Diff de JSON](https://jsglobe.com/pt/apps/json-diff): Compare dois documentos JSON chave a chave
+- [Formatador SQL](https://jsglobe.com/pt/apps/sql-formatter): Formatação legível para instruções SQL
+- [Formatador XML](https://jsglobe.com/pt/apps/xml-formatter): Indente e minifique marcação XML ou HTML
+- [Crontab](https://jsglobe.com/pt/apps/crontab-generator): Explique expressões cron e veja as próximas execuções
+- [Chmod](https://jsglobe.com/pt/apps/chmod-calculator): Permissões Unix em octal e em forma simbólica
+- [Testador de regex](https://jsglobe.com/pt/apps/regex-tester): Teste padrões com correspondências e grupos ao vivo
+- [Estúdio CSV](https://jsglobe.com/pt/apps/csv-studio): Abra, edite e converta dados CSV em uma tabela
+- [Dados de teste](https://jsglobe.com/pt/apps/mock-data): Gere dados realistas a partir de uma lista de campos
+- [JSON Schema](https://jsglobe.com/pt/apps/json-schema): Deduza um esquema a partir de amostras e valide documentos
+- [Editor de spec de API](https://jsglobe.com/pt/apps/api-spec): Edite e verifique documentos OpenAPI
+- [Docker Compose](https://jsglobe.com/pt/apps/docker-compose): Converta comandos docker run em arquivos compose
+- [Compose para K8s](https://jsglobe.com/pt/apps/compose-to-k8s): Transforme um arquivo compose em manifestos Kubernetes
+- [Kubernetes](https://jsglobe.com/pt/apps/kubernetes): Gere manifestos de deployment, service e ingress
+- [JSX para SVG](https://jsglobe.com/pt/apps/jsx-svg): Converta componentes React em SVG e de volta
+- [Gerador de GitIgnore](https://jsglobe.com/pt/apps/gitignore-generator): Monte um .gitignore a partir das ferramentas que você usa
+
+## Rede
+
+- [Calculadora de sub-rede](https://jsglobe.com/pt/apps/subnet-calculator): Faixas CIDR IPv4, máscaras e contagem de hosts
+- [Conversor de IP](https://jsglobe.com/pt/apps/ip-converter): IPv4 em decimal, hexadecimal, binário e octal
+- [Endereço MAC](https://jsglobe.com/pt/apps/mac-generator): Gere e reformate endereços MAC
+- [Consulta DNS](https://jsglobe.com/pt/apps/dns-lookup): Consultas de registros ao estilo dig por DNS-over-HTTPS
+- [Teste de velocidade](https://jsglobe.com/pt/apps/speed-test): Meça download, upload, latência e jitter
+- [Consulta de domínio](https://jsglobe.com/pt/apps/rdap-lookup): Registros RDAP de um domínio, IP ou rede
+- [Testador de WebSocket](https://jsglobe.com/pt/apps/websocket-tester): Conecte a um socket e acompanhe os quadros
+
+## Texto
+
+- [Lorem Ipsum](https://jsglobe.com/pt/apps/lorem-ipsum): Texto de preenchimento em palavras, frases ou listas
+- [Estatísticas de texto](https://jsglobe.com/pt/apps/text-stats): Contagens, tempo de leitura e análise de caracteres
+- [Diff de texto](https://jsglobe.com/pt/apps/text-diff): Compare dois textos linha a linha
+- [Markdown](https://jsglobe.com/pt/apps/markdown-preview): Escreva markdown e veja o HTML
+- [Seletor de emoji](https://jsglobe.com/pt/apps/emoji-picker): Navegue, busque e copie emoji com seus code points
+- [Tabelas Unicode](https://jsglobe.com/pt/apps/unicode-tables): Percorra blocos Unicode e inspecione qualquer caractere
+- [Estúdio de Documentos](https://jsglobe.com/pt/apps/doc-editor): Escreva, formate e exporte documentos em PDF ou Word, inteiramente no navegador
+- [Letras](https://jsglobe.com/pt/apps/letters): Aprenda os alfabetos grego, cirílico, japonês, coreano e chinês
+
+## Matemática e unidades
+
+- [Avaliador matemático](https://jsglobe.com/pt/apps/math-evaluator): Avalie expressões com funções e constantes [tools: evaluate_expression]
+- [Conversor de unidades](https://jsglobe.com/pt/apps/unit-converter): Comprimento, massa, dados, temperatura e tempo
+- [Plotador de funções](https://jsglobe.com/pt/apps/function-plotter): Trace expressões com zoom, raízes e derivadas
+- [Estatística](https://jsglobe.com/pt/apps/statistics): Resumo, histograma e box plot de um conjunto de números
+
+## Mídia
+
+- [Código QR](https://jsglobe.com/pt/apps/qr-generator): Gere códigos QR escaneáveis offline
+- [Conversor de imagens](https://jsglobe.com/pt/apps/image-converter): Converta, redimensione e comprima imagens no navegador
+- [Vídeo e áudio](https://jsglobe.com/pt/apps/media-converter): Transcodifique vídeo e áudio com WebAssembly
+- [Código de barras](https://jsglobe.com/pt/apps/barcode-generator): Códigos 128, EAN e Code 39 em SVG
+- [Estúdio de ícones](https://jsglobe.com/pt/apps/icon-studio): Monte um ícone com milhares de peças, ou descreva um
+- [Criador de favicon](https://jsglobe.com/pt/apps/favicon-generator): Todos os tamanhos de ícone, um .ico e o manifest
+- [Metadados Exif](https://jsglobe.com/pt/apps/exif-editor): Leia e remova metadados de fotos JPEG
+- [Metadados MP3](https://jsglobe.com/pt/apps/mp3-metadata): Edite tags ID3 e capa em arquivos MP3
+- [SVG de espaço reservado](https://jsglobe.com/pt/apps/svg-placeholder): Gere imagens de espaço reservado como SVG inline
+- [Arte ASCII](https://jsglobe.com/pt/apps/ascii-art): Banners de texto e conversão de imagem em ASCII
+- [Estúdio SVG](https://jsglobe.com/pt/apps/svg-editor): Veja, limpe, recolora e exporte SVG
+- [Gravador de voz](https://jsglobe.com/pt/apps/voice-recorder): Grave áudio e transcreva neste dispositivo
+- [Espelho](https://jsglobe.com/pt/apps/mirror): Espelho de câmera com luz de anel ajustável
+- [Estúdio de capturas](https://jsglobe.com/pt/apps/screenshot): Capture, anote, desfoque e compare capturas de tela
+- [Pintura](https://jsglobe.com/pt/apps/paint): Lápis, formas, preenchimento e spray em uma tela
+- [Estúdio de cartazes](https://jsglobe.com/pt/apps/poster-studio): Crie cartazes e versões para redes com um QR do evento
+
+## Ciências
+
+- [Tabela periódica](https://jsglobe.com/pt/apps/periodic-table): Todos os 118 elementos com suas propriedades
+- [Visualizador de moléculas](https://jsglobe.com/pt/apps/molecule-viewer): Vitaminas, medicamentos e moléculas famosas em 3D
+- [Laboratório de circuitos](https://jsglobe.com/pt/apps/circuit-lab): Monte e simule circuitos eletrônicos básicos
+- [Laboratório de física](https://jsglobe.com/pt/apps/physics-lab): Bolas, blocos, molas, hastes, macacos e motores
+- [Laboratório de lógica](https://jsglobe.com/pt/apps/logic-lab): Portas, flip-flops, contadores, decodificadores e displays de LED
+- [Laboratório de óptica](https://jsglobe.com/pt/apps/optics-lab): Lentes, espelhos e prismas com traçado de raios de verdade
+
+## IA local
+
+- [Chat de IA](https://jsglobe.com/pt/apps/ai-chat): Converse com um modelo rodando neste dispositivo
+- [Código com IA](https://jsglobe.com/pt/apps/ai-code): Explique, revise, documente e converta código
+- [Escritor com IA](https://jsglobe.com/pt/apps/ai-writer): Resuma, reescreva, traduza e revise
+- [Traduzir](https://jsglobe.com/pt/apps/ai-translate): Traduza textos com um modelo neste dispositivo
+- [Regex com IA](https://jsglobe.com/pt/apps/ai-regex): Descreva um padrão e receba uma regex testada
+- [Inspector AI](https://jsglobe.com/pt/apps/inspector): Faça perguntas aos seus documentos, com referências
+
+## Jogos
+
+- [Teste de digitação](https://jsglobe.com/pt/apps/typing-test): Palavras por minuto, precisão e teclas problemáticas
+- [Xadrez](https://jsglobe.com/pt/apps/chess): Jogue contra o computador, aprenda aberturas e treine táticas
+- [Sudoku](https://jsglobe.com/pt/apps/game-sudoku): Grades geradas com anotações e dicas
+- [Blocos](https://jsglobe.com/pt/apps/game-tetris): Empilhe as peças que caem e complete linhas
+- [Memória](https://jsglobe.com/pt/apps/game-memory): Vire as cartas e encontre os pares
+- [Advinhe a palavra](https://jsglobe.com/pt/apps/game-word): Seis tentativas para achar a palavra de cinco letras
+- [Bateria](https://jsglobe.com/pt/apps/drum-kit): Toque os pads e monte uma batida de 16 passos
+- [Afinador](https://jsglobe.com/pt/apps/tuner): Afine violão, baixo ou ukulele de ouvido ou pelo microfone
+- [Teclado MIDI](https://jsglobe.com/pt/apps/midi-keyboard): Sintetizador tocável pelo teclado do computador e por MIDI
+- [2048](https://jsglobe.com/pt/apps/game-2048): Deslize e junte peças até chegar a 2048
+- [Campo minado](https://jsglobe.com/pt/apps/game-minesweeper): Limpe o campo sem pisar em uma mina
+- [Snake](https://jsglobe.com/pt/apps/game-snake): Coma, cresça e não morda a si mesmo
+- [Breakout](https://jsglobe.com/pt/apps/game-breakout): Rebata a bola e limpe todos os tijolos
+- [Pong](https://jsglobe.com/pt/apps/game-pong): O duelo de raquetes original contra a máquina
+- [Invasores](https://jsglobe.com/pt/apps/game-invaders): Segure a linha contra as ondas que descem
+- [Paciência](https://jsglobe.com/pt/apps/game-solitaire): Klondike com compra de uma ou três cartas
+- [Corrida do T-Rex](https://jsglobe.com/pt/apps/game-dino): Pule os cactos no joguinho offline
+- [Cara ou coroa](https://jsglobe.com/pt/apps/coin-flipper): Jogue uma moeda e veja as probabilidades se equilibrarem
+- [Rolador de dados](https://jsglobe.com/pt/apps/dice-roller): Role qualquer dado e veja como os números caem
+
+## Utilitários
+
+- [UUID](https://jsglobe.com/pt/apps/uuid-generator): Gere identificadores v4 e v7 em lote
+- [Informações do dispositivo](https://jsglobe.com/pt/apps/device-info): Tudo o que o navegador sabe sobre este dispositivo
+- [Relógio](https://jsglobe.com/pt/apps/clock): Relógios mundiais, cronômetro e temporizador
+- [Calendário](https://jsglobe.com/pt/apps/calendar): Visão mensal com eventos por área de trabalho
+- [Carteira](https://jsglobe.com/pt/apps/portfolio): Acompanhe posições, alocação e lucro ou prejuízo
+- [Notas](https://jsglobe.com/pt/apps/notes): Anotações rápidas salvas nesta área de trabalho
+- [Tarefas](https://jsglobe.com/pt/apps/todo): Uma lista simples por área de trabalho
+- [Fusos horários](https://jsglobe.com/pt/apps/timezone-planner): Alinhe cidades e ache as horas em comum
+- [Validador de IBAN](https://jsglobe.com/pt/apps/iban-validator): Verifique números de conta e leia suas partes
+- [Console serial](https://jsglobe.com/pt/apps/serial-console): Converse com um dispositivo serial via USB
+- [Bluetooth](https://jsglobe.com/pt/apps/bluetooth-scanner): Leia, assine e escreva características GATT
+- [Teste de controle](https://jsglobe.com/pt/apps/gamepad-tester): Verifique cada analógico, gatilho e botão
+- [Leitor de códigos](https://jsglobe.com/pt/apps/scanner): Leia QR e códigos de barras pela câmera, por uma imagem ou pela tela
+- [Calculadora de imposto](https://jsglobe.com/pt/apps/tax-calculator): Calcule o líquido após impostos em 23 países, inteiramente no seu dispositivo
+
+## Outras seções
+
+- [Todas as ferramentas](https://jsglobe.com/pt/apps)
+- [Privacidade](https://jsglobe.com/pt/privacy)
+- [Aviso legal](https://jsglobe.com/pt/disclaimer)

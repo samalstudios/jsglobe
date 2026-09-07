@@ -1,0 +1,180 @@
+# Toolbox
+
+> ブラウザだけで動く、速くてプライベートな開発ツール。129 個のツール、登録不要、アップロードなし。
+
+すべて自分のブラウザ内の JavaScript として動くので、入力がサーバーに届くことはありません。
+
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 7 tools across 5 pages do this so far, marked below.
+
+Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
+
+## 暗号とセキュリティ
+
+- [テキストのハッシュ](https://jsglobe.com/ja/apps/hash-text): MD5、SHA-1、SHA-256、SHA-512 のダイジェスト
+- [HMAC](https://jsglobe.com/ja/apps/hmac-generator): 鍵付きハッシュのメッセージ認証コード
+- [暗号化 / 復号](https://jsglobe.com/ja/apps/encryption): パスフレーズによる AES-GCM のテキスト暗号化
+- [トークン生成](https://jsglobe.com/ja/apps/token-generator): 強い乱数パスワードと API トークン
+- [TOTP](https://jsglobe.com/ja/apps/otp-generator): 秘密鍵から作る時刻ベースのワンタイムパスワード
+- [Basic 認証](https://jsglobe.com/ja/apps/basic-auth): 資格情報から Authorization ヘッダを作る
+- [鍵ペア](https://jsglobe.com/ja/apps/rsa-keygen): RSA と楕円曲線の鍵を PEM で生成
+- [パスワード強度](https://jsglobe.com/ja/apps/password-strength): エントロピー、弱点、解読までの時間
+- [証明書デコーダ](https://jsglobe.com/ja/apps/cert-decoder): X.509 証明書や署名要求を読む
+- [SSH 鍵](https://jsglobe.com/ja/apps/ssh-keys): OpenSSH 鍵をオフラインで生成、検査
+
+## 変換ツール
+
+- [Base64](https://jsglobe.com/ja/apps/base64-converter): テキストやファイルの符号化と復号 [tools: encode_base64, decode_base64]
+- [色変換](https://jsglobe.com/ja/apps/color-converter): HEX、RGB、HSL、OKLCH とコントラスト確認
+- [カラーパレット](https://jsglobe.com/ja/apps/color-palette): Tailwind 風の階調、色相環、配色
+- [ケース変換](https://jsglobe.com/ja/apps/case-converter): camelCase、snake_case、kebab-case ほか [tools: convert_case]
+- [日付と時刻](https://jsglobe.com/ja/apps/date-converter): Unix タイムスタンプ、ISO 8601、相対時間
+- [基数変換](https://jsglobe.com/ja/apps/base-converter): 2 進、8 進、10 進、16 進、任意の基数
+- [JSON ⇄ YAML](https://jsglobe.com/ja/apps/json-yaml): JSON と YAML の文書を相互変換
+- [テキスト符号化](https://jsglobe.com/ja/apps/text-encoder): 2 進、16 進、Unicode、NATO、モールス、ROT13
+- [リスト変換](https://jsglobe.com/ja/apps/list-converter): 並べ替え、重複除去、囲み、結合
+- [ローマ数字](https://jsglobe.com/ja/apps/roman-numerals): 数とローマ数字を相互変換
+- [通貨](https://jsglobe.com/ja/apps/currency-converter): 日次レートで通貨を換算
+- [モールス信号](https://jsglobe.com/ja/apps/morse-code): 文字をモールスに変換して再生
+- [PDF スタジオ](https://jsglobe.com/ja/apps/pdf-studio): PDF の結合、分割、回転、変換
+
+## ウェブ
+
+- [URL エンコード](https://jsglobe.com/ja/apps/url-encoder): URL の各部をパーセント符号化、復号
+- [URL パーサ](https://jsglobe.com/ja/apps/url-parser): URL を各部とクエリ引数に分解
+- [HTML エンティティ](https://jsglobe.com/ja/apps/html-entities): HTML エンティティのエスケープと復元
+- [JWT パーサ](https://jsglobe.com/ja/apps/jwt-parser): JSON Web Token の復号と検査
+- [キーコード情報](https://jsglobe.com/ja/apps/keycode-info): キーボードイベントを 1 キーずつ調べる
+- [スラグ化](https://jsglobe.com/ja/apps/slugify): 任意の文字列を綺麗な URL スラグに [tools: slugify_text]
+- [HTTP ステータス](https://jsglobe.com/ja/apps/http-status): HTTP ステータスコードを検索できる一覧
+- [ヘッダ点検](https://jsglobe.com/ja/apps/http-headers): レスポンスヘッダを安全性とプライバシーで採点
+- [グラデーション作成](https://jsglobe.com/ja/apps/css-gradient): ドラッグできるカラーストップで CSS グラデーションを作る
+- [CSS アニメーション](https://jsglobe.com/ja/apps/css-animation): キーフレームのプリセットと cubic-bezier エディタ
+
+## 開発
+
+- [JSON 整形](https://jsglobe.com/ja/apps/json-formatter): JSON の整形、検証、圧縮、閲覧 [tools: format_json, check_json]
+- [JSON 差分](https://jsglobe.com/ja/apps/json-diff): 2 つの JSON 文書をキーごとに比較
+- [SQL 整形](https://jsglobe.com/ja/apps/sql-formatter): SQL 文を読みやすく整える
+- [XML 整形](https://jsglobe.com/ja/apps/xml-formatter): XML や HTML の字下げと圧縮
+- [crontab](https://jsglobe.com/ja/apps/crontab-generator): cron 式を解説し、次の実行を予測
+- [chmod](https://jsglobe.com/ja/apps/chmod-calculator): Unix のパーミッションを 8 進と記号で
+- [正規表現テスタ](https://jsglobe.com/ja/apps/regex-tester): パターンを一致とグループつきで即座に試す
+- [CSV スタジオ](https://jsglobe.com/ja/apps/csv-studio): CSV データを表で開き、編集し、変換
+- [ダミーデータ](https://jsglobe.com/ja/apps/mock-data): 項目一覧から現実的なテストデータを生成
+- [JSON スキーマ](https://jsglobe.com/ja/apps/json-schema): 例からスキーマを推定し、文書を検証
+- [API 仕様エディタ](https://jsglobe.com/ja/apps/api-spec): OpenAPI 文書の編集と検査
+- [Docker Compose](https://jsglobe.com/ja/apps/docker-compose): docker run コマンドを compose ファイルに変換
+- [Compose から K8s へ](https://jsglobe.com/ja/apps/compose-to-k8s): compose ファイルを Kubernetes マニフェストに変換
+- [Kubernetes](https://jsglobe.com/ja/apps/kubernetes): deployment、service、ingress のマニフェストを生成
+- [JSX から SVG へ](https://jsglobe.com/ja/apps/jsx-svg): React コンポーネントと SVG を相互変換
+- [GitIgnore 生成](https://jsglobe.com/ja/apps/gitignore-generator): 使っているツールから .gitignore を組み立てる
+
+## ネットワーク
+
+- [サブネット計算](https://jsglobe.com/ja/apps/subnet-calculator): IPv4 の CIDR 範囲、マスク、ホスト数
+- [IP 変換](https://jsglobe.com/ja/apps/ip-converter): IPv4 を 10 進、16 進、2 進、8 進で
+- [MAC アドレス](https://jsglobe.com/ja/apps/mac-generator): MAC アドレスの生成と書式変換
+- [DNS 検索](https://jsglobe.com/ja/apps/dns-lookup): DNS-over-HTTPS で dig 風のレコード照会
+- [速度測定](https://jsglobe.com/ja/apps/speed-test): 下り、上り、遅延、ジッタを測る
+- [ドメイン照会](https://jsglobe.com/ja/apps/rdap-lookup): ドメイン、IP、ネットワークの RDAP レコード
+- [WebSocket テスタ](https://jsglobe.com/ja/apps/websocket-tester): ソケットに接続してフレームを観察
+
+## テキスト
+
+- [ロレム・イプサム](https://jsglobe.com/ja/apps/lorem-ipsum): 単語、文、リストのダミーテキスト
+- [テキスト統計](https://jsglobe.com/ja/apps/text-stats): 文字数、読了時間、文字の分析
+- [テキスト差分](https://jsglobe.com/ja/apps/text-diff): 2 つのテキストを行ごとに比較
+- [Markdown](https://jsglobe.com/ja/apps/markdown-preview): markdown を書いて HTML を確認
+- [絵文字ピッカー](https://jsglobe.com/ja/apps/emoji-picker): 絵文字をコードポイント付きで閲覧、検索、コピー
+- [Unicode 表](https://jsglobe.com/ja/apps/unicode-tables): Unicode ブロックを見て文字を調べる
+- [ドキュメントスタジオ](https://jsglobe.com/ja/apps/doc-editor): 文書の作成、書式設定、PDF や Word への書き出しをすべてブラウザで
+- [文字](https://jsglobe.com/ja/apps/letters): ギリシャ、キリル、日本語、韓国語、中国語の文字を学ぶ
+
+## 数学と単位
+
+- [数式評価](https://jsglobe.com/ja/apps/math-evaluator): 関数と定数を含む式を計算 [tools: evaluate_expression]
+- [単位変換](https://jsglobe.com/ja/apps/unit-converter): 長さ、質量、データ量、温度、時間
+- [関数プロッタ](https://jsglobe.com/ja/apps/function-plotter): 式のグラフを拡大、零点、導関数付きで
+- [統計](https://jsglobe.com/ja/apps/statistics): 数の集まりの要約、ヒストグラム、箱ひげ図
+
+## メディア
+
+- [QR コード](https://jsglobe.com/ja/apps/qr-generator): オフラインで読み取れる QR コードを生成
+- [画像変換](https://jsglobe.com/ja/apps/image-converter): ブラウザ内で画像を変換、リサイズ、圧縮
+- [動画と音声](https://jsglobe.com/ja/apps/media-converter): WebAssembly で動画と音声を変換
+- [バーコード](https://jsglobe.com/ja/apps/barcode-generator): Code 128、EAN、Code 39 を SVG で
+- [アイコンスタジオ](https://jsglobe.com/ja/apps/icon-studio): 数千の部品からアイコンを組む、または言葉で描く
+- [ファビコン作成](https://jsglobe.com/ja/apps/favicon-generator): すべてのアイコンサイズ、.ico、マニフェスト
+- [Exif メタデータ](https://jsglobe.com/ja/apps/exif-editor): JPEG 写真のメタデータの読み取りと削除
+- [MP3 メタデータ](https://jsglobe.com/ja/apps/mp3-metadata): MP3 の ID3 タグとアートワークを編集
+- [プレースホルダ SVG](https://jsglobe.com/ja/apps/svg-placeholder): インライン SVG のプレースホルダ画像を生成
+- [アスキーアート](https://jsglobe.com/ja/apps/ascii-art): 文字バナーと画像のアスキー変換
+- [SVG スタジオ](https://jsglobe.com/ja/apps/svg-editor): SVG の表示、整理、色替え、書き出し
+- [ボイスレコーダー](https://jsglobe.com/ja/apps/voice-recorder): 音声を録音し、この端末で文字起こし
+- [ミラー](https://jsglobe.com/ja/apps/mirror): 明るさを調整できるリングライト付きカメラミラー
+- [スクリーンショットスタジオ](https://jsglobe.com/ja/apps/screenshot): 撮影、注釈、ぼかし、比較
+- [ペイント](https://jsglobe.com/ja/apps/paint): 鉛筆、図形、塗りつぶし、スプレー
+- [ポスタースタジオ](https://jsglobe.com/ja/apps/poster-studio): イベント QR 付きのポスターと SNS 用の派生を作る
+
+## 科学
+
+- [周期表](https://jsglobe.com/ja/apps/periodic-table): 118 元素すべてを全項目つきで
+- [分子ビューア](https://jsglobe.com/ja/apps/molecule-viewer): ビタミン、薬、有名な分子を 3D で
+- [回路ラボ](https://jsglobe.com/ja/apps/circuit-lab): 基本的な電子回路の組み立てとシミュレーション
+- [物理ラボ](https://jsglobe.com/ja/apps/physics-lab): 球、箱、ばね、棒、ジャッキ、モーター
+- [ロジックラボ](https://jsglobe.com/ja/apps/logic-lab): ゲート、フリップフロップ、カウンタ、デコーダ、LED 表示
+- [光学ラボ](https://jsglobe.com/ja/apps/optics-lab): レンズ、鏡、プリズムを本物の光線追跡で
+
+## ローカル AI
+
+- [AI チャット](https://jsglobe.com/ja/apps/ai-chat): この端末で動くモデルと話す
+- [AI コード](https://jsglobe.com/ja/apps/ai-code): コードを説明、レビュー、文書化、変換
+- [AI ライター](https://jsglobe.com/ja/apps/ai-writer): 要約、書き換え、翻訳、校正
+- [翻訳](https://jsglobe.com/ja/apps/ai-translate): この端末のモデルでテキストを翻訳
+- [AI 正規表現](https://jsglobe.com/ja/apps/ai-regex): パターンを説明すると検証済みの正規表現が得られます
+- [Inspector AI](https://jsglobe.com/ja/apps/inspector): 自分の文書に質問し、根拠つきで答えを得る
+
+## ゲーム
+
+- [タイピング測定](https://jsglobe.com/ja/apps/typing-test): 毎分単語数、正確さ、苦手なキー
+- [チェス](https://jsglobe.com/ja/apps/chess): コンピュータと対戦し、定跡を学び、戦術を鍛える
+- [数独](https://jsglobe.com/ja/apps/game-sudoku): メモとヒント付きの自動生成問題
+- [ブロック](https://jsglobe.com/ja/apps/game-tetris): 落ちてくるピースを積んで列を消す
+- [神経衰弱](https://jsglobe.com/ja/apps/game-memory): カードをめくって同じ絵柄を探す
+- [ワード当て](https://jsglobe.com/ja/apps/game-word): 5 文字の単語を 6 回以内に当てる
+- [ドラムキット](https://jsglobe.com/ja/apps/drum-kit): パッドを叩き、16 ステップのビートを組む
+- [チューナー](https://jsglobe.com/ja/apps/tuner): ギター、ベース、ウクレレを耳かマイクで合わせる
+- [MIDI キーボード](https://jsglobe.com/ja/apps/midi-keyboard): PC キーボードと MIDI 入力で弾けるシンセ
+- [2048](https://jsglobe.com/ja/apps/game-2048): タイルを滑らせて合体させ 2048 を目指す
+- [マインスイーパ](https://jsglobe.com/ja/apps/game-minesweeper): 地雷を踏まずに盤面を開ける
+- [スネーク](https://jsglobe.com/ja/apps/game-snake): 食べて伸びて、自分を噛まない
+- [ブロック崩し](https://jsglobe.com/ja/apps/game-breakout): ボールを弾ませてブロックをすべて壊す
+- [ポン](https://jsglobe.com/ja/apps/game-pong): 機械と戦う元祖ラケット対決
+- [インベーダー](https://jsglobe.com/ja/apps/game-invaders): 降りてくる波を食い止める
+- [ソリティア](https://jsglobe.com/ja/apps/game-solitaire): クロンダイク、1 枚めくりと 3 枚めくり
+- [恐竜ラン](https://jsglobe.com/ja/apps/game-dino): オフラインゲームでサボテンを跳び越える
+- [コイン投げ](https://jsglobe.com/ja/apps/coin-flipper): コインを投げて確率がならされる様子を見る
+- [サイコロ](https://jsglobe.com/ja/apps/dice-roller): どんなサイコロも振って出目の分布を見る
+
+## ユーティリティ
+
+- [UUID](https://jsglobe.com/ja/apps/uuid-generator): v4 と v7 の識別子をまとめて生成
+- [デバイス情報](https://jsglobe.com/ja/apps/device-info): ブラウザがこの端末について知っていること
+- [時計](https://jsglobe.com/ja/apps/clock): 世界時計、ストップウォッチ、カウントダウン
+- [カレンダー](https://jsglobe.com/ja/apps/calendar): ワークスペースごとに予定を保存する月表示
+- [ポートフォリオ](https://jsglobe.com/ja/apps/portfolio): 保有、配分、損益を追う
+- [メモ](https://jsglobe.com/ja/apps/notes): このワークスペースに保存される走り書き
+- [タスク](https://jsglobe.com/ja/apps/todo): ワークスペースごとの軽いチェックリスト
+- [タイムゾーン](https://jsglobe.com/ja/apps/timezone-planner): 都市を並べて重なる時間帯を探す
+- [IBAN 検証](https://jsglobe.com/ja/apps/iban-validator): 口座番号を検査し、各部分を読む
+- [シリアルコンソール](https://jsglobe.com/ja/apps/serial-console): USB 経由でシリアル機器と通信
+- [Bluetooth](https://jsglobe.com/ja/apps/bluetooth-scanner): GATT キャラクタリスティックの読み取り、購読、書き込み
+- [ゲームパッド診断](https://jsglobe.com/ja/apps/gamepad-tester): スティック、トリガー、ボタンをすべて確認
+- [コードスキャナ](https://jsglobe.com/ja/apps/scanner): カメラ、画像、画面から QR とバーコードを読む
+- [税計算](https://jsglobe.com/ja/apps/tax-calculator): 23 か国の手取りを、すべて端末上で計算
+
+## ほかのセクション
+
+- [すべてのツール](https://jsglobe.com/ja/apps)
+- [プライバシー](https://jsglobe.com/ja/privacy)
+- [免責事項](https://jsglobe.com/ja/disclaimer)

@@ -1,0 +1,180 @@
+# Toolbox
+
+> 브라우저에서만 돌아가는 빠르고 사적인 개발 도구. 도구 129개, 가입 없음, 업로드 없음.
+
+모든 것이 자기 브라우저 안의 JavaScript로 돌아가므로, 입력이 서버에 닿는 일이 없습니다.
+
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 7 tools across 5 pages do this so far, marked below.
+
+Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
+
+## 암호와 보안
+
+- [텍스트 해시](https://jsglobe.com/ko/apps/hash-text): MD5, SHA-1, SHA-256, SHA-512 다이제스트
+- [HMAC](https://jsglobe.com/ko/apps/hmac-generator): 키를 쓰는 메시지 인증 코드
+- [암호화 / 복호화](https://jsglobe.com/ko/apps/encryption): 암호 문구로 하는 AES-GCM 텍스트 암호화
+- [토큰 생성기](https://jsglobe.com/ko/apps/token-generator): 튼튼한 무작위 비밀번호와 API 토큰
+- [TOTP](https://jsglobe.com/ko/apps/otp-generator): 비밀 키로 만드는 시간 기반 일회용 비밀번호
+- [기본 인증](https://jsglobe.com/ko/apps/basic-auth): 자격 증명으로 Authorization 헤더 만들기
+- [키 쌍](https://jsglobe.com/ko/apps/rsa-keygen): RSA와 타원 곡선 키를 PEM으로 만들기
+- [비밀번호 강도](https://jsglobe.com/ko/apps/password-strength): 엔트로피, 약점, 깨지기까지 걸리는 시간
+- [인증서 디코더](https://jsglobe.com/ko/apps/cert-decoder): X.509 인증서나 서명 요청 읽기
+- [SSH 키](https://jsglobe.com/ko/apps/ssh-keys): OpenSSH 키를 오프라인에서 만들고 살펴보기
+
+## 변환기
+
+- [Base64](https://jsglobe.com/ko/apps/base64-converter): 텍스트나 파일을 인코딩하고 디코딩하기 [tools: encode_base64, decode_base64]
+- [색 변환](https://jsglobe.com/ko/apps/color-converter): HEX, RGB, HSL, OKLCH와 대비 검사
+- [색 팔레트](https://jsglobe.com/ko/apps/color-palette): Tailwind 식 단계, 색상환, 배색
+- [표기법 변환](https://jsglobe.com/ko/apps/case-converter): camelCase, snake_case, kebab-case 등 [tools: convert_case]
+- [날짜와 시간](https://jsglobe.com/ko/apps/date-converter): 유닉스 타임스탬프, ISO 8601, 상대 시간
+- [진법 변환](https://jsglobe.com/ko/apps/base-converter): 2진, 8진, 10진, 16진과 임의의 진법
+- [JSON ⇄ YAML](https://jsglobe.com/ko/apps/json-yaml): JSON과 YAML 문서를 서로 바꾸기
+- [텍스트 인코더](https://jsglobe.com/ko/apps/text-encoder): 2진, 16진, 유니코드, NATO, 모스, ROT13
+- [목록 변환](https://jsglobe.com/ko/apps/list-converter): 정렬, 중복 제거, 감싸기, 다시 합치기
+- [로마 숫자](https://jsglobe.com/ko/apps/roman-numerals): 숫자와 로마 숫자를 서로 바꾸기
+- [통화](https://jsglobe.com/ko/apps/currency-converter): 일별 환율로 통화 바꾸기
+- [모스 부호](https://jsglobe.com/ko/apps/morse-code): 글자를 모스로 바꾸고 소리로 듣기
+- [PDF 스튜디오](https://jsglobe.com/ko/apps/pdf-studio): PDF를 합치고 나누고 돌리고 변환하기
+
+## 웹
+
+- [URL 인코딩](https://jsglobe.com/ko/apps/url-encoder): URL 구성 요소를 퍼센트 인코딩하고 되돌리기
+- [URL 파서](https://jsglobe.com/ko/apps/url-parser): URL을 구성 요소와 질의 매개변수로 나누기
+- [HTML 엔티티](https://jsglobe.com/ko/apps/html-entities): HTML 엔티티를 이스케이프하고 되돌리기
+- [JWT 파서](https://jsglobe.com/ko/apps/jwt-parser): JSON 웹 토큰을 풀고 살펴보기
+- [키코드 정보](https://jsglobe.com/ko/apps/keycode-info): 키보드 이벤트를 키마다 살펴보기
+- [슬러그 만들기](https://jsglobe.com/ko/apps/slugify): 어떤 문자열이든 깔끔한 URL 슬러그로 [tools: slugify_text]
+- [HTTP 상태](https://jsglobe.com/ko/apps/http-status): 검색할 수 있는 HTTP 상태 코드 참고서
+- [헤더 검토](https://jsglobe.com/ko/apps/http-headers): 응답 헤더를 보안과 개인정보 관점에서 채점하기
+- [그레이디언트 만들기](https://jsglobe.com/ko/apps/css-gradient): 끌 수 있는 색 정지점으로 CSS 그레이디언트 만들기
+- [CSS 애니메이션](https://jsglobe.com/ko/apps/css-animation): 키프레임 프리셋과 cubic-bezier 편집기
+
+## 개발
+
+- [JSON 정리](https://jsglobe.com/ko/apps/json-formatter): JSON을 정리하고 검사하고 줄이고 살펴보기 [tools: format_json, check_json]
+- [JSON 차이](https://jsglobe.com/ko/apps/json-diff): 두 JSON 문서를 키 단위로 비교하기
+- [SQL 정리](https://jsglobe.com/ko/apps/sql-formatter): SQL 문을 읽기 좋게 다듬기
+- [XML 정리](https://jsglobe.com/ko/apps/xml-formatter): XML이나 HTML 마크업을 들여쓰고 줄이기
+- [crontab](https://jsglobe.com/ko/apps/crontab-generator): cron 식을 설명하고 다음 실행을 미리 보기
+- [chmod](https://jsglobe.com/ko/apps/chmod-calculator): 유닉스 권한을 8진수와 기호로
+- [정규식 시험기](https://jsglobe.com/ko/apps/regex-tester): 패턴을 실시간 일치와 그룹으로 시험하기
+- [CSV 스튜디오](https://jsglobe.com/ko/apps/csv-studio): CSV 데이터를 표에서 열고 편집하고 변환하기
+- [가짜 데이터](https://jsglobe.com/ko/apps/mock-data): 필드 목록에서 그럴듯한 시험 데이터 만들기
+- [JSON 스키마](https://jsglobe.com/ko/apps/json-schema): 예시에서 스키마를 뽑고 문서를 검사하기
+- [API 명세 편집기](https://jsglobe.com/ko/apps/api-spec): OpenAPI 문서를 편집하고 검사하기
+- [Docker Compose](https://jsglobe.com/ko/apps/docker-compose): docker run 명령을 compose 파일로 바꾸기
+- [Compose에서 K8s로](https://jsglobe.com/ko/apps/compose-to-k8s): compose 파일을 쿠버네티스 매니페스트로 바꾸기
+- [쿠버네티스](https://jsglobe.com/ko/apps/kubernetes): deployment, service, ingress 매니페스트 만들기
+- [JSX에서 SVG로](https://jsglobe.com/ko/apps/jsx-svg): React 컴포넌트와 SVG를 서로 바꾸기
+- [GitIgnore 생성기](https://jsglobe.com/ko/apps/gitignore-generator): 쓰는 도구에서 .gitignore 만들기
+
+## 네트워크
+
+- [서브넷 계산기](https://jsglobe.com/ko/apps/subnet-calculator): IPv4 CIDR 범위, 마스크, 호스트 수
+- [IP 변환](https://jsglobe.com/ko/apps/ip-converter): IPv4를 10진, 16진, 2진, 8진으로
+- [MAC 주소](https://jsglobe.com/ko/apps/mac-generator): MAC 주소를 만들고 형식 바꾸기
+- [DNS 조회](https://jsglobe.com/ko/apps/dns-lookup): DNS-over-HTTPS로 dig 방식 레코드 조회
+- [속도 측정](https://jsglobe.com/ko/apps/speed-test): 내려받기, 올리기, 지연, 지터 재기
+- [도메인 조회](https://jsglobe.com/ko/apps/rdap-lookup): 도메인, IP, 네트워크의 RDAP 레코드
+- [WebSocket 시험기](https://jsglobe.com/ko/apps/websocket-tester): 소켓에 붙어 프레임 지켜보기
+
+## 텍스트
+
+- [로렘 입숨](https://jsglobe.com/ko/apps/lorem-ipsum): 단어, 문장, 목록 형태의 채움 글
+- [텍스트 통계](https://jsglobe.com/ko/apps/text-stats): 글자 수, 읽는 시간, 문자 분석
+- [텍스트 차이](https://jsglobe.com/ko/apps/text-diff): 두 글을 줄 단위로 비교하기
+- [마크다운](https://jsglobe.com/ko/apps/markdown-preview): 마크다운을 쓰고 HTML 미리 보기
+- [이모지 고르기](https://jsglobe.com/ko/apps/emoji-picker): 이모지를 코드 포인트와 함께 훑고 찾고 복사하기
+- [유니코드 표](https://jsglobe.com/ko/apps/unicode-tables): 유니코드 블록을 훑고 문자를 살펴보기
+- [문서 스튜디오](https://jsglobe.com/ko/apps/doc-editor): 문서를 쓰고 서식을 넣고 PDF나 Word로 내보내기, 전부 브라우저에서
+- [글자](https://jsglobe.com/ko/apps/letters): 그리스, 키릴, 일본, 한국, 중국 문자 익히기
+
+## 수학과 단위
+
+- [수식 계산](https://jsglobe.com/ko/apps/math-evaluator): 함수와 상수를 쓰는 식 계산하기 [tools: evaluate_expression]
+- [단위 변환](https://jsglobe.com/ko/apps/unit-converter): 길이, 질량, 데이터, 온도, 시간
+- [함수 그래프](https://jsglobe.com/ko/apps/function-plotter): 식을 확대, 근, 도함수와 함께 그리기
+- [통계](https://jsglobe.com/ko/apps/statistics): 숫자 묶음의 요약, 히스토그램, 상자 그림
+
+## 미디어
+
+- [QR 코드](https://jsglobe.com/ko/apps/qr-generator): 오프라인에서도 읽히는 QR 코드 만들기
+- [이미지 변환](https://jsglobe.com/ko/apps/image-converter): 브라우저에서 이미지를 변환하고 크기를 바꾸고 압축하기
+- [영상과 소리](https://jsglobe.com/ko/apps/media-converter): WebAssembly로 영상과 소리를 변환하기
+- [바코드](https://jsglobe.com/ko/apps/barcode-generator): Code 128, EAN, Code 39을 SVG로
+- [아이콘 스튜디오](https://jsglobe.com/ko/apps/icon-studio): 수천 개 부품으로 아이콘을 만들거나 말로 설명하기
+- [파비콘 만들기](https://jsglobe.com/ko/apps/favicon-generator): 모든 아이콘 크기와 .ico, 매니페스트
+- [Exif 메타데이터](https://jsglobe.com/ko/apps/exif-editor): JPEG 사진의 메타데이터를 읽고 지우기
+- [MP3 메타데이터](https://jsglobe.com/ko/apps/mp3-metadata): MP3의 ID3 태그와 표지 편집하기
+- [자리표시 SVG](https://jsglobe.com/ko/apps/svg-placeholder): 인라인 SVG로 자리표시 이미지 만들기
+- [아스키 아트](https://jsglobe.com/ko/apps/ascii-art): 글자 배너와 이미지의 아스키 변환
+- [SVG 스튜디오](https://jsglobe.com/ko/apps/svg-editor): SVG를 보고 정리하고 색을 바꾸고 내보내기
+- [음성 녹음](https://jsglobe.com/ko/apps/voice-recorder): 소리를 녹음하고 이 기기에서 받아쓰기
+- [거울](https://jsglobe.com/ko/apps/mirror): 밝기를 조절하는 링라이트가 있는 카메라 거울
+- [스크린샷 스튜디오](https://jsglobe.com/ko/apps/screenshot): 찍고 표시하고 흐리게 하고 비교하기
+- [그림판](https://jsglobe.com/ko/apps/paint): 연필, 도형, 채우기, 스프레이
+- [포스터 스튜디오](https://jsglobe.com/ko/apps/poster-studio): 행사 QR을 넣은 포스터와 소셜용 변형 만들기
+
+## 과학
+
+- [주기율표](https://jsglobe.com/ko/apps/periodic-table): 118개 원소 전부와 그 성질
+- [분자 보기](https://jsglobe.com/ko/apps/molecule-viewer): 비타민, 약, 유명한 분자를 3D로
+- [회로 실험실](https://jsglobe.com/ko/apps/circuit-lab): 기본 전자 회로를 만들고 모의 실험하기
+- [물리 실험실](https://jsglobe.com/ko/apps/physics-lab): 공, 블록, 용수철, 막대, 잭, 모터
+- [논리 실험실](https://jsglobe.com/ko/apps/logic-lab): 게이트, 플립플롭, 카운터, 디코더, LED 표시
+- [광학 실험실](https://jsglobe.com/ko/apps/optics-lab): 렌즈, 거울, 프리즘을 실제 광선 추적으로
+
+## 로컬 AI
+
+- [AI 채팅](https://jsglobe.com/ko/apps/ai-chat): 이 기기에서 도는 모델과 대화하기
+- [AI 코드](https://jsglobe.com/ko/apps/ai-code): 코드를 설명하고 검토하고 문서화하고 변환하기
+- [AI 글쓰기](https://jsglobe.com/ko/apps/ai-writer): 요약, 다시 쓰기, 번역, 교정
+- [번역](https://jsglobe.com/ko/apps/ai-translate): 이 기기의 모델로 텍스트를 번역하기
+- [AI 정규식](https://jsglobe.com/ko/apps/ai-regex): 패턴을 설명하면 검증된 정규식을 얻습니다
+- [Inspector AI](https://jsglobe.com/ko/apps/inspector): 자기 문서에 질문하고 근거와 함께 답 받기
+
+## 놀이
+
+- [타자 검사](https://jsglobe.com/ko/apps/typing-test): 분당 단어 수, 정확도, 어려운 키
+- [체스](https://jsglobe.com/ko/apps/chess): 컴퓨터와 두고, 오프닝을 익히고, 전술을 훈련하기
+- [스도쿠](https://jsglobe.com/ko/apps/game-sudoku): 메모와 힌트가 있는 생성된 퍼즐
+- [블록](https://jsglobe.com/ko/apps/game-tetris): 떨어지는 조각을 쌓아 줄을 없애기
+- [짝 맞추기](https://jsglobe.com/ko/apps/game-memory): 카드를 뒤집어 같은 짝 찾기
+- [단어 맞히기](https://jsglobe.com/ko/apps/game-word): 여섯 번 안에 다섯 글자 단어 찾기
+- [드럼 키트](https://jsglobe.com/ko/apps/drum-kit): 패드를 치고 16스텝 비트 만들기
+- [튜너](https://jsglobe.com/ko/apps/tuner): 기타, 베이스, 우쿨렐레를 귀나 마이크로 맞추기
+- [MIDI 건반](https://jsglobe.com/ko/apps/midi-keyboard): 컴퓨터 자판과 MIDI 입력으로 연주하는 신스
+- [2048](https://jsglobe.com/ko/apps/game-2048): 타일을 밀어 합쳐 2048 만들기
+- [지뢰 찾기](https://jsglobe.com/ko/apps/game-minesweeper): 지뢰를 밟지 않고 판을 비우기
+- [스네이크](https://jsglobe.com/ko/apps/game-snake): 먹고 자라되 자기 몸을 물지 않기
+- [벽돌 깨기](https://jsglobe.com/ko/apps/game-breakout): 공을 튕겨 벽돌을 모두 없애기
+- [퐁](https://jsglobe.com/ko/apps/game-pong): 기계와 겨루는 원조 라켓 대결
+- [인베이더](https://jsglobe.com/ko/apps/game-invaders): 내려오는 물결을 막아 내기
+- [솔리테어](https://jsglobe.com/ko/apps/game-solitaire): 클론다이크, 한 장 뽑기와 세 장 뽑기
+- [티렉스 달리기](https://jsglobe.com/ko/apps/game-dino): 오프라인 게임에서 선인장 뛰어넘기
+- [동전 던지기](https://jsglobe.com/ko/apps/coin-flipper): 동전을 던져 확률이 고르게 되는 것을 보기
+- [주사위](https://jsglobe.com/ko/apps/dice-roller): 어떤 주사위든 굴리고 숫자 분포 보기
+
+## 유틸리티
+
+- [UUID](https://jsglobe.com/ko/apps/uuid-generator): v4와 v7 식별자를 한꺼번에 만들기
+- [기기 정보](https://jsglobe.com/ko/apps/device-info): 브라우저가 이 기기에 대해 아는 모든 것
+- [시계](https://jsglobe.com/ko/apps/clock): 세계 시계, 스톱워치, 카운트다운
+- [달력](https://jsglobe.com/ko/apps/calendar): 작업 공간마다 일정을 저장하는 월간 보기
+- [포트폴리오](https://jsglobe.com/ko/apps/portfolio): 보유, 배분, 손익을 따라가기
+- [메모](https://jsglobe.com/ko/apps/notes): 이 작업 공간에 저장되는 짧은 메모
+- [할 일](https://jsglobe.com/ko/apps/todo): 작업 공간마다 두는 가벼운 체크리스트
+- [시간대](https://jsglobe.com/ko/apps/timezone-planner): 도시를 나란히 놓고 겹치는 시간 찾기
+- [IBAN 검사](https://jsglobe.com/ko/apps/iban-validator): 계좌 번호를 확인하고 구성을 읽기
+- [시리얼 콘솔](https://jsglobe.com/ko/apps/serial-console): USB로 시리얼 장치와 주고받기
+- [블루투스](https://jsglobe.com/ko/apps/bluetooth-scanner): GATT 특성을 읽고 구독하고 쓰기
+- [게임패드 점검](https://jsglobe.com/ko/apps/gamepad-tester): 스틱, 트리거, 버튼을 전부 확인하기
+- [코드 스캐너](https://jsglobe.com/ko/apps/scanner): 카메라, 사진, 화면에서 QR과 바코드 읽기
+- [세금 계산기](https://jsglobe.com/ko/apps/tax-calculator): 23개국의 세후 실수령액을 전부 기기에서 계산
+
+## 다른 구역
+
+- [모든 도구](https://jsglobe.com/ko/apps)
+- [개인정보](https://jsglobe.com/ko/privacy)
+- [고지 사항](https://jsglobe.com/ko/disclaimer)

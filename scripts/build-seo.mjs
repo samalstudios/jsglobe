@@ -1,4 +1,5 @@
 import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
+import { execFileSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { catalog, categories } from '../js/apps/catalog.js';
 import { LANGUAGES, DEFAULT_LANGUAGE } from '../js/core/languages.js';
@@ -42,6 +43,43 @@ const escape = (value) =>
   String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const apps = catalog.filter((app) => !app.system);
+
+const stamp = new Date().toISOString().slice(0, 10);
+
+// When a page last really changed, asked of git rather than of the clock. A
+// sitemap saying that all two thousand pages changed today tells a crawler
+// nothing it can use. The generated dictionary and meta files are left out:
+// the build rewrites them in bulk, so they record when the build ran rather
+// than when the tool changed.
+const changed = (paths) => {
+  try {
+    const out = execFileSync('git', ['log', '-1', '--format=%cs', '--', ...paths], { encoding: 'utf8' }).trim();
+    return /^\d{4}-\d{2}-\d{2}$/.test(out) ? out : stamp;
+  } catch {
+    return stamp;
+  }
+};
+
+const newest = (dates) => dates.filter(Boolean).sort().pop() ?? stamp;
+
+const appChanged = new Map(
+  apps.map((app) => [app.id, changed([`js/apps/${app.id}`, `:!js/apps/${app.id}/i18n.js`, `:!js/apps/${app.id}/meta.js`])]),
+);
+const siteChanged = newest([...appChanged.values()]);
+
+// Which pages offer tools to an assistant. Read from the source rather than
+// kept in a second list, so the two cannot drift apart.
+const toolsIn = new Map();
+for (const app of apps) {
+  const file = `js/apps/${app.id}/index.js`;
+  if (!existsSync(file)) continue;
+  const code = await readFile(file, 'utf8');
+  const block = code.match(/\n  tools\(\) \{\n[\s\S]*?\n  \}\n/);
+  if (!block) continue;
+  const names = [...block[0].matchAll(/^\s+name: '([a-z][a-z0-9_]*)',$/gm)].map((hit) => hit[1]);
+  if (names.length) toolsIn.set(app.id, names);
+}
+const copyChanged = changed(['js/i18n', 'scripts/build-seo.mjs']);
 
 const MARK_OPEN = '<!-- seo:start -->';
 const MARK_CLOSE = '<!-- seo:end -->';
@@ -261,7 +299,7 @@ for (const entry of LANGUAGES) {
     await mkdir(dir(lang, `apps/${app.id}`), { recursive: true });
     await writeFile(`${dir(lang, `apps/${app.id}`)}/index.html`, page(meta, body));
     written.push(`${dir(lang, `apps/${app.id}`)}/index.html`);
-    if (lang === DEFAULT_LANGUAGE) routes.push({ path, priority: '0.8', freq: 'monthly' });
+    if (lang === DEFAULT_LANGUAGE) routes.push({ path, priority: '0.8', freq: 'monthly', changed: appChanged.get(app.id) });
   }
 
   for (const group of groups) {
@@ -330,7 +368,7 @@ for (const entry of LANGUAGES) {
       ),
     );
     written.push(`${dir(lang, path.replace(/^\//, ''))}/index.html`);
-    if (lang === DEFAULT_LANGUAGE) routes.push({ path, priority: '0.7', freq: 'weekly' });
+    if (lang === DEFAULT_LANGUAGE) routes.push({ path, priority: '0.7', freq: 'weekly', changed: newest(members.map((item) => appChanged.get(item.id))) });
   }
 
   const libraryVars = { count: apps.length, brand: NAME, tagline };
@@ -394,7 +432,7 @@ for (const entry of LANGUAGES) {
     ),
   );
   written.push(`${dir(lang, 'apps')}/index.html`);
-  if (lang === DEFAULT_LANGUAGE) routes.push({ path: '/apps', priority: '0.9', freq: 'weekly' });
+  if (lang === DEFAULT_LANGUAGE) routes.push({ path: '/apps', priority: '0.9', freq: 'weekly', changed: siteChanged });
 
   const privacyVars = { brand: NAME, repo: REPO, count: apps.length };
   const privacyBody = `<noscript>
@@ -442,7 +480,7 @@ for (const entry of LANGUAGES) {
     ),
   );
   written.push(`${dir(lang, 'privacy')}/index.html`);
-  if (lang === DEFAULT_LANGUAGE) routes.push({ path: '/privacy', priority: '0.3', freq: 'yearly' });
+  if (lang === DEFAULT_LANGUAGE) routes.push({ path: '/privacy', priority: '0.3', freq: 'yearly', changed: copyChanged });
 
   const disclaimerVars = { brand: NAME, repo: REPO };
   const disclaimerBody = `<noscript>
@@ -490,7 +528,7 @@ for (const entry of LANGUAGES) {
     ),
   );
   written.push(`${dir(lang, 'disclaimer')}/index.html`);
-  if (lang === DEFAULT_LANGUAGE) routes.push({ path: '/disclaimer', priority: '0.3', freq: 'yearly' });
+  if (lang === DEFAULT_LANGUAGE) routes.push({ path: '/disclaimer', priority: '0.3', freq: 'yearly', changed: copyChanged });
 
   const homeBody = `<noscript>
   <main>
@@ -528,7 +566,7 @@ for (const entry of LANGUAGES) {
   if (lang === DEFAULT_LANGUAGE) {
     await writeFile('index.html', page(homeMeta, homeBody));
     written.push('index.html');
-    routes.push({ path: '/', priority: '1.0', freq: 'weekly' });
+    routes.push({ path: '/', priority: '1.0', freq: 'weekly', changed: siteChanged });
   } else {
     await mkdir(dir(lang), { recursive: true });
     await writeFile(`${dir(lang)}/index.html`, page(homeMeta, homeBody));
@@ -553,7 +591,7 @@ ${sitemapUrls
     (url) =>
       `  <url>
     <loc>${url.loc}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${url.changed ?? stamp}</lastmod>
     <changefreq>${url.freq}</changefreq>
     <priority>${url.priority}</priority>
 ${LANGUAGES.map(
@@ -575,40 +613,65 @@ await writeFile(
 Allow: /
 
 Sitemap: ${SITE}/sitemap.xml
+
+# A plain summary of every tool, per language, for assistants that would
+# rather read one page than crawl two thousand.
+${LANGUAGES.map((entry) => `# llms: ${SITE}${entry.path ? `/${entry.path}` : ''}/llms.txt`).join('\n')}
 `,
 );
 written.push('robots.txt');
 
 // llms.txt: the whole catalogue as one plain page, for an assistant that wants
-// to know what is here without crawling 1,000 rendered pages. Every tool is a
-// line, grouped the way the site groups them, in the site's own words.
-const llms = [
-  `# ${NAME}`,
-  '',
-  `> ${TAGLINE}. ${apps.length} of them, free, with no account and nothing to install.`,
-  '',
-  'Every tool has its own address and keeps working offline once the page has loaded. Nothing typed, pasted or opened is sent anywhere: the work happens in the tab, on the reader\'s own device. The site is static and open source.',
-  '',
-  `Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant browsing a tool can call it directly rather than driving the interface.`,
-  '',
-  `Languages: ${LANGUAGES.map((entry) => `${entry.native} (${SITE}${entry.path ? `/${entry.path}` : ''}/)`).join(', ')}`,
-  '',
-];
+// to know what is here without crawling two thousand rendered pages. One per
+// language, because an assistant reading in Japanese should not be handed the
+// English names.
+for (const entry of LANGUAGES) {
+  const lang = entry.code;
+  const root = `${SITE}${entry.path ? `/${entry.path}` : ''}`;
+  const tagline = T(lang, 'site.tagline', TAGLINE);
+  const lines = [
+    `# ${NAME}`,
+    '',
+    `> ${T(lang, 'home.description', `${tagline}. ${apps.length} tools, no sign up, no uploads.`, { tagline, count: apps.length })}`,
+    '',
+    T(
+      lang,
+      'app.how2',
+      'Everything runs as JavaScript in your own browser, so your input never reaches a server.',
+    ),
+    '',
+    `Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. ${[...toolsIn.values()].flat().length} tools across ${toolsIn.size} pages do this so far, marked below.`,
+    '',
+    `Languages: ${LANGUAGES.map((other) => `${other.native} (${SITE}${other.path ? `/${other.path}` : ''}/)`).join(', ')}`,
+    '',
+  ];
 
-for (const group of groups) {
-  const members = apps.filter((app) => app.category === group.id);
-  if (!members.length) continue;
-  llms.push(`## ${group.name}`, '');
-  for (const app of members) {
-    llms.push(`- [${app.name}](${SITE}/apps/${app.id}): ${app.tagline}`);
+  for (const group of groups) {
+    const members = apps.filter((app) => app.category === group.id);
+    if (!members.length) continue;
+    lines.push(`## ${groupName(lang, group) ?? group.name}`, '');
+    for (const app of members) {
+      const calls = toolsIn.get(app.id);
+      const suffix = calls ? ` [tools: ${calls.join(', ')}]` : '';
+      lines.push(`- [${appName(lang, app)}](${root}/apps/${app.id}): ${appTagline(lang, app)}${suffix}`);
+    }
+    lines.push('');
   }
-  llms.push('');
+
+  lines.push(
+    `## ${T(lang, 'category.other', 'Other sections')}`,
+    '',
+    `- [${T(lang, 'nav.allTools', 'All tools')}](${root}/apps)`,
+    `- [${U(lang, 'nav.privacy', 'Privacy')}](${root}/privacy)`,
+    `- [${U(lang, 'nav.disclaimer', 'Disclaimer')}](${root}/disclaimer)`,
+    '',
+  );
+
+  const at = lang === DEFAULT_LANGUAGE ? 'llms.txt' : `${dir(lang)}/llms.txt`;
+  if (lang !== DEFAULT_LANGUAGE) await mkdir(dir(lang), { recursive: true });
+  await writeFile(at, lines.join('\n'));
+  written.push(at);
 }
-
-llms.push('## About', '', `- [All tools](${SITE}/apps): every tool in one list`, `- [Privacy](${SITE}/privacy): what happens to your data, which is nothing`, `- [Disclaimer](${SITE}/disclaimer): what these tools can be relied on for`, '');
-
-await writeFile('llms.txt', `${llms.join('\n')}`);
-written.push('llms.txt');
 
 console.log(`generated ${written.length} files for ${apps.length} tools in ${LANGUAGES.length} languages`);
 console.log(`sitemap: ${sitemapUrls.length} urls (${routes.length} routes x ${LANGUAGES.length} languages)`);

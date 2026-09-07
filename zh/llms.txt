@@ -1,0 +1,180 @@
+# Toolbox
+
+> 快速、私密、完全在浏览器中运行的开发者工具。129 个工具，无需注册，不上传任何内容。
+
+一切都以 JavaScript 在你自己的浏览器中运行，因此输入内容不会到达任何服务器。
+
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 7 tools across 5 pages do this so far, marked below.
+
+Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
+
+## 加密与安全
+
+- [文本哈希](https://jsglobe.com/zh/apps/hash-text): MD5、SHA-1、SHA-256、SHA-512 摘要
+- [HMAC](https://jsglobe.com/zh/apps/hmac-generator): 基于密钥的消息认证码
+- [加密 / 解密](https://jsglobe.com/zh/apps/encryption): 使用口令的 AES-GCM 文本加密
+- [令牌生成器](https://jsglobe.com/zh/apps/token-generator): 高强度随机密码与 API 令牌
+- [TOTP](https://jsglobe.com/zh/apps/otp-generator): 由密钥生成基于时间的一次性密码
+- [Basic Auth](https://jsglobe.com/zh/apps/basic-auth): 用凭据构建 Authorization 头
+- [密钥对](https://jsglobe.com/zh/apps/rsa-keygen): 生成 PEM 格式的 RSA 与椭圆曲线密钥
+- [密码强度](https://jsglobe.com/zh/apps/password-strength): 熵值、弱点与破解所需时间
+- [证书解码](https://jsglobe.com/zh/apps/cert-decoder): 读取 X.509 证书或签名请求
+- [SSH 密钥](https://jsglobe.com/zh/apps/ssh-keys): 离线生成并查看 OpenSSH 密钥
+
+## 转换器
+
+- [Base64](https://jsglobe.com/zh/apps/base64-converter): 编码和解码文本或文件 [tools: encode_base64, decode_base64]
+- [颜色转换](https://jsglobe.com/zh/apps/color-converter): HEX、RGB、HSL、OKLCH 与对比度检查
+- [调色板](https://jsglobe.com/zh/apps/color-palette): Tailwind 风格色阶、色轮与配色方案
+- [大小写转换](https://jsglobe.com/zh/apps/case-converter): camelCase、snake_case、kebab-case 等 [tools: convert_case]
+- [日期与时间](https://jsglobe.com/zh/apps/date-converter): Unix 时间戳、ISO 8601 与相对时间
+- [进制转换](https://jsglobe.com/zh/apps/base-converter): 二进制、八进制、十进制、十六进制与任意进制
+- [JSON ⇄ YAML](https://jsglobe.com/zh/apps/json-yaml): 在 JSON 与 YAML 文档之间转换
+- [文本编码](https://jsglobe.com/zh/apps/text-encoder): 二进制、十六进制、Unicode、北约字母、摩尔斯与 ROT13
+- [列表转换](https://jsglobe.com/zh/apps/list-converter): 排序、去重、包装并重新拼接列表
+- [罗马数字](https://jsglobe.com/zh/apps/roman-numerals): 在数字与罗马数字之间转换
+- [汇率](https://jsglobe.com/zh/apps/currency-converter): 按每日汇率换算货币
+- [摩尔斯电码](https://jsglobe.com/zh/apps/morse-code): 把文本转成摩尔斯码并播放
+- [PDF 工作台](https://jsglobe.com/zh/apps/pdf-studio): 合并、拆分、旋转并转换 PDF
+
+## 网页
+
+- [URL 编码](https://jsglobe.com/zh/apps/url-encoder): 对 URL 片段进行百分号编码和解码
+- [URL 解析](https://jsglobe.com/zh/apps/url-parser): 把 URL 拆成各个部分与查询参数
+- [HTML 实体](https://jsglobe.com/zh/apps/html-entities): 转义与还原 HTML 实体
+- [JWT 解析](https://jsglobe.com/zh/apps/jwt-parser): 解码并查看 JSON Web Token
+- [键码信息](https://jsglobe.com/zh/apps/keycode-info): 逐键查看键盘事件
+- [Slugify](https://jsglobe.com/zh/apps/slugify): 把任意文本变成干净的 URL slug [tools: slugify_text]
+- [HTTP 状态码](https://jsglobe.com/zh/apps/http-status): 可搜索的 HTTP 状态码参考
+- [响应头检查](https://jsglobe.com/zh/apps/http-headers): 从安全与隐私角度给响应头评分
+- [渐变生成](https://jsglobe.com/zh/apps/css-gradient): 用可拖动的色标构建 CSS 渐变
+- [CSS 动画](https://jsglobe.com/zh/apps/css-animation): 关键帧预设与三次贝塞尔编辑器
+
+## 开发
+
+- [JSON 格式化](https://jsglobe.com/zh/apps/json-formatter): 格式化、校验、压缩并浏览 JSON [tools: format_json, check_json]
+- [JSON 比较](https://jsglobe.com/zh/apps/json-diff): 逐键比较两份 JSON 文档
+- [SQL 格式化](https://jsglobe.com/zh/apps/sql-formatter): 让 SQL 语句易读的排版
+- [XML 格式化](https://jsglobe.com/zh/apps/xml-formatter): 缩进并压缩 XML 或 HTML 标记
+- [Crontab](https://jsglobe.com/zh/apps/crontab-generator): 解释 cron 表达式并预览下次运行
+- [Chmod](https://jsglobe.com/zh/apps/chmod-calculator): 八进制与符号形式的 Unix 权限
+- [正则测试](https://jsglobe.com/zh/apps/regex-tester): 实时查看匹配结果与分组
+- [CSV 工作台](https://jsglobe.com/zh/apps/csv-studio): 以表格打开、编辑并转换 CSV 数据
+- [测试数据](https://jsglobe.com/zh/apps/mock-data): 按字段列表生成逼真的测试数据
+- [JSON Schema](https://jsglobe.com/zh/apps/json-schema): 从样例推断 schema 并校验文档
+- [API 规范编辑器](https://jsglobe.com/zh/apps/api-spec): 编辑并校验 OpenAPI 文档
+- [Docker Compose](https://jsglobe.com/zh/apps/docker-compose): 把 docker run 命令转成 compose 文件
+- [Compose 转 K8s](https://jsglobe.com/zh/apps/compose-to-k8s): 把 compose 文件转成 Kubernetes 清单
+- [Kubernetes](https://jsglobe.com/zh/apps/kubernetes): 生成 deployment、service 与 ingress 清单
+- [JSX 转 SVG](https://jsglobe.com/zh/apps/jsx-svg): 在 React 组件与 SVG 之间互转
+- [GitIgnore 生成器](https://jsglobe.com/zh/apps/gitignore-generator): 根据所用工具生成 .gitignore
+
+## 网络
+
+- [子网计算器](https://jsglobe.com/zh/apps/subnet-calculator): IPv4 CIDR 范围、掩码与主机数
+- [IP 转换](https://jsglobe.com/zh/apps/ip-converter): 十进制、十六进制、二进制与八进制的 IPv4
+- [MAC 地址](https://jsglobe.com/zh/apps/mac-generator): 生成并重新格式化 MAC 地址
+- [DNS 查询](https://jsglobe.com/zh/apps/dns-lookup): 通过 DNS-over-HTTPS 进行 dig 式记录查询
+- [网速测试](https://jsglobe.com/zh/apps/speed-test): 测量下载、上传、延迟与抖动
+- [域名查询](https://jsglobe.com/zh/apps/rdap-lookup): 域名、IP 或网段的 RDAP 记录
+- [WebSocket 测试](https://jsglobe.com/zh/apps/websocket-tester): 连接 socket 并观察数据帧
+
+## 文本
+
+- [Lorem Ipsum](https://jsglobe.com/zh/apps/lorem-ipsum): 按词、句或列表生成占位文本
+- [文本统计](https://jsglobe.com/zh/apps/text-stats): 计数、阅读时间与字符分析
+- [文本比较](https://jsglobe.com/zh/apps/text-diff): 逐行比较两段文本
+- [Markdown](https://jsglobe.com/zh/apps/markdown-preview): 编写 Markdown 并预览 HTML
+- [Emoji 选择器](https://jsglobe.com/zh/apps/emoji-picker): 浏览、搜索并复制 emoji 及其码位
+- [Unicode 表](https://jsglobe.com/zh/apps/unicode-tables): 浏览 Unicode 区块并查看任意字符
+- [文档工作室](https://jsglobe.com/zh/apps/doc-editor): 在浏览器中撰写、排版并导出 PDF 或 Word 文档
+- [字母](https://jsglobe.com/zh/apps/letters): 学习希腊、西里尔、日语、韩语和汉语的字符
+
+## 数学与单位
+
+- [计算器](https://jsglobe.com/zh/apps/math-evaluator): 求值带函数与常量的表达式 [tools: evaluate_expression]
+- [单位换算](https://jsglobe.com/zh/apps/unit-converter): 长度、质量、数据、温度与时间
+- [函数绘图](https://jsglobe.com/zh/apps/function-plotter): 绘制表达式，支持缩放、求根与导数
+- [统计](https://jsglobe.com/zh/apps/statistics): 一组数字的概要、直方图与箱线图
+
+## 媒体
+
+- [二维码](https://jsglobe.com/zh/apps/qr-generator): 离线生成可扫描的二维码
+- [图片转换](https://jsglobe.com/zh/apps/image-converter): 在浏览器中转换、缩放并压缩图片
+- [视频与音频](https://jsglobe.com/zh/apps/media-converter): 用 WebAssembly 转码视频和音频
+- [条形码](https://jsglobe.com/zh/apps/barcode-generator): 输出 SVG 格式的 Code 128、EAN 与 Code 39
+- [图标工作室](https://jsglobe.com/zh/apps/icon-studio): 用数千个部件拼出图标，或者直接描述它
+- [图标生成](https://jsglobe.com/zh/apps/favicon-generator): 所有图标尺寸、一个 .ico 和 manifest
+- [Exif 元数据](https://jsglobe.com/zh/apps/exif-editor): 读取并清除 JPEG 照片的元数据
+- [MP3 元数据](https://jsglobe.com/zh/apps/mp3-metadata): 编辑 MP3 文件的 ID3 标签与封面
+- [占位 SVG](https://jsglobe.com/zh/apps/svg-placeholder): 生成内联 SVG 占位图
+- [ASCII 艺术](https://jsglobe.com/zh/apps/ascii-art): 文字横幅与图片转 ASCII
+- [SVG 工作台](https://jsglobe.com/zh/apps/svg-editor): 查看、清理、改色并导出 SVG
+- [录音](https://jsglobe.com/zh/apps/voice-recorder): 录制音频并在本机转写
+- [镜子](https://jsglobe.com/zh/apps/mirror): 带可调环形补光的摄像头镜子
+- [截图工作台](https://jsglobe.com/zh/apps/screenshot): 截取、标注、模糊并对比截图
+- [画板](https://jsglobe.com/zh/apps/paint): 在画布上使用铅笔、形状、填充与喷枪
+- [海报工作室](https://jsglobe.com/zh/apps/poster-studio): 设计海报与社交版本，附带活动二维码
+
+## 科学
+
+- [元素周期表](https://jsglobe.com/zh/apps/periodic-table): 全部 118 种元素及完整属性
+- [分子查看器](https://jsglobe.com/zh/apps/molecule-viewer): 以 3D 呈现维生素、药物与著名分子
+- [电路实验室](https://jsglobe.com/zh/apps/circuit-lab): 搭建并模拟基础电子电路
+- [物理实验室](https://jsglobe.com/zh/apps/physics-lab): 小球、方块、弹簧、连杆、液压缸与马达
+- [逻辑实验室](https://jsglobe.com/zh/apps/logic-lab): 逻辑门、触发器、计数器、译码器与 LED 显示
+- [光学实验室](https://jsglobe.com/zh/apps/optics-lab): 透镜、反射镜与棱镜，真实光线追踪
+
+## 本地 AI
+
+- [AI 聊天](https://jsglobe.com/zh/apps/ai-chat): 与在本机运行的模型对话
+- [AI 代码](https://jsglobe.com/zh/apps/ai-code): 解释、审查、注释并转换代码
+- [AI 写作](https://jsglobe.com/zh/apps/ai-writer): 摘要、改写、翻译与校对
+- [翻译](https://jsglobe.com/zh/apps/ai-translate): 用本机上的模型翻译文本
+- [AI 正则](https://jsglobe.com/zh/apps/ai-regex): 描述一个模式并得到经过测试的正则
+- [Inspector AI](https://jsglobe.com/zh/apps/inspector): 向自己的文档提问，答案附带出处
+
+## 游戏
+
+- [打字测试](https://jsglobe.com/zh/apps/typing-test): 每分钟词数、准确率与易错键
+- [国际象棋](https://jsglobe.com/zh/apps/chess): 与电脑对弈、学习开局并训练战术
+- [数独](https://jsglobe.com/zh/apps/game-sudoku): 自动生成的谜题，支持笔记与提示
+- [方块](https://jsglobe.com/zh/apps/game-tetris): 堆叠下落的方块并消除整行
+- [记忆翻牌](https://jsglobe.com/zh/apps/game-memory): 翻开卡片并找出配对
+- [猜词](https://jsglobe.com/zh/apps/game-word): 六次机会猜出五个字母的单词
+- [架子鼓](https://jsglobe.com/zh/apps/drum-kit): 敲击鼓垫并编排 16 步节奏
+- [调音器](https://jsglobe.com/zh/apps/tuner): 用耳朵或麦克风为吉他、贝斯或尤克里里调音
+- [MIDI 键盘](https://jsglobe.com/zh/apps/midi-keyboard): 可用电脑键盘与 MIDI 输入演奏的合成器
+- [2048](https://jsglobe.com/zh/apps/game-2048): 滑动并合并方块，直到凑出 2048
+- [扫雷](https://jsglobe.com/zh/apps/game-minesweeper): 清空雷区且不踩到地雷
+- [贪吃蛇](https://jsglobe.com/zh/apps/game-snake): 进食、变长，别咬到自己
+- [打砖块](https://jsglobe.com/zh/apps/game-breakout): 接住小球并击碎每一块砖
+- [Pong](https://jsglobe.com/zh/apps/game-pong): 与机器对决的经典球拍游戏
+- [太空入侵者](https://jsglobe.com/zh/apps/game-invaders): 抵挡一波波下压的敌人
+- [纸牌](https://jsglobe.com/zh/apps/game-solitaire): 每次翻一张或三张的克朗代克纸牌
+- [恐龙快跑](https://jsglobe.com/zh/apps/game-dino): 在离线小游戏里跃过仙人掌
+- [抛硬币](https://jsglobe.com/zh/apps/coin-flipper): 抛出硬币，看概率如何趋于均衡
+- [掷骰器](https://jsglobe.com/zh/apps/dice-roller): 投掷任意骰子并观察点数分布
+
+## 实用工具
+
+- [UUID](https://jsglobe.com/zh/apps/uuid-generator): 批量生成 v4 与 v7 标识符
+- [设备信息](https://jsglobe.com/zh/apps/device-info): 浏览器所知的本机全部信息
+- [时钟](https://jsglobe.com/zh/apps/clock): 世界时钟、秒表与倒计时
+- [日历](https://jsglobe.com/zh/apps/calendar): 按工作区保存日程的月视图
+- [投资组合](https://jsglobe.com/zh/apps/portfolio): 跟踪持仓、配置与盈亏
+- [备忘](https://jsglobe.com/zh/apps/notes): 保存在此工作区的速记
+- [任务](https://jsglobe.com/zh/apps/todo): 每个工作区一份轻量清单
+- [时区](https://jsglobe.com/zh/apps/timezone-planner): 对齐各城市并找出重叠的时段
+- [IBAN 校验](https://jsglobe.com/zh/apps/iban-validator): 校验银行账号并解读其组成
+- [串口终端](https://jsglobe.com/zh/apps/serial-console): 通过 USB 与串口设备通信
+- [蓝牙](https://jsglobe.com/zh/apps/bluetooth-scanner): 读取、订阅并写入 GATT 特征
+- [手柄测试](https://jsglobe.com/zh/apps/gamepad-tester): 检查每个摇杆、扳机与按键
+- [扫码器](https://jsglobe.com/zh/apps/scanner): 从摄像头、图片或屏幕读取二维码与条形码
+- [税费计算器](https://jsglobe.com/zh/apps/tax-calculator): 计算 23 个国家的税后净收入，全部在本机完成
+
+## 其他分区
+
+- [全部工具](https://jsglobe.com/zh/apps)
+- [隐私](https://jsglobe.com/zh/privacy)
+- [免责声明](https://jsglobe.com/zh/disclaimer)

@@ -129,15 +129,37 @@ const robots = await readFile('robots.txt', 'utf8');
 if (!robots.includes(`Sitemap: ${SITE}/sitemap.xml`)) fail('robots.txt does not point at the sitemap');
 if (!existsSync('assets/og.png')) fail('assets/og.png is missing');
 
-// llms.txt is what an assistant reads instead of crawling every page, so it has
-// to name every tool the catalogue does
-{
-  const llms = await readFile('llms.txt', 'utf8');
-  const missing = apps.filter((app) => !llms.includes(`${SITE}/apps/${app.id})`));
-  if (missing.length) fail(`llms.txt is missing ${missing.length} tools: ${missing.slice(0, 5).map((app) => app.id).join(', ')}`);
-  for (const entry of LANGUAGES) {
-    if (!llms.includes(entry.native)) fail(`llms.txt does not mention ${entry.native}`);
+// llms.txt is what an assistant reads instead of crawling every page, so every
+// language needs one and each has to name every tool the catalogue does
+for (const entry of LANGUAGES) {
+  const at = entry.path ? `${entry.path}/llms.txt` : 'llms.txt';
+  if (!existsSync(at)) {
+    fail(`${at} is missing`);
+    continue;
   }
+  const llms = await readFile(at, 'utf8');
+  const root = `${SITE}${entry.path ? `/${entry.path}` : ''}`;
+  const missing = apps.filter((app) => !llms.includes(`${root}/apps/${app.id})`));
+  if (missing.length) fail(`${at} is missing ${missing.length} tools: ${missing.slice(0, 5).map((app) => app.id).join(', ')}`);
+  for (const other of LANGUAGES) {
+    if (!llms.includes(other.native)) fail(`${at} does not mention ${other.native}`);
+  }
+}
+
+// robots.txt has to point at each one, or nothing will find them
+{
+  const robots = await readFile('robots.txt', 'utf8');
+  for (const entry of LANGUAGES) {
+    const at = `${SITE}${entry.path ? `/${entry.path}` : ''}/llms.txt`;
+    if (!robots.includes(at)) fail(`robots.txt does not point at ${at}`);
+  }
+}
+
+// a sitemap where every page changed on the same day tells a crawler nothing
+{
+  const sitemap = await readFile('sitemap.xml', 'utf8');
+  const dates = new Set([...sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map((hit) => hit[1]));
+  if (dates.size < 2) fail(`every sitemap url claims the same lastmod (${[...dates][0]}), so none of them carry information`);
 }
 
 if (problems.length) {
