@@ -1,0 +1,17 @@
+export default {
+  'base-converter.binaryBase2': '2 進 (基数 2)',
+  'base-converter.octalBase8': '8 進 (基数 8)',
+  'base-converter.decimalBase10': '10 進 (基数 10)',
+  'base-converter.hexadecimalBase16': '16 進 (基数 16)',
+  'base-converter.base32': '32 進',
+  'base-converter.base36': '36 進',
+  'base-converter.enterANumber': '数を入力してください',
+  'base-converter.customBase': '任意の基数',
+  'base-converter.base': '基数',
+  'base-converter.bitView': 'ビット表示',
+  'base-converter.32BitRepresentationGroupedIn': 'ニブル単位でまとめた 32 ビット表現',
+  'base-converter.bitLength': 'ビット長',
+  'base-converter.bytes': 'Bytes',
+  'base-converter.fitsIn': '収まる範囲',
+  'base-converter.scientific': '指数表記',
+};

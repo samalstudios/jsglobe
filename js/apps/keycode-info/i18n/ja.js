@@ -1,0 +1,17 @@
+export default {
+  'keycode-info.pressAnyKey': '何かキーを押してください',
+  'keycode-info.clickHereFirstThenPress': '先にここをクリックしてからキーを押してください。修飾キーの組み合わせも取得します。',
+  'keycode-info.eventProperties': 'イベントのプロパティ',
+  'keycode-info.eventKey': 'event.key',
+  'keycode-info.eventCode': 'event.code',
+  'keycode-info.eventKeycode': 'event.keyCode',
+  'keycode-info.modifiers': '修飾キー',
+  'keycode-info.recentKeys': '最近のキー',
+  'keycode-info.nothingYet': 'まだ何もありません',
+  'keycode-info.snippet': 'スニペット',
+  'keycode-info.pressAKeyToBuild': 'キーを押すと判定コードが作られます',
+  'keycode-info.eventWhich': 'event.which',
+  'keycode-info.location': '場所',
+  'keycode-info.repeat': '繰り返し',
+  'keycode-info.unicode': 'Unicode',
+};

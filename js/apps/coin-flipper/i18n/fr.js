@@ -1,0 +1,18 @@
+export default {
+  'coin-flipper.flipsPerGo': 'Lancers par série',
+  'coin-flipper.heads': 'Pile',
+  'coin-flipper.tails': 'Face',
+  'coin-flipper.flip': 'Retourner',
+  'coin-flipper.flipManyAtOnce': 'Lancer plusieurs à la fois',
+  'coin-flipper.copyTheRun': 'Copier la commande run',
+  'coin-flipper.startOver': 'Recommencer',
+  'coin-flipper.howTheShareSettles': 'Comment la proportion se stabilise',
+  'coin-flipper.evensOutBlurb': 'Chaque lancer a sa propre chance égale. La courbe erre au début puis se rapproche de la moitié à mesure que les lancers s\'accumulent.',
+  'coin-flipper.theRun': 'La commande run',
+  'coin-flipper.copiedTheRun': 'Commande run copiée',
+  'coin-flipper.flippedCount': '{count} lancers',
+  'coin-flipper.longestRun': 'Plus longue série du même côté : {count}',
+  'coin-flipper.flipToBegin': 'Lancez pour commencer, ou appuyez sur la barre d\'espace',
+  'coin-flipper.coinFlipper': 'Pile ou face',
+  'coin-flipper.widgetBlurb': 'Lancez une pièce et voyez les probabilités s\'équilibrer.',
+};

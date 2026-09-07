@@ -1,0 +1,18 @@
+export default {
+  'json-schema.markPropertiesRequired': '속성을 필수로 표시',
+  'json-schema.detectFormats': '형식 감지',
+  'json-schema.noExtraProperties': '추가 속성 없음',
+  'json-schema.includeExamples': '예시 넣기',
+  'json-schema.waiting': '기다리는 중',
+  'json-schema.sampleJson': '예시 JSON',
+  'json-schema.pasteOneOrMoreJson': 'JSON 문서를 하나 이상 붙여넣으세요',
+  'json-schema.jsonSchema': 'JSON 스키마',
+  'json-schema.result': '결과',
+  'json-schema.inferSchema': '스키마 뽑기',
+  'json-schema.validateAgainstSchema': '스키마로 검사',
+  'json-schema.sample': '표본',
+  'json-schema.copy': '복사',
+  'json-schema.download': '내려받기',
+  'json-schema.generatedSchema': '만들어진 스키마',
+  'json-schema.everyDocumentMatchesTheSchema': '모든 문서가 스키마에 맞습니다.',
+};

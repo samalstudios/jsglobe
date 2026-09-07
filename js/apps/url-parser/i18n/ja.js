@@ -1,0 +1,16 @@
+export default {
+  'url-parser.components': 'コンポーネント',
+  'url-parser.queryParams': 'クエリ引数',
+  'url-parser.invalid': '有効な絶対 URL ではありません。',
+  'url-parser.protocol': 'プロトコル',
+  'url-parser.username': 'ユーザー名',
+  'url-parser.password': 'パスワード',
+  'url-parser.hostname': 'ホスト名',
+  'url-parser.port': 'ポート',
+  'url-parser.default': '既定',
+  'url-parser.origin': '原点',
+  'url-parser.path': 'パス',
+  'url-parser.query': 'クエリ',
+  'url-parser.fragment': 'フラグメント',
+  'url-parser.segments': 'セグメント',
+};

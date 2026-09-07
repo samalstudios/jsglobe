@@ -1,9 +1,8 @@
 import { JGApp, define, html } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { debounce } from '../../core/util.js';
 
-const t = appText(strings);
+const t = await appWords('slugify', (lang) => import(`./i18n/${lang}.js`));
 
 const slugify = (text, { separator = '-', lower = true, strict = true, maxLength = 0 } = {}) => {
   let out = text

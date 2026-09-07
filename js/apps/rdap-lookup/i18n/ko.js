@@ -1,0 +1,15 @@
+export default {
+  'rdap-lookup.exampleCom888': 'example.com, 8.8.8.8 또는 AS15169',
+  'rdap-lookup.lookUp': '조회',
+  'rdap-lookup.copyJson': 'JSON 복사',
+  'rdap-lookup.ready': '준비됨',
+  'rdap-lookup.rawResponse': '원본 응답',
+  'rdap-lookup.exactlyWhatTheRegistryReturned': '레지스트리가 돌려준 그대로',
+  'rdap-lookup.overview': '개요',
+  'rdap-lookup.timeline': '타임라인',
+  'rdap-lookup.status': '상태',
+  'rdap-lookup.locksAndPendingOperationsReported': '레지스트리가 알린 잠금과 대기 중인 작업',
+  'rdap-lookup.nameservers': '네임 서버',
+  'rdap-lookup.contacts': '연락처',
+  'rdap-lookup.registriesRedactMostPersonalDetails': '레지스트리는 개인 정보 대부분을 가립니다',
+};

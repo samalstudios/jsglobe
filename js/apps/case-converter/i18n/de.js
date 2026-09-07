@@ -1,0 +1,17 @@
+export default {
+  'case-converter.camelcase': 'camelCase',
+  'case-converter.pascalcase': 'PascalCase',
+  'case-converter.snakeCase': 'snake_case',
+  'case-converter.constantCase': 'CONSTANT_CASE',
+  'case-converter.kebabCase': 'kebab-case',
+  'case-converter.trainCase': 'Train-Case',
+  'case-converter.dotCase': 'dot.case',
+  'case-converter.pathCase': 'path/case',
+  'case-converter.sentenceCase': 'Satz schreibweise',
+  'case-converter.titleCase': 'Titel Schreibweise',
+  'case-converter.lowerCase': 'kleinschreibung',
+  'case-converter.upperCase': 'GROSSSCHREIBUNG',
+  'case-converter.input': 'Eingabe',
+  'case-converter.anySeparatorWorksSpacesDashes': 'Jedes Trennzeichen geht - Leerzeichen, Bindestriche, Unterstriche oder Binnenmajuskel',
+  'case-converter.helloWorldExample': 'hallo welt beispiel',
+};

@@ -1,0 +1,17 @@
+export default {
+  'keycode-info.pressAnyKey': '아무 키나 누르세요',
+  'keycode-info.clickHereFirstThenPress': '먼저 여기를 누른 뒤 키를 누르세요. 조합 키도 함께 잡힙니다.',
+  'keycode-info.eventProperties': '이벤트 속성',
+  'keycode-info.eventKey': 'event.key',
+  'keycode-info.eventCode': 'event.code',
+  'keycode-info.eventKeycode': 'event.keyCode',
+  'keycode-info.modifiers': '조합 키',
+  'keycode-info.recentKeys': '최근 키',
+  'keycode-info.nothingYet': '아직 없습니다',
+  'keycode-info.snippet': '조각',
+  'keycode-info.pressAKeyToBuild': '키를 누르면 판별식이 만들어집니다',
+  'keycode-info.eventWhich': 'event.which',
+  'keycode-info.location': '장소',
+  'keycode-info.repeat': '반복',
+  'keycode-info.unicode': 'Unicode',
+};

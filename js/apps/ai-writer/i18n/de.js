@@ -1,0 +1,16 @@
+export default {
+  'ai-writer.summarise': 'Zusammenfassen',
+  'ai-writer.rewrite': 'Umschreiben',
+  'ai-writer.changeTone': 'Ton ändern',
+  'ai-writer.translate': 'Übersetzen',
+  'ai-writer.proofread': 'Korrekturlesen',
+  'ai-writer.toBullets': 'In Stichpunkte',
+  'ai-writer.commitMessage': 'Commit-Nachricht',
+  'ai-writer.language': 'Sprache',
+  'ai-writer.run': 'Ausführen',
+  'ai-writer.stop': 'Stopp',
+  'ai-writer.input': 'Eingabe',
+  'ai-writer.pasteTextNotesOrA': 'Text, Notizen oder ein Diff einfügen',
+  'ai-writer.result': 'Ergebnis',
+  'ai-writer.copy': 'Kopieren',
+};

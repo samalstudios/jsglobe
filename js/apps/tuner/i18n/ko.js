@@ -1,0 +1,15 @@
+export default {
+  'tuner.guitarStandard': '기타 표준 조율',
+  'tuner.guitarDropD': '기타 드롭 D',
+  'tuner.guitarHalfStepDown': '기타 반음 내림',
+  'tuner.guitarOpenG': '기타 오픈 G',
+  'tuner.bass4String': '베이스 4현',
+  'tuner.ukulele': '우쿨렐레',
+  'tuner.referencePitchA4': '기준 음높이 (A4)',
+  'tuner.hzA4': 'Hz (A4)',
+  'tuner.startListening': '듣기 시작',
+  'tuner.stop': '멈추기',
+  'tuner.playAString': '줄 울리기',
+  'tuner.microphoneIsOff': '마이크가 꺼져 있습니다',
+  'tuner.50Cents': '+50센트',
+};

@@ -1,0 +1,17 @@
+export default {
+  'text-encoder.binary': '二进制',
+  'text-encoder.hexadecimal': '十六进制',
+  'text-encoder.decimalBytes': '十进制字节',
+  'text-encoder.unicodeEscapes': 'Unicode 转义',
+  'text-encoder.numericEntities': '数字实体',
+  'text-encoder.natoAlphabet': '北约字母表',
+  'text-encoder.morseCode': '摩尔斯电码',
+  'text-encoder.rot13': 'ROT13',
+  'text-encoder.reversed': '倒序',
+  'text-encoder.numeronym': '数字缩写',
+  'text-encoder.swap': '交换 ⇅',
+  'text-encoder.plainText': '纯文本',
+  'text-encoder.typeTextToEncode': '输入要编码的文本',
+  'text-encoder.encoded': '已编码',
+  'text-encoder.pasteEncodedTextToDecode': '粘贴要解码的编码文本',
+};

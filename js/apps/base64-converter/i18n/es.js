@@ -1,0 +1,15 @@
+export default {
+  'common.text': 'Texto',
+  'base64.fileToBase64': 'Archivo → Base64',
+  'base64.urlSafe': 'Alfabeto seguro para URL',
+  'base64.swap': 'Intercambiar ⇅',
+  'base64.plainText': 'Texto plano',
+  'base64.textToEncode': 'Texto para codificar',
+  'base64.base64ToDecode': 'Base64 para decodificar',
+  'base64.typeEitherSide': 'Escribe en cualquiera de los dos lados.',
+  'base64.chooseFile': 'Elegir un archivo...',
+  'base64.filesStay': 'Los archivos nunca salen de tu navegador.',
+  'base64-converter.dataUri': 'Data URI',
+  'base64.outputHere': 'Aquí aparece la salida en Base64',
+  'base64.copyNoPrefix': 'Copiar sin el prefijo data URI',
+};

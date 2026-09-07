@@ -1,0 +1,17 @@
+export default {
+  'slugify.text': 'テキスト',
+  'slugify.10WaysToBuildA': 'カフェのメニューを組み立てる 10 の方法 - 2024 年版',
+  'slugify.dash': 'ハイフン (-)',
+  'slugify.underscore': 'アンダースコア (_)',
+  'slugify.dot': 'ドット (.)',
+  'slugify.lowercase': '小文字',
+  'slugify.stripSymbols': '記号を取り除く',
+  'slugify.max': '最大',
+  'slugify.slug': 'Slug',
+  'slugify.variations': '変化形',
+  'slugify.kebab': 'Kebab',
+  'slugify.snake': 'Snake',
+  'slugify.dot2': '点',
+  'slugify.preservedCase': '大文字小文字を保持',
+  'slugify.length': '長さ',
+};

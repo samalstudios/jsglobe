@@ -1,0 +1,17 @@
+export default {
+  'compose-to-k8s.defaultVolumeSize': 'Tamaño de volumen por defecto',
+  'compose-to-k8s.replicasWhenComposeDoesNot': 'Réplicas cuando compose no lo indica',
+  'compose-to-k8s.namespace': 'Espacio de nombres',
+  'compose-to-k8s.ingressController': 'Controlador de ingress',
+  'compose-to-k8s.hostDomain': 'Dominio del host',
+  'compose-to-k8s.imagePullPolicy': 'Política de descarga de imagen',
+  'compose-to-k8s.requestTls': 'Solicitar TLS',
+  'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+  'compose-to-k8s.loadASample': 'Cargar un ejemplo',
+  'compose-to-k8s.pasteAComposeFile': 'Pega un archivo compose',
+  'compose-to-k8s.kubernetesManifests': 'Manifiestos de Kubernetes',
+  'compose-to-k8s.copy': 'Copiar',
+  'compose-to-k8s.download': 'Descargar',
+  'compose-to-k8s.clear': 'Limpiar',
+  'compose-to-k8s.emptyTheInput': 'Vaciar la entrada',
+};

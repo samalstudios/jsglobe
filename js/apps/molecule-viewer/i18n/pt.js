@@ -1,0 +1,18 @@
+export default {
+  'molecule-viewer.ballAndStick': 'Bolas e varetas',
+  'molecule-viewer.spaceFilling': 'Preenchimento espacial',
+  'molecule-viewer.sticks': 'Analógicos',
+  'molecule-viewer.flatDiagram': 'Diagrama plano',
+  'molecule-viewer.defaultStyle': 'Estilo padrão',
+  'molecule-viewer.showHydrogens': 'Mostrar os hidrogênios',
+  'molecule-viewer.spinAutomatically': 'Girar automaticamente',
+  'molecule-viewer.moleculeOfTheDay': 'Molécula do dia',
+  'molecule-viewer.hydrogens': 'Hidrogênios',
+  'molecule-viewer.labels': 'Rótulos',
+  'molecule-viewer.spin': 'Giro',
+  'molecule-viewer.copyXyz': 'Copiar XYZ',
+  'molecule-viewer.savePng': 'Salvar PNG',
+  'molecule-viewer.atoms': 'átomos',
+  'molecule-viewer.bonds': 'ligações',
+  'molecule-viewer.gMol': 'g/mol',
+};

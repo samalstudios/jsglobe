@@ -1,0 +1,16 @@
+export default {
+  'dice-roller.rollWithASound': '音を鳴らして振る',
+  'dice-roller.howMany': '個数',
+  'dice-roller.addToTheTotal': '合計に加える',
+  'dice-roller.roll': '振る',
+  'dice-roller.howOftenEachFaceCame': '各目の出た回数',
+  'dice-roller.recentRolls': '最近の出目',
+  'dice-roller.copyTheLog': 'ログをコピー',
+  'dice-roller.clearTheLog': 'ログを消す',
+  'dice-roller.copiedTheLog': 'ログをコピーしました',
+  'dice-roller.diceThrown': 'サイコロを {count} 個振りました',
+  'dice-roller.rollToSeeTheSpread': '振ると分布が積み上がっていきます',
+  'dice-roller.nothingThrownYet': 'まだ振っていません',
+  'dice-roller.diceRoller': 'サイコロ',
+  'dice-roller.widgetBlurb': 'どんなサイコロも振って、ばらつきを見てみましょう。',
+};

@@ -1,12 +1,11 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { icon } from '../../ui/icons.js';
 import { COUNTRIES } from '../../lib/tax-countries.js';
 import { rates } from '../../lib/tax.js';
 import { countryName, fieldLabel, optionLabel, hintLabel, noteLabel, lineLabel } from './labels.js';
 
-const t = appText(strings);
+const t = await appWords('tax-calculator', (lang) => import(`./i18n/${lang}.js`));
 const sheet = await styleSheet(import.meta.url);
 
 const PERIODS = [

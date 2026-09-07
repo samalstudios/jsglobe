@@ -1,0 +1,17 @@
+export default {
+  'text-encoder.binary': 'Binario',
+  'text-encoder.hexadecimal': 'Hexadecimal',
+  'text-encoder.decimalBytes': 'Bytes decimales',
+  'text-encoder.unicodeEscapes': 'Escapes Unicode',
+  'text-encoder.numericEntities': 'Entidades numéricas',
+  'text-encoder.natoAlphabet': 'Alfabeto OTAN',
+  'text-encoder.morseCode': 'Código morse',
+  'text-encoder.rot13': 'ROT13',
+  'text-encoder.reversed': 'Invertido',
+  'text-encoder.numeronym': 'Numerónimo',
+  'text-encoder.swap': 'Intercambiar ⇅',
+  'text-encoder.plainText': 'Texto plano',
+  'text-encoder.typeTextToEncode': 'Escribe el texto que quieras codificar',
+  'text-encoder.encoded': 'Codificado',
+  'text-encoder.pasteEncodedTextToDecode': 'Pega el texto codificado para decodificarlo',
+};

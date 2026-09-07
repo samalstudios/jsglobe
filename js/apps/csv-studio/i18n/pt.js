@@ -1,0 +1,15 @@
+export default {
+  'csv-studio.dropACsvOrTsv': 'Solte um arquivo CSV ou TSV aqui, ou clique para escolher',
+  'csv-studio.filterRows': 'Filtrar linhas',
+  'csv-studio.firstRowIsAHeader': 'A primeira linha é cabeçalho',
+  'csv-studio.pasteOrExport': 'Colar ou exportar',
+  'csv-studio.nameRoleCity': 'nome,cargo,cidade',
+  'csv-studio.jsonLines': 'JSON por linhas',
+  'csv-studio.markdown': 'Markdown',
+  'csv-studio.addRow': 'Adicionar linha',
+  'csv-studio.addColumn': 'Adicionar coluna',
+  'csv-studio.tidy': 'Arrumar',
+  'csv-studio.trimSpacesDropEmptyRows': 'Remover espaços, linhas vazias e duplicatas',
+  'csv-studio.copy': 'Copiar',
+  'csv-studio.download': 'Baixar',
+};

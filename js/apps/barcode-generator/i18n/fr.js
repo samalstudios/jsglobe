@@ -1,0 +1,15 @@
+export default {
+  'barcode-generator.code128': 'Code 128',
+  'barcode-generator.ean13': 'EAN-13',
+  'barcode-generator.ean8': 'EAN-8',
+  'barcode-generator.code39': 'Code 39',
+  'barcode-generator.format': 'Format',
+  'barcode-generator.value': 'Valeur',
+  'barcode-generator.barWidth': 'Largeur des barres',
+  'barcode-generator.height': 'Hauteur',
+  'barcode-generator.printTheValueUnderThe': 'Afficher la valeur sous les barres',
+  'barcode-generator.ready': 'Prêt',
+  'barcode-generator.copySvg': 'Copier le SVG',
+  'barcode-generator.downloadSvg': 'Télécharger le SVG',
+  'barcode-generator.downloadPng': 'Télécharger le PNG',
+};

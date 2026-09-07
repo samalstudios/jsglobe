@@ -1,0 +1,18 @@
+export default {
+  'rsa-keygen.rsa2048': 'RSA 2048',
+  'rsa-keygen.rsa4096': 'RSA 4096',
+  'rsa-keygen.rsa2048Encryption': 'RSA 2048 (criptografia)',
+  'rsa-keygen.ecdsaP256': 'ECDSA P-256',
+  'rsa-keygen.ecdsaP384': 'ECDSA P-384',
+  'rsa-keygen.ecdhP256': 'ECDH P-256',
+  'rsa-keygen.generateKeyPair': 'Gerar par de chaves',
+  'rsa-keygen.keysAreCreatedWithThe': 'As chaves são criadas com a Web Crypto API e nunca saem desta aba.',
+  'rsa-keygen.publicKey': 'Chave pública',
+  'rsa-keygen.spkiPemEncoded': 'SPKI, codificado em PEM',
+  'rsa-keygen.copy': 'Copiar',
+  'rsa-keygen.save': 'Salvar',
+  'rsa-keygen.privateKey': 'Chave privada',
+  'rsa-keygen.pkcs8PemEncoded': 'PKCS#8, codificado em PEM',
+  'rsa-keygen.jsonWebKey': 'JSON Web Key',
+  'rsa-keygen.keyGenerationFailed': 'Falha ao gerar a chave',
+};

@@ -1,0 +1,18 @@
+export default {
+  'rsa-keygen.rsa2048': 'RSA 2048',
+  'rsa-keygen.rsa4096': 'RSA 4096',
+  'rsa-keygen.rsa2048Encryption': 'RSA 2048 (暗号化)',
+  'rsa-keygen.ecdsaP256': 'ECDSA P-256',
+  'rsa-keygen.ecdsaP384': 'ECDSA P-384',
+  'rsa-keygen.ecdhP256': 'ECDH P-256',
+  'rsa-keygen.generateKeyPair': '鍵ペアを生成',
+  'rsa-keygen.keysAreCreatedWithThe': '鍵は Web Crypto API で作られ、このタブを出ることはありません。',
+  'rsa-keygen.publicKey': '公開鍵',
+  'rsa-keygen.spkiPemEncoded': 'SPKI、PEM 形式',
+  'rsa-keygen.copy': 'コピー',
+  'rsa-keygen.save': '保存',
+  'rsa-keygen.privateKey': '秘密鍵',
+  'rsa-keygen.pkcs8PemEncoded': 'PKCS#8、PEM 形式',
+  'rsa-keygen.jsonWebKey': 'JSON Web Key',
+  'rsa-keygen.keyGenerationFailed': '鍵の生成に失敗しました',
+};

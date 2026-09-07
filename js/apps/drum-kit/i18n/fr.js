@@ -1,0 +1,16 @@
+export default {
+  'drum-kit.kick': 'Grosse caisse',
+  'drum-kit.snare': 'Caisse claire',
+  'drum-kit.clap': 'Clap',
+  'drum-kit.rim': 'Rim',
+  'drum-kit.closedHat': 'Charleston fermé',
+  'drum-kit.openHat': 'Charleston ouvert',
+  'drum-kit.tom': 'Tom',
+  'drum-kit.cymbal': 'Cymbale',
+  'drum-kit.stepSequencer': 'Séquenceur à pas',
+  'drum-kit.16StepsClickToToggle': '16 pas, cliquez pour activer',
+  'drum-kit.play': 'Lecture',
+  'drum-kit.clear': 'Effacer',
+  'drum-kit.loadBeat': 'Charger un rythme',
+  'drum-kit.tempo': 'Tempo',
+};

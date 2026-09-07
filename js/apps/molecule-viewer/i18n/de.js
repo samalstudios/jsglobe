@@ -1,0 +1,18 @@
+export default {
+  'molecule-viewer.ballAndStick': 'Kugel-Stab-Modell',
+  'molecule-viewer.spaceFilling': 'Kalottenmodell',
+  'molecule-viewer.sticks': 'Stabmodell',
+  'molecule-viewer.flatDiagram': 'Flaches Diagramm',
+  'molecule-viewer.defaultStyle': 'Standardstil',
+  'molecule-viewer.showHydrogens': 'Wasserstoff anzeigen',
+  'molecule-viewer.spinAutomatically': 'Automatisch drehen',
+  'molecule-viewer.moleculeOfTheDay': 'Molekül des Tages',
+  'molecule-viewer.hydrogens': 'Wasserstoffatome',
+  'molecule-viewer.labels': 'Beschriftungen',
+  'molecule-viewer.spin': 'Drehung',
+  'molecule-viewer.copyXyz': 'XYZ kopieren',
+  'molecule-viewer.savePng': 'PNG speichern',
+  'molecule-viewer.atoms': 'Atome',
+  'molecule-viewer.bonds': 'Bindungen',
+  'molecule-viewer.gMol': 'g/mol',
+};

@@ -1,12 +1,11 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { media } from '../../core/media.js';
 import { bus } from '../../core/bus.js';
 import { download, formatBytes } from '../../core/util.js';
 import { router } from '../../core/router.js';
 
-const t = appText(strings);
+const t = await appWords('media-converter', (lang) => import(`./i18n/${lang}.js`));
 
 const sheet = await styleSheet(import.meta.url);
 

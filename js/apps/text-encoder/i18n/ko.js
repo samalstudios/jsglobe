@@ -1,0 +1,17 @@
+export default {
+  'text-encoder.binary': '2진',
+  'text-encoder.hexadecimal': '16진',
+  'text-encoder.decimalBytes': '10진 바이트',
+  'text-encoder.unicodeEscapes': '유니코드 이스케이프',
+  'text-encoder.numericEntities': '숫자 엔티티',
+  'text-encoder.natoAlphabet': 'NATO 음성 문자',
+  'text-encoder.morseCode': '모스 부호',
+  'text-encoder.rot13': 'ROT13',
+  'text-encoder.reversed': '거꾸로 됨',
+  'text-encoder.numeronym': '숫자 약어',
+  'text-encoder.swap': '바꾸기 ⇅',
+  'text-encoder.plainText': '일반 텍스트',
+  'text-encoder.typeTextToEncode': '인코딩할 글을 치세요',
+  'text-encoder.encoded': '인코딩 결과',
+  'text-encoder.pasteEncodedTextToDecode': '디코딩할 인코딩된 글을 붙여넣으세요',
+};

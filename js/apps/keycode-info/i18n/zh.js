@@ -1,0 +1,17 @@
+export default {
+  'keycode-info.pressAnyKey': '按任意键',
+  'keycode-info.clickHereFirstThenPress': '先点击这里，然后按键。组合键也会被捕获。',
+  'keycode-info.eventProperties': '事件属性',
+  'keycode-info.eventKey': 'event.key',
+  'keycode-info.eventCode': 'event.code',
+  'keycode-info.eventKeycode': 'event.keyCode',
+  'keycode-info.modifiers': '修饰键',
+  'keycode-info.recentKeys': '最近按下的键',
+  'keycode-info.nothingYet': '暂无内容',
+  'keycode-info.snippet': '代码片段',
+  'keycode-info.pressAKeyToBuild': '按下一个键来生成匹配代码',
+  'keycode-info.eventWhich': 'event.which',
+  'keycode-info.location': '位置',
+  'keycode-info.repeat': '重复',
+  'keycode-info.unicode': 'Unicode',
+};

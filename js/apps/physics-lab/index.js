@@ -1,8 +1,7 @@
 import { JGApp, define, html, raw, styleSheet } from '../../core/app.js';
 import SAMPLES from './scenes.js';
 import { collapsibleGroups, paletteSheet } from '../../ui/palette.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { createWorld, bodyCorners, worldPoint, localPoint, spanOf, hull, polyMass, simpleLoop } from '../../lib/physics.js';
 import { createDesigns } from '../../lib/designs.js';
 import { clipPolygons, polygonArea } from '../../lib/clip.js';
@@ -10,7 +9,7 @@ import { shapesFromSvg } from '../../lib/svg-shapes.js';
 import { icon } from '../../ui/icons.js';
 import { toast, pickFile } from '../../core/util.js';
 
-const t = appText(strings);
+const t = await appWords('physics-lab', (lang) => import(`./i18n/${lang}.js`));
 
 const sheet = await styleSheet(import.meta.url);
 

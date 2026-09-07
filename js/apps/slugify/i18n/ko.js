@@ -1,0 +1,17 @@
+export default {
+  'slugify.text': '텍스트',
+  'slugify.10WaysToBuildA': '카페 메뉴를 짜는 10가지 방법 - 2024년판',
+  'slugify.dash': '하이픈 (-)',
+  'slugify.underscore': '밑줄 (_)',
+  'slugify.dot': '점 (.)',
+  'slugify.lowercase': '소문자',
+  'slugify.stripSymbols': '기호 없애기',
+  'slugify.max': '최대',
+  'slugify.slug': 'Slug',
+  'slugify.variations': '변형',
+  'slugify.kebab': 'Kebab',
+  'slugify.snake': 'Snake',
+  'slugify.dot2': '점',
+  'slugify.preservedCase': '대소문자 유지',
+  'slugify.length': '길이',
+};

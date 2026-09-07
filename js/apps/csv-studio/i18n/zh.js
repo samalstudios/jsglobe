@@ -1,0 +1,15 @@
+export default {
+  'csv-studio.dropACsvOrTsv': '把 CSV 或 TSV 文件拖到这里，或点击选择一个',
+  'csv-studio.filterRows': '筛选行',
+  'csv-studio.firstRowIsAHeader': '第一行是表头',
+  'csv-studio.pasteOrExport': '粘贴或导出',
+  'csv-studio.nameRoleCity': 'name,role,city',
+  'csv-studio.jsonLines': 'JSON Lines',
+  'csv-studio.markdown': 'Markdown',
+  'csv-studio.addRow': '添加行',
+  'csv-studio.addColumn': '添加列',
+  'csv-studio.tidy': '整理',
+  'csv-studio.trimSpacesDropEmptyRows': '去除空格，删除空行与重复行',
+  'csv-studio.copy': '复制',
+  'csv-studio.download': '下载',
+};

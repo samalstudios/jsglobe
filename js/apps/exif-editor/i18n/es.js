@@ -1,0 +1,16 @@
+export default {
+  'exif-editor.dropAJpegHereOr': 'Suelta un JPEG aquí, o haz clic para elegir uno',
+  'exif-editor.metadata': 'Metadatos',
+  'exif-editor.untickATagToDrop': 'Desmarca una etiqueta para quitarla de la copia guardada',
+  'exif-editor.keepTheColourProfile': 'Mantener el perfil de color',
+  'exif-editor.saveCleanedCopy': 'Guardar una copia limpia',
+  'exif-editor.stripEverything': 'Quitar todo',
+  'exif-editor.copyMetadataAsJson': 'Copiar metadatos como JSON',
+  'exif-editor.metadataCopied': 'Metadatos copiados',
+  'exif-editor.onlyJpegFilesCarryExif': 'Solo los archivos JPEG llevan metadatos Exif',
+  'exif-editor.name': 'Nombre',
+  'exif-editor.size': 'Tamaño',
+  'exif-editor.type': 'Tipo',
+  'exif-editor.noExifTagsFoundIn': 'No se han encontrado etiquetas Exif en este archivo.',
+  'exif-editor.thatFileIsNotA': 'Ese archivo no es un JPEG',
+};

@@ -1,9 +1,8 @@
 import { JGApp, define, html } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { encodeBytes, decodeBytes, toBase64, fromBase64 } from '../../core/util.js';
 
-const t = appText(strings);
+const t = await appWords('basic-auth', (lang) => import(`./i18n/${lang}.js`));
 
 class BasicAuth extends JGApp {
   static appId = 'basic-auth';

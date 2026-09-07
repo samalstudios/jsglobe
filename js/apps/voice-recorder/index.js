@@ -1,13 +1,12 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { blobs } from '../../core/blobs.js';
 import { speech } from '../../core/speech.js';
 import { ai } from '../../core/ai.js';
 import { bus } from '../../core/bus.js';
 import { download, formatBytes, copyText, toast, uid } from '../../core/util.js';
 
-const t = appText(strings);
+const t = await appWords('voice-recorder', (lang) => import(`./i18n/${lang}.js`));
 
 const sheet = await styleSheet(import.meta.url);
 

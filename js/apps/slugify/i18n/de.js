@@ -1,0 +1,17 @@
+export default {
+  'slugify.text': 'Text',
+  'slugify.10WaysToBuildA': '10 Wege zu einer Café-Karte - Ausgabe 2024',
+  'slugify.dash': 'Bindestrich (-)',
+  'slugify.underscore': 'Unterstrich (_)',
+  'slugify.dot': 'Punkt (.)',
+  'slugify.lowercase': 'Kleinbuchstaben',
+  'slugify.stripSymbols': 'Sonderzeichen entfernen',
+  'slugify.max': 'max',
+  'slugify.slug': 'Slug',
+  'slugify.variations': 'Varianten',
+  'slugify.kebab': 'Kebab',
+  'slugify.snake': 'Snake',
+  'slugify.dot2': 'Punkt',
+  'slugify.preservedCase': 'Schreibweise erhalten',
+  'slugify.length': 'Länge',
+};

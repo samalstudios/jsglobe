@@ -1,0 +1,15 @@
+export default {
+  'hash-text.outputCase': '출력 대소문자',
+  'hash-text.lower': '소문자',
+  'hash-text.upper': '대문자',
+  'hash-text.textToHash': '해시할 글',
+  'hash-text.sha256': 'SHA-256',
+  'hash-text.hex': '16진',
+  'hash-text.input': '입력',
+  'hash-text.hashedLocallyNothingIsUploaded': '기기에서 계산합니다 - 아무것도 보내지 않습니다',
+  'hash-text.typeOrPaste': '해시할 글을 치거나 붙여넣으세요',
+  'hash-text.chooseFile': '파일 고르기...',
+  'hash-text.noFile': '고른 파일이 없습니다',
+  'common.text': '텍스트',
+  'common.file': '파일',
+};

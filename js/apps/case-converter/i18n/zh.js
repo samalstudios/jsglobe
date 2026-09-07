@@ -1,0 +1,17 @@
+export default {
+  'case-converter.camelcase': 'camelCase',
+  'case-converter.pascalcase': 'PascalCase',
+  'case-converter.snakeCase': 'snake_case',
+  'case-converter.constantCase': 'CONSTANT_CASE',
+  'case-converter.kebabCase': 'kebab-case',
+  'case-converter.trainCase': 'Train-Case',
+  'case-converter.dotCase': 'dot.case',
+  'case-converter.pathCase': 'path/case',
+  'case-converter.sentenceCase': '句首大写',
+  'case-converter.titleCase': '标题大写',
+  'case-converter.lowerCase': '全部小写',
+  'case-converter.upperCase': '全部大写',
+  'case-converter.input': '输入',
+  'case-converter.anySeparatorWorksSpacesDashes': '任何分隔符都可以：空格、连字符、下划线或驼峰',
+  'case-converter.helloWorldExample': 'hello world example',
+};

@@ -1,0 +1,17 @@
+export default {
+  'color-palette.saveColour': 'Salvar a cor',
+  'color-palette.cssVariables': 'Variáveis CSS',
+  'color-palette.tailwindConfig': 'Configuração do Tailwind',
+  'color-palette.scss': 'SCSS',
+  'color-palette.exportScale': 'Escala de exportação',
+  'color-palette.saved': 'Salvo',
+  'color-palette.palette': 'Paleta',
+  'color-palette.wheel': 'Roda',
+  'color-palette.scale': 'Escala',
+  'color-palette.harmony': 'Harmonia',
+  'color-palette.nothingSavedYet': 'Nada salvo ainda.',
+  'color-palette.clickASwatchToSelect': 'Clique em uma amostra para selecioná-la, clique em um nome para copiar a escala inteira.',
+  'color-palette.lightness': 'Luminosidade',
+  'color-palette.hex': 'Hex',
+  'color-palette.nativePicker': 'Seletor nativo',
+};

@@ -1,0 +1,15 @@
+export default {
+  'common.text': '文本',
+  'base64.fileToBase64': '文件 → Base64',
+  'base64.urlSafe': 'URL 安全字母表',
+  'base64.swap': '交换 ⇅',
+  'base64.plainText': '纯文本',
+  'base64.textToEncode': '要编码的文本',
+  'base64.base64ToDecode': '要解码的 Base64',
+  'base64.typeEitherSide': '在任意一侧输入。',
+  'base64.chooseFile': '选择文件...',
+  'base64.filesStay': '文件绝不会离开你的浏览器。',
+  'base64-converter.dataUri': 'Data URI',
+  'base64.outputHere': 'Base64 输出会显示在这里',
+  'base64.copyNoPrefix': '复制时不带 data URI 前缀',
+};

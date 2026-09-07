@@ -1,0 +1,18 @@
+export default {
+  'coin-flipper.flipsPerGo': 'Lançamentos por série',
+  'coin-flipper.heads': 'Cara',
+  'coin-flipper.tails': 'Coroa',
+  'coin-flipper.flip': 'Virar',
+  'coin-flipper.flipManyAtOnce': 'Jogar várias de uma vez',
+  'coin-flipper.copyTheRun': 'Copiar o comando run',
+  'coin-flipper.startOver': 'Começar de novo',
+  'coin-flipper.howTheShareSettles': 'Como a proporção se estabiliza',
+  'coin-flipper.evensOutBlurb': 'Cada lançamento tem sua própria chance igual. A linha oscila no começo e se aproxima da metade conforme os lançamentos se somam.',
+  'coin-flipper.theRun': 'O comando run',
+  'coin-flipper.copiedTheRun': 'Comando run copiado',
+  'coin-flipper.flippedCount': '{count} lançamentos',
+  'coin-flipper.longestRun': 'Maior sequência do mesmo lado: {count}',
+  'coin-flipper.flipToBegin': 'Jogue para começar, ou aperte a barra de espaço',
+  'coin-flipper.coinFlipper': 'Cara ou coroa',
+  'coin-flipper.widgetBlurb': 'Jogue uma moeda e veja as probabilidades se equilibrarem.',
+};

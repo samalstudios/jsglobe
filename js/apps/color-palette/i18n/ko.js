@@ -1,0 +1,17 @@
+export default {
+  'color-palette.saveColour': '색 저장',
+  'color-palette.cssVariables': 'CSS 변수',
+  'color-palette.tailwindConfig': 'Tailwind 설정',
+  'color-palette.scss': 'SCSS',
+  'color-palette.exportScale': '내보내기 배율',
+  'color-palette.saved': '저장했습니다',
+  'color-palette.palette': '팔레트',
+  'color-palette.wheel': '바퀴',
+  'color-palette.scale': '배율',
+  'color-palette.harmony': '조화',
+  'color-palette.nothingSavedYet': '아직 저장한 것이 없습니다.',
+  'color-palette.clickASwatchToSelect': '견본을 누르면 고르고, 이름을 누르면 단계 전체를 복사합니다.',
+  'color-palette.lightness': '밝기',
+  'color-palette.hex': 'Hex',
+  'color-palette.nativePicker': '기본 선택기',
+};

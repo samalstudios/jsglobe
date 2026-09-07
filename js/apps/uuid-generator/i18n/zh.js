@@ -1,0 +1,15 @@
+export default {
+  'uuid.new': '新建',
+  'action.copy': '复制',
+  'uuid-generator.qty': '数量',
+  'action.generate': '生成',
+  'uuid.uppercase': '大写',
+  'uuid.braces': '用花括号包裹',
+  'uuid.dashes': '保留连字符',
+  'uuid-generator.output': '输出',
+  'uuid.copyAll': '复制全部',
+  'uuid-generator.uuidV4': 'UUID v4',
+  'uuid-generator.uuidV7': 'UUID v7',
+  'uuid.shortId': '短 ID',
+  'uuid.nil': '空 UUID',
+};

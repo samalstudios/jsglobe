@@ -1,0 +1,18 @@
+export default {
+  'coin-flipper.flipsPerGo': '每轮抛掷次数',
+  'coin-flipper.heads': '正面',
+  'coin-flipper.tails': '反面',
+  'coin-flipper.flip': '抛掷',
+  'coin-flipper.flipManyAtOnce': '一次抛很多',
+  'coin-flipper.copyTheRun': '复制这一轮',
+  'coin-flipper.startOver': '重新开始',
+  'coin-flipper.howTheShareSettles': '比例如何趋于稳定',
+  'coin-flipper.evensOutBlurb': '每次抛掷的机会都相同。曲线起初会摇摆，次数越多越接近一半。',
+  'coin-flipper.theRun': '本轮记录',
+  'coin-flipper.copiedTheRun': '已复制这一轮',
+  'coin-flipper.flippedCount': '已抛掷 {count} 次',
+  'coin-flipper.longestRun': '同一面最长连续：{count}',
+  'coin-flipper.flipToBegin': '抛一次开始，或按空格键',
+  'coin-flipper.coinFlipper': '抛硬币',
+  'coin-flipper.widgetBlurb': '抛出硬币，看概率如何趋于均衡。',
+};

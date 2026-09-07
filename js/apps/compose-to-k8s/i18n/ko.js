@@ -1,0 +1,17 @@
+export default {
+  'compose-to-k8s.defaultVolumeSize': '기본 볼륨 크기',
+  'compose-to-k8s.replicasWhenComposeDoesNot': 'compose에 없을 때의 복제본 수',
+  'compose-to-k8s.namespace': '네임스페이스',
+  'compose-to-k8s.ingressController': 'ingress 컨트롤러',
+  'compose-to-k8s.hostDomain': '호스트 도메인',
+  'compose-to-k8s.imagePullPolicy': '이미지 가져오기 정책',
+  'compose-to-k8s.requestTls': 'TLS 요청',
+  'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+  'compose-to-k8s.loadASample': '예시 불러오기',
+  'compose-to-k8s.pasteAComposeFile': 'compose 파일을 붙여넣으세요',
+  'compose-to-k8s.kubernetesManifests': '쿠버네티스 매니페스트',
+  'compose-to-k8s.copy': '복사',
+  'compose-to-k8s.download': '내려받기',
+  'compose-to-k8s.clear': '지우기',
+  'compose-to-k8s.emptyTheInput': '입력 비우기',
+};

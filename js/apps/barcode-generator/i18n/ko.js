@@ -1,0 +1,15 @@
+export default {
+  'barcode-generator.code128': 'Code 128',
+  'barcode-generator.ean13': 'EAN-13',
+  'barcode-generator.ean8': 'EAN-8',
+  'barcode-generator.code39': 'Code 39',
+  'barcode-generator.format': '형식',
+  'barcode-generator.value': '값',
+  'barcode-generator.barWidth': '막대 너비',
+  'barcode-generator.height': '높이',
+  'barcode-generator.printTheValueUnderThe': '막대 아래에 값 표시',
+  'barcode-generator.ready': '준비됨',
+  'barcode-generator.copySvg': 'SVG 복사',
+  'barcode-generator.downloadSvg': 'SVG 내려받기',
+  'barcode-generator.downloadPng': 'PNG 내려받기',
+};

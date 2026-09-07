@@ -1,0 +1,15 @@
+export default {
+  'uuid.new': '新規',
+  'action.copy': 'コピー',
+  'uuid-generator.qty': '数量',
+  'action.generate': '生成',
+  'uuid.uppercase': '大文字',
+  'uuid.braces': '波かっこで囲む',
+  'uuid.dashes': 'ハイフンを残す',
+  'uuid-generator.output': '出力',
+  'uuid.copyAll': 'すべてコピー',
+  'uuid-generator.uuidV4': 'UUID v4',
+  'uuid-generator.uuidV7': 'UUID v7',
+  'uuid.shortId': '短い ID',
+  'uuid.nil': 'なし',
+};

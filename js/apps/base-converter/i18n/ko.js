@@ -1,0 +1,17 @@
+export default {
+  'base-converter.binaryBase2': '2진 (기수 2)',
+  'base-converter.octalBase8': '8진 (기수 8)',
+  'base-converter.decimalBase10': '10진 (기수 10)',
+  'base-converter.hexadecimalBase16': '16진 (기수 16)',
+  'base-converter.base32': '32진',
+  'base-converter.base36': '36진',
+  'base-converter.enterANumber': '숫자를 넣으세요',
+  'base-converter.customBase': '사용자 진법',
+  'base-converter.base': '기수',
+  'base-converter.bitView': '비트 보기',
+  'base-converter.32BitRepresentationGroupedIn': '니블 단위로 묶은 32비트 표현',
+  'base-converter.bitLength': '비트 길이',
+  'base-converter.bytes': 'Bytes',
+  'base-converter.fitsIn': '들어가는 범위',
+  'base-converter.scientific': '과학 표기',
+};

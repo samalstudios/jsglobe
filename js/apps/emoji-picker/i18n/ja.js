@@ -1,0 +1,16 @@
+export default {
+  'emoji-picker.smileys': '顔文字',
+  'emoji-picker.people': '人物',
+  'emoji-picker.nature': '自然',
+  'emoji-picker.food': '食べ物',
+  'emoji-picker.travel': '可動範囲',
+  'emoji-picker.objects': 'オブジェクト',
+  'emoji-picker.symbols': '記号',
+  'emoji-picker.flags': 'フラグ',
+  'emoji-picker.searchByNameOrPaste': '名前で検索するか、絵文字を貼り付け',
+  'emoji-picker.clearRecent': '最近の項目を消す',
+  'emoji-picker.copyEmoji': '絵文字をコピー',
+  'emoji-picker.copyCodePoint': 'コードポイントをコピー',
+  'emoji-picker.copyHtmlEntity': 'HTML エンティティをコピー',
+  'emoji-picker.pickedEmojiLandHere': '選んだ絵文字がここに入ります。',
+};

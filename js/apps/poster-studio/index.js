@@ -1,14 +1,13 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
 import { collapsibleGroups, paletteSheet } from '../../ui/palette.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { CANVAS_SIZES, THEMES, FRAMES, GALLERY, makeText, makeShape, newId, icsFor } from '../../lib/poster.js';
 import { encodeQr } from '../../lib/qr.js';
 import { createDesigns } from '../../lib/designs.js';
 import { icon } from '../../ui/icons.js';
 import { download, toast, pickFile } from '../../core/util.js';
 
-const t = appText(strings);
+const t = await appWords('poster-studio', (lang) => import(`./i18n/${lang}.js`));
 
 const sheet = await styleSheet(import.meta.url);
 

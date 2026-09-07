@@ -1,0 +1,17 @@
+export default {
+  'slugify.text': '文本',
+  'slugify.10WaysToBuildA': '打造咖啡馆菜单的 10 种方法 - 2024 版',
+  'slugify.dash': '连字符 (-)',
+  'slugify.underscore': '下划线 (_)',
+  'slugify.dot': '点 (.)',
+  'slugify.lowercase': '小写',
+  'slugify.stripSymbols': '去除符号',
+  'slugify.max': '最大',
+  'slugify.slug': 'Slug',
+  'slugify.variations': '变体',
+  'slugify.kebab': 'kebab',
+  'slugify.snake': '贪吃蛇',
+  'slugify.dot2': '点',
+  'slugify.preservedCase': '保留大小写',
+  'slugify.length': '长度',
+};

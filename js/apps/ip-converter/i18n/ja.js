@@ -1,0 +1,17 @@
+export default {
+  'ip-converter.ipv4AddressOrNumericForm': 'IPv4 アドレスまたは数値表現',
+  'ip-converter.acceptsDottedQuadDecimal0x': 'ドット区切り、10 進数、0x 16 進数、2 進数を受け付けます',
+  'ip-converter.dottedDecimal': 'ドット区切りの 10 進',
+  'ip-converter.decimal': '10 進',
+  'ip-converter.hexadecimal': '16 進',
+  'ip-converter.octal': '8 進',
+  'ip-converter.binary': '2 進',
+  'ip-converter.ipv6Mapped': 'IPv6 マップド',
+  'ip-converter.classification': '分類',
+  'ip-converter.couldNotReadThatAddress': 'そのアドレスを読み取れませんでした。',
+  'ip-converter.class': 'クラス',
+  'ip-converter.scope': '範囲',
+  'ip-converter.octets': 'オクテット',
+  'ip-converter.reverseDns': '逆引き DNS',
+  'ip-converter.integerRange': '整数の範囲',
+};

@@ -1,0 +1,17 @@
+export default {
+  'case-converter.camelcase': 'camelCase',
+  'case-converter.pascalcase': 'PascalCase',
+  'case-converter.snakeCase': 'snake_case',
+  'case-converter.constantCase': 'CONSTANT_CASE',
+  'case-converter.kebabCase': 'kebab-case',
+  'case-converter.trainCase': 'Train-Case',
+  'case-converter.dotCase': 'dot.case',
+  'case-converter.pathCase': 'path/case',
+  'case-converter.sentenceCase': '文頭だけ大文字',
+  'case-converter.titleCase': '各語頭を大文字',
+  'case-converter.lowerCase': '小文字',
+  'case-converter.upperCase': '大文字',
+  'case-converter.input': '入力',
+  'case-converter.anySeparatorWorksSpacesDashes': '区切りは何でも構いません - 空白、ハイフン、アンダースコア、大文字の切れ目',
+  'case-converter.helloWorldExample': 'hello world の例',
+};

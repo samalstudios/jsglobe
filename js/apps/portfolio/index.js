@@ -1,9 +1,8 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { uid, download, toast, pickFile } from '../../core/util.js';
 
-const t = appText(strings);
+const t = await appWords('portfolio', (lang) => import(`./i18n/${lang}.js`));
 
 const sheet = await styleSheet(import.meta.url);
 

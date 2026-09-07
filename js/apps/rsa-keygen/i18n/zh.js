@@ -1,0 +1,18 @@
+export default {
+  'rsa-keygen.rsa2048': 'RSA 2048',
+  'rsa-keygen.rsa4096': 'RSA 4096',
+  'rsa-keygen.rsa2048Encryption': 'RSA 2048（加密）',
+  'rsa-keygen.ecdsaP256': 'ECDSA P-256',
+  'rsa-keygen.ecdsaP384': 'ECDSA P-384',
+  'rsa-keygen.ecdhP256': 'ECDH P-256',
+  'rsa-keygen.generateKeyPair': '生成密钥对',
+  'rsa-keygen.keysAreCreatedWithThe': '密钥由 Web Crypto API 生成，绝不会离开此标签页。',
+  'rsa-keygen.publicKey': '公钥',
+  'rsa-keygen.spkiPemEncoded': 'SPKI，PEM 编码',
+  'rsa-keygen.copy': '复制',
+  'rsa-keygen.save': '保存',
+  'rsa-keygen.privateKey': '私钥',
+  'rsa-keygen.pkcs8PemEncoded': 'PKCS#8，PEM 编码',
+  'rsa-keygen.jsonWebKey': 'JSON Web Key',
+  'rsa-keygen.keyGenerationFailed': '密钥生成失败',
+};

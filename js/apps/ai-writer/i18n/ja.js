@@ -1,0 +1,16 @@
+export default {
+  'ai-writer.summarise': '要約',
+  'ai-writer.rewrite': '書き換え',
+  'ai-writer.changeTone': '調子を変える',
+  'ai-writer.translate': '翻訳',
+  'ai-writer.proofread': '校正',
+  'ai-writer.toBullets': '箇条書きに',
+  'ai-writer.commitMessage': 'コミットメッセージ',
+  'ai-writer.language': '言語',
+  'ai-writer.run': '実行',
+  'ai-writer.stop': '停止',
+  'ai-writer.input': '入力',
+  'ai-writer.pasteTextNotesOrA': '文章、メモ、差分を貼り付け',
+  'ai-writer.result': '結果',
+  'ai-writer.copy': 'コピー',
+};

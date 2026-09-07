@@ -1,0 +1,15 @@
+export default {
+  'uuid.new': 'Novo',
+  'action.copy': 'Copiar',
+  'uuid-generator.qty': 'qtd',
+  'action.generate': 'Gerar',
+  'uuid.uppercase': 'Maiúsculas',
+  'uuid.braces': 'Envolver em chaves',
+  'uuid.dashes': 'Manter os traços',
+  'uuid-generator.output': 'Saída',
+  'uuid.copyAll': 'Copiar tudo',
+  'uuid-generator.uuidV4': 'UUID v4',
+  'uuid-generator.uuidV7': 'UUID v7',
+  'uuid.shortId': 'ID curto',
+  'uuid.nil': 'Nulo',
+};

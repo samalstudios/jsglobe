@@ -1,0 +1,15 @@
+export default {
+  'csv-studio.dropACsvOrTsv': 'CSV か TSV をここにドロップ、またはクリックして選択',
+  'csv-studio.filterRows': '行を絞り込む',
+  'csv-studio.firstRowIsAHeader': '1 行目は見出し',
+  'csv-studio.pasteOrExport': '貼り付けまたは書き出し',
+  'csv-studio.nameRoleCity': '名前,役割,都市',
+  'csv-studio.jsonLines': 'JSON Lines',
+  'csv-studio.markdown': 'Markdown',
+  'csv-studio.addRow': '行を追加',
+  'csv-studio.addColumn': '列を追加',
+  'csv-studio.tidy': '整える',
+  'csv-studio.trimSpacesDropEmptyRows': '空白を詰め、空行と重複を取り除く',
+  'csv-studio.copy': 'コピー',
+  'csv-studio.download': 'ダウンロード',
+};

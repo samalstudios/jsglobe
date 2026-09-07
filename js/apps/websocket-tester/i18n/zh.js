@@ -1,0 +1,18 @@
+export default {
+  'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
+  'websocket-tester.subprotocol': '子协议',
+  'websocket-tester.connect': '连接',
+  'websocket-tester.closed': '已关闭',
+  'websocket-tester.message': '消息',
+  'websocket-tester.send': '发送',
+  'websocket-tester.saveMessage': '保存消息',
+  'websocket-tester.clearLog': '清空日志',
+  'websocket-tester.exportLog': '导出日志',
+  'websocket-tester.savedMessages': '已保存的消息',
+  'websocket-tester.clickToLoadOne': '点击加载一个',
+  'websocket-tester.notes': '备忘',
+  'websocket-tester.savedMessagesAppearHere': '已保存的消息会显示在这里。',
+  'websocket-tester.framesAppearHereOnceYou': '连接后数据帧会显示在这里。',
+  'websocket-tester.theAddressMustStartWith': '地址必须以 ws:// 或 wss:// 开头',
+  'websocket-tester.connectFirst': '请先连接',
+};

@@ -1,10 +1,9 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { md5 } from '../../lib/md5.js';
 import { encodeBytes, toHex, toBase64, debounce, formatBytes, pickFile } from '../../core/util.js';
 
-const t = appText(strings);
+const t = await appWords('hash-text', (lang) => import(`./i18n/${lang}.js`));
 
 const sheet = await styleSheet(import.meta.url);
 

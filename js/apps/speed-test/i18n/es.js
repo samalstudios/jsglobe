@@ -1,0 +1,18 @@
+export default {
+  'speed-test.cloudflare': 'Cloudflare',
+  'speed-test.thisServer': 'Este servidor',
+  'speed-test.testServer': 'Servidor de prueba',
+  'speed-test.startTest': 'Iniciar la prueba',
+  'speed-test.stop': 'Detener',
+  'speed-test.mbps': 'Mbps',
+  'speed-test.readyToMeasureYourConnection': 'Listo para medir tu conexión.',
+  'speed-test.downloadMbps': 'Descarga Mbps',
+  'speed-test.uploadMbps': 'Subida Mbps',
+  'speed-test.latencyMs': 'Latencia ms',
+  'speed-test.jitterMs': 'Jitter ms',
+  'speed-test.connection': 'Conexión',
+  'speed-test.reportedType': 'Tipo informado',
+  'speed-test.reportedDownlink': 'Enlace de bajada informado',
+  'speed-test.roundTripEstimate': 'Estimación de ida y vuelta',
+  'speed-test.dataSaver': 'Ahorro de datos',
+};

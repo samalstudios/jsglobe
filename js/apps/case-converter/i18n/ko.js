@@ -1,0 +1,17 @@
+export default {
+  'case-converter.camelcase': 'camelCase',
+  'case-converter.pascalcase': 'PascalCase',
+  'case-converter.snakeCase': 'snake_case',
+  'case-converter.constantCase': 'CONSTANT_CASE',
+  'case-converter.kebabCase': 'kebab-case',
+  'case-converter.trainCase': 'Train-Case',
+  'case-converter.dotCase': 'dot.case',
+  'case-converter.pathCase': 'path/case',
+  'case-converter.sentenceCase': '문장 첫 글자만 대문자',
+  'case-converter.titleCase': '단어마다 첫 글자 대문자',
+  'case-converter.lowerCase': '소문자',
+  'case-converter.upperCase': '대문자',
+  'case-converter.input': '입력',
+  'case-converter.anySeparatorWorksSpacesDashes': '구분자는 무엇이든 됩니다 - 공백, 하이픈, 밑줄, 대문자 구분',
+  'case-converter.helloWorldExample': 'hello world 예시',
+};

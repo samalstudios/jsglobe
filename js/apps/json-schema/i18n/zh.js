@@ -1,0 +1,18 @@
+export default {
+  'json-schema.markPropertiesRequired': '将属性标记为必填',
+  'json-schema.detectFormats': '识别格式',
+  'json-schema.noExtraProperties': '不允许额外属性',
+  'json-schema.includeExamples': '包含示例',
+  'json-schema.waiting': '等待中',
+  'json-schema.sampleJson': '示例 JSON',
+  'json-schema.pasteOneOrMoreJson': '粘贴一个或多个 JSON 文档',
+  'json-schema.jsonSchema': 'JSON Schema',
+  'json-schema.result': '结果',
+  'json-schema.inferSchema': '推断 schema',
+  'json-schema.validateAgainstSchema': '按 schema 校验',
+  'json-schema.sample': '示例',
+  'json-schema.copy': '复制',
+  'json-schema.download': '下载',
+  'json-schema.generatedSchema': '生成的 schema',
+  'json-schema.everyDocumentMatchesTheSchema': '所有文档都符合该 schema。',
+};

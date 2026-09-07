@@ -1,0 +1,18 @@
+export default {
+  'speed-test.cloudflare': 'Cloudflare',
+  'speed-test.thisServer': 'このサーバー',
+  'speed-test.testServer': 'テストサーバー',
+  'speed-test.startTest': '測定を開始',
+  'speed-test.stop': '停止',
+  'speed-test.mbps': 'Mbps',
+  'speed-test.readyToMeasureYourConnection': '回線を測る準備ができました。',
+  'speed-test.downloadMbps': '下り Mbps',
+  'speed-test.uploadMbps': '上り Mbps',
+  'speed-test.latencyMs': '遅延 ms',
+  'speed-test.jitterMs': 'Jitter ms',
+  'speed-test.connection': '接続',
+  'speed-test.reportedType': '報告された種別',
+  'speed-test.reportedDownlink': '報告された下り速度',
+  'speed-test.roundTripEstimate': '往復時間の目安',
+  'speed-test.dataSaver': 'データセーバー',
+};

@@ -1,0 +1,18 @@
+export default {
+  'speed-test.cloudflare': 'Cloudflare',
+  'speed-test.thisServer': '이 서버',
+  'speed-test.testServer': '시험 서버',
+  'speed-test.startTest': '검사 시작',
+  'speed-test.stop': '멈추기',
+  'speed-test.mbps': 'Mbps',
+  'speed-test.readyToMeasureYourConnection': '연결을 잴 준비가 되었습니다.',
+  'speed-test.downloadMbps': '내려받기 Mbps',
+  'speed-test.uploadMbps': '올리기 Mbps',
+  'speed-test.latencyMs': '지연 ms',
+  'speed-test.jitterMs': 'Jitter ms',
+  'speed-test.connection': '연결',
+  'speed-test.reportedType': '보고된 종류',
+  'speed-test.reportedDownlink': '보고된 다운링크',
+  'speed-test.roundTripEstimate': '왕복 시간 추정',
+  'speed-test.dataSaver': '데이터 절약',
+};

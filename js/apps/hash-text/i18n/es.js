@@ -1,0 +1,15 @@
+export default {
+  'hash-text.outputCase': 'Mayúsculas de salida',
+  'hash-text.lower': 'minúsculas',
+  'hash-text.upper': 'MAYÚSCULAS',
+  'hash-text.textToHash': 'Texto para el hash',
+  'hash-text.sha256': 'SHA-256',
+  'hash-text.hex': 'Hexadecimal',
+  'hash-text.input': 'Entrada',
+  'hash-text.hashedLocallyNothingIsUploaded': 'El hash se calcula en local: no se sube nada',
+  'hash-text.typeOrPaste': 'Escribe o pega el texto para el hash',
+  'hash-text.chooseFile': 'Elegir archivo...',
+  'hash-text.noFile': 'Ningún archivo seleccionado',
+  'common.text': 'Texto',
+  'common.file': 'Archivo',
+};

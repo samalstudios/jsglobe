@@ -1,0 +1,15 @@
+export default {
+  'barcode-generator.code128': 'Code 128',
+  'barcode-generator.ean13': 'EAN-13',
+  'barcode-generator.ean8': 'EAN-8',
+  'barcode-generator.code39': 'Code 39',
+  'barcode-generator.format': '形式',
+  'barcode-generator.value': '値',
+  'barcode-generator.barWidth': 'バーの幅',
+  'barcode-generator.height': '高さ',
+  'barcode-generator.printTheValueUnderThe': 'バーの下に値を表示',
+  'barcode-generator.ready': '準備完了',
+  'barcode-generator.copySvg': 'SVG をコピー',
+  'barcode-generator.downloadSvg': 'SVG をダウンロード',
+  'barcode-generator.downloadPng': 'PNG をダウンロード',
+};

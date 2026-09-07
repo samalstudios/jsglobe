@@ -1,0 +1,15 @@
+export default {
+  'common.text': 'テキスト',
+  'base64.fileToBase64': 'ファイル → Base64',
+  'base64.urlSafe': 'URL セーフな文字集合',
+  'base64.swap': '入れ替え ⇅',
+  'base64.plainText': 'プレーンテキスト',
+  'base64.textToEncode': '符号化するテキスト',
+  'base64.base64ToDecode': '復号する Base64',
+  'base64.typeEitherSide': 'どちら側にも入力できます。',
+  'base64.chooseFile': 'ファイルを選ぶ...',
+  'base64.filesStay': 'ファイルがブラウザを出ることはありません。',
+  'base64-converter.dataUri': 'データ URI',
+  'base64.outputHere': 'Base64 の出力がここに表示されます',
+  'base64.copyNoPrefix': 'データ URI の接頭辞なしでコピー',
+};

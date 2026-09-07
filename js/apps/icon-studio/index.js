@@ -1,12 +1,11 @@
 import { JGApp, define, html, raw, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { copyText, download, toast, debounce } from '../../core/util.js';
 import { ai } from '../../core/ai.js';
 import { parts, groups, findPart, searchParts, partMarkup } from '../../lib/icon-parts.js';
 import { PALETTES, SYSTEM, composeFromWords, readLayers, shortlist } from '../../lib/icon-compose.js';
 
-const t = appText(strings);
+const t = await appWords('icon-studio', (lang) => import(`./i18n/${lang}.js`));
 const sheet = await styleSheet(import.meta.url);
 
 const SIZES = [16, 24, 32, 48, 64, 128, 256];

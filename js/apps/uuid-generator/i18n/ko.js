@@ -1,0 +1,15 @@
+export default {
+  'uuid.new': '새로',
+  'action.copy': '복사',
+  'uuid-generator.qty': '수량',
+  'action.generate': '만들기',
+  'uuid.uppercase': '대문자',
+  'uuid.braces': '중괄호로 감싸기',
+  'uuid.dashes': '하이픈 남기기',
+  'uuid-generator.output': '출력',
+  'uuid.copyAll': '모두 복사',
+  'uuid-generator.uuidV4': 'UUID v4',
+  'uuid-generator.uuidV7': 'UUID v7',
+  'uuid.shortId': '짧은 ID',
+  'uuid.nil': '없음',
+};

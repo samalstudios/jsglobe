@@ -1,0 +1,17 @@
+export default {
+  'ai-translate.defaultTargetLanguage': '既定の翻訳先言語',
+  'ai-translate.translateAsIType': '入力しながら翻訳する',
+  'ai-translate.detectLanguage': '言語を判定',
+  'ai-translate.swapLanguages': '言語を入れ替え',
+  'ai-translate.source': '出典',
+  'ai-translate.0Characters': '0 文字',
+  'ai-translate.typeOrPasteTextTo': '翻訳するテキストを入力するか貼り付け',
+  'ai-translate.translate': '翻訳',
+  'ai-translate.translation': '訳文',
+  'ai-translate.copy': 'コピー',
+  'ai-translate.stop': '停止',
+  'ai-translate.theTranslationAppearsHere': '訳文がここに表示されます。',
+  'ai-translate.neutralTone': '中立的な調子',
+  'ai-translate.formalTone': 'かたい調子',
+  'ai-translate.casualTone': 'くだけた調子',
+};

@@ -1,6 +1,5 @@
 import { JGApp, define, html, raw, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { settings } from '../../core/settings.js';
 import { appSettings } from '../../core/app-settings.js';
 import { workspaces } from '../../core/workspaces.js';
@@ -20,7 +19,7 @@ import { WHISPER_MODELS as whisperModels } from '../../core/speech.js';
 import { icon } from '../../ui/icons.js';
 import { download, pickFile, toast, formatBytes } from '../../core/util.js';
 
-const t = appText(strings);
+const t = await appWords('settings', (lang) => import(`./i18n/${lang}.js`));
 
 const sheet = await styleSheet(import.meta.url);
 

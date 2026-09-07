@@ -1,4 +1,4 @@
-import { readFile, writeFile, readdir } from 'node:fs/promises';
+import { readFile, writeFile, readdir, mkdir, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
 const LANGS = ['de', 'es', 'zh', 'fr', 'pt', 'ja', 'ko', 'nl', 'sv', 'no', 'da', 'pl', 'uk'];
@@ -32,11 +32,19 @@ for (const id of targets) {
     english.set(key.replace(/\\'/g, "'"), source.replace(/\\'/g, "'"));
   }
 
-  const existing = existsSync(`${APPS}/${id}/i18n.js`)
-    ? (await import(`../${APPS}/${id}/i18n.js`)).default
-    : {};
+  // translations live one file per language; the single file they used to
+  // share is still read once so nothing is lost on the way across
+  const existing = {};
+  if (existsSync(`${APPS}/${id}/i18n.js`)) {
+    Object.assign(existing, (await import(`../${APPS}/${id}/i18n.js`)).default);
+  }
+  for (const lang of LANGS) {
+    const at = `${APPS}/${id}/i18n/${lang}.js`;
+    if (existsSync(at)) existing[lang] = (await import(`../${at}?v=${Date.now()}`)).default;
+  }
 
-  const body = LANGS.map((lang) => {
+  const packs = new Map();
+  for (const lang of LANGS) {
     const lines = [];
     for (const [key, source] of english) {
       const value = existing[lang]?.[key] ?? (source ? glossary[source]?.[lang] : null);
@@ -44,10 +52,10 @@ for (const id of targets) {
         if (lang === LANGS[0]) missing.push(`${id}\t${key}\t${source}`);
         continue;
       }
-      lines.push(`    ${quote(key)}: ${quote(value)},`);
+      lines.push(`  ${quote(key)}: ${quote(value)},`);
     }
-    return `  ${lang}: {\n${lines.join('\n')}\n  },`;
-  }).join('\n');
+    if (lines.length) packs.set(lang, lines);
+  }
 
   // A key held in the dictionary but never seen as a literal t('key') call is
   // about to be dropped. That is usually a key built from a template literal,
@@ -56,11 +64,19 @@ for (const id of targets) {
   const losing = Object.keys(existing[LANGS[0]] ?? {}).filter((key) => !keeping.has(key));
   if (losing.length) dropped.push(`${id}: ${losing.join(', ')}`);
 
-  await writeFile(`${APPS}/${id}/i18n.js`, `export default {\n${body}\n};\n`);
+  await mkdir(`${APPS}/${id}/i18n`, { recursive: true });
+  for (const lang of LANGS) {
+    const at = `${APPS}/${id}/i18n/${lang}.js`;
+    // a language with nothing translated yet still gets a file, so asking for
+    // it is a small answer rather than a failed request
+    const lines = packs.get(lang) ?? [];
+    await writeFile(at, lines.length ? `export default {\n${lines.join('\n')}\n};\n` : 'export default {};\n');
+  }
+  if (existsSync(`${APPS}/${id}/i18n.js`)) await rm(`${APPS}/${id}/i18n.js`);
   written += 1;
 }
 
-console.log(`wrote ${written} app dictionaries`);
+console.log(`wrote dictionaries for ${written} apps, one file per language`);
 if (dropped.length) {
   console.log(`\n${dropped.length} app(s) had keys with no literal t() call, so they were dropped:`);
   dropped.forEach((line) => console.log('  ' + line));

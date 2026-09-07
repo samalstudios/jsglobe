@@ -1,0 +1,17 @@
+export default {
+  'ai-translate.defaultTargetLanguage': '默认目标语言',
+  'ai-translate.translateAsIType': '边输入边翻译',
+  'ai-translate.detectLanguage': '检测语言',
+  'ai-translate.swapLanguages': '交换语言',
+  'ai-translate.source': '源',
+  'ai-translate.0Characters': '0 个字符',
+  'ai-translate.typeOrPasteTextTo': '输入或粘贴要翻译的文本',
+  'ai-translate.translate': '翻译',
+  'ai-translate.translation': '翻译',
+  'ai-translate.copy': '复制',
+  'ai-translate.stop': '停止',
+  'ai-translate.theTranslationAppearsHere': '译文会显示在这里。',
+  'ai-translate.neutralTone': '中性语气',
+  'ai-translate.formalTone': '正式语气',
+  'ai-translate.casualTone': '随意语气',
+};

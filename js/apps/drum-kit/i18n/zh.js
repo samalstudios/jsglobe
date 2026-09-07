@@ -1,0 +1,16 @@
+export default {
+  'drum-kit.kick': '底鼓',
+  'drum-kit.snare': '军鼓',
+  'drum-kit.clap': '拍手',
+  'drum-kit.rim': '边击',
+  'drum-kit.closedHat': '闭合踩镲',
+  'drum-kit.openHat': '开放踩镲',
+  'drum-kit.tom': '嗵鼓',
+  'drum-kit.cymbal': '镲片',
+  'drum-kit.stepSequencer': '步进音序器',
+  'drum-kit.16StepsClickToToggle': '16 个步位，点击可切换',
+  'drum-kit.play': '开始',
+  'drum-kit.clear': '清空',
+  'drum-kit.loadBeat': '加载节奏',
+  'drum-kit.tempo': '速度',
+};

@@ -1,0 +1,15 @@
+export default {
+  'hash-text.outputCase': '输出大小写',
+  'hash-text.lower': '小写',
+  'hash-text.upper': '大写',
+  'hash-text.textToHash': '要哈希的文本',
+  'hash-text.sha256': 'SHA-256',
+  'hash-text.hex': '十六进制',
+  'hash-text.input': '输入',
+  'hash-text.hashedLocallyNothingIsUploaded': '在本地计算哈希，不上传任何内容',
+  'hash-text.typeOrPaste': '输入或粘贴要哈希的文本',
+  'hash-text.chooseFile': '选择文件...',
+  'hash-text.noFile': '未选择文件',
+  'common.text': '文本',
+  'common.file': '文件',
+};

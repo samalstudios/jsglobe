@@ -1,0 +1,16 @@
+export default {
+  'drum-kit.kick': 'Bombo',
+  'drum-kit.snare': 'Caja',
+  'drum-kit.clap': 'Palmada',
+  'drum-kit.rim': 'Aro',
+  'drum-kit.closedHat': 'Charles cerrado',
+  'drum-kit.openHat': 'Charles abierto',
+  'drum-kit.tom': 'Tom',
+  'drum-kit.cymbal': 'Platillo',
+  'drum-kit.stepSequencer': 'Secuenciador de pasos',
+  'drum-kit.16StepsClickToToggle': '16 pasos, haz clic para activarlos',
+  'drum-kit.play': 'Iniciar',
+  'drum-kit.clear': 'Limpiar',
+  'drum-kit.loadBeat': 'Cargar ritmo',
+  'drum-kit.tempo': 'Tempo',
+};

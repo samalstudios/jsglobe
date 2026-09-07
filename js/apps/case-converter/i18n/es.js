@@ -1,0 +1,17 @@
+export default {
+  'case-converter.camelcase': 'camelCase',
+  'case-converter.pascalcase': 'PascalCase',
+  'case-converter.snakeCase': 'snake_case',
+  'case-converter.constantCase': 'CONSTANT_CASE',
+  'case-converter.kebabCase': 'kebab-case',
+  'case-converter.trainCase': 'Train-Case',
+  'case-converter.dotCase': 'dot.case',
+  'case-converter.pathCase': 'path/case',
+  'case-converter.sentenceCase': 'Tipo oración',
+  'case-converter.titleCase': 'Tipo Título',
+  'case-converter.lowerCase': 'minúsculas',
+  'case-converter.upperCase': 'MAYÚSCULAS',
+  'case-converter.input': 'Entrada',
+  'case-converter.anySeparatorWorksSpacesDashes': 'Vale cualquier separador: espacios, guiones, guiones bajos o mayúsculas internas',
+  'case-converter.helloWorldExample': 'hola mundo ejemplo',
+};

@@ -1,0 +1,18 @@
+export default {
+  'coin-flipper.flipsPerGo': '한 번에 던지는 횟수',
+  'coin-flipper.heads': '앞면',
+  'coin-flipper.tails': '뒷면',
+  'coin-flipper.flip': '뒤집기',
+  'coin-flipper.flipManyAtOnce': '한꺼번에 던지기',
+  'coin-flipper.copyTheRun': 'run 명령 복사',
+  'coin-flipper.startOver': '처음부터',
+  'coin-flipper.howTheShareSettles': '비율이 자리 잡는 모습',
+  'coin-flipper.evensOutBlurb': '매번 확률은 똑같습니다. 처음에는 선이 흔들리다가 횟수가 쌓이면 절반에 가까워집니다.',
+  'coin-flipper.theRun': 'run 명령',
+  'coin-flipper.copiedTheRun': 'run 명령을 복사했습니다',
+  'coin-flipper.flippedCount': '{count}번 던졌습니다',
+  'coin-flipper.longestRun': '같은 면이 이어진 최장 횟수: {count}',
+  'coin-flipper.flipToBegin': '던져서 시작하거나 스페이스바를 누르세요',
+  'coin-flipper.coinFlipper': '동전 던지기',
+  'coin-flipper.widgetBlurb': '동전을 던져 확률이 고르게 되는 것을 보세요.',
+};

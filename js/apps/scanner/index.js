@@ -1,12 +1,11 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { icon } from '../../ui/icons.js';
 import { toast, copyText } from '../../core/util.js';
 import { scanQrImage, binarize } from '../../lib/qr-decode.js';
 import { scanBarcodeBitmap } from '../../lib/barcode.js';
 
-const t = appText(strings);
+const t = await appWords('scanner', (lang) => import(`./i18n/${lang}.js`));
 const sheet = await styleSheet(import.meta.url);
 
 const KINDS = {

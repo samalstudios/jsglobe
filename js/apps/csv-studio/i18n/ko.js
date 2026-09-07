@@ -1,0 +1,15 @@
+export default {
+  'csv-studio.dropACsvOrTsv': 'CSV나 TSV 파일을 여기에 놓거나 눌러서 고르세요',
+  'csv-studio.filterRows': '행 거르기',
+  'csv-studio.firstRowIsAHeader': '첫 행은 머리글',
+  'csv-studio.pasteOrExport': '붙여넣기 또는 내보내기',
+  'csv-studio.nameRoleCity': '이름,역할,도시',
+  'csv-studio.jsonLines': 'JSON 라인',
+  'csv-studio.markdown': 'Markdown',
+  'csv-studio.addRow': '행 추가',
+  'csv-studio.addColumn': '열 추가',
+  'csv-studio.tidy': '정돈',
+  'csv-studio.trimSpacesDropEmptyRows': '공백을 없애고 빈 행과 중복을 버리기',
+  'csv-studio.copy': '복사',
+  'csv-studio.download': '내려받기',
+};

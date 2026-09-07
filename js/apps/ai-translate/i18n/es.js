@@ -1,0 +1,17 @@
+export default {
+  'ai-translate.defaultTargetLanguage': 'Idioma de destino por defecto',
+  'ai-translate.translateAsIType': 'Traducir mientras escribo',
+  'ai-translate.detectLanguage': 'Detectar idioma',
+  'ai-translate.swapLanguages': 'Intercambiar idiomas',
+  'ai-translate.source': 'Origen',
+  'ai-translate.0Characters': '0 caracteres',
+  'ai-translate.typeOrPasteTextTo': 'Escribe o pega el texto que quieras traducir',
+  'ai-translate.translate': 'Traducir',
+  'ai-translate.translation': 'Traducción',
+  'ai-translate.copy': 'Copiar',
+  'ai-translate.stop': 'Detener',
+  'ai-translate.theTranslationAppearsHere': 'La traducción aparece aquí.',
+  'ai-translate.neutralTone': 'Tono neutro',
+  'ai-translate.formalTone': 'Tono formal',
+  'ai-translate.casualTone': 'Tono informal',
+};

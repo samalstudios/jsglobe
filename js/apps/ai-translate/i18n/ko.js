@@ -1,0 +1,17 @@
+export default {
+  'ai-translate.defaultTargetLanguage': '기본 대상 언어',
+  'ai-translate.translateAsIType': '입력하는 대로 번역하기',
+  'ai-translate.detectLanguage': '언어 감지',
+  'ai-translate.swapLanguages': '언어 바꾸기',
+  'ai-translate.source': '출처',
+  'ai-translate.0Characters': '0자',
+  'ai-translate.typeOrPasteTextTo': '번역할 글을 치거나 붙여넣으세요',
+  'ai-translate.translate': '번역',
+  'ai-translate.translation': '번역',
+  'ai-translate.copy': '복사',
+  'ai-translate.stop': '멈추기',
+  'ai-translate.theTranslationAppearsHere': '번역이 여기에 나옵니다.',
+  'ai-translate.neutralTone': '중립적인 말투',
+  'ai-translate.formalTone': '격식 있는 말투',
+  'ai-translate.casualTone': '편안한 말투',
+};

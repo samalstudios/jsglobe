@@ -1,0 +1,15 @@
+export default {
+  'rdap-lookup.exampleCom888': 'example.com、8.8.8.8、AS15169 など',
+  'rdap-lookup.lookUp': '照会',
+  'rdap-lookup.copyJson': 'JSON をコピー',
+  'rdap-lookup.ready': '準備完了',
+  'rdap-lookup.rawResponse': '生のレスポンス',
+  'rdap-lookup.exactlyWhatTheRegistryReturned': 'レジストリが返したそのまま',
+  'rdap-lookup.overview': '概要',
+  'rdap-lookup.timeline': 'タイムライン',
+  'rdap-lookup.status': '状態',
+  'rdap-lookup.locksAndPendingOperationsReported': 'レジストリが報告するロックと保留中の操作',
+  'rdap-lookup.nameservers': 'ネームサーバー',
+  'rdap-lookup.contacts': '連絡先',
+  'rdap-lookup.registriesRedactMostPersonalDetails': 'レジストリは個人情報の多くを伏せます',
+};

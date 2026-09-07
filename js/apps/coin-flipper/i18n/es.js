@@ -1,0 +1,18 @@
+export default {
+  'coin-flipper.flipsPerGo': 'Lanzamientos por tanda',
+  'coin-flipper.heads': 'Cara',
+  'coin-flipper.tails': 'Cruz',
+  'coin-flipper.flip': 'Lanzar',
+  'coin-flipper.flipManyAtOnce': 'Lanzar muchas de golpe',
+  'coin-flipper.copyTheRun': 'Copiar la tanda',
+  'coin-flipper.startOver': 'Empezar de nuevo',
+  'coin-flipper.howTheShareSettles': 'Cómo se asienta la proporción',
+  'coin-flipper.evensOutBlurb': 'Cada lanzamiento tiene la misma probabilidad. La línea baila al principio y se acerca a la mitad según se acumulan.',
+  'coin-flipper.theRun': 'La tanda',
+  'coin-flipper.copiedTheRun': 'Tanda copiada',
+  'coin-flipper.flippedCount': 'Lanzada {count} veces',
+  'coin-flipper.longestRun': 'Racha más larga del mismo lado: {count}',
+  'coin-flipper.flipToBegin': 'Lanza para empezar, o pulsa la barra espaciadora',
+  'coin-flipper.coinFlipper': 'Lanzador de monedas',
+  'coin-flipper.widgetBlurb': 'Lanza una moneda y observa cómo se equilibra.',
+};

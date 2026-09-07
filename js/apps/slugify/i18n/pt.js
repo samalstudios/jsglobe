@@ -1,0 +1,17 @@
+export default {
+  'slugify.text': 'Texto',
+  'slugify.10WaysToBuildA': '10 maneiras de montar um cardápio de café - edição 2024',
+  'slugify.dash': 'Traço (-)',
+  'slugify.underscore': 'Sublinhado (_)',
+  'slugify.dot': 'Ponto (.)',
+  'slugify.lowercase': 'Minúsculas',
+  'slugify.stripSymbols': 'Remover os símbolos',
+  'slugify.max': 'máx',
+  'slugify.slug': 'Slug',
+  'slugify.variations': 'Variações',
+  'slugify.kebab': 'Kebab',
+  'slugify.snake': 'Snake',
+  'slugify.dot2': 'Ponto',
+  'slugify.preservedCase': 'Caixa preservada',
+  'slugify.length': 'Comprimento',
+};

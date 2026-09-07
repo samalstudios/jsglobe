@@ -1,0 +1,17 @@
+export default {
+  'case-converter.camelcase': 'camelCase',
+  'case-converter.pascalcase': 'PascalCase',
+  'case-converter.snakeCase': 'snake_case',
+  'case-converter.constantCase': 'CONSTANT_CASE',
+  'case-converter.kebabCase': 'kebab-case',
+  'case-converter.trainCase': 'Train-Case',
+  'case-converter.dotCase': 'dot.case',
+  'case-converter.pathCase': 'path/case',
+  'case-converter.sentenceCase': 'Setningsform',
+  'case-converter.titleCase': 'Titteform',
+  'case-converter.lowerCase': 'små bokstaver',
+  'case-converter.upperCase': 'STORE BOKSTAVER',
+  'case-converter.input': 'Inndata',
+  'case-converter.anySeparatorWorksSpacesDashes': 'Hvilket som helst skilletegn virker - mellomrom, bindestrek, understrek eller store bokstaver inni',
+  'case-converter.helloWorldExample': 'hei verden eksempel',
+};

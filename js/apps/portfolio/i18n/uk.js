@@ -1,0 +1,16 @@
+export default {
+  'portfolio.coingecko': 'CoinGecko',
+  'portfolio.usd': 'USD',
+  'portfolio.eur': 'EUR',
+  'portfolio.gbp': 'GBP',
+  'portfolio.chf': 'CHF',
+  'portfolio.cad': 'CAD',
+  'portfolio.aud': 'AUD',
+  'portfolio.jpy': 'JPY',
+  'portfolio.aed': 'AED',
+  'portfolio.finnhub': 'Finnhub',
+  'portfolio.twelveData': 'Twelve Data',
+  'portfolio.export': 'Експорт',
+  'portfolio.aapl': 'AAPL',
+  'portfolio.apple': 'Apple',
+};

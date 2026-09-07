@@ -1,0 +1,18 @@
+export default {
+  'molecule-viewer.ballAndStick': '공막대 모형',
+  'molecule-viewer.spaceFilling': '공간 채움 모형',
+  'molecule-viewer.sticks': '스틱',
+  'molecule-viewer.flatDiagram': '평면 그림',
+  'molecule-viewer.defaultStyle': '기본 스타일',
+  'molecule-viewer.showHydrogens': '수소 원자 표시',
+  'molecule-viewer.spinAutomatically': '저절로 돌리기',
+  'molecule-viewer.moleculeOfTheDay': '오늘의 분자',
+  'molecule-viewer.hydrogens': '수소 원자',
+  'molecule-viewer.labels': '이름표',
+  'molecule-viewer.spin': '회전',
+  'molecule-viewer.copyXyz': 'XYZ 복사',
+  'molecule-viewer.savePng': 'PNG 저장',
+  'molecule-viewer.atoms': '원자',
+  'molecule-viewer.bonds': '결합',
+  'molecule-viewer.gMol': 'g/mol',
+};

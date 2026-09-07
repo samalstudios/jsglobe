@@ -1,0 +1,18 @@
+export default {
+  'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
+  'websocket-tester.subprotocol': '하위 프로토콜',
+  'websocket-tester.connect': '연결',
+  'websocket-tester.closed': '닫힘',
+  'websocket-tester.message': '메시지',
+  'websocket-tester.send': '보내기',
+  'websocket-tester.saveMessage': '메시지 저장',
+  'websocket-tester.clearLog': '로그 지우기',
+  'websocket-tester.exportLog': '로그 내보내기',
+  'websocket-tester.savedMessages': '저장한 메시지',
+  'websocket-tester.clickToLoadOne': '눌러서 불러오기',
+  'websocket-tester.notes': '메모',
+  'websocket-tester.savedMessagesAppearHere': '저장한 메시지가 여기에 나옵니다.',
+  'websocket-tester.framesAppearHereOnceYou': '연결하면 프레임이 여기에 나옵니다.',
+  'websocket-tester.theAddressMustStartWith': '주소는 ws:// 또는 wss:// 로 시작해야 합니다',
+  'websocket-tester.connectFirst': '먼저 연결하세요',
+};

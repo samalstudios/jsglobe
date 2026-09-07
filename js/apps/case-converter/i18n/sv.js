@@ -1,0 +1,17 @@
+export default {
+  'case-converter.camelcase': 'camelCase',
+  'case-converter.pascalcase': 'PascalCase',
+  'case-converter.snakeCase': 'snake_case',
+  'case-converter.constantCase': 'CONSTANT_CASE',
+  'case-converter.kebabCase': 'kebab-case',
+  'case-converter.trainCase': 'Train-Case',
+  'case-converter.dotCase': 'dot.case',
+  'case-converter.pathCase': 'path/case',
+  'case-converter.sentenceCase': 'Meningsform',
+  'case-converter.titleCase': 'Titelform',
+  'case-converter.lowerCase': 'gemener',
+  'case-converter.upperCase': 'VERSALER',
+  'case-converter.input': 'Indata',
+  'case-converter.anySeparatorWorksSpacesDashes': 'Vilken avskiljare som helst fungerar - blanksteg, bindestreck, understreck eller versaler inuti',
+  'case-converter.helloWorldExample': 'hej världen exempel',
+};

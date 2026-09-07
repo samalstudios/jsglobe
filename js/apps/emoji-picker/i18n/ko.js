@@ -1,0 +1,16 @@
+export default {
+  'emoji-picker.smileys': '표정',
+  'emoji-picker.people': '사람',
+  'emoji-picker.nature': '자연',
+  'emoji-picker.food': '음식',
+  'emoji-picker.travel': '이동 범위',
+  'emoji-picker.objects': '객체',
+  'emoji-picker.symbols': '기호',
+  'emoji-picker.flags': '플래그',
+  'emoji-picker.searchByNameOrPaste': '이름으로 찾거나 이모지를 붙여넣으세요',
+  'emoji-picker.clearRecent': '최근 항목 지우기',
+  'emoji-picker.copyEmoji': '이모지 복사',
+  'emoji-picker.copyCodePoint': '코드 포인트 복사',
+  'emoji-picker.copyHtmlEntity': 'HTML 엔티티 복사',
+  'emoji-picker.pickedEmojiLandHere': '고른 이모지가 여기에 모입니다.',
+};

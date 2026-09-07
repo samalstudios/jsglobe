@@ -1,0 +1,16 @@
+export default {
+  'emoji-picker.smileys': 'Caritas',
+  'emoji-picker.people': 'Personas',
+  'emoji-picker.nature': 'Naturaleza',
+  'emoji-picker.food': 'Comida',
+  'emoji-picker.travel': 'Viajes',
+  'emoji-picker.objects': 'Objetos',
+  'emoji-picker.symbols': 'Símbolos',
+  'emoji-picker.flags': 'Banderas',
+  'emoji-picker.searchByNameOrPaste': 'Busca por nombre o pega un emoji',
+  'emoji-picker.clearRecent': 'Borrar los recientes',
+  'emoji-picker.copyEmoji': 'Copiar emoji',
+  'emoji-picker.copyCodePoint': 'Copiar punto de código',
+  'emoji-picker.copyHtmlEntity': 'Copiar entidad HTML',
+  'emoji-picker.pickedEmojiLandHere': 'Los emoji que elijas aparecen aquí.',
+};

@@ -1,0 +1,16 @@
+export default {
+  'dice-roller.rollWithASound': 'Mit Ton würfeln',
+  'dice-roller.howMany': 'Wie viele',
+  'dice-roller.addToTheTotal': 'Zur Summe addieren',
+  'dice-roller.roll': 'Würfeln',
+  'dice-roller.howOftenEachFaceCame': 'Wie oft jede Augenzahl kam',
+  'dice-roller.recentRolls': 'Letzte Würfe',
+  'dice-roller.copyTheLog': 'Verlauf kopieren',
+  'dice-roller.clearTheLog': 'Verlauf leeren',
+  'dice-roller.copiedTheLog': 'Verlauf kopiert',
+  'dice-roller.diceThrown': '{count} Würfel geworfen',
+  'dice-roller.rollToSeeTheSpread': 'Würfle, um die Verteilung wachsen zu sehen',
+  'dice-roller.nothingThrownYet': 'Noch nichts geworfen',
+  'dice-roller.diceRoller': 'Würfelwurf',
+  'dice-roller.widgetBlurb': 'Beliebige Würfel werfen und die Verteilung sehen.',
+};

@@ -1,0 +1,16 @@
+export default {
+  'dice-roller.rollWithASound': 'Lancer avec un son',
+  'dice-roller.howMany': 'Combien',
+  'dice-roller.addToTheTotal': 'Ajouter au total',
+  'dice-roller.roll': 'Lancer',
+  'dice-roller.howOftenEachFaceCame': 'Fréquence de chaque face',
+  'dice-roller.recentRolls': 'Lancers récents',
+  'dice-roller.copyTheLog': 'Copier le journal',
+  'dice-roller.clearTheLog': 'Effacer le journal',
+  'dice-roller.copiedTheLog': 'Journal copié',
+  'dice-roller.diceThrown': '{count} dés lancés',
+  'dice-roller.rollToSeeTheSpread': 'Lancez pour voir la répartition se former',
+  'dice-roller.nothingThrownYet': 'Aucun lancer pour l\'instant',
+  'dice-roller.diceRoller': 'Lanceur de dés',
+  'dice-roller.widgetBlurb': 'Lancez n\'importe quel dé et observez la répartition.',
+};

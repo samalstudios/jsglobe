@@ -1,0 +1,17 @@
+export default {
+  'case-converter.camelcase': 'camelCase',
+  'case-converter.pascalcase': 'PascalCase',
+  'case-converter.snakeCase': 'snake_case',
+  'case-converter.constantCase': 'CONSTANT_CASE',
+  'case-converter.kebabCase': 'kebab-case',
+  'case-converter.trainCase': 'Train-Case',
+  'case-converter.dotCase': 'dot.case',
+  'case-converter.pathCase': 'path/case',
+  'case-converter.sentenceCase': 'Zinsstijl',
+  'case-converter.titleCase': 'Titelstijl',
+  'case-converter.lowerCase': 'kleine letters',
+  'case-converter.upperCase': 'HOOFDLETTERS',
+  'case-converter.input': 'Invoer',
+  'case-converter.anySeparatorWorksSpacesDashes': 'Elk scheidingsteken werkt - spaties, streepjes, liggende streepjes of hoofdletters middenin',
+  'case-converter.helloWorldExample': 'hallo wereld voorbeeld',
+};

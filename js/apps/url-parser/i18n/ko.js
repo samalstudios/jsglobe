@@ -1,0 +1,16 @@
+export default {
+  'url-parser.components': '컴포넌트',
+  'url-parser.queryParams': '질의 매개변수',
+  'url-parser.invalid': '올바른 절대 URL이 아닙니다.',
+  'url-parser.protocol': '프로토콜',
+  'url-parser.username': '사용자 이름',
+  'url-parser.password': '비밀번호',
+  'url-parser.hostname': '호스트 이름',
+  'url-parser.port': '포트',
+  'url-parser.default': '기본',
+  'url-parser.origin': '원점',
+  'url-parser.path': '경로',
+  'url-parser.query': '질의',
+  'url-parser.fragment': '프래그먼트',
+  'url-parser.segments': '세그먼트',
+};

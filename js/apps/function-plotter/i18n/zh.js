@@ -1,0 +1,16 @@
+export default {
+  'function-plotter.addFunction': '添加函数',
+  'function-plotter.resetView': '重置视图',
+  'function-plotter.fitYAxis': '适应 y 轴',
+  'function-plotter.showDerivative': '显示导数',
+  'function-plotter.savePng': '保存 PNG',
+  'function-plotter.range': '范围',
+  'function-plotter.detail': '精细度',
+  'function-plotter.dragToRotateScrollTo': '拖动旋转，滚动缩放',
+  'function-plotter.rootsAndExtrema': '零点与极值',
+  'function-plotter.foundByScanningTheVisible': '通过扫描可见范围找到',
+  'function-plotter.2dCurve': '二维曲线',
+  'function-plotter.3dSurface': '三维曲面',
+  'function-plotter.sinX': 'sin(x)',
+  'function-plotter.noSignChangesInThe': '可见范围内没有符号变化。',
+};

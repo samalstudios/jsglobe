@@ -1,0 +1,15 @@
+export default {
+  'rdap-lookup.exampleCom888': 'example.com, 8.8.8.8 ou AS15169',
+  'rdap-lookup.lookUp': 'Consultar',
+  'rdap-lookup.copyJson': 'Copiar o JSON',
+  'rdap-lookup.ready': 'Pronto',
+  'rdap-lookup.rawResponse': 'Resposta bruta',
+  'rdap-lookup.exactlyWhatTheRegistryReturned': 'Exatamente o que o registro devolveu',
+  'rdap-lookup.overview': 'Visão geral',
+  'rdap-lookup.timeline': 'Linha do tempo',
+  'rdap-lookup.status': 'Status',
+  'rdap-lookup.locksAndPendingOperationsReported': 'Bloqueios e operações pendentes informados pelo registro',
+  'rdap-lookup.nameservers': 'Servidores de nomes',
+  'rdap-lookup.contacts': 'Contatos',
+  'rdap-lookup.registriesRedactMostPersonalDetails': 'Os registros ocultam a maior parte dos dados pessoais',
+};

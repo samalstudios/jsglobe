@@ -1,0 +1,17 @@
+export default {
+  'keycode-info.pressAnyKey': 'Aperte qualquer tecla',
+  'keycode-info.clickHereFirstThenPress': 'Clique aqui primeiro e depois pressione uma tecla. Combinações com modificadores também são capturadas.',
+  'keycode-info.eventProperties': 'Propriedades do evento',
+  'keycode-info.eventKey': 'event.key',
+  'keycode-info.eventCode': 'event.code',
+  'keycode-info.eventKeycode': 'event.keyCode',
+  'keycode-info.modifiers': 'Modificadores',
+  'keycode-info.recentKeys': 'Teclas recentes',
+  'keycode-info.nothingYet': 'Nada ainda',
+  'keycode-info.snippet': 'Trecho',
+  'keycode-info.pressAKeyToBuild': 'Aperte uma tecla para montar um verificador',
+  'keycode-info.eventWhich': 'event.which',
+  'keycode-info.location': 'Local',
+  'keycode-info.repeat': 'Repetir',
+  'keycode-info.unicode': 'Unicode',
+};

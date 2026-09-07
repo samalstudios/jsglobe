@@ -1,6 +1,5 @@
 import { JGApp, define, html, raw, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { collapsibleGroups, paletteSheet } from '../../ui/palette.js';
 import { icon } from '../../ui/icons.js';
 import { toast, download } from '../../core/util.js';
@@ -12,7 +11,7 @@ import {
 } from '../../lib/optics.js';
 import SCENES from './scenes.js';
 
-const t = appText(strings);
+const t = await appWords('optics-lab', (lang) => import(`./i18n/${lang}.js`));
 const sheet = await styleSheet(import.meta.url);
 
 const SOURCES = {

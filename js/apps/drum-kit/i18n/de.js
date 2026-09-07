@@ -1,0 +1,16 @@
+export default {
+  'drum-kit.kick': 'Bassdrum',
+  'drum-kit.snare': 'Snare',
+  'drum-kit.clap': 'Clap',
+  'drum-kit.rim': 'Rimshot',
+  'drum-kit.closedHat': 'Geschlossene Hi-Hat',
+  'drum-kit.openHat': 'Offene Hi-Hat',
+  'drum-kit.tom': 'Tom',
+  'drum-kit.cymbal': 'Becken',
+  'drum-kit.stepSequencer': 'Step-Sequencer',
+  'drum-kit.16StepsClickToToggle': '16 Schritte, zum Umschalten klicken',
+  'drum-kit.play': 'Start',
+  'drum-kit.clear': 'Leeren',
+  'drum-kit.loadBeat': 'Beat laden',
+  'drum-kit.tempo': 'Tempo',
+};

@@ -1,0 +1,17 @@
+export default {
+  'case-converter.camelcase': 'camelCase',
+  'case-converter.pascalcase': 'PascalCase',
+  'case-converter.snakeCase': 'snake_case',
+  'case-converter.constantCase': 'CONSTANT_CASE',
+  'case-converter.kebabCase': 'kebab-case',
+  'case-converter.trainCase': 'Train-Case',
+  'case-converter.dotCase': 'dot.case',
+  'case-converter.pathCase': 'path/case',
+  'case-converter.sentenceCase': 'Як у реченні',
+  'case-converter.titleCase': 'Як У Заголовку',
+  'case-converter.lowerCase': 'малі літери',
+  'case-converter.upperCase': 'ВЕЛИКІ ЛІТЕРИ',
+  'case-converter.input': 'Вхід',
+  'case-converter.anySeparatorWorksSpacesDashes': 'Будь-який роздільник підійде - пробіли, дефіси, підкреслення чи великі літери всередині',
+  'case-converter.helloWorldExample': 'привіт світ приклад',
+};

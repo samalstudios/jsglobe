@@ -1,0 +1,15 @@
+export default {
+  'common.text': '텍스트',
+  'base64.fileToBase64': '파일 → Base64',
+  'base64.urlSafe': 'URL에 안전한 문자 집합',
+  'base64.swap': '바꾸기 ⇅',
+  'base64.plainText': '일반 텍스트',
+  'base64.textToEncode': '인코딩할 글',
+  'base64.base64ToDecode': '디코딩할 Base64',
+  'base64.typeEitherSide': '어느 쪽에나 입력할 수 있습니다.',
+  'base64.chooseFile': '파일 고르기...',
+  'base64.filesStay': '파일은 브라우저를 벗어나지 않습니다.',
+  'base64-converter.dataUri': '데이터 URI',
+  'base64.outputHere': 'Base64 결과가 여기에 나옵니다',
+  'base64.copyNoPrefix': '데이터 URI 접두사 없이 복사',
+};

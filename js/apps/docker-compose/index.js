@@ -1,10 +1,9 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { toYaml, fromYaml } from '../../core/yaml.js';
 import { debounce, copyText, download } from '../../core/util.js';
 
-const t = appText(strings);
+const t = await appWords('docker-compose', (lang) => import(`./i18n/${lang}.js`));
 
 const sheet = await styleSheet(import.meta.url);
 

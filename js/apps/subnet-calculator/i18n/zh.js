@@ -1,0 +1,17 @@
+export default {
+  'subnet-calculator.ipv4AddressWithPrefix': '带前缀的 IPv4 地址',
+  'subnet-calculator.network': '网络',
+  'subnet-calculator.binary': '二进制',
+  'subnet-calculator.networkBitsInAccentHost': '网络位用强调色，主机位用淡色',
+  'subnet-calculator.splitIntoSubnets': '划分子网',
+  'subnet-calculator.enterAValidIpv4Address': '请输入有效的 IPv4 地址，例如 10.0.0.1',
+  'subnet-calculator.networkAddress': '网络地址',
+  'subnet-calculator.broadcast': '广播地址',
+  'subnet-calculator.firstHost': '首个主机',
+  'subnet-calculator.lastHost': '末个主机',
+  'subnet-calculator.subnetMask': '子网掩码',
+  'subnet-calculator.wildcardMask': '通配符掩码',
+  'subnet-calculator.totalAddresses': '地址总数',
+  'subnet-calculator.usableHosts': '可用主机数',
+  'subnet-calculator.range': '范围',
+};

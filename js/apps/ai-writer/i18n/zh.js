@@ -1,0 +1,16 @@
+export default {
+  'ai-writer.summarise': '摘要',
+  'ai-writer.rewrite': '改写',
+  'ai-writer.changeTone': '改变语气',
+  'ai-writer.translate': '翻译',
+  'ai-writer.proofread': '校对',
+  'ai-writer.toBullets': '转为要点',
+  'ai-writer.commitMessage': '提交信息',
+  'ai-writer.language': '语言',
+  'ai-writer.run': '运行',
+  'ai-writer.stop': '停止',
+  'ai-writer.input': '输入',
+  'ai-writer.pasteTextNotesOrA': '粘贴文本、笔记或 diff',
+  'ai-writer.result': '结果',
+  'ai-writer.copy': '复制',
+};

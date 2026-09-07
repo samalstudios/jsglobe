@@ -1,0 +1,16 @@
+export default {
+  'url-parser.components': 'Componentes',
+  'url-parser.queryParams': 'Parámetros de consulta',
+  'url-parser.invalid': 'No es una URL absoluta válida.',
+  'url-parser.protocol': 'Protocolo',
+  'url-parser.username': 'Usuario',
+  'url-parser.password': 'Contraseña',
+  'url-parser.hostname': 'Nombre de host',
+  'url-parser.port': 'Puerto',
+  'url-parser.default': 'por defecto',
+  'url-parser.origin': 'Origen',
+  'url-parser.path': 'Ruta',
+  'url-parser.query': 'Consulta',
+  'url-parser.fragment': 'Fragmento',
+  'url-parser.segments': 'Segmentos',
+};

@@ -1,0 +1,17 @@
+export default {
+  'slugify.text': 'Texto',
+  'slugify.10WaysToBuildA': '10 formas de crear una carta de cafetería - Edición 2024',
+  'slugify.dash': 'Guion (-)',
+  'slugify.underscore': 'Guion bajo (_)',
+  'slugify.dot': 'Punto (.)',
+  'slugify.lowercase': 'Minúsculas',
+  'slugify.stripSymbols': 'Quitar los símbolos',
+  'slugify.max': 'máx',
+  'slugify.slug': 'Slug',
+  'slugify.variations': 'Variantes',
+  'slugify.kebab': 'Kebab',
+  'slugify.snake': 'Snake',
+  'slugify.dot2': 'Punto',
+  'slugify.preservedCase': 'Mayúsculas conservadas',
+  'slugify.length': 'Longitud',
+};

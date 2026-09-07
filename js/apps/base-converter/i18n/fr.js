@@ -1,0 +1,17 @@
+export default {
+  'base-converter.binaryBase2': 'Binaire (base 2)',
+  'base-converter.octalBase8': 'Octal (base 8)',
+  'base-converter.decimalBase10': 'Décimal (base 10)',
+  'base-converter.hexadecimalBase16': 'Hexadécimal (base 16)',
+  'base-converter.base32': 'Base 32',
+  'base-converter.base36': 'Base 36',
+  'base-converter.enterANumber': 'Saisissez un nombre',
+  'base-converter.customBase': 'Base personnalisée',
+  'base-converter.base': 'base',
+  'base-converter.bitView': 'Vue en bits',
+  'base-converter.32BitRepresentationGroupedIn': 'Représentation 32 bits groupée par quartets',
+  'base-converter.bitLength': 'Longueur en bits',
+  'base-converter.bytes': 'Bytes',
+  'base-converter.fitsIn': 'Tient dans',
+  'base-converter.scientific': 'Scientifique',
+};

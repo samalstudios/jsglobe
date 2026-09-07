@@ -1,10 +1,9 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { debounce, copyText } from '../../core/util.js';
 import { toYaml, fromYaml } from '../../core/yaml.js';
 
-const t = appText(strings);
+const t = await appWords('json-yaml', (lang) => import(`./i18n/${lang}.js`));
 
 const sheet = await styleSheet(import.meta.url);
 

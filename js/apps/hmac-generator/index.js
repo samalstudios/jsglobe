@@ -1,9 +1,8 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { encodeBytes, toHex, toBase64, fromHex, debounce } from '../../core/util.js';
 
-const t = appText(strings);
+const t = await appWords('hmac-generator', (lang) => import(`./i18n/${lang}.js`));
 
 const sheet = await styleSheet(import.meta.url);
 

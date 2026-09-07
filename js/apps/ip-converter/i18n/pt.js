@@ -1,0 +1,17 @@
+export default {
+  'ip-converter.ipv4AddressOrNumericForm': 'Endereço IPv4 ou forma numérica',
+  'ip-converter.acceptsDottedQuadDecimal0x': 'Aceita notação pontuada, decimal, hexadecimal 0x ou binária',
+  'ip-converter.dottedDecimal': 'Decimal pontuado',
+  'ip-converter.decimal': 'Decimal',
+  'ip-converter.hexadecimal': 'Hexadecimal',
+  'ip-converter.octal': 'Octal',
+  'ip-converter.binary': 'Binário',
+  'ip-converter.ipv6Mapped': 'Mapeado em IPv6',
+  'ip-converter.classification': 'Classificação',
+  'ip-converter.couldNotReadThatAddress': 'Não foi possível ler esse endereço.',
+  'ip-converter.class': 'Classe',
+  'ip-converter.scope': 'Escopo',
+  'ip-converter.octets': 'Octetos',
+  'ip-converter.reverseDns': 'DNS reverso',
+  'ip-converter.integerRange': 'Faixa de inteiros',
+};

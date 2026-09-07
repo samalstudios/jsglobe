@@ -1,0 +1,16 @@
+export default {
+  'dice-roller.rollWithASound': '掷骰时播放声音',
+  'dice-roller.howMany': '数量',
+  'dice-roller.addToTheTotal': '总和加值',
+  'dice-roller.roll': '掷骰',
+  'dice-roller.howOftenEachFaceCame': '各点数出现次数',
+  'dice-roller.recentRolls': '最近的投掷',
+  'dice-roller.copyTheLog': '复制记录',
+  'dice-roller.clearTheLog': '清空记录',
+  'dice-roller.copiedTheLog': '已复制记录',
+  'dice-roller.diceThrown': '已掷出 {count} 颗骰子',
+  'dice-roller.rollToSeeTheSpread': '掷几次就能看到分布',
+  'dice-roller.nothingThrownYet': '还没有投掷',
+  'dice-roller.diceRoller': '掷骰器',
+  'dice-roller.widgetBlurb': '投掷任意骰子并观察分布。',
+};

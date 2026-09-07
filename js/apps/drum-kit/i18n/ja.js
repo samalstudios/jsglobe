@@ -1,0 +1,16 @@
+export default {
+  'drum-kit.kick': 'キック',
+  'drum-kit.snare': 'スネア',
+  'drum-kit.clap': 'クラップ',
+  'drum-kit.rim': 'リムショット',
+  'drum-kit.closedHat': 'クローズドハイハット',
+  'drum-kit.openHat': 'オープンハイハット',
+  'drum-kit.tom': 'Tom',
+  'drum-kit.cymbal': 'シンバル',
+  'drum-kit.stepSequencer': 'ステップシーケンサ',
+  'drum-kit.16StepsClickToToggle': '16 ステップ、クリックで切り替え',
+  'drum-kit.play': '再生',
+  'drum-kit.clear': 'クリア',
+  'drum-kit.loadBeat': 'ビートを読み込む',
+  'drum-kit.tempo': 'Tempo',
+};

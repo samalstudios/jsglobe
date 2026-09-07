@@ -1,0 +1,17 @@
+export default {
+  'keycode-info.pressAnyKey': 'Appuyez sur une touche',
+  'keycode-info.clickHereFirstThenPress': 'Cliquez ici d\'abord, puis appuyez sur une touche. Les combinaisons avec modificateurs sont aussi capturées.',
+  'keycode-info.eventProperties': 'Propriétés de l\'événement',
+  'keycode-info.eventKey': 'event.key',
+  'keycode-info.eventCode': 'event.code',
+  'keycode-info.eventKeycode': 'event.keyCode',
+  'keycode-info.modifiers': 'Modificateurs',
+  'keycode-info.recentKeys': 'Touches récentes',
+  'keycode-info.nothingYet': 'Rien pour l\'instant',
+  'keycode-info.snippet': 'Extrait',
+  'keycode-info.pressAKeyToBuild': 'Appuyez sur une touche pour construire un test',
+  'keycode-info.eventWhich': 'event.which',
+  'keycode-info.location': 'Lieu',
+  'keycode-info.repeat': 'Répéter',
+  'keycode-info.unicode': 'Unicode',
+};

@@ -1,10 +1,9 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { debounce, copyText } from '../../core/util.js';
 import { evaluate, CONSTANTS, FUNCTIONS } from '../../core/expression.js';
 
-const t = appText(strings);
+const t = await appWords('math-evaluator', (lang) => import(`./i18n/${lang}.js`));
 
 const sheet = await styleSheet(import.meta.url);
 

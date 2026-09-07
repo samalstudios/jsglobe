@@ -1,6 +1,5 @@
 import { JGApp, define, html, raw, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { icon } from '../../ui/icons.js';
 import { toast, download, debounce, pickFile } from '../../core/util.js';
 import { createDesigns } from '../../lib/designs.js';
@@ -17,7 +16,7 @@ import { htmlToBlocks, blockNodes, blocksToHtml, blocksToText, blocksToMarkdown,
 import { layoutDocument, layoutToPdf, BLOCK_STYLE, DEFAULT_TAB } from '../../lib/doc-layout.js';
 import { writeDocx, docxToHtml } from '../../lib/docx.js';
 
-const t = appText(strings);
+const t = await appWords('doc-editor', (lang) => import(`./i18n/${lang}.js`));
 const sheet = await styleSheet(import.meta.url);
 
 const STYLES = [

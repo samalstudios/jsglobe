@@ -1,0 +1,17 @@
+export default {
+  'ip-converter.ipv4AddressOrNumericForm': 'IPv4 주소나 숫자 형태',
+  'ip-converter.acceptsDottedQuadDecimal0x': '점으로 구분된 표기, 10진수, 0x 16진수, 2진수를 받습니다',
+  'ip-converter.dottedDecimal': '점으로 나눈 10진',
+  'ip-converter.decimal': '10진',
+  'ip-converter.hexadecimal': '16진',
+  'ip-converter.octal': '8진',
+  'ip-converter.binary': '2진',
+  'ip-converter.ipv6Mapped': 'IPv6 매핑',
+  'ip-converter.classification': '분류',
+  'ip-converter.couldNotReadThatAddress': '그 주소를 읽을 수 없습니다.',
+  'ip-converter.class': '등급',
+  'ip-converter.scope': '범위',
+  'ip-converter.octets': '옥텟',
+  'ip-converter.reverseDns': '역방향 DNS',
+  'ip-converter.integerRange': '정수 범위',
+};

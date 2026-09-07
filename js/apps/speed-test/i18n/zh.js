@@ -1,0 +1,18 @@
+export default {
+  'speed-test.cloudflare': 'Cloudflare',
+  'speed-test.thisServer': '本服务器',
+  'speed-test.testServer': '测试服务器',
+  'speed-test.startTest': '开始测试',
+  'speed-test.stop': '停止',
+  'speed-test.mbps': 'Mbps',
+  'speed-test.readyToMeasureYourConnection': '已准备好测量你的连接。',
+  'speed-test.downloadMbps': '下载 Mbps',
+  'speed-test.uploadMbps': '上传 Mbps',
+  'speed-test.latencyMs': '延迟 ms',
+  'speed-test.jitterMs': '抖动 ms',
+  'speed-test.connection': '连接',
+  'speed-test.reportedType': '报告的类型',
+  'speed-test.reportedDownlink': '报告的下行速率',
+  'speed-test.roundTripEstimate': '往返时延估算',
+  'speed-test.dataSaver': '流量节省',
+};

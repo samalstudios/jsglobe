@@ -1,0 +1,16 @@
+export default {
+  'url-parser.components': '组成部分',
+  'url-parser.queryParams': '查询参数',
+  'url-parser.invalid': '不是有效的绝对 URL。',
+  'url-parser.protocol': '协议',
+  'url-parser.username': '用户名',
+  'url-parser.password': '密码',
+  'url-parser.hostname': '主机名',
+  'url-parser.port': '端口',
+  'url-parser.default': '默认',
+  'url-parser.origin': '源',
+  'url-parser.path': '路径',
+  'url-parser.query': '查询字符串',
+  'url-parser.fragment': '片段',
+  'url-parser.segments': '路径段',
+};

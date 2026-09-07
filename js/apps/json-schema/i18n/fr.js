@@ -1,0 +1,18 @@
+export default {
+  'json-schema.markPropertiesRequired': 'Marquer les propriétés comme requises',
+  'json-schema.detectFormats': 'Détecter les formats',
+  'json-schema.noExtraProperties': 'Pas de propriétés supplémentaires',
+  'json-schema.includeExamples': 'Inclure des exemples',
+  'json-schema.waiting': 'En attente',
+  'json-schema.sampleJson': 'JSON d\'exemple',
+  'json-schema.pasteOneOrMoreJson': 'Collez un ou plusieurs documents JSON',
+  'json-schema.jsonSchema': 'Schéma JSON',
+  'json-schema.result': 'Résultat',
+  'json-schema.inferSchema': 'Déduire le schéma',
+  'json-schema.validateAgainstSchema': 'Valider contre le schéma',
+  'json-schema.sample': 'Échantillon',
+  'json-schema.copy': 'Copier',
+  'json-schema.download': 'Télécharger',
+  'json-schema.generatedSchema': 'Schéma généré',
+  'json-schema.everyDocumentMatchesTheSchema': 'Tous les documents sont conformes au schéma.',
+};

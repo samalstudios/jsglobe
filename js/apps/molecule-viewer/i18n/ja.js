@@ -1,0 +1,18 @@
+export default {
+  'molecule-viewer.ballAndStick': '球棒モデル',
+  'molecule-viewer.spaceFilling': '空間充填モデル',
+  'molecule-viewer.sticks': 'スティック',
+  'molecule-viewer.flatDiagram': '平面図',
+  'molecule-viewer.defaultStyle': '既定のスタイル',
+  'molecule-viewer.showHydrogens': '水素原子を表示',
+  'molecule-viewer.spinAutomatically': '自動で回す',
+  'molecule-viewer.moleculeOfTheDay': '今日の分子',
+  'molecule-viewer.hydrogens': '水素原子',
+  'molecule-viewer.labels': 'ラベル',
+  'molecule-viewer.spin': '回転',
+  'molecule-viewer.copyXyz': 'XYZ をコピー',
+  'molecule-viewer.savePng': 'PNG を保存',
+  'molecule-viewer.atoms': '原子',
+  'molecule-viewer.bonds': '結合',
+  'molecule-viewer.gMol': 'g/mol',
+};

@@ -1,0 +1,16 @@
+export default {
+  'dice-roller.rollWithASound': 'Rolar com som',
+  'dice-roller.howMany': 'Quantos',
+  'dice-roller.addToTheTotal': 'Somar ao total',
+  'dice-roller.roll': 'Rolar',
+  'dice-roller.howOftenEachFaceCame': 'Com que frequência cada face saiu',
+  'dice-roller.recentRolls': 'Rolagens recentes',
+  'dice-roller.copyTheLog': 'Copiar o registro',
+  'dice-roller.clearTheLog': 'Limpar o registro',
+  'dice-roller.copiedTheLog': 'Registro copiado',
+  'dice-roller.diceThrown': '{count} dados lançados',
+  'dice-roller.rollToSeeTheSpread': 'Role para ver a distribuição se formar',
+  'dice-roller.nothingThrownYet': 'Nada lançado ainda',
+  'dice-roller.diceRoller': 'Rolador de dados',
+  'dice-roller.widgetBlurb': 'Role qualquer dado e observe a distribuição.',
+};

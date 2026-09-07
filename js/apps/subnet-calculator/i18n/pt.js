@@ -1,0 +1,17 @@
+export default {
+  'subnet-calculator.ipv4AddressWithPrefix': 'Endereço IPv4 com prefixo',
+  'subnet-calculator.network': 'Rede',
+  'subnet-calculator.binary': 'Binário',
+  'subnet-calculator.networkBitsInAccentHost': 'Bits de rede em destaque, bits de host apagados',
+  'subnet-calculator.splitIntoSubnets': 'Dividir em sub-redes',
+  'subnet-calculator.enterAValidIpv4Address': 'Informe um endereço IPv4 válido, como 10.0.0.1',
+  'subnet-calculator.networkAddress': 'Endereço de rede',
+  'subnet-calculator.broadcast': 'Difusão',
+  'subnet-calculator.firstHost': 'Primeiro host',
+  'subnet-calculator.lastHost': 'Último host',
+  'subnet-calculator.subnetMask': 'Máscara de sub-rede',
+  'subnet-calculator.wildcardMask': 'Máscara curinga',
+  'subnet-calculator.totalAddresses': 'Total de endereços',
+  'subnet-calculator.usableHosts': 'Hosts utilizáveis',
+  'subnet-calculator.range': 'Amplitude',
+};

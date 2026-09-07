@@ -1,0 +1,17 @@
+export default {
+  'compose-to-k8s.defaultVolumeSize': '默认卷大小',
+  'compose-to-k8s.replicasWhenComposeDoesNot': 'compose 未指定时的副本数',
+  'compose-to-k8s.namespace': '命名空间',
+  'compose-to-k8s.ingressController': 'Ingress 控制器',
+  'compose-to-k8s.hostDomain': '主机域名',
+  'compose-to-k8s.imagePullPolicy': '镜像拉取策略',
+  'compose-to-k8s.requestTls': '启用 TLS',
+  'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+  'compose-to-k8s.loadASample': '加载示例',
+  'compose-to-k8s.pasteAComposeFile': '粘贴一个 compose 文件',
+  'compose-to-k8s.kubernetesManifests': 'Kubernetes 清单',
+  'compose-to-k8s.copy': '复制',
+  'compose-to-k8s.download': '下载',
+  'compose-to-k8s.clear': '清空',
+  'compose-to-k8s.emptyTheInput': '清空输入',
+};

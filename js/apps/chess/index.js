@@ -1,6 +1,5 @@
 import { JGApp, define, html, raw, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { copyText, download, toast } from '../../core/util.js';
 import {
   START_FEN,
@@ -24,7 +23,7 @@ import { LEVELS } from '../../lib/chess-ai.js';
 import { createEngine } from '../../lib/chess-engine.js';
 import { OPENINGS, FAMILIES, LESSONS } from '../../lib/chess-openings.js';
 
-const t = appText(strings);
+const t = await appWords('chess', (lang) => import(`./i18n/${lang}.js`));
 const sheet = await styleSheet(import.meta.url);
 
 // The filled glyphs read clearly at any size once they are coloured, where the

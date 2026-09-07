@@ -1,0 +1,15 @@
+export default {
+  'rdap-lookup.exampleCom888': 'example.com、8.8.8.8 或 AS15169',
+  'rdap-lookup.lookUp': '查询',
+  'rdap-lookup.copyJson': '复制 JSON',
+  'rdap-lookup.ready': '就绪',
+  'rdap-lookup.rawResponse': '原始响应',
+  'rdap-lookup.exactlyWhatTheRegistryReturned': '注册局返回的原始内容',
+  'rdap-lookup.overview': '概览',
+  'rdap-lookup.timeline': '时间线',
+  'rdap-lookup.status': '状态',
+  'rdap-lookup.locksAndPendingOperationsReported': '注册局报告的锁定与待处理操作',
+  'rdap-lookup.nameservers': '域名服务器',
+  'rdap-lookup.contacts': '联系人',
+  'rdap-lookup.registriesRedactMostPersonalDetails': '注册局会隐去大部分个人信息',
+};

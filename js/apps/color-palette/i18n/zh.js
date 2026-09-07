@@ -1,0 +1,17 @@
+export default {
+  'color-palette.saveColour': '保存颜色',
+  'color-palette.cssVariables': 'CSS 变量',
+  'color-palette.tailwindConfig': 'Tailwind 配置',
+  'color-palette.scss': 'SCSS',
+  'color-palette.exportScale': '导出比例',
+  'color-palette.saved': '已保存',
+  'color-palette.palette': '调色板',
+  'color-palette.wheel': '色轮',
+  'color-palette.scale': '缩放',
+  'color-palette.harmony': '配色',
+  'color-palette.nothingSavedYet': '尚未保存任何内容。',
+  'color-palette.clickASwatchToSelect': '点击色块选中它，点击名称复制整条色阶。',
+  'color-palette.lightness': '明度',
+  'color-palette.hex': '十六进制',
+  'color-palette.nativePicker': '系统取色器',
+};

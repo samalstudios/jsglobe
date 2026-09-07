@@ -1,0 +1,16 @@
+export default {
+  'dice-roller.rollWithASound': '소리를 내며 굴리기',
+  'dice-roller.howMany': '몇 개',
+  'dice-roller.addToTheTotal': '합계에 더하기',
+  'dice-roller.roll': '굴리기',
+  'dice-roller.howOftenEachFaceCame': '각 면이 나온 횟수',
+  'dice-roller.recentRolls': '최근 굴림',
+  'dice-roller.copyTheLog': '로그 복사',
+  'dice-roller.clearTheLog': '로그 지우기',
+  'dice-roller.copiedTheLog': '로그를 복사했습니다',
+  'dice-roller.diceThrown': '주사위 {count}개를 던졌습니다',
+  'dice-roller.rollToSeeTheSpread': '굴리면 분포가 쌓여 갑니다',
+  'dice-roller.nothingThrownYet': '아직 던지지 않았습니다',
+  'dice-roller.diceRoller': '주사위',
+  'dice-roller.widgetBlurb': '어떤 주사위든 굴려 흩어짐을 살펴보세요.',
+};

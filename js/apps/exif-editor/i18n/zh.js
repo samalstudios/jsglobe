@@ -1,0 +1,16 @@
+export default {
+  'exif-editor.dropAJpegHereOr': '把 JPEG 拖到这里，或点击选择一张',
+  'exif-editor.metadata': '元数据',
+  'exif-editor.untickATagToDrop': '取消勾选某个标签即可从保存的副本中移除它',
+  'exif-editor.keepTheColourProfile': '保留色彩配置文件',
+  'exif-editor.saveCleanedCopy': '保存清理后的副本',
+  'exif-editor.stripEverything': '清除全部',
+  'exif-editor.copyMetadataAsJson': '以 JSON 复制元数据',
+  'exif-editor.metadataCopied': '已复制元数据',
+  'exif-editor.onlyJpegFilesCarryExif': '只有 JPEG 文件带有 Exif 元数据',
+  'exif-editor.name': '名称',
+  'exif-editor.size': '大小',
+  'exif-editor.type': '类型',
+  'exif-editor.noExifTagsFoundIn': '在此文件中未找到 Exif 标签。',
+  'exif-editor.thatFileIsNotA': '该文件不是 JPEG',
+};

@@ -1,0 +1,15 @@
+export default {
+  'tuner.guitarStandard': '吉他标准调弦',
+  'tuner.guitarDropD': '吉他 Drop D',
+  'tuner.guitarHalfStepDown': '吉他降半音',
+  'tuner.guitarOpenG': '吉他开放 G 调弦',
+  'tuner.bass4String': '四弦贝斯',
+  'tuner.ukulele': '尤克里里',
+  'tuner.referencePitchA4': '基准音高（A4）',
+  'tuner.hzA4': 'Hz A4',
+  'tuner.startListening': '开始聆听',
+  'tuner.stop': '停止',
+  'tuner.playAString': '弹一根弦',
+  'tuner.microphoneIsOff': '麦克风已关闭',
+  'tuner.50Cents': '+50 音分',
+};

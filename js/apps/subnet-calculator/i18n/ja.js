@@ -1,0 +1,17 @@
+export default {
+  'subnet-calculator.ipv4AddressWithPrefix': 'プレフィックス付きの IPv4 アドレス',
+  'subnet-calculator.network': 'ネットワーク',
+  'subnet-calculator.binary': '2 進',
+  'subnet-calculator.networkBitsInAccentHost': 'ネットワーク部を強調、ホスト部を淡く',
+  'subnet-calculator.splitIntoSubnets': 'サブネットに分割',
+  'subnet-calculator.enterAValidIpv4Address': '10.0.0.1 のような有効な IPv4 アドレスを入力してください',
+  'subnet-calculator.networkAddress': 'ネットワークアドレス',
+  'subnet-calculator.broadcast': 'ブロードキャスト',
+  'subnet-calculator.firstHost': '最初のホスト',
+  'subnet-calculator.lastHost': '最後のホスト',
+  'subnet-calculator.subnetMask': 'サブネットマスク',
+  'subnet-calculator.wildcardMask': 'ワイルドカードマスク',
+  'subnet-calculator.totalAddresses': 'アドレス総数',
+  'subnet-calculator.usableHosts': '利用できるホスト数',
+  'subnet-calculator.range': '範囲',
+};

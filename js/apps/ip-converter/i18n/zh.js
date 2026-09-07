@@ -1,0 +1,17 @@
+export default {
+  'ip-converter.ipv4AddressOrNumericForm': 'IPv4 地址或数值形式',
+  'ip-converter.acceptsDottedQuadDecimal0x': '支持点分十进制、十进制、0x 十六进制或二进制',
+  'ip-converter.dottedDecimal': '点分十进制',
+  'ip-converter.decimal': '十进制',
+  'ip-converter.hexadecimal': '十六进制',
+  'ip-converter.octal': '八进制',
+  'ip-converter.binary': '二进制',
+  'ip-converter.ipv6Mapped': 'IPv6 映射',
+  'ip-converter.classification': '分类',
+  'ip-converter.couldNotReadThatAddress': '无法解析该地址。',
+  'ip-converter.class': '类别',
+  'ip-converter.scope': '范围',
+  'ip-converter.octets': '字节段',
+  'ip-converter.reverseDns': '反向 DNS',
+  'ip-converter.integerRange': '整数范围',
+};

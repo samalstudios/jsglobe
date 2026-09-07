@@ -1,0 +1,16 @@
+export default {
+  'exif-editor.dropAJpegHereOr': 'JPEG をここにドロップ、またはクリックして選択',
+  'exif-editor.metadata': 'メタデータ',
+  'exif-editor.untickATagToDrop': 'チェックを外したタグは保存する控えから除かれます',
+  'exif-editor.keepTheColourProfile': 'カラープロファイルを残す',
+  'exif-editor.saveCleanedCopy': '整理した控えを保存',
+  'exif-editor.stripEverything': 'すべて取り除く',
+  'exif-editor.copyMetadataAsJson': 'メタデータを JSON でコピー',
+  'exif-editor.metadataCopied': 'メタデータをコピーしました',
+  'exif-editor.onlyJpegFilesCarryExif': 'Exif メタデータを持つのは JPEG だけです',
+  'exif-editor.name': '名前',
+  'exif-editor.size': 'サイズ',
+  'exif-editor.type': '種類',
+  'exif-editor.noExifTagsFoundIn': 'このファイルに Exif タグは見つかりませんでした。',
+  'exif-editor.thatFileIsNotA': 'そのファイルは JPEG ではありません',
+};

@@ -1,0 +1,17 @@
+export default {
+  'base-converter.binaryBase2': '二进制（基数 2）',
+  'base-converter.octalBase8': '八进制（基数 8）',
+  'base-converter.decimalBase10': '十进制（基数 10）',
+  'base-converter.hexadecimalBase16': '十六进制（基数 16）',
+  'base-converter.base32': '三十二进制',
+  'base-converter.base36': '三十六进制',
+  'base-converter.enterANumber': '输入一个数字',
+  'base-converter.customBase': '自定义进制',
+  'base-converter.base': '进制',
+  'base-converter.bitView': '位视图',
+  'base-converter.32BitRepresentationGroupedIn': '按半字节分组的 32 位表示',
+  'base-converter.bitLength': '位长',
+  'base-converter.bytes': '字节',
+  'base-converter.fitsIn': '可容纳于',
+  'base-converter.scientific': '科学计数法',
+};

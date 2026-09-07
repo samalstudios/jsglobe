@@ -1,0 +1,15 @@
+export default {
+  'ai-code.explain': '説明する',
+  'ai-code.review': 'レビュー',
+  'ai-code.document': '文書',
+  'ai-code.writeTests': 'テストを書く',
+  'ai-code.convert': '変換',
+  'ai-code.simplify': '簡潔にする',
+  'ai-code.targetLanguage': '翻訳先の言語',
+  'ai-code.run': '実行',
+  'ai-code.stop': '停止',
+  'ai-code.code': 'コード',
+  'ai-code.pasteCodeHere': 'ここにコードを貼り付け',
+  'ai-code.result': '結果',
+  'ai-code.copy': 'コピー',
+};

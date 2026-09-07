@@ -1,0 +1,18 @@
+export default {
+  'coin-flipper.flipsPerGo': 'Würfe pro Durchgang',
+  'coin-flipper.heads': 'Kopf',
+  'coin-flipper.tails': 'Zahl',
+  'coin-flipper.flip': 'Werfen',
+  'coin-flipper.flipManyAtOnce': 'Viele auf einmal werfen',
+  'coin-flipper.copyTheRun': 'Durchgang kopieren',
+  'coin-flipper.startOver': 'Neu anfangen',
+  'coin-flipper.howTheShareSettles': 'Wie sich der Anteil einpendelt',
+  'coin-flipper.evensOutBlurb': 'Jeder Wurf hat für sich die gleiche Chance. Die Linie schwankt anfangs und nähert sich der Hälfte, je mehr Würfe zusammenkommen.',
+  'coin-flipper.theRun': 'Der Durchgang',
+  'coin-flipper.copiedTheRun': 'Durchgang kopiert',
+  'coin-flipper.flippedCount': '{count} mal geworfen',
+  'coin-flipper.longestRun': 'Längste Serie derselben Seite: {count}',
+  'coin-flipper.flipToBegin': 'Wirf zum Anfangen, oder drücke die Leertaste',
+  'coin-flipper.coinFlipper': 'Münzwurf',
+  'coin-flipper.widgetBlurb': 'Eine Münze werfen und zusehen, wie sich die Quote einpendelt.',
+};

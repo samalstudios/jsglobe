@@ -1,0 +1,16 @@
+export default {
+  'drum-kit.kick': '킥',
+  'drum-kit.snare': '스네어',
+  'drum-kit.clap': '박수',
+  'drum-kit.rim': '림',
+  'drum-kit.closedHat': '닫은 하이햇',
+  'drum-kit.openHat': '연 하이햇',
+  'drum-kit.tom': 'Tom',
+  'drum-kit.cymbal': '심벌',
+  'drum-kit.stepSequencer': '스텝 시퀀서',
+  'drum-kit.16StepsClickToToggle': '16스텝, 클릭하여 전환',
+  'drum-kit.play': '재생',
+  'drum-kit.clear': '지우기',
+  'drum-kit.loadBeat': '비트 불러오기',
+  'drum-kit.tempo': 'Tempo',
+};

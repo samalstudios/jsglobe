@@ -1,0 +1,15 @@
+export default {
+  'hash-text.outputCase': '出力の大文字小文字',
+  'hash-text.lower': '小文字',
+  'hash-text.upper': '大文字',
+  'hash-text.textToHash': 'ハッシュするテキスト',
+  'hash-text.sha256': 'SHA-256',
+  'hash-text.hex': '16 進',
+  'hash-text.input': '入力',
+  'hash-text.hashedLocallyNothingIsUploaded': 'ローカルで計算されます - 何も送信しません',
+  'hash-text.typeOrPaste': 'ハッシュするテキストを入力するか貼り付け',
+  'hash-text.chooseFile': 'ファイルを選ぶ...',
+  'hash-text.noFile': 'ファイルが選ばれていません',
+  'common.text': 'テキスト',
+  'common.file': 'ファイル',
+};

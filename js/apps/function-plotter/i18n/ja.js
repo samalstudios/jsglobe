@@ -1,0 +1,16 @@
+export default {
+  'function-plotter.addFunction': '関数を追加',
+  'function-plotter.resetView': '表示をリセット',
+  'function-plotter.fitYAxis': 'y 軸を合わせる',
+  'function-plotter.showDerivative': '導関数を表示',
+  'function-plotter.savePng': 'PNG を保存',
+  'function-plotter.range': '範囲',
+  'function-plotter.detail': '詳細',
+  'function-plotter.dragToRotateScrollTo': 'ドラッグで回転、スクロールで拡大縮小',
+  'function-plotter.rootsAndExtrema': '零点と極値',
+  'function-plotter.foundByScanningTheVisible': '表示範囲を走査して見つけました',
+  'function-plotter.2dCurve': '2D 曲線',
+  'function-plotter.3dSurface': '3D 曲面',
+  'function-plotter.sinX': 'sin(x)',
+  'function-plotter.noSignChangesInThe': '表示範囲に符号の変化はありません。',
+};

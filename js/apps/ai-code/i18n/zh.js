@@ -1,0 +1,15 @@
+export default {
+  'ai-code.explain': '解释',
+  'ai-code.review': '审查',
+  'ai-code.document': '文档',
+  'ai-code.writeTests': '编写测试',
+  'ai-code.convert': '转换',
+  'ai-code.simplify': '简化',
+  'ai-code.targetLanguage': '目标语言',
+  'ai-code.run': '运行',
+  'ai-code.stop': '停止',
+  'ai-code.code': '代码',
+  'ai-code.pasteCodeHere': '在此粘贴代码',
+  'ai-code.result': '结果',
+  'ai-code.copy': '复制',
+};

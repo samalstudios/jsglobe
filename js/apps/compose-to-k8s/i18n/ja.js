@@ -1,0 +1,17 @@
+export default {
+  'compose-to-k8s.defaultVolumeSize': '既定のボリューム容量',
+  'compose-to-k8s.replicasWhenComposeDoesNot': 'compose に指定がない場合のレプリカ数',
+  'compose-to-k8s.namespace': '名前空間',
+  'compose-to-k8s.ingressController': 'ingress コントローラ',
+  'compose-to-k8s.hostDomain': 'ホストのドメイン',
+  'compose-to-k8s.imagePullPolicy': 'イメージの取得ポリシー',
+  'compose-to-k8s.requestTls': 'TLS を要求',
+  'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+  'compose-to-k8s.loadASample': 'サンプルを読み込む',
+  'compose-to-k8s.pasteAComposeFile': 'compose ファイルを貼り付け',
+  'compose-to-k8s.kubernetesManifests': 'Kubernetes のマニフェスト',
+  'compose-to-k8s.copy': 'コピー',
+  'compose-to-k8s.download': 'ダウンロード',
+  'compose-to-k8s.clear': 'クリア',
+  'compose-to-k8s.emptyTheInput': '入力を空にする',
+};

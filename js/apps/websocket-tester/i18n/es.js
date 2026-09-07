@@ -1,0 +1,18 @@
+export default {
+  'websocket-tester.wssExampleComSocket': 'wss://example.com/socket',
+  'websocket-tester.subprotocol': 'Subprotocolo',
+  'websocket-tester.connect': 'Conectar',
+  'websocket-tester.closed': 'Cerrado',
+  'websocket-tester.message': 'Mensaje',
+  'websocket-tester.send': 'Enviar',
+  'websocket-tester.saveMessage': 'Guardar el mensaje',
+  'websocket-tester.clearLog': 'Vaciar el registro',
+  'websocket-tester.exportLog': 'Exportar el registro',
+  'websocket-tester.savedMessages': 'Mensajes guardados',
+  'websocket-tester.clickToLoadOne': 'Haz clic para cargar uno',
+  'websocket-tester.notes': 'Notas',
+  'websocket-tester.savedMessagesAppearHere': 'Aquí aparecen los mensajes guardados.',
+  'websocket-tester.framesAppearHereOnceYou': 'Los frames aparecen aquí cuando te conectas.',
+  'websocket-tester.theAddressMustStartWith': 'La dirección debe empezar por ws:// o wss://',
+  'websocket-tester.connectFirst': 'Conéctate primero',
+};

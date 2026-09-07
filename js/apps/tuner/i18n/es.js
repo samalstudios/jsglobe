@@ -1,0 +1,15 @@
+export default {
+  'tuner.guitarStandard': 'Guitarra estándar',
+  'tuner.guitarDropD': 'Guitarra Drop D',
+  'tuner.guitarHalfStepDown': 'Guitarra medio tono abajo',
+  'tuner.guitarOpenG': 'Guitarra Open G',
+  'tuner.bass4String': 'Bajo de 4 cuerdas',
+  'tuner.ukulele': 'Ukelele',
+  'tuner.referencePitchA4': 'Tono de referencia (La4)',
+  'tuner.hzA4': 'Hz La4',
+  'tuner.startListening': 'Empezar a escuchar',
+  'tuner.stop': 'Detener',
+  'tuner.playAString': 'Toca una cuerda',
+  'tuner.microphoneIsOff': 'El micrófono está apagado',
+  'tuner.50Cents': '+50 centésimas',
+};

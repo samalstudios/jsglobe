@@ -1,0 +1,15 @@
+export default {
+  'barcode-generator.code128': 'Code 128',
+  'barcode-generator.ean13': 'EAN-13',
+  'barcode-generator.ean8': 'EAN-8',
+  'barcode-generator.code39': 'Code 39',
+  'barcode-generator.format': '格式',
+  'barcode-generator.value': '值',
+  'barcode-generator.barWidth': '条宽',
+  'barcode-generator.height': '高度',
+  'barcode-generator.printTheValueUnderThe': '在条形下方打印数值',
+  'barcode-generator.ready': '就绪',
+  'barcode-generator.copySvg': '复制 SVG',
+  'barcode-generator.downloadSvg': '下载 SVG',
+  'barcode-generator.downloadPng': '下载 PNG',
+};

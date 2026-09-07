@@ -1,7 +1,6 @@
 import { appText, language } from '../../core/i18n.js';
-import strings from './i18n.js';
 
-const t = appText(strings);
+const t = appText('tax-calculator');
 
 const FIELD = {
   '401(k) contribution': () => t('tax-calculator.field.401KContribution', '401(k) contribution'),

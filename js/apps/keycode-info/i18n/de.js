@@ -1,0 +1,17 @@
+export default {
+  'keycode-info.pressAnyKey': 'Eine beliebige Taste drücken',
+  'keycode-info.clickHereFirstThenPress': 'Zuerst hier klicken, dann eine Taste drücken. Auch Modifier-Kombinationen werden erfasst.',
+  'keycode-info.eventProperties': 'Ereigniseigenschaften',
+  'keycode-info.eventKey': 'event.key',
+  'keycode-info.eventCode': 'event.code',
+  'keycode-info.eventKeycode': 'event.keyCode',
+  'keycode-info.modifiers': 'Modifikatortasten',
+  'keycode-info.recentKeys': 'Zuletzt gedrückte Tasten',
+  'keycode-info.nothingYet': 'Noch nichts',
+  'keycode-info.snippet': 'Codeschnipsel',
+  'keycode-info.pressAKeyToBuild': 'Eine Taste drücken, um einen Vergleich zu bauen',
+  'keycode-info.eventWhich': 'event.which',
+  'keycode-info.location': 'Ort',
+  'keycode-info.repeat': 'Wiederholen',
+  'keycode-info.unicode': 'Unicode',
+};

@@ -56,6 +56,8 @@ export const loadLanguage = async (code) => {
     pack = { ui: {}, categories: {}, ...module.default };
     named = catalogue?.default ?? {};
   }
+  await Promise.all([...appLoaders.keys()].map((id) => warm(id)));
+
   const entry = languageOf(active);
   document.documentElement.lang = entry.locale;
   document.documentElement.dir = entry.dir;
@@ -69,8 +71,39 @@ const interpolate = (raw, vars) => {
 
 export const t = (key, fallback = key, vars) => interpolate(pack.ui[key] ?? fallback, vars);
 
-export const appText = (strings = {}) => (key, fallback = key, vars) =>
-  interpolate(strings[active]?.[key] ?? fallback, vars);
+// An app's own words, one language at a time.
+//
+// A dictionary holding every language is downloaded by everyone to be read by
+// nobody but the one reader it was for. Each app registers how to fetch a
+// language instead, and only the language in use is ever fetched. English is
+// the fallback written into the source, so it needs no file at all.
+const appLoaders = new Map();
+const appStrings = new Map();
+
+const warm = async (id) => {
+  if (active === DEFAULT_LANGUAGE) return;
+  const at = `${id}:${active}`;
+  if (appStrings.has(at)) return;
+  try {
+    appStrings.set(at, (await appLoaders.get(id)(active)).default ?? {});
+  } catch {
+    // a language an app has no words for falls back to what the source says
+    appStrings.set(at, {});
+  }
+};
+
+export const appText = (id, load) => {
+  if (load) appLoaders.set(id, load);
+  return (key, fallback = key, vars) => interpolate(appStrings.get(`${id}:${active}`)?.[key] ?? fallback, vars);
+};
+
+// an app that loads while a language is already chosen has to catch up before
+// it paints, which is why this is awaited where it is called
+export const appWords = async (id, load) => {
+  const say = appText(id, load);
+  await warm(id);
+  return say;
+};
 
 export const appName = (app) => named[app.id]?.name ?? app.i18n?.[active]?.name ?? app.name;
 

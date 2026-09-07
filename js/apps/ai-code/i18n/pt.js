@@ -1,0 +1,15 @@
+export default {
+  'ai-code.explain': 'Explicar',
+  'ai-code.review': 'Revisão',
+  'ai-code.document': 'Documento',
+  'ai-code.writeTests': 'Escrever testes',
+  'ai-code.convert': 'Converter',
+  'ai-code.simplify': 'Simplificar',
+  'ai-code.targetLanguage': 'Idioma de destino',
+  'ai-code.run': 'Executar',
+  'ai-code.stop': 'Parar',
+  'ai-code.code': 'Código',
+  'ai-code.pasteCodeHere': 'Cole código aqui',
+  'ai-code.result': 'Resultado',
+  'ai-code.copy': 'Copiar',
+};

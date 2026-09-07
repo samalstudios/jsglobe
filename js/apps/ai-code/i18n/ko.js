@@ -1,0 +1,15 @@
+export default {
+  'ai-code.explain': '설명하기',
+  'ai-code.review': '검토',
+  'ai-code.document': '문서',
+  'ai-code.writeTests': '테스트 쓰기',
+  'ai-code.convert': '변환',
+  'ai-code.simplify': '간단하게',
+  'ai-code.targetLanguage': '대상 언어',
+  'ai-code.run': '실행',
+  'ai-code.stop': '멈추기',
+  'ai-code.code': '코드',
+  'ai-code.pasteCodeHere': '여기에 코드를 붙여넣으세요',
+  'ai-code.result': '결과',
+  'ai-code.copy': '복사',
+};

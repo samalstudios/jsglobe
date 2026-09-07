@@ -1,0 +1,17 @@
+export default {
+  'slugify.text': 'Texte',
+  'slugify.10WaysToBuildA': '10 façons de composer une carte de café - édition 2024',
+  'slugify.dash': 'Tiret (-)',
+  'slugify.underscore': 'Tiret bas (_)',
+  'slugify.dot': 'Point (.)',
+  'slugify.lowercase': 'Minuscules',
+  'slugify.stripSymbols': 'Retirer les symboles',
+  'slugify.max': 'max',
+  'slugify.slug': 'Slug',
+  'slugify.variations': 'Variantes',
+  'slugify.kebab': 'Kebab',
+  'slugify.snake': 'Snake',
+  'slugify.dot2': 'Point',
+  'slugify.preservedCase': 'Casse conservée',
+  'slugify.length': 'Longueur',
+};

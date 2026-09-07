@@ -1,0 +1,17 @@
+export default {
+  'text-encoder.binary': '2 進',
+  'text-encoder.hexadecimal': '16 進',
+  'text-encoder.decimalBytes': '10 進のバイト',
+  'text-encoder.unicodeEscapes': 'Unicode エスケープ',
+  'text-encoder.numericEntities': '数値参照',
+  'text-encoder.natoAlphabet': 'NATO フォネティックコード',
+  'text-encoder.morseCode': 'モールス符号',
+  'text-encoder.rot13': 'ROT13',
+  'text-encoder.reversed': '逆順',
+  'text-encoder.numeronym': '数字略語',
+  'text-encoder.swap': '入れ替え ⇅',
+  'text-encoder.plainText': 'プレーンテキスト',
+  'text-encoder.typeTextToEncode': '符号化するテキストを入力',
+  'text-encoder.encoded': '符号化結果',
+  'text-encoder.pasteEncodedTextToDecode': '復号したい符号化テキストを貼り付け',
+};

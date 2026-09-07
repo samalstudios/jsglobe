@@ -1,0 +1,16 @@
+export default {
+  'function-plotter.addFunction': '함수 추가',
+  'function-plotter.resetView': '보기 초기화',
+  'function-plotter.fitYAxis': 'y축 맞추기',
+  'function-plotter.showDerivative': '도함수 표시',
+  'function-plotter.savePng': 'PNG 저장',
+  'function-plotter.range': '범위',
+  'function-plotter.detail': '자세히',
+  'function-plotter.dragToRotateScrollTo': '끌어서 돌리고 스크롤로 확대합니다',
+  'function-plotter.rootsAndExtrema': '근과 극값',
+  'function-plotter.foundByScanningTheVisible': '보이는 범위를 훑어 찾았습니다',
+  'function-plotter.2dCurve': '2D 곡선',
+  'function-plotter.3dSurface': '3D 곡면',
+  'function-plotter.sinX': 'sin(x)',
+  'function-plotter.noSignChangesInThe': '보이는 범위에 부호가 바뀌는 곳이 없습니다.',
+};

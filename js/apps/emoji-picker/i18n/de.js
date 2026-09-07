@@ -1,0 +1,16 @@
+export default {
+  'emoji-picker.smileys': 'Smileys',
+  'emoji-picker.people': 'Menschen',
+  'emoji-picker.nature': 'Natur',
+  'emoji-picker.food': 'Essen',
+  'emoji-picker.travel': 'Reisen',
+  'emoji-picker.objects': 'Objekte',
+  'emoji-picker.symbols': 'Symbole',
+  'emoji-picker.flags': 'Flaggen',
+  'emoji-picker.searchByNameOrPaste': 'Nach Namen suchen oder ein Emoji einfügen',
+  'emoji-picker.clearRecent': 'Zuletzt verwendete leeren',
+  'emoji-picker.copyEmoji': 'Emoji kopieren',
+  'emoji-picker.copyCodePoint': 'Codepunkt kopieren',
+  'emoji-picker.copyHtmlEntity': 'HTML-Entity kopieren',
+  'emoji-picker.pickedEmojiLandHere': 'Gewählte Emoji landen hier.',
+};

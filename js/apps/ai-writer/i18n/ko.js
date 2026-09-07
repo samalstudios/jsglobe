@@ -1,0 +1,16 @@
+export default {
+  'ai-writer.summarise': '요약',
+  'ai-writer.rewrite': '다시 쓰기',
+  'ai-writer.changeTone': '말투 바꾸기',
+  'ai-writer.translate': '번역',
+  'ai-writer.proofread': '교정',
+  'ai-writer.toBullets': '글머리 기호로',
+  'ai-writer.commitMessage': '커밋 메시지',
+  'ai-writer.language': '언어',
+  'ai-writer.run': '실행',
+  'ai-writer.stop': '멈추기',
+  'ai-writer.input': '입력',
+  'ai-writer.pasteTextNotesOrA': '글, 메모, 차이를 붙여넣으세요',
+  'ai-writer.result': '결과',
+  'ai-writer.copy': '복사',
+};

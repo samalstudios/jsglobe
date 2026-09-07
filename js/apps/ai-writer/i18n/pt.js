@@ -1,0 +1,16 @@
+export default {
+  'ai-writer.summarise': 'Resumir',
+  'ai-writer.rewrite': 'Reescrever',
+  'ai-writer.changeTone': 'Mudar o tom',
+  'ai-writer.translate': 'Traduzir',
+  'ai-writer.proofread': 'Revisar',
+  'ai-writer.toBullets': 'Para marcadores',
+  'ai-writer.commitMessage': 'Mensagem de commit',
+  'ai-writer.language': 'Idioma',
+  'ai-writer.run': 'Executar',
+  'ai-writer.stop': 'Parar',
+  'ai-writer.input': 'Entrada',
+  'ai-writer.pasteTextNotesOrA': 'Cole texto, notas ou um diff',
+  'ai-writer.result': 'Resultado',
+  'ai-writer.copy': 'Copiar',
+};

@@ -1,0 +1,15 @@
+export default {
+  'media-converter.mp4H264': 'MP4 (H.264)',
+  'media-converter.webmVp9': 'WebM (VP9)',
+  'media-converter.oggVorbis': 'OGG (Vorbis)',
+  'media-converter.opus': 'Opus',
+  'media-converter.flac': 'FLAC',
+  'media-converter.output': 'Вихід',
+  'media-converter.96Kbps': '96 кбіт/с',
+  'media-converter.128Kbps': '128 кбіт/с',
+  'media-converter.192Kbps': '192 кбіт/с',
+  'media-converter.320Kbps': '320 кбіт/с',
+  'media-converter.0KeepsTheOriginal': '0 лишає оригінал',
+  'media-converter.px': 'px',
+  'media-converter.fps': 'fps',
+};

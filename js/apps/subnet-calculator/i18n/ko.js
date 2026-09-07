@@ -1,0 +1,17 @@
+export default {
+  'subnet-calculator.ipv4AddressWithPrefix': '접두 길이가 있는 IPv4 주소',
+  'subnet-calculator.network': '네트워크',
+  'subnet-calculator.binary': '2진',
+  'subnet-calculator.networkBitsInAccentHost': '네트워크 비트는 강조, 호스트 비트는 흐리게',
+  'subnet-calculator.splitIntoSubnets': '서브넷으로 나누기',
+  'subnet-calculator.enterAValidIpv4Address': '10.0.0.1 같은 올바른 IPv4 주소를 넣으세요',
+  'subnet-calculator.networkAddress': '네트워크 주소',
+  'subnet-calculator.broadcast': '브로드캐스트',
+  'subnet-calculator.firstHost': '첫 호스트',
+  'subnet-calculator.lastHost': '마지막 호스트',
+  'subnet-calculator.subnetMask': '서브넷 마스크',
+  'subnet-calculator.wildcardMask': '와일드카드 마스크',
+  'subnet-calculator.totalAddresses': '전체 주소 수',
+  'subnet-calculator.usableHosts': '쓸 수 있는 호스트 수',
+  'subnet-calculator.range': '범위',
+};

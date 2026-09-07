@@ -1,8 +1,7 @@
 import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
 import ackermann from './ackermann.js';
 
-const t = appText(strings);
+const t = appText('physics-lab');
 
 const SCENES = {
   pendulum: {

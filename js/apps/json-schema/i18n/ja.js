@@ -1,0 +1,18 @@
+export default {
+  'json-schema.markPropertiesRequired': 'プロパティを必須にする',
+  'json-schema.detectFormats': '形式を判定',
+  'json-schema.noExtraProperties': '追加のプロパティなし',
+  'json-schema.includeExamples': '例を含める',
+  'json-schema.waiting': '待機中',
+  'json-schema.sampleJson': 'サンプルの JSON',
+  'json-schema.pasteOneOrMoreJson': '1 つ以上の JSON 文書を貼り付け',
+  'json-schema.jsonSchema': 'JSON スキーマ',
+  'json-schema.result': '結果',
+  'json-schema.inferSchema': 'スキーマを推定',
+  'json-schema.validateAgainstSchema': 'スキーマで検証',
+  'json-schema.sample': 'サンプル',
+  'json-schema.copy': 'コピー',
+  'json-schema.download': 'ダウンロード',
+  'json-schema.generatedSchema': '生成されたスキーマ',
+  'json-schema.everyDocumentMatchesTheSchema': 'すべての文書がスキーマに適合しています。',
+};

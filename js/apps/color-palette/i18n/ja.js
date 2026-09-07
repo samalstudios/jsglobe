@@ -1,0 +1,17 @@
+export default {
+  'color-palette.saveColour': '色を保存',
+  'color-palette.cssVariables': 'CSS 変数',
+  'color-palette.tailwindConfig': 'Tailwind の設定',
+  'color-palette.scss': 'SCSS',
+  'color-palette.exportScale': '書き出しの倍率',
+  'color-palette.saved': '保存しました',
+  'color-palette.palette': 'パレット',
+  'color-palette.wheel': '車輪',
+  'color-palette.scale': '倍率',
+  'color-palette.harmony': '配色の調和',
+  'color-palette.nothingSavedYet': 'まだ保存されていません。',
+  'color-palette.clickASwatchToSelect': '見本をクリックすると選択、名前をクリックすると階調全体をコピーします。',
+  'color-palette.lightness': '明度',
+  'color-palette.hex': 'Hex',
+  'color-palette.nativePicker': '標準のピッカー',
+};

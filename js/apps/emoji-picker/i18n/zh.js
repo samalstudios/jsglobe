@@ -1,0 +1,16 @@
+export default {
+  'emoji-picker.smileys': '表情',
+  'emoji-picker.people': '人物',
+  'emoji-picker.nature': '自然',
+  'emoji-picker.food': '食物',
+  'emoji-picker.travel': '旅行',
+  'emoji-picker.objects': '物品',
+  'emoji-picker.symbols': '符号',
+  'emoji-picker.flags': '旗帜',
+  'emoji-picker.searchByNameOrPaste': '按名称搜索或粘贴一个 emoji',
+  'emoji-picker.clearRecent': '清除最近使用',
+  'emoji-picker.copyEmoji': '复制 emoji',
+  'emoji-picker.copyCodePoint': '复制码位',
+  'emoji-picker.copyHtmlEntity': '复制 HTML 实体',
+  'emoji-picker.pickedEmojiLandHere': '选过的 emoji 会出现在这里。',
+};

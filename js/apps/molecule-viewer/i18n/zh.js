@@ -1,0 +1,18 @@
+export default {
+  'molecule-viewer.ballAndStick': '球棍模型',
+  'molecule-viewer.spaceFilling': '空间填充模型',
+  'molecule-viewer.sticks': '棍状模型',
+  'molecule-viewer.flatDiagram': '平面结构图',
+  'molecule-viewer.defaultStyle': '默认样式',
+  'molecule-viewer.showHydrogens': '显示氢原子',
+  'molecule-viewer.spinAutomatically': '自动旋转',
+  'molecule-viewer.moleculeOfTheDay': '今日分子',
+  'molecule-viewer.hydrogens': '氢原子',
+  'molecule-viewer.labels': '标注',
+  'molecule-viewer.spin': '旋转',
+  'molecule-viewer.copyXyz': '复制 XYZ',
+  'molecule-viewer.savePng': '保存 PNG',
+  'molecule-viewer.atoms': '个原子',
+  'molecule-viewer.bonds': '个化学键',
+  'molecule-viewer.gMol': 'g/mol',
+};

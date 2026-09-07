@@ -1,6 +1,5 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { icon } from '../../ui/icons.js';
 import { ai, MODELS } from '../../core/ai.js';
 import { settings } from '../../core/settings.js';
@@ -13,7 +12,7 @@ import {
   withNeighbours, ASK_FOR_LEADS, readLeads,
 } from '../../lib/rag.js';
 
-const t = appText(strings);
+const t = await appWords('inspector', (lang) => import(`./i18n/${lang}.js`));
 
 const sheet = await styleSheet(import.meta.url);
 

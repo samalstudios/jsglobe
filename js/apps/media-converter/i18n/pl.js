@@ -1,0 +1,15 @@
+export default {
+  'media-converter.mp4H264': 'MP4 (H.264)',
+  'media-converter.webmVp9': 'WebM (VP9)',
+  'media-converter.oggVorbis': 'OGG (Vorbis)',
+  'media-converter.opus': 'Opus',
+  'media-converter.flac': 'FLAC',
+  'media-converter.output': 'Wyjście',
+  'media-converter.96Kbps': '96 kb/s',
+  'media-converter.128Kbps': '128 kb/s',
+  'media-converter.192Kbps': '192 kb/s',
+  'media-converter.320Kbps': '320 kb/s',
+  'media-converter.0KeepsTheOriginal': '0 zachowuje oryginał',
+  'media-converter.px': 'px',
+  'media-converter.fps': 'fps',
+};

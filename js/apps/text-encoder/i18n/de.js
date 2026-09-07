@@ -1,0 +1,17 @@
+export default {
+  'text-encoder.binary': 'Binär',
+  'text-encoder.hexadecimal': 'Hexadezimal',
+  'text-encoder.decimalBytes': 'Dezimale Bytes',
+  'text-encoder.unicodeEscapes': 'Unicode-Escapes',
+  'text-encoder.numericEntities': 'Numerische Entities',
+  'text-encoder.natoAlphabet': 'NATO-Alphabet',
+  'text-encoder.morseCode': 'Morsecode',
+  'text-encoder.rot13': 'ROT13',
+  'text-encoder.reversed': 'Umgekehrt',
+  'text-encoder.numeronym': 'Numeronym',
+  'text-encoder.swap': 'Tauschen ⇅',
+  'text-encoder.plainText': 'Klartext',
+  'text-encoder.typeTextToEncode': 'Text zum Kodieren eingeben',
+  'text-encoder.encoded': 'Kodiert',
+  'text-encoder.pasteEncodedTextToDecode': 'Kodierten Text zum Dekodieren einfügen',
+};

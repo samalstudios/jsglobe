@@ -1,0 +1,16 @@
+export default {
+  'exif-editor.dropAJpegHereOr': 'JPEG를 여기에 놓거나 눌러서 고르세요',
+  'exif-editor.metadata': '메타데이터',
+  'exif-editor.untickATagToDrop': '체크를 풀면 그 태그는 저장할 사본에서 빠집니다',
+  'exif-editor.keepTheColourProfile': '색 프로파일 유지',
+  'exif-editor.saveCleanedCopy': '정리한 사본 저장',
+  'exif-editor.stripEverything': '모두 없애기',
+  'exif-editor.copyMetadataAsJson': '메타데이터를 JSON으로 복사',
+  'exif-editor.metadataCopied': '메타데이터를 복사했습니다',
+  'exif-editor.onlyJpegFilesCarryExif': 'Exif 메타데이터는 JPEG 파일만 지닙니다',
+  'exif-editor.name': '이름',
+  'exif-editor.size': '크기',
+  'exif-editor.type': '종류',
+  'exif-editor.noExifTagsFoundIn': '이 파일에서 Exif 태그를 찾지 못했습니다.',
+  'exif-editor.thatFileIsNotA': '그 파일은 JPEG가 아닙니다',
+};

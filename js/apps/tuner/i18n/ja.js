@@ -1,0 +1,15 @@
+export default {
+  'tuner.guitarStandard': 'ギター レギュラー',
+  'tuner.guitarDropD': 'ギター ドロップ D',
+  'tuner.guitarHalfStepDown': 'ギター 半音下げ',
+  'tuner.guitarOpenG': 'ギター オープン G',
+  'tuner.bass4String': 'ベース 4 弦',
+  'tuner.ukulele': 'ウクレレ',
+  'tuner.referencePitchA4': '基準ピッチ (A4)',
+  'tuner.hzA4': 'Hz (A4)',
+  'tuner.startListening': '聞き取りを開始',
+  'tuner.stop': '停止',
+  'tuner.playAString': '弦を鳴らす',
+  'tuner.microphoneIsOff': 'マイクは切れています',
+  'tuner.50Cents': '+50 セント',
+};

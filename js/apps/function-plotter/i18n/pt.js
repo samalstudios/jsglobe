@@ -1,0 +1,16 @@
+export default {
+  'function-plotter.addFunction': 'Adicionar função',
+  'function-plotter.resetView': 'Redefinir a visão',
+  'function-plotter.fitYAxis': 'Ajustar o eixo y',
+  'function-plotter.showDerivative': 'Mostrar a derivada',
+  'function-plotter.savePng': 'Salvar PNG',
+  'function-plotter.range': 'Amplitude',
+  'function-plotter.detail': 'Detalhe',
+  'function-plotter.dragToRotateScrollTo': 'Arraste para girar, role para ampliar',
+  'function-plotter.rootsAndExtrema': 'Raízes e extremos',
+  'function-plotter.foundByScanningTheVisible': 'Encontrado varrendo a faixa visível',
+  'function-plotter.2dCurve': 'Curva 2D',
+  'function-plotter.3dSurface': 'Superfície 3D',
+  'function-plotter.sinX': 'sin(x)',
+  'function-plotter.noSignChangesInThe': 'Nenhuma mudança de sinal na faixa visível.',
+};

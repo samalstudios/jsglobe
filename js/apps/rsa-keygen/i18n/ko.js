@@ -1,0 +1,18 @@
+export default {
+  'rsa-keygen.rsa2048': 'RSA 2048',
+  'rsa-keygen.rsa4096': 'RSA 4096',
+  'rsa-keygen.rsa2048Encryption': 'RSA 2048 (암호화)',
+  'rsa-keygen.ecdsaP256': 'ECDSA P-256',
+  'rsa-keygen.ecdsaP384': 'ECDSA P-384',
+  'rsa-keygen.ecdhP256': 'ECDH P-256',
+  'rsa-keygen.generateKeyPair': '키 쌍 만들기',
+  'rsa-keygen.keysAreCreatedWithThe': '키는 Web Crypto API로 만들어지며 이 탭을 벗어나지 않습니다.',
+  'rsa-keygen.publicKey': '공개 키',
+  'rsa-keygen.spkiPemEncoded': 'SPKI, PEM 인코딩',
+  'rsa-keygen.copy': '복사',
+  'rsa-keygen.save': '저장',
+  'rsa-keygen.privateKey': '개인 키',
+  'rsa-keygen.pkcs8PemEncoded': 'PKCS#8, PEM 인코딩',
+  'rsa-keygen.jsonWebKey': 'JSON Web Key',
+  'rsa-keygen.keyGenerationFailed': '키를 만들지 못했습니다',
+};

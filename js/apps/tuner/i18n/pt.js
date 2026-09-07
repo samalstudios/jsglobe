@@ -1,0 +1,15 @@
+export default {
+  'tuner.guitarStandard': 'Violão afinação padrão',
+  'tuner.guitarDropD': 'Violão em drop D',
+  'tuner.guitarHalfStepDown': 'Violão meio tom abaixo',
+  'tuner.guitarOpenG': 'Violão em sol aberto',
+  'tuner.bass4String': 'Baixo de 4 cordas',
+  'tuner.ukulele': 'Ukulele',
+  'tuner.referencePitchA4': 'Afinação de referência (Lá4)',
+  'tuner.hzA4': 'Hz Lá4',
+  'tuner.startListening': 'Começar a ouvir',
+  'tuner.stop': 'Parar',
+  'tuner.playAString': 'Tocar uma corda',
+  'tuner.microphoneIsOff': 'O microfone está desligado',
+  'tuner.50Cents': '+50 cents',
+};

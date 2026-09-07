@@ -1,0 +1,16 @@
+export default {
+  'dice-roller.rollWithASound': 'Tirar con sonido',
+  'dice-roller.howMany': 'Cuántos',
+  'dice-roller.addToTheTotal': 'Sumar al total',
+  'dice-roller.roll': 'Tirar',
+  'dice-roller.howOftenEachFaceCame': 'Cuántas veces salió cada cara',
+  'dice-roller.recentRolls': 'Tiradas recientes',
+  'dice-roller.copyTheLog': 'Copiar el registro',
+  'dice-roller.clearTheLog': 'Vaciar el registro',
+  'dice-roller.copiedTheLog': 'Registro copiado',
+  'dice-roller.diceThrown': '{count} dados lanzados',
+  'dice-roller.rollToSeeTheSpread': 'Tira para ver cómo se reparte',
+  'dice-roller.nothingThrownYet': 'Aún no has tirado nada',
+  'dice-roller.diceRoller': 'Lanzador de dados',
+  'dice-roller.widgetBlurb': 'Tira cualquier dado y mira el reparto.',
+};

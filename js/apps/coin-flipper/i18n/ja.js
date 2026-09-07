@@ -1,0 +1,18 @@
+export default {
+  'coin-flipper.flipsPerGo': '1 回の連続で投げる数',
+  'coin-flipper.heads': '表',
+  'coin-flipper.tails': '裏',
+  'coin-flipper.flip': '反転',
+  'coin-flipper.flipManyAtOnce': 'まとめて投げる',
+  'coin-flipper.copyTheRun': 'run コマンドをコピー',
+  'coin-flipper.startOver': 'やり直す',
+  'coin-flipper.howTheShareSettles': '割合が落ち着く様子',
+  'coin-flipper.evensOutBlurb': 'どの回も等確率です。最初は線が揺れますが、回数が増えるにつれ 1/2 に近づきます。',
+  'coin-flipper.theRun': 'run コマンド',
+  'coin-flipper.copiedTheRun': 'run コマンドをコピーしました',
+  'coin-flipper.flippedCount': '{count} 回投げました',
+  'coin-flipper.longestRun': '同じ面が続いた最長回数: {count}',
+  'coin-flipper.flipToBegin': '投げて始めるか、スペースキーを押してください',
+  'coin-flipper.coinFlipper': 'コイン投げ',
+  'coin-flipper.widgetBlurb': 'コインを投げて確率がならされる様子を見ましょう。',
+};

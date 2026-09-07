@@ -1,0 +1,18 @@
+export default {
+  'ssh-keys.ecdsaNistp256': 'ECDSA nistp256',
+  'ssh-keys.ecdsaNistp384': 'ECDSA nistp384',
+  'ssh-keys.ecdsaNistp521': 'ECDSA nistp521',
+  'ssh-keys.rsa2048': 'RSA 2048',
+  'ssh-keys.rsa3072': 'RSA 3072',
+  'ssh-keys.rsa4096': 'RSA 4096',
+  'ssh-keys.restrict': 'restrict',
+  'ssh-keys.noPty': 'no-pty',
+  'ssh-keys.noAgentForwarding': 'no-agent-forwarding',
+  'ssh-keys.noPortForwarding': 'no-port-forwarding',
+  'ssh-keys.noX11Forwarding': 'no-X11-forwarding',
+  'ssh-keys.copy': 'Kopiera',
+  'ssh-keys.from': 'from=',
+  'ssh-keys.command': 'command=',
+  'ssh-keys.usrBinBackup': '/usr/bin/backup',
+  'ssh-keys.sha256': 'SHA256',
+};

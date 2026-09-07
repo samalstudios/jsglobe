@@ -1,12 +1,11 @@
 import { JGApp, define, html, styleSheet } from '../../core/app.js';
-import { appText } from '../../core/i18n.js';
-import strings from './i18n.js';
+import { appWords } from '../../core/i18n.js';
 import { escapeHtml } from '../../core/dom.js';
 import { ai } from '../../core/ai.js';
 import { copyText } from '../../core/util.js';
 import '../../ui/jg-ai-bar.js';
 
-const t = appText(strings);
+const t = await appWords('ai-regex', (lang) => import(`./i18n/${lang}.js`));
 
 const sheet = await styleSheet(import.meta.url);
 
