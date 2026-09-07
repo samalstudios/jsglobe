@@ -131,6 +131,7 @@ export default {
     'rsa-keygen.ecdsaP256': 'ECDSA P-256',
     'rsa-keygen.ecdsaP384': 'ECDSA P-384',
     'rsa-keygen.ecdhP256': 'ECDH P-256',
+    'rsa-keygen.copy': 'Kopiëren',
     'rsa-keygen.jsonWebKey': 'JSON Web Key',
   },
   sv: {
@@ -139,6 +140,7 @@ export default {
     'rsa-keygen.ecdsaP256': 'ECDSA P-256',
     'rsa-keygen.ecdsaP384': 'ECDSA P-384',
     'rsa-keygen.ecdhP256': 'ECDH P-256',
+    'rsa-keygen.copy': 'Kopiera',
     'rsa-keygen.jsonWebKey': 'JSON Web Key',
   },
   no: {
@@ -147,6 +149,7 @@ export default {
     'rsa-keygen.ecdsaP256': 'ECDSA P-256',
     'rsa-keygen.ecdsaP384': 'ECDSA P-384',
     'rsa-keygen.ecdhP256': 'ECDH P-256',
+    'rsa-keygen.copy': 'Kopier',
     'rsa-keygen.jsonWebKey': 'JSON Web Key',
   },
   da: {
@@ -155,6 +158,7 @@ export default {
     'rsa-keygen.ecdsaP256': 'ECDSA P-256',
     'rsa-keygen.ecdsaP384': 'ECDSA P-384',
     'rsa-keygen.ecdhP256': 'ECDH P-256',
+    'rsa-keygen.copy': 'Kopiér',
     'rsa-keygen.jsonWebKey': 'JSON Web Key',
   },
   pl: {
@@ -163,6 +167,7 @@ export default {
     'rsa-keygen.ecdsaP256': 'ECDSA P-256',
     'rsa-keygen.ecdsaP384': 'ECDSA P-384',
     'rsa-keygen.ecdhP256': 'ECDH P-256',
+    'rsa-keygen.copy': 'Kopiuj',
     'rsa-keygen.jsonWebKey': 'JSON Web Key',
   },
   uk: {
@@ -171,6 +176,7 @@ export default {
     'rsa-keygen.ecdsaP256': 'ECDSA P-256',
     'rsa-keygen.ecdsaP384': 'ECDSA P-384',
     'rsa-keygen.ecdhP256': 'ECDH P-256',
+    'rsa-keygen.copy': 'Копіювати',
     'rsa-keygen.jsonWebKey': 'JSON Web Key',
   },
 };

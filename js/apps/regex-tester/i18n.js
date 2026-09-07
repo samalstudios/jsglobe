@@ -63,21 +63,57 @@ export default {
     'regex-tester.noMatches': '일치하는 것이 없습니다',
   },
   nl: {
-
+    'regex-tester.pattern': 'Patroon',
+    'regex-tester.testString': 'Testtekst',
+    'regex-tester.contactAdaExampleComOr': 'Neem contact op met ada@example.com of grace@jsglobe.dev voor toegang. Ongeldig: nobody@localhost',
+    'regex-tester.highlighted': 'Gemarkeerd',
+    'regex-tester.matches': 'Overeenkomsten',
+    'regex-tester.cheatSheet': 'Spiekbriefje',
+    'regex-tester.noMatches': 'Geen overeenkomsten',
   },
   sv: {
-
+    'regex-tester.pattern': 'Mönster',
+    'regex-tester.testString': 'Testtext',
+    'regex-tester.contactAdaExampleComOr': 'Kontakta ada@example.com eller grace@jsglobe.dev för åtkomst. Ogiltig: nobody@localhost',
+    'regex-tester.highlighted': 'Markerat',
+    'regex-tester.matches': 'Träffar',
+    'regex-tester.cheatSheet': 'Fusklapp',
+    'regex-tester.noMatches': 'Inga träffar',
   },
   no: {
-
+    'regex-tester.pattern': 'Mønster',
+    'regex-tester.testString': 'Testtekst',
+    'regex-tester.contactAdaExampleComOr': 'Kontakt ada@example.com eller grace@jsglobe.dev for tilgang. Ugyldig: nobody@localhost',
+    'regex-tester.highlighted': 'Markert',
+    'regex-tester.matches': 'Treff',
+    'regex-tester.cheatSheet': 'Jukselapp',
+    'regex-tester.noMatches': 'Ingen treff',
   },
   da: {
-
+    'regex-tester.pattern': 'Mønster',
+    'regex-tester.testString': 'Testtekst',
+    'regex-tester.contactAdaExampleComOr': 'Kontakt ada@example.com eller grace@jsglobe.dev for adgang. Ugyldig: nobody@localhost',
+    'regex-tester.highlighted': 'Markeret',
+    'regex-tester.matches': 'Træf',
+    'regex-tester.cheatSheet': 'Huskeseddel',
+    'regex-tester.noMatches': 'Ingen træf',
   },
   pl: {
-
+    'regex-tester.pattern': 'Wzorzec',
+    'regex-tester.testString': 'Tekst próbny',
+    'regex-tester.contactAdaExampleComOr': 'O dostęp pytaj pod ada@example.com lub grace@jsglobe.dev. Niepoprawny: nobody@localhost',
+    'regex-tester.highlighted': 'Podświetlone',
+    'regex-tester.matches': 'Dopasowania',
+    'regex-tester.cheatSheet': 'Ściąga',
+    'regex-tester.noMatches': 'Brak dopasowań',
   },
   uk: {
-
+    'regex-tester.pattern': 'Взірець',
+    'regex-tester.testString': 'Пробний рядок',
+    'regex-tester.contactAdaExampleComOr': 'Щодо доступу пишіть на ada@example.com або grace@jsglobe.dev. Хибний: nobody@localhost',
+    'regex-tester.highlighted': 'Підсвічено',
+    'regex-tester.matches': 'Збіги',
+    'regex-tester.cheatSheet': 'Шпаргалка',
+    'regex-tester.noMatches': 'Збігів немає',
   },
 };

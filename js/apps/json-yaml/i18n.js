@@ -35,21 +35,33 @@ export default {
     'json-yaml.theYamlParserCoversThe': 'YAML 해석기는 설정에서 흔히 쓰는 범위를 다룹니다. 중첩된 맵, 목록, 스칼라입니다.',
   },
   nl: {
-
+    'json-yaml.loadSample': 'Voorbeeld laden',
+    'json-yaml.keyValue': 'sleutel: waarde',
+    'json-yaml.theYamlParserCoversThe': 'De YAML-lezer dekt het gangbare configuratiedeel: geneste mappen, lijsten en scalairen.',
   },
   sv: {
-
+    'json-yaml.loadSample': 'Läs in exempel',
+    'json-yaml.keyValue': 'nyckel: värde',
+    'json-yaml.theYamlParserCoversThe': 'YAML-tolken täcker den vanliga konfigurationsdelen: nästlade kartor, listor och skalärer.',
   },
   no: {
-
+    'json-yaml.loadSample': 'Last inn eksempel',
+    'json-yaml.keyValue': 'nøkkel: verdi',
+    'json-yaml.theYamlParserCoversThe': 'YAML-tolken dekker den vanlige konfigurasjonsdelen: nøstede kart, lister og skalarer.',
   },
   da: {
-
+    'json-yaml.loadSample': 'Indlæs eksempel',
+    'json-yaml.keyValue': 'nøgle: værdi',
+    'json-yaml.theYamlParserCoversThe': 'YAML-tolken dækker den almindelige konfigurationsdel: indlejrede kort, lister og skalarer.',
   },
   pl: {
-
+    'json-yaml.loadSample': 'Wczytaj przykład',
+    'json-yaml.keyValue': 'klucz: wartość',
+    'json-yaml.theYamlParserCoversThe': 'Czytnik YAML obejmuje typowy podzbiór konfiguracji: zagnieżdżone mapy, listy i wartości proste.',
   },
   uk: {
-
+    'json-yaml.loadSample': 'Завантажити зразок',
+    'json-yaml.keyValue': 'ключ: значення',
+    'json-yaml.theYamlParserCoversThe': 'Читач YAML охоплює звичайну частину налаштувань: вкладені відображення, списки й скаляри.',
   },
 };

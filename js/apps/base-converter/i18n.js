@@ -119,21 +119,27 @@ export default {
     'base-converter.scientific': '과학 표기',
   },
   nl: {
+    'base-converter.32BitRepresentationGroupedIn': '32-bitsweergave gegroepeerd per nibble',
     'base-converter.bytes': 'Bytes',
   },
   sv: {
+    'base-converter.32BitRepresentationGroupedIn': '32-bitars representation grupperad i nibblar',
     'base-converter.bytes': 'Bytes',
   },
   no: {
+    'base-converter.32BitRepresentationGroupedIn': '32-bits framstilling gruppert i nibbler',
     'base-converter.bytes': 'Bytes',
   },
   da: {
+    'base-converter.32BitRepresentationGroupedIn': '32-bits fremstilling grupperet i nibbler',
     'base-converter.bytes': 'Bytes',
   },
   pl: {
+    'base-converter.32BitRepresentationGroupedIn': 'Zapis 32-bitowy pogrupowany po półbajtach',
     'base-converter.bytes': 'Bytes',
   },
   uk: {
+    'base-converter.32BitRepresentationGroupedIn': '32-бітове подання, згруповане по півбайтах',
     'base-converter.bytes': 'Bytes',
   },
 };

@@ -217,21 +217,27 @@ export default {
     'calendar.pickATimeAboveOr': '위에서 시간을 고르거나 주간 보기에서 칸을 누르세요.',
   },
   nl: {
-
+    'calendar.from': 'Van',
+    'calendar.to': 'Naar',
   },
   sv: {
-
+    'calendar.from': 'Från',
+    'calendar.to': 'Till',
   },
   no: {
-
+    'calendar.from': 'Fra',
+    'calendar.to': 'Til',
   },
   da: {
-
+    'calendar.from': 'Fra',
+    'calendar.to': 'Til',
   },
   pl: {
-
+    'calendar.from': 'Z',
+    'calendar.to': 'Na',
   },
   uk: {
-
+    'calendar.from': 'З',
+    'calendar.to': 'У',
   },
 };

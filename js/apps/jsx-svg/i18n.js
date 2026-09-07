@@ -70,21 +70,21 @@ export default {
     'jsx-svg.svgToJsx': 'SVG에서 JSX로',
   },
   nl: {
-
+    'jsx-svg.sample': 'Voorbeeld',
   },
   sv: {
-
+    'jsx-svg.sample': 'Exempel',
   },
   no: {
-
+    'jsx-svg.sample': 'Eksempel',
   },
   da: {
-
+    'jsx-svg.sample': 'Eksempel',
   },
   pl: {
-
+    'jsx-svg.sample': 'Przykład',
   },
   uk: {
-
+    'jsx-svg.sample': 'Зразок',
   },
 };

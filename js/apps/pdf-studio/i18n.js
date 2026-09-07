@@ -189,21 +189,21 @@ export default {
     'pdf-studio.savePdf': 'PDF 저장',
   },
   nl: {
-
+    'pdf-studio.clear': 'Wissen',
   },
   sv: {
-
+    'pdf-studio.clear': 'Rensa',
   },
   no: {
-
+    'pdf-studio.clear': 'Tøm',
   },
   da: {
-
+    'pdf-studio.clear': 'Ryd',
   },
   pl: {
-
+    'pdf-studio.clear': 'Wyczyść',
   },
   uk: {
-
+    'pdf-studio.clear': 'Очистити',
   },
 };

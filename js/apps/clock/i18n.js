@@ -91,21 +91,21 @@ export default {
     'clock.theTimerKeepsRunningWhile': '다른 앱을 열어 두어도 타이머는 계속 갑니다.',
   },
   nl: {
-
+    'clock.12HourTime': '12-uursnotatie',
   },
   sv: {
-
+    'clock.12HourTime': '12-timmarsformat',
   },
   no: {
-
+    'clock.12HourTime': '12-timers format',
   },
   da: {
-
+    'clock.12HourTime': '12-timersformat',
   },
   pl: {
-
+    'clock.12HourTime': 'Format 12-godzinny',
   },
   uk: {
-
+    'clock.12HourTime': '12-годинний формат',
   },
 };

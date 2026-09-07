@@ -120,20 +120,32 @@ export default {
   },
   nl: {
     'text-encoder.rot13': 'ROT13',
+    'text-encoder.swap': 'Wisselen ⇅',
+    'text-encoder.encoded': 'Gecodeerd',
   },
   sv: {
     'text-encoder.rot13': 'ROT13',
+    'text-encoder.swap': 'Byt ⇅',
+    'text-encoder.encoded': 'Kodat',
   },
   no: {
     'text-encoder.rot13': 'ROT13',
+    'text-encoder.swap': 'Bytt ⇅',
+    'text-encoder.encoded': 'Kodet',
   },
   da: {
     'text-encoder.rot13': 'ROT13',
+    'text-encoder.swap': 'Byt ⇅',
+    'text-encoder.encoded': 'Kodet',
   },
   pl: {
     'text-encoder.rot13': 'ROT13',
+    'text-encoder.swap': 'Zamień ⇅',
+    'text-encoder.encoded': 'Zakodowane',
   },
   uk: {
     'text-encoder.rot13': 'ROT13',
+    'text-encoder.swap': 'Поміняти ⇅',
+    'text-encoder.encoded': 'Закодовано',
   },
 };

@@ -133,21 +133,27 @@ export default {
     'password-strength.atLeast16Characters': '16자 이상',
   },
   nl: {
-
+    'password-strength.password': 'Wachtwoord',
+    'password-strength.0Bits': '0 bits',
   },
   sv: {
-
+    'password-strength.password': 'Lösenord',
+    'password-strength.0Bits': '0 bitar',
   },
   no: {
-
+    'password-strength.password': 'Passord',
+    'password-strength.0Bits': '0 bit',
   },
   da: {
-
+    'password-strength.password': 'Adgangskode',
+    'password-strength.0Bits': '0 bit',
   },
   pl: {
-
+    'password-strength.password': 'Hasło',
+    'password-strength.0Bits': '0 bitów',
   },
   uk: {
-
+    'password-strength.password': 'Пароль',
+    'password-strength.0Bits': '0 бітів',
   },
 };

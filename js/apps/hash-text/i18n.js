@@ -106,20 +106,32 @@ export default {
   },
   nl: {
     'hash-text.sha256': 'SHA-256',
+    'hash-text.input': 'Invoer',
+    'common.text': 'Tekst',
   },
   sv: {
     'hash-text.sha256': 'SHA-256',
+    'hash-text.input': 'Indata',
+    'common.text': 'Text',
   },
   no: {
     'hash-text.sha256': 'SHA-256',
+    'hash-text.input': 'Inndata',
+    'common.text': 'Tekst',
   },
   da: {
     'hash-text.sha256': 'SHA-256',
+    'hash-text.input': 'Inddata',
+    'common.text': 'Tekst',
   },
   pl: {
     'hash-text.sha256': 'SHA-256',
+    'hash-text.input': 'Wejście',
+    'common.text': 'Tekst',
   },
   uk: {
     'hash-text.sha256': 'SHA-256',
+    'hash-text.input': 'Вхід',
+    'common.text': 'Текст',
   },
 };

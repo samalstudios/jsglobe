@@ -35,21 +35,33 @@ export default {
     'game-2048.newGame': '새 게임',
   },
   nl: {
-
+    'game-2048.score': 'Score',
+    'game-2048.best': 'Beste',
+    'game-2048.newGame': 'Nieuw spel',
   },
   sv: {
-
+    'game-2048.score': 'Poäng',
+    'game-2048.best': 'Bästa',
+    'game-2048.newGame': 'Nytt spel',
   },
   no: {
-
+    'game-2048.score': 'Poeng',
+    'game-2048.best': 'Beste',
+    'game-2048.newGame': 'Nytt spill',
   },
   da: {
-
+    'game-2048.score': 'Point',
+    'game-2048.best': 'Bedste',
+    'game-2048.newGame': 'Nyt spil',
   },
   pl: {
-
+    'game-2048.score': 'Wynik',
+    'game-2048.best': 'Najlepszy',
+    'game-2048.newGame': 'Nowa gra',
   },
   uk: {
-
+    'game-2048.score': 'Рахунок',
+    'game-2048.best': 'Найкращий',
+    'game-2048.newGame': 'Нова гра',
   },
 };

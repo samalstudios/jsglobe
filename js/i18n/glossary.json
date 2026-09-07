@@ -6,7 +6,13 @@
   "fr": "# Titre",
   "pt": "# Título",
   "ja": "# タイトル",
-  "ko": "# 제목"
+  "ko": "# 제목",
+  "nl": "# Titel",
+  "sv": "# Rubrik",
+  "no": "# Tittel",
+  "da": "# Titel",
+  "pl": "# Tytuł",
+  "uk": "# Заголовок"
  },
  "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple": {
   "de": "#6f7cff, rgb(111 124 255), hsl(235 100% 72%), rebeccapurple",
@@ -45,7 +51,13 @@
   "fr": "+50 cents",
   "pt": "+50 cents",
   "ja": "+50 セント",
-  "ko": "+50센트"
+  "ko": "+50센트",
+  "nl": "+50 cent",
+  "sv": "+50 cent",
+  "no": "+50 cent",
+  "da": "+50 cent",
+  "pl": "+50 centów",
+  "uk": "+50 центів"
  },
  "-----BEGIN CERTIFICATE-----": {
   "de": "-----BEGIN CERTIFICATE-----",
@@ -84,7 +96,13 @@
   "fr": "0 bit",
   "pt": "0 bits",
   "ja": "0 ビット",
-  "ko": "0비트"
+  "ko": "0비트",
+  "nl": "0 bits",
+  "sv": "0 bitar",
+  "no": "0 bit",
+  "da": "0 bit",
+  "pl": "0 bitów",
+  "uk": "0 бітів"
  },
  "0 characters": {
   "de": "0 Zeichen",
@@ -93,7 +111,13 @@
   "fr": "0 caractère",
   "pt": "0 caracteres",
   "ja": "0 文字",
-  "ko": "0자"
+  "ko": "0자",
+  "nl": "0 tekens",
+  "sv": "0 tecken",
+  "no": "0 tegn",
+  "da": "0 tegn",
+  "pl": "0 znaków",
+  "uk": "0 символів"
  },
  "0 in · 0 out": {
   "de": "0 empfangen · 0 gesendet",
@@ -102,7 +126,13 @@
   "fr": "0 entrée · 0 sortie",
   "pt": "0 entrada · 0 saída",
   "ja": "入力 0 · 出力 0",
-  "ko": "입력 0 · 출력 0"
+  "ko": "입력 0 · 출력 0",
+  "nl": "0 in · 0 uit",
+  "sv": "0 in · 0 ut",
+  "no": "0 inn · 0 ut",
+  "da": "0 ind · 0 ud",
+  "pl": "0 wejść · 0 wyjść",
+  "uk": "0 входів · 0 виходів"
  },
  "0 keeps the original": {
   "de": "0 behält das Original",
@@ -111,7 +141,13 @@
   "fr": "0 garde l'original",
   "pt": "0 mantém o original",
   "ja": "0 なら元のまま",
-  "ko": "0이면 원본 유지"
+  "ko": "0이면 원본 유지",
+  "nl": "0 behoudt het origineel",
+  "sv": "0 behåller originalet",
+  "no": "0 beholder originalen",
+  "da": "0 beholder originalen",
+  "pl": "0 zachowuje oryginał",
+  "uk": "0 лишає оригінал"
  },
  "1 stop": {
   "de": "1 Stoppbit",
@@ -120,7 +156,13 @@
   "fr": "1 stop",
   "pt": "1 stop",
   "ja": "1 段",
-  "ko": "1스톱"
+  "ko": "1스톱",
+  "nl": "1 stop",
+  "sv": "1 steg",
+  "no": "1 trinn",
+  "da": "1 trin",
+  "pl": "1 stop",
+  "uk": "1 стоп"
  },
  "1 to 4 demux": {
   "de": "1-zu-4-Demultiplexer",
@@ -129,7 +171,13 @@
   "fr": "Démultiplexeur 1 vers 4",
   "pt": "Demultiplexador 1 para 4",
   "ja": "1対4 デマルチプレクサ",
-  "ko": "1대4 디먹스"
+  "ko": "1대4 디먹스",
+  "nl": "1-naar-4-demultiplexer",
+  "sv": "1 till 4-demultiplexor",
+  "no": "1 til 4-demultiplekser",
+  "da": "1 til 4-demultiplekser",
+  "pl": "Demultiplekser 1 na 4",
+  "uk": "Демультиплексор 1 на 4"
  },
  "1/10 speed": {
   "de": "1/10 Geschwindigkeit",
@@ -138,7 +186,13 @@
   "fr": "Vitesse 1/10",
   "pt": "Velocidade 1/10",
   "ja": "1/10 の速度",
-  "ko": "1/10 속도"
+  "ko": "1/10 속도",
+  "nl": "1/10 snelheid",
+  "sv": "1/10 hastighet",
+  "no": "1/10 fart",
+  "da": "1/10 fart",
+  "pl": "Prędkość 1/10",
+  "uk": "Швидкість 1/10"
  },
  "1/200 speed": {
   "de": "1/200 Geschwindigkeit",
@@ -147,7 +201,13 @@
   "fr": "Vitesse 1/200",
   "pt": "Velocidade 1/200",
   "ja": "1/200 の速度",
-  "ko": "1/200 속도"
+  "ko": "1/200 속도",
+  "nl": "1/200 snelheid",
+  "sv": "1/200 hastighet",
+  "no": "1/200 fart",
+  "da": "1/200 fart",
+  "pl": "Prędkość 1/200",
+  "uk": "Швидкість 1/200"
  },
  "1/4 speed": {
   "de": "1/4 Geschwindigkeit",
@@ -156,7 +216,13 @@
   "fr": "Vitesse 1/4",
   "pt": "Velocidade 1/4",
   "ja": "1/4 の速度",
-  "ko": "1/4 속도"
+  "ko": "1/4 속도",
+  "nl": "1/4 snelheid",
+  "sv": "1/4 hastighet",
+  "no": "1/4 fart",
+  "da": "1/4 fart",
+  "pl": "Prędkość 1/4",
+  "uk": "Швидкість 1/4"
  },
  "1/50 speed": {
   "de": "1/50 Geschwindigkeit",
@@ -165,7 +231,13 @@
   "fr": "Vitesse 1/50",
   "pt": "Velocidade 1/50",
   "ja": "1/50 の速度",
-  "ko": "1/50 속도"
+  "ko": "1/50 속도",
+  "nl": "1/50 snelheid",
+  "sv": "1/50 hastighet",
+  "no": "1/50 fart",
+  "da": "1/50 fart",
+  "pl": "Prędkość 1/50",
+  "uk": "Швидкість 1/50"
  },
  "10 Ways to Build a Café Menu - 2024 Edition": {
   "de": "10 Wege zu einer Café-Karte - Ausgabe 2024",
@@ -174,7 +246,13 @@
   "fr": "10 façons de composer une carte de café - édition 2024",
   "pt": "10 maneiras de montar um cardápio de café - edição 2024",
   "ja": "カフェのメニューを組み立てる 10 の方法 - 2024 年版",
-  "ko": "카페 메뉴를 짜는 10가지 방법 - 2024년판"
+  "ko": "카페 메뉴를 짜는 10가지 방법 - 2024년판",
+  "nl": "10 manieren om een cafékaart samen te stellen - editie 2024",
+  "sv": "10 sätt att bygga en cafémeny - 2024 års utgåva",
+  "no": "10 måter å sette sammen en kafémeny på - 2024-utgaven",
+  "da": "10 måder at sammensætte et cafékort på - 2024-udgaven",
+  "pl": "10 sposobów na ułożenie karty kawiarni - wydanie 2024",
+  "uk": "10 способів скласти меню кав’ярні - видання 2024"
  },
  "100 µs/div": {
   "de": "100 µs/Div",
@@ -183,7 +261,13 @@
   "fr": "100 µs/div",
   "pt": "100 µs/div",
   "ja": "100 µs/div",
-  "ko": "100 µs/div"
+  "ko": "100 µs/div",
+  "nl": "100 µs/div",
+  "sv": "100 µs/div",
+  "no": "100 µs/div",
+  "da": "100 µs/div",
+  "pl": "100 µs/dz",
+  "uk": "100 мкс/поділку"
  },
  "12-hour time": {
   "de": "12-Stunden-Format",
@@ -192,7 +276,13 @@
   "fr": "Format 12 heures",
   "pt": "Formato de 12 horas",
   "ja": "12 時間表記",
-  "ko": "12시간 표기"
+  "ko": "12시간 표기",
+  "nl": "12-uursnotatie",
+  "sv": "12-timmarsformat",
+  "no": "12-timers format",
+  "da": "12-timersformat",
+  "pl": "Format 12-godzinny",
+  "uk": "12-годинний формат"
  },
  "128 kbps": {
   "de": "128 kbit/s",
@@ -201,7 +291,13 @@
   "fr": "128 kbit/s",
   "pt": "128 kbps",
   "ja": "128 kbps",
-  "ko": "128 kbps"
+  "ko": "128 kbps",
+  "nl": "128 kbit/s",
+  "sv": "128 kbit/s",
+  "no": "128 kbit/s",
+  "da": "128 kbit/s",
+  "pl": "128 kb/s",
+  "uk": "128 кбіт/с"
  },
  "16 steps, click to toggle": {
   "de": "16 Schritte, zum Umschalten klicken",
@@ -210,7 +306,13 @@
   "fr": "16 pas, cliquez pour activer",
   "pt": "16 passos, clique para alternar",
   "ja": "16 ステップ、クリックで切り替え",
-  "ko": "16스텝, 클릭하여 전환"
+  "ko": "16스텝, 클릭하여 전환",
+  "nl": "16 stappen, klik om aan of uit te zetten",
+  "sv": "16 steg, klicka för att slå på eller av",
+  "no": "16 steg, klikk for å slå av eller på",
+  "da": "16 trin, klik for at slå til eller fra",
+  "pl": "16 kroków, kliknij, aby przełączyć",
+  "uk": "16 кроків, клацніть, щоб перемкнути"
  },
  "1700000000, 2024-01-31T09:00:00Z, or ": {
   "de": "1700000000, 2024-01-31T09:00:00Z, oder ",
@@ -219,7 +321,13 @@
   "fr": "1700000000, 2024-01-31T09:00:00Z, ou ",
   "pt": "1700000000, 2024-01-31T09:00:00Z, ou ",
   "ja": "1700000000、2024-01-31T09:00:00Z、または ",
-  "ko": "1700000000, 2024-01-31T09:00:00Z 또는 "
+  "ko": "1700000000, 2024-01-31T09:00:00Z 또는 ",
+  "nl": "1700000000, 2024-01-31T09:00:00Z, of ",
+  "sv": "1700000000, 2024-01-31T09:00:00Z, eller ",
+  "no": "1700000000, 2024-01-31T09:00:00Z, eller ",
+  "da": "1700000000, 2024-01-31T09:00:00Z, eller ",
+  "pl": "1700000000, 2024-01-31T09:00:00Z lub ",
+  "uk": "1700000000, 2024-01-31T09:00:00Z або "
  },
  "192 kbps": {
   "de": "192 kbit/s",
@@ -228,7 +336,13 @@
   "fr": "192 kbit/s",
   "pt": "192 kbps",
   "ja": "192 kbps",
-  "ko": "192 kbps"
+  "ko": "192 kbps",
+  "nl": "192 kbit/s",
+  "sv": "192 kbit/s",
+  "no": "192 kbit/s",
+  "da": "192 kbit/s",
+  "pl": "192 kb/s",
+  "uk": "192 кбіт/с"
  },
  "2 + 2 * pi": {
   "de": "2 + 2 * pi",
@@ -252,7 +366,13 @@
   "fr": "2 ms/div",
   "pt": "2 ms/div",
   "ja": "2 ms/div",
-  "ko": "2 ms/div"
+  "ko": "2 ms/div",
+  "nl": "2 ms/div",
+  "sv": "2 ms/div",
+  "no": "2 ms/div",
+  "da": "2 ms/div",
+  "pl": "2 ms/dz",
+  "uk": "2 мс/поділку"
  },
  "2 spaces": {
   "de": "2 Leerzeichen",
@@ -261,7 +381,13 @@
   "fr": "2 espaces",
   "pt": "2 espaços",
   "ja": "スペース 2 つ",
-  "ko": "공백 2칸"
+  "ko": "공백 2칸",
+  "nl": "2 spaties",
+  "sv": "2 blanksteg",
+  "no": "2 mellomrom",
+  "da": "2 mellemrum",
+  "pl": "2 spacje",
+  "uk": "2 пробіли"
  },
  "2 stop": {
   "de": "2 Stoppbits",
@@ -270,7 +396,13 @@
   "fr": "2 stops",
   "pt": "2 stops",
   "ja": "2 段",
-  "ko": "2스톱"
+  "ko": "2스톱",
+  "nl": "2 stops",
+  "sv": "2 steg",
+  "no": "2 trinn",
+  "da": "2 trin",
+  "pl": "2 stopy",
+  "uk": "2 стопи"
  },
  "2 to 4 decoder": {
   "de": "2-zu-4-Decoder",
@@ -279,7 +411,13 @@
   "fr": "Décodeur 2 vers 4",
   "pt": "Decodificador 2 para 4",
   "ja": "2対4 デコーダ",
-  "ko": "2대4 디코더"
+  "ko": "2대4 디코더",
+  "nl": "2-naar-4-decoder",
+  "sv": "2 till 4-avkodare",
+  "no": "2 til 4-dekoder",
+  "da": "2 til 4-dekoder",
+  "pl": "Dekoder 2 na 4",
+  "uk": "Дешифратор 2 на 4"
  },
  "20 ms/div": {
   "de": "20 ms/Div",
@@ -288,7 +426,13 @@
   "fr": "20 ms/div",
   "pt": "20 ms/div",
   "ja": "20 ms/div",
-  "ko": "20 ms/div"
+  "ko": "20 ms/div",
+  "nl": "20 ms/div",
+  "sv": "20 ms/div",
+  "no": "20 ms/div",
+  "da": "20 ms/div",
+  "pl": "20 ms/dz",
+  "uk": "20 мс/поділку"
  },
  "20 µs/div": {
   "de": "20 µs/Div",
@@ -297,7 +441,13 @@
   "fr": "20 µs/div",
   "pt": "20 µs/div",
   "ja": "20 µs/div",
-  "ko": "20 µs/div"
+  "ko": "20 µs/div",
+  "nl": "20 µs/div",
+  "sv": "20 µs/div",
+  "no": "20 µs/div",
+  "da": "20 µs/div",
+  "pl": "20 µs/dz",
+  "uk": "20 мкс/поділку"
  },
  "2D curve": {
   "de": "2D-Kurve",
@@ -306,7 +456,13 @@
   "fr": "Courbe 2D",
   "pt": "Curva 2D",
   "ja": "2D 曲線",
-  "ko": "2D 곡선"
+  "ko": "2D 곡선",
+  "nl": "2D-kromme",
+  "sv": "2D-kurva",
+  "no": "2D-kurve",
+  "da": "2D-kurve",
+  "pl": "Krzywa 2D",
+  "uk": "2D-крива"
  },
  "3 times": {
   "de": "Dreimal",
@@ -315,7 +471,13 @@
   "fr": "3 fois",
   "pt": "3 vezes",
   "ja": "3 回",
-  "ko": "3회"
+  "ko": "3회",
+  "nl": "3 keer",
+  "sv": "3 gånger",
+  "no": "3 ganger",
+  "da": "3 gange",
+  "pl": "3 razy",
+  "uk": "3 рази"
  },
  "30 seconds": {
   "de": "30 Sekunden",
@@ -324,7 +486,13 @@
   "fr": "30 secondes",
   "pt": "30 segundos",
   "ja": "30 秒",
-  "ko": "30초"
+  "ko": "30초",
+  "nl": "30 seconden",
+  "sv": "30 sekunder",
+  "no": "30 sekunder",
+  "da": "30 sekunder",
+  "pl": "30 sekund",
+  "uk": "30 секунд"
  },
  "32-bit representation grouped in nibbles": {
   "de": "32-Bit-Darstellung in Nibbles gruppiert",
@@ -333,7 +501,13 @@
   "fr": "Représentation 32 bits groupée par quartets",
   "pt": "Representação de 32 bits agrupada em nibbles",
   "ja": "ニブル単位でまとめた 32 ビット表現",
-  "ko": "니블 단위로 묶은 32비트 표현"
+  "ko": "니블 단위로 묶은 32비트 표현",
+  "nl": "32-bitsweergave gegroepeerd per nibble",
+  "sv": "32-bitars representation grupperad i nibblar",
+  "no": "32-bits framstilling gruppert i nibbler",
+  "da": "32-bits fremstilling grupperet i nibbler",
+  "pl": "Zapis 32-bitowy pogrupowany po półbajtach",
+  "uk": "32-бітове подання, згруповане по півбайтах"
  },
  "320 kbps": {
   "de": "320 kbit/s",
@@ -342,7 +516,13 @@
   "fr": "320 kbit/s",
   "pt": "320 kbps",
   "ja": "320 kbps",
-  "ko": "320 kbps"
+  "ko": "320 kbps",
+  "nl": "320 kbit/s",
+  "sv": "320 kbit/s",
+  "no": "320 kbit/s",
+  "da": "320 kbit/s",
+  "pl": "320 kb/s",
+  "uk": "320 кбіт/с"
  },
  "3D extrude": {
   "de": "3D-Extrusion",
@@ -351,7 +531,13 @@
   "fr": "Extrusion 3D",
   "pt": "Extrusão 3D",
   "ja": "3D 押し出し",
-  "ko": "3D 돌출"
+  "ko": "3D 돌출",
+  "nl": "3D-extrusie",
+  "sv": "3D-extrudering",
+  "no": "3D-ekstrudering",
+  "da": "3D-ekstrudering",
+  "pl": "Wytłoczenie 3D",
+  "uk": "3D-видавлювання"
  },
  "3D surface": {
   "de": "3D-Fläche",
@@ -360,7 +546,13 @@
   "fr": "Surface 3D",
   "pt": "Superfície 3D",
   "ja": "3D 曲面",
-  "ko": "3D 곡면"
+  "ko": "3D 곡면",
+  "nl": "3D-oppervlak",
+  "sv": "3D-yta",
+  "no": "3D-flate",
+  "da": "3D-flade",
+  "pl": "Powierzchnia 3D",
+  "uk": "3D-поверхня"
  },
  "4 bit counter": {
   "de": "4-Bit-Zähler",
@@ -369,7 +561,13 @@
   "fr": "Compteur 4 bits",
   "pt": "Contador de 4 bits",
   "ja": "4 ビットカウンタ",
-  "ko": "4비트 카운터"
+  "ko": "4비트 카운터",
+  "nl": "4-bitsteller",
+  "sv": "4-bitars räknare",
+  "no": "4-bits teller",
+  "da": "4-bits tæller",
+  "pl": "Licznik 4-bitowy",
+  "uk": "4-бітовий лічильник"
  },
  "4 spaces": {
   "de": "4 Leerzeichen",
@@ -378,7 +576,13 @@
   "fr": "4 espaces",
   "pt": "4 espaços",
   "ja": "スペース 4 つ",
-  "ko": "공백 4칸"
+  "ko": "공백 4칸",
+  "nl": "4 spaties",
+  "sv": "4 blanksteg",
+  "no": "4 mellomrom",
+  "da": "4 mellemrum",
+  "pl": "4 spacje",
+  "uk": "4 пробіли"
  },
  "4 to 1 mux": {
   "de": "4-zu-1-Multiplexer",
@@ -387,7 +591,13 @@
   "fr": "Multiplexeur 4 vers 1",
   "pt": "Multiplexador 4 para 1",
   "ja": "4対1 マルチプレクサ",
-  "ko": "4대1 먹스"
+  "ko": "4대1 먹스",
+  "nl": "4-naar-1-multiplexer",
+  "sv": "4 till 1-multiplexor",
+  "no": "4 til 1-multiplekser",
+  "da": "4 til 1-multiplekser",
+  "pl": "Multiplekser 4 na 1",
+  "uk": "Мультиплексор 4 на 1"
  },
  "4 to 2 encoder": {
   "de": "4-zu-2-Encoder",
@@ -396,7 +606,13 @@
   "fr": "Encodeur 4 vers 2",
   "pt": "Codificador 4 para 2",
   "ja": "4対2 エンコーダ",
-  "ko": "4대2 인코더"
+  "ko": "4대2 인코더",
+  "nl": "4-naar-2-encoder",
+  "sv": "4 till 2-kodare",
+  "no": "4 til 2-koder",
+  "da": "4 til 2-koder",
+  "pl": "Koder 4 na 2",
+  "uk": "Шифратор 4 на 2"
  },
  "5 ms/div": {
   "de": "5 ms/Div",
@@ -405,7 +621,13 @@
   "fr": "5 ms/div",
   "pt": "5 ms/div",
   "ja": "5 ms/div",
-  "ko": "5 ms/div"
+  "ko": "5 ms/div",
+  "nl": "5 ms/div",
+  "sv": "5 ms/div",
+  "no": "5 ms/div",
+  "da": "5 ms/div",
+  "pl": "5 ms/dz",
+  "uk": "5 мс/поділку"
  },
  "50 ms/div": {
   "de": "50 ms/Div",
@@ -414,7 +636,13 @@
   "fr": "50 ms/div",
   "pt": "50 ms/div",
   "ja": "50 ms/div",
-  "ko": "50 ms/div"
+  "ko": "50 ms/div",
+  "nl": "50 ms/div",
+  "sv": "50 ms/div",
+  "no": "50 ms/div",
+  "da": "50 ms/div",
+  "pl": "50 ms/dz",
+  "uk": "50 мс/поділку"
  },
  "500 µs/div": {
   "de": "500 µs/Div",
@@ -423,7 +651,13 @@
   "fr": "500 µs/div",
   "pt": "500 µs/div",
   "ja": "500 µs/div",
-  "ko": "500 µs/div"
+  "ko": "500 µs/div",
+  "nl": "500 µs/div",
+  "sv": "500 µs/div",
+  "no": "500 µs/div",
+  "da": "500 µs/div",
+  "pl": "500 µs/dz",
+  "uk": "500 мкс/поділку"
  },
  "6 digits": {
   "de": "6 Stellen",
@@ -432,7 +666,13 @@
   "fr": "6 chiffres",
   "pt": "6 dígitos",
   "ja": "6 桁",
-  "ko": "6자리"
+  "ko": "6자리",
+  "nl": "6 cijfers",
+  "sv": "6 siffror",
+  "no": "6 sifre",
+  "da": "6 cifre",
+  "pl": "6 cyfr",
+  "uk": "6 цифр"
  },
  "60 seconds": {
   "de": "60 Sekunden",
@@ -441,7 +681,13 @@
   "fr": "60 secondes",
   "pt": "60 segundos",
   "ja": "60 秒",
-  "ko": "60초"
+  "ko": "60초",
+  "nl": "60 seconden",
+  "sv": "60 sekunder",
+  "no": "60 sekunder",
+  "da": "60 sekunder",
+  "pl": "60 sekund",
+  "uk": "60 секунд"
  },
  "7 data": {
   "de": "7 Datenbits",
@@ -450,7 +696,13 @@
   "fr": "7 données",
   "pt": "7 dados",
   "ja": "データ 7 ビット",
-  "ko": "데이터 7비트"
+  "ko": "데이터 7비트",
+  "nl": "7 databits",
+  "sv": "7 databitar",
+  "no": "7 databit",
+  "da": "7 databit",
+  "pl": "7 bitów danych",
+  "uk": "7 бітів даних"
  },
  "7 segment": {
   "de": "7-Segment",
@@ -459,7 +711,13 @@
   "fr": "7 segments",
   "pt": "7 segmentos",
   "ja": "7 セグメント",
-  "ko": "7세그먼트"
+  "ko": "7세그먼트",
+  "nl": "7-segment",
+  "sv": "7-segment",
+  "no": "7-segment",
+  "da": "7-segment",
+  "pl": "7-segmentowy",
+  "uk": "7-сегментний"
  },
  "8 data": {
   "de": "8 Datenbits",
@@ -468,7 +726,13 @@
   "fr": "8 données",
   "pt": "8 dados",
   "ja": "データ 8 ビット",
-  "ko": "데이터 8비트"
+  "ko": "데이터 8비트",
+  "nl": "8 databits",
+  "sv": "8 databitar",
+  "no": "8 databit",
+  "da": "8 databit",
+  "pl": "8 bitów danych",
+  "uk": "8 бітів даних"
  },
  "8 digits": {
   "de": "8 Stellen",
@@ -477,7 +741,13 @@
   "fr": "8 chiffres",
   "pt": "8 dígitos",
   "ja": "8 桁",
-  "ko": "8자리"
+  "ko": "8자리",
+  "nl": "8 cijfers",
+  "sv": "8 siffror",
+  "no": "8 sifre",
+  "da": "8 cifre",
+  "pl": "8 cyfr",
+  "uk": "8 цифр"
  },
  "8x8 matrix": {
   "de": "8x8-Matrix",
@@ -486,7 +756,13 @@
   "fr": "Matrice 8x8",
   "pt": "Matriz 8x8",
   "ja": "8x8 マトリクス",
-  "ko": "8x8 매트릭스"
+  "ko": "8x8 매트릭스",
+  "nl": "8x8-matrix",
+  "sv": "8x8-matris",
+  "no": "8x8-matrise",
+  "da": "8x8-matrix",
+  "pl": "Matryca 8x8",
+  "uk": "Матриця 8x8"
  },
  "96 kbps": {
   "de": "96 kbit/s",
@@ -495,7 +771,13 @@
   "fr": "96 kbit/s",
   "pt": "96 kbps",
   "ja": "96 kbps",
-  "ko": "96 kbps"
+  "ko": "96 kbps",
+  "nl": "96 kbit/s",
+  "sv": "96 kbit/s",
+  "no": "96 kbit/s",
+  "da": "96 kbit/s",
+  "pl": "96 kb/s",
+  "uk": "96 кбіт/с"
  },
  "A UK postcode, case insensitive": {
   "de": "Eine britische Postleitzahl, Groß- und Kleinschreibung egal",
@@ -504,7 +786,13 @@
   "fr": "Un code postal britannique, sans distinction de casse",
   "pt": "Um código postal do Reino Unido, sem diferenciar maiúsculas",
   "ja": "英国の郵便番号、大文字小文字は区別しません",
-  "ko": "영국 우편번호, 대소문자 구분 없음"
+  "ko": "영국 우편번호, 대소문자 구분 없음",
+  "nl": "Een Britse postcode, hoofdletterongevoelig",
+  "sv": "Ett brittiskt postnummer, utan hänsyn till skiftläge",
+  "no": "Et britisk postnummer, uten hensyn til store og små bokstaver",
+  "da": "Et britisk postnummer, uden hensyn til store og små bogstaver",
+  "pl": "Brytyjski kod pocztowy, bez rozróżniania wielkości liter",
+  "uk": "Британський поштовий індекс, без урахування регістру"
  },
  "A cron expression needs five fields.": {
   "de": "Ein Cron-Ausdruck braucht fünf Felder.",
@@ -513,7 +801,13 @@
   "fr": "Une expression cron demande cinq champs.",
   "pt": "Uma expressão cron precisa de cinco campos.",
   "ja": "cron 式には 5 つのフィールドが必要です。",
-  "ko": "cron 식에는 다섯 개의 필드가 필요합니다."
+  "ko": "cron 식에는 다섯 개의 필드가 필요합니다.",
+  "nl": "Een cron-uitdrukking heeft vijf velden nodig.",
+  "sv": "Ett cron-uttryck behöver fem fält.",
+  "no": "Et cron-uttrykk trenger fem felt.",
+  "da": "Et cron-udtryk skal have fem felter.",
+  "pl": "Wyrażenie cron wymaga pięciu pól.",
+  "uk": "Вираз cron потребує п’яти полів."
  },
  "A snapshot is kept each day you update prices": {
   "de": "An jedem Tag, an dem du Kurse aktualisierst, wird eine Momentaufnahme gespeichert",
@@ -579,7 +873,13 @@
   "fr": "AES-256-GCM avec dérivation de clé PBKDF2 (250k itérations)",
   "pt": "AES-256-GCM com derivação de chave PBKDF2 (250 mil iterações)",
   "ja": "PBKDF2 鍵導出 (25 万回) を用いた AES-256-GCM",
-  "ko": "PBKDF2 키 유도(25만 회)를 사용한 AES-256-GCM"
+  "ko": "PBKDF2 키 유도(25만 회)를 사용한 AES-256-GCM",
+  "nl": "AES-256-GCM met PBKDF2-sleutelafleiding (250k iteraties)",
+  "sv": "AES-256-GCM med PBKDF2-nyckelhärledning (250k iterationer)",
+  "no": "AES-256-GCM med PBKDF2-nøkkelutledning (250k iterasjoner)",
+  "da": "AES-256-GCM med PBKDF2-nøgleudledning (250k gentagelser)",
+  "pl": "AES-256-GCM z wyprowadzaniem klucza PBKDF2 (250 tys. iteracji)",
+  "uk": "AES-256-GCM з виведенням ключа PBKDF2 (250 тис. ітерацій)"
  },
  "AI": {
   "de": "KI",
@@ -1002,7 +1302,13 @@
   "fr": "Toutes les unités",
   "pt": "Todas as unidades",
   "ja": "すべての単位",
-  "ko": "모든 단위"
+  "ko": "모든 단위",
+  "nl": "Alle eenheden",
+  "sv": "Alla enheter",
+  "no": "Alle enheter",
+  "da": "Alle enheder",
+  "pl": "Wszystkie jednostki",
+  "uk": "Усі одиниці"
  },
  "All values": {
   "de": "Alle Werte",
@@ -1092,7 +1398,13 @@
   "fr": "N'importe quel séparateur convient - espaces, tirets, tirets bas ou majuscules internes",
   "pt": "Qualquer separador serve - espaços, hifens, sublinhados ou maiúsculas internas",
   "ja": "区切りは何でも構いません - 空白、ハイフン、アンダースコア、大文字の切れ目",
-  "ko": "구분자는 무엇이든 됩니다 - 공백, 하이픈, 밑줄, 대문자 구분"
+  "ko": "구분자는 무엇이든 됩니다 - 공백, 하이픈, 밑줄, 대문자 구분",
+  "nl": "Elk scheidingsteken werkt - spaties, streepjes, liggende streepjes of hoofdletters middenin",
+  "sv": "Vilken avskiljare som helst fungerar - blanksteg, bindestreck, understreck eller versaler inuti",
+  "no": "Hvilket som helst skilletegn virker - mellomrom, bindestrek, understrek eller store bokstaver inni",
+  "da": "Ethvert skilletegn virker - mellemrum, bindestreg, understreg eller store bogstaver inde i ordet",
+  "pl": "Każdy separator się nada - spacje, myślniki, podkreślenia albo wielkie litery w środku",
+  "uk": "Будь-який роздільник підійде - пробіли, дефіси, підкреслення чи великі літери всередині"
  },
  "Appearance": {
   "de": "Darstellung",
@@ -1185,7 +1497,13 @@
   "fr": "Flèches ou WASD pour diriger, espace pour mettre en pause. Balayez sur écran tactile.",
   "pt": "Setas ou WASD para dirigir, espaço para pausar. Deslize em telas de toque.",
   "ja": "方向キーか WASD で操作、スペースで一時停止。タッチ画面ではスワイプ。",
-  "ko": "방향키나 WASD로 조작하고 스페이스로 멈춥니다. 터치 화면에서는 쓸어 넘기세요."
+  "ko": "방향키나 WASD로 조작하고 스페이스로 멈춥니다. 터치 화면에서는 쓸어 넘기세요.",
+  "nl": "Pijltjestoetsen of WASD om te sturen, spatie om te pauzeren. Veeg op aanraakschermen.",
+  "sv": "Piltangenter eller WASD för att styra, mellanslag för paus. Svep på pekskärmar.",
+  "no": "Piltaster eller WASD for å styre, mellomrom for pause. Sveip på berøringsskjermer.",
+  "da": "Piletaster eller WASD for at styre, mellemrum for pause. Stryg på berøringsskærme.",
+  "pl": "Strzałki lub WASD do sterowania, spacja pauzuje. Na ekranach dotykowych przeciągaj.",
+  "uk": "Стрілки або WASD для керування, пробіл ставить на паузу. На сенсорних екранах проводьте пальцем."
  },
  "Arrows": {
   "de": "Pfeile",
@@ -1203,7 +1521,13 @@
   "fr": "Les flèches déplacent, espace tire.",
   "pt": "As setas movem, espaço atira.",
   "ja": "矢印で移動、スペースで発射。",
-  "ko": "화살표로 움직이고 스페이스로 쏩니다."
+  "ko": "화살표로 움직이고 스페이스로 쏩니다.",
+  "nl": "Pijltjes bewegen, spatie schiet.",
+  "sv": "Pilarna flyttar, mellanslag skjuter.",
+  "no": "Pilene flytter, mellomrom skyter.",
+  "da": "Pilene flytter, mellemrum skyder.",
+  "pl": "Strzałki poruszają, spacja strzela.",
+  "uk": "Стрілки рухають, пробіл стріляє."
  },
  "Artist": {
   "de": "Interpret",
@@ -1248,7 +1572,13 @@
   "fr": "En un coup d'œil",
   "pt": "Num relance",
   "ja": "ひと目で",
-  "ko": "한눈에"
+  "ko": "한눈에",
+  "nl": "In één oogopslag",
+  "sv": "En överblick",
+  "no": "Et overblikk",
+  "da": "Et overblik",
+  "pl": "W skrócie",
+  "uk": "Коротко"
  },
  "At least 12 characters": {
   "de": "Mindestens 12 Zeichen",
@@ -1317,7 +1647,13 @@
   "fr": "En-tête Authorization",
   "pt": "Cabeçalho Authorization",
   "ja": "Authorization ヘッダ",
-  "ko": "Authorization 헤더"
+  "ko": "Authorization 헤더",
+  "nl": "Authorization-header",
+  "sv": "Authorization-rubrik",
+  "no": "Authorization-header",
+  "da": "Authorization-header",
+  "pl": "Nagłówek Authorization",
+  "uk": "Заголовок Authorization"
  },
  "Auto": {
   "de": "Automatisch",
@@ -1509,7 +1845,13 @@
   "fr": "Identifiants Base64",
   "pt": "Credenciais Base64",
   "ja": "Base64 の資格情報",
-  "ko": "Base64 자격 증명"
+  "ko": "Base64 자격 증명",
+  "nl": "Base64-inloggegevens",
+  "sv": "Base64-uppgifter",
+  "no": "Base64-legitimasjon",
+  "da": "Base64-oplysninger",
+  "pl": "Dane logowania w Base64",
+  "uk": "Облікові дані у Base64"
  },
  "Based on this machine's clock and timezone": {
   "de": "Basierend auf Uhr und Zeitzone dieses Rechners",
@@ -1518,7 +1860,13 @@
   "fr": "D'après l'horloge et le fuseau de cette machine",
   "pt": "Com base no relógio e no fuso deste computador",
   "ja": "この端末の時計とタイムゾーンに基づく",
-  "ko": "이 기기의 시계와 시간대를 따름"
+  "ko": "이 기기의 시계와 시간대를 따름",
+  "nl": "Op basis van de klok en tijdzone van dit apparaat",
+  "sv": "Utifrån den här maskinens klocka och tidszon",
+  "no": "Ut fra klokken og tidssonen på denne maskinen",
+  "da": "Ud fra denne maskines ur og tidszone",
+  "pl": "Na podstawie zegara i strefy czasowej tego komputera",
+  "uk": "За годинником і часовим поясом цього комп’ютера"
  },
  "Basic Latin": {
   "de": "Basis-Latein",
@@ -1596,7 +1944,13 @@
   "fr": "Meilleur",
   "pt": "Melhor",
   "ja": "最高",
-  "ko": "최고"
+  "ko": "최고",
+  "nl": "Beste",
+  "sv": "Bästa",
+  "no": "Beste",
+  "da": "Bedste",
+  "pl": "Najlepszy",
+  "uk": "Найкращий"
  },
  "Best moves": {
   "de": "Beste Zugzahl",
@@ -1605,7 +1959,13 @@
   "fr": "Meilleurs coups",
   "pt": "Melhores lances",
   "ja": "最善手",
-  "ko": "최선의 수"
+  "ko": "최선의 수",
+  "nl": "Beste zetten",
+  "sv": "Bästa drag",
+  "no": "Beste trekk",
+  "da": "Bedste træk",
+  "pl": "Najlepsze ruchy",
+  "uk": "Найкращі ходи"
  },
  "Bigger": {
   "de": "Größer",
@@ -1869,7 +2229,13 @@
   "fr": "Casser toutes les briques",
   "pt": "Quebre todos os tijolos",
   "ja": "ブロックをすべて壊す",
-  "ko": "벽돌을 모두 깨기"
+  "ko": "벽돌을 모두 깨기",
+  "nl": "Sloop elke steen",
+  "sv": "Slå sönder varje tegelsten",
+  "no": "Slå ned hver murstein",
+  "da": "Slå hver mursten ned",
+  "pl": "Zbij każdą cegłę",
+  "uk": "Розбийте кожну цеглинку"
  },
  "Breakdown": {
   "de": "Aufschlüsselung",
@@ -2172,7 +2538,13 @@
   "fr": "Variable CSS",
   "pt": "Variável CSS",
   "ja": "CSS 変数",
-  "ko": "CSS 변수"
+  "ko": "CSS 변수",
+  "nl": "CSS-variabele",
+  "sv": "CSS-variabel",
+  "no": "CSS-variabel",
+  "da": "CSS-variabel",
+  "pl": "Zmienna CSS",
+  "uk": "Змінна CSS"
  },
  "CSS variables": {
   "de": "CSS-Variablen",
@@ -2208,7 +2580,13 @@
   "fr": "Calme",
   "pt": "Calmo",
   "ja": "落ち着いた",
-  "ko": "차분함"
+  "ko": "차분함",
+  "nl": "Rustig",
+  "sv": "Lugn",
+  "no": "Rolig",
+  "da": "Rolig",
+  "pl": "Spokojnie",
+  "uk": "Спокійно"
  },
  "Camera is off": {
   "de": "Kamera ist aus",
@@ -2403,7 +2781,13 @@
   "fr": "Modifié",
   "pt": "Alterado",
   "ja": "変更",
-  "ko": "바뀜"
+  "ko": "바뀜",
+  "nl": "Gewijzigd",
+  "sv": "Ändrat",
+  "no": "Endret",
+  "da": "Ændret",
+  "pl": "Zmienione",
+  "uk": "Змінено"
  },
  "Changing a swatch replaces every use of that colour in the document.": {
   "de": "Ein Farbfeld zu ändern ersetzt jede Verwendung dieser Farbe im Dokument.",
@@ -2430,7 +2814,13 @@
   "fr": "Aide-mémoire",
   "pt": "Guia rápido",
   "ja": "早見表",
-  "ko": "요약표"
+  "ko": "요약표",
+  "nl": "Spiekbriefje",
+  "sv": "Fusklapp",
+  "no": "Jukselapp",
+  "da": "Huskeseddel",
+  "pl": "Ściąga",
+  "uk": "Шпаргалка"
  },
  "Check": {
   "de": "Prüfen",
@@ -2529,7 +2919,13 @@
   "fr": "Le texte chiffré apparaît ici",
   "pt": "O texto cifrado aparece aqui",
   "ja": "暗号文がここに表示されます",
-  "ko": "암호문이 여기에 나옵니다"
+  "ko": "암호문이 여기에 나옵니다",
+  "nl": "De versleutelde tekst verschijnt hier",
+  "sv": "Den krypterade texten visas här",
+  "no": "Den krypterte teksten vises her",
+  "da": "Den krypterede tekst vises her",
+  "pl": "Zaszyfrowany tekst pojawi się tutaj",
+  "uk": "Зашифрований текст з’явиться тут"
  },
  "Circle": {
   "de": "Kreis",
@@ -2631,7 +3027,13 @@
   "fr": "Effacer",
   "pt": "Limpar",
   "ja": "クリア",
-  "ko": "지우기"
+  "ko": "지우기",
+  "nl": "Wissen",
+  "sv": "Rensa",
+  "no": "Tøm",
+  "da": "Ryd",
+  "pl": "Wyczyść",
+  "uk": "Очистити"
  },
  "Clear all": {
   "de": "Alle löschen",
@@ -2712,7 +3114,13 @@
   "fr": "Cliquez sur une entrée pour la charger",
   "pt": "Clique em uma entrada para carregá-la",
   "ja": "項目をクリックすると読み込みます",
-  "ko": "항목을 누르면 불러옵니다"
+  "ko": "항목을 누르면 불러옵니다",
+  "nl": "Klik op een regel om die te laden",
+  "sv": "Klicka på en rad för att läsa in den",
+  "no": "Klikk på en oppføring for å laste den",
+  "da": "Klik på en post for at indlæse den",
+  "pl": "Kliknij wpis, aby go wczytać",
+  "uk": "Клацніть запис, щоб завантажити його"
  },
  "Click any step to load it": {
   "de": "Auf eine beliebige Stufe klicken, um sie zu laden",
@@ -2721,7 +3129,13 @@
   "fr": "Cliquez sur une étape pour la charger",
   "pt": "Clique em qualquer passo para carregá-lo",
   "ja": "どの手順もクリックで読み込めます",
-  "ko": "어느 단계든 눌러 불러올 수 있습니다"
+  "ko": "어느 단계든 눌러 불러올 수 있습니다",
+  "nl": "Klik op een stap om die te laden",
+  "sv": "Klicka på ett steg för att läsa in det",
+  "no": "Klikk på et trinn for å laste det",
+  "da": "Klik på et trin for at indlæse det",
+  "pl": "Kliknij dowolny stopień, aby go wczytać",
+  "uk": "Клацніть будь-який щабель, щоб завантажити його"
  },
  "Click here first, then press a key. Modifier combinations are captured too.": {
   "de": "Zuerst hier klicken, dann eine Taste drücken. Auch Modifier-Kombinationen werden erfasst.",
@@ -2952,7 +3366,13 @@
   "fr": "Commande",
   "pt": "Comando",
   "ja": "コマンド",
-  "ko": "명령"
+  "ko": "명령",
+  "nl": "Opdracht",
+  "sv": "Kommando",
+  "no": "Kommando",
+  "da": "Kommando",
+  "pl": "Polecenie",
+  "uk": "Команда"
  },
  "Commas": {
   "de": "Kommas",
@@ -3024,7 +3444,13 @@
   "fr": "Composant",
   "pt": "Componente",
   "ja": "コンポーネント",
-  "ko": "컴포넌트"
+  "ko": "컴포넌트",
+  "nl": "Onderdeel",
+  "sv": "Del",
+  "no": "Del",
+  "da": "Del",
+  "pl": "Część",
+  "uk": "Частина"
  },
  "Component name": {
   "de": "Komponentenname",
@@ -3042,7 +3468,13 @@
   "fr": "Compose vers Run",
   "pt": "Compose para Run",
   "ja": "Compose から Run へ",
-  "ko": "Compose에서 Run으로"
+  "ko": "Compose에서 Run으로",
+  "nl": "Compose naar Run",
+  "sv": "Compose till Run",
+  "no": "Compose til Run",
+  "da": "Compose til Run",
+  "pl": "Compose na Run",
+  "uk": "Compose у Run"
  },
  "Compose v2 syntax, no version key": {
   "de": "Compose-v2-Syntax, ohne version-Schlüssel",
@@ -3051,7 +3483,13 @@
   "fr": "Syntaxe Compose v2, sans clé version",
   "pt": "Sintaxe Compose v2, sem a chave version",
   "ja": "Compose v2 の記法、version キーなし",
-  "ko": "Compose v2 문법, version 키 없음"
+  "ko": "Compose v2 문법, version 키 없음",
+  "nl": "Compose v2-syntaxis, zonder version-sleutel",
+  "sv": "Compose v2-syntax, ingen version-nyckel",
+  "no": "Compose v2-syntaks, ingen version-nøkkel",
+  "da": "Compose v2-syntaks, ingen version-nøgle",
+  "pl": "Składnia Compose v2, bez klucza version",
+  "uk": "Синтаксис Compose v2, без ключа version"
  },
  "Composer": {
   "de": "Komponist",
@@ -3165,7 +3603,13 @@
   "fr": "Contactez ada@example.com ou grace@jsglobe.dev pour un accès. Invalide : nobody@localhost",
   "pt": "Contate ada@example.com ou grace@jsglobe.dev para ter acesso. Inválido: nobody@localhost",
   "ja": "アクセスは ada@example.com か grace@jsglobe.dev までご連絡ください。無効: nobody@localhost",
-  "ko": "접근은 ada@example.com 이나 grace@jsglobe.dev 로 연락하세요. 잘못된 예: nobody@localhost"
+  "ko": "접근은 ada@example.com 이나 grace@jsglobe.dev 로 연락하세요. 잘못된 예: nobody@localhost",
+  "nl": "Neem contact op met ada@example.com of grace@jsglobe.dev voor toegang. Ongeldig: nobody@localhost",
+  "sv": "Kontakta ada@example.com eller grace@jsglobe.dev för åtkomst. Ogiltig: nobody@localhost",
+  "no": "Kontakt ada@example.com eller grace@jsglobe.dev for tilgang. Ugyldig: nobody@localhost",
+  "da": "Kontakt ada@example.com eller grace@jsglobe.dev for adgang. Ugyldig: nobody@localhost",
+  "pl": "O dostęp pytaj pod ada@example.com lub grace@jsglobe.dev. Niepoprawny: nobody@localhost",
+  "uk": "Щодо доступу пишіть на ada@example.com або grace@jsglobe.dev. Хибний: nobody@localhost"
  },
  "Contacts": {
   "de": "Kontakte",
@@ -3201,7 +3645,13 @@
   "fr": "Contraste",
   "pt": "Contraste",
   "ja": "コントラスト",
-  "ko": "대비"
+  "ko": "대비",
+  "nl": "Contrast",
+  "sv": "Kontrast",
+  "no": "Kontrast",
+  "da": "Kontrast",
+  "pl": "Kontrast",
+  "uk": "Контраст"
  },
  "Controls": {
   "de": "Bedienelemente",
@@ -3255,7 +3705,13 @@
   "fr": "Copier",
   "pt": "Copiar",
   "ja": "コピー",
-  "ko": "복사"
+  "ko": "복사",
+  "nl": "Kopiëren",
+  "sv": "Kopiera",
+  "no": "Kopier",
+  "da": "Kopiér",
+  "pl": "Kopiuj",
+  "uk": "Копіювати"
  },
  "Copy CSS": {
   "de": "CSS kopieren",
@@ -3273,7 +3729,13 @@
   "fr": "Copier le HTML",
   "pt": "Copiar o HTML",
   "ja": "HTML をコピー",
-  "ko": "HTML 복사"
+  "ko": "HTML 복사",
+  "nl": "HTML kopiëren",
+  "sv": "Kopiera HTML",
+  "no": "Kopier HTML",
+  "da": "Kopiér HTML",
+  "pl": "Kopiuj HTML",
+  "uk": "Копіювати HTML"
  },
  "Copy HTML entity": {
   "de": "HTML-Entity kopieren",
@@ -3471,7 +3933,13 @@
   "fr": "Copier le morse",
   "pt": "Copiar o morse",
   "ja": "モールスをコピー",
-  "ko": "모스 복사"
+  "ko": "모스 복사",
+  "nl": "Morse kopiëren",
+  "sv": "Kopiera morse",
+  "no": "Kopier morse",
+  "da": "Kopiér morse",
+  "pl": "Kopiuj morse",
+  "uk": "Копіювати морзянку"
  },
  "Copy netlist": {
   "de": "Netzliste kopieren",
@@ -3498,7 +3966,13 @@
   "fr": "Copier le rapport",
   "pt": "Copiar o relatório",
   "ja": "レポートをコピー",
-  "ko": "보고서 복사"
+  "ko": "보고서 복사",
+  "nl": "Rapport kopiëren",
+  "sv": "Kopiera rapporten",
+  "no": "Kopier rapporten",
+  "da": "Kopiér rapporten",
+  "pl": "Kopiuj raport",
+  "uk": "Копіювати звіт"
  },
  "Copy result": {
   "de": "Ergebnis kopieren",
@@ -3669,7 +4143,13 @@
   "fr": "Créez une note pour commencer.",
   "pt": "Crie uma nota para começar.",
   "ja": "メモを作って始めましょう。",
-  "ko": "메모를 만들어 시작하세요."
+  "ko": "메모를 만들어 시작하세요.",
+  "nl": "Maak een notitie om te beginnen.",
+  "sv": "Skapa en anteckning för att komma igång.",
+  "no": "Lag et notat for å komme i gang.",
+  "da": "Opret en note for at komme i gang.",
+  "pl": "Utwórz notatkę, aby zacząć.",
+  "uk": "Створіть нотатку, щоб почати."
  },
  "Created with crypto.getRandomValues in this tab": {
   "de": "Mit crypto.getRandomValues in diesem Tab erzeugt",
@@ -3687,7 +4167,13 @@
   "fr": "Expression cron",
   "pt": "Expressão cron",
   "ja": "cron 式",
-  "ko": "cron 식"
+  "ko": "cron 식",
+  "nl": "Cron-uitdrukking",
+  "sv": "Cron-uttryck",
+  "no": "Cron-uttrykk",
+  "da": "Cron-udtryk",
+  "pl": "Wyrażenie cron",
+  "uk": "Вираз cron"
  },
  "Crop": {
   "de": "Zuschneiden",
@@ -3990,7 +4476,13 @@
   "fr": "Décoder",
   "pt": "Decodificar",
   "ja": "復号",
-  "ko": "디코딩"
+  "ko": "디코딩",
+  "nl": "Decoderen",
+  "sv": "Avkoda",
+  "no": "Dekod",
+  "da": "Afkod",
+  "pl": "Odkoduj",
+  "uk": "Розкодувати"
  },
  "Decoded": {
   "de": "Dekodiert",
@@ -3999,7 +4491,13 @@
   "fr": "Décodé",
   "pt": "Decodificado",
   "ja": "復号結果",
-  "ko": "디코딩 결과"
+  "ko": "디코딩 결과",
+  "nl": "Gedecodeerd",
+  "sv": "Avkodat",
+  "no": "Dekodet",
+  "da": "Afkodet",
+  "pl": "Odkodowane",
+  "uk": "Розкодовано"
  },
  "Decrypt": {
   "de": "Entschlüsseln",
@@ -4008,7 +4506,13 @@
   "fr": "Déchiffrer",
   "pt": "Descriptografar",
   "ja": "復号",
-  "ko": "복호화"
+  "ko": "복호화",
+  "nl": "Ontsleutelen",
+  "sv": "Dekryptera",
+  "no": "Dekrypter",
+  "da": "Dekryptér",
+  "pl": "Odszyfruj",
+  "uk": "Розшифрувати"
  },
  "Decrypted text appears here": {
   "de": "Der entschlüsselte Text erscheint hier",
@@ -4017,7 +4521,13 @@
   "fr": "Le texte déchiffré apparaît ici",
   "pt": "O texto descriptografado aparece aqui",
   "ja": "復号したテキストがここに表示されます",
-  "ko": "복호화한 글이 여기에 나옵니다"
+  "ko": "복호화한 글이 여기에 나옵니다",
+  "nl": "De ontsleutelde tekst verschijnt hier",
+  "sv": "Den avkrypterade texten visas här",
+  "no": "Den dekrypterte teksten vises her",
+  "da": "Den dekrypterede tekst vises her",
+  "pl": "Odszyfrowany tekst pojawi się tutaj",
+  "uk": "Розшифрований текст з’явиться тут"
  },
  "Default baud rate": {
   "de": "Standard-Baudrate",
@@ -4089,7 +4599,13 @@
   "fr": "Supprimer",
   "pt": "Excluir",
   "ja": "削除",
-  "ko": "지우기"
+  "ko": "지우기",
+  "nl": "Verwijderen",
+  "sv": "Ta bort",
+  "no": "Slett",
+  "da": "Slet",
+  "pl": "Usuń",
+  "uk": "Вилучити"
  },
  "Delete the selected part": {
   "de": "Das gewählte Bauteil löschen",
@@ -4398,7 +4914,13 @@
   "fr": "Télécharger",
   "pt": "Baixar",
   "ja": "ダウンロード",
-  "ko": "내려받기"
+  "ko": "내려받기",
+  "nl": "Downloaden",
+  "sv": "Ladda ner",
+  "no": "Last ned",
+  "da": "Hent",
+  "pl": "Pobierz",
+  "uk": "Завантажити"
  },
  "Download .ico": {
   "de": ".ico herunterladen",
@@ -4818,7 +5340,13 @@
   "fr": "Facile",
   "pt": "Fácil",
   "ja": "やさしい",
-  "ko": "쉬움"
+  "ko": "쉬움",
+  "nl": "Makkelijk",
+  "sv": "Lätt",
+  "no": "Lett",
+  "da": "Let",
+  "pl": "Łatwy",
+  "uk": "Легкий"
  },
  "Echo what you send": {
   "de": "Gesendetes zurückzeigen",
@@ -4926,7 +5454,13 @@
   "fr": "Encodé",
   "pt": "Codificado",
   "ja": "符号化結果",
-  "ko": "인코딩 결과"
+  "ko": "인코딩 결과",
+  "nl": "Gecodeerd",
+  "sv": "Kodat",
+  "no": "Kodet",
+  "da": "Kodet",
+  "pl": "Zakodowane",
+  "uk": "Закодовано"
  },
  "Encrypt": {
   "de": "Verschlüsseln",
@@ -4935,7 +5469,13 @@
   "fr": "Chiffrer",
   "pt": "Criptografar",
   "ja": "暗号化",
-  "ko": "암호화"
+  "ko": "암호화",
+  "nl": "Versleutelen",
+  "sv": "Kryptera",
+  "no": "Krypter",
+  "da": "Kryptér",
+  "pl": "Zaszyfruj",
+  "uk": "Зашифрувати"
  },
  "Endpoints": {
   "de": "Endpunkte",
@@ -5211,7 +5751,13 @@
   "fr": "Exporter",
   "pt": "Exportar",
   "ja": "書き出し",
-  "ko": "내보내기"
+  "ko": "내보내기",
+  "nl": "Exporteren",
+  "sv": "Exportera",
+  "no": "Eksporter",
+  "da": "Eksportér",
+  "pl": "Eksportuj",
+  "uk": "Експорт"
  },
  "Export PNG": {
   "de": "PNG exportieren",
@@ -5274,7 +5820,13 @@
   "fr": "Expression",
   "pt": "Expressão",
   "ja": "式",
-  "ko": "식"
+  "ko": "식",
+  "nl": "Uitdrukking",
+  "sv": "Uttryck",
+  "no": "Uttrykk",
+  "da": "Udtryk",
+  "pl": "Wyrażenie",
+  "uk": "Вираз"
  },
  "Extension": {
   "de": "Ausfahrweg",
@@ -5376,7 +5928,13 @@
   "fr": "Rapide",
   "pt": "Rápido",
   "ja": "速い",
-  "ko": "빠름"
+  "ko": "빠름",
+  "nl": "Snel",
+  "sv": "Snabb",
+  "no": "Rask",
+  "da": "Hurtig",
+  "pl": "Szybko",
+  "uk": "Швидко"
  },
  "Fields": {
   "de": "Felder",
@@ -5598,7 +6156,13 @@
   "fr": "Il faut cinq lettres",
   "pt": "São necessárias cinco letras",
   "ja": "5 文字が必要です",
-  "ko": "다섯 글자가 필요합니다"
+  "ko": "다섯 글자가 필요합니다",
+  "nl": "Er zijn vijf letters nodig",
+  "sv": "Det behövs fem bokstäver",
+  "no": "Det trengs fem bokstaver",
+  "da": "Der skal bruges fem bogstaver",
+  "pl": "Potrzeba pięciu liter",
+  "uk": "Потрібно п’ять літер"
  },
  "Fix the markup first": {
   "de": "Zuerst das Markup korrigieren",
@@ -5778,7 +6342,13 @@
   "fr": "Format",
   "pt": "Formato",
   "ja": "形式",
-  "ko": "형식"
+  "ko": "형식",
+  "nl": "Opmaken",
+  "sv": "Formatera",
+  "no": "Formater",
+  "da": "Formatér",
+  "pl": "Formatuj",
+  "uk": "Форматувати"
  },
  "Formatted": {
   "de": "Formatiert",
@@ -5787,7 +6357,13 @@
   "fr": "Mis en forme",
   "pt": "Formatado",
   "ja": "整形結果",
-  "ko": "정리한 결과"
+  "ko": "정리한 결과",
+  "nl": "Opgemaakt",
+  "sv": "Formaterat",
+  "no": "Formatert",
+  "da": "Formateret",
+  "pl": "Sformatowane",
+  "uk": "Відформатовано"
  },
  "Found by scanning the visible range": {
   "de": "Durch Abtasten des sichtbaren Bereichs gefunden",
@@ -5859,7 +6435,13 @@
   "fr": "De",
   "pt": "De",
   "ja": "変換元",
-  "ko": "원본"
+  "ko": "원본",
+  "nl": "Van",
+  "sv": "Från",
+  "no": "Fra",
+  "da": "Fra",
+  "pl": "Z",
+  "uk": "З"
  },
  "From images": {
   "de": "Aus Bildern",
@@ -5877,7 +6459,13 @@
   "fr": "Depuis l'octal",
   "pt": "A partir do octal",
   "ja": "8 進から",
-  "ko": "8진에서"
+  "ko": "8진에서",
+  "nl": "Vanuit octaal",
+  "sv": "Från oktalt",
+  "no": "Fra oktalt",
+  "da": "Fra oktalt",
+  "pl": "Z ósemkowego",
+  "uk": "З вісімкового"
  },
  "Full URI": {
   "de": "Vollständige URI",
@@ -5886,7 +6474,13 @@
   "fr": "URI complète",
   "pt": "URI completa",
   "ja": "完全な URI",
-  "ko": "전체 URI"
+  "ko": "전체 URI",
+  "nl": "Volledige URI",
+  "sv": "Fullständig URI",
+  "no": "Fullstendig URI",
+  "da": "Fuldstændig URI",
+  "pl": "Pełny URI",
+  "uk": "Повний URI"
  },
  "Full name": {
   "de": "Vollständiger Name",
@@ -6159,7 +6753,13 @@
   "fr": "Devinez le mot",
   "pt": "Adivinhe a palavra",
   "ja": "単語を当てる",
-  "ko": "단어 맞히기"
+  "ko": "단어 맞히기",
+  "nl": "Raad het woord",
+  "sv": "Gissa ordet",
+  "no": "Gjett ordet",
+  "da": "Gæt ordet",
+  "pl": "Zgadnij słowo",
+  "uk": "Вгадайте слово"
  },
  "Guitar drop D": {
   "de": "Gitarre Drop D",
@@ -6213,7 +6813,13 @@
   "fr": "Difficile",
   "pt": "Difícil",
   "ja": "むずかしい",
-  "ko": "어려움"
+  "ko": "어려움",
+  "nl": "Moeilijk",
+  "sv": "Svår",
+  "no": "Vanskelig",
+  "da": "Svær",
+  "pl": "Trudny",
+  "uk": "Складний"
  },
  "Hardware": {
   "de": "Hardware",
@@ -6264,7 +6870,13 @@
   "fr": "En-tête",
   "pt": "Cabeçalho",
   "ja": "ヘッダー",
-  "ko": "머리글"
+  "ko": "머리글",
+  "nl": "Koptekst",
+  "sv": "Rubrik",
+  "no": "Topptekst",
+  "da": "Sidehoved",
+  "pl": "Nagłówek",
+  "uk": "Заголовок"
  },
  "Heading": {
   "de": "Überschrift",
@@ -6383,7 +6995,13 @@
   "fr": "Surligné",
   "pt": "Realçado",
   "ja": "強調あり",
-  "ko": "강조됨"
+  "ko": "강조됨",
+  "nl": "Gemarkeerd",
+  "sv": "Markerat",
+  "no": "Markert",
+  "da": "Markeret",
+  "pl": "Podświetlone",
+  "uk": "Підсвічено"
  },
  "Hint": {
   "de": "Tipp",
@@ -6410,7 +7028,13 @@
   "fr": "Historique",
   "pt": "Histórico",
   "ja": "履歴",
-  "ko": "기록"
+  "ko": "기록",
+  "nl": "Geschiedenis",
+  "sv": "Historik",
+  "no": "Historikk",
+  "da": "Historik",
+  "pl": "Historia",
+  "uk": "Історія"
  },
  "Hold": {
   "de": "Halten",
@@ -6428,7 +7052,13 @@
   "fr": "Tenir la ligne",
   "pt": "Segure a linha",
   "ja": "防衛線を守る",
-  "ko": "방어선을 지키기"
+  "ko": "방어선을 지키기",
+  "nl": "Houd de linie",
+  "sv": "Håll linjen",
+  "no": "Hold linjen",
+  "da": "Hold linjen",
+  "pl": "Broń linii",
+  "uk": "Тримайте лінію"
  },
  "Home Screen": {
   "de": "Startbildschirm",
@@ -6575,7 +7205,13 @@
   "fr": "Ignorer l'ordre des tableaux",
   "pt": "Ignorar a ordem dos arrays",
   "ja": "配列の順序を無視",
-  "ko": "배열 순서 무시"
+  "ko": "배열 순서 무시",
+  "nl": "Volgorde van arrays negeren",
+  "sv": "Strunta i ordningen i listor",
+  "no": "Se bort fra rekkefølgen i lister",
+  "da": "Se bort fra rækkefølgen i lister",
+  "pl": "Pomijaj kolejność w tablicach",
+  "uk": "Не зважати на порядок у масивах"
  },
  "Image": {
   "de": "Bild",
@@ -6743,7 +7379,13 @@
   "fr": "Entrée",
   "pt": "Entrada",
   "ja": "入力",
-  "ko": "입력"
+  "ko": "입력",
+  "nl": "Invoer",
+  "sv": "Indata",
+  "no": "Inndata",
+  "da": "Inddata",
+  "pl": "Wejście",
+  "uk": "Вхід"
  },
  "Inputs": {
   "de": "Eingänge",
@@ -6815,7 +7457,13 @@
   "fr": "Code morse international",
   "pt": "Código morse internacional",
   "ja": "欧文モールス符号",
-  "ko": "국제 모스 부호"
+  "ko": "국제 모스 부호",
+  "nl": "Internationale morsecode",
+  "sv": "Internationell morsekod",
+  "no": "Internasjonal morsekode",
+  "da": "International morsekode",
+  "pl": "Międzynarodowy alfabet Morse’a",
+  "uk": "Міжнародна абетка Морзе"
  },
  "Interquartile range": {
   "de": "Interquartilsabstand",
@@ -7421,7 +8069,13 @@
   "fr": "Niveau",
   "pt": "Nível",
   "ja": "レベル",
-  "ko": "단계"
+  "ko": "단계",
+  "nl": "Niveau",
+  "sv": "Nivå",
+  "no": "Nivå",
+  "da": "Niveau",
+  "pl": "Poziom",
+  "uk": "Рівень"
  },
  "Light": {
   "de": "Hell",
@@ -7556,7 +8210,13 @@
   "fr": "Vies",
   "pt": "Vidas",
   "ja": "残機",
-  "ko": "목숨"
+  "ko": "목숨",
+  "nl": "Levens",
+  "sv": "Liv",
+  "no": "Liv",
+  "da": "Liv",
+  "pl": "Życia",
+  "uk": "Життя"
  },
  "Load SVG": {
   "de": "SVG laden",
@@ -7601,7 +8261,13 @@
   "fr": "Charger un exemple",
   "pt": "Carregar exemplo",
   "ja": "サンプルを読み込む",
-  "ko": "예시 불러오기"
+  "ko": "예시 불러오기",
+  "nl": "Voorbeeld laden",
+  "sv": "Läs in exempel",
+  "no": "Last inn eksempel",
+  "da": "Indlæs eksempel",
+  "pl": "Wczytaj przykład",
+  "uk": "Завантажити зразок"
  },
  "Loading rates": {
   "de": "Kurse werden geladen",
@@ -7610,7 +8276,13 @@
   "fr": "Chargement des taux",
   "pt": "Carregando as taxas",
   "ja": "レートを読み込み中",
-  "ko": "환율을 불러오는 중"
+  "ko": "환율을 불러오는 중",
+  "nl": "Koersen laden",
+  "sv": "Läser in kurser",
+  "no": "Laster kurser",
+  "da": "Indlæser kurser",
+  "pl": "Wczytuję kursy",
+  "uk": "Завантажую курси"
  },
  "Local": {
   "de": "Lokal",
@@ -7888,7 +8560,13 @@
   "fr": "Correspondances",
   "pt": "Correspondências",
   "ja": "一致",
-  "ko": "일치"
+  "ko": "일치",
+  "nl": "Overeenkomsten",
+  "sv": "Träffar",
+  "no": "Treff",
+  "da": "Træf",
+  "pl": "Dopasowania",
+  "uk": "Збіги"
  },
  "Math operators": {
   "de": "Mathematische Operatoren",
@@ -7951,7 +8629,13 @@
   "fr": "Signification",
   "pt": "Significado",
   "ja": "意味",
-  "ko": "뜻"
+  "ko": "뜻",
+  "nl": "Betekenis",
+  "sv": "Betydelse",
+  "no": "Betydning",
+  "da": "Betydning",
+  "pl": "Znaczenie",
+  "uk": "Значення"
  },
  "Media engine": {
   "de": "Medien-Engine",
@@ -7969,7 +8653,13 @@
   "fr": "Moyen",
   "pt": "Médio",
   "ja": "中",
-  "ko": "보통"
+  "ko": "보통",
+  "nl": "Gemiddeld",
+  "sv": "Medel",
+  "no": "Middels",
+  "da": "Mellem",
+  "pl": "Średni",
+  "uk": "Середній"
  },
  "Meeting room 2": {
   "de": "Besprechungsraum 2",
@@ -8104,7 +8794,13 @@
   "fr": "Minifier",
   "pt": "Minificar",
   "ja": "圧縮",
-  "ko": "줄이기"
+  "ko": "줄이기",
+  "nl": "Verkleinen",
+  "sv": "Minifiera",
+  "no": "Forminsk",
+  "da": "Formindsk",
+  "pl": "Zmniejsz",
+  "uk": "Стиснути"
  },
  "Minimal": {
   "de": "Minimal",
@@ -8332,7 +9028,13 @@
   "fr": "Déplacez avec la souris ou les flèches. Espace pour servir.",
   "pt": "Mova com o mouse ou as setas. Espaço saca.",
   "ja": "マウスか方向キーで動かします。スペースでサーブ。",
-  "ko": "마우스나 방향키로 움직입니다. 스페이스로 서브합니다."
+  "ko": "마우스나 방향키로 움직입니다. 스페이스로 서브합니다.",
+  "nl": "Beweeg met de muis of de pijltjestoetsen. Spatie serveert.",
+  "sv": "Flytta med musen eller piltangenterna. Mellanslag servar.",
+  "no": "Flytt med musen eller piltastene. Mellomrom server.",
+  "da": "Flyt med musen eller piletasterne. Mellemrum server.",
+  "pl": "Poruszaj myszą lub strzałkami. Spacja serwuje.",
+  "uk": "Рухайтеся мишею або стрілками. Пробіл подає."
  },
  "Move with the mouse or the up and down arrows.": {
   "de": "Mit der Maus oder den Pfeiltasten hoch und runter bewegen.",
@@ -8350,7 +9052,13 @@
   "fr": "Coups",
   "pt": "Lances",
   "ja": "手数",
-  "ko": "수"
+  "ko": "수",
+  "nl": "Zetten",
+  "sv": "Drag",
+  "no": "Trekk",
+  "da": "Træk",
+  "pl": "Ruchy",
+  "uk": "Ходи"
  },
  "Muted": {
   "de": "Gedämpft",
@@ -8635,7 +9343,13 @@
   "fr": "Nouvelle partie",
   "pt": "Novo jogo",
   "ja": "新しいゲーム",
-  "ko": "새 게임"
+  "ko": "새 게임",
+  "nl": "Nieuw spel",
+  "sv": "Nytt spel",
+  "no": "Nytt spill",
+  "da": "Nyt spil",
+  "pl": "Nowa gra",
+  "uk": "Нова гра"
  },
  "New line": {
   "de": "Zeilenumbruch",
@@ -8662,7 +9376,13 @@
   "fr": "Nouvelle note",
   "pt": "Nova nota",
   "ja": "新しいメモ",
-  "ko": "새 메모"
+  "ko": "새 메모",
+  "nl": "Nieuwe notitie",
+  "sv": "Ny anteckning",
+  "no": "Nytt notat",
+  "da": "Ny note",
+  "pl": "Nowa notatka",
+  "uk": "Нова нотатка"
  },
  "New seed": {
   "de": "Neuer Startwert",
@@ -8680,7 +9400,13 @@
   "fr": "Nouveau mot",
   "pt": "Nova palavra",
   "ja": "新しい単語",
-  "ko": "새 단어"
+  "ko": "새 단어",
+  "nl": "Nieuw woord",
+  "sv": "Nytt ord",
+  "no": "Nytt ord",
+  "da": "Nyt ord",
+  "pl": "Nowe słowo",
+  "uk": "Нове слово"
  },
  "New workspace": {
   "de": "Neuer Arbeitsbereich",
@@ -8707,7 +9433,13 @@
   "fr": "Prochaine exécution",
   "pt": "Próxima execução",
   "ja": "次の実行",
-  "ko": "다음 실행"
+  "ko": "다음 실행",
+  "nl": "Volgende keer",
+  "sv": "Nästa körning",
+  "no": "Neste kjøring",
+  "da": "Næste kørsel",
+  "pl": "Najbliższe uruchomienie",
+  "uk": "Найближчий запуск"
  },
  "Next runs": {
   "de": "Nächste Läufe",
@@ -8716,7 +9448,13 @@
   "fr": "Prochaines exécutions",
   "pt": "Próximas execuções",
   "ja": "次の実行予定",
-  "ko": "다음 실행들"
+  "ko": "다음 실행들",
+  "nl": "Volgende keren",
+  "sv": "Kommande körningar",
+  "no": "Neste kjøringer",
+  "da": "Næste kørsler",
+  "pl": "Najbliższe uruchomienia",
+  "uk": "Найближчі запуски"
  },
  "Next window": {
   "de": "Nächstes Zeitfenster",
@@ -8761,7 +9499,13 @@
   "fr": "Aucune différence trouvée.",
   "pt": "Nenhuma diferença encontrada.",
   "ja": "違いは見つかりませんでした。",
-  "ko": "다른 곳을 찾지 못했습니다."
+  "ko": "다른 곳을 찾지 못했습니다.",
+  "nl": "Geen verschillen gevonden.",
+  "sv": "Inga skillnader hittades.",
+  "no": "Fant ingen forskjeller.",
+  "da": "Fandt ingen forskelle.",
+  "pl": "Nie znaleziono różnic.",
+  "uk": "Різниць не знайдено."
  },
  "No extra properties": {
   "de": "Keine zusätzlichen Eigenschaften",
@@ -8833,7 +9577,13 @@
   "fr": "Aucune correspondance dans l'année à venir",
   "pt": "Nenhuma correspondência no próximo ano",
   "ja": "今後 1 年以内に該当はありません",
-  "ko": "앞으로 1년 안에는 해당이 없습니다"
+  "ko": "앞으로 1년 안에는 해당이 없습니다",
+  "nl": "Geen overeenkomst binnen het komende jaar",
+  "sv": "Ingen träff inom det närmaste året",
+  "no": "Ingen treff innen det neste året",
+  "da": "Intet træf inden for det næste år",
+  "pl": "Brak dopasowania w ciągu najbliższego roku",
+  "uk": "Немає збігу протягом наступного року"
  },
  "No matches": {
   "de": "Keine Treffer",
@@ -8842,7 +9592,13 @@
   "fr": "Aucune correspondance",
   "pt": "Sem correspondências",
   "ja": "一致なし",
-  "ko": "일치하는 것이 없습니다"
+  "ko": "일치하는 것이 없습니다",
+  "nl": "Geen overeenkomsten",
+  "sv": "Inga träffar",
+  "no": "Ingen treff",
+  "da": "Ingen træf",
+  "pl": "Brak dopasowań",
+  "uk": "Збігів немає"
  },
  "No mistakes recorded yet.": {
   "de": "Noch keine Fehler aufgezeichnet.",
@@ -8860,7 +9616,13 @@
   "fr": "Pas encore de notes",
   "pt": "Nenhuma nota ainda",
   "ja": "メモはまだありません",
-  "ko": "아직 메모가 없습니다"
+  "ko": "아직 메모가 없습니다",
+  "nl": "Nog geen notities",
+  "sv": "Inga anteckningar än",
+  "no": "Ingen notater ennå",
+  "da": "Ingen noter endnu",
+  "pl": "Jeszcze brak notatek",
+  "uk": "Нотаток ще немає"
  },
  "No operations found.": {
   "de": "Keine Operationen gefunden.",
@@ -9118,7 +9880,13 @@
   "fr": "Rien de sélectionné",
   "pt": "Nada selecionado",
   "ja": "選択されていません",
-  "ko": "고른 것이 없습니다"
+  "ko": "고른 것이 없습니다",
+  "nl": "Niets geselecteerd",
+  "sv": "Inget valt",
+  "no": "Ingenting valgt",
+  "da": "Intet valgt",
+  "pl": "Nic nie wybrano",
+  "uk": "Нічого не вибрано"
  },
  "Nothing to show for that search.": {
   "de": "Für diese Suche gibt es nichts.",
@@ -9190,7 +9958,13 @@
   "fr": "Nombre → romain",
   "pt": "Número → romano",
   "ja": "数 → ローマ数字",
-  "ko": "숫자 → 로마 숫자"
+  "ko": "숫자 → 로마 숫자",
+  "nl": "Getal → Romeins",
+  "sv": "Tal → romerskt",
+  "no": "Tall → romertall",
+  "da": "Tal → romertal",
+  "pl": "Liczba → rzymska",
+  "uk": "Число → римське"
  },
  "Numbers": {
   "de": "Zahlen",
@@ -9607,7 +10381,13 @@
   "fr": "Sortie",
   "pt": "Saída",
   "ja": "出力",
-  "ko": "출력"
+  "ko": "출력",
+  "nl": "Uitvoer",
+  "sv": "Utdata",
+  "no": "Utdata",
+  "da": "Uddata",
+  "pl": "Wyjście",
+  "uk": "Вихід"
  },
  "Overlap": {
   "de": "Schnittmenge",
@@ -9775,7 +10555,13 @@
   "fr": "Paires",
   "pt": "Pares",
   "ja": "ペア",
-  "ko": "짝"
+  "ko": "짝",
+  "nl": "Paren",
+  "sv": "Par",
+  "no": "Par",
+  "da": "Par",
+  "pl": "Pary",
+  "uk": "Пари"
  },
  "Palette": {
   "de": "Palette",
@@ -9853,7 +10639,13 @@
   "fr": "Phrase secrète",
   "pt": "Frase secreta",
   "ja": "パスフレーズ",
-  "ko": "암호 문구"
+  "ko": "암호 문구",
+  "nl": "Wachtwoordzin",
+  "sv": "Lösenfras",
+  "no": "Passfrase",
+  "da": "Adgangsfrase",
+  "pl": "Fraza hasłowa",
+  "uk": "Парольна фраза"
  },
  "Password": {
   "de": "Passwort",
@@ -9862,7 +10654,13 @@
   "fr": "Mot de passe",
   "pt": "Senha",
   "ja": "パスワード",
-  "ko": "비밀번호"
+  "ko": "비밀번호",
+  "nl": "Wachtwoord",
+  "sv": "Lösenord",
+  "no": "Passord",
+  "da": "Adgangskode",
+  "pl": "Hasło",
+  "uk": "Пароль"
  },
  "Paste": {
   "de": "Einfügen",
@@ -9880,7 +10678,13 @@
   "fr": "Collez du JSON des deux côtés.",
   "pt": "Cole JSON dos dois lados.",
   "ja": "両側に JSON を貼り付けてください。",
-  "ko": "양쪽에 JSON을 붙여넣으세요."
+  "ko": "양쪽에 JSON을 붙여넣으세요.",
+  "nl": "Plak aan beide kanten JSON.",
+  "sv": "Klistra in JSON på båda sidor.",
+  "no": "Lim inn JSON på begge sider.",
+  "da": "Indsæt JSON på begge sider.",
+  "pl": "Wklej JSON po obu stronach.",
+  "uk": "Вставте JSON з обох боків."
  },
  "Paste SVG markup here": {
   "de": "SVG-Markup hier einfügen",
@@ -9952,7 +10756,13 @@
   "fr": "Collez un en-tête existant ou une paire base64",
   "pt": "Cole um cabeçalho existente ou um par base64",
   "ja": "既存のヘッダか base64 の組を貼り付け",
-  "ko": "기존 헤더나 base64 쌍을 붙여넣으세요"
+  "ko": "기존 헤더나 base64 쌍을 붙여넣으세요",
+  "nl": "Plak een bestaande header of base64-paar",
+  "sv": "Klistra in en befintlig rubrik eller ett base64-par",
+  "no": "Lim inn en eksisterende header eller et base64-par",
+  "da": "Indsæt en eksisterende header eller et base64-par",
+  "pl": "Wklej istniejący nagłówek lub parę w base64",
+  "uk": "Вставте наявний заголовок або пару в base64"
  },
  "Paste ciphertext": {
   "de": "Geheimtext einfügen",
@@ -9961,7 +10771,13 @@
   "fr": "Collez le texte chiffré",
   "pt": "Cole o texto cifrado",
   "ja": "暗号文を貼り付け",
-  "ko": "암호문을 붙여넣으세요"
+  "ko": "암호문을 붙여넣으세요",
+  "nl": "Plak de versleutelde tekst",
+  "sv": "Klistra in den krypterade texten",
+  "no": "Lim inn den krypterte teksten",
+  "da": "Indsæt den krypterede tekst",
+  "pl": "Wklej zaszyfrowany tekst",
+  "uk": "Вставте зашифрований текст"
  },
  "Paste code here": {
   "de": "Code hier einfügen",
@@ -10033,7 +10849,13 @@
   "fr": "Collez les en-têtes de réponse",
   "pt": "Cole os cabeçalhos de resposta",
   "ja": "レスポンスヘッダを貼り付け",
-  "ko": "응답 헤더를 붙여넣으세요"
+  "ko": "응답 헤더를 붙여넣으세요",
+  "nl": "Plak de antwoordheaders",
+  "sv": "Klistra in svarsrubrikerna",
+  "no": "Lim inn svarheaderne",
+  "da": "Indsæt svarheaderne",
+  "pl": "Wklej nagłówki odpowiedzi",
+  "uk": "Вставте заголовки відповіді"
  },
  "Paste sample text to see live matches": {
   "de": "Beispieltext einfügen, um Treffer live zu sehen",
@@ -10078,7 +10900,13 @@
   "fr": "Motif",
   "pt": "Padrão",
   "ja": "パターン",
-  "ko": "패턴"
+  "ko": "패턴",
+  "nl": "Patroon",
+  "sv": "Mönster",
+  "no": "Mønster",
+  "da": "Mønster",
+  "pl": "Wzorzec",
+  "uk": "Взірець"
  },
  "Pause": {
   "de": "Pause",
@@ -10156,7 +10984,13 @@
   "fr": "Permissions",
   "pt": "Permissões",
   "ja": "権限",
-  "ko": "권한"
+  "ko": "권한",
+  "nl": "Rechten",
+  "sv": "Rättigheter",
+  "no": "Rettigheter",
+  "da": "Rettigheder",
+  "pl": "Uprawnienia",
+  "uk": "Права"
  },
  "Personal": {
   "de": "Persönlich",
@@ -10381,7 +11215,13 @@
   "fr": "Lecture",
   "pt": "Reproduzir",
   "ja": "再生",
-  "ko": "재생"
+  "ko": "재생",
+  "nl": "Afspelen",
+  "sv": "Spela",
+  "no": "Spill",
+  "da": "Afspil",
+  "pl": "Odtwórz",
+  "uk": "Відтворити"
  },
  "Play a string": {
   "de": "Eine Saite anspielen",
@@ -10399,7 +11239,13 @@
   "fr": "Jouer une note",
   "pt": "Tocar um tom",
   "ja": "音を鳴らす",
-  "ko": "소리 내기"
+  "ko": "소리 내기",
+  "nl": "Toon afspelen",
+  "sv": "Spela ton",
+  "no": "Spill tone",
+  "da": "Afspil tone",
+  "pl": "Zagraj dźwięk",
+  "uk": "Відтворити тон"
  },
  "Plug in a gamepad and press any button. Browsers only reveal a pad after it sends input.": {
   "de": "Ein Gamepad anschließen und eine beliebige Taste drücken. Browser zeigen ein Pad erst, wenn es Eingaben sendet.",
@@ -10582,7 +11428,13 @@
   "fr": "Préréglages",
   "pt": "Predefinições",
   "ja": "プリセット",
-  "ko": "프리셋"
+  "ko": "프리셋",
+  "nl": "Voorinstellingen",
+  "sv": "Förval",
+  "no": "Forhåndsvalg",
+  "da": "Forvalg",
+  "pl": "Gotowe ustawienia",
+  "uk": "Заготовки"
  },
  "Press a button on a controller": {
   "de": "Eine Taste am Controller drücken",
@@ -10627,7 +11479,13 @@
   "fr": "Aperçu",
   "pt": "Prévia",
   "ja": "プレビュー",
-  "ko": "미리 보기"
+  "ko": "미리 보기",
+  "nl": "Voorbeeld",
+  "sv": "Förhandsvisning",
+  "no": "Forhåndsvisning",
+  "da": "Forhåndsvisning",
+  "pl": "Podgląd",
+  "uk": "Перегляд"
  },
  "Preview size": {
   "de": "Vorschaugröße",
@@ -10992,7 +11850,13 @@
   "fr": "Aléatoire",
   "pt": "Aleatório",
   "ja": "ランダム",
-  "ko": "무작위"
+  "ko": "무작위",
+  "nl": "Willekeurig",
+  "sv": "Slumpmässig",
+  "no": "Tilfeldig",
+  "da": "Tilfældig",
+  "pl": "Losowo",
+  "uk": "Випадково"
  },
  "Randomise": {
   "de": "Zufällig",
@@ -11190,7 +12054,13 @@
   "fr": "Référence",
   "pt": "Referência",
   "ja": "基準",
-  "ko": "기준"
+  "ko": "기준",
+  "nl": "Naslag",
+  "sv": "Referens",
+  "no": "Referanse",
+  "da": "Reference",
+  "pl": "Odniesienie",
+  "uk": "Довідка"
  },
  "Reference pitch (A4)": {
   "de": "Kammerton (A4)",
@@ -11208,7 +12078,13 @@
   "fr": "Actualiser",
   "pt": "Atualizar",
   "ja": "更新",
-  "ko": "새로 고침"
+  "ko": "새로 고침",
+  "nl": "Vernieuwen",
+  "sv": "Uppdatera",
+  "no": "Oppdater",
+  "da": "Opdatér",
+  "pl": "Odśwież",
+  "uk": "Оновити"
  },
  "Refresh prices": {
   "de": "Kurse aktualisieren",
@@ -11564,7 +12440,13 @@
   "fr": "Recommencer",
   "pt": "Reiniciar",
   "ja": "やり直す",
-  "ko": "다시 시작"
+  "ko": "다시 시작",
+  "nl": "Opnieuw beginnen",
+  "sv": "Börja om",
+  "no": "Start på nytt",
+  "da": "Start forfra",
+  "pl": "Zacznij od nowa",
+  "uk": "Почати заново"
  },
  "Result": {
   "de": "Ergebnis",
@@ -11573,7 +12455,13 @@
   "fr": "Résultat",
   "pt": "Resultado",
   "ja": "結果",
-  "ko": "결과"
+  "ko": "결과",
+  "nl": "Resultaat",
+  "sv": "Resultat",
+  "no": "Resultat",
+  "da": "Resultat",
+  "pl": "Wynik",
+  "uk": "Результат"
  },
  "Return": {
   "de": "Rendite",
@@ -11677,7 +12565,13 @@
   "fr": "Romain → nombre",
   "pt": "Romano → número",
   "ja": "ローマ数字 → 数",
-  "ko": "로마 숫자 → 숫자"
+  "ko": "로마 숫자 → 숫자",
+  "nl": "Romeins → getal",
+  "sv": "Romerskt → tal",
+  "no": "Romertall → tall",
+  "da": "Romertal → tal",
+  "pl": "Rzymska → liczba",
+  "uk": "Римське → число"
  },
  "Roomy": {
   "de": "Geräumig",
@@ -11821,7 +12715,13 @@
   "fr": "Run vers Compose",
   "pt": "Run para Compose",
   "ja": "Run から Compose へ",
-  "ko": "Run에서 Compose로"
+  "ko": "Run에서 Compose로",
+  "nl": "Run naar Compose",
+  "sv": "Run till Compose",
+  "no": "Run til Compose",
+  "da": "Run til Compose",
+  "pl": "Run na Compose",
+  "uk": "Run у Compose"
  },
  "Runtime": {
   "de": "Laufzeit",
@@ -11992,7 +12892,13 @@
   "fr": "Échantillon",
   "pt": "Amostra",
   "ja": "サンプル",
-  "ko": "표본"
+  "ko": "표본",
+  "nl": "Voorbeeld",
+  "sv": "Exempel",
+  "no": "Eksempel",
+  "da": "Eksempel",
+  "pl": "Przykład",
+  "uk": "Зразок"
  },
  "Sample JSON": {
   "de": "Beispiel-JSON",
@@ -12010,7 +12916,13 @@
   "fr": "Réponse d'exemple",
   "pt": "Resposta de exemplo",
   "ja": "サンプルのレスポンス",
-  "ko": "예시 응답"
+  "ko": "예시 응답",
+  "nl": "Voorbeeldantwoord",
+  "sv": "Exempelsvar",
+  "no": "Eksempelsvar",
+  "da": "Eksempelsvar",
+  "pl": "Przykładowa odpowiedź",
+  "uk": "Приклад відповіді"
  },
  "Sample sd": {
   "de": "Standardabweichung (Stichprobe)",
@@ -12312,7 +13224,13 @@
   "fr": "Score",
   "pt": "Pontuação",
   "ja": "スコア",
-  "ko": "점수"
+  "ko": "점수",
+  "nl": "Score",
+  "sv": "Poäng",
+  "no": "Poeng",
+  "da": "Point",
+  "pl": "Wynik",
+  "uk": "Рахунок"
  },
  "Screen": {
   "de": "Bildschirm",
@@ -12537,7 +13455,13 @@
   "fr": "Casse de phrase",
   "pt": "Como frase",
   "ja": "文頭だけ大文字",
-  "ko": "문장 첫 글자만 대문자"
+  "ko": "문장 첫 글자만 대문자",
+  "nl": "Zinsstijl",
+  "sv": "Meningsform",
+  "no": "Setningsform",
+  "da": "Sætningsform",
+  "pl": "Jak w zdaniu",
+  "uk": "Як у реченні"
  },
  "Sentences": {
   "de": "Sätze",
@@ -12872,7 +13796,13 @@
   "fr": "La barre oblique sépare les mots",
   "pt": "A barra separa as palavras",
   "ja": "スラッシュで語を区切ります",
-  "ko": "빗금으로 낱말을 나눕니다"
+  "ko": "빗금으로 낱말을 나눕니다",
+  "nl": "De schuine streep scheidt woorden",
+  "sv": "Snedstrecket skiljer ord åt",
+  "no": "Skråstreken skiller ord",
+  "da": "Skråstregen adskiller ord",
+  "pl": "Ukośnik oddziela słowa",
+  "uk": "Скісна риска розділяє слова"
  },
  "Slide up": {
   "de": "Hochschieben",
@@ -13289,7 +14219,13 @@
   "fr": "Commencez à taper...",
   "pt": "Comece a digitar...",
   "ja": "入力を始めてください...",
-  "ko": "입력을 시작하세요..."
+  "ko": "입력을 시작하세요...",
+  "nl": "Begin met typen...",
+  "sv": "Börja skriva...",
+  "no": "Begynn å skrive...",
+  "da": "Begynd at skrive...",
+  "pl": "Zacznij pisać...",
+  "uk": "Почніть набирати..."
  },
  "Start with \"Lorem ipsum dolor sit amet\"": {
   "de": "Mit \"Lorem ipsum dolor sit amet\" beginnen",
@@ -13613,7 +14549,13 @@
   "fr": "Prend en charge + − × ÷ ^ % !, les fonctions et les constantes",
   "pt": "Aceita + − × ÷ ^ % !, funções e constantes",
   "ja": "+ − × ÷ ^ % !、関数、定数に対応",
-  "ko": "+ − × ÷ ^ % !, 함수와 상수를 지원합니다"
+  "ko": "+ − × ÷ ^ % !, 함수와 상수를 지원합니다",
+  "nl": "Ondersteunt + − × ÷ ^ % !, functies en constanten",
+  "sv": "Stöder + − × ÷ ^ % !, funktioner och konstanter",
+  "no": "Støtter + − × ÷ ^ % !, funksjoner og konstanter",
+  "da": "Understøtter + − × ÷ ^ % !, funktioner og konstanter",
+  "pl": "Obsługuje + − × ÷ ^ % !, funkcje i stałe",
+  "uk": "Підтримує + − × ÷ ^ % !, функції та сталі"
  },
  "Swap": {
   "de": "Tauschen",
@@ -13622,7 +14564,13 @@
   "fr": "Échanger",
   "pt": "Trocar",
   "ja": "入れ替え",
-  "ko": "바꾸기"
+  "ko": "바꾸기",
+  "nl": "Wisselen",
+  "sv": "Byt",
+  "no": "Bytt",
+  "da": "Byt",
+  "pl": "Zamień",
+  "uk": "Поміняти"
  },
  "Swap languages": {
   "de": "Sprachen tauschen",
@@ -13649,7 +14597,13 @@
   "fr": "Échanger ⇅",
   "pt": "Trocar ⇅",
   "ja": "入れ替え ⇅",
-  "ko": "바꾸기 ⇅"
+  "ko": "바꾸기 ⇅",
+  "nl": "Wisselen ⇅",
+  "sv": "Byt ⇅",
+  "no": "Bytt ⇅",
+  "da": "Byt ⇅",
+  "pl": "Zamień ⇅",
+  "uk": "Поміняти ⇅"
  },
  "Swift / Android": {
   "de": "Swift / Android",
@@ -13784,7 +14738,13 @@
   "fr": "Tabulation",
   "pt": "Tabulação",
   "ja": "タブ",
-  "ko": "탭"
+  "ko": "탭",
+  "nl": "Tab",
+  "sv": "Tabb",
+  "no": "Tabulator",
+  "da": "Tabulator",
+  "pl": "Tabulator",
+  "uk": "Табуляція"
  },
  "Tag": {
   "de": "Tag",
@@ -13916,7 +14876,13 @@
   "fr": "Chaîne de test",
   "pt": "Texto de teste",
   "ja": "テスト文字列",
-  "ko": "시험 문자열"
+  "ko": "시험 문자열",
+  "nl": "Testtekst",
+  "sv": "Testtext",
+  "no": "Testtekst",
+  "da": "Testtekst",
+  "pl": "Tekst próbny",
+  "uk": "Пробний рядок"
  },
  "Text": {
   "de": "Text",
@@ -13925,7 +14891,13 @@
   "fr": "Texte",
   "pt": "Texto",
   "ja": "テキスト",
-  "ko": "텍스트"
+  "ko": "텍스트",
+  "nl": "Tekst",
+  "sv": "Text",
+  "no": "Tekst",
+  "da": "Tekst",
+  "pl": "Tekst",
+  "uk": "Текст"
  },
  "Text banner": {
   "de": "Textbanner",
@@ -13961,7 +14933,13 @@
   "fr": "Texte à chiffrer",
   "pt": "Texto a criptografar",
   "ja": "暗号化するテキスト",
-  "ko": "암호화할 글"
+  "ko": "암호화할 글",
+  "nl": "Tekst om te versleutelen",
+  "sv": "Text att kryptera",
+  "no": "Tekst som skal krypteres",
+  "da": "Tekst der skal krypteres",
+  "pl": "Tekst do zaszyfrowania",
+  "uk": "Текст для шифрування"
  },
  "That file is not a JPEG": {
   "de": "Diese Datei ist kein JPEG",
@@ -14006,7 +14984,13 @@
   "fr": "L'analyseur YAML couvre le sous-ensemble courant de configuration : cartes imbriquées, listes et scalaires.",
   "pt": "O leitor de YAML cobre o subconjunto comum de configuração: mapas aninhados, listas e escalares.",
   "ja": "YAML の解析は設定でよく使う範囲に対応します。入れ子のマップ、リスト、スカラーです。",
-  "ko": "YAML 해석기는 설정에서 흔히 쓰는 범위를 다룹니다. 중첩된 맵, 목록, 스칼라입니다."
+  "ko": "YAML 해석기는 설정에서 흔히 쓰는 범위를 다룹니다. 중첩된 맵, 목록, 스칼라입니다.",
+  "nl": "De YAML-lezer dekt het gangbare configuratiedeel: geneste mappen, lijsten en scalairen.",
+  "sv": "YAML-tolken täcker den vanliga konfigurationsdelen: nästlade kartor, listor och skalärer.",
+  "no": "YAML-tolken dekker den vanlige konfigurasjonsdelen: nøstede kart, lister og skalarer.",
+  "da": "YAML-tolken dækker den almindelige konfigurationsdel: indlejrede kort, lister og skalarer.",
+  "pl": "Czytnik YAML obejmuje typowy podzbiór konfiguracji: zagnieżdżone mapy, listy i wartości proste.",
+  "uk": "Читач YAML охоплює звичайну частину налаштувань: вкладені відображення, списки й скаляри."
  },
  "The address must start with ws:// or wss://": {
   "de": "Die Adresse muss mit ws:// oder wss:// beginnen",
@@ -14042,7 +15026,13 @@
   "fr": "Le même montant dans d'autres devises",
   "pt": "O mesmo valor em outras moedas",
   "ja": "同じ金額を他の通貨で",
-  "ko": "같은 금액을 다른 통화로"
+  "ko": "같은 금액을 다른 통화로",
+  "nl": "Hetzelfde bedrag in andere valuta",
+  "sv": "Samma belopp i andra valutor",
+  "no": "Samme beløp i andre valutaer",
+  "da": "Samme beløb i andre valutaer",
+  "pl": "Ta sama kwota w innych walutach",
+  "uk": "Та сама сума в інших валютах"
  },
  "The solver could not settle. Check for shorted sources.": {
   "de": "Der Löser konnte sich nicht einpendeln. Auf kurzgeschlossene Quellen prüfen.",
@@ -14164,7 +15154,13 @@
   "fr": "Heure",
   "pt": "Hora",
   "ja": "時刻",
-  "ko": "시간"
+  "ko": "시간",
+  "nl": "Tijd",
+  "sv": "Tid",
+  "no": "Tid",
+  "da": "Tid",
+  "pl": "Czas",
+  "uk": "Час"
  },
  "Time base": {
   "de": "Zeitbasis",
@@ -14236,7 +15232,13 @@
   "fr": "Teintes et nuances",
   "pt": "Tons claros e escuros",
   "ja": "明色と暗色",
-  "ko": "밝은 색과 어두운 색"
+  "ko": "밝은 색과 어두운 색",
+  "nl": "Tinten en schaduwen",
+  "sv": "Ljusare och mörkare toner",
+  "no": "Lysere og mørkere toner",
+  "da": "Lysere og mørkere toner",
+  "pl": "Rozjaśnienia i przyciemnienia",
+  "uk": "Світліші й темніші відтінки"
  },
  "Title": {
   "de": "Titel",
@@ -14254,7 +15256,13 @@
   "fr": "Casse de titre",
   "pt": "Iniciais Maiúsculas",
   "ja": "各語頭を大文字",
-  "ko": "단어마다 첫 글자 대문자"
+  "ko": "단어마다 첫 글자 대문자",
+  "nl": "Titelstijl",
+  "sv": "Titelform",
+  "no": "Titteform",
+  "da": "Titelform",
+  "pl": "Jak W Tytule",
+  "uk": "Як У Заголовку"
  },
  "Titles from filenames": {
   "de": "Titel aus Dateinamen",
@@ -14272,7 +15280,13 @@
   "fr": "Vers",
   "pt": "Para",
   "ja": "変換先",
-  "ko": "대상"
+  "ko": "대상",
+  "nl": "Naar",
+  "sv": "Till",
+  "no": "Til",
+  "da": "Til",
+  "pl": "Na",
+  "uk": "У"
  },
  "To bullets": {
   "de": "In Stichpunkte",
@@ -14674,7 +15688,13 @@
   "fr": "MAJUSCULES",
   "pt": "CAIXA ALTA",
   "ja": "大文字",
-  "ko": "대문자"
+  "ko": "대문자",
+  "nl": "HOOFDLETTERS",
+  "sv": "VERSALER",
+  "no": "STORE BOKSTAVER",
+  "da": "STORE BOGSTAVER",
+  "pl": "WIELKIE LITERY",
+  "uk": "ВЕЛИКІ ЛІТЕРИ"
  },
  "URL encoded": {
   "de": "URL-kodiert",
@@ -14875,7 +15895,13 @@
   "fr": "Mots-clés en majuscules",
   "pt": "Palavras-chave em maiúsculas",
   "ja": "キーワードを大文字に",
-  "ko": "키워드를 대문자로"
+  "ko": "키워드를 대문자로",
+  "nl": "Sleutelwoorden in hoofdletters",
+  "sv": "Nyckelord med versaler",
+  "no": "Nøkkelord med store bokstaver",
+  "da": "Nøgleord med store bogstaver",
+  "pl": "Słowa kluczowe wielkimi literami",
+  "uk": "Ключові слова великими літерами"
  },
  "Usable hosts": {
   "de": "Nutzbare Hosts",
@@ -14938,7 +15964,13 @@
   "fr": "Nom d'utilisateur",
   "pt": "Nome de usuário",
   "ja": "ユーザー名",
-  "ko": "사용자 이름"
+  "ko": "사용자 이름",
+  "nl": "Gebruikersnaam",
+  "sv": "Användarnamn",
+  "no": "Brukernavn",
+  "da": "Brugernavn",
+  "pl": "Nazwa użytkownika",
+  "uk": "Ім’я користувача"
  },
  "Valid range is 1 to 3999": {
   "de": "Der gültige Bereich ist 1 bis 3999",
@@ -14947,7 +15979,13 @@
   "fr": "La plage valide va de 1 à 3999",
   "pt": "A faixa válida vai de 1 a 3999",
   "ja": "有効な範囲は 1 から 3999 です",
-  "ko": "쓸 수 있는 범위는 1부터 3999까지입니다"
+  "ko": "쓸 수 있는 범위는 1부터 3999까지입니다",
+  "nl": "Het geldige bereik is 1 tot 3999",
+  "sv": "Giltigt intervall är 1 till 3999",
+  "no": "Gyldig område er 1 til 3999",
+  "da": "Gyldigt interval er 1 til 3999",
+  "pl": "Dopuszczalny zakres to 1 do 3999",
+  "uk": "Припустимий діапазон - від 1 до 3999"
  },
  "Validate against schema": {
   "de": "Gegen Schema prüfen",
@@ -15091,7 +16129,13 @@
   "fr": "Rapport WCAG 2.1 face au noir et au blanc",
   "pt": "Razão WCAG 2.1 contra preto e branco",
   "ja": "黒と白に対する WCAG 2.1 のコントラスト比",
-  "ko": "검정과 흰색에 대한 WCAG 2.1 대비율"
+  "ko": "검정과 흰색에 대한 WCAG 2.1 대비율",
+  "nl": "WCAG 2.1-verhouding tegen zwart en wit",
+  "sv": "WCAG 2.1-förhållande mot svart och vitt",
+  "no": "WCAG 2.1-forhold mot svart og hvitt",
+  "da": "WCAG 2.1-forhold mod sort og hvid",
+  "pl": "Współczynnik WCAG 2.1 wobec czerni i bieli",
+  "uk": "Співвідношення WCAG 2.1 щодо чорного й білого"
  },
  "WEP": {
   "de": "WEP",
@@ -15130,7 +16174,13 @@
   "fr": "En attente",
   "pt": "Aguardando",
   "ja": "待機中",
-  "ko": "기다리는 중"
+  "ko": "기다리는 중",
+  "nl": "Wachten",
+  "sv": "Väntar",
+  "no": "Venter",
+  "da": "Venter",
+  "pl": "Czekam",
+  "uk": "Очікування"
  },
  "Waiting for a device.": {
   "de": "Warte auf ein Gerät.",
@@ -15148,7 +16198,13 @@
   "fr": "En attente des en-têtes",
   "pt": "Aguardando os cabeçalhos",
   "ja": "ヘッダを待っています",
-  "ko": "헤더를 기다리는 중"
+  "ko": "헤더를 기다리는 중",
+  "nl": "Wacht op headers",
+  "sv": "Väntar på rubriker",
+  "no": "Venter på headere",
+  "da": "Venter på headere",
+  "pl": "Czekam na nagłówki",
+  "uk": "Очікую заголовки"
  },
  "Wall": {
   "de": "Wand",
@@ -15184,7 +16240,13 @@
   "fr": "Onde",
   "pt": "Onda",
   "ja": "波形",
-  "ko": "파형"
+  "ko": "파형",
+  "nl": "Golf",
+  "sv": "Våg",
+  "no": "Bølge",
+  "da": "Bølge",
+  "pl": "Fala",
+  "uk": "Хвиля"
  },
  "Waveform": {
   "de": "Wellenform",
@@ -15981,7 +17043,13 @@
   "fr": "supprimer",
   "pt": "excluir",
   "ja": "削除",
-  "ko": "지우기"
+  "ko": "지우기",
+  "nl": "wissen",
+  "sv": "radera",
+  "no": "slett",
+  "da": "slet",
+  "pl": "usuń",
+  "uk": "стерти"
  },
  "docker run -p 80:80 nginx": {
   "de": "docker run -p 80:80 nginx",
@@ -16005,7 +17073,13 @@
   "fr": "commande docker run",
   "pt": "comando docker run",
   "ja": "docker run コマンド",
-  "ko": "docker run 명령"
+  "ko": "docker run 명령",
+  "nl": "docker run-opdracht",
+  "sv": "docker run-kommando",
+  "no": "docker run-kommando",
+  "da": "docker run-kommando",
+  "pl": "polecenie docker run",
+  "uk": "команда docker run"
  },
  "docker-compose.yml": {
   "de": "docker-compose.yml",
@@ -16053,7 +17127,13 @@
   "fr": "entrée",
   "pt": "enter",
   "ja": "Enter",
-  "ko": "엔터"
+  "ko": "엔터",
+  "nl": "enter",
+  "sv": "retur",
+  "no": "enter",
+  "da": "enter",
+  "pl": "enter",
+  "uk": "enter"
  },
  "event.code": {
   "de": "event.code",
@@ -16239,7 +17319,13 @@
   "fr": "bonjour le monde",
   "pt": "olá mundo",
   "ja": "hello world",
-  "ko": "hello world"
+  "ko": "hello world",
+  "nl": "hallo wereld",
+  "sv": "hej världen",
+  "no": "hei verden",
+  "da": "hej verden",
+  "pl": "witaj świecie",
+  "uk": "привіт світ"
  },
  "hello world example": {
   "de": "hallo welt beispiel",
@@ -16248,7 +17334,13 @@
   "fr": "exemple bonjour le monde",
   "pt": "exemplo olá mundo",
   "ja": "hello world の例",
-  "ko": "hello world 예시"
+  "ko": "hello world 예시",
+  "nl": "hallo wereld voorbeeld",
+  "sv": "hej världen exempel",
+  "no": "hei verden eksempel",
+  "da": "hej verden eksempel",
+  "pl": "witaj świecie przykład",
+  "uk": "привіт світ приклад"
  },
  "hex": {
   "de": "hex",
@@ -16344,7 +17436,13 @@
   "fr": "clé : valeur",
   "pt": "chave: valor",
   "ja": "キー: 値",
-  "ko": "키: 값"
+  "ko": "키: 값",
+  "nl": "sleutel: waarde",
+  "sv": "nyckel: värde",
+  "no": "nøkkel: verdi",
+  "da": "nøgle: værdi",
+  "pl": "klucz: wartość",
+  "uk": "ключ: значення"
  },
  "lower case": {
   "de": "kleinschreibung",
@@ -16353,7 +17451,13 @@
   "fr": "minuscules",
   "pt": "caixa baixa",
   "ja": "小文字",
-  "ko": "소문자"
+  "ko": "소문자",
+  "nl": "kleine letters",
+  "sv": "gemener",
+  "no": "små bokstaver",
+  "da": "små bogstaver",
+  "pl": "małe litery",
+  "uk": "малі літери"
  },
  "manifest.webmanifest": {
   "de": "manifest.webmanifest",
@@ -16919,67 +18023,133 @@
   "fr": "0 laisse le curseur de qualité décider",
   "pt": "0 deixa o controle de qualidade decidir",
   "ja": "0 にすると品質スライダーに任せます",
-  "ko": "0으로 두면 품질 슬라이더가 결정합니다"
+  "ko": "0으로 두면 품질 슬라이더가 결정합니다",
+  "nl": "0 laat de kwaliteitsschuif beslissen",
+  "sv": "0 låter kvalitetsreglaget bestämma",
+  "no": "0 lar kvalitetsglideren bestemme",
+  "da": "0 lader kvalitetsskyderen bestemme",
+  "pl": "0 zostawia decyzję suwakowi jakości",
+  "uk": "0 лишає рішення повзунку якості"
  },
  "1 column": {
   "fr": "1 colonne",
   "pt": "1 coluna",
   "ja": "1 段",
-  "ko": "1단"
+  "ko": "1단",
+  "nl": "1 kolom",
+  "sv": "1 spalt",
+  "no": "1 spalte",
+  "da": "1 spalte",
+  "pl": "1 kolumna",
+  "uk": "1 стовпець"
  },
  "2 columns": {
   "fr": "2 colonnes",
   "pt": "2 colunas",
   "ja": "2 段",
-  "ko": "2단"
+  "ko": "2단",
+  "nl": "2 kolommen",
+  "sv": "2 spalter",
+  "no": "2 spalter",
+  "da": "2 spalter",
+  "pl": "2 kolumny",
+  "uk": "2 стовпці"
  },
  "3 columns": {
   "fr": "3 colonnes",
   "pt": "3 colunas",
   "ja": "3 段",
-  "ko": "3단"
+  "ko": "3단",
+  "nl": "3 kolommen",
+  "sv": "3 spalter",
+  "no": "3 spalter",
+  "da": "3 spalter",
+  "pl": "3 kolumny",
+  "uk": "3 стовпці"
  },
  "401(k) contribution": {
   "fr": "Cotisation 401(k)",
   "pt": "Contribuição 401(k)",
   "ja": "401(k) 拠出",
-  "ko": "401(k) 납입"
+  "ko": "401(k) 납입",
+  "nl": "401(k)-bijdrage",
+  "sv": "401(k)-avsättning",
+  "no": "401(k)-innskudd",
+  "da": "401(k)-bidrag",
+  "pl": "Składka 401(k)",
+  "uk": "Внесок 401(k)"
  },
  "72 points is an inch": {
   "fr": "72 points font un pouce",
   "pt": "72 pontos equivalem a uma polegada",
   "ja": "72 ポイントが 1 インチ",
-  "ko": "72포인트가 1인치"
+  "ko": "72포인트가 1인치",
+  "nl": "72 punten is een inch",
+  "sv": "72 punkter är en tum",
+  "no": "72 punkter er en tomme",
+  "da": "72 punkter er en tomme",
+  "pl": "72 punkty to cal",
+  "uk": "72 пункти - це дюйм"
  },
  "A .docx that Word and Pages both open": {
   "fr": "Un .docx que Word et Pages ouvrent tous les deux",
   "pt": "Um .docx que tanto o Word quanto o Pages abrem",
   "ja": "Word でも Pages でも開ける .docx",
-  "ko": "Word와 Pages 모두에서 열리는 .docx"
+  "ko": "Word와 Pages 모두에서 열리는 .docx",
+  "nl": "Een .docx die zowel Word als Pages opent",
+  "sv": "En .docx som både Word och Pages öppnar",
+  "no": "En .docx som både Word og Pages åpner",
+  "da": "En .docx, som både Word og Pages åbner",
+  "pl": "Plik .docx, który otworzy i Word, i Pages",
+  "uk": "Файл .docx, який відкриють і Word, і Pages"
  },
  "A JWT needs three dot-separated parts": {
   "fr": "Un JWT demande trois parties séparées par des points",
   "pt": "Um JWT precisa de três partes separadas por pontos",
   "ja": "JWT はドットで区切られた 3 つの部分が必要です",
-  "ko": "JWT는 점으로 구분된 세 부분이 필요합니다"
+  "ko": "JWT는 점으로 구분된 세 부분이 필요합니다",
+  "nl": "Een JWT heeft drie door punten gescheiden delen nodig",
+  "sv": "En JWT behöver tre punktseparerade delar",
+  "no": "En JWT trenger tre punktdelte deler",
+  "da": "En JWT skal have tre punktadskilte dele",
+  "pl": "JWT wymaga trzech części rozdzielonych kropkami",
+  "uk": "JWT потребує трьох частин, розділених крапками"
  },
  "A PDF fetches a reader from a CDN the first time, then the reading happens here too.": {
   "fr": "Un PDF récupère un lecteur depuis un CDN la première fois, ensuite la lecture se fait ici aussi.",
   "pt": "Um PDF busca um leitor em um CDN na primeira vez; depois a leitura também acontece aqui.",
   "ja": "PDF は初回だけ CDN から読み取りモジュールを取得し、読み取り自体はここで行われます。",
-  "ko": "PDF는 처음 한 번만 CDN에서 읽기 모듈을 가져오고, 읽는 작업은 여기에서 이루어집니다."
+  "ko": "PDF는 처음 한 번만 CDN에서 읽기 모듈을 가져오고, 읽는 작업은 여기에서 이루어집니다.",
+  "nl": "Een PDF haalt de eerste keer een lezer op van een CDN, daarna gebeurt het lezen ook hier.",
+  "sv": "En PDF hämtar en läsare från ett CDN första gången, sedan sker läsningen också här.",
+  "no": "En PDF henter en leser fra et CDN første gang, deretter skjer lesingen også her.",
+  "da": "En PDF henter en læser fra et CDN første gang, derefter sker læsningen også her.",
+  "pl": "PDF pobiera czytnik z CDN za pierwszym razem, potem odczyt też odbywa się tutaj.",
+  "uk": "PDF першого разу бере модуль читання з CDN, далі читання теж відбувається тут."
  },
  "A blunder. Something was hanging.": {
   "fr": "Une gaffe. Quelque chose était en prise.",
   "pt": "Um erro grave. Alguma peça estava pendurada.",
   "ja": "大悪手。ただで取れる駒がありました。",
-  "ko": "큰 실수. 그냥 잡히는 기물이 있었습니다."
+  "ko": "큰 실수. 그냥 잡히는 기물이 있었습니다.",
+  "nl": "Een blunder. Er stond iets ongedekt.",
+  "sv": "En blunder. Något stod löst.",
+  "no": "En blunder. Noe sto løst.",
+  "da": "En brøler. Noget stod løst.",
+  "pl": "Gruby błąd. Coś stało bez obrony.",
+  "uk": "Груба помилка. Щось стояло без захисту."
  },
  "A browser only hands over services that were asked for by name. Add the uuids your device uses, one per line, before choosing it.": {
   "fr": "Un navigateur ne remet que les services demandés par leur nom. Ajoutez les uuid de votre appareil, un par ligne, avant de le choisir.",
   "pt": "Um navegador só entrega os serviços que foram pedidos pelo nome. Adicione os uuid que seu dispositivo usa, um por linha, antes de escolhê-lo.",
   "ja": "ブラウザは名前で要求されたサービスしか渡しません。デバイスを選ぶ前に、そのデバイスが使う uuid を 1 行に 1 つずつ追加してください。",
-  "ko": "브라우저는 이름으로 요청한 서비스만 넘겨줍니다. 기기를 고르기 전에 그 기기가 쓰는 uuid를 한 줄에 하나씩 추가하세요."
+  "ko": "브라우저는 이름으로 요청한 서비스만 넘겨줍니다. 기기를 고르기 전에 그 기기가 쓰는 uuid를 한 줄에 하나씩 추가하세요.",
+  "nl": "Een browser geeft alleen diensten door die bij naam zijn gevraagd. Voeg de uuids toe die je apparaat gebruikt, één per regel, voordat je het kiest.",
+  "sv": "En webbläsare lämnar bara ut tjänster som efterfrågats vid namn. Lägg till de uuid din enhet använder, en per rad, innan du väljer den.",
+  "no": "En nettleser gir bare fra seg tjenester som er bedt om ved navn. Legg til uuid-ene enheten din bruker, én per linje, før du velger den.",
+  "da": "En browser udleverer kun tjenester, der er bedt om ved navn. Tilføj de uuid'er, din enhed bruger, én pr. linje, før du vælger den.",
+  "pl": "Przeglądarka udostępnia tylko te usługi, o które poproszono po nazwie. Dodaj uuid, których używa twoje urządzenie, po jednym w wierszu, zanim je wybierzesz.",
+  "uk": "Браузер видає лише ті служби, які запитали за назвою. Додайте uuid, якими користується ваш пристрій, по одному в рядку, перш ніж обрати його."
  },
  "A curved mirror focuses": {
   "fr": "Un miroir courbe fait converger",
@@ -18665,7 +19835,13 @@
   "fr": "L'en-tête ou la charge utile n'est pas du JSON base64url valide",
   "pt": "O cabeçalho ou o payload não é JSON base64url válido",
   "ja": "ヘッダーかペイロードが正しい base64url の JSON ではありません",
-  "ko": "헤더나 페이로드가 올바른 base64url JSON이 아닙니다"
+  "ko": "헤더나 페이로드가 올바른 base64url JSON이 아닙니다",
+  "nl": "De header of de payload is geen geldige base64url-JSON",
+  "sv": "Rubriken eller nyttolasten är inte giltig base64url-JSON",
+  "no": "Headeren eller nyttelasten er ikke gyldig base64url-JSON",
+  "da": "Headeren eller nyttelasten er ikke gyldig base64url-JSON",
+  "pl": "Nagłówek lub ładunek nie jest poprawnym JSON-em base64url",
+  "uk": "Заголовок або корисне навантаження не є коректним JSON у base64url"
  },
  "Heading 1": {
   "fr": "Titre 1",
@@ -18743,7 +19919,13 @@
   "fr": "Surligner les changements de mots",
   "pt": "Realçar as mudanças de palavra",
   "ja": "語の変化を強調する",
-  "ko": "낱말이 바뀐 곳 강조"
+  "ko": "낱말이 바뀐 곳 강조",
+  "nl": "Woordwijzigingen markeren",
+  "sv": "Markera ordändringar",
+  "no": "Marker ordendringer",
+  "da": "Markér ordændringer",
+  "pl": "Zaznacz zmiany w słowach",
+  "uk": "Позначати зміни в словах"
  },
  "Hold Alt to look up only this type": {
   "fr": "Maintenez Alt pour n'interroger que ce type",
@@ -18827,13 +20009,25 @@
   "fr": "Ignorer la casse",
   "pt": "Ignorar maiúsculas e minúsculas",
   "ja": "大文字小文字を無視",
-  "ko": "대소문자 무시"
+  "ko": "대소문자 무시",
+  "nl": "Hoofdletters negeren",
+  "sv": "Strunta i skiftläge",
+  "no": "Se bort fra store og små bokstaver",
+  "da": "Se bort fra store og små bogstaver",
+  "pl": "Pomijaj wielkość liter",
+  "uk": "Не зважати на регістр"
  },
  "Ignore trailing whitespace": {
   "fr": "Ignorer les espaces en fin de ligne",
   "pt": "Ignorar espaços no fim da linha",
   "ja": "行末の空白を無視",
-  "ko": "줄 끝 공백 무시"
+  "ko": "줄 끝 공백 무시",
+  "nl": "Spaties aan het regeleinde negeren",
+  "sv": "Strunta i blanksteg sist på raden",
+  "no": "Se bort fra mellomrom sist på linjen",
+  "da": "Se bort fra mellemrum sidst på linjen",
+  "pl": "Pomijaj spacje na końcu wiersza",
+  "uk": "Не зважати на пробіли в кінці рядка"
  },
  "Ignored": {
   "fr": "Ignoré",
@@ -19697,7 +20891,13 @@
   "fr": "Pas encore valide",
   "pt": "Ainda não válido",
   "ja": "まだ有効ではありません",
-  "ko": "아직 유효하지 않음"
+  "ko": "아직 유효하지 않음",
+  "nl": "Nog niet geldig",
+  "sv": "Inte giltigt ännu",
+  "no": "Ikke gyldig ennå",
+  "da": "Endnu ikke gyldig",
+  "pl": "Jeszcze nieważny",
+  "uk": "Ще не чинний"
  },
  "Note {number} added at the end": {
   "fr": "Note {number} ajoutée à la fin",
@@ -20015,13 +21215,25 @@
   "fr": "Collez le texte modifié",
   "pt": "Cole o texto alterado",
   "ja": "変更後の文章を貼り付け",
-  "ko": "바뀐 글을 붙여넣으세요"
+  "ko": "바뀐 글을 붙여넣으세요",
+  "nl": "Plak de gewijzigde tekst",
+  "sv": "Klistra in den ändrade texten",
+  "no": "Lim inn den endrede teksten",
+  "da": "Indsæt den ændrede tekst",
+  "pl": "Wklej zmieniony tekst",
+  "uk": "Вставте змінений текст"
  },
  "Paste the original text": {
   "fr": "Collez le texte d'origine",
   "pt": "Cole o texto original",
   "ja": "元の文章を貼り付け",
-  "ko": "원래 글을 붙여넣으세요"
+  "ko": "원래 글을 붙여넣으세요",
+  "nl": "Plak de oorspronkelijke tekst",
+  "sv": "Klistra in ursprungstexten",
+  "no": "Lim inn den opprinnelige teksten",
+  "da": "Indsæt den oprindelige tekst",
+  "pl": "Wklej pierwotny tekst",
+  "uk": "Вставте початковий текст"
  },
  "Path": {
   "fr": "Chemin",
@@ -20891,7 +22103,13 @@
   "fr": "Signature non vérifiée",
   "pt": "Assinatura não verificada",
   "ja": "署名は検証されていません",
-  "ko": "서명을 확인하지 않았습니다"
+  "ko": "서명을 확인하지 않았습니다",
+  "nl": "Handtekening niet gecontroleerd",
+  "sv": "Signaturen är inte kontrollerad",
+  "no": "Signaturen er ikke kontrollert",
+  "da": "Signaturen er ikke kontrolleret",
+  "pl": "Podpis niesprawdzony",
+  "uk": "Підпис не перевірено"
  },
  "Single": {
   "fr": "Célibataire",

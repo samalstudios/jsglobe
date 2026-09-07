@@ -218,20 +218,26 @@ export default {
   },
   nl: {
     'device-info.hardware': 'Hardware',
+    'device-info.contrast': 'Contrast',
   },
   sv: {
     'device-info.hardware': 'Hardware',
+    'device-info.contrast': 'Kontrast',
   },
   no: {
     'device-info.hardware': 'Hardware',
+    'device-info.contrast': 'Kontrast',
   },
   da: {
     'device-info.hardware': 'Hardware',
+    'device-info.contrast': 'Kontrast',
   },
   pl: {
     'device-info.hardware': 'Hardware',
+    'device-info.contrast': 'Kontrast',
   },
   uk: {
     'device-info.hardware': 'Hardware',
+    'device-info.contrast': 'Контраст',
   },
 };

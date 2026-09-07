@@ -176,20 +176,26 @@ export default {
   },
   nl: {
     'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+    'favicon-generator.copyHtml': 'HTML kopiëren',
   },
   sv: {
     'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+    'favicon-generator.copyHtml': 'Kopiera HTML',
   },
   no: {
     'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+    'favicon-generator.copyHtml': 'Kopier HTML',
   },
   da: {
     'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+    'favicon-generator.copyHtml': 'Kopiér HTML',
   },
   pl: {
     'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+    'favicon-generator.copyHtml': 'Kopiuj HTML',
   },
   uk: {
     'favicon-generator.manifestWebmanifest': 'manifest.webmanifest',
+    'favicon-generator.copyHtml': 'Копіювати HTML',
   },
 };

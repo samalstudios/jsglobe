@@ -105,26 +105,38 @@ export default {
     'uuid.nil': '없음',
   },
   nl: {
+    'action.copy': 'Kopiëren',
+    'uuid-generator.output': 'Uitvoer',
     'uuid-generator.uuidV4': 'UUID v4',
     'uuid-generator.uuidV7': 'UUID v7',
   },
   sv: {
+    'action.copy': 'Kopiera',
+    'uuid-generator.output': 'Utdata',
     'uuid-generator.uuidV4': 'UUID v4',
     'uuid-generator.uuidV7': 'UUID v7',
   },
   no: {
+    'action.copy': 'Kopier',
+    'uuid-generator.output': 'Utdata',
     'uuid-generator.uuidV4': 'UUID v4',
     'uuid-generator.uuidV7': 'UUID v7',
   },
   da: {
+    'action.copy': 'Kopiér',
+    'uuid-generator.output': 'Uddata',
     'uuid-generator.uuidV4': 'UUID v4',
     'uuid-generator.uuidV7': 'UUID v7',
   },
   pl: {
+    'action.copy': 'Kopiuj',
+    'uuid-generator.output': 'Wyjście',
     'uuid-generator.uuidV4': 'UUID v4',
     'uuid-generator.uuidV7': 'UUID v7',
   },
   uk: {
+    'action.copy': 'Копіювати',
+    'uuid-generator.output': 'Вихід',
     'uuid-generator.uuidV4': 'UUID v4',
     'uuid-generator.uuidV7': 'UUID v7',
   },

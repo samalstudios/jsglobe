@@ -91,21 +91,39 @@ export default {
     'api-spec.everythingTheLinterChecksLooks': '린터가 살피는 범위에서는 문제가 없습니다.',
   },
   nl: {
-
+    'api-spec.waiting': 'Wachten',
+    'api-spec.sample': 'Voorbeeld',
+    'api-spec.copy': 'Kopiëren',
+    'api-spec.download': 'Downloaden',
   },
   sv: {
-
+    'api-spec.waiting': 'Väntar',
+    'api-spec.sample': 'Exempel',
+    'api-spec.copy': 'Kopiera',
+    'api-spec.download': 'Ladda ner',
   },
   no: {
-
+    'api-spec.waiting': 'Venter',
+    'api-spec.sample': 'Eksempel',
+    'api-spec.copy': 'Kopier',
+    'api-spec.download': 'Last ned',
   },
   da: {
-
+    'api-spec.waiting': 'Venter',
+    'api-spec.sample': 'Eksempel',
+    'api-spec.copy': 'Kopiér',
+    'api-spec.download': 'Hent',
   },
   pl: {
-
+    'api-spec.waiting': 'Czekam',
+    'api-spec.sample': 'Przykład',
+    'api-spec.copy': 'Kopiuj',
+    'api-spec.download': 'Pobierz',
   },
   uk: {
-
+    'api-spec.waiting': 'Очікування',
+    'api-spec.sample': 'Зразок',
+    'api-spec.copy': 'Копіювати',
+    'api-spec.download': 'Завантажити',
   },
 };

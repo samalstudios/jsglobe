@@ -323,20 +323,26 @@ export default {
   },
   nl: {
     'mirror.zoom': 'Zoom',
+    'mirror.contrast': 'Contrast',
   },
   sv: {
     'mirror.zoom': 'Zoom',
+    'mirror.contrast': 'Kontrast',
   },
   no: {
     'mirror.zoom': 'Zoom',
+    'mirror.contrast': 'Kontrast',
   },
   da: {
     'mirror.zoom': 'Zoom',
+    'mirror.contrast': 'Kontrast',
   },
   pl: {
     'mirror.zoom': 'Zoom',
+    'mirror.contrast': 'Kontrast',
   },
   uk: {
     'mirror.zoom': 'Zoom',
+    'mirror.contrast': 'Контраст',
   },
 };

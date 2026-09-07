@@ -112,21 +112,27 @@ export default {
     'url-parser.segments': '세그먼트',
   },
   nl: {
-
+    'url-parser.username': 'Gebruikersnaam',
+    'url-parser.password': 'Wachtwoord',
   },
   sv: {
-
+    'url-parser.username': 'Användarnamn',
+    'url-parser.password': 'Lösenord',
   },
   no: {
-
+    'url-parser.username': 'Brukernavn',
+    'url-parser.password': 'Passord',
   },
   da: {
-
+    'url-parser.username': 'Brugernavn',
+    'url-parser.password': 'Adgangskode',
   },
   pl: {
-
+    'url-parser.username': 'Nazwa użytkownika',
+    'url-parser.password': 'Hasło',
   },
   uk: {
-
+    'url-parser.username': 'Ім’я користувача',
+    'url-parser.password': 'Пароль',
   },
 };

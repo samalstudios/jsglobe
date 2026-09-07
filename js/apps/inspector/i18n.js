@@ -406,21 +406,27 @@ export default {
     'inspector.widgetBlurb': '자기 문서에 질문할 수 있습니다.',
   },
   nl: {
-
+    'inspector.pdfNote': 'Een PDF haalt de eerste keer een lezer op van een CDN, daarna gebeurt het lezen ook hier.',
+    'inspector.copy': 'Kopiëren',
   },
   sv: {
-
+    'inspector.pdfNote': 'En PDF hämtar en läsare från ett CDN första gången, sedan sker läsningen också här.',
+    'inspector.copy': 'Kopiera',
   },
   no: {
-
+    'inspector.pdfNote': 'En PDF henter en leser fra et CDN første gang, deretter skjer lesingen også her.',
+    'inspector.copy': 'Kopier',
   },
   da: {
-
+    'inspector.pdfNote': 'En PDF henter en læser fra et CDN første gang, derefter sker læsningen også her.',
+    'inspector.copy': 'Kopiér',
   },
   pl: {
-
+    'inspector.pdfNote': 'PDF pobiera czytnik z CDN za pierwszym razem, potem odczyt też odbywa się tutaj.',
+    'inspector.copy': 'Kopiuj',
   },
   uk: {
-
+    'inspector.pdfNote': 'PDF першого разу бере модуль читання з CDN, далі читання теж відбувається тут.',
+    'inspector.copy': 'Копіювати',
   },
 };

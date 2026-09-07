@@ -91,21 +91,39 @@ export default {
     'game-dino.play': '재생',
   },
   nl: {
-
+    'game-dino.score': 'Score',
+    'game-dino.best': 'Beste',
+    'game-dino.restart': 'Opnieuw beginnen',
+    'game-dino.play': 'Afspelen',
   },
   sv: {
-
+    'game-dino.score': 'Poäng',
+    'game-dino.best': 'Bästa',
+    'game-dino.restart': 'Börja om',
+    'game-dino.play': 'Spela',
   },
   no: {
-
+    'game-dino.score': 'Poeng',
+    'game-dino.best': 'Beste',
+    'game-dino.restart': 'Start på nytt',
+    'game-dino.play': 'Spill',
   },
   da: {
-
+    'game-dino.score': 'Point',
+    'game-dino.best': 'Bedste',
+    'game-dino.restart': 'Start forfra',
+    'game-dino.play': 'Afspil',
   },
   pl: {
-
+    'game-dino.score': 'Wynik',
+    'game-dino.best': 'Najlepszy',
+    'game-dino.restart': 'Zacznij od nowa',
+    'game-dino.play': 'Odtwórz',
   },
   uk: {
-
+    'game-dino.score': 'Рахунок',
+    'game-dino.best': 'Найкращий',
+    'game-dino.restart': 'Почати заново',
+    'game-dino.play': 'Відтворити',
   },
 };

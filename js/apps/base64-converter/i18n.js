@@ -105,21 +105,27 @@ export default {
     'base64.copyNoPrefix': '데이터 URI 접두사 없이 복사',
   },
   nl: {
-
+    'common.text': 'Tekst',
+    'base64.swap': 'Wisselen ⇅',
   },
   sv: {
-
+    'common.text': 'Text',
+    'base64.swap': 'Byt ⇅',
   },
   no: {
-
+    'common.text': 'Tekst',
+    'base64.swap': 'Bytt ⇅',
   },
   da: {
-
+    'common.text': 'Tekst',
+    'base64.swap': 'Byt ⇅',
   },
   pl: {
-
+    'common.text': 'Tekst',
+    'base64.swap': 'Zamień ⇅',
   },
   uk: {
-
+    'common.text': 'Текст',
+    'base64.swap': 'Поміняти ⇅',
   },
 };

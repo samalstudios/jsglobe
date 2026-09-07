@@ -511,21 +511,33 @@ export default {
     'poster-studio.nothingSavedYet': '아직 저장한 것이 없습니다.',
   },
   nl: {
-
+    'poster-studio.delete': 'Verwijderen',
+    'poster-studio.text': 'Tekst',
+    'poster-studio.medium': 'Gemiddeld',
   },
   sv: {
-
+    'poster-studio.delete': 'Ta bort',
+    'poster-studio.text': 'Text',
+    'poster-studio.medium': 'Medel',
   },
   no: {
-
+    'poster-studio.delete': 'Slett',
+    'poster-studio.text': 'Tekst',
+    'poster-studio.medium': 'Middels',
   },
   da: {
-
+    'poster-studio.delete': 'Slet',
+    'poster-studio.text': 'Tekst',
+    'poster-studio.medium': 'Mellem',
   },
   pl: {
-
+    'poster-studio.delete': 'Usuń',
+    'poster-studio.text': 'Tekst',
+    'poster-studio.medium': 'Średni',
   },
   uk: {
-
+    'poster-studio.delete': 'Вилучити',
+    'poster-studio.text': 'Текст',
+    'poster-studio.medium': 'Середній',
   },
 };

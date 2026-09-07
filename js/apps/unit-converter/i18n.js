@@ -35,21 +35,33 @@ export default {
     'unit-converter.allUnits': '모든 단위',
   },
   nl: {
-
+    'unit-converter.from': 'Van',
+    'unit-converter.to': 'Naar',
+    'unit-converter.allUnits': 'Alle eenheden',
   },
   sv: {
-
+    'unit-converter.from': 'Från',
+    'unit-converter.to': 'Till',
+    'unit-converter.allUnits': 'Alla enheter',
   },
   no: {
-
+    'unit-converter.from': 'Fra',
+    'unit-converter.to': 'Til',
+    'unit-converter.allUnits': 'Alle enheter',
   },
   da: {
-
+    'unit-converter.from': 'Fra',
+    'unit-converter.to': 'Til',
+    'unit-converter.allUnits': 'Alle enheder',
   },
   pl: {
-
+    'unit-converter.from': 'Z',
+    'unit-converter.to': 'Na',
+    'unit-converter.allUnits': 'Wszystkie jednostki',
   },
   uk: {
-
+    'unit-converter.from': 'З',
+    'unit-converter.to': 'У',
+    'unit-converter.allUnits': 'Усі одиниці',
   },
 };

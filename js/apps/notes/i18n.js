@@ -63,21 +63,57 @@ export default {
     'notes.createANoteToGet': '메모를 만들어 시작하세요.',
   },
   nl: {
-
+    'notes.newNote': 'Nieuwe notitie',
+    'notes.noNotesYet': 'Nog geen notities',
+    'notes.export': 'Exporteren',
+    'notes.delete': 'Verwijderen',
+    'notes.startTyping': 'Begin met typen...',
+    'notes.nothingSelected': 'Niets geselecteerd',
+    'notes.createANoteToGet': 'Maak een notitie om te beginnen.',
   },
   sv: {
-
+    'notes.newNote': 'Ny anteckning',
+    'notes.noNotesYet': 'Inga anteckningar än',
+    'notes.export': 'Exportera',
+    'notes.delete': 'Ta bort',
+    'notes.startTyping': 'Börja skriva...',
+    'notes.nothingSelected': 'Inget valt',
+    'notes.createANoteToGet': 'Skapa en anteckning för att komma igång.',
   },
   no: {
-
+    'notes.newNote': 'Nytt notat',
+    'notes.noNotesYet': 'Ingen notater ennå',
+    'notes.export': 'Eksporter',
+    'notes.delete': 'Slett',
+    'notes.startTyping': 'Begynn å skrive...',
+    'notes.nothingSelected': 'Ingenting valgt',
+    'notes.createANoteToGet': 'Lag et notat for å komme i gang.',
   },
   da: {
-
+    'notes.newNote': 'Ny note',
+    'notes.noNotesYet': 'Ingen noter endnu',
+    'notes.export': 'Eksportér',
+    'notes.delete': 'Slet',
+    'notes.startTyping': 'Begynd at skrive...',
+    'notes.nothingSelected': 'Intet valgt',
+    'notes.createANoteToGet': 'Opret en note for at komme i gang.',
   },
   pl: {
-
+    'notes.newNote': 'Nowa notatka',
+    'notes.noNotesYet': 'Jeszcze brak notatek',
+    'notes.export': 'Eksportuj',
+    'notes.delete': 'Usuń',
+    'notes.startTyping': 'Zacznij pisać...',
+    'notes.nothingSelected': 'Nic nie wybrano',
+    'notes.createANoteToGet': 'Utwórz notatkę, aby zacząć.',
   },
   uk: {
-
+    'notes.newNote': 'Нова нотатка',
+    'notes.noNotesYet': 'Нотаток ще немає',
+    'notes.export': 'Експорт',
+    'notes.delete': 'Вилучити',
+    'notes.startTyping': 'Почніть набирати...',
+    'notes.nothingSelected': 'Нічого не вибрано',
+    'notes.createANoteToGet': 'Створіть нотатку, щоб почати.',
   },
 };

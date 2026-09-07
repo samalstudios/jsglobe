@@ -175,21 +175,27 @@ export default {
     'gitignore-generator.widgetBlurb': '쓰는 도구에서 .gitignore를 만듭니다.',
   },
   nl: {
-
+    'gitignore-generator.copy': 'Kopiëren',
+    'gitignore-generator.download': 'Downloaden',
   },
   sv: {
-
+    'gitignore-generator.copy': 'Kopiera',
+    'gitignore-generator.download': 'Ladda ner',
   },
   no: {
-
+    'gitignore-generator.copy': 'Kopier',
+    'gitignore-generator.download': 'Last ned',
   },
   da: {
-
+    'gitignore-generator.copy': 'Kopiér',
+    'gitignore-generator.download': 'Hent',
   },
   pl: {
-
+    'gitignore-generator.copy': 'Kopiuj',
+    'gitignore-generator.download': 'Pobierz',
   },
   uk: {
-
+    'gitignore-generator.copy': 'Копіювати',
+    'gitignore-generator.download': 'Завантажити',
   },
 };

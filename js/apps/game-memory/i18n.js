@@ -49,21 +49,45 @@ export default {
     'game-memory.bestMoves': '최선의 수',
   },
   nl: {
-
+    'game-memory.newGame': 'Nieuw spel',
+    'game-memory.moves': 'Zetten',
+    'game-memory.pairs': 'Paren',
+    'game-memory.time': 'Tijd',
+    'game-memory.bestMoves': 'Beste zetten',
   },
   sv: {
-
+    'game-memory.newGame': 'Nytt spel',
+    'game-memory.moves': 'Drag',
+    'game-memory.pairs': 'Par',
+    'game-memory.time': 'Tid',
+    'game-memory.bestMoves': 'Bästa drag',
   },
   no: {
-
+    'game-memory.newGame': 'Nytt spill',
+    'game-memory.moves': 'Trekk',
+    'game-memory.pairs': 'Par',
+    'game-memory.time': 'Tid',
+    'game-memory.bestMoves': 'Beste trekk',
   },
   da: {
-
+    'game-memory.newGame': 'Nyt spil',
+    'game-memory.moves': 'Træk',
+    'game-memory.pairs': 'Par',
+    'game-memory.time': 'Tid',
+    'game-memory.bestMoves': 'Bedste træk',
   },
   pl: {
-
+    'game-memory.newGame': 'Nowa gra',
+    'game-memory.moves': 'Ruchy',
+    'game-memory.pairs': 'Pary',
+    'game-memory.time': 'Czas',
+    'game-memory.bestMoves': 'Najlepsze ruchy',
   },
   uk: {
-
+    'game-memory.newGame': 'Нова гра',
+    'game-memory.moves': 'Ходи',
+    'game-memory.pairs': 'Пари',
+    'game-memory.time': 'Час',
+    'game-memory.bestMoves': 'Найкращі ходи',
   },
 };

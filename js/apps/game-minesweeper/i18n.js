@@ -42,21 +42,39 @@ export default {
     'game-minesweeper.newGame': '새 게임',
   },
   nl: {
-
+    'game-minesweeper.easy': 'Makkelijk',
+    'game-minesweeper.medium': 'Gemiddeld',
+    'game-minesweeper.hard': 'Moeilijk',
+    'game-minesweeper.newGame': 'Nieuw spel',
   },
   sv: {
-
+    'game-minesweeper.easy': 'Lätt',
+    'game-minesweeper.medium': 'Medel',
+    'game-minesweeper.hard': 'Svår',
+    'game-minesweeper.newGame': 'Nytt spel',
   },
   no: {
-
+    'game-minesweeper.easy': 'Lett',
+    'game-minesweeper.medium': 'Middels',
+    'game-minesweeper.hard': 'Vanskelig',
+    'game-minesweeper.newGame': 'Nytt spill',
   },
   da: {
-
+    'game-minesweeper.easy': 'Let',
+    'game-minesweeper.medium': 'Mellem',
+    'game-minesweeper.hard': 'Svær',
+    'game-minesweeper.newGame': 'Nyt spil',
   },
   pl: {
-
+    'game-minesweeper.easy': 'Łatwy',
+    'game-minesweeper.medium': 'Średni',
+    'game-minesweeper.hard': 'Trudny',
+    'game-minesweeper.newGame': 'Nowa gra',
   },
   uk: {
-
+    'game-minesweeper.easy': 'Легкий',
+    'game-minesweeper.medium': 'Середній',
+    'game-minesweeper.hard': 'Складний',
+    'game-minesweeper.newGame': 'Нова гра',
   },
 };

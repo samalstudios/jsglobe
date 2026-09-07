@@ -42,21 +42,39 @@ export default {
     'roman-numerals.validRangeIs1To': '쓸 수 있는 범위는 1부터 3999까지입니다',
   },
   nl: {
-
+    'roman-numerals.numberRoman': 'Getal → Romeins',
+    'roman-numerals.romanNumber': 'Romeins → getal',
+    'roman-numerals.reference': 'Naslag',
+    'roman-numerals.validRangeIs1To': 'Het geldige bereik is 1 tot 3999',
   },
   sv: {
-
+    'roman-numerals.numberRoman': 'Tal → romerskt',
+    'roman-numerals.romanNumber': 'Romerskt → tal',
+    'roman-numerals.reference': 'Referens',
+    'roman-numerals.validRangeIs1To': 'Giltigt intervall är 1 till 3999',
   },
   no: {
-
+    'roman-numerals.numberRoman': 'Tall → romertall',
+    'roman-numerals.romanNumber': 'Romertall → tall',
+    'roman-numerals.reference': 'Referanse',
+    'roman-numerals.validRangeIs1To': 'Gyldig område er 1 til 3999',
   },
   da: {
-
+    'roman-numerals.numberRoman': 'Tal → romertal',
+    'roman-numerals.romanNumber': 'Romertal → tal',
+    'roman-numerals.reference': 'Reference',
+    'roman-numerals.validRangeIs1To': 'Gyldigt interval er 1 til 3999',
   },
   pl: {
-
+    'roman-numerals.numberRoman': 'Liczba → rzymska',
+    'roman-numerals.romanNumber': 'Rzymska → liczba',
+    'roman-numerals.reference': 'Odniesienie',
+    'roman-numerals.validRangeIs1To': 'Dopuszczalny zakres to 1 do 3999',
   },
   uk: {
-
+    'roman-numerals.numberRoman': 'Число → римське',
+    'roman-numerals.romanNumber': 'Римське → число',
+    'roman-numerals.reference': 'Довідка',
+    'roman-numerals.validRangeIs1To': 'Припустимий діапазон - від 1 до 3999',
   },
 };

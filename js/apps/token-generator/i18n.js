@@ -154,21 +154,21 @@ export default {
     'token-generator.copyBatch': '묶음 복사',
   },
   nl: {
-
+    'token-generator.copy': 'Kopiëren',
   },
   sv: {
-
+    'token-generator.copy': 'Kopiera',
   },
   no: {
-
+    'token-generator.copy': 'Kopier',
   },
   da: {
-
+    'token-generator.copy': 'Kopiér',
   },
   pl: {
-
+    'token-generator.copy': 'Kopiuj',
   },
   uk: {
-
+    'token-generator.copy': 'Копіювати',
   },
 };

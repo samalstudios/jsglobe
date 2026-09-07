@@ -49,21 +49,45 @@ export default {
     'chmod-calculator.presets': '프리셋',
   },
   nl: {
-
+    'chmod-calculator.permissions': 'Rechten',
+    'chmod-calculator.result': 'Resultaat',
+    'chmod-calculator.command': 'Opdracht',
+    'chmod-calculator.fromOctal': 'Vanuit octaal',
+    'chmod-calculator.presets': 'Voorinstellingen',
   },
   sv: {
-
+    'chmod-calculator.permissions': 'Rättigheter',
+    'chmod-calculator.result': 'Resultat',
+    'chmod-calculator.command': 'Kommando',
+    'chmod-calculator.fromOctal': 'Från oktalt',
+    'chmod-calculator.presets': 'Förval',
   },
   no: {
-
+    'chmod-calculator.permissions': 'Rettigheter',
+    'chmod-calculator.result': 'Resultat',
+    'chmod-calculator.command': 'Kommando',
+    'chmod-calculator.fromOctal': 'Fra oktalt',
+    'chmod-calculator.presets': 'Forhåndsvalg',
   },
   da: {
-
+    'chmod-calculator.permissions': 'Rettigheder',
+    'chmod-calculator.result': 'Resultat',
+    'chmod-calculator.command': 'Kommando',
+    'chmod-calculator.fromOctal': 'Fra oktalt',
+    'chmod-calculator.presets': 'Forvalg',
   },
   pl: {
-
+    'chmod-calculator.permissions': 'Uprawnienia',
+    'chmod-calculator.result': 'Wynik',
+    'chmod-calculator.command': 'Polecenie',
+    'chmod-calculator.fromOctal': 'Z ósemkowego',
+    'chmod-calculator.presets': 'Gotowe ustawienia',
   },
   uk: {
-
+    'chmod-calculator.permissions': 'Права',
+    'chmod-calculator.result': 'Результат',
+    'chmod-calculator.command': 'Команда',
+    'chmod-calculator.fromOctal': 'З вісімкового',
+    'chmod-calculator.presets': 'Заготовки',
   },
 };

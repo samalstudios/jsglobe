@@ -84,21 +84,27 @@ export default {
     'lorem-ipsum.listItems': '목록 항목',
   },
   nl: {
-
+    'lorem-ipsum.output': 'Uitvoer',
+    'lorem-ipsum.copy': 'Kopiëren',
   },
   sv: {
-
+    'lorem-ipsum.output': 'Utdata',
+    'lorem-ipsum.copy': 'Kopiera',
   },
   no: {
-
+    'lorem-ipsum.output': 'Utdata',
+    'lorem-ipsum.copy': 'Kopier',
   },
   da: {
-
+    'lorem-ipsum.output': 'Uddata',
+    'lorem-ipsum.copy': 'Kopiér',
   },
   pl: {
-
+    'lorem-ipsum.output': 'Wyjście',
+    'lorem-ipsum.copy': 'Kopiuj',
   },
   uk: {
-
+    'lorem-ipsum.output': 'Вихід',
+    'lorem-ipsum.copy': 'Копіювати',
   },
 };

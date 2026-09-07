@@ -133,21 +133,27 @@ export default {
     'http-status.widgetBlurb': '모든 상태 코드의 뜻과 쓸 자리.',
   },
   nl: {
-
+    'http-status.copy': 'Kopiëren',
+    'http-status.noMatches': 'Geen overeenkomsten',
   },
   sv: {
-
+    'http-status.copy': 'Kopiera',
+    'http-status.noMatches': 'Inga träffar',
   },
   no: {
-
+    'http-status.copy': 'Kopier',
+    'http-status.noMatches': 'Ingen treff',
   },
   da: {
-
+    'http-status.copy': 'Kopiér',
+    'http-status.noMatches': 'Ingen træf',
   },
   pl: {
-
+    'http-status.copy': 'Kopiuj',
+    'http-status.noMatches': 'Brak dopasowań',
   },
   uk: {
-
+    'http-status.copy': 'Копіювати',
+    'http-status.noMatches': 'Збігів немає',
   },
 };

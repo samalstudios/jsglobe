@@ -274,20 +274,38 @@ export default {
   },
   nl: {
     'mock-data.uuidV4': 'UUID v4',
+    'mock-data.username': 'Gebruikersnaam',
+    'mock-data.copy': 'Kopiëren',
+    'mock-data.download': 'Downloaden',
   },
   sv: {
     'mock-data.uuidV4': 'UUID v4',
+    'mock-data.username': 'Användarnamn',
+    'mock-data.copy': 'Kopiera',
+    'mock-data.download': 'Ladda ner',
   },
   no: {
     'mock-data.uuidV4': 'UUID v4',
+    'mock-data.username': 'Brukernavn',
+    'mock-data.copy': 'Kopier',
+    'mock-data.download': 'Last ned',
   },
   da: {
     'mock-data.uuidV4': 'UUID v4',
+    'mock-data.username': 'Brugernavn',
+    'mock-data.copy': 'Kopiér',
+    'mock-data.download': 'Hent',
   },
   pl: {
     'mock-data.uuidV4': 'UUID v4',
+    'mock-data.username': 'Nazwa użytkownika',
+    'mock-data.copy': 'Kopiuj',
+    'mock-data.download': 'Pobierz',
   },
   uk: {
     'mock-data.uuidV4': 'UUID v4',
+    'mock-data.username': 'Ім’я користувача',
+    'mock-data.copy': 'Копіювати',
+    'mock-data.download': 'Завантажити',
   },
 };

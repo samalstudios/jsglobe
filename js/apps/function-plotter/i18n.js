@@ -112,21 +112,33 @@ export default {
     'function-plotter.noSignChangesInThe': '보이는 범위에 부호가 바뀌는 곳이 없습니다.',
   },
   nl: {
+    'function-plotter.2dCurve': '2D-kromme',
+    'function-plotter.3dSurface': '3D-oppervlak',
     'function-plotter.sinX': 'sin(x)',
   },
   sv: {
+    'function-plotter.2dCurve': '2D-kurva',
+    'function-plotter.3dSurface': '3D-yta',
     'function-plotter.sinX': 'sin(x)',
   },
   no: {
+    'function-plotter.2dCurve': '2D-kurve',
+    'function-plotter.3dSurface': '3D-flate',
     'function-plotter.sinX': 'sin(x)',
   },
   da: {
+    'function-plotter.2dCurve': '2D-kurve',
+    'function-plotter.3dSurface': '3D-flade',
     'function-plotter.sinX': 'sin(x)',
   },
   pl: {
+    'function-plotter.2dCurve': 'Krzywa 2D',
+    'function-plotter.3dSurface': 'Powierzchnia 3D',
     'function-plotter.sinX': 'sin(x)',
   },
   uk: {
+    'function-plotter.2dCurve': '2D-крива',
+    'function-plotter.3dSurface': '3D-поверхня',
     'function-plotter.sinX': 'sin(x)',
   },
 };

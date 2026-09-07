@@ -189,21 +189,27 @@ export default {
     'screenshot.thisBrowserBlockedTheClipboard': '이 브라우저가 클립보드 쓰기를 막았습니다',
   },
   nl: {
-
+    'screenshot.text': 'Tekst',
+    'screenshot.copy': 'Kopiëren',
   },
   sv: {
-
+    'screenshot.text': 'Text',
+    'screenshot.copy': 'Kopiera',
   },
   no: {
-
+    'screenshot.text': 'Tekst',
+    'screenshot.copy': 'Kopier',
   },
   da: {
-
+    'screenshot.text': 'Tekst',
+    'screenshot.copy': 'Kopiér',
   },
   pl: {
-
+    'screenshot.text': 'Tekst',
+    'screenshot.copy': 'Kopiuj',
   },
   uk: {
-
+    'screenshot.text': 'Текст',
+    'screenshot.copy': 'Копіювати',
   },
 };

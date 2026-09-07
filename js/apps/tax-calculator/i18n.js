@@ -1638,21 +1638,21 @@ export default {
     'tax-calculator.line.universalSocialCharge': '보편 사회 부담금',
   },
   nl: {
-
+    'tax-calculator.field.401KContribution': '401(k)-bijdrage',
   },
   sv: {
-
+    'tax-calculator.field.401KContribution': '401(k)-avsättning',
   },
   no: {
-
+    'tax-calculator.field.401KContribution': '401(k)-innskudd',
   },
   da: {
-
+    'tax-calculator.field.401KContribution': '401(k)-bidrag',
   },
   pl: {
-
+    'tax-calculator.field.401KContribution': 'Składka 401(k)',
   },
   uk: {
-
+    'tax-calculator.field.401KContribution': 'Внесок 401(k)',
   },
 };

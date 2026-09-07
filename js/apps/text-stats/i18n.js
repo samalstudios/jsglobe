@@ -84,21 +84,21 @@ export default {
     'text-stats.notEnoughTextYet': '아직 글이 모자랍니다.',
   },
   nl: {
-
+    'text-stats.text': 'Tekst',
   },
   sv: {
-
+    'text-stats.text': 'Text',
   },
   no: {
-
+    'text-stats.text': 'Tekst',
   },
   da: {
-
+    'text-stats.text': 'Tekst',
   },
   pl: {
-
+    'text-stats.text': 'Tekst',
   },
   uk: {
-
+    'text-stats.text': 'Текст',
   },
 };

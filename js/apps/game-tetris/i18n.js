@@ -91,21 +91,39 @@ export default {
     'game-tetris.orHitSpace': '또는 스페이스바',
   },
   nl: {
-
+    'game-tetris.score': 'Score',
+    'game-tetris.level': 'Niveau',
+    'game-tetris.best': 'Beste',
+    'game-tetris.play': 'Afspelen',
   },
   sv: {
-
+    'game-tetris.score': 'Poäng',
+    'game-tetris.level': 'Nivå',
+    'game-tetris.best': 'Bästa',
+    'game-tetris.play': 'Spela',
   },
   no: {
-
+    'game-tetris.score': 'Poeng',
+    'game-tetris.level': 'Nivå',
+    'game-tetris.best': 'Beste',
+    'game-tetris.play': 'Spill',
   },
   da: {
-
+    'game-tetris.score': 'Point',
+    'game-tetris.level': 'Niveau',
+    'game-tetris.best': 'Bedste',
+    'game-tetris.play': 'Afspil',
   },
   pl: {
-
+    'game-tetris.score': 'Wynik',
+    'game-tetris.level': 'Poziom',
+    'game-tetris.best': 'Najlepszy',
+    'game-tetris.play': 'Odtwórz',
   },
   uk: {
-
+    'game-tetris.score': 'Рахунок',
+    'game-tetris.level': 'Рівень',
+    'game-tetris.best': 'Найкращий',
+    'game-tetris.play': 'Відтворити',
   },
 };

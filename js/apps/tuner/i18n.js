@@ -105,21 +105,21 @@ export default {
     'tuner.50Cents': '+50센트',
   },
   nl: {
-
+    'tuner.50Cents': '+50 cent',
   },
   sv: {
-
+    'tuner.50Cents': '+50 cent',
   },
   no: {
-
+    'tuner.50Cents': '+50 cent',
   },
   da: {
-
+    'tuner.50Cents': '+50 cent',
   },
   pl: {
-
+    'tuner.50Cents': '+50 centów',
   },
   uk: {
-
+    'tuner.50Cents': '+50 центів',
   },
 };

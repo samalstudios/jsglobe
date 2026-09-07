@@ -106,20 +106,32 @@ export default {
   },
   nl: {
     'csv-studio.markdown': 'Markdown',
+    'csv-studio.copy': 'Kopiëren',
+    'csv-studio.download': 'Downloaden',
   },
   sv: {
     'csv-studio.markdown': 'Markdown',
+    'csv-studio.copy': 'Kopiera',
+    'csv-studio.download': 'Ladda ner',
   },
   no: {
     'csv-studio.markdown': 'Markdown',
+    'csv-studio.copy': 'Kopier',
+    'csv-studio.download': 'Last ned',
   },
   da: {
     'csv-studio.markdown': 'Markdown',
+    'csv-studio.copy': 'Kopiér',
+    'csv-studio.download': 'Hent',
   },
   pl: {
     'csv-studio.markdown': 'Markdown',
+    'csv-studio.copy': 'Kopiuj',
+    'csv-studio.download': 'Pobierz',
   },
   uk: {
     'csv-studio.markdown': 'Markdown',
+    'csv-studio.copy': 'Копіювати',
+    'csv-studio.download': 'Завантажити',
   },
 };

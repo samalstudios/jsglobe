@@ -49,21 +49,45 @@ export default {
     'game-word.delete': '지우기',
   },
   nl: {
-
+    'game-word.guessTheWord': 'Raad het woord',
+    'game-word.newWord': 'Nieuw woord',
+    'game-word.fiveLettersAreNeeded': 'Er zijn vijf letters nodig',
+    'game-word.enter': 'enter',
+    'game-word.delete': 'wissen',
   },
   sv: {
-
+    'game-word.guessTheWord': 'Gissa ordet',
+    'game-word.newWord': 'Nytt ord',
+    'game-word.fiveLettersAreNeeded': 'Det behövs fem bokstäver',
+    'game-word.enter': 'retur',
+    'game-word.delete': 'radera',
   },
   no: {
-
+    'game-word.guessTheWord': 'Gjett ordet',
+    'game-word.newWord': 'Nytt ord',
+    'game-word.fiveLettersAreNeeded': 'Det trengs fem bokstaver',
+    'game-word.enter': 'enter',
+    'game-word.delete': 'slett',
   },
   da: {
-
+    'game-word.guessTheWord': 'Gæt ordet',
+    'game-word.newWord': 'Nyt ord',
+    'game-word.fiveLettersAreNeeded': 'Der skal bruges fem bogstaver',
+    'game-word.enter': 'enter',
+    'game-word.delete': 'slet',
   },
   pl: {
-
+    'game-word.guessTheWord': 'Zgadnij słowo',
+    'game-word.newWord': 'Nowe słowo',
+    'game-word.fiveLettersAreNeeded': 'Potrzeba pięciu liter',
+    'game-word.enter': 'enter',
+    'game-word.delete': 'usuń',
   },
   uk: {
-
+    'game-word.guessTheWord': 'Вгадайте слово',
+    'game-word.newWord': 'Нове слово',
+    'game-word.fiveLettersAreNeeded': 'Потрібно п’ять літер',
+    'game-word.enter': 'enter',
+    'game-word.delete': 'стерти',
   },
 };

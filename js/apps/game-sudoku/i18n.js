@@ -70,21 +70,27 @@ export default {
     'game-sudoku.check': '확인',
   },
   nl: {
-
+    'game-sudoku.newGame': 'Nieuw spel',
+    'game-sudoku.time': 'Tijd',
   },
   sv: {
-
+    'game-sudoku.newGame': 'Nytt spel',
+    'game-sudoku.time': 'Tid',
   },
   no: {
-
+    'game-sudoku.newGame': 'Nytt spill',
+    'game-sudoku.time': 'Tid',
   },
   da: {
-
+    'game-sudoku.newGame': 'Nyt spil',
+    'game-sudoku.time': 'Tid',
   },
   pl: {
-
+    'game-sudoku.newGame': 'Nowa gra',
+    'game-sudoku.time': 'Czas',
   },
   uk: {
-
+    'game-sudoku.newGame': 'Нова гра',
+    'game-sudoku.time': 'Час',
   },
 };

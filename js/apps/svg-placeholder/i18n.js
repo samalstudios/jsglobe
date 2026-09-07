@@ -133,21 +133,33 @@ export default {
     'svg-placeholder.download': '내려받기',
   },
   nl: {
-
+    'svg-placeholder.pattern': 'Patroon',
+    'svg-placeholder.text': 'Tekst',
+    'svg-placeholder.download': 'Downloaden',
   },
   sv: {
-
+    'svg-placeholder.pattern': 'Mönster',
+    'svg-placeholder.text': 'Text',
+    'svg-placeholder.download': 'Ladda ner',
   },
   no: {
-
+    'svg-placeholder.pattern': 'Mønster',
+    'svg-placeholder.text': 'Tekst',
+    'svg-placeholder.download': 'Last ned',
   },
   da: {
-
+    'svg-placeholder.pattern': 'Mønster',
+    'svg-placeholder.text': 'Tekst',
+    'svg-placeholder.download': 'Hent',
   },
   pl: {
-
+    'svg-placeholder.pattern': 'Wzorzec',
+    'svg-placeholder.text': 'Tekst',
+    'svg-placeholder.download': 'Pobierz',
   },
   uk: {
-
+    'svg-placeholder.pattern': 'Взірець',
+    'svg-placeholder.text': 'Текст',
+    'svg-placeholder.download': 'Завантажити',
   },
 };

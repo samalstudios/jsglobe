@@ -70,21 +70,63 @@ export default {
     'crontab-generator.noMatchWithinTheNext': '앞으로 1년 안에는 해당이 없습니다',
   },
   nl: {
-
+    'crontab-generator.cronExpression': 'Cron-uitdrukking',
+    'crontab-generator.meaning': 'Betekenis',
+    'crontab-generator.nextRuns': 'Volgende keren',
+    'crontab-generator.basedOnThisMachineS': 'Op basis van de klok en tijdzone van dit apparaat',
+    'crontab-generator.presets': 'Voorinstellingen',
+    'crontab-generator.aCronExpressionNeedsFive': 'Een cron-uitdrukking heeft vijf velden nodig.',
+    'crontab-generator.nextRun': 'Volgende keer',
+    'crontab-generator.noMatchWithinTheNext': 'Geen overeenkomst binnen het komende jaar',
   },
   sv: {
-
+    'crontab-generator.cronExpression': 'Cron-uttryck',
+    'crontab-generator.meaning': 'Betydelse',
+    'crontab-generator.nextRuns': 'Kommande körningar',
+    'crontab-generator.basedOnThisMachineS': 'Utifrån den här maskinens klocka och tidszon',
+    'crontab-generator.presets': 'Förval',
+    'crontab-generator.aCronExpressionNeedsFive': 'Ett cron-uttryck behöver fem fält.',
+    'crontab-generator.nextRun': 'Nästa körning',
+    'crontab-generator.noMatchWithinTheNext': 'Ingen träff inom det närmaste året',
   },
   no: {
-
+    'crontab-generator.cronExpression': 'Cron-uttrykk',
+    'crontab-generator.meaning': 'Betydning',
+    'crontab-generator.nextRuns': 'Neste kjøringer',
+    'crontab-generator.basedOnThisMachineS': 'Ut fra klokken og tidssonen på denne maskinen',
+    'crontab-generator.presets': 'Forhåndsvalg',
+    'crontab-generator.aCronExpressionNeedsFive': 'Et cron-uttrykk trenger fem felt.',
+    'crontab-generator.nextRun': 'Neste kjøring',
+    'crontab-generator.noMatchWithinTheNext': 'Ingen treff innen det neste året',
   },
   da: {
-
+    'crontab-generator.cronExpression': 'Cron-udtryk',
+    'crontab-generator.meaning': 'Betydning',
+    'crontab-generator.nextRuns': 'Næste kørsler',
+    'crontab-generator.basedOnThisMachineS': 'Ud fra denne maskines ur og tidszone',
+    'crontab-generator.presets': 'Forvalg',
+    'crontab-generator.aCronExpressionNeedsFive': 'Et cron-udtryk skal have fem felter.',
+    'crontab-generator.nextRun': 'Næste kørsel',
+    'crontab-generator.noMatchWithinTheNext': 'Intet træf inden for det næste år',
   },
   pl: {
-
+    'crontab-generator.cronExpression': 'Wyrażenie cron',
+    'crontab-generator.meaning': 'Znaczenie',
+    'crontab-generator.nextRuns': 'Najbliższe uruchomienia',
+    'crontab-generator.basedOnThisMachineS': 'Na podstawie zegara i strefy czasowej tego komputera',
+    'crontab-generator.presets': 'Gotowe ustawienia',
+    'crontab-generator.aCronExpressionNeedsFive': 'Wyrażenie cron wymaga pięciu pól.',
+    'crontab-generator.nextRun': 'Najbliższe uruchomienie',
+    'crontab-generator.noMatchWithinTheNext': 'Brak dopasowania w ciągu najbliższego roku',
   },
   uk: {
-
+    'crontab-generator.cronExpression': 'Вираз cron',
+    'crontab-generator.meaning': 'Значення',
+    'crontab-generator.nextRuns': 'Найближчі запуски',
+    'crontab-generator.basedOnThisMachineS': 'За годинником і часовим поясом цього комп’ютера',
+    'crontab-generator.presets': 'Заготовки',
+    'crontab-generator.aCronExpressionNeedsFive': 'Вираз cron потребує п’яти полів.',
+    'crontab-generator.nextRun': 'Найближчий запуск',
+    'crontab-generator.noMatchWithinTheNext': 'Немає збігу протягом наступного року',
   },
 };

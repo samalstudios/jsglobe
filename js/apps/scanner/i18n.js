@@ -329,21 +329,39 @@ export default {
     'scanner.widgetBlurb': '카메라나 사진에서 QR 코드와 바코드를 읽습니다.',
   },
   nl: {
-
+    'scanner.text': 'Tekst',
+    'scanner.clear': 'Wissen',
+    'scanner.password': 'Wachtwoord',
+    'scanner.copy': 'Kopiëren',
   },
   sv: {
-
+    'scanner.text': 'Text',
+    'scanner.clear': 'Rensa',
+    'scanner.password': 'Lösenord',
+    'scanner.copy': 'Kopiera',
   },
   no: {
-
+    'scanner.text': 'Tekst',
+    'scanner.clear': 'Tøm',
+    'scanner.password': 'Passord',
+    'scanner.copy': 'Kopier',
   },
   da: {
-
+    'scanner.text': 'Tekst',
+    'scanner.clear': 'Ryd',
+    'scanner.password': 'Adgangskode',
+    'scanner.copy': 'Kopiér',
   },
   pl: {
-
+    'scanner.text': 'Tekst',
+    'scanner.clear': 'Wyczyść',
+    'scanner.password': 'Hasło',
+    'scanner.copy': 'Kopiuj',
   },
   uk: {
-
+    'scanner.text': 'Текст',
+    'scanner.clear': 'Очистити',
+    'scanner.password': 'Пароль',
+    'scanner.copy': 'Копіювати',
   },
 };

@@ -119,21 +119,27 @@ export default {
     'ai-translate.casualTone': '편안한 말투',
   },
   nl: {
-
+    'ai-translate.0Characters': '0 tekens',
+    'ai-translate.copy': 'Kopiëren',
   },
   sv: {
-
+    'ai-translate.0Characters': '0 tecken',
+    'ai-translate.copy': 'Kopiera',
   },
   no: {
-
+    'ai-translate.0Characters': '0 tegn',
+    'ai-translate.copy': 'Kopier',
   },
   da: {
-
+    'ai-translate.0Characters': '0 tegn',
+    'ai-translate.copy': 'Kopiér',
   },
   pl: {
-
+    'ai-translate.0Characters': '0 znaków',
+    'ai-translate.copy': 'Kopiuj',
   },
   uk: {
-
+    'ai-translate.0Characters': '0 символів',
+    'ai-translate.copy': 'Копіювати',
   },
 };

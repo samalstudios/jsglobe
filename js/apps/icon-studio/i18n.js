@@ -329,21 +329,21 @@ export default {
     'icon-studio.widgetBlurb': '수천 개 부품으로 아이콘을 만듭니다.',
   },
   nl: {
-
+    'icon-studio.clear': 'Wissen',
   },
   sv: {
-
+    'icon-studio.clear': 'Rensa',
   },
   no: {
-
+    'icon-studio.clear': 'Tøm',
   },
   da: {
-
+    'icon-studio.clear': 'Ryd',
   },
   pl: {
-
+    'icon-studio.clear': 'Wyczyść',
   },
   uk: {
-
+    'icon-studio.clear': 'Очистити',
   },
 };

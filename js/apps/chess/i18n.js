@@ -448,21 +448,39 @@ export default {
     'chess.tryThisPiece': '{square}의 기물을 시도해 보세요.',
   },
   nl: {
-
+    'chess.play': 'Afspelen',
+    'chess.newGame': 'Nieuw spel',
+    'chess.moves': 'Zetten',
+    'chess.verdictBlunder': 'Een blunder. Er stond iets ongedekt.',
   },
   sv: {
-
+    'chess.play': 'Spela',
+    'chess.newGame': 'Nytt spel',
+    'chess.moves': 'Drag',
+    'chess.verdictBlunder': 'En blunder. Något stod löst.',
   },
   no: {
-
+    'chess.play': 'Spill',
+    'chess.newGame': 'Nytt spill',
+    'chess.moves': 'Trekk',
+    'chess.verdictBlunder': 'En blunder. Noe sto løst.',
   },
   da: {
-
+    'chess.play': 'Afspil',
+    'chess.newGame': 'Nyt spil',
+    'chess.moves': 'Træk',
+    'chess.verdictBlunder': 'En brøler. Noget stod løst.',
   },
   pl: {
-
+    'chess.play': 'Odtwórz',
+    'chess.newGame': 'Nowa gra',
+    'chess.moves': 'Ruchy',
+    'chess.verdictBlunder': 'Gruby błąd. Coś stało bez obrony.',
   },
   uk: {
-
+    'chess.play': 'Відтворити',
+    'chess.newGame': 'Нова гра',
+    'chess.moves': 'Ходи',
+    'chess.verdictBlunder': 'Груба помилка. Щось стояло без захисту.',
   },
 };

@@ -70,21 +70,63 @@ export default {
     'encryption.decryptedTextAppearsHere': '복호화한 글이 여기에 나옵니다',
   },
   nl: {
-
+    'encryption.passphrase': 'Wachtwoordzin',
+    'encryption.aes256GcmWithPbkdf2': 'AES-256-GCM met PBKDF2-sleutelafleiding (250k iteraties)',
+    'encryption.encrypt': 'Versleutelen',
+    'encryption.textToEncrypt': 'Tekst om te versleutelen',
+    'encryption.ciphertextAppearsHere': 'De versleutelde tekst verschijnt hier',
+    'encryption.decrypt': 'Ontsleutelen',
+    'encryption.pasteCiphertext': 'Plak de versleutelde tekst',
+    'encryption.decryptedTextAppearsHere': 'De ontsleutelde tekst verschijnt hier',
   },
   sv: {
-
+    'encryption.passphrase': 'Lösenfras',
+    'encryption.aes256GcmWithPbkdf2': 'AES-256-GCM med PBKDF2-nyckelhärledning (250k iterationer)',
+    'encryption.encrypt': 'Kryptera',
+    'encryption.textToEncrypt': 'Text att kryptera',
+    'encryption.ciphertextAppearsHere': 'Den krypterade texten visas här',
+    'encryption.decrypt': 'Dekryptera',
+    'encryption.pasteCiphertext': 'Klistra in den krypterade texten',
+    'encryption.decryptedTextAppearsHere': 'Den avkrypterade texten visas här',
   },
   no: {
-
+    'encryption.passphrase': 'Passfrase',
+    'encryption.aes256GcmWithPbkdf2': 'AES-256-GCM med PBKDF2-nøkkelutledning (250k iterasjoner)',
+    'encryption.encrypt': 'Krypter',
+    'encryption.textToEncrypt': 'Tekst som skal krypteres',
+    'encryption.ciphertextAppearsHere': 'Den krypterte teksten vises her',
+    'encryption.decrypt': 'Dekrypter',
+    'encryption.pasteCiphertext': 'Lim inn den krypterte teksten',
+    'encryption.decryptedTextAppearsHere': 'Den dekrypterte teksten vises her',
   },
   da: {
-
+    'encryption.passphrase': 'Adgangsfrase',
+    'encryption.aes256GcmWithPbkdf2': 'AES-256-GCM med PBKDF2-nøgleudledning (250k gentagelser)',
+    'encryption.encrypt': 'Kryptér',
+    'encryption.textToEncrypt': 'Tekst der skal krypteres',
+    'encryption.ciphertextAppearsHere': 'Den krypterede tekst vises her',
+    'encryption.decrypt': 'Dekryptér',
+    'encryption.pasteCiphertext': 'Indsæt den krypterede tekst',
+    'encryption.decryptedTextAppearsHere': 'Den dekrypterede tekst vises her',
   },
   pl: {
-
+    'encryption.passphrase': 'Fraza hasłowa',
+    'encryption.aes256GcmWithPbkdf2': 'AES-256-GCM z wyprowadzaniem klucza PBKDF2 (250 tys. iteracji)',
+    'encryption.encrypt': 'Zaszyfruj',
+    'encryption.textToEncrypt': 'Tekst do zaszyfrowania',
+    'encryption.ciphertextAppearsHere': 'Zaszyfrowany tekst pojawi się tutaj',
+    'encryption.decrypt': 'Odszyfruj',
+    'encryption.pasteCiphertext': 'Wklej zaszyfrowany tekst',
+    'encryption.decryptedTextAppearsHere': 'Odszyfrowany tekst pojawi się tutaj',
   },
   uk: {
-
+    'encryption.passphrase': 'Парольна фраза',
+    'encryption.aes256GcmWithPbkdf2': 'AES-256-GCM з виведенням ключа PBKDF2 (250 тис. ітерацій)',
+    'encryption.encrypt': 'Зашифрувати',
+    'encryption.textToEncrypt': 'Текст для шифрування',
+    'encryption.ciphertextAppearsHere': 'Зашифрований текст з’явиться тут',
+    'encryption.decrypt': 'Розшифрувати',
+    'encryption.pasteCiphertext': 'Вставте зашифрований текст',
+    'encryption.decryptedTextAppearsHere': 'Розшифрований текст з’явиться тут',
   },
 };

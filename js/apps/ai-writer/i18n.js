@@ -112,21 +112,33 @@ export default {
     'ai-writer.copy': '복사',
   },
   nl: {
-
+    'ai-writer.input': 'Invoer',
+    'ai-writer.result': 'Resultaat',
+    'ai-writer.copy': 'Kopiëren',
   },
   sv: {
-
+    'ai-writer.input': 'Indata',
+    'ai-writer.result': 'Resultat',
+    'ai-writer.copy': 'Kopiera',
   },
   no: {
-
+    'ai-writer.input': 'Inndata',
+    'ai-writer.result': 'Resultat',
+    'ai-writer.copy': 'Kopier',
   },
   da: {
-
+    'ai-writer.input': 'Inddata',
+    'ai-writer.result': 'Resultat',
+    'ai-writer.copy': 'Kopiér',
   },
   pl: {
-
+    'ai-writer.input': 'Wejście',
+    'ai-writer.result': 'Wynik',
+    'ai-writer.copy': 'Kopiuj',
   },
   uk: {
-
+    'ai-writer.input': 'Вхід',
+    'ai-writer.result': 'Результат',
+    'ai-writer.copy': 'Копіювати',
   },
 };

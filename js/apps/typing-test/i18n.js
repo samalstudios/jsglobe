@@ -77,21 +77,21 @@ export default {
     'typing-test.finishARunToRecord': '한 판을 마치면 기록이 남습니다.',
   },
   nl: {
-
+    'typing-test.restart': 'Opnieuw beginnen',
   },
   sv: {
-
+    'typing-test.restart': 'Börja om',
   },
   no: {
-
+    'typing-test.restart': 'Start på nytt',
   },
   da: {
-
+    'typing-test.restart': 'Start forfra',
   },
   pl: {
-
+    'typing-test.restart': 'Zacznij od nowa',
   },
   uk: {
-
+    'typing-test.restart': 'Почати заново',
   },
 };

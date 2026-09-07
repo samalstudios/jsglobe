@@ -84,21 +84,39 @@ export default {
     'game-solitaire.youClearedTheTable': '판을 다 치웠습니다',
   },
   nl: {
-
+    'game-solitaire.moves': 'Zetten',
+    'game-solitaire.time': 'Tijd',
+    'game-solitaire.best': 'Beste',
+    'game-solitaire.newGame': 'Nieuw spel',
   },
   sv: {
-
+    'game-solitaire.moves': 'Drag',
+    'game-solitaire.time': 'Tid',
+    'game-solitaire.best': 'Bästa',
+    'game-solitaire.newGame': 'Nytt spel',
   },
   no: {
-
+    'game-solitaire.moves': 'Trekk',
+    'game-solitaire.time': 'Tid',
+    'game-solitaire.best': 'Beste',
+    'game-solitaire.newGame': 'Nytt spill',
   },
   da: {
-
+    'game-solitaire.moves': 'Træk',
+    'game-solitaire.time': 'Tid',
+    'game-solitaire.best': 'Bedste',
+    'game-solitaire.newGame': 'Nyt spil',
   },
   pl: {
-
+    'game-solitaire.moves': 'Ruchy',
+    'game-solitaire.time': 'Czas',
+    'game-solitaire.best': 'Najlepszy',
+    'game-solitaire.newGame': 'Nowa gra',
   },
   uk: {
-
+    'game-solitaire.moves': 'Ходи',
+    'game-solitaire.time': 'Час',
+    'game-solitaire.best': 'Найкращий',
+    'game-solitaire.newGame': 'Нова гра',
   },
 };

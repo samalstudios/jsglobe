@@ -189,21 +189,27 @@ export default {
     'list-converter.output': '출력',
   },
   nl: {
-
+    'list-converter.input': 'Invoer',
+    'list-converter.output': 'Uitvoer',
   },
   sv: {
-
+    'list-converter.input': 'Indata',
+    'list-converter.output': 'Utdata',
   },
   no: {
-
+    'list-converter.input': 'Inndata',
+    'list-converter.output': 'Utdata',
   },
   da: {
-
+    'list-converter.input': 'Inddata',
+    'list-converter.output': 'Uddata',
   },
   pl: {
-
+    'list-converter.input': 'Wejście',
+    'list-converter.output': 'Wyjście',
   },
   uk: {
-
+    'list-converter.input': 'Вхід',
+    'list-converter.output': 'Вихід',
   },
 };

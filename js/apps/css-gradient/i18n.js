@@ -169,20 +169,26 @@ export default {
   },
   nl: {
     'css-gradient.radial': 'Radial',
+    'css-gradient.presets': 'Voorinstellingen',
   },
   sv: {
     'css-gradient.radial': 'Radial',
+    'css-gradient.presets': 'Förval',
   },
   no: {
     'css-gradient.radial': 'Radial',
+    'css-gradient.presets': 'Forhåndsvalg',
   },
   da: {
     'css-gradient.radial': 'Radial',
+    'css-gradient.presets': 'Forvalg',
   },
   pl: {
     'css-gradient.radial': 'Radial',
+    'css-gradient.presets': 'Gotowe ustawienia',
   },
   uk: {
     'css-gradient.radial': 'Radial',
+    'css-gradient.presets': 'Заготовки',
   },
 };

@@ -392,21 +392,33 @@ export default {
     'paint.swapTheTwoColours': '두 색 바꾸기',
   },
   nl: {
-
+    'paint.text': 'Tekst',
+    'paint.contrast': 'Contrast',
+    'paint.swap': 'Wisselen',
   },
   sv: {
-
+    'paint.text': 'Text',
+    'paint.contrast': 'Kontrast',
+    'paint.swap': 'Byt',
   },
   no: {
-
+    'paint.text': 'Tekst',
+    'paint.contrast': 'Kontrast',
+    'paint.swap': 'Bytt',
   },
   da: {
-
+    'paint.text': 'Tekst',
+    'paint.contrast': 'Kontrast',
+    'paint.swap': 'Byt',
   },
   pl: {
-
+    'paint.text': 'Tekst',
+    'paint.contrast': 'Kontrast',
+    'paint.swap': 'Zamień',
   },
   uk: {
-
+    'paint.text': 'Текст',
+    'paint.contrast': 'Контраст',
+    'paint.swap': 'Поміняти',
   },
 };

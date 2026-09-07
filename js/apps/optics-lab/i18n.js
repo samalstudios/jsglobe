@@ -707,21 +707,21 @@ export default {
     'optics-lab.widgetBlurb': '렌즈, 거울, 프리즘을 실제 광선 추적으로.',
   },
   nl: {
-
+    'optics-lab.delete': 'Verwijderen',
   },
   sv: {
-
+    'optics-lab.delete': 'Ta bort',
   },
   no: {
-
+    'optics-lab.delete': 'Slett',
   },
   da: {
-
+    'optics-lab.delete': 'Slet',
   },
   pl: {
-
+    'optics-lab.delete': 'Usuń',
   },
   uk: {
-
+    'optics-lab.delete': 'Вилучити',
   },
 };

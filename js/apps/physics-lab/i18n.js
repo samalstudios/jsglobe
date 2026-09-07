@@ -1100,20 +1100,38 @@ export default {
   },
   nl: {
     'physics-lab.motor': 'Motor',
+    'physics-lab.copy': 'Kopiëren',
+    'physics-lab.delete': 'Verwijderen',
+    'physics-lab.clearColour': 'Wissen',
   },
   sv: {
     'physics-lab.motor': 'Motor',
+    'physics-lab.copy': 'Kopiera',
+    'physics-lab.delete': 'Ta bort',
+    'physics-lab.clearColour': 'Rensa',
   },
   no: {
     'physics-lab.motor': 'Motor',
+    'physics-lab.copy': 'Kopier',
+    'physics-lab.delete': 'Slett',
+    'physics-lab.clearColour': 'Tøm',
   },
   da: {
     'physics-lab.motor': 'Motor',
+    'physics-lab.copy': 'Kopiér',
+    'physics-lab.delete': 'Slet',
+    'physics-lab.clearColour': 'Ryd',
   },
   pl: {
     'physics-lab.motor': 'Motor',
+    'physics-lab.copy': 'Kopiuj',
+    'physics-lab.delete': 'Usuń',
+    'physics-lab.clearColour': 'Wyczyść',
   },
   uk: {
     'physics-lab.motor': 'Motor',
+    'physics-lab.copy': 'Копіювати',
+    'physics-lab.delete': 'Вилучити',
+    'physics-lab.clearColour': 'Очистити',
   },
 };

@@ -70,21 +70,63 @@ export default {
     'currency-converter.theSameAmountInOther': '같은 금액을 다른 통화로',
   },
   nl: {
-
+    'currency-converter.from': 'Van',
+    'currency-converter.swap': 'Wisselen',
+    'currency-converter.to': 'Naar',
+    'currency-converter.loadingRates': 'Koersen laden',
+    'currency-converter.refresh': 'Vernieuwen',
+    'currency-converter.copy': 'Kopiëren',
+    'currency-converter.atAGlance': 'In één oogopslag',
+    'currency-converter.theSameAmountInOther': 'Hetzelfde bedrag in andere valuta',
   },
   sv: {
-
+    'currency-converter.from': 'Från',
+    'currency-converter.swap': 'Byt',
+    'currency-converter.to': 'Till',
+    'currency-converter.loadingRates': 'Läser in kurser',
+    'currency-converter.refresh': 'Uppdatera',
+    'currency-converter.copy': 'Kopiera',
+    'currency-converter.atAGlance': 'En överblick',
+    'currency-converter.theSameAmountInOther': 'Samma belopp i andra valutor',
   },
   no: {
-
+    'currency-converter.from': 'Fra',
+    'currency-converter.swap': 'Bytt',
+    'currency-converter.to': 'Til',
+    'currency-converter.loadingRates': 'Laster kurser',
+    'currency-converter.refresh': 'Oppdater',
+    'currency-converter.copy': 'Kopier',
+    'currency-converter.atAGlance': 'Et overblikk',
+    'currency-converter.theSameAmountInOther': 'Samme beløp i andre valutaer',
   },
   da: {
-
+    'currency-converter.from': 'Fra',
+    'currency-converter.swap': 'Byt',
+    'currency-converter.to': 'Til',
+    'currency-converter.loadingRates': 'Indlæser kurser',
+    'currency-converter.refresh': 'Opdatér',
+    'currency-converter.copy': 'Kopiér',
+    'currency-converter.atAGlance': 'Et overblik',
+    'currency-converter.theSameAmountInOther': 'Samme beløb i andre valutaer',
   },
   pl: {
-
+    'currency-converter.from': 'Z',
+    'currency-converter.swap': 'Zamień',
+    'currency-converter.to': 'Na',
+    'currency-converter.loadingRates': 'Wczytuję kursy',
+    'currency-converter.refresh': 'Odśwież',
+    'currency-converter.copy': 'Kopiuj',
+    'currency-converter.atAGlance': 'W skrócie',
+    'currency-converter.theSameAmountInOther': 'Ta sama kwota w innych walutach',
   },
   uk: {
-
+    'currency-converter.from': 'З',
+    'currency-converter.swap': 'Поміняти',
+    'currency-converter.to': 'У',
+    'currency-converter.loadingRates': 'Завантажую курси',
+    'currency-converter.refresh': 'Оновити',
+    'currency-converter.copy': 'Копіювати',
+    'currency-converter.atAGlance': 'Коротко',
+    'currency-converter.theSameAmountInOther': 'Та сама сума в інших валютах',
   },
 };

@@ -92,20 +92,26 @@ export default {
   },
   nl: {
     'hmac-generator.hex': 'Hex',
+    'hmac-generator.helloWorld': 'hallo wereld',
   },
   sv: {
     'hmac-generator.hex': 'Hex',
+    'hmac-generator.helloWorld': 'hej världen',
   },
   no: {
     'hmac-generator.hex': 'Hex',
+    'hmac-generator.helloWorld': 'hei verden',
   },
   da: {
     'hmac-generator.hex': 'Hex',
+    'hmac-generator.helloWorld': 'hej verden',
   },
   pl: {
     'hmac-generator.hex': 'Hex',
+    'hmac-generator.helloWorld': 'witaj świecie',
   },
   uk: {
     'hmac-generator.hex': 'Hex',
+    'hmac-generator.helloWorld': 'привіт світ',
   },
 };

@@ -126,21 +126,45 @@ export default {
     'json-schema.everyDocumentMatchesTheSchema': '모든 문서가 스키마에 맞습니다.',
   },
   nl: {
-
+    'json-schema.waiting': 'Wachten',
+    'json-schema.result': 'Resultaat',
+    'json-schema.sample': 'Voorbeeld',
+    'json-schema.copy': 'Kopiëren',
+    'json-schema.download': 'Downloaden',
   },
   sv: {
-
+    'json-schema.waiting': 'Väntar',
+    'json-schema.result': 'Resultat',
+    'json-schema.sample': 'Exempel',
+    'json-schema.copy': 'Kopiera',
+    'json-schema.download': 'Ladda ner',
   },
   no: {
-
+    'json-schema.waiting': 'Venter',
+    'json-schema.result': 'Resultat',
+    'json-schema.sample': 'Eksempel',
+    'json-schema.copy': 'Kopier',
+    'json-schema.download': 'Last ned',
   },
   da: {
-
+    'json-schema.waiting': 'Venter',
+    'json-schema.result': 'Resultat',
+    'json-schema.sample': 'Eksempel',
+    'json-schema.copy': 'Kopiér',
+    'json-schema.download': 'Hent',
   },
   pl: {
-
+    'json-schema.waiting': 'Czekam',
+    'json-schema.result': 'Wynik',
+    'json-schema.sample': 'Przykład',
+    'json-schema.copy': 'Kopiuj',
+    'json-schema.download': 'Pobierz',
   },
   uk: {
-
+    'json-schema.waiting': 'Очікування',
+    'json-schema.result': 'Результат',
+    'json-schema.sample': 'Зразок',
+    'json-schema.copy': 'Копіювати',
+    'json-schema.download': 'Завантажити',
   },
 };

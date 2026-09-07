@@ -91,21 +91,33 @@ export default {
     'ai-regex.explanation': '설명',
   },
   nl: {
-
+    'ai-regex.aUkPostcodeCaseInsensitive': 'Een Britse postcode, hoofdletterongevoelig',
+    'ai-regex.pattern': 'Patroon',
+    'ai-regex.copy': 'Kopiëren',
   },
   sv: {
-
+    'ai-regex.aUkPostcodeCaseInsensitive': 'Ett brittiskt postnummer, utan hänsyn till skiftläge',
+    'ai-regex.pattern': 'Mönster',
+    'ai-regex.copy': 'Kopiera',
   },
   no: {
-
+    'ai-regex.aUkPostcodeCaseInsensitive': 'Et britisk postnummer, uten hensyn til store og små bokstaver',
+    'ai-regex.pattern': 'Mønster',
+    'ai-regex.copy': 'Kopier',
   },
   da: {
-
+    'ai-regex.aUkPostcodeCaseInsensitive': 'Et britisk postnummer, uden hensyn til store og små bogstaver',
+    'ai-regex.pattern': 'Mønster',
+    'ai-regex.copy': 'Kopiér',
   },
   pl: {
-
+    'ai-regex.aUkPostcodeCaseInsensitive': 'Brytyjski kod pocztowy, bez rozróżniania wielkości liter',
+    'ai-regex.pattern': 'Wzorzec',
+    'ai-regex.copy': 'Kopiuj',
   },
   uk: {
-
+    'ai-regex.aUkPostcodeCaseInsensitive': 'Британський поштовий індекс, без урахування регістру',
+    'ai-regex.pattern': 'Взірець',
+    'ai-regex.copy': 'Копіювати',
   },
 };

@@ -98,21 +98,27 @@ export default {
     'ai-chat.ai': 'AI',
   },
   nl: {
-
+    'ai-chat.export': 'Exporteren',
+    'ai-chat.clear': 'Wissen',
   },
   sv: {
-
+    'ai-chat.export': 'Exportera',
+    'ai-chat.clear': 'Rensa',
   },
   no: {
-
+    'ai-chat.export': 'Eksporter',
+    'ai-chat.clear': 'Tøm',
   },
   da: {
-
+    'ai-chat.export': 'Eksportér',
+    'ai-chat.clear': 'Ryd',
   },
   pl: {
-
+    'ai-chat.export': 'Eksportuj',
+    'ai-chat.clear': 'Wyczyść',
   },
   uk: {
-
+    'ai-chat.export': 'Експорт',
+    'ai-chat.clear': 'Очистити',
   },
 };

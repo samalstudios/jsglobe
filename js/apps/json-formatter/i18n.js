@@ -147,21 +147,63 @@ export default {
     'json-formatter.stats': '노드 {nodes} · 깊이 {depth} · {chars}자',
   },
   nl: {
-
+    'json-formatter.spaces2': '2 spaties',
+    'json-formatter.spaces4': '4 spaties',
+    'json-formatter.tab': 'Tab',
+    'json-formatter.sample': 'Voorbeeld',
+    'action.copy': 'Kopiëren',
+    'action.download': 'Downloaden',
+    'json-formatter.input': 'Invoer',
+    'json-formatter.formatted': 'Opgemaakt',
   },
   sv: {
-
+    'json-formatter.spaces2': '2 blanksteg',
+    'json-formatter.spaces4': '4 blanksteg',
+    'json-formatter.tab': 'Tabb',
+    'json-formatter.sample': 'Exempel',
+    'action.copy': 'Kopiera',
+    'action.download': 'Ladda ner',
+    'json-formatter.input': 'Indata',
+    'json-formatter.formatted': 'Formaterat',
   },
   no: {
-
+    'json-formatter.spaces2': '2 mellomrom',
+    'json-formatter.spaces4': '4 mellomrom',
+    'json-formatter.tab': 'Tabulator',
+    'json-formatter.sample': 'Eksempel',
+    'action.copy': 'Kopier',
+    'action.download': 'Last ned',
+    'json-formatter.input': 'Inndata',
+    'json-formatter.formatted': 'Formatert',
   },
   da: {
-
+    'json-formatter.spaces2': '2 mellemrum',
+    'json-formatter.spaces4': '4 mellemrum',
+    'json-formatter.tab': 'Tabulator',
+    'json-formatter.sample': 'Eksempel',
+    'action.copy': 'Kopiér',
+    'action.download': 'Hent',
+    'json-formatter.input': 'Inddata',
+    'json-formatter.formatted': 'Formateret',
   },
   pl: {
-
+    'json-formatter.spaces2': '2 spacje',
+    'json-formatter.spaces4': '4 spacje',
+    'json-formatter.tab': 'Tabulator',
+    'json-formatter.sample': 'Przykład',
+    'action.copy': 'Kopiuj',
+    'action.download': 'Pobierz',
+    'json-formatter.input': 'Wejście',
+    'json-formatter.formatted': 'Sformatowane',
   },
   uk: {
-
+    'json-formatter.spaces2': '2 пробіли',
+    'json-formatter.spaces4': '4 пробіли',
+    'json-formatter.tab': 'Табуляція',
+    'json-formatter.sample': 'Зразок',
+    'action.copy': 'Копіювати',
+    'action.download': 'Завантажити',
+    'json-formatter.input': 'Вхід',
+    'json-formatter.formatted': 'Відформатовано',
   },
 };

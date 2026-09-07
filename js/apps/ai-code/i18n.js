@@ -105,21 +105,27 @@ export default {
     'ai-code.copy': '복사',
   },
   nl: {
-
+    'ai-code.result': 'Resultaat',
+    'ai-code.copy': 'Kopiëren',
   },
   sv: {
-
+    'ai-code.result': 'Resultat',
+    'ai-code.copy': 'Kopiera',
   },
   no: {
-
+    'ai-code.result': 'Resultat',
+    'ai-code.copy': 'Kopier',
   },
   da: {
-
+    'ai-code.result': 'Resultat',
+    'ai-code.copy': 'Kopiér',
   },
   pl: {
-
+    'ai-code.result': 'Wynik',
+    'ai-code.copy': 'Kopiuj',
   },
   uk: {
-
+    'ai-code.result': 'Результат',
+    'ai-code.copy': 'Копіювати',
   },
 };

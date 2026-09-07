@@ -210,6 +210,7 @@ export default {
     'kubernetes.value': '값',
   },
   nl: {
+    'kubernetes.download': 'Downloaden',
     'kubernetes.deployment': 'Deployment',
     'kubernetes.service': 'Service',
     'kubernetes.ingress': 'Ingress',
@@ -218,6 +219,7 @@ export default {
     'kubernetes.poddisruptionbudget': 'PodDisruptionBudget',
   },
   sv: {
+    'kubernetes.download': 'Ladda ner',
     'kubernetes.deployment': 'Deployment',
     'kubernetes.service': 'Service',
     'kubernetes.ingress': 'Ingress',
@@ -226,6 +228,7 @@ export default {
     'kubernetes.poddisruptionbudget': 'PodDisruptionBudget',
   },
   no: {
+    'kubernetes.download': 'Last ned',
     'kubernetes.deployment': 'Deployment',
     'kubernetes.service': 'Service',
     'kubernetes.ingress': 'Ingress',
@@ -234,6 +237,7 @@ export default {
     'kubernetes.poddisruptionbudget': 'PodDisruptionBudget',
   },
   da: {
+    'kubernetes.download': 'Hent',
     'kubernetes.deployment': 'Deployment',
     'kubernetes.service': 'Service',
     'kubernetes.ingress': 'Ingress',
@@ -242,6 +246,7 @@ export default {
     'kubernetes.poddisruptionbudget': 'PodDisruptionBudget',
   },
   pl: {
+    'kubernetes.download': 'Pobierz',
     'kubernetes.deployment': 'Deployment',
     'kubernetes.service': 'Service',
     'kubernetes.ingress': 'Ingress',
@@ -250,6 +255,7 @@ export default {
     'kubernetes.poddisruptionbudget': 'PodDisruptionBudget',
   },
   uk: {
+    'kubernetes.download': 'Завантажити',
     'kubernetes.deployment': 'Deployment',
     'kubernetes.service': 'Service',
     'kubernetes.ingress': 'Ingress',

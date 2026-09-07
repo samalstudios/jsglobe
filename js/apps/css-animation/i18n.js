@@ -266,6 +266,7 @@ export default {
     'css-animation.generatedCss': '만들어진 CSS',
   },
   nl: {
+    'css-animation.3Times': '3 keer',
     'css-animation.normal': 'normal',
     'css-animation.reverse': 'reverse',
     'css-animation.alternate': 'alternate',
@@ -275,6 +276,7 @@ export default {
     'css-animation.both': 'both',
   },
   sv: {
+    'css-animation.3Times': '3 gånger',
     'css-animation.normal': 'normal',
     'css-animation.reverse': 'reverse',
     'css-animation.alternate': 'alternate',
@@ -284,6 +286,7 @@ export default {
     'css-animation.both': 'both',
   },
   no: {
+    'css-animation.3Times': '3 ganger',
     'css-animation.normal': 'normal',
     'css-animation.reverse': 'reverse',
     'css-animation.alternate': 'alternate',
@@ -293,6 +296,7 @@ export default {
     'css-animation.both': 'both',
   },
   da: {
+    'css-animation.3Times': '3 gange',
     'css-animation.normal': 'normal',
     'css-animation.reverse': 'reverse',
     'css-animation.alternate': 'alternate',
@@ -302,6 +306,7 @@ export default {
     'css-animation.both': 'both',
   },
   pl: {
+    'css-animation.3Times': '3 razy',
     'css-animation.normal': 'normal',
     'css-animation.reverse': 'reverse',
     'css-animation.alternate': 'alternate',
@@ -311,6 +316,7 @@ export default {
     'css-animation.both': 'both',
   },
   uk: {
+    'css-animation.3Times': '3 рази',
     'css-animation.normal': 'normal',
     'css-animation.reverse': 'reverse',
     'css-animation.alternate': 'alternate',

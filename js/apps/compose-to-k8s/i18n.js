@@ -120,20 +120,38 @@ export default {
   },
   nl: {
     'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+    'compose-to-k8s.copy': 'Kopiëren',
+    'compose-to-k8s.download': 'Downloaden',
+    'compose-to-k8s.clear': 'Wissen',
   },
   sv: {
     'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+    'compose-to-k8s.copy': 'Kopiera',
+    'compose-to-k8s.download': 'Ladda ner',
+    'compose-to-k8s.clear': 'Rensa',
   },
   no: {
     'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+    'compose-to-k8s.copy': 'Kopier',
+    'compose-to-k8s.download': 'Last ned',
+    'compose-to-k8s.clear': 'Tøm',
   },
   da: {
     'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+    'compose-to-k8s.copy': 'Kopiér',
+    'compose-to-k8s.download': 'Hent',
+    'compose-to-k8s.clear': 'Ryd',
   },
   pl: {
     'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+    'compose-to-k8s.copy': 'Kopiuj',
+    'compose-to-k8s.download': 'Pobierz',
+    'compose-to-k8s.clear': 'Wyczyść',
   },
   uk: {
     'compose-to-k8s.dockerComposeYml': 'docker-compose.yml',
+    'compose-to-k8s.copy': 'Копіювати',
+    'compose-to-k8s.download': 'Завантажити',
+    'compose-to-k8s.clear': 'Очистити',
   },
 };

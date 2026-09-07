@@ -175,21 +175,33 @@ export default {
     'voice-recorder.recordingSaved': '녹음을 저장했습니다',
   },
   nl: {
-
+    'voice-recorder.download': 'Downloaden',
+    'voice-recorder.delete': 'Verwijderen',
+    'voice-recorder.copy': 'Kopiëren',
   },
   sv: {
-
+    'voice-recorder.download': 'Ladda ner',
+    'voice-recorder.delete': 'Ta bort',
+    'voice-recorder.copy': 'Kopiera',
   },
   no: {
-
+    'voice-recorder.download': 'Last ned',
+    'voice-recorder.delete': 'Slett',
+    'voice-recorder.copy': 'Kopier',
   },
   da: {
-
+    'voice-recorder.download': 'Hent',
+    'voice-recorder.delete': 'Slet',
+    'voice-recorder.copy': 'Kopiér',
   },
   pl: {
-
+    'voice-recorder.download': 'Pobierz',
+    'voice-recorder.delete': 'Usuń',
+    'voice-recorder.copy': 'Kopiuj',
   },
   uk: {
-
+    'voice-recorder.download': 'Завантажити',
+    'voice-recorder.delete': 'Вилучити',
+    'voice-recorder.copy': 'Копіювати',
   },
 };

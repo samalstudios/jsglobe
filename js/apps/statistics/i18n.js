@@ -168,21 +168,21 @@ export default {
     'statistics.outliers': '이상값',
   },
   nl: {
-
+    'statistics.sample': 'Voorbeeld',
   },
   sv: {
-
+    'statistics.sample': 'Exempel',
   },
   no: {
-
+    'statistics.sample': 'Eksempel',
   },
   da: {
-
+    'statistics.sample': 'Eksempel',
   },
   pl: {
-
+    'statistics.sample': 'Przykład',
   },
   uk: {
-
+    'statistics.sample': 'Зразок',
   },
 };
