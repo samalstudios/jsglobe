@@ -48,6 +48,8 @@ import portfolio from './portfolio/meta.js';
 import notes from './notes/meta.js';
 import todo from './todo/meta.js';
 import image_converter from './image-converter/meta.js';
+import png_outline from './png-outline/meta.js';
+import gif_maker from './gif-maker/meta.js';
 import media_converter from './media-converter/meta.js';
 import ai_chat from './ai-chat/meta.js';
 import ai_code from './ai-code/meta.js';
@@ -183,6 +185,8 @@ export const catalog = [
   notes,
   todo,
   image_converter,
+  png_outline,
+  gif_maker,
   media_converter,
   ai_chat,
   ai_code,

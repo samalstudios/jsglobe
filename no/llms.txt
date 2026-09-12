@@ -1,10 +1,10 @@
 # Toolbox
 
-> Raske, private utviklerverktøy som kjører helt i nettleseren. 129 verktøy, ingen registrering, ingen opplasting.
+> Raske, private utviklerverktøy som kjører helt i nettleseren. 131 verktøy, ingen registrering, ingen opplasting.
 
 Alt kjører som JavaScript i din egen nettleser, så det du skriver inn når aldri en tjener.
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 7 tools across 5 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -101,6 +101,8 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [QR-kode](https://jsglobe.com/no/apps/qr-generator): Lag lesbare QR-koder uten nett
 - [Bildeomformer](https://jsglobe.com/no/apps/image-converter): Gjør om, skaler og komprimer bilder i nettleseren
+- [PNG-omriss](https://jsglobe.com/no/apps/png-outline): Tegn omrisset av et bilde som SVG [tools: trace_outline]
+- [GIF-lager](https://jsglobe.com/no/apps/gif-maker): Gjør bilder eller et videoklipp om til en animert GIF [tools: make_gif]
 - [Video og lyd](https://jsglobe.com/no/apps/media-converter): Kod om video og lyd med WebAssembly
 - [Strekkode](https://jsglobe.com/no/apps/barcode-generator): Code 128, EAN og Code 39 som SVG
 - [Ikonstudio](https://jsglobe.com/no/apps/icon-studio): Bygg et ikon av tusenvis av deler, eller beskriv ett

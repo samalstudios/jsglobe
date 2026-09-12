@@ -1,10 +1,10 @@
 # Toolbox
 
-> Snabba, privata utvecklarverktyg som körs helt i webbläsaren. 129 verktyg, ingen registrering, inga uppladdningar.
+> Snabba, privata utvecklarverktyg som körs helt i webbläsaren. 131 verktyg, ingen registrering, inga uppladdningar.
 
 Allt körs som JavaScript i din egen webbläsare, så det du matar in når aldrig en server.
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 7 tools across 5 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -101,6 +101,8 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [QR-kod](https://jsglobe.com/sv/apps/qr-generator): Skapa läsbara QR-koder utan uppkoppling
 - [Bildomvandlare](https://jsglobe.com/sv/apps/image-converter): Omvandla, skala och komprimera bilder i webbläsaren
+- [PNG-kontur](https://jsglobe.com/sv/apps/png-outline): Rita av en bilds kontur till en SVG [tools: trace_outline]
+- [GIF-skapare](https://jsglobe.com/sv/apps/gif-maker): Gör om bilder eller ett videoklipp till en animerad GIF [tools: make_gif]
 - [Video och ljud](https://jsglobe.com/sv/apps/media-converter): Koda om video och ljud med WebAssembly
 - [Streckkod](https://jsglobe.com/sv/apps/barcode-generator): Code 128, EAN och Code 39 som SVG
 - [Ikonstudio](https://jsglobe.com/sv/apps/icon-studio): Bygg en ikon av tusentals delar, eller beskriv en

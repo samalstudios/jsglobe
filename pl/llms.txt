@@ -1,10 +1,10 @@
 # Toolbox
 
-> Szybkie, prywatne narzędzia dla programistów działające w całości w przeglądarce. Narzędzi: 129, bez rejestracji, bez wysyłania plików.
+> Szybkie, prywatne narzędzia dla programistów działające w całości w przeglądarce. Narzędzi: 131, bez rejestracji, bez wysyłania plików.
 
 Wszystko działa jako JavaScript w twojej własnej przeglądarce, więc to, co wpisujesz, nigdy nie trafia na serwer.
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 7 tools across 5 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -101,6 +101,8 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [Kod QR](https://jsglobe.com/pl/apps/qr-generator): Twórz czytelne kody QR bez internetu
 - [Konwerter obrazów](https://jsglobe.com/pl/apps/image-converter): Przekształcaj, skaluj i kompresuj obrazy w przeglądarce
+- [Kontur PNG](https://jsglobe.com/pl/apps/png-outline): Obrysuj kontur obrazu do pliku SVG [tools: trace_outline]
+- [Kreator GIF](https://jsglobe.com/pl/apps/gif-maker): Zamień obrazy lub fragment filmu w animowany GIF [tools: make_gif]
 - [Wideo i dźwięk](https://jsglobe.com/pl/apps/media-converter): Przekoduj wideo i dźwięk za pomocą WebAssembly
 - [Kod kreskowy](https://jsglobe.com/pl/apps/barcode-generator): Kody 128, EAN i Code 39 w formacie SVG
 - [Studio ikon](https://jsglobe.com/pl/apps/icon-studio): Zbuduj ikonę z tysięcy części albo ją opisz

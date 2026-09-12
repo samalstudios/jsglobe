@@ -1,10 +1,10 @@
 # Toolbox
 
-> Schnelle, private Entwicklerwerkzeuge, die vollständig im Browser laufen. 129 Werkzeuge, ohne Anmeldung, ohne Uploads.
+> Schnelle, private Entwicklerwerkzeuge, die vollständig im Browser laufen. 131 Werkzeuge, ohne Anmeldung, ohne Uploads.
 
 Alles läuft als JavaScript im eigenen Browser, die Eingaben erreichen also keinen Server.
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 7 tools across 5 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -101,6 +101,8 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [QR-Code](https://jsglobe.com/de/apps/qr-generator): Scanbare QR-Codes offline erzeugen
 - [Bildkonverter](https://jsglobe.com/de/apps/image-converter): Bilder im Browser umwandeln, skalieren und komprimieren
+- [PNG-Umriss](https://jsglobe.com/de/apps/png-outline): Den Umriss eines Bildes als SVG nachzeichnen [tools: trace_outline]
+- [GIF-Ersteller](https://jsglobe.com/de/apps/gif-maker): Bilder oder einen Videoclip in ein animiertes GIF verwandeln [tools: make_gif]
 - [Video & Audio](https://jsglobe.com/de/apps/media-converter): Video und Audio mit WebAssembly umwandeln
 - [Barcode](https://jsglobe.com/de/apps/barcode-generator): Code 128, EAN und Code 39 als SVG
 - [Icon-Studio](https://jsglobe.com/de/apps/icon-studio): Ein Icon aus tausenden Bauteilen bauen oder beschreiben

@@ -1,10 +1,10 @@
 # Toolbox
 
-> 브라우저에서만 돌아가는 빠르고 사적인 개발 도구. 도구 129개, 가입 없음, 업로드 없음.
+> 브라우저에서만 돌아가는 빠르고 사적인 개발 도구. 도구 131개, 가입 없음, 업로드 없음.
 
 모든 것이 자기 브라우저 안의 JavaScript로 돌아가므로, 입력이 서버에 닿는 일이 없습니다.
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 7 tools across 5 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -101,6 +101,8 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [QR 코드](https://jsglobe.com/ko/apps/qr-generator): 오프라인에서도 읽히는 QR 코드 만들기
 - [이미지 변환](https://jsglobe.com/ko/apps/image-converter): 브라우저에서 이미지를 변환하고 크기를 바꾸고 압축하기
+- [PNG 윤곽선](https://jsglobe.com/ko/apps/png-outline): 그림의 윤곽선을 SVG로 따기 [tools: trace_outline]
+- [GIF 만들기](https://jsglobe.com/ko/apps/gif-maker): 그림이나 동영상 클립을 움직이는 GIF로 만들기 [tools: make_gif]
 - [영상과 소리](https://jsglobe.com/ko/apps/media-converter): WebAssembly로 영상과 소리를 변환하기
 - [바코드](https://jsglobe.com/ko/apps/barcode-generator): Code 128, EAN, Code 39을 SVG로
 - [아이콘 스튜디오](https://jsglobe.com/ko/apps/icon-studio): 수천 개 부품으로 아이콘을 만들거나 말로 설명하기

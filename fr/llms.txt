@@ -1,10 +1,10 @@
 # Toolbox
 
-> Des outils de développement rapides et privés qui tournent entièrement dans le navigateur. 129 outils, sans inscription, sans envoi de fichiers.
+> Des outils de développement rapides et privés qui tournent entièrement dans le navigateur. 131 outils, sans inscription, sans envoi de fichiers.
 
 Tout tourne en JavaScript dans votre propre navigateur, vos saisies n'atteignent donc jamais un serveur.
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 7 tools across 5 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -101,6 +101,8 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [Code QR](https://jsglobe.com/fr/apps/qr-generator): Générer des codes QR lisibles hors ligne
 - [Convertisseur d'images](https://jsglobe.com/fr/apps/image-converter): Convertir, redimensionner et compresser dans le navigateur
+- [Contour PNG](https://jsglobe.com/fr/apps/png-outline): Tracer le contour d’une image en SVG [tools: trace_outline]
+- [Créateur de GIF](https://jsglobe.com/fr/apps/gif-maker): Transformer des images ou un extrait vidéo en GIF animé [tools: make_gif]
 - [Vidéo et audio](https://jsglobe.com/fr/apps/media-converter): Transcoder vidéo et audio avec WebAssembly
 - [Code-barres](https://jsglobe.com/fr/apps/barcode-generator): Codes 128, EAN et Code 39 en SVG
 - [Studio d'icônes](https://jsglobe.com/fr/apps/icon-studio): Composer une icône à partir de milliers de pièces, ou la décrire

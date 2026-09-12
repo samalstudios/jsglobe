@@ -1,0 +1,171 @@
+/* the layout follows the window the app is in, not the whole screen */
+:host { container-type: inline-size; }
+
+.app {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 14px;
+  height: 100%;
+  min-height: 0;
+  outline: none;
+}
+
+.stage { display: flex; flex-direction: column; gap: 8px; min-width: 0; min-height: 0; }
+.stage[data-dropping="true"] .board { border-color: var(--ring); }
+
+.board {
+  --checker: color-mix(in srgb, var(--foreground) 7%, transparent);
+  position: relative;
+  flex: 1;
+  min-height: 240px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+
+.board jg-drop {
+  width: min(480px, 88%);
+  --drop-height: 190px;
+  border-radius: var(--radius-md);
+}
+
+.view { position: relative; }
+/* a checkerboard, so what is clear in the GIF shows as clear rather than as
+   black or white */
+.view[data-clear="true"] {
+  background-color: var(--card);
+  background-image: conic-gradient(var(--checker) 25%, transparent 0 50%, var(--checker) 0 75%, transparent 0);
+  background-size: 16px 16px;
+}
+.view canvas, .view img { display: block; width: 100%; height: 100%; }
+.view[data-pixelated="true"] canvas, .view[data-pixelated="true"] img { image-rendering: pixelated; }
+
+.clip {
+  display: grid;
+  gap: 10px;
+  width: min(640px, 94%);
+  max-height: 100%;
+  padding: 12px 0;
+}
+.clip video {
+  display: block;
+  width: 100%;
+  max-height: 46vh;
+  border-radius: var(--radius-md);
+  background: #000;
+}
+.clip-fields { display: grid; grid-template-columns: 1fr 1fr 150px; gap: 10px; align-items: end; }
+.clip-foot { display: flex; align-items: center; gap: 8px; }
+.clip-foot span { flex: 1; font-size: 12px; color: var(--muted-foreground); }
+
+.transport {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 28px;
+  font-size: 12px;
+  color: var(--muted-foreground);
+  font-variant-numeric: tabular-nums;
+}
+.transport span { white-space: nowrap; }
+.transport .stats { min-width: 0; margin-left: auto; overflow: hidden; text-overflow: ellipsis; text-align: right; }
+
+.strip {
+  display: flex;
+  gap: 6px;
+  padding: 6px 2px 8px;
+  overflow-x: auto;
+  flex: none;
+}
+
+.tile {
+  position: relative;
+  flex: none;
+  display: grid;
+  gap: 3px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  color: var(--muted-foreground);
+  font: inherit;
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+  cursor: grab;
+}
+.tile:hover { border-color: var(--border-strong); }
+.tile.selected { border-color: var(--ring); box-shadow: 0 0 0 1px var(--ring); color: var(--foreground); }
+.tile.before { box-shadow: -3px 0 0 var(--ring); }
+.tile.after { box-shadow: 3px 0 0 var(--ring); }
+.tile canvas {
+  display: block;
+  height: 56px;
+  border-radius: 3px;
+  background-color: var(--card);
+  background-image: conic-gradient(var(--checker, color-mix(in srgb, var(--foreground) 7%, transparent)) 25%, transparent 0 50%, var(--checker, color-mix(in srgb, var(--foreground) 7%, transparent)) 0 75%, transparent 0);
+  background-size: 8px 8px;
+}
+.tile .label { display: flex; justify-content: space-between; gap: 6px; padding: 0 2px; }
+
+.add-tile {
+  flex: none;
+  display: grid;
+  place-items: center;
+  min-width: 64px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--muted-foreground);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.add-tile:hover { color: var(--foreground); border-color: var(--ring); }
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.group {
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.group:first-child { margin-top: 0; }
+
+.toggle { display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer; }
+
+.frame-card {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--foreground) 3%, transparent);
+}
+.frame-card .group { margin-top: 0; }
+.frame-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
+.actions #make { grid-column: 1 / -1; }
+
+[hidden] { display: none !important; }
+
+@container (max-width: 720px) {
+  /* rows as tall as what is in them; the app scrolls rather than overlap them */
+  .app { grid-template-columns: 1fr; grid-template-rows: max-content max-content; overflow-y: auto; }
+  .board { flex: none; min-height: 260px; }
+  .panel { overflow: visible; }
+  .clip-fields { grid-template-columns: 1fr 1fr; }
+}

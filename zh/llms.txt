@@ -1,10 +1,10 @@
 # Toolbox
 
-> 快速、私密、完全在浏览器中运行的开发者工具。129 个工具，无需注册，不上传任何内容。
+> 快速、私密、完全在浏览器中运行的开发者工具。131 个工具，无需注册，不上传任何内容。
 
 一切都以 JavaScript 在你自己的浏览器中运行，因此输入内容不会到达任何服务器。
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 7 tools across 5 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -101,6 +101,8 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [二维码](https://jsglobe.com/zh/apps/qr-generator): 离线生成可扫描的二维码
 - [图片转换](https://jsglobe.com/zh/apps/image-converter): 在浏览器中转换、缩放并压缩图片
+- [PNG 轮廓](https://jsglobe.com/zh/apps/png-outline): 把图片的轮廓描成 SVG [tools: trace_outline]
+- [GIF 制作](https://jsglobe.com/zh/apps/gif-maker): 把图片或视频片段做成动图 GIF [tools: make_gif]
 - [视频与音频](https://jsglobe.com/zh/apps/media-converter): 用 WebAssembly 转码视频和音频
 - [条形码](https://jsglobe.com/zh/apps/barcode-generator): 输出 SVG 格式的 Code 128、EAN 与 Code 39
 - [图标工作室](https://jsglobe.com/zh/apps/icon-studio): 用数千个部件拼出图标，或者直接描述它

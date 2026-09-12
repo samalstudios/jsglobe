@@ -1,10 +1,10 @@
 # Toolbox
 
-> Fast, private developer tools that run entirely in your browser. 129 tools, no sign up, no uploads.
+> Fast, private developer tools that run entirely in your browser. 131 tools, no sign up, no uploads.
 
 Everything runs as JavaScript in your own browser, so your input never reaches a server.
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 7 tools across 5 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -101,6 +101,8 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [QR Code](https://jsglobe.com/apps/qr-generator): Generate scannable QR codes offline
 - [Image Converter](https://jsglobe.com/apps/image-converter): Convert, resize and compress images in the browser
+- [PNG Outline](https://jsglobe.com/apps/png-outline): Trace the outline of a picture into an SVG [tools: trace_outline]
+- [GIF Maker](https://jsglobe.com/apps/gif-maker): Turn pictures or a video clip into an animated GIF [tools: make_gif]
 - [Video & Audio](https://jsglobe.com/apps/media-converter): Transcode video and audio with WebAssembly
 - [Barcode](https://jsglobe.com/apps/barcode-generator): Code 128, EAN and Code 39 barcodes as SVG
 - [Icon Studio](https://jsglobe.com/apps/icon-studio): Build an icon from thousands of parts, or describe one

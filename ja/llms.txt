@@ -1,10 +1,10 @@
 # Toolbox
 
-> ブラウザだけで動く、速くてプライベートな開発ツール。129 個のツール、登録不要、アップロードなし。
+> ブラウザだけで動く、速くてプライベートな開発ツール。131 個のツール、登録不要、アップロードなし。
 
 すべて自分のブラウザ内の JavaScript として動くので、入力がサーバーに届くことはありません。
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 7 tools across 5 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -101,6 +101,8 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [QR コード](https://jsglobe.com/ja/apps/qr-generator): オフラインで読み取れる QR コードを生成
 - [画像変換](https://jsglobe.com/ja/apps/image-converter): ブラウザ内で画像を変換、リサイズ、圧縮
+- [PNG アウトライン](https://jsglobe.com/ja/apps/png-outline): 画像の輪郭をなぞって SVG にする [tools: trace_outline]
+- [GIF メーカー](https://jsglobe.com/ja/apps/gif-maker): 画像や動画クリップをアニメーション GIF にする [tools: make_gif]
 - [動画と音声](https://jsglobe.com/ja/apps/media-converter): WebAssembly で動画と音声を変換
 - [バーコード](https://jsglobe.com/ja/apps/barcode-generator): Code 128、EAN、Code 39 を SVG で
 - [アイコンスタジオ](https://jsglobe.com/ja/apps/icon-studio): 数千の部品からアイコンを組む、または言葉で描く

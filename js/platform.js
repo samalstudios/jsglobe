@@ -22,6 +22,7 @@ export * as optics from './lib/optics.js';
 // ---- geometry --------------------------------------------------------
 export * as clip from './lib/clip.js';
 export * as svgShapes from './lib/svg-shapes.js';
+export * as trace from './lib/trace.js';
 
 // ---- drawing ---------------------------------------------------------
 export * as glyphs from './lib/glyphs.js';
@@ -35,6 +36,7 @@ export * as molecule3d from './lib/gl-molecule.js';
 export * as tax from './lib/tax.js';
 export * as taxCountries from './lib/tax-countries.js';
 export * as raster from './lib/raster.js';
+export * as gif from './lib/gif.js';
 export * as chart from './lib/chart.js';
 export * as formula from './lib/formula.js';
 export * as pdf from './lib/pdf.js';
@@ -82,6 +84,7 @@ export const SURFACE = {
   optics: 'Ray tracing in two dimensions: refraction, reflection, total internal reflection and dispersion.',
   clip: 'Polygon booleans: union, subtract and intersect, with exact vertices.',
   svgShapes: 'Read an SVG into simplified outlines that a solver can use.',
+  trace: 'Trace the outline of a picture into rings and an SVG path, with soft edges, holes, specks and offsets.',
   glyphs: 'The drawn icon outlines as data, on a 24 by 24 grid.',
   iconParts: 'Thousands of generated icon parts from parametric families, searchable and grouped.',
   iconCompose: 'Turn words into a stack of icon parts, with a model or without one.',
@@ -91,6 +94,7 @@ export const SURFACE = {
   tax: 'Progressive bands, ceilings and tapers for working out tax.',
   taxCountries: 'Take-home pay models for twenty three countries.',
   raster: 'Turn a picture into JPEG or PNG bytes at a size you choose.',
+  gif: 'Write and read animated GIFs: one shared palette, dithering, loops, delays and only the changed part of each frame.',
   chart: 'Draw bar, line, area and pie charts onto a canvas.',
   formula: 'Write maths in plain notation and get it back as marked up text.',
   pdf: 'Write PDF files: pages, the standard fonts, text, lines, images and links.',

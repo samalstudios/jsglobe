@@ -22,6 +22,12 @@ import {
   fullUuid, shortUuid, isAssigned, assignedNumber, nameFor, decodeValue, parsePayload, toHex, isUuid,
 } from '../js/lib/gatt.js';
 import { faultsIn, isValid, schemaFor, actionFor, provide } from '../js/lib/webmcp.js';
+import {
+  traceImage, guessMode, borderColour, signedArea as ringArea, boundsOf, toPath, toSvg, statsOf,
+} from '../js/lib/trace.js';
+import {
+  encodeGif, decodeGif, buildPalette, lzwEncode, lzwDecode, delayInHundredths,
+} from '../js/lib/gif.js';
 
 let pass = 0;
 const failures = [];
@@ -888,6 +894,270 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
   ok('a badly described tool is reported, not offered', faults.length === 1 && faults[0].startsWith('bad'));
   ok('providing returns something callable even with no browser', typeof withdraw === 'function');
   withdraw();
+}
+
+// ---- trace: outlines of pictures whose shapes are known -----------------
+{
+  const picture = (width, height, paint) => {
+    const data = new Uint8ClampedArray(width * height * 4);
+    for (let y = 0; y < height; y += 1) {
+      for (let x = 0; x < width; x += 1) {
+        const [r, g, b, a] = paint(x + 0.5, y + 0.5, x, y);
+        data.set([r, g, b, a], (y * width + x) * 4);
+      }
+    }
+    return { data, width, height };
+  };
+  const clear = [0, 0, 0, 0];
+  const solid = [20, 20, 20, 255];
+  const white = [255, 255, 255, 255];
+  // outlines wind one way and holes the other, so the signed areas add up to
+  // what is actually covered
+  const covered = (result) => result.rings.reduce((total, ring) => total + ringArea(ring.points), 0);
+  const near = (value, wanted, within) => Math.abs(value - wanted) <= within;
+
+  // a 40 by 30 block, whose outline should sit exactly on its pixel edges
+  const box = picture(100, 80, (x, y) => (x > 30 && x < 70 && y > 25 && y < 55 ? solid : clear));
+  ok('a picture cut out on a clear background is traced by its transparency', guessMode(box) === 'alpha');
+  const exact = traceImage(box, { tolerance: 0 });
+  const edges = boundsOf(exact.rings);
+  ok('a block traces as one shape', exact.rings.length === 1 && !exact.rings[0].hole);
+  ok('its outline sits on the pixel edges', near(edges.left, 30, 1e-9) && near(edges.right, 70, 1e-9)
+    && near(edges.top, 25, 1e-9) && near(edges.bottom, 55, 1e-9), JSON.stringify(edges));
+  // each corner loses a triangle half a pixel on a side
+  ok('it covers the block less its four corners', near(covered(exact), 1199.5, 0.01), String(covered(exact)));
+  const thinned = traceImage(box, { tolerance: 1 });
+  ok('simplifying a block leaves only its corners', thinned.rings[0].points.length <= 8, String(thinned.rings[0].points.length));
+  ok('and does not change what it covers', near(covered(thinned), 1200, 1), String(covered(thinned)));
+
+  const disc = picture(100, 80, (x, y) => (Math.hypot(x - 50, y - 40) < 25 ? solid : clear));
+  const round = traceImage(disc, { tolerance: 0.5 });
+  ok('a disc covers pi r squared', near(covered(round), Math.PI * 625, Math.PI * 625 * 0.01), String(covered(round)));
+
+  const ring = picture(110, 110, (x, y) => {
+    const out = Math.hypot(x - 55, y - 55);
+    return out < 30 && out >= 15 ? solid : clear;
+  });
+  const donut = traceImage(ring, { tolerance: 0.5 });
+  ok('a ring traces as an outline and a hole', donut.rings.length === 2 && donut.rings.filter((r) => r.hole).length === 1);
+  ok('the outline winds forwards and the hole backwards',
+    donut.rings.every((r) => (r.hole ? ringArea(r.points) < 0 : ringArea(r.points) > 0)));
+  ok('a ring covers the disc less its hole', near(covered(donut), Math.PI * 675, Math.PI * 675 * 0.02), String(covered(donut)));
+  ok('the counts say one shape and one hole', JSON.stringify(statsOf(donut.rings)).startsWith('{"shapes":1,"holes":1'));
+
+  // A soft edge: the last column is three quarters there. The outline should
+  // land where the transparency crosses the threshold, not on a pixel edge.
+  const soft = picture(20, 10, (x, y, i) => (i < 8 ? solid : i === 8 ? [20, 20, 20, 191] : clear));
+  const between = boundsOf(traceImage(soft, { tolerance: 0 }).rings).right;
+  // the field is stretched so the threshold of 128 sits at a half, which puts
+  // the three-quarters pixel at a half plus half of 63 out of 127
+  const partial = 0.5 + 0.5 * (63 / 127);
+  ok('a soft edge is placed between pixels', near(between, 8.5 + (partial - 0.5) / partial, 0.001), String(between));
+  const harder = boundsOf(traceImage(soft, { tolerance: 0, threshold: 200 }).rings).right;
+  ok('raising the threshold pulls the edge in', harder < between - 0.3, `${harder} against ${between}`);
+
+  // on an opaque picture the subject is whatever differs from the border
+  const redOnWhite = picture(40, 40, (x, y) => (x > 10 && x < 30 && y > 10 && y < 30 ? [220, 30, 30, 255] : white));
+  ok('an opaque picture is traced by colour', guessMode(redOnWhite) === 'colour');
+  const border = borderColour(redOnWhite);
+  ok('the background is read off the border', border.r === 255 && border.g === 255 && border.b === 255);
+  ok('a coloured square on white traces as the square', near(covered(traceImage(redOnWhite, { tolerance: 0 })), 399.5, 0.01));
+
+  const inkOnPaper = picture(40, 40, (x, y) => (x > 10 && x < 30 && y > 10 && y < 30 ? [0, 0, 0, 255] : white));
+  ok('the dark parts are the ink', near(covered(traceImage(inkOnPaper, { mode: 'dark', tolerance: 0 })), 399.5, 0.01));
+  const paper = traceImage(inkOnPaper, { mode: 'light', tolerance: 0 });
+  ok('the light parts are the paper, with the ink as a hole', paper.rings.length === 2 && paper.rings.some((r) => r.hole));
+
+  // tidying: dust goes, holes fill
+  const dusty = picture(100, 80, (x, y) =>
+    (x > 30 && x < 70 && y > 25 && y < 55) || (x > 5 && x < 7 && y > 5 && y < 7) ? solid : clear);
+  ok('a speck of dust is traced if nothing says otherwise', traceImage(dusty).rings.length === 2);
+  ok('and goes when specks are ignored', traceImage(dusty, { specks: 10 }).rings.length === 1);
+
+  const holed = picture(60, 60, (x, y) => {
+    const inBlock = x > 15 && x < 45 && y > 15 && y < 45;
+    const inHole = x > 28 && x < 32 && y > 28 && y < 32;
+    return inBlock && !inHole ? solid : clear;
+  });
+  ok('a block with a hole in it traces as two', traceImage(holed).rings.length === 2);
+  ok('filling holes makes it one', traceImage(holed, { fillHoles: true }).rings.length === 1);
+  ok('a hole smaller than a speck is filled too', traceImage(holed, { specks: 20 }).rings.length === 1);
+
+  // Growing a square by r adds a band r wide with rounded corners: the square
+  // r larger on every side, less the four corners a circle does not reach.
+  const square = picture(100, 100, (x, y) => (x > 40 && x < 60 && y > 40 && y < 60 ? solid : clear));
+  const grown = traceImage(square, { offset: 5, tolerance: 0.25 });
+  const grownArea = 900 - (4 - Math.PI) * 25;
+  ok('growing a square gives it round corners and the right area', near(covered(grown), grownArea, grownArea * 0.02),
+    String(covered(grown)));
+  ok('grown by five it reaches five further', near(boundsOf(grown.rings).left, 35, 0.2), String(boundsOf(grown.rings).left));
+  const shrunk = traceImage(square, { offset: -3, tolerance: 0.25 });
+  ok('shrinking a square takes the same off every side', near(covered(shrunk), 196, 196 * 0.04), String(covered(shrunk)));
+
+  // a subject touching the edge can still grow past it
+  const edgeOn = picture(40, 40, (x, y) => (x < 10 && y > 10 && y < 30 ? solid : clear));
+  const past = traceImage(edgeOn, { offset: 5 });
+  ok('an outline can grow past the edge of the picture', boundsOf(past.rings).left < -4, String(boundsOf(past.rings).left));
+  ok('and the SVG makes room for it', /viewBox="-\d/.test(toSvg(past)), toSvg(past).slice(0, 120));
+
+  const doubled = traceImage(box, { tolerance: 0, scale: 2 });
+  ok('a picture traced small comes back at full size', near(covered(doubled), 1199.5 * 4, 0.05) && doubled.width === 200);
+
+  const nothing = traceImage(picture(20, 20, () => clear));
+  ok('an empty picture has no outline', nothing.rings.length === 0);
+  ok('and still makes a valid SVG', toSvg(nothing).startsWith('<svg') && !toSvg(nothing).includes('<path'));
+
+  // one solid colour has nothing that differs from its border, so this has to
+  // be traced by its transparency; left to guess, it finds no subject at all
+  ok('a picture of one colour has no subject to find by colour', traceImage(picture(30, 20, () => solid)).rings.length === 0);
+  const everything = traceImage(picture(30, 20, () => solid), { mode: 'alpha', tolerance: 0 });
+  ok('a picture that is all subject traces round its edge', everything.rings.length === 1
+    && near(covered(everything), 599.5, 0.01));
+
+  // two pixels touching only at a corner are two shapes, not one pinched one
+  const diagonal = picture(4, 4, (x, y, i, j) => ((i === 1 && j === 1) || (i === 2 && j === 2) ? solid : clear));
+  ok('pixels meeting at a corner stay separate', traceImage(diagonal, { tolerance: 0 }).rings.length === 2);
+
+  const straight = toPath(round.rings);
+  const curved = toPath(round.rings, { smooth: true });
+  ok('a plain path is straight lines', straight.startsWith('M') && !straight.includes('C') && straight.includes('L'));
+  ok('a smooth path is curves', curved.includes('C'));
+  ok('every ring is closed', (toPath(donut.rings).match(/Z/g) ?? []).length === 2);
+
+  const outlined = toSvg(donut, { stroke: '#123456', strokeWidth: 3 });
+  const filled = toSvg(donut, { style: 'filled', fill: '#abcdef' });
+  ok('an outline is a stroke with nothing filled', outlined.includes('fill="none"') && outlined.includes('stroke="#123456"'));
+  ok('a filled shape keeps its hole open', filled.includes('fill-rule="evenodd"') && filled.includes('fill="#abcdef"'));
+  ok('a colour that is not a colour is not written into the file',
+    !toSvg(donut, { stroke: '"><script>' }).includes('script'));
+  ok('the picture can ride along underneath', toSvg(donut, { picture: 'data:image/png;base64,AAAA' }).includes('<image'));
+}
+
+// ---- gif: what goes in comes back out -----------------------------------
+{
+  const frame = (width, height, paint, delay = 100) => {
+    const data = new Uint8ClampedArray(width * height * 4);
+    for (let y = 0; y < height; y += 1) {
+      for (let x = 0; x < width; x += 1) data.set(paint(x, y), (y * width + x) * 4);
+    }
+    return { data, delay };
+  };
+  const same = (a, b) => a.length === b.length && a.every((value, index) => value === b[index]);
+  const RED = [220, 30, 40, 255];
+  const BLUE = [20, 60, 200, 255];
+  const CREAM = [250, 240, 200, 255];
+  const CLEAR = [0, 0, 0, 0];
+
+  // A long file read on a cold start. The reader once lost its place partway
+  // through one on the first read only, when the compiler stepped in.
+  const film = Array.from({ length: 24 }, (_, step) => frame(320, 180, (x, y) =>
+    [(x + step * 3) & 255, (y * 2 + step) & 255, ((x ^ y) + step * 5) & 255, 255], 80));
+  const reel = decodeGif(encodeGif(film, 320, 180));
+  ok('a long file reads back whole the first time', reel.frames.length === 24);
+
+  // the one pixel GIF that has been on the web since the nineties
+  const pixel = decodeGif(Uint8Array.from([
+    0x47, 0x49, 0x46, 0x38, 0x39, 0x61, 1, 0, 1, 0, 0x80, 0, 0, 0, 0, 0, 0xff, 0xff, 0xff,
+    0x21, 0xf9, 4, 1, 0, 0, 0, 0, 0x2c, 0, 0, 0, 0, 1, 0, 1, 0, 0, 2, 2, 0x44, 1, 0, 0x3b,
+  ]));
+  ok('the classic see-through pixel reads as one clear pixel', pixel.width === 1 && pixel.frames.length === 1
+    && pixel.frames[0].data[3] === 0);
+
+  const rng = ((seed) => () => ((seed = (seed * 1103515245 + 12345) >>> 0) >>> 8) / 16777216)(7);
+  for (const bits of [2, 4, 8]) {
+    const noise = Uint8Array.from({ length: 30000 }, () => Math.floor(rng() * (1 << bits)));
+    ok(`packing ${bits} bit noise and unpacking it gives it back`, same(lzwDecode(lzwEncode(noise, bits), bits, noise.length), noise));
+  }
+  const runs = new Uint8Array(200000).map((_, index) => (index >> 9) & 3);
+  const packed = lzwEncode(runs, 2);
+  ok('long runs pack small and come back whole', packed.length < 6000 && same(lzwDecode(packed, 2, runs.length), runs));
+
+  // a square walking across a cream field, in three colours
+  const walk = [0, 1, 2, 3].map((step) => frame(40, 30, (x, y) =>
+    (x >= 4 + step * 8 && x < 12 + step * 8 && y >= 10 && y < 18 ? RED : y > 25 ? BLUE : CREAM)));
+  const bytes = encodeGif(walk, 40, 30, { repeat: 0 });
+  const back = decodeGif(bytes);
+  ok('a GIF starts with its signature', String.fromCharCode(...bytes.subarray(0, 6)) === 'GIF89a');
+  ok('every frame comes back', back.frames.length === 4 && back.width === 40 && back.height === 30);
+  ok('a few colours come back exactly', back.frames.every((got, index) => same(got.data, walk[index].data)));
+  ok('for ever is written as for ever', back.repeat === 0);
+  ok('a delay comes back', back.frames.every((got) => got.delay === 100));
+  const whole = encodeGif(walk, 40, 30, { optimise: false });
+  ok('storing only the changes makes a smaller file', bytes.length < whole.length, `${bytes.length} vs ${whole.length}`);
+  ok('storing whole frames reads the same', decodeGif(whole).frames.every((got, index) => same(got.data, walk[index].data)));
+
+  ok('once is written without a loop', decodeGif(encodeGif(walk, 40, 30, { repeat: 1 })).repeat === 1);
+  ok('three plays come back as three', decodeGif(encodeGif(walk, 40, 30, { repeat: 3 })).repeat === 3);
+  ok('a delay under two hundredths is raised to it', delayInHundredths(0) === 2 && delayInHundredths(5) === 2
+    && delayInHundredths(130) === 13);
+
+  const still = [walk[0], walk[0], walk[0], walk[1]];
+  const merged = decodeGif(encodeGif(still, 40, 30));
+  ok('frames that do not change become one longer frame', merged.frames.length === 2 && merged.frames[0].delay === 300);
+
+  // a dot moving over a clear background has to leave nothing behind
+  const dot = [0, 1, 2].map((step) => frame(20, 20, (x, y) => (x >= step * 6 && x < step * 6 + 4 && y < 4 ? RED : CLEAR)));
+  const ghost = decodeGif(encodeGif(dot, 20, 20));
+  ok('clear stays clear', ghost.frames.every((got, index) => same(got.data, dot[index].data)));
+  ok('a moved dot leaves no trail', ghost.frames[2].data[3] === 0);
+
+  // 4096 greys and colours squeezed into a palette
+  const rainbow = frame(64, 64, (x, y) => [x * 4, y * 4, (x + y) * 2, 255]);
+  const palette = buildPalette([rainbow], 256);
+  ok('a palette never holds more than asked', palette.length <= 256 && buildPalette([rainbow], 16).length <= 16);
+  const squeezed = decodeGif(encodeGif([rainbow], 64, 64)).frames[0].data;
+  let miss = 0;
+  for (let at = 0; at < squeezed.length; at += 4) {
+    miss += Math.abs(squeezed[at] - rainbow.data[at]) + Math.abs(squeezed[at + 1] - rainbow.data[at + 1])
+      + Math.abs(squeezed[at + 2] - rainbow.data[at + 2]);
+  }
+  ok('many colours come back close', miss / (64 * 64 * 3) < 6, `average miss ${(miss / (64 * 64 * 3)).toFixed(2)}`);
+  const two = decodeGif(encodeGif([rainbow], 64, 64, { colours: 2 })).frames[0].data;
+  const kinds = new Set();
+  for (let at = 0; at < two.length; at += 4) kinds.add(`${two[at]},${two[at + 1]},${two[at + 2]}`);
+  ok('two colours means two colours', kinds.size === 2);
+
+  // a grey ramp in four shades: dithering should keep each patch's average
+  // close to the ramp, where plain rounding makes steps
+  const ramp = frame(128, 32, (x) => [x * 2, x * 2, x * 2, 255]);
+  const patchMiss = (options) => {
+    const got = decodeGif(encodeGif([ramp], 128, 32, { colours: 4, ...options })).frames[0].data;
+    let total = 0;
+    for (let px = 0; px < 128; px += 16) {
+      let sum = 0;
+      let want = 0;
+      for (let y = 0; y < 32; y += 1) {
+        for (let x = px; x < px + 16; x += 1) {
+          sum += got[(y * 128 + x) * 4];
+          want += ramp.data[(y * 128 + x) * 4];
+        }
+      }
+      total += Math.abs(sum - want) / (16 * 32);
+    }
+    return total / 8;
+  };
+  ok('dithering keeps a ramp smoother than rounding', patchMiss({ dither: true }) < patchMiss({ dither: false }),
+    `${patchMiss({ dither: true }).toFixed(2)} vs ${patchMiss({ dither: false }).toFixed(2)}`);
+
+  // interlaced files store rows out of order; a reader has to put them back
+  const stripes = frame(4, 10, (x, y) => (y % 3 === 0 ? RED : BLUE));
+  const order = [0, 8, 4, 2, 6, 1, 3, 5, 7, 9];
+  const rows = Uint8Array.from(order.flatMap((y) => [0, 1, 2, 3].map(() => (y % 3 === 0 ? 0 : 1))));
+  const body = lzwEncode(rows, 2);
+  const interlaced = Uint8Array.from([
+    ...'GIF89a'.split('').map((char) => char.charCodeAt(0)), 4, 0, 10, 0, 0x80, 0, 0,
+    ...RED.slice(0, 3), ...BLUE.slice(0, 3),
+    0x2c, 0, 0, 0, 0, 4, 0, 10, 0, 0x40, 2, body.length, ...body, 0, 0x3b,
+  ]);
+  ok('interlaced rows are put back in order', same(decodeGif(interlaced).frames[0].data, stripes.data));
+
+  let threw = false;
+  try {
+    decodeGif(Uint8Array.from([1, 2, 3, 4, 5, 6, 7, 8]));
+  } catch {
+    threw = true;
+  }
+  ok('something that is not a GIF is refused', threw);
 }
 
 if (failures.length) {

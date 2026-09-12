@@ -1,10 +1,10 @@
 # Toolbox
 
-> Snelle, private ontwikkelaarshulpmiddelen die volledig in de browser draaien. 129 hulpmiddelen, zonder aanmelding, zonder uploads.
+> Snelle, private ontwikkelaarshulpmiddelen die volledig in de browser draaien. 131 hulpmiddelen, zonder aanmelding, zonder uploads.
 
 Alles draait als JavaScript in je eigen browser, dus wat je invoert bereikt nooit een server.
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 7 tools across 5 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -101,6 +101,8 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [QR-code](https://jsglobe.com/nl/apps/qr-generator): Genereer scanbare QR-codes zonder verbinding
 - [Afbeeldingen omzetten](https://jsglobe.com/nl/apps/image-converter): Afbeeldingen omzetten, schalen en comprimeren in de browser
+- [PNG-omtrek](https://jsglobe.com/nl/apps/png-outline): De omtrek van een afbeelding overtrekken naar SVG [tools: trace_outline]
+- [GIF-maker](https://jsglobe.com/nl/apps/gif-maker): Afbeeldingen of een videofragment omzetten in een geanimeerde GIF [tools: make_gif]
 - [Video en audio](https://jsglobe.com/nl/apps/media-converter): Hercodeer video en audio met WebAssembly
 - [Streepjescode](https://jsglobe.com/nl/apps/barcode-generator): Code 128, EAN en Code 39 als SVG
 - [Pictogramstudio](https://jsglobe.com/nl/apps/icon-studio): Bouw een pictogram uit duizenden onderdelen, of beschrijf er een
