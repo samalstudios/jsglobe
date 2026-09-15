@@ -1,6 +1,6 @@
 # Toolbox
 
-> Snelle, private ontwikkelaarshulpmiddelen die volledig in de browser draaien. 133 hulpmiddelen, zonder aanmelding, zonder uploads.
+> Snelle, private ontwikkelaarshulpmiddelen die volledig in de browser draaien. 137 hulpmiddelen, zonder aanmelding, zonder uploads.
 
 Alles draait als JavaScript in je eigen browser, dus wat je invoert bereikt nooit een server.
 
@@ -52,6 +52,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## Ontwikkeling
 
+- [Git-viewer](https://jsglobe.com/nl/apps/git-viewer): Open een git-repository op je computer en bekijk de commitgrafiek, diffs en inzichten zoals hotspots en busfactor
 - [JSON opmaken](https://jsglobe.com/nl/apps/json-formatter): JSON opmaken, controleren, verkleinen en doorbladeren [tools: format_json, check_json]
 - [JSON vergelijken](https://jsglobe.com/nl/apps/json-diff): Vergelijk twee JSON-documenten sleutel voor sleutel
 - [SQL opmaken](https://jsglobe.com/nl/apps/sql-formatter): Leesbare opmaak voor SQL-instructies
@@ -94,6 +95,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [Rekenmachine](https://jsglobe.com/nl/apps/math-evaluator): Reken uitdrukkingen uit met functies en constanten [tools: evaluate_expression]
 - [Eenheden omrekenen](https://jsglobe.com/nl/apps/unit-converter): Lengte, massa, gegevens, temperatuur en tijd
+- [Reissnelheid](https://jsglobe.com/nl/apps/journey-speed): Bereken de gemiddelde snelheid van een rit en zie hoeveel tijd harder rijden echt scheelt
 - [Functieplotter](https://jsglobe.com/nl/apps/function-plotter): Teken uitdrukkingen met zoom, nulpunten en afgeleiden
 - [Statistiek](https://jsglobe.com/nl/apps/statistics): Samenvatting, histogram en boxplot voor een reeks getallen
 
@@ -135,6 +137,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [AI-schrijver](https://jsglobe.com/nl/apps/ai-writer): Samenvatten, herschrijven, vertalen en nalezen
 - [Vertalen](https://jsglobe.com/nl/apps/ai-translate): Vertaal tekst met een model op dit apparaat
 - [AI-regex](https://jsglobe.com/nl/apps/ai-regex): Beschrijf een patroon en krijg een geteste regex
+- [MCP-tester](https://jsglobe.com/nl/apps/mcp-tester): Verbind met een Model Context Protocol-server en probeer de tools, bronnen en prompts
 - [Inspector AI](https://jsglobe.com/nl/apps/inspector): Stel vragen aan je eigen documenten, met bronvermelding
 
 ## Spelletjes
@@ -169,6 +172,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Portefeuille](https://jsglobe.com/nl/apps/portfolio): Volg posities, verdeling en winst of verlies
 - [Notities](https://jsglobe.com/nl/apps/notes): Snelle kladnotities, bewaard in deze werkruimte
 - [Taken](https://jsglobe.com/nl/apps/todo): Een lichte takenlijst per werkruimte
+- [Bestandsbeheer](https://jsglobe.com/nl/apps/file-manager): Open een map op je computer om bestanden te bekijken, te bewerken en te ordenen
 - [Tijdzones](https://jsglobe.com/nl/apps/timezone-planner): Zet steden naast elkaar en vind de overlappende uren
 - [IBAN-controle](https://jsglobe.com/nl/apps/iban-validator): Controleer rekeningnummers en lees hun onderdelen
 - [Seriële console](https://jsglobe.com/nl/apps/serial-console): Praat met een serieel apparaat via USB

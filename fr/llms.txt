@@ -1,6 +1,6 @@
 # Toolbox
 
-> Des outils de développement rapides et privés qui tournent entièrement dans le navigateur. 133 outils, sans inscription, sans envoi de fichiers.
+> Des outils de développement rapides et privés qui tournent entièrement dans le navigateur. 137 outils, sans inscription, sans envoi de fichiers.
 
 Tout tourne en JavaScript dans votre propre navigateur, vos saisies n'atteignent donc jamais un serveur.
 
@@ -52,6 +52,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## Développement
 
+- [Visionneuse Git](https://jsglobe.com/fr/apps/git-viewer): Ouvrez un dépôt git de votre ordinateur pour voir le graphe des commits, les diffs et des analyses comme les points chauds et le facteur bus
 - [Formateur JSON](https://jsglobe.com/fr/apps/json-formatter): Formater, valider, minifier et explorer du JSON [tools: format_json, check_json]
 - [Diff JSON](https://jsglobe.com/fr/apps/json-diff): Comparer deux documents JSON clé par clé
 - [Formateur SQL](https://jsglobe.com/fr/apps/sql-formatter): Mise en forme lisible des instructions SQL
@@ -94,6 +95,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [Évaluateur mathématique](https://jsglobe.com/fr/apps/math-evaluator): Évaluer des expressions avec fonctions et constantes [tools: evaluate_expression]
 - [Convertisseur d'unités](https://jsglobe.com/fr/apps/unit-converter): Longueur, masse, données, température et temps
+- [Vitesse du trajet](https://jsglobe.com/fr/apps/journey-speed): Calculez la vitesse moyenne d’un trajet et le temps réellement gagné en roulant plus vite
 - [Traceur de fonctions](https://jsglobe.com/fr/apps/function-plotter): Tracer des expressions avec zoom, racines et dérivées
 - [Statistiques](https://jsglobe.com/fr/apps/statistics): Résumé, histogramme et boîte à moustaches d'une série
 
@@ -135,6 +137,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Rédacteur IA](https://jsglobe.com/fr/apps/ai-writer): Résumer, réécrire, traduire et relire
 - [Traduire](https://jsglobe.com/fr/apps/ai-translate): Traduire du texte avec un modèle sur cet appareil
 - [Regex IA](https://jsglobe.com/fr/apps/ai-regex): Décrivez un motif et obtenez une regex testée
+- [Testeur MCP](https://jsglobe.com/fr/apps/mcp-tester): Connectez-vous à un serveur Model Context Protocol et essayez ses outils, ressources et prompts
 - [Inspector AI](https://jsglobe.com/fr/apps/inspector): Poser des questions à ses propres documents, avec les références
 
 ## Jeux
@@ -169,6 +172,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Portefeuille](https://jsglobe.com/fr/apps/portfolio): Suivre les positions, la répartition et les gains ou pertes
 - [Notes](https://jsglobe.com/fr/apps/notes): Notes rapides enregistrées dans cet espace de travail
 - [Tâches](https://jsglobe.com/fr/apps/todo): Une liste légère par espace de travail
+- [Gestionnaire de fichiers](https://jsglobe.com/fr/apps/file-manager): Ouvrez un dossier de votre ordinateur pour parcourir, prévisualiser, modifier et organiser ses fichiers
 - [Fuseaux horaires](https://jsglobe.com/fr/apps/timezone-planner): Aligner des villes et trouver les heures communes
 - [Validateur IBAN](https://jsglobe.com/fr/apps/iban-validator): Vérifier des numéros de compte et lire leurs parties
 - [Console série](https://jsglobe.com/fr/apps/serial-console): Dialoguer avec un appareil série via USB

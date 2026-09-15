@@ -1,6 +1,6 @@
 # Toolbox
 
-> 快速、私密、完全在浏览器中运行的开发者工具。133 个工具，无需注册，不上传任何内容。
+> 快速、私密、完全在浏览器中运行的开发者工具。137 个工具，无需注册，不上传任何内容。
 
 一切都以 JavaScript 在你自己的浏览器中运行，因此输入内容不会到达任何服务器。
 
@@ -52,6 +52,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## 开发
 
+- [Git 查看器](https://jsglobe.com/zh/apps/git-viewer): 打开电脑上的 git 仓库，查看提交图、差异，以及热点文件和巴士因子等洞察
 - [JSON 格式化](https://jsglobe.com/zh/apps/json-formatter): 格式化、校验、压缩并浏览 JSON [tools: format_json, check_json]
 - [JSON 比较](https://jsglobe.com/zh/apps/json-diff): 逐键比较两份 JSON 文档
 - [SQL 格式化](https://jsglobe.com/zh/apps/sql-formatter): 让 SQL 语句易读的排版
@@ -94,6 +95,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [计算器](https://jsglobe.com/zh/apps/math-evaluator): 求值带函数与常量的表达式 [tools: evaluate_expression]
 - [单位换算](https://jsglobe.com/zh/apps/unit-converter): 长度、质量、数据、温度与时间
+- [行程速度](https://jsglobe.com/zh/apps/journey-speed): 计算行程的平均速度，看看开得更快到底能省多少时间
 - [函数绘图](https://jsglobe.com/zh/apps/function-plotter): 绘制表达式，支持缩放、求根与导数
 - [统计](https://jsglobe.com/zh/apps/statistics): 一组数字的概要、直方图与箱线图
 
@@ -135,6 +137,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [AI 写作](https://jsglobe.com/zh/apps/ai-writer): 摘要、改写、翻译与校对
 - [翻译](https://jsglobe.com/zh/apps/ai-translate): 用本机上的模型翻译文本
 - [AI 正则](https://jsglobe.com/zh/apps/ai-regex): 描述一个模式并得到经过测试的正则
+- [MCP 测试器](https://jsglobe.com/zh/apps/mcp-tester): 连接 Model Context Protocol 服务器，试用它的工具、资源和提示词
 - [Inspector AI](https://jsglobe.com/zh/apps/inspector): 向自己的文档提问，答案附带出处
 
 ## 游戏
@@ -169,6 +172,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [投资组合](https://jsglobe.com/zh/apps/portfolio): 跟踪持仓、配置与盈亏
 - [备忘](https://jsglobe.com/zh/apps/notes): 保存在此工作区的速记
 - [任务](https://jsglobe.com/zh/apps/todo): 每个工作区一份轻量清单
+- [文件管理器](https://jsglobe.com/zh/apps/file-manager): 打开电脑上的文件夹，浏览、预览、编辑和整理其中的文件
 - [时区](https://jsglobe.com/zh/apps/timezone-planner): 对齐各城市并找出重叠的时段
 - [IBAN 校验](https://jsglobe.com/zh/apps/iban-validator): 校验银行账号并解读其组成
 - [串口终端](https://jsglobe.com/zh/apps/serial-console): 通过 USB 与串口设备通信

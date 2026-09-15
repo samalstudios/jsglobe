@@ -1,6 +1,6 @@
 # Toolbox
 
-> Hurtige, private udviklerværktøjer, der kører helt i browseren. 133 værktøjer, ingen tilmelding, ingen uploads.
+> Hurtige, private udviklerværktøjer, der kører helt i browseren. 137 værktøjer, ingen tilmelding, ingen uploads.
 
 Alt kører som JavaScript i din egen browser, så det, du taster ind, når aldrig en server.
 
@@ -52,6 +52,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## Udvikling
 
+- [Git-fremviser](https://jsglobe.com/da/apps/git-viewer): Åbn et git-repository på computeren og se commitgrafen, diffs og indsigt som hotspots og busfaktor
 - [JSON-formatering](https://jsglobe.com/da/apps/json-formatter): Formatér, kontrollér, formindsk og udforsk JSON [tools: format_json, check_json]
 - [JSON-sammenligning](https://jsglobe.com/da/apps/json-diff): Sammenlign to JSON-dokumenter nøgle for nøgle
 - [SQL-formatering](https://jsglobe.com/da/apps/sql-formatter): Læsbar formatering af SQL-sætninger
@@ -94,6 +95,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [Udtryksberegner](https://jsglobe.com/da/apps/math-evaluator): Beregn udtryk med funktioner og konstanter [tools: evaluate_expression]
 - [Enhedsomregner](https://jsglobe.com/da/apps/unit-converter): Længde, masse, data, temperatur og tid
+- [Rejsefart](https://jsglobe.com/da/apps/journey-speed): Beregn en turs gennemsnitsfart og se, hvor meget tid højere fart reelt sparer
 - [Funktionstegner](https://jsglobe.com/da/apps/function-plotter): Tegn udtryk med zoom, nulpunkter og afledede
 - [Statistik](https://jsglobe.com/da/apps/statistics): Sammendrag, histogram og boksplot for en talmængde
 
@@ -135,6 +137,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [AI-skribent](https://jsglobe.com/da/apps/ai-writer): Sammendrag, omskrivning, oversættelse og korrektur
 - [Oversæt](https://jsglobe.com/da/apps/ai-translate): Oversæt tekst med en model på denne enhed
 - [AI-regex](https://jsglobe.com/da/apps/ai-regex): Beskriv et mønster og få et afprøvet regulært udtryk
+- [MCP-tester](https://jsglobe.com/da/apps/mcp-tester): Forbind til en Model Context Protocol-server og prøv dens værktøjer, ressourcer og prompts
 - [Inspector AI](https://jsglobe.com/da/apps/inspector): Stil spørgsmål til dine egne dokumenter, med kildehenvisninger
 
 ## Spil
@@ -169,6 +172,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Portefølje](https://jsglobe.com/da/apps/portfolio): Følg beholdninger, fordeling og gevinst eller tab
 - [Noter](https://jsglobe.com/da/apps/notes): Hurtige noter gemt i denne arbejdsflade
 - [Opgaver](https://jsglobe.com/da/apps/todo): En let tjekliste pr. arbejdsflade
+- [Filhåndtering](https://jsglobe.com/da/apps/file-manager): Åbn en mappe på computeren for at gennemse, forhåndsvise, redigere og organisere filer
 - [Tidszoner](https://jsglobe.com/da/apps/timezone-planner): Stil byer op ved siden af hinanden og find de fælles timer
 - [IBAN-tjek](https://jsglobe.com/da/apps/iban-validator): Kontrollér kontonumre og læs deres dele
 - [Seriel konsol](https://jsglobe.com/da/apps/serial-console): Tal med en seriel enhed over USB

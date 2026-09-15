@@ -1,6 +1,6 @@
 # Toolbox
 
-> 브라우저에서만 돌아가는 빠르고 사적인 개발 도구. 도구 133개, 가입 없음, 업로드 없음.
+> 브라우저에서만 돌아가는 빠르고 사적인 개발 도구. 도구 137개, 가입 없음, 업로드 없음.
 
 모든 것이 자기 브라우저 안의 JavaScript로 돌아가므로, 입력이 서버에 닿는 일이 없습니다.
 
@@ -52,6 +52,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## 개발
 
+- [Git 뷰어](https://jsglobe.com/ko/apps/git-viewer): 컴퓨터의 git 저장소를 열어 커밋 그래프, diff, 핫스팟과 버스 팩터 같은 인사이트 보기
 - [JSON 정리](https://jsglobe.com/ko/apps/json-formatter): JSON을 정리하고 검사하고 줄이고 살펴보기 [tools: format_json, check_json]
 - [JSON 차이](https://jsglobe.com/ko/apps/json-diff): 두 JSON 문서를 키 단위로 비교하기
 - [SQL 정리](https://jsglobe.com/ko/apps/sql-formatter): SQL 문을 읽기 좋게 다듬기
@@ -94,6 +95,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [수식 계산](https://jsglobe.com/ko/apps/math-evaluator): 함수와 상수를 쓰는 식 계산하기 [tools: evaluate_expression]
 - [단위 변환](https://jsglobe.com/ko/apps/unit-converter): 길이, 질량, 데이터, 온도, 시간
+- [주행 속도](https://jsglobe.com/ko/apps/journey-speed): 여정의 평균 속도를 계산하고 더 빨리 달리면 실제로 얼마나 시간이 줄어드는지 확인
 - [함수 그래프](https://jsglobe.com/ko/apps/function-plotter): 식을 확대, 근, 도함수와 함께 그리기
 - [통계](https://jsglobe.com/ko/apps/statistics): 숫자 묶음의 요약, 히스토그램, 상자 그림
 
@@ -135,6 +137,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [AI 글쓰기](https://jsglobe.com/ko/apps/ai-writer): 요약, 다시 쓰기, 번역, 교정
 - [번역](https://jsglobe.com/ko/apps/ai-translate): 이 기기의 모델로 텍스트를 번역하기
 - [AI 정규식](https://jsglobe.com/ko/apps/ai-regex): 패턴을 설명하면 검증된 정규식을 얻습니다
+- [MCP 테스터](https://jsglobe.com/ko/apps/mcp-tester): Model Context Protocol 서버에 연결해 도구, 리소스, 프롬프트를 시험하기
 - [Inspector AI](https://jsglobe.com/ko/apps/inspector): 자기 문서에 질문하고 근거와 함께 답 받기
 
 ## 놀이
@@ -169,6 +172,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [포트폴리오](https://jsglobe.com/ko/apps/portfolio): 보유, 배분, 손익을 따라가기
 - [메모](https://jsglobe.com/ko/apps/notes): 이 작업 공간에 저장되는 짧은 메모
 - [할 일](https://jsglobe.com/ko/apps/todo): 작업 공간마다 두는 가벼운 체크리스트
+- [파일 관리자](https://jsglobe.com/ko/apps/file-manager): 컴퓨터의 폴더를 열어 파일을 둘러보고 미리 보고 편집하고 정리하기
 - [시간대](https://jsglobe.com/ko/apps/timezone-planner): 도시를 나란히 놓고 겹치는 시간 찾기
 - [IBAN 검사](https://jsglobe.com/ko/apps/iban-validator): 계좌 번호를 확인하고 구성을 읽기
 - [시리얼 콘솔](https://jsglobe.com/ko/apps/serial-console): USB로 시리얼 장치와 주고받기

@@ -23,6 +23,7 @@ import jwt_parser from './jwt-parser/meta.js';
 import keycode_info from './keycode-info/meta.js';
 import slugify from './slugify/meta.js';
 import http_status from './http-status/meta.js';
+import git_viewer from './git-viewer/meta.js';
 import json_formatter from './json-formatter/meta.js';
 import json_diff from './json-diff/meta.js';
 import sql_formatter from './sql-formatter/meta.js';
@@ -39,6 +40,7 @@ import text_diff from './text-diff/meta.js';
 import markdown_preview from './markdown-preview/meta.js';
 import math_evaluator from './math-evaluator/meta.js';
 import unit_converter from './unit-converter/meta.js';
+import journey_speed from './journey-speed/meta.js';
 import qr_generator from './qr-generator/meta.js';
 import uuid_generator from './uuid-generator/meta.js';
 import device_info from './device-info/meta.js';
@@ -49,6 +51,7 @@ import true_size from './true-size/meta.js';
 import portfolio from './portfolio/meta.js';
 import notes from './notes/meta.js';
 import todo from './todo/meta.js';
+import file_manager from './file-manager/meta.js';
 import image_converter from './image-converter/meta.js';
 import png_outline from './png-outline/meta.js';
 import gif_maker from './gif-maker/meta.js';
@@ -73,6 +76,7 @@ import function_plotter from './function-plotter/meta.js';
 import statistics from './statistics/meta.js';
 import rdap_lookup from './rdap-lookup/meta.js';
 import websocket_tester from './websocket-tester/meta.js';
+import mcp_tester from './mcp-tester/meta.js';
 import cert_decoder from './cert-decoder/meta.js';
 import typing_test from './typing-test/meta.js';
 import chess from './chess/meta.js';
@@ -162,6 +166,7 @@ export const catalog = [
   keycode_info,
   slugify,
   http_status,
+  git_viewer,
   json_formatter,
   json_diff,
   sql_formatter,
@@ -178,6 +183,7 @@ export const catalog = [
   markdown_preview,
   math_evaluator,
   unit_converter,
+  journey_speed,
   qr_generator,
   uuid_generator,
   device_info,
@@ -188,6 +194,7 @@ export const catalog = [
   portfolio,
   notes,
   todo,
+  file_manager,
   image_converter,
   png_outline,
   gif_maker,
@@ -212,6 +219,7 @@ export const catalog = [
   statistics,
   rdap_lookup,
   websocket_tester,
+  mcp_tester,
   cert_decoder,
   typing_test,
   chess,

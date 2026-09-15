@@ -1351,8 +1351,8 @@ const ART = {
       defs: across('sg', ['#30d158', '#ffd60a', '#ff9f0a', '#ff375f'], 18, 0, 82, 0),
       art:
         `<path d="M22.3 74A32 32 0 1 1 77.7 74" fill="none" stroke="#fff" stroke-opacity=".08" stroke-width="8" stroke-linecap="round"/>` +
-        `<path d="M22.3 74A32 32 0 1 1 71.4 34.2" fill="none" stroke="url(#@sg)" stroke-width="8" stroke-linecap="round" opacity=".6" filter="url(#@f)"/>` +
-        `<path d="M22.3 74A32 32 0 1 1 71.4 34.2" fill="none" stroke="url(#@sg)" stroke-width="8" stroke-linecap="round"/>` +
+        `<path d="M22.3 74A32 32 0 0 1 71.4 34.2" fill="none" stroke="url(#@sg)" stroke-width="8" stroke-linecap="round" opacity=".6" filter="url(#@f)"/>` +
+        `<path d="M22.3 74A32 32 0 0 1 71.4 34.2" fill="none" stroke="url(#@sg)" stroke-width="8" stroke-linecap="round"/>` +
         `<g stroke="#fff" stroke-opacity=".55" stroke-width="1.6" stroke-linecap="round" transform="translate(0 0) scale(1)">${ticks.replaceAll('M84 58', 'M76 58')}</g>` +
         shadow('<path d="M50 58 69 40"/>', 1.5, 0.5, 's') +
         `<path d="M50 58 69 40" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/>` +
@@ -2596,29 +2596,121 @@ const ART = {
         `<circle cx="81" cy="48" r="9" fill="none" stroke="#ff453a" stroke-width="1.4" opacity=".6"/>`,
     };
   },
-  // not an app: the dock's way into the library, a grid of little app tiles
+  'git-viewer': ({ dark }) => {
+    // the branch sign: a main line with a branch curving off it, on git's orange
+    const points = [[35, 22], [65, 32], [35, 78]];
+    const main = 'M35 22V78';
+    const branch = 'M65 32C65 54 35 48 35 66';
+    const dot = (x, y) => `<circle cx="${x}" cy="${y}" r="8"/>`;
+    const dots = points.map(([x, y]) => dot(x, y)).join('');
+    return {
+      background: ['#ff7a45', '#d9361c'],
+      defs: across('gw', ['#ffffff', '#ffe3d6'], 0, 14, 0, 86),
+      art:
+        `<ellipse cx="50" cy="40" rx="34" ry="28" fill="#ffb38a" opacity="${dark ? 0.2 : 0.3}" filter="url(#@g)"/>` +
+        shadow(`<path d="${main}" fill="none" stroke-width="7"/><path d="${branch}" fill="none" stroke-width="7"/>${dots}`, 2.4, 0.3) +
+        `<g fill="none" stroke="url(#@gw)" stroke-width="7" stroke-linecap="round"><path d="${main}"/><path d="${branch}"/></g>` +
+        `<g fill="url(#@gw)">${dots}</g>` +
+        `<g fill="#e5482a">${points.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3.4"/>`).join('')}</g>`,
+    };
+  },
+  'journey-speed': ({ dark }) => {
+    const road = '<path d="M46.5 46h7L86 100H14Z"/>';
+    const dashes = [[49.6, 50.4, 52, 56], [49.2, 50.8, 61, 68], [48.6, 51.4, 74, 84], [47.8, 52.2, 90, 100]]
+      .map(([left, right, top, bottom]) => `<path d="M${left} ${top}h${right - left}l${(right - left) * 0.35} ${bottom - top}h-${(right - left) * 1.7}Z"/>`)
+      .join('');
+    const watch = '<circle cx="70" cy="31" r="15"/>';
+    return {
+      background: ['#7ad3ff', '#1f7de0'],
+      defs:
+        linear('jr', ['#4b5563', '#1f2937']) +
+        linear('jh', ['#5fd37a', '#23994a']) +
+        across('jw', ['#ffffff', '#e3e8f0'], 0, 16, 0, 46),
+      art:
+        `<path d="M-4 52C14 42 30 42 50 47S84 40 104 46V104H-4Z" fill="url(#@jh)"/>` +
+        `<path d="M-4 52C14 42 30 42 50 47S84 40 104 46" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1"/>` +
+        `<g fill="url(#@jr)">${road}</g>` +
+        `<g fill="#ffd60a">${dashes}</g>` +
+        `<path d="M46.5 46 14 100M53.5 46 86 100" stroke="#fff" stroke-opacity=".7" stroke-width="1.4"/>` +
+        shadow(watch, 2.5, dark ? 0.4 : 0.28) +
+        `<rect x="67" y="11.5" width="6" height="5" rx="1.6" fill="#e3e8f0"/>` +
+        `<g fill="url(#@jw)">${watch}</g>` +
+        `<path d="M70 21.5V31l6.5 4" fill="none" stroke="#ff375f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>` +
+        `<path d="M70 18.5a12.5 12.5 0 0 1 12.2 9.8" fill="none" stroke="#0a84ff" stroke-width="2.4" stroke-linecap="round"/>` +
+        `<circle cx="70" cy="31" r="2" fill="#1c1c1e"/>`,
+    };
+  },
+  'mcp-tester': ({ dark }) => {
+    // a model at the hub, wired to the three things a server offers: tools,
+    // resources and prompts
+    const hub = [50, 51];
+    const nodes = [[26, 28], [74, 28], [50, 79]];
+    const disc = (x, y, r) => `<circle cx="${x}" cy="${y}" r="${r}"/>`;
+    return {
+      background: ['#3a3f8f', '#14163d'],
+      defs: aurora('ma') + across('mw', ['#ffffff', '#dfe3f3'], 0, 12, 0, 96) + radial('mh', [['#fff', 0.5], ['#fff', 0]], 0.5, 0.3, 0.6),
+      art:
+        `<ellipse cx="50" cy="54" rx="30" ry="28" fill="#7d6bff" opacity="${dark ? 0.28 : 0.35}" filter="url(#@g)"/>` +
+        `<g stroke="#aab4ff" stroke-width="2.6" stroke-linecap="round" opacity=".55">${nodes.map(([x, y]) => `<path d="M${hub[0]} ${hub[1]}L${x} ${y}"/>`).join('')}</g>` +
+        `<g fill="#fff">${[[38, 39.5], [62, 39.5], [50, 65]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="1.9"/>`).join('')}</g>` +
+        shadow(nodes.map(([x, y]) => disc(x, y, 10.5)).join(''), 2.2, 0.35) +
+        `<g fill="url(#@mw)">${nodes.map(([x, y]) => disc(x, y, 10.5)).join('')}</g>` +
+        // tools: a pair of braces
+        `<g transform="translate(26 28) scale(.86) translate(-24 -27.8)"><path d="M21.5 20.5c-2.6 0-3.6 1.2-3.6 3.4v1.4c0 1.3-.7 1.9-2 1.9 1.3 0 2 .6 2 1.9v1.4c0 2.2 1 3.4 3.6 3.4M26.5 20.5c2.6 0 3.6 1.2 3.6 3.4v1.4c0 1.3.7 1.9 2 1.9-1.3 0-2 .6-2 1.9v1.4c0 2.2-1 3.4-3.6 3.4" fill="none" stroke="#4a55c8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>` +
+        // resources: a page
+        `<g transform="translate(74 28) scale(.86) translate(-75 -27.75)"><path d="M71 19.5h7l4 4v11a1.5 1.5 0 0 1-1.5 1.5h-9.5a1.5 1.5 0 0 1-1.5-1.5v-13.5a1.5 1.5 0 0 1 1.5-1.5Z" fill="none" stroke="#4a55c8" stroke-width="2" stroke-linejoin="round"/><path d="M72.5 27h6.5M72.5 31h5" stroke="#4a55c8" stroke-width="1.8" stroke-linecap="round"/></g>` +
+        // prompts: a speech bubble
+        `<g transform="translate(50 78.6) scale(.86) translate(-50 -85)"><path d="M44.5 78.5h11a2.5 2.5 0 0 1 2.5 2.5v5a2.5 2.5 0 0 1-2.5 2.5h-6l-3.5 3v-3h-1.5a2.5 2.5 0 0 1-2.5-2.5v-5a2.5 2.5 0 0 1 2.5-2.5Z" fill="none" stroke="#4a55c8" stroke-width="2" stroke-linejoin="round"/></g>` +
+        shadow(disc(hub[0], hub[1], 14.5), 2.5, 0.45) +
+        `<g fill="url(#@ma)">${disc(hub[0], hub[1], 14.5)}</g>` +
+        `<circle cx="${hub[0]}" cy="${hub[1]}" r="14.5" fill="url(#@mh)"/>` +
+        `<circle cx="${hub[0]}" cy="${hub[1]}" r="14" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1"/>` +
+        `<g fill="#fff">${spark(hub[0], hub[1], 15)}</g>`,
+    };
+  },
+  'file-manager': ({ dark }) => {
+    const back = '<path d="M14 26a6 6 0 0 1 6-6h17.5a6 6 0 0 1 4.4 1.9L46 26.5h34a6 6 0 0 1 6 6V78a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6Z"/>';
+    const front = '<path d="M14 40a5 5 0 0 1 5-5h62a5 5 0 0 1 5 5v38a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6Z"/>';
+    return {
+      background: ['#fbfcff', '#dbe4f2'],
+      defs:
+        linear('fb', ['#3f9df2', '#1f6fd6']) +
+        linear('ff', ['#8fd0ff', '#4aa8f6', ['#3a97ee', 1, 1]]) +
+        linear('fs', ['#ffffff', '#eef1f6']) +
+        linear('fl', [['#fff', 0.55], ['#fff', 0]]),
+      art:
+        shadow(back, 3, dark ? 0.45 : 0.22, 'g') +
+        `<g fill="url(#@fb)">${back}</g>` +
+        // two sheets of paper tucked inside
+        shadow('<rect x="36" y="21" width="40" height="28" rx="3" transform="rotate(-6 56 35)"/>', 1.2, 0.25, 's') +
+        `<rect x="36" y="21" width="40" height="28" rx="3" fill="url(#@fs)" transform="rotate(-6 56 35)"/>` +
+        `<rect x="44" y="25" width="36" height="26" rx="3" fill="#fff" transform="rotate(5 62 38)"/>` +
+        `<g stroke="#c9d3e3" stroke-width="2" stroke-linecap="round" transform="rotate(5 62 38)"><path d="M49 30.5h18M49 35h25"/></g>` +
+        shadow(front, -1.2, 0.18, 's') +
+        `<g fill="url(#@ff)">${front}</g>` +
+        `<path d="M14 40a5 5 0 0 1 5-5h62a5 5 0 0 1 5 5v5H14Z" fill="url(#@fl)"/>` +
+        `<path d="M19.5 35.5h61" stroke="#fff" stroke-opacity=".7" stroke-width="1"/>` +
+        `<path d="M40 60.5h20" stroke="#2b7fe0" stroke-opacity=".45" stroke-width="3" stroke-linecap="round"/>`,
+    };
+  },
+  // not an app: the dock's way into the library, a grid of apps on a bright plate
   'app-library': ({ dark }) => {
-    const colours = ['#ff5e57', '#ff9f0a', '#ffcc00', '#34c759', '#2ac3de', '#0a84ff', '#5e5ce6', '#bf5af2', '#ff375f'];
-    const tile = 21;
-    const gap = 6.5;
+    const tile = 19;
+    const gap = 7.5;
     const start = (100 - tile * 3 - gap * 2) / 2;
     const scale = tile / 100;
+    const tiles = Array.from({ length: 9 }, (_, index) => {
+      const x = start + (index % 3) * (tile + gap);
+      const y = start + Math.floor(index / 3) * (tile + gap);
+      return `<path d="${SQUIRCLE}" transform="translate(${+x.toFixed(2)} ${+y.toFixed(2)}) scale(${scale})"/>`;
+    }).join('');
     return {
-      background: ['#fbfbfd', '#dcdee5'],
-      defs: colours.map((colour, index) => lit(`l${index}`, colour, 0.2, 0.12)).join('') +
-        linear('lh', [['#fff', 0.38], ['#fff', 0, 0.42]]),
-      art: colours
-        .map((colour, index) => {
-          const x = start + (index % 3) * (tile + gap);
-          const y = start + Math.floor(index / 3) * (tile + gap);
-          const shape = `<path d="${SQUIRCLE}" transform="translate(${x} ${y}) scale(${scale})"/>`;
-          return (
-            shadow(shape, 1.2, dark ? 0.4 : 0.2, 's') +
-            `<g fill="url(#@l${index})">${shape}</g>` +
-            `<path d="${SQUIRCLE}" transform="translate(${x} ${y}) scale(${scale})" fill="url(#@lh)"/>`
-          );
-        })
-        .join(''),
+      background: ['#4f8dff', '#6a3cf0'],
+      defs: across('lw', ['#ffffff', '#e6e9ff'], 0, start, 0, 100 - start),
+      art:
+        `<ellipse cx="50" cy="30" rx="44" ry="26" fill="#9fd0ff" opacity="${dark ? 0.18 : 0.3}" filter="url(#@g)"/>` +
+        shadow(tiles, 1.6, dark ? 0.4 : 0.3, 's') +
+        `<g fill="url(#@lw)">${tiles}</g>`,
     };
   },
   settings: () => {

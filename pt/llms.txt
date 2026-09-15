@@ -1,6 +1,6 @@
 # Toolbox
 
-> Ferramentas de desenvolvimento rápidas e privadas, rodando inteiramente no navegador. 133 ferramentas, sem cadastro, sem envios.
+> Ferramentas de desenvolvimento rápidas e privadas, rodando inteiramente no navegador. 137 ferramentas, sem cadastro, sem envios.
 
 Tudo roda como JavaScript no seu próprio navegador, então o que você digita nunca chega a um servidor.
 
@@ -52,6 +52,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## Desenvolvimento
 
+- [Visualizador Git](https://jsglobe.com/pt/apps/git-viewer): Abra um repositório git do computador para ver o gráfico de commits, os diffs e análises como pontos críticos e fator autocarro
 - [Formatador JSON](https://jsglobe.com/pt/apps/json-formatter): Formate, valide, minifique e explore JSON [tools: format_json, check_json]
 - [Diff de JSON](https://jsglobe.com/pt/apps/json-diff): Compare dois documentos JSON chave a chave
 - [Formatador SQL](https://jsglobe.com/pt/apps/sql-formatter): Formatação legível para instruções SQL
@@ -94,6 +95,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [Avaliador matemático](https://jsglobe.com/pt/apps/math-evaluator): Avalie expressões com funções e constantes [tools: evaluate_expression]
 - [Conversor de unidades](https://jsglobe.com/pt/apps/unit-converter): Comprimento, massa, dados, temperatura e tempo
+- [Velocidade da viagem](https://jsglobe.com/pt/apps/journey-speed): Calcule a velocidade média de uma viagem e quanto tempo poupa realmente a andar mais depressa
 - [Plotador de funções](https://jsglobe.com/pt/apps/function-plotter): Trace expressões com zoom, raízes e derivadas
 - [Estatística](https://jsglobe.com/pt/apps/statistics): Resumo, histograma e box plot de um conjunto de números
 
@@ -135,6 +137,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Escritor com IA](https://jsglobe.com/pt/apps/ai-writer): Resuma, reescreva, traduza e revise
 - [Traduzir](https://jsglobe.com/pt/apps/ai-translate): Traduza textos com um modelo neste dispositivo
 - [Regex com IA](https://jsglobe.com/pt/apps/ai-regex): Descreva um padrão e receba uma regex testada
+- [Testador MCP](https://jsglobe.com/pt/apps/mcp-tester): Ligue-se a um servidor Model Context Protocol e experimente as ferramentas, recursos e prompts
 - [Inspector AI](https://jsglobe.com/pt/apps/inspector): Faça perguntas aos seus documentos, com referências
 
 ## Jogos
@@ -169,6 +172,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Carteira](https://jsglobe.com/pt/apps/portfolio): Acompanhe posições, alocação e lucro ou prejuízo
 - [Notas](https://jsglobe.com/pt/apps/notes): Anotações rápidas salvas nesta área de trabalho
 - [Tarefas](https://jsglobe.com/pt/apps/todo): Uma lista simples por área de trabalho
+- [Gestor de ficheiros](https://jsglobe.com/pt/apps/file-manager): Abra uma pasta do computador para explorar, pré-visualizar, editar e organizar os ficheiros
 - [Fusos horários](https://jsglobe.com/pt/apps/timezone-planner): Alinhe cidades e ache as horas em comum
 - [Validador de IBAN](https://jsglobe.com/pt/apps/iban-validator): Verifique números de conta e leia suas partes
 - [Console serial](https://jsglobe.com/pt/apps/serial-console): Converse com um dispositivo serial via USB

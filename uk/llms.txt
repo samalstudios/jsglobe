@@ -1,6 +1,6 @@
 # Toolbox
 
-> Швидкі приватні інструменти для розробників, що працюють повністю в браузері. Інструментів: 133, без реєстрації, без надсилання файлів.
+> Швидкі приватні інструменти для розробників, що працюють повністю в браузері. Інструментів: 137, без реєстрації, без надсилання файлів.
 
 Усе працює як JavaScript у вашому власному браузері, тож введене ніколи не сягає сервера.
 
@@ -52,6 +52,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## Розробка
 
+- [Переглядач Git](https://jsglobe.com/uk/apps/git-viewer): Відкрийте репозиторій git на комп’ютері й перегляньте граф комітів, диффи та аналітику: гарячі точки й bus factor
 - [Форматування JSON](https://jsglobe.com/uk/apps/json-formatter): Форматуйте, перевіряйте, стискайте й переглядайте JSON [tools: format_json, check_json]
 - [Порівняння JSON](https://jsglobe.com/uk/apps/json-diff): Порівняйте два документи JSON ключ за ключем
 - [Форматування SQL](https://jsglobe.com/uk/apps/sql-formatter): Зручне для читання оформлення запитів SQL
@@ -94,6 +95,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [Обчислення виразів](https://jsglobe.com/uk/apps/math-evaluator): Обчислюйте вирази з функціями й сталими [tools: evaluate_expression]
 - [Перетворення одиниць](https://jsglobe.com/uk/apps/unit-converter): Довжина, маса, дані, температура й час
+- [Швидкість поїздки](https://jsglobe.com/uk/apps/journey-speed): Обчисліть середню швидкість поїздки й дізнайтеся, скільки часу насправді заощаджує швидша їзда
 - [Графіки функцій](https://jsglobe.com/uk/apps/function-plotter): Будуйте графіки з масштабом, коренями й похідними
 - [Статистика](https://jsglobe.com/uk/apps/statistics): Зведення, гістограма й коробкова діаграма для набору чисел
 
@@ -135,6 +137,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [ШІ-редактор](https://jsglobe.com/uk/apps/ai-writer): Скорочення, переписування, переклад і вичитування
 - [Переклад](https://jsglobe.com/uk/apps/ai-translate): Перекладайте текст моделлю на цьому пристрої
 - [ШІ-регвирази](https://jsglobe.com/uk/apps/ai-regex): Опишіть взірець і отримайте перевірений регвираз
+- [Тестер MCP](https://jsglobe.com/uk/apps/mcp-tester): Підключіться до сервера Model Context Protocol і випробуйте його інструменти, ресурси та промпти
 - [Inspector AI](https://jsglobe.com/uk/apps/inspector): Питайте власні документи й отримуйте відповіді з посиланнями
 
 ## Ігри
@@ -169,6 +172,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Портфель](https://jsglobe.com/uk/apps/portfolio): Стежте за активами, розподілом і прибутком чи збитком
 - [Нотатки](https://jsglobe.com/uk/apps/notes): Швидкі записи, збережені в цьому робочому просторі
 - [Завдання](https://jsglobe.com/uk/apps/todo): Легкий список справ для кожного робочого простору
+- [Файловий менеджер](https://jsglobe.com/uk/apps/file-manager): Відкрийте папку на комп’ютері, щоб переглядати, редагувати й упорядковувати файли
 - [Часові пояси](https://jsglobe.com/uk/apps/timezone-planner): Зіставте міста й знайдіть спільні години
 - [Перевірка IBAN](https://jsglobe.com/uk/apps/iban-validator): Перевіряйте номери рахунків і читайте їхні частини
 - [Послідовна консоль](https://jsglobe.com/uk/apps/serial-console): Спілкуйтеся з послідовним пристроєм через USB

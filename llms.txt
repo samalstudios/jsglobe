@@ -1,6 +1,6 @@
 # Toolbox
 
-> Fast, private developer tools that run entirely in your browser. 133 tools, no sign up, no uploads.
+> Fast, private developer tools that run entirely in your browser. 137 tools, no sign up, no uploads.
 
 Everything runs as JavaScript in your own browser, so your input never reaches a server.
 
@@ -52,6 +52,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## Development
 
+- [Git Viewer](https://jsglobe.com/apps/git-viewer): Open a git repository on your computer to see its commit graph, diffs and insights like hotspots and bus factor
 - [JSON Formatter](https://jsglobe.com/apps/json-formatter): Format, validate, minify and explore JSON [tools: format_json, check_json]
 - [JSON Diff](https://jsglobe.com/apps/json-diff): Compare two JSON documents key by key
 - [SQL Formatter](https://jsglobe.com/apps/sql-formatter): Readable formatting for SQL statements
@@ -94,6 +95,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [Math Evaluator](https://jsglobe.com/apps/math-evaluator): Evaluate expressions with functions and constants [tools: evaluate_expression]
 - [Unit Converter](https://jsglobe.com/apps/unit-converter): Length, mass, data, temperature and time
+- [Journey Speed](https://jsglobe.com/apps/journey-speed): Work out a trip's average speed and see how much time a faster pace really saves
 - [Function Plotter](https://jsglobe.com/apps/function-plotter): Graph expressions with zoom, roots and derivatives
 - [Statistics](https://jsglobe.com/apps/statistics): Summary, histogram and box plot for a set of numbers
 
@@ -135,6 +137,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [AI Writer](https://jsglobe.com/apps/ai-writer): Summarise, rewrite, translate and proofread
 - [Translate](https://jsglobe.com/apps/ai-translate): Translate text with a model on this device
 - [AI Regex](https://jsglobe.com/apps/ai-regex): Describe a pattern and get a tested regex
+- [MCP Tester](https://jsglobe.com/apps/mcp-tester): Connect to a Model Context Protocol server and try its tools, resources and prompts
 - [Inspector AI](https://jsglobe.com/apps/inspector): Ask questions of your own documents, answered with references
 
 ## Play
@@ -169,6 +172,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Portfolio](https://jsglobe.com/apps/portfolio): Track holdings, allocation and profit or loss
 - [Notes](https://jsglobe.com/apps/notes): Quick scratch notes saved to this workspace
 - [Tasks](https://jsglobe.com/apps/todo): A lightweight checklist per workspace
+- [File Manager](https://jsglobe.com/apps/file-manager): Open a folder on your computer to browse, preview, edit and organise its files
 - [Time Zones](https://jsglobe.com/apps/timezone-planner): Line up cities and find the overlapping hours
 - [IBAN Validator](https://jsglobe.com/apps/iban-validator): Check bank account numbers and read their parts
 - [Serial Console](https://jsglobe.com/apps/serial-console): Talk to a serial device over USB

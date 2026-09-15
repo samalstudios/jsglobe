@@ -37,6 +37,7 @@ export * as molecule3d from './lib/gl-molecule.js';
 
 // ---- codes -----------------------------------------------------------
 export * as tax from './lib/tax.js';
+export * as journey from './lib/journey.js';
 export * as taxCountries from './lib/tax-countries.js';
 export * as raster from './lib/raster.js';
 export * as gif from './lib/gif.js';
@@ -48,9 +49,12 @@ export * as richtext from './lib/richtext.js';
 export * as docLayout from './lib/doc-layout.js';
 export * as syntax from './lib/syntax.js';
 export * as gitignore from './lib/gitignore.js';
+export * as git from './lib/git.js';
+export * as inflate from './lib/inflate.js';
 export * as caret from './lib/caret.js';
 export * as gatt from './lib/gatt.js';
 export * as webmcp from './lib/webmcp.js';
+export * as mcp from './lib/mcp.js';
 export * as alphabets from './lib/alphabets.js';
 export * as httpStatus from './lib/http-status.js';
 export * as rag from './lib/rag.js';
@@ -76,6 +80,7 @@ export * as composeK8s from './lib/compose-k8s.js';
 
 // ---- storage ---------------------------------------------------------
 export * as designs from './lib/designs.js';
+export * as files from './lib/files.js';
 
 // What each domain offers, so an app author can see the surface without
 // opening every file. Kept beside the exports on purpose: a domain added
@@ -98,6 +103,7 @@ export const SURFACE = {
   palette: 'Colour scales, harmonies and contrast.',
   molecule3d: 'Draw molecules in 3D on a canvas.',
   tax: 'Progressive bands, ceilings and tapers for working out tax.',
+  journey: 'Journey time, distance and speed: time saved by a faster pace, true average speed over legs and breaks, and durations as people type them.',
   taxCountries: 'Take-home pay models for twenty three countries.',
   raster: 'Turn a picture into JPEG or PNG bytes at a size you choose.',
   gif: 'Write and read animated GIFs: one shared palette, dithering, loops, delays and only the changed part of each frame.',
@@ -109,9 +115,12 @@ export const SURFACE = {
   docLayout: 'Lay a block document onto pages, for drawing on screen or writing to PDF.',
   syntax: 'Colour code in a dozen languages, as tokens or as ready made HTML.',
   gitignore: 'Ignore file templates, and the pattern rules that decide what git leaves out.',
+  git: 'Read a git repository from its files: refs, loose and packed objects, history in graph order, tree changes, line diffs, working tree status and branch or tag edits.',
+  inflate: 'Decompress deflate and zlib streams that sit end to end, knowing where each one stops.',
   caret: 'Move the caret about inside anything people can type in: mark it, put it back, reach a word, wrap a selection.',
   gatt: 'The Bluetooth GATT vocabulary: the names behind the numbers, and the readings behind the bytes.',
   webmcp: 'Offer what a page can do to an agent browsing it, and describe the same tools to a crawler.',
+  mcp: 'Talk to a Model Context Protocol server over streamable HTTP or SSE, with a demo server in the page and forms built from tool schemas.',
   alphabets: 'The Greek, Cyrillic, Japanese and Chinese letters, with the sounds they stand for and a way to pick what to practise next.',
   httpStatus: 'Every HTTP status with what it means, when to reach for it and the ones it gets confused with.',
   rag: 'Break documents into passages, find the ones that answer a question, and build the prompt that cites them.',
@@ -129,4 +138,5 @@ export const SURFACE = {
   holidays: 'Public holidays by country and year.',
   composeK8s: 'Turn a compose file into Kubernetes manifests.',
   designs: 'Named document storage per app, with import and export.',
+  files: 'Folders and files on the user\'s machine behind one interface: listing, kinds, sorting, safe names, creating, renaming and removing.',
 };

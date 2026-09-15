@@ -1,6 +1,6 @@
 # Toolbox
 
-> ブラウザだけで動く、速くてプライベートな開発ツール。133 個のツール、登録不要、アップロードなし。
+> ブラウザだけで動く、速くてプライベートな開発ツール。137 個のツール、登録不要、アップロードなし。
 
 すべて自分のブラウザ内の JavaScript として動くので、入力がサーバーに届くことはありません。
 
@@ -52,6 +52,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## 開発
 
+- [Git ビューア](https://jsglobe.com/ja/apps/git-viewer): コンピュータ上の git リポジトリを開いて、コミットグラフ、差分、ホットスポットやバス係数などのインサイトを見る
 - [JSON 整形](https://jsglobe.com/ja/apps/json-formatter): JSON の整形、検証、圧縮、閲覧 [tools: format_json, check_json]
 - [JSON 差分](https://jsglobe.com/ja/apps/json-diff): 2 つの JSON 文書をキーごとに比較
 - [SQL 整形](https://jsglobe.com/ja/apps/sql-formatter): SQL 文を読みやすく整える
@@ -94,6 +95,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [数式評価](https://jsglobe.com/ja/apps/math-evaluator): 関数と定数を含む式を計算 [tools: evaluate_expression]
 - [単位変換](https://jsglobe.com/ja/apps/unit-converter): 長さ、質量、データ量、温度、時間
+- [移動速度](https://jsglobe.com/ja/apps/journey-speed): 移動の平均速度を計算し、速く走ると実際にどれだけ時間が縮むかを確認
 - [関数プロッタ](https://jsglobe.com/ja/apps/function-plotter): 式のグラフを拡大、零点、導関数付きで
 - [統計](https://jsglobe.com/ja/apps/statistics): 数の集まりの要約、ヒストグラム、箱ひげ図
 
@@ -135,6 +137,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [AI ライター](https://jsglobe.com/ja/apps/ai-writer): 要約、書き換え、翻訳、校正
 - [翻訳](https://jsglobe.com/ja/apps/ai-translate): この端末のモデルでテキストを翻訳
 - [AI 正規表現](https://jsglobe.com/ja/apps/ai-regex): パターンを説明すると検証済みの正規表現が得られます
+- [MCP テスター](https://jsglobe.com/ja/apps/mcp-tester): Model Context Protocol サーバーに接続して、ツール、リソース、プロンプトを試す
 - [Inspector AI](https://jsglobe.com/ja/apps/inspector): 自分の文書に質問し、根拠つきで答えを得る
 
 ## ゲーム
@@ -169,6 +172,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [ポートフォリオ](https://jsglobe.com/ja/apps/portfolio): 保有、配分、損益を追う
 - [メモ](https://jsglobe.com/ja/apps/notes): このワークスペースに保存される走り書き
 - [タスク](https://jsglobe.com/ja/apps/todo): ワークスペースごとの軽いチェックリスト
+- [ファイルマネージャー](https://jsglobe.com/ja/apps/file-manager): コンピュータのフォルダを開いてファイルを閲覧、プレビュー、編集、整理
 - [タイムゾーン](https://jsglobe.com/ja/apps/timezone-planner): 都市を並べて重なる時間帯を探す
 - [IBAN 検証](https://jsglobe.com/ja/apps/iban-validator): 口座番号を検査し、各部分を読む
 - [シリアルコンソール](https://jsglobe.com/ja/apps/serial-console): USB 経由でシリアル機器と通信

@@ -1313,6 +1313,149 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
   ok('thinning drops wiggles smaller than the tolerance', simplifyRing(wiggle, 0.05).length === 2);
 }
 
+// ---- mcp: events, schemas and a whole conversation with the demo server
+{
+  const { sseParser, exampleFor, problemsWith, fieldsOf, expandTemplate, templateNames, createClient } = await import('../js/lib/mcp.js');
+  const events = [];
+  const feed = sseParser((event) => events.push(event));
+  feed('event: endpoint\ndata: /messages?session=1\n\n: comment\ndata: {"a":');
+  feed('1}\n\n');
+  ok('sse events split across chunks come out whole', events.length === 2 && events[0].event === 'endpoint' && events[1].data === '{"a":1}');
+  const schema = { type: 'object', properties: { name: { type: 'string' }, count: { type: 'integer', default: 3 }, tags: { type: 'array', items: { type: 'string' } } }, required: ['name'] };
+  ok('an example fills defaults and lists', JSON.stringify(exampleFor(schema)) === '{"name":"","count":3,"tags":[""]}');
+  ok('a missing required argument is a problem', problemsWith(schema, { count: 2 }).some((problem) => problem.includes('name')));
+  ok('a fraction is not a whole number', problemsWith(schema, { name: 'a', count: 1.5 }).length === 1);
+  ok('form fields keep their order and requirement', fieldsOf(schema).map((field) => `${field.name}:${field.required}`).join() === 'name:true,count:false,tags:false');
+  ok('templates expand and name their parts', expandTemplate('file:///{path}', { path: 'a b' }) === 'file:///a%20b' && templateNames('db://{table}/{id}').join() === 'table,id');
+  const seen = [];
+  const client = createClient({ transport: 'demo', onMessage: (direction) => seen.push(direction) });
+  const info = await client.connect();
+  const tools = await client.listAll('tools/list', 'tools');
+  const sum = await client.request('tools/call', { name: 'add', arguments: { a: 2, b: 40 } });
+  let refused = false;
+  try {
+    await client.request('nope/nothing');
+  } catch (error) {
+    refused = error.code === -32601;
+  }
+  await client.close();
+  ok('the demo server introduces itself', info.serverInfo?.name === 'demo');
+  ok('the demo server lists its tools', tools.some((tool) => tool.name === 'add'));
+  ok('a tool call returns structured content', sum.structuredContent?.sum === 42);
+  ok('an unknown method is refused with its code', refused);
+  ok('every message is seen both ways', seen.includes('out') && seen.includes('in'));
+}
+
+// ---- files: kinds, names, sorting and a folder from a file input
+{
+  const { kindOf, freeName, nameProblem, sortNodes, fromFileList, pathOf } = await import('../js/lib/files.js');
+  ok('kinds come from extensions', kindOf('photo.JPG') === 'image' && kindOf('main.rs') === 'code' && kindOf('Makefile') === 'code');
+  ok('a free name counts up past taken ones', freeName('untitled folder', ['untitled folder', 'Untitled Folder 2']) === 'untitled folder 3');
+  ok('a free name keeps the extension', freeName('notes.txt', ['notes.txt']) === 'notes 2.txt');
+  ok('slashes are not allowed in names', Boolean(nameProblem('a/b')) && nameProblem('fine.txt') === null);
+  ok('folders sort first and numbers sort naturally', sortNodes([{ kind: 'file', name: 'b10' }, { kind: 'directory', name: 'z' }, { kind: 'file', name: 'b9' }]).map((node) => node.name).join() === 'z,b9,b10');
+  const fake = (path, size) => ({ name: path.split('/').pop(), webkitRelativePath: path, size, lastModified: 0 });
+  const root = fromFileList([fake('site/index.html', 10), fake('site/css/app.css', 20), fake('site/css/print.css', 5)]);
+  const top = await root.list();
+  const css = top.find((node) => node.name === 'css');
+  const inner = await css.list();
+  ok('a file input becomes a read only tree', root.name === 'site' && !root.writable && top.length === 2 && inner.length === 2);
+  ok('a path runs from the root down', pathOf(inner[0]).map((node) => node.name).join('/') === 'site/css/' + inner[0].name);
+}
+
+// ---- journeys: time saved, true averages and durations people type
+{
+  const { compareSpeeds, averageSpeed, formatHours, parseDuration, fuelFactor } = await import('../js/lib/journey.js');
+  const trip = compareSpeeds({ distance: 300, from: 100, to: 120 });
+  ok('300 km at 120 instead of 100 saves half an hour', Math.abs(trip.saved - 0.5) < 1e-9);
+  ok('an hour at 120 instead of 100 buys ten minutes', Math.abs(trip.minutesPerHour - 10) < 1e-9);
+  ok('faster driving uses more fuel', trip.fuelChange > 0 && fuelFactor(90) === 1);
+  const mixed = averageSpeed([{ distance: 60, speed: 60 }, { distance: 60, speed: 120 }], 0.5);
+  ok('the average speed is distance over time, not the mean of speeds', mixed.moving === 80 && mixed.naive === 90);
+  ok('breaks lower the door to door average', Math.abs(mixed.overall - 60) < 1e-9);
+  ok('hours are written to the minute', formatHours(2.727) === '2 h 44 min' && formatHours(0.25) === '15 min');
+  ok('durations are read the ways people type them', parseDuration('2:30') === 2.5 && parseDuration('1h 15m') === 1.25 && parseDuration('45 min') === 0.75 && parseDuration('2h30') === 2.5);
+}
+
+// ---- git: inflate, objects, refs, history, diffs and the graph
+{
+  const { deflateSync, deflateRawSync } = await import('node:zlib');
+  const { createHash } = await import('node:crypto');
+  const { inflateZlib, inflateRaw } = await import('../js/lib/inflate.js');
+  const git = await import('../js/lib/git.js');
+  const sample = new TextEncoder().encode('the quick brown fox '.repeat(400) + 'jumps');
+  const packed = deflateSync(sample);
+  const joined = new Uint8Array(packed.length + 3);
+  joined.set(packed);
+  const { data, end } = inflateZlib(joined, 0, sample.length);
+  ok('inflate matches zlib and stops at the end of the stream', Buffer.compare(Buffer.from(data), Buffer.from(sample)) === 0 && end === packed.length);
+  ok('raw inflate reads stored blocks', new TextDecoder().decode(inflateRaw(deflateRawSync(Buffer.from('stored'), { level: 0 })).data) === 'stored');
+
+  const files = {};
+  const store = (type, body) => {
+    const bytes = Buffer.concat([Buffer.from(`${type} ${body.length}\0`), Buffer.from(body)]);
+    const sha = createHash('sha1').update(bytes).digest('hex');
+    files[`.git/objects/${sha.slice(0, 2)}/${sha.slice(2)}`] = deflateSync(bytes);
+    return sha;
+  };
+  const tree = (entries) => store('tree', Buffer.concat(entries.map(([mode, name, sha]) => Buffer.concat([Buffer.from(`${mode} ${name}\0`), Buffer.from(sha, 'hex')]))));
+  const commit = (treeSha, parents, message, time) => store('commit', `tree ${treeSha}\n${parents.map((parent) => `parent ${parent}\n`).join('')}author Ada <ada@example.com> ${time} +0000\ncommitter Ada <ada@example.com> ${time} +0000\n\n${message}\n`);
+  const one = store('blob', 'one\ntwo\nthree\n');
+  const two = store('blob', 'one\n2\nthree\nfour\n');
+  const root = commit(tree([['100644', 'a.txt', one]]), [], 'Start', 1000);
+  const side = commit(tree([['100644', 'a.txt', one], ['100644', 'b.txt', one]]), [root], 'Side', 1000);
+  const main = commit(tree([['100644', 'a.txt', two]]), [root], 'Main', 1000);
+  const merge = commit(tree([['100644', 'a.txt', two], ['100644', 'b.txt', one]]), [main, side], 'Merge', 1000);
+  files['.git/HEAD'] = 'ref: refs/heads/main\n';
+  files['.git/refs/heads/main'] = `${merge}\n`;
+  files['.git/packed-refs'] = `# pack-refs with: peeled\n${side} refs/heads/side\n`;
+  files['.git/objects/info/packs'] = '';
+  const repo = await git.openRepository(git.memoryReader(files));
+  const head = await repo.head();
+  const refs = await repo.refs();
+  const { commits } = await repo.log({ from: [head.sha, ...refs.map((ref) => ref.commit)] });
+  ok('HEAD resolves through its branch', head.ref === 'refs/heads/main' && head.sha === merge);
+  ok('loose and packed refs are both listed', refs.map((ref) => ref.short).join() === 'main,side');
+  const place = new Map(commits.map((item, index) => [item.sha, index]));
+  ok('history lists children before parents even when times tie', commits.length === 4 && commits.every((item) => item.parents.every((parent) => place.get(parent) > place.get(item.sha))));
+  const layout = git.graphLayout(commits);
+  ok('a merge opens a second lane and it closes again', layout.width === 2 && layout.rows[0].parents.length === 2 && layout.rows[3].after.length === 0);
+  const changes = await repo.changes(merge);
+  ok('a merge is compared with its first parent', changes.length === 1 && changes[0].path === 'b.txt' && changes[0].status === 'added');
+  const ops = git.diffLines('one\ntwo\nthree\n', 'one\n2\nthree\nfour\n');
+  ok('a line diff finds the changed and added lines', ops.map((op) => op.type[0]).join('') === 'srasa' || ops.filter((op) => op.type !== 'same').length === 3);
+  ok('hunks carry line numbers', git.hunks(ops)[0].oldStart === 1 && git.hunks(ops)[0].newLines === 4);
+  await repo.createRef('branch', 'feature/new', root);
+  ok('a branch can be created at a commit', (await repo.resolve('feature/new')) === root);
+  await repo.deleteRef('refs/heads/side');
+  ok('a packed branch can be deleted', (await repo.refs()).every((ref) => ref.short !== 'side'));
+  ok('bad branch names are refused', Boolean(git.refNameProblem('a..b')) && Boolean(git.refNameProblem('has space')) && git.refNameProblem('feature/ok') === null);
+  ok('the id of a blob matches git', (await git.hashBlob(new TextEncoder().encode('one\ntwo\nthree\n'))) === one);
+}
+
+// ---- git insights: churn, bus factor, bug clusters, pace and firefighting
+{
+  const { analyseHistory, isNoisePath } = await import('../js/lib/git.js');
+  const now = Date.UTC(2026, 8, 20) / 1000;
+  const day = 86400;
+  const commits = [];
+  const add = (daysAgo, author, subject, files, merge = false) => commits.push({ sha: String(commits.length).padStart(40, '0'), subject, message: `${subject}\n`, author, email: '', time: now - daysAgo * day, zone: '+0000', merge, files });
+  for (let index = 0; index < 30; index += 1) add(20 + index * 12, index % 5 ? 'Maya' : 'Omar', index % 3 ? 'Add a feature' : 'Fix the totals', ['src/billing.js', 'package-lock.json']);
+  for (let index = 0; index < 8; index += 1) add(400 + index * 10, 'Lena', 'Build the first version', ['src/app.js']);
+  add(30, 'Omar', 'Revert "Add a feature"', ['src/billing.js']);
+  add(35, 'Omar', 'Merge branch fix', [], true);
+  const insight = analyseHistory({ commits, now, anchor: now, idle: false }, {});
+  ok('lockfiles are left out of churn unless asked for', insight.churn[0].path === 'src/billing.js' && insight.churn.every((file) => file.path !== 'package-lock.json'));
+  ok('lockfiles come back when asked for', analyseHistory({ commits, now, anchor: now, idle: false }, { noise: true }).churn.some((file) => file.path === 'package-lock.json'));
+  ok('a folder narrows the file lists', analyseHistory({ commits, now, anchor: now, idle: false }, { folder: 'lib' }).churn.length === 0);
+  ok('files that churn and keep getting fixed are high risk', insight.risky.length === 1 && insight.risky[0].path === 'src/billing.js');
+  ok('one person with most commits is a bus factor risk', insight.people.busFactorRisk && insight.people.contributors[0].name === 'Maya');
+  ok('merges are left out of who built it', insight.people.total === 39);
+  ok('a revert in the last year counts as firefighting', insight.firefighting.count === 1 && insight.firefighting.level === 'normal');
+  ok('commits are counted by month without gaps', insight.pace.months.every((entry, index, list) => index === 0 || entry.month > list[index - 1].month));
+  ok('noise paths are recognised', isNoisePath('web/yarn.lock') && isNoisePath('dist/app.min.js') && !isNoisePath('src/lock.js'));
+}
+
 // ---- app icons: every app is drawn, and every paint a drawing uses exists
 {
   const { appArt, artNames, figures } = await import('../js/lib/app-art.js');

@@ -1,6 +1,6 @@
 # Toolbox
 
-> Schnelle, private Entwicklerwerkzeuge, die vollständig im Browser laufen. 133 Werkzeuge, ohne Anmeldung, ohne Uploads.
+> Schnelle, private Entwicklerwerkzeuge, die vollständig im Browser laufen. 137 Werkzeuge, ohne Anmeldung, ohne Uploads.
 
 Alles läuft als JavaScript im eigenen Browser, die Eingaben erreichen also keinen Server.
 
@@ -52,6 +52,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## Entwicklung
 
+- [Git-Viewer](https://jsglobe.com/de/apps/git-viewer): Ein Git-Repository auf deinem Computer öffnen und Commit-Graph, Diffs und Einblicke wie Hotspots und Bus-Faktor sehen
 - [JSON-Formatierer](https://jsglobe.com/de/apps/json-formatter): JSON formatieren, prüfen, minimieren und erkunden [tools: format_json, check_json]
 - [JSON-Vergleich](https://jsglobe.com/de/apps/json-diff): Zwei JSON-Dokumente Schlüssel für Schlüssel vergleichen
 - [SQL-Formatierer](https://jsglobe.com/de/apps/sql-formatter): Lesbare Formatierung für SQL-Anweisungen
@@ -94,6 +95,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 - [Rechner](https://jsglobe.com/de/apps/math-evaluator): Ausdrücke mit Funktionen und Konstanten auswerten [tools: evaluate_expression]
 - [Einheiten](https://jsglobe.com/de/apps/unit-converter): Länge, Masse, Daten, Temperatur und Zeit
+- [Reisetempo](https://jsglobe.com/de/apps/journey-speed): Durchschnittsgeschwindigkeit einer Fahrt berechnen und sehen, wie viel Zeit schnelleres Fahren wirklich spart
 - [Funktionsplotter](https://jsglobe.com/de/apps/function-plotter): Ausdrücke mit Zoom, Nullstellen und Ableitungen zeichnen
 - [Statistik](https://jsglobe.com/de/apps/statistics): Kennzahlen, Histogramm und Boxplot für Zahlenreihen
 
@@ -135,6 +137,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [KI-Autor](https://jsglobe.com/de/apps/ai-writer): Zusammenfassen, umschreiben, übersetzen und korrigieren
 - [Übersetzen](https://jsglobe.com/de/apps/ai-translate): Text mit einem Modell auf diesem Gerät übersetzen
 - [KI-Regex](https://jsglobe.com/de/apps/ai-regex): Ein Muster beschreiben und eine getestete Regex erhalten
+- [MCP-Tester](https://jsglobe.com/de/apps/mcp-tester): Mit einem Model-Context-Protocol-Server verbinden und seine Werkzeuge, Ressourcen und Prompts testen
 - [Inspector AI](https://jsglobe.com/de/apps/inspector): Fragen an eigene Dokumente stellen, beantwortet mit Belegen
 
 ## Spiele
@@ -169,6 +172,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Portfolio](https://jsglobe.com/de/apps/portfolio): Bestände, Aufteilung und Gewinn oder Verlust verfolgen
 - [Notizen](https://jsglobe.com/de/apps/notes): Schnelle Notizen in diesem Arbeitsbereich
 - [Aufgaben](https://jsglobe.com/de/apps/todo): Eine leichte Checkliste pro Arbeitsbereich
+- [Dateimanager](https://jsglobe.com/de/apps/file-manager): Einen Ordner auf deinem Computer öffnen, Dateien durchsuchen, ansehen, bearbeiten und ordnen
 - [Zeitzonen](https://jsglobe.com/de/apps/timezone-planner): Städte vergleichen und gemeinsame Stunden finden
 - [IBAN-Prüfung](https://jsglobe.com/de/apps/iban-validator): Bankkontonummern prüfen und ihre Teile lesen
 - [Serielle Konsole](https://jsglobe.com/de/apps/serial-console): Mit einem seriellen Gerät über USB sprechen
