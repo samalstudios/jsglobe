@@ -226,7 +226,11 @@ const sheet = css`
     padding: 24px 0 20px;
     color: var(--ring);
   }
-  .brand svg { width: 52px; height: 52px; stroke-width: 1.5; flex: none; }
+  .brand .app-mark {
+    width: 64px;
+    height: 64px;
+    flex: none;
+  }
   .wordmark { display: grid; gap: 3px; }
   .brand h1 {
     margin: 0;
@@ -378,7 +382,7 @@ class JGHome extends JGElement {
               ? html`<section class="page search-page" data-search="true" data-top="${String(layout.widgets().length > 0)}">
                   <div class="search-shell">
                     <div class="brand">
-                      ${icon('knife', 52)}
+                      <img class="app-mark" src="/assets/mark.svg?v=1" alt="" width="64" height="64" />
                       <div class="wordmark">
                         <h1>Toolbox</h1>
                         <p>${t('home.hero', `${Math.floor(registry.all().length / 10) * 10}+ fast, private developer tools that run in your browser`, { count: Math.floor(registry.all().length / 10) * 10 })}</p>

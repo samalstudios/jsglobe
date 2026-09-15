@@ -15,16 +15,16 @@ const sheet = css`
   .backdrop { position: absolute; inset: 0; }
   .menu {
     position: absolute;
-    min-width: 196px;
-    max-width: 260px;
+    min-width: 200px;
+    max-width: 264px;
     padding: 5px;
-    border-radius: var(--radius-lg);
+    border-radius: 12px;
     background: var(--glass-strong);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: saturate(180%) blur(30px);
+    -webkit-backdrop-filter: saturate(180%) blur(30px);
     border: 1px solid var(--glass-border);
-    box-shadow: var(--shadow-lg);
-    animation: pop 0.14s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.08), 0 10px 30px -6px rgba(0, 0, 0, 0.28), 0 2px 6px rgba(0, 0, 0, 0.08);
+    animation: pop 0.16s cubic-bezier(0.2, 0.9, 0.3, 1.15);
     transform-origin: top left;
   }
   @keyframes pop {
@@ -32,11 +32,11 @@ const sheet = css`
     to { opacity: 1; transform: none; }
   }
   .title {
-    padding: 7px 10px 6px;
-    font-size: 11.5px;
+    padding: 6px 10px 4px;
+    font-size: 11px;
     font-weight: 600;
     color: var(--muted-foreground);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
   }
   button {
     display: flex;
@@ -50,11 +50,13 @@ const sheet = css`
     font-family: inherit;
     font-size: 13px;
     text-align: left;
-    padding: 7px 10px;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
+    padding: 5px 10px;
+    min-height: 28px;
+    border-radius: 7px;
+    cursor: default;
   }
-  button:hover:not(:disabled) { background: var(--accent); }
+  button:hover:not(:disabled) { background: var(--ring); color: #fff; }
+  button:hover:not(:disabled) .shortcut { color: rgba(255, 255, 255, 0.75); }
   button:disabled { opacity: 0.45; cursor: not-allowed; }
   button.danger { color: var(--destructive); }
   .glyph {
@@ -67,10 +69,11 @@ const sheet = css`
     color: var(--muted-foreground);
   }
   .glyph svg { --icon-accent: currentColor; stroke-width: 1.7; }
-  button:hover:not(:disabled) .glyph { color: var(--foreground); }
+  button:hover:not(:disabled) .glyph { color: #fff; }
   button.danger .glyph { color: inherit; }
+  button.danger:hover:not(:disabled) { background: var(--destructive); color: #fff; }
   .shortcut { margin-left: auto; font-size: 11px; color: var(--muted-foreground); font-family: var(--font-mono); }
-  hr { height: 1px; border: 0; background: var(--border); margin: 4px 2px; }
+  hr { height: 1px; border: 0; background: var(--border); margin: 4px 10px; }
 `;
 
 class JGMenu extends JGElement {

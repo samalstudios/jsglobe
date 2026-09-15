@@ -13,7 +13,7 @@
 .result .rate { font-family: var(--font-mono); font-size: 12px; color: var(--muted-foreground); }
 .table { display: grid; gap: 4px; }
 .line { display: grid; grid-template-columns: 62px 1fr auto; gap: 10px; align-items: center; font-size: 13px; }
-.line .code { font-family: var(--font-mono); color: var(--muted-foreground); }
+.line .code { font-family: var(--font-mono); color: var(--muted-foreground); padding: 0; border: 0; background: none; box-shadow: none; overflow: visible; }
 .line .amount { font-family: var(--font-mono); text-align: right; }
 .spark { height: 6px; border-radius: 999px; background: var(--muted); overflow: hidden; }
 .spark i { display: block; height: 100%; background: color-mix(in srgb, var(--ring) 70%, transparent); }

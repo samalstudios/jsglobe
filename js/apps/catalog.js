@@ -44,6 +44,8 @@ import uuid_generator from './uuid-generator/meta.js';
 import device_info from './device-info/meta.js';
 import clock from './clock/meta.js';
 import calendar from './calendar/meta.js';
+import metro_maps from './metro-maps/meta.js';
+import true_size from './true-size/meta.js';
 import portfolio from './portfolio/meta.js';
 import notes from './notes/meta.js';
 import todo from './todo/meta.js';
@@ -181,6 +183,8 @@ export const catalog = [
   device_info,
   clock,
   calendar,
+  metro_maps,
+  true_size,
   portfolio,
   notes,
   todo,

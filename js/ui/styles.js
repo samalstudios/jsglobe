@@ -33,7 +33,7 @@ export const layout = css`
     flex-direction: column;
     gap: 14px;
     height: 100%;
-    padding: 18px;
+    padding: 20px;
     overflow: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--border-strong) transparent;
@@ -72,7 +72,7 @@ export const layout = css`
     font-size: 12px;
     font-weight: 500;
     color: var(--muted-foreground);
-    letter-spacing: 0.01em;
+    letter-spacing: 0;
   }
   .hint { font-size: 12px; color: var(--muted-foreground); }
   .error { color: var(--destructive); font-size: 13px; }
@@ -83,9 +83,10 @@ export const layout = css`
 export const panel = css`
   .panel {
     background: var(--card);
-    border: 1px solid var(--border);
+    border: 1px solid var(--card-border);
     border-radius: var(--radius-lg);
-    padding: 14px;
+    box-shadow: var(--card-shadow);
+    padding: 16px;
   }
   .panel.flush { padding: 0; overflow: hidden; }
   .panel.soft { background: color-mix(in srgb, var(--muted) 70%, transparent); }
@@ -114,10 +115,11 @@ export const panel = css`
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 9px 11px;
-    border: 1px solid var(--border);
+    padding: 9px 12px;
+    border: 1px solid var(--card-border);
     border-radius: var(--radius-md);
     background: var(--card);
+    box-shadow: var(--card-shadow);
   }
   .list-item:hover { border-color: var(--border-strong); }
   .empty {
@@ -141,10 +143,11 @@ export const code = css`
     font-family: var(--font-mono);
     font-size: 12.5px;
     line-height: 1.65;
-    background: color-mix(in srgb, var(--muted) 75%, transparent);
-    border: 1px solid var(--border);
+    background: var(--input);
+    border: 1px solid var(--field-border);
     border-radius: var(--radius-md);
-    padding: 12px;
+    box-shadow: var(--field-shadow);
+    padding: 12px 14px;
     margin: 0;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
@@ -156,10 +159,11 @@ export const code = css`
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--muted) 70%, transparent);
+    padding: 9px 12px;
+    border: 1px solid var(--field-border);
+    border-radius: var(--radius-sm);
+    background: var(--input);
+    box-shadow: var(--field-shadow);
     font-family: var(--font-mono);
     font-size: 13px;
     overflow-wrap: anywhere;

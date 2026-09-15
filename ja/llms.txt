@@ -1,10 +1,10 @@
 # Toolbox
 
-> ブラウザだけで動く、速くてプライベートな開発ツール。131 個のツール、登録不要、アップロードなし。
+> ブラウザだけで動く、速くてプライベートな開発ツール。133 個のツール、登録不要、アップロードなし。
 
 すべて自分のブラウザ内の JavaScript として動くので、入力がサーバーに届くことはありません。
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 12 tools across 9 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -120,6 +120,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## 科学
 
+- [国の本当の大きさ](https://jsglobe.com/ja/apps/true-size): 地図上で国を動かして本当の大きさを比べる [tools: compare_country_sizes]
 - [周期表](https://jsglobe.com/ja/apps/periodic-table): 118 元素すべてを全項目つきで
 - [分子ビューア](https://jsglobe.com/ja/apps/molecule-viewer): ビタミン、薬、有名な分子を 3D で
 - [回路ラボ](https://jsglobe.com/ja/apps/circuit-lab): 基本的な電子回路の組み立てとシミュレーション
@@ -164,6 +165,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [デバイス情報](https://jsglobe.com/ja/apps/device-info): ブラウザがこの端末について知っていること
 - [時計](https://jsglobe.com/ja/apps/clock): 世界時計、ストップウォッチ、カウントダウン
 - [カレンダー](https://jsglobe.com/ja/apps/calendar): ワークスペースごとに予定を保存する月表示
+- [メトロマップ](https://jsglobe.com/ja/apps/metro-maps): 駅から駅への経路がわかる動く路線図 [tools: plan_metro_route, plan_metro_tour]
 - [ポートフォリオ](https://jsglobe.com/ja/apps/portfolio): 保有、配分、損益を追う
 - [メモ](https://jsglobe.com/ja/apps/notes): このワークスペースに保存される走り書き
 - [タスク](https://jsglobe.com/ja/apps/todo): ワークスペースごとの軽いチェックリスト

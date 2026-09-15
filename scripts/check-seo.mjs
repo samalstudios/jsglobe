@@ -59,7 +59,7 @@ const page = async (lang, path, route, label) => {
   if (canonical !== url) fail(`${label}: canonical is ${canonical ?? 'missing'}, expected ${url}`);
   if (htmlLang !== localeOf(lang)) fail(`${label}: html lang is ${htmlLang ?? 'missing'}, expected ${localeOf(lang)}`);
   if (!schemas.length) fail(`${label}: no structured data`);
-  if (!markup.includes(`${SITE}/assets/og.png`)) fail(`${label}: no og:image`);
+  if (!markup.includes(`${SITE}/assets/og.png?v=2`)) fail(`${label}: no og:image`);
   if (!markup.includes(`<meta property="og:locale" content="${localeOf(lang)}">`)) fail(`${label}: wrong og:locale`);
   if (!/<h1>/.test(body)) fail(`${label}: the noscript body has no h1`);
   if (body.replace(/<[^>]+>/g, '').trim().length < 200) fail(`${label}: the crawlable body is thin`);
@@ -95,6 +95,15 @@ const routes = [
   })),
   ...apps.map((app) => ({ path: `apps/${app.id}`, route: `/apps/${app.id}`, label: app.id })),
 ];
+
+// pages an app lists beneath its own, as scripts/build-seo.mjs writes them
+for (const app of apps) {
+  if (!existsSync(`js/apps/${app.id}/seo.js`)) continue;
+  const { pages } = await import(`../js/apps/${app.id}/seo.js`);
+  for (const sub of await pages((key, english) => english)) {
+    routes.push({ path: `apps/${app.id}/${sub.slug}`, route: `/apps/${app.id}/${sub.slug}`, label: `${app.id} ${sub.slug}` });
+  }
+}
 
 for (const entry of LANGUAGES) {
   for (const item of routes) {

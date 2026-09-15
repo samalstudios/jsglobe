@@ -41,15 +41,11 @@ const sheet = css`
   }
   .brand:hover { background: var(--glass); border-color: var(--glass-border); text-decoration: none; }
   .mark {
-    display: grid;
-    place-items: center;
-    width: 21px;
-    height: 21px;
-    border-radius: 7px;
-    background: linear-gradient(160deg, color-mix(in srgb, var(--ring) 78%, #fff 22%), var(--ring));
-    color: #fff;
+    display: block;
+    width: 22px;
+    height: 22px;
   }
-  .mark svg { width: 13px; height: 13px; fill: currentColor; stroke: none; }
+  .mark img { display: block; width: 100%; height: 100%; filter: drop-shadow(0 0.5px 1px rgba(0, 0, 0, 0.25)); }
   .chip {
     display: inline-flex;
     align-items: center;
@@ -130,7 +126,7 @@ class JGStatusbar extends JGElement {
     this.paint(html`
       <div class="side">
         <button class="brand" id="launcher" title="${t('status.appLibrary', 'App library')}" aria-label="${t('status.openLibrary', 'Open the app library')}">
-          <span class="mark">${icon('launcher', 13)}</span>
+          <span class="mark"><img src="/assets/icon.svg?v=4" alt="" width="22" height="22"></span>
           <span>JS Globe</span>
         </button>
         <button class="chip workspace" style="--tint:${workspace.tint}">

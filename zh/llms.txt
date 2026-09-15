@@ -1,10 +1,10 @@
 # Toolbox
 
-> 快速、私密、完全在浏览器中运行的开发者工具。131 个工具，无需注册，不上传任何内容。
+> 快速、私密、完全在浏览器中运行的开发者工具。133 个工具，无需注册，不上传任何内容。
 
 一切都以 JavaScript 在你自己的浏览器中运行，因此输入内容不会到达任何服务器。
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 12 tools across 9 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -120,6 +120,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## 科学
 
+- [国家的真实大小](https://jsglobe.com/zh/apps/true-size): 在地图上拖动国家，比较它们的真实面积 [tools: compare_country_sizes]
 - [元素周期表](https://jsglobe.com/zh/apps/periodic-table): 全部 118 种元素及完整属性
 - [分子查看器](https://jsglobe.com/zh/apps/molecule-viewer): 以 3D 呈现维生素、药物与著名分子
 - [电路实验室](https://jsglobe.com/zh/apps/circuit-lab): 搭建并模拟基础电子电路
@@ -164,6 +165,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [设备信息](https://jsglobe.com/zh/apps/device-info): 浏览器所知的本机全部信息
 - [时钟](https://jsglobe.com/zh/apps/clock): 世界时钟、秒表与倒计时
 - [日历](https://jsglobe.com/zh/apps/calendar): 按工作区保存日程的月视图
+- [地铁线路图](https://jsglobe.com/zh/apps/metro-maps): 带站间路线规划的动态地铁图 [tools: plan_metro_route, plan_metro_tour]
 - [投资组合](https://jsglobe.com/zh/apps/portfolio): 跟踪持仓、配置与盈亏
 - [备忘](https://jsglobe.com/zh/apps/notes): 保存在此工作区的速记
 - [任务](https://jsglobe.com/zh/apps/todo): 每个工作区一份轻量清单

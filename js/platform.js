@@ -23,11 +23,14 @@ export * as optics from './lib/optics.js';
 export * as clip from './lib/clip.js';
 export * as svgShapes from './lib/svg-shapes.js';
 export * as trace from './lib/trace.js';
+export * as metro from './lib/metro.js';
+export * as geo from './lib/geo.js';
 
 // ---- drawing ---------------------------------------------------------
 export * as glyphs from './lib/glyphs.js';
 export * as iconParts from './lib/icon-parts.js';
 export * as iconCompose from './lib/icon-compose.js';
+export * as appArt from './lib/app-art.js';
 export * as poster from './lib/poster.js';
 export * as palette from './lib/palette.js';
 export * as molecule3d from './lib/gl-molecule.js';
@@ -85,9 +88,12 @@ export const SURFACE = {
   clip: 'Polygon booleans: union, subtract and intersect, with exact vertices.',
   svgShapes: 'Read an SVG into simplified outlines that a solver can use.',
   trace: 'Trace the outline of a picture into rings and an SVG path, with soft edges, holes, specks and offsets.',
+  metro: 'Metro maps as data: routes between stations, station search, label placement, trains in motion and the map as SVG.',
+  geo: 'Shapes on the globe: true areas, moving a shape across the sphere, and drawing it on a Mercator map.',
   glyphs: 'The drawn icon outlines as data, on a 24 by 24 grid.',
   iconParts: 'Thousands of generated icon parts from parametric families, searchable and grouped.',
   iconCompose: 'Turn words into a stack of icon parts, with a model or without one.',
+  appArt: 'The drawn app icons: continuous corner plates, lit backgrounds, shared materials and rounded figures.',
   poster: 'Poster canvases, themes, frames and the gallery of designs.',
   palette: 'Colour scales, harmonies and contrast.',
   molecule3d: 'Draw molecules in 3D on a canvas.',

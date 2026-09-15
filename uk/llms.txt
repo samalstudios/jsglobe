@@ -1,10 +1,10 @@
 # Toolbox
 
-> Швидкі приватні інструменти для розробників, що працюють повністю в браузері. Інструментів: 131, без реєстрації, без надсилання файлів.
+> Швидкі приватні інструменти для розробників, що працюють повністю в браузері. Інструментів: 133, без реєстрації, без надсилання файлів.
 
 Усе працює як JavaScript у вашому власному браузері, тож введене ніколи не сягає сервера.
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 12 tools across 9 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -120,6 +120,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## Наука
 
+- [Справжній розмір країн](https://jsglobe.com/uk/apps/true-size): Перетягуйте країни картою й порівнюйте їхній справжній розмір [tools: compare_country_sizes]
 - [Періодична таблиця](https://jsglobe.com/uk/apps/periodic-table): Усі 118 елементів з повними властивостями
 - [Перегляд молекул](https://jsglobe.com/uk/apps/molecule-viewer): Вітаміни, ліки й відомі молекули у 3D
 - [Лабораторія схем](https://jsglobe.com/uk/apps/circuit-lab): Складайте й моделюйте прості електронні схеми
@@ -164,6 +165,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Про пристрій](https://jsglobe.com/uk/apps/device-info): Усе, що браузер знає про цей пристрій
 - [Годинник](https://jsglobe.com/uk/apps/clock): Світовий час, секундомір і таймер
 - [Календар](https://jsglobe.com/uk/apps/calendar): Огляд місяця з подіями для кожного робочого простору
+- [Карти метро](https://jsglobe.com/uk/apps/metro-maps): Анімовані карти метро з маршрутами між станціями [tools: plan_metro_route, plan_metro_tour]
 - [Портфель](https://jsglobe.com/uk/apps/portfolio): Стежте за активами, розподілом і прибутком чи збитком
 - [Нотатки](https://jsglobe.com/uk/apps/notes): Швидкі записи, збережені в цьому робочому просторі
 - [Завдання](https://jsglobe.com/uk/apps/todo): Легкий список справ для кожного робочого простору

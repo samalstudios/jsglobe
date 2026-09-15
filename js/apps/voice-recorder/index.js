@@ -81,6 +81,7 @@ class VoiceRecorder extends JGApp {
           <span class="grow"></span>
           <span id="engine"></span>
         </div>
+        <jg-progress id="modelLoad" size="sm" hidden></jg-progress>
         <div class="transcript" id="livetext" hidden></div>
       </div>
 
@@ -125,12 +126,34 @@ class VoiceRecorder extends JGApp {
     const node = this.$('#engine');
     if (!node) return;
     const state = speech.state();
+    this.#paintLoad(state);
     node.textContent =
       state.status === 'idle'
         ? speech.supportsBrowser()
           ? 'Whisper loads on first transcription'
           : 'Whisper loads on first transcription (no browser captions here)'
-        : state.message || state.status;
+        : state.status === 'loading'
+          ? ''
+          : state.message || state.status;
+  }
+
+  // while the model downloads, a bar under the recorder and one in the recording being transcribed
+  #paintLoad(state) {
+    const loading = state.status === 'loading';
+    const bars = [this.$('#modelLoad'), ...this.$$('.transcript jg-progress')].filter(Boolean);
+    for (const bar of bars) {
+      bar.hidden = !loading;
+      if (!loading) continue;
+      bar.setAttribute('label', state.message || 'Loading the speech model');
+      if (state.total) {
+        bar.removeAttribute('indeterminate');
+        bar.setAttribute('value', String(state.progress));
+        bar.setAttribute('amount', `${formatBytes(state.loaded)} of ${formatBytes(state.total)}`);
+      } else {
+        bar.setAttribute('indeterminate', '');
+        bar.removeAttribute('amount');
+      }
+    }
   }
 
   async #load() {
@@ -395,7 +418,10 @@ class VoiceRecorder extends JGApp {
     this.#open = id;
     this.#paintList();
     const target = this.$(`[data-text="${id}"]`);
-    if (target) target.textContent = 'Loading the speech model...';
+    if (target) {
+      target.innerHTML = '<jg-progress size="sm" indeterminate label="Loading the speech model"></jg-progress>';
+      this.#paintLoad(speech.state());
+    }
 
     try {
       const result = await speech.transcribe(item.blob, {

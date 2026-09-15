@@ -1,10 +1,10 @@
 # Toolbox
 
-> Snelle, private ontwikkelaarshulpmiddelen die volledig in de browser draaien. 131 hulpmiddelen, zonder aanmelding, zonder uploads.
+> Snelle, private ontwikkelaarshulpmiddelen die volledig in de browser draaien. 133 hulpmiddelen, zonder aanmelding, zonder uploads.
 
 Alles draait als JavaScript in je eigen browser, dus wat je invoert bereikt nooit een server.
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 12 tools across 9 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -120,6 +120,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## Wetenschap
 
+- [Echte grootte van landen](https://jsglobe.com/nl/apps/true-size): Sleep landen over de kaart om hun echte grootte te vergelijken [tools: compare_country_sizes]
 - [Periodiek systeem](https://jsglobe.com/nl/apps/periodic-table): Alle 118 elementen met volledige eigenschappen
 - [Moleculen bekijken](https://jsglobe.com/nl/apps/molecule-viewer): Vitaminen, medicijnen en bekende moleculen in 3D
 - [Schakelingenlab](https://jsglobe.com/nl/apps/circuit-lab): Bouw en simuleer eenvoudige elektronische schakelingen
@@ -164,6 +165,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Apparaatgegevens](https://jsglobe.com/nl/apps/device-info): Alles wat de browser over dit apparaat weet
 - [Klok](https://jsglobe.com/nl/apps/clock): Wereldklokken, stopwatch en afteltimer
 - [Agenda](https://jsglobe.com/nl/apps/calendar): Maandweergave met afspraken per werkruimte
+- [Metrokaarten](https://jsglobe.com/nl/apps/metro-maps): Geanimeerde metrokaarten met routes tussen stations [tools: plan_metro_route, plan_metro_tour]
 - [Portefeuille](https://jsglobe.com/nl/apps/portfolio): Volg posities, verdeling en winst of verlies
 - [Notities](https://jsglobe.com/nl/apps/notes): Snelle kladnotities, bewaard in deze werkruimte
 - [Taken](https://jsglobe.com/nl/apps/todo): Een lichte takenlijst per werkruimte

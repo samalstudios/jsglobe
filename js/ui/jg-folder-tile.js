@@ -2,7 +2,7 @@ import { JGElement, define, css, html } from '../core/dom.js';
 import { base } from './styles.js';
 import { registry } from '../core/registry.js';
 import { layout } from '../core/layout.js';
-import { icon } from './icons.js';
+import { icon, drawnIcon } from './icons.js';
 
 const sheet = css`
   :host { display: block; -webkit-tap-highlight-color: transparent; }
@@ -45,6 +45,8 @@ const sheet = css`
     overflow: hidden;
   }
   .mini svg { width: 62%; height: 62%; stroke-width: 2.1; }
+  .mini[data-drawn] { display: block; border-radius: 22.5%; background: none; overflow: visible; }
+  .mini[data-drawn] svg { display: block; width: 100%; height: 100%; stroke-width: 0; filter: drop-shadow(0 0.5px 1px rgba(0, 0, 0, 0.18)); }
   .mini.empty { background: color-mix(in srgb, var(--foreground) 8%, transparent); }
   .label {
     max-width: calc(var(--tile, 62px) + 26px);
@@ -86,9 +88,11 @@ class JGFolderTile extends JGElement {
         <span class="shell">
           ${Array.from({ length: 4 }, (unused, index) => {
             const app = previews[index];
-            return app
-              ? html`<span class="mini" style="--mini-tint:${registry.tint(app)}">${icon(app.icon, 24)}</span>`
-              : html`<span class="mini empty"></span>`;
+            if (!app) return html`<span class="mini empty"></span>`;
+            const drawn = drawnIcon(app, 24);
+            return drawn
+              ? html`<span class="mini" data-drawn>${drawn}</span>`
+              : html`<span class="mini" style="--mini-tint:${registry.tint(app)}">${icon(app.icon, 24)}</span>`;
           })}
         </span>
         <span class="label">${folder.name}</span>

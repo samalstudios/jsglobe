@@ -44,6 +44,18 @@ const escape = (value) =>
 
 const apps = catalog.filter((app) => !app.system);
 
+// An app may have pages of its own beneath its page, such as one per city on a
+// map, listed by js/apps/<id>/seo.js in words from the app's own dictionaries.
+const subpages = new Map();
+for (const app of apps) {
+  if (existsSync(`js/apps/${app.id}/seo.js`)) subpages.set(app.id, await import(`../js/apps/${app.id}/seo.js`));
+}
+const appSay = async (lang, id) => {
+  const file = `js/apps/${id}/i18n/${lang}.js`;
+  const words = lang !== DEFAULT_LANGUAGE && existsSync(file) ? (await import(`../${file}`)).default : {};
+  return (key, english, vars) => fill(words[key] ?? english, vars);
+};
+
 const stamp = new Date().toISOString().slice(0, 10);
 
 // When a page last really changed, asked of git rather than of the clock. A
@@ -110,7 +122,7 @@ ${alternates(meta.path)}
 <meta property="og:url" content="${meta.url}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${NAME}">
-<meta property="og:image" content="${SITE}/assets/og.png">
+<meta property="og:image" content="${SITE}/assets/og.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="${localeOf(meta.lang)}">
@@ -120,7 +132,7 @@ ${LANGUAGES.filter((entry) => entry.code !== meta.lang)
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${escape(meta.title)}">
 <meta name="twitter:description" content="${escape(meta.description)}">
-<meta name="twitter:image" content="${SITE}/assets/og.png">
+<meta name="twitter:image" content="${SITE}/assets/og.png?v=2">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 ${meta.keywords ? `<meta name="keywords" content="${escape(meta.keywords)}">` : ''}
 ${[]
@@ -271,10 +283,19 @@ for (const entry of LANGUAGES) {
       ],
     };
 
+    const provider = subpages.get(app.id);
+    const say = provider ? await appSay(lang, app.id) : null;
+    const subs = provider ? await provider.pages(say) : [];
+    const subList = subs.length
+      ? `<h2>${escape(provider.listHeading?.(say) ?? name)}</h2>
+    <ul>${subs.map((sub) => `<li><a href="${link(lang, `${path}/${sub.slug}`)}">${escape(sub.heading)}</a></li>`).join('')}</ul>`
+      : '';
+
     const body = `<noscript>
   <main>
     <nav aria-label="Breadcrumb"><a href="${link(lang, '/')}">${NAME}</a> / <a href="${link(lang, '/apps')}">${escape(allTools)}</a> / <a href="${link(lang, `/apps/category/${app.category}`)}">${escape(section)}</a></nav>
     <h1>${escape(name)}</h1>
+    ${subList}
     <p>${escape(T(lang, 'app.intro', `${line}. This tool runs entirely in your browser: nothing you paste or upload leaves your device.`, vars))}</p>
     <h2>${escape(T(lang, 'app.whatHeading', `What ${name} does`, vars))}</h2>
     <p>${escape(T(lang, 'app.whatBody', `${name} sits in the ${section} section of ${NAME}, alongside ${related.length} related tools. It opens instantly at ${link(lang, path)}, keeps working offline once the page has loaded, and stores anything you save in this browser rather than on a server.`, vars))}</p>
@@ -300,6 +321,42 @@ for (const entry of LANGUAGES) {
     await writeFile(`${dir(lang, `apps/${app.id}`)}/index.html`, page(meta, body));
     written.push(`${dir(lang, `apps/${app.id}`)}/index.html`);
     if (lang === DEFAULT_LANGUAGE) routes.push({ path, priority: '0.8', freq: 'monthly', changed: appChanged.get(app.id) });
+
+    for (const sub of subs) {
+      const subPath = `${path}/${sub.slug}`;
+      const subMeta = {
+        lang,
+        path: subPath,
+        title: `${sub.title} | ${NAME}`,
+        description: sub.description,
+        url: link(lang, subPath),
+        keywords: (sub.keywords ?? []).join(', '),
+        schema: [
+          crumbs([
+            { name: NAME, url: link(lang, '/') },
+            { name: allTools, url: link(lang, '/apps') },
+            { name, url: link(lang, path) },
+            { name: sub.heading, url: link(lang, subPath) },
+          ]),
+        ],
+      };
+      const subBody = `<noscript>
+  <main>
+    <nav aria-label="Breadcrumb"><a href="${link(lang, '/')}">${NAME}</a> / <a href="${link(lang, '/apps')}">${escape(allTools)}</a> / <a href="${link(lang, path)}">${escape(name)}</a></nav>
+    <h1>${escape(sub.heading)}</h1>
+    ${(sub.paragraphs ?? []).map((text) => `<p>${escape(text)}</p>`).join('\n    ')}
+    ${(sub.lists ?? []).map((list) => `<h2>${escape(list.heading)}</h2>
+    <ol>${list.items.map((item) => `<li>${escape(item)}</li>`).join('')}</ol>`).join('\n    ')}
+    ${sub.others?.length ? `<h2>${escape(provider.othersHeading?.(say) ?? name)}</h2>
+    <ul>${sub.others.map((other) => `<li><a href="${link(lang, `${path}/${other.slug}`)}">${escape(other.text)}</a></li>`).join('')}</ul>` : ''}
+    <p><a href="${link(lang, path)}">${escape(name)}</a> · <a href="${link(lang, '/apps')}">${escape(browseAll)}</a></p>
+  </main>
+</noscript>`;
+      await mkdir(dir(lang, subPath), { recursive: true });
+      await writeFile(`${dir(lang, subPath)}/index.html`, page(subMeta, subBody));
+      written.push(`${dir(lang, subPath)}/index.html`);
+      if (lang === DEFAULT_LANGUAGE) routes.push({ path: subPath, priority: '0.7', freq: 'monthly', changed: appChanged.get(app.id) });
+    }
   }
 
   for (const group of groups) {

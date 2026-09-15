@@ -1,10 +1,10 @@
 # Toolbox
 
-> Snabba, privata utvecklarverktyg som körs helt i webbläsaren. 131 verktyg, ingen registrering, inga uppladdningar.
+> Snabba, privata utvecklarverktyg som körs helt i webbläsaren. 133 verktyg, ingen registrering, inga uppladdningar.
 
 Allt körs som JavaScript i din egen webbläsare, så det du matar in når aldrig en server.
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 12 tools across 9 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -120,6 +120,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## Vetenskap
 
+- [Ländernas verkliga storlek](https://jsglobe.com/sv/apps/true-size): Dra länder över kartan och jämför deras verkliga storlek [tools: compare_country_sizes]
 - [Periodiska systemet](https://jsglobe.com/sv/apps/periodic-table): Alla 118 grundämnen med fullständiga egenskaper
 - [Molekylvisare](https://jsglobe.com/sv/apps/molecule-viewer): Vitaminer, läkemedel och kända molekyler i 3D
 - [Kretslabb](https://jsglobe.com/sv/apps/circuit-lab): Bygg och simulera enkla elektroniska kretsar
@@ -164,6 +165,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Om enheten](https://jsglobe.com/sv/apps/device-info): Allt webbläsaren vet om den här enheten
 - [Klocka](https://jsglobe.com/sv/apps/clock): Världsklockor, tidtagarur och nedräkning
 - [Kalender](https://jsglobe.com/sv/apps/calendar): Månadsvy med händelser per arbetsyta
+- [Tunnelbanekartor](https://jsglobe.com/sv/apps/metro-maps): Animerade tunnelbanekartor med vägar mellan stationer [tools: plan_metro_route, plan_metro_tour]
 - [Portfölj](https://jsglobe.com/sv/apps/portfolio): Följ innehav, fördelning och vinst eller förlust
 - [Anteckningar](https://jsglobe.com/sv/apps/notes): Snabba kladdanteckningar sparade i den här arbetsytan
 - [Uppgifter](https://jsglobe.com/sv/apps/todo): En lätt checklista per arbetsyta

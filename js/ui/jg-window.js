@@ -1,9 +1,10 @@
-import { JGElement, define, css, html } from '../core/dom.js';
+import { JGElement, define, css, html, raw } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import { base } from './styles.js';
 import { registry } from '../core/registry.js';
+import { bus } from '../core/bus.js';
 import { clamp } from '../core/util.js';
-import { icon } from './icons.js';
+import { icon, drawnIcon } from './icons.js';
 import './jg-toolbar.js';
 
 const sheet = css`
@@ -13,18 +14,27 @@ const sheet = css`
     flex-direction: column;
     min-width: 320px;
     min-height: 220px;
-    border-radius: var(--radius-xl);
-    background: var(--glass-strong);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-window, 14px);
+    background: var(--background);
+    box-shadow: var(--window-shadow);
     overflow: hidden;
-    animation: window-in 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+    isolation: isolate;
+    animation: window-in 0.34s cubic-bezier(0.2, 0.9, 0.25, 1);
+    transition: box-shadow 0.25s ease;
     contain: layout paint;
   }
+  /* a hairline edge and a sliver of light along the top, drawn over everything */
+  :host::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 1px var(--window-edge), inset 0 1px 0 var(--window-highlight);
+  }
   @keyframes window-in {
-    from { opacity: 0; transform: scale(0.97) translateY(8px); }
+    from { opacity: 0; transform: scale(0.965) translateY(10px); }
     to { opacity: 1; transform: none; }
   }
   :host([state="minimized"]) { display: none; }
@@ -34,21 +44,26 @@ const sheet = css`
     width: auto !important;
     height: auto !important;
     border-radius: 0;
-    border: 0;
+    box-shadow: none;
   }
+  :host([state="maximized"])::after,
+  :host([fullscreen])::after { box-shadow: none; }
   :host([state="maximized"]) {
     position: fixed !important;
     z-index: 90;
   }
-  :host([focused]) { box-shadow: var(--shadow-lg), 0 0 0 1px color-mix(in srgb, var(--ring) 30%, transparent); }
-  :host(:not([focused])) .chrome { opacity: 0.72; }
+  :host(:not([focused])) { box-shadow: var(--window-shadow-rest); }
 
   .chrome {
+    position: relative;
+    z-index: 5;
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid var(--border);
-    background: color-mix(in srgb, var(--card) 62%, transparent);
-    cursor: grab;
+    background: var(--titlebar);
+    backdrop-filter: saturate(180%) blur(24px);
+    -webkit-backdrop-filter: saturate(180%) blur(24px);
+    box-shadow: 0 1px 0 var(--titlebar-rule);
+    cursor: default;
     user-select: none;
     flex: none;
   }
@@ -56,34 +71,43 @@ const sheet = css`
     display: flex;
     align-items: center;
     gap: 12px;
-    height: 48px;
-    padding: 0 12px 0 14px;
+    height: 52px;
+    padding: 0 16px 0 10px;
   }
-  .chrome:active { cursor: grabbing; }
   :host([fullscreen]) .chrome { cursor: default; }
-  .lights { display: flex; gap: 9px; align-items: center; flex: none; }
+
+  .lights { display: flex; gap: 8px; align-items: center; flex: none; }
   .light {
-    width: 15px;
-    height: 15px;
+    position: relative;
+    width: 12px;
+    height: 12px;
     border-radius: 999px;
     border: 0;
     padding: 0;
-    cursor: pointer;
+    cursor: default;
     display: grid;
     place-items: center;
-    font-size: 10px;
-    font-weight: 700;
-    line-height: 1;
-    color: rgba(0, 0, 0, 0.6);
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
-    transition: filter 0.12s ease;
+    color: rgba(0, 0, 0, 0.55);
+    background: var(--light-color);
+    box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.18);
+    transition: background 0.15s ease;
   }
-  .light:hover { filter: brightness(1.08); }
-  .light span { opacity: 0; transition: opacity 0.12s ease; }
-  .lights:hover .light span { opacity: 1; }
-  .close { background: #ff5f57; }
-  .min { background: #febc2e; }
-  .max { background: #28c840; }
+  .light::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 999px;
+  }
+  .light svg { width: 8px; height: 8px; opacity: 0; transition: opacity 0.12s ease; }
+  .lights:hover .light svg { opacity: 1; }
+  .light:active { filter: brightness(0.85); }
+  .close { --light-color: #ff5f57; }
+  .min { --light-color: #febc2e; }
+  .max { --light-color: #28c840; }
+  :host(:not([focused])) .lights:not(:hover) .light {
+    background: var(--light-idle);
+    box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.1);
+  }
 
   .identity { display: flex; align-items: center; gap: 10px; min-width: 0; }
   .spring { flex: 1; min-width: 8px; }
@@ -101,11 +125,14 @@ const sheet = css`
     box-shadow: var(--shadow-sm);
   }
   .badge svg { width: 17px; height: 17px; --icon-accent: rgba(255, 255, 255, 0.72); }
-  .names { display: grid; gap: 1px; min-width: 0; }
+  .badge[data-drawn] { display: block; width: 26px; height: 26px; border-radius: 22.5%; background: none; box-shadow: none; }
+  .badge[data-drawn] svg { display: block; width: 100%; height: 100%; filter: drop-shadow(0 0.5px 1px rgba(0, 0, 0, 0.22)); }
+  .names { display: grid; gap: 0; min-width: 0; }
   .title {
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 600;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
+    line-height: 1.3;
     color: var(--foreground);
     white-space: nowrap;
     overflow: hidden;
@@ -113,16 +140,19 @@ const sheet = css`
   }
   .sub {
     font-size: 11px;
+    line-height: 1.3;
     color: var(--muted-foreground);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  :host(:not([focused])) .identity { opacity: 0.6; }
+  :host(:not([focused])) .badge svg { filter: grayscale(0.35); }
 
   .tools {
     display: flex;
     min-width: 0;
-    padding: 5px 14px 10px;
+    padding: 0 12px 10px;
     overflow: hidden;
   }
   .tools[hidden] { display: none; }
@@ -131,22 +161,22 @@ const sheet = css`
   .action {
     display: grid;
     place-items: center;
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     flex: none;
-    margin-left: -4px;
-    border-radius: var(--radius-sm);
+    border-radius: 8px;
     border: 0;
     background: transparent;
     color: var(--muted-foreground);
-    cursor: pointer;
+    cursor: default;
+    transition: background 0.15s ease, color 0.15s ease;
   }
   .action svg { --icon-accent: currentColor; }
   .action:hover { background: var(--accent); color: var(--foreground); }
+  .action:focus-visible { box-shadow: var(--shadow-ring); }
   @media (max-width: 720px) {
-    .bar { gap: 10px; padding-left: 12px; }
+    .bar { gap: 10px; padding-right: 14px; }
     .sub { display: none; }
-    .identity { max-width: 40%; }
   }
   .body {
     flex: 1;
@@ -166,12 +196,20 @@ const sheet = css`
     gap: 10px;
   }
   .spinner {
-    width: 20px;
-    height: 20px;
-    border-radius: 999px;
-    border: 2px solid var(--border-strong);
-    border-top-color: var(--ring);
-    animation: spin 0.7s linear infinite;
+    position: relative;
+    width: 22px;
+    height: 22px;
+    animation: spin 0.9s steps(8) infinite;
+  }
+  .spinner i {
+    position: absolute;
+    left: 10px;
+    top: 1px;
+    width: 2.2px;
+    height: 6px;
+    border-radius: 2px;
+    background: var(--muted-foreground);
+    transform-origin: 1.1px 10px;
   }
   @keyframes spin { to { transform: rotate(1turn); } }
   .grip { position: absolute; z-index: 4; }
@@ -193,6 +231,13 @@ const sheet = css`
   }
 `;
 
+// the marks that appear inside the window buttons on hover
+const GLYPHS = {
+  close: '<svg viewBox="0 0 8 8" aria-hidden="true"><path d="M1.6 1.6l4.8 4.8M6.4 1.6 1.6 6.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>',
+  min: '<svg viewBox="0 0 8 8" aria-hidden="true"><path d="M1.3 4h5.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>',
+  max: '<svg viewBox="0 0 8 8" aria-hidden="true"><path d="M1.5 3.9V1.5h2.4ZM6.5 4.1v2.4H4.1Z" fill="currentColor"/></svg>',
+};
+
 class JGWindow extends JGElement {
   static styles = [base, sheet];
   static observedAttributes = ['title-text'];
@@ -200,6 +245,12 @@ class JGWindow extends JGElement {
   #actions = [];
 
   #restore = null;
+
+  #badge(app) {
+    if (!app) return html`<span class="badge"></span>`;
+    const drawn = drawnIcon(app, 26);
+    return drawn ? html`<span class="badge" data-drawn>${drawn}</span>` : html`<span class="badge">${icon(app.icon, 17)}</span>`;
+  }
 
   get appId() {
     return this.getAttribute('app-id');
@@ -213,7 +264,7 @@ class JGWindow extends JGElement {
         <div class="bar">
           <button class="action menu" title="${t('action.appOptions', 'App options')}" aria-label="${t('action.appOptions', 'App options')}">${icon('more', 16)}</button>
           <div class="identity">
-            <span class="badge">${app ? icon(app.icon, 17) : ''}</span>
+            ${this.#badge(app)}
             <span class="names">
               <span class="title">${this.getAttribute('title-text') ?? app?.name ?? 'App'}</span>
               ${app?.tagline ? html`<span class="sub">${app.tagline}</span>` : ''}
@@ -221,16 +272,16 @@ class JGWindow extends JGElement {
           </div>
           <span class="spring"></span>
           <div class="lights">
-            <button class="light min" title="${t('action.minimise', 'Minimize')}"><span>-</span></button>
-            <button class="light max" title="${t('action.maximize', 'Maximize')}"><span>+</span></button>
-            <button class="light close" title="${t('action.close', 'Close')}"><span>✕</span></button>
+            <button class="light min" title="${t('action.minimise', 'Minimize')}" aria-label="${t('action.minimise', 'Minimize')}">${raw(GLYPHS.min)}</button>
+            <button class="light max" title="${t('action.maximize', 'Maximize')}" aria-label="${t('action.maximize', 'Maximize')}">${raw(GLYPHS.max)}</button>
+            <button class="light close" title="${t('action.close', 'Close')}" aria-label="${t('action.close', 'Close')}">${raw(GLYPHS.close)}</button>
           </div>
         </div>
         <div class="tools" id="tools" hidden><jg-toolbar id="app-toolbar" variant="plain"></jg-toolbar></div>
       </header>
       <div class="body">
         <slot></slot>
-        <div class="loading"><span class="spinner"></span><span>Loading ${app?.name ?? 'app'}...</span></div>
+        <div class="loading"><span class="spinner">${raw(Array.from({ length: 8 }, (unused, index) => `<i style="transform:rotate(${index * 45}deg);opacity:${(0.2 + index * 0.1).toFixed(2)}"></i>`).join(''))}</span><span>Loading ${app?.name ?? 'app'}...</span></div>
       </div>
       <span class="grip n"></span>
       <span class="grip e"></span>
@@ -256,6 +307,13 @@ class JGWindow extends JGElement {
       this.on(grip, 'pointerdown', (event) => this.#startResize(event, edges));
     });
     this.on(this, 'pointerdown', () => this.emit('window:focus', { appId: this.appId }), true);
+    // the icon follows the icon style and the theme
+    this.track(
+      bus.on('settings:change', () => {
+        const badge = this.$('.badge');
+        if (badge && app) badge.outerHTML = String(this.#badge(app));
+      }),
+    );
     this.on(this, 'app:actions', (event) => {
       event.stopPropagation();
       this.setActions(event.detail.items);

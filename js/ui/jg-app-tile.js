@@ -2,7 +2,7 @@ import { JGElement, define, css, html } from '../core/dom.js';
 import { base } from './styles.js';
 import { registry } from '../core/registry.js';
 import { router } from '../core/router.js';
-import { icon } from './icons.js';
+import { icon, drawnIcon } from './icons.js';
 
 const sheet = css`
   :host {
@@ -36,30 +36,12 @@ const sheet = css`
     font-size: calc(var(--tile, 62px) * 0.34);
     font-weight: 600;
     letter-spacing: -0.02em;
-    box-shadow:
-      0 8px 18px -10px rgba(0, 0, 0, 0.6),
-      inset 0 calc(1px * var(--icon-depth, 0)) 0 rgba(255, 255, 255, calc(0.55 * var(--icon-depth, 0))),
-      inset 0 calc(-3px * var(--icon-depth, 0)) calc(6px * var(--icon-depth, 0)) rgba(0, 0, 0, calc(0.28 * var(--icon-depth, 0)));
+    box-shadow: 0 8px 18px -10px rgba(0, 0, 0, 0.6);
     transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.3, 1.2), box-shadow 0.18s ease;
     overflow: hidden;
     user-select: none;
   }
-  a:hover .app-icon {
-    box-shadow:
-      0 14px 26px -12px rgba(0, 0, 0, 0.6),
-      inset 0 calc(1px * var(--icon-depth, 0)) 0 rgba(255, 255, 255, calc(0.55 * var(--icon-depth, 0))),
-      inset 0 calc(-3px * var(--icon-depth, 0)) calc(6px * var(--icon-depth, 0)) rgba(0, 0, 0, calc(0.28 * var(--icon-depth, 0)));
-  }
-  .app-icon::after {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto;
-    height: 58%;
-    border-radius: calc(var(--tile, 62px) * 0.29) calc(var(--tile, 62px) * 0.29) 60% 60% / calc(var(--tile, 62px) * 0.29) calc(var(--tile, 62px) * 0.29) 26% 26%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.06));
-    opacity: var(--icon-gloss, 0);
-    pointer-events: none;
-  }
+  a:hover .app-icon { box-shadow: 0 14px 26px -12px rgba(0, 0, 0, 0.6); }
 
   .app-icon svg {
     position: relative;
@@ -67,7 +49,37 @@ const sheet = css`
     width: calc(var(--tile, 62px) * 0.46);
     height: calc(var(--tile, 62px) * 0.46);
     stroke-width: 1.6;
-    filter: drop-shadow(0 calc(1px * var(--icon-depth, 0)) calc(1px * var(--icon-depth, 0)) rgba(0, 0, 0, calc(0.4 * var(--icon-depth, 0))));
+  }
+
+  /* the skeuomorphic style: the drawing is the whole tile, shadow included */
+  .app-icon[data-drawn] {
+    display: block;
+    border-radius: 22.5%;
+    background: none;
+    box-shadow: none;
+    overflow: visible;
+    transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.3, 1.15);
+  }
+  .app-icon[data-drawn] svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    filter:
+      drop-shadow(0 calc(var(--tile, 62px) * 0.02) calc(var(--tile, 62px) * 0.025) rgba(0, 0, 0, 0.14))
+      drop-shadow(0 calc(var(--tile, 62px) * 0.07) calc(var(--tile, 62px) * 0.09) rgba(0, 0, 0, 0.16));
+    transition: filter 0.22s ease;
+  }
+  a:hover .app-icon[data-drawn] { box-shadow: none; }
+  a:hover .app-icon[data-drawn] svg {
+    filter:
+      drop-shadow(0 calc(var(--tile, 62px) * 0.03) calc(var(--tile, 62px) * 0.035) rgba(0, 0, 0, 0.14))
+      drop-shadow(0 calc(var(--tile, 62px) * 0.13) calc(var(--tile, 62px) * 0.15) rgba(0, 0, 0, 0.2));
+  }
+  :host([running]) .app-icon[data-drawn]::before {
+    left: 50%;
+    bottom: calc(var(--tile, 62px) * -0.1);
+    margin-left: -2px;
+    background: color-mix(in srgb, var(--foreground) 55%, transparent);
   }
   a:hover .app-icon { transform: translateY(-3px) scale(1.04); }
   a:active .app-icon { transform: scale(0.94); }
@@ -136,10 +148,11 @@ class JGAppTile extends JGElement {
     const app = registry.find(this.appId);
     if (!app) return this.paint('');
     this.style.setProperty('--tint', registry.tint(app));
+    const drawn = drawnIcon(app, 62);
     this.paint(html`
       <a href="${router.href(`/apps/${app.id}`)}" title="${app.tagline}" draggable="false">
         <span class="shell">
-          <span class="app-icon">${icon(app.icon)}</span>
+          ${drawn ? html`<span class="app-icon" data-drawn>${drawn}</span>` : html`<span class="app-icon">${icon(app.icon)}</span>`}
           <span class="remove" title="Remove from home">✕</span>
         </span>
         <span class="label">${app.name}</span>

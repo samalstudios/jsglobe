@@ -1,10 +1,10 @@
 # Toolbox
 
-> Des outils de développement rapides et privés qui tournent entièrement dans le navigateur. 131 outils, sans inscription, sans envoi de fichiers.
+> Des outils de développement rapides et privés qui tournent entièrement dans le navigateur. 133 outils, sans inscription, sans envoi de fichiers.
 
 Tout tourne en JavaScript dans votre propre navigateur, vos saisies n'atteignent donc jamais un serveur.
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 12 tools across 9 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -120,6 +120,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## Sciences
 
+- [Vraie taille des pays](https://jsglobe.com/fr/apps/true-size): Déplacez les pays sur la carte pour comparer leur taille réelle [tools: compare_country_sizes]
 - [Tableau périodique](https://jsglobe.com/fr/apps/periodic-table): Les 118 éléments avec toutes leurs propriétés
 - [Visionneuse de molécules](https://jsglobe.com/fr/apps/molecule-viewer): Vitamines, médicaments et molécules célèbres en 3D
 - [Labo circuits](https://jsglobe.com/fr/apps/circuit-lab): Construire et simuler des circuits électroniques simples
@@ -164,6 +165,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Infos appareil](https://jsglobe.com/fr/apps/device-info): Tout ce que le navigateur sait de cet appareil
 - [Horloge](https://jsglobe.com/fr/apps/clock): Horloges mondiales, chronomètre et minuteur
 - [Calendrier](https://jsglobe.com/fr/apps/calendar): Vue mensuelle avec événements par espace de travail
+- [Plans de métro](https://jsglobe.com/fr/apps/metro-maps): Plans de métro animés avec itinéraires entre stations [tools: plan_metro_route, plan_metro_tour]
 - [Portefeuille](https://jsglobe.com/fr/apps/portfolio): Suivre les positions, la répartition et les gains ou pertes
 - [Notes](https://jsglobe.com/fr/apps/notes): Notes rapides enregistrées dans cet espace de travail
 - [Tâches](https://jsglobe.com/fr/apps/todo): Une liste légère par espace de travail

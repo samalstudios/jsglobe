@@ -16,7 +16,7 @@ import { router } from '../../core/router.js';
 import { REPO_URL } from '../../core/site.js';
 import { MODELS as aiModels } from '../../core/ai.js';
 import { WHISPER_MODELS as whisperModels } from '../../core/speech.js';
-import { icon } from '../../ui/icons.js';
+import { icon, drawnIcon } from '../../ui/icons.js';
 import { download, pickFile, toast, formatBytes } from '../../core/util.js';
 
 const t = await appWords('settings', (lang) => import(`./i18n/${lang}.js`));
@@ -196,7 +196,7 @@ class SettingsApp extends JGApp {
         ${{
           raw: this.#row(
             'Icon style',
-            'Flat keeps the drawn icons plain. Skeuomorphic adds gloss, a bevel and depth.',
+            'Flat shows a simple symbol on a colour. Skeuomorphic shows a detailed drawing for every tool.',
             html`<jg-select data-setting="appearance.icons" value="${settings.get('appearance.icons')}" size="sm" style="width:160px">
               <option value="flat">${t('settings-app.flat', 'Flat')}</option>
               <option value="skeuomorphic">${t('settings-app.skeuomorphic', 'Skeuomorphic')}</option>
@@ -564,7 +564,7 @@ class SettingsApp extends JGApp {
         const fields = appSettings.schema(app.id);
         return html`<div class="panel stack" style="--tint:${registry.tint(app)}">
           <div class="row nowrap">
-            <span class="app-badge">${icon(app.icon, 15)}</span>
+            ${drawnIcon(app, 28) ? html`<span class="app-badge" data-drawn>${drawnIcon(app, 28)}</span>` : html`<span class="app-badge">${icon(app.icon, 15)}</span>`}
             <div class="grow"><div class="strong">${app.name}</div><div class="hint">${app.tagline}</div></div>
             <jg-button size="sm" variant="ghost" data-reset-app="${app.id}">${t('settings-app.reset', 'Reset')}</jg-button>
           </div>
@@ -593,7 +593,7 @@ class SettingsApp extends JGApp {
             <div class="hint strong">${group.name}</div>
             ${registry.byCategory(group.id).map(
               (app) => html`<div class="app-row" style="--tint:${registry.tint(app)}">
-                <span class="app-badge">${icon(app.icon, 15)}</span>
+                ${drawnIcon(app, 28) ? html`<span class="app-badge" data-drawn>${drawnIcon(app, 28)}</span>` : html`<span class="app-badge">${icon(app.icon, 15)}</span>`}
                 <div class="grow"><div class="strong">${app.name}</div><div class="hint mono tiny">/${app.id}</div></div>
                 <jg-badge>${app.widget ? 'widget' : 'app'}</jg-badge>
               </div>`,

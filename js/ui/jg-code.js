@@ -21,16 +21,17 @@ const sheet = css`
     width: 100%;
     min-width: 0;
     min-height: 0;
-    background: color-mix(in srgb, var(--input) 100%, transparent);
-    border: 1px solid var(--border);
+    background: var(--input);
+    border: 1px solid var(--field-border);
     border-radius: var(--radius-md);
+    box-shadow: var(--field-shadow);
     overflow: hidden;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
   }
   .frame:hover { border-color: var(--border-strong); }
   :host([focused]) .frame {
-    border-color: color-mix(in srgb, var(--ring) 70%, var(--border));
-    box-shadow: var(--shadow-ring);
+    border-color: color-mix(in srgb, var(--ring) 80%, transparent);
+    box-shadow: var(--field-shadow), 0 0 0 3.5px color-mix(in srgb, var(--ring) 24%, transparent);
   }
   :host([invalid]) .frame { border-color: color-mix(in srgb, var(--destructive) 60%, var(--border)); }
 
@@ -39,7 +40,7 @@ const sheet = css`
     padding: 10px 8px 10px 10px;
     text-align: right;
     color: color-mix(in srgb, var(--muted-foreground) 70%, transparent);
-    background: color-mix(in srgb, var(--muted) 45%, transparent);
+    background: color-mix(in srgb, var(--muted) 35%, transparent);
     border-right: 1px solid var(--border);
     user-select: none;
     overflow: hidden;

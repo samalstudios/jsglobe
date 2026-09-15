@@ -28,6 +28,15 @@ import {
 import {
   encodeGif, decodeGif, buildPalette, lzwEncode, lzwDecode, delayInHundredths,
 } from '../js/lib/gif.js';
+import {
+  buildNetwork, planRoute, placeLabels, labelClashes, searchStations, findStation, mapSvg, routeSvg,
+  roundedPath, trainMotion, linePaths, planTour,
+} from '../js/lib/metro.js';
+import torontoMap from '../js/apps/metro-maps/maps/toronto.js';
+import {
+  ringArea as sphereArea, polygonsArea, moveShape, shapeCentre, mercatorY, mercatorLat, mercatorStretch, packRings, unpackRings, simplifyRing,
+} from '../js/lib/geo.js';
+import vancouverMap from '../js/apps/metro-maps/maps/vancouver.js';
 
 let pass = 0;
 const failures = [];
@@ -1160,10 +1169,176 @@ const rad = (degrees) => (degrees * Math.PI) / 180;
   ok('something that is not a GIF is refused', threw);
 }
 
+// ---- metro: routes on networks small enough to work out by hand, and the real maps ----
+{
+  // a runs to d along one line, x to y crosses it at b; the long way round has no change
+  const small = buildNetwork({
+    id: 'small',
+    change: 4,
+    lines: [
+      { id: 'red', colour: '#ff0000', minutes: 2, branches: [['a', 'b', 'c', 'd']] },
+      { id: 'blue', colour: '#0000ff', minutes: 2, branches: [['x', 'b', 'y']] },
+      { id: 'slow', colour: '#00ff00', minutes: 5, branches: [['a', 'q', 'r', 'y']] },
+    ],
+    stations: {
+      a: { name: 'Alder', x: 0, y: 0 }, b: { name: 'Birch', x: 2, y: 0 }, c: { name: 'Cedar', x: 4, y: 0 },
+      d: { name: 'Dogwood', x: 6, y: 0 }, x: { name: 'Hazel', x: 2, y: -2 }, y: { name: 'Yew', x: 2, y: 2 },
+      q: { name: 'Quince', x: 0, y: 2 }, r: { name: 'Rowan', x: 1, y: 3 },
+    },
+  });
+  ok('a well formed map has no problems', small.problems.length === 0, small.problems.join('; '));
+  const quick = planRoute(small, 'a', 'y');
+  ok('the fastest way changes where the lines cross', quick.legs.length === 2 && quick.legs[0].to === 'b' && quick.changes === 1);
+  ok('its time is the rides plus the change', quick.minutes === 2 + 4 + 2 && quick.stops === 2);
+  ok('each ride says where the train is headed', quick.legs[0].towards.join() === 'd' && quick.legs[1].towards.join() === 'y');
+  const steady = planRoute(small, 'a', 'y', { prefer: 'changes' });
+  ok('fewest changes takes the long way with none', steady.changes === 0 && steady.legs[0].line === 'slow' && steady.minutes === 15);
+  ok('going nowhere is no trip', planRoute(small, 'c', 'c').legs.length === 0);
+  ok('an unknown station has no route', planRoute(small, 'a', 'nowhere') === null);
+  ok('backwards along a line heads for its first station', planRoute(small, 'd', 'a').legs[0].towards.join() === 'a');
+
+  // visiting several stations along one line in a muddled order comes out in line order
+  const long = buildNetwork({
+    lines: [{ id: 'l', colour: '#123456', minutes: 2, branches: [['p1', 'p2', 'p3', 'p4', 'p5', 'p6']] }],
+    stations: Object.fromEntries(['p1', 'p2', 'p3', 'p4', 'p5', 'p6'].map((id, at) => [id, { name: id.toUpperCase(), x: at * 2, y: 0 }])),
+  });
+  const muddled = planTour(long, ['p1', 'p5', 'p3', 'p6', 'p2']);
+  ok('a tour visits stops in the order that is quickest', muddled.visits.join() === 'p1,p2,p3,p5,p6' && muddled.minutes === 10, muddled.visits.join());
+  const middle = planTour(long, ['p3', 'p1', 'p6']);
+  ok('starting in the middle, the nearer end comes first', middle.visits.join() === 'p3,p1,p6' && middle.minutes === 14, `${middle.visits.join()} ${middle.minutes}`);
+  const free = planTour(long, ['p3', 'p1', 'p6'], { keepStart: false });
+  ok('free to start anywhere, a tour starts at an end', ['p1,p3,p6', 'p6,p3,p1'].includes(free.visits.join()) && free.minutes === 10);
+  const loop = planTour(long, ['p2', 'p5', 'p4'], { returnToStart: true });
+  ok('a round trip comes back to where it began', loop.visits[0] === 'p2' && loop.visits[loop.visits.length - 1] === 'p2' && loop.minutes === 12);
+  const many = buildNetwork({
+    lines: [{ id: 'm', colour: '#654321', minutes: 1, branches: [Array.from({ length: 16 }, (_, at) => `q${at}`)] }],
+    stations: Object.fromEntries(Array.from({ length: 16 }, (_, at) => [`q${at}`, { name: `Q${at}`, x: at * 2, y: 0 }])),
+  });
+  const wide = planTour(many, ['q0', 'q9', 'q3', 'q15', 'q7', 'q12', 'q1', 'q14', 'q5', 'q11', 'q2', 'q13', 'q8', 'q4']);
+  ok('fourteen stops are still put in a sensible order', wide.minutes === 15, `${wide.minutes} ${wide.visits.join()}`);
+  ok('a tour of one station is no tour', planTour(long, ['p1']) === null);
+
+  const broken = buildNetwork({ lines: [{ id: 'z', colour: 'red', branches: [['a', 'ghost']] }], stations: { a: { name: 'A', x: 0, y: 0 }, lonely: { name: 'L', x: 0, y: 0 } } });
+  ok('a map naming a missing station says so', broken.problems.some((problem) => problem.includes('ghost')));
+  ok('a station on no line is reported', broken.problems.some((problem) => problem.includes('lonely')));
+  ok('two stations in one place are reported', broken.problems.some((problem) => problem.includes('same place')));
+  ok('a colour that is not a colour is reported', broken.problems.some((problem) => problem.includes('no colour')));
+
+  const bend = roundedPath([[0, 0, 'a'], [100, 0, null], [100, 100, 'b']]);
+  ok('a bend between stations is rounded', bend.startsWith('M0 0') && bend.includes('Q100 0') && bend.endsWith('L100 100'));
+  const motion = trainMotion([[0, 0, 'a'], [100, 0, 'b'], [200, 0, 'c']], { speed: 100, dwell: 1 });
+  ok('a train waits at a station', Math.abs(motion.at(1.5)[0] - 100) < 1e-9);
+  // out over two hops and back over two, each a second's ride and a second's wait
+  ok('and turns back at the end', motion.period === 8 && Math.abs(motion.at(7.5)[0]) < 1e-9 && Math.abs(motion.at(2.5)[0] - 150) < 1e-6
+    && Math.abs(motion.at(4.5)[0] - 150) < 1e-6);
+
+  const count = (map) => new Set(map.lines.flatMap((line) => line.branches.flat())).size;
+  const interchanges = (network) => [...network.stations.values()].filter((station) => station.lines.length > 1).map((station) => station.id).sort().join();
+  const lineSizes = (network) => network.lines.map((line) => new Set(line.branches.flat()).size).join();
+
+  const toronto = buildNetwork(torontoMap);
+  ok('the Toronto map has no problems', toronto.problems.length === 0, toronto.problems.join('; '));
+  ok('Toronto has 109 stations on lines of 38, 31, 5, 25 and 18', toronto.stations.size === 109 && count(torontoMap) === 109 && lineSizes(toronto) === '38,31,5,25,18', `${toronto.stations.size} ${lineSizes(toronto)}`);
+  ok('Toronto changes at Bloor–Yonge, St George, Spadina, Sheppard–Yonge, Cedarvale, Eglinton, Kennedy and Finch West', interchanges(toronto) === 'bloor-yonge,cedarvale,eglinton,finch-west,kennedy,sheppard-yonge,spadina,st-george', interchanges(toronto));
+  ok('Humber College to Union changes at Finch West', planRoute(toronto, 'humber-college', 'union').legs[0].to === 'finch-west');
+  ok('Mount Dennis to Kennedy rides Line 5 end to end', planRoute(toronto, 'mount-dennis', 'kennedy').changes === 0);
+  const kipling = planRoute(toronto, 'kipling', 'finch');
+  ok('Kipling to Finch changes once, at Bloor–Yonge', kipling.changes === 1 && kipling.legs[0].to === 'bloor-yonge'
+    && kipling.legs[0].towards.join() === 'kennedy' && kipling.legs[1].towards.join() === 'finch');
+  ok('Union to St George needs no change', planRoute(toronto, 'union', 'st-george').changes === 0);
+  const donMills = planRoute(toronto, 'don-mills', 'vaughan-metropolitan-centre');
+  const donMillsSteady = planRoute(toronto, 'don-mills', 'vaughan-metropolitan-centre', { prefer: 'changes' });
+  ok('Don Mills to Vaughan is quicker across town, changing more', donMills.changes === 3 && donMills.legs.some((leg) => leg.line === '5'),
+    `${donMills.changes} changes, ${donMills.minutes} min`);
+  ok('and with fewest changes goes round by Union', donMillsSteady.changes === 1 && donMillsSteady.minutes > donMills.minutes);
+  ok('a station is found by its old name', searchStations(toronto, 'dundas')[0]?.id === 'tmu' && findStation(toronto, 'bloor yonge')?.id === 'bloor-yonge');
+
+  const vancouver = buildNetwork(vancouverMap);
+  ok('the Vancouver map has no problems', vancouver.problems.length === 0, vancouver.problems.join('; '));
+  ok('Vancouver has 54 stations on lines of 24, 17 and 17', vancouver.stations.size === 54 && lineSizes(vancouver) === '24,17,17');
+  ok('Vancouver changes at Waterfront, Commercial–Broadway, Production Way and Lougheed',
+    interchanges(vancouver) === 'commercial-broadway,lougheed-town-centre,production-way-university,waterfront');
+  const airport = planRoute(vancouver, 'yvr-airport', 'metrotown');
+  ok('the airport to Metrotown changes at Waterfront', airport.changes === 1 && airport.legs[0].to === 'waterfront');
+  ok('where branches share track, either train will do', airport.legs[1].towards.sort().join() === 'king-george,production-way-university');
+  ok('Sapperton to Scott Road changes between branches at Columbia', planRoute(vancouver, 'sapperton', 'scott-road').legs[0].to === 'columbia');
+  ok('Lake City Way to Lougheed stays on the Millennium Line', planRoute(vancouver, 'lake-city-way', 'lougheed-town-centre').changes === 0);
+  ok('shared track is drawn once', linePaths(vancouver, 'expo').length === 2 && linePaths(vancouver, 'canada').length === 2);
+
+  for (const [name, network] of [['Toronto', toronto], ['Vancouver', vancouver]]) {
+    const labels = placeLabels(network);
+    ok(`every ${name} station is named`, labels.size === network.stations.size);
+    ok(`no two ${name} names are drawn over each other`, labelClashes(labels) === 0, `${labelClashes(labels)} clashes`);
+    const svg = mapSvg(network, labels);
+    ok(`the ${name} map draws every station`, (svg.match(/data-station=/g) ?? []).length === network.stations.size);
+  }
+  const risky = buildNetwork({ lines: [{ id: 'l', colour: '#123456', branches: [['a', 'b']] }], stations: { a: { name: '<script>', x: 0, y: 0 }, b: { name: 'B & C', x: 2, y: 0 } } });
+  const riskySvg = mapSvg(risky);
+  ok('station names are written as text', !riskySvg.includes('<script>') && riskySvg.includes('&lt;script&gt;') && riskySvg.includes('B &amp; C'));
+  ok('a route draws its A and B', routeSvg(toronto, kipling).includes('pin-a') && routeSvg(toronto, kipling).includes('pin-b'));
+}
+
+// ---- geo: areas and moves on the globe checked against the sphere itself --------
+{
+  const box = (west, south, east, north) => [[west, south], [east, south], [east, north], [west, north]];
+  // a spherical cap band: 2πR²(sin φ2 − sin φ1) × share of the circle
+  const band = (south, north, degrees) => 2 * Math.PI * 6371.0088 ** 2 * (Math.sin((north * Math.PI) / 180) - Math.sin((south * Math.PI) / 180)) * (degrees / 360);
+  close('a box on the equator has the area of its band of the sphere', Math.abs(sphereArea(box(0, 0, 10, 10))), band(0, 10, 10), 1e-6);
+  close('and so does one near the pole', Math.abs(sphereArea(box(20, 70, 50, 80))), band(70, 80, 30), 1e-6);
+  close('a hole is taken away', polygonsArea([[box(0, 0, 10, 10), box(2, 2, 4, 4)]]), band(0, 10, 10) - band(2, 4, 2), 1e-6);
+
+  // edges are read as straight in longitude and latitude, so a moved shape needs
+  // enough points along each edge for that to hold, as real outlines have
+  const dense = (ring) => ring.flatMap(([x1, y1], at) => {
+    const [x2, y2] = ring[(at + 1) % ring.length];
+    return Array.from({ length: 40 }, (_, k) => [x1 + ((x2 - x1) * k) / 40, y1 + ((y2 - y1) * k) / 40]);
+  });
+  const square = [dense(box(-5, -5, 5, 5))];
+  const centre = shapeCentre(square);
+  ok('the middle of a square on the equator is its centre', Math.abs(centre[0]) < 1e-9 && Math.abs(centre[1]) < 1e-9);
+  const north = moveShape(square, centre, [0, 60]);
+  const kept = Math.abs(sphereArea(north[0])) / Math.abs(sphereArea(square[0]));
+  ok('carried north, a shape keeps its true area', Math.abs(kept - 1) < 0.002, `${kept}`);
+  const span = (ring) => Math.max(...ring.map(([lon]) => lon)) - Math.min(...ring.map(([lon]) => lon));
+  ok('but spans more longitude, which is why a map draws it bigger', span(north[0]) > 1.9 * span(square[0]));
+  const across = moveShape(square, centre, [179, 0]);
+  ok('moved over the date line, a shape stays in one piece', span(across[0]) < 10.5);
+  close('Mercator runs both ways', mercatorLat(mercatorY(51.5)), 51.5, 1e-9);
+  close('Mercator draws 60° north four times as big', mercatorStretch(60), 4, 1e-9);
+
+  const ring = [[10.123, 50.456], [11.5, 50.9], [12.25, 49.75]];
+  const back = unpackRings(packRings([ring]))[0];
+  ok('packed outlines come back to the hundredth of a degree', back.every(([x, y], at) => Math.abs(x - ring[at][0]) <= 0.005 && Math.abs(y - ring[at][1]) <= 0.005));
+  const wiggle = Array.from({ length: 50 }, (_, at) => [at, at % 2 ? 0.01 : 0]);
+  ok('thinning drops wiggles smaller than the tolerance', simplifyRing(wiggle, 0.05).length === 2);
+}
+
+// ---- app icons: every app is drawn, and every paint a drawing uses exists
+{
+  const { appArt, artNames, figures } = await import('../js/lib/app-art.js');
+  const { readdir, stat } = await import('node:fs/promises');
+  const apps = [];
+  for (const name of await readdir('js/apps')) {
+    if ((await stat(`js/apps/${name}`)).isDirectory()) apps.push(name);
+  }
+  for (const id of apps) ok(`app ${id} has a drawn icon`, artNames.includes(id));
+  for (const id of artNames) for (const dark of [false, true]) {
+    const art = appArt(id, { dark });
+    const defined = new Set([...art.matchAll(/id="@([\w-]+)"/g)].map((match) => match[1]));
+    const missing = [...art.matchAll(/url\(#@([\w-]+)\)/g)].map((match) => match[1]).filter((name) => !defined.has(name));
+    ok(`icon ${id}${dark ? ' in the dark' : ''} defines every paint it uses`, missing.length === 0, missing.join(', '));
+    const opened = (art.match(/<(?!\/)[a-zA-Z][^>]*[^/]>/g) ?? []).length;
+    const closed = (art.match(/<\/[a-zA-Z]+>/g) ?? []).length;
+    ok(`icon ${id}${dark ? ' in the dark' : ''} closes every element it opens`, opened === closed, `${opened} opened, ${closed} closed`);
+    ok(`icon ${id}${dark ? ' in the dark' : ''} leaves no numbers undrawn`, !/NaN|undefined/.test(art));
+  }
+  ok('figures lay out one path per digit', (figures('2048', 0, 0).match(/<path/g) ?? []).length === 4);
+}
+
 if (failures.length) {
   console.error(`library check failed with ${failures.length} problem${failures.length === 1 ? '' : 's'}:`);
   failures.forEach((problem) => console.error(`  - ${problem}`));
   process.exit(1);
 }
 
-console.log(`libraries ok: ${pass} checks across chess move generation, optics, polygon clipping, writing and reading codes, tax, documents, bluetooth, and page tools`);
+console.log(`libraries ok: ${pass} checks across chess move generation, optics, polygon clipping, writing and reading codes, tax, documents, bluetooth, page tools and app icons`);

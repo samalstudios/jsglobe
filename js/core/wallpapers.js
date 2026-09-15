@@ -1,5 +1,19 @@
 export const wallpapers = [
   {
+    id: 'horizon',
+    label: 'Horizon',
+    dark: `radial-gradient(90% 75% at 0% 0%, #1c2f6e 0%, transparent 62%),
+           radial-gradient(80% 70% at 100% 6%, #47206b 0%, transparent 58%),
+           radial-gradient(100% 80% at 88% 100%, #5a2638 0%, transparent 62%),
+           radial-gradient(90% 75% at 6% 100%, #0e4852 0%, transparent 60%),
+           linear-gradient(180deg, #0c0d16 0%, #07070b 100%)`,
+    light: `radial-gradient(90% 75% at 0% 0%, #cddcff 0%, transparent 62%),
+            radial-gradient(80% 70% at 100% 6%, #ecd8ff 0%, transparent 58%),
+            radial-gradient(100% 80% at 88% 100%, #ffdcca 0%, transparent 62%),
+            radial-gradient(90% 75% at 6% 100%, #cfefe8 0%, transparent 60%),
+            linear-gradient(180deg, #f7f8fc 0%, #eef0f6 100%)`,
+  },
+  {
     id: 'nebula',
     label: 'Nebula',
     dark: `radial-gradient(120% 90% at 12% 4%, #2a1d5e 0%, transparent 55%),

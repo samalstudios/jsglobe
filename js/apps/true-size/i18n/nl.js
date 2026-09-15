@@ -1,0 +1,18 @@
+export default {
+  'true-size.mapLabel': 'Wereldkaart. Sleep een gekleurd land om het te verplaatsen.',
+  'true-size.loading': 'De wereld wordt geladen…',
+  'true-size.showWorld': 'Hele wereld tonen',
+  'true-size.tip': 'Sleep een gekleurd land naar de polen of de evenaar en zie het op de kaart van grootte veranderen, terwijl de echte grootte gelijk blijft.',
+  'true-size.addCountry': 'Land toevoegen',
+  'true-size.searchCountries': 'Landen zoeken',
+  'true-size.orClick': 'Of klik op een land op de kaart',
+  'true-size.onTheMap': 'Op de kaart',
+  'true-size.removeAll': 'Alles verwijderen',
+  'true-size.why': 'Platte wereldkaarten gebruiken de mercatorprojectie, die land sterker uitrekt naarmate het verder van de evenaar ligt. Groenland lijkt even groot als Afrika, maar Afrika is ongeveer 14 keer zo groot.',
+  'true-size.credit': 'Omtrekken van Natural Earth. Oppervlakten zijn bij benadering.',
+  'true-size.timesSmaller': '{times} keer kleiner dan {other}',
+  'true-size.backHome': 'Terug naar zijn plek',
+  'true-size.nothingYet': 'Nog niets op de kaart. Voeg een land toe om te vergelijken.',
+  'true-size.drawnAt': '{times} keer zo groot getekend als op de evenaar',
+  'true-size.noMatch': 'Geen land gevonden',
+};

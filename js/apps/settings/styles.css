@@ -94,5 +94,7 @@
   font: 700 11px/1 var(--font-mono);
   flex: none;
 }
+.app-badge[data-drawn] { display: block; border-radius: 22.5%; background: none; }
+.app-badge[data-drawn] svg { display: block; width: 100%; height: 100%; filter: drop-shadow(0 1px 1.2px rgba(0, 0, 0, 0.16)); }
 .meter { height: 6px; border-radius: 999px; background: var(--muted); overflow: hidden; }
 .meter i { display: block; height: 100%; background: var(--ring); }

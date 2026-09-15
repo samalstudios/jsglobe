@@ -1,10 +1,10 @@
 # Toolbox
 
-> Fast, private developer tools that run entirely in your browser. 131 tools, no sign up, no uploads.
+> Fast, private developer tools that run entirely in your browser. 133 tools, no sign up, no uploads.
 
 Everything runs as JavaScript in your own browser, so your input never reaches a server.
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 12 tools across 9 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -120,6 +120,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## Science
 
+- [True Size of Countries](https://jsglobe.com/apps/true-size): Drag countries across the map to compare their real size [tools: compare_country_sizes]
 - [Periodic Table](https://jsglobe.com/apps/periodic-table): All 118 elements with full properties
 - [Molecule Viewer](https://jsglobe.com/apps/molecule-viewer): Vitamins, drugs and famous molecules in 3D
 - [Circuit Lab](https://jsglobe.com/apps/circuit-lab): Build and simulate basic electronic circuits
@@ -164,6 +165,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Device Info](https://jsglobe.com/apps/device-info): Everything the browser knows about this device
 - [Clock](https://jsglobe.com/apps/clock): World clocks, stopwatch and countdown timer
 - [Calendar](https://jsglobe.com/apps/calendar): Month view with events saved per workspace
+- [Metro Maps](https://jsglobe.com/apps/metro-maps): Animated metro maps with routes between stations [tools: plan_metro_route, plan_metro_tour]
 - [Portfolio](https://jsglobe.com/apps/portfolio): Track holdings, allocation and profit or loss
 - [Notes](https://jsglobe.com/apps/notes): Quick scratch notes saved to this workspace
 - [Tasks](https://jsglobe.com/apps/todo): A lightweight checklist per workspace

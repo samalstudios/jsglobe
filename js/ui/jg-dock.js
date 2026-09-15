@@ -8,7 +8,7 @@ import { usage } from '../core/usage.js';
 import { router } from '../core/router.js';
 import { bus } from '../core/bus.js';
 import { contextMenu } from './jg-menu.js';
-import { icon } from './icons.js';
+import { icon, drawnIcon } from './icons.js';
 
 const sheet = css`
   :host {
@@ -93,25 +93,20 @@ const sheet = css`
       color-mix(in srgb, var(--tint) 96%, #fff 10%) 0%,
       var(--tint) 62%,
       color-mix(in srgb, var(--tint) 86%, #000 16%) 100%);
-    box-shadow:
-      0 8px 16px -10px rgba(0, 0, 0, 0.65),
-      inset 0 calc(1px * var(--icon-depth, 0)) 0 rgba(255, 255, 255, calc(0.5 * var(--icon-depth, 0))),
-      inset 0 calc(-3px * var(--icon-depth, 0)) calc(5px * var(--icon-depth, 0)) rgba(0, 0, 0, calc(0.26 * var(--icon-depth, 0)));
+    box-shadow: 0 8px 16px -10px rgba(0, 0, 0, 0.65);
     position: relative;
     overflow: hidden;
   }
-  .item::after {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto;
-    height: 56%;
-    border-radius: inherit;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.05));
-    opacity: var(--icon-gloss, 0);
-    pointer-events: none;
-  }
   .item svg { position: relative; z-index: 1; }
   .item svg { width: 46%; height: 46%; stroke-width: 1.65; }
+  .item[data-drawn] { background: none; box-shadow: none; overflow: visible; border-radius: 22.5%; }
+  .item[data-drawn] svg {
+    width: 100%;
+    height: 100%;
+    filter:
+      drop-shadow(0 1px 1.2px rgba(0, 0, 0, 0.16))
+      drop-shadow(0 4px 5px rgba(0, 0, 0, 0.18));
+  }
   .launcher .item svg { width: 52%; height: 52%; fill: currentColor; stroke: none; }
   .item:focus-visible { outline: none; box-shadow: var(--shadow-ring); }
 
@@ -121,6 +116,8 @@ const sheet = css`
     color: var(--foreground);
     box-shadow: none;
   }
+  .launcher .item[data-drawn] { background: none; border: 0; }
+  .launcher .item[data-drawn] svg { width: 100%; height: 100%; }
 
   .dot {
     position: absolute;
@@ -278,7 +275,7 @@ class JGDock extends JGElement {
     this.paint(html`
       <nav class="dock" aria-label="Dock">
         <span class="slot launcher">
-          <a class="item" href="${router.href('/apps')}" aria-label="${t('library.title', 'App Library')}">${icon('launcher', 22)}</a>
+          ${drawnIcon({ id: 'app-library' }, 46) ? html`<a class="item" data-drawn href="${router.href('/apps')}" aria-label="${t('library.title', 'App Library')}">${drawnIcon({ id: 'app-library' }, 46)}</a>` : html`<a class="item" href="${router.href('/apps')}" aria-label="${t('library.title', 'App Library')}">${icon('launcher', 22)}</a>`}
           <span class="dot"></span>
         </span>
         <span class="divider"></span>
@@ -299,7 +296,7 @@ class JGDock extends JGElement {
     const app = registry.find(id);
     if (!app) return '';
     return html`<span class="slot" data-id="${id}" data-kind="${kind}" style="--tint:${registry.tint(app)}">
-      <a class="item" href="${router.href(`/apps/${app.id}`)}" aria-label="${app.name}">${icon(app.icon, 22)}</a>
+      ${drawnIcon(app, 46) ? html`<a class="item" data-drawn href="${router.href(`/apps/${app.id}`)}" aria-label="${app.name}">${drawnIcon(app, 46)}</a>` : html`<a class="item" href="${router.href(`/apps/${app.id}`)}" aria-label="${app.name}">${icon(app.icon, 22)}</a>`}
       <span class="dot"></span>
     </span>`;
   }

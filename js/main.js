@@ -15,3 +15,8 @@ Promise.all([customElements.whenDefined('jg-shell'), loadLanguage(router.current
   router.start();
   analytics.start();
 });
+
+// the service worker keeps installed copies current and lets the app open offline
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
+}

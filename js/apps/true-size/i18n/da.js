@@ -1,0 +1,18 @@
+export default {
+  'true-size.mapLabel': 'Verdenskort. Træk et farvet land for at flytte det.',
+  'true-size.loading': 'Indlæser verden…',
+  'true-size.showWorld': 'Vis hele verden',
+  'true-size.tip': 'Træk et farvet land mod polerne eller ækvator, og se det skifte størrelse på kortet, mens den virkelige størrelse er den samme.',
+  'true-size.addCountry': 'Tilføj et land',
+  'true-size.searchCountries': 'Søg efter lande',
+  'true-size.orClick': 'Eller klik på et land på kortet',
+  'true-size.onTheMap': 'På kortet',
+  'true-size.removeAll': 'Fjern alle',
+  'true-size.why': 'Flade verdenskort bruger Mercator-projektionen, der strækker land mere, jo længere fra ækvator det ligger. Grønland ser lige så stort ud som Afrika, men Afrika er omkring 14 gange større.',
+  'true-size.credit': 'Omrids fra Natural Earth. Arealerne er omtrentlige.',
+  'true-size.timesSmaller': '{times} gange mindre end {other}',
+  'true-size.backHome': 'Tilbage på plads',
+  'true-size.nothingYet': 'Intet på kortet endnu. Tilføj et land at sammenligne.',
+  'true-size.drawnAt': 'Tegnet {times} gange så stort som ved ækvator',
+  'true-size.noMatch': 'Intet land passer',
+};

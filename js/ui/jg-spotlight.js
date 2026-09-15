@@ -4,7 +4,7 @@ import { base } from './styles.js';
 import { registry } from '../core/registry.js';
 import { router } from '../core/router.js';
 import { clamp } from '../core/util.js';
-import { icon } from './icons.js';
+import { icon, drawnIcon } from './icons.js';
 import { keys } from '../core/keys.js';
 
 const sheet = css`
@@ -111,6 +111,8 @@ const sheet = css`
     font-weight: 700;
     flex: none;
   }
+  .badge[data-drawn] { display: block; border-radius: 22.5%; background: none; }
+  .badge[data-drawn] svg { display: block; width: 100%; height: 100%; filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.16)); }
   .meta { min-width: 0; flex: 1; }
   .name { font-size: 13.5px; font-weight: 600; }
   .tag { font-size: 12px; color: var(--muted-foreground); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -204,7 +206,7 @@ class JGSpotlight extends JGElement {
               data-active="${String(index === this.#index)}"
               style="--tint:${registry.tint(app)}"
             >
-              <span class="badge">${icon(app.icon, 16)}</span>
+              ${drawnIcon(app, 30) ? html`<span class="badge" data-drawn>${drawnIcon(app, 30)}</span>` : html`<span class="badge">${icon(app.icon, 16)}</span>`}
               <span class="meta">
                 <span class="name">${app.name}</span>
                 <span class="tag">${app.tagline}</span>

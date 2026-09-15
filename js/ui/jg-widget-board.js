@@ -6,7 +6,7 @@ import { layout } from '../core/layout.js';
 import { bus } from '../core/bus.js';
 import { router } from '../core/router.js';
 import { contextMenu } from './jg-menu.js';
-import { icon } from './icons.js';
+import { icon, drawnIcon } from './icons.js';
 
 const sheet = css`
   :host {
@@ -63,6 +63,8 @@ const sheet = css`
     font-size: 8.5px;
     font-weight: 700;
   }
+  .badge[data-drawn] { display: block; border-radius: 22.5%; background: none; }
+  .badge[data-drawn] svg { display: block; width: 100%; height: 100%; }
   .name {
     font-size: 11.5px;
     font-weight: 600;
@@ -157,7 +159,7 @@ class JGWidgetBoard extends JGElement {
           if (!meta) return '';
           return html`<article class="widget" data-size="${widget.size}" data-uid="${widget.uid}" style="--tint:${registry.tint(meta)}">
             <header class="head">
-              <span class="badge">${icon(meta.icon, 11)}</span>
+              ${drawnIcon(meta, 17) ? html`<span class="badge" data-drawn>${drawnIcon(meta, 17)}</span>` : html`<span class="badge">${icon(meta.icon, 11)}</span>`}
               <span class="name">${meta.name}</span>
               <button class="more" title="${t('action.widgetOptions', 'Widget options')}">⋯</button>
             </header>

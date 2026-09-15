@@ -1,0 +1,18 @@
+export default {
+  'true-size.mapLabel': 'Världskarta. Dra ett färgat land för att flytta det.',
+  'true-size.loading': 'Laddar världen…',
+  'true-size.showWorld': 'Visa hela världen',
+  'true-size.tip': 'Dra ett färgat land mot polerna eller ekvatorn och se det ändra storlek på kartan, fast den verkliga storleken är densamma.',
+  'true-size.addCountry': 'Lägg till ett land',
+  'true-size.searchCountries': 'Sök länder',
+  'true-size.orClick': 'Eller klicka på ett land på kartan',
+  'true-size.onTheMap': 'På kartan',
+  'true-size.removeAll': 'Ta bort alla',
+  'true-size.why': 'Platta världskartor använder Mercatorprojektionen, som sträcker ut land mer ju längre från ekvatorn det ligger. Grönland ser lika stort ut som Afrika, men Afrika är ungefär 14 gånger större.',
+  'true-size.credit': 'Konturer från Natural Earth. Ytorna är ungefärliga.',
+  'true-size.timesSmaller': '{times} gånger mindre än {other}',
+  'true-size.backHome': 'Tillbaka till sin plats',
+  'true-size.nothingYet': 'Inget på kartan än. Lägg till ett land att jämföra.',
+  'true-size.drawnAt': 'Ritat {times} gånger så stort som vid ekvatorn',
+  'true-size.noMatch': 'Inget land matchar',
+};

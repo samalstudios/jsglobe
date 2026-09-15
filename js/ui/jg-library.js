@@ -4,7 +4,12 @@ import { base } from './styles.js';
 import { registry } from '../core/registry.js';
 import { router } from '../core/router.js';
 import './jg-app-tile.js';
-import { icon } from './icons.js';
+import { icon, drawnIcon } from './icons.js';
+
+const drawnBadge = (app, size, glyph) => {
+  const drawn = drawnIcon(app, size);
+  return drawn ? html`<span class="badge" data-drawn>${drawn}</span>` : html`<span class="badge">${icon(app.icon, glyph)}</span>`;
+};
 
 const sheet = css`
   :host {
@@ -90,6 +95,8 @@ const sheet = css`
     font-weight: 700;
     flex: none;
   }
+  .badge[data-drawn] { display: block; border-radius: 22.5%; background: none; }
+  .badge[data-drawn] svg { display: block; width: 100%; height: 100%; filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.16)); }
   .meta { min-width: 0; }
   .name { font-size: 13px; font-weight: 600; }
   .tag {
@@ -153,7 +160,7 @@ class JGLibrary extends JGElement {
               .filter((app) => !app.system)
               .map(
                 (app) => html`<a class="card" href="${router.href(`/apps/${app.id}`)}" style="--tint:${registry.tint(app)}">
-                  <span class="badge">${icon(app.icon, 18)}</span>
+                  ${drawnBadge(app, 34, 18)}
                   <span class="meta">
                     <span class="name">${app.name}</span>
                     <span class="tag">${app.tagline}</span>

@@ -42,66 +42,77 @@ class JGButton extends JGElement {
         font-family: inherit;
         font-size: 13px;
         font-weight: 500;
+        letter-spacing: -0.005em;
         line-height: 1;
-        height: 34px;
-        padding: 0 13px;
-        border-radius: var(--radius-md);
+        height: 32px;
+        padding: 0 14px;
+        border-radius: var(--radius-sm);
         border: 1px solid transparent;
         background: var(--primary);
+        background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
         color: var(--primary-foreground);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16), inset 0 0.5px 0 rgba(255, 255, 255, 0.18);
         cursor: pointer;
-        transition: background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease, transform 0.08s ease;
+        transition: background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
         user-select: none;
       }
-      button:active { transform: translateY(0.5px) scale(0.99); }
+      button:active:not(:disabled) { transform: scale(0.97); }
       button:disabled { opacity: 0.5; cursor: not-allowed; }
       button:focus-visible { outline: none; box-shadow: var(--shadow-ring); }
       :host([variant="secondary"]) button {
         background: var(--secondary);
+        background-image: none;
         color: var(--secondary-foreground);
-        border-color: var(--border);
+        border-color: var(--field-border);
+        box-shadow: var(--control-shadow);
       }
       :host([variant="secondary"]) button:hover:not(:disabled) {
-        background: color-mix(in srgb, var(--secondary) 80%, var(--foreground) 6%);
+        background: color-mix(in srgb, var(--secondary) 94%, var(--foreground));
       }
       :host([variant="outline"]) button {
-        background: transparent;
+        background: color-mix(in srgb, var(--card) 70%, transparent);
+        background-image: none;
         color: var(--foreground);
-        border-color: var(--border-strong);
+        border-color: var(--field-border);
+        box-shadow: var(--control-shadow);
       }
-      :host([variant="outline"]) button:hover:not(:disabled) { background: var(--accent); }
+      :host([variant="outline"]) button:hover:not(:disabled) { background: color-mix(in srgb, var(--card) 94%, var(--foreground)); }
       :host([variant="ghost"]) button {
         background: transparent;
+        background-image: none;
         color: var(--foreground);
+        box-shadow: none;
       }
       :host([variant="ghost"]) button:hover:not(:disabled) { background: var(--accent); }
       :host([variant="destructive"]) button {
-        background: color-mix(in srgb, var(--destructive) 16%, transparent);
+        background: color-mix(in srgb, var(--destructive) 12%, transparent);
+        background-image: none;
         color: var(--destructive);
-        border-color: color-mix(in srgb, var(--destructive) 40%, transparent);
+        border-color: color-mix(in srgb, var(--destructive) 26%, transparent);
+        box-shadow: none;
       }
       :host([variant="destructive"]) button:hover:not(:disabled) {
         background: color-mix(in srgb, var(--destructive) 26%, transparent);
       }
       :host([variant="primary"]) button:hover:not(:disabled),
       :host(:not([variant])) button:hover:not(:disabled) {
-        background: color-mix(in srgb, var(--primary) 88%, var(--background));
+        background-color: color-mix(in srgb, var(--primary) 86%, var(--background));
       }
       :host([group]) button { border-radius: 0; }
-      :host([group="first"]) button { border-radius: var(--radius-md) 0 0 var(--radius-md); }
-      :host([group="last"]) button { border-radius: 0 var(--radius-md) var(--radius-md) 0; }
-      :host([group="only"]) button { border-radius: var(--radius-md); }
+      :host([group="first"]) button { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+      :host([group="last"]) button { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+      :host([group="only"]) button { border-radius: var(--radius-sm); }
       :host([group="middle"]) button,
       :host([group="last"]) button { margin-left: -1px; }
       :host([group]) button:hover:not(:disabled),
       :host([group]) button:focus-visible { position: relative; z-index: 1; }
-      :host([size="sm"]) button { height: 28px; padding: 0 10px; font-size: 12px; }
-      :host([size="lg"]) button { height: 40px; padding: 0 18px; font-size: 14px; }
-      :host([size="icon"]) button { width: 34px; height: 34px; padding: 0; }
-      :host([size="icon-sm"]) button { width: 28px; height: 28px; padding: 0; font-size: 12px; }
-      :host([group]) button { height: 100%; min-height: 34px; }
+      :host([size="sm"]) button { height: 26px; padding: 0 10px; font-size: 12px; border-radius: 7px; }
+      :host([size="lg"]) button { height: 40px; padding: 0 20px; font-size: 14px; border-radius: 10px; }
+      :host([size="icon"]) button { width: 32px; height: 32px; padding: 0; }
+      :host([size="icon-sm"]) button { width: 26px; height: 26px; padding: 0; font-size: 12px; border-radius: 7px; }
+      :host([group]) button { height: 100%; min-height: 32px; }
       :host([group][size="sm"]) button,
-      :host([group][size="icon-sm"]) button { min-height: 28px; }
+      :host([group][size="icon-sm"]) button { min-height: 26px; }
       :host([group][size="lg"]) button { min-height: 40px; }
       :host([full]) { display: flex; width: 100%; }
     `,
@@ -129,20 +140,21 @@ const fieldSurface = css`
   .control {
     width: 100%;
     font-family: inherit;
-    font-size: 13.5px;
+    font-size: 13px;
     color: var(--foreground);
-    background: color-mix(in srgb, var(--input) 100%, transparent);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+    background: var(--input);
+    border: 1px solid var(--field-border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--field-shadow);
     padding: 8px 11px;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
   }
-  .control::placeholder { color: color-mix(in srgb, var(--muted-foreground) 80%, transparent); }
+  .control::placeholder { color: color-mix(in srgb, var(--muted-foreground) 72%, transparent); }
   .control:hover { border-color: var(--border-strong); }
   .control:focus {
     outline: none;
-    border-color: color-mix(in srgb, var(--ring) 70%, var(--border));
-    box-shadow: var(--shadow-ring);
+    border-color: color-mix(in srgb, var(--ring) 80%, transparent);
+    box-shadow: var(--field-shadow), 0 0 0 3.5px color-mix(in srgb, var(--ring) 24%, transparent);
   }
   .control:disabled { opacity: 0.55; cursor: not-allowed; }
   :host([invalid]) .control {
@@ -159,8 +171,8 @@ class JGInput extends JGElement {
     fieldSurface,
     css`
       :host { display: block; width: 100%; }
-      .control { height: 34px; padding: 0 11px; }
-      :host([size="sm"]) .control { height: 28px; font-size: 12.5px; }
+      .control { height: 32px; padding: 0 11px; }
+      :host([size="sm"]) .control { height: 26px; font-size: 12px; border-radius: 7px; }
       .wrap { position: relative; display: flex; align-items: center; }
       .affix {
         position: absolute;
@@ -371,22 +383,36 @@ class JGSelect extends JGElement {
       :host { display: block; width: 100%; }
       .wrap { position: relative; display: block; }
       .control {
-        height: 34px;
+        height: 32px;
         appearance: none;
-        padding: 0 30px 0 11px;
+        padding: 0 34px 0 11px;
         cursor: pointer;
+        background: var(--secondary);
+        box-shadow: var(--control-shadow);
+        font-weight: 500;
       }
+      .control:hover { border-color: var(--border-strong); }
       .control option { background: var(--popover); color: var(--popover-foreground); }
       .chevron {
         position: absolute;
-        right: 10px;
+        right: 6px;
         top: 50%;
+        width: 18px;
+        height: 18px;
         transform: translateY(-50%);
+        display: grid;
+        place-items: center;
+        border-radius: 5px;
+        background: var(--ring);
+        background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0));
+        box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.25);
+        color: #fff;
         pointer-events: none;
-        color: var(--muted-foreground);
-        font-size: 10px;
       }
-      :host([size="sm"]) .control { height: 28px; font-size: 12.5px; }
+      .chevron svg { width: 8px; height: 11px; }
+      :host([size="sm"]) .control { height: 26px; font-size: 12px; padding-right: 28px; border-radius: 7px; }
+      :host([size="sm"]) .chevron { width: 15px; height: 15px; right: 5px; border-radius: 4px; }
+      :host([size="sm"]) .chevron svg { width: 7px; height: 9px; }
     `,
   ];
 
@@ -424,7 +450,7 @@ class JGSelect extends JGElement {
         <select class="control" part="select">
           ${inline.map((option) => html`<option value="${option.value}">${option.label}</option>`)}
         </select>
-        <span class="chevron">▼</span>
+        <span class="chevron"><svg viewBox="0 0 8 11" aria-hidden="true"><path d="M1.5 4 4 1.5 6.5 4M1.5 7 4 9.5 6.5 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </div>
     `);
     const control = this.$('.control');
@@ -453,32 +479,29 @@ class JGSwitch extends JGElement {
       :host { display: inline-flex; }
       button {
         position: relative;
-        width: 38px;
-        height: 22px;
+        width: 40px;
+        height: 24px;
         border-radius: 999px;
-        border: 1px solid var(--border);
-        background: var(--muted);
+        border: 0;
+        background: var(--switch-off);
         cursor: pointer;
         padding: 0;
-        transition: background 0.18s ease, border-color 0.18s ease;
+        transition: background 0.25s ease;
       }
       button:focus-visible { outline: none; box-shadow: var(--shadow-ring); }
       .thumb {
         position: absolute;
         top: 2px;
         left: 2px;
-        width: 16px;
-        height: 16px;
+        width: 20px;
+        height: 20px;
         border-radius: 999px;
-        background: var(--foreground);
-        box-shadow: var(--shadow-sm);
-        transition: transform 0.18s cubic-bezier(0.3, 0.8, 0.4, 1);
+        background: #fff;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0, 0, 0, 0.16), 0 0 0 0.5px rgba(0, 0, 0, 0.04);
+        transition: transform 0.3s cubic-bezier(0.3, 1.3, 0.5, 1);
       }
-      :host([checked]) button {
-        background: var(--ring);
-        border-color: color-mix(in srgb, var(--ring) 70%, transparent);
-      }
-      :host([checked]) .thumb { transform: translateX(16px); background: #fff; }
+      :host([checked]) button { background: var(--switch-on); }
+      :host([checked]) .thumb { transform: translateX(16px); }
       :host([disabled]) { opacity: 0.5; pointer-events: none; }
     `,
   ];
@@ -585,15 +608,16 @@ class JGCard extends JGElement {
         flex-direction: column;
         gap: 12px;
         background: var(--card);
-        border: 1px solid var(--border);
+        border: 1px solid var(--card-border);
         border-radius: var(--radius-lg);
-        padding: 14px;
+        box-shadow: var(--card-shadow);
+        padding: 16px;
         height: 100%;
       }
       :host([soft]) .card { background: color-mix(in srgb, var(--muted) 60%, transparent); }
       .head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
       .titles { display: flex; flex-direction: column; gap: 2px; }
-      .title { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+      .title { font-size: 14px; font-weight: 600; letter-spacing: -0.012em; }
       .sub { font-size: 12px; color: var(--muted-foreground); }
       .body { display: flex; flex-direction: column; gap: 10px; flex: 1; min-height: 0; }
     `,
@@ -630,8 +654,8 @@ class JGBadge extends JGElement {
         gap: 4px;
         padding: 2px 8px;
         border-radius: 999px;
-        border: 1px solid var(--border);
-        background: color-mix(in srgb, var(--muted) 70%, transparent);
+        border: 1px solid transparent;
+        background: color-mix(in srgb, var(--muted-foreground) 14%, transparent);
         color: var(--muted-foreground);
         font-size: 11.5px;
         font-weight: 500;
@@ -675,11 +699,9 @@ class JGTabs extends JGElement {
       .tabs {
         display: inline-flex;
         gap: 2px;
-        padding: 3px;
-        border-radius: var(--radius-md);
-        background: color-mix(in srgb, var(--muted) 92%, var(--foreground) 4%);
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow-well);
+        padding: 2px;
+        border-radius: 9px;
+        background: var(--segment-track);
         max-width: 100%;
         overflow: auto;
         scrollbar-width: none;
@@ -695,17 +717,18 @@ class JGTabs extends JGElement {
         font-family: inherit;
         font-size: 12.5px;
         font-weight: 500;
-        padding: 6px 12px;
-        border-radius: calc(var(--radius-md) - 2px);
+        line-height: 1.2;
+        padding: 5px 13px;
+        border-radius: 7px;
         cursor: pointer;
         white-space: nowrap;
-        transition: background 0.15s ease, color 0.15s ease;
+        transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
       }
       button:hover { color: var(--foreground); }
       button[aria-selected="true"] {
-        background: var(--card);
+        background: var(--segment-thumb);
         color: var(--foreground);
-        box-shadow: var(--shadow-raise);
+        box-shadow: var(--segment-shadow);
         font-weight: 600;
       }
       button:focus-visible { outline: none; box-shadow: var(--shadow-ring); }
@@ -761,6 +784,11 @@ class JGTabs extends JGElement {
   }
 }
 
+const COPY_GLYPHS = {
+  copy: '<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5.2" y="5.2" width="8.3" height="8.3" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10.8 3.6V3.2a1.9 1.9 0 0 0-1.9-1.9H4.2a1.9 1.9 0 0 0-1.9 1.9v4.7a1.9 1.9 0 0 0 1.9 1.9h.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>',
+  done: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.4 2.9 2.9 6.1-6.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+};
+
 class JGCopy extends JGElement {
   static styles = [
     base,
@@ -770,10 +798,10 @@ class JGCopy extends JGElement {
         display: inline-flex;
         align-items: center;
         gap: 5px;
-        height: 28px;
-        padding: 0 10px;
-        border-radius: var(--radius-sm);
-        border: 1px solid var(--border);
+        height: 26px;
+        padding: 0 9px;
+        border-radius: 7px;
+        border: 0;
         background: transparent;
         color: var(--muted-foreground);
         font-family: inherit;
@@ -784,8 +812,10 @@ class JGCopy extends JGElement {
       }
       button:hover { color: var(--foreground); background: var(--accent); }
       button:focus-visible { outline: none; box-shadow: var(--shadow-ring); }
-      :host([done]) button { color: var(--success); border-color: color-mix(in srgb, var(--success) 40%, transparent); }
-      :host([size="icon"]) button { width: 28px; padding: 0; justify-content: center; }
+      :host([done]) button { color: var(--success); background: color-mix(in srgb, var(--success) 12%, transparent); }
+      :host([size="icon"]) button { width: 26px; padding: 0; justify-content: center; }
+      .glyph { display: grid; place-items: center; }
+      .glyph svg { width: 14px; height: 14px; }
     `,
   ];
 
@@ -802,7 +832,7 @@ class JGCopy extends JGElement {
   render() {
     const iconOnly = this.getAttribute('size') === 'icon';
     this.paint(html`<button type="button" aria-label="Copy">
-      <span class="glyph">⧉</span>${iconOnly ? '' : html`<span class="text">${this.textContent.trim() || 'Copy'}</span>`}
+      <span class="glyph">${raw(COPY_GLYPHS.copy)}</span>${iconOnly ? '' : html`<span class="text">${this.textContent.trim() || 'Copy'}</span>`}
     </button>`);
     this.on(this.$('button'), 'click', async () => {
       const source = this.getAttribute('from');
@@ -811,11 +841,11 @@ class JGCopy extends JGElement {
       if (!value) return;
       await copyText(value);
       this.setAttribute('done', '');
-      this.$('.glyph').textContent = '✓';
+      this.$('.glyph').innerHTML = COPY_GLYPHS.done;
       setTimeout(() => {
         this.removeAttribute('done');
         const glyph = this.$('.glyph');
-        if (glyph) glyph.textContent = '⧉';
+        if (glyph) glyph.innerHTML = COPY_GLYPHS.copy;
       }, 1200);
     });
   }
@@ -831,14 +861,16 @@ class JGOutput extends JGElement {
         display: flex;
         align-items: flex-start;
         gap: 8px;
-        padding: 10px 12px;
-        border: 1px solid var(--border);
-        border-radius: var(--radius-md);
-        background: color-mix(in srgb, var(--muted) 72%, transparent);
+        padding: 8px 8px 8px 12px;
+        border: 1px solid var(--field-border);
+        border-radius: var(--radius-sm);
+        background: var(--input);
+        box-shadow: var(--field-shadow);
         font-family: var(--font-mono);
         font-size: 12.5px;
         line-height: 1.6;
         min-height: 40px;
+        align-items: center;
       }
       .value {
         flex: 1;
@@ -901,25 +933,29 @@ class JGSlider extends JGElement {
         appearance: none;
         height: 4px;
         border-radius: 999px;
-        background: var(--border-strong);
+        background: linear-gradient(90deg, var(--ring) var(--fill, 0%), var(--switch-off) var(--fill, 0%));
         outline: none;
       }
       input::-webkit-slider-thumb {
         appearance: none;
-        width: 15px;
-        height: 15px;
+        width: 20px;
+        height: 20px;
         border-radius: 999px;
-        background: var(--foreground);
-        border: 2px solid var(--background);
-        box-shadow: var(--shadow-sm);
+        background: #fff;
+        border: 0;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0, 0, 0, 0.16), 0 0 0 0.5px rgba(0, 0, 0, 0.06);
         cursor: pointer;
+        transition: transform 0.15s ease;
       }
+      input:active::-webkit-slider-thumb { transform: scale(1.08); }
+      input:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px color-mix(in srgb, var(--ring) 30%, transparent), 0 1px 1px rgba(0, 0, 0, 0.16); }
       input::-moz-range-thumb {
-        width: 13px;
-        height: 13px;
+        width: 20px;
+        height: 20px;
         border-radius: 999px;
-        background: var(--foreground);
-        border: 2px solid var(--background);
+        background: #fff;
+        border: 0;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0, 0, 0, 0.16);
         cursor: pointer;
       }
       .value {
@@ -950,7 +986,16 @@ class JGSlider extends JGElement {
     if (input) {
       input.value = next;
       this.$('.value').textContent = next;
+      this.#fill(input);
     }
+  }
+
+  // how far along the track the thumb sits, for the filled part of the track
+  #fill(input) {
+    const min = Number(input.min) || 0;
+    const max = Number(input.max) || 100;
+    const share = max > min ? ((Number(input.value) - min) / (max - min)) * 100 : 0;
+    input.style.setProperty('--fill', `${Math.min(100, Math.max(0, share))}%`);
   }
 
   render() {
@@ -964,8 +1009,10 @@ class JGSlider extends JGElement {
       />
       <span class="value">${this.getAttribute('value') ?? 0}</span>
     `);
+    this.#fill(this.$('input'));
     this.on(this.$('input'), 'input', (event) => {
       this.$('.value').textContent = event.target.value;
+      this.#fill(event.target);
       this.emit('input', { value: Number(event.target.value) });
     });
     this.on(this.$('input'), 'change', (event) => this.emit('change', { value: Number(event.target.value) }));
@@ -980,24 +1027,24 @@ class JGSegment extends JGElement {
       .seg { display: flex; flex-wrap: wrap; gap: 6px; }
       button {
         appearance: none;
-        border: 1px solid var(--border);
-        background: transparent;
-        color: var(--muted-foreground);
+        border: 1px solid var(--field-border);
+        background: var(--secondary);
+        color: var(--foreground);
         font-family: inherit;
         font-size: 12px;
         font-weight: 500;
-        padding: 5px 11px;
+        padding: 5px 12px;
         border-radius: 999px;
         cursor: pointer;
         transition: all 0.15s ease;
       }
       button:hover { color: var(--foreground); border-color: var(--border-strong); }
       button[aria-pressed="true"] {
-        background: color-mix(in srgb, var(--ring) 18%, transparent);
-        border-color: color-mix(in srgb, var(--ring) 55%, transparent);
-        color: var(--foreground);
+        background: var(--ring);
+        border-color: transparent;
+        color: #fff;
         font-weight: 600;
-        box-shadow: var(--shadow-sm);
+        box-shadow: 0 1px 2px color-mix(in srgb, var(--ring) 40%, transparent);
       }
     `,
   ];
@@ -1048,7 +1095,7 @@ class JGEmpty extends JGElement {
         place-items: center;
         gap: 8px;
         padding: 40px 20px;
-        border: 1px dashed var(--border);
+        border: 1.5px dashed var(--border-strong);
         border-radius: var(--radius-lg);
         text-align: center;
         color: var(--muted-foreground);

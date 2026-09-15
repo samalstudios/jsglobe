@@ -5,11 +5,11 @@ import { wallpaperCss } from './wallpapers.js';
 
 export const defaults = {
   'appearance.theme': 'auto',
-  'appearance.wallpaper': 'grid',
+  'appearance.wallpaper': 'horizon',
   'appearance.ring': '#8a1c3b',
   'appearance.density': 'cozy',
   'appearance.iconTint': 'category',
-  'appearance.icons': 'flat',
+  'appearance.icons': 'skeuomorphic',
   'appearance.motion': true,
   'home.iconSize': 'medium',
   'home.labels': true,
@@ -45,8 +45,29 @@ export const defaults = {
 
 let cache = null;
 
+// Settings are saved as the choices that differ from the defaults, so a better
+// default reaches everyone who never picked otherwise. Older saves held every
+// value; the one time they are read, the icon style is dropped (the styles
+// themselves changed) along with values equal to a default that has since
+// changed.
+const VERSION = 2;
+const DISCARDED = ['appearance.icons'];
+const RETIRED_DEFAULTS = { 'appearance.wallpaper': 'grid' };
+
+const save = (values) => {
+  const choices = Object.fromEntries(Object.entries(values).filter(([key, value]) => key !== 'version' && value !== defaults[key]));
+  storage.set(workspaces.key('settings'), { ...choices, version: VERSION });
+};
+
 const load = () => {
-  cache = { ...defaults, ...storage.get(workspaces.key('settings'), {}) };
+  const stored = { ...storage.get(workspaces.key('settings'), {}) };
+  if ((stored.version ?? 1) < VERSION) {
+    for (const key of DISCARDED) delete stored[key];
+    for (const [key, retired] of Object.entries(RETIRED_DEFAULTS)) if (stored[key] === retired) delete stored[key];
+    save({ ...defaults, ...stored });
+  }
+  delete stored.version;
+  cache = { ...defaults, ...stored };
   return cache;
 };
 
@@ -68,29 +89,33 @@ export const settings = {
   set(path, value) {
     const next = { ...(cache ?? load()), [path]: value };
     cache = next;
-    storage.set(workspaces.key('settings'), next);
+    save(next);
     bus.emit('settings:change', { ...next, changed: path });
   },
 
   patch(entries) {
     const next = { ...(cache ?? load()), ...entries };
     cache = next;
-    storage.set(workspaces.key('settings'), next);
+    save(next);
     bus.emit('settings:change', { ...next, changed: '*' });
   },
 
   reset() {
     cache = { ...defaults };
-    storage.set(workspaces.key('settings'), {});
+    save(cache);
     bus.emit('settings:change', { ...cache, changed: '*' });
   },
 };
 
+// the theme in use: the one chosen, or the system's when following it
+export const resolvedTheme = () => {
+  const theme = settings.get('appearance.theme');
+  return theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : theme;
+};
+
 export function applyTheme() {
   const root = document.documentElement;
-  const theme = settings.get('appearance.theme');
-  const resolved =
-    theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : theme;
+  const resolved = resolvedTheme();
   root.dataset.theme = resolved;
   root.dataset.wallpaper = settings.get('appearance.wallpaper');
   root.style.setProperty('--wallpaper', wallpaperCss(settings.get('appearance.wallpaper'), resolved));
@@ -105,6 +130,9 @@ export function watchTheme() {
   applyTheme();
   bus.on('settings:change', applyTheme);
   window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
-    if (settings.get('appearance.theme') === 'auto') applyTheme();
+    if (settings.get('appearance.theme') !== 'auto') return;
+    applyTheme();
+    // icons and other drawings follow the theme, so the interface repaints
+    bus.emit('settings:change', { ...settings.all(), changed: 'appearance.theme' });
   });
 }

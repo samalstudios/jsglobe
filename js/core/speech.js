@@ -1,11 +1,19 @@
 import { bus } from './bus.js';
 import { settings } from './settings.js';
 
-const state = { status: 'idle', message: '', pipeline: null, loading: null, model: null };
+const state = { status: 'idle', message: '', pipeline: null, loading: null, model: null, files: {} };
+
+// how much of the model has arrived, summed over every file it is made of
+const downloaded = () => {
+  const files = Object.values(state.files);
+  const loaded = files.reduce((sum, file) => sum + file.loaded, 0);
+  const total = files.reduce((sum, file) => sum + file.total, 0);
+  return { loaded, total, progress: total ? Math.round((loaded / total) * 100) : 0 };
+};
 
 const setStatus = (status, message = '') => {
   Object.assign(state, { status, message });
-  bus.emit('speech:status', { status, message, progress: state.progress ?? 0 });
+  bus.emit('speech:status', { status, message, ...downloaded() });
 };
 
 export const WHISPER_MODELS = [
@@ -15,7 +23,7 @@ export const WHISPER_MODELS = [
 ];
 
 export const speech = {
-  state: () => ({ status: state.status, message: state.message }),
+  state: () => ({ status: state.status, message: state.message, ...downloaded() }),
 
   get engine() {
     return settings.get('speech.engine');
@@ -37,6 +45,7 @@ export const speech = {
     if (state.loading) return state.loading;
 
     state.loading = (async () => {
+      state.files = {};
       setStatus('loading', 'Fetching the speech runtime');
       const module = await import(/* @vite-ignore */ settings.get('speech.moduleUrl'));
       const pipeline = module.pipeline ?? module.default?.pipeline;
@@ -46,8 +55,11 @@ export const speech = {
         device: navigator.gpu ? 'webgpu' : 'wasm',
         progress_callback: (report) => {
           if (report.status === 'progress' && report.total) {
-            state.progress = Math.round((report.loaded / report.total) * 100);
-            setStatus('loading', `Downloading ${report.file}`);
+            state.files[report.file] = { loaded: report.loaded, total: report.total };
+            setStatus('loading', 'Downloading the speech model');
+          } else if (report.status === 'done' && state.files[report.file]) {
+            state.files[report.file].loaded = state.files[report.file].total;
+            setStatus('loading', 'Downloading the speech model');
           }
         },
       });

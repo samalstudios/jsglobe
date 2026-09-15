@@ -1,0 +1,18 @@
+export default {
+  'true-size.mapLabel': 'Mapa świata. Przeciągnij kolorowy kraj, aby go przesunąć.',
+  'true-size.loading': 'Wczytywanie świata…',
+  'true-size.showWorld': 'Pokaż cały świat',
+  'true-size.tip': 'Przeciągnij kolorowy kraj w stronę biegunów lub równika i zobacz, jak zmienia rozmiar na mapie, choć jego prawdziwa wielkość się nie zmienia.',
+  'true-size.addCountry': 'Dodaj kraj',
+  'true-size.searchCountries': 'Szukaj krajów',
+  'true-size.orClick': 'Albo kliknij kraj na mapie',
+  'true-size.onTheMap': 'Na mapie',
+  'true-size.removeAll': 'Usuń wszystko',
+  'true-size.why': 'Płaskie mapy świata używają odwzorowania Merkatora, które rozciąga lądy tym bardziej, im dalej leżą od równika. Grenlandia wygląda na tak dużą jak Afryka, ale Afryka jest około 14 razy większa.',
+  'true-size.credit': 'Obrysy z Natural Earth. Powierzchnie są przybliżone.',
+  'true-size.timesSmaller': '{times} razy mniejszy niż {other}',
+  'true-size.backHome': 'Wróć na miejsce',
+  'true-size.nothingYet': 'Na mapie jeszcze nic nie ma. Dodaj kraj do porównania.',
+  'true-size.drawnAt': 'Narysowany {times} razy większy niż na równiku',
+  'true-size.noMatch': 'Brak pasującego kraju',
+};

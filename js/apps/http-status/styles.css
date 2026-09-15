@@ -33,7 +33,8 @@
 .status .what { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
 .status .more { color: var(--muted-foreground); display: grid; place-items: center; }
 
-.code { font: 700 17px/1.2 var(--font-mono); }
+.code { font: 700 17px/1.2 var(--font-mono); white-space: nowrap; }
+.status .code { padding: 10px 0; text-align: center; overflow: visible; }
 [data-class="1"] .code, .chip[data-class="1"] b { color: #60a5fa; }
 [data-class="2"] .code, .chip[data-class="2"] b { color: var(--success); }
 [data-class="3"] .code, .chip[data-class="3"] b { color: var(--warning); }

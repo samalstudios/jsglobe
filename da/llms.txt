@@ -1,10 +1,10 @@
 # Toolbox
 
-> Hurtige, private udviklerværktøjer, der kører helt i browseren. 131 værktøjer, ingen tilmelding, ingen uploads.
+> Hurtige, private udviklerværktøjer, der kører helt i browseren. 133 værktøjer, ingen tilmelding, ingen uploads.
 
 Alt kører som JavaScript i din egen browser, så det, du taster ind, når aldrig en server.
 
-Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 9 tools across 7 pages do this so far, marked below.
+Pages describe what they can do through WebMCP (navigator.modelContext), so an assistant reading a tool can call it rather than drive the interface. 12 tools across 9 pages do this so far, marked below.
 
 Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Español (https://jsglobe.com/es/), 中文 (https://jsglobe.com/zh/), Français (https://jsglobe.com/fr/), Português (https://jsglobe.com/pt/), 日本語 (https://jsglobe.com/ja/), 한국어 (https://jsglobe.com/ko/), Nederlands (https://jsglobe.com/nl/), Svenska (https://jsglobe.com/sv/), Norsk (https://jsglobe.com/no/), Dansk (https://jsglobe.com/da/), Polski (https://jsglobe.com/pl/), Українська (https://jsglobe.com/uk/)
 
@@ -120,6 +120,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 
 ## Videnskab
 
+- [Landenes virkelige størrelse](https://jsglobe.com/da/apps/true-size): Træk lande hen over kortet og sammenlign deres virkelige størrelse [tools: compare_country_sizes]
 - [Det periodiske system](https://jsglobe.com/da/apps/periodic-table): Alle 118 grundstoffer med fulde egenskaber
 - [Molekylefremviser](https://jsglobe.com/da/apps/molecule-viewer): Vitaminer, lægemidler og kendte molekyler i 3D
 - [Kredsløbslab](https://jsglobe.com/da/apps/circuit-lab): Byg og simulér enkle elektroniske kredsløb
@@ -164,6 +165,7 @@ Languages: English (https://jsglobe.com/), Deutsch (https://jsglobe.com/de/), Es
 - [Om enheden](https://jsglobe.com/da/apps/device-info): Alt hvad browseren ved om denne enhed
 - [Ur](https://jsglobe.com/da/apps/clock): Verdensure, stopur og nedtælling
 - [Kalender](https://jsglobe.com/da/apps/calendar): Månedsvisning med begivenheder pr. arbejdsflade
+- [Metrokort](https://jsglobe.com/da/apps/metro-maps): Animerede metrokort med ruter mellem stationer [tools: plan_metro_route, plan_metro_tour]
 - [Portefølje](https://jsglobe.com/da/apps/portfolio): Følg beholdninger, fordeling og gevinst eller tab
 - [Noter](https://jsglobe.com/da/apps/notes): Hurtige noter gemt i denne arbejdsflade
 - [Opgaver](https://jsglobe.com/da/apps/todo): En let tjekliste pr. arbejdsflade

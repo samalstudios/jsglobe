@@ -15,7 +15,7 @@ const sheet = css`
   .backdrop {
     position: absolute;
     inset: 0;
-    background: color-mix(in srgb, var(--background) 48%, transparent);
+    background: rgba(0, 0, 0, 0.18);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
     animation: fade 0.18s ease;
@@ -31,10 +31,10 @@ const sheet = css`
     display: flex;
     flex-direction: column;
     background: var(--glass-strong);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: saturate(180%) blur(30px);
+    -webkit-backdrop-filter: saturate(180%) blur(30px);
     border-left: 1px solid var(--border);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--window-shadow);
     animation: slide-left 0.26s cubic-bezier(0.2, 0.9, 0.3, 1);
   }
   :host([side="left"]) .panel {

@@ -15,9 +15,9 @@ const sheet = css`
   .veil {
     position: absolute;
     inset: 0;
-    background: color-mix(in srgb, var(--background) 55%, transparent);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(4px) saturate(120%);
+    -webkit-backdrop-filter: blur(4px) saturate(120%);
     animation: fade 0.16s ease;
   }
   @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
@@ -29,17 +29,17 @@ const sheet = css`
     margin: min(18vh, 120px) auto 0;
     display: flex;
     flex-direction: column;
-    border-radius: var(--radius-xl);
+    border-radius: 18px;
     background: var(--glass-strong);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: saturate(180%) blur(30px);
+    -webkit-backdrop-filter: saturate(180%) blur(30px);
     border: 1px solid var(--glass-border);
-    box-shadow: var(--shadow-lg);
-    animation: rise 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+    box-shadow: var(--window-shadow);
+    animation: rise 0.28s cubic-bezier(0.2, 0.9, 0.25, 1.05);
     overflow: hidden;
   }
   @keyframes rise {
-    from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+    from { opacity: 0; transform: translateY(6px) scale(0.96); }
     to { opacity: 1; transform: none; }
   }
 
